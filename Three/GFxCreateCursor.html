@@ -1,0 +1,549 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GFxCreateCursor.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:23:08 GMT -->
+<head>
+<title> UDK | GFxCreateCursor    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">GFxCreateCursor  </b></div>
+<div id="tooltext">
+<a href="GFxCreateCursorJP.html" class="twikiLink">日本語訳</a><br><a href="GFxCreateCursorCH.html" class="twikiLink">中国翻译</a><br><a href="GFxCreateCursorKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/GFxCreateCursor -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="UIAndHUDHome.html" class="twikiLink">User Interfaces &amp; HUDs</a></b> &gt; <b><a href="Scaleform.html" class="twikiLink">Scaleform GFx</a></b> &gt; How to create a mouse cursor
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="How to create a mouse cursor"></a> How to create a mouse cursor </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="GFxCreateCursor.html#How to create a mouse cursor"> How to create a mouse cursor</a> <ul>
+<li> <a href="GFxCreateCursor.html#Overview"> Overview</a>
+</li> <li> <a href="GFxCreateCursor.html#Flash"> Flash</a>
+</li> <li> <a href="GFxCreateCursor.html#UnrealScript - HUD Class Changes (extends _GFxMoviePlayer)"> UnrealScript - HUD Class Changes (extends GFxMoviePlayer)</a>
+</li> <li> <a href="GFxCreateCursor.html#UnrealScript - HUD Wrapper Class Changes"> UnrealScript - HUD Wrapper Class Changes</a>
+</li> <li> <a href="GFxCreateCursor.html#UnrealScript - _MouseInterfacePlayerInput Class"> UnrealScript - MouseInterfacePlayerInput Class</a>
+</li> <li> <a href="GFxCreateCursor.html#UnrealScript - _PlayerController Class Changes"> UnrealScript - PlayerController Class Changes</a>
+</li> <li> <a href="GFxCreateCursor.html#Config Files"> Config Files</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<hr size="1" noshade="noshade">
+This intermediate level tutorial will explain how to add a toggle-able mouse cursor to an already existing HUD. The mouse cursor will not exist on the stage of the Flash file, but only in the library. It will be instantiated and attached to the _root Flash timeline at runtime by UnrealScript when the user presses and holds the Left Shift key on the keyboard.
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>Note:</strong> Using this method, it is best to place all your UI content such as buttons, dropdowns, checkboxes, etc. (with the exception of the mouse cursor) inside a container movie clip that lives at _root. The mouse cursor will also live at _root. This will ensure the mouse is always on top, even when a popup UI element opens (such as that found in a drop down menu widget). These popup elements normally set themselves above everything else when they are created dynamically at runtime. Without being inside a container movie clip, the popup widget would appear above the mouse cursor.
+<p />
+<h2><a name="Flash"></a> Flash </h2>
+<hr size="1" noshade="noshade"> <ul>
+<li> Open your HUD FLA file, and create a new mouse cursor graphic on the stage, either with a bitmap image or using Flash drawing tools. Be sure the tip is pointing to the top-left corner, like most cursors.
+</li> <li> Now Select the cursor graphic, right click, and choose 'Convert to Symbol'.
+</li> <li> In the Name field, enter MouseContainer.
+</li> <li> Type should be Movie Clip.
+</li> <li> Registration should be set to top-left.
+</li> <li> Enable Export for ActionScript and Export in frame 1.
+</li> <li> In the Identifier field, enter MouseContainer.
+</li> <li> Press OK.
+</li> <li> Now, double click the cursor on stage to enter the MouseContainer movie clip.
+</li> <li> Select the graphic again, right click, and choose 'Convert to Symbol' again.
+</li> <li> Name it MouseImage
+</li> <li> Type should again be Movie Clip.
+</li> <li> Registration should again be top-left.
+</li> <li> Press OK.
+</li> <li> Select the cursor movie clip on stage, and give it an instance name of mouseCursor_mc.
+</li> <li> You should now have the following hierarchy: <ul>
+<li> MouseContainer movieclip (no instance name) <ul>
+<li> MouseImage movieclip (instance name: mouseCursor_mc) <ul>
+<li> Mouse cursor bitmap image
+</li></ul>
+</li></ul>
+</li></ul>
+</li> <li> Add any filters you like to this movie clip (mouseCursor_mc), such as a drop shadow filter.
+</li> <li> Now, unselect mouseCursor_mc, add a new layer to the timeline (the timeline inside MouseContainer), and call it actions.
+</li> <li> On frame 1 of the actions layer enter this code:
+</li></ul>
+<p />
+<p />
+<div class="codetitlebar">
+ActionScript
+</div>
+<div class="codesnippet">
+<pre>
+import flash.external.ExternalInterface;
+
+Mouse.hide();
+
+var mouseListener:Object &#61; new Object();
+
+mouseListener.onMouseMove &#61; function ()
+{
+  mouseCursor&#95;mc.&#95;x &#61; &#95;root.&#95;xmouse;
+  mouseCursor&#95;mc.&#95;y &#61; &#95;root.&#95;ymouse;
+
+  ExternalInterface.call(&#34;UpdateMousePosition&#34;, &#95;root.&#95;xmouse, &#95;root.&#95;ymouse);
+
+  updateAfterEvent();
+};
+
+Mouse.addListener(mouseListener);
+</pre>
+</div>
+<p /> <ul>
+<li> Now return to the _root timeline of your Flash file, and delete the cursor movie clip (MouseContainer) form the stage. Don't worry, it still exists in the library. NOTE: You should have two movie clips in the library: MouseContainer &amp; MouseImage, plus the mouse cursor bitmap image.
+</li> <li> Save, Publish, and Import your modified HUD file into UDK.
+</li></ul>
+<p />
+<p />
+<h2><a name="UnrealScript - HUD Class Changes (extends _GFxMoviePlayer)"></a> UnrealScript - HUD Class Changes (extends GFxMoviePlayer) </h2>
+<hr size="1" noshade="noshade">
+First, add these vars to your HUD class (which extend GFxMoviePlayer):
+<p />
+<div class="codesnippet">
+<pre>
+// Standard Flash Objects
+var GFxObject RootMC, MouseContainer, MouseCursor;
+
+var array&#60;ASValue&#62; args;
+</pre>
+</div>
+<p />
+Add this code to your Start() or Init() function.
+<p />
+<div class="codesnippet">
+<pre>
+RootMC &#61; GetVariableObject(&#34;&#95;root&#34;);
+AddFocusIgnoreKey(&#39;LeftShift&#39;); // Tells HUD to ignore Left Shift keyboard presses
+</pre>
+</div>
+<p />
+Add these functions to your class:
+<p />
+<div class="codesnippet">
+<pre>
+event UpdateMousePosition(float X, float Y)
+{
+  local MouseInterfacePlayerInput MouseInterfacePlayerInput;
+
+  MouseInterfacePlayerInput &#61; MouseInterfacePlayerInput(GetPC().PlayerInput);
+  if (MouseInterfacePlayerInput !&#61; None)
+  {
+    MouseInterfacePlayerInput.SetMousePosition(X, Y);
+  }
+}
+
+/&#42;&#42; Toggles mouse cursor on/off &#42;/
+function ToggleCursor(bool showCursor, float mx, float my)
+{
+  if (showCursor)
+  {
+    MouseContainer &#61; CreateMouseCursor();
+    MouseCursor &#61; MouseContainer.GetObject(&#34;my&#95;cursor&#34;);
+    MouseCursor.SetPosition(mx,my);
+    MouseContainer.SetBool(&#34;topmostLevel&#34;, true);
+  }
+  else
+  {
+    MouseContainer.Invoke(&#34;removeMovieClip&#34;, args);
+    MouseContainer &#61; none;
+  }
+
+  bIgnoreMouseInput &#61; !showCursor;
+}
+
+function GFxObject CreateMouseCursor()
+{
+  return RootMC.AttachMovie(&#34;MouseContainer&#34;, &#34;MouseCursor&#34;);
+}
+</pre>
+</div>
+<p />
+The CreateMouseCursor function attaches the Movie Clip in Flash that has the Identifier of MouseContainer to the _root timeline (the Stage), and gives it an instance name of MouseCursor.
+<p />
+In the defaultproperties, be sure to include:
+<p />
+<div class="codesnippet">
+<pre>
+defaultproperties
+{
+  bIgnoreMouseInput &#61; true
+}
+</pre>
+</div>
+<p />
+<p />
+<h2><a name="UnrealScript - HUD Wrapper Class Changes"></a> UnrealScript - HUD Wrapper Class Changes </h2>
+<hr size="1" noshade="noshade">
+First, add these variables to your HUD Wrapper class (the class that instantiates the HUD class above):
+<p />
+<div class="codesnippet">
+<pre>
+var GFxObject HudMovieSize;
+var MouseInterfacePlayerInput MouseInterfacePlayerInput;
+var float MouseX, MouseY;
+</pre>
+</div>
+<p />
+Next, add this line of code (in red) to your PostBeginPlay() function:
+<p />
+<div class="codesnippet">
+<pre>
+simulated function PostBeginPlay()
+{
+  Super.PostBeginPlay();
+
+  // Your HUD instantiation code here...
+
+  // Stage.originalRect contains the original width and height of the SWF file.
+  // Replace HudMovie with the name of your instantiated HUD.
+  HudMovieSize &#61; HudMovie.GetVariableObject(&#34;Stage.originalRect&#34;);
+
+  MouseInterfacePlayerInput &#61; MouseInterfacePlayerInput(PlayerOwner.PlayerInput);
+}
+</pre>
+</div>
+<p />
+Next, add this function, which will be fired off (executed) when the user presses the Left Shift key. This function calls the ToggleCursor() function in the HUD class, and passes it true if the left shift key is pressed down, or false if it is released. It also passes the X &amp; Y position of the mouse.
+<p />
+<div class="codesnippet">
+<pre>
+exec function SetShowCursor(bool showCursor)
+{
+  // Replace HudMovie with the name of your instantiated HUD.
+  HudMovie.ToggleCursor(showCursor, MouseX, MouseY);
+}
+</pre>
+</div>
+<p />
+Now, add these lines of code to the PostRender() event function, just above the HudMovie.TickHud(0) call. These two lines of code are used to get the current X &amp; Y position of the mouse cursor.:
+<p />
+<div class="codesnippet">
+<pre>
+event PostRender()
+{
+  super.PostRender();
+
+  MouseX &#61; MouseInterfacePlayerInput.MousePosition.X;
+  MouseY &#61; MouseInterfacePlayerInput.MousePosition.Y;
+
+  // Tick HUD
+  if (HudMovie !&#61; none)
+  {
+    HudMovie.TickHud(0);
+  }
+}
+</pre>
+</div>
+<p />
+<p />
+<h2><a name="UnrealScript - _MouseInterfacePlayerInput Class"></a> UnrealScript - MouseInterfacePlayerInput Class </h2>
+<hr size="1" noshade="noshade">
+Create this new class and save it as MouseInterfacePlayerInput.uc. Be sure to replace all instances of SFHudWrapper with the name of your HUD Wrapper class:
+<p />
+<div class="codesnippet">
+<pre>
+class MouseInterfacePlayerInput extends PlayerInput;
+
+// Stored mouse position. Set to private write as we don&#39;t want other classes to modify it, but still allow other classes to access it.
+var PrivateWrite IntPoint MousePosition;
+var SFHudWrapper SFHudWrapper;
+var float HudX, HudY;
+
+event PlayerInput(float DeltaTime)
+{
+  GetHudSize();
+
+  if (myHUD !&#61; None)
+  {
+    // Add the aMouseX to the mouse position and clamp it within the viewport width
+    MousePosition.X &#61; Clamp(MousePosition.X + aMouseX, 0, HudX);
+    // Add the aMouseY to the mouse position and clamp it within the viewport height
+    MousePosition.Y &#61; Clamp(MousePosition.Y - aMouseY, 0, HudY);
+  }
+
+  Super.PlayerInput(DeltaTime);
+}
+
+// This function gets the original width and height of the HUD SWF and stores those values in HudX and HudY.
+function GetHudSize()
+{
+  // First store a reference to our HUD Wrapper and get the resolution of the HUD
+  SFHudWrapper &#61; SFHudWrapper(myHUD);
+  HudX &#61; SFHudWrapper.HudMovieSize.GetFloat(&#34;width&#34;);
+  HudY &#61; SFHudWrapper.HudMovieSize.GetFloat(&#34;height&#34;);
+}
+
+function SetMousePosition(int X, int Y)
+{
+  GetHudSize();
+
+  if (MyHUD !&#61; None)
+  {
+    MousePosition.X &#61; Clamp(X, 0, HudX);
+    MousePosition.Y &#61; Clamp(Y, 0, HudY);
+  }
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h2><a name="UnrealScript - _PlayerController Class Changes"></a> UnrealScript - PlayerController Class Changes </h2>
+<hr size="1" noshade="noshade">
+Add this line to the defaultproperties of your PlayerController class:
+<p />
+<div class="codesnippet">
+<pre>
+defaultproperties
+{
+  InputClass&#61;class&#39;MouseInterfacePlayerInput&#39;
+}
+</pre>
+</div>
+<p />
+<p />
+<h2><a name="Config Files"></a> Config Files </h2>
+<p />
+Then, add this line to your DefaultInput.ini file:
+Code:
+<p />
+<div class="codesnippet">
+<pre>
+.Bindings&#61;(Name&#61;&#34;LeftShift&#34;,Command&#61;&#34;SetShowCursor true &#124; Onrelease SetShowCursor false&#34;)
+</pre>
+</div>
+<p /> <ul>
+<li> Save and compile scripts.
+</li> <li> Test your new cursor by running the game!
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GFxCreateCursor.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:23:08 GMT -->
+</html></body>

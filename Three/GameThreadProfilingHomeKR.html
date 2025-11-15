@@ -1,0 +1,799 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GameThreadProfilingHomeKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:32:37 GMT -->
+<head>
+<title> UDK | GameThreadProfilingHomeKR    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">GameThreadProfilingHomeKR  </b></div>
+<div id="tooltext">
+<a href="GameThreadProfilingHome.html" class="twikiLink">English Translation</a><br><a href="GameThreadProfilingHomeJP.html" class="twikiLink">日本語訳</a><br><a href="https://udn.epicgames.com/Three/GameThreadProfilingHomeCH" class="restricted" class="restricted" class="twikiLink">中国翻译</a><br>
+
+<!-- Three/GameThreadProfilingHomeKR -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHomeKR.html" class="twikiLink">UE3 홈</a></b> &gt; <b><a href="PerformanceHomeKR.html" class="twikiLink">퍼포먼스, 프로파일링, 최적화</a></b> &gt; 게임 스레드 프로파일링 및 최적화
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="게임 스레드 프로파일링 및 최적화"></a> 게임 스레드 프로파일링 및 최적화 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="GameThreadProfilingHomeKR.html#게임 스레드 프로파일링 및 최적화"> 게임 스레드 프로파일링 및 최적화</a> <ul>
+<li> <a href="GameThreadProfilingHomeKR.html#개요"> 개요</a>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#게임플레이 프로파일러"> 게임플레이 프로파일러</a>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#통계 뷰어"> 통계 뷰어</a>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#레벨 프로파일링 및 최적화"> 레벨 프로파일링 및 최적화</a> <ul>
+<li> <a href="GameThreadProfilingHomeKR.html#Dynamic Light Environment 업데이트하기"> Dynamic Light Environment 업데이트하기</a>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#로딩 퍼포먼스"> 로딩 퍼포먼스</a>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#파티클"> 파티클</a>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#피직스"> 피직스</a>
+</li></ul>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#스크립트 프로파일링"> 스크립트 프로파일링</a> <ul>
+<li> <a href="GameThreadProfilingHomeKR.html#로그 메시지"> 로그 메시지</a>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#가비지 컬렉션"> 가비지 컬렉션</a>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#프레임별 비싼 업데이트"> 프레임별 비싼 업데이트</a>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#느린 언리얼스크립트 함수 호출"> 느린 언리얼스크립트 함수 호출</a>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#스폰은 느립니다"> 스폰은 느립니다</a>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#언리얼스크립트 전처리 코드 제외"> 언리얼스크립트 전처리 코드 제외</a>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#TickableActors 목록 사용"> TickableActors 목록 사용</a>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#유용한 실행 명령"> 유용한 실행 명령</a>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#선 검사"> 선 검사</a>
+</li></ul>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#네이티브 코드 프로파일링"> 네이티브 코드 프로파일링</a> <ul>
+<li> <a href="GameThreadProfilingHomeKR.html#엔진의 풀"> 엔진의 풀</a>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#Looking For Perf Issues 디파인"> Looking For Perf Issues 디파인</a>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#C++ 전처리기 코드 제외"> C++ 전처리기 코드 제외</a>
+</li></ul>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#플레이어/AI 프로파일링"> 플레이어/AI 프로파일링</a> <ul>
+<li> <a href="GameThreadProfilingHomeKR.html#AI 로깅"> AI 로깅</a>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#Move Actor"> Move Actor</a>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#NavMesh 퍼포먼스"> NavMesh 퍼포먼스</a>
+</li> <li> <a href="GameThreadProfilingHomeKR.html#스켈레탈 메시 컴포넌트 업데이트"> 스켈레탈 메시 컴포넌트 업데이트</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="개요"></a> 개요 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+씬에 추가되는 모든 게임플레이 오브젝트는 약간의 리소스를 차지하며, 보통 가장 흥미로운 오브젝트가 가장 많은 리소스를 차지합니다. 이러한 오브젝트에 충분한 GameThread CPU 시간을 확보하려면 다른 오브젝트가 불필요하게 리소스를 차지하지는 않는지, 모든 오브젝트가 최소한의 작업량으로 소기의 목적을 달성하고 있는지 확인해야 합니다.
+<p />
+<a name="ScriptProfiling"></a>
+<h2><a name="게임플레이 프로파일러"></a> 게임플레이 프로파일러 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<strong>게임플레이 프로파일러</strong> 는 스크립트 코드 내 비싼 함수에 대한 유용한 정보를 많이 제공해 줄 수 있습니다. 프로파일링 데이터 캡처도 매우 빠르며, 짧은 샘플링 기간에 걸쳐 핫 스팟으로 즉시 접근해볼 수 있습니다.
+<p />
+스크립트 프로파일러 데이터를 캡처하려면:
+<p /> <ul>
+<li> 콘솔에 <code><b>PROFILEGAME START</b></code> 를 입력하여 데이터 캡처를 시작합니다.
+</li> <li> 완료되면 <code><b>PROFILEGAME STOP</b></code> 를 입력하여 캡처를 중지시키고 데이터를 디스크에 저장합니다.
+</li> <li> 프로파일링 데이터는 <code>\[UnrealInstallation]\[GameName]\Profiling\</code> 폴더에 저장됩니다. <ul>
+<li> 콘솔에서 통계 데이터는 UnrealConsole 을 통해 PC로 자동 전송될 것입니다.
+</li></ul>
+</li> <li> GameplayProfiler 를 실행하고 파일을 불러옵니다. (예: <code>게임명-07.15-18.58.uprof</code>)
+</li></ul>
+<p />
+더 자세한 개요나 부가 정보에 대해서는 <a href="GameplayProfilerKR.html" class="twikiLink">Gameplay Profiler KR</a> 페이지를 참고해 주시기 바랍니다.
+<p />
+<strong>주:</strong> 많은 경우에 <a href="GameThreadProfilingHomeKR.html#StatsViewer" class="twikiAnchorLink">Stats Viewer</a> 툴이 런타임 부하가 더 걸리는 대신 GameplayProfiler 보다 더욱 다세한 스크립트 프로파일링 데이터를 제공해 줍니다. 통계 데이터 캡처시 #define <strong>STAT SLOW</strong> 를 <strong>1</strong> 로 해 놓으면 StatsViewer 가 프레임에 대해 자세한 언리얼스크립트 콜 그래프를 표시해 줍니다!
+<p />
+<a name="StatsViewer"></a>
+<h2><a name="통계 뷰어"></a> 통계 뷰어 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<strong>StatsViewer</strong> 를 사용하여 CPU 퍼포먼스 문제를 추적해 내려갈 수 있습니다. 언리얼스크립트 코드에 대해 자세한 프로파일링 툴로도 활용 가능합니다!
+<p />
+StatsViewer 는 모든 <strong>언리얼스크립트 함수 호출*과 *게임 통계</strong> (값 카운터, 사이클 타이머 등)을 전부 표시하며, PIX 에서와 유사하게 데이터를 정렬해 볼 수 있는 그래프 시간선도 제공됩니다. 더욱 중요한 것은, 유효범위내 사이클 통계와 뷰 데이터를 멋진 *계층구조형 콜 그래프*로 표시해 줍니다. 이를 통해 어떤 프레임에 "뭐가 느린지" 빠르게 알아볼 수 있습니다. (그래프 창의 프레임에 더블클릭하기만 하면 됩니다.)
+<p />
+<strong>준비:</strong>
+<p /> <ul>
+<li> 사용중인 빌드에 <code>STATS</code> 이 <code>1</code> 로 정의되어 있는지 확인합니다 (UnBuild.h). <ul>
+<li> Debug 및 Release 빌드에서는 디폴트로 켜져 있습니다.
+</li></ul>
+</li> <li> 스크립트 코드를 프로파일링하려면, <code>STATS_SLOW</code> 역시도 <code>1</code> 로 정의되어 있는지 확인합니다 (UnStats.h). <ul>
+<li> 프로파일링이 느려지나, 모든 언리얼스크립트 호출에 대해 자세한 콜 그래프 데이터가 제공됩니다.
+</li></ul>
+</li></ul>
+<p />
+<strong>통계 데이터를 디스크에 캡처하려면 (추천):</strong>
+<p /> <ul>
+<li> 콘솔에 <code><b>STAT StartFile</b></code> 이라 입력하여 통계를 디스크에 캡처 시작합니다.
+</li> <li> 완료되면 <code><b>STAT StopFile</b></code> 을 입력하여 로깅을 중지하고 통계 파일을 마무리합니다.
+</li> <li> 앱 시동 즉시 캡처를 시작하려면 명령줄에 <code>-StartStatsFile</code> 인수를 붙입니다.
+</li> <li> 콘솔에서 <code>-DisableHDDCache</code> 명령줄 옵션 붙이는 것도 잊지 마십시오! <ul>
+<li> HDD 로의 텍스처 밉 캐시(는 통계 파일 쓰기와 경쟁하기에 이)를 끕니다.
+</li></ul>
+</li> <li> 통계 파일은 <code>[UnrealInstallation]\[GameName]\Profiling\</code> 폴더에 출력됩니다. <ul>
+<li> 콘솔에서 통계 데이터는 UnrealConsole 을 통해 PC로 자동 전송됩니다.
+</li></ul>
+</li> <li> StatsViewer 를 실행하여 파일을 불러옵니다. (예: <code>게임명-07.15-18.58.ustats</code>).
+</li></ul>
+<p />
+<strong>실행중인 게임에서 라이브 통계를 캡처하려면:</strong>
+<p /> <ul>
+<li> 게임을 로드합니다.
+</li> <li> <strong>Connect to IP</strong> 를 사용하여 StatsViewer 를 Xenon 세션에 연결합니다.  <ul>
+<li> Xenon 에서 "Debug Channel IP Address" 가 아닌 Xenon 의 "Title IP Address" 를 사용합니다. <ul>
+<li> UFE 에서 "Show All Target Information" 을 클릭하면 찾을 수 있습니다.
+</li></ul>
+</li> <li> port number 가 <strong>13002</strong> 인지 확인합니다.
+</li></ul>
+</li> <li> 라이브 통계가 UDP 연결을 통해 스트림 인 시작됩니다.
+</li> <li> <code>File &gt; Save</code> 로 캡처된 데이터를 디스크에 저장하면 됩니다.
+</li></ul>
+<p />
+<strong>통계 데이터 보기:</strong>
+<p /> <ul>
+<li> <strong>.ustats</strong> 파일을 StatsViewer 툴에 로드하거나, 라이브 게임 세션에 *연결*합니다.
+</li> <li> 버벅임이나 추세를 확인할 수 있도록 상호작용 그래프가 초기 프레임 시간을 표시해 줍니다.
+</li> <li> 왼쪽 열에 있는 통계를 그래프로 *드래그 앤 드롭*하여 통계 데이터를 표시합니다.
+</li> <li> 그래프에 *클릭*하여 프레임을 선택하고 그에 대한 통계 데이터를 봅니다.
+</li> <li> 그래프에 <strong>더블-클릭*하여 그 프레임에 대한 *콜 그래프를 엽니다</strong>.
+</li> <li> 왼쪽 열에 있는 통계에 우클릭하여 "View Frames by Criteria" 범주별로 프레임을 봅니다. (예로 FPS &lt; 20 인 프레임만)
+</li> <li> 메뉴 옵션을 사용하여 뷰 모드를 전환합니다. (프레임 번호 대 시간, 범위/전체 데이터)
+</li></ul>
+<p />
+<strong>기타 노트:</strong>
+<p /> <ul>
+<li> LTCG 모드에서는 (로컬에서 <code>#define STATS</code> 하지 않는 한) 작동하지 않습니다. Release 를 사용하십시오.
+</li> <li> 라이브 통계 캡처에 여전히 버그가 있습니다. (프레임 드롭, 괴상한 스크롤링)
+</li></ul>
+<p />
+실시간 통계 캡처에 대해 자세한 정보는 <a href="PerfStatsKR.html" class="twikiLink">퍼포먼스 추적 시스템</a> 페이지를 확인해 주시기 바랍니다.
+<p />
+<a name="LevelOptimization"></a>
+<h2><a name="레벨 프로파일링 및 최적화"></a> 레벨 프로파일링 및 최적화 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<a name="DleUpdating"></a>
+<h3><a name="Dynamic Light Environment 업데이트하기"></a> Dynamic Light Environment 업데이트하기 </h3>
+<p />
+레벨을 프로파일링할 때, Dynamic Light Environment 의 업데이트 비용이 높게 나타날 수 있습니다. 그러한 상황이 닥치면 레벨에서 DLE 를 사용중인 액터가 무엇인지 살펴보고, 어떻게 설정되었는지 들여다볼 때입니다.
+<p />
+모든 (Mover 라고도 하는) InterpActor 와 KActors 는 Dynamic Light Environment 를 기본으로 가지고 있습니다. 그러나 DLE 업데이트시 광원에 선 검사를 하여, CPU 비용이 꽤나 추가될 수 있습니다. 그러나 동적 오브젝트 상의 라이팅 비용을 줄이기 위해 설정할 수 있는 옵션이 여럿 있습니다.
+<p />
+Light Environment 세팅 중 (게임 스레드 상) 가장 비싼 것에서 싼 순서대로, 사용 시점과 함께 나열해 보겠습니다:
+<p />
+1) <strong>bEnabled=True</strong>, <strong>bDynamic=True</strong> (디폴트)
+<p />
+꼭 필요할 때만 사용하십시오. InvisibleUpdateTime 및 MinTimeBetweenFullUpdates 에 따라 업데이트합니다. 아마도 일정 시점에 동시 활성화되는 수가 50 개 이상이지는 않을 것입니다. 보이고, 플레이어에 가깝거나 움직일 때는 추가 표시여부(visibility) 검사를 합니다.
+<p />
+2) <strong>bEnabled=True</strong>, <strong>bDynamic=False</strong>, <strong>bForceNonCompositeDynamicLights=True</strong>
+<p />
+매우 저렴할 것입니다. environment 는 첫 틱에만 업데이트됩니다. bForceNonCompositeDynamicLights 가 있어야 dynamic light가 거기에 영향을 끼치며, 이는 게임 스레드에 큰 영향을 끼치지 않습니다. 수백개를 놔도 되며, (첫 틱 이후) 유일한 비용은 dynamic light로의 선 검사(와 owner가 보일 때만)입니다. 이는 precomputed shadows 를 사용할 때보다 나아 보이는데, 왜냐면 회전시켜도 라이팅이 올바르게 유지되기 때문입니다. 프랙처 메시에도, GDO에도, 기타 여러 곳에도 사용됩니다. 여기에 비용이 많이 들어간다면, 아마도 코드 측면에서 약간만 최적화시켜주면 될 것입니다.
+<p />
+3) <strong>bEnabled=False</strong>, <strong>bUsePrecomputedShadows=True</strong> (프리미티브 컴포넌트 상에서). 또한 다이내믹 채널에서 꺼낸 다음 스태틱 라이팅 채널에 넣어줘야 할 것입니다.
+<p />
+이는 라이트매핑되고, 렌더링하기도 매우 저렴하고, 사실상 (UDynamicLightEnvironmentComponent::Tick 함수가 계속 호출되는 경우를 제외하고는) 게임 스레드 부하가 없을 것입니다. 움직이면 틀려 보일 것입니다.
+<p />
+활성 상태인 light environment 가 몇이나 되나 알아보는 데 사용할 수 있는 콘솔 명령이 있습니다. 콘솔에 SHOWLIGHTENVS 라 치면 그 프레임에 틱되는 환경 전부를 볼 수 있습니다. 출력 형태는 이렇습니다:
+<p />
+<pre>
+Log: LE: SP&#95;MyMap&#95;01&#95;S.TheWorld:PersistentLevel.InterpActor&#95;12.DynamicLightEnvironmentComponent&#95;231 1
+Log: LE: SP&#95;MyMap&#95;01&#95;S.TheWorld:PersistentLevel.InterpActor&#95;55.DynamicLightEnvironmentComponent&#95;232 0
+Log: LE: SP&#95;MyMap&#95;01&#95;S.TheWorld:PersistentLevel.InterpActor&#95;14.DynamicLightEnvironmentComponent&#95;432 1 ...
+</pre>
+<p />
+줄 끝의 '1' 은 'bDynamic' 이 TRUE 로 설정되었다는 뜻입니다. 레벨 디자이너가 부하를 줄이고자 할 때의 맵 변경 가이드가 될 것입니다.
+<p />
+<h3><a name="로딩 퍼포먼스"></a> 로딩 퍼포먼스 </h3>
+<p />
+가끔 레벨 스트리밍 시간이 오래 걸리는 문제가 있습니다. 보통은 어떤 오브젝트가 문제지요. 그 오브젝트를 찾아내서 왜 그런지 봐야 겠습니다!
+<p />
+로딩/스트리밍을 담당하는 엔진의 define 부분이 몇 있습니다:
+<p /> <ul>
+<li> TRACK_SERIALIZATION_PERFORMANCE
+</li> <li> TRACK_DETAILED_ASYNC_STATS
+</li> <li> TRACK_FILEIO_STATS
+</li></ul>
+<p />
+전부 켜고 레벨을 로드해 보면 로그 파일에 통계가 엄청 뜨며, 어떤 오브젝트가 시간을 잡아먹는지 볼 수 있습니다.
+<p />
+<h3><a name="파티클"></a> 파티클 </h3>
+<p />
+씬에는 보통 파티클이 여럿 있게 마련이고, 비용도 제각각입니다. 다른 것보다 두드러지게 비싼 파티클이 있는지 알아보면 좋겠죠. 추가적으로 필요없는 곳에 돌고 있는 파티클이 있는지도 알아보면 좋겠습니다.
+<p />
+#define TRACK_DETAILED_PARTICLE_TICK_STATS 1 설정하면 로그에 파티클 틱 통계가 많이 출력됩니다.
+<p />
+추가적으로 프레임마다 경계가 업데이트되는 파티클을 찾아보고 싶을 수도 있겠습니다. 그런 파티클시스템에는 ContentAudit 태그가 붙어있을 테지만, 혹시나 각 프레임마다 경계가 동적으로 업데이트되는 파티클을 발견했다! 딱 FixedRelativeBoundingBox 를 시험해 볼 좋은 마루타다 생각하시면 되겠습니다.
+<p />
+일반적으로 느린 파티클 시스템 거의 대부분은, 레벨에서 시야를 가리는 연기 / 파편(splash) 이펙트였습니다. 이러한 것들은 화면상의 크기때문에, 적중 이펙트나 스파크보다 비용이 많이 들게 마련입니다. 이러한 현상에 대해 가장 효과적인 단 한가지 최적화 방법이라면, 좀 더 불투명한 파티클을 조금 더 적게 사용하는 것입니다. 머티리얼 단순화를 통해서도 약간의 이득이 있을 수는 있지만, 레이어 수를 줄이는 것만 못합니다.
+<p />
+왜곡(Distortion)은 사용되는 각 DPG 마다 약간의 고정비가 발생합니다. 화면 전경 DPG 에 (직접 또는 게임플레이 코드를 통해) 놓이는 대미지/피 이펙트를 만드는 경우, 월드 DPG 는 물론 전경 DPG 에도 고정비가 추가됩니다. 이러한 현상을 해결하려면, 머티리얼에서 씬 텍스처를 찾아보는(lookup) 방식을 통해 굴절(refraction) 이펙트를 사용하면 됩니다. 씬 텍스처를 사용하면 소트 순서가 바뀌겠지만, 전경 DPG 의 이펙트에는 중요치 않습니다. 이펙트가 겹치는 것도 제대로 처리해 주지 못하겠지만, 화면 이펙트에는 거의 눈에 띄지 않을 것입니다.
+<p />
+<h3><a name="피직스"></a> 피직스 </h3>
+<p />
+왜 피직스 시간이 높은지 이유를 알아내고 최적화시켜 피직스를 많이 돌릴 수 있으면 현실감도 높아지고 여러모로 좋습니다. 보통 피직스 시간이 높아지는 것은 뭔가 나쁜 짓만 해 대면서 잠도 안자는 퇴폐적인 오브젝트 때문입니다. 찾아내서 뭐가 불만인가 이유나 들어 봅시다.
+<p />
+PhysX 프로파일링 툴 사용법에 대해서는 <a href="PhysXProfilingHomeKR.html" class="twikiLink">PhysX Profiling Home KR</a> 페이지를 참고하시기 바랍니다.
+<p />
+피직스가 뭘 하는지 확인하기 좋은 <a href="ConsoleCommandsKR.html" class="twikiLink">콘솔 명령</a>:
+<p /> <ul>
+<li> LISTAWAKEBODIES: 가만히 서서 움직이는게 아무것도 없는데도 피직스 시간이 하늘높이 치솟는다면, 잠들지 않은 바디가 있는 것입니다.
+</li> <li> PHYSASSETBOUNDS: 씬의 피직스 애셋용 경계가 어디인가.
+</li> <li> nxvis collision: 피직스 콜리전 씬 모양이 어떤지 보여주는 좋은 범용 명령
+</li></ul>
+<p />
+<h2><a name="스크립트 프로파일링"></a> 스크립트 프로파일링 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="로그 메시지"></a> 로그 메시지 </h3>
+<p />
+많은 정보가 로그에 전송됩니다. 시간이 갈 수록 디버그 로그 양이 주체할 수 없을 정도로 커집니다. 그래버리면 정말 무서운 문제가 스팸속에 묻혀 버릴 수가 있습니다. 문제 해결을 위해서는 기본적으로 로그 청소를 깨끗이 해 두다가 문제가 로그에 뜨자마자 바로 고치는 것입니다.
+<p />
+로그 경고/메시지가 뜰 때마다 왜 발생했는지 알아내어 근본 원인을 고칩니다. 내일로 미루지 말고요!
+<p />
+<strong>주</strong>: 로그 경고 / 디버그 메시지를 추가할 때, <strong>제발 제발 제발</strong> 이것도 추가해 주세요!:
+<p />
+    * 고치는 법 / 문제를 고치기 위해 들여다볼 곳
+    * 어떤 오브젝트가 로그를 뿜는지
+<p />
+이거 둘만 추가해 주면 문제 해결이 누워 떡먹기 수준이 됩니다!
+<p />
+접할 수 있는 로그 메시지와 그에 대한 수정 예제입니다:
+<p />
+Cooking Convex For __: 누군가 PreCachedPhysScale 설정을 해 두지 않았을 때 보게 될 메시지입니다. 게임이 해당 오브젝트에 대해 convex hull을 만들어내게 하는거죠. 느려지게 되는 건데, 미리 할 수 있을 때 해 줍시다.
+<p />
+<img src="rsrc/Three/GameThreadProfilingHome/PreCachedPhysScale.jpg" alt="PreCachedPhysScale.jpg" width="900" height="561" />
+<p />
+<h3><a name="가비지 컬렉션"></a> 가비지 컬렉션 </h3>
+<p />
+언리얼엔진3는 메모리 관리 전략의 일환으로 GarbageCollection을 사용합니다. 실제 GC 수행 비용을 최소화해야겠죠. 반복하는 오브젝트 수와 지속적으로 스폰 및 수거하는 오브젝트 수를 최소화시키면 됩니다.
+<p />
+자세한 정보는 <a href="GarbageCollectionKR.html#GC 퍼포먼스 최적화하기">GC 퍼포먼스 최적화하기</a> 부분을 참고해 주십시오.
+<p />
+여기도 참고해 보십시오: 코드의 <code>DETAILED_PER_CLASS_GC_STATS</code> 를 켜면 가비지컬렉터가 들여다 보고 처리해야 할 오브젝트 클래스가 표시됩니다. 지정된 오브젝트 종류를 만나면 이렇게 물어보는 것입니다: "요 오브젝트를 캐시해도 될까요?" 풀이나 스폰한 액터에 캐시하는 것이 계속 스폰했다 수거했다 하는 것보단 나을것입니다.
+<p />
+<h3><a name="프레임별 비싼 업데이트"></a> 프레임별 비싼 업데이트 </h3>
+<p />
+오브젝트는 매 프레임마다 업데이트 / 계산됩니다. 몇몇 오브젝트는 다른 것보다 엄청난 시간을 요합니다. 부착된게 많거나, 콜리전 설정이 잘못됐거나, 비효율적인 tick() 코드이거나 등등의 경우입니다.
+<p />
+UnActorComponent.cpp 에 보면 어느걸 수집할 지 정하는 define이 여럿 있습니다.
+<p />
+다음 것들을 "켜" 줘야 합니다.
+<p /> <ul>
+<li> LOG_DETAILED_COMPONENT_UPDATE_STATS
+</li> <li> LOG_DETAILED_ACTOR_UPDATE_STATS
+</li></ul>
+<p />
+켜고 나면 로그에 엄청난 데이터가 들어차게 됩니다. 목록 최상단의 오브젝트가 가장 비싼 것이니 가장 먼저 봐 줘야 겠습니다.
+<p />
+추가적으로 플레이어 근처에 있지는 않으면서 자잘한 비용이 드는 오브젝트가 많이 있을 경우, 얘들을 TickableActors List 에다 넣거나 플레이어가 근처에 있지 않으면 재워버리는 등 다른 방법을 강구해 봐야 할 것입니다.
+<p />
+<h3><a name="느린 언리얼스크립트 함수 호출"></a> 느린 언리얼스크립트 함수 호출 </h3>
+<p />
+게임의 함수성 프로토타이핑을 빠르게 하는 데는 언리얼스크립트가 그만입니다. 그리고서 완성되면 프로파일을 돌리고 어떤 함수가 미칠듯이 느린지 보는거죠. 느린 함수는 언리얼스크립트를 최적화시켜 주거나 C++로 변환해 주면 됩니다. 이를 통해 레벨 전체를 플레이해 보고 느린 것들을 파일에 빠르게 로그시켜 볼 수 있겠습니다.
+<p />
+추가적으로 잠깐만 등장하면서 프레임을 벌벌 떨게 만들어 버리는 정말 느린 함수를 쉽게 찾아볼 수도 있겠습니다.
+<p />
+이 define을 켭니다: SHOW_SLOW_UNREALSCRIPT_FUNCTION_CALLS
+<p />
+추가적으로 SHOW_SLOW_UNREALSCRIPT_FUNCTION_CALLS_TAKING_LONG_TIME_AMOUNT 를 통해 얼마나 "느린" 함수 호출을 로그시킬지 추려볼 수도 있습니다.
+<p />
+<h3><a name="스폰은 느립니다"></a> 스폰은 느립니다 </h3>
+<p />
+오브젝트가 월드에 ConstructObject / 스폰될 때는 많은 일들이 벌어집니다. AI가 월드에 대량으로 스폰될 때면 엄청나게 버벅이게 됩니다. 그 정도를 줄여야 하겠습니다.
+<p />
+(콘솔의) 엔진은 한 프레임에 폰이 여럿 스폰될 때 그 사실을 알려 줍니다.
+<p />
+그래도 마음속으로는 항상 한 번에 너무 많이 스폰하지는 말아야 한다 생각하고 있어야 합니다.
+<p />
+죽을 때가 좋은 예입니다. 폰이 죽을 때 보통:
+<p />
+    * 고어 메시
+    * 잔해
+    * 소리 재생
+    * 피 파티클
+    * 카메라 파티클
+    * 데칼
+    * 사망 파티클
+    * (사인이 된) 총알 임팩트
+    * 총알 임팩트 소리
+<p />
+엄청 많습니다! 이걸 한 프레임이 전부 다 스폰하려면 버벅일 수 밖에 없습니다. 한 프레임 늦추거나 여러 프레임에 걸쳐 내보내면 별로 티도 안나고 엔진 버벅임도 없을 것입니다.
+<p />
+<h3><a name="언리얼스크립트 전처리 코드 제외"></a> 언리얼스크립트 전처리 코드 제외 </h3>
+<p />
+언리얼스크립트에서는, <code>`if(`notdefined(FINAL_RELEASE))</code> 전처리 명령을 사용하여 발매 빌드에서 코드를 제외시킬 수 있습니다. 이를 통해 관계없는 코드를 포함시키지 않고 실행되게 할 수 있습니다.
+<p />
+<h3><a name="TickableActors 목록 사용"></a> TickableActors 목록 사용 </h3>
+<p />
+Tick() 에서 수행되는 로직류을 포함한 액터가 다수 포진된 거대 레벨을 종종 보게 됩니다. 근데 플레이어가 주변에 있지 않은 데도 로직을 돌리는게 그리 중요하진 않습니다. 그래서 그런 액터의 틱이 발동되지 않게 해서 CPU 사이클 낭비를 막을 수 있으면 좋겠죠?
+<p />
+TickableActors 를 활용하려면 기본적으로 "다시 켤" 오브젝트로부터 이벤트를 구해올 수 있어야 하겠습니다. Foliage 가 좋은 예인데, 플레이어가 직접 문대기 전까지는 틱을 막아 버립시다.
+<p />
+TickableActors 목록에다 액터를 넣었다 뺐다 하려면: SetTickIsDisabled(TRUE/FALSE);
+<p />
+<strong>주</strong>: 마땅한 "이벤트" 방법이 없는 경우, "잠든" 오브젝트를 "깨울" 방법을 정할 매니저나 메커니즘을 만들어야 합니다.
+<p /> <ul>
+<li> AInteractiveFoliageActor 가 이 시스템을 사용하는 액터의 좋은 예입니다.
+</li></ul>
+<p />
+<h3><a name="유용한 실행 명령"></a> 유용한 실행 명령 </h3>
+<p />
+퍼포먼스와 메모리에 착한 짓을 하는 멋진 실행 명령이 기본으로 많이 깔려 있습니다. 문제는 그런 것들이 보통 서브시스템을 처리하는 특정 코드에 묻혀 있다는 것입니다. 또는 서브시스템을 처리하는 페이지에 나열되어 있기도 합니다. 그래서 전부 찾아내기가 꽤나 힘이 들지요.
+<p />
+게다가 명명법도 표준을 따르지 않는 것이 꽤 됩니다.
+<p />
+좀 쓸만한 것들 몇개만 여기다 나열해 보겠습니다.
+<p />
+기본적으로 대부분의 실행 명령에는 어딘가에다 #define을 켜 줘야 합니다. 그래서 보통 실행 명령을 집어다가 FindInFiles 를 돌려줘서 뭘 더 활성화시켜줘야 제대로 돌아갈런지 알아봐야 합니다.
+<p />
+또한 모든 명령이 로그로 출력되는건 아닙니다. 몇몇은 파일을 만들지만, 몇몇은 데이터를 메모리에 생성하기에 "Dump" 명령을 내려야 로그됩니다.
+<p />
+FindInFiles 랑 친하게 지내세요!
+<p />
+UnPlayer.cpp Exec() 함수에 실행 명령이 많습니다.
+UnLevTic.cpp 에는 G______ 변수가 여럿 있으며, 특정 로그를 on/off 토글시키는데 쓰입니다.
+<p />
+    * SHOWSKELCOMPTICKTIME
+    * SHOWLIGHTENVS
+    * SHOWISOVERLAPPING
+    * LISTAWAKEBODIES
+    * TOGGLECROWDS
+    * MOVEACTORTIMES
+    * PHYSASSETBOUNDS
+    * FRAMECOMPUPDATES
+    * FRAMEOFPAIN
+    * SHOWSKELCOMPLODS
+    * SHOWSKELMESHLODS
+    * SHOWFACEFXBONES
+    * SHOWFACEFXDEBUG
+    * LISTSKELMESHES
+    * LISTPAWNCOMPONENTS
+    * TOGGLELINECHECKS / DUMPLINECHECKS / RESETLINECHECKS
+<p />
+<p />
+<h3><a name="선 검사"></a> 선 검사 </h3>
+<p />
+<p />
+<strong>문제:</strong>
+<p />
+<p />
+선 검사하는데 (SingleLineCheck 또는 MultiLineCheck 를 호출하는데) 시간이 너무 많이 걸립니다.
+<p />
+<p />
+<strong>해결책:</strong>
+<p />
+1. 이미 알고있고 확실한 함수의 호출자로 추적해 돌아갈 수 있다면, 그 함수가 너무 자주 호출되지는 않도록 최적화시켜 줘야 합니다.
+<p />
+2. (MoveActor 가 LineCheck 를 호출하거나, Physics 호출을 하여 결국 LineCheck 호출하는 것처럼) 거의 모든 함수에서 사용되는 함수라 함수의 호출자를 추적해 돌아갈 수 없다면, 어느 액터였는지 알아야 합니다.
+<p />
+선 검사 추적 기능을 켜는 명령은 다음과 같습니다: <strong>TOGGLELINECHECKS</strong>, <strong>TOGGLELINECHECKSPIKES</strong>, <strong>DUMPLINECHECKS</strong>, <strong>RESETLINECHECKS</strong>
+<p />
+이 기능은 PC 에서만 작동하며, 함수의 호출자를 알아내는데 도움이 됩니다. 모든 선 검사 호출, 콜스택, 호출자 캡처가 시작됩니다. 이 캡처는 <strong>DUMPLINECHECKS</strong> 명령으로 비울 수 있으며, [게임명]/Logs/ 에 csv 파일로 저장됩니다.
+<p />
+선 검사를 켜면 다음과 같은 로그 메시지가 올라옵니다:
+<p />
+<em>Log: Line tracing is now enabled.</em>
+<em>Log: Stack tracking is now enabled.</em>
+<em>Log: Script stack tracking is now enabled.</em>
+<p />
+아래 파일 예제를 살펴보자면, <em>GearPawn_COGMarcus_0</em> 함수는 1006 프레임에 걸쳐 7042 번 호출되었습니다.
+어느 액터가 어느 함수를 통해 얼마나 많이 호출되었는지 알아낼 수 있습니다. 또한 로그에는 <strong>NonZeroExtent</strong> 추적을 표시할 수도 안할 수도 있습니다.
+이런 식으로 호출 관련 문제와 병목현상을 떼어내어 최적화시킬 수 있습니다.
+<p />
+<pre>
+Log: Log file open    08/07/08 13:45:23
+Log: Captured 74 unique callstacks totalling 13375 function calls over 1006 frames    averaging 13.30 calls/frame
+Log:    7042
+         UWorld::MultiLineCheck() 0xa0c718   + 39 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unlevact.cpp:2037]
+         UGearGameplayCamera::PreventCameraPenetration() 0x1880c6b  + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\geargame\src\gearcamera.cpp:769]
+         UGearGameplayCamera::PlayerUpdateCameraNative() 0x188f913  + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\geargame\src\gearcamera.cpp:1324]
+         UGearGameplayCamera::execPlayerUpdateCameraNative() 0x18922de  + 21 bytes &#91;File&#61;d:\code\unrealengine3\development\src\geargame\inc\geargamecameraclasses.h:401]
+         UObject::CallFunction() 0x5f9a86   + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:5633]
+         UObject::execFinalFunction() 0x5fbdac   + 28 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:1645]
+         UObject::ProcessInternal() 0x5f637e   + 30 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:5862]
+         UObject::CallFunction() 0x5f9d15   + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:5803]
+         UObject::execVirtualFunction() 0x5fbd7f   + 45 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:1638]
+         UObject::execContext() 0x5efa27   + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:1628]
+         UObject::ProcessInternal() 0x5f637e   + 30 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:5862]
+         UObject::CallFunction() 0x5f9d15   + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:5803]
+         UObject::execVirtualFunction() 0x5fbd7f   + 45 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:1638]
+         UObject::ProcessInternal() 0x5f637e   + 30 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:5862]
+         UObject::ProcessEvent() 0x602baf   + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:6012]
+         AActor::ProcessEvent() 0x80d293   + 22 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unactor.cpp:1320]
+         UWorld::Tick() 0xa16256   + 59 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unlevtic.cpp:2998]
+   ....
+
+Log:
+         NonZeroExtent
+         GearPawn&#95;COGMarcus&#95;0 (7042) : No&#95;Detailed&#95;Info&#95;Specified
+
+Log:    358
+         UWorld::MultiLineCheck() 0xa0c718   + 39 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unlevact.cpp:2037]
+         UWorld::MoveActor() 0xa0fc72   + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unlevact.cpp:1416]
+         APawn::physWalking() 0xaa620d   + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unphysic.cpp:838]
+         APawn::startNewPhysics() 0xaa5943   + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unphysic.cpp:469]
+         APawn::performPhysics() 0xa92eb2   + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unphysic.cpp:409]
+         AGearPawn::performPhysics() 0x188a6b4  + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\geargame\src\geargame.cpp:5406]
+         AActor::TickAuthoritative() 0xa00467   + 20 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unlevtic.cpp:721]
+         AActor::Tick() 0xa00571   + 16 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unlevtic.cpp:966]
+         TickActors&#60;FDeferredTickList::FGlobalActorIterator&#62;() 0xa0e7fc   + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unlevtic.cpp:2329]
+         UWorld::Tick() 0xa15708   + 37 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine
+   ....
+</pre>
+<p />
+<p />
+스크립트 추적 역시 캡처되나, 스크립트 추적에는 아직 액터 정보가 제공되지 않습니다.
+리셋하(는, 즉 모든 캡처를 지우)는 명령은 <strong>RESETLINECHECKS</strong> 입니다. 이 기능을 끈 이후에는 반드시 <strong>RESETLINECHECKS</strong> 로 버퍼를 비우시기 바랍니다.
+<p />
+<strong>TOGGLELINECHECKSPIKES</strong> 는 선 검사 정보 덤프 시작을 위해 주어진 프레임 내 선 검사 수를 인수로 받습니다. 예를 들어 <strong>TOGGLELINECHECKSPIKES</strong> 50 은 해당 프레임에서 선 검사가 50 회 이상 수행되는 통계만 덤프합니다. 프로세스를 자동화시켜 특정 기준을 충족하는 프레임 데이터만 캡처하기에 좋습니다.
+<p />
+3. 제안
+<p /> <ul>
+<li> 캐시: 일정 프레임마다의 값을 캐시하고 치명적이지 않은 경우 캐시된 값을 사용하여 해당 프레임에서 바로 결과를 구합니다.
+</li> <li> 프레임 제어: 주어진 프레임에서는 선 검사를 정해진 만큼만 처리하고, 그 수치를 넘어가면 다음 프레임에서 하도록 합니다.
+</li> <li> 굽기(bake): 런타임 호출을 줄이는 솔루션을 찾아보세요. 정보를 노드나 액터에 구워넣을 수 있다면, 실행시간에 호출하지 않아도 됩니다.
+</li></ul>
+<p />
+<p />
+<!--  -->
+<p />
+<h2><a name="플레이어/AI 프로파일링"></a> 플레이어/AI 프로파일링 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="AI 로깅"></a> AI 로깅 </h3>
+<p />
+AI는 재미난 작업을 많이 하는데, 계산적으로는 비쌀 수 있습니다. AI로깅을 활용해 뭘 하고 있었는지, 왜 먹통이 되거나 비싼 행동을 하는 루프에 빠졌는지를 살펴볼 수 있겠습니다.
+<p />
+AI로깅을 하려면 DefaultAI.ini의 각 AIController 클래스 아래에 bAILogging=TRUE 설정을 해 두면 됩니다.
+<p />
+코드에 사용된 `AILog() 전부를 로그 디렉토리의 로그 파일에 출력해 줍니다.
+<p />
+<h3><a name="Move Actor"></a> Move Actor </h3>
+<p />
+게임에서 MoveActor의 비용이 높게 나타나는데는 많은 이유가 있는데, 다음 세가지 범주 중 하나에 해당합니다:
+<p /> <ol>
+<li> 수행되는 MoveActor 호출이 너무 많음
+</li> <li> 이동되는 액터의 세팅이 함수의 비용을 높이고 있음
+</li> <li> 이동되는 액터에 부착된 액터가 많음
+</li></ol>
+<p />
+일반적으로 MoveActor 함수 자체에서 느려지게 만드는 부분도 세가지 있습니다:
+<p /> <ol>
+<li> 비-0규모(non-zero extent) 선-검사 (또는 스웹트 박스 검사)가 액터의 이동을 따라 수행될 때. PHYS_Walking 같은 피직스 모드에 대해 수행됩니다.
+</li> <li> 액터의 새 위치에서 침입(encroachment) 겹침 검사가 수행될 때. 이 작업은 예를 들어 무버나 비히클에 수행됩니다.
+</li> <li> 약간이긴 하지만, 액터 이동시 콜리전 데이터 구조를 업데이트할 때.
+</li></ol>
+<p />
+프레임에서 실행되는 MoveActor 호출을 전부 표시할 수 있는 로깅이 약간 있습니다. 먼저 UnLevAct.cpp 상단에 MOVEACTOR_STATS 를 1 로 정의합니다. 추가로 SHOW_MOVEACTOR_TAKING_LONG_TIME 라는 것이 있는데, 긴 시간이 걸리는 특정 액터만 표시해 주어 스팸이 덜할 수 있습니다.
+<p />
+그리고 게임 내에서 MoveActor 시간이 높은 기간동안 MOVEACTORTIMES 를 칩니다. 이와 같은 로깅이 나옵니다:
+<p />
+<pre>
+   Log: MOVE - GearPawn&#95;COGRedShirt&#95;2 0.037ms 1 0
+   Log: MOVE - GearPointOfInterest&#95;5 0.002ms 0 0
+   Log: MOVE - SkeletalMeshActor&#95;28 0.019ms 0 0
+   Log: MOVE - Emitter&#95;32 0.003ms 0 0
+   Log: MOVE - Emitter&#95;33 0.002ms 0 0
+   Log: MOVE - Emitter&#95;35 0.001ms 0 0
+   Log: MOVE - Emitter&#95;47 0.002ms 0 0
+</pre>
+<p />
+각 줄은 프레임 도중 발생한 MoveActor 로의 호출입니다. 들여쓰기된 줄은 Base 이동의 결과로 호출된 것을 나타냅니다. 즉 SkeletalMeshActor_28 가 움직일 때, 거기에 부착된 이미터 전부에서 MoveActor 가 호출되게 만들었다는 것입니다. 타이밍 수치는 합산된 것으로, 부착된 것의 MoveActor 시간을 포함합니다. 첫 수치 (0 또는 1)은 이동의 일부로써 액터가 벽이나 트리거를 건드렸는지 알아보기 위해 규모 선 검사가 수행되었는지를 나타냅니다. PHYS_Walking 같은 피직스 모드는 한 프레임 내에 다수의 MoveActor 호출로 이어질 수 있는데, 이는 의도된 것입니다.
+<p />
+이제 MoveActor 의 세가지 느린 부분을 살펴보고, 그 회피 방법도 알아보겠습니다.
+<p />
+이동 도중의 규모 선 검사는 다음의 조건을 만족하면 수행되지 않습니다:
+<p /> <ol>
+<li> 액터가 '침입자'(encroacher)로 간주될 때. (예를 들어 PHYS_RigidBody 또는 PHYS_Interpolating 에서, <strong>bCollideActors=TRUE</strong> 일 경우)
+</li> <li> <strong>bCollideActors</strong> 및 <strong>bCollideWorld</strong> 가 <strong>FALSE</strong> 일 경우
+</li> <li> <em>CollisionComponent</em> 가 없을 경우
+</li></ol>
+<p />
+다음의 경우 액터는 침입 점-검사만 수행해 주면 됩니다:
+<p /> <ol>
+<li> 다른 언리얼-피직스 액터 주변(, 걸어다니는 폰 등)으로 밀어줘야 합니다.
+</li> <li> 언제 액터가 트리거를 건드리는지 알아야 합니다.
+</li> <li> 액터의 PhysicsVolume 을 업데이트시켜줘야 합니다.
+</li></ol>
+<p />
+이런 작업이 필요하지 않은 경우 (예를 들어 캐릭터에 부착된 이펙트 클래스 등), 액터의 bNoEncroachCheck 플랙을 TRUE 로 설정하면 됩니다.
+<p />
+bCollideActors 를 FALSE 로 설정하면 액터가 콜리전 옥트리에 추가되거나 업데이트되지 않게 합니다. MoveActor 시간이 약간 빨라지나, 액터가 선 검사에 걸리지 않게 된다는 문제가 있습니다.
+<p />
+<h3><a name="NavMesh 퍼포먼스"></a> NavMesh 퍼포먼스 </h3>
+<p />
+NavigationMesh 는 공간 질의(spatial query)에 많이 사용될 수 있습니다. 제약이 너무 많거나 역으로 충분치 않으면 폴리 참조가 많아져 느려질 수 있습니다.
+<p />
+추가적으로 실행시간에 수정 가능한 것도 느려지는 요인이 됩니다. 각 프레임마다 장애물 메시가 여럿 생성된다면, 이상적인 프레임시간에 못미치게 마련입니다.
+<p />
+UnNavigationMesh.cpp PERF_NAVMESH_TIMES, 이 define을 켜면 navmesh로 들어가는 시간을 출력합니다.
+<p />
+<h3><a name="스켈레탈 메시 컴포넌트 업데이트"></a> 스켈레탈 메시 컴포넌트 업데이트 </h3>
+<p />
+도합 시간에 <code>SkeletalMeshComponent::Tick()</code> 로의 호출 시간이 높게 나타난다면, 그 원인을 살펴봐야 합니다. 왜냐면 UE3 게임 내 많은 캐릭터의 애니메이션 복잡도 때문에, 애니메이션 시스템은 엔진 부분 중 CPU 비용이 비싼 곳 중 하나이기 때문입니다. 그래도 그 시간이 정확히 어떻게 되는지 알아야 가능한 한 최적화할 수 있을 것입니다. 어떻게 되는지를 파악하는 데 도움이 되는 로깅 툴이 몇 있습니다.
+<p />
+먼저 <strong>SHOW_SKELETAL_MESH_COMPONENT_TICK_TIME</strong> 디파인을 <strong>1</strong> 로 설정합니다. 그리고 콘솔의 게임 타입은 <strong>SHOWSKELCOMPTICKTIME</strong> 입니다. 프레임에 티킹된 모든 <em>SkeletalMeshComponents</em> 를, 틱 하는데 얼마나 걸렸는지를 포함해서 부분별로 나눠 로깅합니다. 첫 줄은 열 머리말이라, 스프레스시트에 붙여넣고 추가 분석이 가능합니다.
+<p />
+<div class="codesnippet">
+<pre>
+&#95;Log: SkelMeshComp: Name SkelMeshName Owner TickTotal UpdatePoseTotal TickNodesTotal UpdateTransformTotal UpdateRBTotal&#95;
+&#95;Log: SkelMeshComp: map&#95;01.TheWorld:PersistentLevel.Pawn&#95;Big&#95;Ogre&#95;0.SkeletalMeshComponent&#95;6 OgreMeshes.Big&#95;Ogre Pawn&#95;Big&#95;Ogre&#95;0 0.006564 0.003211 0.000000 0.000769 0.000000&#95;
+&#95;Log: SkelMeshComp: map&#95;01.TheWorld:PersistentLevel.Weap&#95;Crossbow&#95;1.SkeletalMeshComponent&#95;7 CrossbowMeshes.WoodenCrossbow Pawn&#95;Big&#95;Ogre&#95;0 0.008103 0.000000 0.005938 0.000000 0.000000&#95;
+</pre>
+</div>
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol">  <strong><font color="#000000">SkelMeshName</font></strong>  </th><td bgcolor="#eaeaea"> 이 SkeletalMeshComponent 가 사용하는 메시 이름입니다. </td></tr>
+<tr><th bgcolor="#dadada" class="twikiFirstCol">  <strong><font color="#000000">Owner</font></strong>  </th><td bgcolor="#ffffff"> 이 SkeletalMeshComponent 가 부착되어 있는 액터 이름입니다. </td></tr>
+<tr><th bgcolor="#dadada" class="twikiFirstCol">  <strong><font color="#000000">TickTotal</font></strong>  </th><td bgcolor="#eaeaea"> 이 컴포넌트에서 Tick 호출하는 데 if 에 걸린 총 시간입니다. </td></tr>
+<tr><th bgcolor="#dadada" class="twikiFirstCol">  <strong><font color="#000000">UpdatePoseTotal</font></strong>  </th><td bgcolor="#ffffff"> 이 시간에는 모든 애니메이션 블렌딩 (GetBonerAtoms), 콘트롤러 평가, 포즈 매트릭스 빌딩 전부가 포함됩니다. </td></tr>
+<tr><th bgcolor="#dadada" class="twikiFirstCol">  <strong><font color="#000000">TickNodesTotal</font></strong>  </th><td bgcolor="#eaeaea"> 모든 AnimNode 상에서 TickAnimNode 를 호출하는 데 걸린 시간입니다. </td></tr>
+<tr><th bgcolor="#dadada" class="twikiFirstCol">  <strong><font color="#000000">UpdateTransformTotal</font></strong>  </th><td bgcolor="#ffffff"> 컴포넌트를 업데이트(그 변형과 부착된 액터 업데이트, 렌더링 스레드에 정보 전송)하는 데 걸린 시간입니다. 이 시간은 Tick 시간 이외의 것입니다. </td></tr>
+<tr><th bgcolor="#dadada" class="twikiFirstCol">  <strong><font color="#000000">UpdateRBTotal</font></strong>  </th><td bgcolor="#eaeaea"> SkeletalMeshComponent 에 피직스-엔진 표현(PhysicsAssetInstance)이 있는 경우, 그것을 애니메이션 결과에 따라 업데이트하는 데 걸린 시간입니다. </td></tr>
+</table>
+<p />
+처음 검사해 볼 것은 필요치 않은 메시의 애니메이션을 업데이트하고 있지는 않은가 입니다. 그 개선 방법은 이렇습니다:
+<p /> <ol>
+<li> 필요할 때 스켈레탈 메시 인스턴스만 로드하기 위해 스트리밍 레벨을 사용합니다.
+</li> <li> 필요치 않을 때는 스켈레탈 메시를 사용하는 액터를 숨깁니다. SkeletalMeshActor 는 숨겨지면 <strong>'stasis'</strong> 에 넣어지며, 전혀 틱되지 않습니다.
+</li> <li> 가급적 <strong>bUpdateSkelWhenNotRendered</strong> 를 <strong>FALSE</strong> 로 설정합니다. 게임플레이에 애니메이션 통지나 루트 모션에 의존하는 경우, 화면 밖 캐릭터의 애니메이션이 중지될 것이기에 문제가 생길 수 있습니다. 이 옵션은 SkeletalMeshActor 에 대해 디폴트로 <strong>FALSE</strong> 입니다.
+</li></ol>
+<p />
+필수 액터에 대한 애니메이션만 업데이트중이다 확인하고나면, 애니메이션 업데이트 자체를 최적화시키는 작업이 있습니다.
+<p /> <ul>
+<li> '부분 블렌딩'을 남발하지 마십시오. 블렌드 노드에 100% 입력 하나 있을 때는, 단순히 '통과'되기 때문에 CPU 비용이 매우 쌉니다. 그러나 여러 입력이 혼합된 경우, CPU 를 훨씬 많이 사용합니다.
+</li> <li> 트리를 가급적 작게 유지하여 너무 많은 노드가 틱이나 블렌딩되지 않도록 하십시오. 모든 애니메이션에 노드를 추가하는 것 보다는, 코드를 사용하여 한 노드를 변경하는 것이 좋습니다.
+</li> <li> 가능하면 노드에 <strong>bSkipTickWhenZeroWeight</strong> 를 설정하십시오. 관련되지 않은 노드(예로 최종 애니메이션 블렌드에서 zero weight)가 틱되는 것을 방지합니다. 관련되지 않은 블렌드 노드를 즉시 100%로 블렌딩되게도 하여, '부분 블렌딩'을 피할 수 있습니다.
+</li> <li> <strong>bUpdateSkelWhenNotRendered</strong> 를 <strong>FALSE</strong> 로 설정할 수 없다면, 가능한 SkelControl 에 <strong>bIgnoreWhenNotRendered</strong> 설정을 하십시오.
+</li> <li> 가능한 AnimNodeBlendPerBones 에 <strong>bForceLocalSpaceBlend</strong> 을 <strong>TRUE</strong> 으로 설정하십시오. CPU 를 덜 사용합니다.
+</li></ul>
+<p />
+다른 스켈레탈 최적화 팁이라면:
+<p /> <ul>
+<li> 그려야 하는 메시의 수를 줄이십시오. 예를 들어 Gears 에서는 등에 부착된 무기를 표시하지 않습니다.
+</li> <li> 본 수를 줄이고, 원거리에서의 복잡도를 줄이기 위해 메시 LOD 를 사용하십시오.
+</li> <li> 애니메이션이 필요없는 <em>SkeletalMeshComponents</em> 에 <strong>bForceRefpose=TRUE</strong> 설정을 하십시오. (Gears 의 무기는 부착이나 픽업으로 사용되지 않을 때 이렇게 합니다.)
+</li> <li> 캐릭터가 죽어 래그돌이 될 때 <em>UAnimTree::SetUseSavedPose()</em> 를 사용하여 애니메이션을 얼리고 AnimTree 를 단일 노드로 줄이십시오.
+</li> <li> <strong>bSkipTickWhenNotRelevant</strong> 가 설정된 <em>AnimNodeSequence</em> 노드는 메시가 렌더링되지 않으면 애니메이션을 추출하지 않습니다 (루트 모션 추출이 필요치 않으면 캐시된 프레임을 사용합니다). 메시가 표시되지 않을 때 애니메이션 추출 비용이 절약됩니다.
+</li> <li> <strong>bSkipBlendWhenNotRendered=TRUE</strong> 인 <em>AnimNodeBlendLists</em> 와 메시는 렌더링되지 않으며, 블렌딩도 생략됩니다. 블렌딩 비용이 절약되며, 즉시 이행됩니다.
+</li> <li> 트리 내 브랜치를 공유할 수 있다면 그리 하십시오. 예를 들어 공통의 방식을 사용할 수도 있는 (AimOffset 노드와 루핑 애니메이션 등) 브랜치가 여럿 있다 치겠습니다. 복제하지 마시고, 트리가 같은 브랜치를 사용하도록 하십시오. 브랜치는 한 번만 평가되어 캐시되므로, 이 예제에서는 작업을 한 번만 하고서 여러 브렌치에 사용할 수 있습니다.
+</li> <li> 트리는 크면서 노드가 많을 수도 있으나, 퍼포먼스를 위해 매 프레임마다 틱되는 노드의 수를 줄이고 싶지는 않을 것이며 (그 수를 줄이려면 <strong>bSkipTickWhenZeroWeight</strong> 사용), 너무 많은 애니메이션이 추출되어 한 번에 블렌딩되지 않도록 트리를 디자인하십시오.
+</li> <li> 스크립트에서 요청에 따라 애니메이션을 재생하려면 <strong>AnimNodeSlots</strong> 를 사용하십시오. 트리의 한 노드에 재생되는 애니메이션이 하나하나 다 들어있는 것은 좋지 않습니다. AnimNodeSlots 는 일회성 액션에 좋습니다. Gears 에서는 이를 무기 재장전, 무기 변환, 특수 이동 (맨틀, 스왓 턴, 커버 슬립, 회피), 사다리 동작, 전기톱 대결, 움찔, 피격 반응, 사망 애니메이션, 버튼/레버 동작 등에 사용합니다.
+</li> <li> 두 애니메이션이 있다면, 하나에서 다른 것으로 블렌딩할 수 없습니다. 즉 같은 트리에 둘 다 있을 필요가 없다는 뜻입니다. 그 이동 애니메이션과 콘트롤(걷기, 뛰기, 빈둥, 커버 기대기, 치고 나가기 등)이 트리에 존재할 경우의 Gears 에서 Marcus 의 AnimTree 디자인 철학이며, 조준도 마찬가지입니다. 위에 언급한 것과 같은 일회성 액션은 AnimNodeSlots 를 통해 요청시 재생합니다. 이로써 AnimTree 복잡도를 크게 줄이면서도 다양한 애니메이션을 여럿 재생할 수 있습니다.
+</li></ul>
+<p />
+</noautolink>
+<p />
+<style type="text/css">
+<!--
+div.codesnippet
+{
+	margin:0px 10px;
+	padding:0px 10px;
+	background:#f0f0f0;
+	font:12px Courier;
+	max-height:500px;
+	overflow:auto;
+	border:2px inset #989898;
+}
+-->
+</style>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GameThreadProfilingHomeKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:32:38 GMT -->
+</html></body>

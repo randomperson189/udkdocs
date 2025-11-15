@@ -1,0 +1,457 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DLLBind.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:24:54 GMT -->
+<head>
+<title> UDK | DLLBind    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">DLLBind  </b></div>
+<div id="tooltext">
+<a href="DLLBindJP.html" class="twikiLink">日本語訳</a><br><a href="DLLBindCH.html" class="twikiLink">中国翻译</a><br><a href="DLLBindKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/DLLBind -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="UnrealScriptHome.html" class="twikiLink">UnrealScript</a></b> &gt; Calling DLLs from UnrealScript (DLLBind)
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Calling DLLs from _UnrealScript (DLLBind)"></a> Calling DLLs from UnrealScript (DLLBind) </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="DLLBind.html#Calling DLLs from _UnrealScript (DLLBind)"> Calling DLLs from UnrealScript (DLLBind)</a> <ul>
+<li> <a href="DLLBind.html#Overview"> Overview</a>
+</li> <li> <a href="DLLBind.html#UnrealScript side"> UnrealScript side</a>
+</li> <li> <a href="DLLBind.html#DLL side"> DLL side</a>
+</li> <li> <a href="DLLBind.html#Unloading"> Unloading</a>
+</li> <li> <a href="DLLBind.html#Supported Parameter Types"> Supported Parameter Types</a>
+</li> <li> <a href="DLLBind.html#Limitations"> Limitations</a>
+</li> <li> <a href="DLLBind.html#Debugging"> Debugging</a>
+</li> <li> <a href="DLLBind.html#About _UnrealScript strings, and using strings inside structs"> About UnrealScript strings, and using strings inside structs</a>
+</li> <li> <a href="DLLBind.html#Warnings"> Warnings</a>
+</li> <li> <a href="DLLBind.html#Example"> Example</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Starting from the December 2009 version, UnrealScript has the ability to call functions implemented in a Windows DLL. This functionality is intended for use by <a href="DevelopmentKitHome.html" class="twikiLink">UDK</a> developers, and for mod makers developing extensions to 3rd party Unreal Engine 3 products. Full-license Unreal Engine 3 developers are able to <a href="https://udn.epicgames.com/Three/CreatingNativeClasses" class="restricted" class="restricted" class="twikiLink">create Native Classes</a> to call native code directly and should not use this feature. It is disabled by default in licensee source code. To enable it, enable the libffi section of UE3BuildWin32.cs.
+<p />
+<h2><a name="UnrealScript side"></a> UnrealScript side </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+A single UnrealScript class can bind to only a single DLL. The DLL to bind to is specified with the <code><b>DLLBind</b></code> directive, and the DLL name to bind to is specified in parentheses. Do not include a path or .DLL extension. DLLs can only be loaded from the Binaries\Win32\UserCode folder.
+<p />
+Imported functions are declared like UnrealScript functions using the <code><b>dllimport</b></code> function directive.
+<p />
+DLL import functions must be declared final, and it is not possible to create a subclass of a DLLBind class.
+<p />
+For example:
+<pre>
+class TestDLLPlayerController extends PlayerController
+   DLLBind(TestDLL);
+
+dllimport final function CallDLL1(out string s);
+dllimport final function vector CallDLL2(float x, float y, float z);
+dllimport final function bool CallDLL3(string s, int i&#91;2], out float f, out vector v);
+</pre>
+<p />
+When the TestDLLPlayerController class is loaded, it will bind to Binaries\Win32\UserCode\TestDLL.dll. If the DLL cannot be bound, a warning will be printed in the log. It will attempt to find entry points to three exports in the DLL (CallDLL1, CallDLL2 and CallDLL3). Once bound, these functions can be called as normal from other UnrealScript functions. If the bind fails, making a call to one of these functions will have no effect.
+<p />
+<h2><a name="DLL side"></a> DLL side </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+These functions can be implemented in a C++ DLL like this:
+<p />
+<pre>
+extern &#34;C&#34;
+{
+   struct FVector
+   {
+      float x,y,z;
+   };
+
+   &#95;&#95;declspec(dllexport) void CallDLL1(wchar&#95;t&#42; s)
+   {
+      MessageBox(0, s, L&#34;Inside the DLL: CallDLL1&#34;, MB&#95;OK);
+      // reverse the out parameter string
+      int len &#61; wcslen(s);
+      for(int i&#61;0; i&#60;len&#62;&#62;1;i++)
+      {
+         wchar&#95;t temp &#61; s&#91;i];
+         s&#91;i] &#61; s&#91;len-i-1];
+         s&#91;len-i-1] &#61; temp;
+      }
+   }
+
+   &#95;&#95;declspec(dllexport) FVector&#42; CallDLL2(float x, float y, float z)
+   {
+      static FVector result;   // declared static so that the struct&#39;s memory is still valid after the function returns.
+      result.x &#61; x;
+      result.y &#61; y;
+      result.z &#61; z;
+      return &#38;result;
+   }
+
+   &#95;&#95;declspec(dllexport) bool CallDLL3(wchar&#95;t&#42; s, int i&#91;2], float&#42; f, FVector&#42; V)
+   {
+      wchar&#95;t temp&#91;1024];
+      swprintf&#95;s(temp, 1024, L&#34;string: &#37;s, i: {&#37;d,&#37;d}, float: &#37;f, V was (&#37;f,&#37;f,&#37;f)&#34;, s, i&#91;0], i&#91;1], &#42;f, V-&#62;x, V-&#62;y, V-&#62;z);
+      V-&#62;x &#61; (float)i&#91;0];
+      V-&#62;y &#61; (float)i&#91;1];
+      V-&#62;z &#61; (&#42;f);
+      return (MessageBox(0, temp, L&#34;Inside the DLL: CallDLL3&#34;, MB&#95;OKCANCEL) &#61;&#61; IDOK);
+   }
+}
+</pre>
+<p />
+<h2><a name="Unloading"></a> Unloading </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+When the DLLBind class's Class object is destroyed, the DLL will be unloaded using the FreeLibrary API. This should occur when the last reference to the Class object is deleted and garbage collection occurs. You should be able to perform cleanup in your DLL's <a href="http://msdn.microsoft.com/en-us/library/ms682583(VS.85).aspx" target="_top">DllMain()</a> function by responding to the DLL_PROCESS_DETACH fdwReason.
+<p />
+<h2><a name="Supported Parameter Types"></a> Supported Parameter Types </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The following parameter types are supported:
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> UnrealScript type </td><td bgcolor="#eaeaea"> C type </td><td bgcolor="#eaeaea"> &nbsp; </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> int value </td><td bgcolor="#ffffff"> int value (32-bit) </td><td bgcolor="#ffffff"> passed by value </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> int value[..] </td><td bgcolor="#eaeaea"> int* value (32-bit) </td><td bgcolor="#eaeaea"> passed by reference </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> out int value </td><td bgcolor="#ffffff"> int* value (32-bit) </td><td bgcolor="#ffffff"> passed by reference </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> float value </td><td bgcolor="#eaeaea"> float value </td><td bgcolor="#eaeaea"> passed by value </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> float value[..] </td><td bgcolor="#ffffff"> float* value </td><td bgcolor="#ffffff"> passed by reference </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> out float value </td><td bgcolor="#eaeaea"> float* value </td><td bgcolor="#eaeaea"> passed by reference </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> byte value </td><td bgcolor="#ffffff"> unsigned char value </td><td bgcolor="#ffffff"> passed by value </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> byte value[..] </td><td bgcolor="#eaeaea"> unsigned char* value </td><td bgcolor="#eaeaea"> passed by reference </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> out byte value </td><td bgcolor="#ffffff"> unsigned char* value </td><td bgcolor="#ffffff"> passed by reference </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> string value </td><td bgcolor="#eaeaea"> wchar_t* value </td><td bgcolor="#eaeaea"> passed by reference </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> out string value </td><td bgcolor="#ffffff"> wchar_t* value </td><td bgcolor="#ffffff"> passed by reference <strong>SEE WARNINGS BELOW</strong> </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> struct foo </td><td bgcolor="#eaeaea"> struct foo* value </td><td bgcolor="#eaeaea"> passed by reference. The DLL should declare a struct to match the UnrealScript struct. See below for information about strings inside the struct. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> out struct foo </td><td bgcolor="#ffffff"> struct foo* value </td><td bgcolor="#ffffff"> passed by reference </td></tr>
+</table>
+<p />
+The following return types are supported:
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> UnrealScript type </td><td bgcolor="#eaeaea"> C type </td><td bgcolor="#eaeaea"> &nbsp; </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> int </td><td bgcolor="#ffffff"> int (32-bit) </td><td bgcolor="#ffffff"> returns value directly </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> float </td><td bgcolor="#eaeaea"> float value </td><td bgcolor="#eaeaea"> returns value directly </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> byte </td><td bgcolor="#ffffff"> unsigned char </td><td bgcolor="#ffffff"> returns value directly </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> bool </td><td bgcolor="#eaeaea"> unsigned int (32-bit) </td><td bgcolor="#eaeaea"> returns value directly, non-zero is true </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> string </td><td bgcolor="#ffffff"> wchar_t* </td><td bgcolor="#ffffff"> pointer value is strcpy'd into a UnrealScript string. <strong>SEE WARNINGS BELOW</strong> </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> struct foo </td><td bgcolor="#eaeaea"> struct foo* </td><td bgcolor="#eaeaea"> struct data is memcpy'd into the UnrealScript struct. <strong>SEE WARNINGS BELOW</strong> </td></tr>
+</table>
+<p />
+<h2><a name="Limitations"></a> Limitations </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> Only Unicode (UTF-16) strings are supported. Compile your DLL with Unicode enabled.
+</li> <li> As only the 32-bit version of UDK is currently available, only 32-bit DLLs are supported. At such time as a 64-bit version of UDK is available, 64-bit DLLs will be supported.
+</li> <li> DLLs can only be loaded from Binaries\Win32\UserCode.
+</li> <li> Under Win32, only stdcall is supported. (See <a href="http://en.wikipedia.org/wiki/X86_calling_conventions" target="_top">this link</a> for information about calling conventions).
+</li></ul>
+<p />
+<h2><a name="Debugging"></a> Debugging </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> A Debug build of your DLL should bind correctly, and you should be able to attach to UDK.exe with your debugger and set breakpoints in your DLL.
+</li> <li> You should compile your DLL in Release mode if you intend to distribute it to others, otherwise you will likely have problems as the debug version of the C runtime will be unavailable.
+</li></ul>
+<p />
+<h2><a name="About _UnrealScript strings, and using strings inside structs"></a> About UnrealScript strings, and using strings inside structs </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Unreal represents dynamic strings internally as a struct called an FString. It containing 3 members: <ul>
+<li> <b>Data</b>, a 32-bit pointer to the memory allocated for the string
+</li> <li> <b>ArrayNum</b>, a 32-bit int storing the current number of 16-bit WORDs (UTF-16 characters) in the string (including the NULL terminator). This is normally equal to wcslen(Data)+1 except in empty strings, where it is 0.
+</li> <li> <b>ArrayMax</b>, a 32-bit int storing the number of 16-bit WORDs of memory currently allocated for the string.
+</li></ul>
+<p />
+Strings can grow or shrink in length up to ArrayMax-1 WORDs, at which point Unreal will reallocate the Data memory.
+Empty strings are a special case; the Data pointer is NULL, and ArrayNum = ArrayMax = 0.
+<p />
+This creates a problem for DLLBind. The current DLLBind code looks for any string parameters or return values and passes the FString's Data pointer to the DLL. Upon returning, Unreal checks the current length of any string out parameters and adjusts the ArrayNum if necessary.
+For wchar_t* return values, it copies the data into a new Unreal string after the DLL returns.
+<p />
+However none of this is performed for strings inside structs passed by reference to the DLL. The solution to this problem is for the DLL to declare its own local FString class to mirror Unreal's memory layout.
+<p />
+C++:
+<pre>
+struct FString
+{
+   wchar&#95;t&#42; Data;
+   int ArrayNum;
+   int ArrayMax;
+};
+
+struct MyPlayerStruct
+{
+   FString PlayerName;
+   FString PlayerPassword;
+   float Health;
+   float Score;
+};
+</pre>
+<p />
+UnrealScript:
+<pre>
+struct MyPlayerStruct
+{
+   var string PlayerName;
+   var string PlayerPassword;
+   var float Health;
+   var float Score;
+};
+</pre>
+<p />
+Notes <ul>
+<li> If the struct is an out parameter, it is possible to change the value of the strings inside the struct up to the length of ArrayMax, provided you adjust ArrayNum to match afterwards. See the StringDLL example attached.
+</li> <li> Do not attempt to allocate or reallocate the Data pointer, as your DLL will not use Unreal's memory allocator.
+</li> <li> Do not adjust the ArrayMax value.
+</li> <li> Do not return structs with strings because Unreal will attempt to free the Data memory when the struct variable is destroyed.
+</li></ul>
+<p />
+<h2><a name="Warnings"></a> Warnings </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> When modifying a string out parameter, the new string must be the same length or shorter than the previous value of the string passed in. This can be achieve by initializing the string in UnrealScript to something longer than the maximum value the DLL will store. Failure to do this will likely overwrite memory and cause a crash.
+</li> <li> When returning structs or strings, the DLL returns a pointer and Unreal will copy the value back to UnrealScript. However the DLL is responsible for allocating the memory to store the data pointed to. For example, it could return a pointer to a static variable, as is done in CallDLL2. Returning a pointer to a variable declared on the stack will result in corrupt data or a crash, because the stack is destroyed when the DLL function returns.
+</li> <li> In UnrealScript struct members are aligned on 4-byte boundaries, so you should use the <a href="http://msdn.microsoft.com/en-us/library/xh3e3fd0(VS.71).aspx" target="_top">/Zp4</a> compiler option when building your DLL.
+</li> <li> It is possible to declare structs containing Unreal data types that the DLL cannot understand. It is not recommended you do this!
+</li> <li> Do not attempt to return a struct containing UnrealScript strings. Out parameters are OK if you follow the directions above.
+</li> <li> Prior to February 2010 UDK, the current working directory was set to the Binaries\Win32 folder and NOT UserCode. Since the February 2010 version, the working directory is changed to the UserCode folder before calling any DLLBind functions.
+</li></ul>
+<p />
+<h2><a name="Example"></a> Example </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> <a href="rsrc/Three/DLLBind/DLLBind_Example.zip" target="_top">DLLBind_Example.zip</a> - basic DLLBind example
+</li> <li> <a href="rsrc/Three/DLLBind/StringDLL.zip" target="_top">StringDLL.zip</a> - example showing how to use structs with strings.
+</li> <li> <a href="rsrc/Three/DLLBind/ArrayDLL.zip" target="_top">ArrayDLL.zip</a> - advanced example showing use of dynamic arrays inside the DLL including memory reallocation.
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DLLBind.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:24:56 GMT -->
+</html></body>

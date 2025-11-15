@@ -1,0 +1,457 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DevelopmentKitGemsSobelEdgeDetection.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:22:20 GMT -->
+<head>
+<title> UDK | DevelopmentKitGemsSobelEdgeDetection    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">DevelopmentKitGemsSobelEdgeDetection  </b></div>
+<div id="tooltext">
+<a href="DevelopmentKitGemsSobelEdgeDetectionJP.html" class="twikiLink">日本語訳</a><br><a href="DevelopmentKitGemsSobelEdgeDetectionCH.html" class="twikiLink">中国翻译</a><br><a href="DevelopmentKitGemsSobelEdgeDetectionKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/DevelopmentKitGemsSobelEdgeDetection -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="DevelopmentKitGems.html" class="twikiLink">Unreal Development Kit Gems</a></b> &gt; Sobel Edge Detection Post Process Effect <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="PostProcessEffectsHome.html" class="twikiLink">Post Process Effects</a></b> &gt; Sobel Edge Detection Post Process Effect
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Sobel Edge Detection Post Process Effect"></a> Sobel Edge Detection Post Process Effect </h1>
+<hr size="1" noshade="noshade">
+<p />
+<strong><em>Last tested against UDK Mar, 2011</em></strong>
+<br>
+<strong><em>PC compatible</em></strong>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Sobel Edge Detection Post Process Effect"> Sobel Edge Detection Post Process Effect</a> <ul>
+<li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Overview"> Overview</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Material Shader"> Material Shader</a> <ul>
+<li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Calculating the offset"> Calculating the offset</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Using the offset"> Using the offset</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Calculating the X value"> Calculating the X value</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Calculating the Y value"> Calculating the Y value</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Calculating the distance squared"> Calculating the distance squared</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Comparing the distance squared value"> Comparing the distance squared value</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Contrast pass"> Contrast pass</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Minimum intensity pass"> Minimum intensity pass</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Depth exclusion pass"> Depth exclusion pass</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Composite pass"> Composite pass</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Complete!"> Complete!</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Tweaking the post process effect"> Tweaking the post process effect</a> <ul>
+<li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Disabling the composite pass"> Disabling the composite pass</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Disabling the minimum intensity pass"> Disabling the minimum intensity pass</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Disabling the contrast pass"> Disabling the contrast pass</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Disabling the depth exclusion pass"> Disabling the depth exclusion pass</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Adjusting the depth exclusion distance"> Adjusting the depth exclusion distance</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Adjusting the contrast strength"> Adjusting the contrast strength</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Adjusting the minimum intensity"> Adjusting the minimum intensity</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Adjusting the ambient brightness and darkness"> Adjusting the ambient brightness and darkness</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Adjusting the sobel pixel offset"> Adjusting the sobel pixel offset</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#How to use"> How to use</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Related Topics"> Related Topics</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Conclusion"> Conclusion</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetection.html#Downloads"> Downloads</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Sobel edge detection works by calculating the gradient of the image intensity at each pixel. The end result is that it produces a value which correlates to how abruptly the image changes at each pixel. Doing this on the scene depth will allow us to detect edges easily. This document will not go into too much detail explaining the sobel operator. More information can be found <a href="http://en.wikipedia.org/wiki/Sobel_operator">here</a>. The simplest reason why you would use this post process effect is to draw edge lines as it is part of toon rendering. Another reason is to perform a blur filter on edges to remove some of the aliasing produced by polygons.
+<p />
+<h2><a name="Material Shader"></a> Material Shader </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The material shader is built up of several discrete steps.
+<p />
+<h3><a name="Calculating the offset"></a> Calculating the offset </h3>
+<p />
+As each pixel needs to sample eight surrounding pixels, it needs to offset the UV look up when sampling the scene depth. Because the screen coordinates are aligned from zero to one and not zero to resolution width / height, the shader needs to calculate the relative pixel step. By adjusting the offset step, it is possible to control the final edge size. To have the best results ResolutionX and ResolutionY should be set to the current resolution.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeUVLookupOffset.jpg" alt="SobelEdgeUVLookupOffset.jpg" width='642' height='815' />
+<p />
+<h3><a name="Using the offset"></a> Using the offset </h3>
+<p />
+After calculating the sample steps, it needs to be used. To do this a Vector2 is created by using the Append material node. The resultant Vector2 is then added to the relative screen position. The resultant relative screen position is clamped between 0.f and 1.f. This is to prevent depth look up leaking due to the wrapping. There is no need to normalize the scene depth as it is useful to have the entire range of values. This is done for all of the possible combinations, which are: <ul>
+<li> UV02 (X = +offset, Y = -offset)
+</li> <li> UV12 (X = +offset, Y = 0)
+</li> <li> UV22 (X = +offset, Y = +offset)
+</li> <li> UV01 (X = 0, Y = -offset)
+</li> <li> UV21 (X = 0, Y = +offset)
+</li> <li> UV00 (X = -offset, Y = -offset)
+</li> <li> UV10 (X = -offset, Y = 0)
+</li> <li> UV20 (X = -offset, Y = +offset)
+</li></ul>
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeUVOffset.jpg" alt="SobelEdgeUVOffset.jpg" width='882' height='370' />
+<p />
+<h3><a name="Calculating the X value"></a> Calculating the X value </h3>
+<p />
+The formula to calculate the x value is, <strong>0 - UV00 - (UV01 * 2) - UV02 + UV20 + (UV21 * 2) + UV22</strong>.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeCalculatingX.jpg" alt="SobelEdgeCalculatingX.jpg" width='385' height='956' />
+<p />
+<h3><a name="Calculating the Y value"></a> Calculating the Y value </h3>
+<p />
+The formula to calculate the y value is, <strong>0 - UV00 + UV02 - (UV10 * 2) + (UV12 * 2) - UV20 + UV22</strong>.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeCalculatingY.jpg" alt="SobelEdgeCalculatingY.jpg" width='437' height='972' />
+<p />
+<h3><a name="Calculating the distance squared"></a> Calculating the distance squared </h3>
+<p />
+The formula to calculate the distance squared is <strong>(X * X) + (Y * Y)</strong>. The distance squared value can then be used to detect edges.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeDistance.jpg" alt="SobelEdgeDistance.jpg" width='408' height='380' />
+<p />
+<h3><a name="Comparing the distance squared value"></a> Comparing the distance squared value </h3>
+<p />
+From here a comparision between the distance and a scalar parameter is done. When an abrupt change in the scene depth occurs, the distance squared value will be larger. Thus, a simple comparision is used to detect where an edge is and where it isn't.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeEdgeDetection.jpg" alt="SobelEdgeEdgeDetection.jpg" width='800' height='556' />
+<p />
+<h3><a name="Contrast pass"></a> Contrast pass </h3>
+<p />
+Using the contrast helps to increase the upper end of the values while decreasing the lower end. This can be helpful when you are needing to improve the 'sharpness' of the edge detection. This is help for slopes which have a slow differentiating depth value.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeContrast.jpg" alt="SobelEdgeContrast.jpg" width='362' height='250' />
+<p />
+<h3><a name="Minimum intensity pass"></a> Minimum intensity pass </h3>
+<p />
+Even after the contrast pass, you will still get gradients. To remove the gradients, pixel values above a certain value are set to one while everything else is set to zero. This removes all the gradients, but may produce other kinds of artifacts such as aliasing or large areas of black.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeMinimumIntensityPass.jpg" alt="SobelEdgeMinimumIntensityPass.jpg" width='473' height='454' />
+<p />
+<h3><a name="Depth exclusion pass"></a> Depth exclusion pass </h3>
+<p />
+Up to now, this shader can produce artifacts on sky domes or objects that are very far away. Also given that you know that edges would never occur within the sky dome, it is faster to just skip these pixels.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeDepthExclusion.jpg" alt="SobelEdgeDepthExclusion.jpg" width='597' height='451' />
+<p />
+<h3><a name="Composite pass"></a> Composite pass </h3>
+<p />
+After all of the passes, a gray scale texel is produced. Simply multiply this with the scene texture will add the edges.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeCompositePass.jpg" alt="SobelEdgeCompositePass.jpg" width='405' height='238' />
+<p />
+<h3><a name="Complete!"></a> Complete! </h3>
+<p />
+Click to view the shader in full.
+<p />
+<a href="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeShader.jpg" target="_top"><img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeShaderThumbnail.jpg" alt="SobelEdgeShaderThumbnail.jpg" width='800' height='349' /></a>
+<p />
+Here's a screenshot of a level being rendered with the sobel edge post process effect.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeFinalRender.jpg" alt="SobelEdgeFinalRender.jpg" width='800' height='583' />
+<p />
+<h2><a name="Tweaking the post process effect"></a> Tweaking the post process effect </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="Disabling the composite pass"></a> Disabling the composite pass </h3>
+<p />
+Disabling the composite pass skips the step where the shader multiplies the results of the sobel edge detection with the scene sample texture node. This may be desirable for non photo realistic rendering.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeNoCompositePass.jpg" alt="SobelEdgeNoCompositePass.jpg" width='800' height='583' />
+<p />
+<h3><a name="Disabling the minimum intensity pass"></a> Disabling the minimum intensity pass </h3>
+<p />
+Disabling the minimum intensity pass skips the step where the shader removes pixel values below a input value. This may be desirable in non photo realistic rendering where you want to add more depth to the scene.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeNoMinimumIntensityPass.jpg" alt="SobelEdgeNoMinimumIntensityPass.jpg" width='800' height='583' />
+<p />
+<h3><a name="Disabling the contrast pass"></a> Disabling the contrast pass </h3>
+<p />
+Disabling the contrast pass skips the step where the shader exponentially adjusts the pixel values. This may be desirable when you want to use the raw values, instead of pushing values out from the mid point.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeNoContrastPass.jpg" alt="SobelEdgeNoContrastPass.jpg" width='800' height='583' />
+<p />
+<h3><a name="Disabling the depth exclusion pass"></a> Disabling the depth exclusion pass </h3>
+<p />
+Disabling the depth exclusion pass skips the step where the shader skips past pixels where their depth value is larger than a input value. Normally you would want to have this pass so that sky domes do not produce artifacts.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeNoDepthExclusionPass.jpg" alt="SobelEdgeNoDepthExclusionPass.jpg" width='800' height='583' />
+<p />
+<h3><a name="Adjusting the depth exclusion distance"></a> Adjusting the depth exclusion distance </h3>
+<p />
+Adjusting this value allows you skip pixels where their depth value is larger than the input value. Setting this value too low will cause the shader to skip past too many pixels, but setting this value too high may produce artifacts in other places. You will need to find the right value that best suits your scene or game art style.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeAdjustingTheDepthExclusionDistance.jpg" alt="SobelEdgeAdjustingTheDepthExclusionDistance.jpg" width='800' height='583' />
+<p />
+<h3><a name="Adjusting the contrast strength"></a> Adjusting the contrast strength </h3>
+<p />
+Adjusting this value allows you push pixel values outwards from the mid point which is usually 0.5f. Thus if a value is closer towards 0.f, the value will be pushed in this direction where as if a value is closer towards 1.f, it will be pushed in that direction.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeAdjustingTheContrastFactor.jpg" alt="SobelEdgeAdjustingTheContrastFactor.jpg" width='800' height='583' />
+<p />
+<h3><a name="Adjusting the minimum intensity"></a> Adjusting the minimum intensity </h3>
+<p />
+Adjusting this value allows you to include or exclude pixel values that are below this input value. Thus if you wish to have crisper lines, set the minimum intensity to a smaller value, but if you wish to have darker patches; increase the value.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeAdjustingTheMinimumIntensity.jpg" alt="SobelEdgeAdjustingTheMinimumIntensity.jpg" width='800' height='583' />
+<p />
+<h3><a name="Adjusting the ambient brightness and darkness"></a> Adjusting the ambient brightness and darkness </h3>
+<p />
+Adjusting these values allows you tighten or relax the overall brightness/darkness of the scene.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeAdjustingAmbientBrightness.jpg" alt="SobelEdgeAdjustingAmbientBrightness.jpg" width='800' height='583' />
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeAdjustingAmbientDarkness.jpg" alt="SobelEdgeAdjustingAmbientDarkness.jpg" width='800' height='583' />
+<p />
+<h3><a name="Adjusting the sobel pixel offset"></a> Adjusting the sobel pixel offset </h3>
+<p />
+Adjusting this value allows you to sample pixels further away from the current pixel coordinate. This leads to thicker or thinner edges effectively.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeAdjustingSobelPixel.jpg" alt="SobelEdgeAdjustingSobelPixel.jpg" width='800' height='583' />
+<p />
+<h2><a name="How to use"></a> How to use </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+This is material is to be used within the MaterialEffect node within the Post Process Chain. For more information on how to use materials as a post process effect, see <a href="PostProcessMaterials.html" class="twikiLink">Post Process Materials</a>.
+<p />
+<h2><a name="Related Topics"></a> Related Topics </h2>
+<hr size="1" noshade="noshade">
+<p /> <ul>
+<li> <a href="PostProcessEditorUserGuide.html" class="twikiLink">Post Process Editor Guide</a>
+</li> <li> <a href="PostProcessMaterials.html" class="twikiLink">Post Process Materials</a>
+</li> <li> <a href="PostProcessTechnicalGuide.html" class="twikiLink">Post Process Technical Guide</a>
+</li> <li> <a href="PostProcessEffectReference.html" class="twikiLink">Post Process Effect Reference</a>
+</li></ul>
+<p />
+<h2><a name="Conclusion"></a> Conclusion </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Through the use of the Material Editor you can create some very different rendering styles for your game.
+<p />
+<h2><a name="Downloads"></a> Downloads </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> <a href="rsrc/Three/DevelopmentKitGemsSobelEdgeDetection/SobelEdgeContent.zip" target="_top">Download</a> the content used for this gem. (SobelEdgeContent.zip)
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DevelopmentKitGemsSobelEdgeDetection.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:22:26 GMT -->
+</html></body>

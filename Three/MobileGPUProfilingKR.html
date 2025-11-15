@@ -1,0 +1,401 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MobileGPUProfilingKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:32:57 GMT -->
+<head>
+<title> UDK | MobileGPUProfilingKR    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">MobileGPUProfilingKR  </b></div>
+<div id="tooltext">
+<a href="MobileGPUProfiling.html" class="twikiLink">English Translation</a><br><a href="https://udn.epicgames.com/Three/MobileGPUProfilingJP" class="restricted" class="restricted" class="twikiLink">?¥æœ¬èªè¨³</a><br><a href="MobileGPUProfilingCH.html" class="twikiLink">ä¸?›½ç¿»è¯‘</a><br>
+
+<!-- Three/MobileGPUProfilingKR -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHomeKR.html" class="twikiLink">UE3 ??/a></b> &gt; <b><a href="MobileHomeKR.html" class="twikiLink">ëª¨ë°”????/a></b> &gt; ëª¨ë°”??GPU ?„ë¡œ?Œì¼ë§?
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="ëª¨ë°”??GPU ?„ë¡œ?Œì¼ë§?></a> ëª¨ë°”??GPU ?„ë¡œ?Œì¼ë§?</h1>
+<hr size="1" noshade="noshade">
+<em>ë¬¸ì„œ ë³€ê²½ë‚´?? <a href="https://udn.epicgames.com/Main/MartinMittring" class="restricted" class="restricted" class="twikiLink">Martin Mittring</a> ?‘ì„±. <a href="https://udn.epicgames.com/Main/DanielWright" class="restricted" class="restricted" class="twikiLink">Daniel Wright</a>, <a href="https://udn.epicgames.com/Main/JeffWilson" class="restricted" class="restricted" class="twikiLink">Jeff Wilson</a> ?˜ì •. <a href="https://udn.epicgames.com/Main/SungjinHong" class="restricted" class="restricted" class="twikiLink">?ì„±ì§?/a> ë²ˆì—­.</em>
+<div class="twikiToc"> <ul>
+<li> <a href="MobileGPUProfilingKR.html#ëª¨ë°”??GPU ?„ë¡œ?Œì¼ë§?> ëª¨ë°”??GPU ?„ë¡œ?Œì¼ë§?/a> <ul>
+<li> <a href="MobileGPUProfilingKR.html#ê°œìš”"> ê°œìš”</a>
+</li> <li> <a href="MobileGPUProfilingKR.html#ëª¨ë°”???”ë°”?´ìŠ¤?ì„œ GPU ?œê°„ ì¸¡ì •?˜ê¸°"> ëª¨ë°”???”ë°”?´ìŠ¤?ì„œ GPU ?œê°„ ì¸¡ì •?˜ê¸°</a>
+</li> <li> <a href="MobileGPUProfilingKR.html#ProfileEx ë¡??¼ë? ?Œë”ë§?ê¸°ëŠ¥???¼í¬ë¨¼ìŠ¤ ?í–¥ ì¸¡ì •?˜ê¸°"> ProfileEx ë¡??¼ë? ?Œë”ë§?ê¸°ëŠ¥???¼í¬ë¨¼ìŠ¤ ?í–¥ ì¸¡ì •?˜ê¸°</a>
+</li> <li> <a href="MobileGPUProfilingKR.html#?°ì´???¬ì´???Ÿìˆ˜ ìµœì ??> ?°ì´???¬ì´???Ÿìˆ˜ ìµœì ??/a>
+</li> <li> <a href="MobileGPUProfilingKR.html#?¹ì • ?Œë«?¼ìš© ê¸€ë¡œë²Œ ?¸íŒ… ê¸°ëŠ¥ ì¡°ì ˆë²?> ?¹ì • ?Œë«?¼ìš© ê¸€ë¡œë²Œ ?¸íŒ… ê¸°ëŠ¥ ì¡°ì ˆë²?/a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<p />
+<h2><a name="ê°œìš”"></a> ê°œìš” </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<span style="font:italic 10px arial;">(ì»¤ì„œë¥??¬ë¦¬ë©??¤ë¥¸ ?íƒœê°€ ?˜í??©ë‹ˆ??)</span>
+<div style="width:400px;" onmouseover="togglePreviewImage('smoothlayer');" onmouseout="togglePreviewImage('smoothlayer');">
+	<div id="smoothlayer_result" style="display:block;">
+		<img src="rsrc/Three/MobileGPUProfiling/ProfileEx1.jpg" alt="ProfileEx1.jpg" width="546" height="376" />
+	</div>
+	<div id="smoothlayer_original" style="display:none;">
+		<img src="rsrc/Three/MobileGPUProfiling/ProfileEx0.jpg" alt="ProfileEx0.jpg" width="546" height="376" />
+	</div>
+</div>
+<p />
+ëª¨ë°”???˜ë“œ?¨ì–´?ì„œ???Œë”ë§??¼í¬ë¨¼ìŠ¤???¤ë¥¸ ?Œë«?¼ì— ë¹„í•´ ì²˜ì ˆ?©ë‹ˆ?? ë°°í„°ë¦¬ì—????? ë°œì—´?‰ìœ¼ë¡??¤í–‰?´ì•¼ ?˜ëŠ” ì¡°ê±´?Œë¬¸??ë©”ëª¨ë¦??€??­?´ë‚˜ CPU / GPU ?°ì‚° ?¥ë ¥???ˆì–´ ?œì•½???„ê²©???˜ë°–???†ìŠµ?ˆë‹¤. ?°ë„˜???°ì´?¼ê³ , ê´œì°®?€ ?„ë¡œ?Œì¼ë§??´ë„ ?œë¬¸ ?°ë‹¤ê°€ ?˜ë“œ?¨ì–´ ?¬ì–‘??ì²œì°¨ë§Œë³„?…ë‹ˆ?? ê°™ì? ê¸°ì¢…?¼ì??¼ë„ ?¬ìš©ì¤‘ì¸ OS ë²„ì „???°ë¼ ?¬ìš©?????ˆëŠ” ê¸°ëŠ¥???í–¥???¼ì¹  ???ˆìŠµ?ˆë‹¤. ?´ëŸ¬???…ì¡°ê±´ì„ ì¡°ê¸ˆ?´ë‚˜ë§?ê°œì„ ?˜ê³ ?? ?¼í¬ë¨¼ìŠ¤ ?„ë¡œ?Œì¼ë§ê³¼ ë¬¸ì œ ?´ê²°???„í•œ ?¼ë°˜?ì¸ ?´ê²°ì±…ì´ ?˜ëŠ” ?¨ìˆœ??ë©”ì»¤?ˆì¦˜???œê³µ???œë¦¬?„ë¡ ?˜ê² ?µë‹ˆ??
+<p />
+<h2><a name="ëª¨ë°”???”ë°”?´ìŠ¤?ì„œ GPU ?œê°„ ì¸¡ì •?˜ê¸°"></a> ëª¨ë°”???”ë°”?´ìŠ¤?ì„œ GPU ?œê°„ ì¸¡ì •?˜ê¸° </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+ëª¨ë°”???”ë°”?´ìŠ¤???€?„ìŠ¤?¬í”„ ?´ë¦¬ë¥?ì§€?í•˜ì§€ ?ŠìŠµ?ˆë‹¤. ?€?„ìŠ¤?¬í”„ ?´ë¦¬?€ ?¤ë¥¸ ?Œë«?¼ì—?? ?„ì²´ ?„ë ˆ?„ì´????ê¸°ëŠ¥??GPU ?œê°„ ë¹„ìš©??ì¸¡ì •?????°ì…?ˆë‹¤. ?ˆë? ?¤ì–´ 'profilegpu' ??D3D9 / D3D11 ê°ê¸° ?¤ë¥¸ ë¶€ë¶„ì˜ ?„ë ˆ?„ì— ?€??GPU ?œê°„?? 'stat unit' ???„ë ˆ??GPU ?œê°„???˜í??´ëŠ” ëª…ë ¹?…ë‹ˆ?? ê·?ê²°ê³¼ ?¬ìš©?????ˆëŠ” ? ì¼??ì¸¡ì • ?˜ë‹¨?€ ì´??„ë ˆ???œê°„?…ë‹ˆ?? ?„ì¬ CPU(ê²Œì„ ?¤ë ˆ?œì? ?Œë”ë§??¤ë ˆ????GPU ?€ ë³‘í–‰ ?¤í–‰?˜ë?ë¡??„ë ˆ???œê°„?€ ??ì¤?????ê²ƒì´ ?©ë‹ˆ?? <strong>ì¦?ì´??„ë ˆ???œê°„???¬ìš©?˜ì—¬ ?„ë ˆ??GPU ?œê°„??ì¸¡ì •?˜ë ¤ë©? ?„ì¬ ?„ë ˆ?„ì´ GPU ???œí•œ???íƒœ?¬ì•¼ ?œë‹¤??ê²ƒì…?ˆë‹¤.</strong> ?´ëŠ” 'stat unit' ??ë³´ë©´ ?•ì¸?????ˆìŠµ?ˆë‹¤. ?„ë ˆ???œê°„??'Game' ?´ë‚˜ 'Draw' ?œê°„ë³´ë‹¤ ?¬ë‹¤ë©? GPU ???œí•œ???íƒœ?…ë‹ˆ?? ê¸°ëŠ¥???¬ëŸ¿ ???ŒëŠ” ?„ë ˆ?„ì´ CPU ???œì•½??ë°›ì•„ ì¸¡ì •ì¹˜ê? ?˜ëª» ?˜ì˜¤ê²??˜ë‹ˆ, ì£¼ì˜?˜ì‹œê¸?ë°”ë?ˆë‹¤. ?„ì˜ ?¤í¬ë¦°ìƒ·?ì„œ ë³??? Frame ?œê°„?€ Draw ?œê°„ë³´ë‹¤ ê²¨ìš° 2 ms ??ë¿ì´?¼ì„œ, GPU ê¸°ëŠ¥???„ë©´ ë°”ë¡œ CPU ???œì•½??ë°›ê²Œ ?©ë‹ˆ??
+<p />
+<h2><a name="ProfileEx ë¡??¼ë? ?Œë”ë§?ê¸°ëŠ¥???¼í¬ë¨¼ìŠ¤ ?í–¥ ì¸¡ì •?˜ê¸°"></a> ProfileEx ë¡??¼ë? ?Œë”ë§?ê¸°ëŠ¥???¼í¬ë¨¼ìŠ¤ ?í–¥ ì¸¡ì •?˜ê¸° </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+ë³„ë‹¤ë¥?ë°©ë²•???†ì„ ???¹ì • ?Œë”ë§?ê¸°ëŠ¥???„ë¡œ?Œì¼ë§í•´ ë³????ˆëŠ” ì´ˆê°„??ë°©ë²•?…ë‹ˆ??("Ex" ???¤í—˜???»í•˜??experiment ?????ê????…ë‹ˆ??.
+?„ë¡œ?Œì¼ë§í•˜?¤ëŠ” ê¸°ëŠ¥??ë§ˆìŠ¤?¬ë? ì§€?•í•œ ?¤ìŒ 5 ì´ˆë§ˆ??ê·?ê¸°ëŠ¥??? ê??©ë‹ˆ??
+?„ë ˆ???œê°„??ë³´ë©´ ?´ë‹¹ ê¸°ëŠ¥??ê·??„ë ˆ?„ì— ?¼ë§ˆ???í–¥???¼ì¹˜?”ì? ?•ì¸?????ˆìŠµ?ˆë‹¤. ?„ë ˆ?„ìœ¨???¬ê²Œ ì¶œë ?¸ë‹¤ë©???ë°©ë²•?€ ê·¸ë¦¬ ì¢‹ì? ?ŠìŠµ?ˆë‹¤.
+?ˆì •?ì¸ ?„ë ˆ?„ìœ¨???»ìœ¼?¤ë©´ ê²Œì„???¼ì‹œ?•ì? ?íƒœë¡?ì¡°ê¸ˆ ?”ë‘¬ ë³¸ë‹¤? ê?, ë³„ë‹¤ë¥??€ì§ì„???†ëŠ” ?¬ì„ êµ¬ì„±???ëŠ” ê²ƒì´ ì¢‹ìŠµ?ˆë‹¤.
+<p />
+?„ë ˆ???œê°„?€ ?ë™?¼ë¡œ ?œì‹œ(?˜ë©°, ì´ˆë‹¹ ??ë²ˆì”© ê·¸ë¦¬ ë¶€?œëŸ½ì§€???Šê²Œ ?…ë°?´íŠ¸???ˆë‹¤.
+<p />
+ê¸°ëŠ¥??ì¼œë ¤ë©?ì½˜ì†” ë³€??"ProfileEx" ë¥??¤ì •?©ë‹ˆ??
+<p />
+ì½˜ì†”???µí•´ ?•ì¸?????ˆëŠ” ìµœì‹  ?„ì?ë§ì…?ˆë‹¤:
+<p />
+<div class="codesnippet">
+<pre>
+ProfileEx ?
+        Profile Experiment: ?¹ì • ê¸°ëŠ¥??ê»ë‹¤ ì¼œë©´??stat unit ???•ì¸?˜ëŠ” ê¸°ëŠ¥ ?„ë¡œ?Œì¼ë§??¤í—˜ ê¸°ë²•?…ë‹ˆ??
+        ë³„ë‹¤ë¥??„ë¡œ?Œì¼ë§?ë°©ë²•??ì§€?ë˜ì§€ ?ŠëŠ” ?Œë«?¼ì—??? ìš©?©ë‹ˆ??
+        ê°€ê¸‰ì  VSYNC ??êº??ì‹œê³? &#34;?¼ì‹œ?•ì?&#34; ?íƒœê°€ ?´ìƒ?ì…?ˆë‹¤.
+        &#34;Stat unit&#34;, &#34;StableFrameTime&#34; ??ê¸°ëŠ¥ê³??¨ê»˜ ?œì„±?”ë©?ˆë‹¤.
+        FeatureMask 16ì§„ìˆ˜ (?”í•˜???©ì¹˜ê³? 0 ?€ ?•ë‹ˆ?? ?? 0x1a &#61; 0x10 0x08 0x02):
+         0x001: ?”í¼???€?„ìš° ?¬ì˜
+         0x002: ?ìŠ¤ ?¤ë¸Œ ?„ë“œ
+         0x004: ë¸”ë£¸
+         0x008: ê·¸ë¦¼??(?€?„ìš° ë§??ì„±ê³??¬ì˜)
+         0x010: ê¹Šì´ ?´ì„ (ëª¨ë°”???„ìš©)
+         0x020: ë¸”ë£¸/DOF ë¸”ëŸ¬ (ëª¨ë°”???„ìš©)
+         0x040: ê°€?°ì‹œ??ë¸”ëŸ¬ ìµœë? 4 ?˜í”Œë¡?ê°•ì œ
+         0x080: ?¬ê·¸ (ëª¨ë°”???„ìš©)
+         0x100: ë°˜íˆ¬ëª?
+         0x200: ?¤ì¼ˆ?ˆíƒˆ ë©”ì‹œ
+         0x400: ?¤íƒœ??ë©”ì‹œ
+         0x800: ?Œí‹°??(?Œë”ë§ë§Œ ? ê?)
+</pre>
+</div>
+<p />
+?©ë?:
+<p />
+<div class="codesnippet">
+<pre>
+ProfileEx 0x100
+        ë°˜íˆ¬ëª??„ë¡œ?Œì¼ë§?
+</pre>
+</div>
+<p />
+<div class="codesnippet">
+<pre>
+ProfileEx 0x500
+        ë°˜íˆ¬ëª…ê³¼ ?¤íƒœ??ë©”ì‹œ ?„ë¡œ?Œì¼ë§?
+</pre>
+</div>
+<p />
+ì½”ë“œ?ì„œ???´ë ‡ê²?ê°„ë‹¨??C++ ì½”ë“œë¡?ë¹„íŠ¸ë¥??ŒìŠ¤?¸í•  ???ˆìŠµ?ˆë‹¤:
+<p />
+<div class="codesnippet">
+<pre>
+if(!GetProfileExState(0x2, View.Family-&#62;CurrentRealTime))
+{
+    // ê¸°ëŠ¥????ì±„ë¡œ ?„ë¡œ?Œì¼ë§?
+    OutSettings.bEnableDOF &#61; FALSE;
+}
+</pre>
+</div>
+<p />
+??ê¸°ëŠ¥?€ FINAL_RELEASE ?ì„œ???¬ìš©?????†ìŠµ?ˆë‹¤.
+<p />
+<!--  -->
+<p />
+<h2><a name="?¹ì • ?Œë«?¼ìš© ê¸€ë¡œë²Œ ?¸íŒ… ê¸°ëŠ¥ ì¡°ì ˆë²?></a> ?¹ì • ?Œë«?¼ìš© ê¸€ë¡œë²Œ ?¸íŒ… ê¸°ëŠ¥ ì¡°ì ˆë²?</h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+ini ?Œì¼?ëŠ” (BaseEngine.ini ??[SystemSettings] ê°™ì? ê³³ì—) ?¸íŒ…???¬ëŸ¬ê°€ì§€ ?ˆìœ¼ë©? ?´ëŠ” ?Œë«?¼ë³„ë¡?([SystemSettingsMobile] ??[SystemSettingsIPad] ê°™ì??°ì„œ) ??–´?????ˆìŠµ?ˆë‹¤. ?ˆë? ?¤ë©´:
+<p />
+<div class="codesnippet">
+<pre>
+MobileFog&#61;True
+MobileHeightFog&#61;False
+MobileSpecular&#61;True
+MobileBumpOffset&#61;True
+MobileNormalMapping&#61;True
+MobileEnvMapping&#61;True
+MobileRimLighting&#61;True
+MobileColorBlending&#61;True
+MobileColorGrading&#61;False
+MobileVertexMovement&#61;True
+MobileOcclusionQueries&#61;False
+; 0 ?€ ? ëª…??sharpening) ?†ìŒ. -0.5 ë©??ìŠ¤ì²˜ê? ? ëª…??ì§€???Œë”ë§ì´ ?½ê°„ ?ë ¤ì§€ë©??¼ë ?„ì´ ?¬í•´ì§‘ë‹ˆ??
+MobileLODBias&#61;-0.5
+</pre>
+</div>
+<p />
+ìµœê·¼ ?„ì…?? ì¡°ê¸ˆ ???¤í—˜?ì¸ ?¸íŒ…?…ë‹ˆ??
+<p />
+<div class="codesnippet">
+<pre>
+MobileSceneDepthResolveForShadows&#61; TRUE
+</pre>
+</div>
+<p />
+ê¹Šì´ ë²„í¼ ?´ì„ ?¨ê³„ë¥??ëµ?˜ë©´ ?¼í¬ë¨¼ìŠ¤ ?ì— ê½¤ë‚˜ ???´ë“??ë°œìƒ?©ë‹ˆ?? ê·¸ëŸ¬ë©?ê¹Šì´ ë²„í¼ë¥??ˆì „ ?„ë ˆ?„ì—???»ì–´?¤ê¸° ?Œë¬¸???½ê°„??ë¶€?‘ìš©???ê¸¸ ?˜ëŠ” ?ˆìŠµ?ˆë‹¤ë§? ?¹ì • (ì¹´ë©”???´ë™??ê±°ì˜ ?†ê³  ê·¸ë¦¼?ë? ë°›ëŠ” ë¶€ë¶„ì´ ê±°ì˜ ?‰ì??? 2D ê°™ì? 3D) ê²Œì„?ì„œ??ê´œì°®?????ˆìŠµ?ˆë‹¤.
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<script type="text/javascript">
+	function togglePreviewImage(exp)
+	{
+		var result = document.getElementById(exp + "_result");
+		var original = document.getElementById(exp + "_original");
+
+		if(original.style.display == "none")
+		{
+			result.style.display = "none";
+			original.style.display = "block";
+		}
+		else
+		{
+			result.style.display = "block";
+			original.style.display = "none";
+		}
+	}
+</script>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MobileGPUProfilingKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:32:57 GMT -->
+</html></body>

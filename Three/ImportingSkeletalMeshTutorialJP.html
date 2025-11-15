@@ -1,0 +1,353 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ImportingSkeletalMeshTutorialJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:37:53 GMT -->
+<head>
+<title> UDK | ImportingSkeletalMeshTutorialJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ImportingSkeletalMeshTutorialJP  </b></div>
+<div id="tooltext">
+<a href="ImportingSkeletalMeshTutorial.html" class="twikiLink">English Translation</a><br><a href="ImportingSkeletalMeshTutorialCH.html" class="twikiLink">中国翻译</a><br><a href="ImportingSkeletalMeshTutorialKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ImportingSkeletalMeshTutorialJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="SkeletalMesh のインポートのチュートリアル"></a> SkeletalMesh<sup>?</sup> のインポートのチュートリアル </h1>
+<p />
+<em>ドキュメントの概要:UnrealEngine3 にアニメーションやアニメーションを導入するためのチュートリアル。</em>
+<p />
+<em>ドキュメントの変更ログ: Chris Sturgill により作成 (Demiurge Studios<sup>?</sup>)。 <a href="https://udn.epicgames.com/Main/LaurentDelayen" class="restricted" class="restricted" class="twikiLink">Laurent Delayen</a> により更新。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="ImportingSkeletalMeshTutorialJP.html#SkeletalMesh のインポートのチュートリアル"> SkeletalMesh のインポートのチュートリアル</a> <ul>
+<li> <a href="ImportingSkeletalMeshTutorialJP.html#はじめに"> はじめに</a>
+</li> <li> <a href="ImportingSkeletalMeshTutorialJP.html#リアルタイムの Bump Mapping （バンプマッピング）： ディテール メッシュとレンダリング メッシュ"> リアルタイムの Bump Mapping （バンプマッピング）： ディテール メッシュとレンダリング メッシュ</a>
+</li> <li> <a href="ImportingSkeletalMeshTutorialJP.html#エクスポート用にコンテンツを準備する"> エクスポート用にコンテンツを準備する</a> <ul>
+<li> <a href="ImportingSkeletalMeshTutorialJP.html#UV についての簡単な説明"> UV についての簡単な説明</a>
+</li> <li> <a href="ImportingSkeletalMeshTutorialJP.html#法線マップの生成"> 法線マップの生成</a>
+</li></ul>
+</li> <li> <a href="ImportingSkeletalMeshTutorialJP.html#アニメーション メッシュとアニメーションのエクスポート"> アニメーション メッシュとアニメーションのエクスポート</a>
+</li> <li> <a href="ImportingSkeletalMeshTutorialJP.html#エンジンへのコンテンツ取り込み"> エンジンへのコンテンツ取り込み</a> <ul>
+<li> <a href="ImportingSkeletalMeshTutorialJP.html#スケルトンのインポート"> スケルトンのインポート</a>
+</li> <li> <a href="ImportingSkeletalMeshTutorialJP.html#アニメーションのインポート"> アニメーションのインポート</a>
+</li></ul>
+</li> <li> <a href="ImportingSkeletalMeshTutorialJP.html#Skeletal Mesh アクタの使用">  Skeletal Mesh アクタの使用</a>
+</li> <li> <a href="ImportingSkeletalMeshTutorialJP.html#役に立つコンソールコマンド"> 役に立つコンソールコマンド</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="はじめに"></a> はじめに </h2>
+<p />
+本書は、静的メッシュへの適用と同様に、UnrealEngine3 のアートのパイプラインとして作成されました。新しいエンジンに特定の機能や処理過程に焦点をおいています。新しいエンジンで変更のない機能については、UDN の他の文書で詳細に記述されています。
+<p />
+<p />
+<p />
+<h2><a name="リアルタイムの Bump Mapping （バンプマッピング）： ディテール メッシュとレンダリング メッシュ"></a> リアルタイムの Bump Mapping （バンプマッピング）： ディテール メッシュとレンダリング メッシュ </h2>
+<p />
+UnrealEngine3 では、バンプマッピングをリアルタイムで使用する機能が提供されています。この新しいテクノロジーは、新しいモデリングのテクノロジーを必要とします。法線マップは、超高ポリゴンのディテール メッシュからジオメトリの詳細を読み込んで生成されます。このディテールメッシュはリアルタイム状況で実行する必要はなく、法線マップ情報を提供する目的で存在するものです。このため、ポリゴン数への制限が和らぎ、映画のような高画質を実現します。
+<p />
+<img alt="SoldierSideBySideJP.jpg" src="rsrc/Three/ImportingSkeletalMeshTutorialJP/SoldierSideBySideJP.jpg" />
+<p />
+生成された法線マップは、UE3 内で低ポリのレンダリングのメッシュに適用されます。この結果、実際のポリゴン以上に複雑な表現のメッシュが出来上がります。レンダリングメッシュは、実際の処理ではリグ、アニメーション、の後に UE3 へのエクスポートされます。
+<p />
+<h2><a name="エクスポート用にコンテンツを準備する"></a> エクスポート用にコンテンツを準備する </h2>
+<p />
+この時点でディテール メッシュとレンダリング メッシュがスペース内の同じ点に存在するはずです（原点と思われます）。レンダリング メッシュはアンラップされ、UV がレイアウトされています。
+<p />
+<img alt="AtOriginJP.jpg" src="rsrc/Three/ImportingSkeletalMeshTutorialJP/AtOriginJP.jpg" />
+<p />
+レンダリング メッシュのアンラップを前提に SHTools のプロセスが進められるため、このことは重要となります。これは新しいバージョンの 3D Studio Max でも行うことができます。
+<p />
+<h3><a name="UV についての簡単な説明"></a> UV についての簡単な説明 </h3>
+<p />
+法線マッピングのプロセスでは、アンラップに特に注力する必要があります。最善の結果のため、UV がオーバーラップしないようご注意下さい。ジオメトリが同一である場合はUVを重ねることができます。つまり、次のイメージのように、メッシュの別の部分がオーバーラップすることは望ましくないということです。:
+<p />
+<img alt="OverlapUVsJP.jpg" src="rsrc/Three/ImportingSkeletalMeshTutorialJP/OverlapUVsJP.jpg" />
+<p />
+下のイメージのように、ミラー関係にあるジオメトリの UV を重ねることは可能です。:
+<p />
+<img alt="StackedUVsJP.jpg" src="rsrc/Three/ImportingSkeletalMeshTutorialJP/StackedUVsJP.jpg" />
+<p />
+こういった制限はディテールメッシュには当てはまりません。それは、SHTools のプロセス用にテクスチャ処理する必要がないためです。
+<p />
+<h3><a name="法線マップの生成"></a> 法線マップの生成 </h3>
+<p />
+ディテール メッシュから法線マップを生成するプロセスは、SHTools プラグインで処理することも、3DStudio、Max、Maya または Softimage XSI で処理することもできます。このチュートリアルでは、この手順を段階的に紹介します。
+<p />
+SHTools メッシュ プロセッサとサーバーは、Max/Maya/XSI が独自の法線マッピング ツールを提供する前に作成されたものです。当社では、今はこれらのツールを使用して法線マップを作成するのが一般的です。法線マップの作成には、Maya などの 3D モデリングパッケージの使用が強く推奨されています。
+<p />
+<h2><a name="アニメーション メッシュとアニメーションのエクスポート"></a> アニメーション メッシュとアニメーションのエクスポート </h2>
+<p />
+メッシュのエクスポートの詳細なプロセスについては、 <a href="ExportingMeshesTutorialJP.html" class="twikiLink">メッシュのエクスポートのチュートリアル</a>  ページにてご覧いただけます。
+<p />
+リグされたレンダリングメッシュとアニメーションのエクスポートに関しては <a href="https://docs.unrealengine.com/udk/Two/ActorXMaxTutorialJP.html" class="twikiLink">ActorXMaxチュートリアル</a>をご覧ください。
+<p />
+注記:法線マップを SHTools で UE3 にエクスポートする (上記にて記載されています) 事は現時点でサポートされていません。しかし、アニメーションのパイプラインに変更がないため、現状 Maya からのアニメーションのエクスポートはサポートされており、次のサイトで詳細説明をご覧頂けます。 <a href="https://docs.unrealengine.com/udk/Two/ActorXMayaTutorialJP.html" class="twikiLink">ActorXMayaチュートリアル</a>
+<p />
+<h2><a name="エンジンへのコンテンツ取り込み"></a> エンジンへのコンテンツ取り込み </h2>
+<p />
+すべてがエクスポートされ準備ができたので、Unreal Editorでアセットをエンジンに取り込みます。
+<p />
+メッシュのインポートの詳細なプロセスについては、 <a href="ImportingMeshesTutorialJP.html" class="twikiLink">メッシュのインポートのチュートリアル</a>  ページにてご覧いただけます。
+<p />
+Generic ブラウザと新しいパッケージシステムについての詳細は、 <a href="https://udn.epicgames.com/Three/GenericBrowserReferenceJP" class="restricted" class="restricted" class="twikiLink">Generic ブラウザ参照</a> および <a href="UnrealPackagesJP.html" class="twikiLink">Unreal パッケージ</a> をご覧ください。
+<p />
+テクスチャのインポート、マテリアルの作成については、 <a href="MaterialsTutorialJP.html" class="twikiLink">マテリアルのチュートリアル</a> をご覧ください。
+<p />
+<h3><a name="スケルトンのインポート"></a> スケルトンのインポート </h3>
+<p />
+UnrealEngine へのPSKファイルのインポートについての情報は <a href="ActorXJP.html" class="twikiLink">ActorXJP</a> ページをご覧ください。
+<p />
+<p />
+<h3><a name="アニメーションのインポート"></a> アニメーションのインポート </h3>
+<p />
+UnrealEngine3 のアニメーション PSA ファイルのインポートに関しては次のサイト <a href="ImportingAnimationsTutorialJP.html" class="twikiLink">アニメーションシステムを使う</a> をご覧下さい。
+<p />
+<h2><a name="Skeletal Mesh アクタの使用"></a> Skeletal Mesh アクタの使用 </h2>
+<p />
+レベルへのSkeletal Mesh アクタの配置のプロセスは非常に簡単です。
+<p /> <ul>
+<li> <a href="https://udn.epicgames.com/Three/GenericBrowserReferenceJP" class="restricted" class="restricted" class="twikiLink">Generic Browser</a> でSkeletalMesh を選択します。
+</li> <li> レベルで右クリックをし、 'Add Actor'(アクタを追加)へ行き、 'Add SkeletalMesh'(SkeletalMesh'を追加)を選択します。これでレベルにメッシュが見えます。
+</li></ul>
+<p />
+アニメーションを一番簡単に再生する方法は、Matinee アクションとAnimation Control トラックを使うことです。詳細については <a href="MatineeUserGuideJP.html" class="twikiLink">Matinee ユーザーガイド</a> をご覧ください。
+<p />
+<p />
+<h2><a name="役に立つコンソールコマンド"></a> 役に立つコンソールコマンド </h2>
+<p />
+<code>show bones</code> - 骨格メッシュをレンダーするのに使われたボーンの位置を表示します。
+<p />
+役に立つコマンドについては <a href="ConsoleCommandsJP.html" class="twikiLink">コンソールコマンド</a> ページをご覧ください。
+<p />
+<p />
+<p />
+<p />
+
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ImportingSkeletalMeshTutorialJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:37:54 GMT -->
+</html></body>

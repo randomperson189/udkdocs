@@ -1,0 +1,551 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MemoryDebuggingKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:41:02 GMT -->
+<head>
+<title> UDK | MemoryDebuggingKR    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">MemoryDebuggingKR  </b></div>
+<div id="tooltext">
+<a href="MemoryDebugging.html" class="twikiLink">English Translation</a><br><a href="MemoryDebuggingJP.html" class="twikiLink">?�本語訳</a><br><a href="MemoryDebuggingCH.html" class="twikiLink">�?��翻译</a><br>
+
+<!-- Three/MemoryDebuggingKR -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHomeKR.html" class="twikiLink">UE3 ??/a></b> &gt; <b><a href="https://udn.epicgames.com/Three/MemoryHomeKR" class="restricted" class="restricted" class="twikiLink">메모�??�스??/a></b> &gt; 메모�??�버�?
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="메모�??�버�?></a> 메모�??�버�?</h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="MemoryDebuggingKR.html#메모�??�버�?> 메모�??�버�?/a> <ul>
+<li> <a href="MemoryDebuggingKR.html#메모�??�버�?개요"> 메모�??�버�?개요</a>
+</li> <li> <a href="MemoryDebuggingKR.html#?�계�?메모�??�버�?> ?�계�?메모�??�버�?/a>
+</li> <li> <a href="MemoryDebuggingKR.html#참조 케?�스"> 참조 케?�스</a> <ul>
+<li> <a href="MemoryDebuggingKR.html#?�벨??최적??> ?�벨??최적??/a>
+</li> <li> <a href="MemoryDebuggingKR.html#?�진 ?�경 ?�정">?�진 ?�경 ?�정</a>
+</li> <li> <a href="MemoryDebuggingKR.html#?�니메이??최적??> ?�니메이??최적??/a>
+</li> <li> <a href="MemoryDebuggingKR.html#참조 ?�스??> 참조 ?�스??/a>
+</li> <li> <a href="MemoryDebuggingKR.html#메모�??�편??> 메모�??�편??/a>
+</li> <li> <a href="MemoryDebuggingKR.html#?�택 메모�?> ?�택 메모�?/a>
+</li></ul>
+</li> <li> <a href="MemoryDebuggingKR.html#참조"> 참조</a>
+</li> <li> <a href="MemoryDebuggingKR.html#콘솔?�서??메모�?> 콘솔?�서??메모�?/a>
+</li> <li> <a href="MemoryDebuggingKR.html#?�용??명령?�들"> ?�용??명령?�들</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="메모�??�버�?개요"></a> 메모�??�버�?개요 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+???�션?� 메모리�? 관?�된 문제??ndash; ?�히 메모�??�용??물리??메모리의 ?�기�??�한?�는 콘솔?�서??메모�?문제???�떻�??�근?�고 처리??것인지 ?�해?�는???��?????것입?�다.
+<p />
+메모�?문제??계획???�던 경비, ?�???�산, 코드??버그, 그밖???�황?�로 ?�해 게임 개발 ?�중 ?�주 ?�하�?발생?�니??
+<p />
+?�기?�는 ???�황??�??�러가지�?처리?�는 방법???�??기본???�공?�니?�만, ???�세??것�? ?�랫???�정 ?�슈�?참고?�시�?바랍?�다.
+<p />
+<p />
+<h2><a name="?�계�?메모�??�버�?></a> ?�계�?메모�??�버�?</h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<strong>1. 게임??로드?�다</strong>
+<p />
+메모�?부족으�??�해 게임??로드?????�는 경우?�는 <a href="LevelOptimizationKR.html" class="twikiLink">?�벨??최적??/a> ?�이지?�서 ?�벨??최적?�하??방법??참조?�십?�오.
+<p />
+???�벨?�서 �?개의 Static Mesh�??�용?��?, ?�는 Skeletal Mesh???�니메이?? ?�운?????�른 ?�산?� ?�마???�용?��? ??메모�??�용 지침을 ?�해?�는 것이 좋습?�다. ?�는 ?�러분의 게임???�떤 ?�들???�는지, 그리�?무슨 게임?��????�라 ?�라집니??
+<p />
+<p />
+<strong>2. 게임???�행?�고 관찰한??/strong>
+<p />
+게임???�행?�다�??�서, 메모�?부�?문제??부?�칠 ?�려가 ?�는 것�? ?�닙?�다. 게임???�마??많�? ?�의 메모리�? ?�용?�고 ?�는지, 그리�?지?�친 ?�용???�하면서 최�? ?�량까�? ?�마??가??메모리�? ???�아 ?�는지 ?�아???�니??
+<p />
+?�랫??공급?�들?� ?��? ?�한 ?�구�?가지�??�습?�다. <a href="MemoryDebuggingKR.html#MemoryOnConsoles" class="twikiAnchorLink">?�래</a> ???�랫???�션??참고?�십?�요.
+<p />
+<p />
+<strong>3. 메모�??�용??줄인??(메모�?부�??�이)</strong>
+<p />
+메모리�? 부족해지�? �??�인??무엇?��? 범위�?좁�? ?�아보아???�니??
+<p />
+?�음 것들???�인???????�습?�다:  <ul>
+<li> Static Mesh�??�무 많이 가지�??�는 ?�벨.
+</li> <li> 발사�?�??�자�??�무 많이 만들?�내??AI.
+</li> <li> 메모리�? 지?�치�?많이 배정?�는 코드.
+</li></ul>
+<p />
+<p />
+<strong>기본?�으�??�해???�들</strong>
+<p />
+<em>?�디???�마만큼??메모리�? 배정?�어????것인가???�???��??�인 ?�답?� ?�습?�다.</em>
+<p />
+<em>?�는 ?�러분의 게임, 그리�?�?게임???�디??메모리�? ?�용???�정?��????�려 ?�습?�다.</em>
+<p />
+<em>?�라???�재 ?�용?�이 ?�느 ?�도?��? ?�고, ?�에 맞도�??�산???�워???�니??</em>
+<p /> <ul>
+<li> ?�산: 무엇???�해 메모리�? ?�용?��? 결정?�니??
+</li> <li> 모든 ?�산??최적?�되???�고 불필?�한 참조�?가지�??��? ?�도�??�인?�니??
+</li> <li> 게임??계속 ?�행?�기??충분??버퍼(?�편?��? ?�한)�?가지�??�는지 ?�인?�니??
+</li></ul>
+<p />
+<strong>참조 케?�스</strong>
+<p /> <ul>
+<li> <strong><a href="MemoryDebuggingKR.html#LevelOptimization" class="twikiAnchorLink">?�벨??최적??/a></strong>
+</li> <li> <strong><a href="MemoryDebuggingKR.html#EngineConfiguration" class="twikiAnchorLink">?�진 ?�경 ?�정</a></strong>
+</li> <li> <strong><a href="MemoryDebuggingKR.html#AnimationOptimization" class="twikiAnchorLink">?�니메이??최적??/a></strong>
+</li> <li> <strong>Novodex</strong>
+</li></ul>
+<pre>
+           #define KEEP&#95;TRACK&#95;OF&#95;NOVODEX&#95;ALLOCATIONS 1
+</pre> <ul>
+<li> <strong><a href="MemoryDebuggingKR.html#ReferenceSystem" class="twikiAnchorLink">참조 ?�스??/a></strong>
+</li> <li> <strong>메모�??�출 ?��?</strong>
+</li> <li> <strong><a href="MemoryDebuggingKR.html#MemoryFragmentation" class="twikiAnchorLink">메모�??�편??/a></strong>
+</li> <li> <strong><a href="MemoryDebuggingKR.html#StackMemory" class="twikiAnchorLink">?�택 메모�?/a></strong>
+</li> <li> <strong><a href="AudioSystemKR.html" class="twikiLink">?�디???�스??/a></strong>
+</li></ul>
+<p />
+<h2><a name="참조 케?�스"></a> 참조 케?�스 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<a name="LevelOptimization"></a>
+<h3><a name="?�벨??최적??></a> ?�벨??최적??</h3>
+<p />
+<strong>Stats</strong>
+<p />
+<code><b>STAT LEVELS</b></code>
+<p />
+<code>Stat levels</code> �??�행?�여 �?개의 ?�벨??메모리에 로드?�어 ?�는지 ?�인?�십?�오.
+<p /> <ul>
+<li> 초록: ?�로?�됨
+</li> <li> 빨강: 로드??(로드??걸린 ?�간???�께 ?�시)
+</li> <li> ?�랑: ?�로?�되??가비�? 콜렉???�는 �?
+</li> <li> ?�랑: 로드?�었지�?보이지 ?�음
+</li> <li> 분홍: 로드??준비중
+</li></ul>
+<p />
+반드??로드?�어?????�요가 ?�는 ?�벨?� 로드?��? ?�도�??�십?�오. ?�랑???�벨?��? ?????�으�?로드?��? ?�거??로드�?미루?�도 ??좋�? ?�?�들?�니?? 커다?� ?�트리밍 ?�벨?� �?개로 분할?�거??최적???�십?�오.
+<p />
+<code><b>STAT MEMORY</b></code>
+<p />
+<code>Stat Memory</code> ???�벨?�서 ?�산??메모�??�용???�??기본 ?�곽???�공?�니??
+<p /> <ul>
+<li> ?�디??메모�?
+</li> <li> Novodex ?�당
+</li> <li> ?�니메이??
+</li> <li> ?�점 조명
+</li> <li> StaticMesh???�점/?�덱??
+</li> <li> SkeletalMesh???�점/?�덱??
+</li> <li> Decal???�점/?�덱??
+</li> <li> VertexShader
+</li> <li> PixelShader
+</li> <li> ?�스처�????�이�?
+</li> <li> FaceFX
+</li></ul>
+<p />
+많�? 경우 ?�들 가?�데 ?�수, �?Animation, SkeletalMesh, Audio, 그리�?FaceFX ?�이 Unreal??참조 ?�스?�으�??�해 게임 ?�이?�에 ?�로 관?�되???�습?�다. ???��? ??문서?�서 ?�세???�명?�어 ?�습?�다.
+<p />
+<strong>그밖???�용??<a href="ConsoleCommandsKR.html" class="twikiLink">콘솔 명령??/a>:</strong>
+<p /> <ul>
+<li> ListSpawnedActors
+</li> <li> ListLoadedPackages
+</li> <li> ListPrecacheMapPackages
+</li> <li> OBJ BULK
+</li></ul>
+<p />
+최적?��? 관?�된 ?�세???�보??<a href="LevelOptimizationKR.html" class="twikiLink">?�벨??최적??/a> ?�이지�?참고?�십?�오; ??stat???�???�세???�명?�  <a href="StatsDescriptionsKR.html" class="twikiLink">Stat ?�설</a> ?�이지�?참고?�십?�오.
+<p />
+<p />
+<a name="EngineConfiguration"></a>
+<h3><a name="?�진 ?�경 ?�정"></a> ?�진 ?�경 ?�정 </h3>
+<p />
+<strong>?�스처�????�이�?</strong>
+<p />
+?�더 ?�겟을 ?�외??모든 ?�스처는 ?�스처�????�용?�니?? ?�기?�는 Lightmap???�함?�니??(?�점 조명 ?�?�에 Lightmap???�용?�는 것�? 메모�??�약???�실?????�과?�입?�다. Lightmap?� ?�스?�의 메모리�? ?�요?�키지 ?�기 ?�문?�니??.
+<p />
+??게임???�한 ?�스처�????�이즈�? 최적?�되???�는지 ?�인?�십?�오. <code>Stat Memory</code> ???�용?�고 ?�는 ?�스처�????��? 보여줍니?? ?��? 바탕?�로 게임??가???�맞?� ?��? 결정?????�습?�다.
+<p />
+<pre>
+In &#42;Engine.ini,
+      &#91;TextureStreaming]
+         PoolSize&#61;120
+
+</pre>
+<p />
+<strong>빈번??가비�? ?�집:</strong>
+<p />
+게임??<a href="https://udn.epicgames.com/Three/GarbageCollectionKR" class="restricted" class="restricted" class="twikiLink">가비�? ?�집</a> ?????�주 ???�요가 ?�다�? ?�래???�정???�용?�시�?바랍?�다.
+<p />
+<pre>
+&#42;Engine.ini?�서,
+      &#91;Engine.Engine]
+         TimeBetweenPurgingPendingKillObjects&#61;10 (10초마??
+
+</pre>
+<p />
+<a name="AnimationOptimization"></a>
+<h3><a name="?�니메이??최적??></a> ?�니메이??최적??</h3>
+<p />
+게임?�서 AnimSet??참조?�면, ?�는 AnimSet???�는 ?�니메이?�을 모두 로드?�니?? ???�니메이??가?�데 ?��?�??�용???�각?�라�??�것?� ??��?�니?? AnimSet ?�의 ?�니메이?�이 ?��? ?�요?��? ?�다�? ?��? �?개의 ?�위 AnimSet?�로 분할?�여 ?�요???�만 로드??것을 권합?�다.
+<p />
+?��? ?�면, ?�제??모든 무기 ?�니메이?�이 ?�요?��? ?��? ???�러가지 무기?�이 각기 고유??AnimSet??갖도�??�는 것입?�다.
+<p />
+<strong>Matinee:</strong>
+<p />
+ <a href="MatineeUserGuideKR.html" class="twikiLink">Matinee</a> ??경우 최적??문제가 ?�욱 ?�각?�질 ???�습?�다.
+<p />
+마티?�의 ?�퀀?�마???�는 ?�벨마다 ?�른 AnimSet??갖는?�는 것�? ?�크?�로???�라????�?Matinee ?�퀀?��? 각기 ?�른 ?�람???�당?�고 ?�는 경우) 매우 ?��????�이 ?????�습?�다. ?�벨마다 ?�나?�의 AnimSet??가지�??�다�??�상?�이겠�?�? ?�러 개발??그룹 (?�벨 ?�자?�너/?�니메이???�크립터) ?�이?�서 ?��? 관리하??것�? 매우 ?�간??걸리?�일?�니??
+<p />
+InterpData??<code>bShouldBakeAndPrune</code> (CL 259515) ?�래그는 ?�러??경우???��????�니?? ?�는 ?�당 ?�벨???�한 ??AnimSet??만들??�??�벨?�서 ?�용?�는 ?�니메이?�만??복제?�고, 참조�??�시 링크?�니?? 만일 �?AnimSet???�떤 ?�으로든 쿡되거나 로드?�었?�면, ???�래그는 무효?�되?�야 ?�니?? 같�? ?�니메이?�이 복제??것이�??�문?�니?? ???�래그는 굽거???�질?�고 ?�는 AnimSet???�벨???�해 로드???�요가 ?�을 ???�용?�어???�니?? *Editor.ini ??Cooker.MatineeOptions  ?�션?�서 bBakeAndPruneDuringCook �? FALSE �??�정?�여 ???�래그�? 글로벌�?무효?�할 ???�습?�다.
+<p />
+<pre>
+&#42;Editor.ini?�서,
+      &#91;Cooker.MatineeOptions]
+         bBakeAndPruneDuringCook&#61;false
+
+</pre>
+<p />
+<strong>?�니메이???�축:</strong>
+<p />
+?�니메이???�축?� ?�니메이?�의 메모리�? ?�게 ?�약?????�는 부분입?�다. ?�세???�용?� <a href="AnimationCompressionKR.html" class="twikiLink">?�니메이???�축</a> ?�이지�?참고?�십?�오.
+<p />
+<p />
+<a name="ReferenceSystem"></a>
+<h3><a name="참조 ?�스??></a> 참조 ?�스??</h3>
+<p />
+게임?�서 ?�벨?�이 거의 ?�성?�어 가�? ?�들??모두 ?��??�여 �??�요???�산?�만??로드?�었?��? ?�인?�십?�오. Unreal Engine 3?�서??참조??컨텐츠들?� 게임??모두 로드?�니?? 그리�?컨텐츠�? 참조?�는 직접 �?간접?�인 방법?�이 ?�주 많기 ?�문?? ?�신??깨닫지 못하???�이???�?�의 ?�산??로드?�게 ?????�습?�다. ?��? ?�면 Skeletal Mesh�?참조?�는 Pawn?� ?�동?�로 �?Skeletal Mesh???�해 참조??AnimSet??로드?�게 ?�니?? ?�라??모든 ?�니메이??Pawn-&gt;Skeletalmesh-&gt;Animsets-&gt;Animations)??로드?�니?? ???�쇄관계는 메모�?면에???�험?????�습?�다. 게임???�로�?참조?�는 Actor?�을 ??많이 가지�??�기 ?�문?�니??
+<p />
+?�러분�? 보통 ?�벨 ?�자?�너?�과 ?�께 ?�업?�면??로드?�면 ?�될 것들, ?�는 ?�트리밍 ?�벨??간에 분할?�어 ?�꺼번에 로드?�면 ?�되??것들??로드?�고 ?�는 것들???�는지 결정??것입?�다. ?�당 ?�벨???�장?��? ?�는 ?�병??메쉬가 �?좋�? ?�입?�다.
+<p />
+<strong>MEMLEAKCHECK:</strong>
+<p />
+<code>Memleakcheck</code> ?� 많�? ?�의 기본?�인 게임 ?�이?��? <code>[ProfileDirectory:Platform-specific]/MemLeak</code> ???�나??출력 ?�스???�일�??�쇄?�니??
+<p />
+?�는 최소??Skeletal Mesh, AnimSet, ?�운???�등??객체 리스?�에 ?�???�냅?�을 ?��??�니?? 기본?�인 ?�냅?�을 ?�으�? ?�것???��??�여 불필?�하�?로드???�산???�는지 ?�인?????�습?�다. 불필?�하�?로드???�산???�다�?�??�산???�구???�해 참조?�었?��? 추적?�서 �?참조�??�거?�는 것이 ?�결???�쇠?�니??
+<p />
+?�음?� ?��? ?�구?�니??..
+<p />
+<strong>OBJ LIST CLASS=SKELETALMESH:</strong>
+<p />
+로드??SkeletalMesh?�을 모두 ?�이�??�으�??�열?�니?? <code>MEMLEAKCHECK</code> ?� ???�보�??�함?�고 ?��?�??�파�??�으�??�어 ?�어, ?�용???�률?�으�?찾기 ?�렵?�니??
+<p />
+<strong>LISTSOUNDS:</strong>
+<p />
+로드??SoundCue?�을 모두 ?�이�??�으�??�열?�니?? <code>MEMLEAKCHECK</code> ?� ???�보�??�함?�고 ?��?�?????�� ?�파�??�으�??�어 ?�어, ?�용???�률?�으�?찾기 ?�렵?�니??
+<p />
+<strong>OBJ LIST CLASS=STATICMESH:</strong>
+로드??StaticMesh?�을 모두 ?�이�??�으�??�열?�니??
+<p />
+<strong>LISTANIMSETS:</strong>
+<p />
+로드??AnimSet?�을 모두 ?�이�??�으�??�열?�니?? <strong>MEMLEAKCHECK</strong> ?�도 ???�보가 ?�함?�어 ?�습?�다.
+<p />
+<strong>OBJ REFS:</strong>
+<p />
+?�산????로드?�고 ?�는지 ?�아?�는??가???��????�는 방법?� <code>OBJ REFS</code> 명령?��? ?�용?�는 것입?�다. ?�것???�용?�려�?PC?�서 게임???�행?�야 ?�니?? ?�는 ?��? ?�수?�로 ?�해 ?�러 층의 ?�택???�하�? ?��?콘솔 버전??UE3???�래???�기 ?�문?�니??
+<p />
+문제???�산??로드??곳까지 ?�레?�한 ?�음, <code>OBJ REFS CLASS=&lt;?�래???�름&gt; NAME=&lt;?�름&gt;</code> ???�력?�십?�오:
+<p />
+??
+<p />
+<pre>
+OBJ REFS CLASS&#61;SKELETALMESH NAME&#61;BIG&#95;OGRE&#95;2
+</pre>
+<p />
+그러�????�산??참조 ?�슬???��??�니?? ??
+<p />
+<pre>
+Log: Shortest reachability from root to SkeletalMesh (근원?�서 SkeletalMesh 까�???최단 ?�달거리) COG&#95;Bolo&#95;Grenade.Frag&#95;Grenade:
+Log:    SkeletalMesh COG&#95;Bolo&#95;Grenade.Frag&#95;Grenade &#91;target] (root) (standalone)
+Log:    SkeletalMeshComponent GearGame.Default&#95;&#95;GearProj&#95;FragGrenade:COGGrenadeMesh0 (root) (ObjectProperty Engine.SkeletalMeshComponent:SkeletalMesh)
+Log:    Class GearGame.GearProj&#95;FragGrenade (root) (standalone)
+</pre>
+<p />
+?�의 ?�에?�는 Frag_Grenade  메쉬가 native ?�래?�인 GearProj_FragGrenade??기본 ?�성?�서 참조?�고 ?�습?�다.
+<p />
+참조가 ?�나 ?�상?????�다???�을 ?�의?�십?�오. ??경우 참조?�을 ??번에 ?�나??처리?�야 ?�니??
+<p />
+?�산???�확?��? ?�게 로드?�었?�고 ?�정?�는 ?�는 ?�음 �?가지 ?�유가 ?�습?�다: <ul>
+<li> ?�산??native ?�래?�에 ?�해 참조?�었?�니??
+</li> <li> UnrealScript 코드가 (�??�산??참조?�는) ?�래?��? 참조?�여 거기??기본 ?�성??가?�옵?�다:
+</li></ul>
+<pre>
+                      Asset &#61; class&#39;MyGameContent.Pawn&#95;BigOgre&#39;.default.Mesh.PhysicsAsset;
+</pre>
+<p /> <ul>
+<li> Touch Kismet ?�벤??SeqEvt_Touch)가  ClassProximityTypes ?�는 IgnoredClassProximityTypes 배열???�래?��? 참조?�니??
+</li></ul>
+<p />
+<a name="MemoryFragmentation"></a>
+<h3><a name="메모�??�편??></a> 메모�??�편??</h3>
+<p />
+<strong>MEM STAT:</strong> ?�약???�함.
+<p />
+<strong>MEM DETAILED:</strong>
+<p />
+?�당?�에 관???�용???�보�??�쇄?�니?? <a href="MemoryDebuggingKR.html#MemoryOnConsoles" class="twikiAnchorLink">?�래</a> ???�랫???�션??참고?�십?�오.
+<p />
+메모�??�편?��? ?�한 버퍼�?가지�??�는 것이 좋습?�다.
+<p />
+<a name="StackMemory"></a>
+<h3><a name="?�택 메모�?></a> ?�택 메모�?</h3>
+<p />
+?�택 메모리는 메인 ?�레?�에 ?�속?�니?? ?�레?��? 만들 ??�??�이즈�? 지?�할 ?�는 ?��?�? ?��??�으�??�레?��? ?�성?�는 ?�이브러리�? ?�용?�는 경우 ?�는 메모리�? 고려?��? ?�습?�다.
+<p />
+<h2><a name="참조"></a> 참조 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+?�래???�이지?��? 메모리에 관???�층 ?�세???�보?�을 ?�고 ?�습?�다.
+<p /> <ul>
+<li> <strong>메모�?개요</strong>: <a href="https://udn.epicgames.com/Three/MemoryOverviewKR" class="restricted" class="restricted" class="twikiLink">Memory Overview</a>
+</li> <li> <strong>메모�??�당</strong>: <a href="https://udn.epicgames.com/Three/MemoryAllocationKR" class="restricted" class="restricted" class="twikiLink">Memory Allocation</a>
+</li> <li> <strong>메모�??�용??/strong>: <a href="https://udn.epicgames.com/Three/MemoryUsageKR" class="restricted" class="restricted" class="twikiLink">Memory Usage</a>
+</li> <li> <strong>메모�??�로?�일??/strong>: <a href="https://udn.epicgames.com/Three/MemoryProfilerKR" class="restricted" class="restricted" class="twikiLink">Memory Profiler</a>
+</li> <li> <strong>메모�?추적</strong>: <a href="https://udn.epicgames.com/Three/MemoryTrackingKR" class="restricted" class="restricted" class="twikiLink">Memory Tracking</a>
+</li></ul>
+<p />
+<p />
+<a name="MemoryOnConsoles"></a>
+<h2><a name="콘솔?�서??메모�?></a> 콘솔?�서??메모�?</h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<p /> <ul>
+<li> <strong>Xbox360</strong>: <a href="https://udn.epicgames.com/Three/XenonMemoryDebuggingKR" class="restricted" class="restricted" class="twikiLink">MemoryDebugging</a> (Xbox360)
+</li> <li> <strong>PS3</strong>: <a href="https://udn.epicgames.com/Three/PS3MemoryDebuggingKR" class="restricted" class="restricted" class="twikiLink">MemoryDebugging</a> (PS3)
+</li></ul>
+<p />
+<p />
+<h2><a name="?�용??명령?�들"></a> ?�용??명령?�들 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<p /> <ul>
+<li> <strong>모든 Stat 명령?�에 ?�???�명</strong>: <a href="StatsDescriptionsKR.html" class="twikiLink">Stats Descriptions</a>
+</li> <li> <strong>모든 콘솔 명령??/strong>: <a href="ConsoleCommandsKR.html" class="twikiLink">Console Commands</a>
+</li></ul>
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MemoryDebuggingKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:41:02 GMT -->
+</html></body>

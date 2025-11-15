@@ -1,0 +1,642 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DevelopmentKitGemsCreatingAModularPawnCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:28:23 GMT -->
+<head>
+<title> UDK | DevelopmentKitGemsCreatingAModularPawnCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">DevelopmentKitGemsCreatingAModularPawnCH  </b></div>
+<div id="tooltext">
+<a href="DevelopmentKitGemsCreatingAModularPawn.html" class="twikiLink">English Translation</a><br><a href="DevelopmentKitGemsCreatingAModularPawnJP.html" class="twikiLink">日本語訳</a><br><a href="DevelopmentKitGemsCreatingAModularPawnKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/DevelopmentKitGemsCreatingAModularPawnCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="DevelopmentKitHome.html" class="twikiLink">虚幻开发工具包主页</a></b> &gt; <b><a href="DevelopmentKitGems.html" class="twikiLink">虚幻开发工具包说明</a></b> &gt; 如何创建模块化 pawn
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="如何创建模块化 pawn"></a> 如何创建模块化 pawn </h1>
+<hr size="1" noshade="noshade">
+<p />
+<strong><em>于 2011 年 6 月对 UDK 进行最后测试</em></strong>
+<br>
+<strong><em>可以与 PC 和 iOS 兼容</em></strong>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="DevelopmentKitGemsCreatingAModularPawnCH.html#如何创建模块化 pawn"> 如何创建模块化 pawn</a> <ul>
+<li> <a href="DevelopmentKitGemsCreatingAModularPawnCH.html#概述"> 概述</a>
+</li> <li> <a href="DevelopmentKitGemsCreatingAModularPawnCH.html#方法"> 方法</a> <ul>
+<li> <a href="DevelopmentKitGemsCreatingAModularPawnCH.html#相关主题"> 相关主题</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsCreatingAModularPawnCH.html#编写模块化 pawn 脚本"> 编写模块化 pawn 脚本</a> <ul>
+<li> <a href="DevelopmentKitGemsCreatingAModularPawnCH.html#注意事项"> 注意事项</a>
+</li> <li> <a href="DevelopmentKitGemsCreatingAModularPawnCH.html#相关主题"> 相关主题</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsCreatingAModularPawnCH.html#模块化 Pawn 属性"> 模块化 Pawn 属性</a> <ul>
+<li> <a href="DevelopmentKitGemsCreatingAModularPawnCH.html#相关主题"> 相关主题</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsCreatingAModularPawnCH.html#虚幻动画集编辑器"> 虚幻动画集编辑器</a> <ul>
+<li> <a href="DevelopmentKitGemsCreatingAModularPawnCH.html#相关主题"> 相关主题</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsCreatingAModularPawnCH.html#何时使用..."> 何时使用...</a> <ul>
+<li> <a href="DevelopmentKitGemsCreatingAModularPawnCH.html#相关主题"> 相关主题</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+现在很多游戏允许玩家自定义他们的虚拟人物的外观。虽然附件通过插槽或骨骼对于非动画或单独的动画作用非常大；但是在您希望虚拟角色像单独的实体一样移动时它们起不到多大作用。例如，假设您希望允许玩家通过选择衬衫和裤子创建角色。因为将这些部分合成在一起后会组成一个类人生物，在动画没有正确同步的时候，它将会看上去非常不真实。
+<p />
+在这个示例中，我们使 Lauryn 具有不同的肩垫排列，不同的战靴和不同的手臂。阴影和动画可以轻而易举地自动运行。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingAModularPawnCH/ModularPawnTitle.jpg" alt="ModularPawnTitle.jpg" width='700' height='509' />
+<p />
+<h2><a name="方法"></a> 方法 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+有两种方法可以实现这个效果。 <ul>
+<li> 根据 actor 的多骨架网格物体组件 - 这种方法灵活性最好，因为它可以对这个骨架网格物体运行时间更改。然而，这种方法可能会影响性能，因为每个骨架网格物体 actor 都会成为另一个绘制调用。
+</li> <li> 合成网格物体 <strong>（只适用于授权用户）</strong> - 这种方法可以合成网格物体，使用多个网格物体生成一个单独的网格物体。这种方法将不会在这篇说明文章中进行说明。
+</li></ul>
+<p />
+<h3><a name="相关主题"></a> 相关主题 </h3> <ul>
+<li> <a href="https://udn.epicgames.com/Three/MeshCompositing" class="restricted" class="restricted" class="twikiLink">网格物体合成</a>
+</li> <li> <a href="DevelopmentKitGemsAddingSpritesMeshesParticleEffects.html" class="twikiLink">如何将平面实例、网格物体或粒子特效添加到 actor</a>
+</li> <li> <a href="ActorComponents.html" class="twikiLink">Actor 组件</a>
+</li></ul>
+<p />
+<h2><a name="编写模块化 pawn 脚本"></a> 编写模块化 pawn 脚本 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+这是一个可以定义多个骨架网格物体组件的模块化 pawn 类。每个骨架网格组件代表一个 pawn 的一个部分，它可以被替换为另一个部分。只有一个骨架网格物体组件是父代骨架网格物体组件，在这个实例中指的是头部骨架网格物体组件。
+<p />
+父代骨架网格物体组件主要负责计算供它的所有子代骨架网格物体组件使用的骨架动画数据。所有子代骨架网格物体组件同时也会从它们的父代接收到所有平移、旋转和缩放数据。
+<p />
+为了得到最好的结果，请确保所有骨架网格物体使用的是相同的骨架，而且这些网格物体是为同一个动画而设计的。应该将所有顶点直接映射到这个骨架，因为在导出之前不需要使每个骨架网格物体回到中心位置。
+<p />
+最后，所有子代骨架网格物体组件都会将它们的阴影父代设置为相同的父代网格物体组件。这样可以在渲染动态阴影的时候产生更好的性能，同时可以防止阴影重叠问题出现。
+<p />
+<div class="codetitlebar">
+ModularPawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+class ModularPawn extends UTPawn
+  Placeable;
+
+// 表示头部的骨架网格物体。父代骨架网格物体组件。
+var(ModularPawn) const SkeletalMeshComponent HeadSkeletalMesh;
+// 表示人体躯干的骨架网格物体。头部骨架网格物体组件的子代。
+var(ModularPawn) const SkeletalMeshComponent TorsoSkeletalMesh;
+// 表示手臂的骨架网格物体。头部骨架网格物体组件的子代。
+var(ModularPawn) const SkeletalMeshComponent ArmsSkeletalMesh;
+// 表示大腿的骨架网格物体。头部骨架网格物体组件的子代。
+var(ModularPawn) const SkeletalMeshComponent ThighsSkeletalMesh;
+// 表示战靴的骨架网格物体。头部骨架网格物体组件的子代。
+var(ModularPawn) const SkeletalMeshComponent BootsSkeletalMesh;
+// 表示左肩垫的骨架网格物体。头部骨架网格物体组件的子代。
+var(ModularPawn) const SkeletalMeshComponent LeftShoulderPadSkeletalMesh;
+// 表示右肩垫的骨架网格物体。头部骨架网格物体组件的子代。
+var(ModularPawn) const SkeletalMeshComponent RightShoulderPadSkeletalMesh;
+
+defaultproperties
+{
+  // 删除 UTPawn 的已定义骨架网格物体
+  Components.Remove(WPawnSkeletalMeshComponent)
+
+  // 创建动画序列
+  Begin Object class&#61;AnimNodeSequence Name&#61;AnimNodeSequence
+  End Object
+
+  // 创建头部骨架网格物体组件
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;HeadSkeletalMeshComponent
+    bCacheAnimSequenceNodes&#61;false
+    AlwaysLoadOnClient&#61;true
+    AlwaysLoadOnServer&#61;true
+    bOwnerNoSee&#61;true
+    CastShadow&#61;true
+    BlockRigidBody&#61;true
+    bUpdateSkelWhenNotRendered&#61;false
+    bIgnoreControllersWhenNotRendered&#61;true
+    bUpdateKinematicBonesFromAnimation&#61;true
+    bCastDynamicShadow&#61;true
+    RBChannel&#61;RBCC&#95;Untitled3
+    RBCollideWithChannels&#61;(Untitled3&#61;true)
+    LightEnvironment&#61;MyLightEnvironment
+    bOverrideAttachmentOwnerVisibility&#61;true
+    bAcceptsDynamicDecals&#61;false
+    AnimTreeTemplate&#61;AnimTree&#39;CH&#95;AnimHuman&#95;Tree.AT&#95;CH&#95;Human&#39;
+    bHasPhysicsAssetInstance&#61;true
+    TickGroup&#61;TG&#95;PreAsyncWork
+    MinDistFactorForKinematicUpdate&#61;0.2
+    bChartDistanceFactor&#61;true
+    RBDominanceGroup&#61;20
+    MotionBlurScale&#61;0.0
+    bUseOnePassLightingOnTranslucency&#61;true
+    bPerBoneMotionBlur&#61;true
+    // 设置动画节点序列，以便我们可以测试这个动画。
+    Animations&#61;AnimNodeSequence
+  End Object
+  HeadSkeletalMesh&#61;HeadSkeletalMeshComponent
+  Components.Add(HeadSkeletalMeshComponent)
+
+  // 创建人体躯干骨架网格物体组件
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;TorsoSkeletalMeshComponent
+    bCacheAnimSequenceNodes&#61;false
+    AlwaysLoadOnClient&#61;true
+    AlwaysLoadOnServer&#61;true
+    bOwnerNoSee&#61;true
+    CastShadow&#61;true
+    BlockRigidBody&#61;true
+    bUpdateSkelWhenNotRendered&#61;false
+    bIgnoreControllersWhenNotRendered&#61;true
+    bUpdateKinematicBonesFromAnimation&#61;true
+    bCastDynamicShadow&#61;true
+    RBChannel&#61;RBCC&#95;Untitled3
+    RBCollideWithChannels&#61;(Untitled3&#61;true)
+    LightEnvironment&#61;MyLightEnvironment
+    bOverrideAttachmentOwnerVisibility&#61;true
+    bAcceptsDynamicDecals&#61;false
+    bHasPhysicsAssetInstance&#61;true
+    TickGroup&#61;TG&#95;PreAsyncWork
+    MinDistFactorForKinematicUpdate&#61;0.2
+    bChartDistanceFactor&#61;true
+    RBDominanceGroup&#61;20
+    MotionBlurScale&#61;0.0
+    bUseOnePassLightingOnTranslucency&#61;true
+    bPerBoneMotionBlur&#61;true
+    // 将动画组件赋给头部骨架网格物体组件。这样可以保证
+    // 将 pawn 作为一个骨架网格物体组件一样进行处理。
+    ParentAnimComponent&#61;HeadSkeletalMeshComponent
+    // 将阴影父代组件赋给头部骨架网格物体组件。可以使用它加快
+    // 渲染这个 pawn 的阴影的速度，以防阴影发生折叠现象。
+    ShadowParent&#61;HeadSkeletalMeshComponent
+  End Object
+  TorsoSkeletalMesh&#61;TorsoSkeletalMeshComponent
+  Components.Add(TorsoSkeletalMeshComponent)
+
+  // 创建手臂骨架网格物体组件
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;ArmsSkeletalMeshComponent
+    bCacheAnimSequenceNodes&#61;false
+    AlwaysLoadOnClient&#61;true
+    AlwaysLoadOnServer&#61;true
+    bOwnerNoSee&#61;true
+    CastShadow&#61;true
+    BlockRigidBody&#61;true
+    bUpdateSkelWhenNotRendered&#61;false
+    bIgnoreControllersWhenNotRendered&#61;true
+    bUpdateKinematicBonesFromAnimation&#61;true
+    bCastDynamicShadow&#61;true
+    RBChannel&#61;RBCC&#95;Untitled3
+    RBCollideWithChannels&#61;(Untitled3&#61;true)
+    LightEnvironment&#61;MyLightEnvironment
+    bOverrideAttachmentOwnerVisibility&#61;true
+    bAcceptsDynamicDecals&#61;false
+    bHasPhysicsAssetInstance&#61;true
+    TickGroup&#61;TG&#95;PreAsyncWork
+    MinDistFactorForKinematicUpdate&#61;0.2
+    bChartDistanceFactor&#61;true
+    RBDominanceGroup&#61;20
+    MotionBlurScale&#61;0.0
+    bUseOnePassLightingOnTranslucency&#61;true
+    bPerBoneMotionBlur&#61;true
+    // 将动画组件赋给头部骨架网格物体组件。这样可以保证
+    // 将 pawn 作为一个骨架网格物体组件一样进行处理。
+    ParentAnimComponent&#61;HeadSkeletalMeshComponent
+    // 将阴影父代组件赋给头部骨架网格物体组件。可以使用它加快
+    // 渲染这个 pawn 的阴影的速度，以防阴影发生折叠现象。
+    ShadowParent&#61;HeadSkeletalMeshComponent
+  End Object
+  ArmsSkeletalMesh&#61;ArmsSkeletalMeshComponent
+  Components.Add(ArmsSkeletalMeshComponent)
+
+  // 创建大腿骨架网格物体组件
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;ThighsSkeletalMeshComponent
+    bCacheAnimSequenceNodes&#61;false
+    AlwaysLoadOnClient&#61;true
+    AlwaysLoadOnServer&#61;true
+    bOwnerNoSee&#61;true
+    CastShadow&#61;true
+    BlockRigidBody&#61;true
+    bUpdateSkelWhenNotRendered&#61;false
+    bIgnoreControllersWhenNotRendered&#61;true
+    bUpdateKinematicBonesFromAnimation&#61;true
+    bCastDynamicShadow&#61;true
+    RBChannel&#61;RBCC&#95;Untitled3
+    RBCollideWithChannels&#61;(Untitled3&#61;true)
+    LightEnvironment&#61;MyLightEnvironment
+    bOverrideAttachmentOwnerVisibility&#61;true
+    bAcceptsDynamicDecals&#61;false
+    bHasPhysicsAssetInstance&#61;true
+    TickGroup&#61;TG&#95;PreAsyncWork
+    MinDistFactorForKinematicUpdate&#61;0.2
+    bChartDistanceFactor&#61;true
+    RBDominanceGroup&#61;20
+    MotionBlurScale&#61;0.0
+    bUseOnePassLightingOnTranslucency&#61;true
+    bPerBoneMotionBlur&#61;true
+    // 将动画组件赋给头部骨架网格物体组件。这样可以保证
+    // 将 pawn 作为一个骨架网格物体组件一样进行处理。
+    ParentAnimComponent&#61;HeadSkeletalMeshComponent
+    // 将阴影父代组件赋给头部骨架网格物体组件。可以使用它加快
+    // 渲染这个 pawn 的阴影的速度，以防阴影发生折叠现象。
+    ShadowParent&#61;HeadSkeletalMeshComponent
+  End Object
+  ThighsSkeletalMesh&#61;ThighsSkeletalMeshComponent
+  Components.Add(ThighsSkeletalMeshComponent)
+
+  // 创建战靴骨架网格物体组件
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;BootsSkeletalMeshComponent
+    bCacheAnimSequenceNodes&#61;false
+    AlwaysLoadOnClient&#61;true
+    AlwaysLoadOnServer&#61;true
+    bOwnerNoSee&#61;true
+    CastShadow&#61;true
+    BlockRigidBody&#61;true
+    bUpdateSkelWhenNotRendered&#61;false
+    bIgnoreControllersWhenNotRendered&#61;true
+    bUpdateKinematicBonesFromAnimation&#61;true
+    bCastDynamicShadow&#61;true
+    RBChannel&#61;RBCC&#95;Untitled3
+    RBCollideWithChannels&#61;(Untitled3&#61;true)
+    LightEnvironment&#61;MyLightEnvironment
+    bOverrideAttachmentOwnerVisibility&#61;true
+    bAcceptsDynamicDecals&#61;false
+    bHasPhysicsAssetInstance&#61;true
+    TickGroup&#61;TG&#95;PreAsyncWork
+    MinDistFactorForKinematicUpdate&#61;0.2
+    bChartDistanceFactor&#61;true
+    RBDominanceGroup&#61;20
+    MotionBlurScale&#61;0.0
+    bUseOnePassLightingOnTranslucency&#61;true
+    bPerBoneMotionBlur&#61;true
+    // 将动画组件赋给头部骨架网格物体组件。这样可以保证
+    // 将 pawn 作为一个骨架网格物体组件一样进行处理。
+    ParentAnimComponent&#61;HeadSkeletalMeshComponent
+    // 将阴影父代组件赋给头部骨架网格物体组件。可以使用它加快
+    // 渲染这个 pawn 的阴影的速度，以防阴影发生折叠现象。
+    ShadowParent&#61;HeadSkeletalMeshComponent
+  End Object
+  BootsSkeletalMesh&#61;BootsSkeletalMeshComponent
+  Components.Add(BootsSkeletalMeshComponent)
+
+  // 创建左肩垫骨架网格物体组件
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;LeftShouldPadSkeletalMeshComponent
+    bCacheAnimSequenceNodes&#61;false
+    AlwaysLoadOnClient&#61;true
+    AlwaysLoadOnServer&#61;true
+    bOwnerNoSee&#61;true
+    CastShadow&#61;true
+    BlockRigidBody&#61;true
+    bUpdateSkelWhenNotRendered&#61;false
+    bIgnoreControllersWhenNotRendered&#61;true
+    bUpdateKinematicBonesFromAnimation&#61;true
+    bCastDynamicShadow&#61;true
+    RBChannel&#61;RBCC&#95;Untitled3
+    RBCollideWithChannels&#61;(Untitled3&#61;true)
+    LightEnvironment&#61;MyLightEnvironment
+    bOverrideAttachmentOwnerVisibility&#61;true
+    bAcceptsDynamicDecals&#61;false
+    bHasPhysicsAssetInstance&#61;true
+    TickGroup&#61;TG&#95;PreAsyncWork
+    MinDistFactorForKinematicUpdate&#61;0.2
+    bChartDistanceFactor&#61;true
+    RBDominanceGroup&#61;20
+    MotionBlurScale&#61;0.0
+    bUseOnePassLightingOnTranslucency&#61;true
+    bPerBoneMotionBlur&#61;true
+    // 将动画组件赋给头部骨架网格物体组件。这样可以保证
+    // 将 pawn 作为一个骨架网格物体组件一样进行处理。
+    ParentAnimComponent&#61;HeadSkeletalMeshComponent
+    // 将阴影父代组件赋给头部骨架网格物体组件。可以使用它加快
+    // 渲染这个 pawn 的阴影的速度，以防阴影发生折叠现象。
+    ShadowParent&#61;HeadSkeletalMeshComponent
+  End Object
+  LeftShoulderPadSkeletalMesh&#61;LeftShouldPadSkeletalMeshComponent
+  Components.Add(LeftShouldPadSkeletalMeshComponent)
+
+  // 创建右肩垫骨架网格物体组件
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;RightShoulderPadSkeletalMeshComponent
+    bCacheAnimSequenceNodes&#61;false
+    AlwaysLoadOnClient&#61;true
+    AlwaysLoadOnServer&#61;true
+    bOwnerNoSee&#61;true
+    CastShadow&#61;true
+    BlockRigidBody&#61;true
+    bUpdateSkelWhenNotRendered&#61;false
+    bIgnoreControllersWhenNotRendered&#61;true
+    bUpdateKinematicBonesFromAnimation&#61;true
+    bCastDynamicShadow&#61;true
+    RBChannel&#61;RBCC&#95;Untitled3
+    RBCollideWithChannels&#61;(Untitled3&#61;true)
+    LightEnvironment&#61;MyLightEnvironment
+    bOverrideAttachmentOwnerVisibility&#61;true
+    bAcceptsDynamicDecals&#61;false
+    bHasPhysicsAssetInstance&#61;true
+    TickGroup&#61;TG&#95;PreAsyncWork
+    MinDistFactorForKinematicUpdate&#61;0.2
+    bChartDistanceFactor&#61;true
+    RBDominanceGroup&#61;20
+    MotionBlurScale&#61;0.0
+    bUseOnePassLightingOnTranslucency&#61;true
+    bPerBoneMotionBlur&#61;true
+    // 将动画组件赋给头部骨架网格物体组件。这样可以保证
+    // 将 pawn 作为一个骨架网格物体组件一样进行处理。
+    ParentAnimComponent&#61;HeadSkeletalMeshComponent
+    // 将阴影父代组件赋给头部骨架网格物体组件。可以使用它加快
+    // 渲染这个 pawn 的阴影的速度，以防阴影发生折叠现象。
+    ShadowParent&#61;HeadSkeletalMeshComponent
+  End Object
+  RightShoulderPadSkeletalMesh&#61;RightShoulderPadSkeletalMeshComponent
+  Components.Add(RightShoulderPadSkeletalMeshComponent)
+}
+</pre>
+</div>
+<p />
+<h3><a name="注意事项"></a> 注意事项 </h3>
+在上面的类中，将 Anim Node Sequence 定义为允许您测试动画。它将会使动画树停止常规工作，因此，从类脚本或对象（在一个原型内）中删除这个 Anim Node Sequence，使这个动画树可以重新正常运行。
+<p />
+<h3><a name="相关主题"></a> 相关主题 </h3> <ul>
+<li> <a href="UnrealScriptReference.html" class="twikiLink">Unrealscript 引用</a>
+</li> <li> <a href="AnimTreeEditorUserGuide.html" class="twikiLink">动画树编辑器用户指南</a>
+</li> <li> <a href="AnimationOverview.html" class="twikiLink">动画概述</a>
+</li> <li> <a href="AnimationNodes.html" class="twikiLink">动画节点</a>
+</li> <li> <a href="UsingArchetypes.html" class="twikiLink">使用原型</a>
+</li></ul>
+<p />
+<h2><a name="模块化 Pawn 属性"></a> 模块化 Pawn 属性 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+在将一个 ModularPawn 放置在世界中后，打开它的属性窗口将会显示全部骨架网格物体。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingAModularPawnCH/ModularPawnProperties.jpg" alt="ModularPawnProperties.jpg" width='473' height='658' />
+<p />
+展开每个骨架网格物体对象并正确设置这个骨架网格物体。父代骨架网格物体组件应该对 Anim Tree Template、Physics Asset 和 AnimSets 进行设置。在这个实例中，Head Skeletal Mesh 对象将会具有所有这些设置。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingAModularPawnCH/ModularPawnSettingProperties_A.jpg" alt="ModularPawnSettingProperties_A.jpg" width='473' height='989' />
+<p />
+在您设置每个骨架网格物体的时候，它们将会显示在编辑器中。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingAModularPawnCH/ModularPawnSetSkeletalMeshes.jpg" alt="ModularPawnSetSkeletalMeshes.jpg" width='800' height='582' />
+<p />
+父代网格物体组件（头部骨架网格物体）会将一个 Anim Node Sequence 设置给 Animations 对象。展开这个 Animations 选项卡显示这个 Anim Node Sequence。将这个 Anim Seq Name 赋给可以在 Anim Sets 数列中找到的动画。它将会编辑器中更新骨架网格物体组件。要显示这个动画，请运行 PIE。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingAModularPawnCH/ModularPawnSettingAnimationProperties.jpg" alt="ModularPawnSettingAnimationProperties.jpg" width='473' height='989' />
+<p />
+父代骨架网格物体组件（头部骨架网格物体）平移、旋转和缩放会影响子代骨架网格物体组件。如果您发现这个骨架网格物体组件无法放入碰撞圆柱体中，或者该骨架网格物体组件相对 pawn 旋转而言方位不正确，或者在这个骨架网格物体组件太小的情况下，可以调整这些设置。您还可以调整这些网格物体组件的子代；只是要记住这些是相对父代的设置。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingAModularPawnCH/ModularPawnSettingPrimitiveComponentProperties.jpg" alt="ModularPawnSettingPrimitiveComponentProperties.jpg" width='473' height='989' />
+<p />
+<h3><a name="相关主题"></a> 相关主题 </h3> <ul>
+<li> <a href="PlayInEditor.html" class="twikiLink">在编辑器中播放</a>
+</li></ul>
+<p />
+<h2><a name="虚幻动画集编辑器"></a> 虚幻动画集编辑器 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+如果您希望在没有运行 PIE 的情况下显示模块化 pawn，那么您可以在虚幻动画集编辑器中进行这项操作。通过设置“多余的网格物体 #”字段（使用红色高亮显示的字段），您可以将多个网格物体赋给相同的骨架和动画。在这个示例中，大部分 Lauryn 的网格物体已经进行分配。但是，没有足够的插槽分配战靴。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingAModularPawnCH/ModularPawnSettingTheExtraMeshInAnimSet.jpg" alt="ModularPawnSettingTheExtraMeshInAnimSet.jpg" width='800' height='621' />
+<p />
+在您设置了多余的网格物体之后，点击 Anim 选项卡显示动画列表。选择任意动画播放。您应该可以看到所有骨架网格物体动画效果。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingAModularPawnCH/ModularPawnPlayAnAnimationToTest.jpg" alt="ModularPawnPlayAnAnimationToTest.jpg" width='800' height='621' />
+<p />
+<h3><a name="相关主题"></a> 相关主题 </h3> <ul>
+<li> <a href="AnimSetEditorUserGuide.html" class="twikiLink">动画集编辑器用户指南</a>
+</li> <li> <a href="CreatingAnimations.html" class="twikiLink">创建动画</a>
+</li></ul>
+<p />
+<h2><a name="何时使用..."></a> 何时使用... </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+这里还有另一种方法可以将东西附加在骨架网格物体上，而且使用的是插槽附件。这样的话，问题是应该在什么时候使用插槽附件和这种方法？ 答案是在您需要动画同步的时候。在这种特殊情况喜爱，网格物体唯一需要做的是进行同步，这样看起来才像一个 pawn。不过，肩垫可以通过插槽附件完成。
+<p />
+<h3><a name="相关主题"></a> 相关主题 </h3> <ul>
+<li> <a href="UDKCustomCharacters.html" class="twikiLink">UDK 自定义角色</a>
+</li> <li> <a href="SkeletalMeshSockets.html" class="twikiLink">骨架网格物体插槽</a>
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DevelopmentKitGemsCreatingAModularPawnCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:28:25 GMT -->
+</html></body>

@@ -1,0 +1,398 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CreatingNormalMapsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:16:34 GMT -->
+<head>
+<title> UDK | CreatingNormalMapsCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">CreatingNormalMapsCH  </b></div>
+<div id="tooltext">
+<a href="CreatingNormalMaps.html" class="twikiLink">English Translation</a><br><a href="CreatingNormalMapsJP.html" class="twikiLink">日本語訳</a><br><a href="CreatingNormalMapsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/CreatingNormalMapsCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="MaterialsAndTexturesHome.html" class="twikiLink">材质 &amp; 贴图</a></b> &gt; 有关创建法线贴图的技术 <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="TextureArtistHome.html" class="twikiLink">贴图美术人员</a></b> / <b><a href="CharacterArtistHome.html" class="twikiLink">角色美术人员</a></b> / <b><a href="EnvironmentArtistHome.html" class="twikiLink">环境美术人员</a></b> &gt; 有关创建法线贴图的技术
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="有关创建法线贴图的技术"></a> 有关创建法线贴图的技术 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="CreatingNormalMapsCH.html#有关创建法线贴图的技术"> 有关创建法线贴图的技术</a> <ul>
+<li> <a href="CreatingNormalMapsCH.html#概述"> 概述</a>
+</li> <li> <a href="CreatingNormalMapsCH.html#法线贴图格式"> 法线贴图格式</a>
+</li> <li> <a href="CreatingNormalMapsCH.html#来自 Epic 美术工作人员的建议"> 来自 Epic 美术工作人员的建议</a>
+</li> <li> <a href="CreatingNormalMapsCH.html#可下载的资源"> 可下载的资源</a> <ul>
+<li> <a href="CreatingNormalMapsCH.html#nVidia的法线贴图插件"> nVidia的法线贴图插件</a>
+</li> <li> <a href="CreatingNormalMapsCH.html#nVidia插件的 16 位滤镜"> nVidia插件的 16 位滤镜</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+这个文档包含了来自 Epic 的美术工作人员对创建法线贴图方面的一些建议，以及一些有用的法线贴图资源。
+<p />
+<h2><a name="法线贴图格式"></a> 法线贴图格式 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<a href="NormalMapFormats.html" class="twikiLink">这个文档</a>描述了虚幻引擎支持的各种法线贴图的格式。
+<p />
+虚幻引擎可以使用其中的绿色通道朝下的法线贴图。
+<p />
+<p />
+<h2><a name="来自 Epic 美术工作人员的建议"></a> 来自 Epic 美术工作人员的建议 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+当我们问到在 Embry Square 中的一些法线贴图是如何创建的时，Epic 的主美<a href="https://udn.epicgames.com/Main/ChrisPerna" class="restricted" class="restricted" class="twikiLink">Chris Perna</a>这样回答：
+<p />
+<table>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+<td>
+_我使用Nvidia 的法线贴图滤镜从 photosource(图片源)中创建这些贴图。这个滤镜是 photoshop 的一个插件，可以从 nvidias 的网站上下载。
+<p />
+_所使用的处理过程每次会有细微的变化，但是大多数情况下，我将饱和度(以色相/饱和度为单位)降低为灰度化图像，并在 photoshop 中对其运行高反差保留滤镜(highpass filter)。
+<p />
+_这样做会调和一下图片，使色调平滑一些。通过尝试各种不同的设置来看哪种设置可以获得最好的效果。
+<p />
+_当将图片设置为我想要达到的效果时，我把它转换为 16 位的图片。这样创建的法线贴图比仅仅在8位的图片上运行 nvidia 滤镜所创建法线贴图更加清晰。
+<p />
+_然后仅是对图片运行 nvidia 法线贴图滤镜。如果它的噪声太大，可以取消并在其上面应用高斯模糊来使它柔和一些，然后再次运行 nvidia 滤镜。
+<p />
+_通常我设置 nvidia 滤镜为 20-60，从而可以获得一个较好的法线贴图。我们所有的细节凸凹贴图都是以这种方式实现的。
+<p />
+_然后您仅需要覆盖它们，或者在您处理的法线贴图上面使用强光模式并调整它们在 photoshop 中的层次的不透明度来获得预期效果。
+<p />
+</td>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+</table>
+<p />
+来自 Epic 的技术美工<a href="https://udn.epicgames.com/Main/ShaneCaudle" class="restricted" class="restricted" class="twikiLink">Shane Caudle</a>的建议:
+<p />
+<table>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+<td>
+_我们通过使用Nvidia的法线贴图插件在 Photoshop 中制作了很多表面细节凸凹贴图，它仅仅是获得一个灰度化图片然后把它转换为法线贴图。您仅需要在 Photoshop 将这个贴图覆盖在您原始的法线贴图的上面来进行表面细节处理。通过调整一个这个层的透明度来调整表面凸凹的指数也是非常简单的。
+<p />
+</td>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+</table>
+<p />
+来自建模人员<a href="https://udn.epicgames.com/Main/KevinLanning" class="restricted" class="restricted" class="twikiLink">Kevin Lanning</a>:
+<p />
+<table>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+<td>
+<p />
+<strong>关于使用 3D Studio Max 来生成法线贴图...</strong>
+<p />
+_通常也可能是 cage 本身不利于正常的过程。具体来说，如果您正在通过移除在 UV 上镜像化的低多边形区域来优化您的高多边形和低多边形元素，就像如果有一个长方形且长的侧面被镜像化，您已经删除了额外的侧面，所以将会出现未闭合的面。有时候这种情况或者和这种情况类似的设置会使 cage 变得歪斜，且改变 cage 的大小仅会使它变得更加的歪斜。
+<p />
+_我一般不使用 cage ，这样 3D Studio Max 获取信息的方式便更多基于每个低多边形面的法线的多方向发射，这和 SHtools 的方式或最近的 3D Studio Max 的处理方式类似。
+<p />
+_除非您已经对设置中的 grab distance (offset max/min height)有了尽可能多的操作经验，否则当您在实施测试过程时最好不要启用任何 Supersampler 选项并使用较小的尺寸，因为这些可以获得更快的处理速度。
+<p />
+<p />
+<strong>关于在 Photoshop 中对法线贴图进行修正的问题...</strong>
+<p />
+_一旦您发现您能够确定或不能确定的东西，您可以设置您遗失部分的颜色为基本的法线贴图颜色(127,127,255)，这样它便不会显示出不平滑的斑点，然后如果没有2d解决方案，您可以在 photoshop 手动地进行精细处理。
+<p />
+<p />
+<strong>关于在 3D Studio Max 中渲染法线贴图时发生的错误...</strong>
+<p />
+_目标跟踪信息是不重要的，它的存在仅是因为 3D Studio Max 希望您处理法线贴图过程可以用于创建一个 3D Studio Max 材质，如果您没有分配输出的图片来构成一个 3D Studio Max 材质是令它困惑的。
+<p />
+_在渲染时的系统异常意味着您违反了小的东西，并在您的多边形物体上产生了影响，但如果不是 3D Studio Max 是那么过分严格，它根本不算什么问题。
+<p />
+<em>您将需要查看您的所有高多边形资源来缩小错误发生的范围。以下是导致这样问题的一些常见的错误：</em>
+<p /> <ul>
+<li> <em>一个空的 层/命名 的选项或物体；</em>
+</li> <li> _一个 3d 部分已经进行了太多的操作，现在需要重置它的 Xform 。
+</li> <li> _Edit (编辑)多边形模型时发生了一些奇怪的事情，这些事情必须通过先转换为编辑网格物体然后再返回去编辑多边形来解决。
+</li> <li> _或者更加令人迷惑的事情，它仅能通过导出选中的模型部分作为一个物体然后再重新把它导入到场景中来解决。
+</li></ul>
+<p />
+_追踪这些事情的最好方法是渐增地检查每个部分并把它添加到您低多边形的处理列表中，然后再次尝试处理。有时当您添加它到列表时它会崩溃，所以要经常保存，但这是最简单的追踪问题的方法。
+<p />
+_有时只是简单地因为您在场景中有太多个多边形或光源或材质，所以需要把个场景分隔为多个场景来进行分别处理，然后在重新组合。
+<p />
+</td>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+</table>
+<p />
+使用其它程序来生成法线贴图的技巧:
+<table>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+<td>
+_使用 Maya 的 Surface Sampler，在法线贴图中的绿色通道是反向的。在 Photoshop 中将其再次反向将会解决这个问题…  通过在编辑器中修改该通道的 Unpack Min/Max 也是可能解决这个问题的。
+<p />
+_如果不使用 Nvidias Normalmaptool ，您也可以使用 Crazybump  <a href="http://www.crazybump.com/" target="_top">http://www.crazybump.com/</a> ，它可以从简单的 photosource 生成更好的法线贴图、漫反射贴图、高光贴图及置换贴图。
+<p />
+</td>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+</table>
+<p />
+<p />
+<h2><a name="可下载的资源"></a> 可下载的资源 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="nVidia的法线贴图插件"></a> nVidia的法线贴图插件 </h3>
+<p />
+从 <a href="http://developer.nvidia.com/object/nv_texture_tools.html" target="_top">http://developer.nvidia.com/object/nv_texture_tools.html</a> 上可以下载 nVidia 的法线贴图插件。
+<p />
+Epic 美工人员也可以使用 Crazybump 通过高度贴图创建法线贴图，同时将多个法线贴图结合在一起。http://www.crazybump.com/
+<p />
+<p />
+<h3><a name="nVidia插件的 16 位滤镜"></a> nVidia插件的 16 位滤镜 </h3>
+<p />
+法线贴图插件的16位替换滤镜可以从以下网址下载；它对处理从 Brush 导出的灰度化图片是非常便捷的。这个新的滤镜和插件自带的滤镜有相同的文件名；所以可以直接替换它。
+<p /> <ul>
+<li> <a href="rsrc/Three/CreatingNormalMapsCH/NormalMapFilter16.zip" target="_top">NormalMapFilter16.zip</a>: Nvidia 插件的 16 位法线贴图滤镜。
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CreatingNormalMapsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:16:34 GMT -->
+</html></body>

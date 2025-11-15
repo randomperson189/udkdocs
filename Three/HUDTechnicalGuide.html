@@ -1,0 +1,617 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/HUDTechnicalGuide.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:26:01 GMT -->
+<head>
+<title> UDK | HUDTechnicalGuide    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">HUDTechnicalGuide  </b></div>
+<div id="tooltext">
+<a href="HUDTechnicalGuideJP.html" class="twikiLink">日本語訳</a><br><a href="HUDTechnicalGuideCH.html" class="twikiLink">中国翻译</a><br><a href="HUDTechnicalGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/HUDTechnicalGuide -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="UIAndHUDHome.html" class="twikiLink">User Interfaces &amp; HUDs</a></b> &gt; HUD Technical Guide
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="HUD Technical Guide"></a> HUD Technical Guide </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="HUDTechnicalGuide.html#HUD Technical Guide"> HUD Technical Guide</a> <ul>
+<li> <a href="HUDTechnicalGuide.html#Overview"> Overview</a>
+</li> <li> <a href="HUDTechnicalGuide.html#HUD Types"> HUD Types</a> <ul>
+<li> <a href="HUDTechnicalGuide.html#Canvas HUD"> Canvas HUD</a>
+</li> <li> <a href="HUDTechnicalGuide.html#Scaleform GFx HUD"> Scaleform GFx HUD</a>
+</li></ul>
+</li> <li> <a href="HUDTechnicalGuide.html#HUD Class"> HUD Class</a> <ul>
+<li> <a href="HUDTechnicalGuide.html#HUD Properties"> HUD Properties</a>
+</li> <li> <a href="HUDTechnicalGuide.html#HUD Functions"> HUD Functions</a>
+</li></ul>
+</li> <li> <a href="HUDTechnicalGuide.html#MobileHUD"> MobileHUD</a> <ul>
+<li> <a href="HUDTechnicalGuide.html#MobileHUD Properties"> MobileHUD Properties</a>
+</li> <li> <a href="HUDTechnicalGuide.html#MobileHUD Functions"> MobileHUD Functions</a>
+</li></ul>
+</li> <li> <a href="HUDTechnicalGuide.html#UDKHUD"> UDKHUD</a> <ul>
+<li> <a href="HUDTechnicalGuide.html#UDKHUD Properties"> UDKHUD Properties</a>
+</li> <li> <a href="HUDTechnicalGuide.html#UDKHUD Functions"> UDKHUD Functions</a>
+</li></ul>
+</li> <li> <a href="HUDTechnicalGuide.html#Texture Atlas Icon Coordinates"> Texture Atlas Icon Coordinates</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The Heads Up Display (HUD) is used to convey information about the game state quickly and easily to the player during play. The HUD may include pieces of information such as the player's current health, what weapon or item they may be carrying or using, a map of the world displaying the location of other players or items, the player's score, etc. This information is conveyed through the drawing of graphics and text on top of the world.
+<p />
+Some games have much more complicated HUDs than others. For most FPS games, the HUD is fairly simple. It is meant to convey specific bits of information at a glance while not impeding the player's view of the world. This is important since FPS games usually are fast-paced and a split-second can be the difference between life or death. In the case of an RPG, the HUD may be much more complex, bordering on being more of a user interface than just a HUD.
+<p />
+Indeed, the lines between the two become blurred quite often and depends more on your own personal classification of what a HUD may entail, but that is beyond the scope of this document. This document is to serve as a guide to creating a HUD and detailing the functionality available in Unreal Engine 3 for doing so.
+<p />
+<h2><a name="HUD Types"></a> HUD Types </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+There are two basic types of HUDs that can be utilized in Unreal Engine 3. These are:
+<p /> <ul>
+<li> Canvas - Utilizes the Canvas class to draw HUD graphics.
+</li> <li> Scaleform GFx - Utilizes the Scaleform GFx integration to display HUD graphics and menus.
+</li></ul>
+<p />
+These two types of HUDs are not mutually exclusive. It is possible to use a mix of both if it fits your needs.
+<p />
+<h3><a name="Canvas HUD"></a> Canvas HUD </h3>
+<p />
+The Canvas class provides all the tools necessary to draw graphics and text to the screen. It has been used in countless games created using Unreal Engine and is a viable solution for most any game. This method does not provide out of the box input handling or animation, which does not make it well-suited for creating menus or complex user interfaces.
+<p />
+For more information on using the Canvas class to create a HUD, please see the <a href="CanvasTechnicalGuide.html" class="twikiLink">Canvas Technical Guide</a>.
+<p />
+<h3><a name="Scaleform GFx HUD"></a> Scaleform GFx HUD </h3>
+<p />
+The Scaleform GFx integration in Unreal Engine 3 is equally suited to the creation of in-game HUDs as well as menus and user interfaces. It does come with the overhead of setting up scenes in Flash, but this also provides designers the ability to be the ones setting up the interface instead of relying on a programmer to lay things out solely in code.
+<p />
+For more information on using Scaleform GFx to create a HUD, please see the <a href="ScaleformTechnicalGuide.html" class="twikiLink">Scaleform Technical Guide</a>.
+<p />
+<h2><a name="HUD Class"></a> HUD Class </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The HUD class is responsible for determining what will be drawn to the screen and all the logic which is needed to obtain and process the information to be displayed. Each player has its own instance of the HUD class (or a subclass thereof) which is created when the game viewport is initialized. The full process for creating the player's HUD instance is shown below:
+<p />
+<img src="rsrc/Three/HUDTechnicalGuide/HUD_CreateFlow.jpg" alt="HUD_CreateFlow.jpg" width="552" height="480" />
+<p />
+Each update, the player's HUD has its <code>PostRender()</code> event executed which kicks off the process of redrawing the contents of the HUD to the screen. The <code>PostRender()</code> event in turn calls the <code>DrawHUD()</code> function which is the main drawing function. The sequence of drawing events for each update is shown below:
+<p />
+<img src="rsrc/Three/HUDTechnicalGuide/HUD_DrawFlow.jpg" alt="HUD_DrawFlow.jpg" width="552" height="480" />
+<p />
+The <code>DrawHUD()</code> function may then make calls to other more specialized drawing functions to draw individual elements of the HUD to the screen. For example, there may be a <code>DrawMinimap()</code> function responsible for drawing only the map of the world and any other players or points of interest.
+<p />
+<h3><a name="HUD Properties"></a> HUD Properties </h3>
+<p />
+<strong>Debug</strong>
+<p /> <ul>
+<li> <strong>bShowDebugInfo</strong> - If TRUE, debug properties of the current ViewTarget will be displayed on the screen.
+</li> <li> <strong>DebugDisplay</strong> - An array of strings specifying what debug info to display for the current ViewTarget actor when <code>bShowDebugInfo</code> is TRUE. The base engine types include "AI", "physics", "weapon", "net", "camera", and "collision".
+</li></ul>
+<p />
+<strong>Display</strong>
+<p /> <ul>
+<li> <strong>Canvas</strong> - The Canvas object to Draw the HUD on. <strong>Note:</strong> A new Canvas is given every frame, only draw on it from the HUD::PostRender() event. See the <a href="CanvasTechnicalGuide.html" class="twikiLink">Canvas Technical Guide</a> for more information on using the Canvas class.
+</li> <li> <strong>PlayerOwner</strong> - References the PlayerController which owns the HUD, e.g. the local PlayerController.
+</li> <li> <strong>PostRenderedActors</strong> - An array of Actors which need their <code>NativePostRenderFor()</code> and <code>PostRenderFor()</code> functions called to draw HUD overlays.
+</li> <li> <strong>WhiteColor/GreenColor/RedColor</strong> - Preset white, green, and red color variables.
+</li> <li> <strong>bShowHUD</strong> - If TRUE, the HUD will be visible.
+</li> <li> <strong>bShowScores</strong> - If TRUE, the scoreboard will be visible.
+</li> <li> <strong>bShowBadConnectionAlert</strong> - If TRUE, an indication of a bad connection is displayed on the HUD. This is set in native code based on lag and packet loss.
+</li> <li> <strong>RenderDelta</strong> - The amount of time in seconds since the last update.
+</li> <li> <strong>LastHUDRenderTime</strong> - Holds the time of the last render to use when calculating the <code>RenderDelta</code>.
+</li></ul>
+<p />
+<strong>Messages</strong>
+<p /> <ul>
+<li> <strong>ConsoleMessages</strong> - An array of messages to display.
+</li> <li> <strong>ConsoleColor</strong> - The color to use when displaying console messages.
+</li> <li> <strong>ConsoleMessageCount</strong> - The maximum number of console messages to keep in the ConsoleMessages array.
+</li> <li> <strong>ConsoleFontSize</strong> -
+</li> <li> <strong>MessageFontOffset</strong> - An offset applied to the FontSize of LocalMessages when determining which font to use.
+</li> <li> <strong>MaxHUDAreaMessageCount</strong> - The maximum amount of LocalMessages to display.
+</li> <li> <strong>LocalMessages</strong> - An array of LocalMessages to display.
+</li> <li> <strong>ConsoleMessagePos[X/Y]</strong> - Horizontal and vertical position on the screen to draw console messages.
+</li> <li> <strong>KismetTextInfo</strong> - An array of Kismet DrawText messages to display.
+</li> <li> <strong>bMessageBeep</strong> - If TRUE, any new console messages displayed will make a beep.
+</li></ul>
+<p />
+<strong>Viewport</strong>
+<p /> <ul>
+<li> <strong>HUDCanvasScale</strong> - The amount of screen-space to use (for TV's) in the range [0,1].
+</li> <li> <strong>Size[X/Y]</strong> - The size in pixels of the viewport horizontally and vertically..
+</li> <li> <strong>Center[X/Y]</strong> - The center of the viewport horizontally and vertically.
+</li> <li> <strong>Ratio[X/Y]</strong> - The ratio of the current viewport horizontally and vertically size to the native resolution of 1024x768.
+</li></ul>
+<p />
+<h3><a name="HUD Functions"></a> HUD Functions </h3>
+<p />
+<strong>Debug</strong>
+<p /> <ul>
+<li> <strong>ShowDebug [DebugType]</strong> - Toggles displaying properties of player's current ViewTarget. <ul>
+<li> <strong>DebugType</strong> - The properties to show or hide. Values supported by base engine include "AI", "physics", "weapon", "net", "camera", and "collision".
+</li></ul>
+</li> <li> <strong>ShowDisplayDebug [DebugType]</strong> - Determines whether the specified debug information is currently set to be displayed, e.g. it is in the <code>DebugDisplay</code> array. <ul>
+<li> <strong>DebugType</strong> - The properties to check. Values supported by base engine include "AI", "physics", "weapon", "net", "camera", and "collision".
+</li></ul>
+</li> <li> <strong>ShowDebugInfo [out_YL] [out_YPos]</strong> - Entry point for basic debug rendering on the HUD.  Activated and controlled via the "showdebug" console command.  Can be overridden to display custom debug per-game. <ul>
+<li> <strong>out_YL</strong> - The height of the current font.
+</li> <li> <strong>out_YPos</strong> - The vertical position on the Canvas. <code>out_YPos +</code> out_YL= gives the position to draw text for the next debug line.
+</li></ul>
+</li> <li> <strong>DrawRoute [Target]</strong> - Draws debug information for ViewTargets which are bots regarding their current route. <ul>
+<li> <strong>Target</strong> - References the Pawn (bot) for which to draw the route information.
+</li></ul>
+</li></ul>
+<p />
+<strong>Display</strong>
+<p /> <ul>
+<li> <strong>ToggleHUD</strong> - Exec function that toggles the visibility of the HUD, via the <code>bShowHUD</code> variable.
+</li> <li> <strong>ShowHUD</strong> - Exec function that toggles the visibility of the HUD by calling the <code>ToggleHUD()</code> function.
+</li> <li> <strong>ShowScores</strong> - Exec function that toggles display of the in-game scoreboard by calling the <code>SetShowScores()</code> function.
+</li> <li> <strong>SetShowScores [bNewValue]</strong> - Exec function that sets the visibility of the in-game scoreboard, via the <code>bShowScores</code> variable. <ul>
+<li> <strong>bNewValue</strong> - The new value for the <code>bShowScores</code> variable.
+</li></ul>
+</li> <li> <strong>DisplayBadConnectionAlert</strong> - Function stub for drawing the bad connection warning message. Subclasses should override this.
+</li></ul>
+<p />
+<strong>Drawing</strong>
+<p /> <ul>
+<li> <strong>PreCalcValues</strong> - Calculates and populates the Size[X/Y], Center[X/Y], and Ratio[X/Y] values.
+</li> <li> <strong>PostRender</strong> - Main drawing function for the HUD. Called each frame by the engine.
+</li> <li> <strong>DrawHUD</strong> - Main game HUD drawing function. Gets called before any messaging. Subclasses should override this to handle game-specific HUD drawing.
+</li> <li> <strong>Draw2DLine [X1] [Y1] [X2] [Y2] [LineColor]</strong> - Draws a line in 2D space to the screen. <ul>
+<li> <strong>[X/Y]1</strong> - The horizontal and vertical position in pixels for the starting point of the line.
+</li> <li> <strong>[X/Y]2</strong> - The horizontal and vertical position in pixels for the end point of the line.
+</li> <li> <strong>LineColor</strong> - The color to use when drawing the line.
+</li></ul>
+</li> <li> <strong>Draw3DLine [Start] [End] [LineColor]</strong> - Draws a line in 3D space to the screen. <ul>
+<li> <strong>Start</strong> - A Vector specifying the starting point of the line in world space.
+</li> <li> <strong>End</strong> - A Vector specifying the end point of the line in world space.
+</li> <li> <strong>LineColor</strong> - The color to use when drawing the line.
+</li></ul>
+</li> <li> <strong>DrawText [Text] [Position] [TextFont] [FontScale] [TextColor]</strong> - Draws a string of text to the screen. <ul>
+<li> <strong>Text</strong> - The string to draw to the screen.
+</li> <li> <strong>Position</strong> - A Vector2D specifying the horizontal and vertical (X and Y) position in pixels at which to draw the text on the screen.
+</li> <li> <strong>TextFont</strong> - The Font to use to draw the text.
+</li> <li> <strong>FontScale</strong> - A Vector2D specifying the horizontal and vertical (X and Y) scale of the text.
+</li> <li> <strong>TextColor</strong> - The color to use to draw the text to the screen.
+</li></ul>
+</li> <li> <strong>DrawActorOverlays [Viewpoint] [ViewRotation]</strong> - Native. Draws overlays for actors that were rendered this tick and have added themselves to the PostRenderedActors array <ul>
+<li> <strong>Viewpoint</strong> - The current location of the player's camera.
+</li> <li> <strong>ViewRotation</strong> - The current rotation of the player's camera.
+</li></ul>
+</li> <li> <strong>AddPostRenderedActor [A]</strong> - Adds an Actor to the list of <code>PostRenderedActors</code>. <ul>
+<li> <strong>A</strong> - References the Actor to add to the array.
+</li></ul>
+</li> <li> <strong>RemovePostRenderedActor [A]</strong> - Removes an Actor from the list of <code>PostRenderedActors</code>. <ul>
+<li> <strong>A</strong> - References the Actor to remove from the array.
+</li></ul>
+</li> <li> <strong>GetFontSizeIndex [FontSize]</strong> - Returns a Font corresponding to the given font size. <ul>
+<li> <strong>FontSize</strong> - The size for which to get the font.
+</li></ul>
+</li></ul>
+<p />
+<strong>General</strong>
+<p /> <ul>
+<li> <strong>PlayerOwnerDied</strong> - Function stub called when the <code>PlayerOwner</code> of the HUD dies. Subclasses should override this function.
+</li> <li> <strong>OnLostFocusPause [bEnable]</strong> - Pauses or unpauses the game due to main window's focus being lost. <ul>
+<li> <strong>bEnable</strong> - If TRUE, enable the pause state. Otherwise, the pause state is disabled.
+</li></ul>
+</li></ul>
+<p />
+<strong>Messages</strong>
+<p /> <ul>
+<li> <strong>ClearMessage [M]</strong> - Clears the given LocalMessage. <ul>
+<li> <strong>M</strong> - References the HUDLocalizedMessage to clear.
+</li></ul>
+</li> <li> <strong>Message [PRI] [Msg] [MsgType] [LifeTime]</strong> - Wrapper function to add a new console message. Calls <code>AddConsoleMessage()</code>. <ul>
+<li> <strong>PRI</strong> - References the PlayerReplicationInfo of the player sending the message.
+</li> <li> <strong>Msg</strong> - The text of the message.
+</li> <li> <strong>MsgType</strong> - The type of message, i.e. 'Say', 'TeamSay', etc.
+</li> <li> <strong>LifeTime</strong> - Optional. The amount of time in seconds for which to display the message.
+</li></ul>
+</li> <li> <strong>AddConsoleMessage [M] [InMessageClass] [PRI] [LifeTime]</strong> - Adds a new ConsoleMessage to be displayed. <ul>
+<li> <strong>M</strong> - The text of the message.
+</li> <li> <strong>InMessageClass</strong> - The class (LocalMessage or subclass) of the new message.
+</li> <li> <strong>PRI</strong> - References the PlayerReplicationInfo of the player associated with the message.
+</li> <li> <strong>LifeTime</strong> - Optional. The amount of time in seconds for which to display the message.
+</li></ul>
+</li> <li> <strong>DisplayConsoleMessages</strong> - Draws the pending ConsoleMessages to the screen.
+</li> <li> <strong>LocalizedMessage [InMessageClass] [RelatedPRI_1] [RelatedPRI_2] [CriticalString] [Switch] [Position] [LifeTime] [FontSize] [DrawColor] [OptionalObject]</strong> - Wrapper function for adding a new LocalMessage to be displayed. Calls <code>AddLocalizedMessage()</code>. Also adds message as a console message if the <code>bIsSpecial</code> property of the message class is FALSE. <ul>
+<li> <strong>InMessageClass</strong> - The class (LocalMessage or subclass) of the new message.
+</li> <li> <strong>RelatedPRI_1</strong> - References the first PlayerReplicationInfo of a player associated the message. The class of the message defines how the PRI's are used.
+</li> <li> <strong>RelatedPRI_2</strong> - References the second PlayerReplicationInfo of a player associated the message. The class of the message defines how the PRI's are used.
+</li> <li> <strong>CriticalString</strong> - The text of the message.
+</li> <li> <strong>Switch</strong> - The message switch. The class of the message determines how the switch is used.
+</li> <li> <strong>Position</strong> - The vertical position on the screen of the message.
+</li> <li> <strong>LifeTime</strong> - The amount of time in seconds for which to display the message.
+</li> <li> <strong>FontSize</strong> - The size of the font to use for displaying the message. Offset by <code>MessageFontOffset</code> and passed to <code>GetFontSizeIndex()</code> to get the Font to use to display the message.
+</li> <li> <strong>DrawColor</strong> - The color to use when displaying the message.
+</li> <li> <strong>OptionalObject</strong> - Optional. A reference to an object associated with the message. The class of the message defines how the object are used.
+</li></ul>
+</li> <li> <strong>AddLocalizedMessage [Index] [InMessageClass] [CriticalString] [Switch] [Position] [LifeTime] [FontSize] [DrawColor] [MessageCount] [OptionalObject]</strong> - Adds an actual message to the <code>LocalMessages</code> array. <ul>
+<li> <strong>Index</strong> - The index in to the <code>LocalMessages</code> array to place the new message.
+</li> <li> <strong>InMessageClass</strong> - The class (LocalMessage or subclass) of the new message.
+</li> <li> <strong>CriticalString</strong> - The text of the message.
+</li> <li> <strong>Switch</strong> - The message switch. The class of the message determines how the switch is used.
+</li> <li> <strong>Position</strong> - The vertical position on the screen of the message.
+</li> <li> <strong>LifeTime</strong> - The amount of time in seconds for which to display the message.
+</li> <li> <strong>FontSize</strong> - The size of the font to use for displaying the message. Offset by <code>MessageFontOffset</code> and passed to <code>GetFontSizeIndex()</code> to get the Font to use to display the message.
+</li> <li> <strong>DrawColor</strong> - The color to use when displaying the message.
+</li> <li> <strong>MessageCount</strong> - Optional. The number of messages currently in the <code>LocalMessages</code> array.
+</li> <li> <strong>OptionalObject</strong> - Optional. A reference to an object associated with the message. The class of the message defines how the object is used.
+</li></ul>
+</li> <li> <strong>GetScreenCoords [PosY] [ScreenX] [ScreenY] [InMessage]</strong> - Calculates the position on the screen to draw a LocalMessage. <ul>
+<li> <strong>PosY</strong> - Vertical position of the message.
+</li> <li> <strong>ScreenX</strong> - Out. Outputs the horizontal position in pixels.
+</li> <li> <strong>ScreenY</strong> - Out. Outputs the vertical position in pixels.
+</li> <li> <strong>InMessage</strong> - Out. The message to get the screen position for.
+</li></ul>
+</li> <li> <strong>DrawMessage [i] [PosY] [DX] [DY]</strong> - Performs the set up for displaying a LocalMessage and calls <code>DrawMessageText()</code> to display the message. <ul>
+<li> <strong>i</strong> - The index in to the <code>LocalMessages</code> array of the message to display.
+</li> <li> <strong>PosY</strong> - The vertical position on the screen of the message.
+</li> <li> <strong>DX</strong> - Out. Outputs the width of the message's text.
+</li> <li> <strong>DY</strong> - Out. Outputs the height of the message's text.
+</li></ul>
+</li> <li> <strong>DrawMessageText [LocalMessage] [ScreenX] [ScreenY]</strong> - Draws the text of a LocalMessage to the screen. <ul>
+<li> <strong>LocalMessage</strong> - The LocalMessage for which to display the text.
+</li> <li> <strong>ScreenX</strong> - The horizontal position in pixels on the screen to draw the message text.
+</li> <li> <strong>ScreenY</strong> - The vertical position in pixels on the screen to draw the message text.
+</li></ul>
+</li> <li> <strong>DisplayLocalMessages</strong> - Performs layout of and then displays the LocalMessages.
+</li> <li> <strong>DisplayKismetMessages</strong> - Displays all pending Kismet DrawText messages.
+</li></ul>
+<p />
+<h2><a name="MobileHUD"></a> MobileHUD </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The MobileHUD class extends from the base HUD class and adds functionality for the extra HUD aspects necessary for displaying the HUD on mobile devices, such as touch controls. If your game is to be deployed for mobile devices, your HUD should extend from the MobileHUD class or a subclass thereof.
+<p />
+<h3><a name="MobileHUD Properties"></a> MobileHUD Properties </h3>
+<p />
+<strong>Controls</strong>
+<p /> <ul>
+<li> <strong>JoystickBackground</strong> - The texture containing the graphic for the background of the joystick elements.
+</li> <li> <strong>JoystickBackgroundUVs</strong> - The TextureUVs specifying the coordinates of the graphic in the <code>JoystickBackground</code> texture.
+</li> <li> <strong>JoystickHat</strong> - The texture containing the graphic for the actual joystick elements.
+</li> <li> <strong>JoystickHatUVs</strong> - The TextureUVs specifying the coordinates of the graphic in the <code>JoystickHat</code> texture.
+</li> <li> <strong>ButtonImages</strong> - An array of textures containing the graphics for the on-screen buttons.
+</li> <li> <strong>ButtonUVs</strong> - An array of TextureUVs specifying the coordinates of the graphics in the <code>ButtonImages</code> textures.
+</li> <li> <strong>ButtonFont</strong> - The Font used to draw the labels of the on-screen buttons.
+</li> <li> <strong>ButtonCaptionColor</strong> - The color to use when drawing the labels of the on-screen buttons.
+</li> <li> <strong>TrackballBackground</strong> - The texture containing the graphic for the background of the trackball elements.
+</li> <li> <strong>TrackballBackgroundUVs</strong> - The TextureUVs specifying the coordinates of the graphic in the <code>TrackballBackground</code> texture.
+</li> <li> <strong>TrackballTouchIndicator</strong> - The texture containing the graphic for the background of the trackball touch indicator.
+</li> <li> <strong>TrackballTouchIndicatorUVs</strong> - The TextureUVs specifying the coordinates of the graphic in the <code>TrackballTouchIndicator</code> texture.
+</li> <li> <strong>SliderImages</strong> - An array of textures containing the graphics for the on-screen sliders.
+</li> <li> <strong>SliderUVs</strong> - An array of TextureUVs specifying the coordinates of the graphics in the <code>SliderImages</code> textures.
+</li></ul>
+<p />
+<strong>Debug</strong>
+<p /> <ul>
+<li> <strong>bDebugTouches</strong> - If TRUE, display debug information regarding the touches.
+</li> <li> <strong>bDebugZones</strong> - If TRUE, debug info about the various mobile input zones will be displayed.
+</li> <li> <strong>bDebugZonePresses</strong> - If TRUE, debug info about a mobile input zone will be displayed, but only on presses.
+</li></ul>
+<p />
+<strong>General</strong>
+<p /> <ul>
+<li> <strong>bShowGameHUD</strong> - If TRUE, the standard game HUD will be displayed. This is needed to support hiding the hud completly yet still supporting the ShowHUD command.
+</li> <li> <strong>bShowMobileHUD</strong> - If TRUE, the mobile HUD (i.e.: Input zones. etc) will be displayed.
+</li> <li> <strong>bForceMobileHUD</strong> - If TRUE, the Mobile HUD will be displayed even on non-mobile platforms.
+</li></ul>
+<p />
+<strong>Tilt</strong>
+<p /> <ul>
+<li> <strong>bShowMobileTilt</strong> - If TRUE, the device tilt will be displayed.
+</li> <li> <strong>MobileTilt[X/Y]</strong> - The horizontal and vertical position at which to display the device tilt.
+</li> <li> <strong>MobileTiltSize</strong> - The size at which to display the device tilt.
+</li></ul>
+<p />
+<h3><a name="MobileHUD Functions"></a> MobileHUD Functions </h3>
+<p />
+<strong>Drawing</strong>
+<p /> <ul>
+<li> <strong>ShowMobileHUD</strong> - Returns whether or not the mobile HUD should be displayed.
+</li> <li> <strong>RenderMobileMenu</strong> - Mobile HUD menu drawing function. Called by <code>PostRender()</code> after the mobile HUD drawing is complete.
+</li></ul>
+<p />
+<strong>Zones</strong>
+<p /> <ul>
+<li> <strong>DrawInputZoneOverlays</strong> - Main mobile HUD drawing function which draws the input zones on top of everything else. Called by <code>PostRender()</code> after the main HUD drawing is complete.
+</li> <li> <strong>DrawMobileZone_Button [Zone]</strong> - Draws a button for the given input zone. <ul>
+<li> <strong>Zone</strong> - The MobileInputZone for which to draw the button.
+</li></ul>
+</li> <li> <strong>DrawMobileZone_Joystick [Zone]</strong> - Draws a joystick for the given input zone. <ul>
+<li> <strong>Zone</strong> - The MobileInputZone for which to draw the joystick.
+</li></ul>
+</li> <li> <strong>DrawMobileZone_Trackball [Zone]</strong> - Draws a trackball for the given input zone. <ul>
+<li> <strong>Zone</strong> - The MobileInputZone for which to draw the trackball.
+</li></ul>
+</li> <li> <strong>DrawMobileZone_Slider [Zone]</strong> - Draws a slider for the given input zone. <ul>
+<li> <strong>Zone</strong> - The MobileInputZone for which to draw the slider.
+</li></ul>
+</li> <li> <strong>DrawMobileTilt [MobileInput]</strong> - Draws the device tilt using the tilt information of the given MobilePlayerInput. <ul>
+<li> <strong>MobileInput</strong> - The MobilePlayerInput providing the tilt information to be displayed.
+</li></ul>
+</li></ul>
+<p />
+<h2><a name="UDKHUD"></a> UDKHUD </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The UDKHUD class is the most derived HUD class still containing native functionality.
+<p />
+<h3><a name="UDKHUD Properties"></a> UDKHUD Properties </h3>
+<p /> <ul>
+<li> <strong>GlowFonts</strong> - The Fonts to use for drawing pulsing text with a glow or bloom effect. The [0] element in the array holds the font to use for the glow. The [1] element holds the font to draw the regular text.
+</li> <li> <strong>PulseDuration</strong> - The amount of time the text pulse should take.
+</li> <li> <strong>PulseSplit</strong> - The time when the pulse should switch from out to in.
+</li> <li> <strong>PulseMultiplier</strong> - How much the text should pulse - NOTE this will be added to 1.0 (so <code>PulseMultipler</code> 0.5 = 1.5)
+</li> <li> <strong>TextRenderInfo</strong> - A FontRenderInfo struct holding the information used in font rendering. This should be set up in the default properties of the HUD subclass and passed to any <code>Canvas.DrawText()</code> that need it.
+</li> <li> <strong>ConsoleIconFont</strong> - The Font to use for a given console.
+</li> <li> <strong>BindTextFont</strong> - The Font used to display input binds when they aren't represented by an icon in ConsoleIconFont.
+</li></ul>
+<p />
+<h3><a name="UDKHUD Functions"></a> UDKHUD Functions </h3>
+<p /> <ul>
+<li> <strong>DrawGlowText [Text] [X] [Y] [MaxHeightInPixels] [PulseTime] [bRightJustified]</strong> - Draws pulsing text with a glow or bloom effect. <ul>
+<li> <strong>Text</strong> - The string of text to display.
+</li> <li> <strong>[X/Y]</strong> - The horizontal and vertical position on the screen to draw the text.
+</li> <li> <strong>MaxHeightInPixels</strong> - Optional. The maximum height the text should be.
+</li> <li> <strong>PulseTime</strong> - Optional. The amount of time one pulse should take.
+</li> <li> <strong>bRightJustified</strong> - Optional. If TRUE, the text should be aligned to the right edge of the current clipping region of the Canvas.
+</li></ul>
+</li> <li> <strong>TranslateBindToFont [InBindStr] [DrawFont] [OutBindStr]</strong> - Convert a string with potential escape sequenced data in it to a font and the string that should be displayed. <ul>
+<li> <strong>InBindStr</strong> - The string containing the escape data.
+</li> <li> <strong>DrawFont</strong> - Out. Outputs the Font to use to draw the string; either the ConsoleIconFont or the BindTextFont.
+</li> <li> <strong>OutBindStr</strong> - Out. Outputs the string with the escape data stripped.
+</li></ul>
+</li> <li> <strong>DisplayHit [HitDir] [Damage] [damageType]</strong> - Displays a hit effect showing the direction from which the damage came. <ul>
+<li> <strong>HitDir</strong> - The Vector specifying where the damage came from.
+</li> <li> <strong>Damage</strong> - The amount of damage done.
+</li> <li> <strong>damageType</strong> - The DamageType of the damage.
+</li></ul>
+</li></ul>
+<p />
+<h2><a name="Texture Atlas Icon Coordinates"></a> Texture Atlas Icon Coordinates </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The graphics (icons, images, etc.) used in the HUD are usually stored as part of a texture atlas. This means multiple icons or images are stored in a single texture and a specific portion of that texture is drawn to display any particular icon.
+<p />
+<img src="rsrc/Three/HUDTechnicalGuide/texture_atlas.jpg" width="800" height="400" alt="texture_atlas.jpg" />
+<p />
+Individual icons within a texture atlas are accessed using coordinates. The standard method used in Unreal Engine 3 is to specify the horizontal and vertical position of the upper left pixel (usually denoted as <code>U</code> and <code>V</code>) at which to begin sampling the texture and a width and height to sample (usually denoted by <code>UL</code> and <code>VL</code>). These coordinates are usually stored within a struct, i.e. <code>MobileHUD.TextureUVs</code> or <code>UIRoot.TextureCoordinates</code>.
+<p />
+<img src="rsrc/Three/HUDTechnicalGuide/atlas_coords.jpg" width="800" height="400" alt="atlas_coords.jpg" />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/HUDTechnicalGuide.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:26:02 GMT -->
+</html></body>

@@ -1,0 +1,343 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PostProcessTechnicalGuideJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:30:48 GMT -->
+<head>
+<title> UDK | PostProcessTechnicalGuideJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">PostProcessTechnicalGuideJP  </b></div>
+<div id="tooltext">
+<a href="PostProcessTechnicalGuide.html" class="twikiLink">English Translation</a><br><a href="PostProcessTechnicalGuideCH.html" class="twikiLink">中国翻译</a><br><a href="PostProcessTechnicalGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/PostProcessTechnicalGuideJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<h1><a name="Unreal ポストプロセス テクニカルガイド"></a><a name=" Unreal ポストプロセス テクニカルガイド"></a>  Unreal ポストプロセス テクニカルガイド </h1>
+<p />
+<em>ドキュメントの概要: ポストプロセス マネージャの技術的な概要。</em>
+<p />
+<p />
+<em>ドキュメントの変更ログ: <a href="https://udn.epicgames.com/Main/TimJohnson" class="restricted" class="restricted" class="twikiLink">Tim Johnson</a> により作成。 <a href="https://udn.epicgames.com/Main/DanielWright" class="restricted" class="restricted" class="twikiLink">Daniel Wright</a>、<a href="https://udn.epicgames.com/Main/NiklasSmedberg" class="restricted" class="restricted" class="twikiLink">Niklas Smedberg</a> により更新。 Richard Nalezynski<sup>?</sup> により管理。</em>
+<p />
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="PostProcessTechnicalGuideJP.html#はじめに"> はじめに</a>
+</li> <li> <a href="PostProcessTechnicalGuideJP.html#ポストプロセス設定"> ポストプロセス設定</a> <ul>
+<li> <a href="PostProcessTechnicalGuideJP.html#デフォルトのポストプロセス チェーン"> デフォルトのポストプロセス チェーン</a>
+</li> <li> <a href="PostProcessTechnicalGuideJP.html#クッキング"> クッキング</a>
+</li> <li> <a href="PostProcessTechnicalGuideJP.html#エフェクト設定の適用手順"> エフェクト設定の適用手順</a>
+</li> <li> <a href="PostProcessTechnicalGuideJP.html#MotionBlur と _UberPostProcessEffect"> MotionBlur と UberPostProcessEffect</a>
+</li></ul>
+</li> <li> <a href="PostProcessTechnicalGuideJP.html#ポストプロセスマネージャ"> ポストプロセスマネージャ </a>
+</li> <li> <a href="PostProcessTechnicalGuideJP.html#新規エフェクトの作成"> 新規エフェクトの作成</a>
+</li> <li> <a href="PostProcessTechnicalGuideJP.html#ゲームプレイ スクリプトを使用したエフェクト制御"> ゲームプレイ スクリプトを使用したエフェクト制御</a>
+</li> <li> <a href="PostProcessTechnicalGuideJP.html#パフォーマンス:エフェクトの調整"> パフォーマンス:エフェクトの調整</a> <ul>
+<li> <a href="PostProcessTechnicalGuideJP.html#便利なコンソール コマンド"> 便利なコンソール コマンド</a>
+</li></ul>
+</li> <li> <a href="PostProcessTechnicalGuideJP.html#サンプル"> サンプル</a> <ul>
+<li> <a href="PostProcessTechnicalGuideJP.html#アンビエントオクルージョン (AO)"> アンビエントオクルージョン (AO)</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="はじめに"></a> はじめに </h2>
+<p />
+このドキュメントはプログラマーを対象に、Unreal ポストプロセス システムの主な機能がどのように設計および実装されているかについて説明しています。ポストプロセスエフェクトに関して UnrealEd で行われる作業の詳細は、 <a href="PostProcessEditorUserGuideJP.html" class="twikiLink">ポストプロセスエディタ ユーザーガイド</a> ページを参照してください。
+<p />
+<h2><a name="ポストプロセス設定"></a> ポストプロセス設定 </h2>
+<p />
+<h3><a name="デフォルトのポストプロセス チェーン"></a> デフォルトのポストプロセス チェーン </h3>
+<p />
+ゲーム中に使用するデフォルトのポストプロセス チェーンは、Engine.ini で設定します。
+<p />
+<pre>
+&#91;Engine.Engine]
+DefaultPostProcessName&#61;EngineMaterials.DefaultScenePostProcess
+</pre>
+<p />
+<h3><a name="クッキング"></a> クッキング </h3>
+<p />
+クックしたデータを使ってゲームを実行するときは、Engine.ini ファイルの Engine.StartupPackages セクションで、PostProcessChain を含むパッケージの名前が指定されていることを確認してください。
+PostProcessChain は他のコンテンツまたはまたはスクリプトコードで参照されていないことが多いので、.ini 設定に明示的に含めておく必要があります。
+<p />
+<pre>
+&#91;Engine.StartupPackages]
++Package&#61;FX&#95;HitEffects
+</pre>
+<p />
+<h3><a name="エフェクト設定の適用手順"></a> エフェクト設定の適用手順 </h3>
+<p />
+ポストプロセス エフェクトは、以下の 3 か所の設定による制御を受けます。
+<p /> <ol>
+<li> PostProcessChain の Effect ノードのプロパティ ("Use World Settings?" が FALSE の場合)。
+</li> <li> PostProcessVolume プロパティ ("Use World Settings?" が TRUE で、プレーヤーが PP ボリュームの中にいる場合)
+</li> <li> WorldInfo のデフォルトのポストプロセス設定 ("Use World Settings?" が TRUE で、プレーヤーが PP ボリュームの中にいない場合)
+</li></ol>
+<p />
+<h3><a name="MotionBlur と _UberPostProcessEffect"></a> MotionBlur と UberPostProcessEffect </h3>
+<p />
+Xbox では、モーション ブラーは UberPostProcessEffect によって処理されます。すべてのモーション ブラー設定は UberPostProcessEffect ノードから受け入れ ("Use World Settings?" チェックボックスに応じて)、PostProcessChain の MotionBlurEffect ノードは無視されます。
+他のプラットフォームでは、モーション ブラーは PostProcessChain 内の指定 MotionBlurEffect ノードによって処理されます。すべてのモーション ブラー設定は MotionBlurEffect ノードから受け入れ ("Use World Settings?" チェックボックスに応じて)、UberPostProcessEffect ノードのモーションブラー設定は無視されます。
+<p />
+<h2><a name="ポストプロセスマネージャ"></a> ポストプロセスマネージャ </h2>
+<p />
+実行時には、UnrealScript (Unreal スクリプト) または Native (ネイティブ) コードで <code>PostProcessManager</code> クラスを使用してポストプロセスエフェクトを変化させることができます。
+この場合、ゲームスクリプトコードを使って PostProcessChain 全体を置き換え、MaterialEffect の MaterialInstanceConstant 値を変更して外観をカスタマイズすることがよくあります。
+これらのゲーム中に調整するエフェクトノードについては、PostProcessVolume 設定との競合を避けるために、"Use World Settings?" (<code><b>bUseWorldSettings</b></code>) を FALSE に設定しておくとよいでしょう。
+<p />
+<h2><a name="新規エフェクトの作成"></a> 新規エフェクトの作成 </h2>
+<p />
+新しいポストプロセス エフェクトの作成プロセスは極めて簡単です。UPostProcessEffect の派生クラスを新規作成する必要があります。このクラスは、FPostProcessSceneProxy から派生するシーンプロキシを新規作成します。次に、そのプロキシのレンダリングに使用されるグローバルシェーダーを作成します。UMotionBlurEffect、FMotionBlurProcessSceneProxy、FMotionBlurPixelShader、FMotionBlurVertexShader から切り取りと貼り付けを行うだけで、作業の準備はほとんど完了です。
+<p />
+<p />
+<h2><a name="ゲームプレイ スクリプトを使用したエフェクト制御"></a> ゲームプレイ スクリプトを使用したエフェクト制御 </h2>
+<p />
+ゲーム実行中に、ゲームプレイ条件に基づいて 特定のポストプロセス エフェクトを変更する必要が生じることがよくあります。例えば <a href="https://udn.epicgames.com/Three/GearsOfWarJP" class="restricted" class="restricted" class="twikiLink">Gears of War</a> では、ゲーム中に一時停止メニューが表示されるときにポストプロセス設定を変更し、シーンをぼやかし、威嚇的な赤みを加えています。=ULocalPlayer.bOverridePostProcessSettings= プロパティを使用して、プレーヤーが現在使用中のポストプロセス値をオーバーライドすることができます。次に、プレーヤーの <code>FCurrentPostProcessVolumeInfo CurrentPPInfo</code> struct (構造体) に、適切な値とそれらの値に移行する補間回数を新規設定します。
+<p />
+<p />
+<h2><a name="パフォーマンス:エフェクトの調整"></a> パフォーマンス:エフェクトの調整 </h2>
+<p />
+ポストプロセス エフェクトの調整に役立つテクニックをいくつか紹介します。
+<p />
+<h3><a name="便利なコンソール コマンド"></a> 便利なコンソール コマンド </h3>
+<p />
+<code>SHOW POSTPROCESS</code>.など、便利な <a href="ConsoleCommandsJP.html" class="twikiLink">コンソールコマンド</a> があります。
+<p />
+その他に以下のコマンドもあります。
+<p />
+<pre>
+SET &#60;EFFECT&#62; bShowInGame FALSE
+</pre>
+<p />
+ここで、EFFECT は <code>MOTIONBLUREFFECT=、 =DOFANDBLOOMEFFECT</code> または <code>MATERIALEFFECT</code> のいずれかになります。
+<p />
+<h2><a name="サンプル"></a> サンプル </h2>
+<p />
+<h3><a name="アンビエントオクルージョン (AO)"></a> アンビエントオクルージョン (AO) </h3>
+<p />
+Screen Space Ambient Occlusion (SSAO) は、初期導入後に改良が加えられています。変更案の詳細は、 <a href="https://udn.epicgames.com/Three/ImprovingSSAOJP" class="restricted" class="restricted" class="twikiLink">SSAO の改良</a> ページを参照してください。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PostProcessTechnicalGuideJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:30:48 GMT -->
+</html></body>

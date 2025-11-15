@@ -1,0 +1,358 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ReplicationPatternServerToClientRPCKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:11:32 GMT -->
+<head>
+<title> UDK | ReplicationPatternServerToClientRPCKR    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ReplicationPatternServerToClientRPCKR  </b></div>
+<div id="tooltext">
+<a href="ReplicationPatternServerToClientRPC.html" class="twikiLink">English Translation</a><br><a href="ReplicationPatternServerToClientRPCJP.html" class="twikiLink">日本語訳</a><br><a href="ReplicationPatternServerToClientRPCCH.html" class="twikiLink">中国翻译</a><br>
+
+<!-- Three/ReplicationPatternServerToClientRPCKR -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<style type="text/css" media="all">@import "rsrc/Three/ReplicationPatternServerToClientRPC/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHomeKR.html" class="twikiLink">UE3 홈</a></b> &gt; <b><a href="ReplicationHomeKR.html" class="twikiLink">네트워킹과 리플리케이션</a></b> &gt; 서버 투 클라이언트 리모트 프로시저 콜 패턴
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="서버 투 클라이언트 리모트 프로시저 콜 패턴"></a> 서버 투 클라이언트 리모트 프로시저 콜 패턴 </h1>
+<hr size="1" noshade="noshade">
+<em>문서 변경내역: <a href="https://udn.epicgames.com/Main/JamesTan" class="restricted" class="restricted" class="twikiLink">James Tan</a> 작성. <a href="https://udn.epicgames.com/Main/SungjinHong" class="restricted" class="restricted" class="twikiLink">홍성진</a> 번역.</em>
+<div class="twikiToc"> <ul>
+<li> <a href="ReplicationPatternServerToClientRPCKR.html#서버 투 클라이언트 리모트 프로시저 콜 패턴"> 서버 투 클라이언트 리모트 프로시저 콜 패턴</a> <ul>
+<li> <a href="ReplicationPatternServerToClientRPCKR.html#개요"> 개요</a>
+</li> <li> <a href="ReplicationPatternServerToClientRPCKR.html#Player Controller 클래스"> Player Controller 클래스</a>
+</li> <li> <a href="ReplicationPatternServerToClientRPCKR.html#Game Info 클래스"> Game Info 클래스</a>
+</li> <li> <a href="ReplicationPatternServerToClientRPCKR.html#테스팅"> 테스팅</a>
+</li> <li> <a href="ReplicationPatternServerToClientRPCKR.html#내려받기"> 내려받기</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<h2><a name="개요"></a> 개요 </h2>
+<hr size="1" noshade="noshade">
+<em>서버 투 클라이언트 리모트 프로시저 콜</em> 패턴은 클라이언트 측에서 어떤 로직을 돌리고자 할 때 사용됩니다. 데이터를 클라이언트에 푸시만 하려는 경우, <a href="ReplicationPatternRepNotifyKR.html" class="twikiLink">RepNotify 패턴</a>같은 변수 리플리케이션 패턴을 사용하면 됩니다. 들어오는 데이터를 사용하여 클라이언트에 로직을 조금 돌리려 할 때도 이걸 사용하면 됩니다. 예제라면 서버가 연결된 클라이언트 모두에게 메시지를 방송하고자 할 때입니다.
+<p />
+<h2><a name="Player Controller 클래스"></a> Player Controller 클래스 </h2>
+<hr size="1" noshade="noshade">
+PlayerController 는 클라이언트와 서버간 통신의 다리 역할을 합니다. 이 경우 서버는 ReceiveBroadcast 함수와 그 파라미터를 클라이언트에 리플리케이트할 수 있습니다.
+<p />
+<div class="codetitlebar">
+STCRPC_PlayerController.uc
+</div>
+<div class="codesnippet">
+<pre>
+class STCRPC&#95;PlayerController extends PlayerController;
+
+/&#42;&#42;
+ &#42; 서버에서의 방송을 수신하는 client 함수
+ &#42;
+ &#42; 네트워크: 클라이언트
+ &#42;/
+reliable client function ReceiveBroadcast(String ReceivedText)
+{
+  `Log(Self$&#34;:: Server sent me &#39;&#34;$ReceivedText$&#34;&#39;.&#34;);
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h2><a name="Game Info 클래스"></a> Game Info 클래스 </h2>
+<hr size="1" noshade="noshade">
+GameInfo 클래스는 서버에만 있습니다. 이 패턴에서는 SetTimer 함수를 사용하여 RandomBroadcast 를 매 초마다 한 번씩 실행합니다. RandomBroadcast 는 서버상의 WorldInfo 에 저장된 모든 PlayerController 인스턴스에 걸쳐 반복 처리한 다음 ReceiveBroadcast 함수와 그 파라미터를 PlayerController 클라이언트 버전으로 리플리케이트합니다.
+<p />
+<div class="codetitlebar">
+STCRPC_GameInfo.uc
+</div>
+<div class="codesnippet">
+<pre>
+class STCRPC&#95;GameInfo extends GameInfo;
+
+/&#42;&#42;
+ &#42; GameInfo 가 생성된 이후 Post Begin Play 실행
+ &#42;
+ &#42; 네트워크: 데디케이티드/리슨 서버
+ &#42;/
+function PostBeginPlay()
+{
+  Super.PostBeginPlay();
+
+  // 랜덤 메시지를 모든 플레이어에게 방송하는 타이머 설정
+  SetTimer(1.f, true, &#39;RandomBroadcast&#39;);
+}
+
+/&#42;&#42;
+ &#42; 랜덤 메시지를 모든 플레이어에게 방송
+ &#42;
+ &#42; 네트워크: 데디케이티드/리슨 서버
+ &#42;/
+function RandomBroadcast()
+{
+  local STCRPC&#95;PlayerController PlayerController;
+  local int i;
+  local string BroadcastMessage;
+
+  if (WorldInfo !&#61; None)
+  {
+    // 랜덤 텍스트 메시지 구성
+    for (i &#61; 0; i &#60; 32; ++i)
+    {
+      BroadcastMessage $&#61; Chr(Rand(255));
+    }
+
+    ForEach WorldInfo.AllControllers(class&#39;STCRPC&#95;PlayerController&#39;, PlayerController)
+    {
+      `Log(Self$&#34;:: Sending &#34;$PlayerController$&#34; a broadcast message which is &#39;&#34;$BroadcastMessage$&#34;&#39;.&#34;);
+      PlayerController.ReceiveBroadcast(BroadcastMessage);
+    }
+  }
+}
+
+defaultproperties
+{
+  PlayerControllerClass&#61;class&#39;STCRPC&#95;PlayerController&#39;
+}
+</pre>
+</div>
+<p />
+<h2><a name="테스팅"></a> 테스팅 </h2>
+<hr size="1" noshade="noshade">
+클라이언트에서 1 초 정도마다 ReceiveBroadcast 와 아주 랜덤한 방송 메시지가 수신됩니다.
+<img src="rsrc/Three/ReplicationPatternServerToClientRPC/STCRPC_ClientConsoleWindow.jpg" alt="STCRPC_ClientConsoleWindow.jpg" width='900' height='326' />
+<p />
+서버에서 1 초 정도마다 RandomBroadcast 가 호출되며, 서버에 연결된 모든 PlayerController 에서 ReceiveBroadcast 를 실행합니다.
+<img src="rsrc/Three/ReplicationPatternServerToClientRPC/STCRPC_ServerConsoleWindow.jpg" alt="STCRPC_ServerConsoleWindow.jpg" width='669' height='338' />
+<p />
+<h2><a name="내려받기"></a> 내려받기 </h2>
+<hr size="1" noshade="noshade"> <ul>
+<li> 이 패턴에서 사용된 소스 코드 <a href="rsrc/Three/ReplicationPatternServerToClientRPC/ServerToClientRPCExample.zip" target="_top">ServerToClientRPCExample.zip 내려받기</a>.
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ReplicationPatternServerToClientRPCKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:11:32 GMT -->
+</html></body>

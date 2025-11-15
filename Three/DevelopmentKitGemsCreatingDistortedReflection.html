@@ -1,0 +1,417 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DevelopmentKitGemsCreatingDistortedReflection.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:20:17 GMT -->
+<head>
+<title> UDK | DevelopmentKitGemsCreatingDistortedReflection    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">DevelopmentKitGemsCreatingDistortedReflection  </b></div>
+<div id="tooltext">
+<a href="DevelopmentKitGemsCreatingDistortedReflectionJP.html" class="twikiLink">日本語訳</a><br><a href="DevelopmentKitGemsCreatingDistortedReflectionCH.html" class="twikiLink">中国翻译</a><br><a href="DevelopmentKitGemsCreatingDistortedReflectionKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/DevelopmentKitGemsCreatingDistortedReflection -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="DevelopmentKitGems.html" class="twikiLink">Unreal Development Kit Gems</a></b> &gt; Creating distorted reflection <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="MaterialsAndTexturesHome.html" class="twikiLink">Materials &amp; Textures</a></b> &gt; Creating distorted reflection
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Creating distorted reflection"></a> Creating distorted reflection </h1>
+<hr size="1" noshade="noshade">
+<p />
+<strong><em>Last tested against UDK Apr, 2011</em></strong>
+<br>
+<strong><em>PC compatible</em></strong>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="DevelopmentKitGemsCreatingDistortedReflection.html#Creating distorted reflection"> Creating distorted reflection</a> <ul>
+<li> <a href="DevelopmentKitGemsCreatingDistortedReflection.html#Overview"> Overview</a>
+</li> <li> <a href="DevelopmentKitGemsCreatingDistortedReflection.html#Render targets"> Render targets</a> <ul>
+<li> <a href="DevelopmentKitGemsCreatingDistortedReflection.html#Creating a render target"> Creating a render target</a> <ul>
+<li> <a href="DevelopmentKitGemsCreatingDistortedReflection.html#Related Topics"> Related Topics</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsCreatingDistortedReflection.html#Creating the scene capture reflection"> Creating the scene capture reflection</a> <ul>
+<li> <a href="DevelopmentKitGemsCreatingDistortedReflection.html#Setting the scene capture reflection properties"> Setting the scene capture reflection properties</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsCreatingDistortedReflection.html#Creating a mirror"> Creating a mirror</a> <ul>
+<li> <a href="DevelopmentKitGemsCreatingDistortedReflection.html#Mirror material layout"> Mirror material layout</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsCreatingDistortedReflection.html#Creating marble"> Creating marble</a> <ul>
+<li> <a href="DevelopmentKitGemsCreatingDistortedReflection.html#Marble material layout"> Marble material layout</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsCreatingDistortedReflection.html#Creating distorted metal"> Creating distorted metal</a> <ul>
+<li> <a href="DevelopmentKitGemsCreatingDistortedReflection.html#Distorted metal material layout"> Distorted metal material layout</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsCreatingDistortedReflection.html#Why are there bright green areas in my reflections?"> Why are there bright green areas in my reflections?</a> <ul>
+<li> <a href="DevelopmentKitGemsCreatingDistortedReflection.html#Filtering out the pixels based on color"> Filtering out the pixels based on color</a>
+</li> <li> <a href="DevelopmentKitGemsCreatingDistortedReflection.html#Clamping UV coordinates"> Clamping UV coordinates</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsCreatingDistortedReflection.html#Downloads"> Downloads</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<hr size="1" noshade="noshade">
+To give more realism to your materials, sometimes a strong or subtle reflection is required. For performance reasons, a static cube map can be created off line and used in real time to pull off the effect. Due to Moore's Law, there's simply a whole lot more power that can now be used to generate real time reflections to then be used in materials. Real world reflective materials such as mirrors, marble or metal can now be created easily.
+<p />
+<h2><a name="Render targets"></a> Render targets </h2>
+<hr size="1" noshade="noshade">
+Render targets are viewports that are rendered off screen. That is to say, they represent a view of the world but they aren't displayed on the screen. They can be used in materials, and that is where they become very useful; as you then able to modify the render target anyway you want within the Material Editor.
+<p />
+<h3><a name="Creating a render target"></a> Creating a render target </h3>
+Creating a render target is as simple as right clicking in the context browser. Then select "New TextureRenderTarget2D".
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/01_CreatingRenderTarget.jpg" alt="01_CreatingRenderTarget.jpg" width='781' height='797' />
+<p />
+Entering a package name, an optional group and a name. In this example, I've decided to store the Render Target in the map rather than a separate package. Since render targets are usually only used in a specific map it can be useful to do this. However, this is of course up to you. There are parameters you can tweak to adjust the render target 2D.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/02_SetPackageGroupName.jpg" alt="02_SetPackageGroupName.jpg" width='510' height='510' />
+<p /> <ul>
+<li> <strong>Format</strong> - Format of the RenderTarget2D <ul>
+<li> <strong>A8R8G8B8</strong> - 8 Bits RGBA, values can only exist between 0 and 255
+</li> <li> <strong>G8</strong> - 8 Bit Grayscale, values can only exist between 0 and 255
+</li> <li> <strong>FloatRGB</strong> - Float RGB, values can be any floating point number
+</li></ul>
+</li> <li> <strong>Height</strong> - Height of the RenderTarget2D. Smaller is better for performance.
+</li> <li> <strong>Width</strong> - Width of the RenderTarget2D. Smaller is better for performance.
+</li></ul>
+<p />
+Double clicking on the RenderTarget2D within the Content Browser allows you to adjust a few more parameters.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/04_RenderTargetParameters.jpg" alt="04_RenderTargetParameters.jpg" width='775' height='638' />
+<p /> <ul>
+<li> <strong>Address X</strong> - This parameter adjusts what pixels are returned if you sample outside 0.f to 1.f.
+</li> <li> <strong>Address Y</strong> - This parameter adjusts what pixels are returned if you sample outside 0.f to 1.f.
+</li> <li> <strong>Force Linear Gamma</strong> - Set true if you wish to use linear gamma space (a form of gamma correction) for this render target.
+</li> <li> <strong>Needs Two Copies</strong> - Set false if you are using render targets within the scene itself. This helps to save memory, otherwise if the render target is an offscreen buffer which is used for other purposes, you may need to keep two copies.
+</li> <li> <strong>Render Once</strong> - Set true if the render target only needs to be rendered once. This can be useful for scene captures that do not change at all.
+</li> <li> <strong>Target Gamma</strong> - Allows you to adjust the gamma of the render target texture.
+</li> <li> <strong>Force PVRTC4</strong> - Not used for render targets as they are not supported on the iOS.
+</li></ul>
+<p />
+<h4><a name="Related Topics"></a> Related Topics </h4> <ul>
+<li> <a href="RenderToTexture.html" class="twikiLink">Render To Texture</a>
+</li></ul>
+<p />
+<h2><a name="Creating the scene capture reflection"></a> Creating the scene capture reflection </h2>
+<hr size="1" noshade="noshade">
+Go to the Actor Classes tab within the Content Browser and find the Scene Capture Reflect Actor.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/03_SelectSceneCaptureReflectActor.jpg" alt="03_SelectSceneCaptureReflectActor.jpg" width='781' height='797' />
+<p />
+Right click where you want to put the Scene Capture Reflect Actor. Put it at the location of where you want the reflection to originate from.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/05_AddSceneCaptureReflectActor.jpg" alt="05_AddSceneCaptureReflectActor.jpg" width='800' height='615' />
+<p />
+<h3><a name="Setting the scene capture reflection properties"></a> Setting the scene capture reflection properties </h3>
+SceneCaptureReflectActor is simply a container for a SceneCaptureReflectComponent.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/06_SceneCaptureReflectActorProperties.jpg" alt="06_SceneCaptureReflectActorProperties.jpg" width='514' height='789' />
+<p /> <ul>
+<li> <strong>Texture Target</strong> - RenderTarget2D to render the scene capture to.
+</li> <li> <strong>Scale FOV</strong> - Scales the FOV.
+</li> <li> <strong>Enabled</strong> - Is the scene capture enabled?
+</li> <li> <strong>Enable Post Process</strong> - Is post process enabled for this scene capture?
+</li> <li> <strong>Enable Fog</strong> - Is fog enabled for this scene capture?
+</li> <li> <strong>Clear Color</strong> - The color to clear the RenderTarget2D before rendering the scene capture.
+</li> <li> <strong>View Mode</strong>      <strong>SceneCapView_LitNoShadows</strong> - Renders the scene in lit mode, but skipping shadows.      <strong>SceneCapView_Lit</strong> - Renders the scene in lit mode.      <strong>SceneCapView_Unlit</strong> - Renders the scene in unlit mode.      <strong>SceneCapView_Wire</strong> - Renders the scene in wireframe mode.
+</li> <li> <strong>Scene LOD</strong> - Allows you to adjust the scene's LOD level to use when capturing the scene.
+</li> <li> <strong>Frame Rate</strong> - Frame rate to update this scene capture.
+</li> <li> <strong>Post Process</strong> - Post process chain to use for this scene capture.
+</li> <li> <strong>Use Main Scene Post Process Settings</strong> - Uses the scenes post processing settings so that the scene capture is more or less the same.
+</li> <li> <strong>Skip Update If Texture Users Occluded</strong> - Skip updating this scene capture if none of the materials, actors are currently in view.
+</li> <li> <strong>Skip Update If Owner Occluded</strong> - Skip updating this scene capture if the owner of the component is not currently in view.
+</li> <li> <strong>Max Update Dist</strong> - Skip updating this scene capture if the camera is further than this value.
+</li> <li> <strong>Max View Distance Override</strong> - Use this to cull distant objects from the reflection.
+</li> <li> <strong>Skip Rendering Depth Prepass</strong> - Skip the depth prepass when rendering the scene capture. If the scene capture is small, it's more expensive to skip the depth prepass (CPU cost vs GPU cost).
+</li> <li> <strong>Max Streaming Update Dist</strong> - Skip streaming texture updates for the scene capture if the owner is further than this many units away from the viewer.
+</li></ul>
+<p />
+<h2><a name="Creating a mirror"></a> Creating a mirror </h2>
+<hr size="1" noshade="noshade">
+The material is quite straight forward. The only things that needs to be set properly is the Lightmass Switches. When Lightmass is performed, it doesn't make sense to use the render target since this is dependent on the camera view. Thus, without the Lightmass Switches, the incorrect diffuse color is used (usually a bright green). To correct for this, you refer light mass to a constant so that it can reflect light more appropriately.
+<p />
+<h3><a name="Mirror material layout"></a> Mirror material layout </h3>
+<a href="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/07_MirrorMaterialLayout.jpg"><img src="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/07_MirrorMaterialLayoutThumb.jpg" alt="07_MirrorMaterialLayoutThumb.jpg" width='800' height='650' /></a>
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/08_MirrorExample.jpg" alt="08_MirrorExample.jpg" width='800' height='578' />
+<p />
+<h2><a name="Creating marble"></a> Creating marble </h2>
+<hr size="1" noshade="noshade">
+To create the marble material, one method is to linearly interpolate between a diffuse texture and the reflection.
+<p />
+<h3><a name="Marble material layout"></a> Marble material layout </h3>
+<a href="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/09_MarbleFloorMaterialLayout.jpg" alt="09_MarbleFloorMaterialLayout.jpg"><img src="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/09_MarbleFloorMaterialLayoutThumb.jpg" alt="09_MarbleFloorMaterialLayoutThumb.jpg" width='800' height='831' /></a>
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/10_MarbleFloorExample.jpg" alt="10_MarbleFloorExample.jpg" width='800' height='578' />
+<p />
+<h2><a name="Creating distorted metal"></a> Creating distorted metal </h2>
+<hr size="1" noshade="noshade">
+To distort the reflection, you can use the normal maps to offset the UV coordinates.
+<p />
+<h3><a name="Distorted metal material layout"></a> Distorted metal material layout </h3>
+<a href="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/11_DistortedReflectionMaterialLayout.jpg"><img src="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/11_DistortedReflectionMaterialLayoutThumb.jpg" alt="11_DistortedReflectionMaterialLayoutThumb.jpg" width='800' height='936' /></a>
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/12_DistortedReflectionExample.jpg" alt="12_DistortedReflectionExample.jpg" width='800' height='600' />
+<p />
+<h2><a name="Why are there bright green areas in my reflections?"></a> Why are there bright green areas in my reflections? </h2>
+<hr size="1" noshade="noshade">
+Sometimes when Unreal Engine 3 renders the reflection into the render targets, it doesn't use the entire render target texture space available. Since the clear color is bright green often, if the distortion texture look up is outside the rendered bounds then it will use the bright green pixels. This shows up in the distorted reflections unfortunately. There are two methods to deal with this issue.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/Reflection_BrightGreenErrors.jpg" alt="Reflection_BrightGreenErrors.jpg" width='800' height='578' />
+<p />
+<h3><a name="Filtering out the pixels based on color"></a> Filtering out the pixels based on color </h3>
+One method is to look for pixels that match the color you want to filter out (in this case, bright green). After finding those pixels, the undistorted render target is then used. This is done by performing if statements on each component of the distorted render target output. It first looks at the green channel of the distorted render target output. If it is above 0.1f (26 in bytes) then it will filter down to check the red channel, otherwise it will output the distorted render target output. If the red channel is being checked, then it will see if the red channel is below 0.1f. If it is, then it will then check the blue channel, otherwise it will output the distorted render target output. If the blue channel is being checked, then it will see if the blue channel is below 0.1f. If it is, it will then output the render target without the distortion, otherwise it will return the distorted render target.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/Reflection_GreenFilterNodes.jpg" alt="Reflection_GreenFilterNodes.jpg" width='800' height='1368' />
+<p />
+Here is the end result. The results are better than before, but it still misses some of the green pixels due to bilinear filtering.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/Reflection_BrightGreenFilter.jpg" alt="Reflection_BrightGreenFilter.jpg" width='800' height='578' />
+<p />
+However, if you check which pixels are being selected by this method, you'll see that it is also choosing the green pixels that were part of the reflected scene. Because of this, if your scene is using a predominantly green palette then this method won't work so well.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/Reflection_GreenFilterPurple.jpg" alt="Reflection_GreenFilterPurple.jpg" width='800' height='578' />
+<p />
+<h3><a name="Clamping UV coordinates"></a> Clamping UV coordinates </h3>
+The other method is to solve the actual problem. Distortion is achieved by adjusting the UV coordinate look up on the render target. When the UV coordinate goes outside the rendered portion of the render target and into the bright green areas, bright green pixels are used; resulting in the problem. Thus, one way to fix this issue is to clamp the distorted UV coordinate lookup.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/Reflection_UVClampNodes.jpg" alt="Reflection_UVClampNodes.jpg" width='800' height='298' />
+<p />
+Here is the end result. The results are better than before and the filtering method but some texture banding occurs on the edges of the screen which isn't too noticeable.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/Reflection_UVClamping.jpg" alt="Reflection_UVClamping.jpg" width='800' height='578' />
+<p />
+However, this method depends on the fact the render target being used is constant which may not always be the case. Because some pixels are lost due to the UV clamping reflections may not align up in sharp reflections.
+<p />
+<h2><a name="Downloads"></a> Downloads </h2>
+<hr size="1" noshade="noshade"> <ul>
+<li> <a href="rsrc/Three/DevelopmentKitGemsCreatingDistortedReflection/DistortedReflectionContent.zip" target="_top">Download</a> the content used in this gem. (DistortedReflectionContent.zip)
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DevelopmentKitGemsCreatingDistortedReflection.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:20:23 GMT -->
+</html></body>

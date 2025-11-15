@@ -1,0 +1,351 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GPUProfilingHome.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:21:47 GMT -->
+<head>
+<title> UDK | GPUProfilingHome    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">GPUProfilingHome  </b></div>
+<div id="tooltext">
+<a href="GPUProfilingHomeJP.html" class="twikiLink">日本語訳</a><br><a href="GPUProfilingHomeCH.html" class="twikiLink">中国翻译</a><br><a href="GPUProfilingHomeKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/GPUProfilingHome -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="PerformanceHome.html" class="twikiLink">Performance, Profiling, and Optimization</a></b> &gt; GPU Performance and Profiling
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="GPU Performance and Profiling"></a> GPU Performance and Profiling </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="GPUProfilingHome.html#GPU Performance and Profiling"> GPU Performance and Profiling</a> <ul>
+<li> <a href="GPUProfilingHome.html#Overview"> Overview</a>
+</li> <li> <a href="GPUProfilingHome.html#Pixel Shading"> Pixel Shading</a> <ul>
+<li> <a href="GPUProfilingHome.html#Overdraw"> Overdraw</a>
+</li> <li> <a href="GPUProfilingHome.html#Opacity Masking"> Opacity Masking</a>
+</li></ul>
+</li> <li> <a href="GPUProfilingHome.html#Dynamic Lighting"> Dynamic Lighting</a>
+</li> <li> <a href="GPUProfilingHome.html#Dynamic Shadows"> Dynamic Shadows</a> <ul>
+<li> <a href="GPUProfilingHome.html#Performance limitations with dynamic shadows"> Performance limitations with dynamic shadows</a>
+</li></ul>
+</li> <li> <a href="GPUProfilingHome.html#View Modes"> View Modes</a> <ul>
+<li> <a href="GPUProfilingHome.html#Shader Complexity"> Shader Complexity</a>
+</li> <li> <a href="GPUProfilingHome.html#Light Complexity"> Light Complexity</a>
+</li></ul>
+</li> <li> <a href="GPUProfilingHome.html#GPU Profiling Tools"> GPU Profiling Tools</a> <ul>
+<li> <a href="GPUProfilingHome.html#PIX"> PIX</a>
+</li> <li> <a href="GPUProfilingHome.html#GPAD"> GPAD</a>
+</li> <li> <a href="GPUProfilingHome.html#PerfHUD"> PerfHUD</a>
+</li></ul>
+</li> <li> <a href="GPUProfilingHome.html#Detail Modes"> Detail Modes</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+With GPU profiling there are a lot of complicated characteristics. The rule of thumb with regards to GPU performance is to always experiment. Pixel shading is the main time consuming work that the GPU does. Another GPU cost is transform/skinning, which is dependent on the number of vertices in the mesh. Skinned vertices cost much more than static mesh vertices.
+<p />
+<h2><a name="Pixel Shading"></a> Pixel Shading </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="Overdraw"></a> Overdraw </h3>
+<p />
+Translucent materials can be a huge issue for GPU performance because of the overlapping of multiple translucent materials, or overdraw. In general, you want to limit the amount of screenspace any translucent materials are taking up at any time, especially when multiple translucent materials can be overlapping.
+<p />
+Particle systems are a big contributor in this area. Materials used for particles are usually translucent, and with many particles being drawn in any one system, there is a massive potential for overdraw. Some tips for limiting overdraw from particles are listed below:
+<p /> <ul>
+<li> Fewer Complex Particles - It is better for performance to have a particle system that uses fewer complex particles than to have numerous simple particles. If an effect created by numerous particles can be created in the material and applied to a single particle that is preferable.
+</li> <li> Limit Screenspace Coverage - If you can limit the amount of space any particle effect takes up on screen, that limits the impact of the overdraw from the effect.
+</li> <li> Limit Overlapping of Effects - Overlapping of multiple effects amplifies the overdraw impact of any single effect. If possible, detect when multiple effects need to be spawned in the same location and only spawn a single effect instead.
+</li></ul>
+<p />
+<h3><a name="Opacity Masking"></a> Opacity Masking </h3>
+<p />
+Masked materials can be a source of wasted GPU performance because each pixel of the surface of the geometry must be evaluated regardless of whether it ends up being visible. To minimize the amount of overhead of a masked material, there are some optimizations that can be made.
+<p /> <ul>
+<li> Match Geometry to Visible Material Area - It is actually more efficient to add extra detail to the mesh to make it more closely match the visible area of the material being applied to it than to use simple geometry with tons of wasted pixels.
+</li> <li> Remove Specular - Unless it is absolutely necessary, masked materials should remove any specular component to make the calculation of the wasted pixels as simple as possible.
+</li> <li> Use Non-Directional Lighting - Using non-directional lighting can lighten the instructions needed to calculate the lighting for the wasted pixels, resulting in faster performance.
+</li></ul>
+<p />
+<h2><a name="Dynamic Lighting"></a> Dynamic Lighting </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Static lighting and lightmaps are far and away the most efficient method of lighting surfaces. It is always a good idea to limit the number of dynamic lights affecting surfaces in your levels. The goal should always be to have as much of the level as possible being affected by 0 dynamic lights, especially parts the player will never see up close. The <a href="GPUProfilingHome.html#LightComplexity" class="twikiAnchorLink">Light Complexity</a> view mode can help here as it displays the world in terms of the number of dynamic lights affecting the surfaces.
+<p />
+The lighting of dynamic objects can be a huge drain on performance. SkeletalMeshActors, KActors, InterpActors, etc. can make up a large part of the world and lighting these objects without any special techniques can be disastrous. DynamicLightEnvironments provide a method to light dynamic objects while limiting the impact on the GPU. Instead of a pass being made for each light on each object, al the lighting is condensed into a single light and pass. Of course, this comes with certain drawbacks as the lighting and shadowing cannot be 100% accurate. It is advisable to always use DynamicLightEnvironments whenever possible; however, there may be situations where accuracy or quality is paramount. In these cases, such as with cinematics, exceptions can be made.
+<p />
+<h2><a name="Dynamic Shadows"></a> Dynamic Shadows </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Another potential source of performance problems is dynamic shadowing. A quick way to gauge whether dynamic shadowing has an impact on performance is to toggle it off via the <code>SHOW DYNAMICSHADOWS</code> console command. It is advisable to bind a key to this command, so that while the key is pressed dynamic shadows are turned off and then enabled again when the key is released. This can be done from the console - for example: <code>SETBIND F SHOW DYNAMICSHADOWS | ONRELEASE SHOW DYNAMICSHADOWS</code>.
+<p />
+For Actors created in UnrealScript we want to make use of ShadowParenting. This basically means that one actor can have LOTS of attachments but there is only one Dynamic Shadow cast. When you have a Pawn with a weapon, a helmet, a backpack, and some other attachments you want have all of the "attachments" shadow parented to the pawn itself. You do that by: Attachment.SetShadowParent(Parent.Mesh)
+<p />
+<h3><a name="Performance limitations with dynamic shadows"></a> Performance limitations with dynamic shadows </h3>
+<p />
+The GPU cost of shadow buffers is directly proportional to the screenspace size of the shadow frustum. This means a nearby character using shadow buffers is much more expensive than a far away one. It also means that a large object casting a dynamic shadow buffer shadow is much more expensive than a small one. See the <a href="https://udn.epicgames.com/Three/ShadowBufferFilteringOptions" class="restricted" class="restricted" class="twikiLink">Shadow Buffer Filtering Options</a> page for more details.
+<p />
+Also see the <a href="ShadowingReference.html" class="twikiLink">Shadowing Reference</a> page and <a href="ModulatedShadows.html" class="twikiLink">Modulated Shadows</a> page for more shadow optimizations.
+<p />
+<h2><a name="View Modes"></a> View Modes </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Unreal Editor viewports can be set to render using various <a href="ViewModes.html" class="twikiLink">View Modes</a> which are used to display a specific aspect of the scene in a meaningful manner.
+<p />
+<h3><a name="Shader Complexity"></a> Shader Complexity </h3>
+<p />
+The shader complexity view mode colors the scene based on how many pixel shader instructions were required to shade each pixel. Red means very expensive, green means very cheap. Notice that the translucent light shafts add cost to the cheap opaque materials behind them.
+<p />
+<img src="rsrc/Three/GPUProfilingHome/shadercomplexity.jpg" alt="shadercomplexity.jpg" width="792" height="392" />
+<p />
+For complete details on this viewmode, see the <a href="ViewModes.html#ViewModeShaderComplexity" class="twikiAnchorLink">Shader Complexity</a> section of the <a href="ViewModes.html" class="twikiLink">View Modes</a> page.
+<p />
+<a name="LightComplexity"></a>
+<h3><a name="Light Complexity"></a> Light Complexity </h3>
+<p />
+The light complexity view mode colors the scene based on how many dynamic lights are affecting the surfaces. Black means no dynamic lights affecting. Various colors/shades, from green to red, show increasing amounts of dynamic lights affecting. The goal is always to have the entire level display as black, though that is obviously not always possible.
+<p />
+<img src="rsrc/Three/GPUProfilingHome/lightingcomplexity.jpg" alt="lightingcomplexity.jpg" width="792" height="392" />
+<p />
+For complete details on this viewmode, see the <a href="ViewModes.html#ViewModeLightComplexity" class="twikiAnchorLink">Light Complexity</a> section of the <a href="ViewModes.html" class="twikiLink">View Modes</a> page.
+<p />
+<!--  -->
+<p />
+<h2><a name="Detail Modes"></a> Detail Modes </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Sometimes you are shipping on multiple platforms where one doesn't quite have the GPU power of the others. Instead of making your level not look glorious on the platforms which can handle it, you can selectively turn off detail in your maps via DetailMode. This allows the same map to be used on multiple platforms. Additionally, you may have modes such a splitscreen which really crush the GPU. Not rendering visual-only detail is a great way to allow for splitscreen and still have a visually compelling map for non-splitscreen.
+<p />
+Every Component has a DetailMode which can be set. Setting something to High Detail will make it only render when High Detail is allowed:
+<p />
+<img src="rsrc/Three/GPUProfilingHome/detailmode_high.png" alt="detailmode_high.png" width="745" height="364" />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GPUProfilingHome.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:21:48 GMT -->
+</html></body>

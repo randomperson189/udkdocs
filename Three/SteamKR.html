@@ -1,0 +1,524 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/SteamKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:32:35 GMT -->
+<head>
+<title> UDK | SteamKR    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">SteamKR  </b></div>
+<div id="tooltext">
+<a href="Steam.html" class="twikiLink">English Translation</a><br><a href="SteamJP.html" class="twikiLink">日本語訳</a><br><a href="SteamCH.html" class="twikiLink">中国翻译</a><br>
+
+<!-- Three/SteamKR -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<h1><a name="스팀"></a> 스팀 </h1>
+<p />
+<em>문서 요약: 언리얼 엔진 3에 통합된 스팀 사용 및 구현법 안내서입니다.</em>
+<p />
+<em>문서 변경내역: <a href="https://udn.epicgames.com/Main/JohnScott" class="restricted" class="restricted" class="twikiLink">John Scott</a> 작성. <a href="https://udn.epicgames.com/Main/JoshMarkiewicz" class="restricted" class="restricted" class="twikiLink">Josh Markiewicz</a> 수정. <a href="https://udn.epicgames.com/Main/SungjinHong" class="restricted" class="restricted" class="twikiLink">홍성진</a> 번역.</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="SteamKR.html#스팀"> 스팀</a> <ul>
+<li> <a href="SteamKR.html#스팀 클라이언트 사용하기"> 스팀 클라이언트 사용하기</a> <ul>
+<li> <a href="SteamKR.html#(콘텐츠 서버 셋업 이후) 초기 게임 구하는 법"> (콘텐츠 서버 셋업 이후) 초기 게임 구하는 법</a>
+</li> <li> <a href="SteamKR.html#(콘텐츠 서버 셋업 이후) 업데이트 구하는 법"> (콘텐츠 서버 셋업 이후) 업데이트 구하는 법</a>
+</li></ul>
+</li> <li> <a href="SteamKR.html#SteamPipe 를 사용한 콘텐츠 배달"> SteamPipe 를 사용한 콘텐츠 배달</a> <ul>
+<li> <a href="SteamKR.html#Steam SDK 디렉토리 구조와 \sdk\tools\steampipe\ 디렉토리"> Steam SDK 디렉토리 구조와 \sdk\tools\steampipe\ 디렉토리</a>
+</li> <li> <a href="SteamKR.html#로컬 디렉토리 구조 만들기"> 로컬 디렉토리 구조 만들기</a>
+</li> <li> <a href="SteamKR.html#SteamCmd.exe 실행"> SteamCmd.exe 실행</a>
+</li> <li> <a href="SteamKR.html#디포 빌드 컨픽 파일 만들기"> 디포 빌드 컨픽 파일 만들기</a>
+</li> <li> <a href="SteamKR.html#앱 빌드 파일 만들기"> 앱 빌드 파일 만들기</a>
+</li> <li> <a href="SteamKR.html#앱 빌드 파일 스크립트 실행하기"> 앱 빌드 파일 스크립트 실행하기</a>
+</li> <li> <a href="SteamKR.html#빌드 관리하기"> 빌드 관리하기</a>
+</li> <li> <a href="SteamKR.html#Steam Local Content Server (Mongoose)"> Steam Local Content Server (Mongoose)</a>
+</li></ul>
+</li> <li> <a href="SteamKR.html#폐기됨_ 스팀 콘텐츠 툴 사용하기"> 폐기됨 스팀 콘텐츠 툴 사용하기</a> <ul>
+<li> <a href="SteamKR.html#폐기됨_ GUI를 사용하여 솔루션 및 프로젝트 파일이 포함된 초기 빌드 만들기"> 폐기됨 GUI를 사용하여 솔루션 및 프로젝트 파일이 포함된 초기 빌드 만들기</a>
+</li> <li> <a href="SteamKR.html#폐기됨_ 스팀 스크립트를 사용하여 새 버전 만들기"> 폐기됨 스팀 스크립트를 사용하여 새 버전 만들기</a>
+</li> <li> <a href="SteamKR.html#알림"> 알림</a>
+</li></ul>
+</li> <li> <a href="SteamKR.html#폐기됨_ 스팀 콘텐츠 서버 실행하기"> 폐기됨 스팀 콘텐츠 서버 실행하기</a> <ul>
+<li> <a href="SteamKR.html#폐기됨_ 명령줄에서"> 폐기됨 명령줄에서</a>
+</li> <li> <a href="SteamKR.html#폐기됨_ 서비스로서"> 폐기됨 서비스로서</a>
+</li> <li> <a href="SteamKR.html#폐기됨_ 알림"> 폐기됨 알림</a>
+</li></ul>
+</li> <li> <a href="SteamKR.html#게임에서 스팀 사용하기"> 게임에서 스팀 사용하기</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="스팀 클라이언트 사용하기"></a> 스팀 클라이언트 사용하기 </h2>
+<p />
+<h3><a name="(콘텐츠 서버 셋업 이후) 초기 게임 구하는 법"></a> (콘텐츠 서버 셋업 이후) 초기 게임 구하는 법 </h3>
+<p /> <ul>
+<li> 최신 스팀 SDK를 구하고, sdk/client/Steam.exe 및 sdk/client/Steam.cfg 파일을 로컬 폴더에 복사합니다. <ul>
+<li> 라이선시는 '//depot/UnrealEngine3/Development/External/Steamworks/sdk/client/...' 에서 복사하시면 됩니다.
+</li> <li> UDK 유저는 <a href="https://partner.steamgames.com/home" target="_top">https://partner.steamgames.com/home</a> 에서 등록하고 다운받으시면 됩니다.
+</li></ul>
+</li> <li> SteamPipe 콘텐츠 배달 <ul>
+<li> 같은 디렉토리의 'steam_dev.cfg' 를 클라이언트와 같게 만들고 @LocalContentServer "content server ip" 를 추가합니다.
+</li></ul>
+</li> <li> ContentTool 은 <strong><em>deprecated</em></strong> (폐기)되었습니다. <ul>
+<li> 'steam.cfg'를 쓰기 가능하게 한 후, 'SdkContentServerAdrs'를 로컬 콘텐츠 서버를 실행중인 IP로 설정하십시오.
+</li></ul>
+</li> <li> 'Steam.exe'를 실행하십시오.
+</li> <li> 'My games' 탭의 해당 게임에서 (우리의 경우 '언리얼 개발 키트') 우클릭한 후 설치하십시오.
+</li> <li> 설치가 끝난 후, 우클릭 후 'Launch game'을 클릭하십시오.
+</li></ul>
+<p />
+<h3><a name="(콘텐츠 서버 셋업 이후) 업데이트 구하는 법"></a> (콘텐츠 서버 셋업 이후) 업데이트 구하는 법 </h3>
+<p /> <ul>
+<li> 스팀 클라이언트가 실행중이라면 자동으로 업데이트됩니다. <ul>
+<li> 폴링 시간을 건너뛰려면 스팀 클라이언트를 재시작하십시오.
+</li></ul>
+</li></ul>
+<p />
+<strong>참고 (폐기된 ContentTool 전용)</strong>
+<p /> <ul>
+<li> 업데이트를 받았으나 로컬 콘텐츠 서버에는 적용되지 않은 경우, 클라이언트가 헛갈리게 됩니다. 이를 수정하려면 로컬 폴더에 'Steam.exe'와 'Steam.cfg'를 남기고 모두 지운 뒤 재시작하십시오. <ul>
+<li> 초기 개발 단계에서 자주 일어나는 일입니다.
+</li></ul>
+</li></ul>
+<p />
+<a name="SteamPipe"></a>
+<h2><a name="SteamPipe 를 사용한 콘텐츠 배달"></a> SteamPipe 를 사용한 콘텐츠 배달 </h2>
+<p />
+SteamPipe 는 Steam Client 에 콘텐츠를 더욱 효율적으로 배달하는 Valve 의 새로운 콘텐츠 배달 수단입니다. 이는 두 부분으로 이루어져 있는데, 실행파일 SteamCmd.exe 및 게임과 그 콘텐츠를 기술하는 데 필요한 컨픽 스크립트의 집합체 "콘텐츠 빌더", 게임 이미지를 로컬에서 서버로 실행하는 웹 서비스 "콘텐츠 서버" 입니다.
+<p />
+시작하기 전, Steam Technical Account Manager (스팀 기술 계정 관리자)에 얘기하여 게임의 AppId 와 DepotIds 세트를 받아 둡니다.
+<p />
+SteamPipe 관련 모든 문서는 <a href="https://partner.steamgames.com/documentation/steampipe" target="_top">Valve's partner website</a> 에서 찾을 수 있습니다. <ul>
+<li> <strong>"Steam Build Account"</strong> 부분의 지침에 따라 게임을 만들 빌드 계정을 만듭니다.
+</li> <li> <strong>"Initial Setup for New SteamPipe Apps"</strong> 부분의 지침을 따라 게임 관련 메타데이터를 환경설정합니다.
+</li></ul>
+<p />
+<h3><a name="Steam SDK 디렉토리 구조와 \sdk\tools\steampipe\ 디렉토리"></a> Steam SDK 디렉토리 구조와 \sdk\tools\steampipe\ 디렉토리 </h3>
+<p />
+SteamPipe 툴은 \ContentBuilder\ 디렉토리 구조를 갖습니다. <ul>
+<li> <em>\Builder\</em> 에는 빌드 생성에 사용되는 메인 툴 steamcmd.exe 가 들어있습니다.
+</li> <li> <em>\Scripts\</em> 에는 게임 디포용 빌드 스크립트가 들어있습니다 (이는 바뀔 수 있으며, 에픽에서는 관리상의 편의를 위해 스크립트 (.vdf) 파일을 \MyGame\Build\Steam 디렉토리에 넣고 있습니다).
+</li> <li> <em>\Content\</em> 에는 디포에 포함시킬 모든 게임 파일이 들어있습니다 (이는 바뀔 수 있으며, 에픽에서는 빌드 머신의 \SteamContent\ 루트 디렉토리를 사용합니다).
+</li> <li> <em>\Output\</em> 에는 빌드 로그, 디포 캐시, 중간 파일이 들어있습니다 (이는 바뀔 수 있으며, 에픽에서는 빌드 머신의 \SteamContent\ 루트 디렉토리를 사용합니다).
+</li></ul>
+<p />
+<h3><a name="로컬 디렉토리 구조 만들기"></a> 로컬 디렉토리 구조 만들기 </h3>
+<p />
+\SteamContent\ 디렉토리를 (기술적으로는 아무데나 만들어도 되지만) 빌드 머신 루트 이외의 곳에 만듭니다. 이 폴더에는 다음의 두 폴더가 있어야 합니다: <ul>
+<li> <em>\ContentBuilder\</em> <ul>
+<li> 게임 이미지 캐시가 있게 될 'output' 이라는 디렉토리를 만듭니다.
+</li> <li> 실제 캐시 파일인 .csd .csm 파일이 포함되며, 가끔씩 지워줘도 됩니다만 다음 빌드 시간이 느려집니다.
+</li></ul>
+</li> <li> <em>\ContentServer\</em> <ul>
+<li> Mongoose 웹서버 디렉토리 구조의 일부로, 실제 빌드 이미지가 들어갑니다.
+</li> <li> 실제 게임 이미지와 콘텐츠 서빙에 관련된 파일이 들어가는 'htdocs' 라는 디렉토리를 만듭니다.
+</li> <li> 브라우저를 통해 웹서버로 가는 경우 보게 되는 루트 디렉토리입니다.
+</li></ul>
+</li></ul>
+<p />
+<h3><a name="SteamCmd.exe 실행"></a> SteamCmd.exe 실행 </h3>
+<p />
+SteamCmd.exe 첫 실행시 Steam Client 와 비슷하게, 필요한 파일들을 디렉토리에 다운받아 채웁니다.
+<p />
+<strong>주:</strong> 툴에서 로그인 관련 에러가 나는 경우, 빌드 계정이 Steam Guard 에 보호된 것입니다. Steam Guard 코드에 빌드 계정으로 지정된 이메일 주소 확인 후 재시도하기 전,
+<strong>steamcmd.exe "set_steam_guard_code emailedcodehere"</strong> 를 실행합니다.
+<p />
+<strong>주:</strong> steamcmd.exe 실행시 다음과 같은 에러가 난다면: "SteamUpdater: Error: Steam needs to be online to update. Please confirm your network connection and try again."
+해결책은 Internet Options-&gt;Connections-&gt;Lan Settings (인터넷 옵션-&gt;연결-&gt;랜 세팅)으로 가서 Automatically detect settings (세팅 자동 감지) 옵션을 켭니다 (FAQ 에 있는 내용이지만 찾기가 힘들어 개인적으로 골탕 좀 먹었습니다).
+<p />
+<h3><a name="디포 빌드 컨픽 파일 만들기"></a> 디포 빌드 컨픽 파일 만들기 </h3>
+SDK 의 \ContentBuilder\ 스크립트 폴더에 샘플 스크립트가 있지만, 이래 보입니다:
+<p />
+<pre>
+&#34;DepotBuildConfig&#34;
+{
+  &#34;DepotID&#34; &#34;&#60;yourdepotid&#62;&#34;
+
+  // 모든 파일을 재귀적으로 포함
+  &#34;FileMapping&#34;
+  {
+    &#34;LocalPath&#34; &#34;&#42;&#34;
+    &#34;DepotPath&#34; &#34;.&#34;
+    &#34;recursive&#34; &#34;1&#34;
+  }
+
+  // 그러나 모든 심볼 파일은 제외
+  // &#34;FileExclusion&#34; &#34;&#42;.pdb&#34;
+}
+</pre>
+<p />
+<h3><a name="앱 빌드 파일 만들기"></a> 앱 빌드 파일 만들기 </h3>
+<p />
+앱 빌드 파일은 모든 디포 빌드 컨픽을 하나의 게임 이미지 속에 연결시키는데, 이런 식입니다:
+<p />
+<pre>
+&#34;appbuild&#34;
+{
+   &#34;appid&#34;   &#34;&#60;yourappid&#62;&#34;
+   &#34;desc&#34; &#34;&#60;descriptive build name&#62;&#34; // 이 빌드에 대한 설명
+   &#34;buildoutput&#34; &#34;D:\SteamContent\ContentBuilder\output\MyGame\&#34; // .log, .csm, .csd 파일에 대한 로그 출력 폴더로, 이 파일 위치에 상대적입니다.
+   &#34;contentroot&#34; &#34;D:\Builds\UE3\&#34; // 루트 콘텐츠 폴더로, 이 파일 위치에 상대적입니다.
+   &#34;setlive&#34;   &#34;local&#34; // 빌드 성공 이후 살릴 브랜치로, 공백이면 없습니다.
+   &#34;preview&#34; &#34;0&#34; // 프리뷰 빌드를 켭니다.
+   &#34;nobaseline&#34; &#34;0&#34; // baseline manifest 를 사용하지 않고 빌드합니다.
+   &#34;local&#34;   &#34;D:\SteamContent\ContentServer\htdocs&#34;   // 로컬 콘텐츠 서버의 파일 경로로 설정합니다.
+   &#34;depotsskipped&#34; &#34;0&#34; // 부분 빌드가 아닌 경우, 모든 디포가 포함되어 있지 않으면 실패합니다.
+
+   &#34;depots&#34;
+   {
+      &#34;&#60;firstdepotid&#62;&#34; &#34;depot&#95;build&#95;&#60;depotid&#62;.vdf&#34;
+   }
+}
+</pre>
+<p />
+현재 SteamPipe 에 지원되는 빌드 유형은 세 가지입니다: <ul>
+<li> <strong>"Preview"</strong> (프리뷰) 빌드는 로그와 파일 매니페스트만 출력하며, 빌드 셋업시의 빠른 반복작업을 위해 사용됩니다.
+</li> <li> <strong>"Local"</strong> (로컬) 빌드는 Local Content Server (LCS "the Mongoose server") 용 빌드로, 빠른 다운로드와 게임 이미지 로컬 저장을 위한 것입니다.
+</li> <li> <strong>"SteamPipe"</strong> (스팀 파이프) 빌드는 콘텐츠 배달을 위해 빌드한 후 Valve 서버로 업로드합니다.
+</li></ul>
+<p />
+<h3><a name="앱 빌드 파일 스크립트 실행하기"></a> 앱 빌드 파일 스크립트 실행하기 </h3>
+<p />
+아래 예제는 위의 앱 빌드 스크립트를 실행하여 하나의 디포가 정의된 게임 이미지를 만드는 것입니다.
+<p />
+<strong>builder\steamcmd.exe +login account password +run_app_build ..\scripts\app_build.vdf +quit</strong>
+<p />
+처음엔 "preview" 를 "1" 로 설정하고 실행하여 매니페스트가 올바른지 확인하는 게 좋으며, 확인 이후에는 다시 "0" 으로 설정합니다.
+<p />
+<strong>주:</strong> 로그인 설정이 잘못되었다는 빌드 에러가 나오면, Steam Guard 의 보호를 받고 있는 것입니다. Steam Guard 코드의 빌드 계정용으로 지정된 이메일 주소 확인 후 재시도하기 전,
+steamcmd.exe "set_steam_guard_code emailedcodehere" 를 실행합니다.
+<p />
+<h3><a name="빌드 관리하기"></a> 빌드 관리하기 </h3>
+<p />
+앱 빌드 스크립트 실행 성공 후, 빌드는 <a href="https://partner.steamgames.com/apps" target="_top">Valve's admin website</a> (, App Admin, Technical Data, Builds 탭 아래)에서 관리 가능합니다.
+<p />
+<a href="https://partner.steamgames.com/documentation/steampipe" target="_top">SteamPipe documentation</a> 의 지침을 따라 백엔드 관련 메타데이터를 추가 설정합니다.
+<p />
+<h3><a name="Steam Local Content Server (Mongoose)"></a> Steam Local Content Server (Mongoose) </h3>
+<p />
+Local Content Server (LCS)는 콘텐츠를 Steam Client 에 배달하기 위해 빌드 머신이 운영하는 웹서버로, 그에 대한 문서는 <a href="https://partner.steamgames.com/documentation/steampipeLCS" target="_top">Steam 파트너사 웹사이트</a> 를 참고하시기 바랍니다.
+<p />
+몽구스 웹 서버는 SDK 구조 하의 <em>\ContentBuilder\</em> 디렉토리에서 찾을 수 있습니다.
+<p /> <ul>
+<li> mongoose.conf 파일을 통해 운영되는 출력 파일이 어디 있는지 알기 위해 웹서버를 환경설정합니다. <ul>
+<li> <strong>document_root</strong> 변수를 로컬 빌드 머신에 생성된 디렉토리, 예를 들면 <em>C:\SteamContent\ContentServer\htdocs\</em> 로 설정합니다.
+</li> <li> 앱 빌드 파일에 지정된 <strong>"local"</strong> 값에 일치됩니다.
+</li></ul>
+</li> <li> 웹서버 mongoose-3.1.exe 를 실행하면 시스템 트레이에 "m" 아이콘이 나타납니다. <ul>
+<li> 실행파일은 별도로도 서비스로도 실행 가능합니다. 서비스로 실행하려면, 서버 실행 후 시스템 트레이 아이콘에 우클릭한 다음 "Install Service" 를 선택합니다.
+</li></ul>
+</li> <li> 127.0.0.1 로 연결하여 서버 준비가 완료되었는지 확인, 웹페이지의 디포 디렉토리 레퍼런스에 클릭하여 올바른 위치에 접근되는지 확인합니다.
+</li> <li> 서비스로 실행중이면, 실행파일을 다시 실행해서 시스템 트레이 아이콘을 나타나게 한 다음 "Uninstall Service" 시킬 수 있습니다.
+</li></ul>
+<p />
+자세한 셋업 방법에 대해서는 스팀 파트너 웹사이트의 <a href="https://partner.steamgames.com/documentation/steampipeLCS" target="_top">SteamPipe Content Server</a> 페이지를 참고하시기 바랍니다.
+<p />
+<p />
+<h2><a name="폐기됨_ 스팀 콘텐츠 툴 사용하기"></a> <strong><em>폐기됨</em></strong> 스팀 콘텐츠 툴 사용하기 </h2>
+<p />
+GUI 사용하기 및 스팀 스크립트 사용하기의 두 가지 방법이 있습니다.
+<p />
+<h3><a name="폐기됨_ GUI를 사용하여 솔루션 및 프로젝트 파일이 포함된 초기 빌드 만들기"></a> <strong><em>폐기됨</em></strong> GUI를 사용하여 솔루션 및 프로젝트 파일이 포함된 초기 빌드 만들기 </h3>
+<p /> <ul>
+<li> 발표하려는 빌드를 ('C:\Builds\UnrealEngine3' 등의) 로컬 디렉토리에 복사
+</li> <li> (스팀 SDK의 일부인) 콘텐츠 툴 실행 'sdk/tools/ContentTool.exe'
+</li> <li> 'New Solution' 버튼 클릭
+</li> <li> 'Next' 클릭
+</li> <li> 솔루션 선택: 'Solution Name' (UTGame)과 위치 'C:\SteamGame'를 입력
+</li> <li> 'Next' 클릭
+</li> <li> 어플리케이션 부분: 'Application Name' ('Unreal Development Kit'가 GUI에 나타나는 것입니다.), File Delivery는 'Loose Files', 'Application ID'는 13260를 입력
+</li> <li> 'Next' 클릭
+</li> <li> 디포 부분: 이름은 'UTGame', 종류는 'Content', '프로젝트 위치'는 'C:\SteamGame', '디포 위치'는 'C:\SteamGame\Depot', '디포 ID'는 13261
+</li> <li> 'Next' 클릭
+</li> <li> &lt;루트&gt; 우측의 리스트박스 엔트리를 클릭하고 'C:\Builds\UnrealEngine3' 입력
+</li> <li> 'Finish' 클릭 (프로젝트 추가용으로 찾은 파일 목록이 나타나며, OK를 누르면 디포를 동기화합니다.)
+</li> <li> GUI 좌상단 근처의 'Solution Properties' 버튼을 클릭합니다. 'Solution Explorer' 텍스트 바로 아래에 있습니다.
+</li> <li> 트리 목록을 'Launch Options -&gt; Label = Default -&gt; Command line = Unreal Development Kit' 순으로 확장합니다.
+</li> <li> 우클릭 후 명령줄을 'Binaries\Win32\UDKGame.exe'로 바꿉니다.
+</li> <li> 창을 닫고 확인하여 저장합니다.
+</li> <li> 'Build' 툴바 버튼을 클릭합니다. (시간이 조금 걸립니다.)
+</li> <li> 'C:\SteamGame\Depot'에 '13261_0.dat', '13261_0.blob' 및 'UTGame.depot'이 포함되어 있습니다. (이는 appid_version.dat 및 appid_version.blob 입니다.)
+</li> <li> Publish 메뉴에서, 'Publish to Local Testing Server'를 선택하면 '13261_0.dat', '13261_0.blob' 및 'ContentDescriptionDB.xml'를 로컬 서버에 복사합니다.
+</li> <li> 콘텐츠 서버를 실행합니다.
+</li></ul>
+<p />
+<h3><a name="폐기됨_ 스팀 스크립트를 사용하여 새 버전 만들기"></a> <strong><em>폐기됨</em></strong> 스팀 스크립트를 사용하여 새 버전 만들기 </h3>
+<p /> <ul>
+<li> DOS 창을 띄웁니다.
+</li> <li> 실행: '//depot/UnrealEngine3/Development/External/Steamworks/sdk/tools/ContentTool.com' /verbose /console /filename '//depot/UnrealEngine3/UDKGame/Build/Steam/SteamMakeVersion.smd'
+</li> <li> 'C:\SteamGame\Depot'의 새 파일을 'C:\Steam\DepotRoot'로 복사합니다.
+</li> <li> 'C:\SteamGame\ContentDescriptionDB.xml'을 'C:\Steam\DepotRoot'로 복사합니다.
+</li> <li> 콘텐츠 서버를 멈춘 후 시작하면 업데이트를 발견합니다.
+</li></ul>
+<p />
+<h3><a name="알림"></a> 알림 </h3>
+<p /> <ul>
+<li> 업데이트 절차는 빌드 시스템에 자동화되어 있습니다. 자세한 사항은  //depot/UnrealEngine3/Development/Builder/Scripts/Build/SteamVersion.build 를 참조하십시오.
+</li> <li> .sts 및 .spj 파일은 별 거 아닌 거 같은 것도 문제를 일으키니 수정시 매우 주의를 요합니다. 또한 관계된 경로명을 변경하는 것도 문제를 유발할 수 있습니다.
+</li></ul>
+<p />
+<h2><a name="폐기됨_ 스팀 콘텐츠 서버 실행하기"></a> <strong><em>폐기됨</em></strong> 스팀 콘텐츠 서버 실행하기 </h2>
+<p />
+콘텐츠 서버를 실행하는 방법은, 명령줄에서 또는 서비스로서 두 가지 방법이 있습니다.
+<p />
+<h3><a name="폐기됨_ 명령줄에서"></a> <strong><em>폐기됨</em></strong> 명령줄에서 </h3>
+<p /> <ul>
+<li> DOS 창을 띄웁니다.
+</li> <li> 실행: '//depot/UnrealEngine3/Development/External/Steamworks/sdk/tools/contentserver/contentserver.exe' /verbose /DepotPath 'C:\SteamGame\LocalTestServer'
+</li> <li> 디버그 창이 날라다니다가, 마지막에 13261_0 을 볼 수 있습니다.
+</li> <li> 스팀 클라이언트가 이 빌드에 연결하여 다운로드할 수 있습니다.
+</li></ul>
+<p />
+<h3><a name="폐기됨_ 서비스로서"></a> <strong><em>폐기됨</em></strong> 서비스로서 </h3>
+<p /> <ul>
+<li> (서비스용 디포 경로를 설정하기 위해 ContentServerCfg.txt 를 사용하지 않는 한) 'C:\SteamGame\LocalTestServer'를 'C:\Steam\DepotRoot'로 이동합니다. (아래 참고)
+</li> <li> DOS 창을 띄웁니다.
+</li> <li> 실행: '//depot/UnrealEngine3/Development/External/Steamworks/sdk/tools/contentserver/contentserver.exe' /install (this automatically starts the service)
+</li> <li> 스팀 클라이언트가 이 빌드에 연결하여 다운로드할 수 있습니다.
+</li></ul>
+<p />
+<h3><a name="폐기됨_ 알림"></a> <strong><em>폐기됨</em></strong> 알림 </h3>
+<p /> <ul>
+<li> 콘텐츠 서버는 일반적으로 매우 잘 돌아가며, 여러 종류의 전형적인 네트웍 악몽을 매끄럽게 잘 다룹니다.
+</li> <li> 주의할만한 예외가 둘 있습니다. <ul>
+<li> 콘텐츠 서버가 새 버전을 찾지 <strong>못할</strong> 경우, 새 버전을 등록하려면 서비스를 재시작해야 합니다.
+</li> <li> 서비스로 실행할 때의 디포 위치는 명령줄로 설정할 수 없으며, 오직 ContentServer.exe 와 같은 디렉토리에 있는 ContentServerCfg.txt 파일을 통해서만 설정할 수 있습니다. 그렇지 않으면 디폴트 값 \Steam\DepotRoot (볼륨 루트에 상대적인 경로)가 사용됩니다. 이 파일의 싱택스는 UE3 .ini 파일과 비슷합니다. 예로 디포 위치를 \Steam\DepotRoot 에서 \LocalContentServer 로 바꾼다면, ContentServerCfg.txt 에 다음 두 줄을 넣어줘야 합니다:
+</li></ul>
+</li></ul>
+<p />
+<pre>
+           &#91;ClientContent]
+           DepotRootPath &#61; &#34;\LocalContentServer&#34;
+</pre>
+<p />
+<h2><a name="게임에서 스팀 사용하기"></a> 게임에서 스팀 사용하기 </h2>
+<p />
+간단히 게임을 실행할 때 스팀 클라이언트가 실행중이면 모든 스팀 기능에 액세스할 수 있습니다. 스팀 클라이언트가 실행중이지 않으면, 네트워킹 레이어가 내부적으로 공통 온라인 서브시스템에 되돌아가게 (기본적으로 온라인 서스시스템 PC의 기능을 하게) 됩니다.
+<p />
+인증 시스템은 매우 간단합니다. 게임을 '소유'하지 않은 경우, 서버에서 플레이할 수 없습니다. Valve에 소유 앱 id가 여러분의 게임으로 네트웍 연결이 가능한지 문의해 보십시오. '언리얼 개발 키트' 앱 id는 모두에 의해 소유되어 있습니다.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/SteamKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:32:35 GMT -->
+</html></body>

@@ -1,0 +1,496 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PerformanceDebuggingKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:41:02 GMT -->
+<head>
+<title> UDK | PerformanceDebuggingKR    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">PerformanceDebuggingKR  </b></div>
+<div id="tooltext">
+<a href="PerformanceDebugging.html" class="twikiLink">English Translation</a><br><a href="PerformanceDebuggingJP.html" class="twikiLink">日本語訳</a><br><a href="PerformanceDebuggingCH.html" class="twikiLink">中国翻译</a><br>
+
+<!-- Three/PerformanceDebuggingKR -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="성능 디버깅"></a> 성능 디버깅 </h1>
+<p />
+<em>요약:  Unreal Engine에서의 프레임 속도 문제와 힛치를 디버그하는 방법.</em>
+<p />
+<em>문서 변경 내역:  작성 및 유지 관리 <a href="https://udn.epicgames.com/Main/MikeFricker" class="restricted" class="restricted" class="twikiLink">Mike Fricker</a>.</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="PerformanceDebuggingKR.html#성능 디버깅"> 성능 디버깅</a> <ul>
+<li> <a href="PerformanceDebuggingKR.html#게임 성능 개요"> 게임 성능 개요</a>
+</li> <li> <a href="PerformanceDebuggingKR.html#단계별 성능 디버깅"> 단계별 성능 디버깅</a>
+</li> <li> <a href="PerformanceDebuggingKR.html#성능 참조"> 성능 참조</a> <ul>
+<li> <a href="PerformanceDebuggingKR.html#프레임/쓰레드/GPU 시간 (STAT UNIT) 표시"> 프레임/쓰레드/GPU 시간 (STAT UNIT) 표시</a>
+</li> <li> <a href="PerformanceDebuggingKR.html#빌드 환경 설정"> 빌드 환경 설정</a>
+</li> <li> <a href="PerformanceDebuggingKR.html#가비지 수집 확인 중지"> 가비지 수집 확인 중지</a>
+</li> <li> <a href="PerformanceDebuggingKR.html#최종 릴리스 모드에서의 스크립트 컴파일"> 최종 릴리스 모드에서의 스크립트 컴파일</a>
+</li> <li> <a href="PerformanceDebuggingKR.html#VSync 의 무효화"> VSync 의 무효화</a>
+</li> <li> <a href="PerformanceDebuggingKR.html#STAT SLOW 의 사용"> STAT SLOW 의 사용</a>
+</li> <li> <a href="PerformanceDebuggingKR.html#CPU 프로파일링"> CPU 프로파일링</a>
+</li> <li> <a href="PerformanceDebuggingKR.html#StatsViewer 를 사용하는 코드 프로파일링"> StatsViewer 를 사용하는 코드 프로파일링 </a>
+</li> <li> <a href="PerformanceDebuggingKR.html#Script Profiling 을 사용하여 언리얼 스크립트 성능 튜닝하기"> Script Profiling 을 사용하여 언리얼 스크립트 성능 튜닝하기</a>
+</li> <li> <a href="PerformanceDebuggingKR.html#콘솔에서의 성능"> 콘솔에서의 성능</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="게임 성능 개요"></a> 게임 성능 개요 </h2>
+<p />
+다음 섹션들은 성능 문제, 병목 현상 그리고 힛치 등을 추적하는데 가장 도움이 되는 도구들에 대해 이해하는데 도움이 될 것입니다.
+<p />
+대개 가장 먼저 해야할 일은 프레임이 CPU 나 GPU 의 성능에 의해 제한되고 있는지 아닌지 판단한 다음, 적절한 도구를 사용해서 문제를 좁혀나가는 것입니다.
+<p />
+만일 CPU 가 느리게 작동되고 있다면, 이 문제를 해결하는데 사용할 수 있는 명령어와 디버깅 도구들이 많이 있습니다. 때로는 액터나 “움직이는 부분” 이 너무 많은 것이 프레임이 느려지는 원인이 됩니다. 또는 레니게이드 AI 클래스가 프레임당 수천 개의 화염을 발사하고 있을지도 모릅니다. 인내심을 약간 가지면 이러한 성능 문제들을 개별 레벨의 액터에까지 추적할 수 있습니다!
+<p />
+GPU 의 성능에 대해서는 draw 이벤트나 쉐이더 성능, 그리고 게임내 시각화 모드 및 HUD 통계의 분석을 위해 PIX 를 사용할 필요가 있을지 모릅니다. 때로 이들 문제들은 컨텐츠의 짜임새나 조명의 속성에까지 거슬러 올라갑니다.
+<p />
+어떤 경우이든, 지속 프레임의 속도 문제 또는 힛치 (프레임 시간의 대폭 변화) 에 대처하게 됩니다. 빈약한 지속 프레임 속도에 대해서는 단일 프레임 캡처 도구 (명령어 TRACE 등) 와 샘플링 프로파일러 (VTune 등) 가 매우 도움이 될 것입니다. 힛치에 대해서는 StatsViewer 도구의 호출 그래프를 사용하여 프레임의 내력을 분석할 수 있습니다.
+<p />
+상당수의 Unreal 도구들이 다중 플랫폼에서 작용하기는 하지만, 콘솔들은 PC 와는 별도의 성능 디버깅 도구들을 가지고 있습니다.
+<p />
+<p />
+<h2><a name="단계별 성능 디버깅"></a> 단계별 성능 디버깅 </h2>
+<p />
+<strong>디버깅을 위한 준비:</strong>
+<p /> <ol>
+<li> 먼저, 게임이 실행되는 동안에는 언제나 <a href="PerformanceDebuggingKR.html#StatUnit" class="twikiAnchorLink">STAT UNIT</a> 이 있도록 확실히 합니다.
+</li> <li> <a href="PerformanceDebuggingKR.html#BuildConfiguration" class="twikiAnchorLink">빌드 환경 설정</a> 을 설정합니다.  성능을 측정할 때는 ShippingDebugConsole (LTCG) 빌드를, 성능을 디버그할 때는 Release 빌드를 사용합니다.
+</li> <li> <a href="PerformanceDebuggingKR.html#TurnOffLogSpam" class="twikiAnchorLink">로그 스팸</a>, 또는 성능의 결과를 해치는 디버그 코드를 모두 중지했는지 확인합니다.
+</li> <li> Turn off <a href="PerformanceDebuggingKR.html#TurnOffGCVerify" class="twikiAnchorLink">가비지 수집 확인</a> 을 중지합니다. 이것이 힛치를 조장할 수 있기 때문입니다.
+</li> <li> <a href="PerformanceDebuggingKR.html#UseFinalReleaseScripts" class="twikiAnchorLink">최종 릴리스</a> 모드의 스크립트를 컴파일 합니다.
+</li> <li> <a href="PerformanceDebuggingKR.html#TurnOffVSync" class="twikiAnchorLink">VSync 를 무효화</a> 하여 빠른 프레임에서도 병목현상을 식별할 수 있도록 합니다.
+</li></ol>
+<p />
+<strong>병목 현상 타입의 분리:</strong>
+<p /> <ul>
+<li> <a href="PerformanceDebuggingKR.html#StatUnit" class="twikiAnchorLink">STAT UNIT</a> 을 사용하여 프레임이 왜 느려지는지 판단합니다.  <ul>
+<li> 문제가 CPU 때문인지 GPU 때문인지 구별할 수 있어야 합니다.
+</li></ul>
+</li></ul>
+<p />
+<strong>CPU - 느린 C++ 또는 UnrealScript 코드를 철저히 조사:</strong>
+<p /> <ul>
+<li> <a href="PerformanceDebuggingKR.html#StatSlow" class="twikiAnchorLink">STAT SLOW</a> 를 가동하면 CPU에서의 힛치를 식별하는데 도움이 됩니다. <ul>
+<li> STAT SLOW 를 사용할 때 <em>ScriptTime</em> 에서 힛치를 보게 되면, <a href="PerformanceDebuggingKR.html#StatsViewer" class="twikiAnchorLink">StatsViewer</a> 또는 <a href="PerformanceDebuggingKR.html#ScriptProfiling" class="twikiAnchorLink">ScriptProfiling</a> 을 사용해서 게임플레이 코드 내의 스크립트 타이밍 데이터를 파헤쳐 보십시오.
+</li></ul>
+</li> <li> 플랫폼의 <a href="PerformanceDebuggingKR.html#ProfilingCPU" class="twikiAnchorLink">CPU 샘플링 도구들</a> 을 사용해서 C++ 코드용의 프로파일링 데이터를 포착합니다.
+</li> <li> <a href="PerformanceDebuggingKR.html#StatsViewer" class="twikiAnchorLink">StatsViewer</a> 로 사용할 UnrealScript 호출 및 Stat 기반의 타이밍 데이터를 포착합니다. <ul>
+<li> 이것은 힛치와 스크립트 성능 버그를 추적하는데 아주 좋은 도구입니다!
+</li></ul>
+</li> <li> <a href="PerformanceDebuggingKR.html#ScriptProfiling" class="twikiAnchorLink">ScriptProfiling</a> 를 사용하여 UnrealScript 코드에서 핫스팟을 찾아냅니다.
+</li></ul>
+<p />
+<strong>GPU ? 빈약한 렌더링 성능의 원인 판단:</strong> <ul>
+<li> <a href="PerformanceDebuggingKR.html#ProfilingGPU" class="twikiAnchorLink">GPU 프로파일링 도구</a> 를 사용하여 느린 draw 호출, 메모리를 많이 사용하는 쉐이더, 그리고 안좋은 자원 처리의 위치를 파악합니다.
+</li></ul>
+<p />
+<strong>전형적인 Unreal Engine 성능 문제의 해결을 위한 지침:</strong>
+<p /> <ul>
+<li> <a href="https://udn.epicgames.com/Three/PerfDebug_MoveActorKR" class="restricted" class="restricted" class="twikiLink">MoveActor 의 호출</a>: (이 함수에서 호출한 함수를 실행하는데 소비된 시간이 포함된) 포함 시간에  MoveActor() 호출의 자원 사용이   많은 것으로 나타남.
+</li> <li> <a href="PerfDebug_DynamicLightEnvironmentsKR.html" class="twikiLink">동적 조명 환경</a>: 동적 조명 환경의 업데이트가 자원을 많이 사용하는 것으로 나타남.
+</li> <li> <a href="https://udn.epicgames.com/Three/PerfDebug_SkeletalMeshCompUpdatesKR" class="restricted" class="restricted" class="twikiLink">SkeletalMeshComponent 업데이트</a>: 포함 시간에 SkeletalMeshComponent::Tick 호출의 자원 사용이 많은 것으로 나타남.
+</li> <li> <a href="https://udn.epicgames.com/Three/PerfDebug_LineChecksKR" class="restricted" class="restricted" class="twikiLink">LineChecks</a>: SingleLineCheck/MultiLineCheck 에서 시간이 너무 소비됨.
+</li></ul>
+<p />
+<strong>레벨의 컨텐츠 및 자산이 최적화 되도록 함:</strong> <ul>
+<li> 성능 문제는 흔히 레벨이나 자산을 변경하거나 최적화 함으로써 해결될 필요가 있음.
+</li> <li> 이용 가능한 도구에 대한 것은 <a href="PerformanceDebuggingKR.html#OptimizingContent" class="twikiAnchorLink">컨텐츠 최적화</a> 섹션 참조.
+</li></ul>
+<p />
+<p />
+<h2><a name="성능 참조"></a> 성능 참조 </h2>
+<p />
+<a name="StatUnit"></a>
+<h3><a name="프레임/쓰레드/GPU 시간 (STAT UNIT) 표시"></a> 프레임/쓰레드/GPU 시간 (STAT UNIT) 표시 </h3>
+<p />
+프레임 시간의 병목현상이 어디서 일어나는지 판단하려면 <strong>STAT UNIT</strong> 명령어를 사용합니다. <strong>STAT UNIT</strong> 은 프레임 시간, 게임 쓰레드 시간, 렌더 쓰레드 (Draw) 시간 및 GPU 시간 (가능한 경우) 을 표시하는 화면상의 HUD 를 토글합니다. 이것은 성능 문제를 추적하는 매우 귀중한 첫 단계입니다. 이를 항상 가동해 두는 것이 좋습니다.
+<p />
+또한 <strong>STAT FPS</strong> 명령어를 사용하여 화면에 프레임 비율과 프레임 시간을 표시합니다.
+<p />
+<a name="BuildConfiguration"></a>
+<h3><a name="빌드 환경 설정"></a> 빌드 환경 설정 </h3>
+<p />
+성능을 테스트하는 동안에는 <strong>Release</strong> 나 <strong>ShippingDebugConsole</strong> (LTCG) 빌드 환경 설정을 사용합니다.  <strong>ShippingDebugConsole</strong> 은 출하 타이틀에 가까운 성능의 수를 제공합니다. 그러나 어떤 성능 측정 및 디버깅 기능 (Stats 캡처 등) 은 이용할 수 없을지도 모릅니다. 결과를 <em>상대적으로</em> 보는 한, <strong>Release</strong> 빌드는 약간만 조정하면 성능 및 메모리의 테스트에 충분합니다.
+<p />
+<a name="TurnOffLogSpam"></a>
+<strong>Release</strong> 빌드로 테스트하고자 한다면, 관계없는 로깅을 모두 중지시켜야 합니다. 로깅을 중지하려면 이를 명령어를 이용해서 억제하거나 컴파일 때에 이를 #ifdef 으로 처리합니다. 예를 들면, <strong>"suppress AILog"</strong> 은  C++ 와 스크립트의 함수가 느려지게 하는 게임 특정 AI 의 로깅을 중지시킵니다.
+<p />
+<a name="TurnOffGCVerify"></a>
+<h3><a name="가비지 수집 확인 중지"></a> 가비지 수집 확인 중지 </h3>
+<p />
+성능 작업을 하는 동안에는 항상 <em>GC Verification</em> 이 중지되어야 합니다. 그렇지 않으면 <strong>Release</strong> 빌드에 적어도 30초마다 커다란 힛치이 생깁니다. 가비지 수집 확인의 중지는 다음 중 한 가지 방법으로 할 수 있습니다:
+<p /> <ul>
+<li>  <em>UnObjGC.cpp</em> 에서, <strong>VERIFY_DISREGARD_GC_ASSUMPTIONS</strong> 이 <strong>0</strong> 인지 확인합니다.
+</li> <li> 명령 행 인수 <strong>-NoVerifyGC</strong> 를 전달합니다.
+</li></ul>
+<p />
+<a name="UseFinalReleaseScripts"></a>
+<h3><a name="최종 릴리스 모드에서의 스크립트 컴파일"></a> 최종 릴리스 모드에서의 스크립트 컴파일 </h3>
+<p />
+UnrealScript 의 성능은 logging (로깅) 과 assertion (주장) 이 유효화되면 크게 달라집니다. 출하 타이틀에 가까운 성능을 얻는 가장 쉬운 방법은, 스크립트를  <strong>Final Release</strong> 모드로 컴파일하는 것입니다. 이 모드는 비싸게 먹히는 이러한 호출들을 컴파일된 바이트 코드에서 자동적으로 떼어내 버립니다. <strong>Final Release</strong>  스크립트는 다음 중 한 가지 방법으로 구축됩니다:
+<p /> <ul>
+<li> <a href="UnrealFrontendKR.html" class="twikiLink">Unreal Frontend</a> 에서, <strong>Cooking</strong> 탭을 선택하여 <strong>"Cook Final Release Scripts"</strong> 체크박스를 유효화 합니다. 이제 쿠커를 실행하거나 UFE 를 통해 게임을 가동하면 <strong>Final Release</strong> 스크립트가 컴파일되어 사용될 것입니다.
+</li> <li> 명령 행 매개변수 <strong>-Final_Release</strong> 를 <strong>make</strong> 커멘드렛으로 전달합니다.
+</li></ul>
+<p />
+<a name="TurnOffVSync"></a>
+<h3><a name="VSync 의 무효화"></a> VSync 의 무효화 </h3>
+<p />
+최선의 결과를 위해서 <strong>VSync</strong> 를 무효화 합니다 (프레임을 표시하기 전에 수직 회귀를 기다림). 그렇지 않으면 프레임 시간이 게임의 새로 고침 속도에 덧붙여져 정확한 결과를 얻는 것이 더 어려워집니다. 다음은 <strong>VSync</strong> 를 중지시키는 방법입니다: <ul>
+<li> 명령 행 옵션 <strong>-NoVSync</strong> 을 게임에 전달합니다.
+</li> <li> 아니면, <a href="UnrealFrontendKR.html" class="twikiLink">Unreal Frontend</a> 의 <strong>Game</strong> 탭에서 <strong>"No VSync"</strong> 체크박스를 유효화 합니다.
+</li></ul>
+<p />
+<a name="StatSlow"></a>
+<h3><a name="STAT SLOW 의 사용"></a> STAT SLOW 의 사용 </h3>
+<p />
+<strong>STAT SLOW</strong> 명령어는 성능 상승을 발견하는데 도움이 됩니다. 이는 프레임에서 지정 시간 (기본은 10 ms) 보다 오래 실행되는 사이클 Stat 을 보고함으로써 힛치를 줄이는데 도움이 됩니다. 느리게 실행되는 Stat 은 잠깐동안 HUD 에 표시되어 상승을 화면상의 게임 행동과 서로 관련짓기가 더 쉬워집니다.
+<p />
+이것을 사용하려면 콘솔에서 <strong>STAT SLOW</strong> 를 선택적 인수들과 함께 입력합니다. 인수들은 초로 나타낸 분계점 (10 ms는 0.01초) 과 한 번 스파이크하면 Stat 을 얼마동안 렌더할 것인지 (기본값은  10초) 를 나타냅니다.
+<p />
+<em>예:</em>   <strong>STAT SLOW 0.01 10</strong>
+<p />
+이는 지난 10초 동안에 10 ms 이상인 사이클 Stat 을 모두 렌더합니다.
+<p />
+<a name="ProfilingCPU"></a>
+<h3><a name="CPU 프로파일링"></a> CPU 프로파일링 </h3>
+<p />
+프레임 병목현상을 CPU 성능으로서 분리한 후, 처리할 다음 단계 중 하나는 C++ 코드의 어느 곳에서 시간이 소비되었는지 알아내는 것입니다. 그밖에,  Load-Hit-Stores 또는 캐시의 누락 등 숨겨진 성능의 비용을 찾아볼 수도 있습니다.
+<p />
+대부분의 플랫폼은 상세한 코드 메트릭스와 심지어는 라이브 세션에서 포착한 데이터를 사용하는 C++ 코드의 호출 그래프를 제공하는 강력한 CPU 샘플링 도구를 가지고 있습니다. 예를 들어, Windows 플랫폼에서는 짧은 시간 동안에 핫스팟을 분리하기 위한 샘플링 데이터를 포착하기 위해 <em>Intel VTune</em> 을 사용할 수 있습니다. 콘솔 플랫폼에도 비슷한 도구가 있으며, 흔히 개발 도구 체인에 포함됩니다.
+<p />
+이러한 응용 프로그램에 익숙해져서 개발 과정에서 폭넓게 이용하는 것이 좋습니다!
+<p />
+일부 콘솔에는 단일 프레임 CPU/GPU 샘플링 캡처의 수행을 돕는 Unreal 의 유틸리티 기능이 있습니다. <strong>TRACE GAME</strong> 를 타이프하여 CPU 추적을 시작하거나,  <strong>TRACE RENDER</strong> 를 타이프하여  GPU 데이터를 포착할 수 있습니다.
+<p />
+대부분의 CPU 프로파일러는 샘플링 데이터의 포착 그리고/또는 단기간의 호출 그래프 데이터를 지원합니다. 이는 빈약한 지속 프레임 속도와 관계있는 성능 문제를 디버깅 하는데 매우 유용합니다. <em>Sampling captures</em> 는 대개 함수가 C++ 코드로 핫스팟을 호출하도록 해줍니다. 그러나 <em>Call Graph capture</em> 가 훨씬 도움이 된다는 사실을 종종 발견하게 될 것입니다!
+<p />
+<em>호출 그래프</em> 에는 흔히 더 많은 캡처 시간 경비가 소요되지만, 핫스팟 함수의 <strong>호출자</strong> 에 대해 상세한 정보를 제공하여 곧바로 문제의 원인을 찾을 수 있도록 합니다! 여러 객체/액터들이 실행속도가 느린 하나의 함수를 호출하는 경우에도, 운이 좋으면 호출 그래프는 특정 액터 클래스의 이름 또는 원인을 짐작할 수 있는 다른 패턴으로 인도합니다.
+<p />
+때로 호출 그래프는 단순히 시간을 잡아먹는 <em>UnrealScript</em> (<em>ProcessEvent</em>, <em>CallFunction</em> 등의 호출) 를 보여줍니다. 이 경우에는  <a href="PerformanceDebuggingKR.html#StatsViewer" class="twikiAnchorLink">StatsViewer</a> 또는 <a href="PerformanceDebuggingKR.html#ScriptProfiling" class="twikiAnchorLink">ScriptProfiling</a> 캡처를 실행하여 그 호출들을 밝혀낼 수 있습니다.
+<p />
+프레임의 <em>힛치</em> 를 취급할 때, CPU 프로파일러는 가끔 상대적으로 낮은 샘플링 빈도로 인해 다루기 힘들어질 때가 있습니다. 만일 힛치가 게임에서 쉽사리 재현될 수 있는 것이라면, CPU 프로파일링 세션을 캡처하는 동안 그 힛치를 가능한 한 자주 (프레임당 여러 번이 바람직함) 일으키는 것이 좋은 방법입니다. 힛치가 정의하기 어려운 것이라면, 캡처 데이터를 <a href="PerformanceDebuggingKR.html#StatsViewer" class="twikiAnchorLink">StatsViewer</a> 에서 사용하도록 하여, 여려 개의 프레임에 호출 그래프의 이력을 제공하도록 합니다.
+<p />
+<a name="StatsViewer"></a>
+<h3><a name="StatsViewer 를 사용하는 코드 프로파일링"></a> StatsViewer 를 사용하는 코드 프로파일링 </h3>
+<p />
+<strong>StatsViewer</strong> 를 사용하여 CPU 성능 문제를 철저히 조사할 수 있습니다. 이는 또한 UnrealScript 코드를 위한 자세한 프로파일링 도구로서의 역할도 합니다!
+<p />
+StatsViewer 는 모든 <strong>UnrealScript 의 함수 호출들</strong> 과 <strong>게임 stats</strong> (값 계수기, 사이클 타이머 등) 를 PIX 에서와 비슷한 방식으로 데이터를 정렬하고 볼 수 있는 일정 그래프와 함께 표시합니다. 보다 중요한 것은 이것이 유효범위가 한정된 사이클 stat 및 스크립트 함수의 훌륭한 <strong>계층적 호출 그래프</strong> 를 나타낸다는 점입니다. 이는 주어진 프레임에 대해 “무엇이 느린지” 빠르게 알 수 있도록 합니다 (그래프 창에서 프레임을 더블 클릭하기만 하면 됩니다).
+<p />
+준비:
+<p /> <ul>
+<li> 현재 사용하고 있는 빌드 (UnBuild.h) 에 <strong>STATS</strong> 가 <strong>1</strong> 로 정의되도록 합니다. <ul>
+<li> Debug 및 Release 빌드에서는 이것이 유효로 기본 설정되어 있습니다.
+</li></ul>
+</li> <li> 스크립트 코드를 프로파일 하려면, 또한 <strong>STATS_SLOW</strong> 가 <strong>1</strong> 로 정의되도록 합니다 (UnStats.h). <ul>
+<li> 이는 프로파일링이 느려지게 하지만, 모든 UnrealScript 호출에 대한 자세한 호출 그래프 데이터를 제공합니다.
+</li></ul>
+</li></ul>
+<p />
+Stat 데이터를 디스크에 캡처하려면 (권장):
+<p /> <ul>
+<li> 콘솔에 <strong>"STAT StartFile"</strong> 을 타이프하여 stat 을 디스크에 캡처하기 시작합니다 .
+</li> <li> 이 과정이 끝나면 <strong>"STAT StopFile"</strong> 을 타이프하여 로깅을 중지하고 stat 파일을 최종화 합니다.
+</li> <li> 응용 프로그램이 시작될 때  즉시 stat 의 캡처를 시작하려면 매개변수 <strong>"-StartStatsFile"</strong> 을 전달합니다.
+</li> <li> 콘솔에서, 명령 행 옵션 <strong>-DisableHDDCache</strong> 를 반드시 전달하십시오! <ul>
+<li> 이는 텍스처 mip 을 (stat 파일 기록을 겨루는) HDD 에 캐싱하는 일을 중지시킵니다.
+</li></ul>
+</li> <li> Stat 파일들은  \UnrealEngine3\<GameName>\Profiling\ 폴더로 내보내집니다. <ul>
+<li> 콘솔에서는 stat 데이터가 UnrealConsole 을 통해 자동으로 PC로 옯겨집니다.
+</li></ul>
+</li> <li> StatsViewer 를 실행하고 파일을 로드합니다 (예: <GameName>-07.15-18.58.ustats).
+</li></ul>
+<p />
+실행중인 게임으로부터 실시간 stat 을 캡처하려면:
+<p /> <ul>
+<li> 게임을 로드합니다.
+</li> <li> <strong>Connect to IP</strong> 를 사용해서 StatsViewer 를 Xenon 세션에 연결합니다. <ul>
+<li> Xenon 에서, Xenon 의 "Title IP Address" 를 사용합니다. "Debug Channel IP Address" 를 사용하면 안됩니다. <ul>
+<li> UFE 에서 "Show All Target Information" 을 클릭하면 이것을 발견할 수 있습니다.
+</li></ul>
+</li> <li> port 번호가 <strong>13002</strong> 로 설정되었는지 확인합니다.
+</li></ul>
+</li> <li> UDP 접속을 통해 실시간 stat 이 흘러 들어오기 시작합니다!
+</li> <li> 캡처한 데이터를  File -&gt; Save 로 디스크에 저장할 수 있습니다.
+</li></ul>
+<p />
+Stat 데이터 보기:
+<p /> <ul>
+<li> StatsViewer 도구에서 <strong>.ustats</strong> 파일을 로드하거나, 라이브 게임 세션에 <strong>접속</strong> 합니다.
+</li> <li> 대화식 그래프는 먼저 프레임 시간을 나타내므로, 힛치 및 스타일을 볼 수 있습니다.
+</li> <li> Stat 을 왼편 칼럼에서 그래프 위로 <strong>끌어다 놓으면</strong> stat 데이터가 표시됩니다.
+</li> <li> 그래프에서 프레임을 <strong>클릭</strong> 하면 해당 프레임의 stat 데이터를 볼 수 있습니다.
+</li> <li> 그 프레임의 <strong>호출 그래프를 열려면</strong> 그래프를 <strong>더블 클릭</strong> 하면 됩니다!
+</li> <li> 왼편 칼럼에 있는 Stat 을 오른 클릭하면 "View Frames by Criteria (조건별 프레임 보기)" (예: FPS &lt; 20 인 프레임에 한정, 등) 를 할 수 있습니다.
+</li> <li> 메뉴의 옵션을 사용하면 보기 모드를 바꿀 수 있습니다 (프레임 번호 vs. 시간, 한정 범위 내/전체 데이터)
+</li></ul>
+<p />
+그밖의 노트:
+<p /> <ul>
+<li> LTCG 모드에서는 작용하지 않습니다 (<strong>STATS</strong> 를 로컬로 #define 하지 않는한). Release 모드를 사용하십시오.
+</li> <li> 실시간 stat 캡처는 아직 뭔가 부족한 부분들이 있습니다 (프레임 떨구기, 스크롤 등이 약간 어색함) .
+</li></ul>
+<p />
+실시간 Stat 캡처에 대한 자세한 정보는 <a href="PerfStatsKR.html" class="twikiLink">이 페이지</a> 를 참고하십시오.
+<p /> <ul>
+<li> <a href="GameplayProfilerKR.html" class="twikiLink">게임플레이 프로파일러</a>: 게임플레이 코드에서 소요된 시간 데이터를 읽고 분석하는 법에 대한 개요입니다.
+</li></ul>
+<p />
+<a name="ScriptProfiling"></a>
+<h3><a name="Script Profiling 을 사용하여 언리얼 스크립트 성능 튜닝하기"></a> Script Profiling 을 사용하여 언리얼 스크립트 성능 튜닝하기 </h3>
+<p />
+<strong>ScriptProfiler</strong> 는 스크립트 코드에서 비싸게 먹히는 함수들에 대한 좋은 정보를 많이 제공합니다.  이는 프로파일링 데이터를 지극히 빠르게 캡처하여, 짧은 샘플링 기간 동안 핫스팟에 즉각 접근할 수 있게 해줍니다.
+<p />
+스크립트 프로파일러 데이터를 캡처하려면:
+<p /> <ul>
+<li> 콘솔에서 <strong>"PROFILEGAME START"</strong> 를 타이프하여 데이터를 캡처하기 시작합니다.
+</li> <li> 이것이 끝나면, <strong>"PROFILEGAME STOP"</strong> 을 타이프하여 캡처를 중지하고 데이터를 디스크에 저장합니다.
+</li> <li> 프로파일링 데이터는  \UnrealEngine3\<GameName>\Profiling\ 폴더로 내보내 집니다. <ul>
+<li> 콘솔에서는 stat 데이터가 UnrealConsole 을 통해 자동으로 PC로 옯겨집니다.
+</li></ul>
+</li> <li> ScriptProfiler 를 실행하고 파일을 로드합니다 (예: <GameName>-07.15-18.58.uprof).
+</li></ul>
+<p />
+자세한 정보는 <a href="GameplayProfilerKR.html" class="twikiLink">게임플레이 프로파일러</a> 문서를 보십시오.
+<p />
+<em>주:</em>  많은 경우에 <a href="PerformanceDebuggingKR.html#StatsViewer" class="twikiAnchorLink">StatsViewer</a> 도구는 실제로 게임플레이 프로파일러보다 더욱 자세한 스크립트 프로파일링 데이터를 실시간 경비보다 많은 경비로 제공합니다. Stat 데이터를 캡처할 때 <strong>STAT SLOW</strong> 를 <strong>1</strong> 로 정의했는지만 확인하십시오. 그러면 StatsViewer 는 해당 프레임에 대한 UnrealScript 호출 그래프 전부를 표시합니다!
+<p />
+<h3><a name="콘솔에서의 성능"></a> 콘솔에서의 성능 </h3>
+<p />
+<em>콘솔 특정의 성능에 대한 정보는 하위 페이지에 수록될 것입니다.</em>
+<p />
+모든 Stat 명령어의 목록에 대해서는 <a href="StatsDescriptionsKR.html" class="twikiLink">Stats 해설</a> 페이지를 참고하십시오.
+<p />
+모든 Console 명령어의 목록에 대해서는 <a href="ConsoleCommandsKR.html" class="twikiLink">콘솔 명령어</a> 페이지를 참고하십시오.
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PerformanceDebuggingKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:41:02 GMT -->
+</html></body>

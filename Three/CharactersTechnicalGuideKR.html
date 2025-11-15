@@ -1,0 +1,706 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CharactersTechnicalGuideKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:11:10 GMT -->
+<head>
+<title> UDK | CharactersTechnicalGuideKR    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">CharactersTechnicalGuideKR  </b></div>
+<div id="tooltext">
+<a href="CharactersTechnicalGuide.html" class="twikiLink">English Translation</a><br><a href="CharactersTechnicalGuideJP.html" class="twikiLink">日本語訳</a><br><a href="CharactersTechnicalGuideCH.html" class="twikiLink">中国翻译</a><br>
+
+<!-- Three/CharactersTechnicalGuideKR -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHomeKR.html" class="twikiLink">UE3 홈</a></b> &gt; <b><a href="GameplayProgrammingHomeKR.html" class="twikiLink">게임플레이 프로그래밍</a></b> &gt; 캐릭터 테크니컬 가이드
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="캐릭터 테크니컬 가이드"></a> 캐릭터 테크니컬 가이드 </h1>
+<hr size="1" noshade="noshade">
+<em>문서 변경내역: <a href="https://udn.epicgames.com/Main/JeffWilson" class="restricted" class="restricted" class="twikiLink">Jeff Wilson</a> 작성. <a href="https://udn.epicgames.com/Main/SungjinHong" class="restricted" class="restricted" class="twikiLink">홍성진</a> 번역.</em> <br>
+<strong><em>UDK 2011년 6월 버전으로 최종 테스팅</em></strong>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="CharactersTechnicalGuideKR.html#캐릭터 테크니컬 가이드"> 캐릭터 테크니컬 가이드</a> <ul>
+<li> <a href="CharactersTechnicalGuideKR.html#개요"> 개요</a>
+</li> <li> <a href="CharactersTechnicalGuideKR.html#Controllers"> Controllers</a> <ul>
+<li> <a href="CharactersTechnicalGuideKR.html#Controller 클래스"> Controller 클래스</a> <ul>
+<li> <a href="CharactersTechnicalGuideKR.html#Pawn과 빙의"> Pawn과 빙의</a>
+</li> <li> <a href="CharactersTechnicalGuideKR.html#인벤토리"> 인벤토리</a>
+</li> <li> <a href="CharactersTechnicalGuideKR.html#이동 및 내비게이션"> 이동 및 내비게이션</a>
+</li> <li> <a href="CharactersTechnicalGuideKR.html#카메라 / 조준"> 카메라 / 조준</a>
+</li></ul>
+</li> <li> <a href="CharactersTechnicalGuideKR.html#PlayerController 클래스"> PlayerController 클래스</a> <ul>
+<li> <a href="CharactersTechnicalGuideKR.html#일반"> 일반</a>
+</li> <li> <a href="CharactersTechnicalGuideKR.html#플레이어 입력 / 이동"> 플레이어 입력 / 이동</a>
+</li></ul>
+</li> <li> <a href="CharactersTechnicalGuideKR.html#AIController 클래스"> AIController 클래스</a> <ul>
+<li> <a href="CharactersTechnicalGuideKR.html#의사 결정"> 의사 결정</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="CharactersTechnicalGuideKR.html#Pawn 클래스"> Pawn 클래스</a> <ul>
+<li> <a href="CharactersTechnicalGuideKR.html#Controller와 빙의"> Controller와 빙의</a>
+</li> <li> <a href="CharactersTechnicalGuideKR.html#인벤토리 및 무기"> 인벤토리 및 무기</a>
+</li> <li> <a href="CharactersTechnicalGuideKR.html#데미지 입기"> 데미지 입기</a>
+</li> <li> <a href="CharactersTechnicalGuideKR.html#애니메이션"> 애니메이션</a>
+</li> <li> <a href="CharactersTechnicalGuideKR.html#카메라 원근 / 조준"> 카메라 원근 / 조준</a>
+</li></ul>
+</li> <li> <a href="CharactersTechnicalGuideKR.html#Player 예제"> Player 예제</a> <ul>
+<li> <a href="CharactersTechnicalGuideKR.html#Player Pawn 클래스"> Player Pawn 클래스</a>
+</li> <li> <a href="CharactersTechnicalGuideKR.html#Player Controller 클래스"> Player Controller 클래스</a>
+</li> <li> <a href="CharactersTechnicalGuideKR.html#GameInfo 클래스"> GameInfo 클래스</a>
+</li></ul>
+</li> <li> <a href="CharactersTechnicalGuideKR.html#NPC 예제"> NPC 예제</a> <ul>
+<li> <a href="CharactersTechnicalGuideKR.html#NPC Pawn 클래스"> NPC Pawn 클래스</a>
+</li> <li> <a href="CharactersTechnicalGuideKR.html#NPC Controller 클래스"> NPC Controller 클래스</a>
+</li></ul>
+</li> <li> <a href="CharactersTechnicalGuideKR.html#새로운 커스텀 NPC 테스트하기"> 새로운 커스텀 NPC 테스트하기</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="개요"></a> 개요 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+언리얼의 캐릭터는 Pawn(폰)과 Controller(콘트롤러), 두 부분으로 나뉘어 있습니다. Pawn은 월드의 플레이어나 플레이어 이외의 캐릭터(NPC)의 물리적 표현입니다. 조종자가 플레이어인지 AI인지는 관계 없습니다. Pawn은 메시, 콜리전, 피직스같은 것들을 가져 캐릭터와 월드 사이의 물리적 상호작용에 포함된 함수기능을 처리할 수 있게 됩니다. 또한 다른 플레이어나 주변 환경으로부터 데미지를 받거나, 소리를 내거나, 애니메이션을 재생하거나, 무기를 집고 발사(의 경우 엄밀히 따지면 Controller 클래스에서 시작)하는 등의 인벤토리 함수기능도 포함됩니다.
+<p />
+각 Pawn은 언제고 하나의 Controller를 갖습니다. Controller란, 이름 그대로 'Pawn한테 무엇을 어떻게 시킬 것인가' 제어기입니다. 간단히 폰의 뇌입니다. Controller는 PlayerController나 AIController와 같이 다양하게 등장합니다만, 주요 목적은 플레이어나 월드의 다른 자극으로부터 입력값을 받고, 처리하여, 적절하게 반응하게 하는 것입니다. 이는 보통 몇 가지 명령을 전달하는 식으로 처리하게 됩니다.
+<p />
+보통의 경우에는, GameInfo 클래스가 플레이어 로그인시 Controller를 생성해 주고, 게임이 시작될 때 각 Controller에 대해 Pawn을 생성하여 할당해 줍니다. 마지막 과정을 <em>possession, 빙의</em> 라 합니다. Pawn에 Controller라는 혼령이 달라붙어 조정하는 것입니다. 플레이어 생성 전 과정을 도식화하면 아래와 같습니다:
+<p />
+<img alt="CreationProcess.jpg" src="rsrc/Three/CharactersTechnicalGuide/CreationProcess.jpg" />
+<p />
+물론 꼭 이대로인건 아닙니다. 월드에 자동으로 놓이지 않고 수동으로 채워넣은 NPC로 가득찬 게임일 수도 있으니까요. 이런 NPC는 보통 베이스 Pawn 클래스의 하위클래스로, 자체 Controller의 생성과 할당이 베이스 클래스에서 처리되는 것일 수도 있습니다.
+<p />
+<h2><a name="Controllers"></a> Controllers </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Controller는 비-물리 액터로, Pawn의 행동을 조절하기 위해 Pawn에 부착된 것입니다. 플레이어나 주변 환경에서 정보를 받으며, 이 정보를 활용하여 Pawn이 알맞게 반응하게 합니다. 플레이어 입력에 반응하던, 내비게이션 시스템이 만든 이동 경로를 따라가던, 여러 이벤트에 관련된 동작을 수행하던, 이동을 관장하는 것은 Controller 입니다. Pawn이 게임에서 움직인다면, Controller가 그러라 그래서 그러는 (^_^) 것입니다. Controller는 제어중인 Pawn에 발생하는 (적 발견이나 소리같은) 이벤트 정보를 많이 받습니다. Controller는 이런 이벤트를 사용하여 해당 이벤트에 Pawn이 적당히 반응하도록 구현합니다.
+<p />
+Controller의 주요 하위클래스 둘은 <code><b>PlayerController</b></code> 및 <code><b>AIController</b></code> 입니다. 새 캐릭터를 만들 때, 만들려는 캐릭터의 종류에 따라 이 클래스 중 하나 혹은 그 하위클래스를 확장하게 됩니다.
+<p />
+Controller, 특히 AIController는 Controller의 같은 클래스 내의 함수 오버라이딩을 허용하여 Controller의 현 상태에 따라 다른 액션을 수행하게 하는 State를 비중있게 사용합니다. 또한 상태는 AI 캐릭터가 월드를 돌아다니는데 사용하는 이동 함수같은 잠복 코드 및 함수 사용 능력을 제공하기도 합니다.
+<p />
+<h3><a name="Controller 클래스"></a> Controller 클래스 </h3>
+<p />
+베이스 Controller 클래스에는 Pawn을 조절하는게 플레이어인지 AI인지 딱히 지정할 필요가 없는 일반적인 조작에 적용되는 일반 함수와 이벤트가 포함되어 있습니다.
+<p />
+<h4><a name="Pawn과 빙의"></a> Pawn과 빙의 </h4>
+<p />
+Pawn의 빙의 및 해방에 관련된 함수입니다.
+<p /> <ul>
+<li> <strong>Possess [inPawn] [bVehicleTransition]</strong> - 지정된 Pawn을 Controller의 Pawn으로 할당하며, PossessedBy() 함수를 호출하여 해당 Pawn에 알립니다.
+</li> <li> <strong>UnPossess</strong> - Controller의 Pawn 참조를 해제하며, UnPossessedBy() 함수를 호출하여 해당 Pawn이 이 Controller에 의해 조절되지 않게 되었음을 알립니다.
+</li></ul>
+<p />
+<h4><a name="인벤토리"></a> 인벤토리 </h4>
+<p />
+집어들기, 무기, 기타 인벤토리 전용 함수기능들입니다.
+<p /> <ul>
+<li> <strong>RatePickup [PickupHolder] [PickupClass]</strong> - PickupFactory에서의 회신으로, 집어든 것의 적합성을 계산합니다.
+</li> <li> <strong>HandlePickup [InvetoryItem]</strong> - 이 함수는 오버라이드용 껍데기로, 집어든 아이템 처리를 위한 추가 함수기능 구현용입니다.
+</li> <li> <strong>FireWeaponAt [inActor]</strong> - 이 함수는 Controller의 Pawn이 현재 활성 무기를 지정된 액터에 발사하게 합니다.
+</li> <li> <strong>StopFiring</strong> - Controller의 Pawn이 현재 활성 무기의 발사를 중지하게 합니다.
+</li> <li> <strong>SwitchToBestWeapon [bForceNewWeapon]</strong> - 이 Controller의 Pawn 인벤토리에 있는 무기 중 가장 좋은 것이 무엇인지 계산하여 활성 무기로 만듭니다. 옵션 불리언 파라미터로 현재 활성 무기가 제일 좋은 것인지 여부에 관계없이 다른 무기중 가장 좋은 것을 선택하게 할 수도 있습니다.
+</li> <li> <strong>ClientSetWeapon [WeaponClass]</strong> - 이 Controller의 Pawn이 지정된 무기로 바꾸게 하며, 해당 무기 종류는 Pawn의 인벤토리에 있다 가정합니다.
+</li></ul>
+<p />
+무기에 대한 상세 정보는 <a href="WeaponsTechnicalGuideKR.html" class="twikiLink">무기  테크니컬 가이드</a> 를 참고하십시오.
+<p />
+<h4><a name="이동 및 내비게이션"></a> 이동 및 내비게이션 </h4>
+<p />
+Pawn을 월드에서 잠재적으로 움직이는 것에 관계된 함수입니다. 즉 특정 위치로의 명령이 내려지고, 매 틱마다 업데이트할 필요 없이 자동으로 이동하는 것을 말합니다.
+<p /> <ul>
+<li> <strong>MoveTo [NewDestination] [ViewFocus] [DestinationOffset] [bShouldWalk]</strong> - Pawn의 초점을 지정된 옵션 액터에 유지한 채로, Pawn을 지정된 위치( 및 지정된 offset 오차범위 내)로 이동시킵니다. 이 함수는 목적지까지의 Pawn 내비게이션을 돕기 위해 경로 네트워크를 사용합니다.
+</li> <li> <strong>MoveToDirectNonPathPos [NewDestination] [ViewFocus] [DestinationOffset] [bShouldWalk]</strong> - MoveTo() 함수기능은 동일합니다만, 경로를 따를때가 아닌 최종 목표로 이동할 때만 사용해야 합니다.
+</li> <li> <strong>MoveToward [NewTarget] [ViewFocus] [DestinationOffset] [bUseStrafing] [bShouldWalk]</strong> - Pawn을 NewTarget으로 지정된 액터로 이동시킵니다. 다른 Pawn이나 인벤토리 액터에 이동할 때 이 함수는 내비게이션 네트워크를 활용합니다.
+</li> <li> <strong>FindPathTo [aPoint] [MaxPathLength] [bReturnPartial]</strong> - 해당 목적지에 가장 가까운 내비게이션 노드까지의 경로를 계산하여, 그 경로상의 다음 노드를 반환합니다.
+</li> <li> <strong>FindPathToward [anActor] [bWeightDetours] [MaxPathLength] [bReturnPartial]</strong> - 해당 액터에 가장 가까운 내비게이션 노드까지의 경로를 계산하여, 그 경로상의 다음 노드를 반환합니다.
+</li> <li> <strong>FindPathTowardNearest [GoalClass] [bWeightDetours] [MaxPathLength] [bReturnpartial]</strong> - 해당 클래스에 가장 가까운 노드까지의 경로를 계산하여, 그 경로상의 다음 노드를 반환합니다.
+</li> <li> <strong>FindPathToIntercept [Pawn] [InRouteGoal] [bWeightDetours] [MaxPathLength] [bReturnpartial]</strong> - 해당 Pawn의 월드 이동을 가로막을 경로를 계산하여, 그 경로상의 다음 노드를 반환합니다.
+</li> <li> <strong>PointReachable [aPoint]</strong> - Pawn의 이동 능력으로 지정된 위치에 직접 이동할 수 있는지 여부를 반환합니다. 이 함수는 비용이 많이 들기에, 가능하면 ActorReachable() 를 사용하는게 좋습니다.
+</li> <li> <strong>ActorReachable [anActor]</strong> - Pawn의 이동 능력으로 지정된 액터에 직접 이동할 수 있는지 여부를 반환합니다. 잠재적으로 PointReachable() 보다 최적화되기는 했지만, 여전히 비용이 많이 들기에 아껴 쓰는게 좋습니다.
+</li> <li> <strong>FindRandomDest</strong> - 내비게이션 네트워크의 임의 노드를 반환합니다. 캐릭터가 월드를 이리저리 돌아다니는 상태로 만들기에 좋습니다.
+</li></ul>
+<p />
+인공지능 및 내비게이션에 관한 상세 정보는 <a href="AIOverviewKR.html" class="twikiLink">AI 개요</a> 를 참고하십시오.
+<p />
+<h4><a name="카메라 / 조준"></a> 카메라 / 조준 </h4>
+<p />
+이 부분의 함수는 시점과 Controller 및 Pawn의 조준에 관계된 것입니다.
+<p /> <ul>
+<li> <strong>GetPlayerViewPoint [out_Location] [out_Rotation]</strong> - Controller Pawn의 시점을 반환합니다. 유저 플레이어의 경우 카메라의 시점과 동일합니다. AI 플레이어의 경우 Pawn의 눈이 향하는 시점입니다. 이와 같은 기본 구현에서는, 그저 Controller 자체의 위치와 방향이라고 봐도 됩니다.
+</li> <li> <strong>GetActorEyesViewPoint [out_Location] [out_Rotation]</strong> - Controller 혹은 있는 경우 그 Pawn의 시점을 반환합니다. 근본적으로 플레이어가 어디에서 어느 방향으로 보는지를 반환하는 겁니다.
+</li> <li> <strong>IsAimingAt [Target] [Epsilon]</strong> - Controller가 주어진 반경 안에서 현재 지정된 대상을 조준하고 있는지 여부를 반환합니다. 엡실론값 1.0은 정조준을 뜻하며, 낮은 값은 오차를 허용한다는 뜻입니다.
+</li></ul>
+<p />
+<h3><a name="PlayerController 클래스"></a> PlayerController 클래스 </h3>
+<p />
+PlayerController와 그 하위클래스는, 유저 플레이어로부터 입력을 받아 처리하여 게임에서 그 결과 동작을 보여주는 함수기능을 구현합니다. 대부분의 경우, Pawn 이동, (Pawn을 직접 움직이는 식으로) 카메라 조절, 플레이어가 누른 키나 버튼에 따라 무기 전환이나 발사 등의 동작을 PlayerController가 다룬다는 뜻입니다.
+<p />
+<h4><a name="일반"></a> 일반 </h4>
+<p />
+너무 일반적인지라 아무 범주에도 속하지 않는 함수들입니다.
+<p /> <ul>
+<li> <strong>Playertick [DeltaTime]</strong> - 플레이어용 주요 업데이트 함수입니다. 매 싸이클마다 실행됩니다.
+</li> <li> <strong>ConsoleCommand [Command]</strong> - 마치 플레이어가 직접 입력한 것마냥 해당 명령을 실행합니다.
+</li></ul>
+<p />
+<h4><a name="플레이어 입력 / 이동"></a> 플레이어 입력 / 이동 </h4>
+<p />
+플레이어의 입력과 이동에 적용되는 함수들입니다.
+<p /> <ul>
+<li> <strong>InitInputSystem</strong> - PlayerController의 PlayerInput 클래스의 인스턴스를 새로 만들어 입력 시스템을 초기화하는 함수입니다.
+</li> <li> <strong>PlayerMove [DeltaTime]</strong> - 현재 이동에 대한 가속 및 회전값을 새로 계산하여 (혼자놀기나 청취서버에 대해서는) ProcessMove() 를 호출하거나, (네트워크 클라이언트에 대해서는) ReplicateMove() 를 호출합니다. 단순히 베이스 PlayerController 클래스의 토막이지만, PlayerWalking (플레이어가 걷는) 상태와 같은 이동 관련 상태가 오버라이드되어 있습니다. 이 함수는 매 싸이클마다 PlayerTick() 에 의해 호출됩니다.
+</li> <li> <strong>ProcessMove [DeltaTime] [newAccel] [DoubleClickMove] [DeltaRot]</strong> - 클라이언트 측의 현 이동을 다룹니다. 이 함수는 이동에 대한 특수 함수기능을 요하는 특정 상태 내부에 오버라이드되어 있습니다.
+</li> <li> <strong>ReplicateMove [DeltaTime] [newAccel] [DoubleClickMove] [DeltaRot]</strong> - 이동 과정을 시작시키는 함수입니다. 현 이동을 PendingMove 목록에 저장하고, (서버측에서 실행되는) ProcessMove() 및 ServerMove() 를 호출합니다.
+</li> <li> <strong>ServerMove [TimeStamp] [inAccel] [ClientLoc] [MoveFlags] [ClientRoll] [View]</strong> - 서버측에서만 실행되며, MoveAutonomous() 를 호출하여 현 이동을 수행합니다. 지난 업데이트 이후 시간이 충분히 지났는지, 서버와 클라이언트 위치 사이의 오차가 심한지에 따라 업데이트 필요 여부를 결정하기도 합니다.
+</li> <li> <strong>Move Autonomous [DeltaTime] [MoveFlags] [newAccel] [DeltaRot]</strong> - ProcessMove() 를 호출하여 필요한 자율 물리 계산을 업데이트합니다.
+</li> <li> <strong>ClientUpdatePosition</strong> - 클라이언트측 플레이어의 위치를 서버와 일치하도록 업데이트합니다. PlayerTick() 함수에서, ServerMove() 함수를 통해 필요하다고 결정된 경우에만 호출됩니다.
+</li> <li> <strong>UpdateRotation [DeltaTime]</strong> - Controller와 Controller Pawn의 회전값을 플레이어 입력 기반으로 업데이트합니다.
+</li> <li> <strong>ProcessViewRotation [DeltaTime] [out_ViewRotation] [DeltaRot]</strong> - 플레이어의 입력을 기반으로 플레이어 시점 회전을 처리하여, 결과 회전값을 출력합니다. UpdateRotation() 에서 호출됩니다.
+</li></ul>
+<p />
+<h3><a name="AIController 클래스"></a> AIController 클래스 </h3>
+<p />
+AIController와 그 하위클래스는 Pawn의 환경을 관찰하고 및 그 환경 정보를 기반으로 똑똑한 결정을 내리도록 하는 함수기능을 구현합니다. 근본적으로 내부에 포함된 결정 루프를 사용하여 지속적으로 의사 결정 과정을 순환시키며, 그 결정을 기반으로 적절한 행동을 취합니다. AIController 클래스의 주요 함수는 아래에 설명되어 있습니다:
+<p />
+<h4><a name="의사 결정"></a> 의사 결정 </h4>
+<p />
+AI 조절 개체를 다룰 때, 의사 결정 과정은 정말 매우 중요합니다. 어떤 처리 정보 없이, 그리고 그런 정보가 없어 뭘 어떻게 할 지 모르는 NPC는 그냥 꿔다놓은 보릿자루일 뿐입니다. 물론 AI를 똑똑하게 만드는건 나중의 일이지만, AIController 클래스 구조의 어느 곳에다 어떻게 AI 코드를 넣는 지는 알아야 할 것입니다. 아래 함수들이 의사 결정 과정에서의 주요 일꾼들입니다.
+<p />
+알림: 이 함수는 AIController 클래스가 아닌 UDKBot 클래스에 구현되어 있습니다. 사용하려면 UDKBot이나 UTBot 에서 연장해 와야 합니다.
+<p /> <ul>
+<li> <strong>ExecuteWhatToDoNext</strong> - (다음에 할 일을 수행) 의사 결정 과정의 주요 시작점이며, 결정 논리의 대부분을 담고 있어야 합니다. 이 함수는 물리 틱 동안에 수행되지만, 물리 상태를 변경하는 것을 포함해서는 안됩니다.
+</li> <li> <strong>WhatToDoNext</strong> - (다음에 할 일) 다음 틱 동안에 ExecuteWhatToDoNext() 이 호출되게 하며, 물리 틱 동안에 수행할 불안전 코드를 포함할 수도 있습니다. LatentWhatToDonext() 를 사용하기 위해 상태 코드 내부에서 호출되지는 않습니다.
+</li> <li> <strong>LatentWhatToDoNext</strong> - (다음에 잠재적으로 할 일) WhatToDoNext() 호출을 캡슐화하며, 지연틱 의사결정 과정 수행을 기다립니다. 상태 코드에서 호출되어 다음 의사결정 루프동안 일시정지 상태가 되게 합니다.
+</li></ul>
+<p />
+<p />
+<h2><a name="Pawn 클래스"></a> Pawn 클래스 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Pawn 클래스는 언리얼 내의 모든 플레이어, 캐릭터, 크리처, 기타 종류 개체의 베이스 클래스입니다. 전에 언급한 대로, 플레이어나 AI와 월드간의 물리 상호작용을 담당합니다. 커스텀 Pawn 클래스를 만들 때, 먼저 어떤 함수기능이 기존해 있는지 알아놔야 캐릭터의 행동을 구현하기 위해 함수기능을 어떻게 오버리아드할 것인지, 혹은 아예 새로운 함수 기능을 추가하게 되면 시간이 얼마나 필요하게 되는지 등에 대한 것을 결정할 수 있을 겁니다. 이에 대한 지원으로, 아래에 Pawn 클래스의 중요 함수들을 함수기능에 따라 세부 항목으로 나눠 설명해 놨습니다.
+<p />
+<h3><a name="Controller와 빙의"></a> Controller와 빙의 </h3>
+<p />
+Pawn과 Controller 및 빙의(/해제) 상호작용에 관련된 함수기능을 포함하는 함수입니다.
+<p /> <ul>
+<li> <strong>PossessedBy [controller] [bVehicleTransition]</strong> - Pawn의 Controller로 새로 지정된 Controller를 설정하며, 필요한 동작이나 초기화를 수행합니다. Controller가 Pawn에 빙의되면 호출됩니다.
+</li> <li> <strong>Unpossessed</strong> - Pawn의 Controller 및 관련 프로퍼티를 초기화시킵니다. Pawn이 죽을 때, 라운드가 끝날 때, Controller가 더이상 Pawn에 들러붙어 있을 필요가 없을 때, 즉 다른 Pawn에 빙의되려 한다든가 등등의 경우에 Controller에서 호출됩니다.
+</li> <li> <strong>SpawnDefaultController</strong> - Pawn에 현재 Controller가 없는 경우, Pawn에 대한 ControllerClass 의 인스턴스를 스Pawn하여 Controller가 Pawn에 빙의되게 합니다. 이는 Pawn의 PostBeginPlay() 함수에서 호출되어 게임플레이 동안 스Pawn된 Pawn이나 레벨에 놓인 Pawn에 Controller가 제대로 달라붙게 해 줍니다.
+</li> <li> <strong>DetatchFromController [bDestroyController]</strong> - Pawn에 달라붙은 Controller 빙의를 해제하며, 옵션을 통해 빙의가 깨진 후 Controller를 파괴할 수도 있습니다. Pawn이 죽거나 리셋, 파괴될 때, 다른 Controller에 할당될 때 호출됩니다.
+</li></ul>
+<p />
+<h3><a name="인벤토리 및 무기"></a> 인벤토리 및 무기 </h3>
+<p />
+대부분의 인벤토리 함수기능은 PostBeginPlay() 이벤트 안에서 스Pawn되는 Pawn의 인벤토리매니저에 의해 처리됩니다. 그러나 Pawn은 약간의 함수기능을 처리하며, 인벤토리 전용 함수를 여럿 사용해서 명령을 인벤토리매니저에 전달하기도 합니다. Pawn 클래스는 무기 및 무기 발사에 관련된 함수도 여럿 포함되어 있습니다. 그 함수들은 아래와 같습니다.
+<p /> <ul>
+<li> <strong>AddDefaultInventory</strong> - 기본 인벤토리에 나열된 인벤토리 아이템을 Pawn의 인벤토리에 추가합니다. 이 함수는 GameInfo 클래스의 AddDefaultInventory() 함수에서 호출됩니다.
+</li> <li> <strong>CreateInventory [inventoryClass] [bDoNotActivate]</strong> - 지정된 인벤토리 클래스의 인스턴스를 만들고, Pawn의 인벤토리에 추가한 뒤, 새 인벤토리 아이템을 반환합니다. 이 함수는 단순히 인벤토리매니저로 호출을 전달하여 실제 작업을 처리하게 합니다.
+</li> <li> <strong>FindInventoryType [inventoryClass] [bAllowSubclass]</strong> - Pawn의 인벤토리에서 지정된 클래스의 인스턴스를 검색하여 찾으면 해당 인스턴스를 반환합니다.
+</li> <li> <strong>TossInventory [invenetoryItem] [forceVelocity]</strong> - Pawn이 지정된 인벤토리를 지정된 속도로 던져버리게 하고, Pawn의 인벤토리에서도 제거합니다. 단순히 TossInventory() 함수에 명령을 전달하여 처리하게 합니다.
+</li> <li> <strong>ThrowActiveWeapon</strong> - Pawn이 현재 선택 무기를 바닥에 버리게 하고, Pawn의 인벤토리에서 제거합니다. 단순히 TossInventory()에 명령을 전달하여 처리하게 합니다.
+</li> <li> <strong>SetActiveWeapon [newWeapon]</strong> - 지정된 무기를 Pawn의 현재 무기로 설정합니다. 단순히 인벤토리매니저에 명령을 전달하여 처리하게 합니다.
+</li> <li> <strong>PlayWeaponSwitch [oldWeapon] [newWeapon]</strong> - Pawn이 예전 무기에서 새 무기로 전환하는데 필요한 애니메이션을 수행하게 합니다. 인벤토리매니저의 ChangeWeapon() 함수에서 호출됩니다.
+</li> <li> <strong>StartFire [fireModeNum]</strong> - Pawn이 현재 무기를 지정된 발사모드로 발사를 시작하게 합니다. 인벤토리매니저에 명령을 전달합니다.
+</li> <li> <strong>StopFire [fireModeNum]</strong> - Pawn이 현재 무기의 발사모드 발사를 멈추게 합니다. 인벤토리매니저에 명령을 전달합니다.
+</li> <li> <strong>WeaponFired [weapon] [bViaReplication] [hitLocation]</strong> - 현재 무기를 발사하는 데 관련된 모든 효과 생성의 델리게이트(대리자)로 사용됩니다. 현재 무기의 PlayFireEffects() 함수를 호출합니다.
+</li> <li> <strong>WeaponStoppedFiring [weapon] [bViaReplication]</strong> - 현재 무기를 발사하는 데 관련된 모든 효과 파괴의 델리게이트로 사용됩니다. 현재 무기의 StopFireEffects() 함수를 호출합니다.
+</li></ul>
+<p />
+<h3><a name="데미지 입기"></a> 데미지 입기 </h3>
+<p />
+Pawn 클래스에는 힐링 뿐 아니라 무기나 기타 환경에서 데미지를 입는 함수기능도 포함되어 있습니다. 데미지와 체력에 관련된 함수는 아래와 같습니다.
+<p /> <ul>
+<li> <strong>TakeDamage [damage] [InstigatedBy] [hitLocation] [momentum] [damageType] [hitInfo] [damageCauser]</strong> - Pawn의 체력을 지정된 만큼 깎습니다. <ul>
+<li> <strong>Damage</strong> - 체력을 깎을 양입니다.
+</li> <li> <strong>InstigatedBy</strong> - 데미지를 입을 Pawn Controller 입니다.
+</li> <li> <strong>HitLocation</strong> - 데미지가 적용될 위치입니다.
+</li> <li> <strong>Momentum</strong> - 데미지의 결과로 Pawn에 적용될 속도입니다.
+</li> <li> <strong>DamageType</strong> - 입힐 데미지의 유형을 나타내는 클래스입니다.
+</li> <li> <strong>HitInfo</strong> - 데미지에 관한 정보의 옵션 TraceHitInfo 구조체 입니다.
+</li> <li> <strong>DamageCauser</strong> - 데미지를 입히는 옵션 액터 입니다.
+</li></ul>
+</li> <li> <strong>HealDamage [amount] [healer] [damageType]</strong> - Pawn이 살아있고 최대 최력이 아닌 경우, Pawn의 최대 체력 범위 내에서 체력을 지정된 만큼 올립니다.
+</li> <li> <strong>TakeFallingDamage</strong> - 낙하 속도에 기반하여 Pawn에 데미지를 입힙니다. 적절한 데미지를 TakeDamage() 함수에 전달합니다.
+</li> <li> <strong>CrushedBy [otherPawn]</strong> - Pawn이 다른 Pawn에 깔렸을 때 데미지를 입게 합니다. 데미지량은 이 Pawn을 깔아뭉갠 Pawn의 속도에 기반합니다. Pawn의 BaseChange() 함수에서 호출되며, 데미지량을 TakeDamage() 함수에 전달합니다.
+</li> <li> <strong>TakeRadiusDamageOnBones [instigatedBy] [baseDamage] [damageRadius] [damageType] [momentum] [hurtOrigin] [bFullDamage] [damageCauser] [bones]</strong> - 반경에 따라 감쇠되는 데미지를 Pawn 스켈레탈 메시의 지정된 본 목록에 적용하는 함수입니다.
+</li> <li> <strong>NotifyTakeHit [instigatedBy] [hitLocation] [damage] [damageType] [momentum]</strong> - Pawn이 데미지를 입었음을 알 필요가 있는 대상에게 알리는 함수입니다. Controller의 NotifyTakeHit() 함수를 호출합니다.
+</li> <li> <strong>TakeDrowningDamage</strong> - Pawn이 물 속에 너무 오래 있었을 때, 그 기간에 따라 데미지를 적용합니다.
+</li></ul>
+<p />
+<h3><a name="애니메이션"></a> 애니메이션 </h3>
+<p />
+Pawn은 스켈레탈 메시를 주요 시각 요소로 사용합니다. 이동과 같은 동작의 애니메이션 재생 대부분은 Pawn에 할당된 AnimTree에 의해 처리되지만, 내장 애니메이션 재생용 함수기능에는 약간의 제약이 있습니다. 이들 중 대부분은 Pawn의 스켈레탈 메시 요소에 명령을 전달하는 도우미 함수 형태로 등장하며, 이 함수들에 대한 설명은 아래와 같습니다.
+<p />
+알림: Mesh 변수에 의해 참조되는 Pawn의 SkeletalMeshComponent는 개별 애니메이션 시퀸스를 재생하는 애니메이션 관련 함수기능을 포함하고 있습니다. 염두에 두실 것은, 이를 사용하려면 Pawn의 AnimTree에 있는 유일무이한 애니메이션 노드가 AnimNodeSequence 노드여야 한다는 겁니다. 즉 블렌딩과 같은 AnimTree 시스템의 고급 함수기능을 전부 잃게 된다는 것이지만, 필요하다면 그런 함수기능이 있기는 합니다.
+<p /> <ul>
+<li> <strong>SetMorphWeight [MorphNodeName] [MorphWieght]</strong> - Pawn에 할당된 AnimTree 내부 지정 모핑 노드의 무게를 설정합니다.
+</li> <li> <strong>SetSkelControlScale [SkelControlName] [Scale]</strong> - Pawn에 할당된 AnimTree 내부 지정 SkelControl 노드의 크기를 설정합니다.
+</li> <li> <strong>PlayActorFaceFXAnim [AnimSet] [GroupName] [SeqName] [SoundCueToPlay]</strong> - Pawn이 지정된 FaceFX 안면 애니메이션 시퀸스를 실행하게 합니다.
+</li> <li> <strong>StopActorFaceFXAnim</strong> - 현재 실행중인 FaceFX 안면 애니메이션 시퀸스를 멈춥니다.
+</li> <li> <strong>IsActorPlayingFaceFXAnim</strong> - Pawn이 현재 FaceFX 안면 애니메이션을 실행중인지에 대한 불리언 값을 반환합니다.
+</li></ul>
+<p />
+<h3><a name="카메라 원근 / 조준"></a> 카메라 원근 / 조준 </h3>
+<p />
+Pawn이 현재 뷰 대상일 때 플레이어의 카메라 위치 및 방향 조절이나 플레이어 및 NPC의 현 조준 설정용 함수기능을 포함하는 함수입니다.
+<p /> <ul>
+<li> <strong>CalcCamera [DeltaTime] [out_CamLoc] [out_CamRot] [out_FOV]</strong> - Pawn에서의 카메라 시점을 계산합니다. 플레이어에 대한 주 카메라 계산입니다.
+</li> <li> <strong>GetDefaultCameraMode [controller]</strong> - 이 Pawn에 사용될 카메라 모드 기본값의 이름을 반환합니다. 보통 Controller가 Pawn에 달라붙어 있을 때 호출됩니다.
+</li> <li> <strong>ProcessViewRotation [deltaTime]  [out_ViewRotation] [out_DeltaRot]</strong> - 플레이어의 시야 회전값을 처리하여 최종 시야 회전값을 out_ViewRotation 파라미터로 반환합니다. PlayerController의 UpdateRotation() 함수에서 호출됩니다.
+</li> <li> <strong>SetViewRotation [NewRotation]</strong> - Controller가 있을경우 그 회전값을 설정하며, 없을 경우 Pawn에 직접 설정합니다.
+</li> <li> <strong>GetActorEyesViewPoint [out_Location] [out_Rotation]</strong> - Pawn의 눈 위치와 방향값, 즉 플레이어의 시점을 반환합니다. 1인칭 원근 모드에서는 카메라의 위치 및 방향과 동일합니다. 대부분의 추적이 수행될 시점이기도 합니다.
+</li> <li> <strong>GetBaseAimRotation</strong> - Pawn의 조준 회전값을 조준 에러나 자동조준, 조준접착 등의 조정 없이 Rotator로 반환합니다.
+</li> <li> <strong>GetAdjustedAimFor [Weapon] [StartFireLoc]</strong> - 기본 조준 회전값에 적용할 중간점, 즉 조준 에러나 자동 조준 등을 허용합니다. 기본값으로 Controller의 GetAdjustedaimFor() 함수에 명령을 전달합니다. Pawn에 Controller가 없는 경우에는 기본 조준 회전값을 반환합니다.
+</li></ul>
+<p />
+<p />
+<h2><a name="Player 예제"></a> Player 예제 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+커스텀 메시를 사용하여 플레이어 조절 캐릭터를 새로 추가하는 법 데모로, 다음의 클래스 셋이 새로 사용됩니다: Pawn, PlayerController, GameInfo. 이 예제의 목적은 플레이어가 조절하는 캐릭터를 새로 만드는 데 대한 기본을 보여드리기 위함입니다. 기본 구현을 해 놓고 나면, 게임에 적합한 새 캐릭터 구현에 무엇을 사용할 것인가, 또는 자체 커스텀 함수기능을 추가할 것인가 선택하는 단순한 문제가 됩니다.
+<p />
+<img alt="Player.jpg" src="rsrc/Three/CharactersTechnicalGuide/Player.jpg" />
+<p />
+<h3><a name="Player Pawn 클래스"></a> Player Pawn 클래스 </h3>
+<p />
+이 예제용으로 새로 만든 Pawn 클래스에는 약간의 함수 기능이 추가되었습니다. 내장 체력 재생 기능을 넣기로 결정했습니다. Tick() 함수 내부에서, Pawn의 현 체력이 매 틱마다 지정된 양만큼 차오르게 됩니다. 이를 위해 약간의 클래스 함수를 추가하여 Tick 함수를 오버라이드하고, 재생 기능을 추가하였습니다.
+<p />
+<div class="codetitlebar">
+UDNPawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+class UDNPawn extends UTPawn;
+
+var float ElapsedRegenTime;
+var float RegenAmount;
+var float RegenTime;
+
+event Tick(float DeltaTime)
+{
+   // 경과 시간 계산
+   ElapsedRegenTime +&#61; DeltaTime;
+
+   // 충분히 지났는지?
+   if(ElapsedRegenTime &#62;&#61; RegenTime)
+   {
+      // Pawn을 치유하고 경과 시간 초기화
+      HealDamage(RegenAmount, Controller, class&#39;DamageType&#39;);
+      ElapsedRegenTime &#61; 0.0f;
+   }
+}
+
+defaultproperties
+{
+   // 재생 프로퍼티용 기본값 설정
+   RegenAmount&#61;2
+   RegenTime&#61;1
+}
+</pre>
+</div>
+<p />
+<h3><a name="Player Controller 클래스"></a> Player Controller 클래스 </h3>
+<p />
+PlayerController 클래스는 UTPlayerController 클래스의 아주 기본적인 확장 클래스입니다. 캐릭터 클래스를 플레이어로 사용하도록 유지하기 위해 클래스 변수를 추가했을 뿐이며, 기존 ServerSetCharacterClass() 함수를 사용하여 캐릭터 클래스를 플레이어의 캐릭터로 설정합니다.
+<p />
+<div class="codetitlebar">
+UDNPlayerController.uc
+</div>
+<div class="codesnippet">
+<pre>
+class UDNPlayerController extends UTPlayerController;
+
+var class&#60;UTFamilyInfo&#62; CharacterClass;
+
+simulated event PostBeginPlay()
+{
+   super.PostBeginPlay();
+
+   SetupPlayerCharacter();
+}
+
+/&#42;&#42; 플레이어의 캐릭터 정보 클래스 설정 &#38; 기타 초기화 수행 &#42;/
+function SetupPlayerCharacter()
+{
+   // 캐릭터를 이 커스텀 캐릭터로 설정
+   ServerSetCharacterClass(CharacterClass);
+}
+
+defaultproperties
+{
+   // 커스텀 캐릭터에 대해 UTFamilyInfo 클래스로 지정
+  CharacterClass&#61;class&#39;UTFamilyInfo&#95;Liandri&#95;Male&#39;
+}
+</pre>
+</div>
+<p />
+<h3><a name="GameInfo 클래스"></a> GameInfo 클래스 </h3>
+<p />
+이 경우에는 새 Pawn 및 PlayerController 클래스가 사용된다는 것을 지정하기 위해 새 게임유형이 필요합니다. UDK를 사용하여 게임을 만들 때는 어쨌든 커스텀 게임유형을 사용하게 마련이므로, 아예 새로 만드는 것 보다는 해당 클래스에 필요한 적절한 기본 프로퍼티를 추가하면 됩니다. 이 예제에서는 새 게임유형을 만들고, DefaultPawnClass 및 PlayerControllerClass 프로퍼티를 단순히 새로 만든 Pawn 및 PlayerController 클래스로 설정합니다.
+<p />
+<div class="codetitlebar">
+UDNGame.uc
+</div>
+<div class="codesnippet">
+<pre>
+class UDNGame extends UTDeathMatch;
+
+defaultproperties
+{
+   // 커스텀 Pawn 클래스로 지정합니다.
+  DefaultPawnClass&#61;class&#39;UDNPawn&#39;
+
+   // 커스텀 PlayerController 클래스로 지정합니다.
+  PlayerControllerClass&#61;class&#39;UDNPlayerController&#39;
+}
+</pre>
+</div>
+<p />
+이제 이 게임유형을 사용하여 맵을 돌리면, 플레이어가 데미지을 입었을 때 재생하게 되며 커스텀 캐릭터를 사용하게 됩니다.
+<p />
+<p />
+<h2><a name="NPC 예제"></a> NPC 예제 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+간단한 AI 조정 Pawn 데모를 위해, Pawn 및 Controller 클래스가 생성됩니다. Pawn 클래스는 언리얼 에디터 내부에 배치 가능할 것이며, 사용할 Controller 클래스 설정을 포함해서 메시, 애니메이션, 물리 프로퍼티 설정을 처리하게 됩니다. Controller가 월드에 NPC가 돌아다니는 것을 관장하게 되며, 현 목적지에 도달할 때마다 임의의 목적지를 선택하게 됩니다.
+<p />
+<img alt="NPC.jpg" src="rsrc/Three/CharactersTechnicalGuide/NPC.jpg" />
+<p />
+<h3><a name="NPC Pawn 클래스"></a> NPC Pawn 클래스 </h3>
+<p />
+Pawn 클래스는 꽤 간단합니다. 추가된 프로퍼티가 한 쌍 있으나, 디자이너가 쉽게 사용할 수 있도록 기존 프로퍼티를 그냥 복사해 놨을 뿐입니다. SkeletalMeshComponent가 메시, AnimTree, AnimSet, PhysicsAsset과 같은 시각 프로퍼티 전부를 설정하는데 사용됩니다. 이들 중 몇몇 기본값은 프로퍼티 기본값 블록에 설정되어 있습니다. NPC를 조절용 Controller 클래스를 설정하는 데 한 클래스가 사용되었습니다. PostBeginPlay() 함수는 기존 ControllerClass 변수를 새 NPCController 함수로 설정하는데 사용되었습니다. 마지막으로, SetCharacterClassFromInfo() 함수는 이 NPC 구현에는 필요하지 않아 아무것도 하지 않도록 오버라이드했습니다.
+<p />
+클래스 소스 전체는 다음과 같습니다:
+<p />
+<div class="codetitlebar">
+UDNPawn_NPC.uc
+</div>
+<div class="codesnippet">
+<pre>
+class UDNPawn&#95;NPC extends UTPawn
+   placeable;
+
+var(NPC) SkeletalMeshComponent NPCMesh;
+var(NPC) class&#60;AIController&#62; NPCController;
+
+simulated event PostBeginPlay()
+{
+   if(NPCController !&#61; none)
+   {
+      // 기존 ControllerClass를 새로 만든 NPCController 클래스로 설정
+      ControllerClass &#61; NPCController;
+   }
+
+   Super.PostBeginPlay();
+}
+
+// 아무것도 하지 않게 오버라이드
+simulated function SetCharacterClassFromInfo(class&#60;UTFamilyInfo&#62; Info)
+{
+}
+
+defaultproperties
+{
+   // 기본 NPC메시 설정
+   Begin Object Class&#61;SkeletalmeshComponent Name&#61;NPCMesh0
+      SkeletalMesh&#61;SkeletalMesh&#39;CH&#95;LIAM&#95;Cathode.Mesh.SK&#95;CH&#95;LIAM&#95;Cathode&#39;
+      PhysicsAsset&#61;PhysicsAsset&#39;CH&#95;AnimCorrupt.Mesh.SK&#95;CH&#95;Corrupt&#95;Male&#95;Physics&#39;
+      AnimSets(0)&#61;AnimSet&#39;CH&#95;AnimHuman.Anims.K&#95;AnimHuman&#95;BaseMale&#39;
+      AnimtreeTemplate&#61;AnimTree&#39;CH&#95;AnimHuman&#95;Tree.AT&#95;CH&#95;Human&#39;{
+   End Object
+   NPCMesh&#61;NPCMesh0
+   Mesh&#61;NPCMesh0
+   Components.Add(NPCMesh0)
+
+   // 커스텀 AIController 클래스로 지정 - 기본값으로
+  NPCController&#61;class&#39;UDNBot&#39;
+}
+</pre>
+</div>
+<p />
+<h3><a name="NPC Controller 클래스"></a> NPC Controller 클래스 </h3>
+<p />
+Controller 클래스는 가능한 한 가장 기본적인 조작 구현에 관한 것입니다. ExecuteWhatToDoNext() 함수는 주요 의사결정 함수로, Controller가 계속 방랑 상태가 되게 하기 위해 오버라이드됩니다. 이 상태는 단순히 목적지가 존재하는가, 혹은 Pawn이 현재 목적지에 도착했는지 검사한 후, 필요하다면 새 목적지를 설정하고나서 Controller에게 목적지를 향해 이동하라고 명령합니다. 마지막으로 LatentWhatToDoNext() 함수가 호출되어 다음 틱에 ExecuteWhatToDoNext() 함수가 다시 호출되게 하며, 결정 루프를 다시 반복하여 시작하게 됩니다.
+<p />
+Controller 클래스용 소스는 다음과 같습니다:
+<p />
+<div class="codetitlebar">
+UDNBot.uc
+</div>
+<div class="codesnippet">
+<pre>
+class UDNBot extends UTBot;
+
+var Actor Destination;
+
+protected event ExecuteWhatToDoNext()
+{
+   // 방랑 상태로 지정
+   GotoState(&#39;Roaming&#39;);
+}
+
+state Roaming
+{
+Begin:
+   // 방금 시작됐거나 목적지에 막 도착한 경우
+   // 새 목적지를 임의로 선택
+   if(Destination &#61;&#61; none &#124;&#124; Pawn.ReachedDestination(Destination))
+   {
+      Destination &#61; FindRandomDest();
+   }
+
+   // 목적지로의 경로를 찾아 경로상의 다름 노드로 이동
+   MoveToward(FindPathToward(Destination), FindPathToward(Destination));
+
+   // 다음 결정 루프 발동
+   LatentWhatToDoNext();
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h2><a name="새로운 커스텀 NPC 테스트하기"></a> 새로운 커스텀 NPC 테스트하기 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+새로운 NPC 클래스는 액터 클래스 탭에서 찾을 수 있습니다. 검색 위젯을 사용하는 것이 편할 것입니다.
+<p />
+<img src="rsrc/Three/CharactersTechnicalGuide/UDNCTG_ActorClasses.jpg" alt="UDNCTG_ActorClasses.jpg" width='481' height='691' />
+<p />
+콘텐츠 브라우저 안의 액터 클래스 탭에서 액터를 선택하고, 게임 뷰포트에 우클릭하여 맥락 메뉴를 불러올 수 있습니다. 맥락 메뉴에서 <strong>여기에 UDN_PawnNPC 추가</strong> 를 클릭하면 됩니다.
+<p />
+<img src="rsrc/Three/CharactersTechnicalGuide/UDNCTG_AddActor.jpg" alt="UDNCTG_AddActor.jpg" width='541' height='914' />
+<p />
+NPC 가 월드에 생겼습니다. PIE 로 게임을 테스트해 볼 수 있습니다.
+<p />
+<img src="rsrc/Three/CharactersTechnicalGuide/UDNCTG_PlacedNPC.jpg" alt="UDNCTG_PlacedNPC.jpg" width='745' height='903' />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CharactersTechnicalGuideKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:11:10 GMT -->
+</html></body>

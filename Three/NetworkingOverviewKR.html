@@ -1,0 +1,1053 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NetworkingOverviewKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:11:31 GMT -->
+<head>
+<title> UDK | NetworkingOverviewKR    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">NetworkingOverviewKR  </b></div>
+<div id="tooltext">
+<a href="NetworkingOverview.html" class="twikiLink">English Translation</a><br><a href="NetworkingOverviewJP.html" class="twikiLink">日本語訳</a><br><a href="NetworkingOverviewCH.html" class="twikiLink">中国翻译</a><br>
+
+<!-- Three/NetworkingOverviewKR -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHomeKR.html" class="twikiLink">UE3 홈</a></b> &gt; <b><a href="ReplicationHomeKR.html" class="twikiLink">네트워킹과 리플리케이션</a></b> &gt; 언리얼 네트워킹 아키텍처
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="언리얼 네트워킹 아키텍처"></a> 언리얼 네트워킹 아키텍처 </h1>
+<hr size="1" noshade="noshade">
+<em>문서 변경내역: <a href="https://udn.epicgames.com/Main/TimSweeney" class="restricted" class="restricted" class="twikiLink">Tim Sweeney</a> 원저. <a href="https://udn.epicgames.com/Main/StevePolge" class="restricted" class="restricted" class="twikiLink">Steve Polge</a> 이식. <a href="https://udn.epicgames.com/Main/JamesTan" class="restricted" class="restricted" class="twikiLink">James Tan</a> 업데이트. <a href="https://udn.epicgames.com/Main/SungjinHong" class="restricted" class="restricted" class="twikiLink">홍성진</a> 번역.</em>
+<div class="twikiToc"> <ul>
+<li> <a href="NetworkingOverviewKR.html#언리얼 네트워킹 아키텍처"> 언리얼 네트워킹 아키텍처</a> <ul>
+<li> <a href="NetworkingOverviewKR.html#개요"> 개요</a> <ul>
+<li> <a href="NetworkingOverviewKR.html#처음서부터 네트워킹을 구현하세요!"> 처음서부터 네트워킹을 구현하세요!</a>
+</li> <li> <a href="NetworkingOverviewKR.html#P2P(개인별 접속) 모델"> P2P(개인별 접속) 모델</a>
+</li> <li> <a href="NetworkingOverviewKR.html#클라이언트-서버 모델"> 클라이언트-서버 모델</a>
+</li> <li> <a href="NetworkingOverviewKR.html#언리얼 네트워킹 아키텍처"> 언리얼 네트워킹 아키텍처</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewKR.html#기본 개념"> 기본 개념</a> <ul>
+<li> <a href="NetworkingOverviewKR.html#목표"> 목표</a>
+</li> <li> <a href="NetworkingOverviewKR.html#기본 용어"> 기본 용어</a>
+</li> <li> <a href="NetworkingOverviewKR.html#업데이트 주기"> 업데이트 주기</a>
+</li> <li> <a href="NetworkingOverviewKR.html#서버가 왕"> 서버가 왕</a>
+</li> <li> <a href="NetworkingOverviewKR.html#대역폭 제한"> 대역폭 제한</a>
+</li> <li> <a href="NetworkingOverviewKR.html#리플리케이션"> 리플리케이션</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewKR.html#액터"> 액터</a> <ul>
+<li> <a href="NetworkingOverviewKR.html#규칙 (Role)"> 규칙 (Role)</a> <ul>
+<li> <a href="NetworkingOverviewKR.html#정의"> 정의</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewKR.html#연관성 (Relevancy)"> 연관성 (Relevancy)</a> <ul>
+<li> <a href="NetworkingOverviewKR.html#정의"> 정의</a>
+</li> <li> <a href="NetworkingOverviewKR.html#C++ 로 연관성 정의 바꾸기"> C++ 로 연관성 정의 바꾸기</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewKR.html#우선권"> 우선권</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewKR.html#리플리케이션"> 리플리케이션</a> <ul>
+<li> <a href="NetworkingOverviewKR.html#리플리케이션 개요"> 리플리케이션 개요</a> <ul>
+<li> <a href="NetworkingOverviewKR.html#액터 리플리케이션"> 액터 리플리케이션</a>
+</li> <li> <a href="NetworkingOverviewKR.html#변수 리플리케이션"> 변수 리플리케이션</a>
+</li> <li> <a href="NetworkingOverviewKR.html#함수 호출 리플리케이션"> 함수 호출 리플리케이션</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewKR.html#예제"> 예제</a>
+</li> <li> <a href="NetworkingOverviewKR.html#UnrealScript: replication 문"> UnrealScript: replication 문</a> <ul>
+<li> <a href="NetworkingOverviewKR.html#신뢰(reliable) vs 비신뢰(unreliable)"> 신뢰(reliable) vs 비신뢰(unreliable)</a>
+</li> <li> <a href="NetworkingOverviewKR.html#변수는 항상 신뢰"> 변수는 항상 신뢰</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewKR.html#리플리케이션 조건"> 리플리케이션 조건</a> <ul>
+<li> <a href="NetworkingOverviewKR.html#리플리케이션 조건 지침"> 리플리케이션 조건 지침</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewKR.html#변수 리플리케이션"> 변수 리플리케이션</a> <ul>
+<li> <a href="NetworkingOverviewKR.html#업데이트 메커니즘"> 업데이트 메커니즘</a>
+</li> <li> <a href="NetworkingOverviewKR.html#변수형 참고"> 변수형 참고</a>
+</li> <li> <a href="NetworkingOverviewKR.html#액터 프로퍼티"> 액터 프로퍼티</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewKR.html#함수 호출 리플리케이션"> 함수 호출 리플리케이션</a> <ul>
+<li> <a href="NetworkingOverviewKR.html#원격지 경유 메커니즘"> 원격지 경유 메커니즘</a>
+</li> <li> <a href="NetworkingOverviewKR.html#함수 호출 리플리케이션 vs 변수 리플리케이션"> 함수 호출 리플리케이션 vs 변수 리플리케이션</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewKR.html#시뮬레이션 함수와 스테이트"> 시뮬레이션 함수와 스테이트</a>
+</li> <li> <a href="NetworkingOverviewKR.html#리플리케이션 패턴"> 리플리케이션 패턴</a> <ul>
+<li> <a href="NetworkingOverviewKR.html#서버 CPU 사용 최소화"> 서버 CPU 사용 최소화</a>
+</li> <li> <a href="NetworkingOverviewKR.html#인지 반응시간 최소화"> 인지 반응시간 최소화</a>
+</li> <li> <a href="NetworkingOverviewKR.html#ReplicationInfo 클래스"> ReplicationInfo 클래스</a>
+</li> <li> <a href="NetworkingOverviewKR.html#ReplicatedEvent() 사용하기"> ReplicatedEvent() 사용하기</a>
+</li> <li> <a href="NetworkingOverviewKR.html#WorldInfo 클래스"> WorldInfo 클래스</a>
+</li> <li> <a href="NetworkingOverviewKR.html#GameInfo 클래스"> GameInfo 클래스</a> <ul>
+<li> <a href="NetworkingOverviewKR.html#InitGame"> InitGame</a>
+</li> <li> <a href="NetworkingOverviewKR.html#PreLogin"> PreLogin</a>
+</li> <li> <a href="NetworkingOverviewKR.html#Login"> Login</a>
+</li> <li> <a href="NetworkingOverviewKR.html#PostLogin"> PostLogin</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewKR.html#플레이어 이동과 예측"> 플레이어 이동과 예측</a> <ul>
+<li> <a href="NetworkingOverviewKR.html#개요"> 개요</a>
+</li> <li> <a href="NetworkingOverviewKR.html#내부 작동 원리"> 내부 작동 원리</a>
+</li> <li> <a href="NetworkingOverviewKR.html#장점"> 장점</a>
+</li> <li> <a href="NetworkingOverviewKR.html#이동 패턴"> 이동 패턴</a>
+</li> <li> <a href="NetworkingOverviewKR.html#플레이어 스테이트 동기화"> 플레이어 스테이트 동기화</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewKR.html#플레이어 애니메이션 (클라이언트 측)"> 플레이어 애니메이션 (클라이언트 측)</a>
+</li> <li> <a href="NetworkingOverviewKR.html#사체"> 사체</a>
+</li> <li> <a href="NetworkingOverviewKR.html#무기 발사"> 무기 발사</a>
+</li> <li> <a href="NetworkingOverviewKR.html#발사체"> 발사체</a>
+</li> <li> <a href="NetworkingOverviewKR.html#무기 부착"> 무기 부착</a>
+</li> <li> <a href="NetworkingOverviewKR.html#소리"> 소리</a>
+</li> <li> <a href="NetworkingOverviewKR.html#피직스"> 피직스</a> <ul>
+<li> <a href="NetworkingOverviewKR.html#리플리케이션"> 리플리케이션</a>
+</li> <li> <a href="NetworkingOverviewKR.html#시뮬레이션"> 시뮬레이션</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewKR.html#퍼포먼스 팁"> 퍼포먼스 팁</a> <ul>
+<li> <a href="NetworkingOverviewKR.html#최적화 목표"> 최적화 목표</a> <ul>
+<li> <a href="NetworkingOverviewKR.html#Native (C++)"> Native (C++)</a>
+</li> <li> <a href="NetworkingOverviewKR.html#치트 검사와 예방"> 치트 검사와 예방</a>
+</li> <li> <a href="NetworkingOverviewKR.html#트래픽 모니터링"> 트래픽 모니터링</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewKR.html#네트워크 드라이버 구현"> 네트워크 드라이버 구현</a> <ul>
+<li> <a href="NetworkingOverviewKR.html#플러그인 네트워크 드라이버"> 플러그인 네트워크 드라이버</a>
+</li> <li> <a href="NetworkingOverviewKR.html#인터넷 드라이버"> 인터넷 드라이버</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewKR.html#언리얼 와이어 프로토콜"> 언리얼 와이어 프로토콜</a>
+</li> <li> <a href="NetworkingOverviewKR.html#현재와 미래"> 현재와 미래</a>
+</li> <li> <a href="NetworkingOverviewKR.html#유용한 링크"> 유용한 링크</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="개요"></a> 개요 </h2>
+<hr size="1" noshade="noshade">
+멀티플레이어 게임이란 공유 현실에 관한 이야기입니다. 모든 플레이어가 같은 세계에 있다고 느끼고, 그 세계에서 벌어지는 똑같은 사건을 다른 시점으로 바라보는 것이죠. 멀티플레이어 게임이 <em>Doom</em> 으로 대표되는 2인용 모뎀 게임에서 <em>Quake 2</em>, <em><a href="http://www.unreal.com/" target="_top">Unreal</a></em>, <em>Ultima Online</em> 과 같은 크고 지속적이며 더욱 자유로운 형태의 상호작용을 바탕으로 하는 게임에 이르기까지, 공유 현실을 뒷받침하는 기술은 엄청나게 진화해 왔습니다.
+<p />
+<h3><a name="처음서부터 네트워킹을 구현하세요!"></a> 처음서부터 네트워킹을 구현하세요! </h3>
+한 가지 깨달아야 할 중요한 사실은, 네트워크 멀티플레이어를 지원하는 게임을 계획중이라면, 게임 개발 단계에서부터 그것을 염두에 두고 만들며 테스트해야 한다는 것입니다. 네트워크 구현을 효율적으로 하면 게임 오브젝트 디자인 결정 상으로도 엄청난 영향을 끼치게 됩니다. 이미 있는 솔루션을 개선하는 작업은 힘이 들며, 함수성을 여러 오브젝트에 나눠 넣는 등 네트워킹을 염두에 두지 않았을 때는 전혀 문제가 없었을 디자인상의 결정도 멀티플레이어에는 심각한 문제를 초래할 수 있습니다.
+<p />
+<h3><a name="P2P(개인별 접속) 모델"></a> P2P(개인별 접속) 모델 </h3>
+초기에는 <em>Doom</em> 이나 <em>Duke Nukem</em> 같은 P2P 게임이 있었습니다. 이런 게임에서는 게임 내 각 기계가 동등했습니다. 모두가 입력이나 타이밍에 있어 서로 정확히 동기화되었고, 각 기계는 똑같은 입력에 대해 똑같은 게임 로직을 수행합니다. 완전히 결정론적인 (즉 고정된 속도에 임의적이지도 않은) 게임 로직과 함께하여, 기계의 모든 플레이어는 똑같은 현실을 인지하는 것입니다.
+<p />
+이러한 접근법의 장점은 단순성입니다. 단점은: <ul>
+<li> <strong>지속성의 결여</strong>. 모든 플레이어가 같이 게임을 시작해야 하니, 새로운 플레이어가 원하는 대로 오고 갈 수가 없습니다.
+</li> <li> <strong>플레이어 유연성 결여</strong>. 네트워킹 아키텍처의 획일적 속성때문에, 이런저런 조정의 부하나 네트워크로 인한 오류 발생 확률이 플레이어 수에 정비례합니다.
+</li> <li> <strong>프레임율 유연성 결여</strong>. 모든 플레이어가 똑같은 내부 프레임율로 실행해야 하기에, 다양한 속도의 기계를 지원하기가 힘이 듭니다.
+</li></ul>
+<p />
+<h3><a name="클라이언트-서버 모델"></a> 클라이언트-서버 모델 </h3>
+다음으로는 <em>Quake</em> 에 처음 도입되어 나중에 <em>Ultima Online</em> 에 사용된 단일 클라이언트-서버 아키텍처가 등장합니다. 한 기계는 "서버"로 지정되어, 모든 게임 플레이 상의 결정을 담당합니다. 다른 기계는 "클라이언트"로, 키입력을 서버에 전송하고 렌더링할 오브젝트 목록을 받아다가 렌더링만 담당하는 터미널로 간주됩니다. 이러한 발전은 게임 서버가 인터넷 각지에 시작되면서 대규모 인터넷 게이밍을 가능하게 했습니다. 클라이언트-서버 아키텍처는 나중에 <em>QuakeWorld</em> 와 <em>Quake 2</em> 에서, 대역폭 사용량을 낮추면서도 시각적인 디테일은 더욱 살리기 위해, 부가 시뮬레이션과 예측 로직을 클라이언트 쪽으로 옮기는 식으로 확장되었습니다. 클라이언트는 렌더링할 오브젝트 목록 뿐만 아니라 그 궤적에 대한 정보도 같이 받아, 클라이언트가 오브젝트의 운동에 대해 기초적인 예측을 합니다. 게다가 클라이언트 운동의 인지 지연시간을 없애기 위해 획일적 예측 프로토콜이 도입되기도 했습니다.
+<p />
+여전히, 이러한 접근법에도 단점은 있습니다: <ul>
+<li> <strong>추가 조정 가능성 결여</strong> - 사용자나 라이선시가 (웨폰, 플레이어 콘트롤 등) 새로운 종류의 오브젝트를 만들 때, 해당 오브젝트의 시뮬레이션과 예측 부분을 명시하기 위한 글루 로직을 만들어야 합니다.
+</li> <li> <strong>예측 모델의 난점</strong> - 이 모델에서는 네트워크 코드와 게임 코드가 별개의 모듈이지만, 둘 다 서로의 구현을 온전히 인지하고 있어야 하는데, 게임 스테이트 동기화 유지를 위해서입니다. (이상적으로는) 별개의 모듈 사이 강 결합은 바람직하지 않은데, 확장을 힘들게 만들기 때문입니다.
+</li></ul>
+<p />
+<h3><a name="언리얼 네트워킹 아키텍처"></a> 언리얼 네트워킹 아키텍처 </h3>
+언리얼은 <strong>범용 클라이언트-서버 모델</strong> 이라는 새로운 접근법을 멀티플레이어 게이밍에 도입했습니다. 이 모델에서 서버는 여전히 게임 스테이트의 진행에 대해 전권을 행사합(authoritative, 권위적입)니다. 그러나 클라이언트는 실제로 게임 스테이트의 딱 부분집합만을 로컬에 유지하면서, 서버와 같은 게임 코드를 실행하면서 게임의 흐름을 예측하고, 거의 유사한 데이터를 기준으로 하여, 두 기계 사이에 교환해야 하는 데이터 양을 최소화시킵니다. 서버는 연관된(relevant) 액터와 그 리플리케이트(replicate, 네트워크를 통해 복제)된 프로퍼티를 리플리케이트하여, 월드에 대한 정보를 클라이언트에 보냅니다. 클라이언트와 서버는 또 리플리케이트된 함수, 즉 함수가 호출되는 액터를 소유한 클라이언트와 서버 사이에서만 리플리케이트되는 함수로 통신을 합니다.
+<p />
+나아가 확장성이 뛰어난 객체 지향형 스크립팅 언어 UnrealScript 로 자체 서술되는 <em>게임 스테이트</em> (state, 상태)는, 게임 로직을 네트워크 코드에서 온전히 분리시킵니다. 네트워크 코드는 언어로 서술되는 어떤 게임과도 잘 어울릴 수 있도록 범용화되어 있습니다. 이를 바탕으로 객체 지향형의 목표인 확장성(extensibility)을 향상시킬 수 있습니다. 확장성이란, 오브젝트의 행위는 해당 오브젝트만으로 완전히 서술해야지, 오브젝트 내부 구현을 알아내자고 고정배선된(hard-wired) 다른 코드 조각에 의존하지는 말아야 한다는 개념을 말합니다.
+<p />
+<h2><a name="기본 개념"></a> 기본 개념 </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="목표"></a> 목표 </h3>
+여기서의 목표는 언리얼의 네트워킹 아키텍처를 꽤나 엄격한 방식으로 정의하는 것인데, 꽤나 복잡하기 때문에 정확하게 정의하지 않으면 오해의 소지가 많기 때문입니다.
+<p />
+<h3><a name="기본 용어"></a> 기본 용어 </h3>
+기본 용어는 다음과 같이 정확히 정의합니다:
+<p /> <ul>
+<li> <strong>variable</strong>, <strong>변수</strong> 는 고정된 이름과 수정가능한 값 사이의 연계입니다. 변수의 예로는 <code>X=123</code> 와 같이 정수(integer), <code>Y=3.14</code> 와 같이 실수(float), <code>Team="Rangers"</code> 와 같이 문자열(string), <code>V=(1.5,2.5,-0.5)</code> 와 같은 벡터(vector)를 들 수 있습니다.
+</li> <li> <strong>object</strong>, <strong>오브젝트</strong> 는 고정된 변수 세트로 구성된 자체-독립적 데이터 구조체입니다.
+</li> <li> <strong>actor</strong>, <strong>액터</strong> 는 레벨을 독립적으로 돌아다니면서 그 안의 다른 액터들과 상호작용할 수 있는 오브젝트입니다.
+</li> <li> <strong>level</strong>, <strong>레벨</strong> 은 액터 세트를 담는 오브젝트입니다.
+</li> <li> <strong>tick</strong>, <strong>틱</strong> 은 DeltaTime 이라는 주어진 가변 기간이 지나면 전체 게임 스테이트를 업데이트하는 작업입니다.
+</li> <li> 레벨의 <strong>game state</strong>, 게임 스테이트는, 틱 작업이 현재 진행중이지 않은 일정 시점에서, 그 레벨에 존재하는 모든 액터와 그 모든 변수의 현재 값의 전체 집합을 말합니다.
+</li> <li> <strong>client</strong>, <strong>클라이언트</strong> 란, 월드에서 일어나는 이벤트를 대략적으로 시뮬레이션하여 플레이어가 보는 월드의 시야를 그려내기에 적합한 게임 스테이트 부분집합을 유지하는 언리얼 엔진 실행 인스턴스를 말합니다.
+</li> <li> <strong>server</strong>, <strong>서버</strong> 란, 한 레벨의 틱 작업과, 게임 스테이트를 모든 클라이언트에 권위적으로 통신하는 작업을 담당하는 언리얼 엔진 실행 인스턴스를 말합니다.
+</li></ul>
+<p />
+<h3><a name="업데이트 주기"></a> 업데이트 주기 </h3>
+위의 모든 개념은 틱과 게임 스테이트 말고는 잘 이해가 될 것입니다. 그래서 그 둘에 대해 더욱 자세히 다뤄 보겠습니다. 우선 언리얼의 업데이트 주기를 단순히 설명해 보면 이렇습니다:
+<p /> <ul>
+<li> 내가 <em>서버</em> 면, 현재 게임 스테이트를 모든 클라이언트와 통신합니다.
+</li> <li> 내가 <em>클라이언트</em> 면, 이동 요청을 서버에 보내고, 서버에서 새로운 게임 스테이트 정보를 받아, 월드를 보는 내 시야를 추정하여 화면에 그립니다.
+</li> <li> 지난 번 틱 이후 <code>DeltaTime</code> 만큼의 가변 기간이 지났다 치면, 게임 스테이트 업데이트를 위해 <em>틱</em> 작업을 합니다.
+</li></ul>
+<p />
+틱 작업은 레벨의 모든 액터 업데이트, 피직스 수행, 발생된 재미난 게임 이벤트 통지, 필수 스크립트 코드 실행 등으로 이루어 집니다. 언리얼의 모든 피직스와 업데이트 코드는 가변 기간의 경과를 처리할 수 있도록 디자인되어 있습니다.
+<p />
+예를 들어 언리얼의 운동 피직스는 이렇습니다:
+<p />
+<div class="codesnippet">
+<pre>
+ Position +&#61; Velocity &#42; DeltaTime
+</pre>
+</div>
+<p />
+이를 통해 프레임율 확장성이 향상되는 것입니다.
+<p />
+틱 작업이 진행중일 때는, 실행되는 코드에 의해 게임 스테이트가 계속해서 수정됩니다. 게임 스테이트는 세 가지 방법으로 변화 가능합니다:
+<p /> <ul>
+<li> 액터에 있는 변수는 수정 가능합니다.
+</li> <li> 액터는 생성(create) 가능합니다.
+</li> <li> 액터는 소멸(destroy) 가능합니다.
+</li></ul>
+<p />
+<h3><a name="서버가 왕"></a> 서버가 왕 </h3>
+위에서 서버의 게임 스테이트는 레벨 내 모든 액터의 모든 변수 집합으로 완벽하고 간결하게 정의됩니다. 서버는 게임 플레이 흐름에 대해 전권을 행사하므로, 서버의 게임 스테이트는 항상 하나의 참 게임 스테이트로 간주할 수 있습니다. 클라이언트에 있는 게임 스테이트 버전은 항상, 여러가지 다른 종류의 서버 게임 스테이트를 추정한 것으로 간주할 수 있습니다. 클라이언트에 존재하는 액터는, 오브젝트 그 자체라기 보다는 오브젝트를 임시로 추정하여 나타낸 것이기 때문에, 프록시로 간주해야 할 것입니다.
+<p />
+클라이언트가 네트워크 멀티플레이어 게임에서 사용할 레벨을 로드할 때는, 레벨에서 <strong>bNoDelete</strong> 나 <strong>bStatic</strong> 중 하나가 참으로 설정되지 않은 모든 액터를 지웁니다. (서버의 결정을 통해) 해당 클라이언트에 연관된 액터는, 서버에서 클라이언트로 리플리케이트됩니다. (GameInfo 처럼) 절대 클라이언트에 리플리케이트되지 않은 액터도 있습니다.
+<p />
+<h3><a name="대역폭 제한"></a> 대역폭 제한 </h3>
+네트워크 대역폭이 무제한이라면 네트워크 코드는 매우 간단할 것입니다. 틱이 끝날 때마다 서버는 그냥 각 클라이언트에 게임 스테이트를 온전히 전송하고, 클라이언트는 언제나 서버에서 벌어지는 게임의 상태를 그대로 그려내기만 하면 될 일입니다. 그러나 28.8K 모뎀을 기준으로 한 인터넷 현실은, 업데이트를 그대로 전송하기에 필요한 대역폭의 1% 수준이 될까말까 입니다. 물론 인터넷 환경은 개선될 터이지만, 게임과 그래픽의 발전속도를 나타내는 무어의 법칙을 따라가기에는 역부족입니다. 그러므로 게임 스테이트 업데이트를 온전히 전송할 만큼 충분한 대역폭이 갖춰질 날은, 현재도 앞으로도 없을 것입니다.
+<p />
+그래서 네트워크 코드의 주요 목표는, 클라이언트가 제한된 대역폭으로 공유 현실에 가까운 상호작용형 월드 뷰를 그려낼 수 있도록, 서버가 게임 스테이트를 합리적으로 추정하여 통신할 수 있도록 하는 것입니다.
+<p />
+<h3><a name="리플리케이션"></a> 리플리케이션 </h3>
+언리얼은 "서버와 클라이언트 사이 공유 현실을 어느 정도로 추정하여 적합하게 그려낼 것인가" 하는 일반적인 문제를 "리플리케이션" 의 문제로 봅니다. 즉 그 정도의 공유 현실 추정을 위해, 서버와 클라이언트 사이에 흐르는 데이터와 명령 집합 크기를 결정하는 문제로 보는 것입니다.
+<p />
+<h2><a name="액터"></a> 액터 </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="규칙 (Role)"></a> 규칙 (Role) </h3>
+일반적으로 모든 액터에는 <strong>Role</strong> 과 <strong>RemoteRole</strong> 프로퍼티가 있으며, 서버와 클라이언트에는 그 값이 서로 다릅니다. 서버에 있는 모든 액터는 <strong>Role</strong> 이 <strong>ROLE_Authority</strong> (전권 행사)로 설정되어 있습니다.
+<p />
+서버에 있는 액터가 <strong>RemoteRole</strong> 로 가질 수 있는 값은: <ul>
+<li> <strong>ROLE_AutonomousProxy</strong> 자율 프록시 - 소유중인 클라이언트에 리플리케이트될 때, PlayerController 와 제어되는 Pawn  입니다.
+</li> <li> <strong>ROLE_SimulatedProxy</strong> 시뮬레이션 프록시 - 다른 모든 리플리케이트 액터입니다.
+</li> <li> <strong>ROLE_None</strong> 없음 - 어떤 클라이언트에도 절대 리플리케이트되지 않는 액터입니다.
+</li></ul>
+<p />
+서버에서 액터의 <strong>RemoteRole</strong> 은 클라이언트에서 그 액터의 <strong>Role</strong> 입니다. 클라이언트로 리플리케이트되는 모든 액터는 <strong>RemoteRole</strong> 이 <strong>ROLE_Authority</strong> 로 설정됩니다.
+<p />
+<h4><a name="정의"></a> 정의 </h4>
+<strong>Actor</strong> 클래스는 <strong>ENetRole</strong> 열거형과 <strong>Role</strong>, <strong>RemoteRole</strong> 변수 둘을 다음과 같이 정의합니다:
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+// 넷 변수
+enum ENetRole
+{
+   ROLE&#95;None,              // 규칙 전혀 없음
+   ROLE&#95;SimulatedProxy,    // 이 액터의 로컬 시뮬레이션 프록시입니다.
+   ROLE&#95;AutonomousProxy,   // 이 액터의 로컬 자율 프록시입니다.
+   ROLE&#95;Authority,         // 액터에 대해 전권을 행사합니다.
+};
+var ENetRole RemoteRole, Role;
+</pre>
+</div>
+<p />
+<strong>Role</strong> 과 <strong>RemoteRole</strong> 변수는 각각 로컬과 원격지에서의 액터에 대한 제어권을 나타냅니다:
+<p /> <ul>
+<li> <strong>Role == ROLE_SimulatedProxy</strong> - 시뮬레이션 프록시라는 것은, 액터가 피직스와 애니메이션을 시뮬레이션하는 임시 추정 프록시라는 뜻입니다. 클라이언트에서 시뮬레이션 프록시는 (직선이나 중력의 영향을 받는 운동 및 충돌 등) 기본적인 피직스를 수행하나, 고차원적인 운동 결정을 내리지는 않습니다. 그냥 갈 뿐이지요. <em>simulated</em> 키워드로 표시된 함수만 실행시킬 수 있으며, <em>simulated</em> 로 표시된 스테이트에만 들어갈 수 있습니다. 이 상황은 네트워크 클라이언트에서만 나타나며, 서버나 싱글 플레이어 게임에서는 보이지 않습니다.
+</li> <li> <strong>Role == ROLE_AutonomousProxy</strong> - 자율 프록시라는 것은, 액터가 로컬 플레이어라는 뜻입니다. 자율 프록시에는 클라이언트 측에서 운동에 대한 (시뮬레이션 보다는) 예측을 위한 특수 로직이 내장되어 있습니다. 클라이언트의 어느 스크립트 함수도 실행시킬 수 있고, 어느 스테이트에도 들어갈 수 있습니다. 이 상황은 네트워크 클라이언트에서만 나타나며, 네트워크 서버나 싱글 플레이어 게임에서는 보이지 않습니다.
+</li> <li> <strong>Role == ROLE_Authority</strong> - 전권 행사(권위적이)라는 것은, 이 기계가 이 액터에 대한 전권을 행사한다는 뜻입니다.
+</li></ul>
+싱글 플레이어 게임에서는 모든 액터의 경우에 해당합니다. 어느 함수든 실행 가능하고, 어느 스테이트에도 들어갈 수 있습니다.
+<p />
+서버상 모든 액터의 경우에도 해당합니다.
+<p />
+클라이언트에서는 클라이언트가 자체적으로 스폰한 액터, 이를테면 대역폭 사용량을 줄이기 위해 클라이언트 측에서 이루어지는 장식성 특수효과같은 경우에 해당합니다.
+<p />
+서버측에서 모든 액터에는 <strong>Role == ROLE_Authority</strong>, <strong>RemoteRole</strong> 은 프록시 타입 중 하나로 설정됩니다. 클라이언트에서 <strong>Role</strong> 과 <strong>RemoteRole</strong> 는 항상 서버 값에 비할 때 정반대입니다. <strong>Role</strong> 과 <strong>RemoteRole</strong> 라는 단어에서 그 의미를 예상할 수 있습니다.
+<p />
+대부분의 <strong>ENetRole</strong> 값 뜻은 <strong>Actor</strong> 나 <strong>PlayerPawn</strong> 같은 UnrealScript 클래스의 replication 문에서 정의되어 있습니다. replication 문이 여러가지 규칙 값에 대한 의미를 어떻게 정의하고 있는지, 몇 가지 예제는 이렇습니다:
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>주:</strong> 이 예제는 엄밀히 언리얼 엔진 1 과 2 에 연관되어 있지만, 핵심 개념은 언리얼 엔진 3 에도 여전합니다.
+<p /> <ul>
+<li> <strong>Actor.AmbientSound</strong> 변수가 서버에서 클라이언트로 전송됩니다. <strong>Actor</strong> 클래스에서 이 리플리케이션 정의는: <ul>
+<li> <pre>if(Role &#61;&#61; ROLE&#95;Authority) AmbientSound;</pre>
+</li></ul>
+</li> <li> <strong>Actor.AnimSequence</strong> 변수가 서버에서 클라이언트로 전송되지만, 메시로 렌더링되는 액터만입니다. <strong>Actor</strong> 클래스에서 이 리플리케이션 정의는: <ul>
+<li> <pre>if(DrawType &#61;&#61; DT&#95;Mesh &#38;&#38; RemoteRole &#60;&#61; ROLE&#95;SimulatedProxy) AnimSequence;</pre>
+</li></ul>
+</li> <li> 서버는 시뮬레이션 프록시가 처음 스폰될 때 모든 <strong>Velocity</strong> 와 이동 브러시를 클라이언트에 전송합니다. <strong>Actor</strong> 클래스에서 이 리플리케이션 정의는: <ul>
+<li> <pre>if((RemoteRole &#61;&#61; ROLE&#95;SimulatedProxy &#38;&#38; (bNetInitial &#124;&#124; bSimulatedPawn)) &#124;&#124; bIsMover) Velocity;</pre>
+</li></ul>
+</li></ul>
+<p />
+모든 UnrealScript 클래스의 replication 문을 공부해 보면, 모든 규칙의 내부 작업 방식을 이해할 수 있습니다. 리플리케이션에 관련해서 "내부적으로 돌아가는 _마법_" 같은 일은 별로 없습니다. C++ 로우 레벨에서, 엔진은 액터, 함수 호출, 변수 리플리케이션을 위한 기본적인 메커니즘을 제공합니다. UnrealScript 하이 레벨에서, 여러가지 규칙에 따라 어떤 변수와 함수를 리플리케이트시킬지 구체화시켜 다양한 네트워크 규칙의 의미를 정의합니다. 즉 규칙의 의미는, 시뮬레이션 프록시에 대한 피직스와 애니메이션을 조건적으로 업데이트하는 내부 C++ 로직 약간을 제외하고는, UnrealScript 로 거의 자체 정의됩니다.
+<p />
+<h3><a name="연관성 (Relevancy)"></a> 연관성 (Relevancy) </h3>
+<p />
+<h4><a name="정의"></a> 정의 </h4>
+언리얼의 레벨은 방대할 수가 있기에, 일정 시간에 플레이어가 보는 것은 그 레벨에 있는 액터의 일부일 수가 있습니다. 레벨에 있는 대다수의 다른 액터는 보이지도 들리지도 않으며, 플레이어에게 별다른 영향을 끼치지도 못합니다. 서버에 의해 클라이언트에 보이거나 영향을 끼칠 수 있는 것으로 여겨지는 액터 집합은, 해당 클라이언트에 대해 연관성이 있는 액터 집합으로 여깁니다. 언리얼 네트워크 코드의 중요한 대역폭 최적화는, 클라이언트에게 연관성이 있는 액터 집합을 알려주는 것에 있습니다.
+<p />
+언리얼은 플레이어에게 연관성이 있는 액터 집합을 결정하는 데 있어 다음 규칙을 (순서대로) 적용합니다: <ul>
+<li> 액터의 RemoteRole 이 ROLE_None 이면, 연관성이 없습니다.
+</li> <li> 액터가 다른 액터의 스켈레톤에 붙어 있으면, 그 연관성은 그 베이스의 연관성에 따라 결정됩니다.
+</li> <li> 액터에 <strong>bAlwaysRelevant</strong> 설정이 되어 있으면, 연관성이 있습니다.
+</li> <li> 액터에 (인벤토리에 사용되는) <strong>bOnlyRelevantToOwner</strong> 설정이 참이면, 해당 액터를 소유하는 플레이어의 클라이언트에만 잠재적 연관성이 있습니다.
+</li> <li> 액터가 플레이어에 의해 소유되어 있으면 (<strong>Owner == Player</strong>), 연관성이 있습니다.
+</li> <li> 액터가 숨겨져 있고 (<strong>bHidden <code>= true</strong>) 충돌하지 않는데다 (<strong>bBlockPlayers =</code> false</strong>) 배경음도 없으면 (<strong>AmbientSound == None</strong>) 액터는 연관성이 없습니다.
+</li> <li> 액터의 <strong>Location</strong> 와 플레이어의 <strong>Location</strong> 사이의 시선(line-of-sight) 검사에 의해 액터가 보인다면, 연관성이 있습니다.
+</li> <li> 액터가 (정확한 수치는 퍼포먼스 최적화에 따라 결정되지만) 2-10 초 전에 보였었다면, 연관성이 있습니다.
+</li></ul>
+<p />
+<!--  -->
+참고로 (클라이언트에 남아있는) <strong>bStatic</strong> 및 <strong>bNoDelete</strong> 액터 역시 리플리케이트 가능합니다.
+<p />
+이러한 규칙은 플레이어에게 정말로 영향을 끼칠 수 있는 액터 집합을 제대로 추정해 내기 위해 고안된 것입니다. 물론 완전하지는 않습니다. 시선 검사는 커다란 액터에 대해 가끔 (약간의 휴리스틱으로 보정하긴 하지만) 잘못된 결과를 내기도 하며, 배경음의 소리 차폐를 처리하지 못하는 등의 문제가 있습니다. 그러나 그 추정 오차라고 해 봐야, 인터넷 반응 지연이나 패킷 손실 특성 등 네트워크 환경에 내재된 오차에 비하면 새발의 피입니다.
+<p />
+<!--  -->
+<p />
+<h3><a name="우선권"></a> 우선권 </h3>
+모뎀 인터넷 연결을 기반으로 하는 데쓰매치 게임의 경우, 서버가 각 클라이언트에 알리고자 하는 게임 스테이트를 모두 알릴 만큼의 대역폭이 충분할 리가 없기에, 언리얼은 모든 액터에 우선권을 부여하는 부하 균형 기법을 사용, 각 액터가 게임플레이에 있어 얼마나 <em>중요한가</em> 에 따라 각 액터에 <em>적당량의</em> 대역폭을 줍니다.
+<p />
+각 액터에는 <code>NetPriority</code> 라는 실수 변수가 있습니다. 수치가 높을 수록 그 액터는 다른 것에 비해 더 많은 대역폭을 갖습니다. 우선권이 2.0 인 액터는 1.0 인 액터에 비해 그 업데이트 빈도가 정확히 두 배가 됩니다. 여기서 중요한 것은 비율이므로, 모든 것의 우선권을 높인다고 언리얼의 네트워크 퍼포먼스가 나아지지 않습니다. 퍼포먼스 튜닝을 통해 <code>NetPriority</code> 에 할당한 값을 조금 살펴보자면 이렇습니다:
+<p /> <ul>
+<li> <strong>Actor</strong> - 1.0
+</li> <li> <strong>Pawns</strong> - 2.0
+</li> <li> <strong>PlayerController</strong> - 3.0
+</li> <li> <strong>Projectiles</strong> - 2.5
+</li> <li> <strong>Inventory</strong> - 1.4
+</li> <li> <strong>Vehicule</strong> - 3.0
+</li></ul>
+<p />
+<!--  -->
+<p />
+<h2><a name="리플리케이션"></a> 리플리케이션 </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="리플리케이션 개요"></a> 리플리케이션 개요 </h3>
+네트워크 코드는 서버와 클라이언트 사이의 게임 스테이트에 대한 정보를 통신하는 데 있어, 세 가지 원시적인 로우 레벨 리플리케이션 작업을 기반으로 하고 있습니다.
+<p />
+<h4><a name="액터 리플리케이션"></a> 액터 리플리케이션 </h4>
+서버는 각 클라이언트의 "연관된"(relevant) 액터 집합(클라이언트에 보이거나, 클라이언트의 뷰 또는 운동에 어떻게든 즉효를 끼칠 것 같은 액터들)을 알아내어, 클라이언트에게 그 액터의 "리플리케이트된"(네트워크를 통해 복제된) 사본을 만들어 유지하라 이릅니다. 서버는 항상 해당 액터에 대해 전권을 행사하는 버전을 갖기에, 다수의 클라이언트는 언제고 해당 액터의 추정 리플리케이트된 버전을 가질 수 있습니다.
+<p />
+리플리케이트된 액터가 클라이언트에 스폰될 때, <strong>PreBeginPlay()</strong> 와 <strong>PostBeginPlay()</strong> 도중에는 <strong>Location</strong> 와 (<strong>bNetInitialRotation</strong> 가 참일 때 유효한) <strong>Rotation</strong> 만 쓸 수 있습니다. 리플리케이트된 액터는 서버가 그 리플리케이션 채널을 닫기 때문에 소멸(destroy)만 가능한데, Actor 프로퍼티 <strong>bNetTemporary</strong> 와 <strong>bTearOff</strong> 가 참으로 설정된 경우에는 예외입니다.
+<p />
+액터 프로퍼티 리플리케이션은 신뢰성(reliable)이 있습니다. 즉 그 액터의 클라이언트 버전 프로퍼티는 결국 서버의 값을 반영하게 되며, 모든 프로퍼티 값 변화가 리플리케이트되지는 않는다는 뜻입니다. 어떤 경우에도 액터 프로퍼티는 서버에서 클라이언트로만 리플리케이트되기에, 그러한 프로퍼티는 그것을 정의하는 Actor 클래스의 리플리케이션 정의에 포함되어 있을 때만 리플리케이트됩니다.
+<p />
+리플리케이션 정의는 리플리케이션 조건을 나타내며, 이는 현재 고려되는 클라이언트에 주어진 프로퍼티를 리플리케이트할지, 한다면 언제 할지를 설명합니다. 연관성이 있는 액터라 할지라도, 프로퍼티 전부가 리플리케이트되진 않습니다. 리플리케이션 조건을 신경써서 지정해 주면 대역폭 사용량을 크게 줄일 수 있습니다.
+<p />
+리플리케이션 도중에만 유효하면서, 서버가 고려중인 리플리케이션 클라이언트에 따라 값이 변하는 액터 프로퍼티는 셋 있습니다: <ol>
+<li> <strong>bNetDirty 가 참이면</strong> 리플리케이트된 프로퍼티가 UnrealScript 를 통해 변경된 경우<!--  -->입니다. 최적화를 위해 사용되는 옵션입니다. (<strong>bNetDirty</strong> 가 거짓이라면 UnrealScript 리플리케이션 조건이나 스크립트로만 수정되는 프로퍼티가 변경되었는지 검사할 필요가 없기 때문이죠.) 자주 업데이트되는 프로퍼티의 리플리케이션을 관리하는 데는 <strong>bNetDirty</strong> 를 사용하지 마시기 바랍니다!
+</li> <li> <strong>bNetInitial</strong> 는, 리플리케이트된 액터 프로퍼티 전부의 초기 리플리케이션이 끝날 때까지 계속해서 참입니다.
+</li> <li> <strong>bNetOwner가 참이면</strong>, Actor 의 최상위 오너가 현재 클라이언트가 소유한 PlayerController 인 경우입니다.
+</li></ol>
+<p />
+<h4><a name="변수 리플리케이션"></a> 변수 리플리케이션 </h4>
+클라이언트에 중요한 게임 스테이트 양상을 나타내는 액터 변수는 "리플리케이트" 가능합니다. 즉 서버측에서 변수 값이 바뀔 때마다, 서버는 클라이언트에 업데이트된 값을 보냅니다. 새로운 값으로 덮어쓴다면 클라이언트측의 변수도 변경되겠지요. 변수 리플리케이션 조건은 UnrealScript 클래스의 Replication{} 블록에 지정됩니다.
+<p />
+<h4><a name="함수 호출 리플리케이션"></a> 함수 호출 리플리케이션 </h4>
+네트워크 게임의 서버에서 호출되는 함수는 로컬에서 실행하기 보다는 원격 클라이언트로 보낼 수 있습니다. 또는 클라이언트 측에서 호출되는 함수도 로컬에서 호출하기 보다는 서버로 보낼 수 있습니다. 함수 리플리케이션은 함수 정의에서 <strong>server</strong>, <strong>client</strong>, <strong>reliable</strong>, <strong>unreliable</strong> 키워드로 지정할 수 있습니다.
+<p />
+<h3><a name="예제"></a> 예제 </h3>
+구체적인 예제를 들어 보자면, 네트워크 게임에서의 클라이언트 경우를 생각해 봅시다. 자신을 향해 총을 쏘며 달려오는 적이 두 마리 있으며, 총성이 들립니다. 모든 게임 스테이트는 로컬이 아닌 서버에 유지되고 있는데, 어떻게 그런 것들이 보이고 들리는 것일까요?
+<p /> <ul>
+<li> 적을 볼 수 있는 이유는, 그 적들이 자신에게 <em>연관성이 있다는</em> (즉 보인다는) 서버의 인식에 따라, 서버는 그 액터들을 자신에게 리플리케이트하고 있기 때문입니다. 고로 클라이언트는 자신을 쫓아 오는 두 플레이어 액터의 로컬 사본을 갖는 것입니다.
+</li> <li> 적이 자신을 향해 뛰어오는 것처럼 보이는 이유는, 서버가 <strong>Location</strong> 과 <strong>Velocity</strong> 프로퍼티를 리플리케이트하고 있기 때문입니다. 서버에서의 <strong>Location</strong> 업데이트 사이 사이마다, 클라이언트는 적의 이동을 로컬에서 시뮬레이트합니다.
+</li> <li> 총성을 들을 수 있는 이유는, 서버가 <strong>ClientHearSound</strong> 함수를 리플리케이트하고 있기 때문입니다. <strong>PlayerPawn</strong> 이 소리를 들었다고 서버가 판단할 때마다 <strong>PlayerPawn</strong> 에 대해 <strong>ClientHearSound</strong> 함수가 호출되는 것입니다.
+</li></ul>
+<p />
+이쯤에서 언리얼 멀티플레이어 게임 작동방식의 로우 레벨 메커니즘은 확실히 아셨을 것입니다. 서버가 게임 스테이트를 업데이트하고 중요한 게임 결정은 전부 내린 다음, 일부 액터를, 일부 변수를, 일부 함수 호출을 차례대로 클라이언트에 리플리케이트하는 것입니다.
+<p />
+모든 액터를 리플리케이트할 필요가 없다는 것도 명확합니다. 예를 들어 레벨에 반쯤 걸쳐있던 액터가 시야에서 사라졌는데, 그걸 업데이트하느라 대역폭을 낭비할 필요는 없습니다. 또, 보이는 변수라고 모두 업데이트할 필요도 없습니다. 예를 들어 AI 결정을 내리기 위해 서버가 사용하는 변수는 클라이언트에 전송할 필요가 없으며, 클라이언트에는 표시 변수, 애니메이션 변수, 피직스 변수같은 것만 알려주면 됩니다. 또한, 서버에서 실행되는 대부분의 함수도 리플리케이트되지 않습니다. 클라이언트가 보거나 듣게 되는 함수 오출만 리플리케이트해 주면 됩니다. 즉 모두 합치면, 서버에 저장되는 데이터 양은 엄청나나 클라이언트에 상관이 있는 것은 그 중 일부, 플레이어가 보고 듣고 느끼는 것에 영향을 끼치는 것들 뿐입니다.
+<p />
+고로 로직상의 다음 질문은, "리플리케이트해 줘야 하는 액터, 변수, 함수 호출을 언리얼 엔진이 어떻게 알아내는가?" 입니다.
+<p />
+답은, 액터에 대한 스크립트를 작성하는 프로그래머가 해당 스크립트의 어떤 변수와 함수를 리플리케이트할지 결정합니다. 그리고 바로 그가 해당 스크립트 안에 "replication 문"이라는 짧은 코드를 작성하여, 어떤 조건에서 무엇을 리플리케이트해 줘야 하는지 언리얼 엔진에 알려줍니다. 실제 월드 예로, <strong>Actor</strong> 클래스에 정의된 것을 몇 가지 들어 보겠습니다.
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>주:</strong> 이 모든 변수가 언리얼 엔진 (1 과 2 에는 있었지만) 3 의 Actor.uc 에 있는 것은 아니지만, 핵심 개념은 여전합니다.
+<p /> <ul>
+<li> <strong>Location</strong> (벡터) 변수는 액터의 위치를 담습니다. 서버는 위치 유지를 담당하기에, 서버가 그것을 클라이언트에 보내 줘야 합니다. 즉 리플리케이션 조건은 본질적으로 "내가 서버면 이걸 리플리케이트해라" 합니다.
+</li> <li> <strong>Mesh</strong> (오브젝트 리퍼런스) 변수는 액터에 렌더링할 메시를 가리킵니다. 서버가 그것을 클라이언트에 보내줘야 하나, 액터를 메시로 렌더링해야 하는 경우, 즉 Actor 의 <strong>DrawType</strong> 이 <strong>DT_Mesh</strong> 일 경우에만 보내주면 됩니다. 즉 리플리케이션 조건은 본질적으로 "내가 서버이고 <strong>DrawType</strong> 이 <strong>DT_Mesh</strong> 이면 이걸 리플리케이트해라" 합니다.
+</li> <li> <strong>PlayerPawn</strong> 클래스에는 <strong>bFire</strong> 와 <strong>bJump</strong> 처럼 키 와 버튼 입력을 정의하는 불리언 변수가 한다발 있습니다. 이들은 (입력이 발생하는) 클라이언트측에 생성되며, 서버는 그걸 알아야 합니다. 즉 리플리케이션 조건은 본질적으로 "내가 클라이언트면 이걸 리플리케이트해라" 합니다.
+</li> <li> <strong>PlayerController</strong> 클래스에는 플레이어가 소리를 들었다 알려주는 <strong>ClientHearSound</strong> 함수가 있습니다. 서버에서 호출되긴 하지만, 실제 소리는 게임을 플레이하는 사람, 즉 클라이언트 쪽에 들려줘야 합니다. 즉 이 함수에 대한 리플리케이션 조건은 "내가 서버면 이걸 리플리케이트해라" 가 되겠습니다.
+</li></ul>
+<p />
+위의 예제에서 보면 여러가지 것들이 명백해 집니다. 우선 리플리케이트될 수도 있는 모든 변수와 함수는, 리플리케이션을 해 줘야 하는지에 따라 참 또는 거짓으로 결정되는 표현식 "리플리케이션 조건"을 붙여줘야 합니다. 둘째, 이 리플리케이션 조건은 양방향이 되어야 합니다. 변수와 함수를, 서버도 클라이언트에 리플리케이트할 수 있어야 하고, 클라이언트도 서버로 리플리케이트할 수 있어야 합니다. 셋째, 이 "리플리케이션 조건"은 복합적일 수 있습니다. 이를테면 "내가 서버이고, 이 액터를 네트워크로 전송하는 것이 처음이면 이걸 리플리케이트해라" 하고 말이지요.
+<p />
+그러므로 변수와 함수를 리플리케이트해야 하는 (복합) 조건 표현을 위한 범용적인 방식이 필요합니다. 이러한 조건을 표현하는 데 있어 최적의 방법은 무엇일까요? 여러가지 옵션을 살펴봤는데, 이미 클래스, 변수, 코드 작성에도 아주 강력한 언어인 UnrealScript 가 리플리케이션 조건 작성에 완벽한 툴이 될 것이라는 결론을 내렸습니다.
+<p />
+<h3><a name="UnrealScript: replication 문"></a> UnrealScript: replication 문 </h3>
+UnrealScript 에서, 모든 클래스는 하나의 replication 문을 가질 수 있습니다. replication 문에는 하나 이상의 리플리케이션 정의가 들어 있습니다. 각 리플리케이션 정의는 (참이나 거짓으로 나오는) 리플리케이션 조건, 조건이 적용되는 하나 이상의 변수 목록으로 구성됩니다.
+<p />
+클래스의 replication 문은 해당 클래스에 정의된 변수만을 가리킬 수 있습니다. 이런 식으로, <strong>Actor</strong> 클래스에 <strong>DrawType</strong> 변수가 들어 있다면, 그 리플리케이션 조건을 어디서 찾아야 할지는 뻔합니다. Actor 클래스 안에만 있을 수 있는 것입니다.
+<p />
+클래스에 replication 문이 포함되지 않도록 하는 것도 가능합니다. 클래스가 리플리케이트할 변수나 함수를 새로 정의할 필요가 없다면 말입니다. 사실 대부분의 클래스는 replication 문이 필요하지 않습니다. 표시되는 것에 영향을 끼치는 "유의미한" 변수 대부분은 <strong>Actor</strong> 클래스에 정의되어 있으며, 서브클래스에서만 수정되기 때문입니다.
+<p />
+클래스에 변수를 새로 정의는 했는데 리플리케이션 정의에 올려놓지 않았다면, 그 변수는 절대로 리플리케이트되지 않는다는 뜻입니다. 이것은 정상입니다. 대부분의 변수는 리플리케이트할 필요가 없기 때문이지요.
+<p />
+replication 문의에 대한 UnrealScript 문법 예제입니다. <strong>replication {}</strong> 블록에 쌓인 부분이구요. <strong>PlayerReplicationInfo</strong> 클래스에서 따온 것입니다:
+<p />
+<div class="codetitlebar">
+PlayerReplicationInfo.uc
+</div>
+<div class="codesnippet">
+<pre>
+replication
+{
+   // 클라이언트에 절대 전송되지 않는 것들입니다.
+   if ( bNetDirty &#38;&#38; (Role &#61;&#61; Role&#95;Authority) )
+      Score, Deaths, bHasFlag, PlayerLocationHint,
+      PlayerName, Team, TeamID, bIsFemale, bAdmin,
+      bIsSpectator, bOnlySpectator, bWaitingPlayer, bReadyToPlay,
+      StartTime, bOutOfLives, UniqueId;
+   if ( bNetDirty &#38;&#38; (Role &#61;&#61; Role&#95;Authority) &#38;&#38; !bNetOwner )
+      PacketLoss, Ping;
+   if ( bNetInitial &#38;&#38; (Role &#61;&#61; Role&#95;Authority) )
+      PlayerID, bBot;
+}
+</pre>
+</div>
+<p />
+<h4><a name="신뢰(reliable) vs 비신뢰(unreliable)"></a> 신뢰(reliable) vs 비신뢰(unreliable) </h4>
+<strong>unreliable</strong> 키워드로 리플리케이트된 함수는 반대편에 도달한다는 보장이 없으며, 도달한다 쳐도 순서대로 전송되지 않았을 수가 있습니다. 비신뢰 함수의 전송히 막히는 경우라면, 네트워크 패킷 손실과 대역폭 포화 때문입니다. 그러니 그 확률은 매우 대략적이라는 것을 이해해야 합니다. 결과는 네트워크 종류에 따라 크게 달라질 수 있기에, 보장을 할 수가 없습니다:
+<p /> <ul>
+<li> <strong>LAN</strong> - 랜 게임에서는 비신뢰 데이터가 99% 성공적으로 수신된다 추정합니다. 그러나 게임의 진행 도중에 리플리케이트되는 것들은 수백 수천가지는 되기에, 비신뢰 데이터 일부가 손실된다는 것은 거의 확실합니다. 그러므로 랜 정도의 퍼포먼스만을 대상으로 한다 쳐도, 비신뢰 함수 리플리케이션이 전송되는 와중에 손실되는 경우를 코드는 너그러이 처리할 수 있어야 합니다.
+</li> <li> <strong>인터넷</strong> - 전형적인 저품질 28.8K ISP 접속을 기준으로, 비신뢰 함수는 보통 90%-95% 전송률을 보입니다. 다른 말로 손실 빈도가 아주 높지요.
+</li></ul>
+<p />
+신뢰 / 비신뢰 함수 사이의 득과 실에 대한 감을 더욱 확실히 잡으려면, 언리얼의 스크립트에 있는 replication 문에서 그 중요성 대비 신뢰성 결정을 어떻게 내렸는지 참고해 보시기 바랍니다. 신뢰 함수를 사용할 때는 신중을 기해 꼭 필요할 때만 사용하시기 바랍니다.
+<p />
+<h4><a name="변수는 항상 신뢰"></a> 변수는 항상 신뢰 </h4>
+변수는 패킷 손실이나 대역폭 포화 상황에서도 항상 반대편에 반드시 도달됩니다. 그러한 변수가 변경되는 경우, 보낸 순서 그대로 반대편에 도달한다는 보장이 없습니다. 또한, 변수의 값은 결국 동기화되기는 하지만, 그 변수의 모든 변경내용이 리플리케이트되지는 않을 수 있습니다.
+<p />
+<h3><a name="리플리케이션 조건"></a> 리플리케이션 조건 </h3>
+클래스 스크립트 내 리플리케이션 조건에 대한 간단 예제입니다:
+<p />
+<div class="codetitlebar">
+Pawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+replication
+{
+   if( Role&#61;&#61;ROLE&#95;Authority )
+      Weapon;
+}
+</pre>
+</div>
+<p />
+이 리플리케이션 조건을 우리말로 풀자면, "이 액터의 <strong>Role</strong> 변수 값이 <strong>ROLE_Authority</strong> 라면, 이 액터에 연관성이 있는 모든 클라이언트에게 이 액터의 <strong>Weapon</strong> 변수를 리플리케이트해라" 입니다.
+<p />
+리플리케이션 조건은 참이나 거짓 값으로 나오는 (즉 불리언) 표현식이면 됩니다. 즉 변수 비교, 함수 호출, 불리언 연산자 <code>!</code>, <code>&amp;&amp;</code>, <code>||</code>, <code>^^</code> 조합 등, UnrealScript 로 작성할 수 있는 표현식이면 무엇이든 가능합니다.
+<p />
+액터의 <strong>Role</strong> 변수는 보통 그 액터에 대한 로컬 머신의 제어권이 얼마나 되나를 나타냅니다. <strong>ROLE_Authority</strong> 는 "이 기계는 서버이니, 프록시 액터에 대한 전권을 행사할 수 있다"는 뜻입니다. <strong>ROLE_SimulatedProxy</strong> 는 "이 기계는 클라이언트니, 액터의 피직스를 시뮬레이트(예측)해야 한다"는 뜻입니다. <strong>Role</strong> 에 대해서는 추후 자세히 설명하겠으나, 간단히 요약하면:
+<p /> <ul>
+<li> <strong>if (Role == ROLE_Authority)</strong> - "내가 서버라면, 이걸 클라이언트에 리플리케이트한다."
+</li> <li> <strong>if (Role &lt; ROLE_Authority)</strong> - "내가 클라이언트라면, 이걸 서버에 리플리케이트한다."
+</li></ul>
+<p />
+다음 변수는 활용도가 뛰어나 replication 문에 매우 자주 사용됩니다:
+<p /> <ul>
+<li> <strong>bIsPlayer</strong> - 이 액터가 플레이어인지 입니다. 플레이어면 참이고, 다른 액터면 거짓입니다.
+</li> <li> <strong>bNetOwner</strong> - 이 액터가 리플리케이션 조건을 구하는 클라이언트에 의해 소유되었는지 입니다. 예를 들어 "Fred" 가 <code>DispersionPistol</code> 을 쥐고 있고, "Bob" 은 아무 무기도 쥐고 있지 않습니다. <code>DispersionPistol</code> 이 "Fred" 에 리플리케이트될 때는, ("Fred" 는 무기를 소유하고 있기 때문에) <code>bNetOwner</code> 변수는 참이 됩니다. "Bob" 에 리플리케이트될 때는, ("Bob"은 무기를 소유하지 않기에) <strong>bNetOwner</strong> 변수는 거짓이 됩니다.
+</li> <li> <strong>bNetInitial</strong> - 서버측에서만 (즉 <strong>Role <code>= ROLE_Authority</strong> 일때만) 유효합니다. 이 액터가 클라이언트에 처음 리플리케이트되는지를 나타냅니다. <strong>Role =</code> ROLE_SimulatedProxy</strong> 인 클라이언트에 유용한데, 서버가 그 위치와 속도를 한 번만 보내고 그 이후로는 클라이언트가 예측하게 할 수 있기 때문입니다.
+</li></ul>
+<p />
+<h4><a name="리플리케이션 조건 지침"></a> 리플리케이션 조건 지침 </h4>
+전형적으로 변수 리플리케이션은 (클라이언트에 서버로, 또는 서버에서 클라이언트로만 되지 양방은 안되는) 일방이기에, 모든 리플리케이션 조건은 보통 <strong>Role</strong> 이나 <strong>RemoteRole</strong> 의 비교로 시작합니다. 예를 들면 <strong>if(Role == ROLE_Authority)</strong> 또는 <strong>if(RemoteRole &lt; ROLE_SimulatedProxy)</strong> 이죠. 리플리케이션 조건에 <strong>Role</strong> 이나 <strong>RemoteRole</strong> 비교가 들어있지 않다면, 아마도 무언가 잘못된 것입니다.
+<p />
+리플리케이션 조건은 네트워크 플레이 도중 서버에서 매우매우 자주 평가되니, 가급적 간단히 하세요.
+<p />
+리플리케이션 조건에 함수 호출이 허용되기는 하지만, 엄청 느려질 수 있으니 가급적 삼가세요.
+<p />
+리플리케이션 조건에는 부작용이 없을 것입니다. 네트워크 코드는 예기치 못한 때를 포함해서 언제고 그 조건 호출 시기를 선택할 수 있기 때문입니다. 예를 들어 <strong>if(Counter++ &gt; 10)</strong> ... 같은 식으로 해도 됩니다. 운이 좋으면 뭐가 어떻게 될지 알아낼 수 있겠지요.
+<p />
+<h3><a name="변수 리플리케이션"></a> 변수 리플리케이션 </h3>
+<h4><a name="업데이트 메커니즘"></a> 업데이트 메커니즘 </h4>
+매번 틱 이후, 서버는 연관성이 있는 집합 내 모든 액터를 확인합니다. 그 리플리케이트되는 변수 전부를 검사하여 예전 업데이트 이후 변경되었는지 알아보고, 변수의 리플리케이션 조건을 평가하여 변수를 보낼 필요가 있는지 알아봅니다. 회선에 대역폭 여유가 있는 경우, 네트워크를 통해 그 변수를 다른 기계로 보냅니다.
+<p />
+이렇게 클라이언트는 월드에서 벌어지는, 해당 클라이언트에 보이거나 들리는 <em>중요</em> 이벤트에 대한 업데이트를 받습니다. 변수 리플리케이션에서 기억할 핵심 요점은:
+<p /> <ul>
+<li> 변수 리플리케이션은 틱이 완료된 이후에만 일어납니다. 그러므로 틱 도중에 어느 한 변수의 값이 바뀌었다가 다시 원래 값으로 되돌아간 경우, 그 변수는 리플리케이트되지 않습니다. 즉 클라이언트에는 틱이 지난 후의 서버 액터 변수 스테이트에 대한 것만 보이게 되며, 틱 도중의 변수 스테이트는 보이지 않습니다.
+</li> <li> 변수는 예전에 알고 있던 값에서 변경되었을 경우에만 리플리케이트됩니다.
+</li> <li> 액터에 대한 변수는 클라이언트의 연관 세트에 있을 때만 클라이언트에 리플리케이트됩니다. 즉 클라이언트는 연관 세트에 있지 않은 액터에 대해서 정확한 변수를 갖지 못합니다.
+</li></ul>
+<p />
+UnrealScript 에는 글로벌 변수 개념이 없어, 리플리케이트 가능한 변수는 액터에 속하는 인스턴스 변수 뿐입니다.
+<p />
+<h4><a name="변수형 참고"></a> 변수형 참고 </h4> <ul>
+<li> <strong>Vector</strong> 와 <strong>Rotator</strong> - 대역폭 효율을 높이기 위해 언리얼은 벡터와 로테이터 값을 양자화(quantize)시킵니다. 벡터의 <strong>X</strong>, <strong>Y</strong>, <strong>Z</strong> 컴포넌트는 보내기 전 16비트 signed int 로 변환되기에, 소수점 값이나 -32768...32767 범위를 벗어나는 값은 잃게 됩니다. 로테이터의 <strong>Pitch</strong>, <strong>Yaw</strong>, <strong>Roll</strong> 컴포넌트도 byte, 즉 <strong>(Pitch &gt;&gt; 8) &amp; 255</strong> 형태로 변환됩니다. 그러니 벡터와 로테이터에는 주의를 기울여야 합니다. 정밀도를 유지해야 하는 경우, 개별 컴포넌트에 int 나 float 변수를 사용하십시오. 정밀도가 보존된 상태로 전송됩니다.
+</li> <li> <strong>일반 구조체</strong> - 모든 컴포넌트를 전송하여 리플리케이트됩니다. 구조체는 "다보내거나 안보내거나" 식으로 전송됩니다.
+</li> <li> <strong>변수 배열</strong> - 배열 크기가 448 바이트 미만인 경우에만 리플리케이트 가능합니다. 동적 배열은 불가능합니다. <ul>
+<li> <strong>배열</strong> 은 효율적으로 리플리케이트됩니다. 큰 배열의 요소가 하나 변경되면, 그 요소만 전송됩니다.
+</li></ul>
+</li></ul>
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>주:</strong> 리플리케이션 규칙은 바뀔 수 있으며, 우선권 개념도 있습니다. 예를 들어 구조체 안에 들어있는 정적 배열은, 구조체 안에 있기 떄문에 항상 전체 전송됩니다!
+<p />
+<h4><a name="액터 프로퍼티"></a> 액터 프로퍼티 </h4>
+액터 프로퍼티 리플리케이션은 신뢰성입니다. 액터 클라이언트 버전의 프로퍼티는 결국 서버의 값을 반영하게 되어, 모든 프로퍼티 값 변화가 리플리케이트되지 않는다는 뜻입니다.
+<p /> <ul>
+<li> 프로퍼티는 서버에서 클라이언트로만 리플리케이트됩니다.
+</li> <li> 프로퍼티는 그 프로퍼티를 정의하는 클래스의 리플리케이션 정의에 포함되어 있을 경우에만 리플리케이트됩니다.
+</li></ul>
+<p />
+<h3><a name="함수 호출 리플리케이션"></a> 함수 호출 리플리케이션 </h3>
+<h4><a name="원격지 경유 메커니즘"></a> 원격지 경유 메커니즘 </h4>
+네트워크 게임 도중 UnrealScript 함수가 호출될 때, 그리고 그 함수에 replication 키워드가 있을 때, 그 키워드의 평가와 실행은 다음과 같이 진행됩니다:
+<p />
+함수 호출이 네트워크 반대편 기계에서 실행되도록 전송합니다. 다른 말로, 함수의 이름과 그 파라미터 전부를 데이터 패킷에 우겨넣어 차후 실행될 수 있도록 만든 것을 다른 기계에 전송하는 것입니다. 이런 일이 발생하면 함수는 즉시 반환하고 실행이 계속됩니다. 값을 반환하도록 선언된 함수라면, 그 반환값은 0 (또는 다른 유형인 경우 0 에 해당하는 값, 즉 벡터는 <code>0,0,0</code>, 오브젝트는 <code>None</code> 등)으로 설정됩니다. out 파라미터는 그대로입니다. 다른 말로 UnrealScript 는 절대로 가만히 앉아서 리플리케이트된 함수 호출이 끝나기만 기다리지 않으므로, 절대 교착 상태에 빠질 일이 없습니다. 리플리케이트된 함수 호출은 원격 기계로 보내 실행되도록 하고, 로컬 코드는 실행이 이어지는 것입니다.
+<p />
+변수 리플리케이션과는 달리, 액터의 함수 호출은 서버에서 액터를 소유하는 클라이언트(플레이어)로만 리플리케이트 가능합니다. 그러므로 <strong>PlayerController</strong> (즉 자체 소유 플레이어), <strong>Pawn</strong> (즉 제어권을 가진 Controller 소유 플레이어 아바타), <strong>Inventory</strong> (즉 현재 소지중인 플레이어에 소유된 웨폰과 픽업 아이템)의 서브클래스에서만 함수 리플리케이션은 쓸모가 있습니다. 말하자면 함수 호출은 하나의 액터(, 즉 그것을 소유하는 플레이어)로만 리플리케이트 가능하며, 여러 곳에 뿌리지 않습니다.
+<p />
+<em>server</em> 키워드가 붙은 함수가 클라이언트에서 호출되면, 서버로 리플리케이트됩니다. 역으로 <em>client</em> 키워드가 붙은 함수가 서버에서 호출되면, 그 액터를 소유하는 클라이언트에 리플리케이트됩니다.
+<p />
+변수 리플리케이션과는 달리, 함수 호출 리플리케이션은 호출 즉시 원격지에 전송되며, 대역폭 상황과 상관없이 항상 리플리케이트됩니다. 고로 함수 호출 리플리케이션을 남발하면 대역폭이 금방 넘칠 수가 있습니다. 함수 리플리케이션은 대역폭이 얼마나 남았든 끌어다 쓰며, 나머지 대역폭만이 변수 리플리케이션에 사용됩니다. 그러므로 회선이 함수 리플리케이션으로 넘쳐난다면 변수 리플리케이션이 희박해 질 수 있으며, 시각적으로는 다른 액터의 업데이트가 보이지 않거나 뚝뚝 끊기는 것처럼 보이게 됩니다.
+<p />
+UnrealScript 에는 글로벌 함수가 없으므로, "글로벌 함수 리플리케이션" 개념도 없습니다. 함수는 항상 특정 액터에 대한 맥락에서만 호출됩니다.
+<p />
+<h4><a name="함수 호출 리플리케이션 vs 변수 리플리케이션"></a> 함수 호출 리플리케이션 vs 변수 리플리케이션 </h4>
+함수(는 가용 대역폭에 상관없이 항상 리플리케이트되므로) 리플리케이션이 너무 많으면 가용 대역폭이 가득찰 수 있으며, 그에 따라 변수 리플리케이션은 가용 대역폭에 맞춰 자동으로 허리띠를 졸라맵니다.
+<p />
+함수 호출은 UnrealScript 실행 도중 실제 호출될 때만 리플리케이트되는 반면, 변수는 스크립트 코드가 실행중이지 않을 때 현재 틱이 끝난 다음에만 리플리케이트됩니다.
+<p />
+액터에서의 함수 호출은 그 액터를 소유하는 클라이언트에만 리플리케이트되는 반면, 액터의 변수는 그 액터와 연관성이 있는 모든 클라이언트에 리플리케이트됩니다.
+<p />
+<h2><a name="시뮬레이션 함수와 스테이트"></a> 시뮬레이션 함수와 스테이트 </h2>
+<hr size="1" noshade="noshade">
+클라이언트 측에는 다수의 액터가 "프록시", 즉 서버가 액터를 추정하여 만든 사본 형태로 존재하며, 이것을 클라이언트로 전송하여 게임플레이 도중 클라이언트가 보고 듣는 것을 시청각적으로 적절히 추정해 냅니다.
+<p />
+클라이언트에서 이 프록시 액터는 보통 클라이언트측 피직스를 사용해서 돌아다니고 환경에 영향을 끼치고 하므로, 그 함수는 언제든지 호출 가능합니다. 예로써, 시뮬레이션 프록시 <strong>TardyiumShard</strong> 발사체가 자율 프록시 <strong>Tree</strong> 액터를 들이받는 상황을 들어 봅시다. 액터가 충돌할 때 언리얼 엔진은 각 액터의 <strong>Touch()</strong> 함수를 호출하여 충돌을 알리려 합니다. 경우에 따라서 클라이언트는 이 함수 호출 중 일부는 실행하려 하나, 나머지는 무시합니다. 예를 들어 <strong>Skaarj's Bump()</strong> 함수는 클라이언트측에서 호출할 일이 없습니다. 그 <strong>Bump()</strong> 함수는 게임플레이 로직을 하려는 함수이고, 게임플레이 로직은 서버에서만 일어나야 하기 때문이죠. 그러므로 <strong>Skaarj's Bump()</strong> 함수는 호출해서는 안됩니다. 그러나 <strong>TarydiumShard</strong> 발사체의 <strong>Touch()</strong> 함수는 호출해야 하는데, 피직스를 중지하고 클라이언트측 특수효과 액터를 스폰하기 때문입니다.
+<p />
+UnrealScript 함수는 <strong>simulated</strong> 키워드 옵션을 붙여 선언할 수 있으며, 이를 통해 프록시 액터에서 어떤 함수가 실행되도록 할 것인지 프로그래머가 미세조정할 수 있습니다. 프록시 액터 (즉 <strong>Role == ROLE_SimulatedProxy</strong> 인 액터)의 경우, <strong>simulated</strong> 키워드로 선언된 함수만 호출됩니다. 다른 모든 함수는 건너뜁니다.
+<p />
+전형적인 simulated 함수 예제입니다:
+<p />
+<div class="codesnippet">
+<pre>
+simulated function HitWall( vector HitNormal, actor Wall )
+{
+  SetPhysics(PHYS&#95;None);
+  MakeNoise(0.3);
+  PlaySound(ImpactSound);
+  PlayAnim(&#39;Hit&#39;);
+}
+</pre>
+</div>
+<p />
+즉 <strong>simulated</strong> 란 "이 함수는 프록시 액터에 대해서 항상 실행해야 한다"는 뜻입니다.
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>주</strong>: simulated 함수의 서브클래스 구현시에도 그 정의에 <strong>simulated</strong> 키워드를 붙여야 합니다! UnrealScript Compiler 가 그에 대한 경고를 띄울 것입니다.
+<p />
+시뮬레이션 스테이트는 함수와 비슷합니다.
+<p />
+<h2><a name="리플리케이션 패턴"></a> 리플리케이션 패턴 </h2>
+<hr size="1" noshade="noshade">
+에픽이 출시하는 게임과 언리얼 엔진에 공히 쓰이는 리플리케이션 패턴의 목표는 다음과 같습니다.
+<p />
+<h3><a name="서버 CPU 사용 최소화"></a> 서버 CPU 사용 최소화 </h3> <ul>
+<li> 액터 리플리케이션 비용을 최소화합니다. <!--  --> <ul>
+<li> 잠재적 액터 리플리케이션 (<strong>RemoteRole</strong> != <strong>ROLE_None</strong> 인 액터) 수를 최소화시킵니다.
+</li> <li> 일정 틱에 클라이언트별 연관성 검사를 해야 하는 액터 수를 최소화시킵니다.
+</li> <li> 일정 틱에 클라이언트별 실제로 연관된 액터 수를 최소화시킵니다.
+</li> <li> 일정 틱에 클라이언트별 리플리케이트되는 액터마다 검사해야 하는 리플리케이트 프로퍼티 수를 최소화시킵니다.
+</li> <li> <strong>bNetDirty</strong> 를 불필요하게 설정하지 않습니다.
+</li></ul>
+</li> <li> 액터 틱 비용을 최소화합니다. <ul>
+<li> 서버에 필요치 않은 (파티클 이펙트 등의) 액터 스폰을 삼갑니다.
+</li> <li> 게임플레이 연관성이 없는 코드의 실행을 삼갑니다.
+</li></ul>
+</li> <li> 수신된 함수 리플리케이션 처리 비용을 최소화합니다. <ul>
+<li> 수신하여 처리가 필요한 함수의 수를 최소화합니다.
+</li></ul>
+</li></ul>
+<p />
+플레이어의 수가 늘어남에 따라, 액터 리플리케이션 비용은 서버 실행 시간의 주요 부분을 차지하게 되는데, (잠재적으로 리플리케이트되는 액터의 수는 플레이어 수에 비례하기 마련이기에) 비용은 플레이어 수에 따라 선형 증가하기 보다는 기하급수적으로 증가하는 경향을 보입니다.
+<p /> <ul>
+<li> 대역폭 사용량을 최소화합니다. <ul>
+<li> 클라이언트별 연관 액터의 수
+</li> <li> 프로퍼티 업데이트 빈도
+</li> <li> 전송되는 패킷 수
+</li></ul>
+</li></ul>
+<p />
+리플리케이트되는 액터와 프로퍼티 전부에 대한 로그를 확인하려면 <strong>DevNetTraffic</strong> 억제를 해제합니다. <strong>Stat Net</strong> 콘솔 명령 역시도 유용합니다. 언리얼 엔진이 보내고 받는 패킷을 살펴보는 데는 <a href="NetworkProfilerKR.html" class="twikiLink">Network Profiler</a> 만한 것도 없습니다.
+<p />
+<h3><a name="인지 반응시간 최소화"></a> 인지 반응시간 최소화 </h3>
+클라이언트가 플레이어 입력에 따라 소유 액터의 행위를 예측하고, 서버로부터 확인을 받기 전에 이 행위를 시뮬레이트(하고 필요하다면 보정)합니다. Pawn 이동이나 Weapon 처리에는 이 모델을 사용하지만, Vehicle 에는 사용하지 않습니다. 피직스 시뮬레이션을 저장했다 다시 재생하는 데 따르는 복잡도에 비하면 비히클 조작 반응시간 감소에 따른 이점이 보잘것 없기 때문이며, 보통 인터넷 반응시간이나 현실의 차량 제어 반응시간이나 거기서 거기이기 때문입니다.
+<p />
+<h3><a name="ReplicationInfo 클래스"></a> ReplicationInfo 클래스 </h3>
+ReplicationInfo 클래스에는 <strong>bAlwaysRelevant</strong> 가 참으로 설정되어 있습니다. <strong>NetUpdateFrequency</strong> 를 낮게 설정하여 서버 퍼포먼스를 높일 수 있습니다. 리플리케이트된 프로퍼티가 바뀔 때마다, <strong>NetUpdateTime</strong> 을 명시적으로 바꿔 강제로 리플리케이션 시킵니다. <!--  --> <strong>bSkipActorPropertyReplication</strong> 와 <strong>bOnlyDirtyReplication</strong> 를 참으로 설정하여 서버 퍼포먼스를 높이는 것도 가능합니다.
+<p />
+<h3><a name="ReplicatedEvent() 사용하기"></a> ReplicatedEvent() 사용하기 </h3>
+<strong>Repnotify</strong> 키워드를 가진 프로퍼티가 리플리케이트되면, 수정된 프로퍼티 이름을 파라미터로 하여 <strong>ReplicatedEvent()</strong> 이벤트를 호출합니다. 이 시스템으로 한 번 업데이트된 리플리케이트 프로퍼티를 기반으로 여러 프로퍼티와 컴포넌트를 효율적으로 초기화시킬 수 있습니다. 예를 들어 <strong>Vehicle.bDriving</strong> 이 바뀌면 <strong>ReplicatedEvent()</strong> 이 선택된 다음 <strong>DrivingStatusChanged()</strong> 가 호출되도록 합니다. UT 에서 이런 식으로 엔진 소리나 기타 클라이언트측 이펙트를 켜고 끕니다. 비슷하게 <strong>UTCarriedObject</strong> 가 팀 프로퍼티를 받으면, 메시에 적용된 머티리얼이나 다이내믹 라이트의 색과 같은 컴포넌트 프로퍼티 변화를 포함해서 클라이언트측 이펙트를 업데이트합니다.
+<p />
+클라이언트의 로컬 <strong>PlayerController</strong> 소유 <strong>PlayerReplicationInfo</strong> 의 팀 프로퍼티나 오너 프로퍼티가 업데이트되면, 모든 액터에 대해 <strong>NotifyLocalPlayerTeamReceived()</strong> 를 호출합니다.
+<p />
+필수 프로퍼티의 리플리케이션이 모두 끝날 때까지 초기화 코드 실행을 지연시키는 데도 사용할 수 있습니다. 참고로 프로퍼티가 디폴트 값에서 변하지 않으면 리플리케이트되는 이벤트도 없으니, 그런 경우에는 액터가 제대로 초기화도록 해 줄 필요가 있습니다.
+<p />
+<h3><a name="WorldInfo 클래스"></a> WorldInfo 클래스 </h3>
+네트워크 게임의 모든 게임 월드 인스턴스에는 NetMode 가 있습니다. <strong>WorldInfo</strong> 클래스는 <strong>ENetMode</strong> 열거형과 관련 <strong>NetMode</strong> 변수를 다음과 같이 정의합니다:
+<p />
+<div class="codesnippet">
+<pre>
+var enum ENetMode
+{
+  NM&#95;Standalone,        // 독립형 게임입니다.
+  NM&#95;DedicatedServer,   // 로컬 클라이언트 없이, 데디케이티드(전용) 서버입니다.
+  NM&#95;ListenServer,      // 리슨 서버입니다.
+  NM&#95;Client             // 로컬 서버 없이, 클라이언트 전용입니다.
+} NetMode;
+</pre>
+</div>
+<p />
+<strong>NetMode</strong> 프로퍼티는 종종 여러가지 게임 인스턴스 유형에 대해 어떤 코드를 실행시킬지 제어하는 데 사용됩니다.
+<p />
+<h3><a name="GameInfo 클래스"></a> GameInfo 클래스 </h3>
+<strong>GameInfo</strong> 클래스는 게임 규칙에 대한 구현입니다. (데디케이티드와 싱글플레이어 두) 서버에는 UnrealScript 에서 <strong>WorldInfo.Game</strong> 로 접근할 수 있는 <strong>GameInfo</strong> 서브클래스가 하나 있습니다. 언리얼의 각 게임 타입에 대해 특수 <strong>GameInfo</strong> 서브클래스가 있습니다. 기존 클래스를 예로 들면, UTGame, UTDeathmatch, UTTeamGame 등입니다.
+<p />
+네트워크 게임의 클라이언트에는 <strong>GameInfo</strong> 가 없습니다. 즉 클라이언트 측에는 <strong>WorldInfo.Game == None</strong> 라는 뜻입니다. 게임플레이 규칙은 전부 서버가 구현하니 클라이언트에는 <strong>GameInfo</strong> 가 없어야 할 것이며, 코드 대다수는 클라이언트가 게임 규칙을 모를 것을 요구합니다.
+<p />
+<strong>GameInfo</strong> 는 오고 가는 플레이어 인식, 킬에 이름 붙이기, 무기 리스폰 여부 등등 폭넓은 함수성 집합을 구현합니다. 여기서는 네트워크 프로그래밍에 직접 관계가 있는 <strong>GameInfo</strong> 함수만 살펴보도록 하겠습니다.
+<p />
+<h4><a name="InitGame"></a> InitGame </h4>
+<div class="codesnippet">
+<pre>
+event InitGame(string Options, out string ErrorMessage);
+</pre>
+</div>
+<p />
+(네트워크 플레이든 싱글 플레이든) 서버가 처음 시작될 때 호출됩니다. 서버가 시작 URL 옵션을 해석할 수 있는 기회를 주지요. 예를 들어 "Unreal.exe MyLevel.unr?game=unreali.teamgame" 로 서버를 시작했다면, <strong>Options</strong> 문자열은 <strong>"?game=unreali.teamgame"</strong> 입니다. <strong>Error</strong> 가 빈 문자열이 아니라면, 게임은 치명적 오류를 내며 실패합니다.
+<p />
+<h4><a name="PreLogin"></a> PreLogin </h4>
+<div class="codesnippet">
+<pre>
+event PreLogin(string Options, string Address, out string ErrorMessage, out string FailCode);
+</pre>
+</div>
+<p />
+네트워크 클라이언트 로그인 직전에 호출됩니다. 서버에 플레이어를 거부할 수 있는 기회를 줍니다. 플레이어의 암호를 (있다면) 확인하고, 플레이어 제한을 실시하는 등의 서버 작업을 하는 곳입니다.
+<p />
+<h4><a name="Login"></a> Login </h4>
+<div class="codesnippet">
+<pre>
+event PlayerController Login(string Portal, string Options, out string ErrorMessage);
+</pre>
+</div>
+<p />
+<strong>Login()</strong> 함수는, 에러 문자열을 반환하지 않는 <strong>PreLogin()</strong> 이후에는 항상 호출됩니다. <strong>Options</strong> 문자열의 파라미터를 사용한 플레이어 스폰을 담당합니다. 성공했다면 스폰한 <strong>PlayerController</strong> 액터를 반환합니다. <strong>Login()</strong> 과 <strong>PostLogin()</strong> 는 독립형 게임에서 <strong>PlayerController</strong> 액터를 만드는 데도 사용됩니다.
+<p />
+<strong>Login()</strong> 함수가 로그인 실패를 나타내는 <strong>None</strong> 을 반환하면, Error 를 에러 설명 문자열로 설정합니다. <strong>Login()</strong> 실패는 최후의 수단으로만 사용해야 합니다. 로그인에 실패할 것 같으면, <strong>Login()</strong> 보다는 <strong>PreLogin()</strong> 에서 하는 것이 효율적입니다.
+<p />
+<h4><a name="PostLogin"></a> PostLogin </h4>
+<div class="codesnippet">
+<pre>
+event PostLogin(PlayerController NewPlayer);
+</pre>
+</div>
+<p />
+<strong>PostLogin()</strong> 함수는 로그인이 성공한 이후 호출됩니다. 리플리케이트된 함수를 호출할 수 있는 첫 지점입니다.
+<p />
+<h3><a name="플레이어 이동과 예측"></a> 플레이어 이동과 예측 </h3>
+<h4><a name="개요"></a> 개요 </h4>
+언리얼에 순수한 클라이언트-서버 모델이 사용되었다면, 플레이어 이동은 매우 랙이 심해 보였을 것입니다. 핑이 300 ms 나오는 접속 상태에서 앞으로 이동 키를 누르면, 300 ms 동안 움직이지 않을 것입니다. 마우스를 왼쪽으로 밀었는데도 회전하는 데까지 300 ms 가 걸리겠지요. 엄청 좌절스럽습니다.
+<p />
+클라이언트 이동 랙을 없애기 위해, 언리얼은 QuakeWorld 에서 처음 도입된 것과 비슷한 예측 계획(scheme, 스키마)을 사용합니다. 플레이어 예측 계획은 오로지 UnrealScript 로 구현됩니다. <strong>PlayerController</strong> 클래스에서 구현되는 하이 레벨 기능으로, 네트워크 코드 기능은 아닙니다. 언리얼의 클라이언트 이동 예측은, 순전히 네트워크 코드의 범용 리플리케이션 기능 층에 놓여 있는 것입니다.
+<p />
+<h4><a name="내부 작동 원리"></a> 내부 작동 원리 </h4>
+<strong>PlayerController</strong> 스크립트를 살펴보면 언리얼의 플레이어 예측이 어떤 식으로 작동하나 정확히 확인할 수 있습니다. 코드가 약간은 복잡하니, 그 작동 원리를 간단히 살펴보겠습니다.
+<p />
+이 접근법은 획일식 예측/교정 알고리즘으로 최적의 설명이 가능합니다. 클라이언트는 (조이스틱, 마우스, 키보드 등의) 입력과 (중력, 부력, 영역 속도 등의) 물리적 힘을 고려하여 3D 가속도 벡터로 운동을 설명합니다. 클라이언트는 리플리케이트된 <strong>ServerMove</strong> 함수 호출을 통해, 이 가속도에다 여러가지 입력 관련 정보와 현재 (클라이언트측 <strong>WorldInfo.TimeSeconds</strong> 의 값인) 타임 스탬프를 곁들인 정보를 서버에 전송합니다:
+<p />
+<div class="codesnippet">
+<pre>
+server function ServerMove(float TimeStamp, vector InAccel, vector ClientLoc, byte MoveFlags, byte ClientRoll, int View)
+</pre>
+</div>
+<p />
+그런 다음 클라이언트는 <strong>MoveAutonomous()</strong> 를 호출하여 로컬에서 똑같이 이동시켜 주고, <strong>SavedMove</strong> 클래스를 사용하여 이동 내역 링크드 리스트에 이 이동을 보관합니다. 클라이언트가 서버에서 아무것도 듣지 못했다면, 클라이언트는 싱글-플레이어 게임에서와 마찬가지로 랙없이 움직여 다닐 수 있을 것입니다.
+<p />
+서버가 (네트워크를 통해 리플리케이트된) <strong>ServerMove()</strong> 함수 호출을 받을 때, 서버는 똑같은 이동을 서버에서 즉시 수행합니다. <strong>ServerMove</strong> 의 현재 <strong>TimeStamp</strong> 와 예전 것에서 이동 <strong>DeltaTime</strong> (경과 시간)을 추론해 냅니다. 이런 식으로 서버는 클라이언트와 같은 기본 이동 로직을 수행합니다. 그러나 서버가 클라이언트와는 약간 다를 수 있습니다. 뛰어다니는 몬스터를 예로 들어 보자면, 클라이언트는 (서버와 대충의 동기상태를 유지하는 것일 뿐이기에) 서버의 위치와 다르다고 생각할 수 있습니다. 고로 클라이언트와 서버는 <strong>ServerMove()</strong> 호출 결과 클라이언트를 실제로 얼마나 움직일지에 대해 합의하지 못했을 수가 있죠. 어쨌든 전권을 행사하는 것은 서버이고, 클라이언트의 위치 결정을 담당하는 것도 오로지 서버입니다. 서버가 클라이언트 <strong>ServerMove()</strong> 호출을 처리하고나면, 네트워크를 통해 클라이언트로 리플리케이트되는 클라이언트 <strong>ClientAdjustPosition()</strong> 함수를 호출합니다:
+<p />
+<div class="codesnippet">
+<pre>
+client function ClientAdjustPosition(float TimeStamp, name newState, EPhysics newPhysics, float NewLocX, float NewLocY, float NewLocZ, float NewVelX, float NewVelY, float NewVelZ, Actor NewBase)
+</pre>
+</div>
+<p />
+이제 클라이언트가 <strong>ClientAdjustPosition()</strong> 호출을 받으면, 자신의 위치에 대한 서버의 결정에 따라야 합니다. 그래서 클라이언트는 자신의 정확한 위치와 속도를 <strong>ClientAdjustPosition()</strong> 호출에 지정된 대로 설정합니다. 그러나 서버가 <strong>ClientAdjustPosition()</strong> 에 지정한 위치는 과거 일정 시점에서의 클라이언트 위치를 반영한 것입니다. 그래도 클라이언트는 현재 어디에 있어야 할 것인가를 예측하고 싶겠지요. 그래서 클라이언트는 자기 링크드 리스트의 <strong>SavedMove</strong> 전부를 살펴봅니다. <strong>ClientAdjustPosition()</strong> 호출의 <strong>TimeStamp</strong> 보다 앞선 이동은 전부 버리고요. <strong>TimeStamp</strong> 이후 발생한 이동에 대해서만 루핑을 통해 하나하나 <strong>MoveAutonomous()</strong> 를 호출하여 다시 실행시킵니다.
+<p />
+이런 식으로 클라이언트는 어느 시점에서든, 서버가 알려준 것에 비해 핑 시간 절반만큼 앞선 지점을 항상 예측할 수 있습니다. 이렇게, 로컬 이동에 랙이 전혀 끼지 않는 것이지요.
+<p />
+<h4><a name="장점"></a> 장점 </h4>
+이 접근법은 순수히 예측형으로, 두 월드에 최고의 결과를 냅니다. 어떤 경우에도 서버가 완벽한 전권 행사를 하는 것이죠. 거의 항상 클라이언트 이동 시뮬레이션은 서버가 수행한 클라이언트 이동을 정확히 모사해 내기에, 클라이언트 위치가 보정되는 일은 드뭅니다. 플레이어가 로켓에 맞는다든지, 적에 부딪혔다든지 하는 희귀한 경우에나 클라이언트 위치를 보정해 주면 될 것입니다.
+<p />
+<h4><a name="이동 패턴"></a> 이동 패턴 </h4>
+다음 도표는 오차 보정이 포함된 서버와 클라이언트의 이동 패턴을 그려보는 데 좋습니다.
+<p />
+<table><tr><th width="50%">서버</th><th width="20"></th><th width="50%">클라이언트</th></tr>
+<tr><td></td><td></td><td><b>ReplicateMove()</b></td></tr>
+<tr><td></td><td></td><td>ProcessMove() 대신 호출됩니다. 플레이어 인풋에 따라 폰 피직스를 수행하고, (PlayerController SavedMove 에) 저장한 다음 결과를 리플리케이트합니다. SavedMove 서브클래스를 만들어 게임 전용 이동 입력과 결과를 저장할 수 있습니다. ReplicateMove() 도 업로드 대역폭 절약과 서버 퍼포먼스 향상을 위해 리플리케이트된 이동 결합을 시도해 봅니다.</td></tr>
+<tr><td align="right"><b>ServerMove()</b></td><td>&lt;-</td><td><b>CallServerMove()</b></td></tr>
+<tr><td>수신된 입력에 따라 폰 피직스 업데이트를 수행하고, 그 결과를 클라이언트가 보내온 결과와 비교합니다. 참고로 이동 업데이트는 클라이언트 시계를 기준으로 합니다. 클라이언트에 심각한 위치 오차가 누적된 경우, 보정을 요청합니다. 아니라면 good move ack 를 요청합니다.</td><td></td><td>현재 이동을 (프레임율과 가용 대역폭에 따라) 하나 둘 정도, 클라이언트 시계 타임스탬프와 함께 보냅니다. 두 이동을 한 번에 보내면 대역폭은 절약되지만, 보정 시간이 길어집니다. 패킷이 손실된 경우 최근 "중요" 이동 재전송을 위해 OldServerMove() 를 호출할 수도 있습니다.</td></tr>
+<tr><td align="right"><b>SendClientAdjustment()</b></td><td>-&gt;</td><td><b>ClientAckGoodMove()</b></td></tr>
+<tr><td>한 틱에 여러 개의 ServerMove() 를 받았을 때 반응도 여러 번 보내지 않도록 하기 위해, 클라이언트 반응은 PlayerController 틱 끝으로 미룹니다. 오차가 없으면, good move ack 입니다.</td><td></td><td>타임스탬프 왕복 시간에 따라 핑을 업데이트하고, 타임스탬프가 그 이전인 SavedMove 를 지웁니다.</td></tr></table>
+<p />
+<table><tr><th width="50%">서버</th><th width="20"></th><th width="50%">클라이언트</th></tr>
+<tr><td align="right"><b>SendClientAdjustment()</b></td><td>-&gt;</td><td><b>ClientAdjustPosition()</b></td></tr>
+<tr><td>한 틱에 여러 개의 ServerMove() 를 받았을 때 반응도 여러 번 보내지 않도록 하기 위해, 클라이언트 반응은 PlayerController 틱 끝으로 미룹니다. 오차가 있으면 ClientAdjustPosition() 를 호출하고 good move ack 를 요청합니다.</td><td></td><td>타임스탬프가 보정 타임스탬프 이전인 SavedMove 를 비웁니다. Pawn 을 서버가 지정한 위치로 옮기고, bUpdatePosition 를 설정합니다.</td></tr>
+<tr><td></td><td></td><td><b>ClientUpdatePosition()</b></td></tr>
+<tr><td></td><td></td><td>bUpdatePosition 가 참일 때 PlayerTick() 에서 호출됩니다. 남아있는 모든 SavedMove 를 다시 재생시켜 폰을 현재 클라이언트 시간 위치로 끌어옵니다.</td></tr></table>
+<p />
+<!-- <img alt="Networking-PlayerMovementReplication.JPG" src="rsrc/Three/NetworkingOverviewKR/Networking-PlayerMovementReplication.JPG" />
+<p />
+<img alt="Networking-PlayerMovementReplication_ErrorAdjustment.JPG" src="rsrc/Three/NetworkingOverviewKR/Networking-PlayerMovementReplication_ErrorAdjustment.JPG" /> -->
+<p />
+<h4><a name="플레이어 스테이트 동기화"></a> 플레이어 스테이트 동기화 </h4>
+PlayerController 코드는 클라이언트와 서버가 항상 똑같은 스테이트를 유지하려 한다 가정합니다. 클라이언트가 서버와 다른 스테이트에 들어갔을 때 업데이트 가능하도록, <strong>ClientAdjustPosition()</strong> 에는 스테이트가 포함됩니다. 서버가 스테이트를 바꿔야 하나 클라이언트가 자체적으로 그 스테이트를 시뮬레이트할 수 없을 경우, <strong>ClientGotoState()</strong> 를 사용하여 즉시 그 스테이트에 강제로 들어가게 만듭니다. UnrealScript 의 스테이트 스택 함수성 (<strong>PushState()</strong> / <strong>PopState()</strong>) 을 처리/동기화시키는 기능은 지원되지 않으니, PlayerController 에는 사용하지 않는 것이 좋습니다.
+<p />
+<h3><a name="플레이어 애니메이션 (클라이언트 측)"></a> 플레이어 애니메이션 (클라이언트 측) </h3>
+애니메이션에 게임플레이 연관성이 없다면, 서버에서는 전혀 실행할 필요가 없습니다. SkeletalMeshComponent 의 <strong>bUpdateSkelWhenNotRendered</strong> 와 <strong>IgnoreControllersWhenNotRendered</strong> 프로퍼티를 통해 제어 가능하며, <strong>SkelControlBase::bIgnoreWhenNotRendered</strong> 를 통해서는 스켈레탈 콘트롤러 단위 제어도 가능합니다. 클라이언트 측 애니메이션은 Pawn 스테이트 (피직스와 Pawn 프로퍼티) 조사를 통해 주도합니다.
+<p />
+애니메이션 주도형 이동의 경우, 루트 본 모션이 가속도/속도로 변환되며, 바로 그것이 리플리케이트됩니다. 즉 애니메이션은 (액터에 상대적으로) 제자리에 고정되어 있으며, 루트 본 모션이 액터를 대신 움직이는 가속도/속도로 변환됩니다.
+<p />
+서버/클라이언트에서는 이 방식이 루트 모션 이동을 쓰지 않은 방식보다 가볍습니다.
+<p />
+<h3><a name="사체"></a> 사체 </h3>
+<strong>bTearoff</strong> 가 참이면 이 액터는 더이상 새 클라이언트에 리플리케이트되지 않으며, 리플리케이트하고 있던 클라이언트에서는 <em>떨어져 나갑니다</em> (<strong>ROLE_Authority</strong> 가 됩니다). <strong>bTearOff</strong> 를 받으면 <strong>TornOff()</strong> 이벤트가 호출됩니다. 기본 구현에서는 죽는 폰에서 <strong>PlayDying()</strong> 을 호출합니다.
+<p />
+<h3><a name="무기 발사"></a> 무기 발사 </h3>
+무기 발사는 플레이어 이동 패턴과 비슷합니다: <ul>
+<li> 클라이언트는 발사를 요청하는 플레이어 입력을 받는 즉시 (소리, 애니메이션, 총구섬광 등의) 발사 이펙트를 재생하고, <strong>ServerStartFire()</strong> 와 <strong>ServerStopFire()</strong> 를 호출하여 서버 발사를 요청합니다. <ul>
+<li> 클라이언트에는 서버와 연관된 프로퍼티가 제대로 동기화되지 않은 희귀한 경우를 제외하고, 무기를 발사할 수 있는지 제대로 예측하기에 충분한 (총알 수, 무기 타이밍 상태 등의) 스테이트 정보가 있습니다.
+</li></ul>
+</li> <li> 서버는 발사체를 스폰하고 대미지 처리를 합니다. 발사체는 클라이언트에 리플리케이트됩니다.
+</li></ul>
+<p />
+<h3><a name="발사체"></a> 발사체 </h3>
+단순한 예측가능 발사체에 쓰이는 예제입니다: <ul>
+<li> <strong>bNetTemporary</strong> 가 참으로 설정됩니다. <ul>
+<li> 첫 리플리케이션 이후, 액터 채널은 닫히고 액터는 다시 업데이트되지 않습니다. 액터는 클라이언트에서 소멸됩니다.
+</li> <li> 대역폭을 저장하고, 서버 프로퍼티 리플리케이션을 테스트합니다.
+</li></ul>
+</li> <li> <strong>bReplicateInstigator</strong> 가 참으로 설정됩니다. <ul>
+<li> 발사체가 instigator 와 제대로 상호작용할 수 있도록요.
+</li></ul>
+</li> <li> 클라이언트 측 이펙트를 스폰합니다. <ul>
+<li> 참고로 클라이언트에 스폰되는 액터는 그 클라이언트에서 ROLE_Authority 이며, 다른 클라이언트나 서버에 존재하지 않습니다.
+</li> <li> 서버에서는 전혀, 이 이펙트를 스폰도 리플리케이션도 할 필요 없습니다.
+</li></ul>
+</li></ul>
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>결점:</strong> 클라이언트의 타겟 및/또는 발사체 시뮬레이션이 꺼져있는 경우, 타겟 적중 판정이 잘못될 수 있습니다. 그렇기에 <em>한방에 죽는</em> 유형의 발사체에는 사용하지 마시기 바랍니다.
+<p />
+<h3><a name="무기 부착"></a> 무기 부착 </h3>
+상호관련되는 액터 그룹이 모두 리플리케이트되도록 하지 마십시오. 퍼포먼스는 물론 동기화를 최소화시켜야 하는 것에도 문제가 됩니다.
+<p />
+<em>Unreal Tournament</em> 에서 무기는 소유 클라이언트에만 리플리케이트됩니다. 무기 부착(Weapon Attachment)은 리플리케이트되지 않으나 클라이언트측에는 스폰되며, 리플리케이트되는 Pawn 프로퍼티 몇 개로 제어합니다. Pawn 은 <strong>FlashCount</strong> 와 <strong>FiringMode</strong> 를, UT Pawn 은 <strong>CurrentWeaponAttachmentClass</strong> 를 리플리케이트합니다. 이 패턴이 사용되는 다른 예로는 Pawn 의 <strong>ViewPitch</strong> 프로퍼티를 들 수 있습니다.
+<p />
+<h3><a name="소리"></a> 소리 </h3>
+<strong>ClientHearSound()</strong> 함수는 소리를 슬을 수 있는 모든 PlayerController 에서 호출됩니다. <strong>ClientCreateAudioComponent()</strong> 함수는 소리를 담당하는 액터에서 호출됩니다. 클라이언트에 액터가 존재하지 않는 경우, 소리는 리플리케이트된 위치에서 재생되며, 오디오 컴포넌트는 <strong>WorldInfo</strong> 에 의해 생성됩니다. PlayerController 의 <strong>ClientPlaySound()</strong> 함수는 클라이언트에서 위치가 지정되지 않는 소리를 재생합니다.
+<p />
+클라이언트에서는 가급적 시뮬레이트된 소리를 재생하시기 바랍니다!
+<p />
+<h3><a name="피직스"></a> 피직스 </h3>
+<h4><a name="리플리케이션"></a> 리플리케이션 </h4>
+피직스 시뮬레이션은 클라이언트와 서버 둘 다에서 실행됩니다. 서버에서 클라이언트로 업데이트가 전송되구요. 리짓 바디의 물리적 상태를 나타내며 (<strong>Actor</strong> 에 정의된 대로) 리플리케이트되는 구조체는 다음과 같습니다:
+<p />
+<div class="codesnippet">
+<pre>
+struct RigidBodyState
+{
+  var vector Position;
+  var Quat Quaternion;
+  var vector LinVel; // RBSTATE&#95;LINVELSCALE times actual (precision reasons)
+  var vector AngVel; // RBSTATE&#95;ANGVELSCALE times actual (precision reasons)
+  var int bNewData;
+};
+</pre>
+</div>
+<p />
+모든 프로퍼티가 동시에 바뀌도록 구조체가 사용됩니다. 벡터는 인티저 해상도로 압축시켜, 보내기 전 스케일을 조정합니다. 쿼터니언은 세 가지 값만 보내도록 압축되며, 넷째 값은 다른 세 가지에서 추론해 냅니다.
+<p />
+피직스 리플리케이션의 경우, 두 종류의 보정이 있습니다: <ul>
+<li> 작은 보정과 이동 물체: 위치 조정 20%, 타겟의 추가 속도 80%
+</li> <li> 큰 보정이나 정지 물체: 위치 조정 100%
+</li></ul>
+<p />
+<h4><a name="시뮬레이션"></a> 시뮬레이션 </h4>
+피직스 시뮬레이션을 나타내는 시나리오는 다음과 같습니다: <ul>
+<li> <strong>ROLE_SimulatedProxy</strong> 액터 시뮬레이션 <ul>
+<li> 클라이언트는 수신된 위치와 속도에 따라 시뮬레이션 액터의 위치를 계속해서 업데이트합니다.
+</li> <li> <strong>bUpdateSimulatedPosition</strong> 가 참이라면, 서버의 _권위적) 위치 업데이트가 계속해서 클라이언트에 전송됩니다. (거짓이면, 액터의 첫 리플리케이션 이후 위치 업데이트는 전송되지 않습니다.)
+</li></ul>
+</li> <li> 다른 클라이언트의 폰 <ul>
+<li> 다른 액터와는 달리, 시뮬레이트되는 폰은 클라이언트에서 정상적인 피직스 함수를 실행하지 않습니다. 즉 <strong>Landed()</strong> 이벤트같은 피직스 이벤트는, 폰을 소유하지 않는 클라이언트에서는 절대 호출되지 않는다는 뜻입니다.
+</li> <li> 폰의 피직스 모드는 그 위치와 <strong>bSimulateGravity</strong> 플랙을 통해 추론하며, 그 예측 위치는 리플리케이트된 속도에 따라 업데이트됩니다. <ul>
+<li> 폰이 리플리케이트된 위치에 맞지 않아 클라이언트에서 월드를 뚫고 떨어질 위기에 처한 경우, <strong>bSimGravityDisabled</strong> 플랙을 설정하여 중력 시뮬레이션을 임시로 끕니다.
+</li></ul>
+</li></ul>
+</li> <li> <strong>PHYS_RigidBody</strong> 액터 (Vehicles, KActors 등) <ul>
+<li> 클라이언트와 서버 둘 다 오브젝트를 시뮬레이트하지만, 서버는 (오브젝트가 꺠어 있을 때) 주기적으로 클라이언트에 <em>권위적</em> 업데이트를 보냅니다. 그러면 클라이언트는 서버 버전에 맞추기 위해 <!--  -->오브젝트를 움직입니다. <ul>
+<li> 오차가 적정 임계값 이하라면 위치를 확 잡아끌기보다는 천천히 수렴되도록 속도를 변경하여 부드럽게 움직여 봅니다.
+</li></ul>
+</li> <li> 모든 프로퍼티를 동기상태로 수신해야 하는 원자성(atomic) 리플리케이션에는 <strong>RigidBodyState</strong> 구조체를 사용합니다.
+</li></ul>
+</li></ul>
+<p />
+래그돌 피직스의 경우, 엉덩이 위치만 리플리케이트됩니다. 완전히 <em>뗴어 버려</em> (tear off) 전혀 리플리케이트시키지 않는 것도 가능합니다.
+<p />
+비히클 (<strong>PHYS_RigidBody</strong> 액터)의 경우, 네트워크 흐름은 다음과 같습니다: <ol>
+<li> 클라이언트에서 키를 입력합니다.
+</li> <li> (쓰로틀, 스티어링, 상승) 입력을 서버에 전송, 즉 리플리케이트 함수 <strong>ServerDrive</strong> 를 호출합니다.
+</li> <li> (OutputBrake, OutputGas 등의) 출력을 생성하여 클라이언트에 전송 가능한 리플리케이트 구조체에 패킹, 즉 서버에서 <strong>ProcessCarInput()</strong> 를 호출합니다.
+</li> <li> 서버와 클라이언트의 비히클을 업데이트하고, (OutputBrake, OutputGas 등의) 출력을 사용하여 바퀴/차량에 힘/회전력을 적용, 즉 클라이언트와 서버에서 <strong>UpdateVehicle()</strong> 를 호출합니다.
+</li></ol>
+<p />
+<h2><a name="퍼포먼스 팁"></a> 퍼포먼스 팁 </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="최적화 목표"></a> 최적화 목표 </h3>
+여기서의 목표는 주어진 대역폭 한계 내에서 시각적으로 중요한 디테일 전송량을 최대로 늘리는 것입니다. 대역폭 한계는 실행시간에 결정되므로, 멀티플레이어 게임에서 사용되는 액터에 대한 스크립트 작성시의 목표는 대역폭 사용을 최소화시키는 것입니다. 저희가 스크립트에 사용하는 기법은:
+<p />
+가급적 <strong>ROLE_SimulatedProxy</strong> 과 시뮬레이션 이동을 사용합니다. 예를 들어 거의 모든 언리얼 발사체는 <strong>ROLE_SimulatedProxy</strong> 를 사용합니다. 한 가지 예외는 Razorjack 발사 부모드로, 게임플레이 도중 플레이어가 좌우 조정이 가능한 것이라서 서버는 위치를 클라이언트에 지속적으로 업데이트해야 합니다.
+<p />
+간단한 특수 효과에는, 순전히 클라이언트 측에만 특수 효과 액터를 스폰합니다. 예를 들어 저희 발사체 대수는 시뮬레이션 <strong>HitWall()</strong> 함수를 사용하여 클라이언트측 이펙트를 스폰합니다. 이 특수 효과는 게임플레이에 영향을 끼친다기 보다는 그저 장식용이기에, 완전히 클라이언트 측에서 그 작업을 하는 데는 문제가 없습니다.
+<p />
+<!--  -->
+<p />
+<strong>Repnotify</strong> 키워드가 붙은 프로퍼티가 리플리케이트될 때, <strong>ReplicatedEvent()</strong> 이벤트에 수정된 프로퍼티 이름을 파라미터로 붙여 호출합니다. 이 기능을 사용하여 네트워크 대역폭을 절약하는 법에 대해서는, 리플리케이션 패턴 부분을 참고해 주시기 바랍니다.
+<p />
+각 클래스의 디폴트 <strong>NetPriority</strong> 를 미세 조정합니다. 발사체와 플레이어에는 우선권을 높게, 순전히 장식으로만 쓰이는 효과에는 우선권을 낮게 잡습니다. 언리얼이 제공하는 디폴트 값이 처음 감을 잡기에는 좋으나, 미세 조정을 하면 언제든 약간은 개선의 여지가 있습니다.
+<p />
+액터가 클라이언트에 처음 리플리케이트될 때, 그 변수 전부가 클래스 디폴트 값으로 초기화됩니다. 그 이후 최근 알려진 값과 달라진 변수만 리플리케이트됩니다. 고로 클래스를 디자인할 때 가급적 많은 변수가 디폴트 값으로 설정되게 하는 것이 좋습니다. 예를 들어 액터가 항상 <strong>LightBrightness</strong> 값이 123 이어야 한다면, 그렇게 하는 방법은 두 가지가 있습니다: (1) 클래스의 <strong>LightBrightness</strong> 디폴트 값을 123 으로 설정합니다. (2) Actor 의 <strong>BeginPlay()</strong> 함수에서, <strong>LightBrightness</strong> 를 123 으로 초기화시킵니다. 첫 번째 접근법의 효율이 더 좋은데, <strong>LightBrightness</strong> 값이 리플리케이트될 일이 없기 때문입니다. 두 번째 접근법으로는, Actor 가 클라이언트에 처음 연관성을 갖게 될 때마다 <strong>LightBrightness</strong> 를 리플리케이트해야 합니다..
+<p />
+다음과 같은 상황도 주의하십시오: <ul>
+<li> 액터 리퍼런스가 (클라이언트에 연관성이 있지 않아) serialize 불가능하다면, <strong>bNetInitial</strong> 과 <strong>bNetDirty</strong> 는 지워지지 않습니다. 즉 서버는 계속해서 그 프로퍼티 리플리케이션을 시도하면서 CPU 사이클을 잡아먹는다는 뜻입니다.<!--  -->
+<p />
+<h4><a name="치트 검사와 예방"></a> 치트 검사와 예방 </h4>
+<em>Unreal Tournament</em> 에서 발견된 네트워크 관련 치트 유형은 다음과 같습니다: <ul>
+<li> 스피드 핵 <ul>
+<li> 이동 업데이트에 클라이언트의 시계를 사용한다는 점을 이용합니다.
+</li> <li> 서버와 클라이언트의 시계가 가는 속도가 과도히 다르지는 않은지, 내장된 검사를 합니다.
+</li> <li> 패킷 손실이 심한 경우 결과가 잘못될 수 있습니다.
+</li></ul>
+</li> <li> 에임봇 - UnrealScript, 외부 버전
+</li> <li> 월핵, 레이더 - UnrealScript, 외부 버전
+</li></ul>
+<p />
+<h4><a name="트래픽 모니터링"></a> 트래픽 모니터링 </h4>
+<!--  -->
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NetworkingOverviewKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:11:31 GMT -->
+</html></body>

@@ -1,0 +1,813 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CLIKChatBox.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:23:17 GMT -->
+<head>
+<title> UDK | CLIKChatBox    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">CLIKChatBox  </b></div>
+<div id="tooltext">
+<a href="CLIKChatBoxJP.html" class="twikiLink">日本語訳</a><br><a href="CLIKChatBoxCH.html" class="twikiLink">中国翻译</a><br><a href="CLIKChatBoxKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/CLIKChatBox -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="UIAndHUDHome.html" class="twikiLink">User Interfaces &amp; HUDs</a></b> &gt; <b><a href="Scaleform.html" class="twikiLink">Scaleform GFx</a></b> &gt; How to create a simple chat box
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="How to create a simple chat box"></a> How to create a simple chat box </h1>
+<hr size="1" noshade="noshade">
+<p />
+<strong><em>Last tested Sept UDK, 2011</em></strong>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="CLIKChatBox.html#How to create a simple chat box"> How to create a simple chat box</a> <ul>
+<li> <a href="CLIKChatBox.html#Overview"> Overview</a>
+</li> <li> <a href="CLIKChatBox.html#Flash Setup"> Flash Setup</a> <ul>
+<li> <a href="CLIKChatBox.html#Text Input Box"> Text Input Box</a>
+</li> <li> <a href="CLIKChatBox.html#Send Button"> Send Button</a>
+</li> <li> <a href="CLIKChatBox.html#Multi-line Scrollable Chat Log"> Multi-line Scrollable Chat Log</a>
+</li> <li> <a href="CLIKChatBox.html#Chat form"> Chat form</a>
+</li> <li> <a href="CLIKChatBox.html#Chat window"> Chat window</a>
+</li></ul>
+</li> <li> <a href="CLIKChatBox.html#HUD Class _UnrealScript"> HUD Class UnrealScript</a>
+</li> <li> <a href="CLIKChatBox.html#GameInfo Class Setup"> GameInfo Class Setup</a>
+</li> <li> <a href="CLIKChatBox.html#PlayerController Class Setup"> PlayerController Class Setup</a> <ul>
+<li> <a href="CLIKChatBox.html#Enable Chatting Via Keyboard Command (Pressing Enter)"> Enable Chatting Via Keyboard Command (Pressing Enter)</a> <ul>
+<li> <a href="CLIKChatBox.html#Adding the key binding"> Adding the key binding</a>
+</li> <li> <a href="CLIKChatBox.html#HUDWrapper Class Setup"> HUDWrapper Class Setup</a>
+</li> <li> <a href="CLIKChatBox.html#HUD Class Setup"> HUD Class Setup</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="CLIKChatBox.html#Downloads"> Downloads</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<hr size="1" noshade="noshade">
+This intermediate to advanced level tutorial will cover the steps needed for a rudimentary multiplayer multi-line chat window that works during game play, capturing all keyboard entry, and disallowing the game from capturing keyboard entry while it has focus. It will provide two ways to access the chat input - mouse click and keyboard command.
+<p />
+This tutorial assumes you are already very familiar with setting up and using Scaleform and CLIK widgets, and that you have a working mouse cursor in a Scaleform based HUD. The tutorial also required a good knowledge of <a href="ReplicationHome.html" class="twikiLink">replication</a>.
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>Important:</strong> This tutorial also requires the <a href="GFxCreateCursor.html" class="twikiLink">toggle-able mouse tutorial</a>.
+<p />
+<h2><a name="Flash Setup"></a> Flash Setup </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="Text Input Box"></a> Text Input Box </h3> <ul>
+<li> Drop a CLIK TextInput widget onto your HUD. (C:\UDK\UDK-2011-09\Development\Flash\CLIK\components\TextInput.FLA )
+</li> <li> Give it an instance name of chatInput.
+</li> <li> Open the Component Inspector (CS4) or the Component Parameters rollout (CS5) and enable 'actAsButton'.
+</li></ul>
+<p />
+<h3><a name="Send Button"></a> Send Button </h3> <ul>
+<li> Next drop a CLIK Button widget next to the TextInput widget. (C:\UDK\UDK-2011-09\Development\Flash\CLIK\components\Button.FLA)
+</li> <li> Give it an instance name of chatSendBtn.
+</li> <li> Open the Component Inspector (CS4) or the Component Parameters rollout (CS5) and enter 'Send' in the label field of the button.
+</li></ul>
+<p />
+<h3><a name="Multi-line Scrollable Chat Log"></a> Multi-line Scrollable Chat Log </h3> <ul>
+<li> Drop a CLIK Text Area widget above the TextInput widget. (C:\UDK\UDK-2011-09\Development\Flash\CLIK\components\TextArea.FLA)
+</li> <li> Give it an instance name of chatLog.
+</li> <li> Open the Component Inspector (CS4) or the Component Parameters rollout (CS5) and disable 'editable'.
+</li> <li> Drop a CLIK Scroll Bar widget to the right of the TextInput widget. (C:\UDK\UDK-2011-09\Development\Flash\CLIK\components\Scrollbar.FLA )
+</li> <li> Give it an instance name of chatScrollBar.
+</li> <li> Select the Text Area, and open the Component Inspector (CS4) or the Component Parameters rollout (CS5) and set the scrollBar field of the Text Area to chatScrollBar.
+</li></ul>
+<p />
+<h3><a name="Chat form"></a> Chat form </h3> <ul>
+<li> Align the four widgets on stage so they are all near each other, forming a box. You can stretch (non-uniform scale) the widgets as needed.
+</li> <li> Select all four widgets on the stage, right click, and choose Convert to Symbol.
+</li> <li> Set the Name to chatForm
+</li> <li> Set the Type to Movie Clip.
+</li> <li> Enable Export for ActionScript &amp; Export in frame 1.
+</li> <li> Set the Identifier to chatForm
+</li> <li> Set the Class to gfx.core.UIComponent
+</li> <li> Press OK.
+</li> <li> Delete the chatForm movie clip form the stage, leaving it in the library.
+</li></ul>
+<p />
+<h3><a name="Chat window"></a> Chat window </h3> <ul>
+<li> Copy the file \Development\Flash\CLIK\demos\com\Scaleform\Window .as to \Development\Flash\CLIK\gfx\controls\Window.as
+</li> <li> Open this class file and change line 7 (the class declaration line) to this:
+</li></ul>
+<p />
+<div class="codetitlebar">
+ActionScript
+</div>
+<div class="codesnippet">
+<pre>
+class gfx.controls.Window extends UIComponent {
+</pre>
+</div>
+<p /> <ul>
+<li> Open the file \Development\Flash\CLIK\demos\WindowDemo.FLA.
+</li> <li> Go to the Library panel of this file.
+</li> <li> Select the WindowSkinned symbol.
+</li> <li> Right click the WindowSkinned symbol and select Copy.
+</li> <li> Return to your HUD FLA file.
+</li> <li> Right click on the stage and select Paste to paste the Window symbol in place.
+</li> <li> Align the window near the bottom left of the stage.
+</li> <li> Give it an instance name of chatWindow.
+</li> <li> With the chatWindow selected on stage, open the Component Inspector (CS4) or the Component Parameters rollout (CS5).
+</li> <li> Set the formSource to chatForm.
+</li> <li> Ensure formType is set to symbol.
+</li> <li> Set maxHeight &amp; maxWidget to 400.
+</li> <li> Set minHeight and minWidget to 200.
+</li> <li> Set offsetBottom to 24, offsetLeft to 20, offsetRight to 20, and offsetTop to 46, or whatever works for you after testing.
+</li> <li> Set title to Chat.
+</li> <li> Right click the WindowSkinned symbol in the Library Panel and select Properties.
+</li> <li> Change the Class field to gfx.controls.Window and press OK.
+</li> <li> Right click the symbol again and choose Component Definition.
+</li> <li> Change the Class field to gfx.controls.Window and press OK.
+</li> <li> Save, Publish, and Import your SWF into UDK as usual. You should now have a draggable chat window on the stage, which contains the chat input, chat area, send button, and scrollbar.
+</li></ul>
+<p />
+<h2><a name="HUD Class _UnrealScript"></a> HUD Class UnrealScript </h2>
+<hr size="1" noshade="noshade">
+Your HUD Class should extend GFxMoviePlayer. Add these new variables to your UnrealScript HUD Class file:
+<p />
+<div class="codetitlebar">
+<strong><em>YourHUD.uc</em></strong>
+</div>
+<div class="codesnippet">
+<pre>
+var WorldInfo ThisWorld;
+var SFPlayerController PC;
+
+var array&#60;string&#62; chatMessages; // this will hold all the chat messages
+var bool bChatting;
+
+// These are our CLIK widgets for the chat system
+var GFxClikWidget MyChatInput, MyChatSendButton, MyChatLog;
+</pre>
+</div>
+<p />
+Modify your Start()/Init() function as follows (add the red lines):
+<p />
+<div class="codetitlebar">
+<strong><em>YourHUD.uc</em></strong>
+</div>
+<div class="codesnippet">
+<pre>
+function Init(optional LocalPlayer player)
+{
+  super.Init(player);
+  ThisWorld &#61; GetPC().WorldInfo;
+
+  Start();
+  Advance(0);
+
+  // ... other initialization code here ...
+
+  // Register the HUD with the PlayerController
+  PC &#61; SFPlayerController(GetPC());
+  PC.registerHUD(self);
+}
+</pre>
+</div>
+<p />
+Modify the ToggleCursor() function (from the Mouse tutorial earlier).
+<p />
+<div class="codetitlebar">
+<strong><em>YourHUD.uc</em></strong>
+</div>
+<div class="codesnippet">
+<pre>
+/&#42;&#42; Toggles mouse cursor on/off &#42;/
+function ToggleCursor(bool showCursor, float mx, float my)
+{
+  if (showCursor)
+  {
+    MouseContainer &#61; CreateMouseCursor();
+    MouseCursor &#61; MouseContainer.GetObject(&#34;my&#95;cursor&#34;);
+    MouseCursor.SetPosition(mx,my);
+    MouseContainer.SetBool(&#34;topmostLevel&#34;, true);
+  }
+  else
+  {
+    MouseContainer.Invoke(&#34;removeMovieClip&#34;, args);
+    MouseContainer &#61; none;
+  }
+
+  if (!bChatting)
+  {
+    bCaptureInput &#61; showCursor;
+    bIgnoreMouseInput &#61; !showCursor;
+  }
+  else
+  {
+    bCaptureInput &#61; true;
+    bIgnoreMouseInput &#61; false;
+  }
+}
+</pre>
+</div>
+<p />
+Now modify the WidgetInitialized() function of your HUD and set up event listeners for mouse click events on the chat text input field and the chat send button:
+<p />
+<div class="codetitlebar">
+<strong><em>YourHUD.uc</em></strong>
+</div>
+<div class="codesnippet">
+<pre>
+event bool WidgetInitialized(name WidgetName, name WidgetPath, GFxObject Widget)
+{
+  switch(WidgetName)
+  {
+  case (&#39;chatInput&#39;):
+    MyChatInput &#61; GFxClikWidget(Widget);
+    MyChatInput.AddEventListener(&#39;CLIK&#95;press&#39;, OnChat);
+    break;
+
+  case (&#39;chatSendBtn&#39;):
+    MyChatSendButton &#61; GFxClikWidget(Widget);
+    MyChatSendButton.AddEventListener(&#39;CLIK&#95;press&#39;, OnChatSend);
+    break;
+
+  case (&#39;chatLog&#39;):
+    MyChatLog &#61; GFxClikWidget(Widget);
+    break;
+
+  default:
+    break;
+  }
+
+  return true;
+}
+</pre>
+</div>
+<p />
+Add the OnChat() event handler.
+<p />
+<div class="codetitlebar">
+<strong><em>YourHUD.uc</em></strong>
+</div>
+<div class="codesnippet">
+<pre>
+// Event Handler - handles when the player clicks on the chat box text input field.
+function OnChat(GFxClikWidget.EventData ev)
+{
+  bChatting &#61; true;
+}
+</pre>
+</div>
+<p />
+Add the OnChatSend() function. This function broadcasts the message when the Send button is pressed, and returns control to the game.
+<p />
+<div class="codetitlebar">
+<strong><em>YourHUD.uc</em></strong>
+</div>
+<div class="codesnippet">
+<pre>
+function OnChatSend(GFxClikWidget.EventData ev)
+{
+  local string Msg;
+
+  Msg &#61; MyChatInput.GetString(&#34;text&#34;);
+
+  if (Msg !&#61; &#34;&#34;)
+  {
+    PC.SendTextToServer(PC, Msg);
+  }
+
+  MyChatInput.SetString(&#34;text&#34;, &#34;&#34;);
+  self.bCaptureInput &#61; false;
+  bChatting &#61; false;
+}
+</pre>
+</div>
+<p />
+Now, for the function that updates the chat area, displaying each message received thus far from Broadcast():
+<p />
+<div class="codetitlebar">
+<strong><em>YourHUD.uc</em></strong>
+</div>
+<div class="codesnippet">
+<pre>
+function UpdateChatLog(string message)
+{
+  local string displayMsg;
+  local int i;
+
+  chatMessages.AddItem(message);
+
+  displayMsg &#61; &#34;&#34;;
+
+  for (i &#61; 0; i &#60; chatMessages.length; i++)
+  {
+    displayMsg &#64;&#61; chatMessages&#91;i];
+    displayMsg &#64;&#61; &#34;\n&#34;;
+  }
+
+  MyChatLog.SetString(&#34;text&#34;, displayMsg);
+  MyChatLog.SetFloat(&#34;position&#34;, MyChatLog.GetFloat(&#34;maxscroll&#34;));
+}
+</pre>
+</div>
+<p />
+Add the widget bindings and other important variables in your default properties:
+<p />
+<div class="codetitlebar">
+<strong><em>YourHUD.uc</em></strong>
+</div>
+<div class="codesnippet">
+<pre>
+defaultproperties
+{
+    WidgetBindings.Add((WidgetName&#61;&#34;chatInput&#34;,WidgetClass&#61;class&#39;GFxClikWidget&#39;))
+    WidgetBindings.Add((WidgetName&#61;&#34;chatSendBtn&#34;,WidgetClass&#61;class&#39;GFxClikWidget&#39;))
+    WidgetBindings.Add((WidgetName&#61;&#34;chatLog&#34;,WidgetClass&#61;class&#39;GFxClikWidget&#39;))
+
+    bIgnoreMouseInput &#61; true;
+    bCaptureInput &#61; false;
+}
+</pre>
+</div>
+<p />
+<p />
+<h2><a name="GameInfo Class Setup"></a> GameInfo Class Setup </h2>
+<hr size="1" noshade="noshade">
+Open your GameInfo class.
+<p />
+Only add these variables to your game info class, if it does not extend UTGame or a child of UTGame, such as UTDeathmatch. You will get a warning on compile, if these variables are already being declared. If so, remove them from your game info class.
+<p />
+<div class="codetitlebar">
+<strong><em>YourGameInfo.uc</em></strong>
+</div>
+<div class="codesnippet">
+<pre>
+var class&#60;BroadcastHandler&#62; BroadcastHandlerClass;
+var BroadcastHandler BroadcastHandler;   // handles message (text and localized) broadcasts
+</pre>
+</div>
+<p />
+Next, add this line to the InitGame() function in your GameInfo class:
+<p />
+<div class="codetitlebar">
+<strong><em>YourGameInfo.uc</em></strong>
+</div>
+<div class="codesnippet">
+<pre>
+event InitGame( string Options, out string ErrorMessage )
+{
+    Super.InitGame(Options, ErrorMessage);
+    BroadcastHandler &#61; spawn(BroadcastHandlerClass);
+}
+</pre>
+</div>
+<p />
+Inside our GameInfo class, we'll override the Broadcast event class from \Development\Src\Engine\Classes\GameInfo.uc
+<p />
+<div class="codetitlebar">
+<strong><em>YourGameInfo.uc</em></strong>
+</div>
+<div class="codesnippet">
+<pre>
+event Broadcast(Actor Sender, coerce string Msg, optional name Type)
+{
+  local SFPlayerController PC;
+  local PlayerReplicationInfo PRI;
+
+  // This code gets the PlayerReplicationInfo of the sender. We&#39;ll use it to get the sender&#39;s name with PRI.PlayerName
+  if (Pawn(Sender) !&#61; None)
+  {
+    PRI &#61; Pawn(Sender).PlayerReplicationInfo;
+  }
+  else if (Controller(Sender) !&#61; None)
+  {
+    PRI &#61; Controller(Sender).PlayerReplicationInfo;
+  }
+
+  // This line executes a &#34;Say&#34;
+  BroadcastHandler.Broadcast(Sender, Msg, Type);
+
+  // This is where we broadcast the received message to all players (PlayerControllers)
+  if (WorldInfo !&#61; None)
+  {
+    ForEach WorldInfo.AllControllers(class&#39;SFPlayerController&#39;,PC)
+    {
+      `Log(Self$&#34;:: Sending &#34;$PC$&#34; a broadcast message from &#34;$PRI.PlayerName$&#34; which is &#39;&#34;$Msg$&#34;&#39;.&#34;);
+      PC.ReceiveBroadcast(PRI.PlayerName, Msg);
+    }
+  }
+}
+</pre>
+</div>
+<p />
+Last of all, add these lines to your GameInfo class' default properties, being sure to modify them with your class names:
+<p />
+<p />
+<div class="codetitlebar">
+<strong><em>YourGameInfo.uc</em></strong>
+</div>
+<div class="codesnippet">
+<pre>
+defaultproperties
+{
+  PlayerControllerClass&#61;class&#39;SFPlayerController&#39;
+  BroadcastHandlerClass&#61;class&#39;Engine.BroadcastHandler&#39;
+  HUDType&#61;class&#39;SFTutorial.SFHudWrapper&#39;
+  bUseClassicHUD&#61;true
+}
+</pre>
+</div>
+<p />
+<h2><a name="PlayerController Class Setup"></a> PlayerController Class Setup </h2>
+<hr size="1" noshade="noshade">
+Create/Open the PlayerController class (in this case: SFPlayerController):
+<p />
+<div class="codetitlebar">
+SFPlayerController.uc
+</div>
+<div class="codesnippet">
+<pre>
+class SFPlayerController extends UTPlayerController;
+</pre>
+</div>
+<p />
+First we'll create a function that registers the HUD inside the PlayerController so we can easily call functions in the HUD from the PlayerController:
+<p />
+<div class="codetitlebar">
+SFPlayerController.uc
+</div>
+<div class="codesnippet">
+<pre>
+var SFHud MySFHud;
+
+function registerHUD(SFHud hud)
+{
+  MySFHud &#61; hud;
+}
+</pre>
+</div>
+<p />
+The next function is used to send a message to the server:
+<p />
+<div class="codetitlebar">
+SFPlayerController.uc
+</div>
+<div class="codesnippet">
+<pre>
+exec function SendTextToServer(SFPlayerController PC, String TextToSend)
+{
+  `Log(Self$&#34;:: Client wants to send &#39;&#34;$TextToSend$&#34;&#39; to the server.&#34;);
+  ServerReceiveText(PC, TextToSend);
+}
+</pre>
+</div>
+<p />
+This function is used to receive a server message and then broadcast it:
+<p />
+<div class="codetitlebar">
+SFPlayerController.uc
+</div>
+<div class="codesnippet">
+<pre>
+reliable server function ServerReceiveText(SFPlayerController PC, String ReceivedText)
+{
+  WorldInfo.Game.Broadcast(PC, ReceivedText, &#39;Say&#39;);
+}
+</pre>
+</div>
+<p />
+Last of all, we need to create a client function that listens for broadcasts from the server, and routes them to the chat window:
+<p />
+<div class="codetitlebar">
+SFPlayerController.uc
+</div>
+<div class="codesnippet">
+<pre>
+reliable client function ReceiveBroadcast(String PlayerName, String ReceivedText)
+{
+    `Log(Self$&#34;:: The Server sent me &#39;&#34;$ReceivedText$&#34;&#39; from &#34;$PlayerName$&#34;.&#34;);
+    MySFHud.UpdateChatLog(PlayerName &#64; &#34;: &#34; &#64; ReceivedText);
+}
+</pre>
+</div>
+<p />
+<h3><a name="Enable Chatting Via Keyboard Command (Pressing Enter)"></a> Enable Chatting Via Keyboard Command (Pressing Enter) </h3>
+For this step, we'll use the Enter key to begin chatting, as well as sending (completing) the chat message. You can however use whatever key you want.
+<p />
+<h4><a name="Adding the key binding"></a> Adding the key binding </h4>
+<p />
+Open DefaultInput.ini, and add the following line:
+<p />
+<div class="codesnippet">
+<pre>
+.Bindings&#61;(Name&#61;&#34;Enter&#34;,Command&#61;&#34;ChatHandler&#34;)
+</pre>
+</div>
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>Note</strong>: You will need to comment out or delete the following line for the pressed key to work for chatting:
+<p />
+<div class="codesnippet">
+<pre>
+.Bindings&#61;(Name&#61;&#34;Enter&#34;,Command&#61;&#34;GBA&#95;Use&#34;)
+</pre>
+</div>
+<p />
+<h4><a name="HUDWrapper Class Setup"></a> HUDWrapper Class Setup </h4>
+Open your HUDWrapper. This is the class that instantiates the HUD. Add the function that will be executed on key press.:
+<p />
+<div class="codetitlebar">
+<strong><em>YourHUDWrapper.uc</em></strong>
+</div>
+<div class="codesnippet">
+<pre>
+exec function ChatHandler()
+{
+  HudMovie.ToggleChat(); // Replace HudMovie with the reference name of your HUD movie.
+}
+</pre>
+</div>
+<p />
+<h4><a name="HUD Class Setup"></a> HUD Class Setup </h4>
+Open your HUD class.
+<p />
+First, we need to ensure that our chosen key is never captured as input by our HUD movie. We do this by adding it to the focus ignore key list. Add this line to your Start()/Init() function:
+<p />
+<div class="codesnippet">
+<pre>
+AddFocusIgnoreKey(&#39;Enter&#39;);
+</pre>
+</div>
+<p />
+Next, add a function that will enable chatting via keyboard command. This function is called by the HUDWrapper:
+<p />
+<div class="codesnippet">
+<pre>
+function ToggleChat()
+{
+  if (!bChatting)
+  {
+    bCaptureInput &#61; true;
+    OnChat();
+  }
+  else
+  {
+    bCaptureInput &#61; false;
+    OnChatSend();
+  }
+}
+</pre>
+</div>
+<p />
+Next, modify the OnChat() and OnChatSend() function parameters so that they are optional:
+<p />
+<div class="codesnippet">
+<pre>
+function OnChat(optional GFxClikWidget.EventData ev)
+function OnChatSend(optional GFxClikWidget.EventData ev)
+</pre>
+</div>
+<p />
+Now modify the OnChat() function by adding this line of code:
+<p />
+<div class="codesnippet">
+<pre>
+MyChatInput.SetBool(&#34;focused&#34;, true);
+</pre>
+</div>
+<p />
+And finally, modify the OnChatSend() function with this line of code:
+<p />
+<div class="codesnippet">
+<pre>
+MyChatLog.SetBool(&#34;focused&#34;, true);
+</pre>
+</div>
+<p />
+Recompile scripts, and test your HUD.
+<p />
+<h2><a name="Downloads"></a> Downloads </h2>
+<hr size="1" noshade="noshade"> <ul>
+<li> <a href="rsrc/Three/CLIKChatBox/UDK_September2011_ScaleformSandboxFiles.zip" target="_top">Download</a> UDK_September2011_ScaleformSandboxFiles.zip.
+</li></ul>
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CLIKChatBox.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:23:18 GMT -->
+</html></body>

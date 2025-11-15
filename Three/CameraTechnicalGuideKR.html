@@ -1,0 +1,2512 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CameraTechnicalGuideKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:11:10 GMT -->
+<head>
+<title> UDK | CameraTechnicalGuideKR    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">CameraTechnicalGuideKR  </b></div>
+<div id="tooltext">
+<a href="CameraTechnicalGuide.html" class="twikiLink">English Translation</a><br><a href="CameraTechnicalGuideJP.html" class="twikiLink">日本語訳</a><br><a href="CameraTechnicalGuideCH.html" class="twikiLink">中国翻译</a><br>
+
+<!-- Three/CameraTechnicalGuideKR -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHomeKR.html" class="twikiLink">UE3 홈</a></b> &gt; <b><a href="GameplayProgrammingHomeKR.html" class="twikiLink">게임플레이 프로그래밍</a></b> &gt; 카메라 테크니컬 가이드
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="카메라 테크니컬 가이드"></a> 카메라 테크니컬 가이드 </h1>
+<hr size="1" noshade="noshade">
+<em>문서 변경사항: <a href="https://udn.epicgames.com/Main/JeffWilson" class="restricted" class="restricted" class="twikiLink">Jeff Wilson</a> 작성. <a href="https://udn.epicgames.com/Main/SungjinHong" class="restricted" class="restricted" class="twikiLink">홍성진</a> 번역.</em>
+<div class="twikiToc"> <ul>
+<li> <a href="CameraTechnicalGuideKR.html#카메라 테크니컬 가이드">카메라 테크니컬 가이드</a> <ul>
+<li> <a href="CameraTechnicalGuideKR.html#개요">개요</a>
+</li> <li> <a href="CameraTechnicalGuideKR.html#카메라">카메라</a> <ul>
+<li> <a href="CameraTechnicalGuideKR.html#포스트 프로세스 이펙트">포스트 프로세스 이펙트</a>
+</li> <li> <a href="CameraTechnicalGuideKR.html#렌즈 이펙트">렌즈 이펙트</a>
+</li> <li> <a href="CameraTechnicalGuideKR.html#카메라 애니메이션">카메라 애니메이션</a>
+</li> <li> <a href="CameraTechnicalGuideKR.html#카메라 모디파이어">카메라 모디파이어</a>
+</li></ul>
+</li> <li> <a href="CameraTechnicalGuideKR.html#플레이어 콘트롤러">플레이어 콘트롤러</a>
+</li> <li> <a href="CameraTechnicalGuideKR.html#폰">폰</a>
+</li> <li> <a href="CameraTechnicalGuideKR.html#카메라 동작 커스터마이징">카메라 동작 커스터마이징</a>
+</li> <li> <a href="CameraTechnicalGuideKR.html#예제 - _CalcCamera">예제 - CalcCamera</a> <ul>
+<li> <a href="CameraTechnicalGuideKR.html#1인칭 카메라 예제">1인칭 카메라 예제</a>
+</li> <li> <a href="CameraTechnicalGuideKR.html#3인칭 카메라 예제">3인칭 카메라 예제</a>
+</li> <li> <a href="CameraTechnicalGuideKR.html#내려보기 카메라 예제">내려보기 카메라 예제</a>
+</li> <li> <a href="CameraTechnicalGuideKR.html#등측도법(isometric) 카메라 예제">등측도법(isometric) 카메라 예제</a>
+</li> <li> <a href="CameraTechnicalGuideKR.html#횡스크롤 카메라 예제">횡스크롤 카메라 예제</a>
+</li> <li> <a href="CameraTechnicalGuideKR.html#통합 카메라 예제">통합 카메라 예제</a>
+</li></ul>
+</li> <li> <a href="CameraTechnicalGuideKR.html#예제 - 커스텀 카메라"> 예제 - 커스텀 카메라</a> <ul>
+<li> <a href="CameraTechnicalGuideKR.html#기본 카메라 모듈"> 기본 카메라 모듈</a>
+</li> <li> <a href="CameraTechnicalGuideKR.html#커스텀 카메라"> 커스텀 카메라</a>
+</li> <li> <a href="CameraTechnicalGuideKR.html#베이스 콘트롤 모듈"> 베이스 콘트롤 모듈</a>
+</li> <li> <a href="CameraTechnicalGuideKR.html#엔진 클래스 오버라이딩"> 엔진 클래스 오버라이딩</a> <ul>
+<li> <a href="CameraTechnicalGuideKR.html#PlayerController 클래스"> PlayerController 클래스</a>
+</li> <li> <a href="CameraTechnicalGuideKR.html#Pawn 클래스"> Pawn 클래스</a>
+</li> <li> <a href="CameraTechnicalGuideKR.html#GameInfo 클래스"> GameInfo 클래스</a>
+</li></ul>
+</li> <li> <a href="CameraTechnicalGuideKR.html#카메라 모듈 예제"> 카메라 모듈 예제</a>
+</li> <li> <a href="CameraTechnicalGuideKR.html#콘트롤 모듈 예제"> 콘트롤 모듈 예제</a>
+</li> <li> <a href="CameraTechnicalGuideKR.html#환경설정 파일"> 환경설정 파일</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="개요"></a> 개요 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+언리얼 엔진 3의 플레이어용 카메라 시스템은 크게 다음의 세 메인 클래스로 구성되어 있습니다: Camera, Pawn, PlayerController. 이 클래스들은 모두 플레이 도중의 플레이어 카메라에 적용될 위치나 회전 및 기타 특수 이펙트에 관련되어 있습니다.
+<p />
+PlayerController에는 Camera 사용 및 Pawn 조절에의 참조가 포함됩니다. PlayerController는 플레이어로부터 입력받은 값을 사용하여 조절중인 Pawn의 위치 및 회전을 업데이트합니다. 기본값으로 Camera는 그 업데이트 사항을 Pawn에 넘겨주어 차례로 카메라의 위치와 회전을 업데이트하게 됩니다.
+<p />
+이 클래스를 하나 이상 혹은 그 상호작용법을 수정, 월드를 플레이어에게 보여주기 위해 제작중인 게임에 알맞은 원근법을 사용하여 플레이어의 카메라를 설정할 수 있습니다. 플레이어 카메라 기본값은 1인칭 원근법이며, 3인칭 어깨너머 원근법으로 전환할 수 있는 옵션이 포함되어 있습니다. 기타 내려보기 원근법, 등측도법(isometric), 횡스크롤 원근법 등 게임에 필요한 모드로 월드를 표시하도록 쉽게 수정할 수 있습니다.
+<p />
+<p />
+<h2><a name="카메라"></a> 카메라 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+카메라 클래스는 월드 내의 플레이어 뷰를 나타냅니다. 플레이어 카메라의 위치와 회전은 씬이 화면상에 뿌려질 때 렌더링되는 시점을 결정합니다. 또한 카메라 클래스에서 월드를 카메라를 통해 볼 때의 방법, 즉 시야나 상 비율같은 설정도 조절할 수 있습니다. 게다가 포스트 프로세스, 렌즈 이펙트, 카메라 모디파이어, 카메라 애니메이션 등과 같은 특수 이펙트를 적용할 수도 있습니다.
+<p />
+FOV 변수 전부는 각도로 표현됨에 유의하십시오.
+<p />
+<strong>카메라 프로퍼티</strong>
+<p /> <ul>
+<li> <strong>일반</strong> <ul>
+<li> <strong>PCOwner</strong> - 이 카메라를 소유하는 PlayerController로의 참조
+</li> <li> <strong>CameraStyle</strong> - 이 카메라의 현재 모드. 뷰 타겟에 의해 시점이 덮어쓰이지 않았을 때 (1인칭, 3인칭, 자유 등의) 카메라 종류를 결정하는데 사용
+</li> <li> <strong>ViewTarget</strong> - 뷰 타겟을 정의하는 현재 데이터. 유형은 TViewTarget
+</li> <li> <strong>TViewTarget</strong> <ul>
+<li> <strong>Target</strong> - 카메라가 "따르고" 있는 타겟 액터
+</li> <li> <strong>Controller</strong> - 폰인 경우 타겟의 콘트롤러 <ul>
+<li> <strong>POV</strong> - 타겟에 이상적인 시점. 유형은 TPOV <ul>
+<li> <strong>TPOV</strong> <ul>
+<li> <strong>Location</strong> - 시점의 위치
+</li> <li> <strong>Rotation</strong> - 시점의 회전
+</li> <li> <strong>FOV</strong> - 시점의 시야각
+</li></ul>
+</li> <li> <strong>AspectRatio</strong> - 타겟에 사용할 상 비율
+</li> <li> <strong>PRI</strong> - Player Replication Info, 폰 전이를 통한 동일 플레이어 추적에 사용되는 플레이어 자가복제 정보
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li> <li> <strong>시야</strong> <ul>
+<li> <strong>DefaultFOV</strong> - 카메라의 기본 시야
+</li> <li> <strong>bLockedFOV</strong> - 참이면, 카메라의 시야가 LockedFOV 값에 잠김
+</li> <li> <strong>LockedFOV</strong> - FOV가 잠겼을 때 사용할 시야
+</li></ul>
+</li> <li> <strong>상 비율</strong> <ul>
+<li> <strong>DefaultAspectRatio</strong> - 카메라의 상 비율 기본값
+</li> <li> <strong>bConstrainAspectRatio</strong> - 참이면 카메라의 상 비율이 ConstrainedAspectRatio 값에 제한됨
+</li> <li> <strong>ConstrainedAspectRatio</strong> - 카메라의 상 비율이 제한되었을 때 사용할 상 비율
+</li></ul>
+</li></ul>
+<p />
+<strong>카메라 함수</strong>
+<p /> <ul>
+<li> <strong>일반</strong> <ul>
+<li> <strong>UpdateCamera [DeltaTime]</strong> - 카메라 업데이트을 수행하기 위해 프레임마다 호출 <ul>
+<li> <strong>DeltaTime</strong> - 지난 업데이트 이후 경과 시간
+</li></ul>
+</li> <li> <strong>GetCameraViewPoint [OutCamLoc] [OutCamRot]</strong> - 카메라의 위치와 회전값을 구함. 직접 호출해야 함. PCOwner의 GetPlayerViewPoint() 함수 대리 호출 가능 <ul>
+<li> <strong>OutCamLoc</strong> - 카메라 위치 출력
+</li> <li> <strong>OutCamRot</strong> - 카메라 회전 출력
+</li></ul>
+</li> <li> <strong>ProcessViewRotation [DeltaTime] [OutViewRotation] [OutDeltaRot]</strong> - 카메라에 이 프레임의 뷰 회전 변경사항을 바꿀 수 있는 기회를 주기 위해 PCOwner에 의해 호출됨 <ul>
+<li> <strong>DeltaTime</strong> - 지난 업데이트 이후 경과 시간
+</li> <li> <strong>OutViewRotation</strong> - 조절된 카메라 뷰 회전 출력
+</li> <li> <strong>OutDeltaRot</strong> - 조절된 카메라 델타 회전 출력
+</li></ul>
+</li></ul>
+</li> <li> <strong>시야</strong> <ul>
+<li> <strong>GetFOVAngle</strong> - 카메라의 현 시야각 반환
+</li> <li> <strong>SetFOV [NewFOV]</strong> - 카메라의 시야를 NewFOV 값으로 설정 <ul>
+<li> <strong>NewFOV</strong> - 카메라의 시야로 설정할 값
+</li></ul>
+</li></ul>
+</li> <li> <strong>뷰 타겟</strong> <ul>
+<li> <strong>SetViewTarget [NewViewTarget] [TransitionParams]</strong> - 카메라의 뷰 타겟 설정 <ul>
+<li> <strong>NewViewTarget</strong> - 카메라의 새로운 뷰 타겟으로 설정할 액터
+</li> <li> <strong>TransitionParams</strong> - 새로운 뷰 타겟으로의 전이시 사용할 혼합 파라미터
+</li></ul>
+</li> <li> <strong>UpdateViewTarget [OutVT] [DeltaTime]</strong> - 뷰타겟을 새 위치, 회전, 시야로 업데이트하기 위해 프레임별로 호출됨. (뷰 타겟 액터에서 CalcCamera?() 오버라이딩에 상반되는) 커스텀 카메라를 사용중이라면, 이게 바로 동작을 바라는 대로 구현하기 위한 오버라이딩의 주요 함수가 됩니다. <ul>
+<li> <strong>OutVT</strong> - 카메라의 시점과 뷰 타겟을 담는 데이터 구조체 출력
+</li> <li> <strong>DeltaTime</strong> - 지난 업데이트 이후 경과 시간
+</li></ul>
+</li></ul>
+</li></ul>
+<p />
+<h3><a name="포스트 프로세스 이펙트"></a> 포스트 프로세스 이펙트 </h3>
+<p />
+포스트 프로세스 이펙트는 렌더링된 씬이 플레이어에게 표시되기 전에 적용되는 이펙트를 말합니다. 각 카메라는 월드, 볼륨, 기본 포스트 프로세스 설정을 덮어쓸 수 있는 자체 포스트 프로세스 이펙트 세트를 적용할 수 있습니다.
+<p />
+포스트 프로세스 이펙트에 대한 상세 정보는, <a href="PostProcessEditorUserGuideKR.html" class="twikiLink">포스트 프로세스 에디터 가이드</a> , <a href="PostProcessTechnicalGuideKR.html" class="twikiLink">포스트 프로세스 테크니컬 가이드</a> , <a href="PostProcessMaterialsKR.html" class="twikiLink">포스트 프로세스 머티리얼</a> 등을 참고하십시오.
+<p />
+<strong>포스트 프로세스 이펙트 프로퍼티</strong>
+<p /> <ul>
+<li> <strong>CameOverridePostProcessAlpha</strong> - 카메라의 포스트 프로세스 설정 영향력을 월드, 볼륨, 기본 포스트 프로세스 설정 등에 맞게 설정. 값 0.0 은 월드, 볼륨, 기본 포스트 프로세스 이펙트가, 1.0 은 카메라의 포스트 프로세스가 최대 영향력을 행사함을 의미
+</li> <li> <strong>CamPostProcessSettings</strong> - 카메라가 월드, 볼륨, 기본 포스트 프로세스 이펙트를 덮어쓸 때 사용할 포스트 프로세스 설정
+</li> <li> <strong>bEnableColorScaling</strong> - 참이면 최종 이미지의 색 채널이 ColorScale 값을 사용하여 조절
+</li> <li> <strong>ColorScale</strong> - 최종 이미지의 개별 색 채널 조절용 벡터
+</li> <li> <strong>bEnableColorScaleInterp</strong> - 참이면 SetDesiredColorScale() 함수를 통해 색 스케일 값이 새로 설정될 때, 카메라가 색 스케일 중간값으로 보간
+</li> <li> <strong>bEnableFading</strong> - 참이면 카메라가 화면에 FadeColor를 FadeAmount만큼 적용
+</li> <li> <strong>FadeColor</strong> - 카메라가 페이드할 때 화면에 적용할 색
+</li> <li> <strong>FadeAmount</strong> - 페이드에 적용할 양. 근본적으로는 페이드의 알파값
+</li></ul>
+<p />
+<strong>포스트 프로세스 이펙트 함수</strong>
+<p /> <ul>
+<li> <strong>SetDesiredColorScale [NewColorScale] [InterpTime]</strong> - 색 스케일 값을 새로 설정하고 bEnableColorScaleInterp 값에 따라 보간 <ul>
+<li> <strong>NewColorScale</strong> - 색 스케일에 사용할 새로운 값
+</li> <li> <strong>InterpTime</strong> - 새로운 색 스케일값 보간에 걸리는 시간
+</li></ul>
+</li></ul>
+<p />
+<h3><a name="렌즈 이펙트"></a> 렌즈 이펙트 </h3>
+<p />
+렌즈 이펙트는 플레이어의 카메라 렌즈에 적용되는 파티클 이펙트입니다. 렌즈 이펙트는 카메라 렌드에 떨어지는 빗방울이나 핏자국, 내려앉는 먼지나 가루 등을 만드는데 사용합니다. 카메라 클래스에 이런 이펙트 유형을 적용하는 함수가 포함됩니다.
+<p />
+파티클 시스템 및 이펙트에 대한 상세 정보는, <a href="ParticleSystemReferenceKR.html" class="twikiLink">파티클 시스템 참고서</a> 를 참고하십시오.
+<p />
+<strong>렌즈 이펙트 프로퍼티</strong>
+<p /> <ul>
+ <li>
+ <ul>
+<li> <strong>CameraLensEffects</strong> - 현재 카메라에 적용된 파티클 이펙트 전체의 배열
+</li></ul>
+</li></ul>
+<p />
+<strong>렌즈 이펙트 함수</strong>
+<p /> <ul>
+<li> <strong>FindCameraLensEffect [LensEffectEmitterClass]</strong> - 현재 카메라에 적용된 렌즈 이펙트 검색 및 일치 유형 반환 <ul>
+<li> <strong>LensEffectEmitterType</strong> - 검색할 렌즈 이펙트 클래스
+</li></ul>
+</li> <li> <strong>AddCameraLensEffect [LensEffectEmitterClass]</strong> - 지정된 유형의 렌즈 이펙트를 카메라에 새로 적용 <ul>
+<li> <strong>LensEffectEmitterClass</strong> - 카메라에 적용할 렌즈 이펙트 클래스
+</li></ul>
+</li> <li> <strong>RemoveCameraLensEffect [Emitter]</strong> - 카메라에서 렌즈 이펙트 제거 <ul>
+<li> <strong>Emitter</strong> - 카메라에서 제거할 렌즈 이펙트
+</li></ul>
+</li> <li> <strong>ClearCameraLensEffects</strong> - 카메라에 현재 적용된 렌즈 이펙트 전부 제거
+</li></ul>
+<p />
+<h3><a name="카메라 애니메이션"></a> 카메라 애니메이션 </h3>
+<p />
+카메라 애니메이션이란 마티네에서 생성 가능한 (혹은 외부 애니메이션 에디터로 만든 것을 가져온) 애니메이션을 말하며, 애니메이션의 이동 및 회전 정보를 사용하여 플레이 도중 카메라를 맞춥(offset)니다. 또한 FOV나 포스트프로세스 이펙트처럼 보통 마티네로 애니메이트 가능한 카메라의 기타 프로퍼티도 애니메이트시킬 수 있습니다. 카메라 흔들기나 핸드헬드 카메라의 손떨림은 물론 여타 애니메이션 이펙트 생성에 꽤나 유용합니다.
+<p />
+카메라 애니메이션 설정에 대한 상세 정보는, <a href="SettingUpCamerasKR.html" class="twikiLink">카메라 설정하기</a> 를 참고하십시오.
+<p />
+<strong>카메라 애니메이션 함수</strong>
+<p /> <ul>
+<li> <strong>PlayCameraAnim [CameraAnim] [Rate] [Scale] [BlendInTime] [BlendOutTime] [bLoop] [bRandomStartTime] [Duration] [bSingleInstance]</strong> - 카메라에서 카메라 애니메이션을 재생 <ul>
+<li> <strong>CameraAnim</strong> - 재생할 카메라 애니메이션
+</li> <li> <strong>Rate</strong> - 옵션. 카메라 애니메이션 재생 속도
+</li> <li> <strong>Scale</strong> - 옵션. 카메라 애니메이션 변형에 적용할 강도
+</li> <li> <strong>BlendInTime</strong> - 옵션. 카메라 애니메이션 속으로의 혼합에 걸리는 시간
+</li> <li> <strong>BlendOutTime</strong> - 옵션. 카메라 애니메이션 밖으로의 혼합에 걸리는 시간
+</li> <li> <strong>bLoop</strong> - 옵션. 참이면 카메라 애니메이션을 명시적으로 멈출 때까지 지속
+</li> <li> <strong>bRandomStartTime</strong> - 옵션. 참이면 카메라 애니메이션이 시간선 내의 임의 지점에서부터 재생 시작
+</li> <li> <strong>Duration</strong> - 옵션. 애니메이션 재생 기간. 설정하지 않으면 전체 애니메이션 재생
+</li> <li> <strong>bSingleInstance</strong> - 옵션. 참이면 한 번에 하나의 카메라 흔들림 인스턴스만 가능
+</li></ul>
+</li> <li> <strong>StopAllCameraAnims [bImmediate]</strong> - 현재 재생중인 카메라 애니메이션 모두 정지 <ul>
+<li> <strong>bImmediate</strong> - 옵션. 참이면 애니메이션이 즉시 정지, 설정된 혼합 시간도 무시
+</li></ul>
+</li> <li> <strong>StopAllCameraAnimsByType [Anim] [bImmediate]</strong> - 지정된 유형의 카메라 애니메이션 인스턴스를 전부 정지 <ul>
+<li> <strong>Anim</strong> - 정지시킬 카메라 애니메이션 유형
+</li> <li> <strong>bImmediate</strong> - 옵션. 참이면 애니메이션이 바로 정지, 설정된 혼합 시간도 무시
+</li></ul>
+</li> <li> <strong>StopCameraAnim [AnimInst] [bImmediate]</strong> - 지정된 카메라 애니메이션 인스턴스를 정지 <ul>
+<li> <strong>AnimInst</strong> - 정지시킬 카메라 애니메이션 인스턴스
+</li> <li> <strong>bImmediate</strong> - 옵션. 참이면 애니메이션이 바로 정지, 설정된 혼합 시간도 무시
+</li></ul>
+</li></ul>
+<p />
+<h3><a name="카메라 모디파이어"></a> 카메라 모디파이어 </h3>
+<p />
+카메라 모디파이어란 카메라에 적용했을 때 그 프로퍼티를 바꿀 수 있는 객체를 말합니다. CameraModifier 클래스가 해당 이펙트의 기본 클래스입니다. 이 클래스를 하위클래스화하고 내부 함수를 오버라이드하면 완전한 맞춤 모디파이어를 만들 수 있습니다. CameraModifier_CameraShake 클래스가 카메라 모디파이어로 만든 좋은 예입니다.
+<p />
+<strong>카메라 모디파이어 프로퍼티</strong>
+<p /> <ul>
+ <li>
+ <ul>
+<li> <strong>ModifierList</strong> - 카메라에 현재 적용된 모든 카메라 모디파이어 배열
+</li> <li> <strong>CameraShakeModClass</strong> - cone-driven 카메라 흔들기, 즉 키즈멧에서의 카메라 애니메이션이 아닌 화면 흔들기 등에 사용하는 클래스
+</li></ul>
+</li></ul>
+<p />
+<strong>카메라 모디파이어 함수</strong>
+<p /> <ul>
+<li> <strong>PlayCameraShake [Shake] [Scale] [PlaySpace] [UserPlaySpaceRot]</strong> - 카메라에 카메라 흔들기 이펙트를 재생 <ul>
+<li> <strong>Shake</strong> - 카메라 흔들기 이펙트에 사용할 CameraShake 설정
+</li> <li> <strong>Scale</strong> - 카메라 흔들기 설정에 곱해줄 스케일 인자
+</li> <li> <strong>PlaySpace</strong> - 옵션. 카메라 흔들기에 사용할 재생 공간
+</li> <li> <strong>UserPlaySpaceRot</strong> - 옵션. 사용자 지정 재생 공간에 사용할 회전
+</li></ul>
+</li> <li> <strong>StopCameraShake [Shake]</strong> - 카메라의 카메라 흔들기 이펙트 재생 중지 <ul>
+<li> <strong>Shake</strong> - 재생을 멈출 카메라 흔들기
+</li></ul>
+</li> <li> <strong>CalcRadialCameraShake [Cam] [Epicenter] [InnerRadius] [OuterRadius] [Falloff]</strong> - 지정된 카메라의 반경 흔들기 강도를 계산하여 반환 <ul>
+<li> <strong>Cam</strong> - 강도를 계산할 카메라
+</li> <li> <strong>Epicenter</strong> - 카메라 흔들기 발생 진원지
+</li> <li> <strong>InnerRadius</strong> - 감쇠가 시작될 진원지로부터의 거리
+</li> <li> <strong>OuterRadius</strong> - 카메라 흔들기 이펙트가 끝나게 될 진원지로부터의 거리
+</li> <li> <strong>Falloff</strong> - 강도 감쇠를 계산하는데 사용할 지수
+</li></ul>
+</li> <li> <strong>PlayWorldCameraShake [Shake] [ShakeInstigator] [Epicenter] [InnerRadius] [OuterRadius] [Falloff] [bTrForceFeedback] [bOrientShakeTowardEpicenter]</strong> - 근처 카메라 전부에 영향을 끼치는 월드내 카메라 흔들기 재생 <ul>
+<li> <strong>Shake</strong> - 재생할 카메라 흔들기
+</li> <li> <strong>ShakeInstigator</strong> - 카메라 흔들기를 실시하게 한 액터
+</li> <li> <strong>Epicenter</strong> - 카메라 흔들기 발생 진원지
+</li> <li> <strong>InnerRadius</strong> - 감쇠가 시작될 진원지로부터의 거리
+</li> <li> <strong>OuterRadius</strong> - 카메라 흔들기 이펙트가 끝나게 될 진원지로부터의 거리
+</li> <li> <strong>Falloff</strong> - 감쇠 강도 계산에 사용될 지수
+</li> <li> <strong>bTryForceFeedback</strong> - 참이면 힘 피드백 적용을 영향받는 콘트롤러 전부에 시도
+</li> <li> <strong>bOrientShakeTowardEpicenter</strong> - 옵션. 참이면 카메라 흔들기의 오프셋 모두가 진원지를 향하는데 관계되어 적용, 양수 X축이 진원지를 향하는 채로.
+</li></ul>
+</li> <li> <strong>ClearAllCameraShakes</strong> - 카메라에 현재 적용된 카메라 흔들기를 모두 제거
+</li></ul>
+<p />
+<h2><a name="플레이어 콘트롤러"></a> 플레이어 콘트롤러 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+PlayerController는 플레이어의 입력을 폰의 이동이나 카메라 조절같은 게임 액션으로 옮기는 것을 담당합니다. 꼭 그런건 아니더래도 PlayerController 회전이 카메라 회전을 담당하는 건 꽤나 전형적인 경우입니다. 카메라 시점을 새로 만들 때, PlayerController 클래스 내의 함수기능을 각 카메라 유형에 따라 플레이어의 입력이 폰의 이동 및 방향에 적절히 적용되도록 약간 업데이트하거나 오버라이드해야 할 수도 있습니다. 이동 및 카메라에 관련된 프로퍼티와 함수 일부에 대한 설명은 아래와 같습니다.
+<p />
+<strong>플레이어 콘트롤러 프로퍼티</strong>
+<p /> <ul>
+<li> <strong>PlayerCamera</strong> - 플레이어 카메라로의 참조
+</li> <li> <strong>CameraClass</strong> - 플레이어 용으로 사용할 카메라 클래스
+</li> <li> <strong>ViewTarget</strong> - 플레이어 카메라의 현재 뷰 타겟
+</li> <li> <strong>RealViewTarget</strong> - 플레이어 카메라 뷰 타겟의 플레이어 자가복제 정보
+</li> <li> <strong>FOVangle</strong> - 플레이어 카메라의 시야각
+</li> <li> <strong>DefaultFOV</strong> - 플레이어 카메라에 사용할 기본 시야각
+</li></ul>
+<p />
+<strong>플레이어 콘트롤러 함수</strong>
+<p /> <ul>
+<li> <strong>GetPlayerViewPoint [out_Location] [out_Rotation]</strong> - 콘트롤러 폰의 시점 반환. 사람 플레이어에 대해서는 카메라의 시점. AI 플레이어에 대해서는 폰의 눈에서의 시점. 이런 기본 구현에서는 단순히 콘트롤러 자체의 위치 및 회전. <ul>
+<li> <strong>out_Location</strong> - 플레이어의 시점 위치 출력
+</li> <li> <strong>out_Rotation</strong> - 플레이어의 시점 회전 출력
+</li></ul>
+</li> <li> <strong>GetActorEyesViewPoint [out_Location] [out_Rotation]</strong> - 콘트롤러나 있을 경우 폰의 시점 반환. 근본적으로 플레이어가 어디에서 어느 방향을 보는지를 반환 <ul>
+<li> <strong>out_Location</strong> - 플레이어 눈의 위치 출력
+</li> <li> <strong>out_Rotation</strong> - 플레이어 눈의 회전 출력
+</li></ul>
+</li> <li> <strong>UpdateRotation [DeltaTime]</strong> - 콘트롤러와 콘트롤러 폰의 회전을 플레이어 입력에 따라 업데이트 <ul>
+<li> <strong>DeltaTime</strong> - 지난 업데이트 이후 경과 시간
+</li></ul>
+</li> <li> <strong>ProcessViewRotation [DeltaTime] [out_ViewRotation] [DeltaRot]</strong> - 콘트롤러의 뷰 회전에 변경을 허용하기 위해 호출됩니다. (clamping 등) UpdateRotation() 에서 호출됩니다. <ul>
+<li> <strong>DeltaTime</strong> - 지난 업데이트 이후 경과 시간
+</li> <li> <strong>out_ViewRotation</strong> - 플레이어 뷰 회전 출력
+</li> <li> <strong>DeltaRot</strong> - 플레이어 입력에 따른 회전 변화
+</li></ul>
+</li> <li> <strong>PlayerMove [DeltaTime]</strong> - 현 이동에 대한 가속 및 회전값을 새로 계산 후 (1인용이나 청취서버 용으로는) ProcessMove() 또는 (네트워크 클라이언트 용으로는) ReplicateMove() 호출. 단지 기본 PlayerController 클래스의 토막일 뿐이나 플레이어걷기 상태와 같은 이동 관련 특정 상태 내에서 오버라이드됨. 매 사이클마다 PlayerTick() 함수에서 호출되는 함수
+</li> <li> <strong>ProcessMove [DeltaTime] [newAccel] [DoubleClickMove] [DeltaRot]</strong> - 클라이언트에서의 현 이동을 처리. 이동에 대한 특수 함수기능을 요하는 특정 상태 내에서 오버라이드되는 함수
+</li></ul>
+<p />
+<h2><a name="폰"></a> 폰 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+폰은 플레이어의 월드 내 물리 표현일 뿐 아니라, 플레이어 카메라의 위치와 회전 조절 담당도 가능합니다. 카메라 시점을 완전히 새로 만들기 위해 오버라이드 가능한 함수를 포함합니다. 카메라 관련 함수 일부에 대한 설명은 아래와 같습니다.
+<p />
+<strong>폰 함수</strong>
+<p /> <ul>
+<li> <strong>CalcCamera [DeltaTime] [out_CamLoc] [out_CamRot] [out_FOV]</strong> - 폰에서 볼 때의 카메라 시점 계산. 플레이어용 주요 카메라 계산 함수 <ul>
+<li> <strong>DeltaTime</strong> - 지난 업데이트 이후 경과 시간
+</li> <li> <strong>out_CamLoc</strong> - 카메라 위치 출력
+</li> <li> <strong>out_CamRot</strong> - 카메라 회전 출력
+</li> <li> <strong>out_FOV</strong> - 카메라 시야 출력
+</li></ul>
+</li> <li> <strong>GetDefaultCameraMode [RequestedBy]</strong> - 이 폰에 사용해야 하는 기본 카메라 모드를 이름으로 반환. 보통 콘트롤러가 폰에 빙의될 때 호출  <ul>
+<li> <strong>RequestedBy</strong> - 기본 카메라 모드를 요구하는 콘트롤러
+</li></ul>
+</li> <li> <strong>ProcessViewRotation [deltaTime]  [out_ViewRotation] [out_DeltaRot]</strong> - 폰에게 플레이어의 뷰 회전에 영향을 끼칠 수 있는 기회를 주고, 최종 뷰 회전값을 out_ViewRotation 파라미터로 반환. PlayerController의 UpdateRotation() 함수에서 호출 <ul>
+<li> <strong>deltaTime</strong> - 지난 업데이트 이후 경과 시간
+</li> <li> <strong>out_ViewRotation</strong> - 폰 시점의 회전 출력
+</li> <li> <strong>out_DeltaRot</strong> - 델타 회전 출력
+</li></ul>
+</li> <li> <strong>SetViewRotation [NewRotation]</strong> - 콘트롤러가 있으면 그 회전을, 없으면 폰 자체의 회전을 설정 <ul>
+<li> <strong>NewRotation</strong> - 폰의 뷰를 새로이 설정할 회전
+</li></ul>
+</li> <li> <strong>GetActorEyesViewPoint [out_Location] [out_Rotation]</strong> - 폰의 눈, 또는 플레이어 시점의 위치 및 방향 반환. 1인칭 시점에서는 카메라의 위치 및 방향과 동일. 또한 대부분의 투사가 수행될 시점 <ul>
+<li> <strong>out_Location</strong> - 폰의 눈 위치 출력
+</li> <li> <strong>out_Rotation</strong> - 폰의 눈 방향 출력
+</li></ul>
+</li></ul>
+<p />
+<p />
+<h2><a name="카메라 동작 커스터마이징"></a> 카메라 동작 커스터마이징 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+커스텀 카메라를 구현하는 방법은 크게 두 가지 있습니다. 뷰 타겟 Pawn은 CalcCamera()를 구현할 수도, Camera를 extend하여 커스텀 클래스를 만들 수도 있습니다.
+<p />
+Pawn.CalcCamera() 구현은 단순하고 간단한 카메라 모드에 좋습니다. 이 방법의 단점이라면 포스트 프로세스 이펙트나 카메라 애니메이션을 포함해서 몇몇 함수기능을 쓸 수 없다는 점입니다.
+<p />
+커스텀 카메라 클래스 생성법은 설정하는 데 약간의 간접비가 추가될 수야 있겠지만, 기능은 훨씬 낫습니다. GameFramework.GamePlayerCamera 가 이런 접근법의 좋은 예입니다.
+<p />
+<p />
+<h2><a name="예제 - _CalcCamera"></a> 예제 - CalcCamera </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+아래는 폰의 CalcCamera() 함수를 사용하여 플레이어의 카메라 시점 변경법, 어떤 경우에는 플레이어 입력이 처리되는 법에 대한 기본 예제입니다. 필요한 카메라에다 그냥 가져다 붙여 쓰기만 하면 되는 해결책은 되기 힘들며, 단지 자신만의 커스텀 카메라 설정 제작법을 알려드리기 위한 것일 뿐입니다.
+<p />
+발매가능한 세련된 카메라 유형을 만들려면 엄청난 양의 변경을 할 수도, 아니 해야만 할 것입니다. 1인칭 모드가 아닌 경우 마우스휠 스크롤을 통해 플레이어와 카메라의 거리를 조절하는 기능을 구현하고 싶을 지도 모르겠습니다. 어떤 모드에서는 카메라가 월드 지오메트리에 부대끼는 것을 피하게 하는 코드를 넣는 것도, 레벨을 특별히 그에 조심해서 디자인하지 않은 경우에는 좋은 생각일 듯 합니다. 어떤 모드에서는 십자선을 지우기 보단 표시법을 바꾸는 것도 좋겠습니다.
+<p />
+여기 예제 전부에는, 게임에 새로운 Pawn 및 PlayerController 클래스를 사용하라고 할 새 커스텀 게임타입 클래스가 필요합니다.
+<p />
+<span style="font:12px Courier;">
+UDNGame.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNGame extends UTDeathMatch;
+
+defaultproperties
+{
+   DefaultPawnClass&#61;class&#39;UDNExamples.UDNPawn&#39;
+   PlayerControllerClass&#61;class&#39;UDNExamples.UDNPlayerController&#39;
+   MapPrefixes&#91;0]&#61;&#34;UDN&#34;
+}
+</pre>
+</div>
+<p />
+엔진에게 새 게임타입을 기본으로 사용하게 하기 위해 DefaultGame.ini도 변경해야 합니다.
+<p />
+<span style="font:12px Courier;">
+DefaultGame.ini
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+&#91;Engine.GameInfo]
+DefaultGame&#61;UDNExamples.UDNGame
+DefaultServerGame&#61;UDNExamples.UDNGame
+</pre>
+</div>
+<p />
+<strong>알림:</strong> 새 게임타입을 사용하게 하려면 맵에 전치사가 바르게 붙어있나 확인해야 합니다. 여기 게임타입에선 전치사를 "UDN"으로 설정해 놨기에 모든 맵도 "UDN-"으로 시작해야 합니다. 맵의 World 프로퍼티 중 <em>Game Type PIE</em> 부분을 새 게임타입으로 설정하는 식으로도 에디터에 있는 아무 맵을 가지고 새 게임타입을 빠르게 테스트해 볼 수 있습니다.
+<p />
+<h3><a name="1인칭 카메라 예제"></a> 1인칭 카메라 예제 </h3>
+<p />
+1인칭 시점은 UTPawn에서 연장된 폰 전부의 기본 카메라 유형입니다. 이 예제는 기본 1인칭 카메라를 만드는 데 관련된 과정을 더 잘 시연해보이기 위해, 관련된 각 클래스에서 카메라 유형을 구성하는 주요 부분을 끌어낸 뒤 새로운 하위클래스로 대체하는 것입니다.
+<p />
+<img alt="camera_first.jpg" src="rsrc/Three/CameraTechnicalGuide/camera_first.jpg" />
+<p />
+<span style="font:12px Courier;">
+UDNPawn.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPawn extends UTPawn;
+
+simulated function bool CalcCamera( float fDeltaTime, out vector out&#95;CamLoc, out rotator out&#95;CamRot, out float out&#95;FOV )
+{
+   // 1인칭 카메라 위치 및 회전 계산
+   GetActorEyesViewPoint( out&#95;CamLoc, out&#95;CamRot );
+
+   return true;
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<span style="font:12px Courier;">
+UDNPlayerController.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPlayerController extends UTPlayerController;
+
+state PlayerWalking
+{
+ignores SeePlayer, HearNoise, Bump;
+
+   function ProcessMove(float DeltaTime, vector NewAccel, eDoubleClickDir DoubleClickMove, rotator DeltaRot)
+   {
+      if( Pawn &#61;&#61; None )
+      {
+         return;
+      }
+
+      if (Role &#61;&#61; ROLE&#95;Authority)
+      {
+         // 원격 클라이언트용 ViewPitch 업데이트
+         Pawn.SetRemoteViewPitch( Rotation.Pitch );
+      }
+
+      Pawn.Acceleration &#61; NewAccel;
+
+      CheckJumpOrDuck();
+      }
+}
+
+function UpdateRotation( float DeltaTime )
+{
+   local Rotator   DeltaRot, newRotation, ViewRotation;
+
+   ViewRotation &#61; Rotation;
+   if (Pawn!&#61;none)
+   {
+      Pawn.SetDesiredRotation(ViewRotation);
+   }
+
+   // Calculate Delta to be applied on ViewRotation
+   DeltaRot.Yaw   &#61; PlayerInput.aTurn;
+   DeltaRot.Pitch   &#61; PlayerInput.aLookUp;
+
+   ProcessViewRotation( DeltaTime, ViewRotation, DeltaRot );
+   SetRotation(ViewRotation);
+
+   NewRotation &#61; ViewRotation;
+   NewRotation.Roll &#61; Rotation.Roll;
+
+   if ( Pawn !&#61; None )
+      Pawn.FaceRotation(NewRotation, deltatime);
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h3><a name="3인칭 카메라 예제"></a> 3인칭 카메라 예제 </h3>
+<p />
+3인칭 카메라 설정은 UTPawn 하위클래스 전부에 대체 카메라 유형으로 포함되어 있습니다. 이 예제는 주요 부분을 끌어내고 기본 카메라를 이 3인칭 카메라로 오버라이드한 것입니다.
+<p />
+<img alt="camera_third.jpg" src="rsrc/Three/CameraTechnicalGuide/camera_third.jpg" />
+<p />
+<span style="font:12px Courier;">
+UDNPawn.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPawn extends UTPawn;
+
+//플레이어 메시를 기본으로 보이게끔 오버라이드
+simulated event BecomeViewTarget( PlayerController PC )
+{
+   local UTPlayerController UTPC;
+
+   Super.BecomeViewTarget(PC);
+
+   if (LocalPlayer(PC.Player) !&#61; None)
+   {
+      UTPC &#61; UTPlayerController(PC);
+      if (UTPC !&#61; None)
+      {
+         //플레이어 콘트롤러를 등뒤 뷰에 설정 및 메시 보이게
+         UTPC.SetBehindView(true);
+         SetMeshVisibility(UTPC.bBehindView);
+      }
+   }
+}
+
+simulated function bool CalcCamera( float fDeltaTime, out vector out&#95;CamLoc, out rotator out&#95;CamRot, out float out&#95;FOV )
+{
+   local vector CamStart, HitLocation, HitNormal, CamDirX, CamDirY, CamDirZ, CurrentCamOffset;
+   local float DesiredCameraZOffset;
+
+   CamStart &#61; Location;
+   CurrentCamOffset &#61; CamOffset;
+
+   DesiredCameraZOffset &#61; (Health &#62; 0) - 1.2 &#42; GetCollisionHeight() + Mesh.Translation.Z : 0.f;
+   CameraZOffset &#61; (fDeltaTime &#60; 0.2) - DesiredCameraZOffset &#42; 5 &#42; fDeltaTime + (1 - 5&#42;fDeltaTime) &#42; CameraZOffset : DesiredCameraZOffset;
+
+   if ( Health &#60;&#61; 0 )
+   {
+      CurrentCamOffset &#61; vect(0,0,0);
+      CurrentCamOffset.X &#61; GetCollisionRadius();
+   }
+
+   CamStart.Z +&#61; CameraZOffset;
+   GetAxes(out&#95;CamRot, CamDirX, CamDirY, CamDirZ);
+   CamDirX &#42;&#61; CurrentCameraScale;
+
+   if ( (Health &#60;&#61; 0) &#124;&#124; bFeigningDeath )
+   {
+      // 월드에 찝히지 않게 카메라 위치 조절
+      // &#64;todo fixmesteve.  FindSpot이 실패하면 (거의 안그러지만) 계속 찝히게 될 수 있습니다.
+      FindSpot(GetCollisionExtent(),CamStart);
+   }
+   if (CurrentCameraScale &#60; CameraScale)
+   {
+      CurrentCameraScale &#61; FMin(CameraScale, CurrentCameraScale + 5 &#42; FMax(CameraScale - CurrentCameraScale, 0.3)&#42;fDeltaTime);
+   }
+   else if (CurrentCameraScale &#62; CameraScale)
+   {
+      CurrentCameraScale &#61; FMax(CameraScale, CurrentCameraScale - 5 &#42; FMax(CameraScale - CurrentCameraScale, 0.3)&#42;fDeltaTime);
+   }
+
+   if (CamDirX.Z &#62; GetCollisionHeight())
+   {
+      CamDirX &#42;&#61; square(cos(out&#95;CamRot.Pitch &#42; 0.0000958738)); // 0.0000958738 &#61; 2&#42;PI/65536
+   }
+
+   out&#95;CamLoc &#61; CamStart - CamDirX&#42;CurrentCamOffset.X + CurrentCamOffset.Y&#42;CamDirY + CurrentCamOffset.Z&#42;CamDirZ;
+
+   if (Trace(HitLocation, HitNormal, out&#95;CamLoc, CamStart, false, vect(12,12,12)) !&#61; None)
+   {
+      out&#95;CamLoc &#61; HitLocation;
+   }
+
+   return true;
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<span style="font:12px Courier;">
+UDNPlayerController.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPlayerController extends UTPlayerController;
+
+state PlayerWalking
+{
+ignores SeePlayer, HearNoise, Bump;
+
+   function ProcessMove(float DeltaTime, vector NewAccel, eDoubleClickDir DoubleClickMove, rotator DeltaRot)
+   {
+      if( Pawn &#61;&#61; None )
+      {
+         return;
+      }
+
+      if (Role &#61;&#61; ROLE&#95;Authority)
+      {
+         // 원격 클라이언트의 ViewPitch 업데이트
+         Pawn.SetRemoteViewPitch( Rotation.Pitch );
+      }
+
+      Pawn.Acceleration &#61; NewAccel;
+
+      CheckJumpOrDuck();
+   }
+}
+
+function UpdateRotation( float DeltaTime )
+{
+   local Rotator   DeltaRot, newRotation, ViewRotation;
+
+   ViewRotation &#61; Rotation;
+   if (Pawn!&#61;none)
+   {
+      Pawn.SetDesiredRotation(ViewRotation);
+   }
+
+   // ViewRotation에 적용되도록 Delta를 계산
+   DeltaRot.Yaw   &#61; PlayerInput.aTurn;
+   DeltaRot.Pitch   &#61; PlayerInput.aLookUp;
+
+   ProcessViewRotation( DeltaTime, ViewRotation, DeltaRot );
+   SetRotation(ViewRotation);
+
+   NewRotation &#61; ViewRotation;
+   NewRotation.Roll &#61; Rotation.Roll;
+
+   if ( Pawn !&#61; None )
+      Pawn.FaceRotation(NewRotation, deltatime);
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h3><a name="내려보기 카메라 예제"></a> 내려보기 카메라 예제 </h3>
+<p />
+내려보기 카메라는 추가 변경사항을 추가하여 만들 수 있습니다. 3인칭 카메라 설정과 유사하지만, 폰의 회전을 제한할 필요가 있습니다. 특히 상하, 위아래 조준은 허용되지 않습니다.
+<p />
+<img alt="camera_top.jpg" src="rsrc/Three/CameraTechnicalGuide/camera_top.jpg" />
+<p />
+<span style="font:12px Courier;">
+UDNPawn.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPawn extends UTPawn;
+
+var float CamOffsetDistance; //플레이어 위로 카메라를 띄울 거리
+var bool bFollowPlayerRotation; //참이면 카메라가 플레이어와 함께 회전
+
+//기본으로 플레이어 메시가 보이게끔 오버라이드
+simulated event BecomeViewTarget( PlayerController PC )
+{
+   local UTPlayerController UTPC;
+
+   Super.BecomeViewTarget(PC);
+
+   if (LocalPlayer(PC.Player) !&#61; None)
+   {
+      UTPC &#61; UTPlayerController(PC);
+      if (UTPC !&#61; None)
+      {
+         //플레이어 콘트롤러를 등뒤 뷰에 설정 및 메시 보이게
+         UTPC.SetBehindView(true);
+         SetMeshVisibility(UTPC.bBehindView);
+         UTPC.bNoCrosshair &#61; true;
+      }
+   }
+}
+
+simulated function bool CalcCamera( float fDeltaTime, out vector out&#95;CamLoc, out rotator out&#95;CamRot, out float out&#95;FOV )
+{
+   out&#95;CamLoc &#61; Location;
+   out&#95;CamLoc.Z +&#61; CamOffsetDistance;
+
+   if(!bFollowPlayerRotation)
+   {
+      out&#95;CamRot.Pitch &#61; -16384;
+      out&#95;CamRot.Yaw &#61; 0;
+      out&#95;CamRot.Roll &#61; 0;
+   }
+   else
+   {
+      out&#95;CamRot.Pitch &#61; -16384;
+      out&#95;CamRot.Yaw &#61; Rotation.Yaw;
+      out&#95;CamRot.Roll &#61; 0;
+   }
+
+   return true;
+}
+
+simulated singular event Rotator GetBaseAimRotation()
+{
+   local rotator   POVRot, tempRot;
+
+   tempRot &#61; Rotation;
+   tempRot.Pitch &#61; 0;
+   SetRotation(tempRot);
+   POVRot &#61; Rotation;
+   POVRot.Pitch &#61; 0;
+
+   return POVRot;
+}
+
+defaultproperties
+{
+   bFollowPlayerRotation &#61; false;
+   CamOffsetDistance&#61;384.0
+}
+</pre>
+</div>
+<p />
+<span style="font:12px Courier;">
+UDNPlayerController.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPlayerController extends UTPlayerController;
+
+state PlayerWalking
+{
+ignores SeePlayer, HearNoise, Bump;
+
+   function ProcessMove(float DeltaTime, vector NewAccel, eDoubleClickDir DoubleClickMove, rotator DeltaRot)
+   {
+      if( Pawn &#61;&#61; None )
+      {
+         return;
+      }
+
+      if (Role &#61;&#61; ROLE&#95;Authority)
+      {
+         // 원격 클라이언트용 ViewPitch 업데이트
+         Pawn.SetRemoteViewPitch( Rotation.Pitch );
+      }
+
+      Pawn.Acceleration &#61; NewAccel;
+
+      CheckJumpOrDuck();
+   }
+}
+
+function UpdateRotation( float DeltaTime )
+{
+   local Rotator   DeltaRot, newRotation, ViewRotation;
+
+   ViewRotation &#61; Rotation;
+   if (Pawn!&#61;none)
+   {
+      Pawn.SetDesiredRotation(ViewRotation);
+   }
+
+   // ViewRotation에 적용될 Delta 계산
+   DeltaRot.Yaw   &#61; PlayerInput.aTurn;
+   DeltaRot.Pitch   &#61; 0;
+
+   ProcessViewRotation( DeltaTime, ViewRotation, DeltaRot );
+   SetRotation(ViewRotation);
+
+   NewRotation &#61; ViewRotation;
+   NewRotation.Roll &#61; Rotation.Roll;
+
+   if ( Pawn !&#61; None )
+      Pawn.FaceRotation(NewRotation, deltatime);
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h3><a name="등측도법(isometric) 카메라 예제"></a> 등측도법(isometric) 카메라 예제 </h3>
+<p />
+간단한 등측도법형 카메라는 전에 보여드린 내려보기 카메라 예제와 매우 유사합니다. 카메라 오프셋이 X, Z 두 축을 따라 이루어 지며, 상하는 플레이어에 맞추어 내리회전시킵니다.
+<p />
+<img alt="camera_iso.jpg" src="rsrc/Three/CameraTechnicalGuide/camera_iso.jpg" />
+<p />
+<span style="font:12px Courier;">
+UDNPawn.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPawn extends UTPawn;
+
+var float CamOffsetDistance; //플레이어에서 카메라를 띄울 거리
+var int IsoCamAngle; //카메라의 상하각
+
+//기본으로 플레이어 메시가 보이게 오버라이드
+simulated event BecomeViewTarget( PlayerController PC )
+{
+   local UTPlayerController UTPC;
+
+   Super.BecomeViewTarget(PC);
+
+   if (LocalPlayer(PC.Player) !&#61; None)
+   {
+      UTPC &#61; UTPlayerController(PC);
+      if (UTPC !&#61; None)
+      {
+         //플레이어 콘트롤러를 등뒤 뷰에 설정 및 메시 보이게
+         UTPC.SetBehindView(true);
+         SetMeshVisibility(UTPC.bBehindView);
+         UTPC.bNoCrosshair &#61; true;
+      }
+   }
+}
+
+simulated function bool CalcCamera( float fDeltaTime, out vector out&#95;CamLoc, out rotator out&#95;CamRot, out float out&#95;FOV )
+{
+   out&#95;CamLoc &#61; Location;
+   out&#95;CamLoc.X -&#61; Cos(IsoCamAngle &#42; UnrRotToRad) &#42; CamOffsetDistance;
+   out&#95;CamLoc.Z +&#61; Sin(IsoCamAngle &#42; UnrRotToRad) &#42; CamOffsetDistance;
+
+   out&#95;CamRot.Pitch &#61; -1 &#42; IsoCamAngle;
+   out&#95;CamRot.Yaw &#61; 0;
+   out&#95;CamRot.Roll &#61; 0;
+
+   return true;
+}
+
+simulated singular event Rotator GetBaseAimRotation()
+{
+   local rotator   POVRot, tempRot;
+
+   tempRot &#61; Rotation;
+   tempRot.Pitch &#61; 0;
+   SetRotation(tempRot);
+   POVRot &#61; Rotation;
+   POVRot.Pitch &#61; 0;
+
+   return POVRot;
+}
+
+defaultproperties
+{
+   IsoCamAngle&#61;6420 //35.264 도
+   CamOffsetDistance&#61;384.0
+}
+</pre>
+</div>
+<p />
+<span style="font:12px Courier;">
+UDNPlayerController.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPlayerController extends UTPlayerController;
+
+state PlayerWalking
+{
+ignores SeePlayer, HearNoise, Bump;
+
+   function ProcessMove(float DeltaTime, vector NewAccel, eDoubleClickDir DoubleClickMove, rotator DeltaRot)
+   {
+      if( Pawn &#61;&#61; None )
+      {
+         return;
+      }
+
+      if (Role &#61;&#61; ROLE&#95;Authority)
+      {
+         // 원격 클라이언트용 ViewPitch 업데이트
+         Pawn.SetRemoteViewPitch( Rotation.Pitch );
+      }
+
+      Pawn.Acceleration &#61; NewAccel;
+
+      CheckJumpOrDuck();
+   }
+}
+
+function UpdateRotation( float DeltaTime )
+{
+   local Rotator   DeltaRot, newRotation, ViewRotation;
+
+   ViewRotation &#61; Rotation;
+   if (Pawn!&#61;none)
+   {
+      Pawn.SetDesiredRotation(ViewRotation);
+   }
+
+   // ViewRotation에 적용될 Delta 계산
+   DeltaRot.Yaw   &#61; PlayerInput.aTurn;
+   DeltaRot.Pitch   &#61; 0;
+
+   ProcessViewRotation( DeltaTime, ViewRotation, DeltaRot );
+   SetRotation(ViewRotation);
+
+   NewRotation &#61; ViewRotation;
+   NewRotation.Roll &#61; Rotation.Roll;
+
+   if ( Pawn !&#61; None )
+      Pawn.FaceRotation(NewRotation, deltatime);
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h3><a name="횡스크롤 카메라 예제"></a> 횡스크롤 카메라 예제 </h3>
+<p />
+간단한 횡스크롤 카메라는 카메라 시점 조절 뿐만 아니라 플레이어 입력 처리법을 변경할 필요도 있습니다. 플레이어는 화면상에서 왼쪽이나 오른쪽으로만 움직일 수 있으며, 움직이는 방향으로만 향하도록 고정되어 있습니다. 그래서 입력 A와 D키가 플레이어를 앞 뒤로 움직이게 해야 합니다.
+<p />
+<img alt="camera_side.jpg" src="rsrc/Three/CameraTechnicalGuide/camera_side.jpg" />
+<p />
+<span style="font:12px Courier;">
+UDNPawn.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPawn extends UTPawn;
+
+var float CamOffsetDistance; //카메라를 잠글 Y축상의 위치
+
+//기본으로 플레이어 메시가 보이게끔 오버라이드
+simulated event BecomeViewTarget( PlayerController PC )
+{
+   local UTPlayerController UTPC;
+
+   Super.BecomeViewTarget(PC);
+
+   if (LocalPlayer(PC.Player) !&#61; None)
+   {
+      UTPC &#61; UTPlayerController(PC);
+      if (UTPC !&#61; None)
+      {
+         //플레이어 콘트롤러를 등뒤 뷰에 설정 및 메시 보이게
+         UTPC.SetBehindView(true);
+         SetMeshVisibility(UTPC.bBehindView);
+         UTPC.bNoCrosshair &#61; true;
+      }
+   }
+}
+
+simulated function bool CalcCamera( float fDeltaTime, out vector out&#95;CamLoc, out rotator out&#95;CamRot, out float out&#95;FOV )
+{
+   out&#95;CamLoc &#61; Location;
+   out&#95;CamLoc.Y &#61; CamOffsetDistance;
+
+   out&#95;CamRot.Pitch &#61; 0;
+   out&#95;CamRot.Yaw &#61; 16384;
+   out&#95;CamRot.Roll &#61; 0;
+   return true;
+}
+
+simulated singular event Rotator GetBaseAimRotation()
+{
+   local rotator   POVRot;
+
+   POVRot &#61; Rotation;
+   if( (Rotation.Yaw &#37; 65535 &#62; 16384 &#38;&#38; Rotation.Yaw &#37; 65535 &#60; 49560) &#124;&#124;
+      (Rotation.Yaw &#37; 65535 &#60; -16384 &#38;&#38; Rotation.Yaw &#37; 65535 &#62; -49560) )
+   {
+      POVRot.Yaw &#61; 32768;
+   }
+   else
+   {
+      POVRot.Yaw &#61; 0;
+   }
+
+   if( POVRot.Pitch &#61;&#61; 0 )
+   {
+      POVRot.Pitch &#61; RemoteViewPitch &#60;&#60; 8;
+   }
+
+   return POVRot;
+}
+
+defaultproperties
+{
+   CamOffsetDistance&#61;0.0
+}
+</pre>
+</div>
+<p />
+<span style="font:12px Courier;">
+UDNPlayerController.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPlayerController extends UTPlayerController;
+
+state PlayerWalking
+{
+ignores SeePlayer, HearNoise, Bump;
+
+   function ProcessMove(float DeltaTime, vector NewAccel, eDoubleClickDir DoubleClickMove, rotator DeltaRot)
+   {
+      local Rotator tempRot;
+
+      if( Pawn &#61;&#61; None )
+      {
+         return;
+      }
+
+      if (Role &#61;&#61; ROLE&#95;Authority)
+      {
+         // 원격 클라이언트용 ViewPitch 업데이트
+         Pawn.SetRemoteViewPitch( Rotation.Pitch );
+      }
+
+      Pawn.Acceleration.X &#61; -1 &#42; PlayerInput.aStrafe &#42; DeltaTime &#42; 100 &#42; PlayerInput.MoveForwardSpeed;
+      Pawn.Acceleration.Y &#61; 0;
+      Pawn.Acceleration.Z &#61; 0;
+
+      tempRot.Pitch &#61; Pawn.Rotation.Pitch;
+      tempRot.Roll &#61; 0;
+      if(Normal(Pawn.Acceleration) Dot Vect(1,0,0) &#62; 0)
+      {
+         tempRot.Yaw &#61; 0;
+         Pawn.SetRotation(tempRot);
+      }
+      else if(Normal(Pawn.Acceleration) Dot Vect(1,0,0) &#60; 0)
+      {
+         tempRot.Yaw &#61; 32768;
+         Pawn.SetRotation(tempRot);
+      }
+
+      CheckJumpOrDuck();
+   }
+}
+
+function UpdateRotation( float DeltaTime )
+{
+   local Rotator   DeltaRot, ViewRotation;
+
+   ViewRotation &#61; Rotation;
+
+   // Calculate Delta to be applied on ViewRotation
+   DeltaRot.Yaw &#61; Pawn.Rotation.Yaw;
+   DeltaRot.Pitch   &#61; PlayerInput.aLookUp;
+
+   ProcessViewRotation( DeltaTime, ViewRotation, DeltaRot );
+   SetRotation(ViewRotation);
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h3><a name="통합 카메라 예제"></a> 통합 카메라 예제 </h3>
+<p />
+이 예제는 다른 예제를 단일 구현으로 한 데 묶어 플레이어가 카메라 유형을 전환할 수 있게 하며, 실행 함수의 사용을 통해 조절합니다.
+<p />
+<span style="font:12px Courier;">
+UDNPawn.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPawn extends UTPawn;
+
+Enum CameraPerspective
+{
+   CAM&#95;FirstPerson,
+   CAM&#95;ThirdPerson,
+   CAM&#95;TopDown,
+   CAM&#95;SideScroller,
+   CAM&#95;Isometric
+};
+
+var bool bFollowPlayerRotation;
+var CameraPerspective CameraType;
+var float CamOffsetDistance;
+var int IsoCamAngle;
+
+exec function CameraMode(CameraPerspective mode)
+{
+   local UTPlayerController UTPC;
+
+   CameraType &#61; mode;
+
+   UTPC &#61; UTPlayerController(Controller);
+   if (UTPC !&#61; None)
+   {
+      if(CameraType !&#61; CAM&#95;FirstPerson)
+      {
+         UTPC.SetBehindView(true);
+         if(CameraType !&#61; CAM&#95;ThirdPerson)
+         {
+            UTPC.bNoCrosshair &#61; true;
+         }
+         else
+         {
+            UTPC.bNoCrosshair &#61; false;
+         }
+      }
+      else
+      {
+         UTPC.bNoCrosshair &#61; false;
+
+         UTPC.SetBehindView(false);
+      }
+      SetMeshVisibility(UTPC.bBehindView);
+   }
+}
+
+exec function IsoAngle(int angle)
+{
+   IsoCamAngle &#61; angle;
+}
+
+/&#42; BecomeViewTarget
+   이 액터가 그 ViewTarget이 될 때 Camera에 의해 호출 &#42;/
+simulated event BecomeViewTarget( PlayerController PC )
+{
+   local UTPlayerController UTPC;
+
+   Super.BecomeViewTarget(PC);
+
+   if (LocalPlayer(PC.Player) !&#61; None)
+   {
+      UTPC &#61; UTPlayerController(PC);
+      if (UTPC !&#61; None)
+      {
+         if(CameraType !&#61; CAM&#95;FirstPerson)
+         {
+            UTPC.SetBehindView(true);
+            if(CameraType !&#61; CAM&#95;ThirdPerson)
+            {
+               UTPC.bNoCrosshair &#61; true;
+            }
+            else
+            {
+               UTPC.bNoCrosshair &#61; false;
+            }
+         }
+         else
+         {
+            UTPC.bNoCrosshair &#61; false;
+
+            UTPC.SetBehindView(false);
+         }
+         SetMeshVisibility(UTPC.bBehindView);
+      }
+   }
+}
+
+/&#42;&#42;
+ &#42;   이 폰을 보고있을 때, 카메라 시점 계산
+ &#42;
+ &#42; &#64;param   fDeltaTime   지난 업데이트 이후 경과 시간
+ &#42; &#64;param   out&#95;CamLoc   카메라 위치
+ &#42; &#64;param   out&#95;CamRot   카메라 회전
+ &#42; &#64;param   out&#95;FOV      시야
+ &#42;
+ &#42; &#64;return   폰이 카메라 시점을 제공하면 참
+ &#42;/
+simulated function bool CalcCamera( float fDeltaTime, out vector out&#95;CamLoc, out rotator out&#95;CamRot, out float out&#95;FOV )
+{
+   // 고정 카메라 처리
+
+   if (bFixedView)
+   {
+      out&#95;CamLoc &#61; FixedViewLoc;
+      out&#95;CamRot &#61; FixedViewRot;
+   }
+   else
+   {
+      if ( CameraType &#61;&#61; CAM&#95;ThirdPerson )   // BehindView 처리
+      {
+         CalcThirdPersonCam(fDeltaTime, out&#95;CamLoc, out&#95;CamRot, out&#95;FOV);
+      }
+      else if ( CameraType &#61;&#61; CAM&#95;TopDown )   // BehindView 처리
+      {
+         CalcTopDownCam(fDeltaTime, out&#95;CamLoc, out&#95;CamRot, out&#95;FOV);
+      }
+      else if ( CameraType &#61;&#61; CAM&#95;SideScroller )   // BehindView 처리
+      {
+         CalcSideScrollerCam(fDeltaTime, out&#95;CamLoc, out&#95;CamRot, out&#95;FOV);
+      }
+      else if ( CameraType &#61;&#61; CAM&#95;Isometric )   // BehindView 처리
+      {
+         CalcIsometricCam(fDeltaTime, out&#95;CamLoc, out&#95;CamRot, out&#95;FOV);
+      }
+      else
+      {
+         // 기본값으로 폰의 눈을 통해 보도록...
+         GetActorEyesViewPoint( out&#95;CamLoc, out&#95;CamRot );
+      }
+
+      if ( UTWeapon(Weapon) !&#61; none)
+      {
+         UTWeapon(Weapon).WeaponCalcCamera(fDeltaTime, out&#95;CamLoc, out&#95;CamRot);
+      }
+   }
+
+   return true;
+}
+
+simulated function bool CalcTopDownCam( float fDeltaTime, out vector out&#95;CamLoc, out rotator out&#95;CamRot, out float out&#95;FOV )
+{
+   out&#95;CamLoc &#61; Location;
+   out&#95;CamLoc.Z +&#61; CamOffsetDistance;
+
+   if(!bFollowPlayerRotation)
+   {
+      out&#95;CamRot.Pitch &#61; -16384;
+      out&#95;CamRot.Yaw &#61; 0;
+      out&#95;CamRot.Roll &#61; 0;
+   }
+   else
+   {
+      out&#95;CamRot.Pitch &#61; -16384;
+      out&#95;CamRot.Yaw &#61; Rotation.Yaw;
+      out&#95;CamRot.Roll &#61; 0;
+   }
+
+   return true;
+}
+
+simulated function bool CalcSideScrollerCam( float fDeltaTime, out vector out&#95;CamLoc, out rotator out&#95;CamRot, out float out&#95;FOV )
+{
+   out&#95;CamLoc &#61; Location;
+   out&#95;CamLoc.Y &#61; CamOffsetDistance;
+
+   out&#95;CamRot.Pitch &#61; 0;
+   out&#95;CamRot.Yaw &#61; 16384;
+   out&#95;CamRot.Roll &#61; 0;
+
+   return true;
+}
+
+simulated function bool CalcIsometricCam( float fDeltaTime, out vector out&#95;CamLoc, out rotator out&#95;CamRot, out float out&#95;FOV )
+{
+   out&#95;CamLoc &#61; Location;
+   out&#95;CamLoc.X -&#61; Cos(IsoCamAngle &#42; UnrRotToRad) &#42; CamOffsetDistance;
+   out&#95;CamLoc.Z +&#61; Sin(IsoCamAngle &#42; UnrRotToRad) &#42; CamOffsetDistance;
+
+   out&#95;CamRot.Pitch &#61; -1 &#42; IsoCamAngle;
+   out&#95;CamRot.Yaw &#61; 0;
+   out&#95;CamRot.Roll &#61; 0;
+
+   return true;
+}
+
+/&#42;&#42;
+ &#42; 수정(조준 에러, 자동고정, 자동부착)되지 않은 순수한 기본 Aim Rotation 반환
+ &#42;
+ &#42; &#64;return   base Aim rotation.
+ &#42;/
+simulated singular event Rotator GetBaseAimRotation()
+{
+   local vector   POVLoc;
+   local rotator   POVRot, tempRot;
+
+   if(CameraType &#61;&#61; CAM&#95;TopDown &#124;&#124; CameraType &#61;&#61; CAM&#95;Isometric)
+   {
+      tempRot &#61; Rotation;
+      tempRot.Pitch &#61; 0;
+      SetRotation(tempRot);
+      POVRot &#61; Rotation;
+      POVRot.Pitch &#61; 0;
+   }
+   else if(CameraType &#61;&#61; CAM&#95;SideScroller)
+   {
+      POVRot &#61; Rotation;
+      if( (Rotation.Yaw &#37; 65535 &#62; 16384 &#38;&#38; Rotation.Yaw &#37; 65535 &#60; 49560) &#124;&#124;
+          (Rotation.Yaw &#37; 65535 &#60; -16384 &#38;&#38; Rotation.Yaw &#37; 65535 &#62; -49560) )
+      {
+         POVRot.Yaw &#61; 32768;
+      }
+      else
+      {
+         POVRot.Yaw &#61; 0;
+      }
+
+      if( POVRot.Pitch &#61;&#61; 0 )
+      {
+         POVRot.Pitch &#61; RemoteViewPitch &#60;&#60; 8;
+      }
+   }
+   else
+   {
+      if( Controller !&#61; None &#38;&#38; !InFreeCam() )
+      {
+         Controller.GetPlayerViewPoint(POVLoc, POVRot);
+         return POVRot;
+      }
+      else
+      {
+         POVRot &#61; Rotation;
+
+         if( POVRot.Pitch &#61;&#61; 0 )
+         {
+            POVRot.Pitch &#61; RemoteViewPitch &#60;&#60; 8;
+         }
+      }
+   }
+
+   return POVRot;
+}
+
+
+defaultproperties
+{
+   CameraType&#61;CAM&#95;FirstPerson;
+   bFollowPlayerRotation &#61; false;
+   CamOffsetDistance&#61;384.0
+   IsoCamAngle&#61;6420 //35.264 도
+}
+</pre>
+</div>
+<p />
+<span style="font:12px Courier;">
+UDNPlayerController.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPlayerController extends UTPlayerController;
+
+state PlayerWalking
+{
+   function ProcessMove(float DeltaTime, vector NewAccel, eDoubleClickDir DoubleClickMove, rotator DeltaRot)
+   {
+      local UDNPawn P;
+      local Rotator tempRot;
+
+          if( (Pawn !&#61; None) )
+      {
+         P &#61; UDNPawn(Pawn);
+         if(P !&#61; none)
+         {
+            if(P.CameraType &#61;&#61; CAM&#95;SideScroller)
+            {
+               Pawn.Acceleration.X &#61; -1 &#42; PlayerInput.aStrafe &#42; DeltaTime &#42; 100 &#42; PlayerInput.MoveForwardSpeed;
+               Pawn.Acceleration.Y &#61; 0;
+               Pawn.Acceleration.Z &#61; 0;
+
+               tempRot.Pitch &#61; P.Rotation.Pitch;
+               tempRot.Roll &#61; 0;
+               if(Normal(Pawn.Acceleration) Dot Vect(1,0,0) &#62; 0)
+               {
+                  tempRot.Yaw &#61; 0;
+                  P.SetRotation(tempRot);
+               }
+               else if(Normal(Pawn.Acceleration) Dot Vect(1,0,0) &#60; 0)
+               {
+                  tempRot.Yaw &#61; 32768;
+                  P.SetRotation(tempRot);
+               }
+            }
+            else
+            {
+
+               if ( (DoubleClickMove &#61;&#61; DCLICK&#95;Active) &#38;&#38; (Pawn.Physics &#61;&#61; PHYS&#95;Falling) )
+                  DoubleClickDir &#61; DCLICK&#95;Active;
+               else if ( (DoubleClickMove !&#61; DCLICK&#95;None) &#38;&#38; (DoubleClickMove &#60; DCLICK&#95;Active) )
+               {
+                  if ( UTPawn(Pawn).Dodge(DoubleClickMove) )
+                     DoubleClickDir &#61; DCLICK&#95;Active;
+               }
+
+               Pawn.Acceleration &#61; newAccel;
+            }
+
+            if (Role &#61;&#61; ROLE&#95;Authority)
+            {
+               // 원격 클라이언트용 ViewPitch 업데이트
+               Pawn.SetRemoteViewPitch( Rotation.Pitch );
+            }
+         }
+
+         CheckJumpOrDuck();
+      }
+   }
+}
+
+function UpdateRotation( float DeltaTime )
+{
+   local UDNPawn P;
+   local Rotator   DeltaRot, newRotation, ViewRotation;
+
+   P &#61; UDNPawn(Pawn);
+
+   ViewRotation &#61; Rotation;
+   if (p !&#61; none &#38;&#38; P.CameraType !&#61; CAM&#95;SideScroller)
+   {
+      Pawn.SetDesiredRotation(ViewRotation);
+   }
+
+   // ViewRotation에 적용될 Delta 계산
+   if( P !&#61; none &#38;&#38; P.CameraType &#61;&#61; CAM&#95;SideScroller )
+   {
+      DeltaRot.Yaw &#61; Pawn.Rotation.Yaw;
+   }
+   else
+   {
+      DeltaRot.Yaw &#61; PlayerInput.aTurn;
+   }
+   DeltaRot.Pitch &#61; PlayerInput.aLookUp;
+
+   ProcessViewRotation( DeltaTime, ViewRotation, DeltaRot );
+   SetRotation(ViewRotation);
+
+   ViewShake( deltaTime );
+
+   NewRotation &#61; ViewRotation;
+   NewRotation.Roll &#61; Rotation.Roll;
+
+   if (P !&#61; None &#38;&#38; P.CameraType !&#61; CAM&#95;SideScroller )
+      Pawn.FaceRotation(NewRotation, deltatime);
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h2><a name="예제 - 커스텀 카메라"></a> 예제 - 커스텀 카메라 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+이 예제는 이전 모음집과는 다른 접근법을 취합니다. 여지껏 전부 카메라를 변경하는 데 Pawn 클래스의 CalcCamera() 함수를 사용했습니다. 이 예제에서는 카메라 동작을 빠르게 변경할 수 있도록 다른 카메라 모듈에 쉽게 꽂을 수 있는 커스텀 카메라 프레임워크가 생성될 겁니다. 게다가 이 모듈로 플레이어 이동이나 조준, 심지어 마우스 커서나 조준선 그리기까지 일정 부분을 덮어쓸 수 있을 겁니다. 마찬가지로 중요한 점은, 포스트 프로세스 이펙트나 카메라 애니메이션 및 효과 등의 카메라 기능 전부에 접근할 수 있다는 겁니다. 게다가 플레이어 콘트롤러 클래스는 플레이어 이동이나 조준과 같은 특정 양상을 덮어쓰기 위해 플레이어 콘트롤 모듈을 사용하는 기능을 더하게 됩니다.
+<p />
+이 예제 셋업은 다른 예제에서의 경우처럼 비교적 간단히 함수 몇 개 오버라이딩 이상의 작업이 필요합니다. 이 예제는 기존 예제에서 건드렸던 것과 동일한 함수 중 다수의 오버라이딩이 필요하나, 해당 함수에 직접 함수성을 변경하거나 더하는 대신, 그냥 해당 함수가 그냥 커스텀 카메라와 콘트롤 시스템을 살펴보고 그들이 보통 수행하는 함수성을 제공합니다.
+<p />
+새 카메라 클래스는 근본적으로 카메라 모듈과의 인터페이스 역할을 하게 됩니다. 카메라 모듈 새로 만들기 및 카메라가 플레이어 Pawn 이외의 뷰 타겟을 갖는 경우를 처리하는 함수 몇을 포함합니다. 그 이상의 역할은 다양한 Engine 클래스로부터의 함수 호출을 처리할 현재 카메라 모듈로 전달하는 것입니다. 비슷하게 PlayerController 및 Pawn 클래스로부터의 특정 이동과 조준 함수를 처리하기 위해 의지된 콘트롤 모듈을, 새 PlayerController 클래스가 참조하게 됩니다. 이를 통해 모든 것으로의 카메라 유형 전용 함수성을 한 클래스에 깔끔하게 담을 수 있게 되었으며, 원하는 대로 대체시킬 수 있어 빠르고 쉽게 카메라 유형을 새로이 구현할 수 있습니다.
+<p />
+<p />
+<h3><a name="기본 카메라 모듈"></a> 기본 카메라 모듈 </h3>
+<p />
+기본 카메라 모듈 클래스는 Object 클래스로부터 연장하며, 모든 카메라 모듈에 공통되는 프로퍼티 및 동작 전부를 정의합니다. 이를 소유하는 카메라로의 참조 뿐만 아니라 현재 마우스 커서 위치도 포함됩니다. 약간의 초기화 및 초기화해제 함수가 정의되어 있으나, 대다수의 함수는 나중에 PlayerController, Pawn, HHUD 클래스에서 오버라이딩됩니다.
+<p />
+이 클래스는 환경설정 가능하거나 지정된 카메라 모듈에서 일관되어야 하는 프로퍼티를 *Camera.ini 파일에서 찾을 수 있게 하기 위해 <em>config(Camera)</em> 지정자(specifier)를 통해 정의됩니다. 또한 실제로 사용하지는 못하게 하기 위해 <em>abstract</em> 로 정의됩니다. 특정 카메라에 대해 본을 떠서 만들 수 있는 템플릿에 가까우며, 그 자체를 실제로 사용할 수 있는 클래스는 아닙니다.
+<p />
+<span style="font:12px Courier;">
+UDNCameraModule.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNCameraModule extends Object
+   abstract
+   config(Camera);
+
+//카메라 소유하기
+var transient UDNPlayerCamera   PlayerCamera;
+
+//모드 전용 초기화
+function Init();
+
+/&#42;&#42; 카메라가 활성화되면 호출 &#42;/
+function OnBecomeActive( UDNCameraModule OldCamera );
+/&#42;&#42; 카메라가 비활성화되면 호출 &#42;/
+function OnBecomeInActive( UDNCameraModule NewCamera );
+
+//새 카메라 위치 및 회전 계산
+function UpdateCamera(Pawn P, UDNPlayerCamera CameraActor, float DeltaTime, out TViewTarget OutVT);
+
+//새 뷰 타겟 초기화
+simulated function BecomeViewTarget( UDNPlayerController PC );
+
+//줌인 처리
+function ZoomIn();
+
+//줌아웃 처리
+function ZoomOut();
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h3><a name="커스텀 카메라"></a> 커스텀 카메라 </h3>
+<p />
+새로운 카메라 클래스는 기본 Camera 클래스에서 연장하며, 카메라 모듈을 처리하기 위해 몇몇 함수는 덮어쓰고 새 함수성을 추가합니다. 이 시스템에서 카메라의 주요 임무는, 이제 대부분의 계산을 처리하고 있기에 카메라 모듈에 대한 중간자 역할을 하는 것입니다.
+<p />
+<span style="font:12px Courier;">
+UDNPlayerCamera.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPlayerCamera extends Camera
+   config(Camera);
+
+var UDNPlayerController PlayerOwner; //이 카메라를 소유하는 플레이어 콘트롤러
+var UDNCameraModule CurrentCamera; //현재 사용중인 카메라 모드
+var config string DefaultCameraClass; //기본 카메라 모드용 클래스
+
+function PostBeginPlay()
+{
+   local class&#60;UDNCameraModule&#62; NewClass;
+
+   Super.PostBeginPlay();
+
+   // 카메라 모드 셋업
+   if ( (CurrentCamera &#61;&#61; None) &#38;&#38; (DefaultCameraClass !&#61; &#34;&#34;) )
+   {
+      //사용할 기본 카메라 클래스 구하기
+      NewClass &#61; class&#60;UDNCameraModule&#62;( DynamicLoadObject( DefaultCameraClass, class&#39;Class&#39; ) );
+
+      //기본 카메라 생성
+      CurrentCamera &#61; CreateCamera(NewClass);
+   }
+}
+
+//소유하는 PlayerController에 대한 PlayerCamera 초기화
+function InitializeFor(PlayerController PC)
+{
+   //부모 초기화
+   Super.InitializeFor(PC);
+
+   //플레이어 콘트롤러에 PlayerOwner 설정
+   PlayerOwner &#61; UDNPlayerController(PC);
+}
+
+/&#42;&#42;
+ &#42; 내부. 지정된 클래스의 새 카메라를 생성 및 초기화하고 오브젝트 참조를 반환.
+ &#42;/
+function UDNCameraModule CreateCamera(class&#60;UDNCameraModule&#62; CameraClass)
+{
+   local UDNCameraModule NewCam;
+
+   //새 카메라를 만들고 초기화
+   NewCam &#61; new(Outer) CameraClass;
+   NewCam.PlayerCamera &#61; self;
+   NewCam.Init();
+
+   //새/구 카메라의 활성/비활성 함수 호출
+   if(CurrentCamera !&#61; none)
+   {
+      CurrentCamera.OnBecomeInactive(NewCam);
+      NewCam.OnBecomeActive(CurrentCamera);
+   }
+   else
+   {
+      NewCam.OnBecomeActive(None);
+   }
+
+   //새 카메라를 현재로 설정
+   CurrentCamera &#61; NewCam;
+
+   return NewCam;
+}
+
+/&#42;&#42;
+ &#42; ViewTarget 질의 및 Point Of View(시점) 출력
+ &#42;
+ &#42; &#64;param   OutVT    사용할 ViewTarget
+ &#42; &#64;param   DeltaTime   지난 카메라 업데이트 이후의 Delta Time(경과 시간(초))
+ &#42;/
+function UpdateViewTarget(out TViewTarget OutVT, float DeltaTime)
+{
+   local CameraActor   CamActor;
+   local TPOV OrigPOV;
+   local Vector Loc, Pos, HitLocation, HitNormal;
+   local Rotator Rot;
+   local Actor HitActor;
+
+   // 보간 도중엔 나가는 뷰타겟을 업데이트하지 않음
+   if( PendingViewTarget.Target !&#61; None &#38;&#38; OutVT &#61;&#61; ViewTarget &#38;&#38; BlendParams.bLockOutgoing )
+   {
+      return;
+   }
+
+   OrigPOV &#61; OutVT.POV;
+
+   // 뷰타겟의 기본 FOV(시야)
+   OutVT.POV.FOV &#61; DefaultFOV;
+
+   // 카메라 액터를 통해 보기
+   CamActor &#61; CameraActor(OutVT.Target);
+   if( CamActor !&#61; None )
+   {
+      CamActor.GetCameraView(DeltaTime, OutVT.POV);
+
+      // CameraActor로부터 상 비율 집어내기
+      bConstrainAspectRatio   &#61; bConstrainAspectRatio &#124;&#124; CamActor.bConstrainAspectRatio;
+      OutVT.AspectRatio      &#61; CamActor.AspectRatio;
+
+      // CameraActor가 사용된 PostProcess 세팅을 오버라이딩 하려는지 확인
+      CamOverridePostProcessAlpha &#61; CamActor.CamOverridePostProcessAlpha;
+      CamPostProcessSettings &#61; CamActor.CamOverridePostProcess;
+   }
+   else
+   {
+      // Pawn ViewTarget에 카메라 위치를 기술할 기회를 제공
+      // Pawn이 카메라 뷰를 오버라이딩하지 않으면, 기본값으로 진행
+      if( Pawn(OutVT.Target) &#61;&#61; None &#124;&#124;
+         !Pawn(OutVT.Target).CalcCamera(DeltaTime, OutVT.POV.Location, OutVT.POV.Rotation, OutVT.POV.FOV) )
+      {
+         //Pawn이 제어를 원하지 않아 커스텀 모드를 가짐
+         if(CurrentCamera !&#61; none)
+         {
+            //카메라 업데이트를 처리하기 위한 모드 허용
+            CurrentCamera.UpdateCamera(Pawn(OutVT.Target), self, DeltaTime, OutVT);
+         }
+         //커스텀 모드 없음 - 기본 카메라 스타일 사용
+         else
+         {
+            switch( CameraStyle )
+            {
+               case &#39;Fixed&#39;      :   // 업데이트하지 않으며, 기존 카메라 위치는 저장하여 유지
+                                 // POV 저장, CalcCamera가 그걸 변경했는데도 여전히 거짓을 반환하는 경우
+                                 OutVT.POV &#61; OrigPOV;
+                                 break;
+
+               case &#39;ThirdPerson&#39;   : // 간단한 3인칭 뷰 구현
+               case &#39;FreeCam&#39;      :
+               case &#39;FreeCam&#95;Default&#39;:
+                                 Loc &#61; OutVT.Target.Location;
+                                 Rot &#61; OutVT.Target.Rotation;
+
+                                 //OutVT.Target.GetActorEyesViewPoint(Loc, Rot);
+                                 if( CameraStyle &#61;&#61; &#39;FreeCam&#39; &#124;&#124; CameraStyle &#61;&#61; &#39;FreeCam&#95;Default&#39; )
+                                 {
+                                    Rot &#61; PCOwner.Rotation;
+                                 }
+                                 Loc +&#61; FreeCamOffset &#62;&#62; Rot;
+
+                                 Pos &#61; Loc - Vector(Rot) &#42; FreeCamDistance;
+                                 // &#64;fixme, BlockingVolume.bBlockCamera&#61;false 존중
+                                 HitActor &#61; Trace(HitLocation, HitNormal, Pos, Loc, FALSE, vect(12,12,12));
+                                 OutVT.POV.Location &#61; (HitActor &#61;&#61; None) ? Pos : HitLocation;
+                                 OutVT.POV.Rotation &#61; Rot;
+                                 break;
+
+               case &#39;FirstPerson&#39;   : // 단순 일인칭, 뷰타겟 &#39;눈&#39;을 통한 뷰
+               default            :   OutVT.Target.GetActorEyesViewPoint(OutVT.POV.Location, OutVT.POV.Rotation);
+                                 break;
+
+            }
+         }
+      }
+   }
+
+   ApplyCameraModifiers(DeltaTime, OutVT.POV);
+
+   // 카메라의 위치 및 회전 설정, 뷰타겟에 잠기지 않았을 경우를 처리하기 위해
+   SetRotation(OutVT.POV.Rotation);
+   SetLocation(OutVT.POV.Location);
+}
+
+//카메라 모드로 뷰 타겟 초기화를 pass through
+simulated function BecomeViewTarget( PlayerController PC )
+{
+   CurrentCamera.BecomeViewTarget(UDNPlayerController(PC));
+}
+
+//카메라 모드로 줌인을 pass through
+function ZoomIn()
+{
+   CurrentCamera.ZoomIn();
+}
+
+//카메라 모드로 줌아웃을 pass through
+function ZoomOut()
+{
+   CurrentCamera.ZoomOut();
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h3><a name="베이스 콘트롤 모듈"></a> 베이스 콘트롤 모듈 </h3>
+<p />
+베이스 콘트롤 모듈 클래스는 Object 클래스로부터 연장하며, 모든 콘트롤 모듈에 공통이 될 프로퍼티와 작동 방식 전부를 정의합니다. 그를 소유하는 콘트롤러로의 참조뿐 아니라 현재 마우스 커서 위치도 포함합니다. 베이스 카메라 모듈처럼, 특정 유형에 필요할 지도 모르는 셋업이나 클린업을 허용하기 위해 초기화 및 초기화해제 함수가 약간 정의되어 있습니다. 클래스의 나머지는 플레이어의 이동과 조준도 처리하는 함수로 구성됩니다.
+<p />
+이 클래스는, 어느 프로퍼티도 환경설정 가능하도록 또는 *Control.ini 파일에서 보게 될 특정 콘트롤 모듈 내에서도 지속되도록 하기 위해 <em>config(Control)</em> 지정자를 사용하여 정의됩니다. 실제로 사용되지 않게 하기 위해 <em>abstract</em> 로도 정의됩니다. 특정 콘트롤 모듈의 견본으로 사용할 템플릿일 뿐이며, 그 자체를 사용할 일은 없을 클래스입니다.
+<p />
+<span style="font:12px Courier;">
+UDNControlModule.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNControlModule extends Object
+   abstract
+   config(Control);
+
+//소유하는 콘트롤러로의 참조
+var UDNPlayerController Controller;
+
+//모드-전용 초기화
+function Init();
+
+/&#42;&#42; 카메라가 활성화될 때 호출 &#42;/
+function OnBecomeActive( UDNControlModule OldModule );
+/&#42;&#42; 카메라가 비활성화될 때 호출 &#42;/
+function OnBecomeInActive( UDNControlModule NewModule );
+
+//Pawn 조준 회전 계산
+simulated singular function Rotator GetBaseAimRotation();
+
+//커스텀 플레이어 이동 처리
+function ProcessMove(float DeltaTime, vector NewAccel, eDoubleClickDir DoubleClickMove, rotator DeltaRot);
+
+//콘트롤러 회전 계산
+function UpdateRotation(float DeltaTime);
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h3><a name="엔진 클래스 오버라이딩"></a> 엔진 클래스 오버라이딩 </h3>
+<p />
+여러 엔진 클래스, 주로 PlayerController, Pawn, HUD 클래스는 새로운 카메라 및 콘트롤 시스템과의 인터페이스 역할을 하기 위해서 연장될 필요가 있습니다. 이와 같은 새 클래스를 활용하기 위해서는 새 게임타입도 만들어야 할 겁니다.
+<p />
+<h4><a name="PlayerController 클래스"></a> PlayerController 클래스 </h4>
+<p />
+새로운 PlayerController 클래스는 사용되는 카메라 모듈의 유형을 바꾸기용은 물론 줌인이나 줌아웃용 exec 함수를 더합니다. (줌 함수의 작동 방법은 현재 카메라 모듈의 구현 방법에 따라 달라집니다.) 콘트롤 모듈로의 호출을 추가하기 위해 <em>PlayerWalking</em> (플레이어 걷기) 상태의 <em>ProcessMove()</em> (이동 처리) 함수 및 <em>UpdateRotation()</em> (회전 업데이트) 함수를 오버라이딩합니다. 마지막으로 카메라가 파괴되는 것을 막고 PlayerController가 새로운 커스텀 카메라(가 존재할 때 이)를 강제로 사용하게 하기 위해, <em>GetPlayerViewPoint()</em> (플레이어 시점 구하기) 함수를 오버라이딩하고 변경합니다.
+<p />
+<span style="font:12px Courier;">
+UDNPlayerController.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPlayerController extends UTPlayerController;
+
+var UDNControlModule ControlModule; //사용할 플레이어 콘트롤 모듈
+var config string DefaultControlModuleClass; //플레이어 콘트롤 모듈용 기본 클래스
+
+//클래스에 의해 다른 카메라로 전환하기 위한 exec 함수
+exec function ChangeControls( string ClassName )
+{
+   local class&#60;UDNControlModule&#62; ControlClass;
+   local UDNControlModule NewControlModule;
+
+   ControlClass &#61; class&#60;UDNControlModule&#62;( DynamicLoadObject( DefaultControlModuleClass, class&#39;Class&#39; ) );
+
+   if(ControlClass !&#61; none)
+   {
+      // 모듈을 PlayerController와 연결
+      NewControlModule &#61; new(Outer) ControlClass;
+      NewControlModule.Controller &#61; self;
+      NewControlModule.Init();
+
+      // 새/구 모듈의 활성/비활성 함수 호출
+      if(ControlModule !&#61; none)
+      {
+         ControlModule.OnBecomeInactive(NewControlModule);
+         NewControlModule.OnBecomeActive(ControlModule);
+      }
+      else
+      {
+         NewControlModule.OnBecomeActive(None);
+      }
+
+      ControlModule &#61; NewControlModule;
+   }
+   else
+   {
+      `log(&#34;Couldn&#39;t get control module class!&#34;);
+      // Control Class가 없는 건 괜찮습니다. PlayerController는 기본 큰트롤을 사용합니다.
+   }
+}
+
+//클래스에 의해 다른 카메라로의 전환하기 위한 exec 함수
+exec function ChangeCamera( string ClassName )
+{
+   local class&#60;UDNCameraModule&#62; NewClass;
+
+   NewClass &#61; class&#60;UDNCameraModule&#62;( DynamicLoadObject( ClassName, class&#39;Class&#39; ) );
+
+   if(NewClass !&#61; none &#38;&#38; UDNPlayerCamera(PlayerCamera) !&#61; none)
+   {
+      UDNPlayerCamera(PlayerCamera).CreateCamera(NewClass);
+   }
+}
+
+//줌인 exec
+exec function ZoomIn()
+{
+   if(UDNPlayerCamera(PlayerCamera) !&#61; none)
+   {
+      UDNPlayerCamera(PlayerCamera).ZoomIn();
+   }
+}
+
+//줌아웃 exec
+exec function ZoomOut()
+{
+   if(UDNPlayerCamera(PlayerCamera) !&#61; none)
+   {
+      UDNPlayerCamera(PlayerCamera).ZoomOut();
+   }
+}
+
+simulated function PostBeginPlay()
+{
+   local class&#60;UDNControlModule&#62; ControlClass;
+   local UDNControlModule NewControlModule;
+
+   Super.PostBeginPlay();
+
+   ControlClass &#61; class&#60;UDNControlModule&#62;( DynamicLoadObject( DefaultControlModuleClass, class&#39;Class&#39; ) );
+
+   if(ControlClass !&#61; none)
+   {
+      // 모듈을 PlayerController와 연결
+      NewControlModule &#61; new(Outer) ControlClass;
+      NewControlModule.Controller &#61; self;
+      NewControlModule.Init();
+
+      // 신/구 모듈의 활성/비활성 함수 호출
+      if(ControlModule !&#61; none)
+      {
+         ControlModule.OnBecomeInactive(NewControlModule);
+         NewControlModule.OnBecomeActive(ControlModule);
+      }
+      else
+      {
+         NewControlModule.OnBecomeActive(None);
+      }
+
+      ControlModule &#61; NewControlModule;
+   }
+   else
+   {
+      `log(&#34;Couldn&#39;t get control module class!&#34;);
+      // Control Class가 없는건 괜찮습니다. PlayerController는 기본 콘트롤을 사용합니다.
+   }
+}
+
+state PlayerWalking
+{
+   function ProcessMove(float DeltaTime, vector NewAccel, eDoubleClickDir DoubleClickMove, rotator DeltaRot)
+   {
+      //Controller가 UDNPlayerCamera를 가짐
+      if(ControlModule !&#61; none)
+      {
+         //커스텀 카메라의 플레이어 이동 덮어쓰기를 허용
+         ControlModule.ProcessMove(DeltaTime, NewAccel, DoubleClickMove, DeltaRot);
+      }
+        else
+        {
+         Super.ProcessMove(DeltaTime, NewAccel, DoubleClickMove, DeltaRot);
+        }
+      }
+}
+
+function UpdateRotation( float DeltaTime )
+{
+   //Controller가 UDNPlayerCamera를 가짐
+   if(ControlModule !&#61; none)
+   {
+      //커스텀 카메라의 회전 업데이트를 허용
+      ControlModule.UpdateRotation(DeltaTime);
+   }
+    else
+    {
+         Super.UpdateRotation(DeltaTime);
+   }
+}
+
+
+/&#42; GetPlayerViewPoint: 플레이어의 시점 반환
+   AI에게 이는 Pawn의 눈 시점
+   휴먼 플레이어에게 이는 카메라의 시점 &#42;/
+simulated event GetPlayerViewPoint( out vector POVLocation, out Rotator POVRotation )
+{
+   local float DeltaTime;
+   local UTPawn P;
+
+   P &#61; IsLocalPlayerController() ? UTPawn(CalcViewActor) : None;
+
+   DeltaTime &#61; WorldInfo.TimeSeconds - LastCameraTimeStamp;
+   LastCameraTimeStamp &#61; WorldInfo.TimeSeconds;
+
+   // CameraActor 뷰 사용 지원
+   if ( CameraActor(ViewTarget) !&#61; None )
+   {
+      if ( PlayerCamera &#61;&#61; None )
+      {
+         super.ResetCameraMode();
+         SpawnCamera();
+      }
+      super.GetPlayerViewPoint( POVLocation, POVRotation );
+   }
+   else
+   {
+      //카메라 부수지 말어!!!
+      /&#42; if ( PlayerCamera !&#61; None )
+      {
+         PlayerCamera.Destroy();
+         PlayerCamera &#61; None;
+      } &#42;/
+
+      //카메라는 없고 뷰타겟이 있으면, 뷰타겟이 제어하게
+      if ( PlayerCamera &#61;&#61; None &#38;&#38; ViewTarget !&#61; None )
+      {
+         POVRotation &#61; Rotation;
+         if ( (PlayerReplicationInfo !&#61; None) &#38;&#38; PlayerReplicationInfo.bOnlySpectator &#38;&#38; (UTVehicle(ViewTarget) !&#61; None) )
+         {
+            UTVehicle(ViewTarget).bSpectatedView &#61; true;
+            ViewTarget.CalcCamera( DeltaTime, POVLocation, POVRotation, FOVAngle );
+            UTVehicle(ViewTarget).bSpectatedView &#61; false;
+         }
+         else
+         {
+            ViewTarget.CalcCamera( DeltaTime, POVLocation, POVRotation, FOVAngle );
+         }
+
+         if ( bFreeCamera )
+         {
+            POVRotation &#61; Rotation;
+         }
+      }
+      //카메라도 뷰타겟도 없으면, 우리가 제어하게
+      else if(PlayerCamera &#61;&#61; None)
+      {
+         CalcCamera( DeltaTime, POVLocation, POVRotation, FOVAngle );
+         return;
+      }
+      //카메라가 있으면, 카메라가 제어하게
+      else
+      {
+         POVLocation &#61; PlayerCamera.ViewTarget.POV.Location;
+         POVRotation &#61; PlayerCamera.ViewTarget.POV.Rotation;
+         FOVAngle &#61; PlayerCamera.ViewTarget.POV.FOV;
+      }
+   }
+
+   // 뷰 흔들기 적용
+   POVRotation &#61; Normalize(POVRotation + ShakeRot);
+   POVLocation +&#61; ShakeOffset &#62;&#62; Rotation;
+
+   if( CameraEffect !&#61; none )
+   {
+      CameraEffect.UpdateLocation(POVLocation, POVRotation, GetFOVAngle());
+   }
+
+
+   // 결과 캐시
+   CalcViewActor &#61; ViewTarget;
+   CalcViewActorLocation &#61; ViewTarget.Location;
+   CalcViewActorRotation &#61; ViewTarget.Rotation;
+   CalcViewLocation &#61; POVLocation;
+   CalcViewRotation &#61; POVRotation;
+
+   if ( P !&#61; None )
+   {
+      CalcEyeHeight &#61; P.EyeHeight;
+      CalcWalkBob &#61; P.WalkBob;
+   }
+}
+
+defaultproperties
+{
+   CameraClass&#61;class&#39;UDNExamples.UDNPlayerCamera&#39;
+   MatineeCameraClass&#61;class&#39;UDNExamples.UDNPlayerCamera&#39;
+}
+</pre>
+</div>
+<p />
+<h4><a name="Pawn 클래스"></a> Pawn 클래스 </h4>
+<p />
+새로운 Pawn 클래스는 단지 거짓을 반환하기 위해서 <em>CalcCamera()</em> 함수를 오버라이딩합니다. 그래야 새로운 카메라 시스템이 항상 카메라 location 및 position을 제어할 수 있습니다. <em>BecomeViewTarget()</em> 및 <em>GetBaseAimRotation()</em> (뷰타겟 되기 및 기본 조준 회전 구하기) 함수는 그 함수성 처리를 카메라 및 콘트롤 시스템에 각각 전달하기 위해 오버라이딩됩니다.
+<p />
+<span style="font:12px Courier;">
+UDNPawn.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPawn extends UTPawn;
+
+/&#42; BecomeViewTarget
+   이 액터가 ViewTarget이 될 때 Camera에 의해 호출 &#42;/
+simulated event BecomeViewTarget( PlayerController PC )
+{
+   local UDNPlayerController UDNPC;
+
+   UDNPC &#61; UDNPlayerController(PC);
+
+   //Pawn이 UDNPlayerController에 의해 제어되며, UDNPlayerCamera를 가짐
+      if(UDNPC !&#61; none &#38;&#38; UDNPlayerCamera(UDNPC.PlayerCamera) !&#61; none)
+      {
+      //커스텀 카메라의 메시 표시여부 등의 제어를 허용
+      UDNPlayerCamera(UDNPC.PlayerCamera).BecomeViewTarget(UDNPC);
+      }
+      else
+      {
+      Super.BecomeViewTarget(PC);
+   }
+}
+
+/&#42;&#42;
+ &#42;   이 폰을 보고있을 때 카메라 시점 계산
+ &#42;
+ &#42; &#64;param   fDeltaTime   지난 업데이트 이후 경과 시간
+ &#42; &#64;param   out&#95;CamLoc   카메라 위치
+ &#42; &#64;param   out&#95;CamRot   카메라 회전
+ &#42; &#64;param   out&#95;FOV      시야
+ &#42;
+ &#42; &#64;return   Pawn이 카메라 시야를 제공해야 하면 참
+ &#42;/
+simulated function bool CalcCamera( float fDeltaTime, out vector out&#95;CamLoc, out rotator out&#95;CamRot, out float out&#95;FOV )
+{
+   //커스텀 카메라의 그 위치 및 회전을 제어를 허용하기 위해 거짓 반환
+      return false;
+}
+
+/&#42;&#42;
+ &#42; 조정 없는 기본 Aim Rotation(조준 에러, 자동조준, 부착 등등 없이 깨끗한 초기 상태의 조준 회전값) 반환
+ &#42;
+ &#42; &#64;return   base Aim rotation.
+ &#42;/
+simulated singular event Rotator GetBaseAimRotation()
+{
+      local vector   POVLoc;
+      local rotator   POVRot;
+      local UDNPlayerController PC;
+
+   PC &#61; UDNPlayerController(Controller);
+
+   //Pawn이 UDNPlayerController에 의해 제어되며, UDNPlayerCamera를 가짐
+      if(PC !&#61; none &#38;&#38; PC.ControlModule !&#61; none)
+      {
+      //커스텀 카메라의 조준 회전 제어 허용
+      return PC.ControlModule.GetBaseAimRotation();
+      }
+      else
+      {
+         if( Controller !&#61; None &#38;&#38; !InFreeCam() )
+         {
+            Controller.GetPlayerViewPoint(POVLoc, POVRot);
+            return POVRot;
+         }
+         else
+         {
+            POVRot &#61; Rotation;
+
+            if( POVRot.Pitch &#61;&#61; 0 )
+            {
+               POVRot.Pitch &#61; RemoteViewPitch &#60;&#60; 8;
+            }
+
+            return POVRot;
+         }
+      }
+}
+
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h4><a name="GameInfo 클래스"></a> GameInfo 클래스 </h4>
+<p />
+새로운 게임타입 클래스는 사용할 HUD, Pawn, PlayerController를 새로 설정하는 UTDeathMatch의 기본 연장입니다. 또한 여기에 지정된 HUD 클래스가 UTGFxHUDWrapper 대신 사용될 수 있도록 <em>bUseClassicHUD</em> 를 True로 설정하며, 이 불리언을 설정하지 않고서는 하드코딩해야만 이 클래스를 사용할 수 있습니다.
+<p />
+<span style="font:12px Courier;">
+UDNGame.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNGame extends UTDeathMatch;
+
+defaultproperties
+{
+   DefaultPawnClass&#61;class&#39;UDNExamples.UDNPawn&#39;
+   PlayerControllerClass&#61;class&#39;UDNExamples.UDNPlayerController&#39;
+   MapPrefixes&#91;0]&#61;&#34;UDN&#34;
+}
+</pre>
+</div>
+<p />
+<h3><a name="카메라 모듈 예제"></a> 카메라 모듈 예제 </h3>
+<p />
+새로운 카메라 프레임워크를 사용하는 예제로써, 내려보기 카메라를 설정하겠습니다. 카메라 모듈 새로 만들기는 주로 기본 카메라 모듈 클래스에 정의된 함수를 구현하는 일입니다. 이 작업 중 대부분은 위의 <em>CalcCamera()</em> 예제를 살펴 본 경우라면 거의 비슷할 겁니다.
+<p />
+<span style="font:12px Courier;">
+UDNCameraModule_TopDown.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNCameraModule&#95;TopDown extends UDNCameraModule;
+
+var float CamAltitude; //플레이어로부터의 실제 카메라 높이 오프셋
+var float DesiredCamAltitude; //카메라를 이동시킬 새 높이 오프셋
+var float MaxCamAltitude; //카메라와 플레이어 사이의 최대 오프셋
+var float MinCamAltitude; //카메라와 플레이어 사이의 최소 오프셋
+var float CamZoomIncrement; //마우스휠 클릭마다 몇 유닛만큼 줌 시킬지
+
+//새 카메라 위치 및 회전 계산
+function UpdateCamera(Pawn P, UDNPlayerCamera CameraActor, float DeltaTime, out TViewTarget OutVT)
+{
+   //거기 없으면 새 카메라 오프셋으로 보간
+   if(CamAltitude !&#61; DesiredCamAltitude)
+   {
+      CamAltitude +&#61; (DesiredCamAltitude - CamAltitude) &#42; DeltaTime &#42; 3;
+   }
+
+   //높이(Z) 오프셋으로 카메라를 플레이어에 맞춤
+   OutVT.POV.Location &#61; OutVT.Target.Location;
+   OutVT.POV.Location.Z +&#61; CamAltitude;
+
+   //카메라 회전 설정 - 아래로 향하게
+   OutVT.POV.Rotation.Pitch &#61; -16384;
+   OutVT.POV.Rotation.Yaw &#61; 0;
+   OutVT.POV.Rotation.Roll &#61; 0;
+}
+
+//새 뷰 타겟 초기화
+simulated function BecomeViewTarget( UDNPlayerController PC )
+{
+   if (LocalPlayer(PC.Player) !&#61; None)
+      {
+      // 플레이어 메시 보이게 설정
+        PC.SetBehindView(true);
+        UDNPawn(PC.Pawn).SetMeshVisibility(PC.bBehindView);
+        PC.bNoCrosshair &#61; true;
+      }
+}
+
+function ZoomIn()
+{
+   // 카메라 높이 낮추기
+   DesiredCamAltitude -&#61; CamZoomIncrement;
+
+   // 카메라 높이 한계치로 고정
+   DesiredCamAltitude &#61; FMin(MaxCamAltitude, FMax(MinCamAltitude, DesiredCamAltitude));
+}
+
+function ZoomOut()
+{
+   // 카메라 높이 높이기
+   DesiredCamAltitude +&#61; CamZoomIncrement;
+
+   // 카메라 높이 한계치로 고정
+   DesiredCamAltitude &#61; FMin(MaxCamAltitude, FMax(MinCamAltitude, DesiredCamAltitude));
+}
+
+defaultproperties
+{
+   CamAltitude&#61;384.0
+   DesiredCamAltitude&#61;384.0
+   MaxCamAltitude&#61;1024.0
+   MinCamAltitude&#61;160.0
+   CamZoomIncrement&#61;96.0
+}
+</pre>
+</div>
+<p />
+<h3><a name="콘트롤 모듈 예제"></a> 콘트롤 모듈 예제 </h3>
+<p />
+<span style="font:12px Courier;">
+UDNControlModule_TopDown.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNControlModule&#95;TopDown extends UDNControlModule;
+
+//Pawn 조준 회전 계산
+simulated singular function Rotator GetBaseAimRotation()
+{
+   local rotator   POVRot;
+
+   //Pawn이 향하는 곳을 조준 - 상하(pitch) 잠금
+      POVRot &#61; Controller.Pawn.Rotation;
+      POVRot.Pitch &#61; 0;
+
+      return POVRot;
+}
+
+//커스텀 플레이어 이동 처리
+function ProcessMove(float DeltaTime, vector NewAccel, eDoubleClickDir DoubleClickMove, rotator DeltaRot)
+{
+   if( Controller.Pawn &#61;&#61; None )
+   {
+       return;
+   }
+
+    if (Controller.Role &#61;&#61; ROLE&#95;Authority)
+    {
+       // 원격 클라이언트용 ViewPitch 업데이트
+        Controller.Pawn.SetRemoteViewPitch( Controller.Rotation.Pitch );
+   }
+
+    Controller.Pawn.Acceleration &#61; NewAccel;
+
+
+   Controller.CheckJumpOrDuck();
+}
+
+//콘트롤러 회전 계산
+function UpdateRotation(float DeltaTime)
+{
+   local Rotator   DeltaRot, NewRotation, ViewRotation;
+
+      ViewRotation &#61; Controller.Rotation;
+
+   //폰을 커서 방향으로 회전
+      if (Controller.Pawn!&#61;none)
+      Controller.Pawn.SetDesiredRotation(ViewRotation);
+
+      DeltaRot.Yaw   &#61; Controller.PlayerInput.aTurn;
+      DeltaRot.Pitch   &#61; 0;
+
+      Controller.ProcessViewRotation( DeltaTime, ViewRotation, DeltaRot );
+      Controller.SetRotation(ViewRotation);
+
+      NewRotation &#61; ViewRotation;
+      NewRotation.Roll &#61; Controller.Rotation.Roll;
+
+      if ( Controller.Pawn !&#61; None )
+         Controller.Pawn.FaceRotation(NewRotation, DeltaTime);
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h3><a name="환경설정 파일"></a> 환경설정 파일 </h3>
+<p />
+아래 파일 전부는 UDKgame/Config 디렉토리에 위치해야 합니다. 새로 생긴 몇가지는 만들어야 할 겁니다. 나머지는 새 환경설정 세팅을 포함하도록 변경하기만 하면 됩니다.
+<p />
+DefaultCamera.ini 파일은 새 카메라 클래스에 있는 다양한 환경설정 변수용 값으로 채워야 합니다. 이 예제는 기본 카메라 모듈 클래스 세팅만으로 구성되어 있습니다.
+<p />
+<span style="font:12px Courier;">
+DefaultCamera.ini
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+&#91;UDNExamples.UDNPlayerCamera]
+DefaultCameraClass&#61;UDNExamples.UDNCameraModule&#95;TopDown
+</pre>
+</div>
+<p />
+DefaultGame.ini 파일은 새 게임타입을 가리키기 위해 <em>[Engine.GameInfo]</em> 부분을 변경해야 하며, 밑에는 기본 콘트롤 모듈 클래스로 사용할 것을 지정한 부분을 추가해야 합니다.
+<p />
+<span style="font:12px Courier;">
+DefaultGame.ini
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+
+...
+
+&#91;Engine.GameInfo]
+DefaultGame&#61;UDNExamples.UDNGame
+DefaultServerGame&#61;UDNExamples.UDNGame
+
+...
+
+&#91;UDNExamples.UDNPlayerController]
+DefaultControlModuleClass&#61;UDNExamples.UDNControlModule&#95;TopDown
+</pre>
+</div>
+<p />
+이와 같이 만들고/또는 바라는 대로 환경설정 세팅으로 채워넣거나 변경하고나면, 다음번 게임이나 에디터를 실행할 때 새로운 UDKCamera.ini 및 UDKGame.ini 파일이 생성되게 됩니다.
+<p />
+<strong>알림:</strong> 새 게임타입을 사용하게 하려면 맵에 전치사가 바르게 붙어있나 확인해야 합니다. 여기 게임타입에선 전치사를 "UDN"으로 설정해 놨기에 모든 맵도 "UDN-"으로 시작해야 합니다. 맵의 World 프로퍼티 중 <em>Game Type PIE</em> 부분을 새 게임타입으로 설정하는 식으로도 에디터에 있는 아무 맵을 가지고 새 게임타입을 빠르게 테스트해 볼 수 있습니다.
+<p />
+</noautolink>
+<p />
+<style type="text/css">
+<!--
+div.codesnippet
+{
+    margin:0px 10px;
+    padding:0px 10px;
+    background:#f0f0f0;
+    font:12px Courier;
+    max-height:500px;
+    overflow:auto;
+    border:2px inset #989898;
+}
+-->
+</style>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CameraTechnicalGuideKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:11:10 GMT -->
+</html></body>

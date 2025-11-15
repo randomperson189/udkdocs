@@ -1,0 +1,554 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TcpLinkCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:24:50 GMT -->
+<head>
+<title> UDK | TcpLinkCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">TcpLinkCH  </b></div>
+<div id="tooltext">
+<a href="TcpLink.html" class="twikiLink">English Translation</a><br><a href="TcpLinkJP.html" class="twikiLink">日本語訳</a><br><a href="TcpLinkKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/TcpLinkCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="InputOutputHome.html" class="twikiLink">输入 / 输出</a></b> &gt; TcpLink
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="TcpLink"></a> TcpLink </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="TcpLinkCH.html#TcpLink"> TcpLink</a> <ul>
+<li> <a href="TcpLinkCH.html#概述"> 概述</a>
+</li> <li> <a href="TcpLinkCH.html#模式"> 模式</a> <ul>
+<li> <a href="TcpLinkCH.html#Receive mode（接收模式）"> Receive mode（接收模式）</a>
+</li> <li> <a href="TcpLinkCH.html#Link mode（连接模式）"> Link mode（连接模式）</a>
+</li> <li> <a href="TcpLinkCH.html#Line mode（行模式）"> Line mode（行模式）</a>
+</li></ul>
+</li> <li> <a href="TcpLinkCH.html#连接状态"> 连接状态</a>
+</li> <li> <a href="TcpLinkCH.html#应用"> 应用</a> <ul>
+<li> <a href="TcpLinkCH.html#客户端"> 客户端</a>
+</li> <li> <a href="TcpLinkCH.html#服务器"> 服务器</a>
+</li></ul>
+</li> <li> <a href="TcpLinkCH.html#API"> API</a> <ul>
+<li> <a href="TcpLinkCH.html#结构"> 结构</a>
+</li> <li> <a href="TcpLinkCH.html#变量"> 变量</a>
+</li> <li> <a href="TcpLinkCH.html#函数"> 函数</a>
+</li> <li> <a href="TcpLinkCH.html#事件"> 事件</a>
+</li></ul>
+</li> <li> <a href="TcpLinkCH.html#下载"> 下载</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<hr size="1" noshade="noshade">
+TcpLink 类允许您在虚幻引擎中创建 TCP 套接字。通过这个套接字，您可以和因特网上的其它服务器相连接，或者您可以提供一个简单的网络服务。
+<p />
+注意，这不是一个具有高性能的功能。使用这个功能会对游戏性能产生重大的影响。当提供服务时，性能影响会更大。所以当时用这个功能时请记住这点。
+<p />
+在页面的底部，您会看到一些使用 TcpLink 的几个实例。
+<p />
+引擎内部包含了一个 HTTP WebServer 的实现。这个网络服务器使用了 TcpLink 接功能。
+<p />
+<h2><a name="模式"></a> 模式 </h2>
+<hr size="1" noshade="noshade">
+这个 TcpLink 类包含了几个控制这个类作用的模式。这些模式如下所示：
+<p />
+<h3><a name="Receive mode（接收模式）"></a> Receive mode（接收模式） </h3>
+当接收数据时 TcpLink 可以以两种不同的模式进行操作：
+<p /> <ul>
+<li> Event mode（事件模式）(<code>RMODE_Event</code>)
+</li> <li> Manual mode（手动模式）(<code>RMODE_Manual</code>)
+</li></ul>
+<p />
+<h4><a name="Event mode（事件模式）"></a> Event mode（事件模式） </h4>
+在事件模式中，TcpLink 连接的 native 代码将会根据<a href="TcpLinkCH.html#LinkMode" class="twikiAnchorLink">连接模式</a>触发其中的一个事件。
+<p />
+在 <code>MODE_Text</code> 模式中，执行 <em>ReceivedText</em> 事件。_text_ 参数包含了自从上一个事件后接收到的所有文本。
+<p />
+在 <code>MODE_Line</code> 模式中，执行 <em>ReceivedLine</em> 事件。_line_ 参数包含了单独的一行文本，没有行终结符号。和其它的事件不同，这个事件在每次 tick（更新）中可以发生多次。
+<p />
+在 <code>MODE_Binary</code> 模式中，执行 <em>ReceivedBinary</em> 事件。_count_ 参数说明了在字节缓冲 <em>B</em> 中允许的字节数。
+<p />
+<h4><a name="Manual mode（手动模式）"></a> Manual mode（手动模式） </h4>
+正如它的名称所预示的，在手动模式中，您负责读取数据。这可以通过在一个 tick（更新）事件期间或者使用一个计时器来完成。我们强烈地推荐您不要在每次 tick（更新）时执行多次读取操作，因为这样会减慢并阻挡操作。
+<p />
+可以使用 <em>ReadText</em> 或 <em>ReadBinary</em> 函数来读取数据。这两个函数返回了读取的字节的数量。_ReadBinary_ 的参数 <em>count</em> 定义了您可以读取的字节的最大数量。您可以使用它的返回值来决定可以读取的字节的实际数量。
+<p />
+与事件模式不同，它和连接模式是没有关系的。您可以使用任何函数。您可以使用轻量级的 <em>IsDataPending</em> 函数，来看看您是否觉着读取数据很麻烦。
+<p />
+<h3><a name="Link mode（连接模式）"></a> Link mode（连接模式） </h3>
+在 TcpLink 中可以操作两种不同的模式。连接模式决定了当在接收模式事件模型中 TcpLink 操作时将要调用哪个事件。
+<p />
+连接模型也影响了 <em>SendText</em> 的工作方式。当连接模型是 <code>MODE_Line</code> 时，那么将会在使用 <em>SendText</em> 发送的文本后面添加换行结束符。请参照行模式部分来获得关于换行结束符的信息。
+<p />
+<h3><a name="Line mode（行模式）"></a> Line mode（行模式） </h3>
+行模式控制了当接收到文本时如何检测新加的行，并且控制在 <em>SendText</em> 上添加新建行的结束符。仅当连接模式设置为 <code>MODE_Line</code> 时才会使用行模式。
+<p />
+需要为发送模式 ( <em>OutLineMode</em> ) 和接收模式 ( <em>InLineMode</em> ) 分别地设置行模式。
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol">  <strong><font color="#000000">模式</font></strong>  </th><th bgcolor="#dadada">  <strong><font color="#000000">结束符</font></strong>  </th><td bgcolor="#eaeaea"> &nbsp; </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <code>LMODE_DOS</code> </td><td bgcolor="#ffffff"> <code>\n\r</code> </td><td bgcolor="#ffffff"> &nbsp; </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <code>LMODE_UNIX</code> </td><td bgcolor="#eaeaea"> <code>\n</code> </td><td bgcolor="#eaeaea"> &nbsp; </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <code>LMODE_MAC</code> </td><td bgcolor="#ffffff"> <code>\r\n</code> </td><td bgcolor="#ffffff"> 不能使用。它是不争去的，和旧的 MacOS 使用的 <code>\r</code> 一样。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <code>LMODE_AUTO</code> </td><td bgcolor="#eaeaea"> <code>\n\r</code> </td><td bgcolor="#eaeaea"> 当接收数据时，会在 <code>\n</code> 处对其进行分个，并且会删除 <code>\r</code> 的前面和后面的字符串。 </td></tr>
+</table>
+<p />
+<h2><a name="连接状态"></a> 连接状态 </h2>
+<hr size="1" noshade="noshade">
+TcpLink 包含了一个用于报告当前连接状态的变量：  <em>LinkState</em> 。通常您不需要关系这个，特别是当您使用 TcpLink 的事件时。但是有些情况下，使用它来获取当前正在发生的事情或许是有趣的。
+<p /> <dl>
+<dt> <code>STATE_Initialized</code>  </dt><dd> TcpLink 的初始状态。它已经准备好进行绑定。您可以使用 <em>BindPort</em> 。
+</dd> <dt> <code>STATE_Ready</code>  </dt><dd> TcpLink 被绑定到一个端口，并且准备好建立连接。您可以使用 <em>Open</em> 或 <em>Listen</em> 。
+</dd> <dt> <code>STATE_Listening</code>  </dt><dd> TcpLink 监听正在到来的连接。这通常是调用 <em>Listen</em> 的结果。
+</dd> <dt> <code>STATE_Connecting</code>  </dt><dd> 正在尝试连接。这通常是调用 <em>Open</em> 的结果。TcpLink 还没有准备好进行 I/O（输入/输出）。
+</dd> <dt> <code>STATE_Connected</code>  </dt><dd> 已经建立了连接，准备好进行 I/O（输入/输出）。
+</dd> <dt> <code>STATE_ListenClosePending</code>  </dt><dd> Listen（监听）套接字排队等待被关闭。这通常是调用 <em>Close</em> 的结果。
+</dd> <dt> <code>STATE_ConnectClosePending</code>  </dt><dd> 客户端套接字排队等待被关闭。这通常是调用 <em>Close</em> 的结果。
+</dd> <dt> <code>STATE_ListenClosing</code>  </dt><dd> listen（监听）套接字当前正在关闭它的连接。它还不能用于做其它事情。
+</dd> <dt> <code>STATE_ConnectClosing</code>  </dt><dd> 客户端套接字正在关闭它的连接。它还不能用于做其它事情。
+</dd></dl>
+<p />
+<h2><a name="应用"></a> 应用 </h2>
+<hr size="1" noshade="noshade">
+TcpLink 类可以使用两种不同的方式进行应用，作为客户端或作为服务器。
+<p />
+<h3><a name="客户端"></a> 客户端 </h3> <ol>
+<li> 设置适当的模式。
+</li> <li> <em>BindPort()</em>
+</li> <li> 创建 <code>IpAddr</code> 结构：       * 通过使用 <em>Resolve(...)</em> 解析主机名称。       * 使用 <em>StringToIpAddr(..)</em> 来转换 IP 字符串。
+</li> <li> <em>Open(..)</em>
+</li> <li> 1. 等待 <em>Opened()</em> 事件、或者当 <em>LinkState</em> 是 <code>STATE_Connected</code> 时、或等 <em>IsConnected()</em> 返回真时。
+</li> <li> 读 和/或 写 数据
+</li> <li> <em>Close(..)</em>
+</li></ol>
+<p />
+客户端通常会随机地使用一个空闲接口，因此在调用 <em>BindPort</em> 时不必使用任何参数。
+<p />
+请参照下面链接的包中的 <code>TcpLinkClient</code> 类来获得关于如何使用 TcpLink 作为客户端的实例。
+<p />
+<h3><a name="服务器"></a> 服务器 </h3>
+为服务器使用 TcpLink 稍微有点复杂。我们强烈推荐您把服务器分为两个类：
+<p /> <ol>
+<li> 一般的监听类
+</li> <li> 连接接受类
+</li></ol>
+<p />
+一般的监听类将会简单地监听连接尝试及当建立了一个连接时生成一个连接接受类。实际上是连接接受类真正地负责处理连接。这个逻辑已经内置到了 TcpLink 类中，您所做的一切便是设置 <em>AcceptClass</em> 变量。
+<p />
+监听类的过程如下：
+<p /> <ol>
+<li> 设置适当的模式。
+</li> <li> 设置监听类。
+</li> <li> <em>BindPort(12345)</em>
+</li> <li> <em>Listen()</em>
+</li> <li> [可选项] 向 <em>GainedChild(..)</em> 和 <em>LostChild(..)</em> 事件做出反应。
+</li></ol>
+<p />
+服务器应该在特定的端口上进行监听，否则客户端不知道它们应该连接到哪个端口上。那个端口已经绑定到了某些其它的过程上的情况也是可能发生的。在这种情况下， <em>BindPort(..)</em> 将会返回值 0，意味着没有绑定端口。另外，您可以设置第二个参数为真，这样它将绑定到下一个可用端口上。绑定端口是通过函数调用 <em>BindPort(..)</em> 返回的。当绑定成功后，您可以调用 <em>Listen()</em> 函数来启动服务器。
+<p />
+当定义一个 <em>AcceptClass</em> 类，并建立了一个新的连接时将会调用 <em>GainedChild(..)</em> 和 <em>LostChild(..)</em> 事件。您可以使用这个功能来限制可以连接到服务器上的最大数量。要想停止接受新的连接，您可以简单地调用 <em>Close()</em> 函数，要想重新启动接受连接只要简单地再次调用 <em>Listen()</em> 函数即可。
+<p />
+当建立连接后，连接接受类和客户端套接字的工作方式是非常像的。
+<p /> <ol>
+<li> 等待 <em>Accepted</em> 事件
+</li> <li> 读 和/或 写 数据
+</li> <li> <em>Close(..)</em>
+</li></ol>
+<p />
+当没有设置 <em>AcceptClass</em> 时，监听类将接受每个连接的客户端的 <em>Accepted</em> 事件。
+<p />
+<h2><a name="API"></a> API </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="结构"></a> 结构 </h3>
+<h4><a name="IpAddr"></a><a name="_IpAddr"></a> IpAddr </h4>
+这是由 IP 地址 (IPv4) 和端口数组成。
+<p />
+<h3><a name="变量"></a> 变量 </h3> <dl>
+<dt> <em>LinkMode</em>  </dt><dd> 请参照链接模式
+</dd> <dt> <em>InLineMode</em> , <em>OutLineMode</em>  </dt><dd> 请参照线模式
+</dd> <dt> <em>Port</em>  </dt><dd> 本地端口
+</dd> <dt> <em>ReceiveMode</em>  </dt><dd> 请参照 Receive（接收）模式
+</dd> <dt> <em>LinkState</em>  </dt><dd> 请参照 Link（连接）状态
+</dd> <dt> <em>RemoteAddr</em>  </dt><dd> 包含另一侧机器信息的 <code>IpAddr</code> 结构
+</dd> <dt> <em>AcceptClass</em>  </dt><dd> 用于服务器模式中，因为这个类将会处理连入的连接
+</dd></dl>
+<p />
+除了这里列出的变量外还有一些其它变量，但是这些变量是在内部使用的，从而应该遗弃。
+<p />
+<h3><a name="函数"></a> 函数 </h3>
+<h4><a name="IsDataPending"></a><a name="_IsDataPending"></a> IsDataPending </h4>
+<code>native function bool IsDataPending()</code>
+<p />
+如果套接字上的数据是没有处理的，则返回真。
+<p />
+<h4><a name="ParseURL"></a><a name="_ParseURL"></a> ParseURL </h4>
+<code>native function bool ParseURL(coerce string URL, out string Addr, out int PortNum, out string LevelName, out string EntryName)</code>
+<p />
+解析 Unreal URL。如果是有效的 url 则返回真。Unreal 的 URL 和您在浏览器中使用的 URL 是不同的。它可能不是非常有用。
+<p />
+<h4><a name="Resolve"></a> Resolve </h4>
+<code>native function Resolve( coerce string Domain )</code>
+<p />
+解析作为第一个参数提供的主机名称。主机名称解析是一个较慢的过程，因此函数的结果是通过一个事件返回的。
+<p />
+当解析成功时，调用 <em>Resolved</em> 。否则调用 <em>ResolveFailed</em> 事件。
+<p />
+<h4><a name="GetLastError"></a><a name="_GetLastError"></a> GetLastError </h4>
+<code>native function int GetLastError()</code>
+<p />
+返回最近的错误代码。返回值 0 的意思是没有错误。其它的值的意思由底层子系统决定。
+对于 MS Windows 来说，错误的代码与 <a href="http://msdn.microsoft.com/en-us/library/ms740668(VS.85).aspx">WinSock API</a> 是等同的。
+<p />
+<h4><a name="IpAddrToString"></a><a name="_IpAddrToString"></a> IpAddrToString </h4>
+<code>native function string IpAddrToString( IpAddr Arg )</code>
+<p />
+将 IpAddr（IP 地址）结构转化为字符串。例如： <code>123.123.123.123:45678</code>
+<p />
+<h4><a name="StringToIpAddr"></a><a name="_StringToIpAddr"></a> StringToIpAddr </h4>
+<code>native function bool StringToIpAddr( string Str, out IpAddr Addr )</code>
+<p />
+将 IPv4 地址 + 端口解析为 IpAddr 结构。当成功时返回真。
+<p />
+<h4><a name="GetLocalIP"></a><a name="_GetLocalIP"></a> GetLocalIP </h4>
+<code>native function GetLocalIP(out IpAddr Arg )</code>
+<p />
+获得本地 IP 地址。这是由底层子系统返回的第一个 IP 地址，并且它可能是一个不可路由的地址。所以请小心使用它。
+<p />
+<h4><a name="BindPort"></a> BindPort </h4>
+<code>native function int BindPort( optional int PortNum, optional bool bUseNextAvailable )</code>
+<p />
+为这个 TcpLink 实例绑定一个端口。如果没有给出端口号，那么分配随机的空闲端口。如果第二个参数位置，那么如果最佳的端口已经被使用，则绑定下一个可用的空闲端口。如果它为 false，那么绑定失败。
+<p />
+返回值是绑定端口，否则绑定失败返回 0。
+<p />
+<h4><a name="Listen"></a> Listen </h4>
+<code>native function bool Listen()</code>
+<p />
+设置 TcpLink 的监听模式。如果成功返回真。在监听模式中，TcpLink 将会等待将要到来的连接。请参照服务器模式获得更多的信息。
+<p />
+<h4><a name="Open"></a> Open </h4>
+<code>native function bool Open( IpAddr Addr )</code>
+<p />
+打开一个到远程主机的连接。使用 <em>StringToIpAddr</em> 或 <em>Resolve</em> 来获得有效的 IpAddr 结构。
+<p />
+如果在初始化连接时出现问题，那么返回假。当调用这个函数后，套接字还没有准备好连接。请等待 <em>Opened</em> 事件出现或当 <em>IsConnected</em> 变为真时才准备好。
+<p />
+<h4><a name="Close"></a> Close </h4>
+<code>native function bool Close()</code>
+<p />
+关闭当前的连接。请使用这个函数来停止 TcpLink 监听将要连入的连接，或者关闭到远程主机的连接。当关闭连接后，您可以使用 <em>Open</em> 或 <em>Close</em> 来重新打开连接。
+<p />
+<h4><a name="IsConnected"></a><a name="_IsConnected"></a> IsConnected </h4>
+<code>native function bool IsConnected()</code>
+<p />
+当 TcpLink 连接到远程主机时返回真。在客户端模式中，当建立了到远程主机的有效连接时返回真。在服务器模式中仅当连接了客户端时才返回真。
+<p />
+<h4><a name="SendText"></a><a name="_SendText"></a> SendText </h4>
+<code>native function int SendText( coerce string Str )</code>
+<p />
+发送一个字符串到远程主机。如果连接模式是 <code>MODE_Line</code> ，那么将会附加一个行结束符。请参照服务器模式获得更多的信息。
+<p />
+它将会返回发送到远程主机的字节的数量，这可能和字符串的长度不一致。
+<p />
+<h4><a name="SendBinary"></a><a name="_SendBinary"></a> SendBinary </h4>
+<code>native function int SendBinary( int Count, byte B[255] )</code>
+<p />
+发送一些字节到远程主机。_count_ 参数定义了缓冲（第二个参数）中要发送到远程主机的字节的数量。您可以一次最多发送 255 个字节。
+<p />
+它将会返回发送到远程主机的字节的数量。
+<p />
+<h4><a name="ReadText"></a><a name="_ReadText"></a> ReadText </h4>
+<code>native function int ReadText( out string Str )</code>
+<p />
+从远程主机读取文本。这是一个阻塞操作，直到数据读取完成为止将不会返回。这个函数仅在手动传递模式中使用。
+<p />
+它返回了读取的字节的数量，它不是必须等于字符串长度。
+<p />
+<h4><a name="ReadBinary"></a><a name="_ReadBinary"></a> ReadBinary </h4>
+<code>native function int ReadBinary( int Count, out byte B[255] )</code>
+<p />
+可以从远程主机读取的字节的最大数量。此时您可以最多读取 255 个字节。这个函数仅在手动传递模式中使用。
+<p />
+它返回了读取的字节的数量。这个值可以小于 <em>count</em> 参数中提供的值。
+<p />
+<h3><a name="事件"></a> 事件 </h3>
+<h4><a name="Resolved（解析）"></a> Resolved（解析） </h4>
+<code>event Resolved( IpAddr Addr )</code>
+<p />
+当成功解析了一个主机名称时调用它。
+<p />
+<h4><a name="ResolveFailed"></a><a name="_ResolveFailed"></a> ResolveFailed </h4>
+<code>event ResolveFailed()</code>
+<p />
+当不能解析主机名称时调用它。
+<p />
+<h4><a name="Accepted（接受）"></a> Accepted（接受） </h4>
+<code>event Accepted()</code>
+<p />
+当客户端连接到监听模式中的一个 TcpLink 时调用，或者由在监听模式中的一个 TcpLink 产生的 TcpLink 调用。
+<p />
+<h4><a name="Opened"></a> Opened </h4>
+<code>event Opened()</code>
+<p />
+当 <em>open</em> 成功时调用。
+<p />
+<h4><a name="Closed"></a> Closed </h4>
+<code>event Closed()</code>
+<p />
+当关闭 TcpLink 连接时调用。这是或者是调用 <em>close</em> 的结果或者是当远程主机关闭连接时的结果。
+<p />
+<h4><a name="ReceivedText"></a><a name="_ReceivedText"></a> ReceivedText </h4>
+<code>event ReceivedText( string Text )</code>
+<p />
+当连接模式是 <code>MODE_Text</code> 并且接收模式是 <code>RMODE_Event</code> 的情况下，TcpLink 接收文本时调用这个函数。
+<p />
+<h4><a name="ReceivedLine"></a><a name="_ReceivedLine"></a> ReceivedLine </h4>
+<code>event ReceivedText( string Line )</code>
+<p />
+当连接模式是 <code>MODE_Line</code> 并且接收模式是 <code>RMODE_Event</code> 的情况下，TcpLink 接收文本时调用这个函数。会根据线模式将文本从新行中分离出来。每次更新时可以多次调用这个事件。
+<p />
+<h4><a name="ReceivedText"></a><a name="_ReceivedText"></a> ReceivedText </h4>
+<code>event ReceivedBinary( int Count, byte B[255] )</code>
+<p />
+当连接模式是 <code>MODE_Binary</code> 并且接收模式是 <code>RMODE_Event</code> 的情况下，TcpLink 接收文本时调用这个函数。_count_ 参数定义了写入到字节缓冲中的字节数量。
+<p />
+<h2><a name="下载"></a> 下载 </h2>
+<hr size="1" noshade="noshade">
+压缩文件中包含的是几个关于 TcpLink 类应用的实例：
+<p /> <dl>
+<dt> <code>TcpLinkClient</code>  </dt><dd> 一个非常简单的 HTTP 客户端。
+</dd> <dt> <code>TcpLinkServer</code>  </dt><dd> 一个简单的服务器，它将会回应它接收到的的每行文本，这个过程实际上是由 <code>TcpLinkServerAcceptor</code> 类处理的。
+</dd> <dt> <code>TcpLinkServerAcceptor</code>  </dt><dd> 这个类处理 <code>TcpLinkServer</code> 接收到的连接。
+</dd></dl>
+<p /> <ul>
+<li> <a href="#" target="_top">TcpLinkExamples.zip</a>: TcpLink 实例。
+</li></ul>
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TcpLinkCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:24:50 GMT -->
+</html></body>

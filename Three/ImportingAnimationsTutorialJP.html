@@ -1,0 +1,350 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ImportingAnimationsTutorialJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:36 GMT -->
+<head>
+<title> UDK | ImportingAnimationsTutorialJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ImportingAnimationsTutorialJP  </b></div>
+<div id="tooltext">
+<a href="ImportingAnimationsTutorial.html" class="twikiLink">English Translation</a><br><a href="ImportingAnimationsTutorialCH.html" class="twikiLink">中国翻译</a><br><a href="ImportingAnimationsTutorialKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ImportingAnimationsTutorialJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="アニメーションのインポート チュートリアル"></a> アニメーションのインポート チュートリアル </h1>
+<p />
+<em>ドキュメントの概要: PSA ファイルから Unreal エンジンにメッシュ アニメーションを取り込み、SkeletalMesh アクタを配置する方法を説明するチュートリアル。</em>
+<p />
+<em>ドキュメントの変更ログ: <a href="https://udn.epicgames.com/Main/JamesGolding" class="restricted" class="restricted" class="twikiLink">James Golding</a> により作成および更新。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="ImportingAnimationsTutorialJP.html#アニメーションのインポート チュートリアル"> アニメーションのインポート チュートリアル</a> <ul>
+<li> <a href="ImportingAnimationsTutorialJP.html#はじめに"> はじめに</a>
+</li> <li> <a href="ImportingAnimationsTutorialJP.html#コンテンツのエクスポート"> コンテンツのエクスポート</a>
+</li> <li> <a href="ImportingAnimationsTutorialJP.html#エンジンへのコンテンツ取り込み"> エンジンへのコンテンツ取り込み</a> <ul>
+<li> <a href="ImportingAnimationsTutorialJP.html#アニメーションのインポート"> アニメーションのインポート </a> <ul>
+<li> <a href="ImportingAnimationsTutorialJP.html#新しい _AnimSet の作成"> 新しい AnimSet の作成</a>
+</li> <li> <a href="ImportingAnimationsTutorialJP.html#AnimSetViewer を開く"> AnimSetViewer を開く</a>
+</li> <li> <a href="ImportingAnimationsTutorialJP.html#PSA ファイルのインポート"> PSA ファイルのインポート</a>
+</li> <li> <a href="ImportingAnimationsTutorialJP.html#AnimSetViewer の使用"> AnimSetViewer の使用</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="はじめに"></a> はじめに </h2>
+<p />
+このドキュメントの内容はアニメーションにも適用され、Unreal Engine 3 のアート パイプラインの手引きとなるものです。ここでは特に新しいエンジンにおける機能や手順に焦点を当てています。旧バージョンから変更されていない機能については、UDN の他のドキュメントで取り上げて詳細に説明しています。
+<p />
+<p />
+<p />
+<p />
+<h2><a name="コンテンツのエクスポート"></a> コンテンツのエクスポート </h2>
+<p />
+Unreal Engine 3 では、アニメーション シーケンスは Maya または Max から <a href="ActorXJP.html" class="twikiLink">ActorXJP</a> プラグインを使用してエクスポートします。
+<p />
+<p />
+<h2><a name="エンジンへのコンテンツ取り込み"></a> エンジンへのコンテンツ取り込み </h2>
+<p />
+<h3><a name="アニメーションのインポート"></a> アニメーションのインポート </h3>
+<p />
+Unreal Engine 3 では、PSA ファイルは AnimSet (アニメーションセット) オブジェクトの多数の AnimSequence (アニメーション シーケンス) としてインポートされます。マテリアルや静的メッシュと同様に、AnimSets は <a href="https://udn.epicgames.com/Three/GenericBrowserReferenceJP" class="restricted" class="restricted" class="twikiLink">汎用ブラウザ</a> に表示されます。
+<p />
+<img alt="animsetinbrowser.jpg" src="rsrc/Three/ImportingAnimationsTutorialJP/animsetinbrowser.jpg" />
+<p />
+<h4><a name="新しい _AnimSet の作成"></a> 新しい AnimSet の作成 </h4>
+<p />
+PSA ファイルをインポートする前に、それらの AnimSet を作成する必要があります。新しい AnimSet を作成するにはいくつかの方法があります。
+<p /> <ul>
+<li> <a href="https://udn.epicgames.com/Three/GenericBrowserReferenceJP" class="restricted" class="restricted" class="twikiLink">汎用ブラウザ</a> で、背景を右クリックし [New AnimSet] (新規アニメーションセット) を選択します。新しい AnimSet の名前と、格納先のパッケージ名を入力します。
+</li></ul>
+<p />
+<img alt="newanimsetcontext.jpg" src="rsrc/Three/ImportingAnimationsTutorialJP/newanimsetcontext.jpg" />
+<p /> <ul>
+<li> <a href="https://udn.epicgames.com/Three/GenericBrowserReferenceJP" class="restricted" class="restricted" class="twikiLink">汎用ブラウザ</a> の [File] (ファイル) メニューから、[New] (新規) を選択し、[Factory] (ファクトリ) コンボボックスから [AnimSet] を選択します。新しい AnimSet の名前とパッケージ名を入力します。
+</li></ul>
+<p />
+<img alt="newanimsetfactory.jpg" src="rsrc/Three/ImportingAnimationsTutorialJP/newanimsetfactory.jpg" />
+<p /> <ul>
+<li>  AnimSetViewer が既に開いている場合は、[File] メニューから [New AnimSet] を選択できます。新しい AnimSet の名前と、格納先のパッケージ名を入力します。
+</li></ul>
+<p />
+<img alt="ASV_newanimset.jpg" src="rsrc/Three/ImportingAnimationsTutorialJP/ASV_newanimset.jpg" />
+<p />
+<h4><a name="AnimSetViewer を開く"></a> AnimSetViewer を開く </h4>
+<p />
+AnimSetViewer (アニメーションセット ビューア) ツールを使用して、既存の AnimSet に PSA ファイルをインポートします。ツールを開くには、以下のいずれかの方法を実行します。
+<p /> <ul>
+<li> <a href="https://udn.epicgames.com/Three/GenericBrowserReferenceJP" class="restricted" class="restricted" class="twikiLink">汎用ブラウザ</a> で、AnimSet をダブルクリックするか、そのコンテキストメニューから [AnimSet Viewer] を選択します。目的の AnimSet が選択された状態で AnimSetViewer が開き、ロード済みのコンテンツから再生に適した SkeletalMesh (骨格メッシュ) を検出します。
+</li> <li> SkeletalMesh をダブルクリックするか、そのコンテキストメニューから [AnimSet Viewer] を選択します。選択したメッシュ上で AnimSet を再生できる場合は、左側の AnimSet コンボボックスに AnimSet が表示されます。
+</li></ul>
+<p />
+<h4><a name="PSA ファイルのインポート"></a> PSA ファイルのインポート </h4>
+<p />
+アニメーションのインポート先となる AnimSet を選択したら、[File] メニューから [Import PSA] (PSA をインポート) を選択します。次に、インポートする PSA ファイルを選択して [OK] を押します。左側のシーケンス リストボックスに新規シーケンスが追加表示されます。
+<p />
+新しい AnimSet の場合、最初にインポートしたアニメーションによってその AnimSet の 'track table' (トラックテーブル) が定義されます。後からインポートするアニメーションはすべて、このテーブルに従います。インポートする PSA ファイルに、ターゲット AnimSet のトラックテーブルに存在しないトラックが含まれている場合は、次のメッセージが表示され、トラックテーブルを延長してこの新しいトラック名を含めるかどうかの確認を求められます。
+<p />
+<pre>
+Extra track (...) found in PSA but not in AnimSet. (PSA ファイルに、AnimSet に存在しない追加トラックが見つかりました)
+Would you like to add this track to all existing animations using the selected SkeletalMesh reference pose? (選択した SkeletalMesh 参照ポーズを使用して、このトラックをすべての既存アニメーションに追加しますか?)
+</pre>
+<p />
+AnimSet 内の AnimSequences はすべて同数のトラックで構成する必要があるため、セット内の既存の AnimSequences すべてにもトラックを「作成」する必要があり、これには選択した SkeletalMesh の参照ポーズが使用されます。逆に、インポートする PSA ファイルに、ターゲット AnimSet のテーブルに含まれるトラックが存在しない場合は、次のメッセージが表示されます。
+<p />
+<pre>
+Could not find needed track (...) for this AnimSet. (この AnimSet に必要なトラックが見つかりませんでした)
+Would you like to use the selected SkeletalMesh reference pose to create the track? (選択されている SkeletalMesh 参照ポーズを使用してトラックを作成しますか?)
+</pre>
+<p />
+これにより、選択されている SkeletalMesh の参照ポーズを使用して AnimSequence の新規トラックが作成されます。
+<p />
+Additive アニメーション (ターゲットポーズまたはベースポーズとして) を作成するのに使用されていたアニメーションをインポートすると、関連のある Additive アニメーションを自動的にリビルドするかどうかを確認するメッセージが表示されます。これは 2009 年 12 月 QA 承認ビルドの新機能です。更新したばかりで、アニメーションに必要な参照ポーズが含まれていない場合は、FixAdditiveReferences コマンドレットを実行してリビルドすることができます。
+<p />
+Additive アニメーションの詳細は、 <a href="AnimationOverview.html#AdditiveAnimationJP" class="twikiAnchorLink">AdditiveAnimation</a> を参照してください。
+<p />
+<p />
+<h4><a name="AnimSetViewer の使用"></a> AnimSetViewer の使用 </h4>
+<p />
+左上のコンボボックスから骨格メッシュを選択して表示することができます。このボックスには、現在ロードされている骨格メッシュがすべて表示されます。ビューアは新しい骨格メッシュ上で、選択された AnimSet の再生を試みますが、再生できない場合には警告メッセージを表示します。
+<p />
+AnimSet コンボボックスには、選択した SkeletalMesh 上で再生可能なすべての AnimSet が表示されます。
+<p />
+シーケンスを再生するには、左側のリストボックスでシーケンスを選択します。各シーケンスの右側の数字はフレーム数を表わします。
+<p />
+画面の下には、現在選択されている SkeltalMesh、AnimSet、AnimSequence に関する情報が表示されます。さらに、アニメーションの現在のプレビュー位置 (秒数) も表示されます。
+<p />
+AnimSetViewer には、選択した AnimSequence の名前変更、削除などを行うための多数のツールがあります。だたし、ゲームコードはアニメーションをその名前で参照するため、名前を変更するとゲームが中断される可能性がある点に気を付けてください。
+<p />
+<p />
+<p />
+<p />
+
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ImportingAnimationsTutorialJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:37 GMT -->
+</html></body>

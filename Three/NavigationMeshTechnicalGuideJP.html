@@ -1,0 +1,385 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavigationMeshTechnicalGuideJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:19 GMT -->
+<head>
+<title> UDK | NavigationMeshTechnicalGuideJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">NavigationMeshTechnicalGuideJP  </b></div>
+<div id="tooltext">
+<a href="NavigationMeshTechnicalGuide.html" class="twikiLink">English Translation</a><br><a href="NavigationMeshTechnicalGuideCH.html" class="twikiLink">中国翻译</a><br><a href="NavigationMeshTechnicalGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/NavigationMeshTechnicalGuideJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="ナビゲーションメッシュ テクニカルガイド"></a> ナビゲーションメッシュ テクニカルガイド </h1>
+<p />
+<em>ドキュメント概要: ナビゲーション メッシュ システムの技術的側面に関する概要。Unreal Engine におけるナビゲーション メッシュ システムの紹介は <a href="NavigationMeshReferenceJP.html" class="twikiLink">ナビゲーションメッシュ参照</a> を参照。</em>
+<p />
+<em>ドキュメントの変更ログ: <a href="https://udn.epicgames.com/Main/MattTonks" class="restricted" class="restricted" class="twikiLink">Matt Tonks</a> により作成されアップデート。</em>
+<p />
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="NavigationMeshTechnicalGuideJP.html#ナビゲーションメッシュ テクニカルガイド"> ナビゲーションメッシュ テクニカルガイド</a> <ul>
+<li> <a href="NavigationMeshTechnicalGuideJP.html#概要"> 概要</a>
+</li> <li> <a href="NavigationMeshTechnicalGuideJP.html#ナビゲーションハンドル"> ナビゲーションハンドル</a> <ul>
+<li> <a href="NavigationMeshTechnicalGuideJP.html#ナビゲーションハンドルの機能"> ナビゲーションハンドルの機能</a>
+</li></ul>
+</li> <li> <a href="NavigationMeshTechnicalGuideJP.html#ナビゲーションインターフェース"> ナビゲーションインターフェース</a>
+</li> <li> <a href="NavigationMeshTechnicalGuideJP.html#Nav Mesh デバッギング"> Nav Mesh デバッギング</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<p />
+このドキュメントは、AI がナビゲーションメッシュ (別名: <em>nav mesh</em>) を使えるように「橋渡し」を行うための早業ガイドです。
+Unreal Engine におけるナビゲーション メッシュ システムの紹介は、 <a href="NavigationMeshReferenceJP.html" class="twikiLink">ナビゲーション メッシュを参照</a> を参照してください。
+<p />
+<h2><a name="ナビゲーションハンドル"></a> ナビゲーションハンドル </h2>
+<p />
+(<code><b>NavigationHandle.UC</b></code>)
+<p />
+以前は、すべてのパス検索機能は Pawn に含まれていました。ナビゲーション メッシュに基づくパス検索のすべての新しい機能は、ナビゲーション ハンドルと呼ばれる内蔵型のオブジェクトにカプセル化されています。ナビゲーション ハンドル自体はコンポーネントであり、パスしたいものとともにどのようなアクタにもアタッチすることができます。さらに、ハンドルはパス検索の出力を格納します。これは、生成されたパスを格納し、行っているパス横断のタイプに関係あるほかのすべてを格納するように拡張することもできるということです。
+<p />
+AI がパス検索をするには、以下が必要です: <ul>
+<li> interface_navigationhandle の実装  (インターフェースに関しては後ほど解説)。
+</li> <li> navigationhandle コンポーネントをどこかでアクセス可能にしておく。
+</li></ul>
+<p />
+<p />
+<h3><a name="ナビゲーションハンドルの機能"></a> ナビゲーションハンドルの機能 </h3>
+<p />
+ナビゲーション ハンドル機能には、大まかに以下の 3 つのカテゴリがあります:
+<p /> <ol>
+<li> 実際のパス検索 (制約/終点評価コントロールを含む)
+</li> <li> パスに従う関数
+</li> <li> navmesh からデータをクエリーする関数
+</li></ol>
+<p />
+<strong><em>実際のパス検索機能</em></strong>
+<p />
+   パス検索は、パス制約と終点評価を活用して実行されます。詳細な情報は、<a href="NavMeshConstraintsAndGoalEvaluatorsJP.html" class="twikiLink">制約と終点評価のページ</a>を参照してください。
+   パス検索をするには、少なくとも 1 つの制約と 1 つの終点評価がセットアップされている必要があります。これをするには、通常、以下のような何らかの標準的な関数を追加するのが良いでしょう:
+<p />
+   <pre>
+   event bool GeneratePathTo( Actor Goal, optional float WithinDistance, optional bool bAllowPartialPath )
+   {
+      if( NavigationHandle &#61;&#61; None )
+         return FALSE;
+
+      AddBasePathConstraints(false);
+
+      class&#39;NavMeshPath&#95;Toward&#39;.static.TowardGoal( NavigationHandle, Goal );
+      class&#39;NavMeshGoal&#95;At&#39;.static.AtActor( NavigationHandle, Goal, WithinDistance, bAllowPartialPath );
+
+      return NavigationHandle.FindPath();
+   }
+   </pre>
+<p />
+サンプルコードはこちらです。 <a href="rsrc/Three/NavigationMeshTechnicalGuideJP/TestAI_ExampleCode_v2.zip" target="_top">TestAI_ExampleCode_v2.zip</a>: navigationhandle パス関数の仕様例
+<p /> <ul>
+<li> <code><b>FindPath</b></code> - これは、A* ループを実行し、終点評価スタックが適切な終点を見つけたと決定するまで、または作業セットが空であると決定する (試行するノードがなくなる) まで実行されます。その後、検索が成功すると TRUE を返し、findpath を呼び出した navigationhandle の pathcache に結果となるパスが格納されます。よりカスタム化されたパス検索の状況 (例: カバー検索) では、終点評価は、その内部の考慮によっては、余分なデータを格納することができます。
+</li></ul>
+<p />
+<strong><em>パスに従う関数</em></strong> <ul>
+<li> <code><b>SetFinalDestination</b></code> - この関数は、navigationhandle で FinalDestination パラメータを設定します。これは、2 つの理由から必要となっています。1 つ目はpathcache はエッジのリストなので、ボットが最後のエッジに到達すると、パスの最後のポリゴンで、パスの実際の終点ポイントにボットが到達するのにより情報が必要となるからです。2 つ目は、これがすべてのパス検索で自動に設定されていないのは、終点に向かって現在歩いている AI が、実際のそこへのパスと関連しないパス検索を行う可能性があり (例: どこかを走っている間にカバーを探す)、従ってこの場合、現在格納されている finaldest を上書きしないようにするためです。備考: 特定の終点評価 (すなわち NavMeshGoal_At) は、既に設定されていない場合、これを自動的に設定します。これは、従来のパス コントロールの状況でのみ使用できるからです。
+</li></ul>
+<p /> <ul>
+<li> <code><b>GetNextMoveLocation</b></code> - これは、パスに従う関数の重要なものです。パスに沿って現在どこにいるかを決定し、空間内でエンティティがどこに移動すればよいかを計算します (例: MoveTo() にどのポイントを供給するかを計算します)。
+</li></ul>
+<p />
+<strong><em>Navmesh クエリー関数</em></strong>
+ここにリスト化するには多すぎるので、ナビゲーション ハンドル関数の完全なリストは、 <a href="NavigationMeshReferenceJP.html" class="twikiLink">ナビゲーション メッシュ参照</a> を参照してください。注目すべきものは以下の通りです。 <ul>
+<li> <code><b>PointReachable</b></code> - これは、navmesh 生成プロセスによって生成される障壁メッシュに対してラインチェックを行います。これは、衝突ジオメトリに対して通常のラインチェックを行うよりもずっと速く、通常の到達可能チェックをするよりも速いです (これには、数々のラインチェックが関わってきます)。
+</li> <li> <code><b>GetValidPositionsForBox</b></code> - これは、与えられた境界内でパスされたボックスのすべての有効な (そして重複していない) 位置を返します。スポーン ロケーションを見つける場合などに有用です。
+</li></ul>
+<p />
+<p />
+<h2><a name="ナビゲーションインターフェース"></a> ナビゲーションインターフェース </h2>
+<p />
+(<code><b>Interface_NavigationHandle.uc</b></code>)
+ナビゲーションハンドル インターフェースを使うことで、ナビゲーション メッシュ上で任意のアクタがパス検索を実行できます。パス検索時には、対象エンティティの特定の基本属性 (幅、サポートしているエッジなど) が必要で、パス検索関数がパス検索エンティティの性能を判断するためにクエリーするのが、このインターフェースです。
+<p />
+このインターフェースの現在の状態は以下のとおりです。
+<p />
+<pre>
+   virtual UBOOL   AbleToSearch()&#61;0;
+   virtual FVector   GetSearchExtent()&#61;0;
+   virtual FVector   GetSearchStart()&#61;0;
+   virtual UBOOL   CanMantle()      { return FALSE; }
+   virtual UBOOL   CanCoverSlip()   { return FALSE; }
+</pre>
+<p />
+<strong><em>これらの関数は入力を取るので、SetupPathfindingParams にパックして、他のパラメータのようにキャッシュすることができません。</em></strong> <ul>
+<li> <code><b>CanCoverSlip</b></code> - パスされた coverlink を考慮して、このエンティティがこの場所でカバースリップ (カバーからカバーへローディ ランする) できるかどうかを決定します。
+</li> <li> <code><b>GetEdgeZAdjust</b></code> - パスされたエッジを考慮して、この AI がそこをパス コントロールするのにどのポイントを使用すれば良いか、そのエッジのサーフェス上の高さを決定します (例: 辺りをうろつく AI は、これをオーバーライドして、パス可能な空間のトップ近くに移動できます)。
+</li> <li> <code><b>CheckMantleValidity</b></code> - マントル エッジを使用する前に、エンティティのカスタム検証を可能にします。
+</li></ul>
+<p />
+<strong><em>パス検索のパラメータのほとんどは、SetupPathfindingParams を使用して設定され、パス検索中にキャッシュされます。</em></strong> <ul>
+<li> <code><b>SetupPathfindingParams</b></code> - 以下が、簡単な実装です。
+</li></ul>
+<p />
+<pre>
+void AController::SetupPathfindingParams( FNavMeshPathParams&#38; out&#95;ParamCache )
+{
+   VERIFY&#95;NAVMESH&#95;PARAMS(8);
+   if(Pawn !&#61; NULL)
+   {
+      out&#95;ParamCache.bAbleToSearch &#61; TRUE;
+      out&#95;ParamCache.SearchExtent &#61; Pawn-&#62;GetCylinderExtent()+NavMeshPath&#95;SearchExtent&#95;Modifier;
+      out&#95;ParamCache.SearchStart &#61; Pawn-&#62;Location;
+      out&#95;ParamCache.bCanMantle &#61; Pawn-&#62;bCanMantle;
+      out&#95;ParamCache.bNeedsMantleValidityTest &#61; FALSE;
+      out&#95;ParamCache.MaxDropHeight &#61; GetMaxDropHeight();
+      out&#95;ParamCache.MinWalkableZ &#61; Pawn-&#62;WalkableFloorZ;
+      out&#95;ParamCache.MaxHoverDistance &#61; (Pawn-&#62;bCanFly) ? -1.f : DEFAULT&#95;BOX&#95;PADDING;
+   }
+        else { ... }
+}
+</pre>
+<p />
+<code><b>VERIFY_NAVMESH_PARAMS</b></code> マクロに注目してください。これは、ここで指定されたパラメータの数が navigationhandle で指定された NUM_PATHFINDING_PARAMS にマッチしない場合、コンパイル時間アサーションを投入します。これは、パラメータのケースが追加されて、クライアント実装で適切にセットアップされないことを防止します。
+<p />
+以下が、ここにリストされるすべてのパラメータの説明と何に使用されるかの解説です。 <ul>
+<li> <code><b>Interface</b></code> - 現在パス検索しているエンティティのインターフェース参照へ戻るポインタです。
+</li> <li> <code><b>bCanMantle</b></code> - このエンティティがカバー マントルを使用できるかどうかを格納します。
+</li> <li> <code><b>bNeedsMantleValidityTest</b></code> - CheckMantleValidity が、このエンティティに呼び出されるべきかどうかを格納します (これを必要としない AI が不必要な vfunction 呼び出しを取得しないようにするため)。
+</li> <li> <code><b>bAbleToSearch</b></code> - このエンティティは検索に使用するのに有効かどうかをチェックします (ポーンを持っているかどうかなど)。
+</li> <li> <code><b>SearchExtent</b></code> - パス コントロールしているエンティティのサイズです。これは、AI がどのエッジを通り抜けることができるかを決定するのに使用されます。@備考: これは、X/Y 次元のもっとも大きい方を使用します。パス検索範囲は、対称でなければいけません。対称でない場合、(リーダーの範囲を持つ長い電車のようなオブジェクト パスに関して) 強制的に対称にされます (そして残りはそれに従います)。@ FNavMeshEdgeBase::Supports() を参照してください。
+</li> <li> <code><b>SearchStart</b></code> - 検索を開始する位置です。
+</li> <li> <code><b>MaxDropHeight</b></code> - この AI が落ちる (例: 崖から落ちるなど) ことが可能な最大の高さです。
+</li> <li> <code><b>MinWalkableZ</b></code> - この AI が歩くことの可能なもっとも勾配の急な坂を表します (サーフェス法線の Z コンポーネント)。
+</li> <li> <code><b>MaxHoverDistance</b></code> - この AI がうろつくことを許可されているポリゴン上の最大距離です (アンカー ポリゴンを決定するのに使用されます。例えば、厳密には重複する 2 つのポリゴンに AI がいる場合、中にいるとみなされるぐらいサーフェスに実際に近いのはどちらか、ということです)。
+</li></ul>
+<p />
+<p />
+<h2><a name="Nav Mesh デバッギング"></a> Nav Mesh デバッギング </h2>
+<p />
+ランタイム時のナビゲーション メッシュ パス検索のデバッギング問題に関する詳細な情報は、 <a href="NavigationMeshPathDebuggingJP.html" class="twikiLink">Nav Mesh Path Debugging</a> ページを参照してください。
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavigationMeshTechnicalGuideJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:19 GMT -->
+</html></body>

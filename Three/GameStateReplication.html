@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GameStateReplication.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:21:29 GMT -->
+<head>
+<title> UDK | GameStateReplication    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">GameStateReplication  </b></div>
+<div id="tooltext">
+<a href="GameStateReplicationJP.html" class="twikiLink">日本語訳</a><br><a href="GameStateReplicationCH.html" class="twikiLink">中国翻译</a><br><a href="GameStateReplicationKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/GameStateReplication -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="ReplicationHome.html" class="twikiLink">Networking &amp; Replication</a></b> &gt; Game State Replication
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="Game State Replication"></a> Game State Replication </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="GameStateReplication.html#Game State Replication"> Game State Replication</a> <ul>
+<li> <a href="GameStateReplication.html#Overview"> Overview</a>
+</li> <li> <a href="GameStateReplication.html#Replication checks"> Replication checks</a>
+</li> <li> <a href="GameStateReplication.html#Reliable versus unreliable"> Reliable versus unreliable</a>
+</li> <li> <a href="GameStateReplication.html#Replication data approximation"> Replication data approximation</a>
+</li> <li> <a href="GameStateReplication.html#Replication statements rules"> Replication statements rules</a>
+</li> <li> <a href="GameStateReplication.html#Replication statement guidelines"> Replication statement guidelines</a>
+</li> <li> <a href="GameStateReplication.html#Writing replication statements"> Writing replication statements</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<hr size="1" noshade="noshade">
+For each actor that is relevant to a particular client, the server executes a series of replication checks on that actor, for that client. These checks determine which variables should be replicated to the client, and determine if a given function should be sent to the client for execution instead of executing on the local machine. Likewise, the client is able to replicate functions (but not variables) back to the server. This sending of data about an actor is called replication. Sending all of the data for an actor would overflow connections, as would sending changed data. Instead, the approach Unreal takes is to replicate only the data that is needed on that particular client.
+<p />
+<p />
+<h2><a name="Replication checks"></a> Replication checks </h2>
+<hr size="1" noshade="noshade">
+When you think about the number of clients in a server, and the number of relevant actors for each client, and the number of replication checks on variables for each actor, there's a large number of these checks that are performed to determine what data to send over the network. Special care should be taken when implementing replication statements so as to not waste too much of the CPU calculating what to send. Don't call functions from within replication statements, as function calls are much too slow for replication statements. If necessary, calculate the result of a function in tick, and use the value of the variable in your replication statement. Along the same lines, you should try to keep your checks as simple as possible, only evaluating a condition if its necessary. Due to the time needed to evaluate the replication conditions for the variables in Actor, Inventory, and other popular classes in Unrealscript; these checks were moved to native code. That's why you will see the <strong>nativereplication</strong> on a few of the Engine classes. Any variables being evaluated for replication will be covered by the native replication code<!--  -->. The Unrealscript replication statements are still important however, and are used for situations like cheat protection and documentation for mod authors who do not have the source. Any variables that are not defined in a nativereplication class, (defined in a non-nativereplication subclass or superclass) will be replicated via the unrealscript definitions.
+<p />
+<p />
+<h2><a name="Reliable versus unreliable"></a> Reliable versus unreliable </h2>
+<hr size="1" noshade="noshade">
+Another optimization used in networking is the difference between reliable and unreliable data. In the case of variables, all data is reliable. If a variable does not make it through to the client, it is guaranteed to be re-sent to the client and eventually make it. To allow for out-of-order packets, the variable data from the highest-numbered packet is used, ensuring freshness. Functions however, exist in both reliable and unreliable forms. A reliable function, is guaranteed to reach the client in the same order it was sent, relative to other reliable functions. An unreliable function however, is sent to the client, but it is not guaranteed to be received (if it does not make it to the client, then the server does not attempt to resend the function again). Generally, a reliable function should be used when the function is important to game play, so that clients maintain a relatively close simulation to the server. An unreliable function should be viewed as a nice to have, but not necessary; such as special effects.
+<p />
+<p />
+<h2><a name="Replication data approximation"></a> Replication data approximation </h2>
+<hr size="1" noshade="noshade">
+Another optimization is that of how Unreal sends vectors, rotators, and arrays across the internet. These rules apply to both function arguments and variables. <!--  -->
+<p /> <ul>
+<li> <strong>Vectors</strong> -  Each component rounded to the nearest integer.
+</li> <li> <strong>Planes</strong> - Each component rounded to the nearest integer.
+</li> <li> <strong>Rotators</strong> - Can have 255 distinct values for each component. The values are then scaled back up from 0-255 to 0-65536 on the other end of the connection.
+</li> <li> <strong>Structs</strong> - All or nothing. If one element changes, the entire struct is replicated.
+</li> <li> <strong>Static Arrays</strong> - Dynamic arrays can not be replicated.
+</li> <li> <strong>Strings, Structs</strong> - Must be less than 448 bytes or the variable will starve the rest of that particular actor's variables
+</li> <li> <strong>CompressedPosition</strong> - The above transformations for vectors and rotators (except for Rotator.Roll, this is always zero) are applied. And the velocity component gets the same transformation as a vector.
+</li></ul>
+<p />
+These rules apply to variable replication only.
+<p /> <ul>
+<li> <strong>Static Arrays</strong> - Only the changed elements in the array will be sent.
+</li></ul>
+<p />
+See <a href="ReplicationVariableReplicationNotes.html" class="twikiLink">Variable replication notes</a> for more information. If you require precise vectors, planes and rotators then it is best to create a new struct as these a struct specific optimizations. It is always best to send as little data as needed, this simulating as much as you can on the client is highly recommended.
+<p />
+<p />
+<h2><a name="Replication statements rules"></a> Replication statements rules </h2>
+<hr size="1" noshade="noshade">
+There are a few useful things to know about when writing your own replication statements. First, you can only define a replication statement in the class in which the variable is defined. This means you can never override replication statements, and you must define the replication statement in the correct class that defines the data. If you find yourself needing to override a variable's replication conditions, chances are that you're using the wrong role for your actor, and you need to rethink what kind of role it should have, that allows you to replicate this data. This way, if the Actor class contains a variable DrawType, then you know where to look for its replication condition: it can only reside there in the Actor class. If you still need to replicate data, you're usually better off making a new variable that acts as the carrier message, and is copied over to the true variable on the other side.
+<p />
+Defining replicated functions is now only done using the function modifiers <strong>server</strong>, <strong>client</strong>, <strong>reliable</strong> and <strong>unrealiable</strong>. The meaning of these modifiers are straight forward. A function declared <strong>server</strong> will be executed on the server and is usually called by a client. A function declared <strong>client</strong> will be executed on the actor's owning client. <strong>Client</strong> and <strong>server</strong> are mutually exclusive, just like <strong>reliable</strong> and <strong>unreliable</strong>; that is to say a function cannot be both <strong>server</strong> and <strong>client</strong>. A function declared <strong>reliable</strong> will always be executed in order and guaranteed to arrive. A function declared <strong>unreliable</strong> might not make it to the other side; meaning, if the network is saturated this function call will be discarded.
+<p />
+<p />
+<h2><a name="Replication statement guidelines"></a> Replication statement guidelines </h2>
+<hr size="1" noshade="noshade">
+Keep your replication statements simple. If you have many relevant instances of this class, then these replication conditions are likely to be run very frequently, and any optimization you can perform will go a long way. We already discussed the importance of not doing anything overly complicated, and that rule should be adhered to. Second, use the <strong>bNet...</strong> variables if possible. These variables, like <strong>bNetInitial</strong>, <strong>bNetOwner</strong>, <strong>bNetDirty</strong> are quite useful and requires no additional CPU requirement to use these variables, as they are set for you automatically. Checks can also be performed to do various things depending upon if the Role/RemoteRole is a <strong>Role_SimulatedProxy</strong> or <strong>Role_AutonomousProxy</strong>. The best place to find examples of these more intricate checks is in the Engine classes, particularly <strong>Actor</strong>, <strong>Pawn</strong> and <strong>PlayerController</strong>. It should also go without saying that you should not change anything in a replication statement. Doing <strong>i++</strong> in a replication statement causes <strong>i</strong> to change unpredictably as it is being replicated, which is not something you really want to do. And finally, as the last word advice, the server checks all incoming data to be sure it is legitimate. If the client replicates something to the server, the server will exchange the <strong>Role</strong> and <strong>RemoteRole</strong> variables temporarily, and evaluate the replication condition to see if the other end had a legitimate reason for sending that data. If the check fails, then the data is discarded. That means that when you are writing replication statements, make sure that the server also has all the data needed to perform the replication check. Otherwise, it will never be processed or accepted by the server.
+<p />
+<h2><a name="Writing replication statements"></a> Writing replication statements </h2>
+<hr size="1" noshade="noshade">
+In UnrealScript, every class can have one replication block which contains many replication statements. Each replication statement consists of a replication condition (a statement that evaluates to true or false), and a list of one or more variables to which the condition applies.
+<p />
+It's perfectly okay for a class to not contain a replication statement, it just means that the class will not replicate any of it's defined variables to the other side. In fact, most classes do not need replication statements because most of the "interesting" variables that affect display are defined in the Actor class, and are only modified by code in subclasses.
+<p />
+If you define a new variable in a class, but you don't list it in a replication definition, that means that your variable is absolutely never replicated. This is the norm; most variables don't need to be replicated.
+<p />
+Here is an example of the UnrealScript syntax for the replication statement. This is taken from the Pawn class:
+<p />
+<div class="codetitlebar">
+Pawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+replication
+{
+  // Variables the server should send ALL clients.
+  if (bNetDirty &#38;&#38; Role &#61;&#61; ROLE&#95;Authority)
+  FlashLocation, bSimulateGravity, bIsWalking, PlayerReplicationInfo, HitDamageType, TakeHitLocation, DrivenVehicle, Health;
+
+  // variables sent to owning client
+  if (bNetDirty &#38;&#38; bNetOwner &#38;&#38; Role &#61;&#61; ROLE&#95;Authority)
+    InvManager, Controller, GroundSpeed, WaterSpeed, AirSpeed, AccelRate, JumpZ, AirControl;
+
+  // sent to non owning clients
+  if (bNetDirty &#38;&#38; !bNetOwner &#38;&#38; Role&#61;&#61;Role&#95;Authority)
+    bIsCrouched, FlashCount, FiringMode;
+
+  // variable sent to all clients when Pawn has been torn off. (bTearOff)
+  if (bTearOff &#38;&#38; bNetDirty &#38;&#38; Role &#61;&#61; ROLE&#95;Authority)
+    TearOffMomentum;
+
+  // variables sent to all but the owning client
+  if (!bNetOwner &#38;&#38; Role&#61;&#61;ROLE&#95;Authority)
+    RemoteViewPitch;
+}
+</pre>
+</div>
+<p />
+Here is an example of some replicated functions, taken from the Controller class:
+<div class="codetitlebar">
+Controller.uc
+</div>
+<div class="codesnippet">
+<pre>
+reliable server function ServerRestartPlayer()
+{
+  if (WorldInfo.NetMode !&#61; NM&#95;Client &#38;&#38; Pawn !&#61; None)
+  {
+    ServerGivePawn();
+  }
+}
+
+reliable client function ClientSetWeapon( class&#60;Weapon&#62; WeaponClass )
+{
+  local Inventory Inv;
+
+  if (Pawn &#61;&#61; None)
+  {
+    return;
+  }
+
+  Inv &#61; Pawn.FindInventoryType( WeaponClass );
+  if (Weapon(Inv) !&#61; None)
+  {
+    Pawn.SetActiveWeapon(Weapon(Inv));
+  }
+}
+</pre>
+</div>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GameStateReplication.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:21:29 GMT -->
+</html></body>

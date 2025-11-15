@@ -1,0 +1,558 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CreatingLevelsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:15:33 GMT -->
+<head>
+<title> UDK | CreatingLevelsCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">CreatingLevelsCH  </b></div>
+<div id="tooltext">
+<a href="CreatingLevels.html" class="twikiLink">English Translation</a><br><a href="CreatingLevelsJP.html" class="twikiLink">日本語訳</a><br><a href="CreatingLevelsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/CreatingLevelsCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="LevelStreamingHome.html" class="twikiLink">关卡动态载入</a></b> &gt;创建关卡<br/>
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt; <b><a href="LevelDesignerHome.html" class="twikiLink">关卡设计师</a></b> &gt; 创建关卡
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="创建关卡"></a> 创建关卡 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="CreatingLevelsCH.html#创建关卡">创建关卡</a> <ul>
+<li> <a href="CreatingLevelsCH.html#概述"> 概述</a>
+</li> <li> <a href="CreatingLevelsCH.html#入门指南">入门指南</a>
+</li> <li> <a href="CreatingLevelsCH.html#关卡基础">关卡基础</a> <ul>
+<li> <a href="CreatingLevelsCH.html#BSP"> BSP</a>
+</li> <li> <a href="CreatingLevelsCH.html#光源">光源</a>
+</li> <li> <a href="CreatingLevelsCH.html#Player Starts"> Player Starts</a>
+</li> <li> <a href="CreatingLevelsCH.html#播放关卡">播放关卡</a> <ul>
+<li> <a href="CreatingLevelsCH.html#Play In Editor(在编辑器中播放)"> Play In Editor(在编辑器中播放)</a>
+</li> <li> <a href="CreatingLevelsCH.html#Play From Here(从这里开始播放)"> Play From Here(从这里开始播放)</a>
+</li></ul>
+</li> <li> <a href="CreatingLevelsCH.html#其它的几何体">其它的几何体</a> <ul>
+<li> <a href="CreatingLevelsCH.html#Player Containment(玩家遏制区域)"> Player Containment(玩家遏制区域)</a>
+</li> <li> <a href="CreatingLevelsCH.html#窗、门以及陷阱">窗、门以及陷阱</a>
+</li></ul>
+</li> <li> <a href="CreatingLevelsCH.html#Sky Domes(穹顶)"> Sky Domes(穹顶)</a>
+</li> <li> <a href="CreatingLevelsCH.html#Working Off The Origin(清理原点)"> Working Off The Origin(清理原点)</a>
+</li> <li> <a href="CreatingLevelsCH.html#Light Colors(光源颜色)"> Light Colors(光源颜色)</a>
+</li> <li> <a href="CreatingLevelsCH.html#材质"> 材质</a>
+</li> <li> <a href="CreatingLevelsCH.html#静态网格物体"> 静态网格物体</a>
+</li> <li> <a href="CreatingLevelsCH.html#地形"> 地形</a>
+</li> <li> <a href="CreatingLevelsCH.html#发射器和粒子特效">发射器和粒子特效</a>
+</li> <li> <a href="CreatingLevelsCH.html#声效">声效</a>
+</li> <li> <a href="CreatingLevelsCH.html#导航AI"> 导航AI</a>
+</li> <li> <a href="CreatingLevelsCH.html#关卡动态载入"> 关卡动态载入</a>
+</li> <li> <a href="CreatingLevelsCH.html#关卡优化">关卡优化</a>
+</li></ul>
+</li> <li> <a href="CreatingLevelsCH.html#来自Epic关卡设计人员的建议">来自Epic关卡设计人员的建议</a>
+</li> <li> <a href="CreatingLevelsCH.html#结论"> 结论</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+本文档介绍了使用第三代虚幻引擎创建您第一个关卡的基本知识。虚幻引擎3相对于虚幻引擎2来说已经发生了很多改变，但是通过以下这些步骤，您将会知道如何使用一些BSP区域、地形、静态网格物体及各种光源来创建关卡。
+<p />
+本文档对如何创建并放置组成关卡的主要元素进行了粗略概括。当您读完这篇文章时，您应该知道如何创建用于构建真实关卡的标准构建块了。
+<p />
+<p />
+<h2><a name="入门指南"></a> 入门指南 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+当第一次启动UnrealEd时，您将会看到一个空白的画布，使您可以在它上面描画关卡世界。您的媒介是画刷和静态网格物体，然后架上光照，再通过路径把它们结合到一起。描述有些太艺术化了对吗？  或许确实有点；但是喜欢创造的关卡设计者是很难说服的。
+<p />
+关卡设计是一件令人愿意做的事，如果您曾经对关卡中某个阴暗角落的光照而烦恼，那么您就会理解我所说的话。
+<p />
+<p />
+<h2><a name="关卡基础"></a> 关卡基础 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+默认情况下，关卡编辑器是通过Additive(添加型)的方式进行的。然而，当从 <em>File(文件)</em> 菜单的 <em>New Level(新建关卡)</em> 菜单项中创建新的关卡时，您可以选择Additive(添加型) 或 Subtractive(挖空型) 关卡。
+<p />
+<h3><a name="BSP"></a> BSP </h3>
+<p />
+BSP组成了世界的外壳。它是引擎的 可见性/网络子系统 的主要遮挡体，并且组成了您关卡中大多数较大的几何体块。要想向世界中添加BSP几何体，您需要使用Builder Brush(构建画刷)(<em>红色的那个</em>)。要想添加一个基本的立方体到世界中，可以通过以下方式实现：
+<p /> <ol>
+<li> 右击 <em>Cube(立方体)</em> 画刷构建器按钮。https://udn.epicgames.com/pub/Three/CreatingLevelsCH/cal1.jpg
+</li> <li> 输入以下 <em>Properties(属性)</em> 值: <strong>X=1024,Y=1024,Z=32</strong>.
+</li> <li> 点击 <em>Properties(属性)</em> Build(构建)按钮来更新改变。
+</li> <li> 点击 <em>Add Brush(添加画刷)</em>  按钮。https://udn.epicgames.com/pub/Three/CreatingLevelsCH/cal2.jpg
+</li></ol>
+<p />
+如果您现在正在关卡中到处移动，您将可以看到您新创建的立方体。然而如果您打开光照，您将不能看到任何东西。如果您所看到的是漆黑一片，请尝试切换视口到不包含光照的视图模式。如果您正确地操作了所有的事情，那么您应该看到以下东西：
+<p />
+<img alt="cal3.jpg" src="rsrc/Three/CreatingLevelsCH/cal3.jpg" />
+<p />
+<img alt="cal3.jpg" src="rsrc/Three/CreatingLevelsCH/cal3.jpg" /> 关于BSP画刷属性和操作的更详细的解释，请参照<a href="UsingBspBrushes.html" class="twikiLink">使用BSP画刷</a>页面。关于对BSP几何体的更多控制，请参照<a href="GettingStartedWithGeometryMode.html" class="twikiLink">几何体模式指南</a>页面。
+<p />
+<h3><a name="光源"></a> 光源 </h3>
+<p />
+在此时播放关卡从某种程度上说是没有意义的，因为您还不能看到任何东西。所以需要添加光源。
+<p />
+右击BSP表面大致的中心位置并从 <em>Add Actor(添加 Actor)</em> 子菜单中选择 <em>Add Light(添加光源菜单项)</em> 。使用控件，把光源向上拖拽一点，以便它可以更好地覆盖区域。把视口切换到支持光照的视图模式，您应该看到类似于以下的情形：
+<p />
+<img alt="cal7.jpg" src="rsrc/Three/CreatingLevelsCH/cal7.jpg" />
+<p />
+这种方法添加了一个点光源。要想添加其它类型的光源，请打开<a href="https://udn.epicgames.com/Three/GenericBrowserReference" class="restricted" class="restricted" class="twikiLink"> 通用浏览器</a> ，切换到Actor标签，它显示了各种Actor类别，然后打开Light(光源)部分并从中选择您想使用的光源类别。当您像之前那样右击关卡时，将会出现一个添加选中的光源到那个位置的选项。
+<p />
+请参照<a href="LightingReference.html" class="twikiLink">光照参考</a>和<a href="Lightmass.html" class="twikiLink">Lightmass</a>页面来获得关于光照的更多信息。
+<p />
+<h3><a name="Player Starts"></a> Player Starts </h3>
+<p />
+当关卡加载时我们需要告诉游戏玩家从那里开始，所以右击bsp表面的任何地方并从 <em>Add Actor(添加Actor)</em> 子菜单中选择 <em>PlayerStart</em> 菜单项。这时您将会看到类似于以下的情形：
+<p />
+<img alt="cal4.jpg" src="rsrc/Three/CreatingLevelsCH/cal4.jpg" />
+<p />
+<h3><a name="播放关卡"></a> 播放关卡 </h3>
+<p />
+在您在关卡中到处奔跑来查看你所创建的东西之前，请通过点击工具条上的 <em>Build Geometry(构建几何体)</em> (<img alt="cal5.jpg" src="rsrc/Three/CreatingLevelsCH/cal5.jpg" />) 按钮来构建关卡。
+<p />
+一旦构建了几何体，您可以或者选择<a href="PlayInEditor.html" class="twikiLink">在编辑器中播放</a> (PIE)或者选择Play From Here(从这里播放)功能来播放游戏。
+<p />
+可以通过按下ESCAPE键来关闭游戏窗口并返回到编辑器。
+<p />
+<h4><a name="Play In Editor(在编辑器中播放)"></a> Play In Editor(在编辑器中播放) </h4>
+<p />
+点击 <em>Play This Level(播放这个关卡)</em> 按钮 <img alt="cal6.jpg" src="rsrc/Three/CreatingLevelsCH/cal6.jpg" />.
+<p />
+这将会将在关卡，并且您将从Player Start的位置开始跑动。
+<p />
+<h4><a name="Play From Here(从这里开始播放)"></a> Play From Here(从这里开始播放) </h4>
+<p />
+当您操作关卡时，需要把关卡扩大到从您开始跑动的位置到您想测试的区域是不可避免的，这会造成很多麻烦。如果您想从关卡中的任何地方开始播放游戏，仅需右击您关卡的地面并选择菜单项 <em>Play From Here(从这里播放)</em> 。这将会正常地在游戏中加载关卡，但是您的起始位置是您鼠标点击的位置。
+<p />
+<h3><a name="其它的几何体"></a> 其它的几何体 </h3>
+<p />
+<h4><a name="Player Containment(玩家遏制区域)"></a> Player Containment(玩家遏制区域) </h4>
+<p />
+您或许已经注意到当您玩那种您可以越过BSP边缘的关卡时，并会陷入到空旷的区域。引擎不会试图限制玩家在关卡中的移动，所以关于玩家的移动限制由您来决定。您可以简单地通过使用更多的BSP来阻止玩家进入到空旷的区域。比如，让我们创建一个墙体来看这是如何实现的：
+<p /> <ol>
+<li> 右击 <em>Cube(立方体)</em> 画刷构建器按钮。https://udn.epicgames.com/pub/Three/CreatingLevelsCH/cal1.jpg
+</li> <li> 输入以下 <em>Properties(属性)</em> 值: <strong>X=1024,Y=32,Z=256</strong>.
+</li> <li> 点击 <em>Properties(属性)</em> Build(构建)按钮来更新改变。
+</li> <li> 点击 <em>Add Brush(添加画刷)</em>  按钮。https://udn.epicgames.com/pub/Three/CreatingLevelsCH/cal2.jpg
+</li></ol>
+<p />
+现在您应该可以获得类似于这样的东西：
+<p />
+<img alt="cal8.jpg" src="rsrc/Three/CreatingLevelsCH/cal8.jpg" />
+<p />
+如果您播放关卡，您会发现这个新的墙体在您的运行轨迹中使您停止。如果您正确地包围您的房间和区域，玩家将永远不再会进入到空旷区域。
+<p />
+<h4><a name="窗、门以及陷阱"></a> 窗、门以及陷阱 </h4>
+<p />
+虚幻引擎支持除了添加以外的其它BSP操作-比如挖空。现在我们在地面上制作一个洞。
+<p /> <ol>
+<li> 右击 <em>Cube(立方体)</em> 画刷构建器按钮。https://udn.epicgames.com/pub/Three/CreatingLevelsCH/cal1.jpg
+</li> <li> 输入以下 <em>Properties(属性)</em> 值: <strong>X=256,Y=256,Z=512</strong>.
+</li> <li> 点击 <em>Properties(属性)</em> Build(构建)按钮来更新改变。
+</li> <li> 点击 <em>Subtract Brush(挖空型画刷按钮)</em>  按钮。https://udn.epicgames.com/pub/Three/CreatingLevelsCH/cal14.jpg
+</li></ol>
+<p />
+现在您应该可以获得类似于这样的东西：
+<p />
+<img alt="cal9.jpg" src="rsrc/Three/CreatingLevelsCH/cal9.jpg" />
+<p />
+如果您现在播放关卡，您将会看到那个墙体将会阻止您穿过它，但是您会调入到地面上的洞里。同样的原理可以应用到您想创建的其它东西上：窗口、门等 。
+<p />
+<h3><a name="Sky Domes(穹顶)"></a> Sky Domes(穹顶) </h3>
+<p />
+虚幻引擎3关卡中的天空可以通过在一个非常大的放置在世界上方的圆顶内部上应用天空材质来创建。一般材质有一组云贴图，材质的边缘和世界雾相混合，云贴图和材质边缘的雾颜色相混合。一个具有少量材质的自发光蒙板用作为的太阳。材质中贴图的布局依赖于圆顶网格物体的UV映射，有些是平铺映射的，有些事球状地映射的。把这些材质应用到圆顶上，然后把圆顶放置到世界中，将其缩放到非常大的尺寸。这可以减轻视差的感觉。
+<p />
+<h3><a name="Working Off The Origin(清理原点)"></a> Working Off The Origin(清理原点) </h3>
+<p />
+简单地说，我们根本就没有移动构建画刷。当然，您可以随便地移动它，您也可以根据需要使用同一个构建画刷来 添加/挖空 任何数量的画刷。请尝试这样做。选择构建画刷并使用控件到处地拖拽、旋转它等等，并将其和一些新的画刷进行叠加或挖空操作。一旦您已经熟悉了编辑器中的这些工具和操作，您便可以通过很小的努力便可以得到一些非常好看的图形。比如，这个场景完全是使用BSP创建的：
+<p />
+<img alt="cal10.jpg" src="rsrc/Three/CreatingLevelsCH/cal10.jpg" />
+<p />
+当然，当您开始应用类似于光照颜色、不同的材质及静态网格物体等装饰物时，它看上去将会更漂亮。
+<p />
+<h3><a name="Light Colors(光源颜色)"></a> Light Colors(光源颜色) </h3>
+<p />
+好吧，现在我们回到我们最原始的关卡，我们把光源的颜色改为漂亮的橘黄色。在视口中双击光源将会弹出那个actor的属性窗口(或者 按下  <em>F4</em> )。打开  <em>Light(光源)</em> 类别，然后打开 <em>LightComponent(光源组件)</em> ，最后点击 <em>Color(颜色)</em> 即可。
+<p />
+<img alt="cal11.jpg" src="rsrc/Three/CreatingLevelsCH/cal11.jpg" />
+<p />
+点击这里的放大镜按钮，您将会获得标准的颜色选择器对话框窗口。选择橘黄色并点击 <em>OK(确定)</em> 。那么场景将会变为以下的情形：
+<p />
+<img alt="cal12.jpg" src="rsrc/Three/CreatingLevelsCH/cal12.jpg" />
+<p />
+<h3><a name="材质"></a> 材质 </h3>
+<p />
+在BSP表面上应用材质是非常简单的，您只要选择您想应用材质的表面然后在通用浏览器中点击材质即可。材质将会自动地应用到所有选中的表面上。这里我打开其中一个贴图包并迅速地应用某些材质到我们的BSP表面上：
+<p />
+<img alt="cal13.jpg" src="rsrc/Three/CreatingLevelsCH/cal13.jpg" />
+<p />
+关于材质的更多信息，请参照<a href="MaterialsTutorial.html" class="twikiLink">材质指南</a>页面。
+<p />
+<h3><a name="静态网格物体"></a> 静态网格物体 </h3>
+<p />
+静态网格物体是快速地向关卡中添加细节的一种很好的方式，您根本不需要手动地构建它。静态网格物体是一个很大的主题，以至于我们在这篇文章中不能完全地覆盖关于它的内容，但是我们在这里介绍了一些基本内容。要想把一个静态网格物体添加到您的关卡中，您首先需要在通用浏览器中选择他。然后右击您关卡中的某个位置，然后从 <em>Add Actor(添加Actor)</em> 子菜单中选择 <em>Add StaticMesh(添加静态网格物体)</em> 菜单项即可。
+<p />
+这样您便可以把那个静态网格物体添加到您的关卡中。然后您可以拖拽它、旋转它以及把它放置到您希望的位置。我已经添加了几个静态网格物体到我们的关卡中( <em>并且把光源的颜色改回为白色，以便更容易地看清</em> )。
+<p />
+<img alt="cal15.jpg" src="rsrc/Three/CreatingLevelsCH/cal15.jpg" />
+<p />
+正如您看到的，它们和BSP一样被照亮，而且事实上您不能分辨出它们和BSP表面的区别。静态网格物体是一种通过最小的努力添加关卡细节的较好的方法。
+<p />
+关于静态网格物体的更多信息，请参照<a href="ImportingStaticMeshTutorial.html" class="twikiLink">静态网格物体指南</a>页面。
+<p />
+<h3><a name="地形"></a> 地形 </h3>
+<p />
+第一步是创建地形。在通用浏览器的 <em>Actor</em> 标签内， 选择 <em>Info</em> 下面的*Terrain(地形)* Actor。右击世界并选择 <em>Add Terrain Here(在这里添加地形)</em> 。右击新添加的地形Actor并选择 <em>Properties(属性)</em> (或按下 <em>F4</em> )。在 <em>Terrain(地形)</em> 部分下，把 <em>NumPatchesX</em> 和 <em>NumPatchesY</em> 的值都改为 <strong>4</strong> 。
+<p />
+在3D视口中，直到放置光源之前，地形将是黑色的。在 <em>Generic Browser(通用浏览器)</em> 的 <em>Actor</em> 标签下，选择 <em>Light(光源)</em> 下的 <strong>Directional Light(定向光源)</strong> Actor。右击世界并选择 <em>Add Directional Light Here(在这里添加定向光源)</em> 。然后根据需要调整光源位置及旋转光源。
+<p />
+对于地形，您至少需要一个层。右击新添加的地形Actor并选择 <em>Properties(属性)</em> (或按下 <em>F4</em> )。在 <em>Terrain(地形)</em> 部分下，点击 <em>Layers(层)</em> 属性附近的 <em>Add New Item(添加新项)</em> 按钮。新的地形图层设置需要被输入到新创建的图层的 <em>Setup(设置)</em> 属性中。在通用浏览器的 <em>Generic</em> 标签下，使用 <em>Terrain Layer(地形层)</em> 来过滤资源类型。选择想使用地形层，并且在地形层的设置属性中选择 <em>Use Current(使用当前的层)</em> 。
+<p />
+这时，您可以进入到地形编辑模式，通过描画地形表面调整地形高度值来操作地形。
+<p />
+关于地形的相关信息，请参照<a href="SettingUpTerrain.html" class="twikiLink">设立地形</a> 和 <a href="UsingTerrain.html" class="twikiLink">使用地形</a>页面。
+<p />
+<h3><a name="发射器和粒子特效"></a> 发射器和粒子特效 </h3>
+<p />
+<h3><a name="声效"></a> 声效 </h3>
+<p />
+关于您可以在关卡中使用的不同类型的环境声音的解释，请参照声效Actors<sup>?</sup>
+<p />
+<h3><a name="导航AI"></a> 导航AI </h3>
+<p />
+关于设置Pathnodes和使用AI路径的更多信息，请参照<a href="NavigationAI.html" class="twikiLink">Navigation AI</a>页面。---+++关卡动态载入
+<p />
+<h3><a name="关卡动态载入"></a> 关卡动态载入 </h3>
+<p />
+请参照<a href="LevelStreamingHowTo.html" class="twikiLink">关卡动态载入</a>指南来获得关于建立持久关卡和多个动态载入关卡的更多新。
+<p />
+<h3><a name="关卡优化"></a> 关卡优化 </h3>
+<p />
+请参照<a href="LevelOptimization.html" class="twikiLink">关卡优化</a>指南来是您的关卡获得更好的性能，请参照<a href="MapErrors.html" class="twikiLink">地图错误</a>页面获得每个警告的解释。
+<p />
+<p />
+<h2><a name="来自Epic关卡设计人员的建议"></a> 来自Epic关卡设计人员的建议 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+来自Josh Jay<sup>?</sup>:
+<p />
+<table>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+<td>
+<em>一些技巧...或许这些技巧对于有经验的关卡设计人员来说是显而易见的；但是对于初学者来说这些可能是有用的</em>:
+<p /> <ul>
+<li> <em>首先请确保您完全地使用BSP来构建您地图的外壳。不要添加任何网格物体以及进行光照修补。仅需要在地图中放置大量的点光源并保持它使用简单的BSP来构成原型。如果地图在明亮多变的BSP下是有趣的，那么当您使它变得漂亮时它将变得更加的有趣。</em>
+</li> <li> <em>请确保BSP的表面代表了最终几何体的最大宽度。我的意思是，不要让添加的网格物体覆盖在您的BSP的上面。您可以把BSP壳想象成为动脉壁。在BSP上添加网格物体仅会使BSP的空间变紧，并且会创建瓶颈，从而可以非常容易地破坏您已经创建的游戏性原型。</em>
+</li> <li> <em>当您开始添加第一遍的网格物体时，请一定要尽可能地贴近您的BSP外形。我发现的有一个方法非常有用并且很容易开始，即</em> :  <ol>
+<li> <em>选择一个添加型BSP。</em>
+</li> <li> <em>右击一个正交视图，在"Polygon(多边形)"子菜单下有一个选项是： “To Brush(到画刷)”。选择"To Brush(到画刷)"将会在那个地方以和添加型画刷相同的方向创建一个构建画刷。</em>
+</li> <li> <em>再次右击正交视口，并在"Add Volume(添加体积)"菜单下选择"Blocking Volume(阻挡体积)"。这将会把构建画刷转换为碰撞画刷。</em>
+</li> <li> <em>删除当前在那个位置的添加型画刷，并使用您的网格物体填充那个阻挡体积。</em>
+</li></ol>
+</li> <li> <em>鼓励美术工作人员创建依附于8点网格的灵活的环境网格物体。尝试使用尽可能模块化的基本资源来构建您的地形基础。您可以把这想象为使用简单的几何体来填充一个画布。很多时候我发现关卡设计人员在构建好网格物体基础之前过早地向关卡中放入装饰的网格物体。</em>
+</li> <li> <em>尽量保持沿着地平线线(或玩家的高度)的网络的简单化。尽量保持眼睛水平面视觉效果尽可能地整洁，以便玩家可以更加容易地把目标和它的背景区分开来。</em>
+</li> <li> <em>尽量关注您的多边形数量的同时更要关注网格物体的数量。也就是，不要使用具有不合理的多边形数量的网格物体(如果您正在为您的墙体的地基使用10K个多边形网格物体，那么您需要跟您的美术工作人员谈一下)。请尽量使用视觉上看上去足够灵活的网格物体，从而它可以符合多个目的的要求(这个网格物体可以用于做墙体、装饰物以及地面等)。</em>
+</li> <li> <em>贴图内存可能很快就被耗尽。请尝试使用那些和其它网格物体共享贴图空间的网格物体。无论何时当我制作标志牌时，我尝试尽量映射尽可能多的网格物体到一个单独的材质上。请尝试使用尽可能唯一的贴图。[请参照下面Daniel Vogel提出的关于图集的建议]。</em>
+</li> <li> <em>材质实例是您的朋友。您应该使用贴图的颜色变化(红砖、黄砖、白砖)来制作彩色的材质实例而不是使用不同颜色的位图。材质实例是非常便宜并且对内存的依赖较低。</em>
+</li></ul>
+<p />
+</td>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+</table>
+<p />
+来自<a href="https://udn.epicgames.com/Main/LeePerry" class="restricted" class="restricted" class="twikiLink">Lee Perry</a>:
+<p />
+<table>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+<td>
+<em>一但您的人员已经掌握了基本的BSP构建和关卡基础，我推荐您立即让它们转向到脚本方面。对于那些以前没有编过程序或写过脚本的人来说，这是一个令人兴奋地事情；同时对于那些迫切地想使它们的设计目标显现屏幕上的人来说，这是一个具有创造性的宝藏。找一个具有一些触发器、动态光源的基本空的关卡外形，然后让他们去添加并设计开关、门、actor工厂、附加物体等等….这样他们无时无刻不在具有主动性地积极地实现着它们自己的设计思想。</em>
+<p />
+<em>那也就是说，学习设计基本得体的形象的网格是使它们获得工作的主要原因。然而糟糕但却是事实的是，关卡设计人员的员工雇佣情况是10个人中有9个人的形象的设计都胜过它们的脚本书写经验。</em>
+<p />
+<em>让工作人员尽早地通过使用每个事件来给提供玩家反馈。每个人都需要知道如何触发一个基本的屏幕晃动、产生粒子特效以及播放声音。如果他们花费一个小时的时间来制作一些建筑物倒塌、构建掩体或者其它东西，请务必再花费5分钟的事件添加这3个东西，使那个事件成为可信的“体验”，即使它们是预留位置。仿制一次和大怪boss的战斗？  如果他没有做出任何反应，那么是别人对它感兴趣的机会便是零。输出“大火球来了”到日志中不会对玩家有什么反应，去尝试吧。</em>
+<p />
+<em>有点偏离主题，但是我所见过的每个在校大学生的关卡都把玩家反馈作为最后的可选项来进行润色，但是实际上，这确是让玩家脸上产生微笑的核心东西。我希望教师把反馈的重要性深深地印在他们的脑子里。如果他们要想使基本的玩家交互感真实并有趣，那么他们不能简单地在不考虑参数的情况下纵容他们的幻想，也不能允许他们在过渡极端的设计中漫无目的地徘徊。</em>
+<p />
+<em>我知道那会反抗很多人的想法，即在学生走出校门之前，他们应该抓住这种非真正商业或没有产品限制的机会来发挥想象…但是我认为具有好的反馈和真实交互的简单设计远比他们占用时间来制作Derek Smart 大的作品好的多。</em>
+<p />
+<em>对我们来说，预制是一些实例收藏，每个预制将会附加改变，以便当您更新预制时，它不会忘记您对一个单独的预制所做的任何修改。所以您可以是在当红色的光源在它的上方时构建一个预制门，把它放置在各处；把一个预制光源改为绿色，稍后您可以调整用在所有门上的红色的阴影并且更新主要的预制，所有红色的光源将会更新为新的阴影，但是因为您已经改变了一个预制实例来显示绿色光源，那么即使所有其它的实例都已经更新了那个实例将仍然是绿色。</em>
+<p />
+<em>所以基本上来讲，它们是实例，但是它们可以记住您对任何特定实例所做的改变，以便当新的改变进行向下传递时不会影响您的个别的改变。</em>
+<p />
+</td>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+</table>
+<p />
+来自<a href="https://udn.epicgames.com/Main/DanielVogel" class="restricted" class="restricted" class="twikiLink">Daniel Vogel</a>：
+<p />
+<table>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+<td>
+<em>贴图图集仅是对具有小贴图的分布在关卡各处的网格物体来说是个胜利。对于正常的网格物体，我们仍然每个物体使用单独的贴图(或者，一组贴图，如果您查看法线、漫反射…)。类似于地面上的残骸、标记以及所有小的东西都可以进行图集集合，因为它经常需要动态地载入来在关卡中进行应用。</em>
+</td>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+</table>
+<p />
+<p />
+来自<a href="https://udn.epicgames.com/Main/AdamBellefeuil" class="restricted" class="restricted" class="twikiLink">Adam Bellefeuil</a>：
+<p />
+<table>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+<td>
+<em>首先请确保您完全地使用BSP来构建您地图的外壳。不要添加任何网格物体以及进行光照修补。仅需要在地图中放置大量的点光源并保持它使用简单的BSP来构成原型。如果地图在明亮多变的BSP下是有趣的，那么当您使它变得漂亮时它将变得更加的有趣。</em>
+<p />
+<em>这是非常重要的。我们稍微地进行一些扩展：  把游戏性、脚本、视觉效果作为单独的处理层次来安排。这听起来是很显然易见的，但是在过去我所做的很多项目中都没有这样做，并且也尝到了苦果。如果一个设计人员的任务是同时处理视觉效果、游戏性/脚本，那么通常在某处这些事情其中的一件的效果将较差。通常是它的游戏性。在早期，那是非常普通的撞击一个在代码中等待的障碍物或者来自网络上的资源以及燃烧一周“重新整理家具”，而不是解决游戏性问题或者对脚本进行修改。如果这些人物是独立安排的，即使是同一个人完成其中的两件事，您便可以保证视觉效果和游戏性/脚本都能好的它们应该获得的最好尝试。UE3中的Kismet和Matinee使得这个工作变得更加容易，因为您可以在项目早期安排几乎是最终的脚本，设计人员可以必须要程序员的情况下制作或者设计出关于任何东西的原型。</em>
+<p />
+</td>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+</table>
+<p />
+<p />
+<h2><a name="结论"></a> 结论 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+显然， 要想创建世界级的关卡，您还有很长的路要走，我们会进一步提供更加高级的文章来供您学习。然而，本文章为您提供了使用编辑器并查看您可以制作的东西的基本知识。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CreatingLevelsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:15:37 GMT -->
+</html></body>

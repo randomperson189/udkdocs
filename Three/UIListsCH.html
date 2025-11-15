@@ -1,0 +1,329 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UIListsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:38:39 GMT -->
+<head>
+<title> UDK | UIListsCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">UIListsCH  </b></div>
+<div id="tooltext">
+<a href="UILists.html" class="twikiLink">English Translation</a><br><a href="UIListsJP.html" class="twikiLink">日本語訳</a><br><a href="UIListsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/UIListsCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="UI列表系统"></a> UI列表系统 </h1>
+<em>文档概要:虚幻引擎3中的列表的技术指南。</em>
+<p />
+<em>文档变更记录:由Ron Prestenback<sup>?</sup>创建；由Richard Nalezynski<sup>?</sup>维护。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="UIListsCH.html#UI列表系统"> UI列表系统</a> <ul>
+<li> <a href="UIListsCH.html#概述">概述</a>
+</li> <li> <a href="UIListsCH.html#术语">术语</a>
+</li> <li> <a href="UIListsCH.html#使用Lists">使用Lists</a> <ul>
+<li> <a href="UIListsCH.html#组件">组件</a>
+</li> <li> <a href="UIListsCH.html#数据">数据</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<p />
+列表是数据容器。一般，“列表配置”是指那些影响一组抽象的、非类型化(untyped)的数据记录的排列和显示方式的数据。
+<p />
+<p />
+<h2><a name="术语"></a> 术语 </h2>
+<p />
+<p />
+<h2><a name="使用Lists"></a> 使用Lists </h2>
+<p />
+从概念上来说，UIList包含一组非类型化的数据。在您数据集中的每条数据对应一个单独的元素。根据您的配置列表显示数据的方式，一个元素可以对应列表中的一个单元。如果您的一条记录有多个域，一个单独的原书将通常会对应具有多列的一个单独的行(传统的“报告”模式)。在非常少的情况下，一个单独的元素将会对应具有多个行的一个单独的列，这有点像一个多层柱或翻转过来的报告的视图。
+<p />
+所以，您第一件需要做的事情是决定基于点击的行和列来决定 <strong>element index(元素索引)</strong> 。这个算法由类表的CellLinkType决定。在最简单的情况时，即每个单元代表一个单独的数据记录，元素索引如下所示：
+<p />
+<pre>
+NewIndex &#61; (NumColumns &#42; ClickedRow) + ClickedColumn;
+</pre>
+<p />
+对于使用连接的纵列的列表来说，每行是一个独立的元素，算法将如下所示：
+<p />
+<pre>
+NewIndex &#61; ClickedRow;
+</pre>
+<p />
+这些计算只是一些例子，实际上它们不会产生好的结果。对于真正的算法，您也需要把类似于列表的当前TopIndex的信息考虑进来，但是通过这个例子您可以知道了基本的计算原理。
+<p />
+一旦您知道了选中元素的索引，只要把那个值传递到SetIndex()函数即可。
+<p />
+<h3><a name="组件"></a> 组件 </h3>
+<p />
+我们成为 <em>list(列表)</em> 的数据展现手段由3部分组成：数据源、呈现器(presenter)及用于展现数据的容器。
+<p />
+<strong>UIListElementProvider</strong>: 数据源负责为列表提供元素。它处理提供选中项的最初集合；把用户的选择放置到存储单元(他可以是一个profile、远程服务器或者正在播放的游戏中的某个actor实例)；以及在某些情况下，根据当前的游戏状态进制原则某些元素。
+<p />
+<strong>UIComp_ListPresenter</strong>:呈现器(presenter)负责格式化及渲染列表数据。它决定了要渲染的元素；元素的渲染顺序；为每个列表元素创建底层单元；把风格及风格改变传递给这些单元；确保单元在正确的状态等。
+<p />
+<strong>UIList</strong>:容器定义呈现器渲染列表数据所使用的参数。容器管理： <ul>
+<li> list layout(列表布局):元素数量；列和行的数量；定义呈现器渲染列表数据所使用的边界范围；控制一个单独的元素如何和列表的行及列映射；管理任何额外的列表助手，比如滚动条、列标题等。
+</li> <li> list interaction(列表交互):跟踪选中元素的索引；跟踪一次可显示的元素的最大数量；跟踪显示的第一个元素的索引；处理随着插入和删除元素所带来的所有“后续问题”(比如，如果由于删除操作导致选中的列表的索引变为无效值，如果需要，可以调整TopIndex)；存储及应用影响列表操作的用户配置数据，比如列表元素是否应该“自动换行”及是否允许选择禁用的元素。
+</li> <li> input processing(输入处理):基于用户输入更新选中的索引，比如按下 上/下 箭头按键或鼠标点击；当用户移动滚动条时更新显示的元素；当用户重新调整列的大小时通知呈现器(presenter)等。
+</li></ul>
+<p />
+列表实例中，您或许需要考虑到的列表配置数据是CellLinkType、TopIndex、MaxVisibleItems、WrapType、bAllowDisabledItemSelection以及 bEnableMultiSelect。
+<p />
+列表元素映射到 列/行 的方式的区别在UIList.uc的ECellLinkType enum注释中有详细的介绍： <ul>
+<li> <strong>LINKED_None</strong> 意味着无论列表显示的行及列的数量是多少，都是一个列表元素映射一个列表单元，
+</li> <li> <strong>LINKED_Columns</strong> 意味着行数是变化的；但是列数保持(连接的列)。仅当列表的 <code>RowAutoSizeMode</code> 设置为 None 时，配置的 <code>RowCount</code> 才有效。
+</li> <li> <strong>LINKED_Rows</strong> 意味着列数是变化的；但是行数保持不变(连接的行)。
+</li></ul>
+<p />
+<h3><a name="数据"></a> 数据 </h3>
+<p />
+由于UIList可以绑定到任何一种类型的数据上，列表本身仅使用索引进行工作。UIList.GetCurrentItem()将会返回在项目数据中的当前索引的值，它对应着为列表提供数据所使用的数据仓库中的任何数据的索引。控件和数据仓库通过界面进行通信，在这种情况下是UIListElementProvider 和 UIListElementCellProvider界面。
+<p />
+UIListElementProvider是一个向UIList提供到UIList.Items数组的索引的对象的接口，并且它被缓存在UIList.DataProvider变量中。
+<p />
+UIListElementCellProvider是用于向特定行中的每列提供真正值的对象的接口。根据绑定到列表的数据类型的不同，列表中每个元素的数据来自不同的对象(比如，在OnlineGameSearch数据仓库情况下，每个接收到的数据仓库有它自己的UIDataProvider_Settings来为那个服务器提供数据)，或者它们可以全部都来自同一个对象。由于这个原因，UIListElementProvider提供了一个方法用于为一个给定索引[对应到数据仓库值的数组中的索引]查找正确的单元值 - GetElementCellValueProvider()。一旦您为选中的元素找到了正确的单元值提供者，您可以调用 GetCellFieldValue()方法来为获得您正在查找的那个特定元素的任何数据域的值。
+<p />
+<pre>
+if ( MyList-&#62;DataProvider )
+{
+    INT CurrentItem &#61; MyList-&#62;GetCurrentItem();
+    if(CurrentItem !&#61; INDEX&#95;NONE )
+    {
+        TScriptInterface&#60;IUIListElementCellProvider&#62; CellProvider &#61; MyList-&#62;DataProvider-&#62;GetElementCellValueProvider(MyList-&#62;DataSource.DataStoreFieldName, CurrentItem);
+        if ( CellProvider )
+        {
+             //调用 GetCellFieldValue 来获得我想获得的数据域的值。
+        }
+    }
+}
+
+</pre>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UIListsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:38:39 GMT -->
+</html></body>

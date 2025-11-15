@@ -1,0 +1,321 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NetworkProfiler.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:21:42 GMT -->
+<head>
+<title> UDK | NetworkProfiler    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">NetworkProfiler  </b></div>
+<div id="tooltext">
+<a href="https://udn.epicgames.com/Three/NetworkProfilerJP" class="restricted" class="restricted" class="twikiLink">日本語訳</a><br><a href="NetworkProfilerCH.html" class="twikiLink">中国翻译</a><br><a href="NetworkProfilerKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/NetworkProfiler -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="ReplicationHome.html" class="twikiLink">Networking &amp; Replication</a></b> &gt; Network Profiler
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="Network Profiler"></a> Network Profiler </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="NetworkProfiler.html#Network Profiler"> Network Profiler</a> <ul>
+<li> <a href="NetworkProfiler.html#Overview"> Overview</a> <ul>
+<li> <a href="NetworkProfiler.html#Requirements"> Requirements</a>
+</li></ul>
+</li> <li> <a href="NetworkProfiler.html#Setup Unreal Engine to emit tokens"> Setup Unreal Engine to emit tokens</a>
+</li> <li> <a href="NetworkProfiler.html#Network Profiler UI"> Network Profiler UI</a> <ul>
+<li> <a href="NetworkProfiler.html#Run Selection tab"> Run Selection tab</a>
+</li> <li> <a href="NetworkProfiler.html#Chart, Filter, Details tab"> Chart, Filter, Details tab</a>
+</li> <li> <a href="NetworkProfiler.html#Actors tab"> Actors tab</a>
+</li> <li> <a href="NetworkProfiler.html#Properties tab"> Properties tab</a>
+</li> <li> <a href="NetworkProfiler.html#RPCs tab"> RPCs tab</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="NetworkProfiler.html#Captured data"> Captured data</a>
+</li> <li> <a href="NetworkProfiler.html#Code"> Code</a>
+</li> <li> <a href="NetworkProfiler.html#Alternatives"> Alternatives</a>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<hr size="1" noshade="noshade">
+The standalone network profiler is a C# application that works in conjunction with the engine's ability to emit a token stream for various network events. The main focus is on outgoing network bandwidth from the server and it therefore only captures <em>send</em> -like events.
+<p />
+<h3><a name="Requirements"></a> Requirements </h3>
+<hr size="1" noshade="noshade">
+The following software components are required for the Network Profiler: <ul>
+<li> <a href="http://www.microsoft.com/downloadS/details.aspx?familyid=130F7986-BF49-4FE5-9CA8-910AE6EA442C">Microsoft Chart Controls for .NET 3.5</a>
+</li> <li> <a href="http://www.microsoft.com/downloadS/details.aspx?familyid=1D69CE13-E1E5-4315-825C-F14D33A303E9">Microsoft Chart Controls Add-On for MS VS 2008</a>
+</li></ul>
+<p />
+<h2><a name="Setup Unreal Engine to emit tokens"></a> Setup Unreal Engine to emit tokens </h2>
+<hr size="1" noshade="noshade">
+To use the network profiler, simply pass <code><b>-networkprofiler=TAG</b></code> on the game command line, which wil then start the token emission when there is network data and either upon exit or map change will write a *.nprof file to the Profiling folder (<em>i.e C:\UDK\UDK-2012-01\UDKGame\Profiling</em>)
+<p />
+This created and potentially uploaded file can then in turn be opened by the NetworkProfiler.exe in the Binaries folder and further investigated.
+<p />
+<h2><a name="Network Profiler UI"></a> Network Profiler UI </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="Run Selection tab"></a> Run Selection tab </h3>
+This tab lets you either open a *.nprof file directly, or if set up, allows you to pick various runs from the associated database.
+<p />
+<h3><a name="Chart, Filter, Details tab"></a> Chart, Filter, Details tab </h3>
+This tab is used for visual representation of the data stream. The charting area takes up the top portion with the check box list of potential graphs to chart to its right.
+<p />
+The chart allows zooming via drag selection, which defaults to the X axis by default. Pressing the right mouse button in the chart area will toggle the currently active axis. You can undo zoom operations by clicking the little circle with the dot on the scrollbar.
+<p />
+The data summary window will either show a summary of the last drag selection, or if single clicked, the currently selected frame. The textbox to its right lists all captured network operations during that frame.
+<p />
+The actor, property and RPC filters will filter the displayed information based on the content of the checkbox at the time "Apply Filters" is clicked. Simply clear the filter and hit "Apply Filters" to undo any filtering.
+<p />
+Worth noting that the outgoing bandwidth graph/ summary is taking packet overhead into account. This is a platform specific value that can be modified by setting NetworkStream.PacketOverhead.
+<p />
+<a href="rsrc/Three/NetworkProfiler/np_chart.jpg"><img src="rsrc/Three/NetworkProfiler/np_chart_thumbnail.jpg" alt="np_chart_thumbnail.jpg" width='900' height='886' /></a>
+<p />
+<h3><a name="Actors tab"></a> Actors tab </h3>
+The actors tab shows all actors types that have been replicated and summary of replication counts and sizes.
+<p />
+<a href="rsrc/Three/NetworkProfiler/np_actors.jpg"><img src="rsrc/Three/NetworkProfiler/np_actors_thumbnail.jpg" alt="np_actors_thumbnail.jpg" width='900' height='886' /></a>
+<p />
+<h3><a name="Properties tab"></a> Properties tab </h3>
+The properties tab shows all properties that have been replicated and summary of replication counts and sizes.
+<p />
+<a href="rsrc/Three/NetworkProfiler/np_properties.jpg"><img src="rsrc/Three/NetworkProfiler/np_properties_thumbnail.jpg" alt="np_properties_thumbnail.jpg" width='900' height='886' /></a>
+<p />
+<h3><a name="RPCs tab"></a> RPCs tab </h3>
+The RPCs tab shows all RPCs that have been replicated and summary of replication counts and sizes.
+<p />
+<a href="rsrc/Three/NetworkProfiler/np_rpcs.jpg"><img src="rsrc/Three/NetworkProfiler/np_rpcs_thumbnail.jpg" alt="np_rpcs_thumbnail.jpg" width='900' height='886' /></a>
+<p />
+<h1><a name="Captured data"></a> Captured data </h1>
+<hr size="1" noshade="noshade">
+Currently captured by the profiler are low level FSocket::Send* events, UChannel::SendBunch, UActor::ReplicateActor actor/ property replication, RPC sends, client join/ leave events, and with frame markers.
+<p />
+<!--  -->
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NetworkProfiler.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:21:44 GMT -->
+</html></body>

@@ -1,0 +1,652 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CreatingAnimationsJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:32 GMT -->
+<head>
+<title> UDK | CreatingAnimationsJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">CreatingAnimationsJP  </b></div>
+<div id="tooltext">
+<a href="CreatingAnimations.html" class="twikiLink">English Translation</a><br><a href="CreatingAnimationsCH.html" class="twikiLink">中国翻译</a><br><a href="CreatingAnimationsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/CreatingAnimationsJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="Unreal Engine でのアニメーションの作成"></a> Unreal Engine でのアニメーションの作成 </h1>
+<p />
+<em>ドキュメントの概要: Unreal エンジンにアニメーションを取り込むコンテンツパイプラインの説明。</em>
+<p />
+<em>ドキュメントの変更ログ: <a href="https://udn.epicgames.com/Main/ScottDossett" class="restricted" class="restricted" class="twikiLink">Scott Dossett</a> および <a href="https://udn.epicgames.com/Main/JayHosfelt" class="restricted" class="restricted" class="twikiLink">Jay Hosfelt</a> により作成。Richard Nalezynski<sup>?</sup> により管理。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="CreatingAnimationsJP.html#Unreal Engine でのアニメーションの作成"> Unreal Engine でのアニメーションの作成</a> <ul>
+<li> <a href="CreatingAnimationsJP.html#概要"> 概要</a>
+</li> <li> <a href="CreatingAnimationsJP.html#開発ツール"> 開発ツール</a> <ul>
+<li> <a href="CreatingAnimationsJP.html#ActorX"> ActorX</a>
+</li></ul>
+</li> <li> <a href="CreatingAnimationsJP.html#キャラクター"> キャラクター</a> <ul>
+<li> <a href="CreatingAnimationsJP.html#キャラクター セットアップとリギング"> キャラクター セットアップとリギング</a>
+</li> <li> <a href="CreatingAnimationsJP.html#ボーン階層"> ボーン階層</a>
+</li> <li> <a href="CreatingAnimationsJP.html#キャラクターのエクスポート"> キャラクターのエクスポート</a>
+</li> <li> <a href="CreatingAnimationsJP.html#キャラクターのインポートと設定"> キャラクターのインポートと設定</a>
+</li></ul>
+</li> <li> <a href="CreatingAnimationsJP.html#武器"> 武器</a> <ul>
+<li> <a href="CreatingAnimationsJP.html#一人称武器セットアップとリギング"> 一人称武器セットアップとリギング</a> <ul>
+<li> <a href="CreatingAnimationsJP.html#エンジンでの微調整"> エンジンでの微調整</a>
+</li></ul>
+</li> <li> <a href="CreatingAnimationsJP.html#三人称武器セットアップとリギング"> 三人称武器セットアップとリギング</a>
+</li> <li> <a href="CreatingAnimationsJP.html#武器のエクスポート"> 武器のエクスポート</a>
+</li> <li> <a href="CreatingAnimationsJP.html#武器のインポート"> 武器のインポート</a>
+</li> <li> <a href="CreatingAnimationsJP.html#エンジンでの微調整"> エンジンでの微調整</a>
+</li></ul>
+</li> <li> <a href="CreatingAnimationsJP.html#Morph Targets (モーフ ターゲット)"> Morph Targets (モーフ ターゲット)</a> <ul>
+<li> <a href="CreatingAnimationsJP.html#Morph Target Setup(モーフ ターゲット) セットアップ"> Morph Target Setup(モーフ ターゲット) セットアップ</a>
+</li> <li> <a href="CreatingAnimationsJP.html#Morph Target (モーフ ターゲット) エクスポート"> Morph Target (モーフ ターゲット) エクスポート</a>
+</li> <li> <a href="CreatingAnimationsJP.html#Morph Target (モーフ ターゲット) インポートとエディタでのセットアップ"> Morph Target (モーフ ターゲット) インポートとエディタでのセットアップ</a>
+</li></ul>
+</li> <li> <a href="CreatingAnimationsJP.html#フェイス"> フェイス</a>
+</li> <li> <a href="CreatingAnimationsJP.html#ビークル"> ビークル</a>
+</li> <li> <a href="CreatingAnimationsJP.html#カメラ"> カメラ</a>
+</li> <li> <a href="CreatingAnimationsJP.html#Creatures"> Creatures</a>
+</li> <li> <a href="CreatingAnimationsJP.html#エディタ ツール"> エディタ ツール</a>
+</li> <li> <a href="CreatingAnimationsJP.html#PSK と PSA を理解する"> PSK と PSA を理解する</a> <ul>
+<li> <a href="CreatingAnimationsJP.html#コンテンツのインポートとエディタでのセットアップ"> コンテンツのインポートとエディタでのセットアップ</a>
+</li> <li> <a href="CreatingAnimationsJP.html#Animation Set Editor"> Animation Set Editor</a>
+</li> <li> <a href="CreatingAnimationsJP.html#アニメーションツリー エディタ"> アニメーションツリー エディタ</a>
+</li> <li> <a href="CreatingAnimationsJP.html#PhAT"> PhAT</a>
+</li></ul>
+</li> <li> <a href="CreatingAnimationsJP.html#モーションキャプチャ"> モーションキャプチャ</a> <ul>
+<li> <a href="CreatingAnimationsJP.html#ゲーム内アニメーションのためのモーション キャプチャとシネマティクスのためのモーション キャプチャ"> ゲーム内アニメーションのためのモーション キャプチャとシネマティクスのためのモーション キャプチャ</a>
+</li></ul>
+</li> <li> <a href="CreatingAnimationsJP.html#開発用アセット"> 開発用アセット</a> <ul>
+<li> <a href="CreatingAnimationsJP.html#アニメーションデータ"> アニメーションデータ</a>
+</li> <li> <a href="CreatingAnimationsJP.html#モーションキャプチャ データ"> モーションキャプチャ データ</a>
+</li> <li> <a href="CreatingAnimationsJP.html#キーフレームデータ"> キーフレームデータ</a>
+</li></ul>
+</li> <li> <a href="CreatingAnimationsJP.html#エクスポート"> エクスポート</a>
+</li> <li> <a href="CreatingAnimationsJP.html#インポート"> インポート</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<p />
+このドキュメントは、Unreal Engine のコンテンツ パイプラインのうち、アニメーションの作成に使用する各種アセットを特定するための出発点の役目を果たします。
+<p />
+<p />
+<h2><a name="開発ツール"></a> 開発ツール </h2>
+<p />
+<h3><a name="ActorX"></a> ActorX </h3>
+<p />
+すべての骨格キャラクターとアニメーションは、3D パッケージからエクスポートされ、ActorX を介して、Unreal Editor にインポートされなければいけません。
+<p />
+ <a href="ActorXJP.html" class="twikiLink">ActorXJP</a> ページのダウンロード情報を参照してください。
+<p />
+<h2><a name="キャラクター"></a> キャラクター </h2>
+<p />
+<h3><a name="キャラクター セットアップとリギング"></a> キャラクター セットアップとリギング </h3>
+<p />
+キャラクター モデルは比較的ニュートラルなポーズ (姿勢) に作成する必要がありますが (通常は T-Pose)、ジョイントは弛緩した自然な位置にあっても構いません。ボーン構造はボーンの単一階層で、人間の骨組みを模倣し、キャラクターメッシュの内部に収まるようなポーズをとり、原点に置かれるメインの "root" ボーンを親とします。
+<p />
+エディタでは、Y-Up 軸方向で作成された骨格メッシュのインポートも可能ですが、当社ではすべての 3D パッケージで Z-Up の使用を推奨しています。これによりボード間の整合性が保たれ、Max と Maya の間で座標軸に関する問題なくメッシュやアニメーションを転送することができます。
+<p />
+Z-Up を標準とした場合、Max では +Y 軸、Maya では-Y 軸を下向きにしてキャラクターのモデルやリグが作成されます (理由はわかりませんが、2 つのパッケージ間でこの座標軸の向きは逆になります)。エディタでは、+X 軸にキャラクターを向かせるために、回転オフセットを適用します。
+<p />
+<img alt="Marcus_Skeleton_Overlay.jpg" src="rsrc/Three/CreatingAnimationsJP/Marcus_Skeleton_Overlay.jpg" />
+<p />
+骨組みには、衣服、アーマー (防具)、毛髪などのパーツとして重みづけされた追加のボーンも含まれ、武器ボーンや IK ボーンなど、アタッチメントポイントとしてのみ使用されるボーンも含まれています。
+<p />
+キャラクター アニメーション リグは、完全に骨格階層から別にしておくのが最善です。骨格階層にロケータやノードを追加すると、エクスポートの際に問題の原因となる場合があります。
+<p />
+複数のキャラクターが、同一の骨組みにモデル化され、これに収まるような割合に調整されると、これらのキャラクターは、アニメーション セットを共有することができ、必要なアニメーションの量が削減されます。微妙に異なる比率を持ったキャラクターでさえも、通常アニメーションを共有することができます。
+<p />
+<p />
+<strong><em>テクニカルな面に関する注意</em></strong>: <ul>
+<li> 骨組み内でメッシュに影響を及ぼすボーンの最大数は <strong>75</strong> です。
+</li> <li> 骨組み内のボーン合計最大数は <strong>256</strong> です。
+</li></ul>
+(これらの設定に最大値を超える値を設定すると、キャラクター上に 2 番目のレンダリングパスが生じ、最適化が低下します。) <ul>
+<li> メッシュの場合、1 つの頂点あたりの bone influences (ボーン影響) 変数の数は 4 です。
+</li> <li> メッシュに関しては、1 つの頂点にごとの最大ボーン影響度は <strong>4</strong> です。(インポート時、4 つ以上のボーンに影響される頂点は、もっとも低い影響が削除され、その頂点の残りの 4 つの影響で標準化されます。) 特定の LOD には、使用する最大に基づいてコストがあることに留意してください。従って、3 つの使用ですむ場合は、速くなります。LOD 1 やそれ以下には、通常 1 つを使用します。
+</li></ul>
+<p />
+<strong><em>最適化に関する注意</em></strong>: 複数キャラクターをモデル化し、同じ骨組みの周囲に収まるような割合に調整すると、これらのキャラクターはアニメーションセットを共有することができ、必要なアニメーションの量が削減されます。キャラクター間のバランスが少ずれていても、アニメーションを共有できます。
+<p />
+<strong><em>3DStudioMax に関する注意</em></strong>: Biped キャラクターをまずセットアップし、その Biped にマッチするように骨組みを調整してビルドします。そして、骨組みを Biped に拘束します。これは、Biped でのアニメーション化が可能になりますが、ActorX にエクスポートする場合は、骨組みにアニメーションをベイクしてから、Biped を削除します。
+<p />
+<strong><em>Maya に関する注意</em></strong>: バインド ポーズのボーン回転を設定する際は、バインド ポーズの初期回転値は、メインの Rotate (回転) フィールドか、Joint Orient (ジョイントの向き) フィールドに入力できます。メイン Rotate (回転) フィールドにこれらの値を入力すると、常に各ジョイントの実際の回転値を見ることができます。Joint Orient フィールドにこれらの値を入力すると、オフセット値として機能し、各ジョイントのメインの Rotate 値を「ゼロ出力」のまま、適切なバインド ポーズを維持することができます。以下の図では、キャラクターはまったく同じポーズをしています。しかし左側の図では、腕のボーンに初期回転値があり、右の図では、初期回転を Joint Orient 値に適用することにより、ポーズを変えずに値がゼロ出力になっています。どちらの方法を使用するかは、完全に個人の好みですが、どちらか一方を選んで、全員がそれを常に使用するようにしてください。これらの方法を両方使用すると、パイプラインでの不統一性の原因となります。
+<p />
+<img alt="JointOrient.JPG" src="rsrc/Three/CreatingAnimationsJP/JointOrient.jpg" />
+<p />
+<h3><a name="ボーン階層"></a> ボーン階層 </h3>
+<p />
+骨盤から別のルート ボーンを持つことは重要です。どこにあるかはあまり関係ありませんが、特定のことがらに関してはより複雑になります。ルートが足と原点にあると、アニメーションが一緒に動作するのを確認するのが簡単だということが分かりました。空中のどこかにあると、アニメーションが適切にチェーン/ブレンドせず、ポップを起こす場合に検知しにくいです。たとえば、Marcus が何かに上っているような <a href="RootMotionJP.html" class="twikiLink">RootMotion (ルート モーション)</a> アニメーションをする際に、ルート ボーンをどこに置くべきかをビジュアライズするのが簡単になります。なぜなら、これは彼の足が地面につく部分であるべきだからです。
+<p />
+IK に関しては、足と手にルート ボーンの直接の子である IK Bones を使用します。これは、長いボーン階層を持つアニメーションをブレンドする際に、位置/回転エラーを解消します。
+<p />
+関連するアニメーションにより、階層の武器ボーンの場所は常に良い点と悪い点があります。たいていの場合、キャラクターは銃を持っているので、これらが手の子になるのは道理にかなっています。というのは、どれだけアニメーションを圧縮しても、またはどんなに低いフレームレートでアニメーション化しても、銃は手の中で確固とした位置を維持するからです。欠点は、武器が手から離れなければいけない場合です。スナイパー ライフルのような特定のリロードのアニメーション中、または銃をしまう場合は、ボーンの間で争いが起き、これが顕著にならないようにするためにより高いフレームレートを必要とする可能性があります。これらのタイプのアニメーションは、私たちのケースではまれだったので、手の子とすることがもっともメモリの節約になると決定しました。常に回転するようなたくさんの近接武器をアニメーション化していたとすれば、武器ボーンを階層のより高い部分に入れる (ルートの子に入れることさえも) ことを選択していたでしょう。
+<p />
+武器の先のボーンは、銃のピボット点を中心に変更する方法として設置されましたが、すべてのアニメーションの武器ボーン位置を変えず、その後際エクスポートせずにでも、すべてのアニメーションは正しく見えます。アニメーション化でいくつかの小さなリグの利点がありますが、まったくないほうがより良いと言えます。実装する時間があまりない中で、ミラーリング アニメーションの動作方法を終了した際に、行わなければいけない変更であったと言えます。これは、足のスライディングを減少させるには便利です。2 個以上のアニメーションを長いボーン階層でブレンドする際には、エラーが起きる場合があります。足の IK は足が正しい場所に維持されることを確保する方法でした。これは、方向的なブレンドでかなり顕著でした。<a href="https://udn.epicgames.com/Three/GearsOfWarJP" class="restricted" class="restricted" class="twikiLink">Gears of War</a> (PC) の Brumak ボス戦などのより大きな生物に関しては、これを維持しました。
+<p />
+armroll ボーン―上腕ボーンの直接の子―は、頂点が変形するのを手助けするために、上腕ボーンの半分の量をひねるためにあります。これは、階層の中でロール ボーンを腕に直接入れるより、ゲーム内でより良い動作をします。これにより、IK と 2 つのジョイントされた腕を持つことができます。
+<p />
+<img alt="Marcus_Heirarchy.jpg" src="rsrc/Three/CreatingAnimationsJP/Marcus_Heirarchy.jpg" />
+<p />
+<h3><a name="キャラクターのエクスポート"></a> キャラクターのエクスポート </h3>
+<p />
+キャラクター メッシュが骨組みにバインドされ、適切に 3D パッケージ内で重みつけされた後で、ActorX を使用して PSK ファイルとしてエクスポートすることができます。エクスポートを望まない余分なボーンやウェイトされたメッシュがシーンにある場合は、シーンからこれを削除するか、接尾辞 <strong>_noexport</strong> を付けて個々のボーンの名前を変更する (Maya のみ) か、最上階層ボーンを接尾辞 <strong>_ignore</strong> を付けて名前を変更してください。
+<p />
+<h3><a name="キャラクターのインポートと設定"></a> キャラクターのインポートと設定 </h3>
+<p />
+Unreal エディタを開き、アセットブラウザでキャラクターのインポート先となるパッケージを開きます。...を右クリックし... (以下執筆中)
+<p />
+<h2><a name="武器"></a> 武器 </h2>
+<p />
+<h3><a name="一人称武器セットアップとリギング"></a> 一人称武器セットアップとリギング </h3>
+<p />
+一人称武器 (1st Person Weapons) とは、ゲームでプレーヤー各自が保持する武器のことです。プレーヤーの視界近くに配置され、通常はゲーム時間中ほどんと見える場所にあるため、このモデルはかなり大きなポリゴンで、その解像度テクスチャもより高いのが普通です。
+<p />
+<strong><em>ヒント</em></strong>:  一人称武器は片側から見られるのが一般的なので、ゲームを見る側から絶対に見えないポリゴンまたはオブジェクトを消去することで、モデルを最適化できます。最後のアニメーションが完了した後で、どの部分が絶対に見えないかを確認してからモデルを最適化します。
+<p />
+3D パッケージで、カメラを原点に配置し、+X 軸の方向に合わせます。これはプレーヤーのゲーム内の視野を表わします。このカメラの前に、一人称武器メッシュをゲーム中に見られるのと同じように配置します。適切に見えるようにカメラの FOV (field of view 視野角) とメッシュ位置を調整します。
+<p />
+<strong><em>テクニカルな面に関する注意</em></strong>:  一人称モデルは異なるレンダリングパスで表示されるため、ビューのオフセットと FOV を変更し、シーンビュー全体ではなく一人称オブジェクトだけに適用することができます。
+<p />
+一人称武器の設定時における最初の重要な決定事項は、プレーヤー自身が自分の腕を見ることができるかどうかにあります。これを視野に含めることにした場合、設定がかなり複雑になる可能性があります。その上、各武器にさまざまなタイプのアーム (男性、女性、ロボット、生き物などの腕) を提供するとなると、その複雑さはさらに増大します。
+<p />
+<img alt="1P_Weapon.jpg" src="rsrc/Three/CreatingAnimationsJP/1P_Weapon.jpg" />
+<p />
+__1) 一人称武器のみ、一人称プレーヤーのアームはなし―これは複雑さが最低レベルのオプションで、武器のリギングとアニメーションのみ必要とします。武器はボーン階層にバインドします。このボーン構造は、原点にとどまる "root" ボーンを親とします。原点位置のカメラ視点から武器をアニメーション化します。アニメーションが完了した後で、ActorX のエクスポート機能を使用して、骨格メッシュは PSK ファイル、アニメーションは PSA ファイルとしてエクスポートします。
+<p />
+__2) 一人称武器と一人称アーム、ただしアームのバリアントはない―すべてのキャラクターのアームが同様で、一人称アームに 1 種類のモデルだけ必要な場合は、アームと武器を同じ骨組みに含めることができます。この単一の骨組み構造は、原点にとどまる "root" ボーンを親とします。原点位置のカメラ視点から武器とアームをアニメーション化します。アニメーションが完了した後で、武器とアームは一緒に単一の PSK ファイルとしてエクスポートし、アニメーションは PSA ファイルとしてエクスポートします。
+<p />
+__3) 一人称武器と、複数バリエーションの一人称アーム―各キャラクターが非常に異なり、各武器の扱いに必要な一人称アームメッシュが複数必要な場合は、武器用とアーム用に 2 つの骨組みが個別に必要です。各骨組みは、シーン原点に位置する独自の root ボーンを親とします。モデリングの観点から、アームメッシュの異形はすべて同じポーズ、同じ比率でモデル化し、同じ骨組みにバインドする必要があります。各アームメッシュを個別の PSK ファイルにエクスポートし、各武器は別に個別の PSK ファイルにエクスポートしてから、Unreal エディタにインポートします。これらの個別のアーム骨格メッシュは、1 つの AnimSet (アニメーションセット) を共有できます。
+<p />
+3D パッケージで武器とアームを一緒にアニメーション化した後でアニメーションをベークしてから、2 つの間の拘束関係を削除します。このファイルを ExportReady バージョンとして別名で保存し、両方の骨組みを含むバージョンを作成します。アームの骨組みを削除し、武器のアニメーションを PSA ファイルにエクスポートします。両方の骨組みを含む ExportReady ファイルを再度開きます。武器の骨組みを削除し、アームのアニメーションを別の PSA ファイルに、同じアニメーション名とフレーム範囲を指定してエクスポートします。各 PSA ファイルをそれぞれの AnimSet にインポートします。これにより、各武器ごとに Arm AnimSet (アームアニメーションセット) と Weapon AnimSet (武器アニメーションセット) が作成されます。
+<p />
+プログラマーとの共同作業により、ゲーム内でカメラの FOV を正しく設定し、一人称武器とアームが機能するようにして、正しいアームメッシュの異形をロードし、武器とアームのアニメーションを同期します。アニメーションはシーン原点を基点とするため、ビュー内でオフセットを設定する必要はありません。
+<p />
+<img alt="1P_Arm_Variants.JPG" src="rsrc/Three/CreatingAnimationsJP/1P_Arm_Variants.jpg" />
+<p />
+<h4><a name="エンジンでの微調整"></a> エンジンでの微調整 </h4>
+<p />
+正しいカメラ FOV で一人称武器と腕を動作させ、武器と腕のアニメーションを同期させるには、正しい腕メッシュの変化形を読み込み、プログラマとともに作業するのが最善です。アニメーションはシーンの原点に基づいているので、ビューに入れるにはオフセットは必要ないはずです。微調整が必要な場合は、オフセットはメッシュに適用するか、プログラマがオフセットをハードコードすることができます。
+<p />
+<h3><a name="三人称武器セットアップとリギング"></a> 三人称武器セットアップとリギング </h3>
+<p />
+三人称武器とは、主人公であるプレーヤーから見える、他のキャラクターが手にしている武器のことです。三人称武器モデルを設定するには、まずそれを専用の小さなボーン階層にバインドし、骨格メッシュとしてエクスポートする必要があります。この root ボーンがキャラクターの weapon ボーンによって拘束されたときに、武器がキャラクターの手の中の適切な位置におさまるように、武器の root ボーンを武器メッシュと相対的に配置する必要があります。
+<p />
+<img alt="3P_Weapon_Attach.JPG" src="rsrc/Three/CreatingAnimationsJP/3P_Weapon_Attach.jpg" />
+<p />
+リロードのアニメーションのように武器とキャラクターをともにアニメーション化するには、リグされたキャラクターと武器を同じシーンに持ってきて、武器の「root」ボーンをキャラクターの「weapon」ボーンに拘束します。最終的には武器とキャラクターを 2 つ別々の、しかしながら同期させた状態のアニメーションとしてエクスポートします。
+<p />
+手を武器のパーツ、またはその反対に拘束して、お好きなようにキャラクターと武器をアニメーション化してください。このキャラクター プラス武器のアニメーションの準備が整ったら、骨格階層にアニメーションをベイクし、すべての拘束を削除してください。すべてのアニメーション キーは武器の「root」ボーンからのみ削除し、その位置と回転値を &lt;0,0,0&gt; に設定してください。これは、すべてのアニメーション化された武器のアニメーションを維持しますが、武器をシーンの原点に置いたままにします。ファイルを保存しますが、”ExportReady” バージョンと名前を変更してください。
+<p />
+<h3><a name="武器のエクスポート"></a> 武器のエクスポート </h3>
+<p />
+武器とキャラクターのベイクされたアニメーションを含む "Export Ready" ファイルを開きます。シーンからキャラクターの骨組みとメッシュを削除します。ActorX を使用して、武器とアニメーションを PSA ファイルとしてエクスポートします。両方の骨組みを含む ExportReady ファイルを再度開き、ここで武器の骨組みとメッシュを削除します。同じアニメーション名とフレーム範囲を指定し、キャラクター アニメーションを別の PSA ファイルにエクスポートします。
+<p />
+<h3><a name="武器のインポート"></a> 武器のインポート </h3>
+<p />
+Unreal エディタで、キャラクターの PSA ファイルはキャラクターの AnimSet にインポートし、武器の PSA は武器の AnimSet にインポートします。
+<p />
+<h3><a name="エンジンでの微調整"></a> エンジンでの微調整 </h3>
+<p />
+プログラマーとの共同作業により、ゲームプレイ中に武器骨格メッシュがキャラクターの weapon ボーンに拘束されるようにします。場合によっては、キャラクターの weapon ボーン上にソケットを作成する必要があります。次にキャラクターと武器の両方でアニメーションを再生すると、同期再生されます。
+<p />
+<h2><a name="Morph Targets (モーフ ターゲット)"></a> Morph Targets (モーフ ターゲット) </h2>
+<p />
+<h3><a name="Morph Target Setup(モーフ ターゲット) セットアップ"></a> Morph Target Setup(モーフ ターゲット) セットアップ </h3>
+<p />
+<a href="MorphTargetsJP.html" class="twikiLink">Morph Target (モーフ ターゲット)</a> (Blend Shape としても知られています) は、頂点のグループをオフセットすることにより、メッシュの形、またはメッシュの一部を変更するのに使用されます。この頂点の変形は、ボーンの変形が十分でない場合の良い選択肢となります。Morph Target は、顔のアニメーション、筋肉のシミュレーション、ビークルのダメージなど、いろいろな適用ができます。
+<p />
+<h3><a name="Morph Target (モーフ ターゲット) エクスポート"></a> Morph Target (モーフ ターゲット) エクスポート </h3>
+<p />
+エディタでの使用のため、Morph Target は個々の PSK ファイルとしてエクスポートされ (骨格メッシュをエクスポートするのに使用されるのと同じファイルです)、Unreal Editor の以前インポートされた骨格メッシュの上にインポートされます。特定のメッシュに 20 個のモーフがある場合は、20 個の PSK ファイルをエクスポートする必要があります。
+<p />
+3D パッケージで、すべてのモーフを同じメッシュにターゲットしてください。このターゲット メッシュが選択された状態で、最初のモーフをオンにして、ターゲット メッシュを .PSK ファイルとして、ActorX エクスポータを使用してエクスポートします。最初のモーフをオフにして、次のモーフをオンにします。その同じターゲット メッシュを別の .PSK としてエクスポートします。各モーフが個々の .PSK ファイルにエクスポートされるまで、これを繰り返します。
+<p />
+<strong><em>モーフの注意</em></strong>: 頂点順序が同じなままであるために、すべてのモーフは、同じメッシュからエクスポートされ、同じメッシュへインポートされなければいけません。異なる頂点順序でメッシュにモーフをインポートすることは、問題を起こす原因となります。各モーフをエクスポートする際は、メッシュを移動させない、または骨格バインド ポーズを変更しないようにしてください。ソース骨格メッシュを再びインポートすることも、頂点順序の問題の原因となり、Morph Target の再インポートが必要になる場合があります。
+<p />
+<h3><a name="Morph Target (モーフ ターゲット) インポートとエディタでのセットアップ"></a> Morph Target (モーフ ターゲット) インポートとエディタでのセットアップ </h3>
+<p />
+Morph Target をインポートし、Unreal Editor でセットアップするには、MorphTargetSet Asset を作成する必要があります。その後、PSK をMorphTargetSet にインポートして、モーフのリストを作成します。そして、モーフ リストを Animtree の骨格メッシュにアタッチします。この時点で、プログラマはモーフにアクセスして適用するか、Matinee で適用し、変更することができます。
+<p />
+MorphSet アセットを作成するには、モーフを適用したい骨格メッシュをダブルクリックします。これで Animset Editor が開きます。Animset Editor で、メニュー項目 File (ファイル) -&gt; NewMorphTargetSet を選択します。作成したい新しいMorphTargetSet アセットのPackage (パッケージ)、Group (グループ)、Name (名前) を入力します。
+<p />
+Animset Editor の Browser (ブラウザ) セクションの一番上にある “Morph” タブをクリックします。新しいMorphTargetSet が選択されているはずです。そうでない場合は、ドロップダウン メニューをクリックして、新しいMorphTargetSet を探してください。
+<p />
+PSK ファイルをモーフ リストにインポートするには、メニュー項目 File (ファイル) -&gt; Import MorphTarget (MorphTarget をインポート) を選択します。PSK のリストを選択し (複数の PSK ファイルは [Shift] 選択できます)、”OK” をクリックしてください。各モーフは、ダイアログ ボックスを表示するので、モーフの名前のダブルチェック、または変更をすることができます。高ポリゴン メッシュのモーフは、インポートするのに時間がかかることがあります。インポート後に、MorphTargets リストで各モーフをクリックします。これで、3D ウィンドウのソース メッシュ上で選択されたモーフをプレビューすることができるので、正しくインポートされたかを確認することができます。
+<p />
+<strong><em>技術的注意</em></strong>: 新しいモーフをインポートする際に、エディタは頂点順序に、インポートされた PSK とソース骨格メッシュの間の頂点を比較し、位置の変わった頂点を探し出し、移動した頂点のデータのみを保存します。
+<p />
+Morph Target を骨格メッシュに接続するには、メッシュの Animtree を開きます。これで Animset Editor ウィンドウが開きます。Animtree Editor で、Animtree ノードを選択します。
+<p />
+<img alt="Morph_AnimtreeNode.jpg" src="rsrc/Three/CreatingAnimationsJP/Morph_AnimtreeNode.jpg" />
+<p />
+まずは Animtree を作成した MorphTartetSet に接続します。Properties (プロパティ) セクションで、"PreviewMorphSets" リストを展開し、緑色のプラス アイコンを選択して入力を作成します。
+<p />
+<img alt="Morph_AnimtreeProperties_AddMorphItem.jpg" src="rsrc/Three/CreatingAnimationsJP/Morph_AnimtreeProperties_AddMorphItem.jpg" />
+<p />
+Animset Editor ウィンドウが開いた状態で、Generic ブラウザに戻り、MorphTargetSet を選択します。そして、この Animtree Editor ウィンドウに戻り、緑色の矢印をクリックして、MorphTargetSet を Animset プロパティに追加します。
+<p />
+<img alt="Morph_AnimtreeProperties_ApplyMorphSet.jpg" src="rsrc/Three/CreatingAnimationsJP/Morph_AnimtreeProperties_ApplyMorphSet.jpg" />
+<p />
+今度は、個々のモーフを Animtree に接続します。Animtree Editor ウィンドウの何もないエリアをクリックして、ノードのリストを表示させます。"MorphNodeWeight" を選択してそのノードを作成します。再度、何もないエリアを右クリックして、"MorphPose" を選択してそのノードを作成します。以下のようにモーフ ノードと animtree をリンクさせてください。
+<p />
+<img alt="Morph_AnimtreeHeirarchy.jpg" src="rsrc/Three/CreatingAnimationsJP/Morph_AnimtreeHeirarchy.jpg" />
+<p />
+プロパティ セクションで MorphPose ノードを選択して、MorphTargetSet に既存のモーフの名前を入力します。これで、値のバーを MorphNodeWeight ノードの下にドラッグして、3D ウィンドウで Morph がブレンドイン/アウトするのが見えるはずです。MorphNodeWeight ノードの名前を変更します。MorphNodeWeight ノードの名前は、Matinee を通して、またはモーフをゲーム内に適用するためにプログラマによって使用されます。
+<p />
+このツリーを素早く複製して、より多くのモーフを Animtree に追加するには、MorphNodeWeight ノードと MorphPose ノードの両方を選択して、[Ctrl] + [W] を押してノードとリンクを複製してください。新しいMorphPose ノードのモーフ名を変更し、MorphNodeWeight ノードの名前を変更してください。
+<p />
+<h2><a name="フェイス"></a> フェイス </h2>
+<p />
+<h2><a name="ビークル"></a> ビークル </h2>
+<p />
+ビークルのセットアップとリギングに関する情報は、 <a href="SettingUpVehiclesJP.html" class="twikiLink">ビークルのセットアップ</a> ページを参照してください。
+<p />
+<p />
+<h2><a name="カメラ"></a> カメラ </h2>
+<p />
+カメラのセットアップとリギングに関する情報は、 <a href="SettingUpCamerasJP.html" class="twikiLink">カメラのセットアップ</a> ページを参照してください。
+<p />
+<h2><a name="Creatures"></a> Creatures </h2>
+<p />
+<h2><a name="エディタ ツール"></a> エディタ ツール </h2>
+<p />
+<h2><a name="PSK と PSA を理解する"></a> PSK と PSA を理解する </h2>
+<p />
+骨格メッシュやアニメーションをエディタにインポートする際には、PSK と PSA という 2 つのファイル タイプで作業することになります。
+<p />
+<strong>PSK</strong> ファイルは、メッシュ自身、マテリアル番号、エッジ スムージング、ボーン階層、バインド ポーズでのボーンの位置や方向、頂点ウェイトの情報を含む骨格メッシュに関するすべての情報を含んでいます。これはアニメーション情報を含みません。エディタにインポートされると、これは、ボーンの階層にウェイトされたメッシュを作成します。メッシュは、3D パッケージのタイムラインの最初にあったポーズでエクスポートされ、エディタではこれが Bind Pose となります。
+<p />
+<strong>PSA</strong> ファイルは、アニメーションのリストを含んでいます。これらのアニメーションは、時間とともにボーンの位置や方向のデータを含みます。このデータは、その親ボーンに関連しているので、階層が変わると、アニメーションは再エクスポートされなければいけない場合があります。エディタにインポートされると、これは、ボーン トラックのリストや、これらのトラックの位置や回転データを含むアニメーションのリストを Animset に追加します。
+<p />
+<strong><em>PSA に関する注意</em></strong>: このボーン トラックのリストは、それがリンクしている骨格メッシュのボーンからは完全に独立しており、animset のトラック リストにマッチする骨格メッシュ ボーンにアニメーションを適用するだけであることに注意してください。余分なボーンを含むアニメーションをインポートすることで、ボーンはトラック リストに追加できます。アニメーション ブラウザの “Delete tracks (トラックを削除)” メニュー項目を選択することで、ボーンをトラック リストから削除することができます。animset からトラックを削除しても、骨格メッシュにボーンを追加したり、骨格メッシュからボーンを削除したりすることはありません。animset を異なる骨格メッシュにリンクしても、animset のボーンのトラック リストは変更されません。
+<p />
+<h3><a name="コンテンツのインポートとエディタでのセットアップ"></a> コンテンツのインポートとエディタでのセットアップ </h3>
+<p />
+PSK ファイルを Unreal Editor にインポートするには、まず Asset Browser を開き、キャラクターをインポートしたいパッケージを読み込みます。
+<p />
+リストのパッケージで右クリックをして、”Import… (インポート)” を選択します。
+<p />
+PSK ファイルを選択して、”Open (開く)” をクリックします。
+<p />
+インポート ダイアログ ボックスが開くので、パッケージ名が正しいかどうか確認してください。フィールドに、新しい未使用の名前をタイプすることで、インポート時に新しいパッケージを作成します。新しいサブ グループを追加したい場合、または既存のサブ グループにインポートしたい場合は、“Group (グループ)” フィールドに名前を追加することもできます。“Name (名前)” フィールドで、名前が正しいことを確認してください。デフォルトで、PSK ファイルの名前を使用するようになっています。  上書きするには、既存の骨格メッシュの名前をタイプしてください。
+<p />
+Maya で Y-Up を使用している場合、"bAssumeMayaCoordinates" ボックスをチェックすることで、オフセットを適用し、エディタでメッシュが正しく見えるように方向を正します。
+<p />
+“OK” をクリックすると、パッケージで新しい骨格メッシュを作成します。高ポリゴン メッシュは、インポートするのに時間がかかる場合があります。
+<p />
+このメッシュをビューして編集するには、ダブルクリックしてください。これで Animset Editor ウィンドウが開きます。このウィンドウは、animset、骨格メッシュ、Morph Target を変更するのに使用します。
+<p />
+<p />
+<p />
+<h3><a name="Animation Set Editor"></a> Animation Set Editor </h3>
+<p />
+Animset Editor Window は、animset、骨格メッシュ、Morph Target を表示して、変更するのに使用します。
+<p />
+<img alt="AnimsetEditor_ColorCoded.jpg" src="rsrc/Three/CreatingAnimationsJP/AnimsetEditor_ColorCoded.jpg" />
+<p />
+<font color="#0000ff">Preview Buttons (プレビュー ボタン)</font>: 3D ビューで表示されているものを操作します。<br />
+<font color="#008080">Browser (ブラウザ)</font>: メッシュ、アニメーション、モーフをリストしたり、選択したりします。<br />
+<font color="#008000">Skeleton Tree (骨格ツリー)</font>:  3D ビューで階層をビューしたり、ボーンを非表示にしたりします。<br />
+<font color="#ff00ff">Properties (プロパティ)</font>: メッシュ、アニメーション、モーフの設定を変更します。<br />
+<font color="#800000">3D View (3D ビュー)</font>: メッシュ、アニメーション、モーフをビューします。<br />
+<font color="#808000">Time Slider (タイム スライダー)</font>: アニメーションの再生や一時停止、animnotifies のビューをします。
+<p />
+3D ビューで、左のマウス ボタンを使用することで、メッシュの周りデビューを回転させることができます。右のマウス ボタンは、ビューをズームインしたり、ズームアウトします。真ん中のマウス ボタンは、上下左右にビューをパニングします。
+<p />
+[L] キーを押しながら 3D ウィンドウでドラッグすると、ライトを移動させることができます。
+<p />
+<strong>一般的なボタン</strong>:
+<p />
+<img alt="AnimsetEditor_MainButtons.jpg" src="rsrc/Three/CreatingAnimationsJP/AnimsetEditor_MainButtons.jpg" />
+<p /> <dl>
+<dt> <strong>Show Skeleton (骨格を表示)</strong> </dt><dd> これは、3D ウィンドウでメッシュの上にオーバーレイされたボーン構造を表示します。これがオンの状態で、Skeleton Tree (骨格ツリー) セクションで、特定のボーンを右クリックして、これらを表示したり、非表示にしたりすることができます。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Show Bone Names (ボーン名を表示)</strong> </dt><dd> これは、3D ウィンドウで各ボーンの名前を表示します。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Show Wireframe (ワイヤフレームを表示)</strong> </dt><dd> これは、ワイヤフレーム ビューとシェードされたビューを切り替えます。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Show Reference Pose (参照ポーズを表示)</strong> </dt><dd> これは、骨格メッシュを強制的にバインド ポーズ (インポートされたポーズ) にします。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Show Mirror (ミラーを表示)</strong> </dt><dd> これは、XZ プレーンに沿って、アニメーションをミラーします。これはプレビュー専用です。アニメーションを実際に変更することはありません。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Socket Manager (ソケット マネージャ)</strong> </dt><dd> これは、Socket Manager (ソケット マネージャ) ウィンドウを開き、ボーンに Socket (ソケット) を追加することができます。Socket (ソケット) は、武器やパーティクルなどのアイテムを追加するのに使用されます。Socket (ソケット) は、必要に応じて、ボーンからオフセットすることができます。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>New Notify (新しい Notify)</strong> </dt><dd> これは、AnimNotify を選択されたアニメーションのタイムラインに追加します。Animnotifies はサウンド、パーティクル、アタッチメントの切り替え、またはプログラマが設定できるようなあらゆるイベントをトリガするタイムラインのポイントです。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Toggle Cloth (クロスのトグル)</strong> </dt><dd> これは、頂点クロス シミュレーションをビューすることができます。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Generate Soft-Body Tetrahedron Mesh (ソフトボディ四面体メッシュの生成)</strong> </dt><dd> (?)
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Toggle Soft-Body Preview Simulation (ソフトボディ プレビュー シミュレーションのトグル)</strong> </dt><dd> (?)
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Show Uncompressed Animation (非圧縮のアニメーションを表示)</strong> </dt><dd> アニメーション圧縮が適用され、Show Skeleton (骨格を表示) がオンされると、これは、他の骨格をオーバーレイし、選択されたアニメーションの非圧縮バージョンを再生します。従って、2 つの骨格の違いをビジュアル的に比べることができます。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Animation Compression... (アニメーション圧縮)</strong> </dt><dd> これは、Animation Compression (アニメーション圧縮) ウィンドウを開きます。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>LOD</strong> </dt><dd> このボタンのセットは、3D ウィンドウでビューされる LOD を変更します。AUTO (自動) は、ゲームで表示されるように LOD を表示し、LOD メッシュを、メッシュからのビューアーの距離により変更します。現在の LOD レベル数は、3D ウィンドウの左上の隅に表示されています。B、1、2、3 ボタンは、3D ウィンドウに強制的にその LOD レベルを表示させます。“B” はベース、LOD-0 のことを示します。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Playback Speed (再生スピード)</strong> </dt><dd> このボタンのセットは、3D ウィンドウでのアニメーションの再生スピードを変更します。しかしながら、プレビュー レートを変えるだけであり、ゲーム内での再生レートには影響を与えません。ゲーム内のアニメーションのスピードに影響を与える "RateScale" 設定は、Properties (プロパティ) セクションの AnimSequence タブで変更することができます。
+</dd></dl>
+<p />
+詳細については、<a href="AnimSetEditorUserGuideJP.html" class="twikiLink">AnimSet エディタユーザーガイド</a> を参照してください。
+<p />
+<h3><a name="アニメーションツリー エディタ"></a> アニメーションツリー エディタ </h3>
+<p />
+詳細については、<a href="AnimTreeEditorUserGuideJP.html" class="twikiLink">AnimTree エディタユーザーガイド</a> を参照してください。
+<p />
+<h3><a name="PhAT"></a> PhAT </h3>
+<p />
+詳細な情報に関しては、<a href="https://docs.unrealengine.com/5.0/udk/Three/PhysicsAssetEditor/UserGuideJP.html" class="twikiLink">物理資産ツール</a> を参照してください。
+<p />
+<h2><a name="モーションキャプチャ"></a> モーションキャプチャ </h2>
+<p />
+このセクションでは、Epic の独特のモーション キャプチャ装置やパイプラインを紹介します。しかし、市場には多くのタイプのモーション キャプチャ システムがあることを覚えておいてください。それぞれのタイプには、その利点と欠点があります。ご自身に一番合うシステムを使用するようにしてください。どのようなモーション キャプチャ システムやパイプラインを使用するにしても、最終的なアニメーションを Unreal Editor にインポートするには、Max、Maya、Softimage のような 3D パッケージから、ActorX エクスポータを使用してエクスポートしなければいけません。
+<p />
+Epic では、Vicon MX システム (<a href="http://www.vicon.com/" target="_top">http://www.vicon.com/</a>) を使用しています。これは、俳優に付けられたベルクロによって反射するマーカーを追跡する「受動光」システムです。Epic のシステムでは、36 台のカメラが部屋中に均一に置かれています。同時に、同期した参考用ビデオも記録します。
+<p />
+<strong><em>Epic のモーション キャプチャ パイプラインは以下の通りです。</em></strong> <ol>
+<li> システムを調整します。
+</li> <li> 動きをキャプチャします。
+</li> <li> Vicon IQ または Blade を使用してマーカー データをクリーンアップします。
+</li> <li> Motionbuilder でキャラクターにターゲットします。
+</li> <li> Max または Maya でアニメーションを洗練します。
+</li> <li> ActorX を使用して Unreal Editor にインポートします。
+</li></ol>
+<p />
+現在は、Vicon Blade ソフトウェアを使用して、キャプチャ、マーカー データのクリーンアップ、ラベルを行っています。俳優のマーカーの位置は、ニーズによって変わりますが、1 人の俳優につき、以下のようなレイアウトで 51 個のマーカーを使用しています。
+<p />
+<img alt="Mocap_Marker_Placement.jpg" src="rsrc/Three/CreatingAnimationsJP/Mocap_Marker_Placement.jpg" />
+<p />
+武器や小道具にもマーカーをつけます。トラックしなければいけない武器やオブジェクトのそれぞれに 4 個から 5 個のマーカーをつけます。実際は 3 個で十分ですが、オクルージョンのことを考えると 1 個か 2 個余分につけると便利です。また、データをクリーンアップしたり、ラベルしたりする際に、オブジェクトの前面を断定するのが簡単になります。
+<p />
+<img alt="Markered_Gun_Lancer.jpg" src="rsrc/Three/CreatingAnimationsJP/Markered_Gun_Lancer.jpg" />
+<p />
+Vicon IQ でマーカー データをクリーンアップし、ラベルした後、ラベルのついたマーカー データと完全にリグしたキャラクターを Motionbuilder シーンにインポートします。その後、モーションをキャラクターにターゲットします。Motionbuilder の “Character (キャラクター)” や “Actor (俳優)” オプションを調節して、希望する動きやポーズを作成したら、アニメーションをキャラクター骨格、または Motionbuilder キャラクター リグに描画します (アニメーションを「ベイクする」として知られています)。この時点でさらに、アニメーションをクリーンアップしたり、タイミングを調整したり、ループをセットアップしたりと、すべて Motionbuilder で行うことができます。
+<p />
+その後、そのアニメーションを Motionbuilder から Max Biped または Maya にインポートして、アニメーションに最終的な磨きをかけます。
+<p />
+アニメーションが完全に思うように仕上がったら、ActorX を使用して、そのアニメーションを Max または Maya から Unreal Editor にエクスポートします。
+<p />
+<strong><em>ヒント</em></strong>: 部屋の一隅にはビデオカメラが設置されています。Epic のシステムは、そのビデオカメラからビデオをキャプチャし、データと同期するようにセットアップされています。ビデオカメラがすべてのキャプチャ空間をカバーできるのに十分なワイドレンズであることを確認してください。
+<p />
+<p />
+<img alt="Mocap_RefCam_Comp.jpg" src="rsrc/Three/CreatingAnimationsJP/Mocap_RefCam_Comp.jpg" />
+<p />
+<strong><em>ヒント</em></strong>: すべてのキャラクターが常にキャプチャ ボリューム内に留まっていて、各パフォーマンスを T-Pose で始め、T-Pose で終わると、データをクリーンアップするのが簡単になります。俳優がキャプチャ空間を出ても構わない場合は、ダッシュする時のみです。俳優がキャプチャ空間から出ると、出たままの状態で、シーンの最後に T-Pose に戻ってもいけません。
+<p />
+<strong><em>ヒント</em></strong>: 色のついたベルクロ ストラップを各俳優に取り付け、参考用ビデオで簡単に俳優を識別できるようにします。
+<p />
+<img alt="Mocap_Character_RefPose.jpg" src="rsrc/Three/CreatingAnimationsJP/Mocap_Character_RefPose.jpg" />
+<p />
+<h3><a name="ゲーム内アニメーションのためのモーション キャプチャとシネマティクスのためのモーション キャプチャ"></a> ゲーム内アニメーションのためのモーション キャプチャとシネマティクスのためのモーション キャプチャ </h3>
+<p />
+<strong><em>ゲーム内アニメーションのためのモーション キャプチャ</em></strong>: ゲーム内アニメーションをキャプチャする際には、一度に 1 人の俳優のみをキャプチャするべきです。何かのインタラクションがある場合は、2 人でも構いません。多くの場合、アニメーター自身がスーツを着てキャプチャされます。というのは、どのようなアニメーションが必要とされているかを一番良く分かっているからです。これが最終的にどのアニメーションにブレンドするか、またはそこからブレンドするかを常に念頭において、モーションの最初と最後にそのポーズになるべく近づけるようにしてください。また、アイドルな状態、またはそれを止める状態などのように、アニメーションがループされるのかを念頭において、ループが顕著であることが分かってしまうような独特の動きを最小限に抑えてください。ゲーム内のアニメーションは、特定のカメラに対して演じるものではないので、どのような角度から見ても良く見えなければいけません。
+<p />
+<strong><em>シネマティクス アニメーションのためのモーション キャプチャ</em></strong>: シネマティクス、またはカットシーンのためのアニメーションをキャプチャする際には、そのシーンに現れるすべての俳優をキャプチャします。Epic の場合、通常一度に 5 人までのプロの俳優をキャプチャします。脚本、絵コンテ、アニマティクス、事前に録音されたボイスオーバーを含む、映画の製作に似たパイプラインを使用するのが最善です。これらすべては、モーション キャプチャを記録する際に、これに関わる俳優やアニメーターのためにシーンをセットアップする手助けをします。通常、ビデオカメラをマークして、シーンがモーション キャプチャされるのと同時に、シネマティクス ディレクターが歩きながら、意図するビューでシーンを撮影します。俳優はこのカメラに向かってパフォーマンスをし、最終的に Matinee でカメラ ワークをセットアップするのに使用できるような参考用ビデオができあがります。特定のシネマティクスが、手持ち撮影のカメラのような感覚を必要とする場合は、モーション キャプチャ セッションでカメラの動きもキャプチャします。
+<p />
+<strong><em>ヒント</em></strong>: 身体のパーツにおもりを追加することで、俳優の姿勢や歩行を調節することができます。Gears of War の Boomer のアニメーションでは、足首へのおもりとダイビングのウェイト ベルトを俳優につけて、ぎこちない歩行のサイクルを作り上げました。
+<p />
+<p />
+<h2><a name="開発用アセット"></a> 開発用アセット </h2>
+<p />
+<h3><a name="アニメーションデータ"></a> アニメーションデータ </h3>
+<p />
+<h3><a name="モーションキャプチャ データ"></a> モーションキャプチャ データ </h3>
+<p />
+通常、人間の動きはモーションキャプチャにより最も良く取り込まれます。
+<p />
+Epic では Vicon IQ を使用してキャプチャし、次に Motionbuilder でデータをターゲット化し、タイムシフトやループ化などを処理します。次に、BVH's を使用してターゲットアニメーションを 3D Studio Max にエクスポートするか、または Maya の .fbx インポート機能を使って Maya にエクスポートし、それぞれのパッケージで最終的なクリーンアップを行います。
+<p />
+<h3><a name="キーフレームデータ"></a> キーフレームデータ </h3>
+<p />
+<p />
+<h2><a name="エクスポート"></a> エクスポート </h2>
+<p />
+<p />
+<h2><a name="インポート"></a> インポート </h2>
+<p />
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CreatingAnimationsJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:36 GMT -->
+</html></body>

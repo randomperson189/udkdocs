@@ -1,0 +1,377 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ActorTicking.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:08:03 GMT -->
+<head>
+<title> UDK | ActorTicking    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ActorTicking  </b></div>
+<div id="tooltext">
+<a href="ActorTickingJP.html" class="twikiLink">日本語訳</a><br><a href="ActorTickingCH.html" class="twikiLink">中国翻译</a><br><a href="ActorTickingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ActorTicking -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<!--  -->
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="UnrealScriptHome.html" class="twikiLink">UnrealScript</a></b> &gt; Actor Ticking <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="GameplayProgrammingHome.html" class="twikiLink">Gameplay Programming</a></b> &gt; Actor Ticking
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Actor Ticking"></a> Actor Ticking </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="ActorTicking.html#Actor Ticking"> Actor Ticking</a> <ul>
+<li> <a href="ActorTicking.html#Overview"> Overview</a>
+</li> <li> <a href="ActorTicking.html#TG_PreAsyncGroup"> TG_PreAsyncGroup</a>
+</li> <li> <a href="ActorTicking.html#TG_DuringAsyncGroup"> TG_DuringAsyncGroup</a>
+</li> <li> <a href="ActorTicking.html#TG_PostAsyncGroup"> TG_PostAsyncGroup</a>
+</li> <li> <a href="ActorTicking.html#Actor Spawning"> Actor Spawning</a>
+</li> <li> <a href="ActorTicking.html#Component Ticking"> Component Ticking</a>
+</li> <li> <a href="ActorTicking.html#Tick Code Flow"> Tick Code Flow</a>
+</li> <li> <a href="ActorTicking.html#Detailed Code Flow (And Beyond Ticking)"> Detailed Code Flow (And Beyond Ticking)</a> <ul>
+<li> <a href="ActorTicking.html#Code Flow (each frame)"> Code Flow (each frame)</a>
+</li> <li> <a href="ActorTicking.html#Why Is It So Important?"> Why Is It So Important?</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Actors are ticked once per frame with the elapsed time between frames in the order they appear in the World's actor list (aggregate of all levels' lists). Actors are now ticked in 3 phases: before asynchronous work, during asynchronous work, and after asynchronous work. Which group an Actor is ticked in is controlled by the TickGroup member. If an Actor needs to have its state updated before any asynchronous work (physics, and others later), then it needs to be assigned to the TG_PreAsyncWork group. Failing to do so will cause incorrect behavior and/or off-by-one-frame problems. Actors that can be ticked in parallel with physics and other threads are assigned to the TG_DuringAsyncWork group. If any Actor in that group calls a function that touches our rigid body physics data, an error is logged and the call is ignored. This can lead to memory leaks, invalid scene state, etc. so must be diligently fixed. The same thing holds true SpawnActor(), MoveActor(), SetLocation(), SetCollision(), etc. Those functions will continue to execute, but not affect the physics thread. They will also log errors. Finally, an Actor that depends on physics being updated first sets their group to TG_PostAsyncWork. Actors in this group depend on results from the physics simulation in order to represent an accurate world state (vehicles, ragdolls, etc.) It's safe to call both physics and all Unreal functions for movement, spawning, and collision in this phase.
+<p />
+<p />
+Here's a list of pros/cons for placing Actors into tick groups:
+<p />
+<h2><a name="TG_PreAsyncGroup"></a> TG_PreAsyncGroup </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
++ Can safely call any Unreal function or Novodex physics function
+<p />
++ Updates positions, rotations, etc. for the physics simulation
+<p />
+- Operates on last frame's physics simulation results
+<p />
+- No parallelism in processing
+<p />
+<h2><a name="TG_DuringAsyncGroup"></a> TG_DuringAsyncGroup </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
++ Happens in parallel with physics simulation
+<p />
+- Unsafe to call certain Unreal functions and all Novodex physics functions which write to the scene data (read is ok)
+<p />
+<h2><a name="TG_PostAsyncGroup"></a> TG_PostAsyncGroup </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
++ Can safely call any Unreal function or Novodex physics function
+<p />
++ Operates on the current frame's physics simulation data
+<p />
+- No parallelism in processing
+<p />
+So the general rules for placing an Actor into a given list are:
+<p /> <ol>
+<li> If it changes collision, spawns collidable actors, writes to Novodex data, then it should go in TG_PreAsyncWork. Common Actors here are Pawns, Weapons, and some rigid body classes.
+</li> <li> If the Actor doesn't change collision, spawn colliding Actors (non-colliding are fine), or change Novodex data, then the Actor should be placed in the TG_DuringAsyncWork group. This is the best place as time spent ticking Actors hides any time spent simulating physics, e.g. 2ms of tick time here means that up to 2ms of simulation time are free. Particle systems, audio, AI processing are good candidates for this group.
+</li> <li> If the Actor needs to get data back from Novodex before updating its Unreal data, then it must go in TG_PostAsyncWork. Vehicles and ragdolls are what will most often go here.
+</li></ol>
+<p />
+<p />
+<h2><a name="Actor Spawning"></a> Actor Spawning </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Spawning an Actor means, it will be ticked (and all of its components) in the group it is spawned in with no regard to its tick group. The very next frame, the newly spawned Actor will be ticked in the correct tick group. One exception to this is that Actor's spawned during the asynchronous tasks are deferred until TG_PostAsyncWork.
+<p />
+<p />
+<h2><a name="Component Ticking"></a> Component Ticking </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Just as Actors can be segregated into different ticking groups, so can Components. Previously, an Actor ticked all of its Components during the Actor's tick. This still happens, but Components that need to be in different groups are added to a list that manages when they'll be ticked. Components should be assigned ticking groups using the same criteria for assigning an Actor to a tick group.
+<p />
+<p />
+<h2><a name="Tick Code Flow"></a> Tick Code Flow </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Game Thread</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Physics Thread</font></a> </th></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> Work through the world's Actor list ticking those that are TG_PreAsyncWork and deferring all others </td><td bgcolor="#ffffff"> Idle </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> For each ticked Actor, work through components list ticking TG_PreAsyncWork and deferring all others </td><td bgcolor="#eaeaea"> Idle </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> Tell physics thread to start </td><td bgcolor="#ffffff"> Start simulation </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> For each Actor in the TG_DuringAsyncWork list, tick the actor </td><td bgcolor="#eaeaea"> Simulate Physics </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> For each Component in the Actor, tick the Component deferring as needed </td><td bgcolor="#ffffff"> Simulate Physics </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> For each Component deferred until TG_DuringAsycnWork, tick the Component </td><td bgcolor="#eaeaea"> Simulate Physics </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> Block until physics work is done </td><td bgcolor="#ffffff"> Return Simulation Results </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> For each Actor in the TG_PostAsyncWork list, tick the actor </td><td bgcolor="#eaeaea"> Idle </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> For each Component in the Actor, tick the Component </td><td bgcolor="#ffffff"> Idle </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> For each Component deferred until TG_PostAsycnWork, tick the Component </td><td bgcolor="#eaeaea"> Idle </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> Render &amp; Repeat </td><td bgcolor="#ffffff"> Idle </td></tr>
+</table>
+<p />
+<p />
+<h2><a name="Detailed Code Flow (And Beyond Ticking)"></a> Detailed Code Flow (And Beyond Ticking) </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="Code Flow (each frame)"></a> Code Flow (each frame) </h3>
+<p />
+<pre>
+Object ticking
+   Pre-physics
+      controller (input)
+      pawn (script)
+      Components
+         SkeletalMeshComponent: update animations, skeleton controls, then compute the matrices
+   Physics, async
+      pawn physics
+   Post-physics
+   Camera tick
+   Viewport tick
+
+   &#34;server travelling&#34;
+   &#34;client travelling&#34;
+   streaming
+
+Render
+   Calculate VP matrix (ask camera in script, returns cached value)
+   Controller.PreRender
+      UTPawn.PreRender (pretty good thing for licencees to use as well)
+   Render everything
+
+Audio
+
+Callgraph computation
+</pre>
+<p />
+<h3><a name="Why Is It So Important?"></a> Why Is It So Important? </h3>
+<p />
+Understanding the ticking and rendering order is essential to avoid off-by-1-frame issues and to work around dependencies in calling order.  For instance, the camera is updated after all ticking is done, so anything that is camera relative (such as a first-person attachment or a laser dot) must be done in PreRender.  But if there is, for instance, an <em>animation</em> dependancy on camera position, there <strong>will be</strong> an off-by-1-frame issue, because animation occurs during Pre-physics, pawn movement occurs during physics, camera (typically) is dependant on pawn position, and thus the animation dependancy creates a loop.  To get around these issues, it may be necessary to calculate something more than once per frame.  Moving the camera tick as well as the animation tick to post physics will allow the animation to have correctly updated camera position (but the camera will be updated twice per frame unless coded specifically not to).
+<p />
+ - Jordan Weitz<sup>?</sup>
+<p />
+<noautolink>
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ActorTicking.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:08:03 GMT -->
+</html></body>

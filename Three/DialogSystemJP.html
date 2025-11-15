@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DialogSystemJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:40 GMT -->
+<head>
+<title> UDK | DialogSystemJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">DialogSystemJP  </b></div>
+<div id="tooltext">
+<a href="DialogSystem.html" class="twikiLink">English Translation</a><br><a href="DialogSystemCH.html" class="twikiLink">中国翻译</a><br><a href="DialogSystemKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/DialogSystemJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="ダイアログ システム"></a> ダイアログ システム </h1>
+<p />
+<em>ドキュメント概要: 特定のゲーム スタイルに使用されるデザイン原理とダイアログ システムの実装に関する概要。</em>
+<p />
+<em>ドキュメントの変更ログ: <a href="https://udn.epicgames.com/Main/ScottSherman" class="restricted" class="restricted" class="twikiLink">Scott Sherman</a> と <a href="https://udn.epicgames.com/Main/JohnScott" class="restricted" class="restricted" class="twikiLink">John Scott</a> により作成、アップデート、Richard Nalezynski<sup>?</sup> により管理。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="DialogSystemJP.html#ダイアログ システム"> ダイアログ システム</a> <ul>
+<li> <a href="DialogSystemJP.html#概観"> 概観</a> <ul>
+<li> <a href="DialogSystemJP.html#ストリーミング オーディオ"> ストリーミング オーディオ</a>
+</li> <li> <a href="DialogSystemJP.html#非スクリプト ダイアログ"> 非スクリプト ダイアログ</a>
+</li> <li> <a href="DialogSystemJP.html#スクリプト ダイアログ"> スクリプト ダイアログ</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="概観"></a> 概観 </h2>
+<p />
+<h3><a name="ストリーミング オーディオ"></a> ストリーミング オーディオ </h3>
+<p />
+Unreal Engine の<a href="AudioSystemJP.html" class="twikiLink">オーディオ システム</a> は、任意のオーディオ コンテンツの同時ストリーミングをサポートしませんが、中にオーディオの入っているパッケージをストリーミングすることができます。テクスチャ ストリーミングにできる限りの帯域幅を充てたかったので、このアプローチが好まれました。さらに、Unreal Tournament や <a href="https://udn.epicgames.com/Three/GearsOfWar2JP" class="restricted" class="restricted" class="twikiLink">Gears of War</a> などのような速いアクション ゲームでの遅延は許容できません。また、この時点で FaceFX アニメーションを同期させることは、追加的な作業になってきます。代替方法として、特別なダイアログ システムが Gears に作成されました。
+<p />
+Gears はまた、非スクリプト ダイアログを持つので、このアプローチは努力に見合う価値があります。
+<p />
+<h3><a name="非スクリプト ダイアログ"></a> 非スクリプト ダイアログ </h3>
+<p />
+Gears 2 のダイアログ システムは、 <em>非スクリプト ダイアログ システム</em> 、または <strong>GUDS</strong> です。これは、Gears 1 でも使用されました。
+<p />
+システムはイベントベースで、敵が見つかった場合や自分のチームの誰かが倒れた場合などのゲーム内の出来事について Pawn にコメントさせます。起こり得る各アクションで、Pawn はプレイされることのできるラインの選択肢を持っています。ラインの数は各アクションごとにバラバラであり、まったくない場合もあります。現時点では、Pawn が話すことのできるラインは GUDBank に格納されており、ゲームはマップ上の各ポーンのためにこれを完全に読み込みます。これで、いつでも多量のサウンドが存在することにつながります。
+<p />
+システムのメモリ オーバーヘッドを軽減するために、各プレイヤーの GUDBank はいくつかの小さなバンクに分けられています。ポーンにはいつでも少なくとも 1 つのバンクが読み込まれている状態が保証されているので、セットアップしたいかなる状況にも応答可能となっています。
+<p />
+このプロセスは<a href="ContentCookingJP.html" class="twikiLink">コンテンツのクッキング</a> 中に行われるので、コンテンツ側でのマネジメント オーバーヘッドが発生しません。システムは、ゲーム特有の_クッカ ヘルパー_を導入します。これは、必要な際にゲームがクッキング プロセスのコントロールを得ることができるようにします。クッキング パイプラインの各段階は、ゲーム クッカ ヘルパーを呼び出し、必要なアクションを実行させることを可能にします。これらのアクションには、クックされるべきパッケージのリストの生成、個々のオブジェクトのクッキング、ヘルパーにパッケージを読みこませる関数 (または、GUDS クッキングの場合のように、その場で 1 つを作成する)、クッキングのためにパッケージが読み込まれた後、しかしいかなるプロセッシングが起こる前に呼び出される関数を含みます。
+<p />
+GUDS クッキングは、以下のようにシステムを利用します。 <ul>
+<li> クッカは、クックされる必要があると決定したパッケージのリストを生成します。これが終了すると、クッカ ヘルパーへの呼び出しを行い、ここで、リストに生成される必要のある GUD バンクを追加します。これらは実際には存在しないので、「偽」のパッケージです。ヘルパーは、作成する必要があると分かっているパッケージ名を挿入します。この間、上記したようにソース GUDBanks をいくつかのより小さなバンクに分けます。また、後にシステム内のダイアログによって使用されるサウンド キューと FaceFX アニメーションのリストを生成します。(この情報は、クッカが実行されるたびに再生成されるのを避けるために、永続性のクッカ データに格納されます。) 目次パッケージも、「親」 GUDBank クラスを、それが分けられる GUDBank パッケージのコレクションにマップするようなリストに入れられます。
+</li> <li> クッカは、リストでパッケージをたどり、それぞれを読み込み、その中でオブジェクトをクックします。パッケージを読み込む際には、まずヘルパーに呼び出しを掛け、パッケージの読み込みを許可します。GUDS の場合は、これが、ヘルパーがその場でパッケージを作成し返す場所になります。これは、新しい GUDBank を作成し、それに適切なラインを埋め込むことに関わります。すべての FaceFX アニメーションはまた、バンクが設定されるとポーンに適用されるような新しい AnimGroup に挿入されます。これはまた、GUD パッケージが後のプロセスでの使用のためにクックされているかどうかを示す内部フラグを設定します。ヘルパーが任意のパッケージ ファイルで特別なプロセッシングを必要としない場合、NULL を返し、クッカはパッケージを標準の方法で読み込みます。これは、すべての非 GUDS パッケージで行われます。
+</li> <li> パッケージが読み込まれた後、ヘルパーはポスト読み込み関数を呼び出します。GUDS システムの場合は、パッケージが GearGame または GearGameContent の場合、ヘルパーはオリジナルの GUD バンクを見つけて、そのコンテンツを削除します。これは、ラインがクックされたパッケージに取り込まれることを避けるためです。(この操作は、実際の GUDBank オブジェクトのクック中にも行えますが、クッカ ヘルパーの PostLoad 関数の使用ケースを明らかにすることに注目してください。)
+</li> <li> その後、クッカはパッケージ内の各オブジェクトをたどり、クックします。最初にヘルパー CookObject 関数を呼び出します。これは、標準のクッカがこの先のオブジェクトをプロセスすべきかどうかを示すようなブーリアンを返します。GUDS ヘルパーの場合、オブジェクトが参照されたリストのサウンド キューであり、パッケージが GUDS パッケージでないと、サウンド キューが現在のパッケージにクックされることを避けるため、これは <code>MarkedByCooker</code> に設定されます。GUDS パッケージの場合、これは強制的にエクスポートするように設定され、必要ならば FaceFX アニメーション グループ名も修正されます。オブジェクトが FaceFX アセットまたは animset の場合、そして GUDS パッケージでない場合は、GUDS によって使用されるいかなる参照されるアニメーションもそのセットから削除されます。
+</li></ul>
+<p />
+ランタイム時に、GUDS マネージャは、バンクのロード/アンロードを処理します。ポーンがスポーンすると、これは GUD マネージャで登録されます。ポーンが GUDS アセットを使用すると、マネージャはコレクションが既に読み込まれたかどうかをチェックします。まだの場合は、ポーンと共にある GUDBank パッケージの非同期読み込みを開始します。読み込まれたパッケージは、適切なコレクションに入れられ、これは、バンクを使用するすべてのポーンがなくなる際に、バンクにくっついたままになるのを避けるため、参照カウントします。さまざまな時期に、新しいバンクのセットをストリーミングするために要求を設置して、応答の繰り返しを軽減することができます。新しいバンクが読み込まれると、古いものはアンロードされます。
+<p />
+この特定のシステムは、ゲームで使用することができないでしょうが、ゲーム独自のニーズに基づいてコンテンツを分けるためのモデルを提供することはできるでしょう。
+<p />
+このシステムは、動的 (非スクリプト) ダイアログのためにデザインされていることに注意してください。
+<p />
+<h3><a name="スクリプト ダイアログ"></a> スクリプト ダイアログ </h3>
+<p />
+ハードリファレンスされた (状況に固有の) ダイアログは、このアプローチでは恩恵を受けることがありません。変更された GUDS アプローチを取ることもできますが、これは単にダイアログをより小さなバッチに分けるだけになります。1 つのバッチが使用されている間、マネージャが次に必要とされるバッチを非同期読み込みします。バッチが完了したと分かると、アンロードされ、いつでもメモリ内のラインの量を軽減します。メモリ オーバーヘッドを最小限にするためにバッチ サイズのバランスを取りながら、再生で障害がないようにするのが、この場合のコツとなります。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DialogSystemJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:40 GMT -->
+</html></body>

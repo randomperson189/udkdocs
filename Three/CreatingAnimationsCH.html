@@ -1,0 +1,640 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CreatingAnimationsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:59 GMT -->
+<head>
+<title> UDK | CreatingAnimationsCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">CreatingAnimationsCH  </b></div>
+<div id="tooltext">
+<a href="CreatingAnimations.html" class="twikiLink">English Translation</a><br><a href="CreatingAnimationsJP.html" class="twikiLink">日本語訳</a><br><a href="CreatingAnimationsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/CreatingAnimationsCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt;<b><a href="AnimationHome.html" class="twikiLink">动画</a></b> &gt;为虚幻引擎创建动画<br/>
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt;<b><a href="AnimatorHome.html" class="twikiLink">动画设计师</a></b> &gt;为虚幻引擎创建动画<br/>
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="为虚幻引擎创建动画"></a> 为虚幻引擎创建动画 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="CreatingAnimationsCH.html#为虚幻引擎创建动画">为虚幻引擎创建动画</a> <ul>
+<li> <a href="CreatingAnimationsCH.html#概述"> 概述</a>
+</li> <li> <a href="CreatingAnimationsCH.html#开发工具"> 开发工具</a>
+</li> <li> <a href="CreatingAnimationsCH.html#角色">角色</a>
+</li> <li> <a href="CreatingAnimationsCH.html#武器">武器</a>
+</li> <li> <a href="CreatingAnimationsCH.html#顶点变形目标"> 顶点变形目标</a>
+</li> <li> <a href="CreatingAnimationsCH.html#面部">面部</a>
+</li> <li> <a href="CreatingAnimationsCH.html#车辆"> 车辆</a>
+</li> <li> <a href="CreatingAnimationsCH.html#照相机"> 照相机</a>
+</li> <li> <a href="CreatingAnimationsCH.html#编辑器工具">编辑器工具</a>
+</li> <li> <a href="CreatingAnimationsCH.html#运动捕捉">运动捕捉</a>
+</li> <li> <a href="CreatingAnimationsCH.html#开发资源"> 开发资源</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<hr size="1" noshade="noshade">
+本文将介绍虚幻引擎内容传递流程的动画创建过程中所使用的不同类型美术资源相关的基本知识。
+<p />
+<h2><a name="开发工具"></a> 开发工具 </h2>
+<hr size="1" noshade="noshade">
+<!--
+!~---+++ ActorX
+<p />
+所有的骨架网格物体和动画必须从您的3D包中导出，并通过ActorX导入到虚幻编辑器中。
+<p />
+请查看<a href="ActorX.html" class="twikiLink">ActorX</a>页面来获得下载信息。
+-->
+现代的3D内容创建包（比如3DMax和Maya）支持FBX。虚幻引擎3内部支持FBX导入及导出。
+<p />
+<h2><a name="角色"></a> 角色 </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="角色设置和骨架绑定"></a> 角色设置和骨架绑定 </h3>
+<p />
+角色模型应该以非常中立的姿势创建，通常是“T-姿势”，但是使关节处于放松自然的形式也是可以的。骨骼结构应该是单一的骨骼层次、模仿人类的骨架、使角色网格物体处于合适的姿势，并且以放置在原点的“root(根骨骼)”为父项。
+<p />
+尽管编辑器可以导入使用Y轴正方向创建的骨架网格物体，但我们更加希望在所有3D包中使用Z轴正方向进行工作。这样可以保证事情在所有3D包中都一致，并且允许我们在Max和Maya间转换网格物体，不会出现任何坐标轴问题。
+<p />
+当使用Z轴正方向为标准时，角色的建模和骨架绑定在Max中应该面向+Y，或者在Maya中面向-Ｙ。(这个坐标轴在这两个包中是反转的)。在编辑器中，我们对角色应用旋转偏移，使得它们在编辑器中面向+X轴。
+<p />
+<img alt="Marcus_Skeleton_Overlay.jpg" src="rsrc/Three/CreatingAnimationsCH/Marcus_Skeleton_Overlay.jpg" />
+<p />
+对于像布料、装甲或毛发这样的局部，骨架也可以包含额外的带权重的骨骼；同时骨架也可以包含用作为附加点的骨骼，比如武器骨骼或IK骨骼。
+<p />
+最好保持您的角色动画绑定完全地和骨架层次分离开。当导出时，在骨架层次中添加定位器和节点可能会引起一些问题。
+<p />
+如果对多个角色进行建模及并它们的分割部分均衡地适应同一个骨架，那么这些角色可以共享动画集，从而可以减少所需动画的数量。尽管角色的分割部分稍微有点不同通常也可以共享动画。
+<p />
+<strong><em>技术注意事项</em></strong> : <ul>
+<li> 在一个骨架中网格物体影响可以影响的骨骼的最大数量为 <strong>75</strong> 。
+</li> <li> 在一个骨架中的总骨骼数的最大值为 <strong>256</strong> 。
+</li></ul>
+(使这些数值的任何一个超过它们的最大值将会导致在角色上进行第二次渲染，从而降低优化。） <ul>
+<li> 对于网格物体，每个顶点的骨骼影响点的最大数量为 <strong>4</strong> 。(当导入时，任何顶点，如果受到超过4个骨骼的影响，那么将会把它的最低影响点删除，并且在那个顶点的剩余4个影响点之间进行单位化处理)。注意，这会产生基于您为某特定LOD所使用的最大值的性能消耗。所以您如果您想使用值不超过3，那么速度将会较快。一般我们仅为LOD1使用1或小于1的值。
+</li></ul>
+<p />
+<strong><em>优化注意事项</em></strong> :  如果对多个角色进行建模及并它们的分割部分均衡地适应同一个骨架，那么这些角色可以共享动画集，从而可以减少所需动画的数量。即使角色稍微有些不同的部分也可以共享动画。
+<p />
+<strong><em>3D Studio Max 注意事项</em></strong>:  我们首先创建一个两足(Biped)角色，接着构建一个成比例的骨架来匹配那个两足动物，然后把那个骨架约束到两足(Biped)角色上。这样便允许我们使两足(Biped)角色产生动画，但稍后我们需要烘焙骨架上的动画并删除两足(Biped)角色，以便将其导出为FBX格式的文件。
+<p />
+<strong><em>Maya注意事项</em></strong> ：  为绑定的姿势设置骨骼旋转，绑定姿势的最初旋转值可以或者放置在主Rotate(旋转)域中，或者放置在Joint Orient(关节方位)文本域。把这些值放置到主Rotate域时，您将总是可以看到每个关节的真正旋转值。把这些值放置到Joint Orient域时，它是作为一个偏移量出现的，允许您对每个关节的主Rotate值进行归零定位并且可以保留适当的绑定姿势。在以下的图片中，角色是完全相同的姿势。然而在左侧，手臂骨骼有一个初始旋转值；在右侧，通过把初始旋转应用到Joint Orient值上，在没有改变姿势的情况下对这些值进行归零化处理。至于选择哪种方式完全是个人喜好问题，但是选择其中的一种方式并且确保其它的每个绑定姿势都采用这个方式是一种较好的处理办法。因为在这些方式间进行切换可能会在传递过程中引起矛盾。
+<p />
+<img alt="JointOrient.JPG" src="rsrc/Three/CreatingAnimationsCH/JointOrient.jpg" />
+<p />
+<h3><a name="骨骼层次"></a> 骨骼层次 </h3>
+<p />
+具有和骨盆分离的根骨骼是很重要的。根骨骼放在哪里都是没有关系的，尽管放在某些地方可能会使事情变得稍微有点复杂。我们发现当根骨骼在脚部和原点时，可以确保动画一起工作得很好。如果根骨骼在空中的某个地方，当动画不能进行正确地 链接/混合 并产生明显的凸起时，它是很难检测到它了。比如，在Marcus爬上某物的地方执行<a href="RootMotion.html" class="twikiLink">根骨骼运动</a>动画，那么应该把根骨骼放置在哪里便是显而易见的，因为它应该放置在它的脚部即将接触地面的地方。
+<p />
+对于IK，我们把IK骨骼用于脚部和手部，根骨骼的直接子节点。这样便去除了当和具有很长骨骼层次的动画相混合时产生的 位置/旋转 错误。
+<p />
+根据所涉及的动画不同，层次中的武器骨骼的位置通常有正面的和反面的。大多数时候我们的角色都持着枪，所以把它们设为手的子节点是有意义的，因为不管我们压缩动画的程度是多么严重或者我们的动画是在多么低的帧频率下播放，枪支都会在手中保持固定的姿势。这样做的缺点是，当骨骼必须离开手部时的情形。在某些重新装载弹药过程中或者当给枪支安装皮套过程中，骨骼之间或许会发生很多变动，需要在较高的帧频率下才能看到，否则它不能被注意到。因为这些动画类型在我们实例中是很少的，所以我们认为把它们用作为手部的子节点将会为我们节约很多内存。如果我们有很多格斗武器并且它们在持续地到处旋转或怎样，我们可以把这个武器骨骼放置在较高的层次，甚至作为根骨骼的子节点。
+<p />
+武器末端的骨骼(weapon end bones)是一个附加骨骼，它可以把枪的支点改为中心位置的一种方法，在不没有改变所有动画中武器骨骼位置并重新导出它们的情况下，仍然可以使所有动画正确地显示。对于动画有一些较小的骨架绑定优势，但是最好不要使用它们。当我们完成镜像动画是如何工作但没有很多时间来实现它时，这个改变就必须发生。这对于简化脚步的滑行是很重要的。当您将两个以上的动画和很长的骨骼层次相混合时，将会产生错误；脚部的IK是确保脚部在正确位置的一种方式。这在定向混合中是非常明显的。对于非常大的创建物，我们确实要保持它，比如在<a href="https://udn.epicgames.com/Three/GearsOfWar" class="restricted" class="restricted" class="twikiLink">战争机器</a> (PC)中的Brumak的战争。
+<p />
+胳膊肘骨骼 -上臂骨骼的直接子节点 – 仅用于调整上臂骨格的一半数量来帮助顶点进行更好的变形。在游戏中，这样比把roll bones(旋转骨骼)直接放置到层次中的手臂下会获得更好的效果，所以按照这种方式我们仍然可以使具有关节连接的两段手臂和IK一起协同工作。
+<p />
+<img alt="Marcus_Heirarchy.jpg" src="rsrc/Three/CreatingAnimationsCH/Marcus_Heirarchy.jpg" />
+<p />
+<h3><a name="角色导出"></a> 角色导出 </h3>
+<p />
+一旦在您的3D包中将角色网格物体绑定到骨架上并进行了适当的权重设置，那么便可以将其导出为大部分3D内容创建包都支持的FBX文件。如果在场景中有您不想导出的额外骨骼或者带权重网格物体，您必须从场景中将其移除，或者(仅在Maya中)您可以使用后缀 <strong>_noexport</strong> 来单独地重命名那些骨骼，或者使用后缀 <strong>_ignore</strong> 重命名最高层次的骨骼。--> 请参照 <a href="FBXSkeletalMeshPipeline.html#ExportMesh" class="twikiAnchorLink">FBX骨架网格物体导出</a>页面获得更多信息。
+<p />
+<h3><a name="角色导入和设置"></a> 角色导入和设置 </h3>
+<p />
+请参照  <a href="FBXSkeletalMeshPipeline.html#ImportMesh" class="twikiAnchorLink">FBX骨架网格物体导入</a>页面获得更多信息。
+<p />
+<h2><a name="武器"></a> 武器 </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="第一人称武器设置和骨架绑定"></a> 第一人称武器设置和骨架绑定 </h3>
+<p />
+第一人称武器是您在游戏中看到的您自己持有的武器。因为它们放置的位置离玩家的视野很近，并且大多数时候都在其视野中，所以模型一般都具有较高数量的多边形，且它们上应用的贴图都具有较高的分辨率。
+<p />
+<strong><em>技巧</em></strong>:  由于第一人称武器一般仅能从一侧看到，通过删除玩家永远看不到的任何多边形或者物体(通常在模型的前侧/右侧)，可以对模型进行优化。仅当最终的动画完成时才对模型进行优化处理，那时您便知道哪个部分是永远不会被看到的。
+<p />
+在您的3D包中，在原点放置一个照相机，并把它的方向沿着+X轴对齐。这将会代表在游戏中玩家的视野。把第一人称武器网格物体放置到这个相机视野的前面，这样便可以在游戏中看到它。调整相机的FOV及网格物体的位置来获得理想的效果。
+<p />
+<strong><em>技术注意事项</em></strong> :  第一人称游戏是使用不同的渲染遍数进行显示的，所以可以进行视角偏移和FOV改变，且它仅影响第一人称物体而不会影响整个场景的视图。可以编程人员协作来为第一人称的相关条目来调整FOV、视角偏移以及剪切板。
+<p />
+当设计第一人称武器时第一个需要确定的事情是您是否能够看到您自己的手臂。使第一人称手臂可以在视野中显示将会增加设计的复杂度级别。此外，使每个武器可以具有多种类型的手臂(男人、女人、机器人、生物等等)，也将会再次增加复杂度级别。
+<p />
+<img alt="1P_Weapon.jpg" src="rsrc/Three/CreatingAnimationsCH/1P_Weapon.jpg" />
+<p />
+<strong><em>1) 仅第一人称武器，没有第一人称手臂。</em></strong>  这是复杂度最低的选项，仅需要武器的骨架绑定和动画。武器应该和一个骨架层次进行绑定。这个骨架结构应该以在起始位置的“root (根)”骨骼为父项。从相机所在的原点处开始使武器进行动画。一旦动画完成，便可以将骨架网格物体和动画导出为单独的FBX文件。
+<p />
+<strong><em>2)第一人称武器和第一人称手臂，但只有一种类型的手臂。</em></strong>  如果所有的角色都有同样的手臂，您仅需要一个第一人称手臂模型，手臂和武器可以是一个单一的骨架的一部分。这个单一的骨架应该以在起始位“root(根骨骼)”为父项。从相机所在的原点处开始使武器进行动画。一旦动画完成，可以将武器网格物体导出为一个单独的FBX文件，并将动画导出为单独的FBX文件。
+<p />
+<strong><em>3) 第一人称武器和多种不同的第一人称手臂。</em></strong>  如果角色差异很大，那么您需要多个第一人称手臂网格物体来和每个武器进行协作，您需要两个单独的骨架，一个是武器的，一个是手臂的。每个骨架需要以场景原点的”root(根骨骼)”为父项。从建模的立场来说，所有手臂网格物体应该以同样的姿势、使用同样的分割部分、并且绑定到同样的骨架上来进行建模。您需要把不同的手臂网格物体导出到单独的FBX 文件中，并且把每个武器网格物体单独地导出到FBX 文件中；然后把它们导入到虚幻编辑器。这些单独的手臂骨架网格物体将可以共享同一个动画集。
+<p />
+一旦您已经在您的3D包中使武器和手臂一起产生了动画，可以把动画烘焙出来并移除它们之间的约束。保存这个文件并把它重命名为” ExportReady”版本，这时您便有了一个具有两个骨架的版本。删除手臂骨架并导出武器动画到PSA文件。重新打开具有两个骨架的” ExportReady”文件。现在删除武器网格物体并使用同样的动画名称和帧范围来导出手臂动画到另一个FBX 文件中。把每个FBX 文件导入到它们自己的动画集中。最终您会拥有一个手臂动画集和每个武器的一个武器动画集。
+<p />
+在游戏中，武器骨架网格物体和手臂骨架网格物体将会被再次放回到一起，并播放同步后的动画，然后任何手臂骨架网格物体将可以从任何手臂动画集中播放动画。
+<p />
+<img alt="1P_Arm_Variants.JPG" src="rsrc/Three/CreatingAnimationsCH/1P_Arm_Variants.jpg" />
+<p />
+<h4><a name="在引擎中调整"></a> 在引擎中调整 </h4>
+<p />
+最好和程序员进行合作，来使游戏中的第一人称武器和手臂在正确的相机FOV下、正确地加载不同的手臂网格物体、并且使武器和手臂的动画保持同步的情况下进行运作。因为动画是基于场景的原点的，所以不需要任何偏移来时来使它们处于视角中。如果它们需要稍微地进行调整，您可以或者给网格物体应用偏移、或者程序员通过代码进行偏移。
+<p />
+<h3><a name="第三人称武器设置和骨架绑定"></a> 第三人称武器设置和骨架绑定 </h3>
+<p />
+第三人称武器是您看到的其它角色持有的武器。为了建立第三人称武器模型，首先应该把它和它自己的较小的骨骼层次相绑定，然后作为骨架网格物体导出。应该放置武器的”根骨骼”，以便当它被约束到角色的”武器”的骨骼时，武器可以恰当地排列在角色的手中。
+在您的3D包中，当武器的”根骨骼”被约束到角色”武器”的骨骼时，角色和武器便可以一起在同一个场景中产生动画。您最终可以导出两个独立的但同步的动画。一个是武器的一个是角色的。
+<p />
+<img alt="3P_Weapon_Attach.JPG" src="rsrc/Three/CreatingAnimationsCH/3P_Weapon_Attach.jpg" />
+<p />
+为了是武器和角色一同产生动画，比如重新装载弹药的动画，把已经进行骨架绑定的角色和武器放入到同一个场景中，并且把武器的”根骨骼”先约束到角色的”武器”骨骼上。您最终可以导出武器和角色的动画，它们是两个独立的动画但它们之间却是同步的。
+<p />
+通过使用约束来保持手部锁定到武器部分或者以相反的方式，可以使角色和武器按照您希望的方式进行动画。一旦 角色-加-武器 的动画准备好，便可以把动画烘焙到两个骨架层次上，并且可以删除它们之间的所有约束。仅从武器的”根骨骼”删除所有的关键帧，并设置它的位置和旋转值为&lt;0,0,0&gt;。这将会保持所有带动画武器上的动画，但是保持武器在场景的零点处。保存这个文件但是把为“ExportReady(准备导出)”版本。
+<p />
+<h3><a name="武器导出"></a> 武器导出 </h3>
+<p />
+打开您的包含武器和角色的烘焙动画的"Export Ready"文件。从场景中删除角色骨架和网格物体，然后导出武器动画为一个FBX文件。重新打开具有两个骨架的“ExportReady”文件，这次删除武器的骨架和网格物体。使用同样的动画名称和帧范围导出角色动画，但是导入另一个 FBX文件中。
+<p />
+<h3><a name="武器导入"></a> 武器导入 </h3>
+<p />
+在虚幻引擎中，导入角色的FBX 文件到角色的动画集中，并导入武器的PSA文件到武器的动画集中。
+<p />
+<h3><a name="在引擎中调整"></a> 在引擎中调整 </h3>
+<p />
+和编程人员协作，使得在游戏播放时把武器的骨架网格物体约束到角色的”武器”骨骼上。这可能需要在角色的”武器”上创建一个插槽。当动画在角色和武器上同时播放时，它们应该是同步的。
+<p />
+<h2><a name="顶点变形目标"></a> 顶点变形目标 </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="顶点变形目标设置"></a> 顶点变形目标设置 </h3>
+<p />
+<a href="MorphTargets.html" class="twikiLink">顶点变形目标</a> (也称为Blend Shapes(混合形状))用于改变一个网格物体的形状，或者网格物体的某一部分，它通过使一组顶点发生偏移来实现。当骨骼变形不能满足需求时，顶点变形可以作为一种很好的可替换方式。顶点变形目标可以有很多应用，包括脸部动画、肌肉仿真甚至车辆毁坏。
+<p />
+<h3><a name="顶点变形目标导出"></a> 顶点变形目标导出 </h3>
+<p />
+为了虚幻编辑器中进行应用，顶点变形目标可以和骨架网格物体一同导出到一个单独的FBX文件中，然后将其再一次性地导入到虚幻编辑器中进行应用。或者，如果您愿意，也可以分别地导出它们，然后再分别地导入它们。请参照 <a href="FBXMorphTargetPipeline.html#ImportingMorphs" class="twikiAnchorLink">FBX导入顶点变形目标</a>页面获得更多信息。
+<p />
+<!--
+在3D包中，把所有的顶点变形放置到同一个网格物体上。选中这个目标网格物体，打开第一个变形，并把它作为.PSK文件通过使用ActorX导出器将其导出。关闭第一个变形，然后打开下一个变形，把同一个目标网格物体作为另一个.PSK文件导出。重复这个步骤直到所有的变形都被导出为单独的.PSK文件。
+-->
+<p />
+<strong><em>顶点变形注意事项</em></strong>:  所有的顶点变形的导出网格物体和导入网格物体必须是同一个，从而可以确保顶点顺序仍然是一样的。导入一个顶点变形到一个具有不同顶点顺序网格物体上时在大多数情况下都会引起一些问题。请确保当导出每个顶点变形时不要移动网格物体或者改变骨架绑定姿势。重新导入源网格物体可能也会导致顶点顺序问题，并且可能需要重新导入顶点变形目标。
+<p />
+<h3><a name="在编辑器中进行顶点变形目标的导入及设置"></a> 在编辑器中进行顶点变形目标的导入及设置 </h3>
+<p />
+请参照 <a href="FBXMorphTargetPipeline.html#ImportingMorphs" class="twikiAnchorLink">FBX导入顶点变形目标</a>页面获得更多信息。
+<p />
+<!--
+为了在虚幻编辑器中导入及设置顶点变形目标，您必须创建一个MorphTargetSet(定点变形目标集)资源。然后把您的PSKs导入到那个MorphTargetSet(定点变形目标集)中来创建一个顶点变形列表。然后在动画数中把顶点变形列表附加到您的骨架网格物体上。那时，编程人员便可以访问及应用顶点变形了，或者它们可以在Matinee中应用或修改它们。
+<p />
+为了创建MorphSet(顶点变形集)资源，双击您想把顶点变形应用到的骨架网格物体。这将会打开动画集编辑器。在动画集编辑器中，选择菜单项 File(文件) -&gt; NewMorphTargetSet(新建变性目标集)。输入您想创建的新的MorphTargetSet(变性目标集)资源的包、组以及名称。
+<p />
+点击在动画集编辑器的Browser(浏览器)部分的顶部的”Morph(顶点变形)”标签。您新建的MorphTargetSet应该处于选中状态。如果没有，点击下拉菜单并找到您新建的MorphTargetSet。
+<p />
+为了把您的PSK文件导入到顶点变形列表中，可以选择菜单项 File(文件) -&gt; Import MorphTarget(导入变形目标)。选择您的PSKs列表(你可以按住shift键来选中多个PSK文件)，然后点击”OK(确认)”按钮。每个顶点变形都会弹出一个对话框，允许您或者进行仔细检查或者改变顶点变形的名称。高多边形网格物体的导入可能需要一段时间。导入后，在MorphTargets(顶点变性目标)列表中点击每个定点变形。这样便可以在3D窗口中的源网格物体上预览选中的顶点变形，以便您可以确认它们是否被正确地导入。
+-->
+<p />
+<strong><em>技术注意事项</em></strong>:  当导入一个新的顶点变形时，编辑器将会按照顶点顺序在导入的PSK和源网格物体之间比较顶点，将会找出位置变化的顶点，并仅保存移动的顶点的数据。
+<p />
+为了把定点变形目标连接到骨架网格物体上，打开您的网格物体的动画树。这将会打开动画集编辑器。在动画树编辑器中选择动画树节点。
+<p />
+<img alt="Morph_AnimtreeNode.jpg" src="rsrc/Three/CreatingAnimationsCH/Morph_AnimtreeNode.jpg" />
+<p />
+您首先需要把动画树连接到您创建的MorphTartetSet(顶点变形目标集)上。在Properties(属性)部分，展开"Preview Mesh List(预览网格物体列表)"属性。然后在Preview Morph Sets(预览顶点变形集合)中添加一项。展开"Preview Morph Sets(预览顶点变形集合)"列表。
+<p />
+<img alt="Morph_AnimtreeProperties_AddMorphItem.jpg" src="rsrc/Three/CreatingAnimationsCH/Morph_AnimtreeProperties_AddMorphItem.jpg" />
+<p />
+打开动画集编辑器窗口，返回的内容浏览器，并选择您的MorphTargetSet(顶点变形目标集)。然后再次返回到这个动画树编辑器窗口，点击绿色的箭头来把那个顶点变形集添加到Preview Morph Set(预览顶点变形集合)列表中。
+<p />
+<img alt="Morph_AnimtreeProperties_ApplyMorphSet.jpg" src="rsrc/Three/CreatingAnimationsCH/Morph_AnimtreeProperties_ApplyMorphSet.jpg" />
+<p />
+现在您必须把独立的顶点变形连接到动画树上。右击动画树编辑器窗口的空白区域来显示一系列的节点。选择"MorphNodeWeight(顶点变形节点权重)"来创建那个节点。再次右击空白区域，然后选择"MorphPose(顶点变形姿势)"来创建那个节点。按照下图所显示的来链接顶点变形节点和动画树。
+<p />
+<img alt="Morph_AnimtreeHeirarchy.jpg" src="rsrc/Three/CreatingAnimationsCH/Morph_AnimtreeHeirarchy.jpg" />
+<p />
+在属性部分，选择MorphPose节点，在您的MorphTargetSet中输入一个现有的顶点变形的名称。您现在应该可以拖动在MorphNodeWeight节点下面的数值滑条了，从而在3D窗口中看到定点变形的混合入和混合出效果。重命名MorphNodeWeight节点。MorphNodeWeight节点的名称将会被Matinee或者编程人员使用，从而可以把它应用到游戏中的定点变形上。
+<p />
+为了快速地复制这个树，并且像这个动画树中添加更多的顶点变形，可以同时选中MorphNodeWeight 节点和MorphPose节点，并按下ctrl+w键来复制节点及其链接。在新的MorphPose节点中改变顶点变形的名称，并且重命名MorphNodeWeight节点。
+<p />
+<h2><a name="面部"></a> 面部 </h2>
+<hr size="1" noshade="noshade">
+<p />
+关于设置FaceFX的更多信息，请参照<a href="IntroductionToFaceFX.html" class="twikiLink">Face FX简介</a>页面。
+<p />
+<h2><a name="车辆"></a> 车辆 </h2>
+<hr size="1" noshade="noshade">
+<p />
+关于设立及其绑定车辆的相关信息，请参照<a href="SettingUpVehicles.html" class="twikiLink">设立车辆</a>页面。
+<p />
+<h2><a name="照相机"></a> 照相机 </h2>
+<hr size="1" noshade="noshade">
+<p />
+关于设立及绑定相机的信息，请参照<a href="SettingUpCameras.html" class="twikiLink">设立相机</a>页面。
+<p />
+<!--
+!---++ 生物
+<hr size="1" noshade="noshade">
+-->
+<p />
+<h2><a name="编辑器工具"></a> 编辑器工具 </h2>
+<hr size="1" noshade="noshade">
+<p />
+<!--
+!---++ 理解PSK和PSA文件
+<hr size="1" noshade="noshade">
+<p />
+当导入骨架网格物体和动画到编辑器中时，您将会使用两种类型的文件： PSK和 PSA。
+<p />
+<strong>PSK</strong> 文件包含着关于骨架网格物体的所有信息，包括网格物体本身、材质数量、边缘光滑度、骨骼层次、骨骼位置、绑定姿势的朝向以及顶点权重信息等。它不包含动画信息。当它被导入到编辑器中时，这将会针对骨骼层次创建一个带权重的网格物体。这个网格物体的导出姿势是在您的3D包中的时间轴开始处的姿势，在编辑器中，这个姿势将作为它的Bind Pose(绑定姿势)。
+<p />
+<strong>PSA</strong> 文件包含着一系列动画。这些动画包含了在整个时间范围内的骨骼位置及其朝向的数据。这个数据和它的父项骨骼是相对的，所以如果层次改变了，动画可能需要重新导入。当把PSA文件导入到编辑器中时，将会在动画集中增加一系列的动画列表，这些动画包含它们自己的骨骼轨迹列表以及这些轨迹的位置和旋转数据。
+<p />
+<strong><em>PSA注意事项</em></strong>: 请记住上面的骨架轨迹列表和它所连接到的骨架网格物体的骨骼是完全独立的，并且仅会把动画应用到匹配动画集的轨迹列表的骨架网格物体的骨骼上。可以通过导入一个包含额外骨骼的动画来把骨骼添加到轨迹列表中。也可以通过在动画浏览器中选择"Delete tracks(删除轨迹)"菜单项来从轨迹列表中删除骨骼。从动画集中删除轨迹将会从任何骨架网格物体上添加或删除骨骼。链接一个动画集到一个不同的骨架网格物体将不会改变动画集的骨骼轨迹列表。
+-->
+<p />
+<h3><a name="在编辑器中进行内容导入及设置"></a> 在编辑器中进行内容导入及设置 </h3>
+<p />
+<!--
+为了把您的PSK文件导入到虚幻编辑器中，您必须首先要打开资源浏览器，并且加载您想把角色导入到的包。
+<p />
+右击列表中的刚刚加载的包，并选择"Import(导入)..."
+<p />
+选择您的PSK文件，并点击"Open(打开)"
+<p />
+在打开的导入对话框中，确认您的包的名称是否正确。输入一个新的名称，如果这个名称没有使用过，则在导入时会创建一个新包。如果您想添加一个新的子组，您也可以在“Group(组)”文本域中添加一个新的名称，否则它将会被导入到现有的子组中。在“Name(名称)”文本域，确认那个名称是否正确。默认情况下，它将会使用PSK文件的名称。输入一个现有的骨架网格物体的名称，那么新导入的将会覆盖原来的骨架网格物体。
+<p />
+如果您使用Maya中的正Y轴，您可以选择"bAssumeMayaCoordinates(采用Maya坐标)"单选框，并且这将会对其应用偏移量，从而使它在编辑器中看上去是正确的。
+<p />
+点击”OK”，这将会在包中创建一个新的骨架网格物体。高多边形网格物体的导入可能需要一段时间。
+-->
+请参照<a href="FBXSkeletalMeshPipeline.html#ImportMesh" class="twikiAnchorLink">FBX骨架网格物体导入</a>页面获得关于将骨架网格物体导入到虚幻引擎3中的更多信息。要想查看及编辑该网格物体，请在内容浏览器中双击它即可。这将会打开动画集编辑器窗口。这个窗口用于修改动画集、骨架网格物体和顶点变形目标。
+<p />
+<h3><a name="动画集编辑器"></a> 动画集编辑器 </h3>
+<p />
+<!--
+动画集编辑器窗口用于查看和修改动画集、骨架网格物体和顶点变形目标。
+<p />
+<img alt="AnimsetEditor_ColorCoded.jpg" src="rsrc/Three/CreatingAnimationsCH/AnimsetEditor_ColorCoded.jpg" />
+<p />
+<font color="#0000ff">预览按钮</font>: 用于操作3D窗口中显示的东西。
+<br /> <font color="#008080">浏览器</font>: 用于列出及选择网格物体、动画或定点变形。<br />
+<font color="#008000">骨架树</font>:  用于在3D视图中查看层次以及隐藏骨骼。
+<br /> <font color="#ff00ff">属性</font>: 用于修改对网格物体、动画及顶点变形的设置。<br />
+<font color="#800000">3D视图</font>: 用于查看网格物体、动画和顶点变形。<br />
+<font color="#808000">时间滑块</font>: 用于播放或者暂定动画以及查看动画通知。
+<p />
+在3D视图中，使用鼠标左键来围绕您的网格物体旋转视图。 右键用于移动您的视图的远近，中间的鼠标按钮可以在上下左右的方向上平移您的视图。
+<p />
+当在3D视图中进行拖动的过程中按下”L”键，将允许您移动光源。
+<p />
+<strong>按钮概括</strong>:
+<p />
+<img alt="AnimsetEditor_MainButtons.jpg" src="rsrc/Three/CreatingAnimationsCH/AnimsetEditor_MainButtons.jpg" />
+<p /> <dl>
+<dt> <strong>Show Skeleton(显示骨架)</strong> </dt><dd> 这将会在3D窗口中显示骨骼结构，覆盖在网格物体上。当打开此按钮时，您可以通过在骨架树选项中通过右击它们来显示或者隐藏某些骨骼。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Show Bone Names(显示骨骼名称)</strong> </dt><dd> 这将在3D窗口中显示每个骨骼的名称。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Show Wireframe(显示线框)</strong> </dt><dd> 这将在线框视图和着色视图间切换。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Show Reference Pose(显示参考姿势)</strong> </dt><dd> 这将强制骨架网格物体为它的绑定姿势(就是它被导入时的姿势)。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Show Mirror(显示镜像)</strong> </dt><dd> 这将会沿着XZ平面镜像动画。仅用于预览。它不会真正地修改动画。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Socket Manager(插槽管理器)</strong> </dt><dd> 这将打开插槽管理器窗口，并允许您把插槽添加到骨骼上。插槽用于附加项武器或粒子这样的东西。如果需要插槽可以和骨骼发生偏移。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>New Notify(新建通知)</strong> </dt><dd> 这将会把AnimNotify(动画通知)添加到选中动画的时间轴上。动画通知是时间轴上的点，可以触发事件，这些事件包括类似于声音、粒子、附加交换或者其它程序员可以连接的任何东西且没有数量限制。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Toggle Cloth(切换布料)</strong> </dt><dd> 这允许您查看顶点布料仿真。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Generate Soft-Body Tetrahedron Mesh(生成软体四面体网格物体)</strong> </dt><dd> (?)
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Toggle Soft-Body Preview Simulation(切换软体预览仿真)</strong> </dt><dd> (?)
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Show Uncompressed Animation(显示未压缩的动画)</strong> </dt><dd> 当应用了动画压缩，并且Show Skeleton(现时骨架)切换为打开状态时，这将会覆盖播放选定动画的未压缩版本的另一个骨架。所以您可以可视化地比较这两个骨架的不同。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Animation Compression(动画压缩)...</strong> </dt><dd> 这可以打开动画压缩窗口。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>LOD</strong> </dt><dd> 这组按钮将会在3D窗口中改变所看到的骨架网格物体的细节层次。AUTO显示它们在游戏中显示时所使用的LOD版本，将会根据查看者到网格物体的距离来改变网格物体的LOD。当前的LOD层次值显示在3D窗口的左上角。B, 1, 2, 3按钮将会强制3D窗口显示那个LOD级别。   "B"指的是Base(基础网格物体)或LOD-0。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>Playback Speed(播放速度)</strong> </dt><dd> 这组按钮将改变动画在3D预览窗口中的播放速度。但是它仅改变预览速度，不会影响它在游戏中的播放速度。"RateScale(速率缩放)"设置，将影响游戏中动画的速度，可以在属性部分的动画序列标签下进行修改。
+</dd></dl>
+-->
+请查看<a href="AnimSetEditorUserGuide.html" class="twikiLink">动画集编辑器用户指南</a>页面来获得更多信息。
+<p />
+<h3><a name="动画树编辑器"></a> 动画树编辑器 </h3>
+<hr size="1" noshade="noshade">
+<p />
+请查看<a href="AnimTreeEditorUserGuide.html" class="twikiLink">动画树编辑器用户指南</a>来获得更多信息
+<p />
+<h3><a name="PhAT"></a> PhAT </h3>
+<hr size="1" noshade="noshade">
+<p />
+请查看<a href="https://docs.unrealengine.com/5.0/udk/Three/PhysicsAssetEditor/UserGuide.html" class="twikiLink">物理编辑器用户指南</a>来获得更多信息。
+<p />
+<h2><a name="运动捕捉"></a> 运动捕捉 </h2>
+<hr size="1" noshade="noshade">
+<p />
+这个部分将讨论Epic的独特的运动捕捉工具及使用方法。但请记住，在市场上有很多种类型的运动捕捉系统。每种类型都有它的优缺点。请使用最适合您的系统。无论您使用哪个运动捕捉系统或方法，为了把最终的动画导入到虚幻编辑器中，您都必须使用ActorX导出器把这些动画从类似于Max、Maya 或 Softimage的3D包中导出。
+<p />
+我们使用 <a href="http://www.vicon.com/">Vicon MX</a>系统。这是一个” Passive Optical(无源)”系统，它跟踪通过Velcro附加到actor上的反射标志。我们的系统安排了36个照相机非常均匀地分配在整个房间内。同时我们也记录同步的参考视频。
+<p />
+<strong><em>我们的运动捕捉方法如下</em></strong>: <ol>
+<li> 校准系统。
+</li> <li> 捕捉运动。
+</li> <li> 使用Vicon IQ 或 Blade来清除标志数据。
+</li> <li> 在Motionbuilder中把动作放置到目标角色上。
+</li> <li> 在Max或Maya中修改动画使其更加完美。
+</li> <li> 使用ActorX把它导入到虚幻编辑器中。
+</li></ol>
+<p />
+我们目前使用Vicon Blade软件来捕获、清除及标注标记数据。放置在actors上的标志可以基于您的需要而变化，但是我们在以下的布局中每个acotor使用了51个标志。
+<p />
+<img alt="Mocap_Marker_Placement.jpg" src="rsrc/Three/CreatingAnimationsCH/Mocap_Marker_Placement.jpg" />
+<p />
+我们也在武器和小道具上放置标志 – 尝试在每个需要跟踪的武器或者物体上放置4或5个标记。您真正需要的仅是3个标记，但为了防止遮挡，多添加一个或者两个标记是有帮助的。这样也会使得您在清除或者标记数据时更加容易地决定物体的前面。
+<p />
+<img alt="Markered_Gun_Lancer.jpg" src="rsrc/Three/CreatingAnimationsCH/Markered_Gun_Lancer.jpg" />
+<p />
+当在Vicon IQ中清除及标注了标记数据后，我们将把那个带标签的标志数据和一个完全进行了骨架绑定的角色导入到一个Motionbuilder场景中，然后把那个动作放置到角色上。一旦已经对Motionbuilder的“Character(角色)”和“Actor”选项进行调整来创建想要的运动和姿势，我们规划动画(也称为”烘焙”)动画或者到角色骨架或者到Motionbuilder角色绑定装置。这时，我们可以进一步在Motionbuilder中是动画变得简洁、调整时间或设置循环。
+<p />
+然后我们把Motionbuilder中的动画导入到Max Biped 或者Maya中，来最终的对动画进行修饰。
+<p />
+一旦动画达到我们希望的效果，我们可以使用AcotorX把那个动画从Max或Maya中导出，然后再将其导入到虚幻编辑器中。
+<p />
+<strong><em>技巧</em></strong>: 我们使用在房间的角落安装的可携式摄像机。我们设立的系统是为了那个可携式摄像机中捕获视频，并使它和数据保持同步。请确保可携式摄像机由足够宽的镜头来覆盖所有的捕获空间。
+<p />
+<img alt="Mocap_RefCam_Comp.jpg" src="rsrc/Three/CreatingAnimationsCH/Mocap_RefCam_Comp.jpg" />
+<p />
+<strong><em>技巧</em></strong>:  如果所有的任务都呆在捕获体积内，且如果它们每个开始和结束表现都为T-姿势，那么清理数据是很容易的。我们使actor查处我们的捕获空间的仅当他正在疾跑时。一旦一个actor离开了捕获空间，那么它应该一致呆在外面，并且在场景结束时不返回到T-姿势。
+<p />
+<strong><em>技巧</em></strong>:  我们将把一些带颜色的Velcro彩带附加到actor上，以便我们可以用一种简单的方法在参考视频中辨别不同的actors。
+<p />
+<img alt="Mocap_Character_RefPose.jpg" src="rsrc/Three/CreatingAnimationsCH/Mocap_Character_RefPose.jpg" />
+<p />
+<h3><a name="游戏中动画的运动捕获  VS 过场动画的运动捕获"></a> 游戏中动画的运动捕获  VS 过场动画的运动捕获 </h3>
+<p />
+<strong><em>游戏中动画的运动捕获</em></strong>: 当捕获游戏中的动画时，您或许一次仅能捕获一个单独的actor。如果有任何类型的交互，您也可能一次捕获两个actors。许多次后，动画工作者开始武装自己并捕获自己的动作，因为他最知道需要什么类型的动作。请记住这个动画将最终从哪个动画进行混合及混合到哪个动画，并尝试在动作的起始处和结束处尽可能地靠近那个动作。同时也要记住那个动画是否要进行循环，比如空闲或者打破空闲，请尝试最小化使循环明显的任何独特的运动。游戏中的动画或许不会针对特定的相机进行表现，所以它们需要从各个角度看上去都很好。
+<p />
+<strong><em>过场动画的运动捕获</em></strong>: 从影片或者影片剪辑中捕捉动画，您会捕捉到在那个创景中的所有actors。在我们的例子中，我们通常一次捕捉5个专业actors的动画。最好使用类似于电影制作方法，包括脚本、故事板、样片以及预先录制的旁白等。当记录动态捕捉时，所有的这些将会帮助我们为涉及到的actors和动画制作人员设计场景。我们通常标记出一个可携式摄像机，让电影导演到处走动并从已经设计好的视图中对整个场景进行录制，同时对场景进行动态捕捉。您的actors将会对着这照相机进行表演，最终，您将会获得一个参考视频，它可以用于在Mainee中设置相机进行工作。如果特定的电影需要手持摄像机的效果，您将需要在运动捕捉阶段捕捉相机的运动。
+<p />
+<strong><em>技巧</em></strong>:  您可以通过为actor身体的某些部分添加权重来调整他的姿态及行走效果。为了获得战争机器中的Boomer的动画，我们添加了一个脚裸权重和一个连接到actor的驱动权重来获得“动作迟缓”的行走循环。
+<p />
+<h2><a name="开发资源"></a> 开发资源 </h2>
+<hr size="1" noshade="noshade">
+<p />
+<!-- !---+++ 动画数据-->
+<p />
+<h3><a name="运动捕获数据"></a> 运动捕获数据 </h3>
+<p />
+一般情况下人类的运动最好通过运动捕捉进行捕获。
+<p />
+在Epic，我们使用Vicon IQ进行捕捉，然后使用Motion Builder处理数据，可以在Motion Builder进行任何次数的交换和循环。然后我们使用BVH's把目标动画导出到3D Studio Max中，或者使用FBX导出器把它导入到Maya中，在这两个3D包中的任何一个中进行最终的处理。
+<p />
+<!--
+!---+++ 关键帧数据
+<p />
+!---++  导出步骤
+<hr size="1" noshade="noshade">
+<p />
+!---++ 导入
+<hr size="1" noshade="noshade">
+-->
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CreatingAnimationsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:24:02 GMT -->
+</html></body>

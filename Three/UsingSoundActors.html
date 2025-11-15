@@ -1,0 +1,464 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingSoundActors.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:13:59 GMT -->
+<head>
+<title> UDK | UsingSoundActors    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">UsingSoundActors  </b></div>
+<div id="tooltext">
+<a href="UsingSoundActorsJP.html" class="twikiLink">日本語訳</a><br><a href="UsingSoundActorsCH.html" class="twikiLink">中国翻译</a><br><a href="UsingSoundActorsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/UsingSoundActors -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="AudioHome.html" class="twikiLink">Audio Home</a></b> &gt; Sound Actors <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="LevelDesignerHome.html" class="twikiLink">Level Designer</a></b> &gt; Sound Actors
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Sound Actors"></a> Sound Actors </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="UsingSoundActors.html#Sound Actors"> Sound Actors</a> <ul>
+<li> <a href="UsingSoundActors.html#Overview"> Overview</a>
+</li> <li> <a href="UsingSoundActors.html#AmbientSound Actor"> AmbientSound Actor</a>
+</li> <li> <a href="UsingSoundActors.html#AmbientSoundSimple Actor"> AmbientSoundSimple Actor</a>
+</li> <li> <a href="UsingSoundActors.html#AmbientSoundNonLoop Actor"> AmbientSoundNonLoop Actor</a>
+</li> <li> <a href="UsingSoundActors.html#AmbientSoundSpline Actor"> AmbientSoundSpline Actor</a>
+</li> <li> <a href="UsingSoundActors.html#ReverbVolume"> ReverbVolume</a>
+</li> <li> <a href="UsingSoundActors.html#SoundTriggeringVolume"> SoundTriggeringVolume</a>
+</li></ul>
+</li> <li> <a href="UsingSoundActors.html#Sound Actors Properties"> Sound Actors Properties</a> <ul>
+<li> <a href="UsingSoundActors.html#Enveloper"> Enveloper</a>
+</li> <li> <a href="UsingSoundActors.html#OmniRadius (Flatten Attenuation Radius)"> OmniRadius (Flatten Attenuation Radius)</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Unreal Engine 3 provides several different types of actors that can be used to produce or modify ambient sounds within the level.
+<p />
+<h2><a name="AmbientSound Actor"></a> AmbientSound Actor </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+AmbientSound Actors are placed in maps to trigger SoundCues. When Actor Classes\Keypoint\AmbientSound is highlighted in the Generic Browser, these actors can be added virtually anywhere within the map by right clicking on desired location in any of the browser windows and selecting Add AmbientSound Here.
+<p />
+<img alt="13UE3AmbientSound01.jpg" src="rsrc/Three/UsingSoundActors/13UE3AmbientSound01.jpg" />
+<p />
+This Actor is largely used for triggering ambient looping sounds but it can also trigger non-looping sounds. When listener enters the radii defined in the SoundCue Editor the Actor is trigger once. If the Looping Node is utilized, it'll play repeatedly within the radii and respond to all properties defined in the SoundCue. If the Looping Node is not utilized the audio file will trigger once when listener enters radii.
+<p />
+<img alt="14UE3AmbientSound02.jpg" src="rsrc/Three/UsingSoundActors/14UE3AmbientSound02.jpg" />
+<p />
+The only controllable parameters on this actor are Pitch and Volume. The Radii must be defined in the SoundCue and there isn't a graphic representation of it in the editor. Use this actor when the flexibility of the SoundCue Editor to create complex sounds is more desirable than radii control\visibility. If you want to trigger the same Cue in multiple locations with different radii settings you'll need to create duplicate Cues for each instance.
+<p />
+<h2><a name="AmbientSoundSimple Actor"></a> AmbientSoundSimple Actor </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The functionality of the AmbientSoundSimple Actor is similar to that of the AmbientSound Actor only instead of triggering SoundCues it triggers audio files directly. So in many ways this Actor is more similar to AmbientSound Actors found in previous Unreal engines.
+<p />
+<p />
+<img alt="15UE3AmbientSimple01.jpg" src="rsrc/Three/UsingSoundActors/15UE3AmbientSimple01.jpg" />
+<p />
+This allows per Actor control over Attenuation, Spatialization, Radii, and Modulation. Relative Volume and Pitch adjustments are accomplished by using Volume Modulation and Pitch Modulation. The Min\Max Radii can be seen in the editor graphically as spheres and can be adjusted in real-time by click dragging the Red\Green\Blue Actor arrows.
+<p />
+<h2><a name="AmbientSoundNonLoop Actor"></a> AmbientSoundNonLoop Actor </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+AmbientSoundNonLoop Actors are placed in maps to trigger Non-Looping sounds randomly within a particular radius. When listener enters the radius it'll continue triggering sounds as defined in the Actor until listener exits the radii. As with AmbientSoundSimple this Actor triggers audio files directly.
+<p />
+<img alt="16UE3AmbientSimpleNon01.jpg" src="rsrc/Three/UsingSoundActors/16UE3AmbientSimpleNon01.jpg" />
+<p /> <ul>
+<li> Delay Time controls the Minimum and Maximum amount of silence between triggers in seconds. Each time an audio file is triggered it'll randomly pick a delay time between that range.
+</li> <li> Volume Modulation + Pitch Modulation are used to define overall Actor Volume + Pitch
+</li> <li> Sound Slots are added for each Wav file by clicking the small green icon located on the right side of the SoundSlots tab. Each Sound Slot features per slot volume, pitch, and weight properties. Weight controls the probability a Sound Slot will be triggered relative to other Sound Slots in the Actor.
+</li> <li> The `Wave' slot located at the bottom of the Actors window should be ignored and not used.
+</li> <li> The Min\Max Radii can be seen in the editor graphically as spheres and can be adjusted in real-time by click dragging the Red\Green\Blue Actor arrows.
+</li></ul>
+<p />
+ <img alt="selectedsound.jpg" src="rsrc/Three/UsingSoundActors/selectedsound.jpg" />
+<p />
+All AmbientSoundSimple + AmbientSoundNonLoop Actors selected in a map.
+<p />
+<h2><a name="AmbientSoundSpline Actor"></a> AmbientSoundSpline Actor </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+In <strong>AmbientSoundSpline</strong> the sound location is not given in one point. The whole spline can be treated as  a sound source. Virtual speaker position is estimated based on set of points on a spline (those points are generated automatically) and listener's position. This type of actor was created mainly to cover long/large areas with a movable sound using only one SoundActor as a source. For example you can use it to apply sounds to: river flowing by, wind on the cliff, distant battle soundscape, etc.
+<p />
+How to create:
+<p /> <ul>
+<li> Open Content Browser, select Actor Classes tab, expand Keypoint -&gt; AmbientSoundSpline
+</li></ul>
+<p />
+<img alt="spline_actor_step01.jpg" src="rsrc/Three/UsingSoundActors/spline_actor_step01.jpg" />
+<p /> <ul>
+<li> Pick the one you want (Simple, NonLoop or MultiCue)and drag it onto game's world
+</li> <li> Draw the curve on which sound will travel. Best possible way is to select the TOP view in view-port. Then press and hold left mouse button on white square in the center of actor icon. While keeping left mouse button pressed you will have to press PERIOD and move your mouse to add a new point. Then you will see that a new point has been created.  <ul>
+<li> If you wish to delete extra points on your spline you need to use BACKSPACE. it can be only done by starting from the last one towards the first one.
+</li> <li> If you wish  to change the shape of your spline just grab one of the white squares and move it into appropriate position
+</li></ul>
+</li></ul>
+<p />
+<img alt="ASSS_Editor.PNG" src="rsrc/Three/UsingSoundActors/ASSS_Editor.png" />
+<p />
+Points on spline: <ul>
+<li> Blue point shows the virtual speaker's position.
+</li> <li> White - spline curve control points.
+</li> <li> Light violet - points with a sound range defined.
+</li> <li> Green - points inside the listener's scope.
+</li> <li> Red circle represents listener's hearing scope. Red point represents listener's position (draggable).
+</li></ul>
+<p />
+<p />
+<strong>AmbientSoundSpline</strong> allows you to put many sounds along the spline. In editor, bounds of range are represented by bigger light violet points on the spline (they can be dragged). You can move this points graphically by grabbing a grey square visible on the spline (if the ranges are set to -1 grey squares will be at both ends of spline and unavailable to move). To see a range for each slot you will have to type slot's number in <em>Edited Slot</em> field. View on currently edited slot can be changed using this variable.
+<p />
+<p />
+Spline actor properties:
+<p />
+There are 3 types of <strong>AmbientSoundSpline</strong> actors. :
+<p /> <ul>
+<li> <em>AmbientSoundSplineSimple</em> - holds properties of regular AmbientSoundSimple
+</li> <li> <em>AmbientSoundSimpleSplineNonLoop</em> holds properties of regular AmbientSoundNonLoop
+</li> <li> <em>AmbientSoundSplineMultiCue</em> - holds properties of regular AmbientSound
+</li></ul>
+<p />
+Each of them has standard sound actor properties. Each sound has its slot which can be filled with .wav or SoundCue (depending on spline actor type). Each slot has defined range on spline. Please note that <em>Delay Min/Max</em> may occur depending on sound actor type.
+<p />
+<img alt="spline_actor_step02.jpg" src="rsrc/Three/UsingSoundActors/spline_actor_step02.jpg" />
+<p />
+Below you will find description of properties which can be found in each type of spline actor
+<p /> <ul>
+<li> <em>Edited Slot</em> - shows currently edited Sound Slot on the spline
+</li> <li> <em>Spline Component</em> - you can change curvature type by expanding Ambient Sound Spline -&gt; Spline Component -&gt; Spline Info -&gt; Points
+</li> <li> <em>Sound Slots</em> -&gt; <em>Start Point</em> - place on spline where sound starts to track the camera. -1 = 1st point on the spline
+</li> <li> <em>Sound Slots</em> -&gt; <em>End Point</em> - place on the spline where sound finishes to track the camera. -1 = last point on the spline
+</li></ul>
+<p />
+<p />
+<img alt="spline_actor_step03.jpg" src="rsrc/Three/UsingSoundActors/spline_actor_step03.jpg" />
+<p />
+<em>Listener Scope Radius</em> - shows the radius in which you will be able to hear sounds on the spline. Cannot be smaller than RadiusMax. It is presented visually as well. Usually when you create a Spline Sound Actor you will see a big red circle, with red square dot in the middle, somewhere in the area. This one represent the hearing range of the camera and you can move it using your mouse. There is also a blue dot representing virtual sound source which is audible to camera. This is the place where actual sound comes from. Green dots moving on currently edited slot when you approach red circle close enough represent camera's hearing range.
+<p />
+<img alt="spline_actor_step04.jpg" src="rsrc/Three/UsingSoundActors/spline_actor_step04.jpg" />
+<p />
+<p />
+<h2><a name="ReverbVolume"></a> ReverbVolume </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+If you make any reverb volume changes, they will not work in realtime in
+the editor. You need to rebuild the geometry of the sub-level that contains your ReverbVolumes when you make <strong>ANY</strong> changes to the reverb volume(s).
+<p />
+<h2><a name="SoundTriggeringVolume"></a> SoundTriggeringVolume </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+UE has the ability to generate one shot audio events without any Kismet usage. It has been achieved by adding a possibility of creating the <strong>SoundTriggeringVolume</strong>. You can apply this one to any part of existing map’s geometry. The advantage of this approach is that it is very easy to create and use. Apart it gives you numerous possibilities of usage. Here would be an example. Player approaches a rocky cliff. When he is close enough he enters  this volume and engine triggers one shot sound of rocks falling down the path.
+<p />
+How to create: <ul>
+<li> Create a volume using brush builder. When done please pick <strong>SoundTriggeringVolume</strong> by right mouse click from volumes selector
+</li> <li> When done press F4 (properties) and click on the padlock symbol while you keep <strong>SoundTriggeringVolume</strong> selected
+</li> <li> Mark (in viewport, or scene manager) actor/actors you want to be triggered and then press "use selected object in content browser" (green arrow symbol)
+</li> <li> This will add scene actors to the <strong>SoundTriggeringVolume</strong>
+</li> <li> Once you enter it every SoundActor hooked will be played.
+</li> <li> After being played this SoundActor will be moved to garbage collector (unless it is a looped sound). If, for some reason, you need to leave this actor in memory please uncheck ‘Delete After Play’ flag in actor’s properites
+</li></ul>
+<p />
+<img alt="SoundTriggeringVolume.jpg" src="rsrc/Three/UsingSoundActors/SoundTriggeringVolume.jpg" />
+<p />
+<p />
+<p />
+<hr size="1" noshade="noshade">
+<h1><a name="Sound Actors Properties"></a> Sound Actors Properties </h1>
+<hr size="1" noshade="noshade">
+<p />
+<p />
+<p />
+<h2><a name="Enveloper"></a> Enveloper </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This module is another feature added to SoundActor &amp; SoundCue. It will allow you to change sound parameters in time domain (using graphic interface) such as pitch and volume. It is available as a single block in a SoundCue or you can use it as a property of all sound actors.
+<p />
+How to create: <ul>
+<li> insert chosen SoundActor in game world
+</li> <li> open its properties
+</li> <li> select 'create new object' in Enveloper slot
+</li></ul>
+<p />
+<img alt="enveloper_step01.jpg" src="rsrc/Three/UsingSoundActors/enveloper_step01.jpg" />
+<p /> <ul>
+<li> it will create an Enveloper module with 3 properties: Looping, Envelope, Modulation
+</li></ul>
+<p />
+<img alt="enveloper_step02.jpg" src="rsrc/Three/UsingSoundActors/enveloper_step02.jpg" />
+<p />
+Enveloper properties:
+<p />
+<strong>Looping</strong>:
+<p /> <ul>
+<li> <em>Loop Start</em> - envelope's start point of loop
+</li> <li> <em>Loop End</em> - envelope's end point of loop
+</li> <li> <em>Duration After Loop</em> - fade out time after which looping is finished
+</li> <li> <em>Loop Count</em> - quantity of loops
+</li> <li> <em>Loop Indefinately</em> - switch yes/no
+</li> <li> <em>Loop</em> - switch yes/no (designed to work with Loop Count switch)
+</li></ul>
+<p />
+<img alt="enveloper_step03_looping.jpg" src="rsrc/Three/UsingSoundActors/enveloper_step03_looping.jpg" />
+<p />
+<strong>Envelope</strong>. Click on right side green chart symbol to bring graphical interface:
+<p /> <ul>
+<li> <em>Volume Interp Curve</em> - volume envelope which you can define. expand structure until you see 'Points'. Where: <em>InVal</em> = time in seconds, <em>OutVal</em> =  volume multiplier, <em>InterpMode</em> = type of curve
+</li> <li> <em>PitchInterpCurve</em> - pitch envelope which you can define. expand structure until you see 'Points'. Where: <em>InVal_= time in seconds, _OutVal</em> =  pitch multiplier, InterpMode = type of curve
+</li> <li> <em>PanLeftRightInterCurve</em> - panning envelope which you can define. expand structure until you see 'Points'. Where: <em>InVal_= time in seconds, _OutVal</em> =  panning multiplier (1 = 100% left, 0 = center, -1 = 100%  right. works only with mono sounds, needs Spatliaze flag on actor to be switch off), <em>InterpMode</em> = type of curve
+</li> <li> <em>PanFrontBackInterCurve</em> - panning envelope which you can define. expand structure until you see 'Points'. Where: <em>InVal_= time in seconds, _OutVal</em> =  panning multiplier (1 = 100% front, 0 = center, -1 = 100%  back. works only with mono sounds, requires 'Spatialize' flag on actor to be switch off), <em>InterpMode</em> = type of curve
+</li></ul>
+<p />
+<img alt="enveloper_step03_envelope_drawing.jpg" src="rsrc/Three/UsingSoundActors/enveloper_step03_envelope_drawing.jpg" />
+<p />
+<strong>Modulation</strong>. Randomizes predefined values across all defined points on envelope:
+<p /> <ul>
+<li> <em>PitchMin</em> - minimal value of played pitch
+</li> <li> <em>PitchMax</em> - maximal value of played pitch
+</li> <li> <em>VolumeMin</em> - minimal value of played volume
+</li> <li> <em>VolumeMax</em> - maximal value of played volume
+</li></ul>
+<p />
+<img alt="enveloper_step03_modulation.jpg" src="rsrc/Three/UsingSoundActors/enveloper_step03_modulation.jpg" />
+<p />
+<h2><a name="OmniRadius (Flatten Attenuation Radius)"></a> OmniRadius (Flatten Attenuation Radius) </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<em>Omni Radius</em> this one sets the range of spatializing radius in which bleed between channels occur. It prevents sound source from sudden jumps between channels when you stand very close to actual Sound Actor and start to strafe. It has inverse LogReverse falloff characteristic.
+<p />
+<img alt="SoundActor_OmniRadius.jpg" src="rsrc/Three/UsingSoundActors/SoundActor_OmniRadius.jpg" />
+<p />
+When used in conjunction with AmbientSoundSpline actor this is called <em>Flatten Attenuation Radius</em>
+<p />
+<img alt="spline_actor_step05.jpg" src="rsrc/Three/UsingSoundActors/spline_actor_step05.jpg" />
+<p />
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingSoundActors.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:14:04 GMT -->
+</html></body>

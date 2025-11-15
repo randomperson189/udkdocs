@@ -1,0 +1,388 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CreatingNormalMapsJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:43 GMT -->
+<head>
+<title> UDK | CreatingNormalMapsJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">CreatingNormalMapsJP  </b></div>
+<div id="tooltext">
+<a href="CreatingNormalMaps.html" class="twikiLink">English Translation</a><br><a href="CreatingNormalMapsCH.html" class="twikiLink">中国翻译</a><br><a href="CreatingNormalMapsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/CreatingNormalMapsJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="法線マップ作成のテクニック"></a> 法線マップ作成のテクニック </h1>
+<p />
+<em>ドキュメントの概要: 法線マップを作成するための実用的なアドバイスと、ダウンロード可能なリソースのコレクション。</em>
+<p />
+<em>ドキュメントの変更ログ:  Dave Burke<sup>?</sup> により作成。<a href="https://udn.epicgames.com/Main/AlanWillard" class="restricted" class="restricted" class="twikiLink">Alan Willard</a> により更新。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="CreatingNormalMapsJP.html#法線マップ作成のテクニック"> 法線マップ作成のテクニック</a> <ul>
+<li> <a href="CreatingNormalMapsJP.html#概要"> 概要</a>
+</li> <li> <a href="CreatingNormalMapsJP.html#法線マップのフォーマット"> 法線マップのフォーマット</a>
+</li> <li> <a href="CreatingNormalMapsJP.html#Epic 社のアーティストからのアドバイス"> Epic 社のアーティストからのアドバイス</a>
+</li> <li> <a href="CreatingNormalMapsJP.html#ダウンローダブルリソース"> ダウンローダブルリソース</a> <ul>
+<li> <a href="CreatingNormalMapsJP.html#Nvidia 法線マッピング プラグイン"> Nvidia 法線マッピング プラグイン</a>
+</li> <li> <a href="CreatingNormalMapsJP.html#Nvidia プラグインのための 16 ビット フィルター"> Nvidia プラグインのための 16 ビット フィルター</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<p />
+この文書には、Epic 社のアーティストからの法線マップの作成に関するアドバイスの他、法線マップの便利なリソースへのリンクが含まれます｡
+<p />
+<h2><a name="法線マップのフォーマット"></a> 法線マップのフォーマット </h2>
+<p />
+<a href="NormalMapFormatsJP.html" class="twikiLink">このドキュメント</a> では、Unreal Engine でサポートされているさまざまな法線マップのフォーマットについて説明します。
+<p />
+Unreal Engine は下向きのグリーンチャンネルにある法線マップを使用しています。
+<p />
+<h2><a name="Epic 社のアーティストからのアドバイス"></a> Epic 社のアーティストからのアドバイス </h2>
+<p />
+Embry Square の中のいくつかの法線マップがどのように作成されたのかを聞かれて、Epic 社のリード アーティスト <a href="https://udn.epicgames.com/Main/ChrisPerna" class="restricted" class="restricted" class="twikiLink">Chris Perna</a> は以下のように答えました：
+<p />
+<table>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+<td>
+<p />
+<em>それらのテクスチャは、Nvidia の法線マップ フィルターを使ってフォト ソースから作成しました｡フィルターはフォトショップにプラグインとして使え、Nvidia のウェブサイトからダウンロードできます｡</em>
+<p />
+<em>プロセスはそれぞれ少々異なりますが、ほとんどの場合、彩度（色相/彩度の中の）をグレースケールにダンプし、フォトショップでハイパス フィルターをかけます。</em>
+<p />
+<em>これによりイメージが少々中和され、トーンも均等に近いものになります｡設定をいじり、より良い結果を引き出してください｡</em>
+<p />
+<em>希望どおりの状態になったら、16 ビットに変換します｡これにより、８ビットのイメージに Nvidia のフィルターをかけるよりも、よりクリーンな法線マップができます｡</em>
+<p />
+<em>次に、イメージに Nvidia 法線マップ フィルターをかけます。派手すぎる場合は、ガウスぼかしを使って少々柔らかくし、再度 Nvidia フィルターをかけます。</em>
+<p />
+<em>私は通常 Nvidia フィルターを 20-60 に設定し、程好い深みのある法線マップを作ります｡我々のディテールの凝ったバンプ マップはすべてこの方法で作られています｡</em>
+<p />
+<em>次にこれらをオーバーレイするか、プロセスした法線マップの上からハード ライトを使い、フォトショップでレイヤーの透明度を調節して希望どおりの効果にします。</em>
+<p />
+</td>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+</table>
+<p />
+Epic 社のテクニカル アーティスト  <a href="https://udn.epicgames.com/Main/ShaneCaudle" class="restricted" class="restricted" class="twikiLink">Shane Caudle</a> からのアドバイス:
+<p />
+<table>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+<td>
+<em>サーフェスのディテール バンプ マップには、Nvidia の法線マッピング プラグインを使ってフォトショップでよく作業をします｡グレースケールのイメージを取り、法線マップに変換するのです｡</em>
+<em>Photoshop で元の法線マップの上にこれをオーバーレイするだけで、サーフェス ディテールを加えることができます。サーフェスバンプの強度調整もこのレイヤーの不透明度を調整するだけでなので、非常に簡単です。</em>
+<p />
+</td>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+</table>
+<p />
+モデラーである <a href="https://udn.epicgames.com/Main/KevinLanning" class="restricted" class="restricted" class="twikiLink">Kevin Lanning</a> からのアドバイス:
+<p />
+<table>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+<td>
+<p />
+<strong>Max を使った法線マップの作成について...</strong>
+<p />
+<em>ケージそのものがプロセスに適さない、ということもよくあります。具体的に説明すると、ハイポリゴンとローポリゴン要素の最適化方法として、UV 上にミラー化されたローポリゴンの全領域を消去すると、ミラー化されているのが長方形の長辺の場合には追加の側面が削除されてしまい、結果としてオープン フェイスとなります。場合によっては、この状況やこれに匹敵するセットアップによりケージに歪みが生じ、そのような場合にはサイズを変更しても歪みがさらに酷くなるだけです。</em>
+<p />
+<em>私はよく、ケージを使用しないことに決めて、基本的には各ローポリゴンフェイスの法線に基づいて多数の方向に発射する方法により Max で情報を取得しています。この方法は、 SHtools または3D Studio Maxで処理されるに似ています。</em>
+<p />
+<em>テストプロセスでは、セットアップのグラブ距離 (最大/最小高さをオフセット) 内のキンクをできるだけ多く除去するまで、Supersampler オプションのいずれも有効にせず、小さなサイズで実行するのがよいでしょう。この方がより速く実行できます。</em>
+<p />
+<p />
+<strong>Photoshop における法線マップ問題の修正について...</strong>
+<p />
+<em>修正可能および不可能な内容を把握してから、不足パーツの色をベース法線マップ カラー (117,117,255) に設定します。これにより、アンチエイリアスがかかったカラーブロブになり目立たなくなります。次に、Photoshop で手動で調整し、2d での回避策がないかどうかを調べます。</em>
+<p />
+<strong>Max で法線マップをレンダリングする際に発生するエラーについて...</strong>
+<p />
+<em>ターゲット スロットのメッセージは重要ではありません。これはマップマテリアル作成のためにユーザーが法線マップ処理を行なっているものと Max が勘違いし、その結果 Max マテリアルを形成するための出力イメージが割り当てられていないと判断したために現れるものです。</em>
+<p />
+<em>レンダリング中のシステム例外は、何かの些細な問題をハイポリゴン オブジェクトが取り上げているだけで、Max が細かいことにこだわるタイプだ、ということを示す以外は事実上問題ではありません。</em>
+<p />
+<em>エラーの所在を突き止めるには、ハイポリゴン アセットをすべて徹底的に調べる必要があります。この原因となり得る一般的なエラーには以下があります。</em>
+<p /> <ul>
+<li> <em>空のレイヤー/指定選択項目またはオブジェクト。</em>
+</li> <li> <em>3d パーツで多数の操作を行なったために、その Xform のリセットが必要な状態にある場合。</em>
+</li> <li> <em>Edit Poly model (編集ポリゴンモデル) で異常な状態が発生し、これを直すには一度編集メッシュに変換してから編集ポリゴンに戻さなければならない場合。</em>
+</li> <li> <em>上記よりさらに酷い状態に陥り、選択したモデルセクションをオブジェクトとしてエクスポートしてから、シーンに再インポートしなければ直せない場合。</em>
+</li></ul>
+<p />
+<em>これらのエラー状態を追跡するには、各パーツを徐々にチェックしてからローポリゴンのプロセスリストに追加し、再度プロセスを試みるのが一番よい方法です。リストに追加した途端にクラッシュすることもあるので、頻繁に保存する必要がありますが、これが一番簡単なエラー追跡方法です。</em>
+<p />
+<em>ときには、シーン内のポリゴン、ライト、またはマテリアルの数が多すぎるためにエラーが発生することもあります。この場合は、シーンを個別プロセスごとに複数のシーンに分割してから、後でリアセンブルする必要があります。</em>
+<p />
+<p />
+</td>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+</table>
+<p />
+他のプログラムを使って法線マップを生成する場合のヒント:
+<table>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+<td>
+<em>Maya の Surface Sampler を使用し、法線マップのグリーン チャンネルを反転します。これを Photoshop でもう一度反転すると、この問題が解決されます。または、エディタでこのチャンネルの [Unpack Min/Max] を変更して問題を解決することもできます。</em>
+<p />
+<em>Nvidias Normalmaptool を使用する代わりに Crazybump (<a href="http://www.crazybump.com/" target="_top">http://www.crazybump.com/</a>) を使用すると、かなり上質の法線マップを生成できるだけでなく、単純なフォトソースからディフューズ、スペキュラー、および変位マップを生成することができます。</em>
+</td>
+<td>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</td>
+</table>
+<p />
+<p />
+<h2><a name="ダウンローダブルリソース"></a> ダウンローダブルリソース </h2>
+<p />
+<h3><a name="Nvidia 法線マッピング プラグイン"></a> Nvidia 法線マッピング プラグイン </h3>
+<p />
+Nvidia 法線マッピング プラグインは、<a href="http://developer.nvidia.com/object/nv_texture_tools.html" target="_top">http://developer.nvidia.com/object/nv_texture_tools.html</a> からダウンロードできます｡
+<p />
+エピック・ゲームズ社のアーティストはから法線マップを作成するためにCrazybump を使用しており、また複数の法線マップを結合するのにも使用しています。http://www.crazybump.com/
+<p />
+<h3><a name="Nvidia プラグインのための 16 ビット フィルター"></a> Nvidia プラグインのための 16 ビット フィルター </h3>
+<p />
+法線マップ プラグインのための 16 ビットの置換フィルターは、下からダウンロードできます；これは特に、ZBrush からエクスポートされたグレースケールのイメージを扱う際に便利です｡この新しいフィルターのファイル名は、プラグインに付属しているものと同じ名前ですので、置換してください｡
+<p /> <ul>
+<li> <a href="rsrc/Three/CreatingNormalMapsJP/NormalMapFilter16.zip" target="_top">NormalMapFilter16.zip</a>: Nvidia プラグインのための 16ビット法線マップ フィルター
+</li></ul>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CreatingNormalMapsJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:43 GMT -->
+</html></body>

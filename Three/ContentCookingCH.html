@@ -1,0 +1,581 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ContentCookingCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:11:39 GMT -->
+<head>
+<title> UDK | ContentCookingCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ContentCookingCH  </b></div>
+<div id="tooltext">
+<a href="ContentCooking.html" class="twikiLink">English Translation</a><br><a href="ContentCookingJP.html" class="twikiLink">日本語訳</a><br><a href="ContentCookingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ContentCookingCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="UE3Basics.html" class="twikiLink">虚幻引擎 3 基础知识</a></b> &gt; 内容烘焙 <br/>
+<!--  -->
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="内容烘焙"></a> 内容烘焙 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="ContentCookingCH.html#内容烘焙">内容烘焙</a> <ul>
+<li> <a href="ContentCookingCH.html#概述"> 概述</a>
+</li> <li> <a href="ContentCookingCH.html#烘焙"> 烘焙</a> <ul>
+<li> <a href="ContentCookingCH.html#决定要烘焙的东西">决定要烘焙的东西</a>
+</li> <li> <a href="ContentCookingCH.html#命令行"> 命令行 </a> <ul>
+<li> <a href="ContentCookingCH.html#选项">选项</a>
+</li></ul>
+</li> <li> <a href="ContentCookingCH.html#输出">输出</a>
+</li> <li> <a href="ContentCookingCH.html#PC和烘焙"> PC和烘焙</a>
+</li></ul>
+</li> <li> <a href="ContentCookingCH.html#烘焙的包">烘焙的包</a> <ul>
+<li> <a href="ContentCookingCH.html#类型">类型</a> <ul>
+<li> <a href="ContentCookingCH.html#Native 脚本包"> Native 脚本包</a>
+</li> <li> <a href="ContentCookingCH.html#启动包">启动包</a>
+</li> <li> <a href="ContentCookingCH.html#地图包">地图包</a>
+</li> <li> <a href="ContentCookingCH.html#贴图包">贴图包</a>
+</li></ul>
+</li> <li> <a href="ContentCookingCH.html#应用"> 应用</a>
+</li></ul>
+</li> <li> <a href="ContentCookingCH.html#配置"> 配置</a> <ul>
+<li> <a href="ContentCookingCH.html#配置文件">配置文件</a> <ul>
+<li> <a href="ContentCookingCH.html#[Engine._PackagesToAlwaysCook]"> [Engine.PackagesToAlwaysCook]</a>
+</li> <li> <a href="ContentCookingCH.html#[Engine._StartupPackages]"> [Engine.StartupPackages]</a>
+</li> <li> <a href="ContentCookingCH.html#b_SerializeStartupPackagesFromMemory(是否从内存中序列化启动包)"> bSerializeStartupPackagesFromMemory(是否从内存中序列化启动包)</a>
+</li> <li> <a href="ContentCookingCH.html#b_FullyCompressStartupPackages(是否完全压缩启动包)"> bFullyCompressStartupPackages(是否完全压缩启动包)</a>
+</li> <li> <a href="ContentCookingCH.html#[Engine._PackagesToForceCookPerMap]"> [Engine.PackagesToForceCookPerMap]</a>
+</li> <li> <a href="ContentCookingCH.html#[Core.System] _SeekFreePCPaths"> [Core.System] SeekFreePCPaths</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+内容烘焙是指如何转换内容为 <a href="https://udn.epicgames.com/Three/ConsoleSupport" class="restricted" class="restricted" class="twikiLink">游戏机平台支持</a> (当前是 Xbox 360 和 PS3)的格式。PC现在也可以使用烘焙数据，这将会产生更快的加载速度。就绝大部分功能而言，它是非常简单的，但是有几个事情至少需要您的团队中的一个人知道。
+<p />
+烘焙器本身是一个Unreal<a href="CommandletList.html" class="twikiLink">commandlet(命令开关)</a>。一般，您将使用<a href="UnrealFrontend.html" class="twikiLink">Unreal Frontend</a>工具来调用这个命令开关，可以传入任何配置选项。但是，您也可以通过直接使用命令行开关本身来烘焙您的内容。
+<p />
+请确保您已经正确地<a href="https://udn.epicgames.com/Three/SettingUpUnrealEngine3" class="restricted" class="restricted" class="twikiLink">设置</a>了您的版本！
+<p />
+<p />
+<h2><a name="烘焙"></a> 烘焙 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+烘焙器的最主要的作用是以最佳的格式保存包，以便可以在游戏机平台(以及PC)上进行加载。在包上所进行的处理包含以下几个方面: <ul>
+<li> 剥离任何不必要的数据，比如仅编辑器使用的数据(这将会对文件的大小产生很大的影响)。
+</li> <li> 字节交换所有数据，以便它可以在没有CPU消耗的情况下被大尾字节架构所加载。
+</li> <li> 处理资源，以便它们按照它们native(本身)的格式存储，并且为加载做好准备，使得在游戏机平台上不需要任何进一步的处理。
+</li> <li> 创建免搜索的、独立的包，以便可以从寻道速度时间较慢的媒体(也就是 DVD/BD)上获得最佳的加载速度。
+</li></ul>
+<p />
+在游戏机平台上，UE3仅支持加载烘焙的包。在PC上的UE3可以加载烘焙的、位烘焙的、甚至两者混合的包。
+<p />
+<h3><a name="决定要烘焙的东西"></a> 决定要烘焙的东西 </h3>
+<p />
+命令开关通过加载包、处理它们然后重新保存它们来进行操作。加载的包列表由命令行开关和.ini设置决定。烘焙的包被保存到一个烘焙目录中，它的格式是XXXGame\CookedYYY，这里的XXX是指您的游戏的名称，YYY是指游戏平台名称。烘焙的包文件在游戏机平台上的扩展名是.xxx，在PC上的扩展名是原来的。如果命令开关选项覆盖了默认值的情况下，仅那些比烘焙过的包的日期更新的日期会被进行重新烘焙。
+<p />
+专用文件Textures.tfc(.tfc是贴图文件缓存的扩展名)包含了所有的动态载入贴图。这是游戏机平台的默认行为，但是您可以禁用这个功能。如果没有.tfc文件，游戏机平台将仅存储引用的内容包的副本，仅把它们贴图留在内容包中。如果使用了.tfc文件，将不再需要内容包，所以烘焙目录将仅包含seekfree包和.tfc文件。
+<p />
+详细的流程是这样的： <ul>
+<li> Non-seekfree(非免搜索)包  (当不使用.tfc时): <ul>
+<li> 烘焙被正在烘焙的免搜索(seekfree )包所引用的任何过期的非-免搜索包（non-seekfree）。
+</li></ul>
+</li> <li> Seekfree (免搜索)包 (脚本、启动文件、地图) <ul>
+<li> 烘焙任何相对于源文件来说已经过期的免搜索(seekfree)包(检查是否有更新的引用的内容包)。
+</li> <li> (当使用.tfc时)当处理seekfree(免寻道)的包、贴图或者过期贴图时，它们将会被添加到.tfc文件中进行动态载入。
+</li></ul>
+</li> <li> 独立的seekfree(免搜索)包 <ul>
+<li> 烘焙任何相对于源文件来说已经过时的seekfree(免搜索)包。
+</li></ul>
+</li></ul>
+<p />
+如果指定了-full，那么将会首先删除所有的烘焙的包，以便所有的文件都会在日期检查时失败，从而可以进行全部地烘焙。如果指定了-recookseekfree，那么不管怎样，地图、启动文件以及独立的免搜索包都将会被烘焙。
+<p />
+<h3><a name="命令行"></a> 命令行 </h3>
+<p />
+一般，您将会使用<a href="UnrealFrontend.html" class="twikiLink">Unreal Frontend</a>来运行烘焙器，但是如果您想进行自动地烘焙或类似的行为，您可以使用<a href="CommandletList.html" class="twikiLink">命令行</a>界面。
+<p />
+<pre>
+gamename.exe CookPackages &#91;map1] &#91;map2] ... &#91;mapn] -platform&#61;&#60;Platform&#62; -&#91;options]
+</pre>
+<p />
+<h4><a name="选项"></a> 选项 </h4>
+<p /> <ul>
+<li> <strong>platform=</strong> &lt;PLATFORM&gt;: 设置为那个平台进行烘焙。平台可以使以下其中之一：  <ul>
+<li> pc - 烘焙具有编辑器支持的PC版本。
+</li> <li> pcserver - 烘焙针对专用服务器的PC版本 (不支持编辑器、剥离了大量数据)
+</li> <li> pcconsole - 像烘焙游戏机平台版本那样烘焙PC版本 (没有编辑器支持，剔除无关数据)。
+</li> <li> ps3, xbox360, xenon - 游戏机平台。
+</li> <li> tegra, iphone - 移动设备平台。
+</li></ul>
+</li> <li> <strong>full</strong>: 强制重新保存所有现有包。如果指定了这个选项，则首先会删除CookedYYY文件夹的内容。
+</li> <li> <strong>singlethread</strong>: 禁用多线程烘焙。
+</li> <li> <strong>processes=</strong> &lt;N&gt;: 在一个多线程烘焙中使用N个进程。
+</li> <li> <strong>recookseekfree</strong>: 强制重新烘焙所有的免搜索的包(在命令行或.ini上的启动包、独立的免搜索的包、地图)。当默认的依赖性检查不能正常工作时，这个功能是有用的(尤其是对独立的免搜索的包来说，因为当任何非免搜索的包改变时，它将不会重新烘焙所有的独立的免搜索的包，这个地图是不一样的)。
+</li> <li> <strong>-cookallmaps</strong>: 烘焙游戏中的所有地图。
+</li> <li> <strong>-mapsonly</strong>: 仅烘焙地图，将不会尝试烘焙其它东西。
+</li> <li> <strong>-inisonly</strong>: 仅烘焙.ini文件和本地化文件(烘焙到Coalesced.ini 和 Coalesced.int等文件中)。
+</li> <li> <strong>-sha</strong>: 为启动文件和接合文件生成SHA hash，并把它们输出到Hashes.sha中。
+</li> <li> <strong>languageforcooking=</strong> &lt;LANG&gt;: 设置LANG一种语言，以便进烘焙一种单独的语言。默认值为int（英语）。
+</li> <li> <strong>multilanguagecook=</strong> &lt;LANG1&lt;+LANG2&lt;-LANG3...&gt;&gt;&gt;: 同时烘焙多种语言。示例： -multilanguagecook=int+ita-fra 烘焙英语、意大利语和法语。前面有减号的语言(比如French（法语）)，仅针对文本本地化文件进行烘焙，所以近启动包和ini文件会被烘焙。
+</li> <li> <strong>saveshadersatend</strong>: 告诉烘焙器延迟着色器缓存的保存直到烘焙结束为止，而不是在烘焙每个包后进行保存。
+</li> <li> <strong>nopackagecompression</strong>: 不允许对烘焙后的包进行压缩。以包的大小为代价加速烘焙。
+</li> <li> <strong>noloccooking</strong>: 仅针对字幕处理的当前语言，仅生成和本地化文件结合的当前语言。
+</li> <li> <strong>verifytfc</strong>: 检查.tfc文件的错误。
+</li> <li> <strong>analyzereferecedcontent</strong>: 存储烘焙的包所引用的内容的统计数据。请参照FAnalyzeReferencedContentStat。
+</li> <li> <strong>usermode</strong>: 烘焙内容，就好像它是DLC或mod一样(这将仅烘焙在命令行中指定的包，它不会烘焙发行的脚本包)。关于DLC的更多信息，请参照<a href="https://udn.epicgames.com/Three/DownloadableContent" class="restricted" class="restricted" class="twikiLink">DownloadableContent</a> and 针对PS3平台的DLC<sup>?</sup>页面。
+</li> <li> <strong>skipmaps</strong>: 仅烘焙非地图免搜索的包。
+</li> <li> <strong>skipsavingmaps</strong>: 烘焙但不保存地图。这对于烘焙地图使用的LOC数据是有用的。
+</li> <li> <strong>skipnotrequiredpackages</strong>: 跳过 加载&amp;保存 那些不需要进行烘焙处理的包，从而加速LOC烘焙。
+</li> <li> <strong>skipmaterialcleanup</strong>: 跳过清除材质的过程来加速烘焙迭代。
+</li> <li> <strong>skipstaticmeshclean</strong>: 跳过把材质压入到关卡中放置的静态网格物体实例中的过程。skipmaterialcleanup将会自动完成这个处理。
+</li> <li> <strong>skippmapobjs</strong>: 跳过识别P-maps(永久性关卡)中所包含的对象的步骤，并从它包含的子关卡中删除这些对象。（注意： 多个永久性关卡中包含的子关卡将会自动跳过这个优化。)
+</li> <li> <strong>skippsysmodules</strong>: 跳过从粒子系统删除相同的模块的过程。
+</li> <li> <strong>fastcook</strong>: 等同于指定NOLOCCOOKING、SKIPMATERIALCLEANUP、SKIPPSYSMODULES、SKIPPAMPOBJS &amp; QUICK。
+</li></ul>
+<p />
+<h3><a name="输出"></a> 输出 </h3>
+<p />
+烘焙器的输出是这六种类型文件的其中一种： levels(关卡)、native script packages (native脚本包)、combined startup package（组合的启动包）、texture streaming packages(贴图动态载入包)、standalone seek-free files（独立的免搜索文件）、texture file caches(贴图文件缓存)以及 metadata/helper(元数据/帮助)文件。
+<p />
+<strong>(关卡)</strong> 是一个包含了除了针对高级贴图mips的内容之外关卡所需的所有内容的包，从而基本可以使它免搜索地加载关卡(没有高细节贴图)。
+<p />
+native script packages (native脚本包)是一个UnrealScript包，在它内部有native类，并且通常总是在游戏启动时加载。它将会把脚本代码所引用的内容烘焙到这个包中，所以您需要小心地处理脚本代码直接引用的资源的数量。对于 <em>Gears of War(战争机器)</em> 来说，我们有一个主要的native脚本包WarfareGame.u，它具有native基类；WarfareGameContent.u，它没有native类，但是它有很多引用了很多不需要同时加载的内容(怪物等)的子类。
+<p />
+<strong>combined startup package（组合的启动包）</strong> 组合了所有用于启动游戏所需要的但却又没有被烘焙到主菜单关卡中的包。这包括类似于DefaultMaterial的物体。任何在启动包中的物体将总是被加载。
+<p />
+<strong>Texture streaming packages (贴图动态载入包)</strong> 包含了真正高级别(大的)mip数据，以便它不会在DVD上被复制太多次，并使得它可以在运行时很容易地进行动态载入。
+<p />
+<strong>Standalone seekfree packages(独立的seekfree包)</strong> 它不是地图或脚本包，但是它把到它们的所有引用抽取出来放到一个单独的包中。在 <em>Unreal Tournament(虚幻竞技场)</em> 中，这用于组成自定义人物的网格块的包。当通过很多个网格块构建出一个人物时，我们通过加载独立的seekfree包(异步地)快速加载网格物体和它们所依赖的贴图。因为在游戏机平台上不支持DynamicLoadObject，我们通过完全地加载包来加载物体。当烘焙独立的免搜索包时会有两个输出包 – 一个具有_SF扩展名。而另一个没有。带有 _SF的文件是真正的包含所有物体和它们依赖的免搜索包，而没有带_SF的文件包含了动态加载的贴图(由于压缩差异，引擎不能从免搜索文件中自动地载入包)。
+<p />
+<strong>texture file cache(贴图文件缓存)</strong> 是一个独立的文件，它把很多值得动态载入的贴图组合到一个文件中。这个文件可以用于降低磁盘上文件的总数量以及一次同时打开文件的总数量(当平台有任何限制时)。
+<p />
+<strong>Audio streaming packages</strong> 没有创建Audio streaming packages(音频动态载入包) ，但是您可以动态载入包含音频的包。这种方法是比实现对任意音频的动态载入支持上更有利的，因为我们想把更多的带宽尽可能地留给贴图动态载入；而且，对于像虚幻竞技场和<a href="https://udn.epicgames.com/Three/GearsOfWar2" class="restricted" class="restricted" class="twikiLink">战争机器</a>这样的如此快动作的游戏来说，发生延迟也是不能接受的，而且在这时同步FaceFX动画也成为了一个额外的麻烦事。作为替换，战争机器创建了一个专用的<a href="DialogSystem.html" class="twikiLink">对话框系统</a>。
+<p />
+<h3><a name="PC和烘焙"></a> PC和烘焙 </h3>
+<p />
+PC可以运行烘焙或未烘焙数据。要想运行具有烘焙数据的游戏，请使用-seekfreeloading命令行选项(或者在<a href="UnrealFrontend.html" class="twikiLink">Unreal Frontend</a>中的Run with Cooked Data[运行具有烘焙数据的游戏])。要使用编辑器运行未烘焙的数据，请使用-cookededitor命令行选项。
+<p />
+为PC和游戏机平台进行烘焙的不同： <ul>
+<li> PC包保持它们的扩展名，游戏机平台的包的扩展名改为.xxx。
+</li> <li> PC的 非-seekfree 包中保留了所有的物体，而不是像游戏机平台那样仅保存贴图。
+</li> <li> 游戏机平台烘焙支持TextureFileCache包。
+</li> <li> 游戏机平台烘焙时删除的“源数据”比PC烘焙时删除的更多，因为PC编辑器可以加载使用烘焙的包(参照UT3)来提供mod支持等。
+</li></ul>
+<p />
+UT3的PC版本发行了烘焙数据，并且允许mods。我们把它作为"Publishing(发布)"版本呈现给用户的，它和烘焙类似，但是它仅烘焙在它们mod中的包。它基本上是在"-usermode"中来为PC烘焙的(也就是，没有烘焙我们的native 脚本包)。
+<p />
+<p />
+<h2><a name="烘焙的包"></a> 烘焙的包 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="类型"></a> 类型 </h3>
+<p />
+有4种类型的烘焙的包。以下是它们的描述以及它们是如何加载的介绍。
+<p />
+<h4><a name="Native 脚本包"></a> Native 脚本包 </h4>
+<p />
+<strong>描述</strong>: <strong>描述</strong>:这些包中是native脚本代码。它们将经过烘焙并且使它们成为“seekfree”包(尽管对于类似于Core和Engine的脚本包来说，由于它们在对象之间的相互依赖导致它们不可能真正地100%的seekfree，但bPreloadPackagesFromMemory选项可以读取搜索不是很重要的地方的内存)。通过烘焙，所有直接引用的内容(贴图、网格物体等)  都会被放到这个包中。
+<p />
+<strong>加载</strong> : 它们将会始终并永久地被100%地加载:) 它们是启动时要加载的第一个东西(也就是Core、Engine、GameFramework、UTGame等)。
+<p />
+<h4><a name="启动包"></a> 启动包 </h4>
+<p />
+<strong>描述</strong>: 这些包是最初启动游戏时所需要的额外的包，它们的内容不会被烘焙到其它包中。它们被列在 [Engine.StartupPackages]部分。一般，我们需要启动包的原因是在这些包中的物体没有被脚本或地图直接地引用，所以需要对它们进行手动地烘焙和加载。
+<p />
+<strong>加载</strong> : 在这些包中的所有物体都将会在启动时加载，并且将永远不会对其进行垃圾回收。这意味着您应该从这些包中删除不必要的物体，从而可以节约运行时内存。
+<p />
+<h4><a name="地图包"></a> 地图包 </h4>
+<p />
+<strong>描述</strong>: 地图和那个地图引用的所有资源(除了在native脚本包中的类)。和native脚本包一样，它们也是免搜索的。多个烘焙的地图可以包含相同的物体(即如果两个使用了同一个贴图，那么将会把那个贴图分别烘焙到两个包中)。这增加了DVD/BD的使用量，但是不会增加运行时内存，因为如果物体已经通过使用它的地图加载到内存中，那么当再次加载使用这些物体的地图时(当您需要在动态载入关卡时加载多个关卡的情况)，这些物体将会被跳过。
+<p />
+<strong>加载</strong> : 当游戏或玩家切换地图时加载。它将会被完全地加载(对动态载入来说通常是异步的)，并且在关卡通过调用LoadMap卸载或动态载出之前它将一直存在。
+<p />
+<h4><a name="贴图包"></a> 贴图包 </h4>
+<p />
+<strong>描述</strong>: 这个包含有用于贴图动态载入的高级别的mip数据。在烘焙期间，除了高级mips以外的所有东西都会从包中删除。
+<p />
+<strong>加载</strong> : 这些包将永远不会作为包加载，它们仅用于动态载入贴图(它的低级别mips在烘焙包中)。
+<p />
+<h3><a name="应用"></a> 应用 </h3>
+<p />
+根据资源的应用来烘焙资源的方法：
+<p />
+<strong>直接引用的资源</strong>: 如果有一个物体被其他物体直接地引用，那么需要该物体的免搜索包(native脚本、地图)将会把它抽取到烘焙的免搜索包中，除非它具有动态载入贴图并且您现在没有使用贴图文件缓存，否则在Cooked(烘焙)目录中将不存在资源包。
+<p />
+<em>解决方案</em>: 不需要做任何事。这正是我们所希望的。
+<p />
+<strong>Loaded dynamically from any level(从任何关卡进行动态加载)</strong>: 如果没有免搜索包(native脚本、地图)引用那个物体，并且在运行时加载了那个物体，那么我们期望加载物体的方法是  <code>LoadPackage</code> ，因为如果物体没有通过 <code>LoadPackage</code> 进行加载，那么 <code>DynamicLoadObject</code> 将会在游戏机平台上返回 <code><b>NULL</b></code> 。
+<p />
+<em>解决方案</em>: 在您游戏的DefaultEngine.ini中的 <code>[Engine.PackagesToAlwaysCook]</code> 部分，把它标记为独立的免搜索包：
+<p />
+<pre>
+&#91;Engine.PackagesToAlwaysCook]
++SeekFreePackage&#61;MyGamePackage
+</pre>
+<p />
+这将会创建 MyGamePackage_SF.xxx(如果有贴图并且您没有使用TextureFileCache，那么MyGamePackage.xxx可以用于任何动态载入贴图)。这个包在进行游戏机平台加载时将会使用更加适合的格式，而不是像之前那样对外部引用和动态载入贴图不能进行正确地展现。
+<p />
+<strong>Loaded dynamically from one level(从一个关卡中动态地加载)</strong>: 如果仅一个或两个关卡(也就是，菜单关卡)动态地加载那个物体，您可以把那个包强制地加入到地图文件中，那么以后当加载那个地图时，那个包也将总是会被加载。
+<p />
+<em>解决方案</em>: 在您游戏的DefaultEngine.ini的 <code>[Engine.PackagesToForceCookPerMap]</code> 部分，设置要强制加入到地图中的包：
+<p />
+<pre>
+&#91;Engine.PackagesToForceCookPerMap]
+.Map&#61;MyFrontend
+.Package&#61;MyGamePackage
+</pre>
+<p />
+现在，无论何时，当加载MyFrontend时，在MyGamePackage中的所有物体都将会被加载，并且可以使用 <code>DynamicLoadObject=/=FindObject</code> 去获取物体。
+<p />
+<strong>Used in EVERY level(在每个关卡中使用)</strong>: 如果一个物体在任何时候都可以使用，您应该把它放到Startup 包中，以便它将只加载一次，但以后将总是在内存中。
+<p />
+<em>解决方案</em>: 在您的游戏的DefaultEngine.ini的 <code>[Engine.StartupPackages]</code> 部分添加您的包：
+<p />
+<pre>
+&#91;Engine.StartupPackages]
++Package&#61;MyGamePackage
+</pre>
+<p />
+<p />
+<h2><a name="配置"></a> 配置 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="配置文件"></a> 配置文件 </h3>
+<p />
+当设置您的游戏进行烘焙时，您需要修改一些.ini设置。因为游戏机平台的Engine.ini文件是从主要的Engine.ini文件来生成的，所以您应该在您游戏的DefaultEngine.ini文件中指定这些设置。然而，烘焙器将会在生成的目标平台的Engine.ini文件中查找那些设置，所以如果需要，您可以在您的游戏中的针对特定平台的的Engine.ini指定那些设置。
+<p />
+<h4><a name="[Engine._PackagesToAlwaysCook]"></a> [Engine.PackagesToAlwaysCook] </h4>
+<p />
+<strong>描述</strong>: 这个部分是用于放入您确认所有用户已经烘焙的地图以及独立的免搜索包。自从12月份的版本后，所有的 非- 免搜索包都将会被烘焙，所以不必再指定您想烘焙的随机包了。
+<p />
+这个部分在以后或许会进行重命名或者被分割为两个部分，因为随着时间的推移它的应用已经发生了改变。同时，独立的免搜索包也不会每次都进行重新烘焙，除非您在命令行中进行了覆盖。
+<p />
+<strong>什么时候使用</strong>: 您需要把那些你必须使用的包放在那里，比如主菜单关卡。同时，当您需要一个独立的seekfree包时(请参照上面的 “Operation”部分)。使用"Package="来确保它们已经被烘焙，并且使用 "SeekFreePackage=" 来指定seekfree包。
+<p />
+<strong>格式</strong>:
+<pre>
+&#91;Engine.PackagesToAlwaysCook]
++Package&#61;entry
++Package&#61;UTFrontend
++SeekFreePackage&#61;CH&#95;IronGuard&#95;Male
+</pre>
+<p />
+<h4><a name="[Engine._StartupPackages]"></a> [Engine.StartupPackages] </h4>
+<p />
+<strong>描述</strong>: 这里列出的包将会基于每种语言(Startup_int.xxx, Startup_kor.xxx, 等)被组合到一起来合成一个免搜索的启动包。在这些包中的物体(以及它们的依赖)是您在您最初启动游戏时所需要的，并且它们将总是在内存中 。通常在这些包中的物体将不会被烘焙到其它包中。
+<p />
+<strong>什么时候使用:</strong> 当您在最初启动过程中需要的物体或者需要物体总是在内存中时使用。在以下的实例中，正确的字体文件将会在UI_Fonts处进行应用。所以，如果有一个UI_Fonts_KOR.upk包，当针对韩语烘焙时，它将会把UI_Fonts_KOR放到Startup_KOR.xxx中。
+<p />
+<strong>格式</strong>:
+<pre>
+&#91;Engine.StartupPackages]
++Package&#61;FX&#95;HitEffects
++Package&#61;UI&#95;Fonts
++Package&#61;UI&#95;Scenes&#95;HUD
++Package&#61;UI&#95;Skins
++Package&#61;UI&#95;Skin&#95;Derived
++Package&#61;SpeechRecognition
+</pre>
+<p />
+<h4><a name="b_SerializeStartupPackagesFromMemory(是否从内存中序列化启动包)"></a> bSerializeStartupPackagesFromMemory(是否从内存中序列化启动包) </h4>
+<p />
+<strong>描述</strong>: 以在最初启动期间大量的临时内存为代价来启用较快的启动速度。在启动时所做的事情是开始读取启动包中的列表到内存中，这个过程在幕后是异步的。所以，当正在从DVD(相对较慢)中读取一些包时，它可以处理其它包。默认情况下，引擎将会预先加载native脚本包、启动包和Startup_*.xxx。
+<p />
+它的工作原理是这样的: <ul>
+<li> 开始把Core.u从DVD读入到一个已分配的内存块。
+</li> <li> 等待它完成。
+</li> <li> 开始读取Engine.u。
+</li> <li> 从内存块中把Core.u序列化到引擎中。
+</li> <li> 当从序列化已读取包的过程中，继续读取包。
+</li></ul>
+<p />
+<strong>什么时候使用</strong>: 当您有足够的内存来分配这些额外的大的内存块并且您想加速启动游戏的引导速度时使用它。
+<p />
+<strong>格式</strong>:
+[Engine.StartupPackages]
+bSerializeStartupPackagesFromMemory=True
+<p />
+<p />
+<h4><a name="b_FullyCompressStartupPackages(是否完全压缩启动包)"></a> bFullyCompressStartupPackages(是否完全压缩启动包) </h4>
+<p />
+<strong>描述</strong>: <strong>描述</strong>:启用对启动包的所有包进行压缩。这些可以在加载过程中通过一个单一的操作来进行异步压缩。
+<p />
+<strong>什么时候使用</strong>: 当和bSerializeStartupPackagesFromMemory 结合使用时，这将可能有利于获得更快的启动包加载速度。当引擎准备好处理已经加载的包时，它就已经解压缩。
+<p />
+<strong>格式</strong>:
+[Engine.StartupPackages]
+bFullyCompressStartupPackages=True
+<p />
+<p />
+<h4><a name="[Engine._PackagesToForceCookPerMap]"></a> [Engine.PackagesToForceCookPerMap] </h4>
+<p />
+<strong>描述</strong>: 这个部分将会强制把某些包完全地烘焙到一个地图包中。
+<p />
+<strong>什么时候使用</strong>: 当您想使用DynamicLoadObject (DLO)来通过字符串名称而不是对象引用来加载物体时使用它。烘焙器将会仅遵循对象引用而不是字符串引用，所以它们不会使物体被烘焙到地图中。比如，UI系统使用DLO来打开UIScenes(UI页面)和贴图。所以，在虚幻竞技场中，我们轻质把包含页面和贴图的包烘焙到主菜单中。这样便可以达到预定目标，以便页面和贴图可以通过加载UTFrontEnd地图来进行简单地加载。只要加载了关卡，物体就不会被垃圾回收。
+<p />
+<strong>格式</strong>:
+<p />
+格式是 Map=<MapName>后跟随着任何数量多的Package=<Package>，从而列出要烘焙到那个地图中的包。
+<p />
+<pre>
+&#91;Engine.PackagesToForceCookPerMap]
+.Map&#61;UTFrontEnd
+.Package&#61;UI&#95;Scenes&#95;Mutators
+.Package&#61;UI&#95;FrontEnd&#95;Art
+.Package&#61;UI&#95;Portrait
+.Package&#61;UI&#95;Scenes&#95;ChrisBLayout
+.Package&#61;UI&#95;Scenes&#95;FrontEnd
+.Package&#61;UI&#95;Scenes&#95;Common
+.Package&#61;UI&#95;Skin&#95;Derived
+.Package&#61;UI&#95;Skins
+.Package&#61;UI&#95;Scenes&#95;Campaign
+.Package&#61;UI&#95;Weapons
+.Map&#61;UTM-MissionSelection
+.Package&#61;UI&#95;Scenes&#95;Campaign
+.Package&#61;UI&#95;Skin&#95;Derived
+.Package&#61;UI&#95;Skins
+</pre>
+<p />
+<h4><a name="[Core.System] _SeekFreePCPaths"></a> [Core.System] SeekFreePCPaths </h4>
+<p />
+<strong>描述</strong>: 这部分将会保留CookedPC目录内部的扩展名和相关目录结构(使用 <code>-cookededitor</code> 标志获得编辑器功能)。
+<p />
+<strong>什么时候使用</strong>: 针对PC烘焙的版本。
+<p />
+<strong>格式</strong>:
+<pre>
+&#91;Core.System]
+SeekFreePCPaths&#61;&#60;PATH&#62;
+</pre>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ContentCookingCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:11:39 GMT -->
+</html></body>

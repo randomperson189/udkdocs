@@ -1,0 +1,416 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DecalsTechnicalGuide.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:21:37 GMT -->
+<head>
+<title> UDK | DecalsTechnicalGuide    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">DecalsTechnicalGuide  </b></div>
+<div id="tooltext">
+<a href="DecalsTechnicalGuideJP.html" class="twikiLink">日本語訳</a><br><a href="DecalsTechnicalGuideCH.html" class="twikiLink">中国翻译</a><br><a href="DecalsTechnicalGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/DecalsTechnicalGuide -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="ParticlesAndEffectsHome.html" class="twikiLink">Particle &amp; Effects</a></b> &gt; <b><a href="DecalsHome.html" class="twikiLink">Decals</a></b> &gt; Decal System Technical Guide
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Decal System Technical Guide"></a> Decal System Technical Guide </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="DecalsTechnicalGuide.html#Decal System Technical Guide"> Decal System Technical Guide </a> <ul>
+<li> <a href="DecalsTechnicalGuide.html#Overview"> Overview</a>
+</li> <li> <a href="DecalsTechnicalGuide.html#DecalComponent member variables"> DecalComponent member variables</a> <ul>
+<li> <a href="DecalsTechnicalGuide.html#Material"> Material</a>
+</li> <li> <a href="DecalsTechnicalGuide.html#Size"> Size</a>
+</li> <li> <a href="DecalsTechnicalGuide.html#Planes"> Planes</a>
+</li> <li> <a href="DecalsTechnicalGuide.html#Tiling"> Tiling</a>
+</li> <li> <a href="DecalsTechnicalGuide.html#Hit Information"> Hit Information</a>
+</li> <li> <a href="DecalsTechnicalGuide.html#Clipping"> Clipping</a>
+</li> <li> <a href="DecalsTechnicalGuide.html#Static"> Static</a>
+</li> <li> <a href="DecalsTechnicalGuide.html#Receivers"> Receivers</a>
+</li> <li> <a href="DecalsTechnicalGuide.html#Components"> Components</a>
+</li> <li> <a href="DecalsTechnicalGuide.html#Bias"> Bias</a>
+</li> <li> <a href="DecalsTechnicalGuide.html#Filtering"> Filtering</a>
+</li> <li> <a href="DecalsTechnicalGuide.html#Projection Flags"> Projection Flags</a>
+</li></ul>
+</li> <li> <a href="DecalsTechnicalGuide.html#Creating decals from script"> Creating decals from script</a>
+</li> <li> <a href="DecalsTechnicalGuide.html#Decal Lifetime Management"> Decal Lifetime Management</a>
+</li> <li> <a href="DecalsTechnicalGuide.html#Performance Monitoring"> Performance Monitoring</a> <ul>
+<li> <a href="DecalsTechnicalGuide.html#Relevant Stats"> Relevant Stats</a>
+</li> <li> <a href="DecalsTechnicalGuide.html#Relevant _ShowFlags"> Relevant ShowFlags</a>
+</li> <li> <a href="DecalsTechnicalGuide.html#Globally enabling/disabling decals"> Globally enabling/disabling decals</a>
+</li></ul>
+</li> <li> <a href="DecalsTechnicalGuide.html#Using Decals"> Using Decals</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+This page provides technical details for programmers on the decal system and using decals.
+<p />
+<h2><a name="DecalComponent member variables"></a> DecalComponent member variables </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+What follows is a brief description of the DecalComponent member variables...
+<p />
+<h3><a name="Material"></a> Material </h3>
+<p />
+The DecalMaterial property represents the material to use on this decal.  A MaterialInstance chain that must eventually lead to a DecalMaterial
+<p />
+<h3><a name="Size"></a> Size </h3>
+<p />
+The size of the decal on the surface (tangent/binormal directions): <ul>
+<li> Width/Height
+</li></ul>
+<p />
+<h3><a name="Planes"></a> Planes </h3>
+<p />
+The size of the decal: <ul>
+<li> NearPlane/FarPlane
+</li></ul>
+<p />
+<h3><a name="Tiling"></a> Tiling </h3>
+<p />
+Tiling multipliers and offsets for the decal UVs: <ul>
+<li> TileX/TileY
+</li> <li> OffsetX/OffsetY
+</li></ul>
+<p />
+<h3><a name="Hit Information"></a> Hit Information </h3>
+<p />
+Information about the decal frustum location and orientation, used during render data computation and also for decal debug rendering: <ul>
+<li> HitLocation
+</li> <li> HitNormal
+</li> <li> HitTangent
+</li> <li> HitBinormal
+</li></ul>
+<p />
+<h3><a name="Clipping"></a> Clipping </h3>
+<p />
+The bNoClip property defaults to FALSE.  If TRUE, use the "NoClip" codepath when computing decal geometry.  This codepath does not perform a software clip of potential receiver triangles against the decal frustum, at the expense of extra fill during decal rendering.  In addition, textures used in "NoClip" decal materials must have their address mode set to TA_Clamp and have a transparent border around their outer edge wide enough to survive mipmapping.
+<p />
+Note that bNoClip is implied for lit decals on vertex-lit static meshes.
+<p />
+<h3><a name="Static"></a> Static </h3>
+<p />
+The bStaticDecal property is TRUE only for decals placed in the level through the editor.  bStaticDecal is set to TRUE by ADecalActor's <code>defaultproperties</code> block.
+<p />
+<h3><a name="Receivers"></a> Receivers </h3>
+<p />
+HitComponent defaults to NULL.  If non-NULL, only this component will be considered as a potential receiver when computing decal geometry.  Setting this property precludes having to intersect against all potential receivers, but may lead to undesirable results, as the decal will project only onto the specified component (which is bad for eg. rocket blasts).
+<p />
+<h3><a name="Components"></a> Components </h3>
+<p />
+The list of components that generated geometry for this decal and their associated render data.  The <code>Receiver</code> and <code>RenderData</code> arrays are always of the same length, and the i'th entry of <code>RenderData</code> is the data for <code>Receiver</code> i.  This layout allows for receivers to be attached/detached to the decal independantly of others.
+<p />
+<h3><a name="Bias"></a> Bias </h3>
+<p />
+When two or more decals overlap, the DepthBias and SlopeScaleDepthBias parameters can be used to bias the decal's depth to control whether it is rendered below or above other decals.
+<p />
+<h3><a name="Filtering"></a> Filtering </h3>
+<p />
+As described above, Filter contains a list of actors to filter and FilterMode describes whether or not the actors in the Filter (FM_Ignore) list should be ignored or should be the only actors affected (FM_Affect) by this decal.  The default value is FM_None, meaning that the Filter is not consulted
+<p />
+<h3><a name="Projection Flags"></a> Projection Flags </h3>
+<p />
+These flags control whether the decal projects onto: <ul>
+<li> bProjectonBackfaces - triangle backfaces
+</li> <li> bProjectOnBSP - BSP
+</li> <li> bProjectOnStaticMeshes - static meshes
+</li> <li> bProjectOnSkeletalMeshes - skeletal meshes
+</li> <li> bProjectOnTerrain - terrain
+</li></ul>
+<p />
+<h2><a name="Creating decals from script"></a> Creating decals from script </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Decals are typically created by calling DecalManager's <code>&gt;SpawnDecal</code> member function.  The basic process is to simply call <code>SpawnDecal</code> with arguments describing the decal's size, orientation, material, and hints about how the decal should be computed.
+<p />
+Imagine a weapon class containing a <code>SpawnHitDecal</code> member function that gets called in response to a weapon hitting something in the game.
+<p />
+Code for this function might look like the following:
+<p />
+<pre>
+// A class containing state/behaviour shared by all weapons in your game.
+class BaseWeaponClassForYourGame extends Weapon
+
+// ...
+
+// Generates a decal based on a weapon hit; called by functions like eg. SpawnExplosionEffects.
+simulated function SpawnHitDecal(ImpactInfo Impact)
+{
+    local DecalComponent         DecalTemplate;
+
+    // Consult eg. the physical material system stored in the impact info
+    // to get decal parameters appropriate for this surface/weapon pairing.
+    DecalTemplate &#61; Impact.GetDecalTemplate( this );
+
+    // Create a decal based on the decal template.
+    WorldInfo.MyDecalManager.SpawnDecal( DecalTemplate.DecalMaterial,                // UMaterialInstance used for this decal.
+                              Impact.HitLocation,                         // Decal spawned at the hit location.
+                              rotator(-Impact.HitNormal),                 // Orient decal into the surface.
+                              DecalTemplate.Width, DecalTemplate.Height,  // Decal size in tangent/binormal directions.
+                              DecalTemplate.Thickness,                    // Decal size in normal direction.
+                              DecalTemplate.bNoClip,                      // If TRUE, use &#34;NoClip&#34; codepath.
+                              FRand() &#42; 360,                              // random rotation
+                              Impact.HitInfo.HitComponent );               // If non-NULL, consider this component only.
+}
+</pre>
+<p />
+<h2><a name="Decal Lifetime Management"></a> Decal Lifetime Management </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The singleton DecalManager Actor, accessed through WorldInfo-&gt;MyDecalManager, manages temporary decals. It keeps a list of all such decals currently in the world. The base implementation simply ticks down a configurable lifetime for each decal and detaches it when the time expires, but this class can easily be overridden (through the configurable DecalManagerClassPath in WorldInfo) to implement different behavior.
+<p />
+The DecalManager also pools DecalComponents it creates. When a decal's lifetime runs out, it is returned to the pool and that component will be used again for a future SpawnDecal() call. This minimizes object overhead and garbage collection times by having only as many DecalComponents around as are needed in a worst case instead of constantly creating and throwing away objects.
+<p />
+<h2><a name="Performance Monitoring"></a> Performance Monitoring </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="Relevant Stats"></a> Relevant Stats </h3>
+<p />
+The Engine stats group (visualized by entering <code>stat engine</code> on the in-game console) contains two entries relevant to decals: DecalDrawCalls, the total number of decal draw calls; and DecalTriangles, the total number of decal triangles passed to the renderer.  Also, the Game stats group (<code>stat game</code>) contains DecalTime, the amount of time spent ticking the decal manager and decal lifetime policies.
+<p />
+<h3><a name="Relevant _ShowFlags"></a> Relevant ShowFlags </h3>
+<p />
+Their are two showflags governing decal rendering. <code>SHOW DECALINFO</code> enables the rendering of decal debug information, including decal frustums and their tangent bases. <code>SHOW DECALS</code> globally toggles whether or not decals are drawn to a viewport, including any decal debug rendering enabled with <code>DECALINFO</code>.
+<p />
+<h3><a name="Globally enabling/disabling decals"></a> Globally enabling/disabling decals </h3>
+<p />
+The <code>bStaticDecalsEnabled</code> and <code>bDynamicDecalsEnabled</code> config member variables of Engine can be used to enable/disable all aspects (geometry computation, scene attachment and rendering, etc.) of static and dynamic decals. Both variables default to <strong>TRUE</strong>, meaning decals are fully enabled.
+<p />
+<p />
+<h2><a name="Using Decals"></a> Using Decals </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+For information on placing and manipulating decals in levels using the editor tools, please see the <a href="UsingDecals.html" class="twikiLink">Using Decals</a> page.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DecalsTechnicalGuide.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:21:37 GMT -->
+</html></body>

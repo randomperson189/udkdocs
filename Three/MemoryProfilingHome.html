@@ -1,0 +1,548 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MemoryProfilingHome.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:21:45 GMT -->
+<head>
+<title> UDK | MemoryProfilingHome    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">MemoryProfilingHome  </b></div>
+<div id="tooltext">
+<a href="https://udn.epicgames.com/Three/MemoryProfilingHomeJP" class="restricted" class="restricted" class="twikiLink">日本語訳</a><br><a href="https://udn.epicgames.com/Three/MemoryProfilingHomeCH" class="restricted" class="restricted" class="twikiLink">中国翻译</a><br><a href="MemoryProfilingHomeKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/MemoryProfilingHome -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<!--  -->
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="PerformanceHome.html" class="twikiLink">Performance, Profiling, and Optimization</a></b> &gt; Memory Usage and Profiling
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Memory Usage and Profiling"></a> Memory Usage and Profiling </h1>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="MemoryProfilingHome.html#Memory Usage and Profiling"> Memory Usage and Profiling</a> <ul>
+<li> <a href="MemoryProfilingHome.html#Overview"> Overview</a>
+</li> <li> <a href="MemoryProfilingHome.html#Debugging memory: Step by step"> Debugging memory: Step by step</a>
+</li> <li> <a href="MemoryProfilingHome.html#Memory Tracking Tools and Techniques"> Memory Tracking Tools and Techniques</a> <ul>
+<li> <a href="MemoryProfilingHome.html#Memory Tracking Tools"> Memory Tracking Tools</a>
+</li> <li> <a href="MemoryProfilingHome.html#Memory Profiler"> Memory Profiler</a>
+</li> <li> <a href="MemoryProfilingHome.html#STAT LEVELS"> STAT LEVELS</a>
+</li> <li> <a href="MemoryProfilingHome.html#STAT MEMORY"> STAT MEMORY</a>
+</li></ul>
+</li> <li> <a href="MemoryProfilingHome.html#DVD Footprint"> DVD Footprint</a>
+</li> <li> <a href="MemoryProfilingHome.html#Executable Size"> Executable Size</a>
+</li> <li> <a href="MemoryProfilingHome.html#Always Loaded Content"> Always Loaded Content</a>
+</li> <li> <a href="MemoryProfilingHome.html#Content Cost Comparison"> Content Cost Comparison</a> <ul>
+<li> <a href="MemoryProfilingHome.html#Content Histograms"> Content Histograms</a>
+</li></ul>
+</li> <li> <a href="MemoryProfilingHome.html#Engine Memory Pools"> Engine Memory Pools</a>
+</li> <li> <a href="MemoryProfilingHome.html#Hot Spot Reports"> Hot Spot Reports</a>
+</li> <li> <a href="MemoryProfilingHome.html#MemLeakCheck Tracking"> MemLeakCheck Tracking</a>
+</li> <li> <a href="MemoryProfilingHome.html#Texture Pool"> Texture Pool</a>
+</li> <li> <a href="MemoryProfilingHome.html#TArray Slack"> TArray Slack</a>
+</li> <li> <a href="MemoryProfilingHome.html#Memory Fragmentation"> Memory Fragmentation</a>
+</li> <li> <a href="MemoryProfilingHome.html#Stack Memory"> Stack Memory</a>
+</li> <li> <a href="MemoryProfilingHome.html#Finding Referenced Assets"> Finding Referenced Assets</a>
+</li> <li> <a href="MemoryProfilingHome.html#Memory On Consoles"> Memory On Consoles</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Memory usage is always a concern for video games, especially those destined for consoles or mobile devices where memory is limited. This extends from the amount of space taken up by content assets on disk to memory usage of different systems during runtime. These are all extremely important pieces of information that make it possible to constrain memory usage within acceptable limits.
+<p />
+<h2><a name="Debugging memory: Step by step"></a> Debugging memory: Step by step </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<strong>1. Load the Game</strong>
+<p />
+If you can't load the game due to running out of memory, please refer to the <a href="LevelOptimization.html" class="twikiLink">Level Optimization</a> page to find out how to optimize the level.
+<p />
+It is generally a good idea to have established guidelines for a memory budget &ndash; for example, how many Static Meshes you can use in a level; or other assets such as Skeletal Meshes, Animations or Sounds. This can vary dramatically based on what your game does and what it is about.
+<p />
+<strong>2. Run the Game and Observe</strong>
+<p />
+Even if the game runs, it doesn't necessarily mean you're safe from running out of memory. You need to know how much memory your game is using and how much is available for new content and features.
+<p />
+<!--  -->
+<p />
+<strong>3. Reduce memory usage (no OOM)</strong>
+<p />
+When you're running out of memory, you need to narrow down the possible causes.
+<p />
+Some possibilities include:  <ul>
+<li> The level that has too many Static Meshes.
+</li> <li> AIs that create too many projectiles and particles.
+</li> <li> Code that allocates too much memory.
+</li></ul>
+<p />
+<strong>Basic Understanding</strong>
+<p />
+<em>There is no universal answer as to how much memory should go to where.</em>
+<p />
+<em>It is up to a your game to figure out where to spend your memory.</em>
+<p />
+<em>So you need to understand where your current usage is and what your budget should be.</em>
+<p /> <ul>
+<li> Budget: Decide what to use memory on.
+</li> <li> Make sure all assets are optimal and don't have unnecessary references.
+</li> <li> Make sure you have enough buffer (for fragmentation) to keep your game running.
+</li></ul>
+<p />
+<h2><a name="Memory Tracking Tools and Techniques"></a> Memory Tracking Tools and Techniques </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<!--  -->
+<p />
+<h3><a name="STAT LEVELS"></a> STAT LEVELS </h3>
+<p />
+The <code>STAT LEVELS</code> command can be used to see how many levels are loaded in memory.
+<p /> <ul>
+<li> <font color="#ff0000">Red</font> - Level is loaded and visible.
+</li> <li> <font color="#ff6600">Orange</font> - Level is in the process of being made visible.
+</li> <li> <font color="#ffff00">Yellow</font> - Level is loaded but not visible.
+</li> <li> <font color="#0000ff">Blue</font> - Level is unloaded but still resident in memory, will be cleaned up when garbage collection occurs.
+</li> <li> <font color="#008000">Green</font> - Level is unloaded.
+</li> <li> <font color="#800080">Purple</font> - Level is preloading.
+</li></ul>
+<p />
+If you have a level that doesn't have to be loaded, please make sure to not load it. Yellow levels are good candidates to not load or to defer if you can. If you have a big streaming level, try to split it or optimize.
+<p />
+<h3><a name="STAT MEMORY"></a> STAT MEMORY </h3>
+<p />
+The <code>STAT MEMORY</code> command provides a basic outline of assets' memory usage in the level
+<p /> <ul>
+<li> Audio Memory
+</li> <li> Novodex Allocation
+</li> <li> Animation
+</li> <li> Vertex Lighting
+</li> <li> StaticMesh Vertex/Index
+</li> <li> SkeletalMesh Vertex/Index
+</li> <li> Decal Vertex/Index
+</li> <li> VertexShader
+</li> <li> PixelShader
+</li> <li> Texture Pool Size
+</li> <li> FaceFX
+</li></ul>
+<p />
+Many of these such as Animation, SkeletalMesh, Audio, and FaceFX, are related to the size of loaded game content because of Unreal reference system. That is elaborated on further in this document.
+<p />
+<img src="rsrc/Three/MemoryProfilingHome/stat_memory.jpg" alt="stat_memory.jpg" width="640" height="540" />
+<p />
+<!--  -->
+<p />
+<h2><a name="Content Cost Comparison"></a> Content Cost Comparison </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+When you have lots of content you can often have vastly different memory costs for objects that are used in the game. Often these massive differences are a side effect of having multiple people create assets. Or from having something change from a "Boss Encounter" to just being a mini-boss encounter. Over time things change. If you don't have a way to track and compare assets to each other then you will end up mis-using resources.
+<p />
+Basically, we want a have Weapons of the same type cost about the same. Characters of the same type cost about the same. Doing so allows us to more easily plan out levels that will work without special casing everything
+<p />
+<code>GAMENAME ContentComparisonCommandlet</code>
+<p />
+<strong>NOTE:</strong> You probably want to run this nightly
+<p />
+This will break down the asset's total memory into a number of "key" categories for better comparison.
+<p />
+Those are currently located in the BaseEngine.ini and are the following:
+<p />
+<pre>
+&#91;ContentComparisonReferenceTypes]
++Class&#61;AnimSet
++Class&#61;SkeletalMesh
++Class&#61;SoundCue
++Class&#61;StaticMesh
++Class&#61;Texture2D
+</pre>
+<p />
+We are using these attributes as they usually represent the majority of memory usage and are also the easiest to compare across assets.
+<p />
+For example, if you have N weapons. You can probably break them up into: Small, Medium, and Large weapons. In general we don't want to have small weapons cost more than Large weapon. So being able to visualize how much each weapon cost is a great way to make certain our costs are in line.
+<p />
+More generally, we want to have a really low standard deviation across our asset types. Example: If we have N similiar characters, we don't want one character to cost 1.5 to 2.0 times more than all the other characters in terms of SkeletalMesh.
+<p />
+There are lots of reasons why a character could end up costing more than others. And some of those reasons are just ignorance. The idea with this commandlet is to list out the costs and then make certain they fall in line with our expectations. This also provides a nice way to investigate outliers.
+<p />
+To set up which classes the <code>ContentComparisionCommandlet</code> looks at modify <code>DefaultEditor.ini</code> <code>ContentComparisonClassesToCompare</code>
+<p />
+<h3><a name="Content Histograms"></a> Content Histograms </h3>
+<p />
+Seeing that you have 15 megs of sounds always loaded in nice to know. But what are those sounds? If you do "listsounds" you get a huge list of hundreds of sounds, which is pretty painful to get an idea of what the distribution is. The same occurs for textures where you have hundreds of textures loaded.
+<p />
+Getting a quick high level view of what TYPES of sounds are in memory can save you lots of time. If the percentages are correct then everything is Good. But if you see that you are using 40% of your sound budget on footstep sounds that gives you a quick place to optimize.
+<p />
+By using a combination of MemLeakCheck and xls spreadsheets you can make useful histograms. A sample .xls file that can be used for sounds and textures is provided: <a href="rsrc/Three/MemoryProfilingHome/SoundTextureHistograms.xlsx" target="_top">SoundTextureHistograms.xlsx</a>
+<p />
+Load up your level and then:
+<p /> <ul>
+<li> Run MemLeakCheck
+</li> <li> Copy and paste out the list of Sounds into the SoundData tab in the .xls
+</li> <li> Copy and paste out the list of Textures into the TextureData tab in the .xls
+</li> <li> The .xls will then give you each category and the amount of memory used by that category
+</li></ul>
+<p />
+<strong>NOTE:</strong> if you have added SoundClasses or TextureGroups you will need to update the .xls with those Categories
+<p />
+<h2><a name="Engine Memory Pools"></a> Engine Memory Pools </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+As the engine loads new levels and creates new objects there are a number of Pools/Caches/Lists that will grow over time. These will stabilize after a number of levels have been loaded. The issue is that not all of them are "capped" and not all of them are "cleared" often. So you can get some high water marks that don't seem to be in the normal "stat memory" type logging. Some of these are cleared by calling WorldInfo.ClearObjectPools or per-pool clear functions.
+<p />
+Here are some example of the pools/caches/lists:
+<p /> <ul>
+<li> Name Table
+</li> <li> Octree
+</li> <li> RB_BodyInstance Pool (c.f. DISABLE_POOLED_RB_INSTANCES)
+</li> <li> RB_ConstraintInstance Pool (c.f. DISABLE_POOLED_RB_INSTANCES)
+</li> <li> Static Mesh Collision Scales
+</li> <li> Static Draw lists on render thread
+</li> <li> Particles if using the EmitterPool
+</li> <li> Decals if using the DecalManager
+</li></ul>
+<p />
+<h2><a name="Hot Spot Reports"></a> Hot Spot Reports </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Hot spot reports are useful in identifying memory dips due to sub-levels streaming in and out. They will allow your LDs to better see which buckets are costing the most memory, and should allow them to optimize their levels to better fit in memory. For a complete guide to creating and using hot spot reports, see the <a href="HotSpotReportGeneration.html" class="twikiLink">Hot Spot Report Generation</a> page.
+<p />
+<h2><a name="MemLeakCheck Tracking"></a> MemLeakCheck Tracking </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+MemLeakCheck provides a really easy to use and understand view of where memory is being used in your game. It is just a text file so you can diff it easily to see changes over time.
+<p />
+For more detail on this technique, see the <a href="MemLeakCheckTracking.html" class="twikiLink">MemLeakCheck Tracking</a> page.
+<p />
+<h2><a name="Texture Pool"></a> Texture Pool </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The texture pool is a fixed size so we will not have any adverse affects on overall system memory for having a huge amount of textures. That said we want to make certain that we are effectively using that memory. That means we need to make certain that the amount of texture memory that we can see is within the pool size. We could have GIGs of textures across the entire map as long as the area around us does not exceed the texture pool.
+<p />
+Using the <code>stat streaming</code> command will display texture streaming stats. The stats you care about are:
+<p /> <ul>
+<li> Streaming Fudge Factor: We want this to be as close to 1.0f as possible
+</li> <li> Over Budget: We want this to be as close to 0.0f as possible
+</li></ul>
+<p />
+The <code>listtextures</code> console command displays all of the textures currently in the pool and their current size. Looking at that list will allow you to see if there are questionable textures existing in the pool!
+<p />
+In the Editor there is the TextureStats tab. Running through your level in PIE and then looking at that tab will show a lot of stats about Textures. One of the really important ones is the "Last Seen(sec)" column. If you have a texture in that is never seen even tho it is referenced, then that is a candidate for looking to see where it is used and perhaps removing it!
+<p />
+All textures except render targets use texture pool. This includes lightmaps. (Using lightmaps instead of vertex lighting is a clear win on memory savings because they won't fluctuate system memory.)
+<p />
+Also make sure you have an optimal texture pool size for your game. Stat Memory will show how much of texture pool is being used. Based on that, you'll be able to determine the best number for your game.
+<p />
+In <code>DefaultEngine.ini</code>:
+<p />
+<pre>
+&#91;TextureStreaming]
+PoolSize&#61;120
+</pre>
+<p />
+<!--  -->
+<p />
+<h2><a name="Memory Fragmentation"></a> Memory Fragmentation </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<strong>MEM STAT:</strong> summary only
+<p />
+<strong>MEM DETAILED:</strong>
+<p />
+This prints out useful information for allocator. Please refer to the platform section below.
+<p />
+You need to keep a buffer (depending on platform) of memory around to deal with fragmentation issues. Your game will crash out of memory before it reaches "0" reported free memory.
+<p />
+<!--  -->
+<p />
+<h2><a name="Finding Referenced Assets"></a> Finding Referenced Assets </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+As the levels from the game get closer to completion, it is well worth taking a pass over all of them to ensure that only the assets needed are loaded. In Unreal Engine 3, any referenced content will be loaded in the game, and with so many ways to reference content &ndash; both directly and indirectly &ndash; you can end up loading large assets without realizing it. For example, a Pawn referencing a Skeletal Mesh automatically will load the AnimSet that is referenced by the Skeletal Mesh, thus all animations(Pawn-&gt;Skeletalmesh-&gt;Animsets-&gt;Animations). This chain relation can be dangerous in terms of memory as more Actors reference each other.
+<p />
+You will normally have to work with a level designer to determine if there are things being loaded that should not be, or that could be split across streaming levels and not all loaded at the same time. An example might be the mesh of a enemy that is not present in this level.
+<p />
+<strong>MEMLEAKCHECK:</strong>
+<p />
+<code>Memleakcheck</code> prints a lot of basic game data to one output file as text file in <code>[ProfileDirectory:Platform-specific]/MemLeak</code>.
+<p />
+This will at least show you the snapshot of object list of Skeletal Meshes, AnimSets, Sounds, and so on. Once you have a basic snapshot, you can go through them and see if there are unnecessary assets loaded. If so, trace it down to who references it and remove the reference is the key to the solution.
+<p />
+Below is the case study...
+<p />
+<strong>OBJ LIST CLASS=SKELETALMESH:</strong>
+<p />
+Lists all SkeletalMeshes loaded, sorted by size. <code>MEMLEAKCHECK</code> includes this information, but it is sorted alphabetically, which makes it hard to find content to optimize.
+<p />
+<strong>LISTSOUNDS:</strong>
+<p />
+Lists all SoundCues loaded, sorted by size. <code>MEMLEAKCHECK</code> includes this information, but it is also sorted alphabetically, which makes it hard to find content to optimize.
+<p />
+<strong>OBJ LIST CLASS=STATICMESH:</strong>
+Lists all StaticMeshes loaded, sorted by size.
+<p />
+<strong>LISTANIMSETS:</strong>
+<p />
+Lists all AnimSets loaded, sorted by size. <strong>MEMLEAKCHECK</strong> also includes this info.
+<p />
+<strong>OBJ REFS:</strong>
+<p />
+The most useful way to find why an asset is being loaded is using the <code>OBJ REFS</code> command. To use this, you need to run the game on PC, as it requires a deep stack due to the recursive functions and usually crashes the console versions of UE3.
+<p />
+Play to the point where the asset in question is loaded, and then type: <code>OBJ REFS CLASS=<classname> NAME=<name></code>
+<p />
+For example:
+<p />
+<pre>
+OBJ REFS CLASS&#61;SKELETALMESH NAME&#61;BIG&#95;OGRE&#95;2
+</pre>
+<p />
+It will then show what the chain of references is that is pulling in this asset e.g.:
+<p />
+<pre>
+Log: Shortest reachability from root to SkeletalMesh COG&#95;Bolo&#95;Grenade.Frag&#95;Grenade:
+Log:    SkeletalMesh COG&#95;Bolo&#95;Grenade.Frag&#95;Grenade &#91;target] (root) (standalone)
+Log:    SkeletalMeshComponent GearGame.Default&#95;&#95;GearProj&#95;FragGrenade:COGGrenadeMesh0 (root) (ObjectProperty Engine.SkeletalMeshComponent:SkeletalMesh)
+Log:    Class GearGame.GearProj&#95;FragGrenade (root) (standalone)
+</pre>
+<p />
+In the example above, the Frag_Grenade mesh is being referenced by the default properties of the GearProj_FragGrenade native class.
+<p />
+Note that there may be more than one reference, in which case you will have to take care of them one at a time.
+<p />
+Here are some reasons we have found for assets being incorrectly loaded: <ul>
+<li> The asset is referenced by a native class.
+</li> <li> UnrealScript code references the class (that references the asset) to get a default property from it:
+</li></ul>
+<pre>
+            Asset &#61; class&#39;MyGameContent.Pawn&#95;BigOgre&#39;.default.Mesh.PhysicsAsset;
+</pre> <ul>
+<li> A Touch Kismet event (SeqEvt_Touch) references the class in its ClassProximityTypes or IgnoredClassProximityTypes arrays.
+</li></ul>
+<p />
+<!--  -->
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MemoryProfilingHome.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:21:46 GMT -->
+</html></body>

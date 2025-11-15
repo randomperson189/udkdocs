@@ -1,0 +1,707 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CanvasTechnicalGuideCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:30:42 GMT -->
+<head>
+<title> UDK | CanvasTechnicalGuideCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">CanvasTechnicalGuideCH  </b></div>
+<div id="tooltext">
+<a href="CanvasTechnicalGuide.html" class="twikiLink">English Translation</a><br><a href="CanvasTechnicalGuideJP.html" class="twikiLink">日本語訳</a><br><a href="CanvasTechnicalGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/CanvasTechnicalGuideCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="UIAndHUDHome.html" class="twikiLink">用户界面 &amp; HUD</a></b> &gt; 画布技术指南
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="画布技术指南"></a> 画布技术指南 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="CanvasTechnicalGuideCH.html#画布技术指南">画布技术指南</a> <ul>
+<li> <a href="CanvasTechnicalGuideCH.html#概述"> 概述</a>
+</li> <li> <a href="CanvasTechnicalGuideCH.html#Canvas类"> Canvas类</a> <ul>
+<li> <a href="CanvasTechnicalGuideCH.html#Canvas(画布)属性"> Canvas(画布)属性</a>
+</li> <li> <a href="CanvasTechnicalGuideCH.html#画布函数"> 画布函数</a>
+</li></ul>
+</li> <li> <a href="CanvasTechnicalGuideCH.html#画布描画"> 画布描画</a>
+</li> <li> <a href="CanvasTechnicalGuideCH.html#映射和反映射"> 映射和反映射</a> <ul>
+<li> <a href="CanvasTechnicalGuideCH.html#映射"> 映射</a>
+</li> <li> <a href="CanvasTechnicalGuideCH.html#反映射"> 反映射</a>
+</li></ul>
+</li> <li> <a href="CanvasTechnicalGuideCH.html#混合模式">混合模式</a>
+</li> <li> <a href="CanvasTechnicalGuideCH.html#画布图标"> 画布图标</a>
+</li> <li> <a href="CanvasTechnicalGuideCH.html#画布HUD示例"> 画布HUD示例</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<p />
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+使用Canvas类进行描画和绘制一幅图片类似，但您的媒介是由图像和文本组成，而不是涂料。
+<p />
+<img src="rsrc/Three/CanvasTechnicalGuideCH/canvas_painting.jpg" alt="canvas_painting.jpg" width="640" height="400" />
+<p />
+有一些特殊的函数用于把类似于图像、材质、形状和文本的元素描画到屏幕上。通过把这些元素组合到一起，就能创建出一个连贯的、吸引人的并且提供很多信息的界面。当然，Canvas类的用途不仅是描画界面和HUD。它也用于其它需要进行描画的地方，比如ScriptedTextures(脚本贴图)。在任何情况下,无论在哪里使用Canvas类进行描画，基本的概念是一样的。
+<p />
+<h2><a name="Canvas类"></a> Canvas类 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Canvas类的命名是合适的，因为它提供了一个用于描画的空画布。它也提供了以专用描画函数方式进行描画的必要工具。
+<p />
+每次更新视口时，都会创建一个新的Canvas对象。这意味着您不能总是引用同样的Canvas对象并不断地使用它来向屏幕上进行描画。HUD类的确保持了一个到当前Canvas的引用，但是它仅在主要描画循环期间并且在那个循环期间执行的任何函数中进行访问。否则，将不能确保Canvas存在或者有用。
+<p />
+<h3><a name="Canvas(画布)属性"></a> Canvas(画布)属性 </h3>
+<p />
+<strong>Drawing(描画)</strong>
+<p /> <ul>
+<li> <strong>DrawColor(描画颜色)</strong> - 描画所使用的颜色。将用于文本。
+</li> <li> <strong>Font(字体)</strong> - 描画文本所使用的字体。
+</li> <li> <strong>DefaultTexture(默认贴图)</strong> - 用于描画基于贴图的元素所使用的默认贴图，没有指定可选的贴图参数。
+</li></ul>
+<p />
+<strong>一般</strong>
+<p /> <ul>
+<li> <strong>Org[X/Y]</strong> - 当前剪辑区域的水平和垂直原点。
+</li> <li> <strong>Clip[X/Y]</strong> -当前剪辑区域的右下角。
+</li> <li> <strong>Cur[X/Y/Z]</strong> - 要描画到的当前位置。
+</li> <li> <strong>CurYL</strong> - 自从上一次调用 <code>DrawText()</code> 函数后所描画的任何元素的最大垂直尺寸。
+</li> <li> <strong>Size[X/Y]</strong> -描画Canvas的视口的真正的水平和垂直维度。
+</li> <li> <strong>bCenter</strong> - 如果为真，文本将会居中描画。
+</li> <li> <strong>bNoSmooth</strong> - 如果为真，那么将会对要描画到Canvas上的元素应用双线性过滤。
+</li></ul>
+<p />
+<h3><a name="画布函数"></a> 画布函数 </h3>
+<p />
+<strong>一般</strong>
+<p /> <ul>
+<li> <strong>Reset [bKeepOrigin]</strong> - 这是引擎调用的事件，每次更新时重新设置Canvas的属性。 <ul>
+<li> <strong>bKeeporigin</strong> - 如果为真，将重新设置 <code>OrgX</code> 和 <code>OrgY</code> 属性。
+</li></ul>
+</li> <li> <strong>SetPos [PosX] [PosY] [PosZ]</strong> - 设置画布的当前描画位置。 <ul>
+<li> <strong>Pos[X/Y/Z]</strong> - 要进行描画的地方的水平和垂直位置。Z默认为1.0，当调用这个函数时通常会被忽略。
+</li></ul>
+</li> <li> <strong>SetOrigin [X] [Y]</strong> - 设置画布的剪辑区域的原点。 <ul>
+<li> <strong>[X/Y]</strong> - 水平和垂直位置，以像素为单位。
+</li></ul>
+</li> <li> <strong>SetClip [X] [Y]</strong> - 设置画布的剪辑区域的左下角的位置。 <ul>
+<li> <strong>[X/Y]</strong> - 水平和垂直位置，以像素为单位。
+</li></ul>
+</li> <li> <strong>SetDrawColor [R] [G] [B] [A]</strong> - 创建使用给定值的一个颜色，并设置Canvas的 <code>DrawColor</code> 。 <ul>
+<li> <strong>[R/G/B/A]</strong> - 红、绿、蓝和透明度值。
+</li></ul>
+</li> <li> <strong>SetDrawColorStruct [C]</strong> - 设置画布的 <code>DrawColor</code> 使用给定颜色。 <ul>
+<li> <strong>C</strong> - 要使用的颜色。
+</li></ul>
+</li></ul>
+<p />
+<strong>图标</strong>
+<p /> <ul>
+<li> <strong>MakeIcon [Texture] [U] [V] [UL] [VL]</strong> - 创建并返回一个使用给定贴图的新CanvasIcon(画布图标)。 <ul>
+<li> <strong>Texture</strong> - 从中抽取图标的贴图。
+</li> <li> <strong>[U/V]</strong> - 要使用的贴图部分的左上角的水平位置和垂直位置。这个值以贴图像素为单位。
+</li> <li> <strong>[UL/VL]</strong> - 要使用的贴图部分的宽度和高度。这个值以贴图像素为单位。
+</li></ul>
+</li> <li> <strong>DrawIcon [Icon] [X] [Y] [Scale]</strong> - 在给定的位置以给定的比例描画CanvasIcon（画布图标）。 <ul>
+<li> <strong>Icon</strong> - 要描画的CanvasIcon。
+</li> <li> <strong>[X/Y]</strong> - 在屏幕上描画图标的水平和垂直位置，以像素为单位。
+</li> <li> <strong>Scale</strong> - 应用到图标上的比例。
+</li></ul>
+</li></ul>
+<p />
+<strong>形状</strong>
+<p /> <ul>
+<li> <strong>DrawRect [RectX] [RectY] [Tex]</strong> - 使用当前的 <code>DrawColor(描画颜色)</code> 在当前的描画位置描画一个特定尺寸的填充长方形。 <ul>
+<li> <strong>Rect[X/Y]</strong> - 要描画的长方形的宽度和高度。
+</li> <li> <strong>Tex</strong> - 可选。填充长方形所使用的贴图。默认为画布的DefaultTexture（默认贴图）。
+</li></ul>
+</li> <li> <strong>DrawBox [width] [height]</strong> - 在当前描画画布的位置处描画一个具有给定大小的2个像素宽的边界长方形。 <ul>
+<li> <strong>width</strong> - 要描画的方框的宽度。
+</li> <li> <strong>height</strong> - 要描画的方框的高度。
+</li></ul>
+</li> <li> <strong>Draw2DLine [X1] [Y1] [X2] [Y2] [LineColor]</strong> - 在屏幕上描画一条直线。 <ul>
+<li> <strong>[X/Y]1</strong> - 描画直线开始处的水平和垂直位置，以像素为单位。
+</li> <li> <strong>[X/Y]2</strong> - 描画直线结束处的是水平和垂直位置。
+</li> <li> <strong>LineColor</strong> - 用于描画直线的颜色。
+</li></ul>
+</li> <li> <strong>DrawTextureLine [StartPoint] [EndPoint] [Perc] [Width] [LineColor] [LineTexture] [U] [V] [UL] [VL]</strong> - 使用旋转、贴图平铺块来描画一条2D直线。 <ul>
+<li> <strong>StartPoint</strong> - 描画直线的起始点。这是一个向量，X和T分量包含了屏幕空间像素坐标。
+</li> <li> <strong>EndPoint</strong> - 描画直线的结束点。这是一个向量，X和T分量包含了屏幕空间像素坐标。
+</li> <li> <strong>Perc</strong> - 要描画的直线的量。这个值是由 <code>EndPoint</code> 减去 <code>StartPoint</code> 的整体距离来获得的，决定了描画的直线的长度。渲染的直线将总是以 <code>StartPoint</code> 到 <code>EndPoint</code> 的中点为中心。
+</li> <li> <strong>Width</strong> - 每条直线的宽度，以像素为单位。
+</li> <li> <strong>LineColor</strong> - 描画第一条直线所使用的颜色。
+</li> <li> <strong>Tex</strong> - 描画直线所使用的贴图。
+</li> <li> <strong>[U/V]</strong> - 要使用的贴图部分的左上角的水平位置和垂直位置。这个值以贴图像素为单位。
+</li> <li> <strong>[UL/VL]</strong> - 要使用的贴图部分的宽度和高度。这个值以贴图像素为单位。
+</li></ul>
+</li> <li> <strong>DrawTextureDoubleLine [StartPoint] [EndPoint] [Perc] [Spacing] [Width] [LineColor] [AltLineColor] [Tex] [U] [V] [UL] [VL]</strong> - 使用旋转、贴图平铺块来描画一条2D直线。 <ul>
+<li> <strong>StartPoint</strong> - 描画直线的起始点。这是一个向量，X和T分量包含了屏幕空间像素坐标。
+</li> <li> <strong>EndPoint</strong> - 描画直线的结束点。这是一个向量，X和T分量包含了屏幕空间像素坐标。
+</li> <li> <strong>Perc</strong> - 要描画的直线的量。这个值是由 <code>EndPoint</code> 减去 <code>StartPoint</code> 的整体距离来获得的，决定了描画的直线的长度。渲染的直线将总是以 <code>StartPoint</code> 到 <code>EndPoint</code> 的中点为中心。
+</li> <li> <strong>Spacing</strong> - 两条直线之间的像素的数量。
+</li> <li> <strong>Width</strong> - 每条直线的宽度，以像素为单位。
+</li> <li> <strong>LineColor</strong> - 描画第一条直线所使用的颜色。
+</li> <li> <strong>AltLineColor</strong> - 描画第二条直线所使用的颜色。
+</li> <li> <strong>Tex</strong> - 描画直线所使用的贴图。
+</li> <li> <strong>[U/V]</strong> - 要使用的贴图部分的左上角的水平位置和垂直位置。这个值以贴图像素为单位。
+</li> <li> <strong>[UL/VL]</strong> - 要使用的贴图部分的宽度和高度。这个值以贴图像素为单位。
+</li></ul>
+</li> <li> <strong>DrawDebugGraph [Title] [ValueX] [ValueY] [UL_X] [UL_Y] [W] [H] [RangeX] [RangeY]</strong> - 描画一个比较两个值的图表。用于可视化的调试和调整。 <ul>
+<li> <strong>Title</strong> - 描画在图表上的标签, 如果没有标签则描画“”。
+</li> <li> <strong>Value[X/Y]</strong> - 位于图表的水平轴和垂直轴上的点的值。
+</li> <li> <strong>UL_[X/Y]</strong> - 屏幕上图标左上角的水平位置和垂直位置，以像素为单位。
+</li> <li> <strong>[W/H]</strong> - 图表的宽度及高度，以像素为单位。
+</li> <li> <strong>Range[X/Y]</strong> - 在图表上显示的水平轴和垂直轴的值的范围。
+</li></ul>
+</li></ul>
+<p />
+<strong>Text(文本)</strong>
+<p /> <ul>
+<li> <strong>CreateFontRenderInfo [bClipText] [bEnableShadow] [GlowColor] [GlowOuterRadius] [GlowInnerRadius]</strong> -创建并返回一个具有给定属性的新FontRenderInfo。 <ul>
+<li> <strong>bClipText</strong> - 如果为True，那么描画的具有这个FontRenderInfo文本将会被剪辑掉。
+</li> <li> <strong>bEnableShadow</strong> - 如果为True，那么描画的具有这个FontRenderInfo的文本将会被阴影化。
+</li> <li> <strong>GlowColor</strong> - 描画闪光文本所使用的基本颜色。
+</li> <li> <strong>GlowOuterRadius</strong> - 这是指出闪光轮廓的外部半径的Vector2D (0到1之间，0.5是角色轮廓的边缘)，闪光影响强度在GlowOuterRadius.X处是0，在GlowOuterRadius.Y处是1。
+</li> <li> <strong>GlowInnerRadius</strong> -  这是指出闪光轮廓的内部半径的Vector2D (0到1之间，0.5是角色轮廓的边缘)，闪光影响强度在GlowOuterRadius.X处是0，在GlowOuterRadius.Y处是1。
+</li></ul>
+</li> <li> <strong>StrLen [String] [XL] [YL]</strong> - 计算给定字符串的水平和垂直大小。这考虑了文本自动换行的情形。 <ul>
+<li> <strong>String</strong> - 要获取其尺寸的文本。
+</li> <li> <strong>[X/Y]L</strong> - Out. 输出文本的水平和垂直尺寸。
+</li></ul>
+</li> <li> <strong>TextSize [String] [XL] [YL]</strong> - 计算给定字符串的水平及垂直尺寸。它用于剪辑文本，因为它没有考虑自动换行。 <ul>
+<li> <strong>String</strong> - 要获取其尺寸的文本。
+</li> <li> <strong>[X/Y]L</strong> - Out. 输出文本的水平和垂直尺寸。
+</li></ul>
+</li> <li> <strong>DrawText [Text] [CR] [XScale] [YScale] [RenderInfo]</strong> - 描画一串字符串到屏幕上。 <ul>
+<li> <strong>Text</strong> - 要描画的文本字符串。
+</li> <li> <strong>CR</strong> - 可选。如果为True，那么当前描画位置以在描画该文本之前描画的文本的大小在垂直方向上递增。
+</li> <li> <strong>[X/Y]Scale</strong> - 可选。应用到文本上的水平和垂直缩放比例。
+</li> <li> <strong>RenderInfo</strong> - 可选。当描画文本时要使用的 <code>FontRenderInfo</code> 。
+</li></ul>
+</li></ul>
+<p />
+<strong>贴图/材质 描画</strong>
+<p /> <ul>
+<li> <strong>DrawTile [Tex] [XL] [YL] [U] [V] [UL] [VL] [LColor] [ClipTile] [Blend]</strong> - 在当前位置(CurX,CurY)在沿着坐标轴的方块上描画一个贴图。 <ul>
+<li> <strong>Tex</strong> - 要描画的贴图。
+</li> <li> <strong>[XL/YL]</strong> - 要描画的平铺块的宽度和高度。
+</li> <li> <strong>[U/V]</strong> -要描画的贴图部分的左上角的水平和垂直位置。这个值以贴图像素为单位。
+</li> <li> <strong>[UL/VL]</strong> - 要描画的贴图部分的宽度和高度。这个值以贴图像素为单位。
+</li> <li> <strong>LColor</strong> - 用于描画平铺块的使用的颜色。
+</li> <li> <strong>ClipTile</strong> - 如果为True，平铺块将会被剪辑区域剪切掉。
+</li> <li> <strong>Blend</strong> - 可选。当描画平铺块时使用要使用的 <code>EBlendMode</code> 混合模式。
+</li></ul>
+</li> <li> <strong>PreOptimizeDrawTiles [Num] [Tex] [Blend]</strong> - 使用相同的贴图和混合模式为以后连续调用的DrawTile()函数预先分配顶点和三角形。 <ul>
+<li> <strong>Num</strong> -在这个函数后要执行 <code>DrawTile()</code> 的次数。如果执行完这么多次 <code>DrawTile()</code> 之前进行了其他描画(文本、不同的贴图等)，那么将不能进行优化，导致内存浪费。
+</li> <li> <strong>Tex</strong> - 在后续函数调用中使用的贴图。
+</li> <li> <strong>Blend</strong> - 在后续的函数调用中将使用的 <code>EBlendMode</code>  混合模式。
+</li></ul>
+</li> <li> <strong>DrawMaterialTile [Mat] [XL] [YL] [U] [V] [UL] [VL] [LColor] [ClipTile] [Blend]</strong> - 在当前位置(CurX,CurY)在沿着坐标轴的方块上描画一个材质。 <ul>
+<li> <strong>Mat</strong> - 要描画的材质。
+</li> <li> <strong>[XL/YL]</strong> - 要描画的平铺块的宽度和高度。
+</li> <li> <strong>[U/V]</strong> -要描画的材质部分的左上角的水平和垂直位置。这个值是[0，1]范围内的百分比。
+</li> <li> <strong>[UL/VL]</strong> - 要描画的贴图部分的宽度和高度。这个值是[0，1]范围内的百分比。
+</li> <li> <strong>LColor</strong> - 用于描画平铺块的使用的颜色。
+</li> <li> <strong>ClipTile</strong> - 如果为True，平铺块将会被剪辑区域剪切掉。
+</li></ul>
+</li> <li> <strong>DrawRotatedTile [Tex] [Rotation] [XL] [YL] [U] [V] [UL] [VL] [AnchorX] [AnchorY]</strong> - 在当前描画位置(CurX,CurY)向旋转方块上描画一个贴图。 <ul>
+<li> <strong>Tex</strong> - 要描画的贴图。
+</li> <li> <strong>Rotation</strong> - 这个旋转向量指出了平铺块的旋转量。
+</li> <li> <strong>[XL/YL]</strong> - 要描画的平铺块的宽度和高度。
+</li> <li> <strong>[U/V]</strong> -要描画的贴图部分的左上角的水平和垂直位置。这个值以贴图像素为单位。
+</li> <li> <strong>[UL/VL]</strong> - 要描画的贴图部分的宽度和高度。这个值以贴图像素为单位。
+</li> <li> <strong>Anchor[X/Y]</strong> - 相对于贴图块的左上角，用作为旋转支点的水平位置和垂直位置，以像素为单位。
+</li></ul>
+</li> <li> <strong>DrawRotatedMaterialTile [Mat] [Rotation] [XL] [YL] [U] [V] [UL] [VL] [AnchorX] [AnchorY]</strong> - 在当前描画位置 (CurX,CurY)向旋转方块描画一个材质。 <ul>
+<li> <strong>Mat</strong> - 要描画的材质。
+</li> <li> <strong>Rotation</strong> - 这个旋转向量指出了平铺块的旋转量。
+</li> <li> <strong>[XL/YL]</strong> - 要描画的平铺块的宽度和高度。
+</li> <li> <strong>[U/V]</strong> -要描画的材质部分的左上角的水平和垂直位置。这个值是[0，1]范围内的百分比。
+</li> <li> <strong>[UL/VL]</strong> - 要描画的贴图部分的宽度和高度。这个值是[0，1]范围内的百分比。
+</li> <li> <strong>Anchor[X/Y]</strong> - 相对于贴图块的左上角，用作为旋转支点的水平位置和垂直位置，以像素为单位。
+</li></ul>
+</li> <li> <strong>DrawTileStretched [Tex] [Rotation] [XL] [YL] [U] [V] [UL] [VL] [LColor] [bStretchHorizontally] [bStretchVertically]</strong> - 在当前位置(CurX,CurY)向画一个沿着坐标轴方块延展的贴图。将会拉伸这个贴图使它适应平铺块，同时保持贴图的完整性。这对于描画任意大小的盒子是有用的，因为贴图的外部轮廓部分是不改变的，而内部部分进行缩放。 <ul>
+<li> <strong>Tex</strong> - 要描画的贴图。
+</li> <li> <strong>[XL/YL]</strong> - 要描画的平铺块的宽度和高度。
+</li> <li> <strong>[U/V]</strong> -要描画的贴图部分的左上角的水平和垂直位置。这个值以贴图像素为单位。
+</li> <li> <strong>[UL/VL]</strong> - 要描画的贴图部分的宽度和高度。这个值以贴图像素为单位。
+</li> <li> <strong>LColor</strong> - 用于描画平铺块的使用的颜色。
+</li> <li> <strong>bStretchHorizontally</strong> - 可选。如果为True，平铺块沿着水平方向拉伸平铺块而不是缩放。
+</li> <li> <strong>bStretchVertically</strong> - 可选。如果为True，平铺块沿着垂直方向拉伸平铺块而不是缩放。
+</li></ul>
+</li> <li> <strong>DrawTris [Tex] [Triangles]</strong> - 描画一组三角形到屏幕上。 <ul>
+<li> <strong>Tex</strong> - 应用到三角形上的贴图。
+</li> <li> <strong>Triangles</strong> - 要描画的一组 <code>CanvasUVTris</code> 。
+</li></ul>
+</li> <li> <strong>DrawTexture [Tex] [Scale]</strong> - 以给定的比例把整个给定贴图作为一个平铺块描画到屏幕上。 <ul>
+<li> <strong>Tex</strong> - 要描画的贴图。
+</li> <li> <strong>Scale</strong> - 应用到描画的贴图块上的比例。最终渲染的贴图块的维度是： <code>(Scale * Tex.SizeX x Scale * Tex.SizeY)</code>
+</li></ul>
+</li> <li> <strong>DrawTextureBlended [Tex] [Scale] [Blend]</strong> - 使用特定的混合模式按照特定的比例把给定整个贴图作为一个平铺块描画到屏幕上。 <ul>
+<li> <strong>Tex</strong> - 要描画的贴图。
+</li> <li> <strong>Scale</strong> - 应用到描画的贴图块上的比例。最终渲染的贴图块的维度是： <code>(Scale * Tex.SizeX x Scale * Tex.SizeY)</code>
+</li> <li> <strong>Blend</strong> - 要使用的 <code>EBlendMode</code> 混合模式。
+</li></ul>
+</li></ul>
+<p />
+<strong>Transform(变换)</strong>
+<p /> <ul>
+<li> <strong>Project [location]</strong> -把一个3D世界空间向量变为2D屏幕坐标。 <ul>
+<li> <strong>location</strong> - 要变换的世界空间向量。
+</li></ul>
+</li> <li> <strong>DeProject [ScreenPos] [WorldOrigin] [WorldDirection]</strong> - 把2D屏幕坐标变换为3D世界空间的原点和方向。这可以用于获取光线的轨迹中 。 <ul>
+<li> <strong>ScreenPos</strong> - 这是表示要变换的屏幕坐标的Vector2D,以像素为单位。
+</li> <li> <strong>WorldOrigin</strong> - Out. 输出世界空间原点向量。
+</li> <li> <strong>WorldDirection</strong> - Out. 输出世界空间方向向量。
+</li></ul>
+</li> <li> <strong>PushTranslationMatrix [TranslationVector]</strong> - 把一个变换矩阵推到画布上。 <ul>
+<li> <strong>TranslationVector</strong> - 创建变换矩阵所使用的变换向量。
+</li></ul>
+</li> <li> <strong>PopTransform</strong> - 从画布变换栈中弹出最顶端的矩阵。
+</li></ul>
+<p />
+<h2><a name="画布描画"></a> 画布描画 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Canvas从本质上讲就是一个可以在其上进行描画的虚拟区域。它具有宽度和高度，这些值通常是和画布相关联的视口的维度。画布也具有剪辑区域，它或者剪切或者切断在其外面描画的元素，或者可以使用它来把文本封装在特定区域内。
+<p />
+<img src="rsrc/Three/CanvasTechnicalGuideCH/canvas_regions.jpg" alt="canvas_regions.jpg" width="640" height="400" />
+<p />
+当执行描画函数时，那个函数描画的元素将会被放置在画布的当前描画位置处。一般，应该在描画每个新的元素之前设置当前的描画位置；但是，在某些情况下描画文本时,可以在每个函数调用中执行回车换行，从而可以使用连续的描画函数来快速地描画多行文本。
+<p />
+<h2><a name="映射和反映射"></a> 映射和反映射 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+映射指世界坐标系和屏幕坐标系之间的变换。在某些情况下这是一个非常有用的概念。它可以用于在位于世界中特定位置处出现的HUD上描画元素，比如玩家上面浮动信息，或者它可以用于决定玩家正在瞄准或者鼠标正悬停在世界中的哪些对象上。RTS游戏为了在世界中选择单元会大量地使用这些概念。在任何游戏类型中，这个功能对于在世界中显示关于某对象的相关信息都是有用的。
+<p />
+映射是通过两个主要函数完成：
+<p /> <ul>
+<li> <strong><a href="CanvasTechnicalGuideCH.html#Project" class="twikiAnchorLink">Project</a></strong> - 把3D世界空间向量变换为2D屏幕坐标。
+</li> <li> <strong><a href="CanvasTechnicalGuideCH.html#DeProject" class="twikiAnchorLink">DeProject</a></strong> - 把2D屏幕坐标变换为3D世界中的原点和方向。
+</li></ul>
+<p />
+<h3><a name="映射"></a> 映射 </h3>
+<p />
+<code>Project()</code> 函数取入世界空间中的一个向量，比如Actor的位置，然后把它变换为2D屏幕坐标。
+<p />
+<img src="rsrc/Three/CanvasTechnicalGuideCH/project_game.jpg" alt="project_game.jpg" width="651" height="400" />
+<p />
+想象一下您的计算机屏幕是一个您可以通过它来看到游戏世界的窗口。然后，在您的眼睛和“窗口”另一侧的世界中的Actor之间画一条直线。直线和窗口相交的点是 <code>Project()</code> 函数返回的屏幕坐标。
+<p />
+<img src="rsrc/Three/CanvasTechnicalGuideCH/project_window.jpg" alt="project_window.jpg" width="574" height="325" />
+<p />
+通过计算屏幕上的Actor的位置，出现在世界中的相关Actor位置处叠加的图形或文本或两者的组合物不那么重要。这个功能的基本的应用是在游戏中玩家的头上浮动地显示他们的名称。
+<p />
+<img src="rsrc/Three/CanvasTechnicalGuideCH/player_names.jpg" alt="player_names.jpg" width="631" height="400" />
+<p />
+<h3><a name="反映射"></a> 反映射 </h3>
+<p />
+ <code>DeProject()</code> 函数获取一组Vector2D形式的屏幕坐标，把这些坐标变换为原点及方向向量，它们是光线的组件。
+<p />
+<img src="rsrc/Three/CanvasTechnicalGuideCH/deproject_window.jpg" alt="deproject_window.jpg" width="574" height="325" />
+<p />
+可以使用原点和方向向量创建一个开始和结束向量，把该向量和 <code>Trace()</code> 函数结合使用来执行类似于鼠标获取或者在鼠标当前悬停的位置在世界中投射标线的动作。
+<p />
+<img src="rsrc/Three/CanvasTechnicalGuideCH/mouse_reticle.jpg" alt="mouse_reticle.jpg" width="640" height="480" />
+<p />
+<h2><a name="混合模式"></a> 混合模式 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+对于任何使用过虚幻引擎3的材质系统的人，都应该熟悉混合模式。混合模式描述了当前正在描画的元素如何同已经在帧缓冲中的元素进行结合。对于画布描画，这意味着描画到HUD上的贴图如何同在其后面渲染的世界相结合，或者它可以描述描画到ScriptedTexture上的贴图如何同ScriptedTexture的当前内容相结合。
+<p />
+混合模式可能选项的枚举值 <code>EBlendMode</code> 包含以下项：
+<p /> <ul>
+<li> <em>BLEND_Opaque</em> - Final color(最终颜色) = Source color(源颜色)。这个混合模式和光照兼容。
+</li> <li> <em>BLEND_Masked</em> - 如果OpacityMask &lt; OpacityMaskClipValue，那么  - Final color = Source color，否则忽略像素。这个混合模式和光照兼容。
+</li> <li> <em>BLEND_Translucent</em> - 最终颜色 = 源颜色 * 透明度+ 目标颜色 * (1 - 透明度)。这个混合模式不和动态光照兼容。
+</li> <li> <em>BLEND_Additive</em> - 最终颜色 = 源颜色 + 目标颜色（Dest color）。这个混合模式不和动态光照兼容。
+</li> <li> <em>BLEND_Modulate</em> - 最终颜色 = 源颜色 * 目标颜色. 这个混合模式不和动态光照、雾兼容，除非这是一个贴图材质。
+</li> <li> <em>BLEND_SoftMasked</em> - 和BLEND_Masked类似,但是模糊了不透明和透明之间的界线。对于使用这个模式有一些限制。关于更多的信息，请参照<a href="SoftMasked.html" class="twikiLink">软蒙板</a>页面。
+</li> <li> <em>BLEND_AlphaComposite</em> - 用于具有预乘alpha通道的贴图的材质。也就是，颜色通道已经和alpha通道相乘，所以当和帧缓存进行混合时，GPU可以跳过一般和alpha混合结合使用的(SrcAlpha * SrcColor)算法。混合模式是作为Scaleform GFx集成的一部分来添加的，Scaleform GFx一般会为UI贴图使用这种类型的混合。
+</li></ul>
+<p />
+一般，和画布结合使用的有意义的选项是BLEND_Opaque、BLEND_Additive和BLEND_Modulated 模式。其他的模式用于在材质中使用，并且依赖于材质系统外面没有提供的其他的参数。
+<p />
+<h2><a name="画布图标"></a> 画布图标 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+显然，用于向屏幕上描画图形的、需要大量参数的函数是非常令人厌烦的。同样显然的是如果需要改变贴图坐标，搜索整个描画循环获得任何及所有那个贴图的应用来修改它们是难以想象的。画布图标解决了这个问题，它允许在默认属性中指定一个贴图和坐标，然后把画布图标传递给描画函数而不是传递单独的参数。这使得描画代码更加的干净，并且使得迭代更加高效，因为您知道需要修改的值在哪里。
+<p />
+默认情况下，Canvas类中提供的用于描画画布图标的唯一函数是 <code>DrawIcon()</code> 。这个函数使用画布图标的属性执行了一次简单的 <code>DrawTile()</code> 调用。您需要特殊的功能吗，比如描画拉伸的画布图标，那么则需要在您的HUD类中创建自定义描画函数来处理这些情况了。
+<p />
+这里是示例：
+<p />
+<div style="margin:0px 10px;background:#e0e0e0;font:12px Courier;padding:5px;">
+<pre>
+/&#42;&#42;
+ &#42; 在需要的画布位置处描画一个拉伸的CanvasIcon 。
+ &#42;/
+final function DrawIconStretched(CanvasIcon Icon, float X, float Y, optional float ScaleX, optional float ScaleY)
+{
+   if (Icon.Texture !&#61; None)
+   {
+      // verify properties are valid
+      if (ScaleX &#60;&#61; 0.f)
+      {
+         ScaleX &#61; 1.f;
+      }
+
+      if (ScaleY &#60;&#61; 0.f)
+      {
+         ScaleY &#61; 1.f;
+      }
+
+      if (Icon.UL &#61;&#61; 0.f)
+      {
+         Icon.UL &#61; Icon.Texture.GetSurfaceWidth();
+      }
+
+      if (Icon.VL &#61;&#61; 0.f)
+      {
+         Icon.VL &#61; Icon.Texture.GetSurfaceHeight();
+      }
+
+      // set the canvas position
+      Canvas.SetPos(X, Y);
+
+      // and draw the texture
+      Canvas.DrawTileStretched(Icon.Texture, Abs(Icon.UL) &#42; ScaleX, Abs(Icon.VL) &#42; ScaleY,
+                           Icon.U, Icon.V, Icon.UL, Icon.VL,, true, true);
+   }
+}
+</pre>
+</div>
+<p />
+<h2><a name="画布HUD示例"></a> 画布HUD示例 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+这个示例展示了一个非常简单的HUD的创建过程，它使用Canvas类中的各种描画方法显示了玩家的名称和生命值。
+<p />
+<span style="font:12px Courier;">
+UDNHUD.uc
+</span>
+<div style="margin:0px 10px;background:#e0e0e0;font:12px Courier;padding:5px;">
+<pre>
+class UDNHUD extends MobileHUD;
+
+var Texture2D DefaultTexture;
+var Font PlayerFont;
+var float PlayerNameScale;
+
+var CanvasIcon HealthIcon;
+var CanvasIcon HealthBackgroundIcon;
+
+function DrawHUD()
+{
+   local Vector2D TextSize;
+
+   super.DrawHUD();
+
+   //描画玩家的生命值。
+   Canvas.DrawIcon(HealthIcon, 8, 8, 0.5);
+   Canvas.Font &#61; PlayerFont;
+   Canvas.SetDrawColorStruct(WhiteColor);
+   DrawIconStretched(HealthBackgroundIcon, 0, 0, 2.167, 0.875);
+   Canvas.TextSize(PlayerOwner.Pawn.Health, TextSize.X, TextSize.Y);
+   Canvas.SetPos(96 - (TextSize.X &#42; PlayerNameScale / RatioX),0);
+   Canvas.DrawText(PlayerOwner.Pawn.Health,,PlayerNameScale / RatioX,PlayerNameScale / RatioY);
+
+   //描画玩家名称。
+   Canvas.SetPos(0, SizeY - 64);
+   Canvas.DrawTileStretched(DefaultTexture,256, 64, 8, 72, 112, 48, ColorToLinearColor(GreenColor), true, true, 1.0);
+   Canvas.TextSize(UTPlayerController(PlayerOwner).PlayerReplicationInfo.PlayerName, TextSize.X, TextSize.Y);
+   Canvas.SetPos(128 - ((TextSize.X &#42; PlayerNameScale / RatioX) / 2), SizeY - 28 - ((TextSize.Y &#42; PlayerNameScale / RatioY) / 2));
+   Canvas.DrawText(UTPlayerController(PlayerOwner).PlayerReplicationInfo.PlayerName,,PlayerNameScale / RatioX,PlayerNameScale / RatioY);
+}
+
+/&#42;&#42;
+ &#42; 在需要的画布位置处描画一个拉伸的CanvasIcon 。
+ &#42;/
+final function DrawIconStretched(CanvasIcon Icon, float X, float Y, optional float ScaleX, optional float ScaleY)
+{
+   if (Icon.Texture !&#61; None)
+   {
+      // 验证属性是否有效
+      if (ScaleX &#60;&#61; 0.f)
+      {
+         ScaleX &#61; 1.f;
+      }
+
+      if (ScaleY &#60;&#61; 0.f)
+      {
+         ScaleY &#61; 1.f;
+      }
+
+      if (Icon.UL &#61;&#61; 0.f)
+      {
+         Icon.UL &#61; Icon.Texture.GetSurfaceWidth();
+      }
+
+      if (Icon.VL &#61;&#61; 0.f)
+      {
+         Icon.VL &#61; Icon.Texture.GetSurfaceHeight();
+      }
+
+      // 设置画布位置
+      Canvas.SetPos(X, Y);
+
+      // 描画贴图
+      Canvas.DrawTileStretched(Icon.Texture, Abs(Icon.UL) &#42; ScaleX, Abs(Icon.VL) &#42; ScaleY,
+                           Icon.U, Icon.V, Icon.UL, Icon.VL,, true, true);
+   }
+}
+
+defaultproperties
+{
+   DefaultTexture&#61;Texture2D&#39;UDNHUDContent.UDN&#95;HUDGraphics&#39;
+   PlayerFont&#61;&#34;UI&#95;Fonts.MultiFonts.MF&#95;HudLarge&#34;
+   PlayerNameScale&#61;0.25
+   HealthIcon&#61;(Texture&#61;Texture2D&#39;UDNHUDContent.UDN&#95;HUDGraphics&#39;,U&#61;72,V&#61;8,UL&#61;48,VL&#61;48)
+   HealthBackgroundIcon&#61;(Texture&#61;Texture2D&#39;UDNHUDContent.UDN&#95;HUDGraphics&#39;,U&#61;8,V&#61;8,UL&#61;48,VL&#61;48)
+}
+</pre>
+</div>
+<p />
+<span style="font:12px Courier;">
+UDNGame.uc
+</span>
+<div style="margin:0px 10px;background:#e0e0e0;font:12px Courier;padding:5px;">
+<pre>
+class UDNGame extends UTGame;
+
+defaultproperties
+{
+   bUseClassicHUD&#61;true
+   HUDType&#61;class&#39;UDNExamples.UDNHUD&#39;
+}
+</pre>
+</div>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CanvasTechnicalGuideCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:30:44 GMT -->
+</html></body>

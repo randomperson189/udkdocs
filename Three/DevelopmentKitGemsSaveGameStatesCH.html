@@ -1,0 +1,1701 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DevelopmentKitGemsSaveGameStatesCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:24:51 GMT -->
+<head>
+<title> UDK | DevelopmentKitGemsSaveGameStatesCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">DevelopmentKitGemsSaveGameStatesCH  </b></div>
+<div id="tooltext">
+<a href="DevelopmentKitGemsSaveGameStates.html" class="twikiLink">English Translation</a><br><a href="DevelopmentKitGemsSaveGameStatesJP.html" class="twikiLink">日本語訳</a><br><a href="DevelopmentKitGemsSaveGameStatesKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/DevelopmentKitGemsSaveGameStatesCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="DevelopmentKitGems.html" class="twikiLink">虚幻开发工具包精华文章</a></b> &gt; 保存游戏状态 <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="InputOutputHome.html" class="twikiLink">输入 / 输出</a></b> &gt; 保存游戏状态 <br/>
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="保存游戏状态"></a> 保存游戏状态 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<strong><em>最后一次测试是在2012年3月份的UDK版本上进行的</em></strong>
+<p />
+<strong><em>可以与 PC 兼容</em></strong>
+<br/>
+<strong><em>可以与Mac机兼容</em></strong>
+<br/>
+<strong><em>可以同iOS平台兼容</em></strong>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#保存游戏状态"> 保存游戏状态</a> <ul>
+<li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#概述"> 概述</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#开发游戏时要记住已存游戏状态这个概念"> 开发游戏时要记住已存游戏状态这个概念</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#已存游戏状态工作方式的大致流程"> 已存游戏状态工作方式的大致流程</a> <ul>
+<li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#玩家在运行关卡一段时间后保存游戏"> 玩家在运行关卡一段时间后保存游戏</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#关卡名称序列化"> 关卡名称序列化</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#将所有实现_SaveGameStateInterface 的actors序列化为JSon"> 将所有实现SaveGameStateInterface 的actors序列化为JSon</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#将Kismet和Matinee序列化成JSon"> 将Kismet和Matinee序列化成JSon</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#使用_BasicSaveObject保存数据"> 使用BasicSaveObject保存数据</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#玩家从一个已存游戏状态加载一个游戏"> 玩家从一个已存游戏状态加载一个游戏</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#加载已存游戏状态对象"> 加载已存游戏状态对象</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#加载地图，地图后面附加命令行来存储已存游戏状态的文件名称"> 加载地图，地图后面附加命令行来存储已存游戏状态的文件名称</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#当地图完成加载，重新加载已存游戏状态对象"> 当地图完成加载，重新加载已存游戏状态对象</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#迭代JSon数据并在关卡中的actor和对象上对数据进行反序列化。"> 迭代JSon数据并在关卡中的actor和对象上对数据进行反序列化。</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#KActor示例"> KActor示例</a> <ul>
+<li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#序列化KActor"> 序列化KActor</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#反序列化KActor"> 反序列化KActor</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#玩家控制的Pawn事例"> 玩家控制的Pawn事例</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#游戏状态加载的kismet事件"> 游戏状态加载的kismet事件</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#问题"> 问题</a> <ul>
+<li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#如何处理子actor或子对象"> 如何处理子actor或子对象</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#已存游戏状态以纯文本形式存储。我怎样制止玩家作弊？"> 已存游戏状态以纯文本形式存储。我怎样制止玩家作弊？</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#是否有可能在线存储JSon数据？">是否有可能在线存储JSon数据？</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#怎样集成这个开发工具精华文章！？"> 怎样集成这个开发工具精华文章！？</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#我已经进行集成该功能，但是当我加载地图时什么都没发生！"> 我已经进行集成该功能，但是当我加载地图时什么都没发生！</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#相关主题"> 相关主题</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#下载"> 下载</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<hr size="1" noshade="noshade">
+虚幻引擎1和2都支持将整关卡从内存保存到磁盘中的游戏存储方式。虽然这个方法在制作过程中运行良好，但是任何内容的开发者稍后对关卡所进行的修改都不会在关卡中反应。要解决这个问题，另一个呈现已存游戏的方法就是只保存足够的数据，即已存游戏要在初次加载关卡时存储，然后将已存游戏状态应用到所有在关卡中的actor和对象上。
+<p />
+<h2><a name="开发游戏时要记住已存游戏状态这个概念"></a> 开发游戏时要记住已存游戏状态这个概念 </h2>
+<hr size="1" noshade="noshade">
+由于已存游戏状态运行方式的关系，您必须特别留意您在世界中所销毁的是什么。一旦销毁了一个actor，已存游戏序列化工具就不能识别这个ator，因为它现在已经不存在了。如果这个actor是临时的，通常来说不是问题。但是如果actor是关卡设计师摆放的，那么重新加载关卡并应用已存游戏数据时，关卡设计师所放置的actor不会受到影响，因为actor的数据已经不存在了。
+<p />
+<h2><a name="已存游戏状态工作方式的大致流程"></a> 已存游戏状态工作方式的大致流程 </h2>
+<hr size="1" noshade="noshade"> <ul>
+<li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#PlayerSavesTheGameAfterPlayingALevelForAWhile" class="twikiAnchorLink">玩家在运行关卡一段时间后保存游戏</a> <ol>
+<li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#SerializeTheLevelName" class="twikiAnchorLink">序列化关卡名称</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#SerializeAllActorsThatImplementTheSaveGameStateInterfaceAsJSon" class="twikiAnchorLink">将所有实现SaveGameStateInterface 的actors序列化为JSon</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#SerializeKismetAndMatineeAsJSon" class="twikiAnchorLink">将Kismet和Matinee序列化成JSon</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#SaveTheDataUsingBasicSaveObject" class="twikiAnchorLink">使用BasicSaveObject存储数据</a>
+</li></ol>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#PlayerLoadsAGameFromASavedGameState" class="twikiAnchorLink">玩家从已存游戏状态中加载一个游戏</a> <ol>
+<li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#LoadTheSavedGameStateObject" class="twikiAnchorLink">加载已存戏状态对象</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#LoadTheMapAppendingACommandLineToStoreSavedGameStateFileName" class="twikiAnchorLink">加载一个地图，在地图上附加命令行来存储已存游戏状态文件名</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#WhenTheMapHasFinishedLoadingReloadTheSavedGameStateObject" class="twikiAnchorLink">当地图完成加载，重新加载已存游戏状态对象</a>
+</li> <li> <a href="DevelopmentKitGemsSaveGameStatesCH.html#IterateOverTheJSonDataAndDeserializeTheDataOnTheActorsAndObjectsWithinTheLevel" class="twikiAnchorLink">迭代Json数据并反序列化在关卡中actor和对象上的数据</a>
+</li></ol>
+</li></ul>
+<p />
+<a name="PlayerSavesTheGameAfterPlayingALevelForAWhile"></a>
+<h3><a name="玩家在运行关卡一段时间后保存游戏"></a> 玩家在运行关卡一段时间后保存游戏 </h3>
+为了举例方便，我们只在这篇精华文章中添加一个控制台命令。当然，您的游戏会拥有一个附加在游戏里的图解用户界面，不过您也可以用任何方法调用带有文件名参数的同一个控制台命令。或者可以把控制台命令函数设置成静态的，因为它并不依赖于在一个特定的actor或对象实例范围中执行(它调用PlayerController::ClientMessage()，但是您总能通过使用Actor::GetALocalPlayerController()来获取本地玩家控制器)。
+<p />
+当执行控制台命令时，它启动了保存游戏状态的进程。首先 SaveGameState(保存游戏状态)对象已经被实例化。SaveGameState(保存游戏状态)对象处理actor、Kismet和Matinee的迭代和序列化，。然后我们"检查清理"文件名。虽然在这个事例中只会检测空格, 但是获取文件名只是为了确保其中没有加入任何非法字符。如果需要更强大的文件名获取功能，您可能需要考虑确保像 \, /, ?, ! 这样的字符 <strong>不会</strong> 出现在文件名中。文件名获取功能同样保证了文件扩展名"sav"会在其还不存在的情况下自动加入。接下来SaveGameState(保存游戏状态)需要迭代和序列化Actor、Kismet和Matinee。最后，如果 SaveGameState(保存游戏状态)通过BasicSaveObject()成功保存在磁盘中，那么玩家会收到游戏已经被保存的信息。
+<p />
+<div class="codetitlebar">
+SaveGameStatePlayerController.uc
+</div>
+<div class="codesnippet">
+<pre>
+/&#42;&#42;
+ &#42; This exec function will save the game state to the file name provided.
+ &#42;
+ &#42; &#64;param      FileName      File name to save the SaveGameState to
+ &#42;/
+exec function SaveGameState(string FileName)
+{
+  local SaveGameState SaveGameState;
+
+  // Instance the save game state
+  SaveGameState &#61; new () class&#39;SaveGameState&#39;;
+  if (SaveGameState &#61;&#61; None)
+  {
+    return;
+  }
+
+  // Scrub the file name
+  FileName &#61; ScrubFileName(FileName);
+
+  // Ask the save game state to save the game
+  SaveGameState.SaveGameState();
+
+  // Serialize the save game state object onto disk
+  if (class&#39;Engine&#39;.static.BasicSaveObject(SaveGameState, FileName, true, class&#39;SaveGameState&#39;.const.SAVEGAMESTATE&#95;REVISION))
+  {
+    // If successful then send a message
+    ClientMessage(&#34;Saved game state to &#34;$FileName$&#34;.&#34;, &#39;System&#39;);
+  }
+}
+</pre>
+</div>
+<p />
+<a name="SerializeTheLevelName"></a>
+<h3><a name="关卡名称序列化"></a> 关卡名称序列化 </h3>
+已存游戏状态用来序列化关卡名称(或地图文件名)，这样已存游戏状态在其自身在加载的状态下可以识别哪个地图将是它要加载的。与其将关卡名称存在其他的文件中，比如配置文件中，简单地将它存储在已存游戏状态中更加有意义。已存游戏状态只需要设置它需要存储的变量，就象BasicSaveObject()会为您执行将真实数据存到磁盘里那样。如果任何动态加载关卡可见，或要求暂停加载，那么它们就会被存入一个数组，这样当重新加载已存游戏状态，动态加载关卡就会被直接载入。这个步骤同时还会保存当前GameInfo类。
+<p />
+<div class="codetitlebar">
+SaveGameState.uc
+</div>
+<div class="codesnippet">
+<pre>
+/&#42;&#42;
+ &#42; Saves the game state by serializing all of the actors that implement the SaveGameStateInterface, Kismet and Matinee.
+ &#42;/
+function SaveGameState()
+{
+  local WorldInfo WorldInfo;
+
+  // Get the world info, abort if the world info could not be found
+  WorldInfo &#61; class&#39;WorldInfo&#39;.static.GetWorldInfo();
+  if (WorldInfo &#61;&#61; None)
+  {
+    return;
+  }
+
+  // Save the map file name
+  PersistentMapFileName&#61; String(WorldInfo.GetPackageName());
+
+  // Save the currently streamed in map file names
+  if (WorldInfo.StreamingLevels.Length &#62; 0)
+  {
+    // Iterate through the streaming levels
+    for (i &#61; 0; i &#60; WorldInfo.StreamingLevels.Length; ++i)
+    {
+      // Levels that are visible and has a load request pending should be included in the streaming levels list
+      if (WorldInfo.StreamingLevels&#91;i] !&#61; None &#38;&#38; (WorldInfo.StreamingLevels&#91;i].bIsVisible &#124;&#124; WorldInfo.StreamingLevels&#91;i].bHasLoadRequestPending))
+      {
+        StreamingMapFileNames.AddItem(String(WorldInfo.StreamingLevels&#91;i].PackageName));
+      }
+    }
+  }
+
+  // 保存游戏info类
+  GameInfoClassName &#61; PathName(WorldInfo.Game.Class);
+}
+</pre>
+</div>
+<p />
+<a name="SerializeAllActorsThatImplementTheSaveGameStateInterfaceAsJSon"></a>
+<h3><a name="将所有实现_SaveGameStateInterface 的actors序列化为JSon"></a> 将所有实现SaveGameStateInterface 的actors序列化为JSon </h3>
+只需序列化动态actor，这样在此可供选择的迭代器就是DynamicActors(动态actor)了。还要添加一个SaveGameStateInterface(已存游戏状态界面)的筛选器，因为它能让您决定哪些动态actor需要进行序列化，哪些不需要。在这里使用一个接口，这样稍后扩展已存游戏状态更加容易，因为它是一个稍后会序列化和反序列化JSon数据的actor。当实现这个actor时， SaveGameStateInterface要进行自我序列化，它返回加密的JSon字符串。这个字符串被添加到 SerializedActorData数组，然后数组通过BasicSaveObject()进行保存。
+<p />
+<div class="codetitlebar">
+SaveGameState.uc
+</div>
+<div class="codesnippet">
+<pre>
+/&#42;&#42;
+ &#42; Saves the game state by serializing all of the actors that implement the SaveGameStateInterface, Kismet and Matinee.
+ &#42;/
+function SaveGameState()
+{
+  local WorldInfo WorldInfo;
+  local Actor Actor;
+  local String SerializedActorData;
+  local SaveGameStateInterface SaveGameStateInterface;
+  local int i;
+
+  // Get the world info, abort if the world info could not be found
+  WorldInfo &#61; class&#39;WorldInfo&#39;.static.GetWorldInfo();
+  if (WorldInfo &#61;&#61; None)
+  {
+    return;
+  }
+
+  // Save the persistent map file name
+  PersistentMapFileName&#61; String(WorldInfo.GetPackageName());
+
+  // Save the currently streamed in map file names
+  if (WorldInfo.StreamingLevels.Length &#62; 0)
+  {
+    // Iterate through the streaming levels
+    for (i &#61; 0; i &#60; WorldInfo.StreamingLevels.Length; ++i)
+    {
+      // Levels that are visible and has a load request pending should be included in the streaming levels list
+      if (WorldInfo.StreamingLevels&#91;i] !&#61; None &#38;&#38; (WorldInfo.StreamingLevels&#91;i].bIsVisible &#124;&#124; WorldInfo.StreamingLevels&#91;i].bHasLoadRequestPending))
+      {
+        StreamingMapFileNames.AddItem(String(WorldInfo.StreamingLevels&#91;i].PackageName));
+      }
+    }
+  }
+
+  // 保存游戏info类
+  GameInfoClassName &#61; PathName(WorldInfo.Game.Class);
+
+  // Iterate through all of the actors that implement SaveGameStateInterface and ask them to serialize themselves
+  ForEach WorldInfo.DynamicActors(class&#39;Actor&#39;, Actor, class&#39;SaveGameStateInterface&#39;)
+  {
+    // Type cast to the SaveGameStateInterface
+    SaveGameStateInterface &#61; SaveGameStateInterface(Actor);
+    if (SaveGameStateInterface !&#61; None)
+    {
+      // Serialize the actor
+      SerializedActorData &#61; SaveGameStateInterface.Serialize();
+      // If the serialzed actor data is valid, then add it to the serialized world data array
+      if (SerializedActorData !&#61; &#34;&#34;)
+      {
+        SerializedWorldData.AddItem(SerializedActorData);
+      }
+    }
+  }
+}
+</pre>
+</div>
+<p />
+SaveGameStateInterface非常简洁。该接口有两个函数,每个actor都必须要实现这两个函数。Serialize()在加载时序列化该actor所有的数据。Deserialize()处理及时读取在早些时候存储的JSon数据，并存储合理的数值。
+<p />
+<div class="codetitlebar">
+SaveGameStateInterface.uc
+</div>
+<div class="codesnippet">
+<pre>
+interface SaveGameStateInterface;
+
+/&#42;&#42;
+ &#42; Serializes the actor&#39;s data into JSon
+ &#42;
+ &#42; &#64;return  JSon data representing the state of this actor
+ &#42;/
+function String Serialize();
+
+/&#42;&#42;
+ &#42; Deserializes the actor from the data given
+ &#42;
+ &#42; &#64;param  Data  JSon data representing the differential state of this actor
+ &#42;/
+function Deserialize(JSonObject Data);
+</pre>
+</div>
+<p />
+<a name="SerializeKismetAndMatineeAsJSon"></a>
+<h3><a name="将Kismet和Matinee序列化成JSon"></a> 将Kismet和Matinee序列化成JSon </h3>
+存储游戏状态也能序列化Kismet事件和Kismet变量。这让游戏策划能使用Kismet来实现一部分游戏功能。它通过在关卡中迭代Kismet事件和Kismet变量并序列化每一个kismet事件和kismet变量来完成。
+<p />
+Kismet事件把它们的ActivationTime(激活时间)用偏移量方式来计算。当已存游戏状态重新加载时， WorldInfo.TimeSeconds总是在0或者很小的数字上。这不太可能是先前游戏保存的时间。如果kismet事件已经设置了它的ReTriggerDelay(重新触发延迟)变量，那么ActivationTime(激活时间)通常是很重要的。这样是为了避免由于保存和加载导致在Kismet事件重新触发太快的地方会有bug出现，这要求在计算ActivationTime 的剩余时间时考虑ReTriggerDelay 。这样当重新加载该kismet事件，如果已经触发该事件，则通常会在以后设置ActivationTime。另一个已经保存的数值是TriggerCount。这通常要求触发器把它们 MaxTriggerCount(最大触发量)的数值设置为非零。
+<p />
+Kismet变量通过使用类型反转和错误方式进行侦测。还有一种选择就是迭代 Kismet Sequence Objects (Kismet序列对象)来寻找每个Kismet变量的类型。两种方法都可以。一旦Kismet变量被侦测，它的数值将会被序列化。
+<p />
+<div class="codetitlebar">
+SaveGameState.uc
+</div>
+<div class="codesnippet">
+<pre>
+/&#42;&#42;
+ &#42; Saves the Kismet game state
+ &#42;/
+protected function SaveKismetState()
+{
+  local WorldInfo WorldInfo;
+  local array&#60;Sequence&#62; RootSequences;
+  local array&#60;SequenceObject&#62; SequenceObjects;
+  local SequenceEvent SequenceEvent;
+  local SeqVar&#95;Bool SeqVar&#95;Bool;
+  local SeqVar&#95;Float SeqVar&#95;Float;
+  local SeqVar&#95;Int SeqVar&#95;Int;
+  local SeqVar&#95;Object SeqVar&#95;Object;
+  local SeqVar&#95;String SeqVar&#95;String;
+  local SeqVar&#95;Vector SeqVar&#95;Vector;
+  local int i, j;
+  local JSonObject JSonObject;
+
+  // Get the world info, abort if it does not exist
+  WorldInfo &#61; class&#39;WorldInfo&#39;.static.GetWorldInfo();
+  if (WorldInfo &#61;&#61; None)
+  {
+    return;
+  }
+
+  // Get all of the root sequences within the world, abort if there are no root sequences
+  RootSequences &#61; WorldInfo.GetAllRootSequences();
+  if (RootSequences.Length &#60;&#61; 0)
+  {
+    return;
+  }
+
+  // Serialize all SequenceEvents and SequenceVariables
+  for (i &#61; 0; i &#60; RootSequences.Length; ++i)
+  {
+    if (RootSequences&#91;i] !&#61; None)
+    {
+      // Serialize Kismet Events
+      RootSequences&#91;i].FindSeqObjectsByClass(class&#39;SequenceEvent&#39;, true, SequenceObjects);
+      if (SequenceObjects.Length &#62; 0)
+      {
+        for (j &#61; 0; j &#60; SequenceObjects.Length; ++j)
+        {
+          SequenceEvent &#61; SequenceEvent(SequenceObjects&#91;j]);
+          if (SequenceEvent !&#61; None)
+          {
+            JSonObject &#61; new () class&#39;JSonObject&#39;;
+            if (JSonObject !&#61; None)
+            {
+              // Save the path name of the SequenceEvent so it can found later
+              JSonObject.SetStringValue(&#34;Name&#34;, PathName(SequenceEvent));
+              // Calculate the activation time of what it should be when the saved game state is loaded. This is done as the retrigger delay minus the difference between the current world time
+              // and the last activation time. If the result is negative, then it means this was never triggered before, so always make sure it is larger or equal to zero.
+              JsonObject.SetFloatValue(&#34;ActivationTime&#34;, FMax(SequenceEvent.ReTriggerDelay - (WorldInfo.TimeSeconds - SequenceEvent.ActivationTime), 0.f));
+              // Save the current trigger count
+              JSonObject.SetIntValue(&#34;TriggerCount&#34;, SequenceEvent.TriggerCount);
+              // Encode this and append it to the save game data array
+              SerializedWorldData.AddItem(class&#39;JSonObject&#39;.static.EncodeJson(JSonObject));
+            }
+          }
+        }
+      }
+
+      // Serialize Kismet Variables
+      RootSequences&#91;i].FindSeqObjectsByClass(class&#39;SequenceVariable&#39;, true, SequenceObjects);
+      if (SequenceObjects.Length &#62; 0)
+      {
+        for (j &#61; 0; j &#60; SequenceObjects.Length; ++j)
+        {
+          // Attempt to serialize as a boolean variable
+          SeqVar&#95;Bool &#61; SeqVar&#95;Bool(SequenceObjects&#91;j]);
+          if (SeqVar&#95;Bool !&#61; None)
+          {
+            JSonObject &#61; new () class&#39;JSonObject&#39;;
+            if (JSonObject !&#61; None)
+            {
+              // Save the path name of the SeqVar&#95;Bool so it can found later
+              JSonObject.SetStringValue(&#34;Name&#34;, PathName(SeqVar&#95;Bool));
+              // Save the boolean value
+              JSonObject.SetIntValue(&#34;Value&#34;, SeqVar&#95;Bool.bValue);
+              // Encode this and append it to the save game data array
+              SerializedWorldData.AddItem(class&#39;JSonObject&#39;.static.EncodeJson(JSonObject));
+            }
+
+            // Continue to the next one within the array as we&#39;re done with this array index
+            continue;
+          }
+
+          // Attempt to serialize as a float variable
+          SeqVar&#95;Float &#61; SeqVar&#95;Float(SequenceObjects&#91;j]);
+          if (SeqVar&#95;Float !&#61; None)
+          {
+            JSonObject &#61; new () class&#39;JSonObject&#39;;
+            if (JSonObject !&#61; None)
+            {
+              // Save the path name of the SeqVar&#95;Float so it can found later
+              JSonObject.SetStringValue(&#34;Name&#34;, PathName(SeqVar&#95;Float));
+              // Save the float value
+              JSonObject.SetFloatValue(&#34;Value&#34;, SeqVar&#95;Float.FloatValue);
+              // Encode this and append it to the save game data array
+              SerializedWorldData.AddItem(class&#39;JSonObject&#39;.static.EncodeJson(JSonObject));
+            }
+
+            // Continue to the next one within the array as we&#39;re done with this array index
+            continue;
+          }
+
+          // Attempt to serialize as an int variable
+          SeqVar&#95;Int &#61; SeqVar&#95;Int(SequenceObjects&#91;j]);
+          if (SeqVar&#95;Int !&#61; None)
+          {
+            JSonObject &#61; new () class&#39;JSonObject&#39;;
+            if (JSonObject !&#61; None)
+            {
+              // Save the path name of the SeqVar&#95;Int so it can found later
+              JSonObject.SetStringValue(&#34;Name&#34;, PathName(SeqVar&#95;Int));
+              // Save the int value
+              JSonObject.SetIntValue(&#34;Value&#34;, SeqVar&#95;Int.IntValue);
+              // Encode this and append it to the save game data array
+              SerializedWorldData.AddItem(class&#39;JSonObject&#39;.static.EncodeJson(JSonObject));
+            }
+
+            // Continue to the next one within the array as we&#39;re done with this array index
+            continue;
+          }
+
+          // Attempt to serialize as an object variable
+          SeqVar&#95;Object &#61; SeqVar&#95;Object(SequenceObjects&#91;j]);
+          if (SeqVar&#95;Object !&#61; None)
+          {
+            JSonObject &#61; new () class&#39;JSonObject&#39;;
+            if (JSonObject !&#61; None)
+            {
+              // Save the path name of the SeqVar&#95;Object so it can found later
+              JSonObject.SetStringValue(&#34;Name&#34;, PathName(SeqVar&#95;Object));
+              // Save the object value
+              JSonObject.SetStringValue(&#34;Value&#34;, PathName(SeqVar&#95;Object.GetObjectValue()));
+              // Encode this and append it to the save game data array
+              SerializedWorldData.AddItem(class&#39;JSonObject&#39;.static.EncodeJson(JSonObject));
+            }
+
+            // Continue to the next one within the array as we&#39;re done with this array index
+            continue;
+          }
+
+          // Attempt to serialize as a string variable
+          SeqVar&#95;String &#61; SeqVar&#95;String(SequenceObjects&#91;j]);
+          if (SeqVar&#95;String !&#61; None)
+          {
+            JSonObject &#61; new () class&#39;JSonObject&#39;;
+            if (JSonObject !&#61; None)
+            {
+              // Save the path name of the SeqVar&#95;String so it can found later
+              JSonObject.SetStringValue(&#34;Name&#34;, PathName(SeqVar&#95;String));
+              // Save the string value
+              JSonObject.SetStringValue(&#34;Value&#34;, SeqVar&#95;String.StrValue);
+              // Encode this and append it to the save game data array
+              SerializedWorldData.AddItem(class&#39;JSonObject&#39;.static.EncodeJson(JSonObject));
+            }
+
+            // Continue to the next one within the array as we&#39;re done with this array index
+            continue;
+          }
+
+          // Attempt to serialize as a vector variable
+          SeqVar&#95;Vector &#61; SeqVar&#95;Vector(SequenceObjects&#91;j]);
+          if (SeqVar&#95;Vector !&#61; None)
+          {
+            JSonObject &#61; new () class&#39;JSonObject&#39;;
+            if (JSonObject !&#61; None)
+            {
+              // Save the path name of the SeqVar&#95;Vector so it can found later
+              JSonObject.SetStringValue(&#34;Name&#34;, PathName(SeqVar&#95;Vector));
+              // Save the vector value
+              JSonObject.SetFloatValue(&#34;Value&#95;X&#34;, SeqVar&#95;Vector.VectValue.X);
+              JSonObject.SetFloatValue(&#34;Value&#95;Y&#34;, SeqVar&#95;Vector.VectValue.Y);
+              JSonObject.SetFloatValue(&#34;Value&#95;Z&#34;, SeqVar&#95;Vector.VectValue.Z);
+              // Encode this and append it to the save game data array
+              SerializedWorldData.AddItem(class&#39;JSonObject&#39;.static.EncodeJson(JSonObject));
+            }
+
+            // Continue to the next one within the array as we&#39;re done with this array index
+            continue;
+          }
+        }
+      }
+    }
+  }
+}
+</pre>
+</div>
+<p />
+保存Matinee的方式同保存kismet的一样，因为所保存的是Matinee Kismet Sequence Action(Matinee Kismet序列动作)。由此，迭代所有 Kismet Sequence Objects(Kismet序列对象)，使用SeqAct_Interp 进行过滤。然后序列化所有相关对象并就将其添加到SerializedWorldData 数组。
+<p />
+<div class="codetitlebar">
+SaveGameState.uc
+</div>
+<div class="codesnippet">
+<pre>
+/&#42;&#42;
+ &#42; Saves the Matinee game state
+ &#42;/
+protected function SaveMatineeState()
+{
+  local WorldInfo WorldInfo;
+  local array&#60;Sequence&#62; RootSequences;
+  local array&#60;SequenceObject&#62; SequenceObjects;
+  local SeqAct&#95;Interp SeqAct&#95;Interp;
+  local int i, j;
+  local JSonObject JSonObject;
+
+  // Get the world info, abort if it does not exist
+  WorldInfo &#61; class&#39;WorldInfo&#39;.static.GetWorldInfo();
+  if (WorldInfo &#61;&#61; None)
+  {
+    return;
+  }
+
+  // Get all of the root sequences within the world, abort if there are no root sequences
+  RootSequences &#61; WorldInfo.GetAllRootSequences();
+  if (RootSequences.Length &#60;&#61; 0)
+  {
+    return;
+  }
+
+  // Serialize all SequenceEvents and SequenceVariables
+  for (i &#61; 0; i &#60; RootSequences.Length; ++i)
+  {
+    if (RootSequences&#91;i] !&#61; None)
+    {
+      // Serialize Matinee Kismet Sequence Actions
+      RootSequences&#91;i].FindSeqObjectsByClass(class&#39;SeqAct&#95;Interp&#39;, true, SequenceObjects);
+      if (SequenceObjects.Length &#62; 0)
+      {
+        for (j &#61; 0; j &#60; SequenceObjects.Length; ++j)
+        {
+          SeqAct&#95;Interp &#61; SeqAct&#95;Interp(SequenceObjects&#91;j]);
+          if (SeqAct&#95;Interp !&#61; None)
+          {
+            // Attempt to serialize the data
+            JSonObject &#61; new () class&#39;JSonObject&#39;;
+            if (JSonObject !&#61; None)
+            {
+              // Save the path name of the SeqAct&#95;Interp so it can found later
+              JSonObject.SetStringValue(&#34;Name&#34;, PathName(SeqAct&#95;Interp));
+              // Save the current position of the SeqAct&#95;Interp
+              JSonObject.SetFloatValue(&#34;Position&#34;, SeqAct&#95;Interp.Position);
+              // Save if the SeqAct&#95;Interp is playing or not
+              JSonObject.SetIntValue(&#34;IsPlaying&#34;, (SeqAct&#95;Interp.bIsPlaying) ? 1 : 0);
+              // Save if the SeqAct&#95;Interp is paused or not
+              JSonObject.SetIntValue(&#34;Paused&#34;, (SeqAct&#95;Interp.bPaused) ? 1 : 0);
+              // Encode this and append it to the save game data array
+              SerializedWorldData.AddItem(class&#39;JSonObject&#39;.static.EncodeJson(JSonObject));
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</pre>
+</div>
+<p />
+<a name="SaveTheDataUsingBasicSaveObject"></a>
+<h3><a name="使用_BasicSaveObject保存数据"></a> 使用BasicSaveObject保存数据 </h3>
+如前所示，保存游戏状态的数据是通过BasicSaveObject()进行保存的。BasicSaveObject()返回true(真值)还是false(假值)取决于文件是否成功写入。它能让您显示提示游戏是否成功保存的信息。
+<p />
+<div class="codetitlebar">
+SaveGameStatePlayerController.uc
+</div>
+<div class="codesnippet">
+<pre>
+/&#42;&#42;
+ &#42; This exec function will save the game state to the file name provided.
+ &#42;
+ &#42; &#64;param      FileName      File name to save the SaveGameState to
+ &#42;/
+exec function SaveGameState(string FileName)
+{
+  local SaveGameState SaveGameState;
+
+  // Instance the save game state
+  SaveGameState &#61; new () class&#39;SaveGameState&#39;;
+  if (SaveGameState &#61;&#61; None)
+  {
+    return;
+  }
+
+  // Scrub the file name
+  FileName &#61; ScrubFileName(FileName);
+
+  // Ask the save game state to save the game
+  SaveGameState.SaveGameState();
+
+  // Serialize the save game state object onto disk
+  if (class&#39;Engine&#39;.static.BasicSaveObject(SaveGameState, FileName, true, class&#39;SaveGameState&#39;.const.SAVEGAMESTATE&#95;REVISION))
+  {
+    // If successful then send a message
+    ClientMessage(&#34;Saved game state to &#34;$FileName$&#34;.&#34;, &#39;System&#39;);
+  }
+}
+</pre>
+</div>
+<p />
+<hr/>
+<p />
+<a name="PlayerLoadsAGameFromASavedGameState"></a>
+<h3><a name="玩家从一个已存游戏状态加载一个游戏"></a> 玩家从一个已存游戏状态加载一个游戏 </h3>
+LoadGameState() 是已存游戏状态处加载的入口点。其次，这个函数可能被设为静态函数，因为他不依赖于任何类的实例。
+<p />
+<div class="codetitlebar">
+SaveGameStatePlayerController.uc
+</div>
+<div class="codesnippet">
+<pre>
+/&#42;&#42;
+ &#42; This exec function will load the game state from the file name provided
+ &#42;
+ &#42; &#64;param    FileName    File name of load the SaveGameState from
+ &#42;/
+exec function LoadGameState(string FileName);
+</pre>
+</div>
+<p />
+<a name="LoadTheSavedGameStateObject"></a>
+<h3><a name="加载已存游戏状态对象"></a> 加载已存游戏状态对象 </h3>
+已存游戏状态对象首先通过使用BasicLoadObject()从磁盘中加载。
+<p />
+<div class="codetitlebar">
+SaveGameStatePlayerController.uc
+</div>
+<div class="codesnippet">
+<pre>
+/&#42;&#42;
+ &#42; This exec function will load the game state from the file name provided
+ &#42;
+ &#42; &#64;param    FileName    File name of load the SaveGameState from
+ &#42;/
+exec function LoadGameState(string FileName)
+{
+  local SaveGameState SaveGameState;
+
+  // Instance the save game state
+  SaveGameState &#61; new () class&#39;SaveGameState&#39;;
+  if (SaveGameState &#61;&#61; None)
+  {
+    return;
+  }
+
+  // Scrub the file name
+  FileName &#61; ScrubFileName(FileName);
+
+  // Attempt to deserialize the save game state object from disk
+  if (class&#39;Engine&#39;.static.BasicLoadObject(SaveGameState, FileName, true, class&#39;SaveGameState&#39;.const.SAVEGAMESTATE&#95;REVISION))
+  {
+  }
+}
+</pre>
+</div>
+<p />
+<a name="LoadTheMapAppendingACommandLineToStoreSavedGameStateFileName"></a>
+<h3><a name="加载地图，地图后面附加命令行来存储已存游戏状态的文件名称"></a> 加载地图，地图后面附加命令行来存储已存游戏状态的文件名称 </h3>
+如果已经成功地加载了已存游戏状态，那么就可以加载序列化的地图，该地图具有命令行参数，该参数指出当该地图加载完成时应该继续加载所定义的已存游戏状态 如果您决定使这个函数成为静态函数，您可以从其他全局可引用actor处调用ConsoleCommand()。
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>注意</strong>: 在这里使用命令"start"，而不是"open"，因为"start"总是重置命令行参数，而"open"' <em>附加</em> 命令行参数。这点非常重要，否则命令行参数"SaveGameState" 会进行多次添加，从而导致已存游戏状态加载错误。
+<p />
+<div class="codetitlebar">
+SaveGameStatePlayerController.uc
+</div>
+<div class="codesnippet">
+<pre>
+/&#42;&#42;
+ &#42; This exec function will load the game state from the file name provided
+ &#42;
+ &#42; &#64;param    FileName    File name of load the SaveGameState from
+ &#42;/
+exec function LoadGameState(string FileName)
+{
+  local SaveGameState SaveGameState;
+
+  // Instance the save game state
+  SaveGameState &#61; new () class&#39;SaveGameState&#39;;
+  if (SaveGameState &#61;&#61; None)
+  {
+    return;
+  }
+
+  // Scrub the file name
+  FileName &#61; ScrubFileName(FileName);
+
+  // Attempt to deserialize the save game state object from disk
+  if (class&#39;Engine&#39;.static.BasicLoadObject(SaveGameState, FileName, true, class&#39;SaveGameState&#39;.const.SAVEGAMESTATE&#95;REVISION))
+  {
+    // Start the map with the command line parameters required to then load the save game state
+    ConsoleCommand(&#34;start &#34;$SaveGameState.PersistentMapFileName$&#34;?Game&#61;&#34;$SaveGameState.GameInfoClassName$&#34;?SaveGameState&#61;&#34;$FileName);
+  }
+}
+</pre>
+</div>
+<p />
+<a name="WhenTheMapHasFinishedLoadingReloadTheSavedGameStateObject"></a>
+<h3><a name="当地图完成加载，重新加载已存游戏状态对象"></a> 当地图完成加载，重新加载已存游戏状态对象 </h3>
+当地图加载完成，SaveStateGameInfo::InitGame()会判断出一个存储游戏状态命令行参数是否存在。如果存在，则在 PendingSaveGameFileName里保存数值。当开始进行匹配，则再次从磁盘中加载已存游戏状态对象，并要求加载游戏状态。当加载了已存游戏状态时，玩家会收到信息，提示他们已存游戏已经加载。如果有任何动态载入关卡存在，则 SaveStateGameInfo::StartMatch()会要求所有的玩家控制器动态载入其他地图。但是由于在其他地图里，动态加载不会同时完成,所以就里会设置一个叫作SaveStateGameInfo::WaitingForStreamingLevelsTimer()的循环计时器来监控所有的动态加载关卡加载完毕的时间。当动态加载关卡完成时，则通过调用Super.StartMatch() [UTGame::StartMatch()].开始进行匹配。
+<p />
+<div class="codetitlebar">
+SaveGameStateGameInfo.uc
+</div>
+<div class="codesnippet">
+<pre>
+class SaveGameStateGameInfo extends UTGame;
+
+// Pending save game state file name
+var private string PendingSaveGameFileName;
+
+/&#42;
+ &#42; Initialize the game. The GameInfo&#39;s InitGame() function is called before any other scripts (including PreBeginPlay()), and is used by the GameInfo to initialize parameters and spawn its helper classes.
+ &#42;
+ &#42; &#64;param    Options        Passed options from the command line
+ &#42; &#64;param    ErrorMessage    Out going error messages
+ &#42;/
+event InitGame( string Options, out string ErrorMessage )
+{
+  Super.InitGame(Options, ErrorMessage);
+
+  // Set the pending save game file name if required
+  if (HasOption(Options, &#34;SaveGameState&#34;))
+  {
+    PendingSaveGameFileName &#61; ParseOption(Options, &#34;SaveGameState&#34;);
+  }
+  else
+  {
+    PendingSaveGameFileName &#61; &#34;&#34;;
+  }
+}
+
+/&#42;&#42;
+ &#42; Start the match - inform all actors that the match is starting, and spawn player pawns
+ &#42;/
+function StartMatch()
+{
+  local SaveGameState SaveGameState;
+  local PlayerController PlayerController;
+  local int i;
+
+  // Check if we need to load the game or not
+  if (PendingSaveGameFileName !&#61; &#34;&#34;)
+  {
+    // Instance the save game state
+    SaveGameState &#61; new () class&#39;SaveGameState&#39;;
+    if (SaveGameState &#61;&#61; None)
+    {
+      return;
+    }
+
+    // Attempt to deserialize the save game state object from disk
+    if (class&#39;Engine&#39;.static.BasicLoadObject(SaveGameState, PendingSaveGameFileName, true, class&#39;SaveGameState&#39;.const.SAVEGAMESTATE&#95;REVISION))
+    {
+      // Synchrously load in any streaming levels
+      if (SaveGameState.StreamingMapFileNames.Length &#62; 0)
+      {
+        // Ask every player controller to load up the streaming map
+        ForEach WorldInfo.AllControllers(class&#39;PlayerController&#39;, PlayerController)
+        {
+          // Stream map files now
+          for (i &#61; 0; i &#60; SaveGameState.StreamingMapFileNames.Length; ++i)
+          {
+            PlayerController.ClientUpdateLevelStreamingStatus(Name(SaveGameState.StreamingMapFileNames&#91;i]), true, true, true);
+          }
+
+          // Block everything until pending loading is done
+          PlayerController.ClientFlushLevelStreaming();
+        }
+
+        // Store the save game state in StreamingSaveGameState
+        StreamingSaveGameState &#61; SaveGameState;
+        // Start the looping timer which waits for all streaming levels to finish loading
+        SetTimer(0.05f, true, NameOf(WaitingForStreamingLevelsTimer));
+        return;
+      }
+
+      // Load the game state
+      SaveGameState.LoadGameState();
+    }
+
+    // Send a message to all player controllers that we&#39;ve loaded the save game state
+    ForEach WorldInfo.AllControllers(class&#39;PlayerController&#39;, PlayerController)
+    {
+      PlayerController.ClientMessage(&#34;Loaded save game state from &#34;$PendingSaveGameFileName$&#34;.&#34;, &#39;System&#39;);
+    }
+  }
+
+  Super.StartMatch();
+}
+
+function WaitingForStreamingLevelsTimer()
+{
+  local int i;
+  local PlayerController PlayerController;
+
+  for (i &#61; 0; i &#60; WorldInfo.StreamingLevels.Length; ++i)
+  {
+    // If any levels still have the load request pending, then return
+    if (WorldInfo.StreamingLevels&#91;i].bHasLoadRequestPending)
+    {
+      return;
+    }
+  }
+
+  // Clear the looping timer
+  ClearTimer(NameOf(WaitingForStreamingLevelsTimer));
+
+  // Load the save game state
+  StreamingSaveGameState.LoadGameState();
+  // Clear it for garbage collection
+  StreamingSaveGameState &#61; None;
+
+  // Send a message to all player controllers that we&#39;ve loaded the save game state
+  ForEach WorldInfo.AllControllers(class&#39;PlayerController&#39;, PlayerController)
+  {
+    PlayerController.ClientMessage(&#34;Loaded save game state from &#34;$PendingSaveGameFileName$&#34;.&#34;, &#39;System&#39;);
+  }
+
+  // Start the match
+  Super.StartMatch();
+}
+</pre>
+</div>
+<p />
+<a name="IterateOverTheJSonDataAndDeserializeTheDataOnTheActorsAndObjectsWithinTheLevel"></a>
+<h3><a name="迭代JSon数据并在关卡中的actor和对象上对数据进行反序列化。"></a> 迭代JSon数据并在关卡中的actor和对象上对数据进行反序列化。 </h3>
+既然已存游戏状态对象已经完成加载，那就可以迭代实现SaveGameStateInterface的actor、kismet和Matinee，并基于存储在SerializedWorldData数组(这个数组现在已经编码成JSon格式)中恢复它们。
+<p />
+当SerializedWorldData迭代时，每个元素都会被解码成JSonObject. 获得其名称将会使您对JsonObject数据的关联内容有深入了解。针对SeqAct_Interp进行测试可以知道 这个数据是同Matinee对象、Kismet 事件或Kismet 变量的SeqEvent或SeqVar相关的。如果这三个均不相关，那么它在这个世界中只能和一个actor相关。
+<p />
+如果JSonObject数据在世界中针对一个actor，那么通过使用 FindObject()函数可以找到这个actor。在存储了actor完整的路径名称之后， FindObject()应该就能找到关卡设计师所放置的任何一个actor。如果FindObject()失败，那么它一定是在运行中被实例化的一个actor。这就是为什么存储ObjectArchetype也十分有用的原因，这样如果需要的话，已存游戏状态就能对它重新实例化。一旦actor被找到或被实例化，这个actor就会被转换成SaveGameStateInterface，并基于在JSonObject里存储的数据对其自身进行反序列化处理。
+<p />
+<div class="codetitlebar">
+SaveGameState.uc
+</div>
+<div class="codesnippet">
+<pre>
+/&#42;&#42;
+ &#42; Loads the game state by deserializing all of the serialized data and applying the data to the actors that implement the SaveGameStateInterface, Kisment and Matinee.
+ &#42;/
+function LoadGameState()
+{
+  local WorldInfo WorldInfo;
+  local int i;
+  local JSonObject JSonObject;
+  local String ObjectName;
+  local SaveGameStateInterface SaveGameStateInterface;
+  local Actor Actor, ActorArchetype;
+
+  // No serialized world data to load!
+  if (SerializedWorldData.Length &#60;&#61; 0)
+  {
+    return;
+  }
+
+  // Grab the world info, abort if no valid world info
+  WorldInfo &#61; class&#39;WorldInfo&#39;.static.GetWorldInfo();
+  if (WorldInfo &#61;&#61; None)
+  {
+    return;
+  }
+
+  // For each serialized data object
+  for (i &#61; 0; i &#60; SerializedWorldData.Length; ++i)
+  {
+    if (SerializedWorldData&#91;i] !&#61; &#34;&#34;)
+    {
+      // Decode the JSonObject from the encoded string
+      JSonObject &#61; class&#39;JSonObject&#39;.static.DecodeJson(SerializedWorldData&#91;i]);
+      if (JSonObject !&#61; None)
+      {
+        // Get the object name
+        ObjectName &#61; JSonObject.GetStringValue(&#34;Name&#34;);
+        // Check if the object name contains SeqAct&#95;Interp, if so deserialize Matinee
+        if (InStr(ObjectName, &#34;SeqAct&#95;Interp&#34;,, true) !&#61; INDEX&#95;NONE)
+        {
+          LoadMatineeState(ObjectName, JSonObject);
+        }
+        // Check if the object name contains SeqEvent or SeqVar, if so deserialize Kismet
+        else if (InStr(ObjectName, &#34;SeqEvent&#34;,, true) !&#61; INDEX&#95;NONE &#124;&#124; InStr(ObjectName, &#34;SeqVar&#34;,, true) !&#61; INDEX&#95;NONE)
+        {
+          LoadKismetState(ObjectName, JSonObject);
+        }
+        // Otherwise it is some other type of actor
+        else
+        {
+          // Try to find the persistent level actor
+          Actor &#61; Actor(FindObject(ObjectName, class&#39;Actor&#39;));
+
+          // If the actor was not in the persistent level, then it must have been transient then attempt to spawn it
+          if (Actor &#61;&#61; None)
+          {
+            // Spawn the actor
+            ActorArchetype &#61; GetActorArchetypeFromName(JSonObject.GetStringValue(&#34;ObjectArchetype&#34;));
+            if (ActorArchetype !&#61; None)
+            {
+              Actor &#61; WorldInfo.Spawn(ActorArchetype.Class,,,,, ActorArchetype, true);
+            }
+          }
+
+          if (Actor !&#61; None)
+          {
+            // Cast to the save game state interface
+            SaveGameStateInterface &#61; SaveGameStateInterface(Actor);
+            if (SaveGameStateInterface !&#61; None)
+            {
+              // Deserialize the actor
+              SaveGameStateInterface.Deserialize(JSonObject);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/&#42;&#42;
+ &#42; Returns an actor archetype from the name
+ &#42;
+ &#42; &#64;return    Returns an actor archetype from the string representation
+ &#42;/
+function Actor GetActorArchetypeFromName(string ObjectArchetypeName)
+{
+  local WorldInfo WorldInfo;
+
+  WorldInfo &#61; class&#39;WorldInfo&#39;.static.GetWorldInfo();
+  if (WorldInfo &#61;&#61; None)
+  {
+    return None;
+  }
+
+  // Use static look ups if on the console, for static look ups to work
+  //  &#42; Force cook the classes or packaged archetypes to the maps
+  //  &#42; Add packaged archetypes to the StartupPackage list
+  //  &#42; Reference the packages archetypes somewhere within Unrealscript
+  if (WorldInfo.IsConsoleBuild())
+  {
+    return Actor(FindObject(ObjectArchetypeName, class&#39;Actor&#39;));
+  }
+  else // Use dynamic look ups if on the PC
+  {
+    return Actor(DynamicLoadObject(ObjectArchetypeName, class&#39;Actor&#39;));
+  }
+}
+</pre>
+</div>
+<p />
+反序列化Kismet 的方法和反序列化Actors基本一样，但有一点例外是如果找不到kismet序列对象的话，虚幻脚本不会对它进行实例化。一旦通过使用 FindObject()找到kismet序列对象，下面就能用类型转换找到精确的内容。从那里恢复JsonObject中所保存的值。
+<p />
+<div class="codetitlebar">
+SaveGameState.uc
+</div>
+<div class="codesnippet">
+<pre>
+/&#42;&#42;
+ &#42; Loads the Kismet Sequence state based on the data provided
+ &#42;
+ &#42; &#64;param    ObjectName    Name of the Kismet object in the level
+ &#42; &#64;param    Data      Data as JSon for the Kismet object
+ &#42;/
+function LoadKismetState(string ObjectName, JSonObject Data)
+{
+  local SequenceEvent SequenceEvent;
+  local SeqVar&#95;Bool SeqVar&#95;Bool;
+  local SeqVar&#95;Float SeqVar&#95;Float;
+  local SeqVar&#95;Int SeqVar&#95;Int;
+  local SeqVar&#95;Object SeqVar&#95;Object;
+  local SeqVar&#95;String SeqVar&#95;String;
+  local SeqVar&#95;Vector SeqVar&#95;Vector;
+  local Object SequenceObject;
+  local WorldInfo WorldInfo;
+
+  // Attempt to find the sequence object
+  SequenceObject &#61; FindObject(ObjectName, class&#39;Object&#39;);
+
+  // Could not find sequence object, so abort
+  if (SequenceObject &#61;&#61; None)
+  {
+    return;
+  }
+
+  // Deserialize Kismet Event
+  SequenceEvent &#61; SequenceEvent(SequenceObject);
+  if (SequenceEvent !&#61; None)
+  {
+    WorldInfo &#61; class&#39;WorldInfo&#39;.static.GetWorldInfo();
+    if (WorldInfo !&#61; None)
+    {
+      SequenceEvent.ActivationTime &#61; WorldInfo.TimeSeconds + Data.GetFloatValue(&#34;ActivationTime&#34;);
+    }
+
+    SequenceEvent.TriggerCount &#61; Data.GetIntValue(&#34;TriggerCount&#34;);
+    return;
+  }
+
+  // Deserialize Kismet Variable Bool
+  SeqVar&#95;Bool &#61; SeqVar&#95;Bool(SequenceObject);
+  if (SeqVar&#95;Bool !&#61; None)
+  {
+    SeqVar&#95;Bool.bValue &#61; Data.GetIntValue(&#34;Value&#34;);
+    return;
+  }
+
+  // Deserialize Kismet Variable Float
+  SeqVar&#95;Float &#61; SeqVar&#95;Float(SequenceObject);
+  if (SeqVar&#95;Float !&#61; None)
+  {
+    SeqVar&#95;Float.FloatValue &#61; Data.GetFloatValue(&#34;Value&#34;);
+    return;
+  }
+
+  // Deserialize Kismet Variable Int
+  SeqVar&#95;Int &#61; SeqVar&#95;Int(SequenceObject);
+  if (SeqVar&#95;Int !&#61; None)
+  {
+    SeqVar&#95;Int.IntValue &#61; Data.GetIntValue(&#34;Value&#34;);
+    return;
+  }
+
+  // Deserialize Kismet Variable Object
+  SeqVar&#95;Object &#61; SeqVar&#95;Object(SequenceObject);
+  if (SeqVar&#95;Object !&#61; None)
+  {
+    SeqVar&#95;Object.SetObjectValue(FindObject(Data.GetStringValue(&#34;Value&#34;), class&#39;Object&#39;));
+    return;
+  }
+
+  // Deserialize Kismet Variable String
+  SeqVar&#95;String &#61; SeqVar&#95;String(SequenceObject);
+  if (SeqVar&#95;String !&#61; None)
+  {
+    SeqVar&#95;String.StrValue &#61; Data.GetStringValue(&#34;Value&#34;);
+    return;
+  }
+
+  // Deserialize Kismet Variable Vector
+  SeqVar&#95;Vector &#61; SeqVar&#95;Vector(SequenceObject);
+  if (SeqVar&#95;Vector !&#61; None)
+  {
+    SeqVar&#95;Vector.VectValue.X &#61; Data.GetFloatValue(&#34;Value&#95;X&#34;);
+    SeqVar&#95;Vector.VectValue.Y &#61; Data.GetFloatValue(&#34;Value&#95;Y&#34;);
+    SeqVar&#95;Vector.VectValue.Z &#61; Data.GetFloatValue(&#34;Value&#95;Z&#34;);
+    return;
+  }
+}
+</pre>
+</div>
+<p />
+反序列化Matinee同反序列化Kismet相似。但是，如果matinee序列在保存已存游戏状态时运行，则IsPlaying会在 JSonObject中保存为1。这样ForceStartPosition完成设置，然后要求运行Matinee。否则Matinee会将它的位置根据在JSonObject中所保存的位置数值进行设置。
+<p />
+<div class="codetitlebar">
+SaveGameState.uc
+</div>
+<div class="codesnippet">
+<pre>
+/&#42;&#42;
+ &#42; Loads up the Matinee state based on the data
+ &#42;
+ &#42; &#64;param    ObjectName    Name of the Matinee Kismet object
+ &#42; &#64;param    Data      Saved Matinee Kismet data
+ &#42;/
+function LoadMatineeState(string ObjectName, JSonObject Data)
+{
+  local SeqAct&#95;Interp SeqAct&#95;Interp;
+  local float OldForceStartPosition;
+  local bool OldbForceStartPos;
+
+  // Find the matinee kismet object
+  SeqAct&#95;Interp &#61; SeqAct&#95;Interp(FindObject(ObjectName, class&#39;Object&#39;));
+  if (SeqAct&#95;Interp &#61;&#61; None)
+  {
+    return;
+  }
+
+  if (Data.GetIntValue(&#34;IsPlaying&#34;) &#61;&#61; 1)
+  {
+    OldForceStartPosition &#61; SeqAct&#95;Interp.ForceStartPosition;
+    OldbForceStartPos &#61; SeqAct&#95;Interp.bForceStartPos;
+
+    // Play the matinee at the forced position
+    SeqAct&#95;Interp.ForceStartPosition &#61; Data.GetFloatValue(&#34;Position&#34;);
+    SeqAct&#95;Interp.bForceStartPos &#61; true;
+    SeqAct&#95;Interp.ForceActivateInput(0);
+
+    // Reset the start position and start pos
+    SeqAct&#95;Interp.ForceStartPosition &#61; OldForceStartPosition;
+    SeqAct&#95;Interp.bForceStartPos &#61; OldbForceStartPos;
+  }
+  else
+  {
+    // Set the position of the matinee
+    SeqAct&#95;Interp.SetPosition(Data.GetFloatValue(&#34;Position&#34;), true);
+  }
+
+  // Set the paused
+  SeqAct&#95;Interp.bPaused &#61; (Data.GetIntValue(&#34;Paused&#34;) &#61;&#61; 1) ? true : false;
+}
+</pre>
+</div>
+<p />
+<h2><a name="KActor示例"></a> KActor示例 </h2>
+<hr size="1" noshade="noshade">
+这个示例向您展示如何设置一个actor来使用草村游戏状态系统对其自身进行序列化和反序列化。请记住，对任何您想让保存游戏系在加载或保存时自动识别的Actor类来说，您需要实现SaveGameStateInterface。
+<p />
+<div class="codetitlebar">
+SaveGameStateKActor.uc
+</div>
+<div class="codesnippet">
+<pre>
+class SaveGameStateKActor extends KActor
+  Implements(SaveGameStateInterface);
+</pre>
+</div>
+<p />
+<h3><a name="序列化KActor"></a> 序列化KActor </h3>
+只有位置和旋转度数值才能在此保存。路径名称和对象原型必要数据，否则 Save Game State System(保存游戏状态系统)不能识别对哪个actor或对象应用数据，或者，如果actor或对象需要被实例化，Save Game State System(保存游戏状态系统)将不能识别对哪个actor或者对象原型进行实例化。
+<p />
+所以位置保存为三个浮点型值、旋转度保存为三个整型值。您也可以根据要求保存更多的变量。选择JSon的一个原因是您可以使用可以JSonObject::SetObject()函数创建 父项—子项 结构。这样，您也可以在这步中让子actor或对象序列化其自身(确保这些Actors或对象有一种方法来跟踪它们是否已经序列化；因为您不想多次重复地 序列化/反序列化 这些对象)。这自然创造了一个非常简单的方法来处理附加的actor或对象，而不需要去修改 Save Game State System(保存游戏状态)的底层代码
+<p />
+<div class="codetitlebar">
+SaveGameStateKActor.uc
+</div>
+<div class="codesnippet">
+<pre>
+/&#42;&#42;
+ &#42; Serializes the actor&#39;s data into JSon
+ &#42;
+ &#42; &#64;return  JSon data representing the state of this actor
+ &#42;/
+function String Serialize()
+{
+  local JSonObject JSonObject;
+
+  // Instance the JSonObject, abort if one could not be created
+  JSonObject &#61; new () class&#39;JSonObject&#39;;
+  if (JSonObject &#61;&#61; None)
+  {
+    `Warn(Self$&#34; could not be serialized for saving the game state.&#34;);
+    return &#34;&#34;;
+  }
+
+  // Serialize the path name so that it can be looked up later
+  JSonObject.SetStringValue(&#34;Name&#34;, PathName(Self));
+
+  // Serialize the object archetype, in case this needs to be spawned
+  JSonObject.SetStringValue(&#34;ObjectArchetype&#34;, PathName(ObjectArchetype));
+
+  // Save the location
+  JSonObject.SetFloatValue(&#34;Location&#95;X&#34;, Location.X);
+  JSonObject.SetFloatValue(&#34;Location&#95;Y&#34;, Location.Y);
+  JSonObject.SetFloatValue(&#34;Location&#95;Z&#34;, Location.Z);
+
+  // Save the rotation
+  JSonObject.SetIntValue(&#34;Rotation&#95;Pitch&#34;, Rotation.Pitch);
+  JSonObject.SetIntValue(&#34;Rotation&#95;Yaw&#34;, Rotation.Yaw);
+  JSonObject.SetIntValue(&#34;Rotation&#95;Roll&#34;, Rotation.Roll);
+
+  // Send the encoded JSonObject
+  return class&#39;JSonObject&#39;.static.EncodeJson(JSonObject);
+}
+</pre>
+</div>
+<p />
+<h3><a name="反序列化KActor"></a> 反序列化KActor </h3>
+Kactor要反序列化其自身时，将会向该Kactor提供它自身序列化后的Json数据。这样只要反向执行操作就能在保存游戏状态的时候将KActor恢复到它原先的状态。如上所述，如果您希望序列化子actor或子对象，在此就会有一个合适的地方对该数据进行反序列化。
+<p />
+<div class="codetitlebar">
+SaveGameStateKActor.uc
+</div>
+<div class="codesnippet">
+<pre>
+/&#42;&#42;
+ &#42; Deserializes the actor from the data given
+ &#42;
+ &#42; &#64;param  Data  JSon data representing the differential state of this actor
+ &#42;/
+function Deserialize(JSonObject Data)
+{
+  local Vector SavedLocation;
+  local Rotator SavedRotation;
+
+  // Deserialize the location and set it
+  SavedLocation.X &#61; Data.GetFloatValue(&#34;Location&#95;X&#34;);
+  SavedLocation.Y &#61; Data.GetFloatValue(&#34;Location&#95;Y&#34;);
+  SavedLocation.Z &#61; Data.GetFloatValue(&#34;Location&#95;Z&#34;);
+
+  // Deserialize the rotation and set it
+  SavedRotation.Pitch &#61; Data.GetIntValue(&#34;Rotation&#95;Pitch&#34;);
+  SavedRotation.Yaw &#61; Data.GetIntValue(&#34;Rotation&#95;Yaw&#34;);
+  SavedRotation.Roll &#61; Data.GetIntValue(&#34;Rotation&#95;Roll&#34;);
+
+  if (StaticMeshComponent !&#61; None)
+  {
+    StaticMeshComponent.SetRBPosition(SavedLocation);
+    StaticMeshComponent.SetRBRotation(SavedRotation);
+  }
+}
+</pre>
+</div>
+<p />
+<h2><a name="玩家控制的Pawn事例"></a> 玩家控制的Pawn事例 </h2>
+<hr size="1" noshade="noshade">
+玩家所操控的pawn在关卡设计师没有放置相关actor的地方是十分有趣的事例，即地图中既没有放置PlayController(玩家控制器)也没有Pawn类。但是，关卡设计师能以不同的目的把pawn放置在地图中，比如把敌对怪放在单人地图中。在此用这个方法是要保存一个叫做IsPlayerControlled的额外标记。这样当保存游戏系统实例化并反序列化pawn时，如果IsPlayerControlled设成1，那么反序列化代码会通知GameInfo这一事件。
+<p />
+<div class="codetitlebar">
+SaveGameStatePlayerController.uc
+</div>
+<div class="codesnippet">
+<pre>
+/&#42;&#42;
+ &#42; Serializes the actor&#39;s data into JSon
+ &#42;
+ &#42; &#64;return  JSon data representing the state of this actor
+ &#42;/
+function String Serialize()
+{
+  local JSonObject JSonObject;
+
+  // Instance the JSonObject, abort if one could not be created
+  JSonObject &#61; new () class&#39;JSonObject&#39;;
+  if (JSonObject &#61;&#61; None)
+  {
+    `Warn(Self$&#34; could not be serialized for saving the game state.&#34;);
+    return &#34;&#34;;
+  }
+
+  // Serialize the path name so that it can be looked up later
+  JSonObject.SetStringValue(&#34;Name&#34;, PathName(Self));
+
+  // Serialize the object archetype, in case this needs to be spawned
+  JSonObject.SetStringValue(&#34;ObjectArchetype&#34;, PathName(ObjectArchetype));
+
+  // Save the location
+  JSonObject.SetFloatValue(&#34;Location&#95;X&#34;, Location.X);
+  JSonObject.SetFloatValue(&#34;Location&#95;Y&#34;, Location.Y);
+  JSonObject.SetFloatValue(&#34;Location&#95;Z&#34;, Location.Z);
+
+  // Save the rotation
+  JSonObject.SetIntValue(&#34;Rotation&#95;Pitch&#34;, Rotation.Pitch);
+  JSonObject.SetIntValue(&#34;Rotation&#95;Yaw&#34;, Rotation.Yaw);
+  JSonObject.SetIntValue(&#34;Rotation&#95;Roll&#34;, Rotation.Roll);
+
+  // If the controller is the player controller, then saved a flag to say that it should be repossessed by the player when we reload the game state
+  JSonObject.SetIntValue(&#34;IsPlayerControlled&#34;, (PlayerController(Controller) !&#61; None) ? 1 : 0);
+
+  // Send the encoded JSonObject
+  return class&#39;JSonObject&#39;.static.EncodeJson(JSonObject);
+}
+
+/&#42;&#42;
+ &#42; Deserializes the actor from the data given
+ &#42;
+ &#42; &#64;param  Data  JSon data representing the differential state of this actor
+ &#42;/
+function Deserialize(JSonObject Data)
+{
+  local Vector SavedLocation;
+  local Rotator SavedRotation;
+  local SaveGameStateGameInfo SaveGameStateGameInfo;
+
+  // Deserialize the location and set it
+  SavedLocation.X &#61; Data.GetFloatValue(&#34;Location&#95;X&#34;);
+  SavedLocation.Y &#61; Data.GetFloatValue(&#34;Location&#95;Y&#34;);
+  SavedLocation.Z &#61; Data.GetFloatValue(&#34;Location&#95;Z&#34;);
+  SetLocation(SavedLocation);
+
+  // Deserialize the rotation and set it
+  SavedRotation.Pitch &#61; Data.GetIntValue(&#34;Rotation&#95;Pitch&#34;);
+  SavedRotation.Yaw &#61; Data.GetIntValue(&#34;Rotation&#95;Yaw&#34;);
+  SavedRotation.Roll &#61; Data.GetIntValue(&#34;Rotation&#95;Roll&#34;);
+  SetRotation(SavedRotation);
+
+  // Deserialize if this was a player controlled pawn, if it was then tell the game info about it
+  if (Data.GetIntValue(&#34;IsPlayerControlled&#34;) &#61;&#61; 1)
+  {
+    SaveGameStateGameInfo &#61; SaveGameStateGameInfo(WorldInfo.Game);
+    if (SaveGameStateGameInfo !&#61; None)
+    {
+      SaveGameStateGameInfo.PendingPlayerPawn &#61; Self;
+    }
+  }
+}
+</pre>
+</div>
+<p />
+当调用GameInfo::RestartPlayer()时，它首先确认是否有等待中的玩家pawn在等待玩家控制器。如果有，则得到玩家控制器。
+<p />
+<div class="codetitlebar">
+SaveGameStateGameInfo.uc
+</div>
+<div class="codesnippet">
+<pre>
+/&#42;&#42;
+ &#42; Restarts a controller
+ &#42;
+ &#42; &#64;param    NewPlayer    Player to restart
+ &#42;/
+function RestartPlayer(Controller NewPlayer)
+{
+  local LocalPlayer LP;
+  local PlayerController PC;
+
+  // Ensure that we have a controller
+  if (NewPlayer &#61;&#61; None)
+  {
+    return;
+  }
+
+  // If we have a pending player pawn, then just possess that one
+  if (PendingPlayerPawn !&#61; None)
+  {
+    // Assign the pending player pawn as the new player&#39;s pawn
+    NewPlayer.Pawn &#61; PendingPlayerPawn;
+
+    // Initialize and start it up
+    if (PlayerController(NewPlayer) !&#61; None)
+    {
+      PlayerController(NewPlayer).TimeMargin &#61; -0.1;
+    }
+
+    NewPlayer.Pawn.LastStartTime &#61; WorldInfo.TimeSeconds;
+    NewPlayer.Possess(NewPlayer.Pawn, false);
+    NewPlayer.ClientSetRotation(NewPlayer.Pawn.Rotation, true);
+
+    if (!WorldInfo.bNoDefaultInventoryForPlayer)
+    {
+      AddDefaultInventory(NewPlayer.Pawn);
+    }
+
+    SetPlayerDefaults(NewPlayer.Pawn);
+
+    // Clear the pending pawn
+    PendingPlayerPawn &#61; None;
+  }
+  else // Otherwise spawn a new pawn for the player to possess
+  {
+    Super.RestartPlayer(NewPlayer);
+  }
+
+  // To fix custom post processing chain when not running in editor or PIE.
+  PC &#61; PlayerController(NewPlayer);
+  if(PC !&#61; none)
+  {
+    LP &#61; LocalPlayer(PC.Player);
+
+    if (LP !&#61; None)
+    {
+      LP.RemoveAllPostProcessingChains();
+      LP.InsertPostProcessingChain(LP.Outer.GetWorldPostProcessChain(), INDEX&#95;NONE, true);
+
+      if (PC.myHUD !&#61; None)
+      {
+        PC.myHUD.NotifyBindPostProcessEffects();
+      }
+    }
+  }
+}
+</pre>
+</div>
+<p />
+这就能保证当加载一个已存游戏状态时，玩家在结束时的位置同以前一样，他就不会回到PlayerStart。
+<p />
+<h2><a name="游戏状态加载的kismet事件"></a> 游戏状态加载的kismet事件 </h2>
+<hr size="1" noshade="noshade">
+有时候执行一些kismet动作来保证游戏世界完全存储是十分必要的。这个可以通过制作一个自定义序列事件来实现。
+<p />
+<div class="codetitlebar">
+SaveGameState_SeqEvent_SavedGameStateLoaded.uc
+</div>
+<div class="codesnippet">
+<pre>
+class SaveGameState&#95;SeqEvent&#95;SavedGameStateLoaded extends SequenceEvent;
+
+defaultproperties
+{
+  ObjName&#61;&#34;Saved Game State Loaded&#34;
+  MaxTriggerCount&#61;0
+  VariableLinks.Empty
+  OutputLinks(0)&#61;(LinkDesc&#61;&#34;Loaded&#34;)
+  bPlayerOnly&#61;false
+}
+</pre>
+</div>
+<p />
+当在GameInfo::StartMatch()中加载保存游戏状态时出发自定义Sequence Event(序列事件)
+<p />
+<div class="codetitlebar">
+SaveGameStateGameInfo.uc
+</div>
+<div class="codesnippet">
+<pre>
+/&#42;&#42;
+ &#42; Start the match - inform all actors that the match is starting, and spawn player pawns
+ &#42;/
+function StartMatch()
+{
+  local SaveGameState SaveGameState;
+  local PlayerController PlayerController;
+  local int Idx;
+  local array&#60;SequenceObject&#62; Events;
+  local SaveGameState&#95;SeqEvent&#95;SavedGameStateLoaded SavedGameStateLoaded;
+
+  // Check if we need to load the game or not
+  if (PendingSaveGameFileName !&#61; &#34;&#34;)
+  {
+    // Instance the save game state
+    SaveGameState &#61; new () class&#39;SaveGameState&#39;;
+    if (SaveGameState &#61;&#61; None)
+    {
+      return;
+    }
+
+    // Attempt to deserialize the save game state object from disk
+    if (class&#39;Engine&#39;.static.BasicLoadObject(SaveGameState, PendingSaveGameFileName, true, class&#39;SaveGameState&#39;.const.SAVEGAMESTATE&#95;REVISION))
+    {
+      // Load the game state
+      SaveGameState.LoadGameState();
+    }
+
+    // Send a message to all player controllers that we&#39;ve loaded the save game state
+    ForEach WorldInfo.AllControllers(class&#39;PlayerController&#39;, PlayerController)
+    {
+      PlayerController.ClientMessage(&#34;Loaded save game state from &#34;$PendingSaveGameFileName$&#34;.&#34;, &#39;System&#39;);
+
+      // Activate saved game state loaded events
+      if (WorldInfo.GetGameSequence() !&#61; None)
+      {
+        WorldInfo.GetGameSequence().FindSeqObjectsByClass(class&#39;SaveGameState&#95;SeqEvent&#95;SavedGameStateLoaded&#39;, true, Events);
+        for (Idx &#61; 0; Idx &#60; Events.Length; Idx++)
+        {
+          SavedGameStateLoaded &#61; SaveGameState&#95;SeqEvent&#95;SavedGameStateLoaded(Events&#91;Idx]);
+          if (SavedGameStateLoaded !&#61; None)
+          {
+            SavedGameStateLoaded.CheckActivate(PlayerController, PlayerController);
+          }
+        }
+      }
+    }
+  }
+
+  Super.StartMatch();
+}
+</pre>
+</div>
+<p />
+<h2><a name="问题"></a> 问题 </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="如何处理子actor或子对象"></a> 如何处理子actor或子对象 </h3>
+选择JSon的一个原因是您可以使用可以JSonObject::SetObject()函数创建 父项—子项 结构。这样，您也可以在这步中让子actor或对象序列化其自身(确保这些Actors或对象有一种方法来跟踪它们是否已经序列化；因为您不想多次重复地 序列化/反序列化 这些对象)。这自然创造了一个非常简单的方法来处理附加的actor或对象，而不需要去修改 Save Game State System(保存游戏状态)的底层代码 当要求反序列化这个actor或对象时，您可以迭代内部的JSon对象并执行同样的反序列化操作。
+<p />
+<h3><a name="已存游戏状态以纯文本形式存储。我怎样制止玩家作弊？"></a> 已存游戏状态以纯文本形式存储。我怎样制止玩家作弊？ </h3>
+另一个选择JSon的原因是，只要在Notepad或其他种类的文本编辑软件中打开已存游戏状态的文件，就能很容易地对其进行调试。但是可以理解的是，没有以二进制的方式存储可能会有作弊的行为发生。
+<p />
+对这个问题，这里还有一些其他的思路。您可以通过文本乱码功能经过JSon加密对数据进行模糊处理。但即便是这样，那些真正想窃取您所存游戏的人最终也会得到解码。甚至连二进制文件也不会幸免。
+<p />
+因此，一天结束之后；您几乎无法阻止使用秘籍；除非您可以指定信息源，并指定保存数据所存储的地方（联机保存）。
+<p />
+<h3><a name="是否有可能在线存储JSon数据？"></a> 是否有可能在线存储JSon数据？ </h3>
+是的。使用JSon的一个优点就是，它是一种可交互形式数据的纯文本，它能通过<a href="TcpLink.html" class="twikiLink">TCPLink</a>.传输到服务器。这样已存游戏就能在某地在线存储，而用户就能在不同的机器，或在 <em>不同</em> 的设备上取回数据。或者您甚至可以有一个识别和显示JSon数据的网站，它能显示用户对此的进展。现实当中的可能性是无穷的。
+<p />
+<h3><a name="怎样集成这个开发工具精华文章！？"></a> 怎样集成这个开发工具精华文章！？ </h3>
+您可以从SaveGameState类继承（最简单），或者您可以在SaveGameState类中将代码转换为您自己的游戏。记住，您 <strong>必须</strong> 运行的是正确的游戏类型，这样游戏才会使用争取的PlayerController；否则所有代码都会因为使用了错误的类而无法正常工作。要查看当前所使用的是哪个GameInfo和PlayerController，请使用 "showdebug" 控制台命令。它将会在屏幕的左上角显示当前所使用的GameInfo和PlayerController。
+<p />
+<!--
+您将代码成功集成到您自己的游戏类型中之后，您需要在加载保存游戏状态命令发出后改变可以启动这个地图的控制台命令。
+<p />
+<div class="codesnippet">
+ConsoleCommand("start "$SaveGameState.MapFileName$"?<b><u>Game=SaveGameState.SaveGameStateGameInfo</u></b>?SaveGameState="$FileName);
+</div>
+<p />
+您必须将在重新加载地图时使用的GameInfo更改为您自己的游戏类型。如果没有这么做，那么将会错误加载集成的游戏类型！
+-->
+<p />
+<h3><a name="我已经进行集成该功能，但是当我加载地图时什么都没发生！"></a> 我已经进行集成该功能，但是当我加载地图时什么都没发生！ </h3>
+请记住，在默认状态下，当已存游戏状态有动态加载关卡，事例代码使用SaveGameStateGameInfo::StartMatch()及到Super.StartMatch()的延迟调用。当 bDelayedStart为false(假值)并且bWaitingToStartMatch默认为true(真值)，则自动调用GameInfo::StartMatch()。但是，如果这同您的游戏不匹配，那么请调用SaveGameStateGameInfo::StartMatch()。您也可以移除SaveGameStateGameInfo::StartMatch()的内容，因为它在这里的主要原因是保存游戏状态需要PlayerController(玩家控制器)在保存游戏状态加载前被实例化。
+<p />
+<h2><a name="相关主题"></a> 相关主题 </h2>
+<hr size="1" noshade="noshade"> <ul>
+<li> <a href="UnrealOnMobile.html#BasicSaveObject" class="twikiAnchorLink">针对移动设备的虚幻引擎 – Basic Save Object()</a>
+</li> <li> <a href="CloudDocumentStorage.html" class="twikiLink">Cloud Storage(云存储)</a>
+</li> <li> <a href="TcpLink.html" class="twikiLink">TCP 链接</a>
+</li></ul>
+<p />
+<h2><a name="下载"></a> 下载 </h2>
+<hr size="1" noshade="noshade"> <ul>
+<li> <a href="#" target="_top">下载</a>脚本及示例地图。
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DevelopmentKitGemsSaveGameStatesCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:24:51 GMT -->
+</html></body>

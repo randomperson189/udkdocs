@@ -1,0 +1,423 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LevelStreamingHowToJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:47 GMT -->
+<head>
+<title> UDK | LevelStreamingHowToJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">LevelStreamingHowToJP  </b></div>
+<div id="tooltext">
+<a href="LevelStreamingHowTo.html" class="twikiLink">English Translation</a><br><a href="LevelStreamingHowToCH.html" class="twikiLink">中国翻译</a><br><a href="LevelStreamingHowToKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/LevelStreamingHowToJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHomeJP.html" class="twikiLink">UE3 ホーム</a></b> &gt; <b><a href="LevelStreamingHomeJP.html" class="twikiLink">レベルストリーミング</a></b> &gt; レベルのストリーミングの手順
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="レベルのストリーミングの手順"></a> レベルのストリーミングの手順 </h1>
+<hr size="1" noshade="noshade">
+<div class="twikiToc"> <ul>
+<li> <a href="LevelStreamingHowToJP.html#レベルのストリーミングの手順"> レベルのストリーミングの手順</a> <ul>
+<li> <a href="LevelStreamingHowToJP.html#概要"> 概要</a>
+</li> <li> <a href="LevelStreamingHowToJP.html#Persistent レベル"> Persistent レベル</a> <ul>
+<li> <a href="LevelStreamingHowToJP.html#Persistentレベルの作成方法"> Persistentレベルの作成方法</a>
+</li></ul>
+</li> <li> <a href="LevelStreamingHowToJP.html#Kismet でのスクリプト済みストリーミングの方法"> Kismet でのスクリプト済みストリーミングの方法</a> <ul>
+<li> <a href="LevelStreamingHowToJP.html#スクリプト済みストリーミングの手順リスト"> スクリプト済みストリーミングの手順リスト</a>
+</li></ul>
+</li> <li> <a href="LevelStreamingHowToJP.html#距離ベースによるストリーミング"> 距離ベースによるストリーミング</a> <ul>
+<li> <a href="LevelStreamingHowToJP.html#距離によるストリーミングの手順リスト"> 距離によるストリーミングの手順リスト</a>
+</li></ul>
+</li> <li> <a href="LevelStreamingHowToJP.html#ストリームしたレベルを操作する"> ストリームしたレベルを操作する</a> <ul>
+<li> <a href="LevelStreamingHowToJP.html#ローディングおよびイベント"> ローディングおよびイベント</a>
+</li> <li> <a href="LevelStreamingHowToJP.html#アクタのレベル間の移動"> アクタのレベル間の移動</a>
+</li> <li> <a href="LevelStreamingHowToJP.html#最適化"> 最適化</a>
+</li></ul>
+</li> <li> <a href="LevelStreamingHowToJP.html#ボリュームのストリーミング"> ボリュームのストリーミング</a>
+</li> <li> <a href="LevelStreamingHowToJP.html#まとめ"> まとめ</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<p />
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+ここにご紹介する方法で、Unreal Engine 3 のユーザーは複数レベルの同時ストリーミングの構築を実現し、広大なシームレス ワールドのイリュージョンを作り上げることができます。
+　
+ボリュームベースのレベルストリーミングについての情報は <a href="LevelStreamingVolumesJP.html" class="twikiLink">レベルストリーミングボリューム</a> の文書をご覧ください。
+<p />
+<p />
+<h2><a name="Persistent レベル"></a> Persistent レベル </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+複数のレベルをシームレスにブレンドするという目的への第一のステップは、Persistent レベルの作成です。このレベルは、基本的にはどのレベルをストリーム入出力するかをつかさどるマスター レベルとして考えてよいでしょう。
+<p />
+Persistent レベルの作成とストリーミングレベルをそこに追加する作業は、いくつかの簡単なステップで完了します。:
+<p />
+複数のレベルをシームレスにブレンドするという目的への第一のステップは、Persistent レベルの作成です。このレベルは、基本的にはどのレベルをストリーム入出力するかをつかさどるマスター レベルとして考えてよいでしょう。
+<p />
+Persistent レベルの作成とストリーミングレベルをそこに追加する作業は、いくつかの簡単なステップで完了します。
+<p />
+ 新規マップを作成し、不可視エリアに小さなジオメトリのキューブを追加します。（エンジンはこのマップをレベルとして扱うためだけにこの作業を行いますが、今後はこの方法は徐々に使わなくなる予定です。）
+<p /> <ol>
+<li> プレーヤにゲームを開始させたい場所をプレーヤスタート地点として配置します。持続レベルではこのプレーヤスタート地点が空間に浮いていることが多いのですが、一旦レベルをストリーム インすると、最初にストリームされたレベルの中なら、プレーヤにゲームを開始させたい地点はどこへでも移動することができます。ゲームを始める時には持続レベルを起動することになりますが、プレーヤは実は持続レベルではなく、ストリームされたレベルのうちのひとつにあるジオメトリを歩き進むことになります。
+</li> <li> マップには、管理しやすいように、例えば「Headquarters_P」などの、持続レベルと分かるような名前をつけて保存しておきます。
+</li> <li> Generic ブラウザを開き、[Level] タブをクリックします。ここで、ストリーム インしたいレベルを記載しておく必要があります。「Headquarters」が 3 つのマップで構成される場合、3 つすべてをここに追加します。この作業は、[Level] のプルダウンメニューから、[Level]→[New From File](ファイルから新規) を選択して行います。ストリーミング レベルを追加する順番は重要ではありませんが、 UnrealEd<sup>?</sup> の今後のバージョンではレベルが整理できるよう順番の並べ替えもサポートする予定です。最終的には下のイメージのような状態で終わるはずです。 レベルのストリーム インには、距離と Kismet の二つの方法があります。距離によるストリーミング入出力は、レベル原点からの距離に基づいて行われます。一方、Kismet によるストリーミングを使うと、デザイナーは Kismet スクリプトを介して、思い通りのレベルの入出力が行えるようになり、この方法がもっともよく使われています。
+</li> <li> <em>レベルのストリーム インには、距離と Kismet の 2 つの方法があります。</em> <ul>
+<li> 距離によるストリーミング入出力は、レベル原点からのプレイヤーの距離に基づいて行われます。
+</li> <li> Kismet のストリーミングは、デザイナーが Kismet スクリプトを介して思い通りのレベルの入出力が行えるので、よく使われる方法です。
+</li></ul>
+</li></ol>
+<p />
+<p />
+<img alt="streamingImagenew1.jpg" src="rsrc/Three/LevelStreamingHowTo/streamingImagenew1.jpg" />
+<p />
+<strong>例1: ストリームした 3 つのレベルを追加した後のレベル ブラウザ</strong>
+<p />
+‘CURRENT’と表示されているレベルは、エディター ウィンドウまたは Kismet で行われた変更に伴って修正されます。これにより、書込み可能なマップであれば、複数のマップで簡単に作業することができるようになります。例えば保存のボタンを押すと、‘CURRENT’ レベルを保存（もしくは、[Save All Levels](すべてのレベルを保存)のボタンをクリックして持続レベルを含むリスト上の全マップを保存）します。
+<p />
+Visible のチェックボックスでは、エディターでレベルを表示するか非表示にするかを切り替えることができますが、これは視覚上のことだけで、ゲーム実行時にレベルがストリーム インされるかどうかには関係していません。ただし、ここで不可視なレベルについては、レベルのリビルド結果が反映されませんので、複雑なレベルがある場合には不可視にしておくと、大きく時間を節約することができます。
+<p />
+Persistent レベルから、ストリームしたレベルを永久に削除するには、ブラウザのプルダウンメニューにある[level]から[Remove level](ワールドからレベルを削除)を選択します。レベルのストリーム方法を変更したい場合は、一旦レベルを削除して再追加し、採用したいストリーム方法を選択します。現在のところ、[Load] と [Unload]、[Lock/Unlock](ロック／アンロック) のアイコン、そして[Draw Bounding Box](境界ボックスを描画する)フラグは作動しません。
+<p />
+<img alt="streamingImagenew2.jpg" src="rsrc/Three/LevelStreamingHowTo/streamingImagenew2.jpg" />
+<p />
+<img alt="streamingImagenew2.jpg" src="rsrc/Three/LevelStreamingHowTo/streamingImagenew2.jpg" />
+<p />
+<strong>例2: 右クリックから、[Make Current](現在のレベルを作成)を選択して作業中のレベルへ移動</strong>
+<p />
+<h3><a name="Persistentレベルの作成方法"></a> Persistentレベルの作成方法 </h3>
+<p /> <ul>
+<li>  UnrealEd<sup>?</sup> で新規マップを作成
+</li> <li> 立方体など、単純な形状の BSP ジオメトリを追加
+</li> <li> プレーヤスタート地点を追加
+</li> <li> レベルブラウザにストリームしたいレベルを追加
+</li> <li> マップを保存して命名
+</li></ul>
+<p />
+<p />
+<h2><a name="Kismet でのスクリプト済みストリーミングの方法"></a> Kismet でのスクリプト済みストリーミングの方法 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+上記の手順で持続レベルを作成できたら、ゲームにストリームしたいレベルの選択準備は完了です。この作業は二段階に分かれます。ひとつはレベルのストリーミング（ローディング）、もうひとつはレベルの可視化です。Kismet によりレベルをストリームする場合は、次の手順どおりに作業を進めて下さい。:
+<p /> <ul>
+<li> Kismet を開く
+</li> <li> レベルをスタートアップに設定（[New Event](新しいイベント) → [Level Loaded](レベルのロード)）
+</li> <li> 存在するレベルの数だけ[Stream Level](レベル ストリーム)を実行（[New Action](新しい操作)→[レベル]→[Stream Level](レベル ストリーム)）
+</li> <li> [Stream Level](レベル ストリーム)の各操作をクリックして、LevelName ([レベル名) と表示されたところにレベル名を入力して、対応するレベルを追加する。
+</li> <li> [Stream Level](レベル ストリーム)の各操作への[Load](ロード) とレベルのロードを接続
+</li></ul>
+<p />
+この手順を完了すると、持続マップを実行するとすぐに接続された各レベルがロードされるようになります。ここで覚えておきたいことは、プレーヤがゲームのワールドに入ってきた直後から表示したいマップがある場合は、レベルをロード直後から可視状態にするオプション設定（bMakeVisibleAfterLoad）が用意されていることです。また、ストリームしたセクションをロード直後から可視にする bShouldBlockOnLoad についても確認しておくとよいでしょう。
+<p />
+<img alt="streamingImagenew3.jpg" src="rsrc/Three/LevelStreamingHowTo/streamingImagenew3.jpg" />
+<p />
+<strong>例3: Kismet で 3 つのレベルをロード</strong>
+<p />
+ここで、ロード時に可視と設定しておけば、持続レベルを起動してストリーミング レベルを検査できるはずです。パフォーマンス上の理由で可視と設定しなかったレベルがある場合は、トリガの設定かその他の方法により可視にします。例えば、Headquarters_3 は開始時にプレーヤが見るにはあまりにも遠いので、リソースを他のものに使うために後で可視にすることにします。Kismet には[New Action](新しい操作)→[Level] に[Change Level Visibility](レベルの可視性を変更)という機能があります。この操作によりストリームしたレベルの表示と非表示を任意に切り替えることができます。Stream Level の操作で Unload のイベントを使った場合、レベルはメモリからアンロードされます。これはメモリを開放するという利点がある反面、可視にしたい時に Load イベントを使用しておく必要があります。
+<p />
+<h3><a name="スクリプト済みストリーミングの手順リスト"></a> スクリプト済みストリーミングの手順リスト </h3>
+<p /> <ul>
+<li> Kismet を開く
+</li> <li> LevelLoaded (レベルのロード) および StreamLevel (レベル ストリーム) の操作を追加し、スタートアップを Load に接続
+</li> <li> Stream Level(レベル ストリーム)で左クリックし、[LevelName] (レベル名) のフィールドにストリームしたいレベルの名前を追加し、bMakeVisibleAfterLoad フラグをチェック
+</li> <li> マップを保存しゲームを起動
+</li></ul>
+<p />
+<p />
+<h2><a name="距離ベースによるストリーミング"></a> 距離ベースによるストリーミング </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+プレーヤからの距離に基づいてストリームするレベルを選択する場合は、いくつかの追加作業があります。まず、持続レベルがGeneric ブラウザで選択されていることを確認し、WorldInfo (ワールドの情報) のカテゴリーを右端で展開します。WorldInfo_# で右クリックすると、[Edit Properties](プロパティの編集) が表示されるので選択します。プロパティウィンドウから WorldInfo のプロパティを開いて、[StreamingLevels] (ストリーミング レベル) のプロパティを開きます。すると、各ストリーミング レベルのリストが表示されます。[MaxDistance] (最大距離) のフィールドに、レベルをストリーム インするプレーヤからの距離を設定することができます。ここで指定された距離は、デフォルトでレベルのワールド スペースに座標（0, 0, 0）を中心とした球体範囲と考えて下さい。プレーヤがこの球体に進入すると、レベルはストリーム インされ、球体を離れるとレベルがアンロードされます。この球体の場所は変更可能ですが、通常この球体でストリーミングするレベルの全体を包括する必要があるので、実際は移動が必要な場合がほとんどです。したがって、レベルに近くなるとロードし、レベルの周辺を離れるとアンロードします。まだサポートされてはいませんが、この球体の在処を表示する機能を追加する予定です。
+<p />
+このストリーミング方法は、レベルからのプレーヤの距離に基づいて、レベルのロードおよびアンロードを何度も行う必要がある場合に便利です。レベルは表示と非表示を切り替えるのではなくストリーム入出力を行うため、マップが大きい場合など、レベルのロードにはかなりの時間がかかる場合がありますのでご注意下さい。
+<p />
+<img alt="streamingImagenew4.jpg" src="rsrc/Three/LevelStreamingHowTo/streamingImagenew4.jpg" />
+<p />
+<strong>例4: 距離に基づくストリーミングの設定</strong>
+<p />
+<h3><a name="距離によるストリーミングの手順リスト"></a> 距離によるストリーミングの手順リスト </h3>
+<p /> <ul>
+<li> "Generic Browser"  を開く
+</li> <li> "Level" (レベル) のタブをクリック
+</li> <li> Generic ブラウザのファイルメニューから[Level]→[New From File](ファイルから新規作成) を選択し、ストリーム インしたいレベルを選択
+</li> <li> "Distance" ストリーミングを選択
+</li> <li> "Persistent Level" が選択状態であることを確認し、右端に WorldInfo のプロパティを展開。WorldInfo_# で右クリックして "Edit Properties" を選択
+</li> <li> 開いているプロパティ メニューで、WorldInfo に続いて StreamingLevels を展開
+</li> <li> レベルをワールドにストリーム インする、ゲーム内におけるプレーヤからの距離を入力し、この距離を測定する原点となるワールド スペースの座標位置を変更します。
+</li></ul>
+<p />
+<p />
+<h2><a name="ストリームしたレベルを操作する"></a> ストリームしたレベルを操作する </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="ローディングおよびイベント"></a> ローディングおよびイベント </h3>
+<p />
+通常レベルがロードされた時に多くのイベントを展開させる "Level Startup" (レベル スタートアップ) の操作に代わり、新しいKismetの操作が追加されました。この操作は "Level Loaded And Visible" (レベルをロードして可視にする) という名の機能です。基本的には "Level Startup" と同様の働きをしますが、 "Change Level Visibility" (レベルの可視性を変更) の操作と併用するように作られています。レベルがプレーヤに可視になっているときは、CLV とストリーム インのいずれの方法でも、[bMakeVisibleAfterLoad] (ロード後可視にする) がチェックされていれば、 "Loaded And Visible" (ロードして可視にする) が発動されます。　"Remote Events" (リモート イベント) と一緒に使うことにより、ストリームしたレベルを、イベントの授受のほか、ロードおよびアンロードも必要に応じて行うことができる、自己完結のエンティティとすることができます。例えば下のイメージでは、主題となるレベルが可視になると共にプレーヤがテレポートし、他のレベルからリモート イベントが発動されると何らかの生物のスポーンも行います。
+<p />
+<img alt="streamingImagenew5.jpg" src="rsrc/Three/LevelStreamingHowTo/streamingImagenew5.jpg" />
+<p />
+<strong>例5: ストリーム レベルのサンプル スクリプト</strong>
+<p />
+<h3><a name="アクタのレベル間の移動"></a> アクタのレベル間の移動 </h3>
+<p />
+2007 年 12 月 QA 承認済みビルドの時点で、アクタを単純に 1 つのレベルからコピー (Ctrl + C) して、現在のレベルを変更し、貼り付ける (Ctrl + V) だけで、アクタのレベル間移動ができるようになりました。しかしながら、これは <em>MoveSelectedActorsToCurrentLevel</em> のものと似たようなパスウェイを使用するので、アクタ間の潜在的なリファレンスを解決するためには、アクタを <em>スクラッチ</em> ワールドに直列化しなければいけません。この機能は変更リスト #203995 と #206418 で導入されました。
+<p />
+2007 年 1 月 QA 承認済みビルド以前のビルドでは、一度にたくさんのアクタを移動させた場合は、 <em>メモリ不足</em> が起こったかも知れませんが、これはエディタ トランザクション バッファのパフォーマンス (とメモリ使用量) を修正した際に修正されました (変更リスト #206829)。
+<p />
+また、2007 年 1 月 QA 承認ビルドでは、 <a href="LevelBrowserReferenceJP.html" class="twikiLink">レベル ブラウザ参照</a> 内の <em>[New Level from Selected Actors]</em>  (選択されたアクタから新しいレベル) ボタンで、アクタを新しいレベルへ移動することができます (変更リスト #206324)。
+<p />
+<h3><a name="最適化"></a> 最適化 </h3>
+<p />
+ほとんどのデベロッパーは、パフォーマンスやワークフローのためには、ストリーミング レベルが高ければ高いほど良いと感じるはずです。しかしながら、これは現在システムにある制限要因で調節されるはずです。すなわち、一つのレベルに設置されたアクタは、他のレベルにより kismet 内で直接リファレンスされることができません。遠隔イベントは、ストリーミング レベル全体でイベントをトリガするために発動され、受信されますが、この時点ではレベル全体でアクタを直接することはできません。上記の写真では、Pathnode_0 と Pathnode_1 はこのスクリプトと同じレベルに位置していなければならず、この場合では Headquarters_2 です。もし、これらどちらかのノードが HQ_1 または 3 にあった場合は、これらの操作は機能しません。
+<p />
+2007 年 12 月 QA 承認済みビルド以降、既存のレベルをストリーミング チャンクにより簡単に分ける機能があります。
+<p /> <ul>
+<li> ワールド内でたくさんのアクタを選択します。
+</li> <li> レベル ブラウザの <em>Level (レベル)</em> にある <em>New Level from Selected Actors (選択されたアクタから新しいレベル)</em> を選択します。
+</li> <li> 新しいストリーミング レベルがディスクに作成され、ワールドに追加されます。その後、選択されたアクタは新しいレベルに移動されます。
+</li></ul>
+<p />
+<p />
+これにより、より小さなストリーミング レベル セクションを作成するのが容易になります。
+<p />
+<p />
+<h2><a name="ボリュームのストリーミング"></a> ボリュームのストリーミング </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+ボリューム ベースのレベル ストリーミングに関する情報は、 <a href="LevelStreamingVolumesJP.html" class="twikiLink">レベル ストリーミング ボリューム</a> ページを参照してください。
+<p />
+<p />
+<h2><a name="まとめ"></a> まとめ </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+以上がゲーム ワールドにレベルを同時ストリーム入出力する方法の概要です。多くの新しい機能や更新中の機能があるため、機能や作業の単純化などが追加されるごとに本文を定期的にオンラインで更新する予定です。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LevelStreamingHowToJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:47 GMT -->
+</html></body>

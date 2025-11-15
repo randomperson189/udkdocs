@@ -1,0 +1,1330 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/WeaponsTechnicalGuideJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:39 GMT -->
+<head>
+<title> UDK | WeaponsTechnicalGuideJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">WeaponsTechnicalGuideJP  </b></div>
+<div id="tooltext">
+<a href="WeaponsTechnicalGuide.html" class="twikiLink">English Translation</a><br><a href="WeaponsTechnicalGuideCH.html" class="twikiLink">中国翻译</a><br><a href="WeaponsTechnicalGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/WeaponsTechnicalGuideJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px; font:10px Verdana;" >
+<b><a href="WebHomeJP.html" class="twikiLink">UE3 ホーム</a></b> &gt; <b><a href="GameplayProgrammingHomeJP.html" class="twikiLink">ゲームプレイプログラミング</a></b> &gt; 武器システムのテクニカルガイド
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="武器システムのテクニカルガイド"></a> 武器システムのテクニカルガイド </h1>
+<hr size="1" noshade="noshade">
+<div class="twikiToc"> <ul>
+<li> <a href="WeaponsTechnicalGuideJP.html#武器システムのテクニカルガイド"> 武器システムのテクニカルガイド </a> <ul>
+<li> <a href="WeaponsTechnicalGuideJP.html#概要"> 概要</a>
+</li> <li> <a href="WeaponsTechnicalGuideJP.html#インベントリ"> インベントリ </a> <ul>
+<li> <a href="WeaponsTechnicalGuideJP.html#武器に関するインベントリ管理"> 武器に関するインベントリ管理 </a>
+</li></ul>
+</li> <li> <a href="WeaponsTechnicalGuideJP.html#武器"> 武器 </a> <ul>
+<li> <a href="WeaponsTechnicalGuideJP.html#武器の発砲モード"> 武器の発砲モード </a>
+</li> <li> <a href="WeaponsTechnicalGuideJP.html#武器の発砲タイプ"> 武器の発砲タイプ </a>
+</li> <li> <a href="WeaponsTechnicalGuideJP.html#発砲シーケンス"> 発砲シーケンス </a> <ul>
+<li> <a href="WeaponsTechnicalGuideJP.html#武器の発射ロジック"> 武器の発射ロジック</a>
+</li></ul>
+</li> <li> <a href="WeaponsTechnicalGuideJP.html#武器のプロパティ"> 武器のプロパティ </a>
+</li> <li> <a href="WeaponsTechnicalGuideJP.html#武器の関数"> 武器の関数 </a>
+</li> <li> <a href="WeaponsTechnicalGuideJP.html#UDKWeapon のプロパティ"> UDKWeapon のプロパティ </a>
+</li> <li> <a href="WeaponsTechnicalGuideJP.html#UDKWeapon の関数"> UDKWeapon の関数 </a>
+</li> <li> <a href="WeaponsTechnicalGuideJP.html#UTWeapon のプロパティ"> UTWeapon のプロパティ </a>
+</li> <li> <a href="WeaponsTechnicalGuideJP.html#UTWeapon の関数"> UTWeapon の関数 </a>
+</li></ul>
+</li> <li> <a href="WeaponsTechnicalGuideJP.html#付属"> 付属 </a> <ul>
+<li> <a href="WeaponsTechnicalGuideJP.html#UTWeaponAttachment のプロパティ"> UTWeaponAttachment のプロパティ </a>
+</li> <li> <a href="WeaponsTechnicalGuideJP.html#UTWeaponAttachment の関数"> UTWeaponAttachment の関数 </a>
+</li></ul>
+</li> <li> <a href="WeaponsTechnicalGuideJP.html#発射物"> 発射物 </a> <ul>
+<li> <a href="WeaponsTechnicalGuideJP.html#Projectile （発射物） のプロパティ"> Projectile （発射物） のプロパティ </a>
+</li> <li> <a href="WeaponsTechnicalGuideJP.html#Projectile （発射物）の関数"> Projectile （発射物）の関数 </a>
+</li> <li> <a href="WeaponsTechnicalGuideJP.html#UTProjectile のプロパティ"> UTProjectile のプロパティ </a>
+</li> <li> <a href="WeaponsTechnicalGuideJP.html#UTProjectile の関数"> UTProjectile の関数 </a>
+</li></ul>
+</li> <li> <a href="WeaponsTechnicalGuideJP.html#ピックアップ"> ピックアップ </a> <ul>
+<li> <a href="WeaponsTechnicalGuideJP.html#武器ファクトリー"> 武器ファクトリー </a>
+</li> <li> <a href="WeaponsTechnicalGuideJP.html#武器庫"> 武器庫 </a>
+</li> <li> <a href="WeaponsTechnicalGuideJP.html#弾薬ファクトリー"> 弾薬ファクトリー </a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<p />
+「Unreal」の武器は、プレイヤーが（通常はある種の発射物を発砲するために）使用することができるインベントリのアイテムです。デフォルトの武器システムは、「Unreal Engine 3」で見られる通り、一人称のシューティングゲームに典型的な、さまざまなガンを作成するためのシステムのように思われます。しかし実際は、それとは異なるタイプのゲームで見られるような他のタイプの武器や便利なアイテムを非常に容易に作成することができます。たとえば、仲間を回復させる魔法や生物を捕獲する網、敵を倒すブーメランなどが考えられます。この武器システムは、スポーツ系ゲームのような異種ゲームで使えるように改造することさえ考えられるのです。たとえば、ゴルフゲームでプレイヤーがバッグの中に入れて使用できる各種クラブなどを作成することが考えられます。ちょっとした創造性と自由な心があれば、「Unreal Engine 3」の武器システムは、ほとんどあらゆるタイプのゲームのニーズと制約に簡単に対応できるのです。
+<p />
+このドキュメントの目的は、武器システムの機能と新たな武器の簡単な作成方法について概説することにあります。まず、武器とポーン間の相互作用のプロセスを、インベントリ制御という観点から、武器のポーンへの受け渡し、武器の破棄などに分割して考えます。次に、武器を発砲するときに実行するシーケンスについて解説します。ここでは、どのような関数およびステートが一連のプロセスに不可欠であるかということを正確に示します。最後に、さまざまな武器クラスに所属している重要な関数とプレイヤーの多くについて、それぞれに解説をつけて、リストアップします。このような情報をすべて利用することによって、どのように武器システムを作成するゲームに生かすかということ、また、どのような部分を調整または改造、放置すべきかということについて、よいアイデアを練り始める必要があるでしょう。
+<p />
+武器セットアップのコンテンツ面に関する詳細は、 <a href="SettingUpWeaponsJP.html" class="twikiLink">Setting Up Weapons</a> を参照してください。
+<p />
+<h2><a name="インベントリ"></a> インベントリ </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<p />
+「Unreal」のインベントリシステムによって、ゲーム内で各プレイヤーに属するアイテムはすべてを把握することができます。各プレイヤーは自身の InventoryManager をもっています。これは、インベントリアイテムを取る、破棄する、装備する、使用するなどの処理を行います。プレイヤーのインベントリ内に配置することができるアイテムは、すべてインベントリ基本クラスを継承します。このクラスは、インベントリシステムで使用されるとともに、InventoryManager によって管理されるのに必要な関数およびプロパティの固有なサブセットを提供するものです。
+<p />
+<h3><a name="武器に関するインベントリ管理"></a> 武器に関するインベントリ管理 </h3>
+<p />
+Weapon は Inventory (インベントリ) の子であることから、2 通りの方法でポーンのインベントリに追加できます。つまり、Pawn.GiveWeapon() 関数を使用してポーンに直接与えるか、DroppedPickup または PickupFactory アクタによりポーンに割り当てます。DroppedPickups とは、武器がワールドに配置されると作成されるアクタで、Weapon の物理的な存在を表し、プレーヤーがアイテムを (意図的またはデスと同時に) 放棄したときに DropFrom() によって作成されます。PickupFactory アクタは、通常デザイナーによりマップに配置されたアクタを表します。これらのアクタが、供出するインベントリアイテムがあるかどうかの判定タスクを処理し、ワールドにおけるアイテムの状態を管理します
+<p />
+DroppedPickup と PickupFactory はどちらも既存のインベントリアイテムを受け取り取り、ポーンに渡します。これは GiveTo() 関数により実行されます。この関数は InventoryManager に対して、InventoryManager.AddInventory() 関数を使ってこのアイテムをポーンのインベントリに追加するよう指示します。
+<p />
+ポーンに武器を与える 2 つ目の方法は、Pawn.GiveWeapon() の使用です。これは、非物理的アクタ (GameInfo や Mutator など) が、簡単に (それ自体をスポーンせずに) ポーンに武器を簡単に提供できるようにするためのヘルパー関数です。InventoryManager.CreateInventory() を呼び出し、作成する武器クラスを渡してこれを行います。
+<p />
+ポーンに与えられた武器は、使用される前にアクティブにする必要があります。通常、このアクティブ化はユーザー入力 (NextWeapon() または PrevWeapon() のいずれか) と SwitchToWeaponClass() 実行関数を用いて行います。これらの関数がロジックを実行し、新しい武器が決まると SetCurrentWeapon() を呼び出します。
+<p />
+SetCurrentWeapon() は、武器のアクティブ化の主要な起点です。1 つのパラメータ DesiredWeapon (アクティブにする武器への参照) を取り、常にローカル クライアントから呼び出されます。関数を呼び出すとコードチェーンを開始し、現在の武器を「収納」 (インベントリに返して非アクティブ状態すること) します。図 1 は、システムの動作の概略図を示しています。
+<p />
+<img alt="figure1.jpg" src="rsrc/Three/WeaponsTechnicalGuide/figure1.jpg" />
+<p />
+InventoryManager は PendingWeapon プロパティを用いて、武器収納シーケンスが終了したときに次に切り替える武器を決定します。SetCurrentWeapon() はこのプロパティを設定してから TryPutDown() を呼び出します。この関数は武器の非アクティブ化を開始します。
+<p />
+Weapon.TryPutDown() は WeaponPuttingDown へのステート移行を試み、タイミングが良くない場合には bWeaponPutDown フラグプロパティを設定します。ほとんどのステート移行中には、このプロパティを用いて武器収納が要求されたかどうかの確認が行われます。TryPutDown() が WeaponPuttingDown ステートへの移行または bWeaponPutDown フラグの設定に成功した場合は true を返し、その他の場合は false を返します
+<p />
+武器の収納に成功すると、SetCurrentWeapon() は ServerSetCurrentWeapon() を呼び出してサーバー上でプロセスを開始します。このプロセスは SetCurrentWeapon() とほぼ同じですが、注意すべき点が 2 点あります。ひとつは、ServerSetCurrentWeapon() はクライアント上で TryPutDown() に成功したことを前提としている点、もうひとつは、この InventoryManager がローカルで制御されている場合は、リッスンサーバーの存在に配慮し、サーバー側の TryPutDown() 呼び出しを制限する必要がある点です。
+<p />
+上記の 2 点は、いずれも既存の武器が存在することを前提としています。この条件を満たさない場合、TryPutDown() はスキップされ、制御は ChangedWeapon() に直接渡されます。ChangedWeapon() の説明に進む前に、WeaponPutingDown と武器のその他のステートに目を通しておく必要があります。
+<p />
+武器には、以下に示す 6 つの重要なステートがあります。
+<p /> <ol>
+<li> Inactive (インアクティブ) - 武器が使用されていないときは、通常非アクティブステートに入ります。デフォルトでは、これは武器が画面に見えず、StartFire()/EndFire() イベントを取得できないことを意味します。
+</li> <li> Active (アクティブ) - 武器を手に持っているが、発射していないときはアクティブステートになります。このステートから StartFire() を呼び出すと発射シーケンスが開始します。
+</li> <li> WeaponEquipping (武器を装備) - 最初に武器をアクティブにすると (Activate() 関数を呼び出して)、WeaponEquipping ステートに移行します。このステートでは、任意の "bring up" (登場) アニメーションとエフェクトを再生します。アクティブに移行するのに要する時間は、TimeWeaponEquipping() で制御します。
+</li> <li> WeaponPuttingDown (武器の収納) - このステートは、武器をインベントリに納めて非アクティブにする状態を指します。このステートは、通常は TryPutDown() 関数を呼び出したときか、bWeaponPuttingDown のチェックが遅れたときに開始します。WeaponEquipping と同様に、必要なアニメーションやエフェクトを再生し、TimeWeaponPutDown() を使って収納アクションにかかる時間を調整します。
+</li> <li> PendingClientWeaponSet (クライアントの武器設定待ち) - これはクライアント上でのみ発生する特別なステートです。武器がアクティブになっていても、まだ初期状態で重要な情報 (扇動者 (instigator) やオーナーなど) が複製されていないときはこの状態に入ります。このステートに移行した武器は、これらの値の到着を確認する間隔チェックを設定し、その時点で WeaponEquipping ステートに移行します。
+</li> <li> Firing（発砲） - 大変な仕事を行うステートです。StartFire によってトリガーされます。通常は、FiringStatesArray 内で Firing として指定されます。
+</li></ol>
+<p />
+PendingClientWeaponSet を除き、武器はクライアントとサーバーの両方で並行して異なるステートに移行し、必要に応じて分岐しますが、これについては後ほど詳細に説明します。
+<p />
+武器を収納すると、InventoryManager.ChangedWeapon() が呼び出されます (武器の WeaponPuttingDown ステートの WeaponIsDown() 関数から)。ChangedWeapon の役割は、ポーン内の武器プロパティを実際に変更し、通知を行い、最後に新しい武器をアクティブにします。
+<p />
+この場合も同様に、ステート移行はクライアントとサーバーで同時に発生しますが、これはサーバーが追いかけることより発生する視覚的な遅延を避けるためです。武器のコードでは、後述する PendingFire システムを使ってこれを正常に処理します。
+<p />
+Weapon.Activate() が呼び出されると、武器は WeaponEquipping ステートに移行します。上記のリストから、このステートでは武器を使用するための初期化が行われ、「構えの」アニメーションまたはエフェクトが再生されることがわかります。武器の「装備」は TimeWeaponEquipping() 関数の制御を受けます。この関数の内部から武器のメッシュが関連付けられ、アニメーションが再生されます。最後に、EquipTime のタイマーがセットされ、これが終了すると WeaponEquipped() 関数が呼び出されます。装備が完了した武器は Active ステートに移行し、使用できるようになります。
+<p />
+<p />
+<h2><a name="武器"></a> 武器 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<p />
+Weapon クラスは、当然のことながら、「Unreal」において武器システムの主眼となるものです。このクラスには、武器の機能および動作を規定するロジックが含まれています。これは大抵の場合、発砲ショットという概念が中心になります。しかし、この「発砲」という概念を、武器が「使用される」という、より一般的な観点で捉えてみることが有益なこともあります。こうすることによって、「Unreal」における武器の概念は、銃の狭い定義から離れて抽象化されます。同時に、ゲームである種のアクションを実行するために使用するアイテムとしての方向性を武器にもたせることができるのです。もちろん、シューティングゲームの場合には、「発砲」という用語がゲームのコンセプトに合致するため問題はないでしょう。武器のあり方や使用方法について異なる考え方をするゲームの場合には、このような抽象化した捉え方をすることで、武器システムの利用が容易になります。
+<p />
+<h3><a name="武器の発砲モード"></a> 武器の発砲モード </h3>
+<p />
+「Unreal」における武器には、複数のモードがあります。デフォルトでは、Fire （発砲）とAlt Fire （もう一方の発砲）があります。これはそれぞれ左マウスボタンと右マウスボタンを押すと実行されます。それぞれの発砲モードは全く異なる動作をします。例としては Link Gun が挙げられます。メインの Fire モードはプラズマの発射物を射出しますが、Alt Fire モードは一定ビームを射出します。これらは全く異なるものであり、それぞれのモードを実行するためのコードにおいても異なるものとして扱われる必要があります。武器は 3 つ以上の発砲モードをもつことができます。ただし、異なる発砲モードそれぞれを発砲させるための仕組みが必要となります。これはデフォルトのシステムには組み込まれていません。入力システムの中で新たなバインディングが作成される必要があり、また、そのような機能を追加するための新たなメソッドも必要となるでしょう。
+<p />
+<h3><a name="武器の発砲タイプ"></a> 武器の発砲タイプ </h3>
+<p />
+武器がどのように射出するのかということ、また、ヒットする （影響を与える）対象は何かということを決定するのは、現在の発砲モードにおける発砲タイプです。「Unreal」ではデフォルトで 2 つの発砲タイプが定義されています。Instant Fire （即射）と Projectile Fire （発射体の発砲）です。Instant Fire は、その名が示すとおりです。このタイプは、発砲すると同時にトレースを実行し、即座にヒットされる対象を決定するとともに、ダメージまたは他の望ましい結果を与えます。Projectile Fire も名前どおりです。発射物 （projectile）の発砲モードで発砲された場合、新たな発射物がスポーンされて、その武器が狙っている方向に発射されます。次に発射物がプロセスを引き継いで、ヒット対象を決定するとともに、ダメージまたは他の結果を与えます。
+<p />
+これらの定義済みの発砲タイプは、両方とも必要な場合は改変することが可能ですが、さらに Custom Fire（カスタムの発砲）も用意されています。このタイプの動作は定義されていないため、各自のニーズに合わせて完全にカスタマイズすることができます。このタイプのおかげで、武器システムは極めて柔軟なものとなります。新たに武器のエフェクト考え出して実装することができるからです。
+<p />
+<h3><a name="発砲シーケンス"></a> 発砲シーケンス </h3>
+<p />
+アクティブステートに入った武器は、プレーヤーのコントローラーから発射イベントの受け取りを開始することができます。発射のコードパスを調べてみる前に、Weapon.uc の変数宣言と HasAmmo() などのインベントリ関数に目を通しておきましょう。デフォルトでは、UE3 の武器システムには弾薬の取り扱いに関する stub 関数のみが含まれ、本当の実装はゲーム側に任されています。
+<p />
+以下は、発射シーケンスの簡単な概要を記した Weapon.uc からのコメントブロックです。
+<p />
+<h4><a name="武器の発射ロジック"></a> 武器の発射ロジック </h4>
+<p />
+ここでは、武器システムは権威サーバーとローカルクライアントの両方で同じ流れに従う 1 つのコードパスとして設計されています。リモートクライアントは武器について意識することなく、WeaponAttachment システムを使用して最終的な結果を得ることができます。
+<p /> <ol>
+<li> ローカル クライアントの InventoryManager (IM) は StartFire の呼び出しを受け取り、StartFire() を呼び出します。
+</li> <li> ローカルクライアントに権威がない場合、ServerStartFire() を介してサーバに通知します。
+</li> <li> StartFire() と ServerStartFire() が BeginFire() の呼び出しにより同時に起動されます。
+</li> <li> BeginFire() は、敵襲モードの PendingFire フラグを設定します。
+</li> <li> BeginFire() は現在のステートを調べて、Active ステートであれば、FiringStatesArray 配列に定義されている新規発射ステートに移行し、発射シーケンスを開始します。これは SendToFiringState の呼び出しにより実行されます。
+</li> <li> 発射ロジックはさまざまなステートで処理され、以下の役割を担当します。 <ol>
+<li> 関連する PendingFire が hot (発射可能）である間は発射を続ける。
+</li> <li> 弾薬が切れると新しい武器に移る。
+</li> <li> 発射しなくなったら、Active ステートに移行する。
+</li></ol>
+</li></ol>
+<p />
+武器システムは、IM から StopFire() イベントも受信します。これが発生すると、以下のロジックが実行されます。
+<p /> <ol>
+<li> ローカルクライアント上の IM は StopFire() を呼び出します。
+</li> <li> 武器の StopFire が Authoritive プロセス上にない場合、ServerStopFire() イベントを介してサーバに通知します。
+</li> <li> EndFire() を呼び出して StopFire() と ServerStopFire() を同時に起動します。
+</li> <li> EndFire() は、この攻撃モードの PendingFire フラグをクリアします。
+</li></ol>
+<p />
+発射開始/中止の実行における発射ステートは同じで、必要に応じて外側に分岐していきます。例えば、デフォルトの発射ステート ('WeaponFiring') では、該当するすべてのプロセスで関数 FireAmmunition() が発生します。
+<p />
+一度に理解するには多すぎるるので、シーケンス全体について詳しい考察を加えていきます。PlayerController から始めましょう。PlayerController が StartFire() 実行コマンドを受け取ると、ポーンに通知します。ポーンは InventoryManager に通知し、InventoryManager は Owner.Weapon.Start() を呼び出して完全シーケンスを開始します。playerController は、エンドユーザーが使おうとしている発射モードを認識し、それを渡します。それに合わせてプロパティ CurrentFireMode が設定されます。
+<p />
+StartFire() が呼び出されると、武器は簡単な Ammo (弾薬) チェックを実行し、これが失敗に終わった場合は有効な武器への切り替えを試みます。チェックに失敗しなければ、BeginFire() を呼び出します。加えて、StartFire() がリモート クライアント上で呼び出された場合は、要求された関数は ServerStartFire() を介してサーバーに複製され、この関数が次に BeginFire() を呼び出します。Weapon.BeginFire() から、クライアントとサーバーの両方で並行して武器の実行が開始されます。これ以降はコード パスはエフェクトなどの処理が必要な場合のみ分岐します。ほとんどのステートで BeginFire() が実行するのは、選択されている発射モードの PendingFire バイト フラグを確認するだけです。
+<p />
+武器の発射シーケンスが始まるのは Active ステートからだけで、Weapon.SendToFiringState() を呼び出して起動します。この関数は武器を WeaponFiring ステートに移行し、新しいステートに入った武器は、直ちに FireAmmunition() 関数を呼び出して攻撃を試みます。次に TimeWeaponFiring() を呼び出して、発射シーケンスのタイミングを設定します。
+<p />
+デフォルトでは、FireAmmunition() 関数は以下に示すように非常に単純です。
+<p />
+<div style="margin:0px 10px;background:#e0e0e0;font:12px Courier;padding:5px;">
+<pre>
+/&#42;&#42;
+ &#42; FireAmmunition: 発砲に関連するすべてのロジックを実行する
+ &#42; - 弾薬を発射する (instant hit (即射) または projectile (投射物) を発射)
+ &#42; - 弾薬を消費する
+ &#42; - 関連エフェクト (発砲サウンドなど) を再生する
+ &#42;
+ &#42; ネットワーク: ローカルプレーヤーとサーバー
+ &#42;/
+
+simulated function FireAmmunition()
+{
+   // 弾薬を使い発射する
+   ConsumeAmmo( CurrentFireMode );
+
+   // これがローカルプレーヤーの場合、発射エフェクトを再生する
+   PlayFiringSound();
+
+   // 異なる発射タイプを処理する
+   switch( WeaponFireTypes&#91;CurrentFireMode] )
+   {
+      case EWFT&#95;InstantHit:
+         InstantFire();
+         break;
+
+      case EWFT&#95;Projectile:
+         ProjectileFire();
+         break;
+
+      case EWFT&#95;Custom:
+         CustomFire();
+         break;
+   }
+}
+
+</pre>
+</div>
+<p />
+FireAmmunition() 関数の役割は、"発砲" を実際に開始し、現在の発射モードの WeaponFireTypes エントリを参照することです。即射砲の場合 (EWFT_InstantHit)、TraceFire() を呼び出します。TraceFire() は、弾丸を追跡し、命中した数を管理します。発射物を飛ばす武器 (EWFT_Projectile) の場合は、ProjectileFire() 関数が呼び出されます。この関数は発射物のスポーンと初期化を行います。最後に、カスタムの発射タイプ (EWFT_Custom) の場合は CustomFire() 関数 が呼び出されます。
+<p />
+TimeWeaponFiring() はタイマーを設定し、現在の発射モードで指定発射間隔ごとに RefireCheckTimer() 関数をトリガします。RefireCheckTimer() は、ステートを移行する必要があるか、または追加の発砲を行うかどうかを調べます。ステートの移行が必要なのは、武器の弾薬がなくなった場合、または現在の発射モードの PendingFire バイト フラグ設定がクリアされた場合です。関数 ShouldRefire() は、武器の発射を続けるか、または中止して Active ステートに戻るべきかどうかを判定するロジックを処理します。
+<p />
+発射シーケンスの開始と同様に、シーケンスの中止も PlayerController で開始し、同じパスをたどります。PlayerController からポーン、ポーンから InventoryManager 、IM から現在の武器、という順序で通知されます。次に武器の StopFire() は、ServerStopFire() への分岐が必要な場合はこれを行い、最後に EndFire() を実行して PendingFire バイト フラグをクリアします。
+<p />
+<h3><a name="武器のプロパティ"></a> 武器のプロパティ </h3>
+<p />
+武器のプロパティは、基本武器クラスの中にあります。これらのプロパティは、「Unreal」のすべての武器に共通のものであり、基本的で汎用的な武器の機能に付属しているものです。
+<p />
+<strong>AI</strong>
+<p /> <ul>
+<li> <strong>ShouldFireOnRelease</strong> - 各発砲モードについて、武器を発砲するには発砲ボタンがリリースされる必要があるか否かに関して AI に対して伝えます。値が 0 の場合は、押下で発砲します。他の値の場合は、リリース時に発砲します。
+</li> <li> <strong>bInstantHit</strong> - true の場合、この武器が即射型の武器であることを AI に対して伝えます。
+</li> <li> <strong>bMeleeWeapon</strong> - true の場合、この武器が近接武器であることを AI に対して伝えます。
+</li> <li> <strong>AIRating</strong> - インベントリの中のどの武器を使用すべきか、あるいは、どの武器を取るべきかをボットが決定する際に、その武器がどの程度望ましいのか明確にします。
+</li></ul>
+<p />
+<strong>発砲とタイミング</strong>
+<p /> <ul>
+<li> <strong>FiringStatesArray</strong> - 各 <a href="#武器の発砲モード">発砲モード</a> のために使用する発砲ステートのリストです。デフォルトのシステムでは、 <em>WeaponFiring</em> ステートが使用されます。
+</li> <li> <strong>WeaponFireTypes</strong> - 各発砲モードのために使用する <a href="#武器の発砲タイプ">発砲タイプ</a> のリストです。       <em>EWFT_InstantHit</em> - 武器がショットをトレースして、ヒットを決定するとともに即座にエフェクトを引き起こします。       <em>EWFT_Projectile</em> - 照準が定まった新たな発射物を、武器がスポーンします。       <em>EWFT_Custom</em> - カスタマイズされた発砲シーケンスの実装が必要とします。       <em>EWFT_None</em> - 武器は発砲しません。
+</li> <li> <strong>WeaponProjectiles</strong> - 各発砲モードの発射物のために使用するクラスのリストです。発砲モードが EWFT_Projectile 発砲タイプを使用することが前提となっています。
+</li> <li> <strong>FireInterval</strong> - 武器が 1 回の発砲で要する時間を設定します。
+</li> <li> <strong>Spread</strong> - 各発砲モードで使用するショット間の広がりの量を設定します。
+</li> <li> <strong>InstantHitDamage</strong> - 各発砲モードについて、この武器の即射ショットによるダメージの量を設定します。
+</li> <li> <strong>InstantHitMomentum</strong> - 各発砲モードについて、この武器の即射ショットによるモメンタム量を設定します。
+</li> <li> <strong>InstanthitDamageTypes</strong> - 各発砲モードについて、この武器の即射ショットのために使用されるダメージタイプを設定します。
+</li> <li> <strong>FireOffset</strong> - この武器のための発射物をスポーンしているときに使用するオフセットを設定します。
+</li> <li> <strong>WeaponRange</strong> - この武器を発砲できる最大距離です。これは、InstantFire() 、ProjectileFire() 、AdjustAim() などといった関数の中で実行されるトレースのために使用されます。
+</li></ul>
+<p />
+<strong>インベントリ</strong>
+<p /> <ul>
+<li> <strong>EquipTime</strong> - この武器を装備するのに要する時間です。
+</li> <li> <strong>PutDownTime</strong> - この武器をしまうのに要する時間です。
+</li> <li> <strong>bWeaponPutDown</strong> - true の場合、この武器は現在のステートの最後でしまわれます。
+</li> <li> <strong>bCanThrow</strong> - true の場合、プレイヤーがこの武器を捨てることができます。通常、デフォルトのインベントリにある武器は false に設定されています。
+</li></ul>
+<p />
+<strong>メッシュとアニメーション</strong>
+<p /> <ul>
+<li> <strong>Mesh</strong> - 武器に使用するメッシュを設定します。（メッシュのタイプはここでは制限されませんが、「Unreal」では骨格メッシュを想定しています）。これは一人称メッシュです。
+</li> <li> <strong>DefaultAnimSpeed</strong> - 時間が指定されていない場合に、この武器上でアニメーションを再生する際の速度です。
+</li></ul>
+<p />
+<h3><a name="武器の関数"></a> 武器の関数 </h3>
+<p />
+<strong>弾薬</strong>
+<p /> <ul>
+<li> <strong>GetProjectileClass</strong> - 現在の発砲モードに対応する発射物のクラスを返します。
+</li> <li> <strong>FireAmmunition</strong> - 現在の発砲モードの発砲に関係するすべてのロジックを実行します。たとえば、InstantFire() 、ProjectileFire() 、CustomFire() などを呼び出します。
+</li> <li> <strong>ConsumeAmmo [FireModeNum]</strong> - 武器を発砲するとき、それに応じて弾薬のカウントを調整するために呼び出される関数スタブです。サブクラスによってオーバーライドされる必要があります。  <ul>
+<li> <strong>FireModeNum</strong> - 弾薬を消費する現在の発砲モードを保持します。
+</li></ul>
+</li> <li> <strong>AddAmmo [Amount]</strong> - この武器のための弾薬を補充するために呼び出される関数スタブです。サブクラスによってオーバーライドされる必要があります。  <ul>
+<li> <strong>Amount</strong> - 補充する弾薬の量を保持します。
+</li></ul>
+</li> <li> <strong>HasAmmo [FireModeNum] [Amount]</strong> - 所定の発砲モードのための弾薬を武器がもっているか否かを返します。デフォルトでは常にtrue が返されるように設定されているため、サブクラスによってオーバーライドされる必要があります。  <ul>
+<li> <strong>FireModeNum</strong> - 弾薬をチェックする発砲モードを保持します。
+</li> <li> <strong>Amount</strong> - オプション項目です。チェックする弾薬の量を保持します。指定されていない場合は、あらゆる弾薬をチェックします。
+</li></ul>
+</li> <li> <strong>HasAnyAmmo</strong> - 発砲モードに関わらず、武器が少しでも弾薬をもっているか否かを返します。デフォルトでは常に true が返されるように設定されているため、サブクラスによってオーバーライドされる必要があります。
+</li> <li> <strong>WeaponEmpty</strong> - 発砲中に武器の弾薬が切れた場合に呼び出される関数スタブです。サブクラスによってオーバーライドされる必要があります。
+</li></ul>
+<p />
+<strong>AI</strong>
+<p /> <ul>
+<li> <strong>IsFiring</strong> - 武器が現在発砲中か否かを返します。
+</li> <li> <strong>GetAIRating</strong> - この武器のための AIRating を返します。
+</li> <li> <strong>GetWeaponRating</strong> - 武器が使用されるのにどのくらい好ましいものかを表す重み付けを返します。
+</li> <li> <strong>CanAttack [Other]</strong> - 所定の Actor を攻撃できる範囲に武器が位置しているか否かを返します。デフォルトでは常に true が返されるように設定されているため、サブクラスによってオーバーライドされる必要があります。  <ul>
+<li> <strong>Other</strong> - 攻撃対象の Actor を参照します。
+</li></ul>
+</li> <li> <strong>FireOnRelease</strong> - リリース時に武器が発砲するか否かを返します。
+</li> <li> <strong>NotifyWeaponFired [FireMode]</strong> - 武器が発砲されたことを AI に対して伝えます。  <ul>
+<li> <strong>FireMode</strong> - 発砲に使用された発砲モードを保持します。
+</li></ul>
+</li> <li> <strong>NotifyWeaponFinishedFiring [FireMode]</strong> - 武器の発砲が停止したことを AI に対して伝えます。  <ul>
+<li> <strong>FireMode</strong> - 停止した発砲の発砲モードを保持します。
+</li></ul>
+</li> <li> <strong>RecommendLongRangedAttack</strong> - 長距離攻撃のためにこの武器をボットが使うべきか否かを返します。
+</li></ul>
+<p />
+<strong>照準</strong>
+<p /> <ul>
+<li> <strong>GetViewAxes [XAxis] [YAxis] [ZAxis]</strong> - 武器の所有者がもっている基本となる視界照準の回転軸を出力します。  <ul>
+<li> <strong>XAxis</strong> - 出力。X 軸の成分を出力します。
+</li> <li> <strong>YAxis</strong> - 出力。Y 軸の成分を出力します。
+</li> <li> <strong>ZAxis</strong> - 出力。Z 軸の成分を出力します。
+</li></ul>
+</li> <li> <strong>GetAdjustedAim [StartFireLoc]</strong> - 武器ならびにポーン、コントローラーによって、武器の向いている位置の調整が即座になされるようにします。  <ul>
+<li> <strong>StartFireLoc</strong> - 発砲元の初期の位置を保持します。
+</li></ul>
+</li> <li> <strong>AddSpread [BaseAim]</strong> - 発砲の広がりのオフセットを、基本となる照準のローテータに加え、さらに、調整された照準の回転を返します。  <ul>
+<li> <strong>BaseAim</strong> - 基本となる照準の回転を保持します。
+</li></ul>
+</li> <li> <strong>GetTargetDistance</strong> - カメラからビューポートの中心にあるもの（あらゆるものが該当）までの、およその Screen 距離を計算します。目の疲れを減らすために、照準をステレオ化するのに役立ちます。
+</li> <li> <strong>AdjustFOVAngle [FOVAngle]</strong> - プレイヤーの FOV （視野角）を武器が修正し、調整されたその FOV の角度を返す関数スタブです。サブクラスによってオーバーライドされる必要があります。  <ul>
+<li> <strong>FOVAngle</strong> - FOV の角度を保持します。
+</li></ul>
+</li> <li> <strong>GetPhysicalFireStartLoc [AimDir]</strong> - 発射物をスポーンするためのワールドの位置を返します。これは、AimDir 方向の Pawn のコリジョンに取り込まれます。  <ul>
+<li> <strong>AimDir</strong> - オプション項目です。武器が狙いを定めている方向を保持します。
+</li></ul>
+</li></ul>
+<p />
+<strong>ダメージ</strong>
+<p /> <ul>
+<li> <strong>GetDamageRadius</strong> - 現在の発砲モードについて、発射物のもつダメージ半径を返します。即射の場合は 0 になります。
+</li> <li> <strong>PassThroughDamage [HitActor]</strong> - 武器からの即射ショットが所定のアクタを撃つべきか無視するべきかを返します。  <ul>
+<li> <strong>HitActor</strong> - テスト対象の Actor を参照します。
+</li></ul>
+</li> <li> <strong>ProcessInstantHit [FiringMode] [Impact] [NumHits]</strong> - 即射ショットによる成功したヒットを処理します。ヒットされた Actorに対してダメージを与え、必要なエフェクトをスポーンします。  <ul>
+<li> <strong>FirignMode</strong> - ショットを放った発砲モードを保持します。
+</li> <li> <strong>ImpactInfo</strong> - 撃たれた Actor に関する情報を保持します。
+</li> <li> <strong>NumHits</strong> - オプション項目です。ダメージを適用するヒットの数を保持します。ショットガンなどのようなマルチヒット武器の場合に役立ちます。
+</li></ul>
+</li></ul>
+<p />
+<strong>エフェクト</strong>
+<p /> <ul>
+<li> <strong>PlayFireEffects [FireModeNum] [HitLocation]</strong> - 武器を発砲しているときにエフェクト（銃口フラッシュなどあらゆるもの）を再生するための関数スタブです。サブクラスによってオーバーライドされる必要があります。  <ul>
+<li> <strong>FireModeNum</strong> - エフェクトを再生する発砲モードを保持します。
+</li> <li> <strong>HitLocation</strong> - オプション項目です。エフェクトを再生するときに使用する位置を保持します。
+</li></ul>
+</li> <li> <strong>StopFireEffects [FireModeNum]</strong> - あらゆるアクティブなエフェクトを停止するための関数スタブです。サブクラスによってオーバーライドされる必要があります。  <ul>
+<li> <strong>FireModeNum</strong> - エフェクトを停止する発砲モードを保持します。
+</li></ul>
+</li> <li> <strong>IncrementFlashCount</strong> - リモートクライアント上で武器発砲エフェクトを再生するために使用される、Pawn の FlashCount 変数を増加します。
+</li> <li> <strong>ClearFlashCount</strong> - Pawn の FlashCount 変数をクリアします。
+</li> <li> <strong>SetFlashLocation [HitLocation]</strong> - 武器の発砲によってヒットされる位置を設定します。これは、発砲エフェクトの再生のためにすべてのクライアントに複製されるものです。  <ul>
+<li> <strong>HitLocation</strong> - 武器の発砲によってヒットされる位置です。
+</li></ul>
+</li> <li> <strong>ClearFlashLocation</strong> - フラッシュの位置をクリアして、武器の発砲エフェクトを停止します。
+</li> <li> <strong>GetMuzzleLoc</strong> - 視覚エフェクトをスポーンするためのワールド位置を返します。
+</li></ul>
+<p />
+<strong>発砲とタイミング</strong>
+<p /> <ul>
+<li> <strong>StartFire [FireModeNum]</strong> - 発砲プロセスを開始するローカルのプレイヤー上で呼び出されます。呼び出しをサーバーに渡し、ローカルで発砲エフェクトをシミュレートします。  <ul>
+<li> <strong>FireModeNum</strong> - 使用された発砲モードを保持します。
+</li></ul>
+</li> <li> <strong>ServerStartFire [FireModeNum]</strong> - サーバー上で呼び出されて、発砲プロセスを開始し、すべてのクライアントに複製します。  <ul>
+<li> <strong>FireModeNum</strong> - 使用された発砲モードを保持します。
+</li></ul>
+</li> <li> <strong>BeginFire [FireModeNum]</strong> - 所定の発砲モードをペンディングしているモードとして設定します。ローカルプレイヤーとサーバーによって呼び出されて、発砲プロセスの同期をとります。  <ul>
+<li> <strong>FireModeNum</strong> - 使用された発砲モードを保持します。
+</li></ul>
+</li> <li> <strong>StopFire [FireModeNum]</strong> - ローカルプレイヤーによって呼び出されて、発砲中の武器を停止します。  <ul>
+<li> <strong>FireModeNum</strong> - 発砲を停止する発砲モードを保持します。
+</li></ul>
+</li> <li> <strong>ServerStopFire [FireModeNum]</strong> - サーバー上で呼び出されて発砲中の武器を停止し、すべてのクライアントに複製します。  <ul>
+<li> <strong>FireModeNum</strong> - 発砲を停止する発砲モードを保持します。
+</li></ul>
+</li> <li> <strong>EndFire [FireModeNum]</strong> - 所定の発砲モードをもはやペンディングしていないモードとして設定します。すべてのクライアント上で呼び出されて、シャットダウンプロセスの同期をとります。  <ul>
+<li> <strong>FireModeNum</strong> - 発砲を停止する発砲モードを保持します。
+</li></ul>
+</li> <li> <strong>ForceEndFire</strong> - 発砲モードがローカルクライアント上で発砲しているのを停止させます。複製されません。
+</li> <li> <strong>SendToFiringState [FireModeNum]</strong> - 武器を所定の発砲モードのための発砲ステートにするとともに、この発砲モードを現在のモードとして設定します。  <ul>
+<li> <strong>FireModeNum</strong> - 現在のモードとして設定する発砲モードを保持します。
+</li></ul>
+</li> <li> <strong>SetCurrentFireMode [FiringModeNum]</strong> - 所定の発砲モードを現在のモードとして設定します。  <ul>
+<li> <strong>FiringModeNum</strong> - 現在のモードとして設定する発砲モードを保持します。
+</li></ul>
+</li> <li> <strong>FireModeUpdated [FiringMode] [bViaReplication]</strong> - 武器の所有者の FiringMode が変化した場合に呼び出されます。  <ul>
+<li> <strong>FiringMode</strong> - 新たな発砲モードを保持します。
+</li></ul>
+</li> <li> <strong>CalcWeaponFire [StartTrace] [EndTrace] [Impactlist] [Extent]</strong> - 即射ショットをシミュレートするとともに、最初のジオメトリのヒットを戻り値として返します。この関数からダメージは与えられません。ショットによってヒットされたもののリストを得るためだけのものです。  <ul>
+<li> <strong>StarTrace</strong> - トレースを開始する位置を保持します。
+</li> <li> <strong>EndTrace</strong> - トレースを終了する位置を保持します。
+</li> <li> <strong>ImpactList</strong> - オプション項目です。出力。発砲のシミュレーションの間に発生したすべての衝撃のリストを出力します。
+</li> <li> <strong>Extent</strong> - オプション項目です。実行するトレースの範囲を保持します。
+</li></ul>
+</li> <li> <strong>InstantFire</strong> - 即射ショットを実行します。CalcWeaponFire() を使用して、Actor をヒットさせます。また、ProcessInstantHit() を使用してそのヒットを処理します。
+</li> <li> <strong>ProjectileFire</strong> - 発射物の発射表示を実行します。武器が照準を合わせている方向に発射物を発射するとともに、武器が発射を実行したことをクライアントに通知します。
+</li> <li> <strong>CustomFire</strong> - カスタマイズされた発砲モードを実装するための関数スタブです。発射物または即射発砲モードを使用しないサブクラスは、この関数をオーバーライドすることによって、カスタマイズされた発砲機能を追加する必要があります。
+</li> <li> <strong>GetPendingFireLength</strong> - この武器のためのすべての発砲モードについて、ペンディングしている発砲を保持する配列の長さを返します。
+</li> <li> <strong>PendingFire [FireMode]</strong> - 所定の発砲モードに、この武器のためのペンディングしている発砲があるか否かを返します。  <ul>
+<li> <strong>FireMode</strong> - ペンディングしている発砲があるかどうかを調べるとき、その対象となる発砲モードを保持します。
+</li></ul>
+</li> <li> <strong>SetPendingFire [FireMode]</strong> - 所定の発砲モードをペンディングとして設定します。  <ul>
+<li> <strong>FireMode</strong> - 設定する発砲モードを保持します。
+</li></ul>
+</li> <li> <strong>ClearPendingFire [FireMode]</strong> - この武器のために、もはやペンディングしていないモードとして、所定の発砲モードを設定します。  <ul>
+<li> <strong>FireMode</strong> - 設定する発砲モードを保持します。
+</li></ul>
+</li> <li> <strong>MaxRange</strong> - 発砲時にこの武器が届く最大距離を返します。
+</li> <li> <strong>GetFireInterval [FireModeNum]</strong> - この武器の所定の発砲モードについて、ショット間の秒数を返します。  <ul>
+<li> <strong>FireModeNum</strong> - インターバルをとる発砲モードを保持します。
+</li></ul>
+</li> <li> <strong>TimeWeaponFiring [FireModeNum]</strong> - 発砲ステートのためのタイマーを設定します。これは、RefireCheckTimer() 関数を実行するとともに、所定の発砲モードのための発砲インターバルと等しいインターバルでループするものです。  <ul>
+<li> <strong>FireModeNum</strong> - タイマーを設定する発砲モードを保持します。
+</li></ul>
+</li> <li> <strong>RefireCheckTimer</strong> - 発砲ステートにおいて、もう 1 回ショットを発するべきか否かを確認し、そうであれば発砲します。
+</li> <li> <strong>GetTraceRange</strong> - トレースで使用する場合の武器の範囲を返します。これは、CalcWeaponFire() 、InstantFire() 、 ProjectileFire() 、AdjustAim() において実行されるものです。なお、サブクラスは、適切なステートにおいてこの関数をオーバーライドする必要があります。
+</li> <li> <strong>GetTraceOwner</strong> - この武器のトレースをもっているActorを返します。トレースによって Actor が無視されるようにするために使用されます。
+</li> <li> <strong>GetPhsyicalFireStartLoc [AimDir]</strong> -
+</li> <li> <strong>HandleFinishedFiring</strong> - 発砲が終了したときに、武器を <em>'Active'</em> ステートに戻します。
+</li> <li> <strong>ShouldRefire</strong> - 武器が発砲を継続すべきか否かを返します。ショットが行われるたびに発砲ステートから呼び出されます。デフォルトの動作では、プレイヤーが発砲ボタンを押している間発砲が継続します。サブクラスは、発砲ステートにおいてこの関数をオーバーライドして動作を変更することができます。
+</li> <li> <strong>StillFiring [FireMode]</strong> - 武器がまだ所定の発砲モードで発砲しているか否かを返します。  <ul>
+<li> <strong>FireMode</strong> - チェックする発砲モードを保持します。
+</li></ul>
+</li></ul>
+<p />
+<strong>インベントリ</strong>
+<p /> <ul>
+<li> <strong>ItemRemovedFromInvManager</strong> -  InventoryManager から呼び出され、プレイヤーのインベントリから武器が取り除かれたことを通知します。デフォルトでは、発砲を強制停止し、武器をデタッチします。
+</li> <li> <strong>IsActiveWeapon</strong> - この武器が現在アクティブか否かを返します。
+</li> <li> <strong>HolderDied</strong> - 武器を所有している Pawn から呼び出され、武器に対して Pawn が死んだことを通知します。デフォルトでは、武器の発砲を停止します。
+</li> <li> <strong>DoOverrideNextWeapon</strong> - 武器が、次の武器へスイッチ（変更）する機能をオーバーライドできるようになります。基本的には、発砲中の武器において、マウスホイール（次の武器へスイッチできるようにバインディングされているものであれば何でも可）を使用することができるようになります。たとえば、物理ガンでは、これを使用して保持されるオブジェクトの距離を変更することができるようになります。武器の発砲ステートでのみ使用しなければ、現在の武器にかかわる切り替え機能に支障が生じます。
+</li> <li> <strong>DoOverridePrevWeapon</strong> - 武器が、前の武器へスイッチする機能をオーバーライドできるようになります。武器の発砲ステートでのみ使用しなければ、現在の武器にかかわる切り替え機能に支障が生じます。
+</li> <li> <strong>DropFrom [StartLocation] [StartVelocity]</strong> - Inventory から継承されます。ワールド内に武器をドロップします。デフォルトでは、発砲を停止して、武器をデタッチし、親クラスの DropFrom() 関数を呼び出すことによって、武器をドロップしてプレイヤーのインベントリから削除します。  <ul>
+<li> <strong>StartLocation</strong> - 武器のドロップ元の位置を保持します。
+</li> <li> <strong>StartVelocity</strong> - ドロップしたときに武器に与える速度を保持します。
+</li></ul>
+</li> <li> <strong>CanThrow</strong> - この武器がプレイヤーによって廃棄することができるか否かを返します。
+</li> <li> <strong>DenyClientWeaponSet</strong> - スイッチされることを武器が拒否すべきか否かを返します。デフォルトでは、常に false を返すように設定されています。したがって、武器はスイッチすることができます。
+</li> <li> <strong>TimeWeaponPutDown</strong> - 武器をかたづけるためのタイマーを設定します。タイマーが完了すると、WeaponIsDown() 関数が実行されます。
+</li> <li> <strong>TimeWeaponEquipping</strong> - 武器を装備するためのタイマーを設定します。タイマーが完了すると、WeaponEquipped() 関数が実行されます。
+</li> <li> <strong>Activate</strong> - Inventory から継承されます。武器を <em>'WeaponEquipping'</em> ステートに送ることによって装備プロセスを開始します。
+</li> <li> <strong>PutDownWeapon</strong> - 武器を <em>'WeaponPuttingDown'</em> ステートに送ることによって武器をかたづけるプロセスを開始します。
+</li> <li> <strong>DenyPickupQuery [ItemClass] [Pickup]</strong> -
+</li> <li> <strong>TryPutDown</strong> - 武器をかたづけようとします。武器をかたづけることができる場合は、true を返します。
+</li> <li> <strong>WeaponIsDown</strong> - 武器をかたづけたときに呼び出される関数スタブです。好みのアクションを実現するには、サブクラスがこの関数をオーバーライドする必要があります。
+</li> <li> <strong>ClientWeaponThrown</strong> - クライアント上で呼び出されて、クライアントに武器を捨てさせるように通知します。発砲を停止し、武器をデタッチします。
+</li> <li> <strong>ClientGivenTo [NewOwner] [bDoNotActivate]</strong> - 武器が新たな Pawn に与えられるときサーバーによって呼び出されます。  <ul>
+<li> <strong>NewOwner</strong> - 武器が与えられた Pawn を参照します。
+</li> <li> <strong>bDoNotActivate</strong> - true の場合、この武器を自動的にアクティベートしません。
+</li></ul>
+</li> <li> <strong>ClientWeaponSet [bOptionalSet] [bDoNotActivate]</strong> - サーバーによって呼び出され、新たな武器が Inventory に入ったことを通知するとともに、その新たな武器にスイッチするか否かを決定します。  <ul>
+<li> <strong>bOptionalSet</strong> - true の場合、Inventorymanager が、Pawn のインベントリの中にある全武器の重み付けを比較することによって、この新たな武器にスイッチすべきか否かを決定します。true ではない場合は、スイッチが必須となり、武器の重み付けに関わらずスイッチされます。
+</li> <li> <strong>bDoNotActivate</strong> - オプション項目です。true の場合、この武器を自動的にアクティベートしません。
+</li></ul>
+</li></ul>
+<p />
+<strong>メッシュとアニメーション</strong>
+<p /> <ul>
+<li> <strong>GetWeaponAnimNodeSeq</strong> - 武器がアニメーションを再生するために使用する AnimNodeSequence への参照を返します。
+</li> <li> <strong>PlayWeaponAnimation [Sequence] [fDesiredDuration] [bLoop] [SkelMesh]</strong> - 武器のメッシュで所定のアニメーションを再生します。  <ul>
+<li> <strong>Sequence</strong> - 再生すべきアニメーションシーケンスの名前を保持します。
+</li> <li> <strong>fDesiredDuration</strong> - アニメーションを再生する時間量を保持します。
+</li> <li> <strong>bLoop</strong> - オプション項目です。true の場合、アニメーションが再生中にループします。
+</li> <li> <strong>SkelMesh</strong> - オプション項目です。アニメーションを再生する骨格メッシュのコンポーネントを参照します。設定されていない場合は、武器の基本メッシュが使用されます。
+</li></ul>
+</li> <li> <strong>StopWeaponAnimation</strong> - 武器で再生しているあらゆるアニメーションを停止します。
+</li> <li> <strong>AttachWeaponTo [MeshCpnt] [SocketName]</strong> - 武器のメッシュを固有の位置にアタッチします。  <ul>
+<li> <strong>MeshCpnt</strong> - アタッチする骨格メッシュのコンポーネントを保持する関数スタブです。サブクラスによってオーバーライドされる必要があります。
+</li> <li> <strong>SocketName</strong> - アタッチするメッシュ上にあるソケット名を保持します。
+</li></ul>
+</li> <li> <strong>DetachWeapon</strong> - 武器のメッシュを Instigator からデタッチする関数スタブです。サブクラスによってオーバーライドされる必要があります。
+</li></ul>
+<p />
+<strong>サウンド</strong>
+<p /> <ul>
+<li> <strong>WeaponPlaySound [Sound] [NoiseLoudness]</strong> - 武器のための所定のサウンドを再生します。  <ul>
+<li> <strong>Sound</strong> - 再生すべき SoundCue を保持します。
+</li> <li> <strong>NoiseLoudness</strong> - オプション項目です。サウンドを再生するときのボリュームを保持します。この実装では使用されません。
+</li></ul>
+</li></ul>
+<p />
+<h3><a name="UDKWeapon のプロパティ"></a> UDKWeapon のプロパティ </h3>
+<p />
+UDKWeapon クラスが独自に持っているプロパティは、ほんの数種類です。
+<p />
+<strong>AI</strong>
+<p /> <ul>
+<li> <strong>bLeadTarget</strong> - true の場合（デフォルト）、武器が標的になっているアクタを狙い撃ちます。即射武器の場合は、無視されます。
+</li> <li> <strong>bConsiderProjectileAcceleration</strong> - true の場合、ターゲットを狙う際に、発射物の加速を考慮に入れます。
+</li></ul>
+<p />
+<strong>発砲とタイミング</strong>
+<p /> <ul>
+<li> <strong>AmmoCount</strong> - この武器のためにプレイヤーがもっている現在の弾薬の量を保持します。
+</li></ul>
+<p />
+<strong>メッシュとアニメーション</strong>
+<p /> <ul>
+<li> <strong>OverlayMesh</strong> - オーバーレイエフェクトのために使用するメッシュを設定します。
+</li></ul>
+<p />
+<h3><a name="UDKWeapon の関数"></a> UDKWeapon の関数 </h3>
+<p />
+<strong>AI</strong>
+<p /> <ul>
+<li> <strong>BestMode</strong> - ボットが使用するのに最善の発砲モードを返す関数スタブです。サブクラスによってオーバーライドされる必要があります。
+</li></ul>
+<p />
+<strong>メッシュとアニメーション</strong>
+<p /> <ul>
+<li> <strong>SetPosition [Holder]</strong> - ワールド内のガンモデルを並べるための関数スタブです。サブクラスによってオーバーライドされる必要があります。  <ul>
+<li> <strong>Holder</strong> - 武器を保持している Pawn を参照します。
+</li></ul>
+</li></ul>
+<p />
+<h3><a name="UTWeapon のプロパティ"></a> UTWeapon のプロパティ </h3>
+<p />
+UTWeapon クラスにあるプロパティの大多数は、ガン系の武器を志向しています。このクラスは、個々の武器の機能を固有のものに変更していく際に、武器システムの出発点となるものです。
+<p />
+<strong>AI</strong>
+<p /> <ul>
+<li> <strong>bFastRepeater</strong> - true の場合、AI がこの武器を、噴射型武器または即射武器とみなします。
+</li> <li> <strong>AimError</strong> - AI による各ショットに加える誤差の最大量です。
+</li> <li> <strong>AimingHelpRadius</strong> - ニアミスを実際のヒットととらえる範囲です。
+</li> <li> <strong>bUseAimingHelp</strong> - true の場合、 <em>AimingHelpRadius</em> を使用して実際のヒットを決定します。
+</li></ul>
+<p />
+<strong>ディスプレイ</strong>
+<p /> <ul>
+<li> <strong>FireCameraAnim</strong> - 武器が発砲した場合にプレイヤーのカメラで再生するカメラアニメーションです。たとえば、反動によるカメラの揺れなどがこれに該当します。
+</li> <li> <strong>WeaponColor</strong> - インゲームの HUD 上で武器名を表示する際に使用するカラーです。
+</li> <li> <strong>WeaponCanvasXPct</strong> - X 軸方向で武器によって占められるスクリーンの割合です。
+</li> <li> <strong>WeaponCanvasYPct</strong> - Y 軸方向で武器によって占められるスクリーンの割合です。
+</li> <li> <strong>PlayerViewOffset</strong> - 武器を配置するために使用される、プレイヤーからのオフセットです。右手に武器を所持していると想定しています。左手に武器を配置するにはこの値に -1 を乗じます。武器を中央に配置するには 0 とします。
+</li> <li> <strong>SmallWeaponOffset</strong> - 小型の武器を使用する場合に適用する追加オフセットです。
+</li> <li> <strong>WideScreenOffsetScaling</strong> - ワイドスクリーンのフォーマットでゲームを表示する際の、ViewOffset のための乗算子です。
+</li> <li> <strong>WideScreenRotationOffset</strong> - ワイドスクリーンのフォーマットでゲームを表示する際に適用する回転のオフセットです。
+</li> <li> <strong>HiddenWeaponOffset</strong> - 非表示の武器を使用する際にのみ利用される特別なオフセットです。ビームのアタッチなどのような、ある特定のエフェクトのために武器を配置するために必要となります。
+</li> <li> <strong>IconCoordinates</strong> - HUD 上でこの武器のアイコンを描画するために使用される、HUD の IconHUDTexture における座標です。
+</li> <li> <strong>CrossHairCoordinates</strong> - HUD 上で通常の照準を描画するために使用される、この武器の CrosshairImage における座標です。
+</li> <li> <strong>SimpleCrossHairCoordinates</strong> - HUD 上で簡単な照準を描画するために使用される、この武器の CrosshairImage における座標です。
+</li> <li> <strong>LockedCrossHairCoordinates</strong> - HUD 上でロックオンされた照準を描画するために使用される、この武器の CrosshairImage における座標です。
+</li> <li> <strong>CustomCrosshairCoordinates</strong> - HUD 上でカスタマイズされた照準を描画するために使用される、この武器の CrosshairImage における座標です。
+</li> <li> <strong>CrosshairImage</strong> - この武器のための照準を含んでいるテクスチャです。
+</li> <li> <strong>StartLockedScale</strong> - ロックされた照準の最小スケールです。
+</li> <li> <strong>FinalLocakedScale</strong> - ロックされた照準の最大スケールです。
+</li> <li> <strong>CrosshairColor</strong> - この武器の照準を描画するときに使用するカラーです。
+</li> <li> <strong>CrosshairScaling</strong> - この武器のための照準をスケーリングするときに使用される乗算子です。
+</li> <li> <strong>bUseCustomCoordinates</strong> - true の場合、SimpleCrossHairCoordinates にかわって、CustomCrosshairCoordinates が使用されます。
+</li> <li> <strong>AmmoDisplayType</strong> - HUD 上でどのように弾薬カウントを表示するかを決定します。  <ul>
+<li> <em>EAWDS_Numeric</em> - テキスト値として弾薬カウントを表示します。
+</li> <li> <em>EAWDS_BarGraph</em> - 棒グラフとして弾薬カウントを表示します。
+</li> <li> <em>EAWDS_Both</em> - テキスト値と棒グラフの両方として弾薬カウントを表示します。
+</li> <li> <em>EAWDS_None</em> - HUD 上の弾薬カウント表示を無効にします。
+</li></ul>
+</li></ul>
+<p />
+<strong>エフェクト</strong>
+<p /> <ul>
+<li> <strong>MuzzleFlashSocket</strong> - この武器に銃口フラッシュのエフェクトをアタッチするときに使用されるソケットの名前です。
+</li> <li> <strong>MuzzleFlashPSC</strong> - 銃口フラッシュエフェクトのためのパーティクルシステムのコンポーネントです。
+</li> <li> <strong>MuzzleFlashPSCTemplate</strong> - メインの発砲モードのための銃口フラッシュエフェクトとして使用する ParticleSystem です。
+</li> <li> <strong>MuzzleFlashAltPSCTemplate</strong> - 全発砲モードのための銃口フラッシュエフェクトとして使用する ParticleSystem です。
+</li> <li> <strong>MuzzleFlashColor</strong> - 銃口フラッシュの ParticleSystem にある MuzzleFlashColor パラメータに渡すカラーです。ただし、存在する場合です。
+</li> <li> <strong>bMuzzleFlashPSCLoops</strong> - true の場合、銃口フラッシュエフェクトが、非アクティブになるかわりに、ループします。ミニガンのような即射武器に役立ちます。
+</li> <li> <strong>MuzzleFlashLight</strong> - 武器が発砲したときにフラッシュするライトです。
+</li> <li> <strong>MuzzleFlashLightClass</strong> - 銃口フラッシュ来とのために使用されるクラスです。
+</li> <li> <strong>MuzzleFlashDuration</strong> - 銃口フラッシュがとどまる時間です。
+</li></ul>
+<p />
+<strong>発砲とタイミング</strong>
+<p /> <ul>
+<li> <strong>AmmoPickupClass</strong> - 弾薬をこの武器に供給する弾薬取り出しのクラスです。
+</li> <li> <strong>LockerAmmoCount</strong> - 武器庫から取り出したときの、この武器のための、初期弾薬カウントです。
+</li> <li> <strong>MaxAmmoCount</strong> - この武器が保持できる最大弾薬量です。
+</li> <li> <strong>ShotCost</strong> - この武器が 1 回のショットで使用する弾薬量です。
+</li> <li> <strong>MinReloadPct</strong> - 武器のスイッチが可能になるまでに、この武器の各発砲モードで発砲した後で経過しなければならない最小時間量です。
+</li> <li> <strong>bZoomedFireMode</strong> - 発砲モードによってビューがズームするか否かを決定します。値が 0 の場合は、ズームを行いません。他の値の場合は、ズームします。
+</li> <li> <strong>ZoomedTargetFOV</strong> - ズームインするときに使用される FOV （視野角）の角度です。
+</li> <li> <strong>ZoomedRate</strong> - 非ズーム状態からズーム状態に （あるいはその逆に）推移する際にズームする毎秒ごとの角度数です。
+</li> <li> <strong>ProjectileSpawnOffset</strong> - 発射開始位置から発射物のスポーンをオフセットするための、Unreal 単位の距離です。
+</li> <li> <strong>ZoomedTurnSpeedScalePct</strong> - ズームされた武器を使用する際の、プレイヤーの回転率を調整するのに使用される乗算子です。
+</li></ul>
+<p />
+<strong>インベントリ</strong>
+<p /> <ul>
+<li> <strong>InventoryGroup</strong> - この武器が属しているインベントリのグループです。これは、0 から 9 までの値からなり、対応する数字キーを押すと、その武器が装備されます。
+</li> <li> <strong>GroupWeight</strong> - インベントリグループ内のこの武器の地位です。同一グループの武器は、この値が高いほど優先されます。
+</li> <li> <strong>InventoryWeight</strong> - インベントリ内にあるこの武器の全体的な優先度です。武器のスイッチに使用されます。
+</li> <li> <strong>bNeverForwardPendingFire</strong> - true の場合、武器は、転送されたペンディング発砲を決して受け入れません。
+</li></ul>
+<p />
+<strong>メッシュとアニメーション</strong>
+<p /> <ul>
+<li> <strong>AttachmentClass</strong> - この武器のためのアタッチメントクラスです。
+</li> <li> <strong>WeaponFireAnim</strong> - 各発砲モードで武器が発砲されるときに武器上で再生するアニメーションです。
+</li> <li> <strong>ArmFireAnim</strong> - 各発砲モードで武器が発砲されるときに、（もしゲームに存在しているならば）プレイヤーのキャラクターの腕メッシュ上で再生するアニメーションです。
+</li> <li> <strong>ArmsAnimSet</strong> - プレイヤーのキャラクターの腕メッシュ上でアニメーションを再生するために使用するアニメーションのセットです。
+</li> <li> <strong>WeaponPutDownAnim</strong> - 武器をかたづけるときに武器上で再生するアニメーションです。
+</li> <li> <strong>ArmsPutDownAnim</strong> - 武器をかたづけるときに、プレイヤーのキャラクターの腕メッシュ上で再生するアニメーションです。
+</li> <li> <strong>WeaponEquipAnim</strong> - 武器を装備するときに武器上で再生するアニメーションです。
+</li> <li> <strong>ArmEquipAnim</strong> - 武器を装備するときに腕メッシュ上で再生するアニメーションです。
+</li> <li> <strong>WeaponIdleAnims</strong> - 武器を待機状態にしているときに、武器上で再生するアニメーションです。
+</li> <li> <strong>ArmIdleAnims</strong> - 武器を待機状態にしているときに、腕メッシュ上で再生するアニメーションです。
+</li> <li> <strong>PivotTranslation</strong> - この武器のための回転ピックアップメッシュの中心軸をオフセットするベクターです。
+</li> <li> <strong>LockerRotation</strong> - 武器庫内にピックアップメッシュを配置するときに使用する回転です。
+</li> <li> <strong>LockerOffset</strong> -  武器庫内にピックアップメッシュを配置するときに使用するオフセットです。
+</li></ul>
+<p />
+<strong>サウンド</strong>
+<p /> <ul>
+<li> <strong>WeaponFireSnd</strong> - 各発砲モードで武器が発砲されるときに再生される SoundCue です。
+</li> <li> <strong>WeaponPutDownSound</strong> - 武器がかたづけられるときに再生される SoundCue です。
+</li> <li> <strong>WeaponEquipSound</strong> - 武器が装備されたときに再生する SoundCue です。
+</li> <li> <strong>ZoomInSound</strong> - 武器がズームインされたときに再生する SoundCue です。
+</li> <li> <strong>ZoomOutSound</strong> - 武器がズームアウトされたときに再生する SoundCue です。
+</li></ul>
+<p />
+<h3><a name="UTWeapon の関数"></a> UTWeapon の関数 </h3>
+<p />
+以下の関数は、UTWeapon クラスで初めて定義されています。このクラスに含まれている多くの関数が、他の武器クラスから継承されています。それらの関数は、他のセクションで説明されています。
+<p />
+<strong>AI</strong>
+<p /> <ul>
+<li> <strong>RelativeStrengthVersus [P] [Dist]</strong> - 所定の Pawn に対して使用された場合にこの武器が発揮する強さを返します。  <ul>
+<li> <strong>P</strong> - 照合相手の Pawn を参照します。
+</li> <li> <strong>Dist</strong> - 武器からターゲットの Pawn までの距離を保持します。
+</li></ul>
+</li> <li> <strong>BotDesireability [PickupHolder] [P] [C]</strong> - 静的です。武器が AI にとってどのくらい望ましいものであるかを返します。次にどのピックアップを取るか AI が決定しようとするときに呼び出されます。  <ul>
+<li> <strong>PickupHolder</strong> - 武器のためのピックアップを参照します。
+</li> <li> <strong>P</strong> - AI の Pawn を参照します。
+</li> <li> <strong>C</strong> - AI の Controller を参照します。
+</li></ul>
+</li> <li> <strong>CanHeal [Other]</strong> - この武器が所定の Actor を回復させることができるか否かを返します。  <ul>
+<li> <strong>Other</strong> - 回復させる対象の Actor を参照します。
+</li></ul>
+</li> <li> <strong>GetOptimalRangeFor [Target]</strong> - 所定のターゲットに向かって発砲する場合の最適な距離を返します。  <ul>
+<li> <strong>Target</strong> - 発砲の的となる Actor を参照します。
+</li></ul>
+</li> <li> <strong>SuggestAttackStyle</strong> - この武器を使って攻撃する場合、AI が突撃すべきか後退すべきかを返します。常に 0 を返します。動作を変えるには、サブクラスがこの関数をオーバーライドする必要があります。
+</li> <li> <strong>SuggestDefenseStyle</strong> - この武器に対して防御する場合、AI が突撃すべきか後退すべきかを返します。常に 0 を返します。動作を変えるには、サブクラスがこの関数をオーバーライドする必要があります。
+</li> <li> <strong>RecommendRangedAttack</strong> - この武器が遠隔攻撃に使用されるべきか否かを返します。常に false を返します。動作を変えるには、サブクラスがこの関数をオーバーライドする必要があります。
+</li> <li> <strong>RangedAttackTime</strong> - この武器を使用した遠隔攻撃の期間を返します。常に 0 を返します。動作を変えるには、サブクラスがこの関数をオーバーライドする必要があります。
+</li> <li> <strong>SplashJump</strong> - 飛散ダメージ（splash damage）の効果を上げるために AI が発砲しながらジャンプすべきか否かを返します。常にfalse を返します。動作を変えるには、サブクラスがこの関数をオーバーライドする必要があります。
+</li> <li> <strong>ShouldFireWithoutTarget</strong> - AI がターゲットをもっていなくてもこの武器が発砲させられるべきか否かを返します。常に false を返します。動作を変えるにはサブクラスがこの関数をオーバーライドする必要があります。たとえば、地雷を発射する武器などです。
+</li></ul>
+<p />
+<strong>照準</strong>
+<p /> <ul>
+<li> <strong>InstantFireTraceStart</strong> - この即射ショットのトレースを開始する位置を返します。
+</li> <li> <strong>InstantFireTraceEnd [StartTrace]</strong> - この即射ショットの終点を返します。
+</li> <li> <strong>InstantAimHelp [StartTrace] [EndTrace] [RealImpact]</strong> - 狙撃補助を使用している場合にニアミスかどうかを調べて、ニアミスをヒットとして返します。  <ul>
+<li> <strong>StartTrace</strong> - ショットが行われた位置を保持します。
+</li> <li> <strong>EndTrace</strong> - ショットトレースの終点を保持します。
+</li> <li> <strong>RealImpact</strong> - CalcWeaponFire() 関数から返される衝撃情報を保持します。
+</li></ul>
+</li> <li> <strong>GetZoomedState</strong> - 現在の、武器のズームステートを返します。
+</li> <li> <strong>CheckZoom [FireModeNum]</strong> - BeginFire() から呼び出されて、ズームステートをチェックします。ズームされている場合は、発砲を終了し、true を返します。  <ul>
+<li> <strong>FireModeNum</strong> - ズームステートをチェックする発砲モードを保持します。
+</li></ul>
+</li> <li> <strong>StartZoom [PC]</strong> - ズームが始まったときに呼び出されます。ズームインサウンドを再生します。  <ul>
+<li> <strong>PC</strong> - プレイヤーの Controller を参照します。
+</li></ul>
+</li> <li> <strong>EndZoom [PC]</strong> - ズームが終了したときに呼び出されます。ズームアウトサウンドを再生します。  <ul>
+<li> <strong>PC</strong> - プレイヤーの Controller を参照します。
+</li></ul>
+</li> <li> <strong>ThrottleLook [aTurn] [aLookup]</strong> - 武器によって Pawn の回転速度が調整可能になるようにする関数スタブです。サブクラスによってオーバーライドされる必要があります。  <ul>
+<li> <strong>aTurn</strong> - 出力。調整された水平方向の回転を出力します。
+</li> <li> <strong>aLookup</strong> - 出力。調整された垂直方向の回転を出力します。
+</li></ul>
+</li> <li> <strong>CanViewAccelerationWhenFiring</strong> - 武器が発砲中にビューの加速をもつことができるか否かを返します。常に false を返します。 動作を変えるには、サブクラスがこの関数をオーバーライドする必要があります。
+</li></ul>
+<p />
+<strong>弾薬</strong>
+<p /> <ul>
+<li> <strong>GetAmmoCount</strong> - 武器がもつ現在の弾薬量です。
+</li> <li> <strong>AmmoMaxed [mode]</strong> - 武器の弾薬が限度量に達しているか否かを返します。
+</li> <li> <strong>DesireAmmo [bDetour]</strong> - この武器の、空になった「弾倉」のパーセンテージを返します。  <ul>
+<li> <strong>bDetour</strong> - 使用されていません。
+</li></ul>
+</li> <li> <strong>NeedAmmo</strong> - 武器の現在の弾薬量がデフォルトの弾薬カウントよりも少ないか否かを返します。
+</li></ul>
+<p />
+<strong>ダメージ</strong>
+<p /> <ul>
+<li> <strong>AdjustPlayerDamage [Damage] [InstigatedBy] [HitLocation] [Momentum] [DamageType]</strong> - 受けた Damage をこの武器を使用して調整するときに、武器の所有者がダメージを引き受けるために呼び出される関数スタブです。たとえば盾などのためには、サブクラスがこの関数をオーバーライドする必要があります。  <ul>
+<li> <strong>Damage</strong> - 出力。元のダメージ量を保持するとともに、調整された量を出力します。
+</li> <li> <strong>InstigatedBy</strong> - このダメージを与える Controller を参照します。
+</li> <li> <strong>HitLocation</strong> - 加えられているダメージの位置を保持します。
+</li> <li> <strong>Momentum</strong> - 出力。元のモメンタムを保持するとともに、調整されたモメンタムを出力します。
+</li> <li> <strong>DamageType</strong> - 加えられているダメージのダメージタイプを保持します。
+</li></ul>
+</li></ul>
+<p />
+<strong>ディスプレイ</strong>
+<p /> <ul>
+<li> <strong>ActiveRenderOverlays [H]</strong> - この武器がアクティブなときに InventoryMangaer によって呼び出され、照準などの要素を HUD 上に描画します。  <ul>
+<li> <strong>H</strong> - 描画に使われる現在の Canvas への入り口となる HUD を参照します。
+</li></ul>
+</li> <li> <strong>DrawWeaponCrosshair [HUD]</strong> - HUD 上に武器の照準を描画します。ActiveRenderOverlays() から呼び出されます。  <ul>
+<li> <strong>HUD</strong> - 描画に使われる現在の Canvas への入り口となる HUD を参照します。
+</li></ul>
+</li> <li> <strong>DrawLockedOn [H]</strong> - 武器がターゲットをロックしている場合に、ロックオンのマークを描画します。  <ul>
+<li> <strong>H</strong> - 描画に使われる現在の Canvas への入り口となる HUD を参照します。
+</li></ul>
+</li> <li> <strong>ShakeView</strong> - ショットが発せられたときに、その武器の持ち主であるクライアント上で、ビューの揺れをともなうカメラアニメーションを再生します。
+</li> <li> <strong>WeaponCalcCamera [fDeltaTime] [out_CamLoc] [out_CamRot]</strong> - 武器によってその所有者のカメラが調整できるようになる関数スタブです。サブクラスによってオーバーライドされる必要があります。  <ul>
+<li> <strong>fDeltaTime</strong> - 最後のフレームから経過した時間を保持します。
+</li> <li> <strong>out_CamLoc</strong> - 現在のカメラの位置を保持するとともに、調整された位置を出力します。
+</li> <li> <strong>out_CamRot</strong> - 現在のカメラの回転を保持するとともに、調整された回転を出力します。
+</li></ul>
+</li> <li> <strong>CoversScreenSpace [ScreenLoc] [Canvas]</strong> - 武器が、所定のスクリーン位置を含んでいるか否かを返します。  <ul>
+<li> <strong>ScreenLoc</strong> - チェックするスクリーン上の位置を保持します。
+</li> <li> <strong>Canvas</strong> - 現在の Canvas を参照します。
+</li></ul>
+</li> <li> <strong>DrawKillIcon [Canvas] [ScreenX] [ScreenY] [HUDScaleX] [HUDScaleY]</strong> - 静的です。この武器によって何かが殺されたときに HUD 上で武器のアイコンを描画します。  <ul>
+<li> <strong>Canvas</strong> - 描画のための現在の Canvas を参照します。
+</li> <li> <strong>ScreenX</strong> - 描画する位置の X 座標を保持します。
+</li> <li> <strong>ScreenY</strong> - 描画する位置の Y 座標を保持します。
+</li> <li> <strong>HUDScaleX</strong> - HUD の水平方向のスケールを保持します。（1024 に対応します。）
+</li> <li> <strong>HUDScaleY</strong> - HUD の垂直方向のスケールを保持します。（768 に対応します。）
+</li></ul>
+</li> <li> <strong>EnableFriendlyWarningCrosshair</strong> - 味方に関わる警告を出す照準を武器が表示するか否かを返します。常に true を返します。  味方を撃ったり、味方に使用したりできる武器については、サブクラスがこの関数をオーバーライドして動作を変更する必要があります。
+</li></ul>
+<p />
+<strong>エフェクト</strong>
+<p /> <ul>
+<li> <strong>MuzzleFlashTimer</strong> - 銃口フラッシュのタイマーの時間が経過したときに、銃口フラッシュのパーティクルシステムを非アクティブにします。
+</li> <li> <strong>CauseMuzzleFlash</strong> - 銃口フラッシュのパーティクルシステムをアクティブにするとともに、それを非アクティブにするためのタイマーをセットします。
+</li> <li> <strong>CauseMuzzleFlashLight</strong> - 銃口フラッシュのライトを on にします。
+</li> <li> <strong>StopMuzzleFlash</strong> - 銃口フラッシュのタイマーをクリアするとともに、銃口フラッシュのパーティクルシステムを非アクティブにします。
+</li> <li> <strong>SetMuzzleFlashparams [PSC]</strong> - 銃口フラッシュのパーティクルシステムにあるあらゆるカスタムパラメータをセットアップします。  <ul>
+<li> <strong>PSC</strong> - 銃口フラッシュパーティクルシステムのコンポーネントを参照します。
+</li></ul>
+</li> <li> <strong>AttachMuzzleFlash</strong> - 銃口フラッシュコンポーネントを作成し、アタッチします。武器がアタッチされるときに呼び出されます。
+</li> <li> <strong>DetachMuzzleFlash</strong> - 銃口フラッシュコンポーネントを取り除き、デタッチします。武器がデタッチされるときに呼び出されます。
+</li> <li> <strong>GetEffectLocation</strong> - トレーサーのような発砲エフェクトをスポーンする起点を返します。
+</li></ul>
+<p />
+<strong>発砲とタイミング</strong>
+<p /> <ul>
+<li> <strong>bReadyToFire</strong> - 武器に発砲の準備ができているか否かを返します。
+</li> <li> <strong>ClientEndFire [FireModeNum]</strong> - クライアント上で呼び出されて、所定の発砲モードによる発砲を停止します。  <ul>
+<li> <strong>FireModeNum</strong> - 発砲を停止する発砲モードを保持します。
+</li></ul>
+</li> <li> <strong>GetPowerPerc</strong> - 武器の現在のパワーを、割合（値は 0.0 から 1.0）として返します。常に 0.0 を返します。動作を変更するには、サブクラスがこの関数をオーバーライドする必要があります。たとえば、充電したりパワーアップして、リリース時に発砲するような武器などが該当します。
+</li> <li> <strong>IsFullyCharged</strong> - 武器が完全に充電されているか否かを返します。たとえば、発砲ボタンを押しているプレイヤーまたは AI からの充電です。
+</li></ul>
+<p />
+<strong>インベントリ</strong>
+<p /> <ul>
+<li> <strong>CalcInventoryWeight</strong> - 武器のスイッチのために使用する、武器に関するユニークなインベントリの重みを計算します。
+</li> <li> <strong>ShouldSwitchTo [InWeapon]</strong> - この武器が所定の武器よりも低い優先度をもつか否かを返します。  <ul>
+<li> <strong>InWeapon</strong> - 照合相手の武器を参照します。
+</li></ul>
+</li> <li> <strong>GetEquipTime</strong> - 武器を装備するのに要する時間を返します。
+</li> <li> <strong>PerformWeaponChange</strong> - この武器を所有する Pawn が武器を変更する場合に呼び出されます。
+</li> <li> <strong>ServerReselectWeapon</strong> - プレイヤーが現在アクティブな武器を再選択する際にサーバー上で呼び出される関数スタブです。
+</li> <li> <strong>AllowSwitchTo [NewWeapon]</strong> - この武器の所有者が、この武器をやめて所定の武器に変更することが可能か否かを返します。常に true を返します。動作を変えるには、サブクラスがこの関数をオーバーライドする必要があります。  <ul>
+<li> <strong>NewWeapon</strong> - 変更して新たに装備する武器を参照します。
+</li></ul>
+</li> <li> <strong>DetourWeight [Other] [PathWeight]</strong> - 所定のパスの重みを使用して、所定の Pawn にとってこの武器がピックアップとしてどのくらい望ましいものであるかを返します。  <ul>
+<li> <strong>Other</strong> - 調べる対象の Pawn（AI）を参照します。
+</li> <li> <strong>PathWeight</strong> - Pawn からこの武器ピックアップまでのパスを保持します。
+</li></ul>
+</li></ul>
+<p />
+<strong>メッシュとアニメーション</strong>
+<p /> <ul>
+<li> <strong>CreateOverlayMesh</strong> - オーバーレイメッシュのためのコンポーネントをセットアップしようとします。
+</li> <li> <strong>SetSkin [NewMaterial]</strong> - 武器メッシュに新たなマテリアルを適用します。新たなマテリアルがない場合は、マテリアルがクリアされます。  <ul>
+<li> <strong>NewMaterial</strong> - 使用する新たなマテリアルを参照します。
+</li></ul>
+</li> <li> <strong>PlayArmAnimation [Sequence] [fDesiredDuration] [OffHand] [bLoop] [SkelMesh]</strong> -
+</li> <li> <strong>PlayWeaponPutDown</strong> - 武器がかたづけられるときのアニメーション（複数可）を再生します。
+</li> <li> <strong>PlayWeaponEquip</strong> - 武器が装備されるときのアニメーション（複数可）を再生します。
+</li> <li> <strong>ChangeVisibility [bIsVisible]</strong> - 武器のビジビリティが変更されるべきときに、武器を所持している Pawn によって呼び出されて、それに応じてビジビリティを設定します。  <ul>
+<li> <strong>bIsVisible</strong> - true の場合、武器をビジブルに設定します。true ではない場合は、武器を非ビジブルに設定します。
+</li></ul>
+</li> <li> <strong>PreloadTextures [bForcePreload]</strong> - ストリームテクスチャを強制的にロードすることによって、武器が装備される前に、MIPS をストリームインします。  <ul>
+<li> <strong>bForcePreload</strong> - true の場合、テクスチャをストリームインします。true ではない場合は、強制されたロードをクリアします。
+</li></ul>
+</li> <li> <strong>SetupArmsAnim</strong> - AnimSet が特定されている場合は、アニメーションをもった腕メッシュをセットアップします。そうでない場合は、腕メッシュを非表示にします。
+</li> <li> <strong>GetHand</strong> - 武器の所有者が、武器をもつのに使用している現在の手を返します。
+</li></ul>
+<p />
+<strong>サウンド</strong>
+<p /> <ul>
+<li> <strong>PlayFiringSound</strong> - 現在の発砲モードのための武器発砲サウンドを再生します。
+</li></ul>
+<p />
+<h2><a name="付属"></a> 付属 </h2>
+<p />
+三人称視点もしくはプレイヤーのメッシュが見える他の視点でプレイヤーを見るとき、武器は、ビジュアル面で全く異なるプロパティ群を使用します。これは、 <em>Attachment</em>  （付属）クラスを使用して行われます。武器はそれぞれ Attachment クラスをもっています。このクラスが保持しているものには、三人称メッシュへの参照、そのメッシュのためのアニメーション、銃口フラッシュなど他エフェクト、さらに、多数の他プロパティがあります。これらは、一人称と異なる視点から武器を見る場合にのみ使用されるものです。発砲や用法といった武器の機能を制御するプロパティはすべて、他のものと同じままです。すなわち、メインの武器クラスからもってきたものです。このようにして、三人称武器のビジュアル面に関するあらゆることがらを、自分自身のクラスに組み込むことができるので、両方の視点に共通のプロパティを複製しなくても済むのです。
+<p />
+<img alt="attachment.jpg" src="rsrc/Three/WeaponsTechnicalGuide/attachment.jpg" />
+<p />
+<h3><a name="UTWeaponAttachment のプロパティ"></a> UTWeaponAttachment のプロパティ </h3>
+<p />
+以下は、三人称視点で武器を見るときに使用される、武器のビジュアル面に関するプロパティです。
+<p />
+<strong>エフェクト</strong>
+<p /> <ul>
+<li> <strong>SplashEffect</strong> - この武器からのショットが水のボリュームをヒットした場合にスポーンさせるアクタです。
+</li> <li> <strong>bMakeSplash</strong> - true の場合、ローカルのプロパティのための飛散エフェクトを表示します。
+</li> <li> <strong>MuzzleFlashSocket</strong> - この武器に銃口フラッシュのエフェクトをアタッチするときに使用されるソケットの名前です。
+</li> <li> <strong>MuzzleFlashPSC</strong> - 銃口フラッシュエフェクトのためのパーティクルシステムのコンポーネントです。
+</li> <li> <strong>MuzzleFlashPSCTemplate</strong> - メインの発砲モードのための銃口フラッシュエフェクトとして使用する ParticleSystem です。
+</li> <li> <strong>MuzzleFlashAltPSCTemplate</strong> - 全発砲モードのための銃口フラッシュエフェクトとして使用する ParticleSystem です。
+</li> <li> <strong>MuzzleFlashColor</strong> - 銃口フラッシュの ParticleSystem にある MuzzleFlashColor パラメータに渡すカラーです。ただし、存在する場合です。
+</li> <li> <strong>bMuzzleFlashPSCLoops</strong> - true の場合、銃口フラッシュエフェクトが、非アクティブになるかわりに、ループします。ミニガンのような即射武器に役立ちます。
+</li> <li> <strong>MuzzleFlashLight</strong> - 武器が発砲したときにフラッシュするライトです。
+</li> <li> <strong>MuzzleFlashLightClass</strong> - 銃口フラッシュ来とのために使用されるクラスです。
+</li> <li> <strong>MuzzleFlashDuration</strong> - 銃口フラッシュがとどまる時間です。
+</li> <li> <strong>MaxFireEffectDistance</strong> - 銃口フラッシュエフェクトが表示されるために、カメラがこの武器アタッチメントから離れていられる最大距離です。
+</li> <li> <strong>ImpactEffects</strong> - さまざまなタイプのサーファスにおいてメインの Fire （発砲）モードによって生じる衝撃に使用する、マテリアルの衝撃エフェクトです。
+</li> <li> <strong>AltImpactEffects</strong> - さまざまなタイプのサーファスにおいてメインの Alt Fire （もう一方の発砲）モードによって生じる衝撃に使用する、マテリアルの衝撃エフェクトです。
+</li> <li> <strong>DefaultImpactEffect</strong> - マテリアル固有の適合するエフェクトをもたないサーファスにおいてメインの Fire モードによって生じる衝撃に使用する、デフォルトのマテリアルの衝撃エフェクトです。
+</li> <li> <strong>DefaultAltImpactEffect</strong> - マテリアル固有の適合するエフェクトをもたないサーファスにおいてメインの Alt Fire モードによって生じる衝撃に使用する、デフォルトのマテリアルの衝撃エフェクトです。
+</li> <li> <strong>MaxImpactEffectDistance</strong> - 衝撃エフェクトを表示するために、カメラがこの武器の衝撃から離れていられる最大距離です。
+</li> <li> <strong>bAlignToSurfaceNormal</strong> - true の場合、この武器のために表示される衝撃エフェクトは、ヒットされたサーファスにそろえて配置されます。デカールを使用する衝撃エフェクトに役立ちます。
+</li></ul>
+<p />
+<strong>発砲とタイミング</strong>
+<p /> <ul>
+<li> <strong>WeaponClass</strong> - このアタッチメントを使用する武器クラスです。
+</li></ul>
+<p />
+<strong>メッシュとアニメーション</strong>
+<p /> <ul>
+<li> <strong>Mesh</strong> - 武器に使用するメッシュを設定します。（メッシュのタイプはここでは制限されませんが、「Unreal」では骨格メッシュを想定しています）。これは一人称メッシュです。
+</li> <li> <strong>OverlayMesh</strong> - オーバーレイエフェクトのために使用するメッシュを設定します。
+</li> <li> <strong>FireAnim</strong> - メインの Fire モードで発砲しているときに武器上で再生するアニメーションです。
+</li> <li> <strong>AltFireAnim</strong> - Alt Fire モードで発砲しているときに武器上で再生するアニメーションです。
+</li> <li> <strong>WeaponAnimType</strong> - この武器によって使用されるアニメーションのタイプです。この武器を使っている Pawn のための Animtree において、目的ノードがどのプロファイルを使うかということを決定するために使用されます。  <ul>
+<li> <em>EWAT_Default</em> - Default （デフォルト）の目的プロファイルが武器によって使用されるようになります。
+</li> <li> <em>EWAT_Pistol</em> - SinglePistol という目的プロファイルが武器によって使用されるようになります。
+</li> <li> <em>EWAT_DualPistols</em> - DualPistols という目的プロファイルが武器によって使用されるようになります。
+</li> <li> <em>EWAT_ShoulderRocket</em> - ShoulderRocket という目的プロファイルが武器によって使用されるようになります。
+</li> <li> <em>EWAT_Stinger</em> - Stinger という目的プロファイルが武器によって使用されるようになります。
+</li></ul>
+</li> <li> <strong>DistFactorForRefPose</strong> - 武器上でアニメーションが依然として再生されているスクリーンスペースにおいて、武器メッシュがもつ最小のサイズです。メッシュがこれよりも小さい場合は、最適化としてアニメーションが無効になります。
+</li></ul>
+<p />
+<strong>サウンド</strong>
+<p /> <ul>
+<li> <strong>BulletWhip</strong> - この武器からショットされた「弾丸」によって生じるサウンドです。
+</li> <li> <strong>bSuppressSounds</strong> - true の場合、この武器によって生じるサウンドは再生しません。
+</li></ul>
+<p />
+<h3><a name="UTWeaponAttachment の関数"></a> UTWeaponAttachment の関数 </h3>
+<p />
+以下の関数は、UTWeaponAttachment にユニークなものです。このクラスにある関数の多くには、他の武器クラスの中に対応する関数があります。それらの関数については、他のセクションで説明されています。
+<p />
+<strong>エフェクト</strong>
+<p /> <ul>
+<li> <strong>FirstPersonFireEffects [PawnWeapon] [HitLocation]</strong> - 必要な、一人称視点の発砲エフェクトを再生します。（銃口フラッシュなどが該当します）。  <ul>
+<li> <strong>PawnWeapon</strong> - エフェクトを再生する武器を参照します。
+</li> <li> <strong>HitLocation</strong> - エフェクトを再生する位置を保持します。
+</li></ul>
+</li> <li> <strong>StopFirstPersonFireEffects [PawnWeapon]</strong> - 再生中の、一人称視点の発砲エフェクトを停止します。  <ul>
+<li> <strong>PawnWeapon</strong> - エフェクトを停止する武器を参照します。
+</li></ul>
+</li> <li> <strong>ThirdPersonFireEffects [HitLocation]</strong> - 三人称視点の発砲エフェクトを再生します。（銃口フラッシュ、アニメーションなどが該当します）。  <ul>
+<li> <strong>HitLocation</strong> - エフェクトを再生する位置を保持します。
+</li></ul>
+</li> <li> <strong>StopThirdPersonFireEffects</strong> - 再生中の、三人称視点の発砲エフェクトを停止します。
+</li> <li> <strong>GetImpactEffect [HitMaterial]</strong> - 所定の物理マテリアル上のヒットのために使用する、マテリアル衝撃エフェクトを返します。  <ul>
+<li> <strong>HitMaterial</strong> - 撃たれた物理マテリアルを保持します。
+</li></ul>
+</li> <li> <strong>AllowImpactEffects [HitActor] [HitLocation] [HitNormal]</strong> - 所定のアクタに対してなされたヒットが衝撃エフェクトをスポーンすべきか否かを返します。  <ul>
+<li> <strong>HitActor</strong> - ヒットされた Actor を参照します。
+</li> <li> <strong>HitLocation</strong> - 衝撃の位置を保持します。
+</li> <li> <strong>HitNormal</strong> - 衝撃が発生したサーファスの法線を保持します。
+</li></ul>
+</li> <li> <strong>SetImpactedActor [HitActor] [HitLocation] [HitNormal] [HitInfo]</strong> - ショットによって衝撃を受けるアクタを設定するための関数スタブです。サブクラスによってオーバーライドされる必要があります。  <ul>
+<li> <strong>HitActor</strong> - ヒットされた Actor を参照します。
+</li> <li> <strong>HitLocation</strong> - 衝撃の位置を保持します。
+</li> <li> <strong>HitNormal</strong> - 衝撃が発生したサーファスの法線を保持します。
+</li> <li> <strong>HitInfo</strong> - 衝撃に関する情報をもつ TraceHitInfo 構造体を保持します。
+</li></ul>
+</li> <li> <strong>PlayImpactEffects [HitLocation]</strong> - 衝撃地点で発生すべきエフェクトをスポーンします。  <ul>
+<li> <strong>HitLocation</strong> - 衝撃の位置を保持します。
+</li></ul>
+</li></ul>
+<p />
+<strong>サウンド</strong>
+<p /> <ul>
+<li> <strong>CheckBulletWhip [FireDir] [HitLocation]</strong> - バレットホイップ（弾丸の鞭: プレイヤーの頭をかすめる銃弾）の有無をチェックして、その結果に応じて該当するサウンドを再生します。  <ul>
+<li> <strong>FireDir</strong> - 「弾丸」が飛んでいた方向を保持します。
+</li> <li> <strong>HitLocation</strong> - 衝撃の位置を保持します。
+</li></ul>
+</li></ul>
+<p />
+<h2><a name="発射物"></a> 発射物 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<p />
+発射物（Projectile）とは、発射物発砲モードを使用する武器によって発射された物理的なオブジェクトのことです。武器は発射物をスポーンして、発射される方向を発射物に伝えます。残りのプロセスは完全に発射物に任されます。これらのオブジェクトは、通常、物理に基づいて自らの動きを計算し、コリジョンイベントを使用することによって、何がヒットされたのかということと、ヒットされた Actor にダメージまたはその他のエフェクトをどのように加えるのかということを決定します。
+<p />
+<h3><a name="Projectile （発射物） のプロパティ"></a> Projectile （発射物） のプロパティ </h3>
+<p />
+発射物のプロパティは、基本となる発射物クラスに置かれています。これらは、すべての発射物に共通のものであって、本質的に一般的なものです。
+<p />
+<strong>コリジョン</strong>
+<p /> <ul>
+<li> <strong>bSwitchToZeroCollision</strong> - この値が true で、さらに、この発射物が非ゼロのコリジョン範囲をもっている場合は、 bBlockNonZeroExtents=false に設定されているアクタとぶつかると、ゼロのコリジョン範囲にスイッチします。
+</li> <li> <strong>ZeroCollider</strong> - ヒットされてゼロコリジョン範囲へのスイッチの原因となった Actor を保持します。
+</li> <li> <strong>ZeroColliderComponent</strong> - ヒットされてゼロコリジョン範囲へのスイッチの原因となった Actor のコンポーネントへの参照を保持します。
+</li> <li> <strong>bBlockedByInstigator</strong> - true の場合、発射物の Instigator が発射物とコリジョンします。
+</li> <li> <strong>CylinderComponent</strong> - 発射物のためのコリジョンコンポーネントです。
+</li></ul>
+<p />
+<strong>ダメージ</strong>
+<p /> <ul>
+<li> <strong>Damage</strong> - 発射物がヒットした Actor（複数可）に対して、発射物が加えたダメージの量です。
+</li> <li> <strong>DamageRadius</strong> - この発射物が飛散ダメージを与える衝撃地点を中心とする範囲です。
+</li> <li> <strong>MomemtumTransfer</strong> - ダメージが及ぶ Actor （複数可）に対して、発射物が与えるモメンタムです。
+</li> <li> <strong>MyDamageType</strong> - ダメージを与えるためにこの発射物が使用するダメージクラスです。
+</li> <li> <strong>InstigatorController</strong> - この発射物がもつ Instigator の Controller への参照を保持します。
+</li> <li> <strong>ImpactedActor</strong> - この発射物が衝撃を与える Actor への参照を保持します。発射物が半径によるダメージを実行していても、この Actor は常に最大ダメージを受けます。また、この Actor は HurtRadius() 関数から無視されます。
+</li></ul>
+<p />
+<strong>移動（movement）</strong>
+<p /> <ul>
+<li> <strong>Speed</strong> - 発射時における発射物の初期速度です。
+</li> <li> <strong>MaxSpeed</strong> - 発射物が達する最大速度です。値が 0 の場合は、無制限を意味します。
+</li> <li> <strong>bRotationFollowsVelocity</strong> - true の場合、発射物の回転が毎フレームごとに更新されることによって、移動しようとしている方向に発射物が常に向くようにします。
+</li> <li> <strong>NetCullDistanceSquared</strong> - クライアント上で関連性があると見なされるために、発射物がカメラから離れていられる最大距離です。
+</li></ul>
+<p />
+<strong>サウンド</strong>
+<p /> <ul>
+<li> <strong>SpawnSound</strong> - 発射物がスポーンされたときに（すなわち発射されるときに）再生される SoundCue です。
+</li> <li> <strong>ImpactSound</strong> - 発射物がワールド内で何かにヒットしたときに再生される SoundCue です。
+</li></ul>
+<p />
+<h3><a name="Projectile （発射物）の関数"></a> Projectile （発射物）の関数 </h3>
+<p />
+<strong>コリジョン</strong>
+<p /> <ul>
+<li> <strong>Touch [Other] [OtherComp] [HitLocation] [HitNormal]</strong> - Actor から継承されます。発射物が何かとコリジョンしたときに実行されます。  <ul>
+<li> <strong>Other</strong> - 発射物とコリジョンした Actor を参照します。
+</li> <li> <strong>OtherComp</strong> - 発射物とコリジョンした Actor のコンポーネントを参照します。
+</li> <li> <strong>HitLocation</strong> - コリジョンが発生した位置を保持します。
+</li> <li> <strong>HitNormal</strong> - コリジョンが発生したサーファスの法線を保持します。
+</li></ul>
+</li> <li> <strong>ProcessTouch [Other] [HitLocation] [HitNormal]</strong> - 発射物が Instigator 以外のものとコリジョンした場合に、（Explode() 関数によって）発射物を爆発させる Touch イベントを処理します。  <ul>
+<li> <strong>Other</strong> - 発射物とコリジョンした Actor を参照します。
+</li> <li> <strong>HitLocation</strong> - コリジョンが発生した位置を保持します。
+</li> <li> <strong>HitNormal</strong> - コリジョンが発生したサーファスの法線を保持します。
+</li></ul>
+</li> <li> <strong>HitWall [HitNormal] [Wall] [WallComp]</strong> - Actor から継承されます。発射物が壁にヒットしたときに実行されます。デフォルトでは、（静的でない限り）衝撃を受けた壁にダメージを与え、（Explode() 関数によって）発射物を爆発させます。  <ul>
+<li> <strong>HitNormal</strong> - コリジョンが発生したサーファスの法線です。
+</li> <li> <strong>Wall</strong> - 発射物がコリジョンした壁 Actor を参照します。ただし、Actor であった場合に限ります。
+</li> <li> <strong>WallComponent</strong> - 発射物がコリジョンしたコンポーネントを参照します。
+</li></ul>
+</li> <li> <strong>Explode [HitLocation] [HitNormal]</strong> - 半径によるダメージを適用（ProjectileHurtRadius() 関数による）するとともに、発射物を破壊（Destroy()関数による）します。  <ul>
+<li> <strong>HitLocation</strong> - 爆発を引き起こしたコリジョンが発生した位置を保持します。
+</li> <li> <strong>HitNormal</strong> - 爆発を引き起こしたコリジョンが発生したサーファスの法線を保持します。
+</li></ul>
+</li></ul>
+<p />
+<strong>ダメージと衝撃</strong>
+<p /> <ul>
+<li> <strong>ProjectileHurtRadius [HurtOrigin] [HitNormal]</strong> - 衝撃の地点を上方に修正することによってワールドジオメトリを避けます。これによって、周辺の Actor へのトレースがより多く成功することになります。また、この新たな衝撃地点を使って HurtRadius() 関数を呼び出します。  <ul>
+<li> <strong>HurtOrigin</strong> - 発射物が衝撃を与えた位置です。
+</li> <li> <strong>HitNormal</strong> - 発射物が衝撃を与えたサーファスの法線です。
+</li></ul>
+</li> <li> <strong>HurtRadius [DamageAmount] [inDamageRadius] [DamageType] [Momentum] [HurtOrigin] [IgnoredActor] [InstigatorController] [bDoFullDamage]</strong> - 指定された半径内に存在する Actor すべてに対してダメージを与えます。ImpactedActor に対して最大ダメージを与えるとともに、ImpactedActor を IgnoredActor として渡して HurtRadius() 関数を親クラスから呼び出します。  <ul>
+<li> <strong>DamageAmount</strong> - 最大ダメージが適用された場合に与えるダメージ量です。
+</li> <li> <strong>InDamageRadius</strong> - Actor にダメージが適用される半径（範囲）です。
+</li> <li> <strong>DamageType</strong> - ダメージを与える場合に使用するダメージタイプです。
+</li> <li> <strong>Momentum</strong> - ダメージを適用する際に Actor に与えるモメンタムです。
+</li> <li> <strong>HurtOrigin</strong> - 半径によるダメージを適用する場合にそのダメージの元となるものです。
+</li> <li> <strong>IgnoredActor</strong> - オプション項目です。発射物によって衝撃を受ける Actor です。最大ダメージが適用されます。
+</li> <li> <strong>InstigatorController</strong> - オプション項目です。この発射物がもつ Instigator の Controller です。ただし、それが存在する場合です。
+</li> <li> <strong>bDoFullDamage</strong> - オプション項目です。true の場合、半径内に存在するすべての Actor に対して、最大量のダメージを適用します。true ではない場合は、半径に渡ってダメージが減じます。
+</li></ul>
+</li> <li> <strong>ApplyFluidSurfaceImpact [Fluid] [HitLocation]</strong> - Actor から継承されます。親クラスから ApplyFluidSurfaceImpact() 関数を呼び出して、流体サーファスアクタの ProjectileEntryEffect パーティクルエフェクトを再生します。  <ul>
+<li> <strong>Fluid</strong> - ヒットされた流体サーファスアクタを参照します。
+</li> <li> <strong>HitLocation</strong> - 発射物が流体サーファスアクタをコリジョンした位置を保持します。
+</li></ul>
+</li></ul>
+<p />
+<strong>移動（movement）</strong>
+<p /> <ul>
+<li> <strong>Init [Direction]</strong> - 回転と速度を設定することによって、発射物を初期化します。  <ul>
+<li> <strong>Direction</strong> - 発射物が発射された方向です。回転を設定するために使用されるとともに、速度 （velocity）を設定するために速さ （speed）によって乗じられます。
+</li></ul>
+</li> <li> <strong>RandSpin [SpinRate]</strong> - 発射物がもつ回転速度 （ピッチ、ヨー、ロール）の成分を、ランダムな値で満たします。  <ul>
+<li> <strong>SpinRate</strong> - 各成分に入るランダムな速度がとる最大値 （正または負）です。
+</li></ul>
+</li> <li> <strong>GetTimeToLocation [TargetLoc]</strong> - 発射物が現在の速さで特定の位置に到達するのに要する時間を返します。  <ul>
+<li> <strong>TargetLoc</strong> - 目的地を保持します。
+</li></ul>
+</li> <li> <strong>StaticGetTimeToLocation [TargetLoc] [StartLoc] [RequestedBy]</strong> - 発射物がデフォルトの速さである位置から他の位置に到達するのに要する時間を返す、GetTimeToLocation() の静的バージョンです。  <ul>
+<li> <strong>TargetLoc</strong> - 目的地を保持します。
+</li> <li> <strong>StartLoc</strong> - 開始位置を保持します。
+</li> <li> <strong>RequestedBy</strong> - この関数を呼び出した Controller を参照します。
+</li></ul>
+</li> <li> <strong>GetRange</strong> - 発射物がライフタイムの期間で移動できる最大距離を返します。
+</li></ul>
+<p />
+<h3><a name="UTProjectile のプロパティ"></a> UTProjectile のプロパティ </h3>
+<p />
+<strong>エフェクト</strong>
+<p /> <ul>
+<li> <strong>ProjEffects</strong> - 飛行中に再生されるパーティクルシステムのコンポーネントです。
+</li> <li> <strong>ProjFlightTemplate</strong> - 発射物を視覚的に表示するために使用されるパーティクルシステムです。
+</li> <li> <strong>ProjExplosionTemplate</strong> - 発射物が爆発するときに再生されるパーティクルシステムです。
+</li> <li> <strong>bAdvancedExplosionEffect</strong> - true の場合、ProjExplosionTemplate パーティクルシステムは、移動の方向と衝撃地点における発射物のヒット法線を、それぞれ Velocity および HitNormal パラメータに渡します。このプロパティを設定する場合、爆発パーティクルシステムがこれらのパラメータでセットアップされるようにします。
+</li> <li> <strong>MaxEffectDistance</strong> - 爆発エフェクトを表示するために、衝撃がカメラから離れることができる最大距離です。
+</li> <li> <strong>ExplosionDecal</strong> - 発射物が爆発する際、衝撃を与えるサーファスに対して適用するデカールです。
+</li> <li> <strong>DecalWidth</strong> - 爆発デカールの幅です。
+</li> <li> <strong>DecalHeight</strong> - 爆発デカールの高さです。
+</li> <li> <strong>DurationOfDecal</strong> - フェードアウトするまでに爆発でカールが表示される時間量です。
+</li> <li> <strong>DecalDissolveParamName</strong> - デカールをフェードアウトさせるために使用するデカールマテリアルにおけるパラメータ名です。
+</li> <li> <strong>bSurppressExplosionFX</strong> - true の場合、発射物が破壊されるときに爆発エフェクトが再生されません。これが役立つのは、LimitationVolumes を使用するか、あるいは、発射物の破壊によって視覚的な爆発が生じない他の方法を使用して、発射物を破壊する場合です。
+</li> <li> <strong>bWaitForEffects</strong> - true の場合、飛行が完了するまで、発射物は生き続けますが非表示になります。
+</li> <li> <strong>bAttachExplosionToVehicles</strong> - true の場合、発射物がビークル（乗り物）に衝撃を与えると、爆発エフェクトが衝撃を与えられたビークルにアタッチされます。
+</li> <li> <strong>ProjectileLight</strong> - この発射物のライトコンポーネントです。これがスポーンされるのは、発射物がローカルプレイヤーによって発射された場合のみです。
+</li> <li> <strong>ProjectileLightClass</strong> - 発射物のライトのクラスです。
+</li> <li> <strong>ExplosionLightClass</strong> - 発射物が爆発する際に使用されるライトのクラスです。
+</li> <li> <strong>MaxExplosionLightDistance</strong> - 爆発ライトを表示するために、衝撃がカメラから離れていられる最大距離です。
+</li></ul>
+<p />
+<strong>サウンド</strong>
+<p /> <ul>
+<li> <strong>bSuppressSounds</strong> - true の場合、この発射物上でサウンドが無効になります。
+</li> <li> <strong>AmbientSound</strong> - この発射物が飛行中にループ再生する SoundCue です。
+</li> <li> <strong>ExplosionSound</strong> - この発射物が爆発したときに再生する SoundCue です。
+</li> <li> <strong>bImportantAmbientSound</strong> - true の場合、この発射物の環境音がパフォーマンス上の理由でカットされることがなくなります。
+</li></ul>
+<p />
+<h3><a name="UTProjectile の関数"></a> UTProjectile の関数 </h3>
+<p />
+<strong>コリジョン</strong>
+<p /> <ul>
+<li> <strong>Landed [HitNormal] [FloorActor]</strong> - Actor から継承されます。発射物がフロアまたはグラウンドとコリジョンしたときに実行されます。  <ul>
+<li> <strong>HitNormal</strong> - 発射物がフロアとコリジョンしたときのサーファス法線を保持します。
+</li> <li> <strong>FloorActor</strong> - 発射物がコリジョンした Actor を参照します。
+</li></ul>
+</li> <li> <strong>Destroyed</strong> - Actor から継承されます。発射物が破壊されるときに実行されます。デフォルトでは、 <em>SpawnExplosionEffects()</em> を呼び出して、爆発をスポーンすると共に飛行エフェクトを終了させます。
+</li></ul>
+<p />
+<strong>エフェクト</strong>
+<p /> <ul>
+<li> <strong>SpawnFlightEffects</strong> - 発射物の飛行中に使用されるエフェクトを、スポーンおよびセットアップします。
+</li> <li> <strong>SpawnExplosionEffects [HitLocation] [HitNormal]</strong> - 発射物が爆発したときに、爆発エフェクトおよびデカール、ライトを、スポーンするとともにセットアップします。  <ul>
+<li> <strong>HitLocation</strong> - 発射物を爆発させた衝撃の位置を保持します。
+</li> <li> <strong>HitNormal</strong> - 発射物を爆発させる衝撃が起きた地点のサーファス法線を保持します。
+</li></ul>
+</li> <li> <strong>SetExplosionEffectParameters [ProjExplosion]</strong> - 必要に応じて、爆発パーティクルシステムに追加のパラメータをセットアップするためにサブクラスによって使用される関数スタブです。SpawnExplosionEffects() 関数によって呼び出されます。  <ul>
+<li> <strong>ProjExplosion</strong> - 爆発エフェクトパーティクルシステムのコンポーネントを参照します。
+</li></ul>
+</li> <li> <strong>ShouldSpawnExplosionLight [HitLocation] [HitNormal]</strong> - 爆発ライトがスポーンされるべきか、それとも、爆発の位置に基づかせるべきではないかを決めるブール値を返します。  <ul>
+<li> <strong>HitLocation</strong> - 爆発の位置を保持します。
+</li> <li> <strong>HitNormal</strong> - 爆発地点のサーファス法線を保持します。
+</li></ul>
+</li> <li> <strong>MyOnParticleSystemFinished [PSC]</strong> - 飛行パーティクルシステムが完了したとき、そのコンポーネントによって呼び出されます。   <em>bWaitForEffects</em> が true の場合に、飛行エフェクトを終了させるために使用されます。  <ul>
+<li> <strong>PSC</strong> - この関数を呼び出すパーティクルシステムのコンポーネントを参照します。
+</li></ul>
+</li> <li> <strong>Shutdown</strong> - あらゆるエフェクトを終了するとともに、物理をシャットダウンし、発射物を破壊します。
+</li></ul>
+<p />
+<strong>移動（movement）</strong>
+<p /> <ul>
+<li> <strong>CalculateTravelTime [Dist] [MoveSpeed] [MaxMoveSpeed] [AccelMag]</strong> - 所定の移動プロパティを使用して所定の距離を発射物が移動するのに要する時間量を返す静的関数です。GetTimeToLocation() および StaticGetTimeToLocation() によって呼び出されます。  <ul>
+<li> <strong>Dist</strong> - 移動する距離を保持します。
+</li> <li> <strong>MoveSpeed</strong> - 発射物の初速を保持します。
+</li> <li> <strong>MaxMoveSpeed</strong> - 発射物の最大速度を保持します。
+</li> <li> <strong>AccelMag</strong> - 発射物の加速度を保持します。
+</li></ul>
+</li></ul>
+<p />
+<h2><a name="ピックアップ"></a> ピックアップ </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<p />
+ピックアップとは、ワールドのいたるところに置かれているアイテムのことで、そこに行き当たったプレイヤーに対して、何らかのインベントリ関連アイテムを提供するものです。武器システムでは、武器工場 （Weapon Factories）および 武器庫 （Weapon Lockers）、弾薬工場 （Ammo Factories）といったピックアップがあります。
+<p />
+<h3><a name="武器ファクトリー"></a> 武器ファクトリー </h3>
+<p />
+武器ファクトリーでは、単一特定タイプの武器がプレイヤーに与えられます。武器ファクトリーが唯一行うことは、そのタイプの武器とデフォルトの弾薬量を、プレイヤーが行き当たったときに、プレイヤーのインベントリに入れるということだけです。ただし、武器それぞれに、それ自身のファクトリー（工場）があるわけではありません。単一のクラスが使用され、設計者が設定できるプロパティによって、どのタイプの武器がプレイヤーに渡されるべきかが決定されるのです。
+<p />
+<img alt="weaponfactory.jpg" src="rsrc/Three/WeaponsTechnicalGuide/weaponfactory.jpg" />
+<p />
+<h3><a name="武器庫"></a> 武器庫 </h3>
+<p />
+武器庫は、一度にさまざまなタイプの武器をプレイヤーに渡すことができるピックアップです。武器庫が渡すことができる武器のタイプは、武器庫がワールドに配置されるときに、設計者によって配列の中に設定されます。各武器には、武器庫固有のデフォルトの弾薬量があります。これは、武器が武器庫から渡されたときに使用されるものです。
+<p />
+<img alt="weaponlocker.jpg" src="rsrc/Three/WeaponsTechnicalGuide/weaponlocker.jpg" />
+<p />
+<h3><a name="弾薬ファクトリー"></a> 弾薬ファクトリー </h3>
+<p />
+弾薬ファクトリーは、特定のタイプの弾薬をプレイヤーに単に渡すピックアップです。弾薬ファクトリーは、特定の武器タイプにしか弾薬を供給しません。また、プレイヤーがこの種のピックアップを使用するには、そのタイプの武器がインベントリに持っている必要があります。各タイプの武器には、独自の弾薬ファクトリークラスがあります。
+<p />
+<img alt="ammofactory.jpg" src="rsrc/Three/WeaponsTechnicalGuide/ammofactory.jpg" />
+<p />
+</noautolink>
+<p />
+<style type="text/css">
+<!--
+div.codesnippet
+{
+    margin:0px 10px;
+    padding:0px 10px;
+    background:#f0f0f0;
+    font:12px Courier;
+    max-height:500px;
+    overflow:auto;
+    border:2px inset #989898;
+}
+-->
+</style>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/WeaponsTechnicalGuideJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:39 GMT -->
+</html></body>

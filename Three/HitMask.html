@@ -1,0 +1,374 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/HitMask.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:21:38 GMT -->
+<head>
+<title> UDK | HitMask    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">HitMask  </b></div>
+<div id="tooltext">
+<a href="HitMaskJP.html" class="twikiLink">日本語訳</a><br><a href="HitMaskCH.html" class="twikiLink">中国翻译</a><br><a href="HitMaskKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/HitMask -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="ParticlesAndEffectsHome.html" class="twikiLink">Particle &amp; Effects</a></b> &gt; <b><a href="DecalsHome.html" class="twikiLink">Decals</a></b> &gt; Hit Mask Component
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Hit Mask Component"></a> Hit Mask Component </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="HitMask.html#Hit Mask Component"> Hit Mask Component</a> <ul>
+<li> <a href="HitMask.html#Overview"> Overview</a>
+</li> <li> <a href="HitMask.html#How to implement"> How to implement</a> <ul>
+<li> <a href="HitMask.html#Add Component to Actor"> Add Component to Actor</a>
+</li> <li> <a href="HitMask.html#Create a texture per Actor"> Create a texture per Actor</a>
+</li> <li> <a href="HitMask.html#Add mask to the texture"> Add mask to the texture</a>
+</li></ul>
+</li> <li> <a href="HitMask.html#How to set it for your character"> How to set it for your character</a> <ul>
+<li> <a href="HitMask.html#Texture Parameter"> Texture Parameter</a>
+</li> <li> <a href="HitMask.html#Replace texture parameter in code"> Replace texture parameter in code</a>
+</li></ul>
+</li> <li> <a href="HitMask.html#Parameters"> Parameters</a> <ul>
+<li> <a href="HitMask.html#Fading related variable"> Fading related variable</a>
+</li></ul>
+</li> <li> <a href="HitMask.html#Limitation"> Limitation</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+HitMask is designed to create decal effect on the character using one texture.
+<p />
+HitMask renders to a texture with UV coordinate of matching world location for skeletalmesh so that you can use that mask to filter  - i.e. shot wounds or any other effect.
+When you give world location with parameter, it will find the matching UV coords and render white circles around the coordinate.
+<p />
+<h2><a name="How to implement"></a> How to implement </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+This step describes how to implement this feature for your game.
+<p />
+<h3><a name="Add Component to Actor"></a> Add Component to Actor </h3>
+<p />
+SceneCapture2DHitMaskComponent is the one responsible to render to texture. This component needs to attach to the pawn or skeletalmesh actor.
+<p />
+<pre>
+      // Add hit mask to the actor
+      Begin Object Class&#61;SceneCapture2DHitMaskComponent Name&#61;HitMaskComp
+      End Object
+      HitMaskComponent&#61;HitMaskComp
+      Components.Add(HitMaskComp)
+</pre>
+<p />
+<h3><a name="Create a texture per Actor"></a> Create a texture per Actor </h3>
+<p />
+Unless you want all characters to share same texture, you'd probably like to create texture and give that as render target for Hit Mask Component.
+<p />
+<pre>
+    // Create Mask Texture of 64x64
+      MaskTexture &#61; class&#39;TextureRenderTarget2D&#39;.static.Create(64, 64, PF&#95;G8, MakeLinearColor(0, 0, 0, 1));
+
+      if ( MaskTexture!&#61;none )
+      {
+            // Update HitMaskComponent with this texture
+            HitMaskComponent.SetCaptureTargetTexture( MaskTexture );
+      }
+</pre>
+<p />
+<h3><a name="Add mask to the texture"></a> Add mask to the texture </h3>
+<p />
+This is to add one circle to the world location of MaskWorldLocation with size of Radius regardless normal test or not.
+<p />
+<pre>
+HitMaskComponent.SetCaptureParameters(MaskWorldLocation, Radius, MaskStartLocation, FALSE); // send capture parameter
+</pre>
+<p />
+MaskStartLocation isn't needed if you don't want any direction test to be done in shader.
+For example, if you'd like to create hit wounds on the character on the chest, you  would not like to render mask behind of character where hit wouldn't have made although it's within the radius.
+MaskStartLocation indicates the origination point and last parameter TRUE will do hit normal test.
+<p />
+If FALSE, the normal test won't be done and it will just create sphere around the world location.
+<p />
+This is created to U unmirrored (V mirrored) since you don't want to create same thing in both places.
+<p />
+<h2><a name="How to set it for your character"></a> How to set it for your character </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Now you have this texture to be used for your character material.
+<p />
+<h3><a name="Texture Parameter"></a> Texture Parameter </h3>
+<p />
+In your material, create texture parameter that can be replaced in game. That will be the target texture we're going to create.
+<p />
+<img alt="TextureParameter.jpg" src="rsrc/Three/HitMask/TextureParameter.jpg" />
+<p />
+Now you need to unmirror the texture. Since when we render it will unmirror U, make sure you do have texture sampling to Unmirror U as well.
+<p />
+<img alt="UnmirrorUCheck.jpg" src="rsrc/Three/HitMask/UnmirrorUCheck.jpg" />
+<p />
+<h3><a name="Replace texture parameter in code"></a> Replace texture parameter in code </h3>
+<p />
+Now time to set the mask texture to the parameter, so that
+<p />
+<pre>
+      // get first parameter
+      MIC &#61; Mesh.CreateAndSetMaterialInstanceConstant(0); // material you&#39;d like to replace
+      if ( MIC !&#61; none &#38;&#38;  MaskTexture!&#61;none )
+      {
+            // Set new texture as FilterMask parameter
+            MIC.SetTextureParameterValue(&#39;FilterMask&#39;, MaskTexture); // use this texture to be used by your material
+      }
+</pre>
+<p />
+<h2><a name="Parameters"></a> Parameters </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> <strong>MaterialIndex</strong> : Which material section to render?
+</li> <li> <strong>ForceLOD</strong> : If -1, use current LOD.
+</li> <li> <strong>HitMaskCullDistance</strong> : Cull distance. If further than this, it won't be tested
+</li></ul>
+<p />
+<h3><a name="Fading related variable"></a> Fading related variable </h3>
+<p />
+You can have it fade out after a while. This is the tweak parameters.
+<p /> <ul>
+<li> <strong>FadingStartTimeSinceHit</strong> : Fading start time after last hit. By default 10 seconds. If -1, it's infinite. If continuous hit comes in, it will stop fade.
+</li> <li> <strong>FadingPercentage</strong> : % of color to apply - Range of 0 to 1
+</li> <li> <strong>FadingDurationTime</strong> : Fading duration time since fading starts - in second
+</li> <li> <strong>FadingIntervalTime</strong> : Fading interval - in second
+</li></ul>
+<p />
+<h2><a name="Limitation"></a> Limitation </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+This is cheap way to create decals on the character but it's limited in terms of shape you're creating. It's creating fading circle around the point.
+Also by default it unmirror U only. So if you have chacter that has mirroring V it can have duplicated mask on both side. It's easy to fix but you can waste memory if you don't use all sections.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/HitMask.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:21:38 GMT -->
+</html></body>

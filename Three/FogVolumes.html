@@ -1,0 +1,460 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/FogVolumes.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:15:43 GMT -->
+<head>
+<title> UDK | FogVolumes    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">FogVolumes  </b></div>
+<div id="tooltext">
+<a href="FogVolumesJP.html" class="twikiLink">日本語訳</a><br><a href="FogVolumesCH.html" class="twikiLink">中国翻译</a><br><a href="FogVolumesKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/FogVolumes -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="ParticlesAndEffectsHome.html" class="twikiLink">Particle &amp; Effects</a></b> &gt; <b><a href="FogEffectsHome.html" class="twikiLink">Fog Effects</a></b> &gt; Fog Volumes
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Fog Volumes"></a> Fog Volumes </h1>
+<hr size="1" noshade="noshade">
+<p />
+<em>Document Changelog: Created by <a href="https://udn.epicgames.com/Main/DanielWright" class="restricted" class="restricted" class="twikiLink">Daniel Wright</a>.</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="FogVolumes.html#Fog Volumes"> Fog Volumes</a> <ul>
+<li> <a href="FogVolumes.html#Versions"> Versions</a>
+</li> <li> <a href="FogVolumes.html#What are Fog Volumes?"> What are Fog Volumes?</a>
+</li> <li> <a href="FogVolumes.html#Setup methods"> Setup methods</a>
+</li> <li> <a href="FogVolumes.html#Quick Automatic Setup"> Quick Automatic Setup</a>
+</li> <li> <a href="FogVolumes.html#Automatic Setup Details"> Automatic Setup Details</a>
+</li> <li> <a href="FogVolumes.html#Quick Manual Setup"> Quick Manual Setup</a>
+</li> <li> <a href="FogVolumes.html#Manual Setup Details"> Manual Setup Details</a>
+</li> <li> <a href="FogVolumes.html#Density Functions"> Density Functions</a>
+</li> <li> <a href="FogVolumes.html#Additional Settings"> Additional Settings</a>
+</li> <li> <a href="FogVolumes.html#Fog Volume Actor"> Fog Volume Actor</a>
+</li> <li> <a href="FogVolumes.html#Fog Volume Material"> Fog Volume Material</a>
+</li> <li> <a href="FogVolumes.html#Interaction with Height Fog"> Interaction with Height Fog</a>
+</li> <li> <a href="FogVolumes.html#Transparency in Fog Volumes"> Transparency in Fog Volumes</a>
+</li> <li> <a href="FogVolumes.html#Performance Implications"> Performance Implications</a>
+</li> <li> <a href="FogVolumes.html#Best Practices"> Best Practices</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Versions"></a> Versions </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Fog Volumes were introduced in QA_APPROVED_BUILD_MAR_2007.  Support for translucency fogged by fog volumes was added soon after and is in QA_APPROVED_BUILD_APRIL_2007.  Particle fogging was enabled in QA_APPROVED_BUILD_MAY_2007.  The constant height density function was also removed in this build, because the same functionality is available through a constant density function with a clipping mesh.  This reduces the number of compiled shaders and is actually more efficient.  The automatic setup method was added in QA_APPROVED_BUILD_FEB_2008, before that only the manual setup method was supported.  In QA_APPROVED_BUILD_APR_2008, shader complexity was extended to include fog volume cost.  In QA_APPROVED_BUILD_JUL_2008 a density setting of 0 is treated the same as bEnabled=False.
+<p />
+<h2><a name="What are Fog Volumes?"></a> What are Fog Volumes? </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+A Fog Volume essentially consists of 3 things: A density function which controls the falloff of the fog, a mesh that clips the density function and a material that defines the color of the fog.  Fog Volumes are a superset of the functionality available in <a href="HeightFog.html" class="twikiLink">HeightFog</a>, because they can be bounded by a mesh, handle multiple density functions and use a customizable material.  Fog Volumes seamlessly handle the camera going inside the volume and opaque objects intersecting the volume.
+<p />
+<h2><a name="Setup methods"></a> Setup methods </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+There are two ways to associate a density function with the mesh that clips it, these are called the automatic and manual methods.
+<p />
+<h2><a name="Quick Automatic Setup"></a> Quick Automatic Setup </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> Place a FogVolumeConstantDensityInfo (Found under Generic Browser-&gt;Actor Classes-&gt;Info-&gt;FogVolumeDensityInfo)
+</li></ul>
+<p />
+<img alt="AutomaticConstDensityFogVolume.jpg" src="rsrc/Three/FogVolumes/AutomaticConstDensityFogVolume.jpg" /><br />
+<em>A constant density fog volume after being placed.</em>
+<p />
+<h2><a name="Automatic Setup Details"></a> Automatic Setup Details </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The automatic setup is designed to require as few clicks as possible to give the most commonly used result.  When you place a new fog volume info actor a static mesh component is automatically added to it and used for rendering the fog volume, you can access this component via FogVolumeConstantDensityInfo-&gt;FogVolumeDensityInfo-&gt;AutomaticMeshComponent.  When you scale or rotate the fog volume info, the automatic mesh component will also be scaled or rotated to fit the fog volume.  This is important for good performance since the mesh is what gets shaded, it must bound the visible fog area tightly or there will be wasted shading calculations especially on the sphere density type.  Additional automatic setup details:
+<p /> <ul>
+<li> Changing DrawScale3d on the fog volume info away from 1.0 will cause the AutomaticMeshComponent to no longer match up with the size of the fog volume info.
+</li> <li> When you place a new spherical fog volume info, DrawScale X, Y and Z are setup such that the AutomaticMeshComponent tightly bounds the fog volume info.
+</li> <li> You can control the position and scaling of the AutomaticMeshComponent relative to the fog volume info by changing AutomaticMeshComponent-&gt;PrimitiveComponent-&gt;Scale, Translation, etc.
+</li> <li> When you create a new fog volume info, a new material instance will be created in the level and automatically applied to the AutomaticMeshComponent.  This is set as FogMaterial.  If you have a material selected in the Generic Browser, that material will be used as the parent, otherwise EngineMaterials.FogVolumeMaterial will be the parent.  You can replace this new material instance with any fog volume compatible material of your choice, but be sure to change FogMaterial on the info actor instead of changing the actual Materials array on the AutomaticMeshComponent.
+</li> <li> The SimpleLightColor property of the fog volume info is a convenience property and will be set as the 'EmissiveColor' vector parameter of the AutomaticMeshComponent's material instance.  If you override the material instance and it does not use an 'EmissiveColor' vector parameter, SimpleLightColor will no longer function.
+</li> <li> The AutomaticMeshComponent is not selectable in the editor unlike the meshes used with the manual method, you have to select the fog volume info actor itself instead.
+</li> <li> The AutomaticMeshComponent will have all collision, lighting and shadowing flags set appropriately.
+</li></ul>
+<p />
+<h2><a name="Quick Manual Setup"></a> Quick Manual Setup </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> Place a closed static mesh
+</li> <li> Place a FogVolumeConstantDensityInfo (Found under Generic Browser-&gt;Actor Classes-&gt;Info-&gt;FogVolumeDensityInfo)
+</li> <li> Clear the newly placed fog info's AutomaticMeshComponent
+</li> <li> Add the static mesh to the info actor's FogVolumeActors array. <ul>
+<li> To do this you first need to open the properties of the FogVolumeConstantDensityInfo you placed, expand DensityComponent
+</li> <li> Click the lock at the top left of the property window
+</li> <li> Select the static mesh in the viewport
+</li> <li> The property window should still show the info actor, since we locked it.
+</li> <li> Click the + to add an entry to the FogVolumeActors array
+</li> <li> Now click the 'use selected actor' button on the new entry.
+</li></ul>
+</li></ul>
+<p />
+<img alt="SetFogVolumeActors.jpg" src="rsrc/Three/FogVolumes/SetFogVolumeActors.jpg" /><br />
+<em>Set the static mesh in the FogVolumeActors array.</em>
+<p />
+At this point the static mesh should be rendered as a fog volume.
+<p />
+<h2><a name="Manual Setup Details"></a> Manual Setup Details </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> When you add a new FogVolumeActors entry, it will get setup with default fog volume settings, which disable collision, lighting and shadowing.  The new FogVolumeActor's mesh component material will also be changed to use EngineMaterials.FogVolumeMaterial.  To override this set the material on the target FogVolumeActor entry, FogMaterial is not used for the manual setup.  <strong>Note: Due to a limitation of the property system, currently the defaults will be set for all entries in the FogVolumeActors array when you add a new entry!</strong>  It is best to set all the entries in the FogVolumeActors array FIRST and then set their materials as you want.
+</li> <li> Using the manual setup allows you to have multiple meshes associated with a single fog volume info, and it allows you to animate the info or meshes separately.  However it can be tedious to setup and animate multiple parts, in which case an automatic setup would be easier.
+</li></ul>
+<p />
+<h2><a name="Density Functions"></a> Density Functions </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The Fog Density Function defines how thick the fog is in different parts of the world.  In UE3 these density functions are represented by FogVolumeDensityInfo actors.  One of these must be placed and have Fog Volume Actors assigned to it.  Here are the different density functions, in order from least expensive to most.
+<p />
+<h3><a name="FogVolumeConstantDensityInfo"></a> FogVolumeConstantDensityInfo </h3>
+<p />
+This is a density function that has the same density everywhere, which is set through the Density variable.
+<p />
+<img alt="ConstantDensityCube.jpg" src="rsrc/Three/FogVolumes/ConstantDensityCube.jpg" /><br />
+<em>A cube rendered with the constant density function.  The location of the fog info actor is irrelevant because the density is constant everywhere.</em>
+<p />
+<h3><a name="FogVolumeLinearHalfspaceDensityInfo"></a> FogVolumeLinearHalfspaceDensityInfo </h3>
+<p />
+This density function is defined by a plane and a linear density coefficient.  The halfspace on one side of the plane will be in fog.  This plane can be rotated and placed arbitrarily by rotating and moving the info actor.  The density in this function increases linearly with the distance from the plane, so the density is 0 on the plane and at a distance of 1 it becomes PlaneDistanceFactor.  The linear density ensures that the halfspace never forms a hard edge, even when the camera is in the plane.
+<p />
+<img alt="LinearHalfspaceHeightfield.jpg" src="rsrc/Three/FogVolumes/LinearHalfspaceHeightfield.jpg" /><br />
+<em>The linear halfspace density function bounded by a cube mesh.  Density starts at 0 at the plane and increases away from the plane, which is oriented in the xy plane in this example, but can be used in any orientation.</em>
+<p />
+<h3><a name="FogVolumeSphericalDensityInfo"></a> FogVolumeSphericalDensityInfo </h3>
+<p />
+The spherical density function has a maximum density of MaxDensity at the center, and the density falls off quadratically to 0 at the radius of the sphere, giving it smooth edges.  The center of the sphere is defined by the info actor's position, and scaling the info actor will scale the radius.
+<p />
+<img alt="SphericalDensitySphere.jpg" src="rsrc/Three/FogVolumes/SphericalDensitySphere.jpg" /><br /><br />
+<img alt="SphericalDensitySphereClipped.jpg" src="rsrc/Three/FogVolumes/SphericalDensitySphereClipped.jpg" /><br />
+<em>The Spherical density function, which has smooth edges.  It is bounded by a mesh which is not visible in the first picture because it doesn't clip the sphere.  In the second picture the mesh clips the sphere.  A preview component shows the extent of the sphere density function in wireframe.</em>
+<p />
+<h3><a name="Additional Density Functions"></a> Additional Density Functions </h3>
+<p />
+If these density functions are not sufficient to create the falloff effect you want, first try to manipulate the material.  For example, if you want softer edges, try using fresnel in the fog volume material on a sphere.   The catch is that only the backfaces of the fog volume are rendered, so instead of a traditional fresnel node you need to mirror the normal to face toward the viewer.  Additional density functions can also be added in code.
+<p />
+<h2><a name="Additional Settings"></a> Additional Settings </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<img alt="FogVolumeInfoProperties.jpg" src="rsrc/Three/FogVolumes/FogVolumeInfoProperties.jpg" /><br />
+<em>Properties of a FogVolumeSphericalDensityInfo.</em>
+<p />
+<h3><a name="bEnabled"></a> bEnabled </h3>
+<p />
+Use this property to enable or disable the fog volume.
+<p />
+<h3><a name="StartDistance"></a> StartDistance </h3>
+<p />
+Distance from the viewer at which fog should start, in world units.  This is currently unsupported with the linear halfspace density function.
+<p />
+<h3><a name="Density, _PlaneDistanceFactor, _MaxDensity"></a> Density, PlaneDistanceFactor, MaxDensity </h3>
+<p />
+These control the fog volume density for each density type.  A value of 0 for any of these is functionally the same as bEnabled=False.
+<p />
+<h2><a name="Fog Volume Actor"></a> Fog Volume Actor </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The fog volume actor is what is actually rendered, and it clips the density function to the interior of the mesh.  <strong>Any CLOSED static or skeletal mesh will work.</strong>  This means that any ray cast through the mesh must intersect the same number of frontfaces as backfaces.  On Xenon and the shader model 2 PC implementation there is a limit on the number of frontfaces or backfaces that can overlap before artifacts appear.  Currently the limit is 4 backfaces overlapping or 4 frontfaces overlapping.
+<p />
+<h2><a name="Fog Volume Material"></a> Fog Volume Material </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The material assigned to the fog volume actor must have these settings: <ul>
+<li> Lighting model is Unlit
+</li> <li> Blend mode is one of the translucent modes (Translucent, Additive or Modulative)
+</li> <li> There must be an emissive input
+</li> <li> bUsedWithFogVolumes must be checked.  Note that this flag is exclusive with the other usage flags, once it is set you can only use the material on fog volumes.
+</li></ul>
+<p />
+<img alt="MinimalMaterialSetup.jpg" src="rsrc/Three/FogVolumes/MinimalMaterialSetup.jpg" /><br />
+<em>A minimal fog volume material setup.  Opacity defaults to 1 so it does not need to be specified.</em>
+<p />
+<p />
+The emissive input of the material is the fog volume color, the opacity input scales the fog contribution, which is calculated from the distance through the fog volume.
+<p />
+<h3><a name="Material limitations"></a> Material limitations </h3>
+<p />
+Only the backfaces of the fog volume actor are drawn when applying the material, which is necessary so the fog volume will still be drawn when the camera is inside it.  This has implications for texturing: the texture will only be applied to the back of the fog volume mesh.  See the <a href="VolumetricLightingGuide.html" class="twikiLink">Volumetric Lighting Guide</a> for volumetric lighting tricks using textures.  This also affects other mesh attributes such as the normal, reflection vector, etc.
+<p />
+<h2><a name="Interaction with Height Fog"></a> Interaction with Height Fog </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Fog Volumes are not affected by height fog.  This may cause artifacts in high density height fog, but it is preferable to per-vertex height fogging on the fog volume which breaks down when using large fog volumes.  Intersecting fog volumes are not supported, they will be drawn as if they were completely in front or behind each other.
+<p />
+<h2><a name="Transparency in Fog Volumes"></a> Transparency in Fog Volumes </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Fog Volumes are sorted with transparent objects, so they will draw correctly if they are completely in front or behind transparent objects.  However, transparent objects that intersect with fog volumes can't be fogged correctly and efficiently on modern hardware, so they are approximated.
+<p />
+<strong>It is important that you set the FogVolumeDensityInfo's ApproxFogLightColor to approximate the material color!</strong>  This is the color that the fog volume will apply to intersecting translucent objects.<br>
+<p />
+<img alt="ApproxFogColor.jpg" src="rsrc/Three/FogVolumes/ApproxFogColor.jpg" /><br />
+<em>Set the ApproxFogLightColor member so that transparent objects intersecting the fog volume will be fogged correctly.</em>
+<p />
+<p />
+Fog on Transparent objects intersecting Fog Volumes has the following limitations: <ul>
+<li> Fog is calculated per-vertex.  To minimize the resulting artifacts, increase the tessellation of the transparent meshes and avoid large translucent meshes.
+</li> <li> Fog transitions due to clipping from the fog volume mesh can't be represented.  Instead, the axis aligned bounding box of the fog volume mesh is used to clip the fog.  Fog transitions from the fog function (ie the sphere edges in the Spherical Density Function) are calculated correctly.
+</li> <li> The most fog interactions that can be approximated on a single transparent object is 4 height fog layers and one fog volume.
+</li> <li> Transparent materials using the modulative blend mode are not fogged at all, by either height fog or fog volumes.
+</li> <li> Transparent materials applied to skinned meshes (Skeletal meshes or Skeletal mesh decals) will not be fogged by fog volumes.
+</li></ul>
+<p />
+You can override the automatic translucent fogging if desired.  To disable any translucent fogging from a fog volume, untick bAffectsTranslucency in the FogVolumeDensityInfo rollout.  To prevent a single material from being fogged, set bAllowFog=false on that material.
+<p />
+<h2><a name="Performance Implications"></a> Performance Implications </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+A fog volume is more expensive than a single layer of translucency in general, but a fog volume is much cheaper than 10's of layers of translucency with the same material and screen area.  When replacing particle effects with a fog volume, use the shader complexity viewmode to get an idea of the relative cost.
+<p />
+There is a some overhead involved for each fog volume that is rendered, even if it only covers a single pixel of the screen or is completely behind opaque objects.  For this reason it's better to have one large fog volume than many small ones, if they occupy the same volume.  Note that the fog volume mesh can be any closed mesh so it is often possible to use a single fog volume in a twisted tunnel while still having complete control over where the fog starts and stops.
+<p />
+Fog Volumes use complex pixel shaders and several passes to get the final result, so they are completely pixel shader bound.  This means that on most platforms having very high poly fog volumes will not affect performance at all.  It also means that fog volumes with a lot of overdraw (overlapping frontfaces and backfaces) will have the worst performance.
+<p />
+The simpler fog functions run faster than the most expensive ones, for example the constant density function is about 2 times faster than the spherical density function.  Try to use the simplest fog function possible.
+<p />
+Every pixel in the fog volume actor will have the same cost, regardless of how it ends up being fogged, so you should be careful to use the smallest mesh possible.  For example with the spherical density function, no fog will be applied outside of the sphere, but if the mesh is larger than the sphere those unfogged pixels will still cost as much as the fogged ones.  Resize the mesh to bound the sphere function as closely as possible.  With the automatic setup method the sphere mesh will bound the sphere function automatically.
+<p />
+Use a fog sheet (See <a href="VolumetricLightingGuide.html" class="twikiLink">Volumetric Lighting Guide</a>) instead of a fog volume if your use case meets all of these criteria: <ul>
+<li> The number of overlapping fog sheets is small
+</li> <li> The camera can't ever go into the fog, or you don't mind the fog fading out when you would have been inside of it
+</li> <li> Translucency doesn't intersect the fog, or the artifacts are not noticeable
+</li></ul>
+<p />
+In this case a fog sheet will be cheaper and provide more flexibility than a fog volume, since you can map any noise texture onto the fog sheet.
+<p />
+<h2><a name="Best Practices"></a> Best Practices </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Fog Volumes are best used for small to medium effects, since they can only approximate intersecting translucency and don't support nesting.  Use <a href="HeightFog.html" class="twikiLink">HeightFog</a> layers or some other method for level-wide fogging, and Fog Volumes for volumetric effects around lights or contained to parts of the level.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/FogVolumes.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:15:46 GMT -->
+</html></body>

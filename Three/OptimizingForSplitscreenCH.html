@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/OptimizingForSplitscreenCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:34:45 GMT -->
+<head>
+<title> UDK | OptimizingForSplitscreenCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">OptimizingForSplitscreenCH  </b></div>
+<div id="tooltext">
+<a href="OptimizingForSplitscreen.html" class="twikiLink">English Translation</a><br><a href="OptimizingForSplitscreenJP.html" class="twikiLink">日本語訳</a><br><a href="OptimizingForSplitscreenKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/OptimizingForSplitscreenCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt; <b><a href="PerformanceHome.html" class="twikiLink">性能分析及优化</a></b> &gt; <b><a href="ContentProfilingHome.html" class="twikiLink">内容分析及优化</a></b> &gt; 针对分屏优化内容
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="针对分屏优化内容"></a> 针对分屏优化内容 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<em>文档变更记录: 由 <a href="https://udn.epicgames.com/Main/DanielWright" class="restricted" class="restricted" class="twikiLink">Daniel Wright</a> 创建。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="OptimizingForSplitscreenCH.html#针对分屏优化内容"> 针对分屏优化内容</a> <ul>
+<li> <a href="OptimizingForSplitscreenCH.html#概述"> 概述</a>
+</li> <li> <a href="OptimizingForSplitscreenCH.html#找出性能消耗最昂贵的组件"> 找出性能消耗最昂贵的组件</a>
+</li> <li> <a href="OptimizingForSplitscreenCH.html#针对分幕缩小内容"> 针对分幕缩小内容</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+注意： <strong>本页面是针对像Xbox360和PS3这样的当代游戏机平台的，针对其他平台的权衡取舍处理可能是不同的。</strong>
+<p />
+分屏严重地打击了渲染线程，因为它要渲染的内容是原来的两倍。在渲染线程上有两个主要的性能消耗： 考虑进行渲染的图元组件或“处理的图元”的数量；渲染可见网格物体所使用的总的描画函数的数量，也就是统计数据中的“Mesh draw calls（网格物体描画调用）”。但并不是所有的描画调用的性能消耗都是相等的。粒子描画函数调用的性能消耗大约是静态网格物体和BSP描画函数调用的三倍，而想InterpActors、KActors和SkeletalMeshActors这样的动态对象的性能消耗大约是静态网格物体和BSp描画函数的两倍。网格物体发射器基于每个粒子生成一个描画调用，所以它们往往是给定场景中性能消耗最昂贵的资源。
+<p />
+在分屏模式下在控制台中输入'stat splitscreen'可以获得用于查看分屏性能的最佳统计数据。这个在PIE中也可以正常工作，您仅需要输入'debugcreateplayer 1'进入到分屏模式。您可以或者连接两个控制器或者使用 'ssswapcontrollers'切换输入到其他玩家。这里是战争机器3 SP 关卡在优化前的统计数据：
+<p />
+<img alt="StatSplitscreenSmall.jpg" src="rsrc/Three/OptimizingForSplitscreenCH/StatSplitscreenSmall.jpg" />
+<p />
+上面的统计数据导致在Xbox 360上花费50ms的渲染线程时间。为了降低这个值，达到在分割屏幕中使用33ms的目标，它们大约需要： <ul>
+<li> 1600个网格物体描画调用。
+</li> <li> 1700个处理图元。
+</li> <li> 150个粒子描画调用。
+</li></ul>
+<p />
+<h2><a name="找出性能消耗最昂贵的组件"></a> 找出性能消耗最昂贵的组件 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+首先，您需要知道关卡中的哪些部分是超出预算的。这可以通过启用'stat splitscreen'命令并在PIE或Xbox分屏中玩游戏，然后将获得数据和上面的目标进行比较。
+<p />
+对于静态网格物体actors，图元统计数据浏览器可能是最好用的工具。注意，您可以通过排序边界半径来快速找到关卡中最小的网格物体。您也可以选择多个行并按下回车来选中所有相关actors。
+<p />
+对于粒子，您可以通过输入'TRACKPARTICLERENDERINGSTATS' 控制台命令，接着在关卡中玩游戏，然后在输入'DUMPPARTICLERENDERINGSTATS'命令，收集到统计数据后，可以查看哪个粒子发射器和粒子系统的性能消耗最昂贵。'DUMPPARTICLERENDERINGSTATS'命令将会将会把两个电子表格文件转存到粒子统计数据的本地日志目录中。
+<p />
+<h2><a name="针对分幕缩小内容"></a> 针对分幕缩小内容 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+最好的方法是图元上的MaxDrawDistance或者使用设置激进的剔除距离体积。MaxDrawDistance可能会导致突兀的暴出现象，但是它比设置细节模式导致的问题更少，因为因为网格物体从近距离处渲染。MaxDrawDistance的不利方面是它仅降低统计数据 'Mesh draw calls(网格物体描画调用)'而不降低‘Processed primitives(处理的图元)’。关于设置剔除距离体积的文档，请参照这里： <a href="VisibilityCulling.html" class="twikiLink">可见性剔除</a>。
+<p />
+下一个最好的方法是将组件的DetailMode（细节模式）设置为High（高），这将使得它不会在分屏中渲染。这可以通过右击-&gt; LOD Operations(LOD操作)-&gt; Set Detail Mode（设置细节模式）-&gt;High(高级)来完成。但是当时用这个方法时您必须要小心，防止由于在光照贴图上留下暗点的网格物体或在光照贴图上创建了一个洞以便从外部接收光照的网格物体导致的可见的失真现象。您可以通过View(视图) -&gt; Detail Mode(细节模式) -&gt; Medium(中等)或者通过跳转到PIE中并输入'debugcreateplayer 1'来预览分屏中显示的内容。通过这种方式删除组件对于性能来说是最有效的，因为它降低了'Processed primitives(处理图元)' 和'Mesh draw calls(网格物体描画调用)'。
+<p />
+粒子发射器(在Cascade列中)有了个新的属性MediumDetailSpawnRateScale。这可以用于降低分屏中粒子个数，如果将该值设置为0将会完全地禁用粒子发射器。网格物体发射器基于每个粒子生成一个描画调用，所以降低粒子数量对它来说会产生很大的影响。在其他类型的发射器上，如果设置MediumDetailSpawnRateScale为0将仅会减少适当的性能消耗。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/OptimizingForSplitscreenCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:34:45 GMT -->
+</html></body>

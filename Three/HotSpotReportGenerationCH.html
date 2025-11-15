@@ -1,0 +1,456 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/HotSpotReportGenerationCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:38:37 GMT -->
+<head>
+<title> UDK | HotSpotReportGenerationCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">HotSpotReportGenerationCH  </b></div>
+<div id="tooltext">
+<a href="HotSpotReportGeneration.html" class="twikiLink">English Translation</a><br><a href="HotSpotReportGenerationJP.html" class="twikiLink">日本語訳</a><br><a href="HotSpotReportGenerationKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/HotSpotReportGenerationCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="PerformanceHome.html" class="twikiLink">性能、分析及优化</a></b> &gt; <b><a href="MemoryProfilingHome.html" class="twikiLink">内存使用和分析</a></b> &gt; 热点报告生成
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="热点报告生成"></a> 热点报告生成 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="HotSpotReportGenerationCH.html#热点报告生成"> 热点报告生成</a> <ul>
+<li> <a href="HotSpotReportGenerationCH.html#概述"> 概述</a>
+</li> <li> <a href="HotSpotReportGenerationCH.html#创建未使用的 _MemLeakCheck 数据"> 创建未使用的 MemLeakCheck 数据</a>
+</li> <li> <a href="HotSpotReportGenerationCH.html#创建可以从中获取数据的 CSV"> 创建可以从中获取数据的 CSV</a>
+</li> <li> <a href="HotSpotReportGenerationCH.html#全面趋势数据解析"> 全面趋势数据解析</a>
+</li> <li> <a href="HotSpotReportGenerationCH.html#解析单独的关卡 CSV"> 解析单独的关卡 CSV</a>
+</li> <li> <a href="HotSpotReportGenerationCH.html#为关卡设计师准备‘人性化’热点报告"> 为关卡设计师准备‘人性化’热点报告</a>
+</li> <li> <a href="HotSpotReportGenerationCH.html#要标注的项"> 要标注的项</a>
+</li> <li> <a href="HotSpotReportGenerationCH.html#要避免的项"> 要避免的项</a>
+</li> <li> <a href="HotSpotReportGenerationCH.html#准备一个追踪热点报告"> 准备一个追踪热点报告</a>
+</li> <li> <a href="HotSpotReportGenerationCH.html#长时间运行"> 长时间运行</a>
+</li> <li> <a href="HotSpotReportGenerationCH.html#冷点报告"> 冷点报告</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+下面的文章会说明如何为您的关卡设计师创建“热点报告”。这些报告将会由您的 QA 部门负责生成，而且可以用于识别由于子关卡动态载入和载出而造成的内存双列直插式封装。它们将允许您的 LD 更清楚地看到消耗最多内存的散列表元，并且应该允许他们优化他们的关卡使其满足内存需求。
+<p />
+<h2><a name="创建未使用的 _MemLeakCheck 数据"></a> 创建未使用的 MemLeakCheck 数据 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+为了获取我们将用于表示 SP 关卡内存状态的未使用数据，您需要进行下面的操作：
+<p />
+<ol>
+<li>加载 UnrealConsole 然后连接到将用于此次测试的游戏实例。</li>
+<li>在您计划从中捕捉数据的版本中启动 DebugConsole 可执行函数。</li>
+<li>加载进入您计划为其捕捉数据的 SP 关卡。</li>
+<li>进入关卡中后，使用下面的命令：
+<div style="margin:20px 0px;">
+	<div style="margin: 0px 10px; padding: 0px 10px;background:#f0f0f0;font:12px Courier;">
+	<code>DoMemLeakchecking 30</code>
+	</div>
+<p />
+	这里面的 30 表示 memleakcheck 捕捉数据之间的时间间隔（秒数）。如果需要，您可以增加或减少频率，但是为了随时可以正确追踪趋势，您通常需要使这个数字保持一致。
+</div>
+</li>
+<li>在 P 关卡要发生改变的时候打开 <code>统计数据关卡</code> 追踪功能。</li>
+<li>经过整个 P 关卡转换到下一个 P 关卡。</li>
+<li>在 2 捕获进入 P 关卡后，您转换返回主要菜单和/或重新启动。</li>
+<li><font color="#ff0000"><b>在开始另一个关卡捕获数据前通常会重新启动。</b></font></li>
+<li>根据列出的平台将 memleakcheck 文件创建在下面的文件夹中：
+	<div style="margin:20px 0px;">
+		<ul>
+		    <li>对于 PC/UDK：
+				<div style="margin:20px 0px;">
+					<div style="margin: 0px 10px; padding: 10px;border:1px solid #000;font:12px Courier;">
+					<code>[install]\[GameName]\Profiling\MEMLEAKS</code>
+					</div>
+				</div>
+			</li>
+		    <li>对于 iOS（将文档目录备份到 PC 中）。请参阅<a href="UnrealiPhonePackager-2.html#Deployment Tools">部署工具</a>了解有关备份文档目录的信息。):
+				<div style="margin:20px 0px;">
+					<div style="margin: 0px 10px; padding: 10px;border:1px solid #000;font:12px Courier;">
+					<code>[install]\[GameName]\iOS_Backups\[DeviceName]\Profiling\MemLeaks</code>
+					</div>
+		   		</div>
+		   	</li>
+<!--  -->
+		</ul>
+	</div>
+</li>
+<li>每个 memleakfile 将会被解析到在以它开始运行的关卡命名的文件夹中。
+<div style="margin:20px 0px;">
+	例如，如果您在 <strong>关卡-a</strong> 中开始捕捉数据，然后进入 <strong>关卡-b</strong> 和 <strong>关卡-c</strong> 捕捉数据，整个运行过程将会在 <strong>关卡-a</strong> 文件夹中。
+</div>
+</li>
+<li>将这些 memleakcheck 文件/文件夹复制到可以轻松到达的位置。</li>
+</ol>
+<p />
+<h2><a name="创建可以从中获取数据的 CSV"></a> 创建可以从中获取数据的 CSV </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<ol>
+<li>从下面的文件夹中启动 memleakcheckdiffer.exe：
+<div style="margin:20px 0px;">
+	<div style="margin: 0px 10px; padding: 10px;border:1px solid #000;font:12px Courier;">
+	<code>..\Binaries\</code>
+	</div>
+</div>
+</li>
+<li>在 MemLeakCheckDiffer 中，选择 <code>文件 &gt; 打开</code> 文件夹及其子文件中的所有 Memleak 文件 </li>
+<li>浏览并导航到您放置您的 memleakcheck 文件的位置。</li>
+<li>等待文件夹填充 MemLeakCheckDiffer。</li>
+<li>只要所有文件夹完成填充了 MemLeakCheckDiffer 窗口之后，请立即选择 <code>生成全面报告</code> 。</li>
+<li>将会生成每个关卡的 CSV，同时还会创建一个 GlobalSummary CSV。</li>
+<li>CSV 位于放置您的 MemLeakCheck 文件的文件夹内部。</li>
+</ol>
+<p />
+<h2><a name="全面趋势数据解析"></a> 全面趋势数据解析 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<ol>
+<li>在 Excel 中打开 GlobalSummary 电子表格。</li>
+<li>为了更加轻松地查看内容数据，隐藏除下面内容之外的所有代码行：
+<div style="margin:20px 0px;"> <ul>
+<li> LowestTFP
+</li> <li> AnimSequenceClasses
+</li> <li> SkeletalMesh_Classes
+</li> <li> SoundNodeWave
+</li> <li> StaticMesh_Classes
+</li></ul>
+</div>
+</li>
+<li>高亮显示这 5 行以散列表元名称开头以这一行最后一个值结尾的代码。</li>
+<li>选择它们后，选择 <code>插入 &gt; 线图</code> 。</li>
+<li>它可供您大致了解每个内容散列表元状态以及关卡内存整体趋势。</li>
+</ol>
+<p />
+<h2><a name="解析单独的关卡 CSV"></a> 解析单独的关卡 CSV </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+在您知道内存封装的位置之后，您需要查出那些可能会导致内存发生改变的内容散列表元。这是从指定双列直插封装中找到内存最小值，然后从这个封装中选取散列表元的值并在双列直插风窗开始之前减去减去这些散列表元的值。它将会使您轻松地确定在这个位置引发最多问题的内容散列表元。
+<p />
+例如，如果关卡在进行双列直插封装之前具有 10 MB 的 AnimSequence Class 数据，而且只要这个封装开始，在这个散列表元中它就会增加为 25 MB，LD 和其他开发人员将会了解到这里记载了一些需要很多动画数据的东西，而这样将会使关卡的内存降低。
+<p />
+如果可以，每个双列直插封装都应该随附这个数据。只需让 LD 知道随双列直插封装时加载的 w/子关卡改变的内容散列表元数量，通常这样做就足以使他们想出哪些需要来回转换或者哪些可能需要从关卡中剔除。
+<p />
+<h2><a name="为关卡设计师准备‘人性化’热点报告"></a> 为关卡设计师准备‘人性化’热点报告 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+在为关卡设计师准备热点报告的时候，谨记要传送尽可能多的可操作信息。也就是说他们需要知道在对内存进行双列直插封装后会发生什么事情。为达成此目的，我们可以确保包含一个内存开始减少时候动态载入的新子关卡的列表。
+<p />
+我们还会提供一个可以在进行封装之前将 LD 直接带到关卡区域的 bugit 位置，以便允许他们在编辑器或游戏中的这个位置环顾四周，使他们可以熟悉这里发生的事情以及可能需要改变的数量。
+<p />
+下面是一个关于我们的热点报告的示例：
+<p />
+<div style="margin: 0px 10px; padding: 10px;border:1px solid #000;">
+加载下面的子关卡进行测试过程中达到的最低内存值是 20 MB：
+<p /> <ul>
+<li> SP_Example_W
+</li> <li> SP_Example_02_boss
+</li> <li> SP_Example_02_S
+</li> <li> SP_Example_03
+</li> <li> SP_Example_04
+</li></ul>
+<p />
+从下面的图表中，您可以看到 2 个双列直插封装位于 30 MB 标记以下：
+<p />
+<img src="rsrc/Three/HotSpotReportGenerationCH/examplegraph.jpg" alt="examplegraph.jpg" width="800" height="418" />
+<p />
+<strong>第一个双列直插封装</strong>
+<p />
+下面的 bugit 位置会在进行该封装之前直接将您带到关卡区域：
+<p />
+<div style="margin: 0px 10px; padding: 0px 10px;background:#f0f0f0;font:12px Courier;">
+<pre>
+BugItGo -1858.2000 -2162.7903 1572.0010 64073 -16686 0&#61;
+</pre>
+</div>
+<p />
+在进行双列直插封装过程中，Anim Sequence Classes 增加了 15 MB，Skeletal Mesh Classes 增加了 5 MB，Sound Node Waves 增加了 5 MB 以及 Static Mesh Classes 增加了 2 MB。
+<p />
+以下是在进行双列直插封装第一部分的第三次和第六次捕捉数据之间动态载入的新子关卡：
+<p /> <ul>
+<li> SP_Example _Cine
+</li></ul>
+<p />
+<strong>第二个双列直插封装</strong>
+<p />
+下面这个 bugit 位置会在进行第二次封装之前直接将您带到关卡区域。
+<p />
+<div style="margin: 0px 10px; padding: 0px 10px;background:#f0f0f0;font:12px Courier;">
+<pre>
+BugItGo 904.3768 261.3029 1761.1804 -4788 -20256 72
+</pre>
+</div>
+<p />
+在进行双列直插封装过程中，Anim Sequence Classes 增加了 10 MB，Skeletal Mesh Classes 增加了 2.5 MB，Sound Node Waves 增加了 5 MB 以及 Static Mesh Classes 增加了 1 MB。
+<p />
+在第 8 次和第 12 次捕捉数据之间进行第二次封装的过程中动态载入下面的子关卡：
+<p /> <ul>
+<li> SP_Example_02_boss
+</li> <li> SP_Example_02_S
+</li> <li> SP_Example_03
+</li></ul>
+<p />
+</div>
+<p />
+<h2><a name="要标注的项"></a> 要标注的项 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+通常在进行封装的单独散列表员中的任何大型变更都应该标注。在很多情况下，例如，过场动画，由于像开启烘焙和剔除这样简单的解决方法的 bug 会使某些散列表元大量增加。通常最好可以尽快完成所有此类可以轻易实现的目标。
+<p />
+<h2><a name="要避免的项"></a> 要避免的项 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+在编译热点报告的时候，您需要避免标注 LD 无法对其施加作用的散列表元。您还需要确定这里是否有会提供可操作数据的散列表元。在我们的测试中，Texture 池统计数据不是可以查看内存的有效散列表元，这是因为限制它们的方式与记录的内容有所不同。
+<p />
+<h2><a name="准备一个追踪热点报告"></a> 准备一个追踪热点报告 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+追踪热点报告允许 LD 们查看自从他们接收到第一份内存报告开始进行改进或衰退的程度。在内存改进（甚至在内存足够好不需要再改进的时候）之后发送一份追踪报告可以帮助 LD 了解他们进行的更改产生的积极作用，所以这样做至关重要。
+<p />
+最终目标是使关卡处于并保持在内存中，与此同时使 LD 有希望发现目前他们的关卡整体状况是决定它是否会发生的关键。
+<p />
+<h2><a name="长时间运行"></a> 长时间运行 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+只要内存中有足够的关卡，就可以在多个关卡上开始进行长期内存运行。要进行这项操作，您只需查找没有阻塞的关卡的一大段时间，然后启动 <code>domemleakchecking 30</code> 命令并尽量播放的时间长一些。在运行这些内存的过程中我们可以使用 <code>reducepoolsize</code> 运行，所以我们可以得到一段最长的时间。
+<p />
+使用这个数据，您可以比较运行和不断运行单独关卡之间的差异，从而得到这两者的内存 delta 基数。查看这个 delta 将会使您知道开始构建为单独关卡将需要的花费，而且会帮助定位可能会发生的任何内存泄露。
+<p />
+<h2><a name="冷点报告"></a> 冷点报告 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+只要解决了内存封装的问题并且游戏在内存范围内（并且时间允许），可以执行冷点报告系统。这就意味着要不断地重复进行收集内存这个过程，但是现在您将需要集中精力于哪些区域有可以添加内存的空间，而不需要缩减内存。如果可以尽早完成这项操作，那么允许 LD 将那些恰好在内存范围内的区域勾勒得栩栩如生。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/HotSpotReportGenerationCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:38:38 GMT -->
+</html></body>

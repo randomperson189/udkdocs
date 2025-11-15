@@ -1,0 +1,382 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingTerrain.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:15:39 GMT -->
+<head>
+<title> UDK | UsingTerrain    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">UsingTerrain  </b></div>
+<div id="tooltext">
+<a href="UsingTerrainJP.html" class="twikiLink">日本語訳</a><br><a href="UsingTerrainCH.html" class="twikiLink">中国翻译</a><br><a href="UsingTerrainKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/UsingTerrain -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="TerrainHome.html" class="twikiLink">Terrain System</a></b> &gt; Using Terrain
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Using Terrain"></a> Using Terrain </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="UsingTerrain.html#Using Terrain"> Using Terrain</a> <ul>
+<li> <a href="UsingTerrain.html#Overview"> Overview</a>
+</li> <li> <a href="UsingTerrain.html#Terrain Properties"> Terrain Properties</a> <ul>
+<li> <a href="UsingTerrain.html#Terrain"> Terrain</a> <ul>
+<li> <a href="UsingTerrain.html#NumPatchesX and _NumPatchesY"> NumPatchesX and NumPatchesY</a>
+</li> <li> <a href="UsingTerrain.html#MaxTesselationLevel"> MaxTesselationLevel</a>
+</li> <li> <a href="UsingTerrain.html#MinTessellationLevel"> MinTessellationLevel</a>
+</li> <li> <a href="UsingTerrain.html#MaxComponentSize"> MaxComponentSize</a>
+</li> <li> <a href="UsingTerrain.html#EditorTessellationLevel"> EditorTessellationLevel</a>
+</li> <li> <a href="UsingTerrain.html#NormalMapLayer"> NormalMapLayer</a>
+</li> <li> <a href="UsingTerrain.html#TesselationDistanceScale"> TesselationDistanceScale</a>
+</li> <li> <a href="UsingTerrain.html#b_MorphingEnabled"> bMorphingEnabled</a>
+</li> <li> <a href="UsingTerrain.html#b_MorphingGradientsEnabled"> bMorphingGradientsEnabled</a>
+</li></ul>
+</li> <li> <a href="UsingTerrain.html#Lighting"> Lighting</a> <ul>
+<li> <a href="UsingTerrain.html#StaticLightingResolution and b_IsOverridingLightResolution"> StaticLightingResolution and bIsOverridingLightResolution</a>
+</li> <li> <a href="UsingTerrain.html#b_EnableSpecular"> bEnableSpecular</a>
+</li></ul>
+</li> <li> <a href="UsingTerrain.html#Collision"> Collision</a> <ul>
+<li> <a href="UsingTerrain.html#CollisionTesselationLevel"> CollisionTesselationLevel</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Terrain was changed to a system where detail is now removed from the mesh as distance from the mesh increases. This allows for the designer to have control of the detail when the vertices are present.
+<p />
+<h2><a name="Terrain Properties"></a> Terrain Properties </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<img alt="Terrain_Properties.jpg" src="rsrc/Three/UsingTerrain/Terrain_Properties.jpg" /><br>
+<p />
+<h3><a name="Terrain"></a> Terrain </h3>
+<p />
+<h4><a name="NumPatchesX and _NumPatchesY"></a> NumPatchesX and NumPatchesY </h4>
+<p />
+The number of patches contained in a single row of the terrain is determined by NumPatchesX. The number of patches in a single column is NumPatchesY.
+<p />
+Note that if you make these dimensions smaller, it will destroy the height-map/alpha-map and other data which is no longer used by the patches. If you make the dimensions larger, it simply fills in the new height-map/alpha-map and other data with zero.
+<p />
+The total size of the terrain can be determined with the following formulas:
+<p />
+<em>SizeX = NumPatchesX * DrawScale * DrawScale3D.X</em>
+<p />
+<em>SizeY = NumPatchesY * DrawScale * DrawScale3D.Y</em>
+<p />
+<h4><a name="MaxTesselationLevel"></a> MaxTesselationLevel </h4>
+<p />
+This is the maximum number of patches (row and column) that will be collapsed into a single quad when tessellating out detail. Must be a power of two, 1 &lt;= MaxTesselationLevel &lt;= 16.
+<p />
+Note that this means the values used for NumPatchesX and NumPatchesY must be multiples of MaxTesselationLevel.
+<p />
+As an example, the following shot shows a terrain with NumPatchesX of 4, NumPatchesY of 4 and a MaxTesselationLevel of 4 at each of the possible 3 tessellation levels. The leftmost is at full detail, with a 4x4 grid of patches present. The middle is at half, displaying a 2x2 grid of collapsed patches. The rightmost is at the lowest level, showing a single quad that covers the original area.
+<p />
+<img alt="Terrain_Tessellation.jpg" src="rsrc/Three/UsingTerrain/Terrain_Tessellation.jpg" /><br>
+<p />
+<h4><a name="MinTessellationLevel"></a> MinTessellationLevel </h4>
+<p />
+This is the minimum number of ‘sub-quads’ (row and column) to collapse to when tessellating out detail. Note that if the value is equal to MaxTesselationLevel, the terrain will not tessellate out any detail.
+<p />
+<h4><a name="MaxComponentSize"></a> MaxComponentSize </h4>
+<p />
+For the engine, the terrain is split up into rectangular groups of patches called terrain components for rendering.  MaxComponentSize is the maximum number of fully detessellated quads in a single row/column of a terrain component. (The maximum number of physical patches at full tessellation detail in a single row/column of a terrain component is simply this number times the MaxTesselationLevel.)
+<p />
+Generally, all components will be MaxComponentSize quads square, but on terrains with a patch resolution which isn't a multiple of MaxComponentSize quads, there will be some components along the edges which are smaller.
+<p />
+This is limited by the MaxTesselationLevel to prevent the vertex buffer for a fully tessellated component from being &gt; 65536 vertices.
+<p />
+For a MaxTesselationLevel of 16, MaxComponentSize is limited to &lt;= 14. <br>
+For a MaxTesselationLevel of 8, MaxComponentSize is limited to &lt;= 30. <br>
+<p />
+Each terrain component is a distinct DrawMesh call. Depending on the complexity of the material applied, which is a result of the layers applied to the patch of terrain as well as the tessellation level rendered, components will have varying performance costs.
+<p />
+If a particular layer is applied to a single terrain component, other components do not pay for it. Note that it may be somewhat difficult to see when a layer is actually 'spilling' into a neighboring component. The highlight-overlay exposed via the terrain browser or property window can be helpful in spotting these cases.
+<p />
+<strong>Viewing MaxComponentSize:</strong> To see the component sizes on the terrain, check the flag on the viewport Show Flags menu - "Terrain Patches". When enabled, terrain will render yellow boxes around each component in the terrain.
+<p />
+MaxComponentSize indicates the number of quads that will be contained in a single UTerrainComponent instance for the terrain - the higher the number, the fewer 'sub-pieces' of terrain.
+<p />
+The number of components is determined by the following:
+<p />
+<em>NumSectionsX = ((NumPatchesX / MaxTesselationLevel) + MaxComponentSize - 1) / MaxComponentSize</em>
+<p />
+<em>NumSectionsY = ((NumPatchesY / MaxTesselationLevel) + MaxComponentSize - 1) / MaxComponentSize</em>
+<p />
+<h4><a name="EditorTessellationLevel"></a> EditorTessellationLevel </h4>
+<p />
+This is a visualization helper that is used in the editor only. It allows the designer to select the tessellation level to view the terrain at in all viewports of the editor. When a 1 is entered, the terrain would be displayed at it lowest detail level. The value must be power of two, and 1 &lt;= EditorTessellationLevel &lt;= MaxTesselationLevel. When set to 0, the terrain will tessellate according to the standard algorithm that is used during game-time.
+<p />
+(NOTE: Currently, in PIE, this value will still impact the terrain being displayed.)
+<p />
+<h4><a name="NormalMapLayer"></a> NormalMapLayer </h4>
+<p />
+This is a hack index for selecting a single layers normal map as the normal map to be applied to the whole terrain.
+<p />
+<h4><a name="TesselationDistanceScale"></a> TesselationDistanceScale </h4>
+<p />
+This is used to scale the distance value used for determining the desired tessellation level to render a quad at. The higher the value, the closer tessellating out details will occur.
+<p />
+<h4><a name="b_MorphingEnabled"></a> bMorphingEnabled </h4>
+<p />
+This is used to indicate that the terrain should morph vertices between tessellation levels. While visually this removes the potential ‘popping’ that can occur on transitions, users should that that it is more expensive both in terms of vertex bandwidth and shader instruction count.
+<p />
+<h4><a name="b_MorphingGradientsEnabled"></a> bMorphingGradientsEnabled </h4>
+<p />
+This is used to indicate that not only should the height values be morphed, but the gradients should as well. (It means nothing if bMorphingEnabled is FALSE.)
+The effects of this option were not greatly noticeable on the test maps used, so it was made a secondary option.
+This mode is more expensive than standard morphing due to addition vertex size and shader instruction counts.
+<p />
+<h3><a name="Lighting"></a> Lighting </h3>
+<p />
+<h4><a name="StaticLightingResolution and b_IsOverridingLightResolution"></a> StaticLightingResolution and bIsOverridingLightResolution </h4>
+<p />
+This is the number of texels/patch size to use for the static shadow-maps.
+A separate shadow-map is used for each terrain component, which is up to (MaxComponentSize * StaticLightingResolution + 1) pixels on a side.
+<p />
+If bIsOverridingLightResolution is not checked, it must be a power of two, 1 &lt;= StaticLightingResolution &lt;= MaxTesselationLevel.
+<p />
+If it is checked, it must be a power of two, 1 &lt;= StaticLightingResolution &lt;= ###.
+<p />
+<h4><a name="b_EnableSpecular"></a> bEnableSpecular </h4>
+<p />
+When checked, specular lighting will be enabled for the terrain actor.
+When unchecked (the default), specular lighting will be disabled for both dynamic and static lighting.
+<p />
+<h3><a name="Collision"></a> Collision </h3>
+<p />
+<h4><a name="CollisionTesselationLevel"></a> CollisionTesselationLevel </h4>
+<p />
+This is the tessellation level to use when performing collision calculations. The value must be power of two, 1 &lt;= CollisionTesselationLevel &lt;= MaxTesselationLevel.
+So, a value of 1 would utilize the lowest tessellation level (the least detail). A value of MaxTesselationLevel would use the fully detailed mesh as the collision data.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingTerrain.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:15:40 GMT -->
+</html></body>

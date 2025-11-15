@@ -1,0 +1,346 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingNavigationMeshesCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:36 GMT -->
+<head>
+<title> UDK | UsingNavigationMeshesCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">UsingNavigationMeshesCH  </b></div>
+<div id="tooltext">
+<a href="UsingNavigationMeshes.html" class="twikiLink">English Translation</a><br><a href="UsingNavigationMeshesJP.html" class="twikiLink">日本語訳</a><br><a href="UsingNavigationMeshesKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/UsingNavigationMeshesCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt; <b><a href="AIAndNavigationHome.html" class="twikiLink">AI &amp; 导航</a></b> &gt; 使用导航网格物体
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="使用导航网格物体"></a> 使用导航网格物体 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="UsingNavigationMeshesCH.html#使用导航网格物体"> 使用导航网格物体</a> <ul>
+<li> <a href="UsingNavigationMeshesCH.html#概述"> 概述</a>
+</li> <li> <a href="UsingNavigationMeshesCH.html#Pylon（双锥晶塔）"> Pylon（双锥晶塔）</a> <ul>
+<li> <a href="UsingNavigationMeshesCH.html#将 Pylons 链接在一起"> 将 Pylons 链接在一起</a>
+</li> <li> <a href="UsingNavigationMeshesCH.html#浅谈在其他双锥晶塔内部的双锥晶塔"> 浅谈在其他双锥晶塔内部的双锥晶塔</a>
+</li> <li> <a href="UsingNavigationMeshesCH.html#为 Pylon 设置扩展区域"> 为 Pylon 设置扩展区域</a>
+</li></ul>
+</li> <li> <a href="UsingNavigationMeshesCH.html#动态 Pylon"> 动态 Pylon</a>
+</li> <li> <a href="UsingNavigationMeshesCH.html#调试绘制"> 调试绘制</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+该文档主要简要介绍了有关将导航网格物体添加到您的关卡中的内容。过程非常简单，其中最复杂的部分是确定如何分裂您的网格物体。
+<p />
+<h2><a name="Pylon（双锥晶塔）"></a> Pylon（双锥晶塔） </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<img alt="PylonTreeView.gif" src="rsrc/Three/UsingNavigationMeshesCH/PylonTreeView.gif" />
+<p />
+整个过程实际上只是将一个称为 Pylon 的特定 actor 类型放置在您的关卡中。该双锥晶塔会做两件事；首先，它会通知自动生成系统从哪里开始探查（这是探查种子点），而第二件事是通知自动系统距离要探查该双锥晶塔还有多远。
+<p />
+例如，下面的屏幕截图中，地图中央放置了一个双锥晶塔，而且在要探查的双锥晶塔内提供了一个围绕它的小半径
+<p />
+<img alt="PylonSmallRad.gif" src="rsrc/Three/UsingNavigationMeshesCH/PylonSmallRad.gif" />
+<p />
+在这里要记住的要点是单独的双锥晶塔不代表整个 AI 可移动空间。它仅仅是可移动空间中的一部分。您的实际关卡将包含一些全部都链接在一起的双锥晶塔。将为每个双锥晶塔生成的网格物体保存在该双锥晶塔内部，因此像这样分裂网格物体会使您在任何指定时间控制网格物体的哪一部分载入和载出。
+<p />
+<h3><a name="将 Pylons 链接在一起"></a> 将 Pylons 链接在一起 </h3>
+<p />
+使双锥晶塔彼此链接十分容易。您只需要确保您希望链接有点重叠的双锥晶塔的探查区域。例如，下面是两个双锥晶塔，它们的扩展半径稍微重叠：
+<p />
+<img alt="RadiusOverlap.gif" src="rsrc/Three/UsingNavigationMeshesCH/RadiusOverlap.gif" />
+<p />
+这会促成根据两个球体之间的重叠线链接的两个网格物体。这是最终网格物体的截图：
+<p />
+<img alt="DoublePylon.gif" src="rsrc/Three/UsingNavigationMeshesCH/DoublePylon.gif" />
+<p />
+注意：光源黄色填充的垂直表面顺着两个双锥晶塔之间的表面。这表示这两个双锥晶塔之间是松散的链接。（如果加载了两个双锥晶塔，松散链接的意思是 AI 可以在它们之间行走。
+<p />
+<h3><a name="浅谈在其他双锥晶塔内部的双锥晶塔"></a> 浅谈在其他双锥晶塔内部的双锥晶塔 </h3>
+<p />
+有一个双锥晶塔完全在另一个双锥晶塔的扩展区域中，这是完全可以的。将会发生的是会首先创建较小的双锥晶塔，然后在较小的双锥晶塔周围创建较大的双锥晶塔，适当地对它进行链接。*但是！* 请记住您永远不得有两个同时都互相完全在对方内部的双锥晶塔。用图片进行说明更容易理解：
+<p />
+<img alt="oknotok.jpg" src="rsrc/Three/UsingNavigationMeshesCH/oknotok.jpg" />
+<p />
+这不会使您的计算机熔化，但是在这种情况下无法创建其中一个双锥晶塔，所以您可能最后没有获得您预期想要的网格物体。
+<p />
+<h3><a name="为 Pylon 设置扩展区域"></a> 为 Pylon 设置扩展区域 </h3>
+<p />
+有两种方法可以让双锥晶塔知道它应有的边界。默认且最简单的方法就是半径。如果您首先将双锥晶塔放置在关卡中，那么您会看到围绕它绘制的球体，它就像一个点光源。这个球体内部就是双锥晶塔要探查的地方。
+<p />
+<img alt="pylonradius.jpg" src="rsrc/Three/UsingNavigationMeshesCH/pylonradius.jpg" />
+<p />
+备选方案是为这个双锥晶塔提供一个要探查的双锥晶塔内部体积的列表。 游戏/&lt;游戏名称&gt;/目标文件夹 包含可以编译游戏的平台的“target projects（目标项目）”。要设置这个选项，您可以选择该双锥晶塔，然后在属性窗口中手动将体积插入到列表，或者像酷小子们 一样使用 snazy 方法。这个 snazy 方法是选择双锥晶塔，然后选择所有您想要其开发内部的体积，并按下 Ctrl+Shift+L。这会通知双锥晶塔将您现在已经选择的所有体积添加到它的列表中。
+<p />
+选择的所有体积和双锥晶塔：
+<p />
+<img alt="volumes_selected.jpg" src="rsrc/Three/UsingNavigationMeshesCH/volumes_selected.jpg" />
+<p />
+链接到双锥晶塔的所有体积：
+（注意：选择了双锥晶塔后，会将任何链接的体积绘制为半透明，而且将会绘制黄色线将双锥晶塔链接到该体积，这里可以帮助您看到该双锥晶塔被链接到了哪些体积）
+<p />
+<img alt="volumes_linked.jpg" src="rsrc/Three/UsingNavigationMeshesCH/volumes_linked.jpg" />
+<p />
+此外，要取消链接双锥晶塔中的体积，只需选择该双锥晶塔，然后选择您想要取消链接的体积并按下 Ctrl+Shift+L，它将会触发到该双锥晶塔的链接。 （您还可以只是从双锥晶塔的 actor 属性 ExpansionVolumes 列表中将其删除）
+<p />
+<h2><a name="动态 Pylon"></a> 动态 Pylon </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<img alt="DynamicPylonTreeView.gif" src="rsrc/Three/UsingNavigationMeshesCH/DynamicPylonTreeView.gif" />
+<p />
+动态双锥晶塔就是可以移动的双锥晶塔。它可以用于诸如电梯或移动的平台这种您希望 AI 可以继续前进，以及转移/离开的地方。在下面的示例中以这个平台为例：
+<p />
+<img alt="dynamic_platform.jpg" src="rsrc/Three/UsingNavigationMeshesCH/dynamic_platform.jpg" />
+<p />
+这个平台上的动态双锥晶塔会在其半径内部创建一个网格物体，但是重点是注意该网格物体与 Dynamic Pylon（动态双锥晶塔）相关，它现在被附加到了这个移动的平台。这意味着该平台移动时，这个网格物体也会移动。
+<p />
+<img alt="dynamic_platform2.jpg" src="rsrc/Three/UsingNavigationMeshesCH/dynamic_platform2.jpg" />
+<p />
+只要平台已经停止移动，那么该动态双锥晶塔会自动将自己链接到该区域中的其他网格物体。
+<p />
+<img alt="dynamic_platform_edges.jpg" src="rsrc/Three/UsingNavigationMeshesCH/dynamic_platform_edges.jpg" />
+<p />
+（注意表示交叉双锥晶塔边缘的红色短划线）
+<p />
+使用动态双锥晶塔需要记住的最重要的事情是为动态双锥晶塔创建的网格物体的任何部分都将会随它一起移动！ 所以注意您让动态双锥晶塔扩展的地方。
+<p />
+就是这样。您学会了将网格物体添加到您的关卡。
+<p />
+下面是一些有关调试绘制的信息以及它所代表的所有含义：
+<p />
+<h2><a name="调试绘制"></a> 调试绘制 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<img alt="debuginfo_key.jpg" src="rsrc/Three/UsingNavigationMeshesCH/debuginfo_key.jpg" />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingNavigationMeshesCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:39 GMT -->
+</html></body>

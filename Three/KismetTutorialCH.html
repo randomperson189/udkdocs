@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/KismetTutorialCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:38:30 GMT -->
+<head>
+<title> UDK | KismetTutorialCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">KismetTutorialCH  </b></div>
+<div id="tooltext">
+<a href="KismetTutorial.html" class="twikiLink">English Translation</a><br><a href="KismetTutorialJP.html" class="twikiLink">日本語訳</a><br><a href="KismetTutorialKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/KismetTutorialCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<h1><a name="Unreal Kismet 指南"></a> Unreal Kismet 指南 </h1>
+<p />
+ <em>文档概要：关于使用UnrealKismet 创建简单序列的指南。</em>
+<p />
+<em>文档变更记录: 由<a href="https://udn.epicgames.com/Main/AlanWillard" class="restricted" class="restricted" class="twikiLink">Alan Willard</a>创建。</em>
+<p />
+<h2><a name="简介"></a> 简介 </h2>
+<p />
+关于使用UnrealKismet的更多信息，请参照<a href="KismetUserGuide.html" class="twikiLink">Kismet用户指南</a>或 <a href="KismetReference.html" class="twikiLink">Kismet参考指南</a>。
+<p />
+<h2><a name="指南"></a> 指南 </h2>
+<p />
+UnrealKismet中的脚本创建是相当的简单的。本指南假设您熟悉虚幻引擎3中的关卡创建。首先，我们将创建一个用于打开和关闭光源的简单脚本。
+<p /> <ol>
+<li> 创建一个简单的关卡，仅具有一个PlayerStart 和一个PointLightToggleable。
+</li> <li> 在PointLightToggleable actor 上启用动态光源(properties(属性)&gt;Light(光源)&gt;bForceDynamicLight=true)。
+</li> <li> 在世界中放置一个trigger(触发器)，并设置它不能被隐藏(properties(属性)&gt;Advanced(高级)&gt;bHidden(是否隐藏)=false)。
+</li> <li> 选择一个光源，并通过点击工具条上的K图标来打开UnrealKismet工作区。
+</li> <li> 右击Kismet工作区，然后通过选择'New Object Var Using <i>Selected Actor</i>(使用<i>选中的Actor</i>新建对象变量)'菜单项(<i>Selected Actor(选中的Actor) </i>将会被选中的actor的名称所替换)。现在您应该可以在对象变量的里面看到一个光源的图标和一个具有唯一名称的光源。
+</li> <li> 下一步是向Trigger附加一个事件。在主编辑器窗口中选择那个Trigger。
+</li> <li> 右击Kismet工作区并通过选择'New Event Using <i>Trigger_0</i>(使用<i>Trigger_0</i>新建事件)'来创建一个Touch事件。这是一个情境关联的菜单，所以您仅可以看到Trigger支持的那些事件。在'Create Event(创建事件)'子菜单，选择'Touch'选项来为Trigger_0创建一个Touch事件。
+</li> <li> 下一步是为事件分配一个动作来执行。右击Kismet工作区，并选择'NewAction(新建动作) -&gt; Toggle(切换) -&gt; Toggle(切换)'。
+</li> <li> 从Touch事件的'Touched'输出端向Toggle动作的输入端拖拽一条连线。您将会注意到Toggle动作有一个底部标记为'Target'的节点。Kismet中的组件的输入端和输出端是根据可以和它们一同使用的变量类型进行颜色编码的。在这种情况下，Target是紫色，所以需要一个对象型变量。
+</li> <li> 在这个例子中，我们想通过从‘Target’节点向创建的包含光源的对象变量拖拽一条线，从而把target和光源对象变量连接到一起。这将会导致Toggle动作在每次被触发时，将会打开或者关闭光源。如果您仅想关闭或打开光源，您仅需要把它和与那个动作相关的输入端连接到一起即可。
+</li> <li> 几乎要完成了，  设置Touch事件并查看下面的编辑器属性。因为我们想不止一次地打开并关闭这个光源，所以设置MaxTriggerCount(最大触发数)为0，这等同于触发的次数没有限制。
+</li> <li> 同时，设置ReTriggerDelay为一个较小的值，比如.1，从而避免可能会出现的快速地处罚两次事件的情形出现。
+</li></ol>
+<p />
+当您完成这些操作后，应该会看到以下状态：
+<p />
+<img alt="kismet_tutorial.gif" src="rsrc/Three/KismetTutorialCH/kismet_tutorial.gif" />
+<p />
+<p />
+现在，关闭UnrealKismet，并通过使用编辑器顶部的Build(构建)菜单或者通过右击世界并选择'Play from here(从这里开始播放)'并当您在关卡内部时按下‘P’键来播放关卡。假设您正在运行一个干净版本的ExampleGame  clientspec，现在应该会有一个默认的人物出现在世界中，并且附加到您的相机上，而不是像幽灵那样到处乱跑。找到Trigger(触发器)并触摸它。光源将会关闭。远离Trigger然后再回来，光源应该变为打开状态！  恭喜您啊，现在您已经创建了一个可以正常工作的UnrealKismet游戏脚本。
+<p />
+另一各种完成这个情形的方法是：
+<p />
+您可以把touch事件和Toggle上的Turn Off(关闭)相连，然后再创建一个UnTouch事件和Toggle的Turn On(打开)输入端相连。这样将会仅在玩家触摸触发器时光源关闭。
+<p />
+<h2><a name="问题解决"></a> 问题解决 </h2>
+<p />
+要想触发Touch(触摸)事件，使用启用了碰撞(bCollideActors)的Pawn是必要的。默认情况下，ExampleGame包中的ExamplePlayerController是观看模式，这样将不会触发您的序列。
+<p />
+注意： 你必须使用一个'PointLightToggleable(可切换的点光源)’，使用'PointLight(点光源)'这将不会工作的。如果您的光源没有切换，但是您的Kismet序列却在工作，请检查您是否意外地使用了错误的光源类型。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/KismetTutorialCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:38:30 GMT -->
+</html></body>

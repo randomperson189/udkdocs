@@ -1,0 +1,452 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TextureStreaming.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:20:57 GMT -->
+<head>
+<title> UDK | TextureStreaming    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">TextureStreaming  </b></div>
+<div id="tooltext">
+<a href="https://udn.epicgames.com/Three/TextureStreamingJP" class="restricted" class="restricted" class="twikiLink">日本語訳</a><br><a href="https://udn.epicgames.com/Three/TextureStreamingCH" class="restricted" class="restricted" class="twikiLink">中国翻译</a><br><a href="TextureStreamingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/TextureStreaming -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="MaterialsAndTexturesHome.html" class="twikiLink">Materials &amp; Textures</a></b> &gt; Texture Streaming <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="RenderingHome.html" class="twikiLink">Rendering</a></b> &gt; Texture Streaming
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Texture Streaming"></a> Texture Streaming </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="TextureStreaming.html#Texture Streaming"> Texture Streaming</a> <ul>
+<li> <a href="TextureStreaming.html#Overview"> Overview</a>
+</li> <li> <a href="TextureStreaming.html#Streaming Type"> Streaming Type</a> <ul>
+<li> <a href="TextureStreaming.html#StreamType Static"> StreamType Static</a>
+</li> <li> <a href="TextureStreaming.html#StreamType Dynamic"> StreamType Dynamic</a>
+</li> <li> <a href="TextureStreaming.html#StreamType Forced"> StreamType Forced</a>
+</li> <li> <a href="TextureStreaming.html#StreamType _LastRenderTime"> StreamType LastRenderTime</a>
+</li> <li> <a href="TextureStreaming.html#StreamType Orphaned"> StreamType Orphaned</a>
+</li></ul>
+</li> <li> <a href="TextureStreaming.html#Decals"> Decals</a>
+</li> <li> <a href="TextureStreaming.html#Pre-streaming Textures"> Pre-streaming Textures</a>
+</li> <li> <a href="TextureStreaming.html#Boosting"> Boosting</a>
+</li> <li> <a href="TextureStreaming.html#TexelFactor"> TexelFactor</a>
+</li> <li> <a href="TextureStreaming.html#Cinematic Mip-Levels"> Cinematic Mip-Levels</a>
+</li> <li> <a href="TextureStreaming.html#Special Texture Groups"> Special Texture Groups</a>
+</li> <li> <a href="TextureStreaming.html#Panic Stream Out"> Panic Stream Out</a>
+</li> <li> <a href="TextureStreaming.html#Optimizing and debugging texture streaming"> Optimizing and debugging texture streaming</a>
+</li> <li> <a href="TextureStreaming.html#Some .ini Settings"> Some .ini Settings</a>
+</li> <li> <a href="TextureStreaming.html#Stat Streaming"> Stat Streaming</a>
+</li> <li> <a href="TextureStreaming.html#Stat _StreamingDetails"> Stat StreamingDetails</a>
+</li> <li> <a href="TextureStreaming.html#Console commands"> Console commands</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The texture streaming system is multi-threaded and priority-based. When using a texture pool (i.e. on consoles), it won't stream out a texture until that memory is needed by another texture with higher priority, which makes texture quality more stable and prevents unnecessary disk access.
+<p />
+The priority of a texture is primarily based on distance but it also takes other factors into account, such as time, wanted resolution and whether it's forced (flagged to be fully streamed in).
+<p />
+The system periodically calculates two values for each streaming texture: the wanted number of mip-levels and the priority. It then sorts all textures based on their priorities and tries to make sure that all textures have at least the number of wanted mip-levels in memory, starting with the texture with the highest priority. If a texture needs to stream in more mip-levels and there isn't enough memory available at the time, it will start to stream out mip-levels from low-priority textures and try again next time.
+<p />
+<h2><a name="Streaming Type"></a> Streaming Type </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The streaming system uses several different types of heuristics when it determines how many mip-levels a textures wants to have in memory. Normally a texture uses only one heuristic but in some cases it can use multiple, such as when the same texture is used on a static mesh as well as a skeletal mesh. In that case, it will pick the highest result (the highest number of wanted mip-levels) among the heuristics used.
+<p />
+The number of wanted mip-levels is clamed to a certain valid range. This range is derived from a number of different factors, such as texture group LOD settings, cinematic mip-levels, packed mip-tails on Xbox, global min and max settings (GMinTextureResidentMipCount and GMaxTextureMipCount) and whether the texture is forced to be fully loaded.
+<p />
+Some types of textures are not handled by any of the normal heuristics because they are not actively tracked by the streaming system. This applies in particular to effect textures. These textures are handled by a fallback heuristic that basically results in all-or-nothing, based on whether it has been rendered within the last 90 seconds. Since the streaming system doesn't track these textures, it can cause a problem if such a texture is also used by some other geometry. The streaming system will only know about the other geometry and will stream the texture solely based on that heuristic. The number of wanted mip-levels will be low when that geometry is far away, even if an effect that uses the same texture is close to the camera. Avoid sharing textures in these cases.
+<p />
+<h3><a name="StreamType Static"></a> StreamType Static </h3>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+This stream type is used for all static objects that are placed in a level in the Unreal Editor. It's essentially distance-based, where it calculates approximately how many pixels the texture occupies on the screen and derives what mip-level it needs to match that resolution.
+<p />
+<h3><a name="StreamType Dynamic"></a> StreamType Dynamic </h3>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Textures on dynamic objects like skeletal meshes or spawned objects uses a dynamic heuristic. It's very similar to the static stream type, but the streaming system keeps track of attach/detach and position and bounding box changes and updates the calculations accordingly.
+<p />
+<h3><a name="StreamType Forced"></a> StreamType Forced </h3>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Textures on objects that has the bForceMipStreaming flag set, or are forced by a Kismet action or game code, will set its WantedMips to the maximum value. They will have a higher-than-normal priority and will be stream in all their mip-levels as soon as possible. Forced textures normally use a timer and will automatically go back to normal streaming behavior when the timer expires. This timer is provided for convenience and as a safe-guard against forgetting to turn off the forced flag. Set the timer to a comfortably large number so you're sure to cover the intended period of time, but it's still a good idea to manually disable it as soon as you know you won't need it anymore. It's very important to turn off Forced as soon as its not needed anymore since a lot of these Forced textures will use up a lot of texture memory and can cause other textures to be streamed out. You can monitor the Forced texture usage with STAT STREAMINGDETAILS or LISTSTREAMINGTEXTURES.
+<p />
+<h3><a name="StreamType _LastRenderTime"></a> StreamType LastRenderTime </h3>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+When a texture isn't tracked by the streaming system and isn't handled by one of the normal heuristics, it will fall back to the LastRenderTime heuristic. This is a very simplistic heuristic that will stream in all mip-levels when a texture is rendered, and basically keep them in memory for 90 seconds after it's not rendered anymore (e.g. the texture may behind the camera, occluded by other geometry, or not part of the scene anymore).
+<p />
+This stream type is normally used only by particle effect textures and should be used with care. Monitor memory usage with STAT STREAMINGDETAILS and LISTSTREAMINGTEXTURES.
+<p />
+<h3><a name="StreamType Orphaned"></a> StreamType Orphaned </h3>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+If streaming system recently lost track of a texture (e.g. because we're in a level transition or a dynamic object just despawned) but the texture still exist, it becomes <em>Orphaned</em> for a while instead of immediately falling back to the LastRenderTime stream type. During this time, it will keep the mips it currently has (or one less of maximum, whichever is lower). This prevents textures from temporarily stream in all mip-levels in a transitional case, since LastRenderTime would stream in all mips if the texture has been rendered recently. The idea is to freeze the texture in its current state until it gets tracked again or deleted from memory.
+<p />
+<h2><a name="Decals"></a> Decals </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Static decals that are placed in the level uses the Static stream type. Dynamic decals that are spawned at run-time use LastRenderTime. Special care is taken to cases where a decal texture is used on both a static and dynamic object, such that LastRenderTime will take precedence in this case to avoid the problem particle effects have with texture sharing.
+<p />
+<h2><a name="Pre-streaming Textures"></a> Pre-streaming Textures </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+There are several ways to start streaming in textures before they're needed. When a level is loaded with a fullscreen loading movie and the loading movie is stopped, the streaming system will automatically block the CPU and stream in all textures it wants based on the current settings at the time (camera/player position, loaded and visible geometry, etc). It will add a line to the log on how long this took and how many textures was streamed in during this time. There is an .ini setting to set a time limit for this blocking operation (TextureStreaming -&gt; LoadMapTimeLimit). This can be called manually at any time if necessary (GStreamingManager-&gt;StreamAllResources).
+<p />
+Specific textures or meshes can be streamed in ahead of time by forcing them into memory in the game code, by calling one of the PrestreamTextures() functions. For a specified time, all their mip-levels will be loaded even if nothing is using those textures yet. Once they start to get used, they can go back to be handled by the streaming system in the normal way again.
+<p />
+It's also possible to add an additional view location to the streaming system, if the game code knows that we may be about to teleport to a new location soon, by calling GStreamingManager-&gt;AddViewSlaveLocation(). The streaming system will treat both these locations and the normal camera view location the same way, streaming textures based on all locations.
+<p />
+During gameplay and level are being streamed in and out by Kismet, pre-streaming must be handled carefully in Kismet by using the Stream-In-Textures Kismet action node. This node can be used exactly like the PrestreamTextures() and AddViewSlaveLocation() functions. Keep in mind that a level must be loaded and visible to be taken into account by the streaming system.
+<p />
+The Stream-In-Textures Kismet node also has an "All Loaded" output, which is triggered when all wanted textures have been loaded or the specified duration has passed, whichever comes first. This can be used to trigger a loading screen, if necessary. Note that if you're over the texture budget, all wanted textures won't fit in memory and will never be loaded so make sure you have a reasonable time limit. (It's possible that this behavior will change in the future, so that it will instead be triggered when all textures that <em>can</em> be loaded has been loaded, to avoid this special case.)
+<p />
+<h2><a name="Boosting"></a> Boosting </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+A specific view location or actor can be boosted. A boost factor of 1.0 means normal operation, whereas a higher number will be more aggressive and boost the number of wanted mip-levels of the associated textures, as if they were closer to the camera, and a lower number will be less aggressive and keep the number of wanted mip-levels lower.
+<p />
+Boost factors are automatically reset to 1.0, so you should keep setting the boost factor every frame and simply stop doing that when you don't need the boost factor anymore.
+<p />
+This can be used to boost specific important characters, or to pre-stream textures more aggressively for a view that may be zoomed in soon (or is already zoomed in).
+<p />
+<h2><a name="TexelFactor"></a> TexelFactor </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The TexelFactor directly affects the number of wanted mip-levels. The higher value, the more mip-levels will be streamed in. It's automatically pre-calculated during cooking where it looks at all triangles in the mesh and compares the ratio between the UV map and the size of the triangle. However, it can be adjusted manually by setting the <strong>StreamingDistanceMultiplier</strong> property on the component. Again, the higher value, the more mip-levels will be streamed in. A StreamingDistanceMultiplier of 2.0 will double the TexelFactor. A StreamingDistanceMultiplier of 0.5 will reduce the TexelFactor by half. The effect can be seen in the TexelFactor at run-time, using the InvestigateTexture or ListStreamingTextures console commands.
+<p />
+<h2><a name="Cinematic Mip-Levels"></a> Cinematic Mip-Levels </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+A texture can have extra high-resolution mip-levels that are only used for a cinematic, not during normal gameplay. The number of cinematic mip-levels is set in the texture properties. To enable these cinematic mip-levels, you must use the Stream-In-Textures Kismet action to enable it for the texture group <em>and</em> force-stream the texture. It can also be enabled by calling UTexture2D::SetForceMipLevelsToBeResident() in C++.
+<p />
+<h2><a name="Special Texture Groups"></a> Special Texture Groups </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+A few texture groups are handled specially. TEXTUREGROUP_Skybox textures are always fully streamed in, they're automatically marked <em>Forced</em>. TEXTUREGROUP_UI textures have all their mip-levels removed during cooking, so they will never be streamed. TEXTUREGROUP_Lightmap and TEXTUREGROUP_Shadowmap use extra boost factors from .ini settings ("LightmapStreamingFactor" and "ShadowmapStreamingFactor"). Textures using one of the three TEXTUREGROUP_Character groups has a slight preference in that they can be the first ones to stream in when loading a map and will be the last textures to stream out in a panic stream out.
+<p />
+<h2><a name="Panic Stream Out"></a> Panic Stream Out </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+When a texture is initially created synchronously (normally with just the smallest mip-levels), it must fit in memory or the game will go Out Of Texture Memory. If there isn't enough memory, the streaming system can try to stream out texture data to make room. There is no time to be play nice here, and it will brutally stream out whatever it can to make room in the texture pool. The operation can take a little time because it will have to scan a lot of textures and defragment the texture pool memory to create a contiguous free space. There will be a line in the log whenever this happens.
+<p />
+<h2><a name="Optimizing and debugging texture streaming"></a> Optimizing and debugging texture streaming </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The first thing to look at is the "Over Budget" value in STAT STREAMING. If it's 0 you're ok. If it's non-zero, you're using more textures than can fit in the texture pool and you should reduce memory usage and/or increase the texture pool size. In some cases, it can be acceptable with a non-zero "Over Budget", since the streaming system is priority-based and the visual quality may be ok anyway.
+<p />
+To find candidates for reducing memory usage, use the "ListStreamingTextures" and "ListTextures" console commands. Note that the texture pool memory is used for both streaming textures (usage various over time) and non-streaming textures (usage is more constant). The ListStreamingTextures command lists streaming textures and information from the streaming system. ListTextures lists all textures, but more generic information.
+<p />
+Check ListStreamingTextures for textures that are unnecessarily marked as Forced or LastRenderTime, and textures that are unnecessarily large. Check if you can share more textures and remove unique textures that aren't really needed. Textures that are unnecessarily large could be adjusted by modifying the LODBias or the StreamingDistanceMultiplier property. Check for unnecessary use of memory-heavy cinematic mip-levels (the texture will be marked as Forced).
+<p />
+Check ListTextures for textures that aren't streamed and use a lot of memory and optimize as needed.
+<p />
+To investigate a particular texture, use the "TrackTexture <name>" and "InvestigateTexture <name>" console commands. Check for unexpected stream outs or if it misses to detect a change. Check that WantedMips is what you expect. Check that it's using the expected stream type. Check that all texture instances (everywhere the texture is used) are accounted for. Check that it's not a case where a untracked texture (e.g. particle effect texture) is shared by a regular tracked instance (e.g. static mesh).
+<p />
+If textures are blurry when loading a new map, check that the View Location is at the correct spot when FStreamingManagerCollection::StreamAllResources() is called when the loading screen is turned off (make sure you use a fullscreen loading movie). Make sure all your data has been fully loaded at that time.
+<p />
+<h2><a name="Some .ini Settings"></a> Some .ini Settings </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The .ini settings are all contained under the TextureStreaming section.
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>PoolSize</b> </td><td bgcolor="#eaeaea"> The size of the texture pool, in MB (Gears Of War uses 145 MB). </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>MemoryMargin</b> </td><td bgcolor="#ffffff"> Amount of memory to keep free, to be used as temp memory when streaming in new data, in MB (Gears Of War uses 10 MB). </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>MemoryLoss</b> </td><td bgcolor="#eaeaea"> Amount of memory to keep unavailable, for future planned use. Should be 0 when shipping. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>LoadMapTimeLimit</b> </td><td bgcolor="#ffffff"> Maximum number of seconds to block when streaming in all textures at the end of the loading screen. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>LightmapStreamingFactor</b> </td><td bgcolor="#eaeaea"> Extra boost factor for TEXTUREGROUP_Lightmap textures. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>ShadowmapStreamingFactor</b> </td><td bgcolor="#ffffff"> Extra boost factor for TEXTUREGROUP_Shadowmap textures. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>BoostPlayerTextures</b> </td><td bgcolor="#eaeaea"> Boost factor that will be applied automatically to all textures on player characters. </td></tr>
+</table>
+<p />
+<h2><a name="Stat Streaming"></a> Stat Streaming </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>Game Thread Update Time</b> </td><td bgcolor="#eaeaea"> Time used per frame, on the game thread. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>Pool Memory Used</b> </td><td bgcolor="#ffffff"> Total amount of memory currently allocated from the texture pool (not just streaming textures). </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>Textures In Memory (Target)</b> </td><td bgcolor="#eaeaea"> Total memory wanted for all streaming textures. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>Textures In Memory (Current)</b> </td><td bgcolor="#ffffff"> Total memory currently allocated from the texture pool, counting streaming textures only. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>Textures On Disk</b> </td><td bgcolor="#eaeaea"> Total amount of texture available on disk for the currently active streaming textures. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>Over Budget</b> </td><td bgcolor="#ffffff"> Estimated amount of over budget texture memory (streaming textures only). </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>Num Wanting Textures</b> </td><td bgcolor="#eaeaea"> Number of textures that currently wants to stream in mip-levels. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>Streaming Textures</b> </td><td bgcolor="#ffffff"> Total number of streaming textures in memory. </td></tr>
+</table>
+<p />
+<h2><a name="Stat _StreamingDetails"></a> Stat StreamingDetails </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>Under Budget</b> </td><td bgcolor="#eaeaea"> Estimated amount of under budget texture memory (streaming textures only). </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>Rendering Thread Update Time</b> </td><td bgcolor="#ffffff"> Time used per frame to update a texture, on the render thread. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>Rendering Thread Finalize Time</b> </td><td bgcolor="#eaeaea"> Time used per frame to finalize a texture, on the render thread. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>Static Textures In Memory</b> </td><td bgcolor="#ffffff"> Current total memory usage for Static textures. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>Dynamic Textures In Memory</b> </td><td bgcolor="#eaeaea"> Current total memory usage for Dynamic textures. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>LastRenderTime Textures In Memory</b> </td><td bgcolor="#ffffff"> Current total memory usage for LastRenderTime textures. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>Forced Textures In Memory</b> </td><td bgcolor="#eaeaea"> Current total memory usage for Forced textures. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>Lightmaps In Memory</b> </td><td bgcolor="#ffffff"> Current total memory usage for lightmaps and shadowmaps. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>Lightmaps On Disk</b> </td><td bgcolor="#eaeaea"> Total amount of lightmap and shadowmap data available on disk, for the currently active textures. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>Intermediate Textures Size</b> </td><td bgcolor="#ffffff"> Current amount of temp memory used for streaming textures in/out. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>Textures Streamed In (Frame)</b> </td><td bgcolor="#eaeaea"> Number of textures streamed in this frame. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>Textures Streamed In (Total)</b> </td><td bgcolor="#ffffff"> Number of textures streamed in since launch. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>Lightmaps Streamed In (Total)</b> </td><td bgcolor="#eaeaea"> Number of lightmaps and shadowmaps streamed in since launch. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>Intermediate Textures</b> </td><td bgcolor="#ffffff"> Current number of temp textures used for streaming in/out. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>Requests In Cancelation Phase</b> </td><td bgcolor="#eaeaea"> Number of requests in cancelation phase. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>Requests In Update Phase</b> </td><td bgcolor="#ffffff"> Number of requests in mip update phase. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>Requests In Finalize Phase</b> </td><td bgcolor="#eaeaea"> Number of requests in mip finalization phase. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>Streaming Latency, Average (sec)</b> </td><td bgcolor="#ffffff"> Average of all latency samples in the ring buffer, in seconds. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>Streaming Bandwidth, Average (MB/s)</b> </td><td bgcolor="#eaeaea"> Average bandwidth usage, in MB/sec. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>Growing Reallocations</b> </td><td bgcolor="#ffffff"> Total number of growing in-place reallocations, since launch. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>Shrinking Reallocations</b> </td><td bgcolor="#eaeaea"> Total number of shrinking in-place reallocations, since launch. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>Full Reallocations</b> </td><td bgcolor="#ffffff"> Total number of full reallocations (involving a texture copy), since launch. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>Failed Reallocations</b> </td><td bgcolor="#eaeaea"> Total number of failed reallocation (stream operation silently ignored), since launch. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>Panic Defragmentations</b> </td><td bgcolor="#ffffff"> Total number of panic defragmentations, since launch. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>Num Textures Instances</b> </td><td bgcolor="#eaeaea"> Current number of texture instances. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>Num Lightmap Instances</b> </td><td bgcolor="#ffffff"> Current number of lightmap and shadowmap instances. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>Dynamic Streaming Total Time (sec)</b> </td><td bgcolor="#eaeaea"> Accumulated total time spent on dynamic primitives since launch, in seconds. </td></tr>
+</table>
+<p />
+<h2><a name="Console commands"></a> Console commands </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>STAT Streaming</b> </td><td bgcolor="#eaeaea"> Displays information about the texture streaming system. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>STAT StreamingDetails</b> </td><td bgcolor="#ffffff"> Displays additional detailed information about the texture streaming system. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>ListStreamingTextures &lt;partial-name&gt;</b> </td><td bgcolor="#eaeaea"> Prints a list of all streaming textures that matches &lt;partial-name&gt;. The list contains information such as current size, how many seconds ago it was rendered, which streaming heuristic it's using, etc. The format is CSV so it can be copy/pasted into Excel for further investigation. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>InvestigateTexture &lt;partial-name&gt;</b> </td><td bgcolor="#ffffff"> Prints all information the streaming system has about all textures that contains the specified <partialname> string. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>TrackTexture &lt;partial-name&gt;</b> </td><td bgcolor="#eaeaea"> The streaming system will start to track textures that contains the specified &lt;partial-name&gt; string and log out any status changes. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>UntrackTexture &lt;partial-name&gt;</b> </td><td bgcolor="#ffffff"> Removes the specified textures from the list of tracked textures. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>ListTrackedTextures</b> </td><td bgcolor="#eaeaea"> Prints the list of a currently tracked textures. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <b>TextureGroups</b> </td><td bgcolor="#ffffff"> Prints memory information for all texture groups. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <b>DumpTextureStreamingStats</b> </td><td bgcolor="#eaeaea"> Prints memory information for the texture streaming system. </td></tr>
+</table>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TextureStreaming.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:20:57 GMT -->
+</html></body>

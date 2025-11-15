@@ -1,0 +1,484 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LightFunctionsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:25:45 GMT -->
+<head>
+<title> UDK | LightFunctionsCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">LightFunctionsCH  </b></div>
+<div id="tooltext">
+<a href="LightFunctions.html" class="twikiLink">English Translation</a><br><a href="LightFunctionsJP.html" class="twikiLink">日本語訳</a><br><a href="LightFunctionsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/LightFunctionsCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="LightingAndShadowsHome.html" class="twikiLink">光照 &amp; 阴影</a></b> &gt; 光照函数
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="Light Functions (光照函数)"></a> Light Functions (光照函数) </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="LightFunctionsCH.html#Light Functions (光照函数)"> Light Functions (光照函数)</a> <ul>
+<li> <a href="LightFunctionsCH.html#概述"> 概述 </a>
+</li> <li> <a href="LightFunctionsCH.html#Decals（贴花） vs 光照函数"> Decals（贴花） vs 光照函数</a>
+</li> <li> <a href="LightFunctionsCH.html#可以使用哪些材质表达式?"> 可以使用哪些材质表达式?</a> <ul>
+<li> <a href="LightFunctionsCH.html#Texture 2D（二维贴图）"> Texture 2D（二维贴图）</a>
+</li> <li> <a href="LightFunctionsCH.html#Texture Cube(立方体贴图)"> Texture Cube(立方体贴图)</a> <ul>
+<li> <a href="LightFunctionsCH.html#如何旋转我的立方体贴图光照函数?"> 如何旋转我的立方体贴图光照函数?</a>
+</li></ul>
+</li> <li> <a href="LightFunctionsCH.html#注意">注意</a>
+</li></ul>
+</li> <li> <a href="LightFunctionsCH.html#可以使用哪种类型的光源?"> 可以使用哪种类型的光源?</a>
+</li> <li> <a href="LightFunctionsCH.html#虚幻编辑器光照函数指南"> 虚幻编辑器光照函数指南</a> <ul>
+<li> <a href="LightFunctionsCH.html#创建光照函数"> 创建光照函数</a>
+</li> <li> <a href="LightFunctionsCH.html#给光照函数添加光源"> 给光照函数添加光源</a> <ul>
+<li> <a href="LightFunctionsCH.html#光照函数属性"> 光照函数属性</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="LightFunctionsCH.html#Unrealscript 光照函数指南"> Unrealscript 光照函数指南</a> <ul>
+<li> <a href="LightFunctionsCH.html#嵌入的光照函数">嵌入的光照函数</a>
+</li> <li> <a href="LightFunctionsCH.html#将光照函数添加到动态地创建的光源上"> 将光照函数添加到动态地创建的光源上</a>
+</li></ul>
+</li> <li> <a href="LightFunctionsCH.html#相关主题"> 相关主题</a>
+</li> <li> <a href="LightFunctionsCH.html#下载"> 下载</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<hr size="1" noshade="noshade">
+光照函数是虚幻引擎3中光源应该如何照亮场景的数学表示。默认，光源将使用基于光源组件定义的各种输入的常量值；比如亮度和颜色。光照函数允许您定义更多有趣的设置来获得摇曳的光照、蒙板光照、闪动的光照、及贴图光照。光照函数使用虚幻引擎3中的材质系统，这使得美工人员和关卡设计人员可以很轻松地创建并修改它。同时，因为光照函数使用材质系统，所以可以实例化这些光照函数来获得各种变化效果。
+<p />
+<img src="rsrc/Three/LightFunctionsCH/LightFunctionsScreenShot.jpg" alt="LightFunctionsScreenShot.jpg" width='800' height='582' />
+<p />
+<h2><a name="Decals（贴花） vs 光照函数"></a> Decals（贴花） vs 光照函数 </h2>
+需要记住的非常重要的一点是光照函数仍然是光源，因此，如果您想在给物体投射光照的过程中投射贴图那么光照函数将是很有用的。光照函数也可以投射贴图立方体，但 decals不能。因此，某物是否投射光照是决定性因素。
+<p />
+<p />
+<h2><a name="可以使用哪些材质表达式?"></a> 可以使用哪些材质表达式? </h2>
+<hr size="1" noshade="noshade">
+并不是所有材质表达式都能和光照函数结合使用。这是因为某些表达式在和光照函数结合使用时没有什么意义。然而，大部分函数都可以使用。所有的数学表达式和贴图样本表达式都有效，但是，那些依赖于其他渲染目标或网格物体属性的表达式将会被忽略。请参照<a href="MaterialsCompendium.html" class="twikiLink">材质表达式概要</a>页面作为参考指南，获得这些表达式的工作方式。
+<p />
+<p />
+<h3><a name="Texture 2D（二维贴图）"></a> Texture 2D（二维贴图） </h3>
+可以使用二维贴图，但是最好将它们保留应用于指定了方向的光源，比如定向光源和点光源。它们也可以用于聚光源，但是会出现贴图条带现象。如果定向光源的光照投射到了一个几乎垂直的表面时也会产生贴图条带现象。
+<p />
+<strong>具有带贴图光照函数的点光源。注意到顶棚和地面上有贴图条带。</strong>
+<p />
+<img src="rsrc/Three/LightFunctionsCH/LightFunctions_PointLightTexture2D.jpg" alt="LightFunctions_PointLightTexture2D.jpg" width='800' height='578' />
+<p />
+<strong>具有带贴图光照函数的聚光源。因为进有较少的几个表面接收到了光照，所以仅出现了少量的贴图条带。</strong>
+<p />
+<img src="rsrc/Three/LightFunctionsCH/LightFunctions_SpotLightTexture2D.jpg" alt="LightFunctions_SpotLightTexture2D.jpg" width='800' height='578' />
+<p />
+<strong>具有带贴图光照函数的定向光源。注意在近乎垂直的表面上的贴图条带，比如某些墙壁上。</strong>
+<p />
+<img src="rsrc/Three/LightFunctionsCH/LightFunctions_DirectionalLightTexture2D.jpg" alt="LightFunctions_DirectionalLightTexture2D.jpg" width='800' height='578' />
+<p />
+<p />
+<h3><a name="Texture Cube(立方体贴图)"></a> Texture Cube(立方体贴图) </h3>
+贴图立方体用于立方体贴图映射。立方体贴图映射是一种环境映射的方法，将每个贴图定义为立方体的其中一个面。在这种情况下当在光照函数中使用立方体贴图时将会产生投影贴图映射。
+<p />
+<strong>具有带立方体贴图光照函数的点光源。没有出现明显的贴图条带。</strong>
+<p />
+<img src="rsrc/Three/LightFunctionsCH/LightFunctions_PointLightTextureCube.jpg" alt="LightFunctions_PointLightTextureCube.jpg" width='800' height='578' />
+<p />
+<strong>具有带立方体贴图光照函数的聚光源。没有出现明显的贴图条带。</strong>
+<p />
+<img src="rsrc/Three/LightFunctionsCH/LightFunctions_SpotLightTextureCube.jpg" alt="LightFunctions_SpotLightTextureCube.jpg" width='800' height='578' />
+<p />
+<strong>具有带立方体贴图光照函数的定向光源。没有出现明显的贴图条带。</strong>
+<p />
+<img src="rsrc/Three/LightFunctionsCH/LightFunctions_DirectionalLightTextureCube.jpg" alt="LightFunctions_DirectionalLightTextureCube.jpg" width='800' height='578' />
+<p />
+这样做意味着您应该总是使用立方体贴图吗? 答案取决于您正在执行哪种类型的投射及您想让它如何影响场景。立方体贴图非常依赖于不会创建任何缝隙的贴图设置。同时，也很难轻松地在材质中平移或旋转贴图立方体。
+<p />
+<h4><a name="如何旋转我的立方体贴图光照函数?"></a> 如何旋转我的立方体贴图光照函数? </h4>
+最简单的方法是旋转光源actor。光源actor的旋转值将会调整材质中所使用的光源向量的值。
+<p />
+<img src="rsrc/Three/LightFunctionsCH/LightFunctions_RotatingLightFunction.jpg" alt="LightFunctions_RotatingLightFunction.jpg" width='535' height='783' />
+<p />
+<h3><a name="注意"></a> 注意 </h3>
+光照函数不能指定光源的最大亮度，因为它是通过光源组件进行设置。但是，光照函数可以作为一个缩放比例来调整光源的最终亮度。
+<p />
+一个光照函数可以输出一个颜色，但是，除非光源组件本身是用了白色否则将不会计算光照函数的颜色。您可以使用Desaturate材质表达式来调整使用了着色贴图的光照函数。
+<p />
+<p />
+<h2><a name="可以使用哪种类型的光源?"></a> 可以使用哪种类型的光源? </h2>
+<hr size="1" noshade="noshade">
+唯一不支持的光源类型是天空光源，但是，这是有道理的，因为天空光源简单地定义了任何地方的环境光照。如果需要，光源可以是任何变种类型：动态光源、可移动的光源或可切换的光源及投射动态阴影的光源。不能为静态光源创建光照函数；如果选择了不合适的光源虚幻编辑器创建光照函数将会失败。
+<p />
+<p />
+<h2><a name="虚幻编辑器光照函数指南"></a> 虚幻编辑器光照函数指南 </h2>
+<hr size="1" noshade="noshade">
+<h3><a name="创建光照函数"></a> 创建光照函数 </h3>
+要创建一个新的光照函数，首先要在内容浏览器中创建一个新的材质。设置您想存储这个材质的包和组(如果光照函数时针对关卡的，那么甚至可以设置为您的关卡)，然后设置您想调用这个光照函数执行什么处理。
+<p />
+<img src="rsrc/Three/LightFunctionsCH/LightFunctions_0_CreateNewMaterial.jpg" alt="LightFunctions_0_CreateNewMaterial.jpg" width='510' height='510' />
+<p />
+为了使得虚幻引擎3将这个材质识别为用作为光照函数，那么必须在材质属性中进行明确地设置。可以通过展开 <strong>Mutually Exclusive Usage</strong> 类别，然后点击 <strong>Used As Light Function(用作为光照函数)</strong> 项。
+<p />
+<img src="rsrc/Three/LightFunctionsCH/LightFunctions_1_SetUsedAsLightFunction.jpg" alt="LightFunctions_1_SetUsedAsLightFunction.jpg" width='800' height='432' />
+<p />
+创建如下所示的一个简单的光照函数。这个光照函数平滑地插值较暗光照和较亮光照。
+<p />
+<img src="rsrc/Three/LightFunctionsCH/LightFunctions_2_SimpleLightFunction.jpg" alt="LightFunctions_2_SimpleLightFunction.jpg" width='800' height='615' />
+<p />
+关闭材质编辑器并选择yes（是）来保存材质。然后保存包。
+<p />
+<h3><a name="给光照函数添加光源"></a> 给光照函数添加光源 </h3>
+首先要确保的是光源是适合应用光照函数的类型的变种。您可以右击光源actor，使用关联菜单在各种光源变种间切换。对于光照函数，您将需要确保使用 <strong>Dominant(主光源)</strong> 、 <strong>Moveable（可移动光源）</strong> 或 <strong>Toggle-able（可切换光源）</strong> 类型光源的变种。
+<p />
+<img src="rsrc/Three/LightFunctionsCH/LightFunctions_ConvertLight.jpg" alt="LightFunctions_ConvertLight.jpg" width='800' height='800' />
+<p />
+打开光源actor的属性。展开 <strong>Light</strong> 类别，然后找到 <strong>Light Component</strong>  对象。在 <strong>Light Component</strong> 对象中，展开 <strong>Light Component</strong> 类别。
+<p />
+<img src="rsrc/Three/LightFunctionsCH/LightFunctions_3_ExpandCategories.jpg" alt="LightFunctions_3_ExpandCategories.jpg" width='358' height='508' />
+<p />
+点击 <strong>Light Function</strong>  域旁边的蓝色箭头。然后点击出现的关联菜单中的 <strong>Light Function</strong> 。这将创建一个新的 <strong>Light Function</strong> 对象。
+<p />
+<img src="rsrc/Three/LightFunctionsCH/LightFunctions_4_CreateNewLightFunction.jpg" alt="LightFunctions_4_CreateNewLightFunction.jpg" width='489' height='508' />
+<p />
+展开 <strong>Light Function(光照函数)</strong> 对象, 选择您在上面制作的光照函数，并点击绿色的箭头来设置光照函数的 <strong>Source Material(源材质)</strong> 域。如果您应用一个使用了贴图的光照函数，那么您也可以投影的缩放比例。
+<p />
+<img src="rsrc/Three/LightFunctionsCH/LightFunctions_5_LightFunctionSet.jpg" alt="LightFunctions_5_LightFunctionSet.jpg" width='358' height='508' />
+<p />
+<h4><a name="光照函数属性"></a> 光照函数属性 </h4> <ul>
+<li> <strong>Source Material(源材质)</strong> - 光照函数所使用的材质。
+</li> <li> <strong>Scale(缩放比例)</strong> - <ul>
+<li> <strong>X</strong> - 调整X轴上的投影比例。
+</li> <li> <strong>Y</strong> - 调整Y轴上的投影比例。
+</li> <li> <strong>Z</strong> - 调整Z轴上的投影比例。
+</li></ul>
+</li> <li> <strong>Disabled Brightness(禁用的亮度)</strong> - 这是当指定了光照函数时应用到光源上的亮度因数，但是处于禁用状态。比如，在使用 SceneCapView_LitNoShadows的场景截图中。这应该设置为光照函数的自发光输入端的平均亮度，值应该在0.f 和1.f之间。
+</li></ul>
+<p />
+<h2><a name="Unrealscript 光照函数指南"></a> Unrealscript 光照函数指南 </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="嵌入的光照函数"></a> 嵌入的光照函数 </h3>
+可以使用Unrealscript在默认属性部分创建光照函数。当您已经在Unrealscript中创建了光照函数后，那么您可以将创建好的光照函数迁入到一个附加的光源组件中。如果您想在运行时产生光源并且让他自动具有光照函数那么这是有用的。您也可以通过在虚幻编辑器中使用光照函数创建一个光源设置的原型来实现这个处理。
+<p />
+<div class="codetitlebar">
+EmbeddedLightFunctionLight.uc
+</div>
+<div class="codesnippet">
+<pre>
+class EmbeddedLightFunctionLight extends PointLightMovable;
+
+defaultproperties
+{
+  // Create the light function in script
+  Begin Object Class&#61;LightFunction Name&#61;MyLightFunction
+    SourceMaterial&#61;Material&#39;LightFunctionAssets.SimpleFlickeringLightFunction&#39;
+  End Object
+
+  // Attach the light function to the light component
+  Begin Object Name&#61;PointLightComponent0
+    Function&#61;MyLightFunction
+  End Object
+
+  bNoDelete&#61;false
+}
+</pre>
+</div>
+<p />
+一旦您编译这个脚本后，那么您便可以在内容浏览器中的Actor类别浏览器中找到这个光源。
+<p />
+<img src="rsrc/Three/LightFunctionsCH/LightFunctionsFindingEmbeddedLightFunctionLight.jpg" alt="LightFunctionsFindingEmbeddedLightFunctionLight.jpg" width='582' height='669' />
+<p />
+<h3><a name="将光照函数添加到动态地创建的光源上"></a> 将光照函数添加到动态地创建的光源上 </h3>
+光照函数可以添加到关卡中现有的光源上，也可以添加到在游戏过程中产生的光源上。唯一的不足是光照函数将它们的材质引用声明为常量，所以目前没有办法使用UnrealScript修改它。由于这个原因，您将需要在虚幻编辑器中将光照函数创建为原型。然后您可以基于该原型生成一个新的光照函数，然后将它在运行时分配给光源组件。
+<p />
+<div class="codetitlebar">
+RunTimeLightFunctionLight
+</div>
+<div class="codesnippet">
+<pre>
+class RunTimeLightFunctionLight extends PointLightMovable;
+
+var(Light) const archetype LightFunction LightFunctionArchetype;
+
+function PostBeginPlay()
+{
+  local PointLightComponent PointLightComponent;
+  local LightFunction LightFunction;
+
+  Super.PostBeginPlay();
+
+  PointLightComponent &#61; PointLightComponent(LightComponent);
+  if (PointLightComponent !&#61; None)
+  {
+    if (LightFunctionArchetype !&#61; None &#38;&#38; LightComponent.Function &#61;&#61; None)
+    {
+      LightFunction &#61; new () LightFunctionArchetype.Class(LightFunctionArchetype);
+      if (LightFunction !&#61; None)
+      {
+        LightComponent.SetLightProperties(,, LightFunction);
+      }
+    }
+
+    PointLightComponent.UpdateColorAndBrightness();
+  }
+}
+
+defaultproperties
+{
+  bNoDelete&#61;false
+}
+</pre>
+</div>
+<p />
+要想创建光照函数原型，那么请跳转到内容浏览器中的Actor类别浏览器部分。搜索LightFunction，右击它并点击"Create Archetype"。
+<p />
+<img src="rsrc/Three/LightFunctionsCH/0_LightFunctionCreateLFArchetype.jpg" alt="0_LightFunctionCreateLFArchetype.jpg" width='582' height='669' />
+<p />
+将会弹出一个窗口，这里您可以设置将要保存原型的地方。针对RunTimeLightFunctionLight 类重复这个过程。
+<p />
+<img src="rsrc/Three/LightFunctionsCH/1_LightFunctionSetLFLocation.jpg" alt="1_LightFunctionSetLFLocation.jpg" width='582' height='669' />
+<p />
+返回到内容浏览器，并双击您的RunTimeLightFunctionLight 类。使用您先前创建的光照函数原型设置LightFunctionArchetype 属性域。
+<p />
+<img src="rsrc/Three/LightFunctionsCH/2_LightFunctionCustomizeLightArchetype.jpg" alt="2_LightFunctionCustomizeLightArchetype.jpg" width='1046' height='669' />
+<p />
+这是个可以在原型中生成的Kismet序列。这样设置是为了生成RunTimeLightFunctionLight 原型。
+<p />
+<img src="rsrc/Three/LightFunctionsCH/3_LightFunctionKismet.jpg" alt="3_LightFunctionKismet.jpg" width='800' height='602' />
+<p />
+<h2><a name="相关主题"></a> 相关主题 </h2>
+<hr size="1" noshade="noshade"> <ul>
+<li> <a href="DevelopmentKitGemsUsingLightFunctions.html" class="twikiLink">使用光照函数</a> - 向您展示了如何使用各种光照函数的开发工具包精华文档。
+</li></ul>
+<p />
+<h2><a name="下载"></a> 下载 </h2>
+<hr size="1" noshade="noshade"> <ul>
+<li> <a href="rsrc/Three/LightFunctionsCH/LightFunctionExample.zip" target="_top">下载</a>Unrealscript光照函数指南所使用的内容。
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LightFunctionsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:25:51 GMT -->
+</html></body>

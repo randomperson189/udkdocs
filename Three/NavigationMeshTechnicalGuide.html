@@ -1,0 +1,339 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavigationMeshTechnicalGuide.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:16:41 GMT -->
+<head>
+<title> UDK | NavigationMeshTechnicalGuide    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">NavigationMeshTechnicalGuide  </b></div>
+<div id="tooltext">
+<a href="NavigationMeshTechnicalGuideJP.html" class="twikiLink">日本語訳</a><br><a href="NavigationMeshTechnicalGuideCH.html" class="twikiLink">中国翻译</a><br><a href="NavigationMeshTechnicalGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/NavigationMeshTechnicalGuide -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="AIAndNavigationHome.html" class="twikiLink">AI &amp; Navigation</a></b> &gt; Navigation Mesh Technical Guide
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="Navigation Mesh Technical Guide"></a> Navigation Mesh Technical Guide </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="NavigationMeshTechnicalGuide.html#Navigation Mesh Technical Guide"> Navigation Mesh Technical Guide</a> <ul>
+<li> <a href="NavigationMeshTechnicalGuide.html#Overview"> Overview</a>
+</li> <li> <a href="NavigationMeshTechnicalGuide.html#Navigation Handle"> Navigation Handle</a> <ul>
+<li> <a href="NavigationMeshTechnicalGuide.html#Navigation handle functionality"> Navigation handle functionality</a> <ul>
+<li> <a href="NavigationMeshTechnicalGuide.html#Actual path finding functionality"> Actual path finding functionality</a>
+</li> <li> <a href="NavigationMeshTechnicalGuide.html#Path following functions"> Path following functions</a>
+</li> <li> <a href="NavigationMeshTechnicalGuide.html#Navmesh query functions"> Navmesh query functions</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="NavigationMeshTechnicalGuide.html#Navigation Interface"> Navigation Interface</a>
+</li> <li> <a href="NavigationMeshTechnicalGuide.html#Nav Mesh Debugging"> Nav Mesh Debugging</a>
+</li> <li> <a href="NavigationMeshTechnicalGuide.html#Pawn path finding parameters"> Pawn path finding parameters </a>
+</li> <li> <a href="NavigationMeshTechnicalGuide.html#Downloads"> Downloads</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<hr size="1" noshade="noshade">
+This is a quick and dirty guide to hooking up your AI to use a navigation mesh (a.k.a. <em>nav mesh</em>). For an introduction to the Navigation Mesh system in the Unreal Engine, see the <a href="NavigationMeshReference.html" class="twikiLink">Navigation Mesh Reference</a>.
+<p />
+<p />
+<h2><a name="Navigation Handle"></a> Navigation Handle </h2>
+<hr size="1" noshade="noshade">
+All PathNode path finding functionality was contained in Controller. All the new functionality for navigation mesh based path finding is encapsulated in a self-contained object called a navigation handle. The navigation handle itself is a component and can be attached to any actor with which you'd like to path. In addition the handle stores the output of the path search. That is it stores the generated path, and can be extended to store whatever else is relevant to the types of path traversals you are doing.
+<p />
+To make your AI path find using navigation meshes it needs to: <ul>
+<li> Implement Interface_NavigationHandle.
+</li> <li> Have a NavigationHandle component accessible somewhere.
+</li></ul>
+<p />
+<p />
+<h3><a name="Navigation handle functionality"></a> Navigation handle functionality </h3>
+Navigation handle functionality comes in roughly three categories.
+<p />
+<h4><a name="Actual path finding functionality"></a> Actual path finding functionality </h4>
+Path finding is performed with the help of path constraints and goal evaluators. See the <a href="NavMeshConstraintsAndGoalEvaluators.html" class="twikiLink">Constraints and Goal Evaluators</a> page for more information. To path find you need at least one constraint and one goal evaluator set up. To do this it's usually a good idea to add some sort of boiler plate function like this:
+<p />
+<div class="codesnippet">
+<pre>
+function bool GeneratePathTo(Actor Goal, optional float WithinDistance, optional bool bAllowPartialPath)
+{
+  if (NavigationHandle &#61;&#61; None)
+  {
+    return false;
+  }
+
+  AddBasePathConstraints(false);
+
+  class&#39;NavMeshPath&#95;Toward&#39;.static.TowardGoal(NavigationHandle, Goal);
+  class&#39;NavMeshGoal&#95;At&#39;.static.AtActor(NavigationHandle, Goal, WithinDistance, bAllowPartialPath);
+
+  return NavigationHandle.FindPath();
+}
+</pre>
+</div>
+<p /> <ul>
+<li> <strong>FindPath()</strong> - This function will execute the A* loop and run until the goal evaluator stack determines a proper goal has been found, or the working set is empty (it ran out of nodes to try). It will then return true if the search was a success, and the resulting path will be stored in the PathCache on the NavigationHandle you called <strong>FindPath()</strong> on. In more customized path search situations (e.g. cover searches) the goal evaluator can store extra data depending on its own internal considerations.
+</li></ul>
+<p />
+<h4><a name="Path following functions"></a> Path following functions </h4> <ul>
+<li> <strong>SetFinalDestination()</strong> - This function sets the <strong>FinalDestination</strong> parameter on the NavigationHandle. This is necessary for two reasons. First, the PathCache is a list of edges, so once the Actor reaches the last edge we need more information to get the Actor to the actual goal point of the path in the last poly of the path. Second, the reason this is not set automatically for every path search is that an Actor currently moving on a path toward a goal may do a path search that is not related to actually pathing there (e.g. look for cover while running somewhere) and thus we don't want to clobber the currently stored <strong>FinalDestination</strong> in this case. <br/><img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>Note:</strong> Certain goal evaluators (namely NavMeshGoal_At) set this automatically if it's not already set as they can only be used in traditional pathing situations.
+</li> <li> <strong>GetNextMoveLocation()</strong> - This is the heavy lifter of path following.  It will determine where along the path you are currently, and calculate the point in space the entity should be moving toward (e.g. figure out what point to feed to <strong>MoveTo()</strong>)
+</li></ul>
+<p />
+<h4><a name="Navmesh query functions"></a> Navmesh query functions </h4>
+There are too many to list here. See <a href="NavigationMeshReference.html" class="twikiLink">Navigation Mesh Reference</a> for a complete list of navigation handle functions.  A couple of note are:  <ul>
+<li> <strong>PointReachable()</strong> - This will do a line check against the obstacle mesh generated by the NavMesh generation process. This is much faster than doing normal line checks against collision geometry, and faster still than doing normal reachability checks (which involve numerous line checks).
+</li> <li> <strong>GetValidPositionsForBox()</strong> - This will return all valid (and non overlapping) positions for the passed box within the given bounds. Very useful for things like finding spawn locations.
+</li></ul>
+<p />
+<!--  -->
+<p />
+<h2><a name="Nav Mesh Debugging"></a> Nav Mesh Debugging </h2>
+<hr size="1" noshade="noshade">
+For information on debugging issues with Navigation Mesh path finding at run time, see the <a href="NavigationMeshPathDebugging.html" class="twikiLink">Nav Mesh Path Debugging</a> page.
+<p />
+<h2><a name="Pawn path finding parameters"></a> Pawn path finding parameters </h2>
+<hr size="1" noshade="noshade">
+There are several parameters on the Pawn itself which will affect path finding that aren't directly related to the navmesh.
+<p />
+Here is a quick overview: <ul>
+<li> <strong>MaxStepHeight</strong> - Maximum vertical height this Pawn can 'step up'. (non jump step)
+</li> <li> <strong>MaxJumpHeight</strong> - Maximum vertical height this Pawn can jump. (this will determine when the Pawn tries to jump over obstacles vs go around them)
+</li> <li> <strong>WalkableFloorZ</strong> - Maximum Z value of the normal of a slope considered walkable. (Pawns will slide off of slopes with Z &gt; this value)
+</li></ul>
+<p />
+<h2><a name="Downloads"></a> Downloads </h2>
+<hr size="1" noshade="noshade"> <ul>
+<li> <a href="rsrc/Three/NavigationMeshTechnicalGuide/TestAI_ExampleCode_v3.zip" target="_top">Download</a> an example which demonstrates how to use NavigationHandle path functions.
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavigationMeshTechnicalGuide.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:16:42 GMT -->
+</html></body>

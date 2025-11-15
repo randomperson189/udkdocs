@@ -1,0 +1,346 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ReplicationPatternClientToServerRPCJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:30:40 GMT -->
+<head>
+<title> UDK | ReplicationPatternClientToServerRPCJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ReplicationPatternClientToServerRPCJP  </b></div>
+<div id="tooltext">
+<a href="ReplicationPatternClientToServerRPC.html" class="twikiLink">English Translation</a><br><a href="ReplicationPatternClientToServerRPCCH.html" class="twikiLink">中国翻译</a><br><a href="ReplicationPatternClientToServerRPCKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ReplicationPatternClientToServerRPCJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<style type="text/css" media="all">@import "rsrc/Three/ReplicationPatternClientToServerRPC/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px; font:10px Verdana;" >
+<b><a href="WebHomeJP.html" class="twikiLink">UE3 ホーム</a></b> &gt; <b><a href="ReplicationHomeJP.html" class="twikiLink">ネットワーク &amp; レプリケーション</a></b> &gt; クライアントからサーバーへのリモートプロシージャコールのパターン
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="クライアントからサーバーへのリモートプロシージャコールのパターン"></a> クライアントからサーバーへのリモートプロシージャコールのパターン </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="ReplicationPatternClientToServerRPCJP.html#クライアントからサーバーへのリモートプロシージャコールのパターン"> クライアントからサーバーへのリモートプロシージャコールのパターン </a> <ul>
+<li> <a href="ReplicationPatternClientToServerRPCJP.html#概要"> 概要 </a>
+</li> <li> <a href="ReplicationPatternClientToServerRPCJP.html#Player Controller (プレイヤーコントローラ) クラス"> Player Controller (プレイヤーコントローラ) クラス </a>
+</li> <li> <a href="ReplicationPatternClientToServerRPCJP.html#Game Info (ゲーム情報) クラス"> Game Info (ゲーム情報) クラス </a>
+</li> <li> <a href="ReplicationPatternClientToServerRPCJP.html#テスティング"> テスティング </a>
+</li> <li> <a href="ReplicationPatternClientToServerRPCJP.html#ダウンロード"> ダウンロード </a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<h2><a name="概要"></a> 概要 </h2>
+<hr size="1" noshade="noshade">
+クライアントからサーバーへのリモートプロシージャコールは、クライアントデータをサーバーに送信する場合に使用されます。クライアントデータはそれ自身でサーバーにレプリケートしません。これによって、ゲーム ステート内の全クラス変数に対する制御をサーバーが維持できます。クライアントからサーバーへのリモートプロシージャコールをクライアントに使用させることによって、サーバーは、入ってくるクライアントデータをインターセプトする機会をつねに得られます。
+<p />
+<h2><a name="Player Controller (プレイヤーコントローラ) クラス"></a> Player Controller (プレイヤーコントローラ) クラス </h2>
+<hr size="1" noshade="noshade">
+プレイヤーコントローラは、クライアントとサーバー間で通信ブリッジの 1 つとして機能します。各プレイヤーは、それぞれ自身のプレヤーコントローラを所有します。以下では、Reliable (信頼できる) がデモンストレーション目的にしか使用されていません。Reliable は、リモートプロシージャコールとそのパラメータが絶対にサーバーに届く必要がある場合に使用されます。Unreliable (信頼できない) は、帯域幅が飽和した状況にともなって、リモートプロシージャコールとそのパラメータが喪失、欠如しても構わない場合に使用されます。
+<p />
+&lt;<div class="codetitlebar">
+CTSRPC_PlayerController.uc
+</div>
+<div class="codesnippet">
+<pre>
+
+class CTSRPC&#95;PlayerController extends PlayerController;
+
+/&#42;&#42;
+ &#42; Exec function which allows the client to send text to the server
+ &#42;
+ &#42; Network: Client
+ &#42;/
+exec function SendTextToServer(String TextToSend)
+{
+  // If the role of the player controller is not authoritive
+  // Text is not empty
+  if (Role &#60; Role&#95;Authority &#38;&#38; TextToSend !&#61; &#34;&#34;)
+  {
+    `Log(Self$&#34;:: Client wants to send &#39;&#34;$TextToSend$&#34;&#39; to the server.&#34;);
+    ServerReceiveText(TextToSend);
+  }
+}
+
+/&#42;&#42;
+ &#42; Server function which receives text from the client
+ &#42;
+ &#42; Network: Dedicated/Listen Server
+ &#42;/
+reliable server function ServerReceiveText(String ReceivedText)
+{
+  // If the role of the player controller is authoritive
+  // Text is not empty
+  if (Role &#61;&#61; Role&#95;Authority &#38;&#38; ReceivedText !&#61; &#34;&#34;)
+  {
+    `Log(Self$&#34;:: Server received text, &#39;&#34;$ReceivedText$&#34;&#39;.&#34;);
+  }
+}
+
+defaultproperties
+{
+}
+</pre>
+<p />
+<p />
+</div>
+<p />
+<h2><a name="Game Info (ゲーム情報) クラス"></a> Game Info (ゲーム情報) クラス </h2>
+<hr size="1" noshade="noshade">
+GameInfo はサーバーにしか存在しません。以下のパターンでは、プレイヤーを接続するための正しい PlayerController をスポーンさせるためにしか使用されません。
+<p />
+&lt;
+<div class="codetitlebar">
+CTSRPC_GameInfo.uc
+</div>
+<div class="codesnippet">
+<pre>
+class CTSRPC&#95;GameInfo extends GameInfo;
+
+defaultproperties
+{
+  PlayerControllerClass&#61;class&#39;CTSRPC&#95;PlayerController&#39;
+}
+</pre>
+</div>
+<p />
+<h2><a name="テスティング"></a> テスティング </h2>
+<hr size="1" noshade="noshade">
+クライアント上で、SendTextToServer が My message to the server. Road house! (メッセージをサーバーに。ロードハウス!) というパラメータをともなって実行されています。
+<p />
+<img src="rsrc/Three/ReplicationPatternClientToServerRPC/CTSRPC_ClientConsoleWindow.jpg" alt="CTSRPC_ClientConsoleWindow.jpg" width='800' height='auto' />
+<p />
+サーバー上で、リモートプロシージャコールの ServerReceiveText が、My message to the server. Road house! (メッセージをサーバーに。ロードハウス!) というパラメータをともなって受信されています。
+<p />
+<img src="rsrc/Three/ReplicationPatternClientToServerRPC/CTSRPC_ServerConsoleWindow.jpg" alt="CTSRPC_ServerConsoleWindow.jpg" width='669' height='338' />
+<p />
+<h2><a name="ダウンロード"></a> ダウンロード </h2>
+<hr size="1" noshade="noshade">  <ul>
+<li> このパターンの中で使用されているソースコードは、 <a href="#" target="_top">ここから</a> ダウンロードすることができます。(ClientToServerRPCExample.zip)
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ReplicationPatternClientToServerRPCJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:30:40 GMT -->
+</html></body>

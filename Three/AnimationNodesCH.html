@@ -1,0 +1,2371 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/AnimationNodesCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:44 GMT -->
+<head>
+<title> UDK | AnimationNodesCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">AnimationNodesCH  </b></div>
+<div id="tooltext">
+<a href="AnimationNodes.html" class="twikiLink">English Translation</a><br><a href="AnimationNodesJP.html" class="twikiLink">日本語訳</a><br><a href="AnimationNodesKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/AnimationNodesCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/Three/AnimationNodesCH/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt;<b><a href="AnimationHome.html" class="twikiLink">动画</a></b> &gt;动画节点<br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt;<b><a href="AnimationHome.html" class="twikiLink">动画设计师</a></b> &gt;动画节点
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="动画节点"></a> 动画节点 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="AnimationNodesCH.html#动画节点"> 动画节点</a> <ul>
+<li> <a href="AnimationNodesCH.html#概述"> 概述</a>
+</li> <li> <a href="AnimationNodesCH.html#当创建动画树时如何考虑动画混合"> 当创建动画树时如何考虑动画混合</a>
+</li> <li> <a href="AnimationNodesCH.html#动画节点"> 动画节点</a> <ul>
+<li> <a href="AnimationNodesCH.html#修改动画节点"> 修改动画节点</a>
+</li> <li> <a href="AnimationNodesCH.html#在 Unrealscript 中引用动画节点"> 在 Unrealscript 中引用动画节点</a>
+</li> <li> <a href="AnimationNodesCH.html#AnimTree 从属关系"> AnimTree 从属关系</a>
+</li> <li> <a href="AnimationNodesCH.html#未分类的节点"> 未分类的节点</a> <ul>
+<li> <a href="AnimationNodesCH.html#AnimNodeAimOffset(瞄准偏移动画节点)"> AnimNodeAimOffset(瞄准偏移动画节点)</a>
+</li></ul>
+</li> <li> <a href="AnimationNodesCH.html#AnimNodeBlend(混合动画节点)"> AnimNodeBlend(混合动画节点)</a> <ul>
+<li> <a href="AnimationNodesCH.html#AnimNodeCrossfader(交叉淡入淡出动画节点)"> AnimNodeCrossfader(交叉淡入淡出动画节点)</a>
+</li> <li> <a href="AnimationNodesCH.html#AnimNodePlayCustomAnim(自定义播放动画节点)"> AnimNodePlayCustomAnim(自定义播放动画节点)</a>
+</li> <li> <a href="AnimationNodesCH.html#AnimNodeScalePlayRate(缩放播放速率动画节点)"> AnimNodeScalePlayRate(缩放播放速率动画节点)</a>
+</li> <li> <a href="AnimationNodesCH.html#AnimNodeScaleRateBySpeed(按速度缩放速率动画节点)"> AnimNodeScaleRateBySpeed(按速度缩放速率动画节点)</a>
+</li></ul>
+</li> <li> <a href="AnimationNodesCH.html#AnimNodeSlot(插槽动画节点)"> AnimNodeSlot(插槽动画节点)</a> <ul>
+<li> <a href="AnimationNodesCH.html#AnimNodeSynch(同步动画节点)"> AnimNodeSynch(同步动画节点)</a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimBlendByDriving / _UTAnimBlendByDriving"> UDKAnimBlendByDriving / UTAnimBlendByDriving </a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimBlendByHoverboardTilt / _UTAnimBlendByHoverboardTilt"> UDKAnimBlendByHoverboardTilt / UTAnimBlendByHoverboardTilt </a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimBlendByHoverboardTurn / _UTAnimBlendByHoverboardTurn"> UDKAnimBlendByHoverboardTurn / UTAnimBlendByHoverboardTurn </a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimBlendBySpeed / _UTAnimBlendBySpeed"> UDKAnimBlendBySpeed / UTAnimBlendBySpeed</a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimNodeCopyBoneTranslation / _UTAnimNodeCopyBoneTranslation"> UDKAnimNodeCopyBoneTranslation / UTAnimNodeCopyBoneTranslation</a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimNodeJumpLeanOffset / _UTAnimNodeJumpLeanOffset"> UDKAnimNodeJumpLeanOffset / UTAnimNodeJumpLeanOffset</a>
+</li></ul>
+</li> <li> <a href="AnimationNodesCH.html#过滤器">过滤器</a> <ul>
+<li> <a href="AnimationNodesCH.html#AnimNode_MultiBlendPerBone(动画节点_基于每个骨骼混合)"> AnimNode_MultiBlendPerBone(动画节点_基于每个骨骼混合)</a>
+</li> <li> <a href="AnimationNodesCH.html#AnimNodeBlendMultiBone(混合多个骨骼动画节点)"> AnimNodeBlendMultiBone(混合多个骨骼动画节点)</a>
+</li></ul>
+</li> <li> <a href="AnimationNodesCH.html#AnimNodeBlendPerBone(基于每个骨骼混合的动画节点)"> AnimNodeBlendPerBone(基于每个骨骼混合的动画节点)</a> <ul>
+<li> <a href="AnimationNodesCH.html#UDKAnimBlendBySlotActive / _UTAnimBlendBySlotActive"> UDKAnimBlendBySlotActive / UTAnimBlendBySlotActive</a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimBlendByWeapon / _UTAnimBlendByWeapon"> UDKAnimBlendByWeapon / UTAnimBlendByWeapon</a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimBlendByWeapType / _UTAnimBlendByWeaponType"> UDKAnimBlendByWeapType / UTAnimBlendByWeaponType</a>
+</li></ul>
+</li> <li> <a href="AnimationNodesCH.html#叠加型动画"> 叠加型动画</a>
+</li> <li> <a href="AnimationNodesCH.html#AnimNodeAdditiveBlending(叠加混合动画节点)"> AnimNodeAdditiveBlending(叠加混合动画节点)</a>
+</li> <li> <a href="AnimationNodesCH.html#BlendBy(混合方式)">BlendBy(混合方式)</a> <ul>
+<li> <a href="AnimationNodesCH.html#AnimNodeBlendByBase(按基础混合动画节点)"> AnimNodeBlendByBase(按基础混合动画节点)</a>
+</li> <li> <a href="AnimationNodesCH.html#AnimNodeBlendByPhysics(按物理混合动画节点)"> AnimNodeBlendByPhysics(按物理混合动画节点)</a>
+</li> <li> <a href="AnimationNodesCH.html#AnimNodeBlendByPosture(按姿势混合动画节点)"> AnimNodeBlendByPosture(按姿势混合动画节点)</a>
+</li></ul>
+</li> <li> <a href="AnimationNodesCH.html#AnimNodeBlendByProperty(按照属性混合动画节点)"> AnimNodeBlendByProperty(按照属性混合动画节点)</a> <ul>
+<li> <a href="AnimationNodesCH.html#AnimNodeBlendBySpeed(按速度混合动画节点)"> AnimNodeBlendBySpeed(按速度混合动画节点)</a>
+</li></ul>
+</li> <li> <a href="AnimationNodesCH.html#AnimNodeBlendList(混合列表动画节点)"> AnimNodeBlendList(混合列表动画节点)</a> <ul>
+<li> <a href="AnimationNodesCH.html#UDKAnimBlendBase / _UTAnimBlendBase"> UDKAnimBlendBase / UTAnimBlendBase</a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimBlendByFall / _UTAnimBlendByFall"> UDKAnimBlendByFall / UTAnimBlendByFall</a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimBlendByFlying / _UTAnimBlendByFlying"> UDKAnimBlendByFlying / UTAnimBlendByFlying</a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimBlendByHoverboarding / _UTAnimBlendByHoverboarding"> UDKAnimBlendByHoverboarding / UTAnimBlendByHoverboarding</a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimBlendByHoverJump / _UTAnimBlendByHoverJump"> UDKAnimBlendByHoverJump / UTAnimBlendByHoverJump</a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimBlendByIdle / _UTAnimBlendByIdle"> UDKAnimBlendByIdle / UTAnimBlendByIdle</a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimBlendByPhysics / _UTAnimBlendByPhysics"> UDKAnimBlendByPhysics / UTAnimBlendByPhysics</a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimBlendByPhysicsVolume / _UTAnimBlendByPhysicsVolume"> UDKAnimBlendByPhysicsVolume / UTAnimBlendByPhysicsVolume</a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimBlendByPosture / _UTAnimBlendByPosture"> UDKAnimBlendByPosture / UTAnimBlendByPosture</a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimBlendByTurnInPlace / _UTAnimBlendByTurnInPlace"> UDKAnimBlendByTurnInPlace / UTAnimBlendByTurnInPlace</a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimBlendByVehicle / _UTAnimBlendByVehicle"> UDKAnimBlendByVehicle / UTAnimBlendByVehicle</a>
+</li></ul>
+</li> <li> <a href="AnimationNodesCH.html#Directional(定向)"> Directional(定向)</a>
+</li> <li> <a href="AnimationNodesCH.html#AnimNodeBlendDirectional (定向混合动画节点)"> AnimNodeBlendDirectional (定向混合动画节点)</a>
+</li> <li> <a href="AnimationNodesCH.html#动画镜像">动画镜像</a> <ul>
+<li> <a href="AnimationNodesCH.html#AnimNodeMirror(镜像动画节点)"> AnimNodeMirror(镜像动画节点)</a>
+</li></ul>
+</li> <li> <a href="AnimationNodesCH.html#Random(随机)"> Random(随机)</a> <ul>
+<li> <a href="AnimationNodesCH.html#AnimNodeRandom(随机动画节点)"> AnimNodeRandom(随机动画节点)</a>
+</li></ul>
+</li> <li> <a href="AnimationNodesCH.html#Animation Node Sequences（动画节点序列）"> Animation Node Sequences（动画节点序列）</a> <ul>
+<li> <a href="AnimationNodesCH.html#AnimNodeSequence(动画节点序列)"> AnimNodeSequence(动画节点序列)</a>
+</li> <li> <a href="AnimationNodesCH.html#AnimNodeSequenceBlendByAim"> AnimNodeSequenceBlendByAim</a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimNodeFramePlayer / _UTAnimNodeFramePlayer"> UDKAnimNodeFramePlayer / UTAnimNodeFramePlayer</a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimNodeSequence / _UTAnimNodeSequence"> UDKAnimNodeSequence / UTAnimNodeSequence</a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimNodeSequenceByBoneRotation / _UTAnimNodeSequenceByBoneRotation"> UDKAnimNodeSequenceByBoneRotation / UTAnimNodeSequenceByBoneRotation</a>
+</li> <li> <a href="AnimationNodesCH.html#UDKAnimNodeSeqWeapon / _UTAnimNodeSeqWeapon"> UDKAnimNodeSeqWeapon / UTAnimNodeSeqWeapon</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="AnimationNodesCH.html#示例"> 示例</a>
+</li> <li> <a href="AnimationNodesCH.html#下载"> 下载</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<hr size="1" noshade="noshade">
+<p />
+本页面是关于动画树编辑器中所有可用的基本动画节点的参考指南。动画节点是虚幻引擎3的动画系统的构建模块。如果您还没有学习相关信息，请阅读<a href="AnimationOverview.html" class="twikiLink">动画概述</a>文档，该文章对虚幻引擎3中的动画系统进行了很好的介绍。每个动画节点是个自包含的黑盒子，它可以从其它动画节点或动画序列获得输入，并输出结果。
+<p />
+<h2><a name="当创建动画树时如何考虑动画混合"></a> 当创建动画树时如何考虑动画混合 </h2>
+<hr size="1" noshade="noshade">
+动画混合节点会使用由动画师创建的动画数据执行操作。这样它可以接收输入，变换骨骼平移和旋转然后输出结果。一个动画混合的结果可以在另一个动画混合中使用。动画混合节点可能还会汇集在动画树所拥有的 actor 内包含的数据。这样允许动画师快速设置一个可以在大多数实例中正常使用的动画树。在需要进行更加复杂的操作时，程序人员可以逐渐增加复杂性。
+<p />
+<h2><a name="动画节点"></a> 动画节点 </h2>
+<hr size="1" noshade="noshade">
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimationNodeTemplate.jpg" alt="AnimationNodeTemplate.jpg" width='445' height='367' />
+<p /> <ol>
+<li> <strong>Title bar(标题栏)</strong> - 显示了动画节点的属性的名称 和/或 相关信息。
+</li> <li> <strong>Body(主体)</strong> - 显示了同输入和输出链接相关联的名称。
+</li> <li> <strong>Blend slider(混合滑块)</strong> - 作为一个可视化的滑块，显示了当前混合的百分比。您也可以通过左击并向左或向右拖拽它来手动地调整混合百分比。
+</li> <li> <strong>Blend information(混合信息)</strong> - 通过数字的形式显示了当前的混合百分比。
+</li> <li> <strong>Outputs(输出)</strong> - 输出动画节点操作结果的链接。
+</li> <li> <strong>Inputs</strong> - 取入该动画节点所使用的值的链接。
+</li></ol>
+<p />
+<h3><a name="修改动画节点"></a> 修改动画节点 </h3>
+右击动画节点的输入框，调出它的关联菜单。您可以中断这个输入中包含的通用链接，重新命名输入或删除输入（前提是动画节点允许您这么做）。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeContextOnInput.jpg" alt="AnimNodeContextOnInput.jpg" width='471' height='205' />
+<p />
+右击动画节点本身，调出它的关联菜单。您可以添加额外的输入（如果动画节点允许您这么做），点开所有现有的链接，删除动画节点，将动画节点复制到剪贴板中，在这个 AnimTree 编辑器中赋值这个动画节点然后粘贴位于剪贴板中的动画节点。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeContextOnAnimNode.jpg" alt="AnimNodeContextOnAnimNode.jpg" width='471' height='276' />
+<p />
+默认情况下，动画节点将会在标题栏中设置动画节点类。您可以通过使用“Anim Node（动画节点）”属性类别中的 <strong>Node Name（节点名称）</strong> 属性更改它。也可以使用 <strong>Node Name（节点名称���</strong> 识别 Unrealscript 中的动画节点；所以如果您希望在运行时引用动画节点，那么请尝试为动画节点使用唯一的名称。但是，不强制使用位移的动画节点名称。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeCustomNodeName.jpg" alt="AnimNodeCustomNodeName.jpg" width='800' height='615' />
+<p />
+<h3><a name="在 Unrealscript 中引用动画节点"></a> 在 Unrealscript 中引用动画节点 </h3>
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+var Name AnimNodeBlendListName;
+var AnimNodeBlendList AnimNodeBlendList;
+var array&#60;AnimNodeBlendList&#62; AllAnimNodeBlendLists;
+
+/&#42;
+ &#42; 在为将这个 Actor 作为它的 Owner 的给定 SkeletalMeshComponent 初始化 AnimTree 后进行调用
+ &#42; 这是适合缓存对 Actor 可以修改的骨架控制器等等的引用的地方
+ &#42;/
+event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  local AnimNodeBlendList LocalAnimNodeBlendList;
+
+  if (SkelComp &#61;&#61; None)
+  {
+    return;
+  }
+
+  if (AnimNodeBlendListName !&#61; &#39;&#39; &#38;&#38; AnimNodeBlendListName  !&#61; &#39;None&#39;)
+  {
+    // 根据名称搜索动画节点混合列表。
+    AnimNodeBlendList &#61; AnimNodeBlendList(SkelComp.FindAnimNode(AnimNodeBlendListName));
+    if (AnimNodeBlendList &#61;&#61; None)
+    {
+      `Warn(&#34;AnimNodeBlendList is none.&#34;);
+    }
+  }
+  else
+  {
+    // 根据类搜索所有动画节点混合列表。
+    ForEach SkelComp.AllAnimNodes(class&#39;AnimNodeBlendList&#39;, LocalAnimNodeBlendList)
+    {
+      AllAnimNodeBlendLists.AddItem(LocalAnimNodeBlendList);
+    }
+  }
+}
+</pre>
+</div>
+<p />
+确保在销毁 actor 的时候清除了所有动画节点引用，否则他们会被当做垃圾文件回收。
+<p />
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  AnimNodeBlendList &#61; None;
+  AllAnimNodeBlendLists.Length &#61; 0;
+}
+</pre>
+</div>
+<p />
+<p />
+<h3><a name="AnimTree 从属关系"></a> AnimTree 从属关系 </h3>
+有关 AnimTree 从属关系的简要说明。拥有这个骨架网格物体组件的 actor，实例化这个 AnimTree 的是这个 AnimTree 的 actor 所有者。这是要记住的重点，因为一些动画节点会在 AnimTree 的 actor 拥有者中查找变量。
+<p />
+<h3><a name="未分类的节点"></a> 未分类的节点 </h3>
+<h4><a name="AnimNodeAimOffset(瞄准偏移动画节点)"></a> AnimNodeAimOffset(瞄准偏移动画节点) </h4>
+<hr size="1" noshade="noshade">
+在游戏中，您通常想让角色所持的武器指向玩家瞄准的地方。因为Pawn是通过碰撞圆柱体定义的，它仅能围绕Yaw(偏转)轴旋转，不能围绕Pitch(倾斜)轴或Roll(旋转)轴，所以很难轻松地旋转pawn使它对准玩家的目标。即使这样，您可能还想让角色的脚步仍然保持在原位。
+<p />
+红色的箭头显示了pawn的旋转度，由红色的碰撞圆柱体代表它。绿色的箭头显示了玩家的瞄准目标 我们可以将瞄准方向定义为从Actor的基础旋转度上进行相对旋转而得到的方向。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AimOffset.jpg" width="600" height="275" />
+<p />
+AnimNodeAimOffset取入一个没有目标偏移(枪指向前方)的动画作为输入。AnimNodeAimOffset节点可以通过添加一个旋转偏移和平移偏移的组合来改变几个骨骼。这些偏移通过这9个姿势定义：
+<p /> <ul>
+<li> <strong>Center Center(居中)</strong> - 动画姿势直接向前方瞄准，没有倾斜或偏转调整。
+</li></ul>
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AimOffsetCenterCenter.jpg" alt="AimOffsetCenterCenter.jpg" width='800' height='872' />
+<p /> <ul>
+<li> <strong>Center Up</strong> - 动画姿势瞄准向正上方，没有偏转调整。
+</li></ul>
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AimOffsetCenterUp.jpg" alt="AimOffsetCenterUp.jpg" width='800' height='872' />
+<p /> <ul>
+<li> <strong>Center Down</strong> - 动画姿势瞄准向正下方，没有偏转调整。
+</li></ul>
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AimOffsetCenterDown.jpg" alt="AimOffsetCenterDown.jpg" width='800' height='872' />
+<p /> <ul>
+<li> <strong>Left Center</strong> - 动画姿势瞄准向左方，没有倾斜调整。
+</li></ul>
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AimOffsetLeftCenter.jpg" alt="AimOffsetLeftCenter.jpg" width='800' height='872' />
+<p /> <ul>
+<li> <strong>Left Up</strong> - 动画姿势瞄准向左上方。
+</li></ul>
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AimOffsetLeftUp.jpg" alt="AimOffsetLeftUp.jpg" width='800' height='872' />
+<p /> <ul>
+<li> <strong>Left Down</strong> - 动画姿势瞄准向左下方。
+</li></ul>
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AimOffsetLeftDown.jpg" alt="AimOffsetLeftDown.jpg" width='800' height='872' />
+<p /> <ul>
+<li> <strong>Right Center</strong> - 动画姿势瞄准向右方，没有倾斜调整。
+</li></ul>
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AimOffsetRightCenter.jpg" alt="AimOffsetRightCenter.jpg" width='800' height='872' />
+<p /> <ul>
+<li> <strong>Right Up</strong> - 动画姿势瞄准向右上方。
+</li></ul>
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AimOffsetRightUp.jpg" alt="AimOffsetRightUp.jpg" width='800' height='872' />
+<p /> <ul>
+<li> <strong>Right Down</strong> - 动画姿势瞄准向右下方。
+</li></ul>
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AimOffsetRightDown.jpg" alt="AimOffsetRightDown.jpg" width='800' height='872' />
+<p />
+然后这9个姿势会使用双线性插值进行混合。这允许动画设计人员设计针对任何方向的网格物体姿势以便进行使用，比如瞄准或者头部外观。平移是在Actor Space(Actor的空间)中完成的，所以局部骨骼的旋转不会影响瞄准的结果。因此，您可以让角色持着武器运动，并且仍然可以精确地瞄准。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeOffsetAnimTree.jpg" alt="AnimNodeOffsetAnimTree.jpg" width='362' height='255' />
+<p /> <ol>
+<li> 动画树编辑器中的AnimNodeAimOffset(瞄准偏移动画节点)。双击该动画节点弹出AimOffset(动画偏移)编辑器。
+</li> <li> 一个二维的可拖拽滑块，用于在动画树编辑器的实时视口中查看AnimNodeAimOffset的混合结果。
+</li></ol>
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeOffsetEditor.jpg" alt="AnimNodeOffsetEditor.jpg" width='610' height='480' />
+<p />
+AimOffset编辑器用于创建AnimNodeAimOffset节点所使用的AimOffset的概要信息。
+<p />
+9个姿势基本上定义了一个长方形。AnimNodeAimOffset节点使用一个单位化的相对瞄准偏移来确定使用哪个姿势。X、Y轴上的范围是： [-1;-1]到[+1;+1]。所以如果瞄准值为[0,0]，则精确地在CenterCenter(中央)，[+1,0]将是RightCenter(右中)，[+0.5,0]则处于CenterCenter (中央)和RightCenter(右中)的中间位置。
+<p />
+<h5><a name="使用 _AimOffset 编辑器"></a><a name=" 使用 _AimOffset 编辑器"></a>  使用 AimOffset 编辑器 </h5>
+当使用编辑器时，第一件事便是创建一个新的profile(概要信息)。在Profile部分，点击"New(新建)"，并输入profile名称。您可以基于每个节点添加多个profiles及删除它们。在上面的工具条上，请注意"Open(打开)"和"Save( 保存)"图标，这些图标可以使您导入及保存profiles。
+<p />
+一旦创建好了一个profile，下一步便是选择要影响的骨骼。这个已通过点击AimOffset(瞄准偏移)编辑器上的"Add Bone(添加骨骼)"按钮来实现。选中骨骼将会按照增量顺序显示它们的索引及名称。
+<p />
+一旦选中了相关骨骼，对于每个骨骼您都可以编辑偏移量来制作那9种姿势。可以通过在Bones(骨骼)组合框点击骨骼的名称来选中骨骼。可以通过点击Aim Direction(瞄准方向)组中的相关按钮来选中一个姿势(或瞄准方向)。
+<p />
+上面的Aim Direction(动画方向)组是一个工具条，用于选择或者Bone Translation(骨骼平移)或Bone Rotation(骨骼旋转)来进行编辑。切换这些按钮将会在实时视口中显示一些相应的控件用于交互式的编辑。"World Space Widget(世界空间)"控件复选框可以在本地空间控件编辑和世界空间编辑之间进行切换。也提供了一些编辑文本域来用于直接的输入数值。
+<p />
+<h5><a name="通过动画烘焙偏移"></a><a name=" 通过动画烘焙偏移"></a>  通过动画烘焙偏移 </h5>
+除了手动地输入偏移或者使用控件工具外，您也可以从动画中提取偏移。为了完成这个目的，请先跳转到节点的属性部分，展开Profiles部分，选择您想编辑的profile索引，您将会看到几个命名为AnimName_XX的变量，这里的XX和9个方向相对应。设置您想使用的动画的名称，然后切换 <strong>bBakeFromAnimations</strong> 属性。您不必把动画分配给全部的9个姿势，但是您至少需要把动画分配给 <strong>Center Center</strong> ，因为这是一个参考姿势，用于提取偏移。当选中 <strong>bBakeFromAnimations</strong> 后，节点将会根据姿势XX和参考姿势CC的不同来提取偏移。
+<p />
+<h5><a name="AnimNodeAimOffset（瞄准偏移动画节点）参数"></a><a name=" _AnimNodeAimOffset（瞄准偏移动画节点）参数"></a>  AnimNodeAimOffset（瞄准偏移动画节点）参数 </h5> <ul>
+<li> <strong>Aim（瞄准）</strong> <ul>
+<li> <strong>X</strong> - 单位化水平动画偏移。
+</li> <li> <strong>Y</strong> - 单位化垂直动画偏移。
+</li></ul>
+</li> <li> <strong>Angle Offset（角偏移）</strong> <ul>
+<li> <strong>X</strong> - 在进行处理之前附加给 <strong>Aim</strong> 的水平动画偏移。
+</li> <li> <strong>Y</strong> - 在进行处理之前附加给 <strong>Aim</strong> 的垂直动画偏移。
+</li></ul>
+</li> <li> <strong>ForceAimDir</strong> - 使用 <strong>ForcedAimDir</strong> ，否则根据 <strong>Aim</strong> 和 <strong>Angle Offset</strong> 处理输出。
+</li> <li> <strong>Bake From Animations</strong> - 勾选该选项后，将会通过动画对偏移进行烘焙。
+</li> <li> <strong>ForcedAimDir</strong> - 强制的动画姿势。
+</li> <li> <strong>Profiles（分布图）</strong> <ul>
+<li> <strong>Profile Name</strong> - 分布图的名称，由 AnimOffset 编辑器进行设置。
+</li> <li> <strong>Horizontal Range（水平范围）</strong> <ul>
+<li> <strong>X</strong> - 最小水平目标。
+</li> <li> <strong>Y</strong> - 最大水平目标。
+</li></ul>
+</li> <li> <strong>Vertical Range（垂直范围）</strong> <ul>
+<li> <strong>X</strong> - 最小垂直目标。
+</li> <li> <strong>Y</strong> - 最大垂直目标。
+</li></ul>
+</li> <li> <strong>Anim Name LU</strong> - 可以表现游戏角色向左上方瞄准 / 看的动画。
+</li> <li> <strong>Anim Name LC</strong> - 可以表现游戏角色向左瞄准 / 看的动画。
+</li> <li> <strong>Anim Name LD</strong> - 可以表现游戏角色向左下方瞄准 / 看的动画。
+</li> <li> <strong>Anim Name CU</strong> - 可以表现游戏角色向上瞄准 / 看的动画。
+</li> <li> <strong>Anim Name CC</strong> - 可以表现游戏角色向前瞄准 / 看的动画。
+</li> <li> <strong>Anim Name CD</strong> - 可以表现游戏角色向下瞄准 / 看的动画。
+</li> <li> <strong>Anim Name RU</strong> - 可以表现游戏角色向右上方瞄准 / 看的动画。
+</li> <li> <strong>Anim Name RC</strong> - 可以表现游戏角色向右瞄准 / 看的动画。
+</li> <li> <strong>Anim Name RD</strong> - 可以表现游戏角色向下瞄准 / 看的动画。
+</li></ul>
+</li></ul>
+<p />
+<h5><a name="在游戏中应用该节点"></a><a name=" 在游戏中应用该节点"></a>  在游戏中应用该节点 </h5>
+使用这个节点需要程序员的协助。您或者需要在代码中引用每个节点，并使Pawn直接修改单位化的Aim参数，或者创建一个该节点的自定义子类。
+<p />
+注意，如果您引用了动画节点，那么当销毁Actor时需要清除它们，否则将不会对它们进行垃圾回收。
+<p />
+<!--  -->
+<p />
+当然，节点将保存最后修改的profile。在游戏播放过程中通过从脚本 <!--  --> 中调用函数::SetActiveProfileByName(), 或:: SetActiveProfileByIndex()来切换profile是可能的。
+<p />
+这段代码会向您说明如何创建一个会看着玩家的 pawn 的 pawn。
+<p />
+<div class="codetitlebar">
+<em>YourPawnClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+var(Pawn) float ViewYawMin;
+var(Pawn) float ViewYawMax;
+var(Pawn) float AimSpeed;
+
+var  AnimNodeAimOffset AimNode;
+var Rotator DesiredAim;
+var Rotator CurrentAim;
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  AimNode &#61; AnimNodeAimOffset(SkelComp.FindAnimNode(&#39;AimNode&#39;));
+}
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  AimNode &#61; None;
+}
+
+simulated function Tick(float DeltaTime)
+{
+  local PlayerController PlayerController;
+
+  Super.Tick(DeltaTime);
+
+  PlayerController &#61; GetALocalPlayerController();
+  if (PlayerController !&#61; None &#38;&#38; PlayerController.Pawn !&#61; None &#38;&#38; AimNode !&#61; None)
+  {
+    DesiredAim &#61; Rotator(Normal(Location - PlayerController.Pawn.Location));
+
+    DesiredAim.Pitch &#61; Clamp(DesiredAim.Pitch, ViewPitchMin, ViewPitchMax);
+    DesiredAim.Yaw &#61; Clamp(DesiredAim.Yaw, ViewYawMin, ViewYawMax);
+
+    if (DesiredAim !&#61; CurrentAim)
+    {
+      CurrentAim &#61; RLerp(CurrentAim, DesiredAim, AimSpeed &#42; DeltaTime, false);
+    }
+
+    // 调整俯仰（即绕Y轴的转动动作）
+    if (CurrentAim.Pitch &#60; 0)
+    {
+      AimNode.Aim.Y &#61; Abs(float(CurrentAim.Pitch) / ViewPitchMax);
+    }
+    else if (CurrentAim.Pitch &#62; 0)
+    {
+      AimNode.Aim.Y &#61; float(CurrentAim.Pitch) / ViewPitchMin;
+    }
+    else
+    {
+      AimNode.Aim.Y &#61; 0.f;
+    }
+
+    // 调整偏转（即绕Z轴的转动动作）
+    if (CurrentAim.Yaw &#62; 0)
+    {
+      AimNode.Aim.X &#61; float(CurrentAim.Yaw) / ViewYawMax;
+    }
+    else if (CurrentAim.Yaw &#60; 0)
+    {
+      AimNode.Aim.X &#61; Abs(float(CurrentAim.Yaw) / ViewYawMin) &#42; -1.f;
+    }
+    else
+    {
+      AimNode.Aim.X &#61; 0.f;
+    }
+  }
+}
+
+simulated function SetWeapAnimType(EWeapAnimType AnimType)
+{
+  if (AimNode !&#61; None)
+  {
+    switch(AnimType)
+    {
+    case EWAT&#95;Default:
+      AimNode.SetActiveProfileByName(&#39;Default&#39;);
+      break;
+
+    case EWAT&#95;Pistol:
+      AimNode.SetActiveProfileByName(&#39;SinglePistol&#39;);
+      break;
+
+    case EWAT&#95;DualPistols:
+      AimNode.SetActiveProfileByName(&#39;DualPistols&#39;);
+      break;
+
+    case EWAT&#95;ShoulderRocket:
+      AimNode.SetActiveProfileByName(&#39;ShoulderRocket&#39;);
+      break;
+
+    case EWAT&#95;Stinger:
+      AimNode.SetActiveProfileByName(&#39;Stinger&#39;);
+      break;
+    }
+  }
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<p />
+<h5><a name="武器瞄准问题"></a><a name=" 武器瞄准问题"></a>  武器瞄准问题 </h5>
+动画树使用Forward Kinematics (FK)(正运动学)来混合动画，这将在骨骼定位很重要的地方进行插值时出现问题。并且更加不幸的是，这种情况恰好存在于武器瞄准中。以下的图片显示了Forward Kinematics(正运动学) 和 Inverse Kinematics (IK)(逆运动学)之间的不同，这对于理解这个问题十分必要的。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/FK_VS_IK.jpg" width="512" height="256" />
+<p />
+当使用FK混合两个动画时，对骨骼的旋转进行插值。在武器瞄准中，这导致左手和右手都发生偏离。有几种方式来解决这个问题。其中的一种方法是把左手粘合到右手的固定偏移处，尽管这样并没有真正的修复左手的偏离问题。我们真正想得到的是在手部的最终位置进行插值，并从那里决定手臂的位置，这样两个手便可以一起对齐。所以我们需要使用Inverse Kinematics (IK)(逆运动学)来使它正常的工作。
+<p />
+由于性能原因，瞄准节点没有提供内置的IK选项，因为评估每个单独的Aim节点的代价是非常昂贵的。然而，可以通过使用特殊的骨架层次结构来修复这个问题。可以创建"IK Bones(IK骨骼)"(根骨骼的直接子节点)，它仅能通过平移使其运动，并且可以逐帧地匹配手部的位置。当现在有不同的动画进行混合时，默认情况下将使用FK混合(因为它们使用旋转)；IK骨骼则使用IK混合(因为它们使用平移)。通过使用一个SkelControlLimb(简单的2个骨骼IK solver骨骼控制器)并根据需要触发它，这使得任意地在FK和IK间进行切换成为可能。骨骼控制器被用为某种后期处理效果，仅处理一次，而不是对树中的每个Aim都进行处理。
+<p />
+<p />
+<h3><a name="AnimNodeBlend(混合动画节点)"></a> AnimNodeBlend(混合动画节点) </h3>
+<hr size="1" noshade="noshade">
+这是一个可以将两个输入混合在一起的简单混合节点。您可以指定想要得到的混合目标以及要混合到最终权重所需要的时间（以秒为单位）。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeBlend.jpg" alt="AnimNodeBlend.jpg" width='800' height='372' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>Skip Blend When Not Rendered</strong> - 会在骨架网格物体没有进行渲染的时候跳过这个混合指令。
+</li></ul>
+<p />
+<h5><a name="UnrealScript 函数"></a><a name=" _UnrealScript 函数"></a>  UnrealScript 函数 </h5> <ul>
+<li> <strong>SetBlendTarget(float BlendTarget, float BlendTime)</strong> - 会设置这个混合节点的预期平衡状态。 <ul>
+<li> <strong>BlendTarget</strong> - 要加到第二个输入上的权重的目标量。这个值应该介于 0.f 和 1.f 之间。
+</li> <li> <strong>BlendTime</strong> - 获得混合目标所需的时间。
+</li></ul>
+</li></ul>
+<p />
+<h5><a name="在虚幻脚本中如何使用"></a><a name=" 在虚幻脚本中如何使用"></a>  在虚幻脚本中如何使用 </h5>
+下面的示例将会说明如何使用半秒钟的混合时间在 Child 1 和 Child 2 之间进行混合。
+<p />
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+var AnimNodeBlend AnimNodeBlend;
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  AnimNodeBlend &#61; None;
+}
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  AnimNodeBlend &#61; AnimNodeBlend(SkelComp.FindAnimNode(&#39;AnimNodeBlend&#39;));
+}
+
+simulated event Tick(float DeltaTime)
+{
+  Super.Tick(DeltaTime);
+
+  if (AnimNodeBlend &#61;&#61; None)
+  {
+    return;
+  }
+
+  if (AnimNodeBlend.BlendTimeToGo &#60;&#61; 0.f)
+  {
+    AnimNodeBlend.SetBlendTarget((AnimNodeBlend.Child2Weight &#62;&#61; 1.f) ? 0.f : 1.f, 0.5f);
+  }
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<p />
+<h4><a name="AnimNodeCrossfader(交叉淡入淡出动画节点)"></a> AnimNodeCrossfader(交叉淡入淡出动画节点) </h4>
+<hr size="1" noshade="noshade">
+这个混合节点允许动画树通过脚本控制在两个动画之间进行交叉淡入淡出。典型的使用方案是在两个玩家闲散动画之间进行混合。这个混合节点需要2个AnimNodeSequences作为输入，您无法连接任何其他类型的动画混合节点。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeCrossfader.jpg" alt="AnimNodeCrossfader.jpg" width='800' height='372' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>Default Anim Seq Name</strong> - 要在启动时候播放的默认动画序列。
+</li></ul>
+<p />
+<h5><a name="UnrealScript 函数"></a><a name=" _UnrealScript 函数"></a>  UnrealScript 函数 </h5> <ul>
+<li> <strong>PlayOneShotAnim(name AnimSeqName, optional float BlendInTime, optional float BlendOutTime, optional bool bDontBlendOut, optional float Rate)</strong> - 播放一段一遍帧动画。 <ul>
+<li> <strong>AnimSeqName</strong> - 要播放的动画序列的名称。
+</li> <li> <strong>BlendInTime</strong> - 要从当前动画混合到这个（新）动画的时间。
+</li> <li> <strong>BlendOutTime</strong> - 要从这个动画（在它完成播放之前）混合返回到前面一个动画的时间。
+</li> <li> <strong>bDontBlendOut</strong> - 如果它为true，那么动画会在最后一帧冻结，并且不会混合返回到之前的动画。
+</li> <li> <strong>Rate</strong> - 动画的播放速率。
+</li></ul>
+</li> <li> <strong>BlendToLoopingAnim(name AnimSeqName, optional float BlendInTime, optional float Rate)</strong> - 淡入循环动画 <ul>
+<li> <strong>AnimSeqName</strong> - 要播放的动画序列的名称。
+</li> <li> <strong>BlendInTime</strong> - 要从当前动画混合到这个（新）动画的时间。
+</li> <li> <strong>Rate</strong> - 动画的播放速率。
+</li></ul>
+</li> <li> <strong>GetAnimName()</strong> - 返回当前正在播放的动画的名称
+</li> <li> <strong>GetActiveChild()</strong> - 返回当前处于激活状态的激活AnimNodeSequence。
+</li></ul>
+<p />
+<h5><a name="在虚幻脚本中如何使用"></a><a name=" 在虚幻脚本中如何使用"></a>  在虚幻脚本中如何使用 </h5>
+该代码段会显示如何通过四分之一秒的混合时间在 <strong>LoopingAnimNames</strong> 数组中定义的两个不同的循环动画之间进行交叉淡入淡出。
+<p />
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+var(Pawn) array&#60;Name&#62; LoopingAnimNames;
+var AnimNodeCrossfader AnimNodeCrossfader;
+var float NextBlendTime;
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  AnimNodeCrossfader &#61; None;
+}
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  AnimNodeCrossfader &#61; AnimNodeCrossfader(SkelComp.FindAnimNode(&#39;AnimNodeCrossfader&#39;));
+}
+
+simulated event Tick(float DeltaTime)
+{
+  Super.Tick(DeltaTime);
+
+  if (AnimNodeCrossfader &#61;&#61; None)
+  {
+    return;
+  }
+
+  if (WorldInfo.TimeSeconds &#62;&#61; NextBlendTime)
+  {
+    AnimNodeCrossfader.BlendToLoopingAnim(LoopingAnimNames&#91;Rand(LoopingAnimNames.Length)], 0.25f, 1.f);
+    NextBlendTime &#61; worldInfo.TimeSeconds + 2.f;
+  }
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<p />
+<h4><a name="AnimNodePlayCustomAnim(自定义播放动画节点)"></a> AnimNodePlayCustomAnim(自定义播放动画节点) </h4>
+<hr size="1" noshade="noshade">
+这个混合节点可以提供代使用自定义动画码控制覆盖动画树分支。常规的分支是常规的树分支，例如上面的主体部分。必须将自定义分支连接到一个AnimNodeSequence。这样，混合节点才可以借用上面的主体部分播放各个参数已经给定的自定义动画。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodePlayCustomAnim.jpg" alt="AnimNodePlayCustomAnim.jpg" width='800' height='372' />
+<p />
+<h5><a name="UnrealScript 函数"></a><a name=" _UnrealScript 函数"></a>  UnrealScript 函数 </h5> <ul>
+<li> <strong>PlayCustomAnim(name AnimName, float Rate, optional float BlendInTime, optional float BlendOutTime, optional bool bLooping, optional bool bOverride)</strong> - 这个函数会回放动画。 <ul>
+<li> <strong>AnimName</strong> - 要播放的动画序列的名称。
+</li> <li> <strong>Rate</strong> - 动画回放速率。
+</li> <li> <strong>BlendInTime</strong> - 要混合该动画的时间（以秒为单位）。
+</li> <li> <strong>BlendOutTime</strong> - 要淡出该动画的时间（以秒为单位）。
+</li> <li> <strong>bLooping</strong> - 循环该动画。
+</li> <li> <strong>bOverride</strong> - 如果将同一个动画序列设置为再次播放，那么将会再次播放这个动画。否则，尝试播放同一个动画序列将不会有任何作用。
+</li></ul>
+</li> <li> <strong>PlayCustomAnimByDuration(name AnimName, float Duration, optional float BlendInTime, optional float BlendOutTime, optional bool bLooping, optional bool bOverride)</strong> - 该函数会使播放动画 <em>x</em> 秒时间这项操作变得更加容易。 <ul>
+<li> <strong>AnimName</strong> - 要播放的动画序列的名称。
+</li> <li> <strong>Duration</strong> - 这个动画应该播放的时间长度（以秒为单位）。
+</li> <li> <strong>BlendInTime</strong> - 要混合该动画的时间（以秒为单位）。
+</li> <li> <strong>BlendOutTime</strong> - 要淡出该动画的时间（以秒为单位）。
+</li> <li> <strong>bLooping</strong> - 循环该动画。
+</li> <li> <strong>bOverride</strong> - 如果将同一个动画序列设置为再次播放，那么将会再次播放这个动画。否则，尝试播放同一个动画序列将不会有任何作用。
+</li></ul>
+</li> <li> <strong>StopCustomAnim(float BlendOutTime)</strong> - 停止当前播放的动画。 <ul>
+<li> <strong>BlendOutTime</strong> - 要淡出该动画的时间（以秒为单位）。
+</li></ul>
+</li> <li> <strong>SetCustomAnim(Name AnimName)</strong> - 将当前播放的动画切换为另一个。 <ul>
+<li> <strong>AnimName</strong> - 动画序列的名称。
+</li></ul>
+</li> <li> <strong>SetActorAnimEndNotification(bool bNewStatus)</strong> - 启用或禁用OnAnimEnd()事件。 <ul>
+<li> <strong>bNewStatus</strong> - True或false可以决定启用或禁用该事件。
+</li></ul>
+</li> <li> <strong>GetCustomAnimNodeSeq()</strong> - 返回正在使用的AnimNodeSequence实例。
+</li> <li> <strong>SetRootBoneAxisOption(optional ERootBoneAxis AxisX, optional ERootBoneAxis AxisY, optional ERootBoneAxis AxisZ)</strong> - 设置供<a href="RootMotion.html" class="twikiLink">根骨骼运动</a>使用的根骨骼坐标轴。 <ul>
+<li> <strong>AxisX</strong> - X轴。
+</li> <li> <strong>AxisY</strong> - Y轴。
+</li> <li> <strong>AxisZ</strong> - Z轴。
+</li></ul>
+</li></ul>
+<p />
+<h5><a name="在虚幻脚本中如何使用"></a><a name=" 在虚幻脚本中如何使用"></a>  在虚幻脚本中如何使用 </h5>
+该代码段会显示如何使用AnimNodePlayCustomAnim节点。它会通过淡入淡出十分之一秒的时间回放 <strong>CustomAnimNames</strong> 中定义的随机动画。如果动画再次随机关闭，它还会回放同一个动画。
+<p />
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+var(Pawn) array&#60;Name&#62; CustomAnimNames;
+var AnimNodePlayCustomAnim AnimNodePlayCustomAnim;
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  AnimNodePlayCustomAnim &#61; None;
+}
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  AnimNodePlayCustomAnim &#61; AnimNodePlayCustomAnim(SkelComp.FindAnimNode(&#39;AnimNodePlayCustomAnim&#39;));
+}
+
+simulated event Tick(float DeltaTime)
+{
+  Super.Tick(DeltaTime);
+
+  if (AnimNodePlayCustomAnim &#61;&#61; None)
+  {
+    return;
+  }
+
+  if (!AnimNodePlayCustomAnim.bIsPlayingCustomAnim)
+  {
+    AnimNodePlayCustomAnim.PlayCustomAnim(CustomAnimNames&#91;Rand(CustomAnimNames.Length)], 1.f, 0.1f, 0.1f, false, true);
+  }
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<p />
+<h4><a name="AnimNodeScalePlayRate(缩放播放速率动画节点)"></a> AnimNodeScalePlayRate(缩放播放速率动画节点) </h4>
+<hr size="1" noshade="noshade">
+这个动画节点提供了动画树控制可以覆盖输入动画播放速率。这将会允许您在一个单独的地方缩放这个动画。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeScalePlayRate.jpg" alt="AnimNodeScalePlayRate.jpg" width='800' height='372' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>Scale By Value</strong> - 动画回放比例（百分数）。
+</li></ul>
+<p />
+<h5><a name="在虚幻脚本中如何使用"></a><a name=" 在虚幻脚本中如何使用"></a>  在虚幻脚本中如何使用 </h5>
+该示例会显示如何使用AnimNodeScalePlayRate节点调节动画回放速率。使用Sin调整回放速率执行正弦回放节奏。
+<p />
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+var(AnimTree) const Name ScalePlayRateAnimNodeName;
+var(AnimTree) const float PlayRateOffset;
+
+var AnimNodeScalePlayRate AnimNodeScalePlayRate;
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  if (ScalePlayRateAnimNodeName !&#61; &#39;&#39;)
+  {
+    AnimNodeScalePlayRate &#61; AnimNodeScalePlayRate(SkelComp.FindAnimNode(ScalePlayRateAnimNodeName));
+  }
+}
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+  AnimNodeScalePlayRate &#61; None;
+}
+
+simulated event Tick(float DeltaTime)
+{
+  Super.Tick(DeltaTime);
+  AnimNodeScalePlayRate.ScaleByValue &#61; (Sin(WorldInfo.TimeSeconds + PlayRateOffset) + 1) &#42; 0.5f;
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<p />
+<h4><a name="AnimNodeScaleRateBySpeed(按速度缩放速率动画节点)"></a> AnimNodeScaleRateBySpeed(按速度缩放速率动画节点) </h4>
+<hr size="1" noshade="noshade">
+该动画节点提供了动画树控制可以根据所拥有的actor的速度大小覆盖输入动画播放速率。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeScaleRateBySpeed.jpg" alt="AnimNodeScaleRateBySpeed.jpg" width='800' height='372' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>Base Speed</strong> - 在计算最终速度时使用的基本速度。例如，它应该等于您的pawn的最大速度；默认值为600.f。如果速度大小为600.f，那么播放速率为1.f或常规速度。如果速度大小为300.f，那么播放速率为0.5f或者是这个速度的一半。
+</li></ul>
+<p />
+<h5><a name="在虚幻脚本中如何使用"></a><a name=" 在虚幻脚本中如何使用"></a>  在虚幻脚本中如何使用 </h5>
+该代码段中包含一个将会根据它所具有的健康值调整它的 <strong>GroundSpeed</strong> 的pawn。这个pawn被损坏后，它将会移动得更慢，动画也会回放得更慢。
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+event TakeDamage(int Damage, Controller InstigatedBy, vector HitLocation, vector Momentum, class&#60;DamageType&#62; DamageType, optional TraceHitInfo HitInfo, optional Actor DamageCauser)
+{
+  Super.TakeDamage(Damage, InstigatedBy, HitLocation, Momentum, DamageType, HitInfo, DamageCauser);
+
+  GroundSpeed &#61; default.GroundSpeed &#42; (float(Health) / float(HealthMax));
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<p />
+<h3><a name="AnimNodeSlot(插槽动画节点)"></a> AnimNodeSlot(插槽动画节点) </h3>
+<hr size="1" noshade="noshade">
+这个AnimNodeSlot节点在这篇文章中的<a href="MatineeAnimControlTrack.html" class="twikiLink">Matinee动画控制</a>中也有说明，因为它可以与Matinee结合使用。
+<p />
+基本上这个节点创建一个插槽，该插槽允许Matinee、Unrealscript<!--  -->使用一个或多个动画来覆盖输入端的值。
+<p />
+设计这个节点的目的是根据需求播放动画，它不一定必须存在动画树中。最好的例子是通过代码来触发一个元素动画（休战、特殊的运动、激战、处刑、死亡等等）。这不仅允许我们保持动画树为一个合适的大小，而且也可以播放大量 一次性的/唯一的 动画。
+<p />
+AnimNodeSlots知道如何处理叠加型动画。默认情况下，它们把叠加型动画添加到源的输入端。但是它们也把叠加型动画当成普通动画数据对待，并执行一个切换(如果在您的树种有一个子仅用于处理叠加数据的子分支)。要使这个行为有效，需要设置bAdditiveAnimationsOverrideSource为 true。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeSlot.jpg" alt="AnimNodeSlot.jpg" width='800' height='287' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>Early Anim End Notify</strong> - 如果该选项为 true，那么当我们开始淡出这个动画的时候在具有所有权actor上执行OnAnimEnd事件。这通常会改善过渡和淡出淡入，只要这个动画开始淡出的时候，我们就可以开始播放新的动画；而不用等到它完全淡出后。
+</li> <li> <strong>Skip Blend When Not Rendered</strong> - 不要在骨架网格物体不可用的时候进行淡出淡入。
+</li> <li> <strong>Additive Animations Override Source</strong> - 如果这一项为 true，那么附加的动画会覆盖源输入。否则，会将附加的动画添加给源输入。
+</li></ul>
+<p />
+<h5><a name="UnrealScript 函数"></a><a name=" _UnrealScript 函数"></a>  UnrealScript 函数 </h5> <ul>
+<li> <strong>PlayCustomAnim(name AnimName, float Rate, optional float BlendInTime, optional float BlendOutTime, optional bool bLooping, optional bool bOverride, optional float StartTime, optional float EndTime)</strong> <ul>
+<li> <strong>AnimName</strong> - 要播放的动画���名称。
+</li> <li> <strong>Rate</strong> - 播放动画应该采用的速率。
+</li> <li> <strong>BlendInTime</strong> - 要淡入这个动画的时间（以秒为单位）。
+</li> <li> <strong>BlendOutTime</strong> - 要淡出这个动画的时间（以秒为单位）。
+</li> <li> <strong>bLooping</strong> - 在被告知停止之前动画应该循环一直循环播放。
+</li> <li> <strong>bOverride</strong> - 只有在将该选项设置为 true 的情况下反复播放同一个动画。
+</li> <li> <strong>StartTime</strong> - 开始播放动画的时间（例如，在动画2秒钟的地方开始播放）。
+</li> <li> <strong>EndTime</strong> - 结束播放动画的时间（例如，在动画4秒钟的地方结束播放）。
+</li></ul>
+</li> <li> <strong>PlayCustomAnimByDuration(name AnimName, float Duration, optional float BlendInTime, optional float BlendOutTime, optional bool bLooping, optional bool bOverride)</strong> - 与上面的函数类似，只是允许您控制动画反复播放的时间长度（秒）。 <ul>
+<li> <strong>AnimName</strong> - 要播放的动画���名称。
+</li> <li> <strong>Duration</strong> - 动画应该播放的时间长度（秒）。
+</li> <li> <strong>BlendInTime</strong> - 要淡入这个动画的时间（以秒为单位）。
+</li> <li> <strong>BlendOutTime</strong> - 要淡出这个动画的时间（以秒为单位）。
+</li> <li> <strong>bLooping</strong> - 在被告知停止之前动画应该循环一直循环播放。
+</li> <li> <strong>bOverride</strong> - 只有在将该选项设置为 true 的情况下反复播放同一个动画。
+</li></ul>
+</li> <li> <strong>GetPlayedAnimation()</strong> - 会返回当前正在播放的动画的名称或者在没有播放动画的情况下返回 ''。
+</li> <li> <strong>StopCustomAnim(float BlendOutTime)</strong> - 停止播放自定义动画。 <ul>
+<li> <strong>BlendOutTime</strong> - 要淡出这个动画的时间（以秒为单位）。
+</li></ul>
+</li> <li> <strong>SetCustomAnim(Name AnimName)</strong> - 将当前播放的动画切换为另一个。 <ul>
+<li> <strong>AnimName</strong> - 要播放的动画���名称。
+</li></ul>
+</li> <li> <strong>SetActorAnimEndNotification(bool bNewStatus)</strong> - 启用或禁用OnAnimEnd()事件。 <ul>
+<li> <strong>bNewStatus</strong> - True或false可以决定启用或禁用该事件。
+</li></ul>
+</li> <li> <strong>GetCustomAnimNodeSeq()</strong> - 会返回当前为播放的动画选择的 AnimNodeSequence。
+</li> <li> <strong>SetRootBoneAxisOption(optional ERootBoneAxis AxisX, optional ERootBoneAxis AxisY, optional ERootBoneAxis AxisZ)</strong> - 设置自定义动画根骨骼选项。 <ul>
+<li> <strong>AxisX</strong> - X轴。
+</li> <li> <strong>AxisY</strong> - Y轴。
+</li> <li> <strong>AxisZ</strong> - Z轴。
+</li></ul>
+</li> <li> <strong>SetRootBoneRotationOption(optional ERootRotationOption AxisX, optional ERootRotationOption AxisY, optional ERootRotationOption AxisZ)</strong> - 设置自定义动画根旋转选项。 <ul>
+<li> <strong>AxisX</strong> - Roll（翻转）轴。
+</li> <li> <strong>AxisY</strong> - Yaw（偏离）轴。
+</li> <li> <strong>AxisZ</strong> - Pitch（倾斜）轴。
+</li></ul>
+</li> <li> <strong>AddToSynchGroup(name GroupName)</strong> - 将这个动画与其他动画同步。 <ul>
+<li> <strong>GroupName</strong> - 同步组名称。
+</li></ul>
+</li> <li> <strong>TickChildWeights(float DeltaSeconds)</strong> - 根据子代权重增加时间。 <ul>
+<li> <strong>DeltaSeconds</strong> - 增加子代权重的时间（秒）。
+</li></ul>
+</li></ul>
+<p />
+<h5><a name="在虚幻脚本中如何使用"></a><a name=" 在虚幻脚本中如何使用"></a>  在虚幻脚本中如何使用 </h5>
+该代码段会显示如何在之前的动画播放一半的时候播放 <strong>CustomAnimNames</strong> 中定义的一个随机动画。只要 AnimNodeSlot 有足够的位置，它就可以在它们之间平滑过渡。
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+var(Pawn) array&#60;Name&#62; CustomAnimNames;
+var AnimNodeSlot AnimNodeSlot;
+var float NextAnimationTime;
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  AnimNodeSlot &#61; None;
+}
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  AnimNodeSlot &#61; AnimNodeSlot(SkelComp.FindAnimNode(&#39;AnimNodeSlot&#39;));
+}
+
+simulated event Tick(float DeltaTime)
+{
+  local float Duration;
+
+  Super.Tick(DeltaTime);
+
+  if (AnimNodeSlot &#61;&#61; None)
+  {
+    return;
+  }
+
+  if (WorldInfo.TimeSeconds &#62;&#61; NextAnimationTime)
+  {
+    Duration &#61; AnimNodeSlot.PlayCustomAnim(CustomAnimNames&#91;Rand(CustomAnimNames.Length)], 1.f, 0.3f, 0.3f, false, true);
+    NextAnimationTime &#61; WorldInfo.TimeSeconds + (Duration &#42; 0.5f);
+  }
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<p />
+<h4><a name="AnimNodeSynch(同步动画节点)"></a> AnimNodeSynch(同步动画节点) </h4>
+<hr size="1" noshade="noshade">
+AnimNodeSynch节点现在已经废除，并由AnimTree(动画树)节点(混合树的根节点)中的AnimGroup(动画组)系统所代替。请阅读<a href="AnimationOverview.html#AnimGroups" class="twikiAnchorLink">动画概述</a>页面获得更多的信息。AnimNodeSynch(同步动画节点)的功能仍然有效，但是对其提供的支持将会停止。我们推荐您转换过来使用新的系统。
+<p />
+下面的屏幕截图会演示如何将新的动画组添加到 Anim Tree（动画树）中。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeSynch.jpg" alt="AnimNodeSynch.jpg" width='800' height='615' />
+<p />
+只要您完成了动画组设置，您就需要将动画节点序列设置为动画组的一部分。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeSynchAnimNodeSequence.jpg" alt="AnimNodeSynchAnimNodeSequence.jpg" width='800' height='615' />
+<p />
+<p />
+<h4><a name="UDKAnimBlendByDriving / _UTAnimBlendByDriving"></a> UDKAnimBlendByDriving / UTAnimBlendByDriving </h4>
+<hr size="1" noshade="noshade">
+该节点会自动混合到‘驾驶’分支，前提是所有者正在驾驶载具，或者他是正在被驾驶的载具。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimBlendByDriving.jpg" alt="AnimNodes_UDKAnimBlendByDriving.jpg" width='800' height='340' />
+<p />
+<h5><a name="UnrealScript 函数"></a><a name=" _UnrealScript 函数"></a>  UnrealScript 函数 </h5> <ul>
+<li> <strong>UpdateDrivingState()</strong> - 强制更新驾驶状态。如果动画混合当前不相关，那么可以使用这一项，因此没有勾记。
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKAnimBlendByHoverboardTilt / _UTAnimBlendByHoverboardTilt"></a> UDKAnimBlendByHoverboardTilt / UTAnimBlendByHoverboardTilt </h4>
+<hr size="1" noshade="noshade">
+该节点会自动在分支之间混合，以便反映玩家在悬浮板上的显示状态。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimBlendByHoverboardTilt.jpg" alt="AnimNodes_UDKAnimBlendByHoverboardTilt.jpg" width='800' height='313' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>TiltScale</strong> - 调整倾斜的权重。
+</li> <li> <strong>TiltDeadZone</strong> - 如果翻转幅度在这个值之下，那么该节点会混合到‘Flat（平面）’分支。
+</li> <li> <strong>TiltYScale</strong> - 调整在计算倾斜角度中使用的向上向量。
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKAnimBlendByHoverboardTurn / _UTAnimBlendByHoverboardTurn"></a> UDKAnimBlendByHoverboardTurn / UTAnimBlendByHoverboardTurn </h4>
+<hr size="1" noshade="noshade">
+该节点会自动在分支之间混合，以便反映玩家在悬浮板上的翻转状态。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimBlendByHoverboardTurn.jpg" alt="AnimNodes_UDKAnimBlendByHoverboardTurn.jpg" width='800' height='303' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>TurnScale</strong> - 调整翻转速度，这个速度可以调整最终的权重。
+</li> <li> <strong>MaxBlendPerSec</strong> - 设置每秒的最大混合更改，它可以调整分支混合的速度。
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKAnimBlendBySpeed / _UTAnimBlendBySpeed"></a> UDKAnimBlendBySpeed / UTAnimBlendBySpeed </h4>
+<hr size="1" noshade="noshade">
+该节点会根据这个骨架网格物体组件的拥有者的速度自动‘Slow（慢速）’和‘Fast（快速）’之间进行混合。这是 AnimBlendBySpeed 的简化版本。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimBlendBySpeed.jpg" alt="AnimNodes_UDKAnimBlendBySpeed.jpg" width='800' height='340' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>MinSpeed</strong> - 最小速度；在位于这个速度或低于这个速度时，节点会混合为‘Slow（慢速）’分支。
+</li> <li> <strong>MaxSpeed</strong> - 最大速度；在位于这个速度或高于这个速度时，节点会混合为‘Fast（快速）’分支。
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKAnimNodeCopyBoneTranslation / _UTAnimNodeCopyBoneTranslation"></a> UDKAnimNodeCopyBoneTranslation / UTAnimNodeCopyBoneTranslation </h4>
+<hr size="1" noshade="noshade">
+这个节点会自动复制骨骼变换，这样可以允许 AnimTree 仿真不同类型的武器装配。将该节点与 AnimNodeAimOffset、UDKAnimNodeSeqWeap / UTAnimNodeSeqWeap 和 UDKAnimBlendByWeapType / UTAnimBlendByWeapType 结合在一起使用。该节点会检测附加的目标节点中的分布图更改，然后更新分布图更新的所有连接的 UDKAnimNodeSeqWeap / UTAnimNodeSeqWeap 和 UDKAnimBlendByWeapType / UTAnimBlendByWeapType 节点。它还会将源骨骼变换复制到目标骨骼变换中。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimNodeCopyBoneTranslation.jpg" alt="AnimNodes_UDKAnimNodeCopyBoneTranslation.jpg" width='800' height='285' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>DefaultBoneCopyArray</strong> - 源和目标骨骼名称的数组。 <ul>
+<li> <strong>SrcBoneName</strong> - 获得骨骼变换的源骨骼名称。
+</li> <li> <strong>DstBoneName</strong> - 要设置骨骼变换的目标骨骼名称。
+</li></ul>
+</li> <li> <strong>DualWieldBoneCopyArray</strong> - 在 AnimNodeAimOffset 概要文件被命名为'DualPistols'的情况下要使用的源和目标骨骼名称的数组。 <ul>
+<li> <strong>SrcBoneName</strong> - 获得骨骼变换的源骨骼名称。
+</li> <li> <strong>DstBoneName</strong> - 要设置骨骼变换的目标骨骼名称。
+</li></ul>
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKAnimNodeJumpLeanOffset / _UTAnimNodeJumpLeanOffset"></a> UDKAnimNodeJumpLeanOffset / UTAnimNodeJumpLeanOffset </h4>
+<hr size="1" noshade="noshade">
+该节点的作用方式与AnimNodeAimOffset十分相近，只是它还会使用其他AnimNodeAimOffset的目标作为方向。该节点用于手动插入值，这样玩家的角色就会看起来好像角色正在跳或倒下的时候它所倾斜的方向是正确的。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimNodeJumpLeanOffset.jpg" alt="AnimNodes_UDKAnimNodeJumpLeanOffset.jpg" width='800' height='312' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>JumpLeanStrength</strong> - 激活‘跳动倾斜度’节点的数量。
+</li> <li> <strong>MaxLeanChangeSpeed</strong> - 倾斜度可以进行改变的速度。
+</li> <li> <strong>bMultiplyByZVelocity</strong> - 我们是否应该在下降的时候倒置倾斜程度。
+</li> <li> <strong>bDodging</strong> - 如果玩家正在躲闪，那么由 native 代码进行设置。当这个选项为true的时候，它会将它自己的概要文件更改为ControllerName_DBLJUMP。
+</li> <li> <strong>bDoubleJumping</strong> - 如果玩家正在进行二级跳，那么由native代码进行设置。当这个选项为true的时候，它会将它自己的概要文件更改为ControllerName_DODGE。
+</li></ul>
+<p />
+<h5><a name="UnrealScript 函数"></a><a name=" _UnrealScript 函数"></a>  UnrealScript 函数 </h5> <ul>
+<li> <strong>SetLeanWeight(float WeightTarget, float BlendTime)</strong> - 允许随着时间淡入并淡出倾斜。 <ul>
+<li> <strong>WeightTarget</strong> - 希望得到的权重目标。
+</li> <li> <strong>BlendTime</strong> - 混合为希望得到的权重目标所需要的时间（秒）。
+</li></ul>
+</li></ul>
+<p />
+<h5><a name="在虚幻脚本中如何使用"></a><a name=" 在虚幻脚本中如何使用"></a>  在虚幻脚本中如何使用 </h5>
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+class ExampleUDKAnimNodeJumpLeanOffset extends Pawn
+  placeable;
+
+var UDKAnimNodeJumpLeanOffset UDKAnimNodeJumpLeanOffset;
+var bool Flipper;
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  UDKAnimNodeJumpLeanOffset &#61; None;
+}
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  UDKAnimNodeJumpLeanOffset &#61; UDKAnimNodeJumpLeanOffset(SkelComp.FindAnimNode(&#39;UDKAnimNodeJumpLeanOffset&#39;));
+  if (UDKAnimNodeJumpLeanOffset !&#61; None)
+  {
+    SetLeanWeight();
+    SetTimer(1.f, true, NameOf(SetLeanWeight));
+  }
+}
+
+simulated event SetLeanWeight()
+{
+  if (UDKAnimNodeJumpLeanOffset !&#61; None)
+  {
+    UDKAnimNodeJumpLeanOffset.SetLeanWeight((Flipper) ? 0.f : 1.f, 0.2f);
+    Flipper &#61; !Flipper;
+  }
+}
+
+defaultproperties
+{
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;PawnMesh
+  End Object
+  Mesh&#61;PawnMesh
+  Components.Add(PawnMesh)
+
+  Begin Object Name&#61;CollisionCylinder
+    CollisionRadius&#61;+0030.0000
+    CollisionHeight&#61;+0072.000000
+  End Object
+}
+</pre>
+</div>
+<p />
+<p />
+<h3><a name="过滤器"></a> 过滤器 </h3>
+<h4><a name="AnimNode_MultiBlendPerBone(动画节点_基于每个骨骼混合)"></a> AnimNode_MultiBlendPerBone(动画节点_基于每个骨骼混合) </h4>
+<hr size="1" noshade="noshade">
+这个混合节点允许您创建有属于它们自己的每个骨骼混合和输入源。您可以在不同的混合权重将任何数量的蒙板结合在一起，并且可以根据您设计的规则自动启用或禁用它们。不过，不需要这么做，这个混合节点可以使用虚幻脚本进行控制。这个混合节点会通过将它的功能压缩到一个单独的混合节点减少节点的数量。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNode_MultiBlendPerBone.jpg" alt="AnimNode_MultiBlendPerBone.jpg" width='800' height='312' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>Mask List</strong> - 列出这个混合节点的所有蒙板。 <ul>
+<li> <strong>Branch List</strong> - 骨骼名称及它们对于一个指定蒙板的特定权重的数列。 <ul>
+<li> <strong>Bone Name</strong> - 使用混合方法的骨骼的名称。
+</li> <li> <strong>Per Bone Weight Increase</strong> - 应用到这个骨骼上的蒙板权重的百分比。
+</li></ul>
+</li> <li> <strong>Desired Weight</strong> - 想要设置给这个蒙板的权重。
+</li> <li> <strong>Blend Time To Go</strong> - 在这个蒙板中进行混合时所剩下的时间（以秒为单位）。这个选项在AnimTree编辑器中没有什么用。
+</li> <li> <strong>Weight Rule List</strong> - 将会自动启用或禁用这个蒙板的规则。 <ul>
+<li> <strong>Node Name</strong> - 要检查的节点的名称。
+</li> <li> <strong>Weight Check</strong> - 权重应该如何检查。
+</li> <li> <strong>Child Index</strong> - 要检查权重的节点的子索引。
+</li></ul>
+</li> <li> <strong>Weight Based On Node Rules</strong> - 这个蒙板的权重是根据权重规则计算的吗？
+</li> <li> <strong>Disable For Non Local Human Players</strong> - 如果所有者不是本地人类玩家，那么忽略这个分支。
+</li></ul>
+</li> <li> <strong>Rotation Blend Type</strong> - 旋转应该如何混合。
+</li></ul>
+<p />
+<h5><a name="UnrealScript 函数"></a><a name=" _UnrealScript 函数"></a>  UnrealScript 函数 </h5> <ul>
+<li> <strong>SetMaskWeight(int MaskIndex, float DesiredWeight, float BlendTime)</strong> - 会控制指定蒙板的权重。 <ul>
+<li> <strong>MaskIndex</strong> - 要应用属性的蒙板的索引。
+</li> <li> <strong>DesiredWeight</strong> - 要赋给这个蒙板的权重。
+</li> <li> <strong>BlendTime</strong> - 蒙板淡入的时间（以秒为单位）。
+</li></ul>
+</li></ul>
+<p />
+<h5><a name="在虚幻脚本中如何使用"></a><a name=" 在虚幻脚本中如何使用"></a>  在虚幻脚本中如何使用 </h5>
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+var AnimNode&#95;MultiBlendPerBone AnimNode&#95;MultiBlendPerBone;
+var float NextBlendTime;
+var int PreviousMaskIndex;
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  AnimNode&#95;MultiBlendPerBone &#61; None;
+}
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  AnimNode&#95;MultiBlendPerBone &#61; AnimNode&#95;MultiBlendPerBone(SkelComp.FindAnimNode(&#39;AnimNode&#95;MultiBlendPerBone&#39;));
+}
+
+simulated event Tick(float DeltaTime)
+{
+  local int NewMaskIndex;
+
+  Super.Tick(DeltaTime);
+
+  if (AnimNode&#95;MultiBlendPerBone &#61;&#61; None)
+  {
+    return;
+  }
+
+  if (WorldInfo.TimeSeconds &#62;&#61; NextBlendTime)
+  {
+    AnimNode&#95;MultiBlendPerBone.SetMaskWeight(PreviousMaskIndex, 0.f, 0.25f);
+    NewMaskIndex &#61; Rand(AnimNode&#95;MultiBlendPerBone.MaskList.Length);
+    AnimNode&#95;MultiBlendPerBone.SetMaskWeight(NewMaskIndex, 1.f, 0.25f);
+    PreviousMaskIndex &#61; NewMaskIndex;
+
+    NextBlendTime &#61; worldInfo.TimeSeconds + 2.f;
+  }
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h4><a name="AnimNodeBlendMultiBone(混合多个骨骼动画节点)"></a> AnimNodeBlendMultiBone(混合多个骨骼动画节点) </h4>
+<hr size="1" noshade="noshade">
+这个动画节点已经过期，不应该再使用。
+<p />
+<h3><a name="AnimNodeBlendPerBone(基于每个骨骼混合的动画节点)"></a> AnimNodeBlendPerBone(基于每个骨骼混合的动画节点) </h3>
+<hr size="1" noshade="noshade">
+这个节点和AnimNodeBlend一样，您仅可以基于每个骨骼来控制两个子动画如何混合到一起。这个节点的实质功能是每个骨骼的蒙板或过滤器。比如，Child 1有腿，Child 2有上部躯干。BranchStartBoneName数组包含了您想对Child 1隐藏的骨骼父项以及从Child2中获取的骨骼父项。对于上面的例子，您把骨骼名称Spine1放到那个数组中，它将可以负责整个的上部躯干。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeBlendPerBone.jpg" alt="AnimNodeBlendPerBone.jpg" width='800' height='372' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>Force Local Space Blend</strong> - 如果这个选项为true，那么在本地空间进行混合，而不是世界空间。它可能会帮助从Source（源）输入中保留一些动画。
+</li> <li> <strong>Branch Start Bone Name</strong> - 开始进行混合的骨骼名称的数列（影响它及其子代）。如果您想要影响骨架的多个脱节部分，您可以在这里定义了多个骨骼名称。
+</li></ul>
+<p />
+<h5><a name="UnrealScript 函数"></a><a name=" _UnrealScript 函数"></a>  UnrealScript 函数 </h5> <ul>
+<li> <strong>SetBlendTarget(float BlendTarget, float BlendTime)</strong> - 设置混合目标允许您淡入及淡出骨骼效果。 <ul>
+<li> <strong>BlendTarget</strong> - 要进行混合的目标。应该是0或1。
+</li> <li> <strong>BlendTime</strong> - 进行混合的时间。
+</li></ul>
+</li></ul>
+<p />
+<h5><a name="在虚幻脚本中如何使用"></a><a name=" 在虚幻脚本中如何使用"></a>  在虚幻脚本中如何使用 </h5>
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+var AnimNodeBlendPerBone AnimNodeBlendPerBone;
+var float NextBlendTime;
+var bool BlendToChildTwo;
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  AnimNodeBlendPerBone &#61; None;
+}
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  AnimNodeBlendPerBone &#61; AnimNodeBlendPerBone(SkelComp.FindAnimNode(&#39;AnimNodeBlendPerBone&#39;));
+}
+
+simulated event Tick(float DeltaTime)
+{
+  Super.Tick(DeltaTime);
+
+  if (AnimNodeBlendPerBone &#61;&#61; None)
+  {
+    return;
+  }
+
+  if (WorldInfo.TimeSeconds &#62;&#61; NextBlendTime)
+  {
+    BlendToChildTwo &#61; !BlendToChildTwo;
+
+    AnimNodeBlendPerBone.SetBlendTarget((BlendToChildTwo) ? 1 : 0, 0.25f);
+    NextBlendTime &#61; WorldInfo.TimeSeconds + 2.f;
+  }
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<p />
+<h4><a name="UDKAnimBlendBySlotActive / _UTAnimBlendBySlotActive"></a> UDKAnimBlendBySlotActive / UTAnimBlendBySlotActive </h4>
+<hr size="1" noshade="noshade">
+如果连接的AnimNodeSlot播放的是一个自定义动画或它当前的混合时间超过0，那么节点只会全部混合到Slot节点。如果您想要AnimTree自动检测连接的AnimSlot是否在播放动画，可以使用这个混合节点，如果是在播放动画，那么它会自动混合它。这样允许程序人员只获取AnimNodeSlot播放动画而AnimTree可以自动进行淡入。这样做的好处是回放会强烈地表现播放器可以触发。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimBlendBySlotActive.jpg" alt="AnimNodes_UDKAnimBlendBySlotActive.jpg" width='800' height='279' />
+<p />
+<p />
+<h4><a name="UDKAnimBlendByWeapon / _UTAnimBlendByWeapon"></a> UDKAnimBlendByWeapon / UTAnimBlendByWeapon </h4>
+<hr size="1" noshade="noshade">
+该节点会在调用 <strong>AnimFire</strong> 的时候混合进入 'Firing（开火）' 分支。当连接的动画节点序列已经停止开火的时候，如果将bLooping设置为false，那么会调用AnimStopFire，否则连接的动画节点序列会将它的动画更改为循环动画序列，而且以循环的方式进行播放。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimBlendByWeapon.jpg" alt="AnimNodes_UDKAnimBlendByWeapon.jpg" width='800' height='332' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>Looping</strong> - 这个武器播放的是一个循环的动画。
+</li> <li> <strong>Looping Anim</strong> - 如果已经进行设置，那么在开火动画完成后，会循环这个动画而不是循环开火动画。
+</li> <li> <strong>Blend Time</strong> - 动画混合时间。
+</li></ul>
+<p />
+<h5><a name="UnrealScript 函数"></a><a name=" _UnrealScript 函数"></a>  UnrealScript 函数 </h5> <ul>
+<li> <strong>AnimFire(name FireSequence, bool bAutoFire, optional float AnimRate, optional float SpecialBlendTime, optional name LoopSequence = LoopingAnim)</strong> - 调用它触发开火序列。它会混合为开火动画。如果指定了bAutoFire，如果LoopSequence为 'None' 或未指定，那么会循环FireSequence，否则将会再放一次FireSequence，在这之后会循环LoopSequence。 <ul>
+<li> <strong>FireSequence</strong> - 用于关闭开火的动画序列的名称。
+</li> <li> <strong>bAutoFire</strong> - 将bLooping设置为这个值。
+</li> <li> <strong>AnimRate</strong> - 播放动画的速率。
+</li> <li> <strong>SpecialBlendTime</strong> - 如果已经设置，它会覆盖默认的BlendTime。
+</li> <li> <strong>LoopSequence</strong> - 用于循环的动画序列的名称。
+</li></ul>
+</li> <li> <strong>AnimStopFire(optional float SpecialBlendTime)</strong> - 淡出开火动画。会自动为非循环开火动画调用该事件；否则必须手动调用它。 <ul>
+<li> <strong>SpecialBlendTime</strong> - 如果已经设置，它会覆盖默认的BlendTime。
+</li></ul>
+</li></ul>
+<p />
+<h5><a name="在虚幻脚本中如何使用"></a><a name=" 在虚幻脚本中如何使用"></a>  在虚幻脚本中如何使用 </h5>
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+class ExampleUDKAnimBlendByWeapon extends Pawn;
+
+// 开火武器动画的名称
+var() const name FireSequenceName;
+// 玩家手持一个自动的开火武器
+var() const bool IsWeaponAutoFire;
+// 动画播放速率
+var() const float FirePlayRate;
+// 重新加载开火动画的混合时间
+var() const float FireBlendTime;
+// 循环开火武器动画的名称
+var() const name LoopingFireSequenceName;
+
+var UDKAnimBlendByWeapon UDKAnimBlendByWeapon;
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  UDKAnimBlendByWeapon &#61; None;
+}
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  UDKAnimBlendByWeapon &#61; UDKAnimBlendByWeapon(SkelComp.FindAnimNode(&#39;UDKAnimBlendByWeapon&#39;));
+  if (UDKAnimBlendByWeapon !&#61; None)
+  {
+    FireWeapon();
+  }
+}
+
+simulated function FireWeapon()
+{
+  if (UDKAnimBlendByWeapon !&#61; None)
+  {
+    // 开始开火动画
+    UDKAnimBlendByWeapon.AnimFire(FireSequenceName, IsWeaponAutoFire, FirePlayRate, FireBlendTime, LoopingFireSequenceName);
+    // 一秒钟之后，停止开火
+    SetTimer(1.f, false, NameOf(StopFireWeapon));
+  }
+}
+
+simulated function StopFireWeapon()
+{
+  if (UDKAnimBlendByWeapon !&#61; None)
+  {
+    // 停止开火动画
+    UDKAnimBlendByWeapon.AnimStopFire(FireBlendTime);
+    // 半秒钟之后重新开始开火
+    SetTimer(0.5f, false, NameOf(FireWeapon));
+  }
+}
+
+defaultproperties
+{
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;PawnMesh
+  End Object
+  Mesh&#61;PawnMesh
+  Components.Add(PawnMesh)
+
+  Begin Object Name&#61;CollisionCylinder
+    CollisionRadius&#61;+0030.0000
+    CollisionHeight&#61;+0072.000000
+  End Object
+}
+</pre>
+</div>
+<p />
+<p />
+<h4><a name="UDKAnimBlendByWeapType / _UTAnimBlendByWeaponType"></a> UDKAnimBlendByWeapType / UTAnimBlendByWeaponType </h4>
+<hr size="1" noshade="noshade">
+该节点会在使用步枪之外的武器时淡入 'Weapon（武器）' 分支。该节点与UDKAnimNodeCopyBoneTranslation / UTAnimNodeCopyBoneTranslation结合在一起使用，因为这个节点会更新所有连接的UDKAnimBlendByWeapType / UTAnimBlendByWeaponType节点。名称已经修复了，而且无法进行更改。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimBlendByWeapType.jpg" alt="AnimNodes_UDKAnimBlendByWeapType.jpg" width='800' height='350' />
+<p />
+<p />
+<h3><a name="叠加型动画"></a> 叠加型动画 </h3>
+<h3><a name="AnimNodeAdditiveBlending(叠加混合动画节点)"></a> AnimNodeAdditiveBlending(叠加混合动画节点) </h3>
+<hr size="1" noshade="noshade">
+该混合节点允许Anim Tree结合<a href="AdditiveAnimations.html" class="twikiLink">叠加型动画</a>，或者与叠加型动画混合，并将它添加到Source（源）输入。目标权重会缩放叠加型动画。叠加型动画还可以直接使用AnimNodeSlot进行播放。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeAdditive.jpg" alt="AnimNodeAdditive.jpg" width='800' height='372' />
+<p />
+<h5><a name="UnrealScript 函数"></a><a name=" _UnrealScript 函数"></a>  UnrealScript 函数 </h5> <ul>
+<li> <strong>SetBlendTarget(float BlendTarget, float BlendTime)</strong> - 设置混合目标允许您淡入及淡出骨骼效果。 <ul>
+<li> <strong>BlendTarget</strong> - 要进行混合的目标。应该是0或1。
+</li> <li> <strong>BlendTime</strong> - 进行混合的时间。
+</li></ul>
+</li></ul>
+<p />
+<h5><a name="在虚幻脚本中如何使用"></a><a name=" 在虚幻脚本中如何使用"></a>  在虚幻脚本中如何使用 </h5>
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+var AnimNodeAdditiveBlending AnimNodeAdditiveBlending;
+var float NextBlendTime;
+var bool BlendToChildTwo;
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  AnimNodeAdditiveBlending &#61; None;
+}
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  AnimNodeAdditiveBlending &#61; AnimNodeAdditiveBlending(SkelComp.FindAnimNode(&#39;AnimNodeAdditiveBlending&#39;));
+}
+
+simulated event Tick(float DeltaTime)
+{
+  Super.Tick(DeltaTime);
+
+  if (AnimNodeAdditiveBlending &#61;&#61; None)
+  {
+    return;
+  }
+
+  if (WorldInfo.TimeSeconds &#62;&#61; NextBlendTime)
+  {
+    BlendToChildTwo &#61; !BlendToChildTwo;
+
+    AnimNodeAdditiveBlending.SetBlendTarget((BlendToChildTwo) ? 1 : 0, 0.25f);
+    NextBlendTime &#61; WorldInfo.TimeSeconds + 2.f;
+  }
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<p />
+<h3><a name="BlendBy(混合方式)"></a> BlendBy(混合方式) </h3>
+<h4><a name="AnimNodeBlendByBase(按基础混合动画节点)"></a> AnimNodeBlendByBase(按基础混合动画节点) </h4>
+<hr size="1" noshade="noshade">
+该混合节点允许Anim Tree在两个与拥有它的actor所依据的内容无关的输入之间自动混合。在您想要角色站在不同种类的表面上移动方式也不同的情况中，这个节点会有所帮助。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeBlendByBase.jpg" alt="AnimNodeBlendByBase.jpg" width='800' height='372' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>Type（类型）</strong>  <ul>
+<li> <strong>BBT_ByActorTag</strong> - 将基础的actor的标签用作过滤器。
+</li> <li> <strong>BBT_ByActorClass</strong> - 将基础的actor的类用作过滤器。
+</li></ul>
+</li> <li> <strong>Actor Tag</strong> - 为了混合为 <strong>Based</strong> 输入匹配的标签。
+</li> <li> <strong>Actor Class</strong> - 为了混合为 <strong>Based</strong> 输入匹配的标签。
+</li> <li> <strong>Blend Time</strong> - 在两个不同的输入之间进行混合的时间。
+</li></ul>
+<p />
+<p />
+<h4><a name="AnimNodeBlendByPhysics(按物理混合动画节点)"></a> AnimNodeBlendByPhysics(按物理混合动画节点) </h4>
+<hr size="1" noshade="noshade">
+该混合节点允许Anim Tree在与拥有它的actor的 <strong>Physics</strong> 变量匹配的输入之间自动混合。在您想要角色在行走、跌到、游泳等等的时候有不同的动画效果的情况中，这个节点会有所帮助。这个混合节点是自动的。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeBlendByPhysics.jpg" alt="AnimNodeBlendByPhysics.jpg" width='800' height='372' />
+<p />
+<h4><a name="AnimNodeBlendByPosture(按姿势混合动画节点)"></a> AnimNodeBlendByPosture(按姿势混合动画节点) </h4>
+<hr size="1" noshade="noshade">
+该混合节点允许Anim Tree在两个输入之间自动混合；Standing（站立）及Crouched（蹲着）。这个混合节点实际上只对Pawns有用。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeBlendByPosture.jpg" alt="AnimNodeBlendByPosture.jpg" width='800' height='372' />
+<p />
+<h5><a name="在虚幻脚本中如何使用"></a><a name=" 在虚幻脚本中如何使用"></a>  在虚幻脚本中如何使用 </h5>
+该代码段会向您说明如何在Pawn类中使用AnimNodeBlendByPosture。AnimNodeBlendByPosture会在Pawn中查看 <strong>bIsCrouched</strong> 变量确定它的混合状态。
+<p />
+<div class="codetitlebar">
+<em>YourPawnClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+simulated function Tick(float DeltaTime)
+{
+  local PlayerController PlayerController;
+
+  PlayerController &#61; GetALocalPlayerController();
+  if (PlayerController !&#61; None &#38;&#38; PlayerController.Pawn !&#61; None)
+  {
+    ShouldCrouch(VSize(PlayerController.Pawn.Location - Location) &#60;&#61; 256.f);
+  }
+}
+
+defaultproperties
+{
+  bCanCrouch&#61;true
+}
+</pre>
+</div>
+<p />
+<h3><a name="AnimNodeBlendByProperty(按照属性混合动画节点)"></a> AnimNodeBlendByProperty(按照属性混合动画节点) </h3>
+<hr size="1" noshade="noshade">
+该混合节点允许Anim Tree在可以最好表现拥有的actor中命名的变量的输入之间自动混合。 <ul>
+<li> <strong>boolean</strong> - 混合节点只使用两个输入。如果这个布尔属性为false，那么混合节点将会混合为第一个输入。如果这个布尔属性为true，那么混合节点将会混合为第二个输入。
+</li> <li> <strong>float</strong> - 混合节点只使用两个输入。这个浮点属性将会在两个输入之间混合。避免在混合几点定义的范围外部使用浮点值。
+</li> <li> <strong>byte</strong> - 混合节点可以使用尽可能多的输入。与 <strong>boolean</strong> 类型非常相似，这个混合节点会混合为响应的索引。字节的范围是0到255。
+</li></ul>
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeBlendByProperty.jpg" alt="AnimNodeBlendByProperty.jpg" width='800' height='372' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>Property Name</strong> -要在拥有它的actor内查看的混合节点的变量的名称（或者在Use Owners Base为true的时候的拥有它的actor的基类）。
+</li> <li> <strong>Use Owners Base</strong> - 勾选您是否希望查看有关拥有它的actor的基类而不是有关拥有它的actor的属性。
+</li> <li> <strong>Use Specific Blend Times</strong> - 使用 <strong>Blend To Child 1 Time</strong> 和 <strong>Blend To Child 2 Time</strong> ，而不是 <strong>Blend Time</strong> 。如果您只对两个输入使用，那么有效。
+</li> <li> <strong>Blend Time</strong> - 在不同的索引之间切换的时候所用的时间。前提是这个属性不是一个浮点值的时候才有效。
+</li> <li> <strong>Float Prop Min</strong> - 在使用一个浮点属性的情况下要使用的最小浮点值。前提是这个属性是一个浮点值的时候才有效。
+</li> <li> <strong>Float Pop Max</strong> - 在使用一个浮点属性的情况下要使用的最大浮点值。前提是这个属性是一个浮点值的时候才有效。
+</li> <li> <strong>Blend To Child 1 Time</strong> - 在切换为Child 1的时候使用的混合时间。在您只有两个输入的情况下有效。
+</li> <li> <strong>Blend To Child 2 Time</strong> - 在切换为Child 2的时候使用的混合时间。在您只有两个输入的情况下有效。
+</li></ul>
+<p />
+<h5><a name="在虚幻脚本中如何使用"></a><a name=" 在虚幻脚本中如何使用"></a>  在虚幻脚本中如何使用 </h5>
+该代码段会向您说明如何将AnimNodeBlendByProperty作为一个布尔变量使用。布尔变量 <strong>MyBlendProperty</strong> 会使AnimNodeBlendByProperty每2秒钟在Child 0和Child 1之间切换。不需要引用这个动画节点，因为AnimNodeBlendByProperty会查看由它的节点名称定义的变量。
+<p />
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+var bool MyBlendProperty;
+var float NextBlendTime;
+
+simulated event Tick(float DeltaTime)
+{
+  Super.Tick(DeltaTime);
+
+  if (WorldInfo.TimeSeconds &#62;&#61; NextBlendTime)
+  {
+    MyBlendProperty &#61; !MyBlendProperty;
+    NextBlendTime &#61; WorldInfo.TimeSeconds + 2.f;
+  }
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+该代码段会向您说明如何将AnimNodeBlendByProperty作为一个浮点变量使用。这个浮点变量 <strong>MyBlendProperty</strong> 会使AnimNodeBlendProperty使用一个两秒的插值时间在Child 0和Child 1之间进行插值。不需要引用这个动画节点，因为AnimNodeBlendByProperty会查看由它的节点名称定义的变量。
+<p />
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+var float MyBlendProperty;
+
+simulated event PostBeginPlay()
+{
+  Super.PostBeginPlay();
+  IsBlendingDown();
+}
+
+simulated event Tick(float DeltaTime)
+{
+  Super.Tick(DeltaTime);
+
+  if (IsTimerActive(NameOf(IsBlendingUp)))
+  {
+    MyBlendProperty &#61; GetTimerCount(NameOf(IsBlendingUp)) / GetTimerRate(NameOf(IsBlendingUp));
+  }
+  else if (IsTimerActive(NameOf(IsBlendingDown)))
+  {
+    MyBlendProperty &#61; 1.f - (GetTimerCount(NameOf(IsBlendingDown)) / GetTimerRate(NameOf(IsBlendingDown)));
+  }
+}
+
+simulated function IsBlendingUp()
+{
+  SetTimer(2.f, false, NameOf(IsBlendingDown));
+}
+
+simulated function IsBlendingDown()
+{
+  SetTimer(2.f, false, NameOf(IsBlendingUp));
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+该代码段会向您说明如何将AnimNodeBlendByProperty作为一个字节变量使用。这个字节变量 <strong>MyBlendProperty</strong> 会使AnimNodeBlendByProperty每2秒钟从Child 0循环到Child 4。不需要引用这个动画节点，因为AnimNodeBlendByProperty会查看由它的节点名称定义的变量。
+<p />
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+var byte MyBlendProperty;
+var float NextBlendTime;
+
+simulated event Tick(float DeltaTime)
+{
+  Super.Tick(DeltaTime);
+
+  if (WorldInfo.TimeSeconds &#62;&#61; NextBlendTime)
+  {
+    MyBlendProperty++;
+
+    if (MyBlendProperty &#62; 4)
+    {
+      MyBlendProperty &#61; 0;
+    }
+
+    NextBlendTime &#61; WorldInfo.TimeSeconds + 2.f;
+  }
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<p />
+<h4><a name="AnimNodeBlendBySpeed(按速度混合动画节点)"></a> AnimNodeBlendBySpeed(按速度混合动画节点) </h4>
+<hr size="1" noshade="noshade">
+这个混合节点允许Anim Tree在拥有它的actor内由Velocity（速度）或Acceleration（加速度）向量的大小决定的约束条件之间的输入之间自动混合。约束条件会定义每个输入之间的边界，例如，Constraints[0]和Constraints[1]分别定义了索引0的边界下限和上限；Constraints[1]和Constraints[2]分别定义了索引 1的边界下限和上限；诸如此类。这些边界可以通过 <strong>Blend Down Perc</strong> 值进行修改，如果您想要严格规定边界，那么将 <strong>Blend Down Perc</strong> 设置为0。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeBlendBySpeed.jpg" alt="AnimNodeBlendBySpeed.jpg" width='800' height='372' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>Blend Up Time</strong> - 在升高索引的时候混合的速度。
+</li> <li> <strong>Blend Down Time</strong> - 在降低索引的时候混合的速度。
+</li> <li> <strong>Blend Down Perc</strong> - 混合开始降低索引混合所在的约束边界。
+</li> <li> <strong>Constraints</strong> - 定义每个索引边界的浮点的数列。0.f到180.f可能表示actor正在行走，180.f到600.f可能表示actor正在跑，600.f到1200.f可能表示actor正在冲刺。
+</li> <li> <strong>Use Acceleration</strong> - 在拥有它的actor中使用加速度变量，而不是速度变量。
+</li> <li> <strong>Blend Up Delay</strong> - 在向上顺移至一个索引之前的时间延迟。
+</li> <li> <strong>Blend Down Delay</strong> - 在向下顺移至一个索引之前的时间延迟。
+</li></ul>
+<p />
+<p />
+<h3><a name="AnimNodeBlendList(混合列表动画节点)"></a> AnimNodeBlendList(混合列表动画节点) </h3>
+<hr size="1" noshade="noshade">
+该混合节点允许Anim Tree在输入之间进行混合。这个混合节点必须与Unrealscript结合在一起使用。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeBlendList.jpg" alt="AnimNodeBlendList.jpg" width='800' height='372' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>Play Active Child</strong> - 当处于活动状态的子索引发生改变的时候，它会播放附带的Anim Node Sequences（动画节点序列）。
+</li> <li> <strong>Editor Active Child Index</strong> - 要在编辑器中使用的子索引。只供AnimTree Editor（动画树编辑器）使用。
+</li></ul>
+<p />
+<h5><a name="UnrealScript 函数"></a><a name=" _UnrealScript 函数"></a>  UnrealScript 函数 </h5> <ul>
+<li> <strong>SetActiveChild(int ChildIndex, float BlendTime)</strong> - 设置处于活动状态的子索引，它允许您在不同的子代之间混合。 <ul>
+<li> <strong>ChildIndex</strong> -要混合到的子索引。
+</li> <li> <strong>BlendTime</strong> - 进行混合的时间。
+</li></ul>
+</li></ul>
+<p />
+<h5><a name="在虚幻脚本中如何使用"></a><a name=" 在虚幻脚本中如何使用"></a>  在虚幻脚本中如何使用 </h5>
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+var AnimNodeBlendList AnimNodeBlendList;
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  AnimNodeBlendList &#61; None;
+}
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  AnimNodeBlendList &#61; AnimNodeBlendList(SkelComp.FindAnimNode(&#39;AnimNodeBlendList&#39;));
+}
+
+simulated event Tick(float DeltaTime)
+{
+  Super.Tick(DeltaTime);
+
+  if (AnimNodeBlendList &#61;&#61; None)
+  {
+    return;
+  }
+
+  if (AnimNodeBlendList.BlendTimeToGo &#60;&#61; 0.f)
+  {
+    AnimNodeBlendList.SetActiveChild(Rand(AnimNodeBlendList.Children.Length), 0.25f);
+  }
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<p />
+<h4><a name="UDKAnimBlendBase / _UTAnimBlendBase"></a> UDKAnimBlendBase / UTAnimBlendBase </h4>
+<hr size="1" noshade="noshade">
+它是一个可以用于创建基于自定义脚本的混合节点的基类。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimBlendBase.jpg" alt="AnimNodes_UDKAnimBlendBase.jpg" width='800' height='345' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>BlendTime</strong> - 显示指定子代淡入的速度。
+</li> <li> <strong>ChildBlendTimes</strong> - 允许混合覆写。
+</li> <li> <strong>bTickAnimInScript</strong> - 如果为true，那么在该节点相关或通常进行更新的时候调用 <strong>TickAnim()</strong> 。
+</li></ul>
+<p />
+<h5><a name="UnrealScript 函数"></a><a name=" _UnrealScript 函数"></a>  UnrealScript 函数 </h5> <ul>
+<li> <strong>GetBlendTime(int ChildIndex, optional bool bGetDefault)</strong> <ul>
+<li> <strong>ChildIndex</strong> - 会返回这个子索引的混合时间。
+</li> <li> <strong>bGetDefault</strong> - 如果为true，那么它将只会返回BlendTime，否则返回 <strong>ChildBlendTimes[ChildIndex]</strong> 。
+</li></ul>
+</li> <li> <strong>GetAnimDuration(int ChildIndex)</strong> - 如果子代是一个AnimNodeSequence，那么查找它处于当前播放速率的持续时间。 <ul>
+<li> <strong>ChildIndex</strong> - 会返回这个子索引的动画持续时间。
+</li></ul>
+</li> <li> <strong>TickAnim(float DeltaSeconds)</strong> - 用于实现Unrealscript中的自定义动画混合功能。 <ul>
+<li> <strong>DeltaSeconds</strong> - 自上次调用 <strong>TickAnim()</strong> 开始的时间/
+</li></ul>
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKAnimBlendByFall / _UTAnimBlendByFall"></a> UDKAnimBlendByFall / UTAnimBlendByFall </h4>
+<hr size="1" noshade="noshade">
+该节点会根据玩家倒下的状态自动混合到相应的分支。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimBlendByFall.jpg" alt="AnimNodes_UDKAnimBlendByFall.jpg" width='800' height='328' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>bIgnoreDoubleJumps</strong> - 如果为true，将会忽略输入的二级跳版本。
+</li> <li> <strong>PreLandTime</strong> - 预测落地触发pre-land动画之前的时间。
+</li> <li> <strong>PreLandStartUprightTime</strong> - 我们应该开始再次变为直立状态落地之前的时间。
+</li> <li> <strong>ToDblJumpUprightTime</strong> - 在执行二级跳的时候要变为直立状态的时间。
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKAnimBlendByFlying / _UTAnimBlendByFlying"></a> UDKAnimBlendByFlying / UTAnimBlendByFlying </h4>
+<hr size="1" noshade="noshade">
+如果pawn正在飞，该节点会自动混合。它还可以自动播放能仿真翅膀张开以及翅膀合上的动画。该混合节点与UDKAnimBlendByDriving相似。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimBlendByFlying.jpg" alt="AnimNodes_UDKAnimBlendByFlying.jpg" width='800' height='335' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>StartingAnimName</strong> - 这个pawn是否会播放一个特殊的开始动画。
+</li> <li> <strong>EndingAnimName</strong> - 这个pawn是否会播放一个特殊的结束动画。
+</li></ul>
+<p />
+<h5><a name="UnrealScript 函数"></a><a name=" _UnrealScript 函数"></a>  UnrealScript 函数 </h5> <ul>
+<li> <strong>UpdateFlyingState()</strong> - 现在强制更新飞行状态。
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKAnimBlendByHoverboarding / _UTAnimBlendByHoverboarding"></a> UDKAnimBlendByHoverboarding / UTAnimBlendByHoverboarding </h4>
+<hr size="1" noshade="noshade">
+该节点会根据UDKVehicleSimHoverboard的状态在不同的分支之间自动进行混合。使用的UDKVehicleSimHoverboard实例是由骨架网格物体组件的所有者进行控制的一个实例。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimBlendByHoverboarding.jpg" alt="AnimNodes_UDKAnimBlendByHoverboarding.jpg" width='800' height='346' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strike><b>FallTimeBeforeAnim</b> - 未使用。</strike>
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKAnimBlendByHoverJump / _UTAnimBlendByHoverJump"></a> UDKAnimBlendByHoverJump / UTAnimBlendByHoverJump </h4>
+<hr size="1" noshade="noshade">
+该节点会根据所有者载具的 'hover' 状态在不同的分支之间自动进行混合。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimBlendByHoverboardJump.jpg" alt="AnimNodes_UDKAnimBlendByHoverboardJump.jpg" width='944' height='461' />
+<p />
+<p />
+<h4><a name="UDKAnimBlendByIdle / _UTAnimBlendByIdle"></a> UDKAnimBlendByIdle / UTAnimBlendByIdle </h4>
+<hr size="1" noshade="noshade">
+该节点会根据所有者的速度在空闲和移动之间自动进行混合。如果所有者的速度为0（或者相对数值比较小），那么节点会混合为 'Idle' 分支。否则该节点会混合到 'Moving' 分支。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimBlendByIdle.jpg" alt="AnimNodes_UDKAnimBlendByIdle.jpg" width='1015' height='461' />
+<p />
+<p />
+<h4><a name="UDKAnimBlendByPhysics / _UTAnimBlendByPhysics"></a> UDKAnimBlendByPhysics / UTAnimBlendByPhysics </h4>
+<hr size="1" noshade="noshade">
+该节点用于通过观察pawn的当前物理确定玩家所对应的分支。它可以使用当前物理枚举索引来看看内部PhysicsMap，然后选择要混合到的相应分支。如果PhysicsMap数列值在0以下，那么通常会使用第一个分支。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimBlendByPhysics.jpg" alt="AnimNodes_UDKAnimBlendByPhysics.jpg" width='800' height='341' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>PhysicsMap</strong> - 将物理枚举索引重新映射到其他分支索引。
+</li> <li> <strong>LandBlendDelay</strong> - 混合到落地动画所延迟的时间。但是，如果所有者在空中的时间少于半秒，那么不会使用它。
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKAnimBlendByPhysicsVolume / _UTAnimBlendByPhysicsVolume"></a> UDKAnimBlendByPhysicsVolume / UTAnimBlendByPhysicsVolume </h4>
+<hr size="1" noshade="noshade">
+该节点会根据所有者当前物理体积的参数在不同的分支之间进行混合。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimBlendByPhysicsVolume.jpg" alt="AnimNodes_UDKAnimBlendByPhysicsVolume.jpg" width='800' height='328' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>PhysicsParamList</strong> - 要检查的参数的列表。 <ul>
+<li> <strong>ChildIndex</strong> - 应该在所有者的物理体积与这些参数匹配的时候变为活动状态的子代的索引。
+</li> <li> <strong>bWaterVolume</strong> - 体积是否是水量。
+</li> <li> <strong>bCheckGravity</strong> - 我们是否关注体积的重力。
+</li> <li> <strong>MinGravity</strong> - bCheckGravity的最小重力阙值。
+</li> <li> <strong>MaxGravity</strong> - bCheckGravity的最大重力阙值。
+</li></ul>
+</li></ul>
+<p />
+<h5><a name="UnrealScript 函数"></a><a name=" _UnrealScript 函数"></a>  UnrealScript 函数 </h5> <ul>
+<li> <strong>PhysicsVolumeChanged(PhysicsVolume NewVolume)</strong> - 当所有者的物理体积发生变化的时候进行调用。 <ul>
+<li> <strong>NewVolume</strong> - 现在所有者所处的PhysicsVolume。
+</li></ul>
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKAnimBlendByPosture / _UTAnimBlendByPosture"></a> UDKAnimBlendByPosture / UTAnimBlendByPosture </h4>
+<hr size="1" noshade="noshade">
+该节点用于确定我们是否应该播放蹲或跑动画。如果所有者将bIsCrouched设置为true，那么会淡入 'Crouch' 分支，否则会淡入 'Run' 分支。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimBlendByPosture.jpg" alt="AnimNodes_UDKAnimBlendByPosture.jpg" width='800' height='365' />
+<p />
+<p />
+<h4><a name="UDKAnimBlendByTurnInPlace / _UTAnimBlendByTurnInPlace"></a> UDKAnimBlendByTurnInPlace / UTAnimBlendByTurnInPlace </h4>
+<hr size="1" noshade="noshade">
+该节点会检查UDKPawn所有者是否转动。如果UDKPawn所有者的绝对RootYawSpeed高于RootYawSpeedThresh，那么会淡入 'TurnInPlace' 。否则，这个动画节点序列赋给 'Idle' 分支，回放名为 'Rotate_Settle_Rif' 的动画。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimBlendByTurnInPlace.jpg" alt="AnimNodes_UDKAnimBlendByTurnInPlace.jpg" width='1089' height='461' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>Root Yaw Speed Thresh</strong> - 在激活 'TurnInPlace' 分支前必须达到的根偏转速度的阙值。
+</li> <li> <strike><b>Turn In Place Blend Speed</b> - 未使用。</strike>
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKAnimBlendByVehicle / _UTAnimBlendByVehicle"></a> UDKAnimBlendByVehicle / UTAnimBlendByVehicle </h4>
+<hr size="1" noshade="noshade">
+该节点会检查pawn是否在载具中。如果pawn在载具内，那么它会尝试将载具的类与分支的名称匹配。如果找到了一个合适的分支，那么它会混合为该分支。如果该分支索引为0，那么它会尝试播放由附加的动画序列节点上的载具定义的动画，或者停止附加的动画序列节点。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimBlendByVehicle.jpg" alt="AnimNodes_UDKAnimBlendByVehicle.jpg" width='800' height='327' />
+<p />
+<h5><a name="UnrealScript 函数"></a><a name=" _UnrealScript 函数"></a>  UnrealScript 函数 </h5> <ul>
+<li> <strong>UpdateVehicleState()</strong> - 现在强制更新载具状态。
+</li></ul>
+<p />
+<p />
+<h3><a name="Directional(定向)"></a> Directional(定向) </h3>
+<h3><a name="AnimNodeBlendDirectional (定向混合动画节点)"></a> AnimNodeBlendDirectional (定向混合动画节点) </h3>
+<hr size="1" noshade="noshade">
+该混合节点允许Anim Tree在表现拥有它的actor向前移动、向后移动、向左扫射和向右扫射的四个输入之间自动进行混合。该混合几点会将速度或加速度的方向与拥有它的actor的方向做比较。根据这两个方向之间的差别，它会在输入值之间切换。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeBlendDirectional.jpg" alt="AnimNodeBlendDirectional.jpg" width='800' height='372' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>Dir Degrees Per Second</strong> - 允许您控制改变定向混合的速度。
+</li> <li> <strong>Single Anim At Or Above LOD</strong> - 如果这个网格物体的LOD处于或高于这个值，那么只使用一个单独的定向动画而不用混合。
+</li> <li> <strong>Use Acceleration</strong> - 使用加速度的方向而不是速度的方向。
+</li></ul>
+<p />
+<p />
+<h3><a name="动画镜像"></a> 动画镜像 </h3>
+<h4><a name="AnimNodeMirror(镜像动画节点)"></a> AnimNodeMirror(镜像动画节点) </h4>
+<hr size="1" noshade="noshade">
+该混合节点允许Anim Tree设置什么时候使用<a href="AnimationMirroring.html" class="twikiLink">动画镜像</a>。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeMirror.jpg" alt="AnimNodeMirror.jpg" width='800' height='372' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>Enable Mirroring</strong> - 如果您希望镜像输入，那么将该选项设置为true。
+</li></ul>
+<p />
+<h5><a name="在虚幻脚本中如何使用"></a><a name=" 在虚幻脚本中如何使用"></a>  在虚幻脚本中如何使用 </h5>
+该代码段会向您说明如何每隔2秒启用及禁用镜像。
+<p />
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+var AnimNodeMirror AnimNodeMirror;
+var float NextBlendTime;
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  AnimNodeMirror &#61; None;
+}
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  AnimNodeMirror &#61; AnimNodeMirror(SkelComp.FindAnimNode(&#39;AnimNodeMirror&#39;));
+}
+
+simulated event Tick(float DeltaTime)
+{
+  Super.Tick(DeltaTime);
+
+  if (AnimNodeMirror &#61;&#61; None)
+  {
+    return;
+  }
+
+  if (WorldInfo.TimeSeconds &#62;&#61; NextBlendTime)
+  {
+    AnimNodeMirror.bEnableMirroring &#61; !AnimNodeMirror.bEnableMirroring;
+    NextBlendTime &#61; WorldInfo.TimeSeconds + 2.f;
+  }
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<h3><a name="Random(随机)"></a> Random(随机) </h3>
+<h4><a name="AnimNodeRandom(随机动画节点)"></a> AnimNodeRandom(随机动画节点) </h4>
+<hr size="1" noshade="noshade">
+该混合节点允许Anim Tree在由用户设置的输入之间进行随机混合。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeRandom.jpg" alt="AnimNodeRandom.jpg" width='800' height='372' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5>
+AnimNodeRandom有一个名为 <strong>Random Info（随机信息）</strong> 的数列。*Random Info（随机信息）* 是结构体的数列。每个结构体会定义供可以确定随机性的混合几点使用的属性。
+<p /> <ul>
+<li> <strong>Chance</strong> - 会拾取这个子代的几率。如果所有索引都是0，那么每个索引都具有相同的几率。
+</li> <li> <strong>Loop Count Min</strong> - 要播放这个动画的最小循环数。如果是0，那么只播放一次。
+</li> <li> <strong>Loop Cound Max</strong> - 要播放这个动画的最大循环数。
+</li> <li> <strong>Blend In Time</strong> - 要混合为这个索引的时间。
+</li> <li> <strong>Play Rate Range</strong> - 动画播放速率范围。如果为0，它会默认为1。
+</li> <li> <strong>Still Frame</strong> - 如果它是一个静止帧，那么不会播放动画，只要随机选取一个，在我们失去聚焦之前坚持使用它。
+</li></ul>
+<p />
+<h3><a name="Animation Node Sequences（动画节点序列）"></a> Animation Node Sequences（动画节点序列） </h3>
+<hr size="1" noshade="noshade">
+<p />
+<h4><a name="AnimNodeSequence(动画节点序列)"></a> AnimNodeSequence(动画节点序列) </h4>
+<hr size="1" noshade="noshade">
+该动画节点会输出动画序列中的动画数据，动画序列存放在AnimSet中。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeSequence.jpg" alt="AnimNodeSequence.jpg" width='800' height='372' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>Anim Seq Name</strong> - 要绑定到的动画序列的名称。将会在Skeletal Mesh Component（骨架网格物体组件）的AnimSets数列指定的所有AnimSet中查找这个名称。
+</li> <li> <strong>Rate</strong> - 播放动画的百分比速度。1.f将会以100%的速度播放动画（正常）。0.5f将会以50%的速度播放动画（较慢）。2.f将会以200%的速度播放动画（较快）。
+</li> <li> <strong>Playing</strong> - 当前正在播放动画吗？
+</li> <li> <strong>Looping</strong> - 动画会循环播放吗？
+</li> <li> <strong>Cause Actor Anim End</strong> - 当动画到达结尾停止播放的时候会触发拥有它的actor中的 <strong>OnAnimEnd</strong> 事件。如果动画被设置为循环播放，那么不会触发该事件。
+</li> <li> <strong>Cause Actor Anim Play</strong> - 当动画开始播放的时候会触发拥有它的actor中的 <strong>OnAnimPlay</strong> 事件。
+</li> <li> <strong>Zero Root Rotation</strong> - 通常会为该动画的根骨骼返回0旋转量。
+</li> <li> <strong>Zero Root Translation</strong> - 通常会为该动画的根骨骼返回0平移量。
+</li> <li> <strong>Disable Warning When Anim Not Found</strong> - 禁用在使用一个无效的 <strong>anim seq name（动画序列名称）</strong> 播放动画节点序列的情况下显示的警告。
+</li> <li> <strong>No Notifies</strong> - 如果为true，那么买不会为这个动画节点序列触发动画通知。
+</li> <li> <strong>Force Refpose When Not Playing</strong> - 在没有播放这个动画节点序列的情况下强制骨架网格物体处于参考姿势。添加这个选项作为一个优化方法。如果动画节点序列一直播放或循环，并且没有被动画树使用；这将会跳过动画数据查找，从而提高性能。
+</li> <li> <strong>Current Time</strong> - 动画回放的当前位置。
+</li> <li> <strong>Notify Weight Threshold</strong> - 为了通知可以执行在最终的混合中该节点必须达到的总权重。它允许您确保动画通知只可以在最明显的动画节点序列上触发。如果动画节点序列属于群组，那么可以忽略。
+</li> <li> <strong>Root Bone Option（根骨骼选项）</strong> <ul>
+<li> <strong>RBA_Default</strong> - 保留动画中的根骨骼运动，同时不影响拥有它的actor的运动。
+</li> <li> <strong>RBA_Discard</strong> - 丢弃任何根骨骼运动，把它锁定到第一帧的位置。
+</li> <li> <strong>RBA_Translate</strong> - 丢弃根骨骼运动，并且把它的速度传递拥有它的actor。
+</li></ul>
+</li> <li> <strong>Root Rotation Option（根旋转选项）</strong> <ul>
+<li> <strong>RRO_Default</strong> - 保留动画中的根骨骼旋转，同时不影响拥有它的actor的旋转。不影响actor。
+</li> <li> <strong>RRO_Discard</strong> - 丢弃任何根骨骼旋转，把它锁定到第一帧的旋转。不影响actor。
+</li> <li> <strong>RRO_Extract</strong> - 丢弃任何根骨骼旋转，并且把它的旋转传递拥有它的actor。
+</li></ul>
+</li></ul>
+<p />
+<h5><a name="UnrealScript 函数"></a><a name=" _UnrealScript 函数"></a>  UnrealScript 函数 </h5> <ul>
+<li> <strong>SetAnim(name Sequence)</strong> - 将该节点正在播放的动画更改为新的名称。将会在拥有它的SkeletaMeshComponent的AnimSet数列中查找。 <ul>
+<li> <strong>Sequence</strong> - 动画序列的名称。
+</li></ul>
+</li> <li> <strong>PlayAnim(bool bLoop, float InRate, float StartTime)</strong> - 开始当前通过使用提供的参数播放的动画。 <ul>
+<li> <strong>bLoop</strong> - 只有在被通知后，动画才可以循环播放以及停止。
+</li> <li> <strong>InRate</strong> - 播放动画的速率。
+</li> <li> <strong>StartTime</strong> - 开始播放动画的时间（例如，在动画2秒钟的地方开始播放）。
+</li></ul>
+</li> <li> <strong>StopAnim()</strong> - 停止当前动画播放。CurrentTime将会保留在原来的位置。
+</li> <li> <strong>ReplayAnim()</strong> - 使用当前设置调用PlayAnim。
+</li> <li> <strong>SetPosition(float NewTime, bool bFireNotifies)</strong> - 将动画强制到一个特定时间。 <ul>
+<li> <strong>NewTime</strong> - 重新放置动画的新时间（以秒为单位）。
+</li> <li> <strong>bFireNotifies</strong> - 启动动画通知。
+</li></ul>
+</li> <li> <strong>GetNormalizedPosition()</strong> - 在给出群组的相对位置的情况下找出同步节点的单位化位置。考虑节点的相对SynchPosOffset。
+</li> <li> <strong>FindGroupRelativePosition(float GroupRelativePosition)</strong> - 在给出群组的相对位置的情况下找出同步节点的位置。考虑节点的相对SynchPosOffset。
+</li> <li> <strong>FindGroupPosition(float GroupRelativePosition)</strong> <ul>
+<li> <strong>GroupRelativePosition</strong> - 要从中开始查找位置的群组相对位置。应该使用0.f到1.f之间的值。
+</li></ul>
+</li> <li> <strong>GetGroupRelativePosition()</strong> - 获取同步节点的相对位置。考虑节点的相对偏移。
+</li> <li> <strong>GetGlobalPlayRate()</strong> - 会返回这个动画的全局播放速率。考虑所有速率比例。
+</li> <li> <strong>GetAnimPlaybackLength()</strong> - 会返回当前动画以当前播放速率播放的持续时间（以秒为单位）。如果没有动画会返回0.0。
+</li> <li> <strong>GetTimeLeft()</strong> - 会返回动画结束播放还剩下的时间（以秒为单位）。假设播放速率不会改变。
+</li> <li> <strong>SetRootBoneAxisOption(ERootBoneAxis AxisX, ERootBoneAxis AxisY, ERootBoneAxis AxisZ)</strong> - 设置自定义动画根骨骼选项。 <ul>
+<li> <strong>AxisX</strong> - X轴。
+</li> <li> <strong>AxisY</strong> - Y轴。
+</li> <li> <strong>AxisZ</strong> - Z轴。
+</li></ul>
+</li> <li> <strong>SetRootBoneRotationOption(ERootRotationOption AxisX, ERootRotationOption AxisY,ERootRotationOption AxisZ)</strong> - 设置供<a href="RootMotion.html" class="twikiLink">根骨骼运动</a>使用的根骨骼坐标轴。 <ul>
+<li> <strong>AxisX</strong> - X轴。
+</li> <li> <strong>AxisY</strong> - Y轴。
+</li> <li> <strong>AxisZ</strong> - Z轴。
+</li></ul>
+</li></ul>
+<p />
+<p />
+<h4><a name="AnimNodeSequenceBlendByAim"></a> AnimNodeSequenceBlendByAim </h4>
+<hr size="1" noshade="noshade">
+该动画节点与AnimNodeAimOffset非常相似，因为它可以在九个之间混合。它比AnimNodeOffset简单多了，并且更容易设置，但是它不可以解决所描述的AnimNodeOffset问题。但是对于简单的瞄准 / 观察混合，它可能是一个可以供您使用的有效动画节点。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodeSequenceBlendByAim.jpg" alt="AnimNodeSequenceBlendByAim.jpg" width='800' height='372' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>Aim（瞄准）</strong> <ul>
+<li> <strong>X</strong> - 当前水平瞄准位置。
+</li> <li> <strong>Y</strong> - 当前垂直瞄准位置。
+</li></ul>
+</li> <li> <strong>Horizontal Range（水平范围）</strong> <ul>
+<li> <strong>X</strong> - 最小水平目标。
+</li> <li> <strong>Y</strong> - 最大水平目标。
+</li></ul>
+</li> <li> <strong>Vertical Range（垂直范围）</strong> <ul>
+<li> <strong>X</strong> - 最小垂直目标。
+</li> <li> <strong>Y</strong> - 最大垂直目标。
+</li></ul>
+</li> <li> <strong>Angle Offset（角偏移）</strong> <ul>
+<li> <strong>X</strong> - 在进行处理之前附加给 <strong>Aim</strong> 的水平动画偏移。
+</li> <li> <strong>Y</strong> - 在进行处理之前附加给 <strong>Aim</strong> 的垂直动画偏移。
+</li></ul>
+</li> <li> <strong>Anim Name LU</strong> - 可以表现游戏角色向左上方瞄准 / 看的动画。
+</li> <li> <strong>Anim Name LC</strong> - 可以表现游戏角色向左瞄准 / 看的动画。
+</li> <li> <strong>Anim Name LD</strong> - 可以表现游戏角色向左下方瞄准 / 看的动画。
+</li> <li> <strong>Anim Name CU</strong> - 可以表现游戏角色向上瞄准 / 看的动画。
+</li> <li> <strong>Anim Name CC</strong> - 可以表现游戏角色向前瞄准 / 看的动画。
+</li> <li> <strong>Anim Name CD</strong> - 可以表现游戏角色向下瞄准 / 看的动画。
+</li> <li> <strong>Anim Name RU</strong> - 可以表现游戏角色向右上方瞄准 / 看的动画。
+</li> <li> <strong>Anim Name RC</strong> - 可以表现游戏角色向右瞄准 / 看的动画。
+</li> <li> <strong>Anim Name RD</strong> - 可以表现游戏角色向下瞄准 / 看的动画。
+</li></ul>
+<p />
+<h5><a name="UnrealScript 函数"></a><a name=" _UnrealScript 函数"></a>  UnrealScript 函数 </h5> <ul>
+<li> <strong>CheckAnimsUpToDate()</strong> - 确保动画已经更新。如果您在游戏过程中更改了任何AnimName_XX，那么在后面调用这个函数。
+</li></ul>
+<p />
+<h5><a name="在虚幻脚本中如何使用"></a><a name=" 在虚幻脚本中如何使用"></a>  在虚幻脚本中如何使用 </h5>
+它与AnimNodeAimOffset相似，但是这个动画节点没有profile选项。
+<p />
+<h4><a name="UDKAnimNodeFramePlayer / _UTAnimNodeFramePlayer"></a> UDKAnimNodeFramePlayer / UTAnimNodeFramePlayer </h4>
+<hr size="1" noshade="noshade">
+这个动画节点是一个辅助的动画节点，它允许您将动画位置设置为一个百分数，范围为0.f到1.f。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimNodeFramePlayer.jpg" alt="AnimNodes_UDKAnimNodeFramePlayer.jpg" width='800' height='437' />
+<p />
+<h5><a name="UnrealScript 函数"></a><a name=" _UnrealScript 函数"></a>  UnrealScript 函数 </h5> <ul>
+<li> <strong>SetAnimation(name Sequence, float RateScale)</strong> - 设置动画节点的动画序列和速率比例。      <strong>Sequence</strong> - 动画序列名称。      <strong>RateScale</strong> - 播放动画的速率。
+</li> <li> <strong>SetAnimPosition(float Perc)</strong> - 根据百分比数值设置动画的位置，范围为0.f到1.f。      <strong>Perc</strong> - 要设置动画位置的百分数。
+</li></ul>
+<p />
+<h5><a name="在虚幻脚本中如何使用"></a><a name=" 在虚幻脚本中如何使用"></a>  在虚幻脚本中如何使用 </h5>
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+class ExampleUDKAnimNodeFramePlayer extends Pawn
+  placeable;
+
+var UDKAnimNodeFramePlayer UDKAnimNodeFramePlayer;
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  UDKAnimNodeFramePlayer &#61; None;
+}
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  UDKAnimNodeFramePlayer &#61; UDKAnimNodeFramePlayer(SkelComp.FindAnimNode(&#39;UDKAnimNodeFramePlayer&#39;));
+  if (UDKAnimNodeFramePlayer !&#61; None)
+  {
+    SetTimer(0.5f, true, NameOf(RandomizePosition));
+  }
+}
+
+simulated function RandomizePosition()
+{
+  if (UDKAnimNodeFramePlayer !&#61; None)
+  {
+    UDKAnimNodeFramePlayer.SetAnimPosition(FRand());
+  }
+}
+
+defaultproperties
+{
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;PawnMesh
+  End Object
+  Mesh&#61;PawnMesh
+  Components.Add(PawnMesh)
+
+  Begin Object Name&#61;CollisionCylinder
+    CollisionRadius&#61;+0030.0000
+    CollisionHeight&#61;+0072.000000
+  End Object
+}
+</pre>
+</div>
+<p />
+<p />
+<h4><a name="UDKAnimNodeSequence / _UTAnimNodeSequence"></a> UDKAnimNodeSequence / UTAnimNodeSequence </h4>
+<hr size="1" noshade="noshade">
+这个动画节点会播放动画的内部栈。每个动画结束的时候，都会从栈中删除它，然后播放栈里面的下一个动画。可以通过UDKAnimBlendByVehicle停止这个动画节点。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimNodeSequence.jpg" alt="AnimNodes_UDKAnimNodeSequence.jpg" width='800' height='405' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>Auto Start</strong> - 如果为true，这个节点将会自动开始播放。
+</li></ul>
+<p />
+<h5><a name="UnrealScript 函数"></a><a name=" _UnrealScript 函数"></a>  UnrealScript 函数 </h5> <ul>
+<li> <strong>PlayAnimation(name Sequence, float SeqRate, bool bSeqLoop)</strong> - 会播放动画。 <ul>
+<li> <strong>Sequence</strong> - 要播放的动画序列的名称。
+</li> <li> <strong>SeqRate</strong> - 播放动画的速率。
+</li> <li> <strong>bSeqLoop</strong> - 如果为True，那么这个动画应该循环播放。
+</li></ul>
+</li> <li> <strong>PlayAnimationSet(array<name> Sequences, float SeqRate, bool bLoopLast)</strong> - 播放Sequences（序列）数列中的第一个动画，然后将其余的动画添加到动画栈中。 <ul>
+<li> <strong>Sequences</strong> - 要播放的动画序列的名称。
+</li> <li> <strong>SeqRate</strong> - 播放动画的速率。
+</li> <li> <strong>bLoopLast</strong> - 如果为True，那么上一个动画应该循环播放。
+</li></ul>
+</li></ul>
+<p />
+<h5><a name="在虚幻脚本中如何使用"></a><a name=" 在虚幻脚本中如何使用"></a>  在虚幻脚本中如何使用 </h5>
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+class ExampleUDKAnimNodeSequence extends Pawn
+  placeable;
+
+// 要播放的动画序列数列
+var() const array&#60;Name&#62; Sequences;
+// 播放序列的速率
+var() const float SeqRate;
+// 如果为true，那么将会循环播放上一个动画
+var() const bool bLoopLast;
+
+var UDKAnimNodeSequence UDKAnimNodeSequence;
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  UDKAnimNodeSequence &#61; None;
+}
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  UDKAnimNodeSequence &#61; UDKAnimNodeSequence(SkelComp.FindAnimNode(&#39;UDKAnimNodeSequence&#39;));
+  if (UDKAnimNodeSequence !&#61; None)
+  {
+    UDKAnimNodeSequence.PlayAnimationSet(Sequences, SeqRate, bLoopLast);
+  }
+}
+
+defaultproperties
+{
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;PawnMesh
+  End Object
+  Mesh&#61;PawnMesh
+  Components.Add(PawnMesh)
+
+  Begin Object Name&#61;CollisionCylinder
+    CollisionRadius&#61;+0030.0000
+    CollisionHeight&#61;+0072.000000
+  End Object
+}
+</pre>
+</div>
+<p />
+<p />
+<h4><a name="UDKAnimNodeSequenceByBoneRotation / _UTAnimNodeSequenceByBoneRotation"></a> UDKAnimNodeSequenceByBoneRotation / UTAnimNodeSequenceByBoneRotation </h4>
+<hr size="1" noshade="noshade">
+该动画节点序列会根据给定骨骼的旋转（相对于拥有它的actor的旋转）从它的列表中选择一个动画。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimNodeSequenceByBoneRotation.jpg" alt="AnimNodes_UDKAnimNodeSequenceByBoneRotation.jpg" width='800' height='416' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>Bone Name</strong> - 方向应该进行测试的骨骼。
+</li> <li> <strong>Bone Axis</strong> - 要检查的骨骼的轴。
+</li> <li> <strong>Anim List</strong> - 要从中进行选择的动画的列表。 <ul>
+<li> <strong>Desired Rotation</strong> - 要播放这个动画的骨骼的预期旋转。
+</li> <li> <strong>Anim Name</strong> - 要播放的动画的名称。
+</li></ul>
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKAnimNodeSeqWeapon / _UTAnimNodeSeqWeapon"></a> UDKAnimNodeSeqWeapon / UTAnimNodeSeqWeapon </h4>
+<hr size="1" noshade="noshade">
+该动画节点序列会根据所有者的武器类型自动变换回放的动画。该动画节点与UDKAnimNodeCopyBoneTranslation/UTAnimNodeCopyBoneTranslation和AnimNodeAimOffset结合在一起使用。AnimNodeAimOffset profile用于确定所有者的武器类型。使用的内部名称无法进行更改，并且与虚幻竞技场3的武器类别相对应。
+<p />
+<img src="rsrc/Three/AnimationNodesCH/AnimNodes_UDKAnimNodeSeqWeap.jpg" alt="AnimNodes_UDKAnimNodeSeqWeap.jpg" width='800' height='287' />
+<p />
+<h5><a name="属性"></a><a name=" 属性"></a>  属性 </h5> <ul>
+<li> <strong>Default Anim</strong> - 在玩家手持步枪时播放的默认动画。
+</li> <li> <strong>Dual Pistol Anim</strong> - 在玩家手持两把手枪时播放的默认动画。
+</li> <li> <strong>Single Pistol Anim</strong> - 在玩家手持一把手枪时播放的默认动画。
+</li> <li> <strong>Shoulder Rocket Anim</strong> - 在玩家手持导弹时播放的默认动画。
+</li> <li> <strong>Stinger Anim</strong> - 在玩家手持刺枪（迷你枪一样的武器）时播放的默认动画。
+</li></ul>
+<p />
+<p />
+<h2><a name="示例"></a> 示例 </h2>
+<hr size="1" noshade="noshade">
+使用上面的一些动画节点，这个简单的示例会说明将它们结合在一起使用可以创建逻辑路径，确定在指定了玩家的pawn所进行的操作后应该如何对骨架网格物体进行动画处理。
+<p />
+要进一步了解这个逻辑规则，请查看可以确定处理其余的树的方法的主要路径。第一个主要路径是 <strong>AnimNodeBlendByPhysics</strong> 。
+<p />
+在这个图片中，当前选择的PHYS_Walking。在这里插入一个名为FullBodySlot的 <strong>AnimNodeSlot</strong> ，这样可以回放全身动画。如果没有播放动画，那么它会转向 <strong>AnimNodeBlendPerBone</strong> 。这里的混合节点允许名为UpperBodySlot的Target <strong>AnimNodeSlot</strong> 播放上半身动画。*AnimNodeBlendPerBone* 也会使用Source（源）子代衍生下半身动画和上半身动画，前提是它不处于活动状态。然后 <strong>AnimNodeBlendByPosture</strong> 会检查动画树所有者是否是蹲着的状态。如果不是蹲着的， <strong>AnimNodeBlendBySpeed</strong> 会检查动画树所有者是否是移动的状态。如果动画树所有者不是移动的，那么使用 <strong>AnimNodeSequence</strong> ，它会播放一段处于空闲状态的动画。否则， <strong>AnimNodeScaleRateBySpeed</strong> 会调整整个回放速率，并且 <strong>AnimNodeBlendDirection</strong> 会混合不同的运行动画。如果动画树所有者是蹲着的，那么会对蹲着状态特定动画采取相似的逻辑方法。为了使运行动画和蹲着的动画同步，在Anim Tree节点中创建 <strong>Run</strong> 同步组。
+<p />
+如果 <strong>AnimNodeBlendByPhysics</strong> 检测出动画树所有者已经使用了PHYS_None，那么 <strong>AnimNodeBlendByProperty</strong> 会检查动画树所有者是否处于驾驶状态。如果动画树所有者不是出于驾驶状态，那么将会输出处于空闲状态的动画。否则，会根据所驾驶的载具使用 <strong>AnimNodeBlendList</strong> 输出不同的驾驶位置。
+<p />
+如果 <strong>AnimNodeBlendByPhysics</strong> 检测出动画树所有者使用了PHYS_Falling，那么会输出下落空闲动画。
+<p />
+如果 <strong>AnimNodeBlendByPhysics</strong> 检测出动画树所有者使用了PHYS_Swimming，那么对于游泳特定动画采用与PHYS_Walking相似的逻辑方法。
+<p />
+然后将混合的结果输出到 <strong>AnimNodeMirror</strong> 中。根据是否需要镜像决定该混合节点是否可以输出镜像的版本。最近 <strong>AnimNodeAimOffset</strong> 向混合的骨架上添加了不同的瞄准 / 观察动画delta。
+<p />
+Anim Tree会读取最终的骨架并将它应用到骨架网格物体上。
+<p />
+<a href="#" target="_top"><img src="rsrc/Three/AnimationNodesCH/AnimNodeGameExample_Thumbnail.jpg" alt="AnimNodeGameExample_Thumbnail.jpg" width='800' height='237' /></a>
+<p />
+<p />
+<h2><a name="下载"></a> 下载 </h2>
+<hr size="1" noshade="noshade">
+<p /> <ul>
+<li> <a href="#" target="_top">下载</a>本文档中使用的内容。
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/AnimationNodesCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:59 GMT -->
+</html></body>

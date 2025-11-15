@@ -1,0 +1,2511 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CameraTechnicalGuide.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:08:07 GMT -->
+<head>
+<title> UDK | CameraTechnicalGuide    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">CameraTechnicalGuide  </b></div>
+<div id="tooltext">
+<a href="CameraTechnicalGuideJP.html" class="twikiLink">日本語訳</a><br><a href="CameraTechnicalGuideCH.html" class="twikiLink">中国翻译</a><br><a href="CameraTechnicalGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/CameraTechnicalGuide -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="GameplayProgrammingHome.html" class="twikiLink">Gameplay Programming</a></b> &gt; Camera Technical Guide
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Camera Technical Guide"></a> Camera Technical Guide </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="CameraTechnicalGuide.html#Camera Technical Guide"> Camera Technical Guide</a> <ul>
+<li> <a href="CameraTechnicalGuide.html#Overview"> Overview</a>
+</li> <li> <a href="CameraTechnicalGuide.html#Camera"> Camera</a> <ul>
+<li> <a href="CameraTechnicalGuide.html#Post Process Effects"> Post Process Effects</a>
+</li> <li> <a href="CameraTechnicalGuide.html#Lens Effects"> Lens Effects</a>
+</li> <li> <a href="CameraTechnicalGuide.html#Camera Animations"> Camera Animations</a>
+</li> <li> <a href="CameraTechnicalGuide.html#Camera Modifiers"> Camera Modifiers</a>
+</li></ul>
+</li> <li> <a href="CameraTechnicalGuide.html#Player Controller"> Player Controller</a>
+</li> <li> <a href="CameraTechnicalGuide.html#Pawn"> Pawn</a>
+</li> <li> <a href="CameraTechnicalGuide.html#Customizing Camera Behavior"> Customizing Camera Behavior</a>
+</li> <li> <a href="CameraTechnicalGuide.html#Examples - _CalcCamera"> Examples - CalcCamera</a> <ul>
+<li> <a href="CameraTechnicalGuide.html#Example First Person Camera"> Example First Person Camera</a>
+</li> <li> <a href="CameraTechnicalGuide.html#Example Third Person Camera"> Example Third Person Camera</a>
+</li> <li> <a href="CameraTechnicalGuide.html#Example Top-Down Camera"> Example Top-Down Camera</a>
+</li> <li> <a href="CameraTechnicalGuide.html#Example Isometric Camera"> Example Isometric Camera</a>
+</li> <li> <a href="CameraTechnicalGuide.html#Example Side-Scrolling Camera"> Example Side-Scrolling Camera</a>
+</li> <li> <a href="CameraTechnicalGuide.html#Example All-In-One Camera"> Example All-In-One Camera</a>
+</li></ul>
+</li> <li> <a href="CameraTechnicalGuide.html#Example - Custom Camera"> Example - Custom Camera</a> <ul>
+<li> <a href="CameraTechnicalGuide.html#Base Camera Module"> Base Camera Module</a>
+</li> <li> <a href="CameraTechnicalGuide.html#Custom Camera"> Custom Camera</a>
+</li> <li> <a href="CameraTechnicalGuide.html#Base Control Module"> Base Control Module</a>
+</li> <li> <a href="CameraTechnicalGuide.html#Engine Class Overrides"> Engine Class Overrides</a> <ul>
+<li> <a href="CameraTechnicalGuide.html#PlayerController"> PlayerController</a>
+</li> <li> <a href="CameraTechnicalGuide.html#Pawn Class"> Pawn Class</a>
+</li> <li> <a href="CameraTechnicalGuide.html#GameInfo Class"> GameInfo Class</a>
+</li></ul>
+</li> <li> <a href="CameraTechnicalGuide.html#Example Camera Module"> Example Camera Module</a>
+</li> <li> <a href="CameraTechnicalGuide.html#Example Control Module"> Example Control Module</a>
+</li> <li> <a href="CameraTechnicalGuide.html#Config Files"> Config Files</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The camera system for players in Unreal Engine 3 is comprised of three main classes: Camera, Pawn, and PlayerController. These classes all interact to control the position, rotation, and any other special effects that should be applied to the player’s camera during play.
+<p />
+The PlayerController holds a reference to the Camera being used as well as the Pawn being controlled. The PlayerController takes in the input from the player and uses that to update the positions and rotation of the Pawn it is controlling. By default, the Camera passes off its update to the Pawn, which in turn updates the position and rotation of the camera.
+<p />
+By modifying one or more of these classes and the way they interact, the player’s camera can be set to show the world to the player using any perspective that suits the type of game you are making. By default, the player’s camera uses a first-person perspective with the option to toggle it to a third-person over-the-shoulder perspective. This can easily be modified to show the world from a top-down perspective, an isometric view, a side-scrolling perspective, or any other view your game might require.
+<p />
+<p />
+<h2><a name="Camera"></a> Camera </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The camera class represents the player’s view into the world. The position and rotation of the player’s camera determines the viewpoint from which the scene is rendered when displayed on-screen. The Camera class also contains properties for controlling the way the world is seen through the camera, such as setting the field of view, aspect ratio, etc. Cameras also have special effects that can be applied to them including such things as post processing, lens effects, camera modifiers, camera animations, etc.
+<p />
+Note that all FOV variables are full angles, expressed in degrees.
+<p />
+<strong>Camera Properties</strong>
+<p /> <ul>
+<li> <strong>General</strong> <ul>
+<li> <strong>PCOwner</strong> – Reference to the PlayerController which owns this camera.
+</li> <li> <strong>CameraStyle</strong> – Current camera mode for this camera. Used to determine the style of camera (i.e., first-person, third-person, free, etc.) when point of view is not being overridden by the view target.
+</li> <li> <strong>ViewTarget</strong> – Current data defining the view target. Type is TViewTarget.
+</li> <li> <strong>TViewTarget</strong> <ul>
+<li> <strong>Target</strong> – Target actor that the camera is "following".
+</li> <li> <strong>Controller</strong> – Controller of the Target, if a Pawn.
+</li> <li> <strong>POV</strong> – Ideal point of view for the Target. Type is TPOV. <ul>
+<li> <strong>TPOV</strong> <ul>
+<li> <strong>Location</strong> – Location for the point of view.
+</li> <li> <strong>Rotation</strong> – Rotation of the point of view.
+</li> <li> <strong>FOV</strong> – Field of view angle for the point of view.
+</li></ul>
+</li> <li> <strong>AspectRatio</strong> – Aspect ratio to use for the Target.
+</li> <li> <strong>PRI</strong> – Player replication info used to track the same player through pawn transitions.
+</li></ul>
+</li></ul>
+</li></ul>
+</li> <li> <strong>FOV</strong> <ul>
+<li> <strong>DefaultFOV</strong> – Default field of view for the camera.
+</li> <li> <strong>bLockedFOV</strong> – If True, the camera’s field of view will be locked to the value of LockedFOV.
+</li> <li> <strong>LockedFOV</strong> – Field of view to use when FOV is locked.
+</li></ul>
+</li> <li> <strong>Aspect Ratio</strong> <ul>
+<li> <strong>DefaultAspectRatio</strong> – Default aspect ratio for the camera.
+</li> <li> <strong>bConstrainAspectRatio</strong> – If True, the camera’s aspect ratio will be constrained to the value of ConstrainedAspectRatio.
+</li> <li> <strong>ConstrainedAspectRatio</strong> – Aspect ratio to use when the aspect ratio of the camera is being constrained.
+</li></ul>
+</li></ul>
+<p />
+<strong>Camera Functions</strong>
+<p /> <ul>
+<li> <strong>General</strong> <ul>
+<li> <strong>UpdateCamera [DeltaTime]</strong> – Called once per frame to perform an update of the camera. <ul>
+<li> <strong>DeltaTime</strong> – The amount of time since the last update occurred.
+</li></ul>
+</li> <li> <strong>GetCameraViewPoint [OutCamLoc] [OutCamRot]</strong> – Retrieves the camera’s location and rotation. This function should not be called directly. Instead, the GetPlayerViewPoint() function of the PCOwner should be called instead. <ul>
+<li> <strong>OutCamLoc</strong> – Outputs the camera’s location.
+</li> <li> <strong>OutCamRot</strong> – Outputs the camera’s rotation.
+</li></ul>
+</li> <li> <strong>ProcessViewRotation [DeltaTime] [OutViewRotation] [OutDeltaRot]</strong> – Called by the PCOwner to give the camera an opportunity to alter this frame's view rotation changes. <ul>
+<li> <strong>DeltaTime</strong> – The amount of time since the last update occurred.
+</li> <li> <strong>OutViewRotation</strong> – Outputs the adjusted view rotation of the camera.
+</li> <li> <strong>OutDeltaRot</strong> – Outputs the adjusted delta rotation of the camera.
+</li></ul>
+</li></ul>
+</li> <li> <strong>FOV</strong> <ul>
+<li> <strong>GetFOVAngle</strong> – Returns the camera’s current field of view angle.
+</li> <li> <strong>SetFOV [NewFOV]</strong> – Sets the camera’s field of view to the NewFOV value. <ul>
+<li> <strong>NewFOV</strong> – Value to set the camera’s field of view to.
+</li></ul>
+</li></ul>
+</li> <li> <strong>View Target</strong> <ul>
+<li> <strong>SetViewTarget [NewViewTarget] [TransitionParams]</strong> – Sets the view target of the camera. <ul>
+<li> <strong>NewViewTarget</strong> – Actor to set as the new view target of the camera.
+</li> <li> <strong>TransitionParams</strong> – Blending parameters to use when transitioning to the new view target.
+</li></ul>
+</li> <li> <strong>UpdateViewTarget [OutVT] [DeltaTime]</strong> – Called per-frame to update the view target to it's new position, rotation, and fov.  If using custom cameras (as opposed to overriding CalcCamera() in the view target actor), this is the key function to override to implement your desired behavior. <ul>
+<li> <strong>OutVT</strong> – Outputs a data structure holding the view target and point of view of the camera.
+</li> <li> <strong>DeltaTime</strong> – The amount of time since the last update occurred.
+</li></ul>
+</li></ul>
+</li></ul>
+<p />
+<h3><a name="Post Process Effects"></a> Post Process Effects </h3>
+<p />
+Post process effects are effects applied to the rendered scene before it is displayed to the player. Each camera has the ability to apply its own set of post process settings that can override the world, volume, or default post process settings.
+<p />
+For more information on post process effects, see <a href="PostProcessEditorUserGuide.html" class="twikiLink">PostProcessEditorUserGuide</a> and <a href="PostProcessTechnicalGuide.html" class="twikiLink">PostProcessTechnicalGuide</a> and <a href="PostProcessMaterials.html" class="twikiLink">PostProcessMaterials</a>.
+<p />
+<strong>Post Process Effects Properties</strong>
+<p /> <ul>
+<li> <strong>CameOverridePostProcessAlpha</strong> – Sets the influence of the camera’s post process settings with respect to the world, volume, or default post process settings. A value of 0.0 means the world, volume, or default post process has full influence. A value of 1.0 means the camera’s post process has full influence.
+</li> <li> <strong>CamPostProcessSettings</strong> – The post process settings to use when the camera is overriding the world, volume, or default post process.
+</li> <li> <strong>bEnableColorScaling</strong> – If True, color channels in the final image will be scaled using the ColorScale values.
+</li> <li> <strong>ColorScale</strong> – Vector for scaling individual color channels in final image.
+</li> <li> <strong>bEnableColorScaleInterp</strong> – If True, the camera will interpolate between color scaling values when new color scaling values are set through the SetDesiredColorScale() function.
+</li> <li> <strong>bEnableFading</strong> – If True, the camera will apply the FadeAmount of the FadeColor to the screen.
+</li> <li> <strong>FadeColor</strong> – Color to apply to the screen when the camera is fading.
+</li> <li> <strong>FadeAmount</strong> – Amount of fading to apply. In essence, the alpha of the fade.
+</li></ul>
+<p />
+<strong>Post Process Effects Functions</strong>
+<p /> <ul>
+<li> <strong>SetDesiredColorScale [NewColorScale] [InterpTime]</strong> – Sets new color scaling values and optionally interpolates depending on the value of bEnableColorScaleInterp. <ul>
+<li> <strong>NewColorScale</strong> – New values to use for color scaling.
+</li> <li> <strong>InterpTime</strong> – Amount of time to take to interpolate to the new color scaling values.
+</li></ul>
+</li></ul>
+<p />
+<h3><a name="Lens Effects"></a> Lens Effects </h3>
+<p />
+Lens effects are particle effects that are applied to the lens of the player’s camera. These lens effects can be used to create things like rain dripping down the camera lens, blood splatter, dirt or dust on the lens, etc. The camera class contains functions for applying these types of effects.
+<p />
+For more information on particle systems and effects, see <a href="ParticleSystemReference.html" class="twikiLink">ParticleSystemReference</a>.
+<p />
+<strong>Lens Effects Properties</strong>
+<p /> <ul>
+ <li>
+ <ul>
+<li> <strong>CameraLensEffects</strong> – Array of all particle effects currently applied to the camera.
+</li></ul>
+</li></ul>
+<p />
+<strong>Lens Effects Functions</strong>
+<p /> <ul>
+<li> <strong>FindCameraLensEffect [LensEffectEmitterClass]</strong> – Searches the lens effects applied to the camera currently and returns any of the matching type. <ul>
+<li> <strong>LensEffectEmitterType</strong> – Class of lens effect to search for.
+</li></ul>
+</li> <li> <strong>AddCameraLensEffect [LensEffectEmitterClass]</strong> – Applies a new lens effect of the given type to the camera. <ul>
+<li> <strong>LensEffectEmitterClass</strong> – Class of lens effect to apply to the camera.
+</li></ul>
+</li> <li> <strong>RemoveCameraLensEffect [Emitter]</strong> – Removes a lens effect from the camera. <ul>
+<li> <strong>Emitter</strong> – Lens effect to remove from the camera.
+</li></ul>
+</li> <li> <strong>ClearCameraLensEffects</strong> – Removes all lens effects currently applied to the camera.
+</li></ul>
+<p />
+<h3><a name="Camera Animations"></a> Camera Animations </h3>
+<p />
+Camera animations are animations that can be created within Matinee (or optionally in an external animation editor and imported) that use the translation and rotation information of the animation to offset the camera during play.  They also provide the ability to animate any of the other properties of the camera that can normally be animated in Matinee, such as FOV or postprocess effects. This can be quite useful for creating effects like camera shaking, the hand-bobbing of a handheld camera, or any other animation effect.
+<p />
+For more information on setting up camera animations, see <a href="SettingUpCameras.html" class="twikiLink">SettingUpCameras</a>.
+<p />
+<strong>Camera Animation Functions</strong>
+<p /> <ul>
+<li> <strong>PlayCameraAnim [CameraAnim] [Rate] [Scale] [BlendInTime] [BlendOutTime] [bLoop] [bRandomStartTime] [Duration] [bSingleInstance]</strong> – Plays a camera animation on the camera. <ul>
+<li> <strong>CameraAnim</strong> – Camera animation to play.
+</li> <li> <strong>Rate</strong> – Optional. Speed at which to play the camera animation.
+</li> <li> <strong>Scale</strong> – Optional. Intensity multiplier to apply to the camera animation transformations.
+</li> <li> <strong>BlendInTime</strong> – Optional. Amount of time to take to blend into the camera animation.
+</li> <li> <strong>BlendOutTime</strong> – Optional. Amount of time to take to blend out of the camera animation.
+</li> <li> <strong>bLoop</strong> – Optional. If True, the camera animation will continue to loop until explicitly stopped.
+</li> <li> <strong>bRandomStartTime</strong> – Optional. If True, the camera animation will begin playing at a random time within the animation’s timeline.
+</li> <li> <strong>Duration</strong> – Optional. Amount of time to play the animation for. If not set, the entire animation will be played.
+</li> <li> <strong>bSingleInstance</strong> – Optional. If True, only one instance of the camera shake will be allowed to exist at any one time.
+</li></ul>
+</li> <li> <strong>StopAllCameraAnims [bImmediate]</strong> – Stops all camera animations currently playing. <ul>
+<li> <strong>bImmediate</strong> – Optional. If True, the animations will stop immediately, ignoring any blending times set.
+</li></ul>
+</li> <li> <strong>StopAllCameraAnimsByType [Anim] [bImmediate]</strong> – Stops all instances of a specific type of camera animation. <ul>
+<li> <strong>Anim</strong> – The type of camera animation to stop.
+</li> <li> <strong>bImmediate</strong> – Optional. If True, the animations will stop immediately, ignoring any blending times set.
+</li></ul>
+</li> <li> <strong>StopCameraAnim [AnimInst] [bImmediate]</strong> – Stops a specific instance of a camera animation. <ul>
+<li> <strong>AnimInst</strong> – The camera animation instance to stop.
+</li> <li> <strong>bImmediate</strong> – Optional. If True, the animations will stop immediately, ignoring any blending times set.
+</li></ul>
+</li></ul>
+<p />
+<h3><a name="Camera Modifiers"></a> Camera Modifiers </h3>
+<p />
+Camera modifiers are objects which, when applied to a camera, can modify properties of the camera. The CameraModifier class is the base class for these effects. By subclassing this class and overriding functions within it, completely custom modifiers can be created. The CameraModifier_CameraShake class is a good example of what can be accomplished with camera modifiers.
+<p />
+<strong>Camera Modifier Properties</strong>
+<p /> <ul>
+ <li>
+ <ul>
+<li> <strong>ModifierList</strong> – Array of all camera modifiers currently applied to the camera
+</li> <li> <strong>CameraShakeModClass</strong> – Class to use for cone-driven camera shake, i.e. non-camera animation screen shake from Kismet.
+</li></ul>
+</li></ul>
+<p />
+<strong>Camera Modifier Functions</strong>
+<p /> <ul>
+<li> <strong>PlayCameraShake [Shake] [Scale] [PlaySpace] [UserPlaySpaceRot]</strong> – Plays a camera shake effect on the camera. <ul>
+<li> <strong>Shake</strong> – CamerShake settings to use for the camera shake effect.
+</li> <li> <strong>Scale</strong> – Scaling factor to multiply the camera shake settings by.
+</li> <li> <strong>PlaySpace</strong> – Optional. Play space to use for the camera shake.
+</li> <li> <strong>UserPlaySpaceRot</strong> – Optional. Rotation to use for user-defined play spaces.
+</li></ul>
+</li> <li> <strong>StopCameraShake [Shake]</strong> – Stops playing a camera shake effect on the camera. <ul>
+<li> <strong>Shake</strong> – The camera shake to stop playing.
+</li></ul>
+</li> <li> <strong>CalcRadialCameraShake [Cam] [Epicenter] [InnerRadius] [OuterRadius] [Falloff]</strong> – Calculates and returns the intensity for a particular camera of a radial shake. <ul>
+<li> <strong>Cam</strong> – Camera to calculate the intensity for.
+</li> <li> <strong>Epicenter</strong> – Location where the camera shake originates from.
+</li> <li> <strong>InnerRadius</strong> – Distance from the epicenter where falloff begins.
+</li> <li> <strong>OuterRadius</strong> – Distance from epicenter where the effect of the camera shake ends.
+</li> <li> <strong>Falloff</strong> – Exponent to use for calculating the falloff of the intensity.
+</li></ul>
+</li> <li> <strong>PlayWorldCameraShake [Shake] [ShakeInstigator] [Epicenter] [InnerRadius] [OuterRadius] [Falloff] [bTrForceFeedback] [bOrientShakeTowardEpicenter]</strong> – Plays an in-world camera shake that affects all nearby cameras. <ul>
+<li> <strong>Shake</strong> – camera shake to play.
+</li> <li> <strong>ShakeInstigator</strong> – Actor that instigated the camera shake.
+</li> <li> <strong>Epicenter</strong> – Location where the camera shake originates from.
+</li> <li> <strong>InnerRadius</strong> – Distance from the epicenter where falloff begins.
+</li> <li> <strong>OuterRadius</strong> – Distance from epicenter where the effect of the camera shake ends.
+</li> <li> <strong>Falloff</strong> – Exponent to use for calculating the falloff of the intensity.
+</li> <li> <strong>bTryForceFeedback</strong> – If true, force feedback will attempt to be applied to any controllers being affected.
+</li> <li> <strong>bOrientShakeTowardEpicenter</strong> – Optional. If True, any offsets in the camera shake will be applied relative to facing the epicenter, with the positive X-axis being towards the epicenter.
+</li></ul>
+</li> <li> <strong>ClearAllCameraShakes</strong> – Removes all camera shakes currently applied to the camera.
+</li></ul>
+<p />
+<h2><a name="Player Controller"></a> Player Controller </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+ The PlayerController is responsible for translating player input into game actions, such as moving a Pawn or controlling the camera. It is typical for the PlayerController's rotation to drive the camera rotation, although this isn't strictly necessary.  When creating new camera perspectives, it may be necessary to update or override some functionality within the PlayerController class as how the player’s input is translated into the movement and orientation of the Pawn can differ with each type of camera. Some of the properties and functions relating to movement and cameras are described below.
+<p />
+<strong>Player Controller Properties</strong>
+<p /> <ul>
+<li> <strong>PlayerCamera</strong> – Reference to the player’s camera.
+</li> <li> <strong>CameraClass</strong> – Class of camera to use for the player.
+</li> <li> <strong>ViewTarget</strong> – The current view target of the player’s camera.
+</li> <li> <strong>RealViewTarget</strong> – Player replication info of the view target of the player’s camera.
+</li> <li> <strong>FOVangle</strong> – Field of view angle of the Player’s camera.
+</li> <li> <strong>DefaultFOV</strong> – Default field of view angle to use for the player’s camera.
+</li></ul>
+<p />
+<strong>Player Controller Functions</strong>
+<p /> <ul>
+<li> <strong>GetPlayerViewPoint [out_Location] [out_Rotation]</strong> – This returns the point of view of the Controller’s Pawn. For human players, this is the camera’s viewpoint. For AI-controlled players, this is the viewpoint from the Pawn’s eyes. In this base implementation, it is simply the location and rotation of the Controller itself. <ul>
+<li> <strong>out_Location</strong> – Outputs the location of the player’s viewpoint.
+</li> <li> <strong>out_Rotation</strong> – Outputs the rotation of the player’s viewpoint.
+</li></ul>
+</li> <li> <strong>GetActorEyesViewPoint [out_Location] [out_Rotation]</strong> – This returns the point of view of the Controller or its Pawn if one exists. Essentially, this returns where the player is looking from and in which direction. <ul>
+<li> <strong>out_Location</strong> – Outputs the location of the player’s eyes.
+</li> <li> <strong>out_Rotation</strong> – Outputs the rotation of the player’s eyes.
+</li></ul>
+</li> <li> <strong>UpdateRotation [DeltaTime]</strong> – This updates the rotation of the Controller and that of the Controller’s Pawn based on the player’s input. <ul>
+<li> <strong>DeltaTime</strong> – The amount of time since the last update occurred.
+</li></ul>
+</li> <li> <strong>ProcessViewRotation [DeltaTime] [out_ViewRotation] [DeltaRot]</strong> – This is called to allow for any modifications to be made to the controller's view rotation (e.g. clamping).  This is called from UpdateRotation(). <ul>
+<li> <strong>DeltaTime</strong> – The amount of time since the last update occurred.
+</li> <li> <strong>out_ViewRotation</strong> – Outputs the player’s view rotation.
+</li> <li> <strong>DeltaRot</strong> – Change in rotation due to player input.
+</li></ul>
+</li> <li> <strong>PlayerMove [DeltaTime]</strong> – This calculates the new acceleration and rotation values for the current move and then calls either ProcessMove() (for single-player or listen servers) or ReplicateMove() (for network clients). This is simply a stub in the base PlayerController class but is overridden within certain states which involve movement, such as the PlayerWalking state. This function is called from the PlayerTick() function every cycle.
+</li> <li> <strong>ProcessMove [DeltaTime] [newAccel] [DoubleClickMove] [DeltaRot]</strong> – This handles the current move on the client. This function is overridden inside certain states which require special functionality for movement.
+</li></ul>
+<p />
+<h2><a name="Pawn"></a> Pawn </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The Pawn is not only the player’s physical representation in the world, but can also be responsible for controlling the position and rotation of the player’s camera. It contains functions which can be overridden to create entirely new camera perspectives. Some of the camera-related functions are describe below.
+<p />
+<strong>Pawn Functions</strong>
+<p /> <ul>
+<li> <strong>CalcCamera [DeltaTime] [out_CamLoc] [out_CamRot] [out_FOV]</strong> – This calculates the camera’s viewpoint when viewing from the Pawn. This is the main camera calculation for the player. <ul>
+<li> <strong>DeltaTime</strong> – The amount of time since the last update occurred.
+</li> <li> <strong>out_CamLoc</strong> – Outputs the camera’s location.
+</li> <li> <strong>out_CamRot</strong> – Outputs the camera’s rotation.
+</li> <li> <strong>out_FOV</strong> – Outputs the camera’s field of view.
+</li></ul>
+</li> <li> <strong>GetDefaultCameraMode [RequestedBy]</strong> – This returns the default camera mode, as a name, that should be used for this Pawn. This is usually called by the controller when possessing the Pawn. <ul>
+<li> <strong>RequestedBy</strong> - The controller requesting the default camera mode.
+</li></ul>
+</li> <li> <strong>ProcessViewRotation [deltaTime]  [out_ViewRotation] [out_DeltaRot]</strong> – This gives the pawn the opportunity to influence the player’s view rotation and returns the final view rotation as the out_ViewRotation parameter. This is called from the UpdateRotation() function of the PlayerController. <ul>
+<li> <strong>deltaTime</strong> – The amount of time since the last update occurred.
+</li> <li> <strong>out_ViewRotation</strong> – Outputs the rotation of the Pawn’s point of view.
+</li> <li> <strong>out_DeltaRot</strong> – Outputs the delta rotation.
+</li></ul>
+</li> <li> <strong>SetViewRotation [NewRotation]</strong> – Sets the rotation of the Controller, if one exists, or of the Pawn itself if no Controller exists. <ul>
+<li> <strong>NewRotation</strong> – New rotation to set the Pawn’s view to.
+</li></ul>
+</li> <li> <strong>GetActorEyesViewPoint [out_Location] [out_Rotation]</strong> – This returns the location and orientation of the Pawn’s eyes, or the point of view of the player. For a first person perspective this is identical to the camera location and orientation. It is also the view point most traces will be performed from. <ul>
+<li> <strong>out_Location</strong> – Outputs the location of the Pawn’s eyes.
+</li> <li> <strong>out_Rotation</strong> – Outputs the rotation of the Pawn’s eyes.
+</li></ul>
+</li></ul>
+<p />
+<p />
+<h2><a name="Customizing Camera Behavior"></a> Customizing Camera Behavior </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+There are 2 main ways to implement your custom camera.  The view target Pawn can implement CalcCamera(), or you can create a custom class extending Camera.
+<p />
+Implementing Pawn.CalcCamera() is useful for simple and straightforward camera modes.  The tradeoff is that some functionality may not be fully functional via this method, including post process effects or camera animations.
+<p />
+Creating a custom camera class can take a little more overhead to set up, but is more fully featured.  GameFramework.GamePlayerCamera is an example of this approach.
+<p />
+<p />
+<h2><a name="Examples - _CalcCamera"></a> Examples - CalcCamera </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Below, there are some basic examples of modifying the player’s camera perspective using the Pawn's CalcCamera() function and in some cases how player input is handled as well. These are not meant as complete plug and play solutions to all your camera needs. They are simply a jumping off point to get started creating your own custom camera setups.
+<p />
+There are obviously a great deal of other modifications that could and should be done to make these polished, shippable camera types. You might want to implement the ability to adjust the camera’s distance from the player in any of non-first person modes by scrolling the mouse wheel. Adding code to avoid the camera encroaching on world geometry in some of the modes might be a good idea if you are not planning to design your levels specifically to avoid such things. Also, changing how the crosshair is drawn instead of removing it completely would be a nice addition in some of the modes.
+<p />
+All of these examples will require a new custom gametype class to tell the game to use the new Pawn and PlayerController classes.
+<p />
+<span style="font:12px Courier;">
+UDNGame.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNGame extends UTDeathMatch;
+
+defaultproperties
+{
+   DefaultPawnClass&#61;class&#39;UDNExamples.UDNPawn&#39;
+   PlayerControllerClass&#61;class&#39;UDNExamples.UDNPlayerController&#39;
+   MapPrefixes&#91;0]&#61;&#34;UDN&#34;
+}
+</pre>
+</div>
+<p />
+The DefaultGame.ini will need to be modified to tell the engine to use the new gametype as the default as well.
+<p />
+<span style="font:12px Courier;">
+DefaultGame.ini
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+&#91;Engine.GameInfo]
+DefaultGame&#61;UDNExamples.UDNGame
+DefaultServerGame&#61;UDNExamples.UDNGame
+</pre>
+</div>
+<p />
+<strong>Note:</strong> In order for the new gametype to be used, you will need to make sure your maps have the correct prefix. We set the prefix to be "UDN" in our gametype so all maps will need to be named starting with "UDN-". It is also possible to quickly test the new gametype with any map in the editor by setting the <em>Game Type PIE</em> property in the World Properties for the map to the new gametype.
+<p />
+<h3><a name="Example First Person Camera"></a> Example First Person Camera </h3>
+<p />
+A first person perspective is the default camera type for all pawns extending from UTPawn. This example pulls out the main parts that make up that camera type from each class involved and places them in new subclasses in order to better demonstrate the process involved in creating a basic first person camera.
+<p />
+<img alt="camera_first.jpg" src="rsrc/Three/CameraTechnicalGuide/camera_first.jpg" />
+<p />
+<span style="font:12px Courier;">
+UDNPawn.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPawn extends UTPawn;
+
+simulated function bool CalcCamera( float fDeltaTime, out vector out&#95;CamLoc, out rotator out&#95;CamRot, out float out&#95;FOV )
+{
+   // Calculate first person camera position and rotation
+   GetActorEyesViewPoint( out&#95;CamLoc, out&#95;CamRot );
+
+   return true;
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<span style="font:12px Courier;">
+UDNPlayerController.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPlayerController extends UTPlayerController;
+
+state PlayerWalking
+{
+ignores SeePlayer, HearNoise, Bump;
+
+   function ProcessMove(float DeltaTime, vector NewAccel, eDoubleClickDir DoubleClickMove, rotator DeltaRot)
+   {
+      if( Pawn &#61;&#61; None )
+      {
+         return;
+      }
+
+      if (Role &#61;&#61; ROLE&#95;Authority)
+      {
+         // Update ViewPitch for remote clients
+         Pawn.SetRemoteViewPitch( Rotation.Pitch );
+      }
+
+      Pawn.Acceleration &#61; NewAccel;
+
+      CheckJumpOrDuck();
+   }
+}
+
+function UpdateRotation( float DeltaTime )
+{
+   local Rotator   DeltaRot, newRotation, ViewRotation;
+
+   ViewRotation &#61; Rotation;
+   if (Pawn!&#61;none)
+   {
+      Pawn.SetDesiredRotation(ViewRotation);
+   }
+
+   // Calculate Delta to be applied on ViewRotation
+   DeltaRot.Yaw   &#61; PlayerInput.aTurn;
+   DeltaRot.Pitch   &#61; PlayerInput.aLookUp;
+
+   ProcessViewRotation( DeltaTime, ViewRotation, DeltaRot );
+   SetRotation(ViewRotation);
+
+   NewRotation &#61; ViewRotation;
+   NewRotation.Roll &#61; Rotation.Roll;
+
+   if ( Pawn !&#61; None )
+      Pawn.FaceRotation(NewRotation, deltatime);
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h3><a name="Example Third Person Camera"></a> Example Third Person Camera </h3>
+<p />
+A third person camera setup is also included as an alternate camera type for all subclasses of UTPawn. This example pulls the main parts out and overrides the default camera to be this third person camera.
+<p />
+<img alt="camera_third.jpg" src="rsrc/Three/CameraTechnicalGuide/camera_third.jpg" />
+<p />
+<span style="font:12px Courier;">
+UDNPawn.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPawn extends UTPawn;
+
+//override to make player mesh visible by default
+simulated event BecomeViewTarget( PlayerController PC )
+{
+   local UTPlayerController UTPC;
+
+   Super.BecomeViewTarget(PC);
+
+   if (LocalPlayer(PC.Player) !&#61; None)
+   {
+      UTPC &#61; UTPlayerController(PC);
+      if (UTPC !&#61; None)
+      {
+         //set player controller to behind view and make mesh visible
+         UTPC.SetBehindView(true);
+         SetMeshVisibility(UTPC.bBehindView);
+      }
+   }
+}
+
+simulated function bool CalcCamera( float fDeltaTime, out vector out&#95;CamLoc, out rotator out&#95;CamRot, out float out&#95;FOV )
+{
+   local vector CamStart, HitLocation, HitNormal, CamDirX, CamDirY, CamDirZ, CurrentCamOffset;
+   local float DesiredCameraZOffset;
+
+   CamStart &#61; Location;
+   CurrentCamOffset &#61; CamOffset;
+
+   DesiredCameraZOffset &#61; (Health &#62; 0) ? 1.2 &#42; GetCollisionHeight() + Mesh.Translation.Z : 0.f;
+   CameraZOffset &#61; (fDeltaTime &#60; 0.2) ? DesiredCameraZOffset &#42; 5 &#42; fDeltaTime + (1 - 5&#42;fDeltaTime) &#42; CameraZOffset : DesiredCameraZOffset;
+
+   if ( Health &#60;&#61; 0 )
+   {
+      CurrentCamOffset &#61; vect(0,0,0);
+      CurrentCamOffset.X &#61; GetCollisionRadius();
+   }
+
+   CamStart.Z +&#61; CameraZOffset;
+   GetAxes(out&#95;CamRot, CamDirX, CamDirY, CamDirZ);
+   CamDirX &#42;&#61; CurrentCameraScale;
+
+   if ( (Health &#60;&#61; 0) &#124;&#124; bFeigningDeath )
+   {
+      // adjust camera position to make sure it&#39;s not clipping into world
+      // &#64;todo fixmesteve.  Note that you can still get clipping if FindSpot fails (happens rarely)
+      FindSpot(GetCollisionExtent(),CamStart);
+   }
+   if (CurrentCameraScale &#60; CameraScale)
+   {
+      CurrentCameraScale &#61; FMin(CameraScale, CurrentCameraScale + 5 &#42; FMax(CameraScale - CurrentCameraScale, 0.3)&#42;fDeltaTime);
+   }
+   else if (CurrentCameraScale &#62; CameraScale)
+   {
+      CurrentCameraScale &#61; FMax(CameraScale, CurrentCameraScale - 5 &#42; FMax(CameraScale - CurrentCameraScale, 0.3)&#42;fDeltaTime);
+   }
+
+   if (CamDirX.Z &#62; GetCollisionHeight())
+   {
+      CamDirX &#42;&#61; square(cos(out&#95;CamRot.Pitch &#42; 0.0000958738)); // 0.0000958738 &#61; 2&#42;PI/65536
+   }
+
+   out&#95;CamLoc &#61; CamStart - CamDirX&#42;CurrentCamOffset.X + CurrentCamOffset.Y&#42;CamDirY + CurrentCamOffset.Z&#42;CamDirZ;
+
+   if (Trace(HitLocation, HitNormal, out&#95;CamLoc, CamStart, false, vect(12,12,12)) !&#61; None)
+   {
+      out&#95;CamLoc &#61; HitLocation;
+   }
+
+   return true;
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<span style="font:12px Courier;">
+UDNPlayerController.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPlayerController extends UTPlayerController;
+
+state PlayerWalking
+{
+ignores SeePlayer, HearNoise, Bump;
+
+   function ProcessMove(float DeltaTime, vector NewAccel, eDoubleClickDir DoubleClickMove, rotator DeltaRot)
+   {
+      if( Pawn &#61;&#61; None )
+      {
+         return;
+      }
+
+      if (Role &#61;&#61; ROLE&#95;Authority)
+      {
+         // Update ViewPitch for remote clients
+         Pawn.SetRemoteViewPitch( Rotation.Pitch );
+      }
+
+      Pawn.Acceleration &#61; NewAccel;
+
+      CheckJumpOrDuck();
+   }
+}
+
+function UpdateRotation( float DeltaTime )
+{
+   local Rotator   DeltaRot, newRotation, ViewRotation;
+
+   ViewRotation &#61; Rotation;
+   if (Pawn!&#61;none)
+   {
+      Pawn.SetDesiredRotation(ViewRotation);
+   }
+
+   // Calculate Delta to be applied on ViewRotation
+   DeltaRot.Yaw   &#61; PlayerInput.aTurn;
+   DeltaRot.Pitch   &#61; PlayerInput.aLookUp;
+
+   ProcessViewRotation( DeltaTime, ViewRotation, DeltaRot );
+   SetRotation(ViewRotation);
+
+   NewRotation &#61; ViewRotation;
+   NewRotation.Roll &#61; Rotation.Roll;
+
+   if ( Pawn !&#61; None )
+      Pawn.FaceRotation(NewRotation, deltatime);
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h3><a name="Example Top-Down Camera"></a> Example Top-Down Camera </h3>
+<p />
+A top-down camera can be created by making some additional modifications. It is similar to the third-person camera setup, but also requires limiting the Pawn’s rotation, specifically its pitch as aiming up or down won’t be allowed.
+<p />
+<img alt="camera_top.jpg" src="rsrc/Three/CameraTechnicalGuide/camera_top.jpg" />
+<p />
+<span style="font:12px Courier;">
+UDNPawn.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPawn extends UTPawn;
+
+var float CamOffsetDistance; //distance to offset the camera above the player
+var bool bFollowPlayerRotation; //If true, camera rotates with player
+
+//override to make player mesh visible by default
+simulated event BecomeViewTarget( PlayerController PC )
+{
+   local UTPlayerController UTPC;
+
+   Super.BecomeViewTarget(PC);
+
+   if (LocalPlayer(PC.Player) !&#61; None)
+   {
+      UTPC &#61; UTPlayerController(PC);
+      if (UTPC !&#61; None)
+      {
+         //set player controller to behind view and make mesh visible
+         UTPC.SetBehindView(true);
+         SetMeshVisibility(UTPC.bBehindView);
+         UTPC.bNoCrosshair &#61; true;
+      }
+   }
+}
+
+simulated function bool CalcCamera( float fDeltaTime, out vector out&#95;CamLoc, out rotator out&#95;CamRot, out float out&#95;FOV )
+{
+   out&#95;CamLoc &#61; Location;
+   out&#95;CamLoc.Z +&#61; CamOffsetDistance;
+
+   if(!bFollowPlayerRotation)
+   {
+      out&#95;CamRot.Pitch &#61; -16384;
+      out&#95;CamRot.Yaw &#61; 0;
+      out&#95;CamRot.Roll &#61; 0;
+   }
+   else
+   {
+      out&#95;CamRot.Pitch &#61; -16384;
+      out&#95;CamRot.Yaw &#61; Rotation.Yaw;
+      out&#95;CamRot.Roll &#61; 0;
+   }
+
+   return true;
+}
+
+simulated singular event Rotator GetBaseAimRotation()
+{
+   local rotator   POVRot, tempRot;
+
+   tempRot &#61; Rotation;
+   tempRot.Pitch &#61; 0;
+   SetRotation(tempRot);
+   POVRot &#61; Rotation;
+   POVRot.Pitch &#61; 0;
+
+   return POVRot;
+}
+
+defaultproperties
+{
+   bFollowPlayerRotation &#61; false;
+   CamOffsetDistance&#61;384.0
+}
+</pre>
+</div>
+<p />
+<span style="font:12px Courier;">
+UDNPlayerController.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPlayerController extends UTPlayerController;
+
+state PlayerWalking
+{
+ignores SeePlayer, HearNoise, Bump;
+
+   function ProcessMove(float DeltaTime, vector NewAccel, eDoubleClickDir DoubleClickMove, rotator DeltaRot)
+   {
+      if( Pawn &#61;&#61; None )
+      {
+         return;
+      }
+
+      if (Role &#61;&#61; ROLE&#95;Authority)
+      {
+         // Update ViewPitch for remote clients
+         Pawn.SetRemoteViewPitch( Rotation.Pitch );
+      }
+
+      Pawn.Acceleration &#61; NewAccel;
+
+      CheckJumpOrDuck();
+   }
+}
+
+function UpdateRotation( float DeltaTime )
+{
+   local Rotator   DeltaRot, newRotation, ViewRotation;
+
+   ViewRotation &#61; Rotation;
+   if (Pawn!&#61;none)
+   {
+      Pawn.SetDesiredRotation(ViewRotation);
+   }
+
+   // Calculate Delta to be applied on ViewRotation
+   DeltaRot.Yaw   &#61; PlayerInput.aTurn;
+   DeltaRot.Pitch   &#61; 0;
+
+   ProcessViewRotation( DeltaTime, ViewRotation, DeltaRot );
+   SetRotation(ViewRotation);
+
+   NewRotation &#61; ViewRotation;
+   NewRotation.Roll &#61; Rotation.Roll;
+
+   if ( Pawn !&#61; None )
+      Pawn.FaceRotation(NewRotation, deltatime);
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h3><a name="Example Isometric Camera"></a> Example Isometric Camera </h3>
+<p />
+A simple isometric-style camera is very similar to the top-down camera example shown previously. The camera is offset along two axes, X and Z, and then the pitch is rotated down to focus on the player.
+<p />
+<img alt="camera_iso.jpg" src="rsrc/Three/CameraTechnicalGuide/camera_iso.jpg" />
+<p />
+<span style="font:12px Courier;">
+UDNPawn.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPawn extends UTPawn;
+
+var float CamOffsetDistance; //distance to offset the camera from the player
+var int IsoCamAngle; //pitch angle of the camera
+
+//override to make player mesh visible by default
+simulated event BecomeViewTarget( PlayerController PC )
+{
+   local UTPlayerController UTPC;
+
+   Super.BecomeViewTarget(PC);
+
+   if (LocalPlayer(PC.Player) !&#61; None)
+   {
+      UTPC &#61; UTPlayerController(PC);
+      if (UTPC !&#61; None)
+      {
+         //set player controller to behind view and make mesh visible
+         UTPC.SetBehindView(true);
+         SetMeshVisibility(UTPC.bBehindView);
+         UTPC.bNoCrosshair &#61; true;
+      }
+   }
+}
+
+simulated function bool CalcCamera( float fDeltaTime, out vector out&#95;CamLoc, out rotator out&#95;CamRot, out float out&#95;FOV )
+{
+   out&#95;CamLoc &#61; Location;
+   out&#95;CamLoc.X -&#61; Cos(IsoCamAngle &#42; UnrRotToRad) &#42; CamOffsetDistance;
+   out&#95;CamLoc.Z +&#61; Sin(IsoCamAngle &#42; UnrRotToRad) &#42; CamOffsetDistance;
+
+   out&#95;CamRot.Pitch &#61; -1 &#42; IsoCamAngle;
+   out&#95;CamRot.Yaw &#61; 0;
+   out&#95;CamRot.Roll &#61; 0;
+
+   return true;
+}
+
+simulated singular event Rotator GetBaseAimRotation()
+{
+   local rotator   POVRot, tempRot;
+
+   tempRot &#61; Rotation;
+   tempRot.Pitch &#61; 0;
+   SetRotation(tempRot);
+   POVRot &#61; Rotation;
+   POVRot.Pitch &#61; 0;
+
+   return POVRot;
+}
+
+defaultproperties
+{
+   IsoCamAngle&#61;6420 //35.264 degrees
+   CamOffsetDistance&#61;384.0
+}
+</pre>
+</div>
+<p />
+<span style="font:12px Courier;">
+UDNPlayerController.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPlayerController extends UTPlayerController;
+
+state PlayerWalking
+{
+ignores SeePlayer, HearNoise, Bump;
+
+   function ProcessMove(float DeltaTime, vector NewAccel, eDoubleClickDir DoubleClickMove, rotator DeltaRot)
+   {
+      if( Pawn &#61;&#61; None )
+      {
+         return;
+      }
+
+      if (Role &#61;&#61; ROLE&#95;Authority)
+      {
+         // Update ViewPitch for remote clients
+         Pawn.SetRemoteViewPitch( Rotation.Pitch );
+      }
+
+      Pawn.Acceleration &#61; NewAccel;
+
+      CheckJumpOrDuck();
+   }
+}
+
+function UpdateRotation( float DeltaTime )
+{
+   local Rotator   DeltaRot, newRotation, ViewRotation;
+
+   ViewRotation &#61; Rotation;
+   if (Pawn!&#61;none)
+   {
+      Pawn.SetDesiredRotation(ViewRotation);
+   }
+
+   // Calculate Delta to be applied on ViewRotation
+   DeltaRot.Yaw   &#61; PlayerInput.aTurn;
+   DeltaRot.Pitch   &#61; 0;
+
+   ProcessViewRotation( DeltaTime, ViewRotation, DeltaRot );
+   SetRotation(ViewRotation);
+
+   NewRotation &#61; ViewRotation;
+   NewRotation.Roll &#61; Rotation.Roll;
+
+   if ( Pawn !&#61; None )
+      Pawn.FaceRotation(NewRotation, deltatime);
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h3><a name="Example Side-Scrolling Camera"></a> Example Side-Scrolling Camera </h3>
+<p />
+A simple side-scroller camera requires not only controlling the camera’s point of view, but also modifying the way player input is handled. The player is only allowed to move left and right on the screen and is always forced to face the direction they are moving. The input is required so that the A and D keys move the player forward or backward.
+<p />
+<img alt="camera_side.jpg" src="rsrc/Three/CameraTechnicalGuide/camera_side.jpg" />
+<p />
+<span style="font:12px Courier;">
+UDNPawn.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPawn extends UTPawn;
+
+var float CamOffsetDistance; //Position on Y-axis to lock camera to
+
+//override to make player mesh visible by default
+simulated event BecomeViewTarget( PlayerController PC )
+{
+   local UTPlayerController UTPC;
+
+   Super.BecomeViewTarget(PC);
+
+   if (LocalPlayer(PC.Player) !&#61; None)
+   {
+      UTPC &#61; UTPlayerController(PC);
+      if (UTPC !&#61; None)
+      {
+         //set player controller to behind view and make mesh visible
+         UTPC.SetBehindView(true);
+         SetMeshVisibility(UTPC.bBehindView);
+         UTPC.bNoCrosshair &#61; true;
+      }
+   }
+}
+
+simulated function bool CalcCamera( float fDeltaTime, out vector out&#95;CamLoc, out rotator out&#95;CamRot, out float out&#95;FOV )
+{
+   out&#95;CamLoc &#61; Location;
+   out&#95;CamLoc.Y &#61; CamOffsetDistance;
+
+   out&#95;CamRot.Pitch &#61; 0;
+   out&#95;CamRot.Yaw &#61; 16384;
+   out&#95;CamRot.Roll &#61; 0;
+   return true;
+}
+
+simulated singular event Rotator GetBaseAimRotation()
+{
+   local rotator   POVRot;
+
+   POVRot &#61; Rotation;
+   if( (Rotation.Yaw &#37; 65535 &#62; 16384 &#38;&#38; Rotation.Yaw &#37; 65535 &#60; 49560) &#124;&#124;
+      (Rotation.Yaw &#37; 65535 &#60; -16384 &#38;&#38; Rotation.Yaw &#37; 65535 &#62; -49560) )
+   {
+      POVRot.Yaw &#61; 32768;
+   }
+   else
+   {
+      POVRot.Yaw &#61; 0;
+   }
+
+   if( POVRot.Pitch &#61;&#61; 0 )
+   {
+      POVRot.Pitch &#61; RemoteViewPitch &#60;&#60; 8;
+   }
+
+   return POVRot;
+}
+
+defaultproperties
+{
+   CamOffsetDistance&#61;0.0
+}
+</pre>
+</div>
+<p />
+<span style="font:12px Courier;">
+UDNPlayerController.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPlayerController extends UTPlayerController;
+
+state PlayerWalking
+{
+ignores SeePlayer, HearNoise, Bump;
+
+   function ProcessMove(float DeltaTime, vector NewAccel, eDoubleClickDir DoubleClickMove, rotator DeltaRot)
+   {
+      local Rotator tempRot;
+
+      if( Pawn &#61;&#61; None )
+      {
+         return;
+      }
+
+      if (Role &#61;&#61; ROLE&#95;Authority)
+      {
+         // Update ViewPitch for remote clients
+         Pawn.SetRemoteViewPitch( Rotation.Pitch );
+      }
+
+      Pawn.Acceleration.X &#61; -1 &#42; PlayerInput.aStrafe &#42; DeltaTime &#42; 100 &#42; PlayerInput.MoveForwardSpeed;
+      Pawn.Acceleration.Y &#61; 0;
+      Pawn.Acceleration.Z &#61; 0;
+
+      tempRot.Pitch &#61; Pawn.Rotation.Pitch;
+      tempRot.Roll &#61; 0;
+      if(Normal(Pawn.Acceleration) Dot Vect(1,0,0) &#62; 0)
+      {
+         tempRot.Yaw &#61; 0;
+         Pawn.SetRotation(tempRot);
+      }
+      else if(Normal(Pawn.Acceleration) Dot Vect(1,0,0) &#60; 0)
+      {
+         tempRot.Yaw &#61; 32768;
+         Pawn.SetRotation(tempRot);
+      }
+
+      CheckJumpOrDuck();
+   }
+}
+
+function UpdateRotation( float DeltaTime )
+{
+   local Rotator   DeltaRot, ViewRotation;
+
+   ViewRotation &#61; Rotation;
+
+   // Calculate Delta to be applied on ViewRotation
+   DeltaRot.Yaw &#61; Pawn.Rotation.Yaw;
+   DeltaRot.Pitch   &#61; PlayerInput.aLookUp;
+
+   ProcessViewRotation( DeltaTime, ViewRotation, DeltaRot );
+   SetRotation(ViewRotation);
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h3><a name="Example All-In-One Camera"></a> Example All-In-One Camera </h3>
+<p />
+This example puts together all the other examples into a single implementation that allows the player to switch between any of the camera types and adjust them through the use of exec functions.
+<p />
+<span style="font:12px Courier;">
+UDNPawn.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPawn extends UTPawn;
+
+Enum CameraPerspective
+{
+   CAM&#95;FirstPerson,
+   CAM&#95;ThirdPerson,
+   CAM&#95;TopDown,
+   CAM&#95;SideScroller,
+   CAM&#95;Isometric
+};
+
+var bool bFollowPlayerRotation;
+var CameraPerspective CameraType;
+var float CamOffsetDistance;
+var int IsoCamAngle;
+
+exec function CameraMode(CameraPerspective mode)
+{
+   local UTPlayerController UTPC;
+
+   CameraType &#61; mode;
+
+   UTPC &#61; UTPlayerController(Controller);
+   if (UTPC !&#61; None)
+   {
+      if(CameraType !&#61; CAM&#95;FirstPerson)
+      {
+         UTPC.SetBehindView(true);
+         if(CameraType !&#61; CAM&#95;ThirdPerson)
+         {
+            UTPC.bNoCrosshair &#61; true;
+         }
+         else
+         {
+            UTPC.bNoCrosshair &#61; false;
+         }
+      }
+      else
+      {
+         UTPC.bNoCrosshair &#61; false;
+
+         UTPC.SetBehindView(false);
+      }
+      SetMeshVisibility(UTPC.bBehindView);
+   }
+}
+
+exec function IsoAngle(int angle)
+{
+   IsoCamAngle &#61; angle;
+}
+
+/&#42; BecomeViewTarget
+   Called by Camera when this actor becomes its ViewTarget &#42;/
+simulated event BecomeViewTarget( PlayerController PC )
+{
+   local UTPlayerController UTPC;
+
+   Super.BecomeViewTarget(PC);
+
+   if (LocalPlayer(PC.Player) !&#61; None)
+   {
+      UTPC &#61; UTPlayerController(PC);
+      if (UTPC !&#61; None)
+      {
+         if(CameraType !&#61; CAM&#95;FirstPerson)
+         {
+            UTPC.SetBehindView(true);
+            if(CameraType !&#61; CAM&#95;ThirdPerson)
+            {
+               UTPC.bNoCrosshair &#61; true;
+            }
+            else
+            {
+               UTPC.bNoCrosshair &#61; false;
+            }
+         }
+         else
+         {
+            UTPC.bNoCrosshair &#61; false;
+
+            UTPC.SetBehindView(false);
+         }
+         SetMeshVisibility(UTPC.bBehindView);
+      }
+   }
+}
+
+/&#42;&#42;
+ &#42;   Calculate camera view point, when viewing this pawn.
+ &#42;
+ &#42; &#64;param   fDeltaTime   delta time seconds since last update
+ &#42; &#64;param   out&#95;CamLoc   Camera Location
+ &#42; &#64;param   out&#95;CamRot   Camera Rotation
+ &#42; &#64;param   out&#95;FOV      Field of View
+ &#42;
+ &#42; &#64;return   true if Pawn should provide the camera point of view.
+ &#42;/
+simulated function bool CalcCamera( float fDeltaTime, out vector out&#95;CamLoc, out rotator out&#95;CamRot, out float out&#95;FOV )
+{
+   // Handle the fixed camera
+
+   if (bFixedView)
+   {
+      out&#95;CamLoc &#61; FixedViewLoc;
+      out&#95;CamRot &#61; FixedViewRot;
+   }
+   else
+   {
+      if ( CameraType &#61;&#61; CAM&#95;ThirdPerson )   // Handle BehindView
+      {
+         CalcThirdPersonCam(fDeltaTime, out&#95;CamLoc, out&#95;CamRot, out&#95;FOV);
+      }
+      else if ( CameraType &#61;&#61; CAM&#95;TopDown )   // Handle BehindView
+      {
+         CalcTopDownCam(fDeltaTime, out&#95;CamLoc, out&#95;CamRot, out&#95;FOV);
+      }
+      else if ( CameraType &#61;&#61; CAM&#95;SideScroller )   // Handle BehindView
+      {
+         CalcSideScrollerCam(fDeltaTime, out&#95;CamLoc, out&#95;CamRot, out&#95;FOV);
+      }
+      else if ( CameraType &#61;&#61; CAM&#95;Isometric )   // Handle BehindView
+      {
+         CalcIsometricCam(fDeltaTime, out&#95;CamLoc, out&#95;CamRot, out&#95;FOV);
+      }
+      else
+      {
+         // By default, we view through the Pawn&#39;s eyes..
+         GetActorEyesViewPoint( out&#95;CamLoc, out&#95;CamRot );
+      }
+
+      if ( UTWeapon(Weapon) !&#61; none)
+      {
+         UTWeapon(Weapon).WeaponCalcCamera(fDeltaTime, out&#95;CamLoc, out&#95;CamRot);
+      }
+   }
+
+   return true;
+}
+
+simulated function bool CalcTopDownCam( float fDeltaTime, out vector out&#95;CamLoc, out rotator out&#95;CamRot, out float out&#95;FOV )
+{
+   out&#95;CamLoc &#61; Location;
+   out&#95;CamLoc.Z +&#61; CamOffsetDistance;
+
+   if(!bFollowPlayerRotation)
+   {
+      out&#95;CamRot.Pitch &#61; -16384;
+      out&#95;CamRot.Yaw &#61; 0;
+      out&#95;CamRot.Roll &#61; 0;
+   }
+   else
+   {
+      out&#95;CamRot.Pitch &#61; -16384;
+      out&#95;CamRot.Yaw &#61; Rotation.Yaw;
+      out&#95;CamRot.Roll &#61; 0;
+   }
+
+   return true;
+}
+
+simulated function bool CalcSideScrollerCam( float fDeltaTime, out vector out&#95;CamLoc, out rotator out&#95;CamRot, out float out&#95;FOV )
+{
+   out&#95;CamLoc &#61; Location;
+   out&#95;CamLoc.Y &#61; CamOffsetDistance;
+
+   out&#95;CamRot.Pitch &#61; 0;
+   out&#95;CamRot.Yaw &#61; 16384;
+   out&#95;CamRot.Roll &#61; 0;
+
+   return true;
+}
+
+simulated function bool CalcIsometricCam( float fDeltaTime, out vector out&#95;CamLoc, out rotator out&#95;CamRot, out float out&#95;FOV )
+{
+   out&#95;CamLoc &#61; Location;
+   out&#95;CamLoc.X -&#61; Cos(IsoCamAngle &#42; UnrRotToRad) &#42; CamOffsetDistance;
+   out&#95;CamLoc.Z +&#61; Sin(IsoCamAngle &#42; UnrRotToRad) &#42; CamOffsetDistance;
+
+   out&#95;CamRot.Pitch &#61; -1 &#42; IsoCamAngle;
+   out&#95;CamRot.Yaw &#61; 0;
+   out&#95;CamRot.Roll &#61; 0;
+
+   return true;
+}
+
+/&#42;&#42;
+ &#42; returns base Aim Rotation without any adjustment (no aim error, no autolock, no adhesion.. just clean initial aim rotation!)
+ &#42;
+ &#42; &#64;return   base Aim rotation.
+ &#42;/
+simulated singular event Rotator GetBaseAimRotation()
+{
+   local vector   POVLoc;
+   local rotator   POVRot, tempRot;
+
+   if(CameraType &#61;&#61; CAM&#95;TopDown &#124;&#124; CameraType &#61;&#61; CAM&#95;Isometric)
+   {
+      tempRot &#61; Rotation;
+      tempRot.Pitch &#61; 0;
+      SetRotation(tempRot);
+      POVRot &#61; Rotation;
+      POVRot.Pitch &#61; 0;
+   }
+   else if(CameraType &#61;&#61; CAM&#95;SideScroller)
+   {
+      POVRot &#61; Rotation;
+      if( (Rotation.Yaw &#37; 65535 &#62; 16384 &#38;&#38; Rotation.Yaw &#37; 65535 &#60; 49560) &#124;&#124;
+          (Rotation.Yaw &#37; 65535 &#60; -16384 &#38;&#38; Rotation.Yaw &#37; 65535 &#62; -49560) )
+      {
+         POVRot.Yaw &#61; 32768;
+      }
+      else
+      {
+         POVRot.Yaw &#61; 0;
+      }
+
+      if( POVRot.Pitch &#61;&#61; 0 )
+      {
+         POVRot.Pitch &#61; RemoteViewPitch &#60;&#60; 8;
+      }
+   }
+   else
+   {
+      if( Controller !&#61; None &#38;&#38; !InFreeCam() )
+      {
+         Controller.GetPlayerViewPoint(POVLoc, POVRot);
+         return POVRot;
+      }
+      else
+      {
+         POVRot &#61; Rotation;
+
+         if( POVRot.Pitch &#61;&#61; 0 )
+         {
+            POVRot.Pitch &#61; RemoteViewPitch &#60;&#60; 8;
+         }
+      }
+   }
+
+   return POVRot;
+}
+
+
+defaultproperties
+{
+   CameraType&#61;CAM&#95;FirstPerson;
+   bFollowPlayerRotation &#61; false;
+   CamOffsetDistance&#61;384.0
+   IsoCamAngle&#61;6420 //35.264 degrees
+}
+</pre>
+</div>
+<p />
+<span style="font:12px Courier;">
+UDNPlayerController.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPlayerController extends UTPlayerController;
+
+state PlayerWalking
+{
+   function ProcessMove(float DeltaTime, vector NewAccel, eDoubleClickDir DoubleClickMove, rotator DeltaRot)
+   {
+      local UDNPawn P;
+      local Rotator tempRot;
+
+          if( (Pawn !&#61; None) )
+      {
+         P &#61; UDNPawn(Pawn);
+         if(P !&#61; none)
+         {
+            if(P.CameraType &#61;&#61; CAM&#95;SideScroller)
+            {
+               Pawn.Acceleration.X &#61; -1 &#42; PlayerInput.aStrafe &#42; DeltaTime &#42; 100 &#42; PlayerInput.MoveForwardSpeed;
+               Pawn.Acceleration.Y &#61; 0;
+               Pawn.Acceleration.Z &#61; 0;
+
+               tempRot.Pitch &#61; P.Rotation.Pitch;
+               tempRot.Roll &#61; 0;
+               if(Normal(Pawn.Acceleration) Dot Vect(1,0,0) &#62; 0)
+               {
+                  tempRot.Yaw &#61; 0;
+                  P.SetRotation(tempRot);
+               }
+               else if(Normal(Pawn.Acceleration) Dot Vect(1,0,0) &#60; 0)
+               {
+                  tempRot.Yaw &#61; 32768;
+                  P.SetRotation(tempRot);
+               }
+            }
+            else
+            {
+
+               if ( (DoubleClickMove &#61;&#61; DCLICK&#95;Active) &#38;&#38; (Pawn.Physics &#61;&#61; PHYS&#95;Falling) )
+                  DoubleClickDir &#61; DCLICK&#95;Active;
+               else if ( (DoubleClickMove !&#61; DCLICK&#95;None) &#38;&#38; (DoubleClickMove &#60; DCLICK&#95;Active) )
+               {
+                  if ( UTPawn(Pawn).Dodge(DoubleClickMove) )
+                     DoubleClickDir &#61; DCLICK&#95;Active;
+               }
+
+               Pawn.Acceleration &#61; newAccel;
+            }
+
+            if (Role &#61;&#61; ROLE&#95;Authority)
+            {
+               // Update ViewPitch for remote clients
+               Pawn.SetRemoteViewPitch( Rotation.Pitch );
+            }
+         }
+
+         CheckJumpOrDuck();
+      }
+   }
+}
+
+function UpdateRotation( float DeltaTime )
+{
+   local UDNPawn P;
+   local Rotator   DeltaRot, newRotation, ViewRotation;
+
+   P &#61; UDNPawn(Pawn);
+
+   ViewRotation &#61; Rotation;
+   if (p !&#61; none &#38;&#38; P.CameraType !&#61; CAM&#95;SideScroller)
+   {
+      Pawn.SetDesiredRotation(ViewRotation);
+   }
+
+   // Calculate Delta to be applied on ViewRotation
+   if( P !&#61; none &#38;&#38; P.CameraType &#61;&#61; CAM&#95;SideScroller )
+   {
+      DeltaRot.Yaw &#61; Pawn.Rotation.Yaw;
+   }
+   else
+   {
+      DeltaRot.Yaw &#61; PlayerInput.aTurn;
+   }
+   DeltaRot.Pitch &#61; PlayerInput.aLookUp;
+
+   ProcessViewRotation( DeltaTime, ViewRotation, DeltaRot );
+   SetRotation(ViewRotation);
+
+   ViewShake( deltaTime );
+
+   NewRotation &#61; ViewRotation;
+   NewRotation.Roll &#61; Rotation.Roll;
+
+   if (P !&#61; None &#38;&#38; P.CameraType !&#61; CAM&#95;SideScroller )
+      Pawn.FaceRotation(NewRotation, deltatime);
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h2><a name="Example - Custom Camera"></a> Example - Custom Camera </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+This example takes a different approach than the previous collection. Those all made use of the CalcCamera() function in the Pawn class to modify the camera. In this example, a custom camera framework will be created that allows for easily plugging in different camera modules to quickly modify the camera behavior. Just as importantly, we have complete access to all of the camera features, such as post process effects, camera animations and effects, etc. In addition, the player controller class will add the ability to use player control modules to override certain aspects of the player movement and aiming.
+<p />
+The setup for this example is a little more involved than the relatively simple overriding of a few functions, as was the case in the other examples. This example requires overriding many of the same functions that were touched in the previous examples, but instead of adding or changing the functionality directly in those functions, those functions will simply look to the custom camera and control system to provide the functionality they usually perform.
+<p />
+The new camera class will essentially act as an interface to the camera modules. It contains a few functions for creating new camera modules and handling the case of the camera having a view target other than the player's Pawn. Its job beyond that is to pass on function calls from various Engine classes to the current camera module to handle. Similarly, the new PlayerController class references a controle module that is relied on to handle certain movement and aiming functions from the PlayerController and Pawn classes. This allows the camera and control type-specific functionality to all be contained in compact, self-contained classes which can be substituted at will to quickly and easily implement new camera types.
+<p />
+<p />
+<h3><a name="Base Camera Module"></a> Base Camera Module </h3>
+<p />
+The base camera module class extends from the Object class and defines all the properties and behavior that will be common to all camera modules. Its one property is a reference to the camera that owns it. Some initialization and deinitialization functions are defined, but the main functionality in this class is performed by the UpdateCamera() function which calculates the new location and rotation of the player's camera and can apply any other desired effects or modifications.
+<p />
+This class is defined using the <em>config(Camera)</em> specifier so that any properties that should be configurable or persistent in the specific camera modules will be found in the *Camera.ini file. It is also defined as <em>abstract</em> so that it cannot actually be used. It is more like a template for the specific camera modules to build from and not a class that would ever actually be used itself.
+<p />
+<span style="font:12px Courier;">
+UDNCameraModule.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNCameraModule extends Object
+   abstract
+   config(Camera);
+
+//owning camera
+var transient UDNPlayerCamera   PlayerCamera;
+
+//mode-specific initialization
+function Init();
+
+/&#42;&#42; Called when the camera becomes active &#42;/
+function OnBecomeActive( UDNCameraModule OldCamera );
+/&#42;&#42; Called when the camera becomes inactive &#42;/
+function OnBecomeInActive( UDNCameraModule NewCamera );
+
+//Calculate new camera location and rotation
+function UpdateCamera(Pawn P, UDNPlayerCamera CameraActor, float DeltaTime, out TViewTarget OutVT);
+
+//initialize new view target
+simulated function BecomeViewTarget( UDNPlayerController PC );
+
+//handle zooming in
+function ZoomIn();
+
+//handle zooming in
+function ZoomOut();
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h3><a name="Custom Camera"></a> Custom Camera </h3>
+<p />
+The new camera class extends from the base Camera class, overriding some functions and adding new functionality to handle the camera modules. The camera's main job in this system is to act as the middleman for the camera module as it is now handling the majority of the calculations.
+<p />
+<span style="font:12px Courier;">
+UDNPlayerCamera.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPlayerCamera extends Camera
+   config(Camera);
+
+var UDNPlayerController PlayerOwner; //player controller owning this camera
+var UDNCameraModule CurrentCamera; //Current camera mode in use
+var config string DefaultCameraClass; //class for default camera mdoe
+
+function PostBeginPlay()
+{
+   local class&#60;UDNCameraModule&#62; NewClass;
+
+   Super.PostBeginPlay();
+
+   // Setup camera mode
+   if ( (CurrentCamera &#61;&#61; None) &#38;&#38; (DefaultCameraClass !&#61; &#34;&#34;) )
+   {
+      //get the default camera class to use
+      NewClass &#61; class&#60;UDNCameraModule&#62;( DynamicLoadObject( DefaultCameraClass, class&#39;Class&#39; ) );
+
+      //create default camera
+      CurrentCamera &#61; CreateCamera(NewClass);
+   }
+}
+
+//Initialize the PlayerCamera for the owning PlayerController
+function InitializeFor(PlayerController PC)
+{
+   //do parent initialization
+   Super.InitializeFor(PC);
+
+   //set PlayerOwner to player controller
+   PlayerOwner &#61; UDNPlayerController(PC);
+}
+
+/&#42;&#42;
+ &#42; Internal. Creates and initializes a new camera of the specified class, returns the object ref.
+ &#42;/
+function UDNCameraModule CreateCamera(class&#60;UDNCameraModule&#62; CameraClass)
+{
+   local UDNCameraModule NewCam;
+
+   //create new camera and initialize
+   NewCam &#61; new(Outer) CameraClass;
+   NewCam.PlayerCamera &#61; self;
+   NewCam.Init();
+
+   //call active/inactive functions on new/old cameras
+   if(CurrentCamera !&#61; none)
+   {
+      CurrentCamera.OnBecomeInactive(NewCam);
+      NewCam.OnBecomeActive(CurrentCamera);
+   }
+   else
+   {
+      NewCam.OnBecomeActive(None);
+   }
+
+   //set new camera as current
+   CurrentCamera &#61; NewCam;
+
+   return NewCam;
+}
+
+/&#42;&#42;
+ &#42; Query ViewTarget and outputs Point Of View.
+ &#42;
+ &#42; &#64;param   OutVT      ViewTarget to use.
+ &#42; &#64;param   DeltaTime   Delta Time since last camera update (in seconds).
+ &#42;/
+function UpdateViewTarget(out TViewTarget OutVT, float DeltaTime)
+{
+   local CameraActor   CamActor;
+   local TPOV OrigPOV;
+   local Vector Loc, Pos, HitLocation, HitNormal;
+   local Rotator Rot;
+   local Actor HitActor;
+
+   // Don&#39;t update outgoing viewtarget during an interpolation
+   if( PendingViewTarget.Target !&#61; None &#38;&#38; OutVT &#61;&#61; ViewTarget &#38;&#38; BlendParams.bLockOutgoing )
+   {
+      return;
+   }
+
+   OrigPOV &#61; OutVT.POV;
+
+   // Default FOV on viewtarget
+   OutVT.POV.FOV &#61; DefaultFOV;
+
+   // Viewing through a camera actor.
+   CamActor &#61; CameraActor(OutVT.Target);
+   if( CamActor !&#61; None )
+   {
+      CamActor.GetCameraView(DeltaTime, OutVT.POV);
+
+      // Grab aspect ratio from the CameraActor.
+      bConstrainAspectRatio   &#61; bConstrainAspectRatio &#124;&#124; CamActor.bConstrainAspectRatio;
+      OutVT.AspectRatio      &#61; CamActor.AspectRatio;
+
+      // See if the CameraActor wants to override the PostProcess settings used.
+      CamOverridePostProcessAlpha &#61; CamActor.CamOverridePostProcessAlpha;
+      CamPostProcessSettings &#61; CamActor.CamOverridePostProcess;
+   }
+   else
+   {
+      // Give Pawn Viewtarget a chance to dictate the camera position.
+      // If Pawn doesn&#39;t override the camera view, then we proceed with our own defaults
+      if( Pawn(OutVT.Target) &#61;&#61; None &#124;&#124;
+         !Pawn(OutVT.Target).CalcCamera(DeltaTime, OutVT.POV.Location, OutVT.POV.Rotation, OutVT.POV.FOV) )
+      {
+         //Pawn didn&#39;t want control and we have a custom mode
+         if(CurrentCamera !&#61; none)
+         {
+            //allow mode to handle camera update
+            CurrentCamera.UpdateCamera(Pawn(OutVT.Target), self, DeltaTime, OutVT);
+         }
+         //no custom mode - use default camera styles
+         else
+         {
+            switch( CameraStyle )
+            {
+               case &#39;Fixed&#39;      :   // do not update, keep previous camera position by restoring
+                                 // saved POV, in case CalcCamera changes it but still returns false
+                                 OutVT.POV &#61; OrigPOV;
+                                 break;
+
+               case &#39;ThirdPerson&#39;   : // Simple third person view implementation
+               case &#39;FreeCam&#39;      :
+               case &#39;FreeCam&#95;Default&#39;:
+                                 Loc &#61; OutVT.Target.Location;
+                                 Rot &#61; OutVT.Target.Rotation;
+
+                                 //OutVT.Target.GetActorEyesViewPoint(Loc, Rot);
+                                 if( CameraStyle &#61;&#61; &#39;FreeCam&#39; &#124;&#124; CameraStyle &#61;&#61; &#39;FreeCam&#95;Default&#39; )
+                                 {
+                                    Rot &#61; PCOwner.Rotation;
+                                 }
+                                 Loc +&#61; FreeCamOffset &#62;&#62; Rot;
+
+                                 Pos &#61; Loc - Vector(Rot) &#42; FreeCamDistance;
+                                 // &#64;fixme, respect BlockingVolume.bBlockCamera&#61;false
+                                 HitActor &#61; Trace(HitLocation, HitNormal, Pos, Loc, FALSE, vect(12,12,12));
+                                 OutVT.POV.Location &#61; (HitActor &#61;&#61; None) ? Pos : HitLocation;
+                                 OutVT.POV.Rotation &#61; Rot;
+                                 break;
+
+               case &#39;FirstPerson&#39;   : // Simple first person, view through viewtarget&#39;s &#39;eyes&#39;
+               default            :   OutVT.Target.GetActorEyesViewPoint(OutVT.POV.Location, OutVT.POV.Rotation);
+                                 break;
+
+            }
+         }
+      }
+   }
+
+   ApplyCameraModifiers(DeltaTime, OutVT.POV);
+
+   // set camera&#39;s location and rotation, to handle cases where we are not locked to view target
+   SetRotation(OutVT.POV.Rotation);
+   SetLocation(OutVT.POV.Location);
+}
+
+//pass view target initialization through to camera mode
+simulated function BecomeViewTarget( PlayerController PC )
+{
+   CurrentCamera.BecomeViewTarget(UDNPlayerController(PC));
+}
+
+//pass zoom in through to camera mode
+function ZoomIn()
+{
+   CurrentCamera.ZoomIn();
+}
+
+//pass zoom out through to camera mode
+function ZoomOut()
+{
+   CurrentCamera.ZoomOut();
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h3><a name="Base Control Module"></a> Base Control Module </h3>
+<p />
+The base control module class extends from the Object class and defines all the properties and behavior that will be common to all control modules. It contains a reference to the controller that owns it as well as holding the current mouse cursor position. Like the base camera module, some initialization and deinitialization functions are defined which allow for any type-specific setup or cleanup that may be necessary. The rest of the class is made up of the functions that will handle the player movement and aiming as well.
+<p />
+This class is defined using the <em>config(Control)</em> specifier so that any properties that should be configurable or persistent in the specific control modules will be found in the *Control.ini file. It is also defined as <em>abstract</em> so that it cannot actually be used. It nothing more than a template for the specific control modules to build from and not a class that would ever actually be used itself.
+<p />
+<span style="font:12px Courier;">
+UDNControlModule.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNControlModule extends Object
+   abstract
+   config(Control);
+
+//reference to the owning controller
+var UDNPlayerController Controller;
+
+//mode-specific initialization
+function Init();
+
+/&#42;&#42; Called when the camera becomes active &#42;/
+function OnBecomeActive( UDNControlModule OldModule );
+/&#42;&#42; Called when the camera becomes inactive &#42;/
+function OnBecomeInActive( UDNControlModule NewModule );
+
+//Calculate Pawn aim rotation
+simulated singular function Rotator GetBaseAimRotation();
+
+//Handle custom player movement
+function ProcessMove(float DeltaTime, vector NewAccel, eDoubleClickDir DoubleClickMove, rotator DeltaRot);
+
+//Calculate controller rotation
+function UpdateRotation(float DeltaTime);
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h3><a name="Engine Class Overrides"></a> Engine Class Overrides </h3>
+<p />
+Several engine classes need to be extended to be able to interface with the new camera and control system, mainly the PlayerController, Pawn, and HUD classes. A new gametype will aslo be created ot make use of these new classes
+<p />
+<h4><a name="PlayerController"></a> PlayerController </h4>
+<p />
+The new PlayerController class adds exec functions for changing the type of camera module being used as well as zooming in or out (how the zoom functions work is dependent on how the current camera module implements them). The <em>ProcessMove()</em> function of the <em>PlayerWalking</em> state and the <em>UpdateRotation()</em> functions are overridden to add calls to the control module. Finally, the <em>GetPlayerViewPoint()</em> function is overridden and modified to keep the camera from being destroyed and to force the PlayerController to use the new custom camera if it exists.
+<p />
+<span style="font:12px Courier;">
+UDNPlayerController.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPlayerController extends UTPlayerController;
+
+var UDNControlModule ControlModule; //player control module to use
+var config string DefaultControlModuleClass; //default class for player control module
+
+//exec function for switching to a different camera by class
+exec function ChangeControls( string ClassName )
+{
+   local class&#60;UDNControlModule&#62; ControlClass;
+   local UDNControlModule NewControlModule;
+
+   ControlClass &#61; class&#60;UDNControlModule&#62;( DynamicLoadObject( DefaultControlModuleClass, class&#39;Class&#39; ) );
+
+   if(ControlClass !&#61; none)
+   {
+      // Associate module with PlayerController
+      NewControlModule &#61; new(Outer) ControlClass;
+      NewControlModule.Controller &#61; self;
+      NewControlModule.Init();
+
+      //call active/inactive functions on new/old modules
+      if(ControlModule !&#61; none)
+      {
+         ControlModule.OnBecomeInactive(NewControlModule);
+         NewControlModule.OnBecomeActive(ControlModule);
+      }
+      else
+      {
+         NewControlModule.OnBecomeActive(None);
+      }
+
+      ControlModule &#61; NewControlModule;
+   }
+   else
+   {
+      `log(&#34;Couldn&#39;t get control module class!&#34;);
+      // not having a Control Class is fine.  PlayerController will use default controls.
+   }
+}
+
+//exec function for switching to a different camera by class
+exec function ChangeCamera( string ClassName )
+{
+   local class&#60;UDNCameraModule&#62; NewClass;
+
+   NewClass &#61; class&#60;UDNCameraModule&#62;( DynamicLoadObject( ClassName, class&#39;Class&#39; ) );
+
+   if(NewClass !&#61; none &#38;&#38; UDNPlayerCamera(PlayerCamera) !&#61; none)
+   {
+      UDNPlayerCamera(PlayerCamera).CreateCamera(NewClass);
+   }
+}
+
+//zoom in exec
+exec function ZoomIn()
+{
+   if(UDNPlayerCamera(PlayerCamera) !&#61; none)
+   {
+      UDNPlayerCamera(PlayerCamera).ZoomIn();
+   }
+}
+
+//zoom out exec
+exec function ZoomOut()
+{
+   if(UDNPlayerCamera(PlayerCamera) !&#61; none)
+   {
+      UDNPlayerCamera(PlayerCamera).ZoomOut();
+   }
+}
+
+simulated function PostBeginPlay()
+{
+   local class&#60;UDNControlModule&#62; ControlClass;
+   local UDNControlModule NewControlModule;
+
+   Super.PostBeginPlay();
+
+   ControlClass &#61; class&#60;UDNControlModule&#62;( DynamicLoadObject( DefaultControlModuleClass, class&#39;Class&#39; ) );
+
+   if(ControlClass !&#61; none)
+   {
+      // Associate module with PlayerController
+      NewControlModule &#61; new(Outer) ControlClass;
+      NewControlModule.Controller &#61; self;
+      NewControlModule.Init();
+
+      //call active/inactive functions on new/old modules
+      if(ControlModule !&#61; none)
+      {
+         ControlModule.OnBecomeInactive(NewControlModule);
+         NewControlModule.OnBecomeActive(ControlModule);
+      }
+      else
+      {
+         NewControlModule.OnBecomeActive(None);
+      }
+
+      ControlModule &#61; NewControlModule;
+   }
+   else
+   {
+      `log(&#34;Couldn&#39;t get control module class!&#34;);
+      // not having a Control Class is fine.  PlayerController will use default controls.
+   }
+}
+
+state PlayerWalking
+{
+   function ProcessMove(float DeltaTime, vector NewAccel, eDoubleClickDir DoubleClickMove, rotator DeltaRot)
+   {
+      //Controller has a UDNPlayerCamera
+      if(ControlModule !&#61; none)
+      {
+         //allow custom camera to override player movement
+         ControlModule.ProcessMove(DeltaTime, NewAccel, DoubleClickMove, DeltaRot);
+      }
+        else
+        {
+         Super.ProcessMove(DeltaTime, NewAccel, DoubleClickMove, DeltaRot);
+        }
+      }
+}
+
+function UpdateRotation( float DeltaTime )
+{
+   //Controller has a UDNPlayerCamera
+   if(ControlModule !&#61; none)
+   {
+      //allow custom camera to update our rotation
+      ControlModule.UpdateRotation(DeltaTime);
+   }
+    else
+    {
+         Super.UpdateRotation(DeltaTime);
+   }
+}
+
+
+/&#42; GetPlayerViewPoint: Returns Player&#39;s Point of View
+   For the AI this means the Pawn&#39;s Eyes ViewPoint
+   For a Human player, this means the Camera&#39;s ViewPoint &#42;/
+simulated event GetPlayerViewPoint( out vector POVLocation, out Rotator POVRotation )
+{
+   local float DeltaTime;
+   local UTPawn P;
+
+   P &#61; IsLocalPlayerController() ? UTPawn(CalcViewActor) : None;
+
+   DeltaTime &#61; WorldInfo.TimeSeconds - LastCameraTimeStamp;
+   LastCameraTimeStamp &#61; WorldInfo.TimeSeconds;
+
+   // support for using CameraActor views
+   if ( CameraActor(ViewTarget) !&#61; None )
+   {
+      if ( PlayerCamera &#61;&#61; None )
+      {
+         super.ResetCameraMode();
+         SpawnCamera();
+      }
+      super.GetPlayerViewPoint( POVLocation, POVRotation );
+   }
+   else
+   {
+      //do not destroy our camera!!!
+      /&#42; if ( PlayerCamera !&#61; None )
+      {
+         PlayerCamera.Destroy();
+         PlayerCamera &#61; None;
+      } &#42;/
+
+      //no camera, we have view target - let view target be in control
+      if ( PlayerCamera &#61;&#61; None &#38;&#38; ViewTarget !&#61; None )
+      {
+         POVRotation &#61; Rotation;
+         if ( (PlayerReplicationInfo !&#61; None) &#38;&#38; PlayerReplicationInfo.bOnlySpectator &#38;&#38; (UTVehicle(ViewTarget) !&#61; None) )
+         {
+            UTVehicle(ViewTarget).bSpectatedView &#61; true;
+            ViewTarget.CalcCamera( DeltaTime, POVLocation, POVRotation, FOVAngle );
+            UTVehicle(ViewTarget).bSpectatedView &#61; false;
+         }
+         else
+         {
+            ViewTarget.CalcCamera( DeltaTime, POVLocation, POVRotation, FOVAngle );
+         }
+
+         if ( bFreeCamera )
+         {
+            POVRotation &#61; Rotation;
+         }
+      }
+      //no camera, no view target - we are in control
+      else if(PlayerCamera &#61;&#61; None)
+      {
+         CalcCamera( DeltaTime, POVLocation, POVRotation, FOVAngle );
+         return;
+      }
+      //we have a camera - let camera be in control
+      else
+      {
+         POVLocation &#61; PlayerCamera.ViewTarget.POV.Location;
+         POVRotation &#61; PlayerCamera.ViewTarget.POV.Rotation;
+         FOVAngle &#61; PlayerCamera.ViewTarget.POV.FOV;
+      }
+   }
+
+   // apply view shake
+   POVRotation &#61; Normalize(POVRotation + ShakeRot);
+   POVLocation +&#61; ShakeOffset &#62;&#62; Rotation;
+
+   if( CameraEffect !&#61; none )
+   {
+      CameraEffect.UpdateLocation(POVLocation, POVRotation, GetFOVAngle());
+   }
+
+
+   // cache result
+   CalcViewActor &#61; ViewTarget;
+   CalcViewActorLocation &#61; ViewTarget.Location;
+   CalcViewActorRotation &#61; ViewTarget.Rotation;
+   CalcViewLocation &#61; POVLocation;
+   CalcViewRotation &#61; POVRotation;
+
+   if ( P !&#61; None )
+   {
+      CalcEyeHeight &#61; P.EyeHeight;
+      CalcWalkBob &#61; P.WalkBob;
+   }
+}
+
+defaultproperties
+{
+   CameraClass&#61;class&#39;UDNExamples.UDNPlayerCamera&#39;
+   MatineeCameraClass&#61;class&#39;UDNExamples.UDNPlayerCamera&#39;
+}
+</pre>
+</div>
+<p />
+<h4><a name="Pawn Class"></a> Pawn Class </h4>
+<p />
+The new Pawn class overrides the <em>CalcCamera()</em> function to simply return false, allowing the new camera system to always control the camera location and position. The <em>BecomeViewTarget()</em> and <em>GetBaseAimRotation()</em> functions are overridden to pass the handling of their functionality on to the camera and control system, respectively.
+<p />
+<span style="font:12px Courier;">
+UDNPawn.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNPawn extends UTPawn;
+
+/&#42; BecomeViewTarget
+   Called by Camera when this actor becomes its ViewTarget &#42;/
+simulated event BecomeViewTarget( PlayerController PC )
+{
+   local UDNPlayerController UDNPC;
+
+   UDNPC &#61; UDNPlayerController(PC);
+
+   //Pawn is controlled by a UDNPlayerController and has a UDNPlayerCamera
+      if(UDNPC !&#61; none &#38;&#38; UDNPlayerCamera(UDNPC.PlayerCamera) !&#61; none)
+      {
+      //allow custom camera to control mesh visibility, etc.
+      UDNPlayerCamera(UDNPC.PlayerCamera).BecomeViewTarget(UDNPC);
+      }
+      else
+      {
+      Super.BecomeViewTarget(PC);
+   }
+}
+
+/&#42;&#42;
+ &#42;   Calculate camera view point, when viewing this pawn.
+ &#42;
+ &#42; &#64;param   fDeltaTime   delta time seconds since last update
+ &#42; &#64;param   out&#95;CamLoc   Camera Location
+ &#42; &#64;param   out&#95;CamRot   Camera Rotation
+ &#42; &#64;param   out&#95;FOV      Field of View
+ &#42;
+ &#42; &#64;return   true if Pawn should provide the camera point of view.
+ &#42;/
+simulated function bool CalcCamera( float fDeltaTime, out vector out&#95;CamLoc, out rotator out&#95;CamRot, out float out&#95;FOV )
+{
+   //return false to allow custom camera to control its location and rotation
+      return false;
+}
+
+/&#42;&#42;
+ &#42; returns base Aim Rotation without any adjustment (no aim error, no autolock, no adhesion.. just clean initial aim rotation!)
+ &#42;
+ &#42; &#64;return   base Aim rotation.
+ &#42;/
+simulated singular event Rotator GetBaseAimRotation()
+{
+      local vector   POVLoc;
+      local rotator   POVRot;
+      local UDNPlayerController PC;
+
+   PC &#61; UDNPlayerController(Controller);
+
+   //Pawn is controlled by a UDNPlayerController and has a UDNPlayerCamera
+      if(PC !&#61; none &#38;&#38; PC.ControlModule !&#61; none)
+      {
+      //allow custom camera to control aim rotation
+      return PC.ControlModule.GetBaseAimRotation();
+      }
+      else
+      {
+         if( Controller !&#61; None &#38;&#38; !InFreeCam() )
+         {
+            Controller.GetPlayerViewPoint(POVLoc, POVRot);
+            return POVRot;
+         }
+         else
+         {
+            POVRot &#61; Rotation;
+
+            if( POVRot.Pitch &#61;&#61; 0 )
+            {
+               POVRot.Pitch &#61; RemoteViewPitch &#60;&#60; 8;
+            }
+
+            return POVRot;
+         }
+      }
+}
+
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h4><a name="GameInfo Class"></a> GameInfo Class </h4>
+<p />
+The new gametype class is a basic extension of the UTDeathMatch class which sets the new HUD, Pawn, and PlayerController classes to use. It also sets <em>bUseClassicHUD</em> to True so that the HUD class specified here will be used instead of the UTGFxHUDWrapper, which is hardcoded to be used unless this boolean is set.
+<p />
+<span style="font:12px Courier;">
+UDNGame.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNGame extends UTDeathMatch;
+
+defaultproperties
+{
+   DefaultPawnClass&#61;class&#39;UDNExamples.UDNPawn&#39;
+   PlayerControllerClass&#61;class&#39;UDNExamples.UDNPlayerController&#39;
+   MapPrefixes&#91;0]&#61;&#34;UDN&#34;
+}
+</pre>
+</div>
+<p />
+<h3><a name="Example Camera Module"></a> Example Camera Module </h3>
+<p />
+As an example of using the new camera framework, a Top-Down camera will be set up. Making a new camera module is mainly a matter of implementing the functions defined in the base camera module class. Much of this will look familiar if you have gone through the <em>CalcCamera()</em> examples above.
+<p />
+<span style="font:12px Courier;">
+UDNCameraModule_TopDown.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNCameraModule&#95;TopDown extends UDNCameraModule;
+
+var float CamAltitude; //actual camera height offset from player
+var float DesiredCamAltitude; //new height offset to move camera to
+var float MaxCamAltitude; //maximum offset from player camera can be
+var float MinCamAltitude; //minimum offset from player camera can be
+var float CamZoomIncrement; //how many units to zoom with each click of mousewheel
+
+//Calculate new camera location and rotation
+function UpdateCamera(Pawn P, UDNPlayerCamera CameraActor, float DeltaTime, out TViewTarget OutVT)
+{
+   //interpolate to new camera offest if not there
+   if(CamAltitude !&#61; DesiredCamAltitude)
+   {
+      CamAltitude +&#61; (DesiredCamAltitude - CamAltitude) &#42; DeltaTime &#42; 3;
+   }
+
+   //align camera to player with height (Z) offset
+   OutVT.POV.Location &#61; OutVT.Target.Location;
+   OutVT.POV.Location.Z +&#61; CamAltitude;
+
+   //set camera rotation - face down
+   OutVT.POV.Rotation.Pitch &#61; -16384;
+   OutVT.POV.Rotation.Yaw &#61; 0;
+   OutVT.POV.Rotation.Roll &#61; 0;
+}
+
+//initialize new view target
+simulated function BecomeViewTarget( UDNPlayerController PC )
+{
+   if (LocalPlayer(PC.Player) !&#61; None)
+      {
+      //Set player mesh visible
+        PC.SetBehindView(true);
+        UDNPawn(PC.Pawn).SetMeshVisibility(PC.bBehindView);
+        PC.bNoCrosshair &#61; true;
+      }
+}
+
+function ZoomIn()
+{
+   //decrease camera height
+   DesiredCamAltitude -&#61; CamZoomIncrement;
+
+   //lock camera height to limits
+   DesiredCamAltitude &#61; FMin(MaxCamAltitude, FMax(MinCamAltitude, DesiredCamAltitude));
+}
+
+function ZoomOut()
+{
+   //increase camera height
+   DesiredCamAltitude +&#61; CamZoomIncrement;
+
+   //lock camera height to limits
+   DesiredCamAltitude &#61; FMin(MaxCamAltitude, FMax(MinCamAltitude, DesiredCamAltitude));
+}
+
+defaultproperties
+{
+   CamAltitude&#61;384.0
+   DesiredCamAltitude&#61;384.0
+   MaxCamAltitude&#61;1024.0
+   MinCamAltitude&#61;160.0
+   CamZoomIncrement&#61;96.0
+}
+</pre>
+</div>
+<p />
+<h3><a name="Example Control Module"></a> Example Control Module </h3>
+<p />
+<span style="font:12px Courier;">
+UDNControlModule_TopDown.uc
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+class UDNControlModule&#95;TopDown extends UDNControlModule;
+
+//Calculate Pawn aim rotation
+simulated singular function Rotator GetBaseAimRotation()
+{
+   local rotator   POVRot;
+
+   //aim where Pawn is facing - lock pitch
+      POVRot &#61; Controller.Pawn.Rotation;
+      POVRot.Pitch &#61; 0;
+
+      return POVRot;
+}
+
+//Handle custom player movement
+function ProcessMove(float DeltaTime, vector NewAccel, eDoubleClickDir DoubleClickMove, rotator DeltaRot)
+{
+   if( Controller.Pawn &#61;&#61; None )
+    {
+       return;
+    }
+
+    if (Controller.Role &#61;&#61; ROLE&#95;Authority)
+    {
+       // Update ViewPitch for remote clients
+        Controller.Pawn.SetRemoteViewPitch( Controller.Rotation.Pitch );
+    }
+
+    Controller.Pawn.Acceleration &#61; NewAccel;
+
+
+   Controller.CheckJumpOrDuck();
+}
+
+//Calculate controller rotation
+function UpdateRotation(float DeltaTime)
+{
+   local Rotator   DeltaRot, NewRotation, ViewRotation;
+
+      ViewRotation &#61; Controller.Rotation;
+
+   //rotate pawn to face cursor
+      if (Controller.Pawn!&#61;none)
+      Controller.Pawn.SetDesiredRotation(ViewRotation);
+
+      DeltaRot.Yaw   &#61; Controller.PlayerInput.aTurn;
+      DeltaRot.Pitch   &#61; 0;
+
+      Controller.ProcessViewRotation( DeltaTime, ViewRotation, DeltaRot );
+      Controller.SetRotation(ViewRotation);
+
+      NewRotation &#61; ViewRotation;
+      NewRotation.Roll &#61; Controller.Rotation.Roll;
+
+      if ( Controller.Pawn !&#61; None )
+         Controller.Pawn.FaceRotation(NewRotation, DeltaTime);
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h3><a name="Config Files"></a> Config Files </h3>
+<p />
+All of the files below should be located in the in the UDKgame/Config directory. Since some may be new additions, you will need to create those. Others can simply be modified to include the new configuration settings..
+<p />
+The DefaultCamera.ini file should be populated with the values for the various config variables found in the new camera classes. For this example, this consists of setting a default camera module class only.
+<p />
+<span style="font:12px Courier;">
+DefaultCamera.ini
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+&#91;UDNExamples.UDNPlayerCamera]
+DefaultCameraClass&#61;UDNExamples.UDNCameraModule&#95;TopDown
+</pre>
+</div>
+<p />
+The DefaultGame.ini file should have the <em>[Engine.GameInfo]</em> section modified to point to the new gametype and it also needs a section added at the bottom to specify the default control module class to use.
+<p />
+<span style="font:12px Courier;">
+DefaultGame.ini
+</span>
+<p />
+<div class="codesnippet">
+<pre>
+
+...
+
+&#91;Engine.GameInfo]
+DefaultGame&#61;UDNExamples.UDNGame
+DefaultServerGame&#61;UDNExamples.UDNGame
+
+...
+
+&#91;UDNExamples.UDNPlayerController]
+DefaultControlModuleClass&#61;UDNExamples.UDNControlModule&#95;TopDown
+</pre>
+</div>
+<p />
+Once these are created and/or populated or modified with the desired configuration settings, a new UDKCamera.ini and UDKGame.ini file will be created the next time the game or editor is run.
+<p />
+<strong>Note:</strong> In order for the new gametype to be used, you will need to make sure your maps have the correct prefix. We set the prefix to be "UDN" in our gametype so all maps will need to be named starting with "UDN-". It is also possible to quickly test the new gametype with any map in the editor by setting the <em>Game Type PIE</em> property in the World Properties for the map to the new gametype.
+<p />
+</noautolink>
+<p />
+<style type="text/css">
+<!--
+div.codesnippet
+{
+    margin:0px 10px;
+    padding:0px 10px;
+    background:#f0f0f0;
+    font:12px Courier;
+    max-height:500px;
+    overflow:auto;
+    border:2px inset #989898;
+}
+-->
+</style>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CameraTechnicalGuide.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:08:08 GMT -->
+</html></body>

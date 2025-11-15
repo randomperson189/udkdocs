@@ -1,0 +1,375 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ProfilingBasicsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:26 GMT -->
+<head>
+<title> UDK | ProfilingBasicsCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ProfilingBasicsCH  </b></div>
+<div id="tooltext">
+<a href="ProfilingBasics.html" class="twikiLink">English Translation</a><br><a href="ProfilingBasicsJP.html" class="twikiLink">日本語訳</a><br><a href="ProfilingBasicsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ProfilingBasicsCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt; <b><a href="PerformanceHome.html" class="twikiLink">性能分析及优化</a></b> &gt;基本的分析及优化技术
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="基本的分析及优化技术"></a> 基本的分析及优化技术 </h1>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="ProfilingBasicsCH.html#基本的分析及优化技术"> 基本的分析及优化技术</a> <ul>
+<li> <a href="ProfilingBasicsCH.html#概述"> 概述</a>
+</li> <li> <a href="ProfilingBasicsCH.html#STAT命令"> STAT命令</a>
+</li> <li> <a href="ProfilingBasicsCH.html#准备分析环境"> 准备分析环境</a> <ul>
+<li> <a href="ProfilingBasicsCH.html#STAT UNIT"> STAT UNIT</a>
+</li> <li> <a href="ProfilingBasicsCH.html#编译配置"> 编译配置</a>
+</li> <li> <a href="ProfilingBasicsCH.html#关闭垃圾回收确认功能"> 关闭垃圾回收确认功能</a>
+</li> <li> <a href="ProfilingBasicsCH.html#以 Final Release(最终发布版本)模式编译脚本"> 以 Final Release(最终发布版本)模式编译脚本</a>
+</li></ul>
+</li> <li> <a href="ProfilingBasicsCH.html#禁用VSync"> 禁用VSync</a> <ul>
+<li> <a href="ProfilingBasicsCH.html#使用STAT SLOW"> 使用STAT SLOW</a>
+</li></ul>
+</li> <li> <a href="ProfilingBasicsCH.html#帮助和技巧"> 帮助和技巧</a> <ul>
+<li> <a href="ProfilingBasicsCH.html#关闭某些功能"> 关闭某些功能</a>
+</li> <li> <a href="ProfilingBasicsCH.html#面向墙壁">面向墙壁</a>
+</li> <li> <a href="ProfilingBasicsCH.html#产生属于一种类型的N个对象"> 产生属于一种类型的N个对象</a>
+</li></ul>
+</li> <li> <a href="ProfilingBasicsCH.html#引导时间分析"> 引导时间分析</a> <ul>
+<li> <a href="ProfilingBasicsCH.html#Profile Nodes(分析节点)"> Profile Nodes(分析节点)</a>
+</li> <li> <a href="ProfilingBasicsCH.html#Profile Node(分析节点)查看器">  Profile Node(分析节点)查看器</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+以下部分将为您讲解用于跟踪性能问题、瓶颈及停顿现象的最有用的工具。
+<p />
+通常，首先需要确定帧是否受到CPU或GPU性能的限制，然后使用适当的工具跟踪限定问题的范围。
+<p />
+如果CPU运行速度很慢，那么有很多命令和调试工具可以帮助您处理这个问题。有时候，可能只是由于actors的数量太多的或者“移动的部分”数量太多而导致帧频率较慢，或者可能是因为一个脱离的AI类每帧正在激活成千次的光线投射。只要耐心一点，您就可以跟踪发现这些性能问题并准确地定位到单独的关卡actor上！
+<p />
+对于GPU性能，您或许需要使用PIX来分析描画事件或着色器性能、以及游戏中的可视化模式和HUD统计数据。有时候，这些问题可能会最终跟踪到内容布局或光照属性上。
+<p />
+无论哪种情况，您都可能遇到持续的较慢帧频率问题或停顿问题(较大的帧时间顿卡)。对于持续的较慢的帧频率来说，单独帧的捕获工具(比如TRACE 命令)和采样优化器(VTune等)可能是非常有用的。对于停顿来说，您将需要使用StatsViewer工具通过函数调用图来分析以前的帧。
+<p />
+注意，尽管大部分Unreal工具可以在多个平台上工作，但是一般游戏机平台的调试工具和PC平台是不同的。
+<p />
+<h2><a name="STAT命令"></a> STAT命令 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+当调试、测试或分析游戏时，能够快速并容易地直接在游戏中查看及分析有意义的数据是非常必要的。通过使用STAT控制台命令，虚幻引擎3提供了用于查看关于游戏和引擎各个方面的大量统计数据的功能，并将它们作为平头显示信息(HUD)显示到屏幕上。
+<p />
+<a href="StatsDescriptions.html" class="twikiLink">Stat 命令描述</a>页面包含了所有可用的统计命令的完整列表以及关于每个命令所显示的各种测量值的介绍。
+<p />
+<h2><a name="准备分析环境"></a> 准备分析环境 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ol>
+<li> 首先，请确保在运行游戏时总是打开<a href="ProfilingBasicsCH.html#StatUnit" class="twikiAnchorLink">STAT UNIT</a>命令。<!--  -->
+</li> <li> <a href="ProfilingBasicsCH.html#TurnOffVSync" class="twikiAnchorLink">禁用VSync</a>，以便可以识别出瓶颈问题，即时在较快的帧上也可以发现瓶颈问题。
+</li></ol>
+<p />
+<a name="StatUnit"></a>
+<h3><a name="STAT UNIT"></a> STAT UNIT </h3>
+<p />
+使用 <strong>STAT UNIT</strong> 命令判断帧时间瓶颈出现的地方。*STAT UNIT* 将启动一个屏幕上的HUD来显示帧时间、游戏线程事件、渲染线程(描画)时间和GPU时间(如果可能)。这是跟踪性能问题的第一步也是非常重要的一步 -- 您应该总是打开这个命令。
+<p />
+同时，您可以使用 <strong>STAT FPS</strong> 命令来在屏幕上显示帧频率和帧时间。
+<p />
+<!--  -->
+<p />
+<a name="TurnOffGCVerify"></a>
+<h3><a name="关闭垃圾回收确认功能"></a> 关闭垃圾回收确认功能 </h3>
+<p />
+当处理性能问题时，您应该总是关闭 <em>GC Verification</em> ，否则在 <strong>Release（发布）</strong> 版本中将会看到大量的停顿现象，每次大约停顿30秒左右。您可以使用以下方法之一来关闭垃圾回收确认功能：
+<p />
+<!--  --> <ul>
+<li> 传入 <strong>-NoVerifyGC</strong> 命令行参数。
+</li></ul>
+<p />
+<!--  -->
+<p />
+<a name="TurnOffVSync"></a>
+<h2><a name="禁用VSync"></a> 禁用VSync </h2>
+<p />
+要想获得最好的效果，您需要关闭 <strong>VSync</strong> (在呈现帧之前等待垂直的折回)。否则，帧时间将会被填充到游戏的刷新频率上，这会导致更难获得精确的图像。要想关闭 <strong>VSync</strong> : <ul>
+<li> 传入 <strong>-NoVSync</strong> 命令行选项到游戏中。
+</li> <li> 或者，在<a href="UnrealFrontend.html" class="twikiLink">Unreal Frontend(虚幻前端)</a>的 <strong>Game</strong> 变迁中启用 <strong>"No VSync"</strong> 复选框。
+</li></ul>
+<p />
+<a name="StatSlow"></a>
+<h3><a name="使用STAT SLOW"></a> 使用STAT SLOW </h3>
+<p />
+您可以使用  <strong>STAT SLOW</strong> 命令帮助您找到性能波动问题。它可以通过报告运行时间长于一帧中特定时间段(默认10毫秒)的任何循环统计数据来帮助您逐步定位帧停顿发生的位置。运行速度较慢的统计数据将会在HUD上显示一段时间，从而可以更加容易地把性能波动和屏幕上的游戏行为联系到一起。
+<p />
+要想使用该命令，可以在控制台中输入 <strong>STAT SLOW</strong> 和用于说明阈值的可选参数，该参数以秒为单位(所以10ms也就是0.01秒)，也可以输入代表一旦波动停顿发生渲染统计数据所持续的时间的参数。默认值是 10秒。
+<p />
+<strong>示例:</strong>   <code>STAT SLOW 0.01 10</code>
+<p />
+这将会渲染在过去的10秒内所有运行时间超过10毫秒的循环统计数据。
+<p />
+<h2><a name="帮助和技巧"></a> 帮助和技巧 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+以下部分介绍了在优化性能问题时需要记住的一些帮助和技巧。
+<p />
+<h3><a name="关闭某些功能"></a> 关闭某些功能 </h3>
+<p />
+一般，游戏有很多令人兴奋但是性能消耗较高的性能。除了当您做很多这些性能消耗昂贵的事情时或者当您有一个复杂场景并且这些性能消耗较大的操作导致场景运行较慢时外，那些功能一般都很好。您可以花费数小时的时间来进行优化，最终获得20-40%的性能改进，但这些改进可能不足以使得场景变得足够的快。另一种方法是关闭那个功能！！ 这对于那些当有很多屠杀发生时很难注意到的事情或者那些位于很远距离发生的事情来说是个很好的策略。
+<p />
+另外，”关闭某些功能“是进行分析时的一个很好的技术。有时候您需要知道花费时间对某些东西进行优化是否值得。那么完全地关掉那个功能便是验证它的最好方法： ”如果我们免除这个功能，那么我们在帧时间预算方面获得什么结果“。
+<p />
+<strong>应用示例:</strong>
+<p /> <ul>
+<li> 距离玩家很远的敌人不必总是需要在地面上产生小的血迹贴花(比如，射击流血的特效)。
+</li> <li> 关卡设计人员知道的玩家永远不会触及的敌人不需要产生血迹或丢下武器。
+</li> <li> 对于一个复杂的SkeletalControl(骨架控制)来说，当拥有者不可见时不去更新它。
+</li> <li> 当布料不在场景中时便可以不仿真布料！ :-)
+</li></ul>
+<p />
+<h3><a name="面向墙壁"></a> 面向墙壁 </h3>
+<p />
+许多时候，代码正在更新那些当它们不可见时实际上不需要渲染的东西。进入到关卡中，面向墙壁，做所有您可以做的正常的分析，这是查看对象是否在不需要更新时更新了它们本身的最好方法。
+<p />
+当然，有些东西在不可见时也需要更新，但是对于大部分多对象来说，不进行持续的更新也是可以的。
+<p />
+<h3><a name="产生属于一种类型的N个对象"></a> 产生属于一种类型的N个对象 </h3>
+<p />
+通常，在游戏中您将会看到有大量同种类型的敌人攻击您，并且此时游戏是比较慢的。由于使用了那种敌人类型导致某些东西变慢了！ 问题是引擎的其它方面阻挡您轻松地查看什么东西使运行较慢。但是有一个较好的解决方法是获得一个测试关卡，在那个测试关卡中产生N个这种类型的敌人，然后分析它。这样便可以很容易地看到影响性能的热点区域在哪里！
+<p />
+这是一个很容易应用的技术。简单地执行以下步骤即可：
+<p /> <ul>
+<li> 在测试关卡中放置N个有问题的对象！
+</li> <li> 分析!
+</li></ul>
+<p />
+<!--  -->
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ProfilingBasicsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:26 GMT -->
+</html></body>

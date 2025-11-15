@@ -1,0 +1,404 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CloudDocumentStorage.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:24:51 GMT -->
+<head>
+<title> UDK | CloudDocumentStorage    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">CloudDocumentStorage  </b></div>
+<div id="tooltext">
+<a href="CloudDocumentStorageCH.html" class="twikiLink">中国翻译</a><br><a href="CloudDocumentStorageKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/CloudDocumentStorage -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="PlatformInterfaceFramework.html" class="twikiLink">PlatformInterface Framework</a></b> &gt; Cloud Document Storage
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Cloud Document Storage"></a> Cloud Document Storage </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="CloudDocumentStorage.html#Cloud Document Storage"> Cloud Document Storage</a> <ul>
+<li> <a href="CloudDocumentStorage.html#Overview"> Overview</a>
+</li> <li> <a href="CloudDocumentStorage.html#CloudStorageBase"> CloudStorageBase</a>
+</li> <li> <a href="CloudDocumentStorage.html#Objects as Data"> Objects as Data</a>
+</li> <li> <a href="CloudDocumentStorage.html#Implementation Details"> Implementation Details</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Cloud document storage allows the data to be stored to and read from documents stored in the "cloud", generally for the purpose of saving game data.
+<p />
+<strong>Note:</strong> Cloud document storage functionality is currently limited to games running on the iOS platform, though it is simulated on PC by storing documents locally.
+<p />
+<h2><a name="CloudStorageBase"></a> CloudStorageBase </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The <code><b>CloudStorageBase</b></code> class is the base class containing the functionality for loading and saving cloud documents. It inherits from the <code><b>PlatformInterfaceBase</b></code> and makes use of the delegate system contained in that class. Each platform (PC, iOS, etc.) has its own subclass extending from <code><b>CloudStorageBase</b></code> that provides the implementation specific to that platform.
+<p />
+<strong>Functions</strong>
+<p /> <ul>
+<li> <strong>Init</strong> - Event called by the engine to initialize the cloud storage system.
+</li> <li> <strong>ReadKeyValue [KeyName] [Type] [SerializedObj]</strong> - Initiates reading a key/value pair from cloud storage and returns TRUE if successful. <ul>
+<li> <strong>KeyName</strong> - The name (<code><b>string</b></code>) of the key to be read.
+</li> <li> <strong>Type</strong> - The <code><b>EPlatformInterfaceDataType</b></code> type of value to be read.
+</li> <li> <strong>SerializedObj</strong> - If you are reading an object, it will de-serialize the binary blob into this object
+</li></ul>
+</li> <li> <strong>WriteKeyValue [KeyName] [Value]</strong> - Writes a key/value pair to the cloud and returns TRUE if successful. <ul>
+<li> <strong>KeyName</strong> - The name (<code><b>string</b></code>) of the key to be written.
+</li> <li> <strong>Value</strong> - The <code><b>PlatformInterfaceData</b></code> value to be written to the specified key.
+</li></ul>
+</li> <li> <strong>QueryForCloudDocuments</strong> - Kick off an async query of documents that exist in the cloud and returns TRUE if successful. If any documents have already been retrieved, this will flush those documents, and refresh the set. Once completed, you can use <code><b>GetNumCloudDocuments()</b></code> and <code><b>GetCloudDocumentName()</b></code> to get the information about any existing documents.
+</li> <li> <strong>GetNumCloudDocuments [bIsForConflict]</strong> - Returns the number of documents known to exist in the cloud following a call to <code><b>QueryForCloudDocuments()</b></code>. <ul>
+<li> <strong>bIsForConflict</strong> - Optional. If TRUE, the number of documents with conflicts will be returned in place of the total number of documents.
+</li></ul>
+</li> <li> <strong>GetCloudDocumentName [Index]</strong> - Returns the name of the document corresponding to the given index. <ul>
+<li> <strong>Index</strong> - The <code><b>Int</b></code>  specifying the index of the document to get the name for.
+</li></ul>
+</li> <li> <strong>CreateCloudDocument [Filename]</strong> - Creates a new document in the cloud (uninitialized, unsaved, use the Write/Save functions). <ul>
+<li> <strong>Filename</strong> - The name (<code><b>string</b></code>) to give the newly created document.
+</li></ul>
+</li> <li> <strong>ReadCloudDocument [Index] [bIsForconflict]</strong> - Reads a document into memory (or whatever is needed so that the ParseDocumentAs* functions operate synchronously without stalling the game). <ul>
+<li> <strong>Index</strong> - The <code><b>Int</b></code> specifying the index of the document to read.
+</li> <li> <strong>bIsForConflict</strong> - If TRUE, the <strong>Index</strong> is into the array of documents with conflicts instead of the array of all documents.
+</li></ul>
+</li> <li> <strong>ParseDocumentAsString [Index] [bIsForConflict]</strong> - Returns a string representing the entire document. The document must first be read in using <code><b>ReadCloudDocument()</b></code>. This should only be used if <code><b>SaveDocumentWithString()</b></code> was used to generate the document. <ul>
+<li> <strong>Index</strong> - The <code><b>Int</b></code> specifying the index of the document to parse.
+</li> <li> <strong>bIsForConflict</strong> - If TRUE, the <strong>Index</strong> is into the array of documents with conflicts instead of the array of all documents.
+</li></ul>
+</li> <li> <strong>ParseDocumentAsBytes [Index] [ByteData] [bIsForConflict]</strong> - Outputs an array of bytes representing the entire document. The document must first be read in using <code><b>ReadCloudDocument()</b></code>. This should only be used if <code><b>SaveDocumentWithBytes()</b></code> was used to generate the document. <ul>
+<li> <strong>Index</strong> - The <code><b>Int</b></code> specifying the index of the document to parse.
+</li> <li> <strong>ByteData</strong> - An array of bytes that is populated with the data from the document. This will be empty if the parsing fails.
+</li> <li> <strong>bIsForConflict</strong> - If TRUE, the <strong>Index</strong> is into the array of documents with conflicts instead of the array of all documents.
+</li></ul>
+</li> <li> <strong>ParseDocumentAsObject [Index] [ObjectClass] [ExpectedVersion] [bIsForConflict]</strong> - Returns an object representing the entire document. The document must first be read in using <code><b>ReadCloudDocument()</b></code>. This should only be used if <code><b>SaveDocumentWithObject()</b></code> was used to generate the document. <ul>
+<li> <strong>Index</strong> - The <code><b>Int</b></code> specifying the index of the document to parse.
+</li> <li> <strong>ObjectClass</strong> - The <code><b>Class</b></code> of the object to create using the data from the document.
+</li> <li> <strong>ExpectedVersion</strong> - An <code><b>Int</b></code> specifying the version number expected to be in the data (set via <code><b>SaveDocumentWithObject</b></code>). If the version of the data does not match this, the function will return <code><b>none</b></code>.
+</li> <li> <strong>bIsForConflict</strong> - If TRUE, the <strong>Index</strong> is into the array of documents with conflicts instead of the array of all documents.
+</li></ul>
+</li> <li> <strong>WriteCloudDocument [Index]</strong> - Writes a document that has been already "saved" using the <code><b>SaveDocumentWith*</b></code> functions. <ul>
+<li> <strong>Index</strong> - The <code><b>Int</b></code> specifying the index of the document to be written.
+</li></ul>
+</li> <li> <strong>SaveDocumentWithString [Index] [StringData]</strong> - Prepare a document for writing to the cloud with a string as input data. This is synchronous. <ul>
+<li> <strong>Index</strong> - The <code><b>Int</b></code> specifying the index of the document to be saved.
+</li> <li> <strong>StringData</strong> - The <code><b>String</b></code> data to be saved to the file.
+</li></ul>
+</li> <li> <strong>SaveDocumentWithBytes [Index] [ByteData]</strong> - Prepare a document for writing to the cloud with an array of bytes as input data. This is synchronous. <ul>
+<li> <strong>Index</strong> - The <code><b>Int</b></code> specifying the index of the document to be saved.
+</li> <li> <strong>ByteData</strong> - The array of bytes to be saved to the file.
+</li></ul>
+</li> <li> <strong>SaveDocumentWithObject [Index] [ObjectData] [SaveVersion]</strong> - Prepare a document for writing to the cloud with an object as input data. This is synchronous. <ul>
+<li> <strong>Index</strong> - The <code><b>Int</b></code> specifying the index of the document to be saved.
+</li> <li> <strong>ObjectData</strong> - The <code><b>Object</b></code> data to be serialized to bytes and saved to the file.
+</li> <li> <strong>SaveVersion</strong> - An <code><b>Int</b></code> specifying the version number of the object being saved. Used so that when you load this object, if the version doesn't match it will skip loading the object.
+</li></ul>
+</li> <li> <strong>ResolveConflictWithNewestDocument</strong> - If there was a conflict notification, this will simply tell the cloud interface to choose the most recently modified version, and toss any others.
+</li> <li> <strong>ResolveConflictWithNewestVersionIndex [Index]</strong> - If there was a conflict notification, this will tell the cloud interface to choose the version with the given Index to be the master version, and to toss any others. <ul>
+<li> <strong>Index</strong> - The <code><b>Int</b></code> specifying the index of the document to keep as the master version.
+</li></ul>
+</li></ul>
+<p />
+<strong>Delegates</strong>
+<p />
+The <code><b>ECloudStorageDelegate</b></code> enum defines the IDs for the types of delegates that can receive callbacks. Delegates can be assigned to each of these using the <a href="PlatformInterfaceFramework.html#DelegateSystem" class="twikiAnchorLink">Platform Interface Delegates</a> system.
+<p /> <ul>
+<li> <strong>CSD_KeyValueReadComplete</strong> - Delegates assigned to this ID are executed when an attempt to read the value of a cloud key/value is completed via <code><b>ReadKeyValue()</b></code>. <ul>
+<li> <strong>bSuccessful</strong> - TRUE if the value was read successfully.
+</li> <li> <strong>Data</strong> - Contains the value that was read.
+</li></ul>
+</li> <li> <strong>CSD_KeyValueWriteComplete</strong> - Delegates assigned to this ID are executed when an attempt to write the value of a cloud key/value is completed via <code><b>WriteKeyValue()</b></code>. <ul>
+<li> <strong>bSuccessful</strong> - TRUE if the value was written successfully.
+</li> <li> <strong>Data</strong> - Contains the value that was written.
+</li></ul>
+</li> <li> <strong>CSD_ValueChanged</strong> - Delegates assigned to this ID are executed when the value of a cloud key/value changes. <ul>
+<li> <strong>bSuccessful</strong> - TRUE.
+</li> <li> <strong>Data</strong> - Contains the name of the key whose value changed.
+</li></ul>
+</li> <li> <strong>CSD_DocumentQueryComplete</strong> - Delegates assigned to this ID are executed when the query for cloud documents is completed, via <code><b>QueryCloudDocuments()</b></code>. <ul>
+<li> <strong>bSuccessful</strong> - TRUE.
+</li> <li> <strong>Data</strong> - Contains the index of the document that was read.
+</li></ul>
+</li> <li> <strong>CSD_DocumentReadComplete</strong> - Delegates assigned to this ID are executed when an attempt to open a document for reading is completed via <code><b>ReadCloudDocument()</b></code>. <ul>
+<li> <strong>bSuccessful</strong> - TRUE if the document was opened successfully.
+</li> <li> <strong>Data</strong> - Contains the index of the document that was opened.
+</li></ul>
+</li> <li> <strong>CSD_DocumentWriteComplete</strong> - Delegates assigned to this ID are executed when an attempt to write a document is completed via <code><b>WriteCloudDocument()</b></code>. <ul>
+<li> <strong>bSuccessful</strong> - TRUE if the document was written successfully.
+</li> <li> <strong>Data</strong> - Contains the index of the document that was written.
+</li></ul>
+</li> <li> <strong>CSD_DocumentConflictDetected</strong> - Delegates assigned to this ID are executed when multiple machines have updated a document resulting in a conflict. This can be used to allow the script to determine which version to use via the ResolveConflictWithNewest* functions. <ul>
+<li> <strong>bSuccessful</strong> - TRUE.
+</li> <li> <strong>Data</strong> - Contains the <strong>Index</strong> of the document where the conflict occurred.
+</li></ul>
+</li></ul>
+<p />
+<h2><a name="Objects as Data"></a> Objects as Data </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Objects and their properties can be serialized and saved to cloud documents, which makes cloud storage a viable option for saving game data. The general idea is a class extending from Object is created that contains variables for all of the data to be saved. An instance of this game data object is created and its variables are updated during the game. When the game is ready to be saved, the instance of this object is passed to <code><b>SaveDocumentWithObject()</b></code> and then the document is written with <code><b>WriteCloudDocument()</b></code>. The data can then be read in when the game starts up using <code><b>ReadCloudDocument()</b></code> and <code><b>ParseDocumentAsObject()</b></code>.
+<p />
+<h2><a name="Implementation Details"></a> Implementation Details </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The general workflow for setting up and using the cloud document storage for Unreal Engine 3 is outlined below:
+<p /> <ol>
+<li> Make sure your game is set up to use the iCloud service in the iOS Provisioning Portal if it is an iOS app. For more information, see the <a href="http://developer.apple.com/" target="_top">Apple Developer Site</a>.
+</li> <li> Get a reference to the <code><b>CloudStorageBase</b></code> object by calling the static <code><b>GetCloudStorageInterface()</b></code> of the <code><b>PlatformInterfaceBase</b></code> class and set up any delegates you wish to handle (document query, value changed, value read, value write, document read, document write, conflict detected), usually in <code><b>PostBeginPlay()</b></code> or some other initialization function depending on where you are placing the cloud document functionality.   <div class="codesnippet"><pre>
+   var CloudStorageBase Cloud;
+
+   ...
+
+   Cloud &#61; class&#39;PlatformInterfaceBase&#39;.static.GetCloudStorageInterface();
+   Cloud.AddDelegate(CSD&#95;ValueChanged, CloudValueChanged);
+   Cloud.AddDelegate(CSD&#95;DocumentReadComplete, CloudReadDocument);
+   Cloud.AddDelegate(CSD&#95;DocumentConflictDetected, CloudConflictDetected);
+   </pre></div>   <code><b>CloudValueChanged</b></code>, <code><b>CloudReadDocument</b></code>, <code><b>CloudConflictDetected</b></code> are just examples. These can be the names of any function matching the signature of the <code><b>PlatformInterfaceDelegate</b></code> delegate.   <div class="codesnippet"><pre>
+   delegate PlatformInterfaceDelegate(const out PlatformInterfaceDelegateResult Result);
+   </pre></div>
+</li> <li> To obtain the list of documents for the game, call <code><b>QueryForCloudDocuments()</b></code> on the <code><b>CloudStorageBase</b></code> object and wait for the <code><b>CSD_DocumentQueryComplete</b></code> callback where you can handle the list of documents to display them to the user in any way you desire (most likely in a menu of some sort).   <div class="codesnippet"><pre>
+   Cloud.QueryForCloudDocuments();
+   </pre></div>
+</li> <li> To read a document, call <code><b>ReadCloudDocument()</b></code> and then use one of the <code><b>ParseDocumentAs*()</b></code> functions depending on the type of data you are expecting.   <div class="codesnippet"><pre>
+   Cloud.ReadCloudDocument(0);
+   StringData &#61; Cloud.ParseDocumentAsString(0);
+   </pre></div>
+</li> <li> To save a document, call one of the <code><b>SaveDocumentAs*()</b></code> functions passing it the appropriate data and then call <code><b>WriteCloudDocument()</b></code> to save the document.   <div class="codesnippet"><pre>
+   Cloud.SaveDocumentAsString(0, StringData);
+   Cloud.WriteCloudDocument(0);
+   </pre></div>
+</li></ol>
+<p />
+A basic implementation can be found in the <code><b>CloudPC.uc</b></code> script of the <code><b>UDKBase\Classes</b></code> directory and can be tested by using the <code><b>CloudGame</b></code> gametype.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CloudDocumentStorage.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:24:51 GMT -->
+</html></body>

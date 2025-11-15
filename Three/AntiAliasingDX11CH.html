@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/AntiAliasingDX11CH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:54 GMT -->
+<head>
+<title> UDK | AntiAliasingDX11CH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">AntiAliasingDX11CH  </b></div>
+<div id="tooltext">
+<a href="AntiAliasingDX11.html" class="twikiLink">English Translation</a><br><a href="AntiAliasingDX11JP.html" class="twikiLink">日本語訳</a><br><a href="AntiAliasingDX11KR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/AntiAliasingDX11CH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="DirectX11Rendering.html" class="twikiLink">UE3 中的 DirectX 11</a></b> &gt; DirectX 11 中的抗锯齿功能 <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="RenderingHome.html" class="twikiLink">渲染</a></b> &gt; DirectX 11 中的抗锯齿功能
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="DirectX 11中的抗锯齿功能"></a> DirectX 11中的抗锯齿功能 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<em>文档变更记录: 由 <a href="https://udn.epicgames.com/Main/DanielWright" class="restricted" class="restricted" class="twikiLink">Daniel Wright</a> 创建。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="AntiAliasingDX11CH.html#DirectX 11中的抗锯齿功能"> DirectX 11中的抗锯齿功能</a> <ul>
+<li> <a href="AntiAliasingDX11CH.html#概述"> 概述</a>
+</li> <li> <a href="AntiAliasingDX11CH.html#启用 MSAA"> 启用 MSAA</a>
+</li> <li> <a href="AntiAliasingDX11CH.html#MSAA 具有延迟着色"> MSAA 具有延迟着色</a>
+</li> <li> <a href="AntiAliasingDX11CH.html#材质属性"> 材质属性</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+UE3 通过使用 MSAA 支持 DirectX 11 中的全景抗锯齿功能。<a href="http://en.wikipedia.org/wiki/Multisample_anti-aliasing" target="_top">MSAA（多重采样抗锯齿）</a>是个硬件功能，仅着色一次像素，但是会对每个像素执行多次深度测试。
+<p />
+<h2><a name="启用 MSAA"></a> 启用 MSAA </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+默认情况下，不启用 MSAA，但是可以通过在 engine ini 文件中将 MaxMultiSamples 的值设置为 4 来启用该功能。或者，您可以通过使用命令 'scale set MaxMultiSamples 4' 来启用 MSAA，这样就不必重新启动编辑器和游戏了。DirectX 11 渲染器仅支持 MaxMultiSamples 的值为 1（没有抗锯齿效果）和4（4倍多重采样抗锯齿）。
+<p />
+<h2><a name="MSAA 具有延迟着色"></a> MSAA 具有延迟着色 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+DirectX11 渲染器在延迟着色过程中执行很多操作，不触及MSAA，它将无法正常工作。每次延迟渲染（光照、阴影、雾、次表面散射、反射等）都被更新，以便沿着几何体边缘对着色进行超级采样，这将降低锯齿效果。
+<p />
+<h2><a name="材质属性"></a> 材质属性 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+材质有一个称为 bEnableMaskedAntialiasing 的属性，当启用多重采样抗锯齿功能时，该属性使得由不透明蒙板创建的蒙版材质的边缘具有抗锯齿效果。这对它适用于毛发和植被这样的物体，但是渲染性能消耗较高。<br>
+<p />
+该图片显示了角色毛发的放大效果，左侧没有启用 bEnableMaskedAntialiasing项，右侧启用了 bEnableMaskedAntialiasing项（两个都是 4xMSAA） 。<br>
+<p />
+<img src="rsrc/Three/AntiAliasingDX11CH/MaskedAA.jpg" alt="MaskedAA.jpg" width="900" height="802" />
+<p />
+当启用 MSAA 时，材质混合模式 BLEND_DitheredTranslucent 实现不同的材质特征。它会导致以抖动模式计算不透明蒙版，使它看上去像是透明的，即时材质实际上是蒙板材质也这样处理。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/AntiAliasingDX11CH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:54 GMT -->
+</html></body>

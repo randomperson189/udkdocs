@@ -1,0 +1,489 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ActorComponentsJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:38 GMT -->
+<head>
+<title> UDK | ActorComponentsJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ActorComponentsJP  </b></div>
+<div id="tooltext">
+<a href="ActorComponents.html" class="twikiLink">English Translation</a><br><a href="ActorComponentsCH.html" class="twikiLink">中国翻译</a><br><a href="ActorComponentsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ActorComponentsJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="アクタ コンポーネント"></a> アクタ コンポーネント </h1>
+<p />
+<noautolink>
+<p />
+<em>ドキュメントの概要: ActorComponent の使用とカスタム アクタ コンポーネント タイプの作成に関する解説。</em>
+<p />
+<em>ドキュメントの変更ログ: Andrew Scheidecker<sup>?</sup> により作成。長期管理。</em>
+<div class="twikiToc"> <ul>
+<li> <a href="ActorComponentsJP.html#アクタ コンポーネント"> アクタ コンポーネント</a> <ul>
+<li> <a href="ActorComponentsJP.html#概要">概要</a>
+</li> <li> <a href="ActorComponentsJP.html#アクタ コンポーネントの使用"> アクタ コンポーネントの使用</a> <ul>
+<li> <a href="ActorComponentsJP.html#ActorComponent (アクタコンポーネント) と _PrimitiveComponent (プリミティブコンポーネント) との違い"> ActorComponent (アクタコンポーネント) と PrimitiveComponent (プリミティブコンポーネント) との違い</a>
+</li> <li> <a href="ActorComponentsJP.html#コンポーネントを追加する"> コンポーネントを追加する</a>
+</li> <li> <a href="ActorComponentsJP.html#コンポーネントの修正"> コンポーネントの修正</a>
+</li> <li> <a href="ActorComponentsJP.html#コンポーネントを削除する"> コンポーネントを削除する</a>
+</li> <li> <a href="ActorComponentsJP.html#コンポーネント テンプレート"> コンポーネント テンプレート</a>
+</li> <li> <a href="ActorComponentsJP.html#コンポーネント テンプレートの作成"> コンポーネント テンプレートの作成</a>
+</li> <li> <a href="ActorComponentsJP.html#コンポーネント テンプレートのインスタンス化と関連付け"> コンポーネント テンプレートのインスタンス化と関連付け</a>
+</li> <li> <a href="ActorComponentsJP.html#スーパー クラスから継承したコンポーネント テンプレートのプロパティを変更する"> スーパー クラスから継承したコンポーネント テンプレートのプロパティを変更する</a>
+</li> <li> <a href="ActorComponentsJP.html#動的に作成されたコンポーネント"> 動的に作成されたコンポーネント</a>
+</li> <li> <a href="ActorComponentsJP.html#共通 _PrimitiveComponent オプション"> 共通 PrimitiveComponent オプション</a>
+</li> <li> <a href="ActorComponentsJP.html#アクタの衝突と _PrimitiveComponent"> アクタの衝突と PrimitiveComponent </a>
+</li></ul>
+</li> <li> <a href="ActorComponentsJP.html#ビルトイン コンポーネント タイプ"> ビルトイン コンポーネント タイプ</a>
+</li> <li> <a href="ActorComponentsJP.html#新しいコンポーネント タイプの作成"> 新しいコンポーネント タイプの作成</a> <ul>
+<li> <a href="ActorComponentsJP.html#SetParentToWorld （親をワールドに設定する）"> SetParentToWorld （親をワールドに設定する）</a>
+</li> <li> <a href="ActorComponentsJP.html#UpdateTransform"> UpdateTransform</a>
+</li> <li> <a href="ActorComponentsJP.html#Detach"> Detach </a>
+</li> <li> <a href="ActorComponentsJP.html#IsValidComponent"> IsValidComponent </a>
+</li></ul>
+</li> <li> <a href="ActorComponentsJP.html#追加ノート"> 追加ノート</a> <ul>
+<li> <a href="ActorComponentsJP.html#関連づけ"> 関連づけ</a>
+</li> <li> <a href="ActorComponentsJP.html#ガーベジコレクション"> ガーベジコレクション</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<p />
+Unreal Engine において、すべてのゲーム関連オブジェクトは基本 Actor クラスから派生されます。前世代のUnreal Engine では、基本Actor クラスは非常に重いもので、アクタ派生サブクラスはビヘイビアに関係なく、すべてのプロパティを継承します。
+<p />
+アクタコンポーネントは、アクタのレンダリングおよびコリジョンのモジュラー拡張性用インターフェースを提供する複数のライトウェイトコンポーネントを定義することにより問題を解決します。
+<p />
+コンポーネントプロトタイプはクラスのデフォルトプロパティで定義されます。また、Unreal Engine 2にて以前に定義されたサブオブジェクトの構文の変更済みバージョンを使用します。プロトタイプには名前がつけられ、サブクラスにより継承されます。サブクラスはプロトタイプのいくつかのまたはすべてのデフォルトプロパティをオーバーライドできます。コンポーネントを使用するには、デフォルトプロパティを通してアクタのコンポーネント配列に追加してください。デフォルトプロパティにて参照されたコンポーネントプロトタイプはアクタクラスと共にインスタンス化されます。デフォルトプロパティはレベルで保存されたアクタクラスの既存インスタンスにプロパゲートされます。
+<p />
+<h2><a name="アクタ コンポーネントの使用"></a> アクタ コンポーネントの使用 </h2>
+<p />
+<h3><a name="ActorComponent (アクタコンポーネント) と _PrimitiveComponent (プリミティブコンポーネント) との違い"></a> ActorComponent (アクタコンポーネント) と PrimitiveComponent (プリミティブコンポーネント) との違い </h3>
+<p />
+ActorComponent (アクタコンポーネント) は、ワールド内のアクタに添付して利用するオブジェクトです。
+<p />
+PrimitiveComponent (プリミティブコンポーネント) は、その ActorComponent でも、レンダリングや衝突が可能なもののことです。
+<p />
+<h3><a name="コンポーネントを追加する"></a> コンポーネントを追加する </h3>
+<p />
+インスタンス化されるアクタは、それと共にインスタンス化される SpriteComponent を持ちます（サブクラスがコンポーネント配列から Sprite を削除しない限り）
+<p />
+コンポーネント配列により参照されたコンポーネントはアクタの位置にバインドされます。
+<p />
+例：
+<p />
+<pre>
+class Actor extends Object;
+
+var const array&#60;ActorComponent&#62;   Components;
+
+defaultproperties
+{
+   Begin Object Class&#61;SpriteComponent Name&#61;Sprite
+      Sprite&#61;S&#95;Actor
+      HiddenGame&#61;True
+   End Object
+   Components.Add(Sprite)
+}
+</pre>
+<p />
+<h3><a name="コンポーネントの修正"></a> コンポーネントの修正 </h3>
+<p />
+例：
+<p />
+<pre>
+class Trigger extends Actor;
+
+defaultproperties
+{
+   Begin Object Name&#61;Sprite
+      Sprite&#61;S&#95;Trigger
+   End Object
+}
+</pre>
+<p />
+<h3><a name="コンポーネントを削除する"></a> コンポーネントを削除する </h3>
+<p />
+例：
+<p />
+<pre>
+class StaticMeshActor extends Actor;
+
+defaultproperties
+{
+   Components.Remove(Sprite)
+   …
+}
+</pre>
+<p />
+Sprite コンポーネントプロトタイプは、 StaticMeshActor クラスのデフォルトプロパティで参照されていないことから StaticMeshActorsでインスタンス化されません。
+<p />
+<p />
+<h3><a name="コンポーネント テンプレート"></a> コンポーネント テンプレート </h3>
+<p />
+コンポーネント テンプレートはアクタ クラスのデフォルト コンポーネントの宣言に使用します。コンポーネント テンプレートは名前つきのオブジェクトで、クラスのデフォルト プロパティで参照するコンポーネントのデフォルト プロパティを含んでいます。クラスがインスタンス化されると、そのクラスが参照するすべてのコンポーネント テンプレートも一緒にインスタンス化されます。
+<p />
+コンポーネント テンプレートは、それ自体が宣言されたクラスのサブクラスに継承されます。各サブクラスは継承したテンプレートのそれぞれのプロパティをオーバーライドできます。
+<p />
+コンポーネント テンプレートのインスタンスはテンプレートのデフォルト プロパティにしたがって連続化されます。これによりアクタ コンポーネントのインスタンスには、テンプレート プロパティをレベルに設置した後に行われた変更内容が常に反映されるようになります。
+<p />
+<h3><a name="コンポーネント テンプレートの作成"></a> コンポーネント テンプレートの作成 </h3>
+<p />
+コンポーネント テンプレートはクラスのデフォルト プロパティで宣言します。:
+<p />
+<pre>
+Begin Object Class&#61;SpriteComponent Name&#61;Sprite
+   Sprite&#61;Texture2D&#39;EngineResources.S&#95;Actor&#39;
+   HiddenGame&#61;True
+   AlwaysLoadOnClient&#61;False
+   AlwaysLoadOnServer&#61;False
+End Object
+</pre>
+<p />
+<h3><a name="コンポーネント テンプレートのインスタンス化と関連付け"></a> コンポーネント テンプレートのインスタンス化と関連付け </h3>
+<p />
+クラスの デフォルト プロパティで参照したコンポーネント テンプレートだけが、クラスでのインスタンス化を行えます。また、アクタの Components 配列にあるアクタ コンポーネントのみ、アクタに関連付けることができます。デフォルト プロパティで、コンポーネント テンプレートをアクタの Components 配列に追加すると、アクタ コンポーネント テンプレートをアクタ クラスでインスタンス化することができ、また、インスタンス化したコンポーネントを自動的にアクタ インスタンスに関連付けることができます。:
+<p />
+<pre>
+Begin Object Class&#61;SpriteComponent Name&#61;Sprite
+   // スプライト コンポーネントのプロパティ値をここで割り当て
+End Object
+Components.Add(Sprite)
+</pre>
+<p />
+<h3><a name="スーパー クラスから継承したコンポーネント テンプレートのプロパティを変更する"></a> スーパー クラスから継承したコンポーネント テンプレートのプロパティを変更する </h3>
+<p />
+コンポーネント テンプレートは、テンプレートが最初にせんげんされたクラスのサブクラスが継承します。サブクラスは継承したテンプレートのそれぞれのプロパティをオーバーライドできます。この例ではアクタから Sprite テンプレートを継承し、スプライト テクスチャ プロパティだけを書き換えます:
+<p />
+<pre>
+Begin Object Name&#61;Sprite
+   Sprite&#61;Texture2D&#39;EngineResources.S&#95;SkyLight&#39;
+End Object
+</pre>
+<p />
+<h3><a name="動的に作成されたコンポーネント"></a> 動的に作成されたコンポーネント </h3>
+<p />
+コンポーネントのインスタンスを動的に作成するには、UnrealScript の new 演算子を使用し、新しいコンポーネントをアクタに関連付けするため、アクタの AttachComponent メソッドを呼び出します。
+<p />
+new 演算子へのパラメータは、コンポーネントを作成する外側(Outer)のオブジェクトで、このコンポーネントを内包して関連付けられるべきアクタです。 こうすることで、他のアクターにコンポーネントが関連付けられてガーベジコレクションをされる前に、コンポーネントの外部参照を設定して不用意にガーベジコレクションされることを確実に防げるようにします。
+<p />
+<pre>
+local StaticMeshComponent NewComponent;
+NewComponent &#61; new(self) class&#39;StaticMeshComponent&#39;;
+// ここに、静的メッシュコンポーネントのプロパティを設定する
+AttachComponent(NewComponent);
+</pre>
+<p />
+アクタを動的にコンポーネントから切り離したい場合は、アクタの DetachComponent メソッドを利用します。これはアクタの配列 Components からコンポーネントを削除して、アクタから切り離します。
+<p />
+<h3><a name="共通 _PrimitiveComponent オプション"></a> 共通 PrimitiveComponent オプション </h3>
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 型 </td><td bgcolor="#eaeaea"> 名前 </td><td bgcolor="#eaeaea"> 説明 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> boolean </td><td bgcolor="#ffffff"> AlwaysLoadOnClient </td><td bgcolor="#ffffff"> AlwaysLoadOnClient=False で、プリミティブの HiddenGame=True で CollideActors=False の場合、プリミティブはゲーム クライアントにロードされません。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> boolean </td><td bgcolor="#eaeaea"> AlwaysLoadOnServer </td><td bgcolor="#eaeaea" align="right"> AlwaysLoadOnServer=False で、プリミティブの CollideActors=False の場合、プリミティブはゲーム サーバにロードされません。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> boolean </td><td bgcolor="#ffffff"> BlockActors </td><td bgcolor="#ffffff" align="right"> PrimitiveComponent の衝突が有効の場合、BlockActor でプリミティブの衝突が他のアクタをブロックするかどうかを定義します。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> boolean </td><td bgcolor="#eaeaea"> CastShadow </td><td bgcolor="#eaeaea" align="right"> PrimitiveComponent がシャドウを投影する場合は True、投影しない場合は False。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> boolean </td><td bgcolor="#ffffff"> CollideActors </td><td bgcolor="#ffffff"> アクタの bCollideActors または PrimitiveComponent の CollideActors プロパティのいずれかが False なら、プリミティブは衝突を起こしません。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> boolean </td><td bgcolor="#eaeaea"> HiddenEditor </td><td bgcolor="#eaeaea"> PrimitiveComponent がエディタ内でレンダリングするなら False、レンダリングしないなら True。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> boolean </td><td bgcolor="#ffffff"> HiddenGame </td><td bgcolor="#ffffff"> PrimitiveComponent がゲーム内でレンダリングするなら False、レンダリングしないなら True。 </td></tr>
+</table>
+<p />
+<h3><a name="アクタの衝突と _PrimitiveComponent"></a> アクタの衝突と PrimitiveComponent </h3>
+<p />
+衝突 PrimitiveComponent では、アクタに関連付けたものすべてについて衝突テストを実施しますが、アクタが移動する場合のテスト対象は PrimitiveComponent だけです。この PrimitiveComponent を選択するには、アクタプロパティの CollisionComponent （衝突コンポーネント） で、アクタの移動衝突チェックに使用するコンポーネントを参照するように設定します。アクタが移動すると、CollisionComponent が参照するコンポーネントの境界ボックスを利用してすべての衝突 PrimitiveComponent に対してスイープします。
+<p />
+<p />
+<h2><a name="ビルトイン コンポーネント タイプ"></a> ビルトイン コンポーネント タイプ </h2>
+<p /> <ul>
+ <li>
+ <ul>
+<li> PrimitiveComponent <ul>
+<li> ArrowComponent
+</li> <li> CameraConeComponent
+</li> <li> CylinderComponent
+</li> <li> DrawFrustumComponent
+</li> <li> MeshComponent <ul>
+<li> StaticMeshComponent
+</li> <li> SkeletalMeshComponent
+</li></ul>
+</li> <li> ParticleSystemComponent
+</li> <li> SpriteComponent
+</li></ul>
+</li> <li> LightComponent <ul>
+<li> DirectionalLightComponent
+</li> <li> PointLightComponent <ul>
+<li> SpotLightComponent
+</li></ul>
+</li> <li> SkyLightComponent
+</li></ul>
+</li> <li> AudioComponent
+</li> <li> HeightFogComponent
+</li> <li> SceneCaptureComponent <ul>
+<li> SceneCapture2DComponent
+</li> <li> SceneCaptureCubeMapComponent
+</li> <li> SceneCaptureParaboloidComponent
+</li> <li> SceneCaptureReflectComponent
+</li></ul>
+</li></ul>
+</li></ul>
+<p />
+<p />
+<h2><a name="新しいコンポーネント タイプの作成"></a> 新しいコンポーネント タイプの作成 </h2>
+<p />
+新しいアクタのコンポーネントタイプを導入するには、ActorComponent 関数のオーバーライドによって関連付け、切り離し、または移動を行います。
+<p />
+<h3><a name="SetParentToWorld （親をワールドに設定する）"></a> SetParentToWorld （親をワールドに設定する） </h3>
+<p />
+UActorComponent::SetParentToWorld は変更に関連付けたコンポーネントを変換する度に呼ばれます。この後は常に Attach または UpdateTransform のいずれかが呼びだされます。
+<p />
+<h3><a name="UpdateTransform"></a> UpdateTransform </h3>
+<p />
+UActorComponent::UpdateTransform は移動を関連付けたコンポーネントを変更する度に呼び出されます。この前に必ず SetParentToWorld に呼ばれ、関連付けていないコンポーネントに呼びだされることはありません。
+<p />
+<h3><a name="Detach"></a> Detach </h3>
+<p />
+UActorComponent::Detach はコンポーネントが切り離されたときに呼び出されます。関連付けていないコンポーネントで呼出されることはありません。
+<p />
+<h3><a name="IsValidComponent"></a> IsValidComponent </h3>
+<p />
+UActorComponent::IsValidComponent は、コンポーネントのプロパティに対してパラメータの検証を補足的に行う場合、オーバーライドされます。返り値がFalseの場合、コンポーネントは関連付けられません。
+<p />
+<h2><a name="追加ノート"></a> 追加ノート </h2>
+<p />
+<h3><a name="関連づけ"></a> 関連づけ </h3>
+<p />
+以前はUE2 では骨格メッシュボーンにアクタが関連付けができるようになっていました。そのため、UE3 では骨格メッシュボーンにアクタコンポーネントが関連付けができるようになっています。
+関連付けにはComponents 配列にコンポーネントを追加するより  SkeletalMeshComponentのデフォルトプロパティにAttachments 配列にエントリを追加します。インスタンス化された参照はコンポーネントに追加され、 SkeletalMeshComponentのAttachComponent とDetachComponent functionsを使用しているスクリプトにコンポーネントを関連付けします。
+<p />
+<h3><a name="ガーベジコレクション"></a> ガーベジコレクション </h3>
+<p />
+一般的に、 <em>破壊</em> されたアクタはリストに追加されます。定期的に(iniオプションTimeBetweenPurgingPendingKillObjectsを基に)、リストのアクタへの参照をクリアし、アクタにスペースを作りリストを空にします。
+アクタコンポーネントの削除はアクターガーベジコレクションの拡張機能です。コンポーネントはアクタと共に削除されます。アクタからコンポーネントの参照は、コンポーネントが削除される前にクリアされます。
+<p />
+詳細については <a href="https://udn.epicgames.com/Three/GarbageCollectionJP" class="restricted" class="restricted" class="twikiLink">ガーベジコレクション</a> をご覧ください。
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ActorComponentsJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:38 GMT -->
+</html></body>

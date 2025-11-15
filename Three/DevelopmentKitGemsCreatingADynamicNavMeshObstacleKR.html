@@ -1,0 +1,512 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DevelopmentKitGemsCreatingADynamicNavMeshObstacleKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:11:28 GMT -->
+<head>
+<title> UDK | DevelopmentKitGemsCreatingADynamicNavMeshObstacleKR    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">DevelopmentKitGemsCreatingADynamicNavMeshObstacleKR  </b></div>
+<div id="tooltext">
+<a href="DevelopmentKitGemsCreatingADynamicNavMeshObstacle.html" class="twikiLink">English Translation</a><br><a href="DevelopmentKitGemsCreatingADynamicNavMeshObstacleJP.html" class="twikiLink">日本語訳</a><br><a href="DevelopmentKitGemsCreatingADynamicNavMeshObstacleCH.html" class="twikiLink">中国翻译</a><br>
+
+<!-- Three/DevelopmentKitGemsCreatingADynamicNavMeshObstacleKR -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<p />
+<b><a href="WebHomeKR.html" class="twikiLink">UE3 홈</a></b> &gt; <b><a href="DevelopmentKitGemsKR.html" class="twikiLink">UDK 젬</a></b> &gt; 동적인 내비게이션 메시 장애물 만들기 <br/>
+<b><a href="WebHomeKR.html" class="twikiLink">UE3 홈</a></b> &gt; <b><a href="AIAndNavigationHomeKR.html" class="twikiLink">AI와 내비게이션</a></b> &gt; 동적인 내비게이션 메시 장애물 만들기
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="동적인 내비게이션 메시 장애물 만들기"></a> 동적인 내비게이션 메시 장애물 만들기 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<em>문서 변경내역: <a href="https://udn.epicgames.com/Main/JamesTan" class="restricted" class="restricted" class="twikiLink">James Tan</a> 작성. <a href="https://udn.epicgames.com/Main/SungjinHong" class="restricted" class="restricted" class="twikiLink">홍성진</a> 번역.</em>
+<br>
+<strong><em>2011년 3월 UDK 버전으로 최종 테스팅, PC 와 iOS 호환</em></strong>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="DevelopmentKitGemsCreatingADynamicNavMeshObstacleKR.html#동적인 내비게이션 메시 장애물 만들기"> 동적인 내비게이션 메시 장애물 만들기</a> <ul>
+<li> <a href="DevelopmentKitGemsCreatingADynamicNavMeshObstacleKR.html#개요"> 개요</a> <ul>
+<li> <a href="DevelopmentKitGemsCreatingADynamicNavMeshObstacleKR.html#관련 토픽"> 관련 토픽</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsCreatingADynamicNavMeshObstacleKR.html#동적 내비게이션 메시 장애물"> 동적 내비게이션 메시 장애물</a>
+</li> <li> <a href="DevelopmentKitGemsCreatingADynamicNavMeshObstacleKR.html#DynamicNavMeshObstacle 사용하기"> DynamicNavMeshObstacle 사용하기</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="개요"></a> 개요 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+내비게이션 메시는 에전 패쓰노드 시스템에 비해 크게 향상된 장점이 많습니다. 그 중 하나를 꼽아보자면, 실시간으로 장애물을 정의하기가 정말 쉽다는 것입니다.
+<p />
+예전 패쓰노드 시스템에서는 패쓰노드를 꺼서 길찾기가 사용하지 못하도록 하는 식으로 했었으나, 보통 레벨 디자이너가 생각했던 것보다 패쓰 노드의 수가 훨씬 많아지는 결과를 내곤 했습니다. 매우 귀찮기도 하고 에러가 발생하기도 쉬웠습니다.
+<p />
+내비게이션 메시로는, 그저 장애물을 2D 모양으로 정의하고 등록하기만 하면 되니 참 간단합니다.
+<p />
+<h3><a name="관련 토픽"></a> 관련 토픽 </h3> <ul>
+<li> <a href="UsingNavigationMeshesKR.html" class="twikiLink">내비게이션 메시 사용하기</a>
+</li> <li> <a href="NavigationMeshReferenceKR.html" class="twikiLink">내비게이션 메시 참고서</a>
+</li> <li> <a href="NavMeshDynamicObstacleSplittingKR.html" class="twikiLink">내비게이션 메시 동적 장애물 분할</a>
+</li> <li> <a href="NavigationMeshTechnicalGuideKR.html" class="twikiLink">내비게이션 메시 테크니컬 가이드</a>
+</li></ul>
+<p />
+<h2><a name="동적 내비게이션 메시 장애물"></a> 동적 내비게이션 메시 장애물 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+다음 스크립트는 NavMeshObstacle 클래스에서 확장된 헬퍼 클래스입니다. 프로그래머가 사용하기 간편한 인터페이스 [SetAsSquare, SetAsRectangle, SetAsCircle] 를 제공하여 원하는 모양을 쉽게 만들 수 있도록 해 줍니다.
+<p />
+<div class="codetitlebar">
+DynamicNavMeshObstacle.uc
+</div>
+<div class="codesnippet">
+<pre>
+class DynamicNavMeshObstacle extends NavMeshObstacle;
+
+// 가능한 모양 목록
+enum EShape
+{
+  EShape&#95;None,
+  EShape&#95;Square,
+  EShape&#95;Rectangle,
+  EShape&#95;Circle
+};
+
+// 내비 메시 장애물 모양
+var PrivateWrite EShape ShapeType;
+// EShape&#95;Square 에 사용
+var PrivateWrite float Width;
+// EShape&#95;Square 및 EShape&#95;Rectangle 에 사용
+var PrivateWrite float Height;
+// EShape&#95;Circle 에 사용
+var PrivateWrite float Radius;
+// EShape&#95;Circle 에 사용
+var PrivateWrite int Sides;
+// 장애물을 액터의 로테이션에 맞춤?
+var bool AlignToRotation;
+
+simulated function PostBeginPlay()
+{
+  // 디폴트 PostBeginPlay 함수 생략
+  Super(Actor).PostBeginPlay();
+}
+
+function SetAsSquare(float NewWidth)
+{
+  if (NewWidth &#62; 0.f)
+  {
+    ShapeType &#61; EShape&#95;Square;
+    Width &#61; NewWidth;
+  }
+}
+
+function SetAsRectangle(float NewWidth, float NewHeight)
+{
+  if (NewWidth &#62; 0.f &#38;&#38; NewHeight &#62; 0.f)
+  {
+    ShapeType &#61; EShape&#95;Rectangle;
+    Width &#61; NewWidth;
+    Height &#61; NewHeight;
+  }
+}
+
+function SetAsCircle(float NewRadius, float NewSides)
+{
+  if (NewRadius &#62; 0.f &#38;&#38; NewSides &#62; 0)
+  {
+    ShapeType &#61; EShape&#95;Circle;
+    Radius &#61; NewRadius;
+    Sides &#61; NewSides;
+  }
+}
+
+event bool GetObstacleBoudingShape(out array&#60;vector&#62; Shape)
+{
+  local Vector Offset;
+  local int i, Angle;
+  local Rotator R;
+
+  if (ShapeType &#61;&#61; EShape&#95;Square)
+  {
+    if (AlignToRotation)
+    {
+      // 우상단 구석
+      Offset.X &#61; Width;
+      Offset.Y &#61; Width;
+      Shape.AddItem(Location + (Offset &#62;&#62; Rotation));
+      // 우하단 구석
+      Offset.X &#61; -Width;
+      Offset.Y &#61; Width;
+      Shape.AddItem(Location + (Offset &#62;&#62; Rotation));
+      // 좌하단 구석
+      Offset.X &#61; -Width;
+      Offset.Y &#61; -Width;
+      Shape.AddItem(Location + (Offset &#62;&#62; Rotation));
+      // 좌상단 구석
+      Offset.X &#61; Width;
+      Offset.Y &#61; -Width;
+      Shape.AddItem(Location + (Offset &#62;&#62; Rotation));
+    }
+    else
+    {
+      // 우상단 구석
+      Offset.X &#61; Width;
+      Offset.Y &#61; Width;
+      Shape.AddItem(Location + Offset);
+      // 우하단 구석
+      Offset.X &#61; -Width;
+      Offset.Y &#61; Width;
+      Shape.AddItem(Location + Offset);
+      // 좌하단 구석
+      Offset.X &#61; -Width;
+      Offset.Y &#61; -Width;
+      Shape.AddItem(Location + Offset);
+      // 좌상단 구석
+      Offset.X &#61; Width;
+      Offset.Y &#61; -Width;
+      Shape.AddItem(Location + Offset);
+    }
+
+    return true;
+  }
+  else if (ShapeType &#61;&#61; EShape&#95;Rectangle)
+  {
+    if (AlignToRotation)
+    {
+      // 우상단 구석
+      Offset.X &#61; Width;
+      Offset.Y &#61; Height;
+      Shape.AddItem(Location + (Offset &#62;&#62; Rotation));
+      // 우하단 구석
+      Offset.X &#61; -Width;
+      Offset.Y &#61; Height;
+      Shape.AddItem(Location + (Offset &#62;&#62; Rotation));
+      // 좌하단 구석
+      Offset.X &#61; -Width;
+      Offset.Y &#61; -Height;
+      Shape.AddItem(Location + (Offset &#62;&#62; Rotation));
+      // 좌상단 구석
+      Offset.X &#61; Width;
+      Offset.Y &#61; -Height;
+      Shape.AddItem(Location + (Offset &#62;&#62; Rotation));
+    }
+    else
+    {
+      // 우상단 구석
+      Offset.X &#61; Width;
+      Offset.Y &#61; Height;
+      Shape.AddItem(Location + Offset);
+      // 우하단 구석
+      Offset.X &#61; -Width;
+      Offset.Y &#61; Height;
+      Shape.AddItem(Location + Offset);
+      // 좌하단 구석
+      Offset.X &#61; -Width;
+      Offset.Y &#61; -Height;
+      Shape.AddItem(Location + Offset);
+      // 좌상단 구석
+      Offset.X &#61; Width;
+      Offset.Y &#61; -Height;
+      Shape.AddItem(Location + Offset);
+    }
+
+    return true;
+  }
+  else if (ShapeType &#61;&#61; EShape&#95;Circle &#38;&#38; Sides &#62; 0)
+  {
+    // 면의 수로 정의된 각 &#39;slice&#39; 각도 구하기
+    Angle &#61; 65536 / Sides;
+    // 로테이션에 맞춰져 있다면, 시작 지점으로 로테이션 사용
+    R &#61; (AlignToRotation) ? Rotation : Rot(0, 0, 0);
+    // 반경 설정
+    Offset.X &#61; Radius;
+    Offset.Y &#61; 0.f;
+    // 각 면에 대해...
+    for (i &#61; 0; i &#60; Sides; ++i)
+    {
+      // 왼편 지점에 추가
+      Shape.AddItem(Location + (Offset &#62;&#62; R));
+      // 다음편에 증가
+      R.Yaw +&#61; Angle;
+    }
+
+    return true;
+  }
+
+  return false;
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h2><a name="DynamicNavMeshObstacle 사용하기"></a> DynamicNavMeshObstacle 사용하기 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+동적 내비게이션 메시 장애물 사용법은 간단합니다. 스폰시키고, 어떤 모양의 장애물로 만들지 구성하고, 등록하면 됩니다.
+<p />
+<div class="codetitlebar">
+<em>YourClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+var DynamicNavMeshObstacle PlacementObstacle;
+
+function PostBeginPlay()
+{
+  Super.PostBeginPlay();
+  PlacementObstacle &#61; Spawn(class&#39;DynamicNavMeshObstacle&#39;);
+  PlacementObstacle.SetAsCircle(96, 8);
+}
+</pre>
+</div>
+<p />
+DynamicNavMeshObstacle 를 움직여서 이동가능 내비게이션 메시 장애물을 만들 수도 있습니다.
+<p />
+<div class="codesnippet">
+<pre>
+function Tick(float DeltaTime)
+{
+  Super.Tick(DeltaTime);
+
+  ForEach TraceActors(class&#39;Actor&#39;, HitActor, HitLocation, HitNormal, CachedMouseWorldOrigin + CachedMouseWorldDirection &#42; 65536.f, CachedMouseWorldOrigin,,, class&#39;Actor&#39;.const.TRACEFLAG&#95;Bullet)
+  {
+    if (HitActor.bWorldGeometry)
+    {
+      PlacementObstacle.UnRegisterObstacle();
+      PlacementObstacle.SetLocation(HitLocation);
+      PlacementObstacle.RegisterObstacle();
+      break;
+    }
+  }
+}
+</pre>
+</div>
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingADynamicNavMeshObstacle/DynamicNavMeshObstacleScreenShot.jpg" alt="DynamicNavMeshObstacleScreenShot.jpg" width='900' height='672' />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DevelopmentKitGemsCreatingADynamicNavMeshObstacleKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:11:28 GMT -->
+</html></body>

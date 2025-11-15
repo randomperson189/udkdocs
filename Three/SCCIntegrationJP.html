@@ -1,0 +1,377 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/SCCIntegrationJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:31:06 GMT -->
+<head>
+<title> UDK | SCCIntegrationJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">SCCIntegrationJP  </b></div>
+<div id="tooltext">
+<a href="SCCIntegration.html" class="twikiLink">English Translation</a><br><a href="SCCIntegrationCH.html" class="twikiLink">中国翻译</a><br><a href="SCCIntegrationKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/SCCIntegrationJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<h1><a name="ソース コントロールの統合"></a> ソース コントロールの統合 </h1>
+<p />
+<em>ドキュメントの概要：<a href="ContentBrowserReferenceJP.html" class="twikiLink">Content ブラウザ</a> でUnrealEd におけるソース コントロール システム（*SCC*）インテグレーション（統合）と Generic ブラウザとの相互作用についての概要を説明。本文の内容はソース コントロールの仕様経験がある程度あり、関連用語の意味が分かることを前提としています。</em>
+<p />
+<em>ドキュメントの変更ログ： <a href="https://udn.epicgames.com/Main/WarrenMarshall" class="restricted" class="restricted" class="twikiLink">Warren Marshall</a> が原著。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="SCCIntegrationJP.html#ソース コントロールの統合"> ソース コントロールの統合</a> <ul>
+<li> <a href="SCCIntegrationJP.html#はじめに"> はじめに</a>
+</li> <li> <a href="SCCIntegrationJP.html#ログイン"> ログイン</a>
+</li> <li> <a href="SCCIntegrationJP.html#ソース コントロール パッケージ アイコン"> ソース コントロール パッケージ アイコン</a>
+</li> <li> <a href="SCCIntegrationJP.html#Source Control (ソース コントロール) メニュー"> Source Control (ソース コントロール) メニュー</a>
+</li> <li> <a href="SCCIntegrationJP.html#その他のワークフロー機能"> その他のワークフロー機能</a> <ul>
+<li> <a href="SCCIntegrationJP.html#変更プロンプトでのチェックアウト"> 変更プロンプトでのチェックアウト</a>
+</li> <li> <a href="SCCIntegrationJP.html#保存中のチェックアウト"> 保存中のチェックアウト</a>
+</li></ul>
+</li> <li> <a href="SCCIntegrationJP.html#Perforce 固有"> Perforce 固有</a> <ul>
+<li> <a href="SCCIntegrationJP.html#Perforce 接続ダイアログ"> Perforce 接続ダイアログ</a>
+</li></ul>
+</li> <li> <a href="SCCIntegrationJP.html#まとめ"> まとめ</a>
+</li> <li> <a href="SCCIntegrationJP.html#統合の拡張"> 統合の拡張</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="はじめに"></a> はじめに </h2>
+<p />
+すべての開発者にとって、開発中のゲームで作業する一方でパッケージやファイルを管理することは重要な問題ですし、プログラマーを念頭おいてデザインされたソース コントロール パッケージの使い方を、アーティストがマスターしなければならないとなれば、なおさらです―というのも、このパッケージには最小限のインターフェースと暗号的メッセージしかないのです。
+<p />
+本書では、UnrealEd において、アーティストがこれらのパッケージを UnrealEd 自体の中から管理できるようにすることで、こうした苦痛を幾分でも軽減する方法について述べます。注： SCC が適切なプログラミング インターフェースをエクスポートする限り、どの SCC を利用しても UnrealEd の関知するところではありません。
+<p />
+注意: UnrealEd は、SCC が適切なプログラミング インターフェースをエクスポートする限り、どの SCC が使われているのか分かりません (<em>それに注意を払いません</em>)。
+<p />
+<h2><a name="ログイン"></a> ログイン </h2>
+<p />
+最初に、ソース コントロールのサポートが有効になっていることを確認します。 <ul>
+<li> <Game>EditorUserSettings.ini をテキストエディタで開きます。
+</li> <li> [SourceControl] セクションを見つけます。
+</li> <li> Disabled=False に設定します。
+</li> <li> ファイルを保存します。
+</li></ul>
+<p />
+エディタを最初に起動するときに、ソースコントロール システムへのログインを求められます。ある同期やビルドを実施して以来初めてエディタを起動する場合、ソース コントロール システムにログインするようにプロンプトが表示されます。これは SCC のネイティブ インターフェースを介して処理されます。ログインすると、情報は保存されるのでエディターの INI ファイルを削除するまで、再ログインは不要です。
+<p />
+<h2><a name="ソース コントロール パッケージ アイコン"></a> ソース コントロール パッケージ アイコン </h2>
+<p />
+<img alt="SCC_PackageTree.PNG" src="rsrc/Three/SCCIntegration/SCC_PackageTree.png" />
+<p />
+SCC が有効になると、Content ブラウザのパッケージツリー表示のパッケージの隣にアイコンが表示されます。表示されるアイコンは以下の通りです。
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">アイコン</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">内容</font></a> </th></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <img alt="SCC_CheckedOut.PNG" src="rsrc/Three/SCCIntegration/SCC_CheckedOut.png" /> </td><td bgcolor="#ffffff"> チェックアウト済みの編集利用可能なファイル </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img alt="SCC_ReadOnly.png" src="rsrc/Three/SCCIntegration/SCC_ReadOnly.png" /> </td><td bgcolor="#eaeaea"> リードオンリーのファイル ― 未チェックアウト </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <img alt="SCC_CheckedOutOther.png" src="rsrc/Three/SCCIntegration/SCC_CheckedOutOther.png" /> </td><td bgcolor="#ffffff"> 別ユーザーによりチェックアウト済みのファイル </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img alt="SCC_NotCurrent.png" src="rsrc/Three/SCCIntegration/SCC_NotCurrent.png" /> </td><td bgcolor="#eaeaea"> 現行バージョンに対応したファイルが存在しない </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <img alt="SCC_NotInDepot.png" src="rsrc/Three/SCCIntegration/SCC_NotInDepot.png" /> </td><td bgcolor="#ffffff"> SCC デポに保管されていないファイル（_追加要_） </td></tr>
+</table>
+<p />
+<img alt="SCC_CheckedOut.PNG" src="rsrc/Three/SCCIntegration/SCC_CheckedOut.png" /> あなたがチェックアウトしたファイルで、編集できます。エディター用に開いたパッケージも<b>ボールド（太字）</b>で表示されています。
+<p />
+<img alt="SCC_ReadOnly.png" src="rsrc/Three/SCCIntegration/SCC_ReadOnly.png" /> 未チェックアウトで、チェックアウトできる状態のファイルです。これは、ハードディスク ドライブに誰もまだチェックアウトしていない最新ファイルがあるという意味です。
+<p />
+<img alt="SCC_CheckedOutOther.png" src="rsrc/Three/SCCIntegration/SCC_CheckedOutOther.png" /> 既に他のユーザーによりチェックアウトされたファイルです。同一バイナリーファイルを複数のユーザーがチェックアウトすることはできないため、再びチェックインされるまでこのファイルをチェックアウトすることはできません。
+<p />
+<img alt="SCC_NotCurrent.png" src="rsrc/Three/SCCIntegration/SCC_NotCurrent.png" /> チェックアウトされたことはないが、現行バージョンではないというファイルです。UnrealEd を終了し、SCC を起動し、現行バージョンにこのファイルを同期し、UnrealEd を再起動して初めて、このファイルをチェックアウトすることができます。
+<p />
+<img alt="SCC_NotInDepot.png" src="rsrc/Three/SCCIntegration/SCC_NotInDepot.png" /> 新規の SCC デポに保管されていないファイルです。メニューにあるオプション機能の[追加]によりこの新規ファイルをソース コントロールに呼び込むことができます。
+<p />
+<h2><a name="Source Control (ソース コントロール) メニュー"></a> Source Control (ソース コントロール) メニュー </h2>
+<p />
+<img alt="SourceControlMenu.png" src="rsrc/Three/SCCIntegration/SourceControlMenu.png" />
+<p />
+Content ブラウザでパッケージ、またはアセットを右クリックすると、コンテキスト メニューが開かれます。ソース コントロール サブメニューは、ここからアクセスすることができます。
+<p /> <ul>
+<li> <strong>Refresh (更新)</strong>  ブラウザ内のパッケージのステータスは、Content ブラウザが最後に更新された時点が、現在になっています。ステータスを即座にアップデートしたい場合は、このオプションを使用してください。
+</li></ul>
+<p /> <ul>
+<li> <strong>Check Out (チェックアウト)</strong>  まずファイルのステータスを更新し、チェックアウト可能かどうかを確認します。できる場合は、SCC デポからファイルをチェックアウトします。
+</li></ul>
+<p /> <ul>
+<li> <strong>Submit... (提出)</strong>  ファイルを SCC デポにチェックバックします。SCC プロバイダによって、これはチェックイン コメントを尋ねるダイアログをポップアップしたり、いくつかのオプションを表示したりします。このオプションは、ファイルがチェックアウトされている場合のみに利用可能です。
+</li></ul>
+<p /> <ul>
+<li> <strong>Revert (戻す)</strong>  ファイルをデポ内の現在の修正に戻します。前回提出された時点以降にユーザーによって保存されたこのファイルへの変更は破棄されます。このオプションは、ファイルがチェックアウトされている場合のみに利用可能です。
+</li></ul>
+<p /> <ul>
+<li> <strong>Revision History... (修正履歴)</strong>  SCC プロバイダがサポートする場合は、これは選択されたファイルの修正履歴を表示するダイアログをポップアップします。
+</li></ul>
+<p />
+<h2><a name="その他のワークフロー機能"></a> その他のワークフロー機能 </h2>
+<p />
+通常の操作の間、Content ブラウザを使用せずにソース コントロールとインターフェースで接続する方法がいくつかあります。
+<p />
+<h3><a name="変更プロンプトでのチェックアウト"></a> 変更プロンプトでのチェックアウト </h3>
+<img alt="CheckoutPrompt.PNG" src="rsrc/Three/SCCIntegration/CheckoutPrompt.png" />
+パッケージがダーティ (保存される必要のあるパッケージ) とマークされていると常に、パッケージをソース コントロールからチェックアウトしたいかどうかを尋ねるダイアログが表示されるのに気付くでしょう。これで、作業しているパッケージを素早く、Content ブラウザで探すことなく、チェックアウトすることが可能になります。このダイアログは、パッケージが初めて変更された場合にのみ表示され、パッケージが保存され、ソース コントロールにチェックインされるまで再表示されません。エディタは、遅い操作中に変更されたパッケージもキューします。例えば、ライティングはいくつかのパッケージを変更する可能性があります。すべてを一度にチェックするように促されます。
+<p /> <ul>
+<li> <strong>Check Out Selected (選択したパッケージをチェックアウト):</strong> ソース コントロールから選択されたパッケージをチェックアウトします。備考: ゴースト化したパッケージは、他の誰かによってチェックアウトされた、またはヘッド修正でないので、チェックアウトすることができません。
+</li> <li> <strong>Make Writable (書き込み可能にする):</strong> 選択されたパッケージを書き込み可能にします。ゴースト化されたパッケージでさえも書き込み可能にすることができます。名前の隣のチェックボックスをクリックするだけです。ゴースト化パッケージには四角いアイコンが表示されます。これは、"Check Out Selected (選択したパッケージをチェックアウト)" をクリックすると、これらのパッケージが無視されることを意味しています。ソース コントロール プロバイダが、チェックアウトされていないファイルを読み取り専用にする場合、このオプションを使用することは、通常良いアイデアとは言えません。これは、ソース コントロール プロバイダが変更に関しての知識を持たなくなるからです。
+</li> <li> <strong>Ask Me Later (後で決定):</strong> 何もチェックアウトせずに、エディタ セッション中、リスト内のパッケージをチェックアウトするように尋ねられることがなくなります。いくつかの保存機能を使用することで、パッケージをチェックアウトするように促されることがあることに留意してください。
+</li></ul>
+<p />
+その他の備考:  ディスクで書き込み可能なパッケージ、またはソース コントロールに存在しないパッケージの変更は、このダイアログを表示させません。
+<p />
+<strong>この機能を使用したくない場合は、メイン エディタ ウィンドウの “View Menu (メニューを見る)” にナビゲートし、”Preferences (設定)“ で "Prompt for Checkout on Package Modification (パッケージ変更時にチェックアウトを促す)" のチェックを外すことで無効化させることができます。</strong>
+<p />
+<h3><a name="保存中のチェックアウト"></a> 保存中のチェックアウト </h3>
+エディタ内の保存オプションの多くも、ソース コントロールからパッケージをチェックアウトするように促します。ソース コントロール プロバイダの中には、チェックアウトされていないファイルを読み取り専用にするものもあります。エディタは、読み取り専用のファイルを保存できないので、保存するにはチェックアウトするか、書き込み可能にする必要があります。保存操作に関する詳細な情報は、<a href="EditorPackageSaveProcedureJP.html" class="twikiLink">Editor Package Save Procedure</a> と <a href="UnrealEdUserGuideJP.html" class="twikiLink">UnrealEd ユーザー ガイド</a> ページを参照してください。
+<p />
+<h2><a name="Perforce 固有"></a> Perforce 固有 </h2>
+<p />
+<h3><a name="Perforce 接続ダイアログ"></a> Perforce 接続ダイアログ </h3>
+<img alt="P4Connect.PNG" src="rsrc/Three/SCCIntegration/P4Connect.png" />
+<p />
+ソース コントロールを有効化した状態でエディタを開始するが初めてな場合、このダイアログが表示されます。 <ul>
+<li> <strong>Server (サーバー):</strong> あなたの Perforce サーバー アドレスとポートです。
+</li> <li> <strong>User (ユーザー):</strong> あなたの Perforce ユーザー名です。
+</li> <li> <strong>Client Spec (クライアント スペック):</strong> ファイルのチェックアウトと提出時に使用するクライアント スペックです。Perforce のより新しいバージョンでは、ワークスペースとしても知られています。ユーザー名を入力した後、任意でユーザー名に関連付けられたクライアント スペックをブラウズすることができます。
+</li></ul>
+<p />
+これらの値は、<Game>EditorUserSettings.ini ファイルでも編集することができます。[SourceControl] セクションを探し、これらの設定を探してみてください。
+<p />
+PortName=(上記のサーバーと同様)
+<p />
+UserName=(上記のユーザーと同様)
+<p />
+ClientSpecName=(上記のクライアント スペックと同様)
+<p />
+<h2><a name="まとめ"></a> まとめ </h2>
+<p />
+SCC のインテグレーションには、さらにいくつかの追加予定があり、追加に応じて本文も更新します。
+<p />
+<h2><a name="統合の拡張"></a> 統合の拡張 </h2>
+<p />
+このドキュメントでは NXN Alienbrain のバージョン7.5およびそれ以降に、拡張機能を追加する方法を説明していますが、この統合ソリューションは他の資産管理ソリューションを利用しているユーザーにとってもガイドとして便利です。
+<p /> <ul>
+<li> <a href="rsrc/Three/SCCIntegrationJP/Advanced_NXN_Alienbrain_7.5_integration_to_UnrealEd3.zip" target="_top">Advanced_NXN_Alienbrain_7.5_integration_to_UnrealEd3.zip</a>:
+</li></ul>
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/SCCIntegrationJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:31:07 GMT -->
+</html></body>

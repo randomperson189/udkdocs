@@ -1,0 +1,807 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ReplicationPatternRepNotifyCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:22 GMT -->
+<head>
+<title> UDK | ReplicationPatternRepNotifyCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ReplicationPatternRepNotifyCH  </b></div>
+<div id="tooltext">
+<a href="ReplicationPatternRepNotify.html" class="twikiLink">English Translation</a><br><a href="ReplicationPatternRepNotifyJP.html" class="twikiLink">日本語訳</a><br><a href="ReplicationPatternRepNotifyKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ReplicationPatternRepNotifyCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/Three/ReplicationPatternRepNotifyCH/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="ReplicationHome.html" class="twikiLink">网络&amp;复制</a></b> &gt; RepNotify(复制通知) 模式
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="RepNotify(复制通知) 模式"></a> RepNotify(复制通知) 模式 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="ReplicationPatternRepNotifyCH.html#RepNotify(复制通知) 模式"> RepNotify(复制通知) 模式</a> <ul>
+<li> <a href="ReplicationPatternRepNotifyCH.html#概述"> 概述</a>
+</li> <li> <a href="ReplicationPatternRepNotifyCH.html#安全注意事项"> 安全注意事项</a>
+</li> <li> <a href="ReplicationPatternRepNotifyCH.html#ExampleReplicationInfo 类"> ExampleReplicationInfo 类</a>
+</li> <li> <a href="ReplicationPatternRepNotifyCH.html#Player Controllers(玩家控制器)类">Player Controllers(玩家控制器)类</a>
+</li> <li> <a href="ReplicationPatternRepNotifyCH.html#GameInfo 类"> GameInfo 类</a>
+</li> <li> <a href="ReplicationPatternRepNotifyCH.html#测试"> 测试</a>
+</li> <li> <a href="ReplicationPatternRepNotifyCH.html#下载"> 下载</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<hr size="1" noshade="noshade">
+RepNotify是一个变量属性标志，当您想检测变量是否由于复制已经发生改变时可以使用该标志。这个模式仅用于客户端，因为客户端必须使用客户端到服务器远程调用来将数据发送到服务器。使用这个模式的常见时机是当您想根据复制的变量更新客户端特效时。
+<p />
+<h2><a name="安全注意事项"></a> 安全注意事项 </h2>
+<hr size="1" noshade="noshade">
+一般情况下，您不想让客户端在没有某种形式的数据验证或检测情况下就简单地修改相关的数据。但为了简化这个示例，这里已经 <strong>忽略</strong> 了安全问题。
+<p />
+<h2><a name="ExampleReplicationInfo 类"></a> ExampleReplicationInfo 类 </h2>
+<hr size="1" noshade="noshade">
+这个复制信息简单地包含了一些可以在服务器和客户端上同时修改的信息。当变量在服务器上更新时，将自动地将它们重新复制到客户端上。一旦变量复制完成，就调用ReplicatedEvent 。
+<p />
+<div class="codetitlebar">
+RN_ExampleReplicationInfo.uc
+</div>
+<div class="codesnippet">
+<pre>
+class RN&#95;ExampleReplicationInfo extends ReplicationInfo;
+
+var RepNotify int IntExample;
+var RepNotify byte ByteExample;
+var RepNotify float FloatExample;
+var RepNotify String StringExample;
+var RepNotify Vector VectorExample;
+var RepNotify Rotator RotatorExample;
+var RepNotify Color ColorExample;
+
+replication
+{
+  // Replicate when dirty
+  if (bNetDirty)
+    IntExample, ByteExample, FloatExample, StringExample, VectorExample, RotatorExample, ColorExample;
+}
+
+/&#42;&#42;
+ &#42; PostBeginPlay is executed after the RN&#95;ExampleReplicationInfo is created
+ &#42;
+ &#42; Network: All
+ &#42;/
+simulated function PostBeginPlay()
+{
+  Super.PostBeginPlay();
+
+  if (Role &#61;&#61; Role&#95;Authority)
+  {
+    `Log(Self$&#34;:: PostBeginPlay():: Executed on the server.&#34;);
+  }
+  else
+  {
+    `Log(Self$&#34;:: PostBeginPlay():: Executed on the client.&#34;);
+  }
+}
+
+/&#42;&#42;
+ &#42; ReplicatedEvent is called when a variable with the RepNotify property flag is updated
+ &#42;
+ &#42; Network: All
+ &#42;/
+simulated event ReplicatedEvent(name VarName)
+{
+  local String Text;
+
+  if (Role &#61;&#61; Role&#95;Authority)
+  {
+    Text &#61; &#34;Server&#34;;
+  }
+  else
+  {
+    Text &#61; &#34;Client&#34;;
+  }
+
+  switch (VarName)
+  {
+  case &#39;IntExample&#39;:
+    `Log(Self$&#34;:: ReplicatedEvent():: &#34;$Text$&#34;:: IntExample is now &#34;$IntExample$&#34;.&#34;);
+    break;
+
+  case &#39;ByteExample&#39;:
+    `Log(Self$&#34;:: ReplicatedEvent():: &#34;$Text$&#34;:: ByteExample is now &#34;$ByteExample$&#34;.&#34;);
+    break;
+
+  case &#39;FloatExample&#39;:
+    `Log(Self$&#34;:: ReplicatedEvent():: &#34;$Text$&#34;:: FloatExample is now &#34;$FloatExample$&#34;.&#34;);
+    break;
+
+  case &#39;StringExample&#39;:
+    `Log(Self$&#34;:: ReplicatedEvent():: &#34;$Text$&#34;:: StringExample is now &#39;&#34;$StringExample$&#34;&#39;.&#34;);
+    break;
+
+  case &#39;VectorExample&#39;:
+    `Log(Self$&#34;:: ReplicatedEvent():: &#34;$Text$&#34;:: VectorExample is now (X&#61;&#34;$VectorExample.X$&#34;, Y&#61;&#34;$VectorExample.Y$&#34;, Z&#61;&#34;$VectorExample.Z$&#34;).&#34;);
+    break;
+
+  case &#39;RotatorExample&#39;:
+    `Log(Self$&#34;:: ReplicatedEvent():: &#34;$Text$&#34;:: RotatorExample is now (Pitch&#61;&#34;$RotatorExample.Pitch$&#34;, Yaw&#61;&#34;$RotatorExample.Yaw$&#34;, Roll&#61;&#34;$RotatorExample.Roll$&#34;).&#34;);
+    break;
+
+  case &#39;ColorExample&#39;:
+    `Log(Self$&#34;:: ReplicatedEvent():: &#34;$Text$&#34;:: ColorExample is now (R&#61;&#34;$ColorExample.R$&#34;, G&#61;&#34;$ColorExample.G$&#34;, B&#61;&#34;$ColorExample.B$&#34;, A&#61;&#34;$ColorExample.A$&#34;).&#34;);
+    break;
+  }
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h2><a name="Player Controllers(玩家控制器)类"></a> Player Controllers(玩家控制器)类 </h2>
+<hr size="1" noshade="noshade">
+玩家控制器类允许客户端修改ExampleReplicationInfo中所包含的变量。为了完成这个处理，玩家控制器发送一个远程调用到它的服务器版本，然后该版本在服务器端修改ExampleReplicationInfo。当服务器端的变量改变后，然后将它们复制回客户端。在现实世界的仿真中，您不必考虑等待信息返程的问题，如果允许您可以简单地更新ExampleReplicationInfo的客户端版本。但是，如果需要某些服务器端验证和逻辑才能完成更新，那么信息返回的等待是不可避免的。为了在简化这个模式示例已经忽略了这种真实世界中的仿真。在这个示例中，注意当服务器端的ExampleReplicationInfo版本发生改变时，同时会调用ReplicatedEvent。这将使得服务器执行任何变量发生改变时所执行的逻辑。
+<p />
+<div class="codetitlebar">
+RN_PlayerController.uc
+</div>
+<div class="codesnippet">
+<pre>
+class RN&#95;PlayerController extends PlayerController;
+
+/&#42;&#42;
+ &#42; Returns an instance of Example Replication Info
+ &#42;
+ &#42; Network: Dedicated/Listen Server
+ &#42;/
+function RN&#95;ExampleReplicationInfo GetExampleReplicationInfoInstance()
+{
+  local RN&#95;ExampleReplicationInfo ExampleReplicationInfo;
+
+  ForEach DynamicActors(class&#39;RN&#95;ExampleReplicationInfo&#39;, ExampleReplicationInfo)
+  {
+    return ExampleReplicationInfo;
+  }
+}
+
+/&#42;&#42;
+ &#42; RPC to update the int
+ &#42;
+ &#42; Network: Dedicated/Listen Server
+ &#42;/
+reliable server function ServerUpdateInt(int I)
+{
+  local RN&#95;ExampleReplicationInfo ExampleReplicationInfo;
+
+  ExampleReplicationInfo &#61; GetExampleReplicationInfoInstance();
+
+  if (ExampleReplicationInfo !&#61; None)
+  {
+    `Log(Self$&#34;:: ServerUpdateInt:: Updating int with &#34;$I$&#34;.&#34;);
+    ExampleReplicationInfo.IntExample &#61; I;
+    ExampleReplicationInfo.ReplicatedEvent(&#39;IntExample&#39;);
+  }
+}
+
+/&#42;&#42;
+ &#42; RPC to update the byte
+ &#42;
+ &#42; Network: Dedicated/Listen Server
+ &#42;/
+reliable server function ServerUpdateByte(byte B)
+{
+  local RN&#95;ExampleReplicationInfo ExampleReplicationInfo;
+
+  ExampleReplicationInfo &#61; GetExampleReplicationInfoInstance();
+
+  if (ExampleReplicationInfo !&#61; None)
+  {
+    `Log(Self$&#34;:: ServerUpdateByte:: Updating byte with &#34;$B$&#34;.&#34;);
+    ExampleReplicationInfo.ByteExample &#61; B;
+    ExampleReplicationInfo.ReplicatedEvent(&#39;ByteExample&#39;);
+  }
+}
+
+/&#42;&#42;
+ &#42; RPC to update the float
+ &#42;
+ &#42; Network: Dedicated/Listen Server
+ &#42;/
+reliable server function ServerUpdateFloat(float F)
+{
+  local RN&#95;ExampleReplicationInfo ExampleReplicationInfo;
+
+  ExampleReplicationInfo &#61; GetExampleReplicationInfoInstance();
+
+  if (ExampleReplicationInfo !&#61; None)
+  {
+    `Log(Self$&#34;:: ServerUpdateFloat:: Updating float with &#34;$F$&#34;.&#34;);
+    ExampleReplicationInfo.FloatExample &#61; F;
+    ExampleReplicationInfo.ReplicatedEvent(&#39;FloatExample&#39;);
+  }
+}
+
+/&#42;&#42;
+ &#42; RPC to update the string
+ &#42;
+ &#42; Network: Dedicated/Listen Server
+ &#42;/
+reliable server function ServerUpdateString(string S)
+{
+  local RN&#95;ExampleReplicationInfo ExampleReplicationInfo;
+
+  ExampleReplicationInfo &#61; GetExampleReplicationInfoInstance();
+
+  if (ExampleReplicationInfo !&#61; None)
+  {
+    `Log(Self$&#34;:: ServerUpdateString:: Updating string with &#34;$S$&#34;.&#34;);
+    ExampleReplicationInfo.StringExample &#61; S;
+    ExampleReplicationInfo.ReplicatedEvent(&#39;StringExample&#39;);
+  }
+}
+
+/&#42;&#42;
+ &#42; RPC to update the vector
+ &#42;
+ &#42; Network: Dedicated/Listen Server
+ &#42;/
+reliable server function ServerUpdateVector(Vector V)
+{
+  local RN&#95;ExampleReplicationInfo ExampleReplicationInfo;
+
+  ExampleReplicationInfo &#61; GetExampleReplicationInfoInstance();
+
+  if (ExampleReplicationInfo !&#61; None)
+  {
+    `Log(Self$&#34;:: ServerUpdateVector:: Updating vector with (X&#61;&#34;$V.X$&#34;, Y&#61;&#34;$V.Y$&#34;, Z&#61;&#34;$V.Z$&#34;).&#34;);
+    ExampleReplicationInfo.VectorExample &#61; V;
+    ExampleReplicationInfo.ReplicatedEvent(&#39;VectorExample&#39;);
+  }
+}
+
+/&#42;&#42;
+ &#42; RPC to update the rotator
+ &#42;
+ &#42; Network: Dedicated/Listen Server
+ &#42;/
+reliable server function ServerUpdateRotator(Rotator R)
+{
+  local RN&#95;ExampleReplicationInfo ExampleReplicationInfo;
+
+  ExampleReplicationInfo &#61; GetExampleReplicationInfoInstance();
+
+  if (ExampleReplicationInfo !&#61; None)
+  {
+    `Log(Self$&#34;:: ServerUpdateRotator:: Updating rotator with (Pitch&#61;&#34;$R.Pitch$&#34;, Yaw&#61;&#34;$R.Yaw$&#34;, Roll&#61;&#34;$R.Roll$&#34;).&#34;);
+    ExampleReplicationInfo.RotatorExample &#61; R;
+    ExampleReplicationInfo.ReplicatedEvent(&#39;RotatorExample&#39;);
+  }
+}
+
+/&#42;&#42;
+ &#42; RPC to update the color
+ &#42;
+ &#42; Network: Dedicated/Listen Server
+ &#42;/
+reliable server function ServerUpdateColor(Color C)
+{
+  local RN&#95;ExampleReplicationInfo ExampleReplicationInfo;
+
+  ExampleReplicationInfo &#61; GetExampleReplicationInfoInstance();
+
+  if (ExampleReplicationInfo !&#61; None)
+  {
+    `Log(Self$&#34;:: ServerUpdateColor:: Updating color with (R&#61;&#34;$C.R$&#34;, G&#61;&#34;$C.G$&#34;, B&#61;&#34;$C.B$&#34;, A&#61;&#34;$C.A$&#34;).&#34;);
+    ExampleReplicationInfo.ColorExample &#61; C;
+    ExampleReplicationInfo.ReplicatedEvent(&#39;ColorExample&#39;);
+  }
+}
+
+/&#42;&#42;
+ &#42; Allows the player controller update the int
+ &#42;
+ &#42; Network: Local
+ &#42;/
+exec function UpdateInt(int I)
+{
+  if (Role &#60; Role&#95;Authority)
+  {
+    ServerUpdateInt(I);
+  }
+}
+
+/&#42;&#42;
+ &#42; Allows the player controller update the byte
+ &#42;
+ &#42; Network: Local
+ &#42;/
+exec function UpdateByte(byte B)
+{
+  if (Role &#60; Role&#95;Authority)
+  {
+    ServerUpdateByte(B);
+  }
+}
+
+/&#42;&#42;
+ &#42; Allows the player controller update the float
+ &#42;
+ &#42; Network: Local
+ &#42;/
+exec function UpdateFloat(float F)
+{
+  if (Role &#60; Role&#95;Authority)
+  {
+    ServerUpdateFloat(F);
+  }
+}
+
+/&#42;&#42;
+ &#42; Allows the player controller update the string
+ &#42;
+ &#42; Network: Local
+ &#42;/
+exec function UpdateString(string S)
+{
+  if (Role &#60; Role&#95;Authority)
+  {
+    ServerUpdateString(S);
+  }
+}
+
+/&#42;&#42;
+ &#42; Allows the player controller update the vector
+ &#42;
+ &#42; Network: Local
+ &#42;/
+exec function UpdateVector(float X, float Y, float Z)
+{
+  local Vector V;
+
+  if (Role &#60; Role&#95;Authority)
+  {
+    V.X &#61; X;
+    V.Y &#61; Y;
+    V.Z &#61; Z;
+    ServerUpdateVector(V);
+  }
+}
+
+/&#42;&#42;
+ &#42; Allows the player controller update the rotator
+ &#42;
+ &#42; Network: Local
+ &#42;/
+exec function UpdateRotator(int Pitch, int Yaw, int Roll)
+{
+  local Rotator R;
+
+  if (Role &#60; Role&#95;Authority)
+  {
+    R.Pitch &#61; Pitch;
+    R.Yaw &#61; Yaw;
+    R.Roll &#61; Roll;
+    ServerUpdateRotator(R);
+  }
+}
+
+/&#42;&#42;
+ &#42; Allows the player controller update the color
+ &#42;
+ &#42; Network: Local
+ &#42;/
+exec function UpdateColor(int R, int G, int B, int A)
+{
+  local Color C;
+
+  if (Role &#60; Role&#95;Authority)
+  {
+    C.R &#61; R;
+    C.G &#61; G;
+    C.B &#61; B;
+    C.A &#61; A;
+    ServerUpdateColor(C);
+  }
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h2><a name="GameInfo 类"></a> GameInfo 类 </h2>
+<hr size="1" noshade="noshade">
+游戏信息类用于使用随机值更新ExampleReplicationInfo 。这为了查看正在运作中的RepNotify方法。因为游戏信息仅在客户端侧，所以可以直接地修改ExampleReplicationInfo，不必执行进一步的复制逻辑。
+<p />
+<div class="codetitlebar">
+RN_GameInfo.uc
+</div>
+<div class="codesnippet">
+<pre>
+class RN&#95;GameInfo extends GameInfo;
+
+var RN&#95;ExampleReplicationInfo ExampleReplicationInfo;
+var const String Alphabet&#91;26];
+
+/&#42;&#42;
+ &#42; PostBeginPlay is executed after the GameInfo is created on the server
+ &#42;
+ &#42; Network: Dedicated/Listen Server
+ &#42;/
+function PostBeginPlay()
+{
+  Super.PostBeginPlay();
+
+  // Create the example replication info
+  ExampleReplicationInfo &#61; Spawn(class&#39;RN&#95;ExampleReplicationInfo&#39;);
+
+  // Start the timer so that fresh data is sent to clients
+  if (ExampleReplicationInfo !&#61; None)
+  {
+    SetTimer(10.f, true, &#39;UpdateExampleReplicationInfo&#39;);
+  }
+}
+
+/&#42;&#42;
+ &#42; Updates the example replication info and sends the new data to the client
+ &#42;
+ &#42; Network: Dedicated/Listen Server
+ &#42;/
+function UpdateExampleReplicationInfo()
+{
+  local int Index, i;
+  local String Text;
+  local Vector V;
+  local Rotator R;
+  local Color C;
+  local Controller Controller;
+
+  if (ExampleReplicationInfo &#61;&#61; None &#124;&#124; WorldInfo &#61;&#61; None)
+  {
+    return;
+  }
+
+  // Ensure that we have players connected
+  ForEach WorldInfo.AllControllers(class&#39;Controller&#39;, Controller)
+  {
+    Index &#61; int(RandRange(0.f, 7.f));
+
+    switch (Index)
+    {
+    case 0: // int
+      ExampleReplicationInfo.IntExample &#61; int(RandRange(-32768, 32768));
+      `Log(Self$&#34;:: UpdateExampleReplicationInfo():: Updating int with &#34;$ExampleReplicationInfo.IntExample$&#34;.&#34;);
+      break;
+
+    case 1: // byte
+      ExampleReplicationInfo.ByteExample &#61; byte(RandRange(0, 255));
+      `Log(Self$&#34;:: UpdateExampleReplicationInfo():: Updating byte with &#34;$ExampleReplicationInfo.ByteExample$&#34;.&#34;);
+      break;
+
+    case 2: // float
+      ExampleReplicationInfo.FloatExample &#61; RandRange(-1234.5678, 1234.5678);
+      `Log(Self$&#34;:: UpdateExampleReplicationInfo():: Updating float with &#34;$ExampleReplicationInfo.FloatExample$&#34;.&#34;);
+      break;
+
+    case 3: // string
+      for (i &#61; 0; i &#60; 32; ++i)
+      {
+        Text $&#61; Alphabet&#91;Rand(26)];
+      }
+      ExampleReplicationInfo.StringExample &#61; Text;
+      `Log(Self$&#34;:: UpdateExampleReplicationInfo():: Updating string with &#34;$ExampleReplicationInfo.StringExample$&#34;.&#34;);
+      break;
+
+    case 4: // vector
+      V.X &#61; RandRange(-1234.5678, 1234.5678);
+      V.Y &#61; RandRange(-1234.5678, 1234.5678);
+      V.Z &#61; RandRange(-1234.5678, 1234.5678);
+      ExampleReplicationInfo.VectorExample &#61; V;
+      `Log(Self$&#34;:: UpdateExampleReplicationInfo():: Updating vector with (X&#61;&#34;$V.X$&#34;, Y&#61;&#34;$V.Y$&#34;, Z&#61;&#34;$V.Z$&#34;)&#34;);
+      break;
+
+    case 5: // rotator
+      R.Pitch &#61; Rand(65535);
+      R.Yaw &#61; Rand(65535);
+      R.Roll &#61; Rand(65535);
+      ExampleReplicationInfo.RotatorExample &#61; R;
+      `Log(Self$&#34;:: UpdateExampleReplicationInfo():: Updating rotator with (Pitch&#61;&#34;$R.Pitch$&#34;, Yaw&#61;&#34;$R.Yaw$&#34;, Roll&#61;&#34;$R.Roll$&#34;)&#34;);
+      break;
+
+    case 6: // color
+      C.R &#61; Rand(255);
+      C.G &#61; Rand(255);
+      C.B &#61; Rand(255);
+      C.A &#61; Rand(255);
+      ExampleReplicationInfo.ColorExample &#61; C;
+      `Log(Self$&#34;:: UpdateExampleReplicationInfo():: Updating color with (R&#61;&#34;$C.R$&#34;, G&#61;&#34;$C.G$&#34;, B&#61;&#34;$C.B$&#34;, A&#61;&#34;$C.A$&#34;)&#34;);
+      break;
+    }
+
+    break;
+  }
+}
+
+defaultproperties
+{
+  PlayerControllerClass&#61;class&#39;RN&#95;PlayerController&#39;
+  Alphabet(0)&#61;&#34;A&#34;
+  Alphabet(1)&#61;&#34;B&#34;
+  Alphabet(2)&#61;&#34;C&#34;
+  Alphabet(3)&#61;&#34;D&#34;
+  Alphabet(4)&#61;&#34;E&#34;
+  Alphabet(5)&#61;&#34;F&#34;
+  Alphabet(6)&#61;&#34;G&#34;
+  Alphabet(7)&#61;&#34;H&#34;
+  Alphabet(8)&#61;&#34;I&#34;
+  Alphabet(9)&#61;&#34;J&#34;
+  Alphabet(10)&#61;&#34;K&#34;
+  Alphabet(11)&#61;&#34;L&#34;
+  Alphabet(12)&#61;&#34;M&#34;
+  Alphabet(13)&#61;&#34;N&#34;
+  Alphabet(14)&#61;&#34;O&#34;
+  Alphabet(15)&#61;&#34;P&#34;
+  Alphabet(16)&#61;&#34;Q&#34;
+  Alphabet(17)&#61;&#34;R&#34;
+  Alphabet(18)&#61;&#34;S&#34;
+  Alphabet(19)&#61;&#34;T&#34;
+  Alphabet(20)&#61;&#34;U&#34;
+  Alphabet(21)&#61;&#34;V&#34;
+  Alphabet(22)&#61;&#34;W&#34;
+  Alphabet(23)&#61;&#34;X&#34;
+  Alphabet(24)&#61;&#34;Y&#34;
+  Alphabet(25)&#61;&#34;Z&#34;
+}
+</pre>
+</div>
+<p />
+<h2><a name="测试"></a> 测试 </h2>
+<hr size="1" noshade="noshade">
+客户端上： <ul>
+<li> <strong>红色</strong> - 这显示了通过复制在客户端上产生的 <strong>ExampleReplicationInfo</strong> 。
+</li> <li> <strong>绿色</strong> - 这显示了当 <strong>FloatExample</strong> 变量的值在服务器端发生改变时会复制 <strong>FloatExample</strong> 变量。
+</li> <li> <strong>蓝色</strong> - 这显示了当客户端使得 <strong>IntExample</strong> 变量的值在服务器端发生改变时复制了该变量。
+</li></ul>
+<img src="rsrc/Three/ReplicationPatternRepNotifyCH/RepNotifyClientConsoleWindow.png" alt="RepNotifyClientConsoleWindow.png" width='800' height='395' />
+<p />
+服务器上： <ul>
+<li> <strong>红色</strong> -  这显示了服务器上产生了 <strong>ExampleReplicationInfo</strong> 。
+</li> <li> <strong>绿色</strong> - 这显示服务器修改了 <strong>FloatExample</strong> 的值。
+</li> <li> <strong>蓝色</strong> - 这显示客户端修改了 <strong>IntExample</strong> 的值。当服务器修改这个值时调用了ReplicatedEvent，这样就不需要复制它所包含的逻辑了。
+</li></ul>
+<img src="rsrc/Three/ReplicationPatternRepNotifyCH/RepNotifyServerConsoleWindow.png" alt="RepNotifyServerConsoleWindow.png" width='669' height='926' />
+<p />
+<h2><a name="下载"></a> 下载 </h2>
+<hr size="1" noshade="noshade"> <ul>
+<li> <a href="rsrc/Three/ReplicationPatternRepNotifyCH/RepNotifyExample.zip" target="_top">下载</a>这个模式中所使用的源码。(RepNotifyExample.zip)
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ReplicationPatternRepNotifyCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:23 GMT -->
+</html></body>

@@ -1,0 +1,382 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingTerrainCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:37:49 GMT -->
+<head>
+<title> UDK | UsingTerrainCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">UsingTerrainCH  </b></div>
+<div id="tooltext">
+<a href="UsingTerrain.html" class="twikiLink">English Translation</a><br><a href="UsingTerrainJP.html" class="twikiLink">日本語訳</a><br><a href="UsingTerrainKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/UsingTerrainCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt; <b><a href="TerrainHome.html" class="twikiLink">地形系统</a></b> &gt; 使用地形
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="使用地形"></a> 使用地形 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="UsingTerrainCH.html#使用地形">使用地形</a> <ul>
+<li> <a href="UsingTerrainCH.html#概述"> 概述</a>
+</li> <li> <a href="UsingTerrainCH.html#地形属性"> 地形属性</a> <ul>
+<li> <a href="UsingTerrainCH.html#地形"> 地形</a> <ul>
+<li> <a href="UsingTerrainCH.html#NumPatchesX（X方向块数量）和_NumPatchesY（Y方向块数量）"> NumPatchesX（X方向块数量）和NumPatchesY（Y方向块数量）</a>
+</li> <li> <a href="UsingTerrainCH.html#MaxTesselationLevel（最大多边形细分水平）"> MaxTesselationLevel（最大多边形细分水平）</a>
+</li> <li> <a href="UsingTerrainCH.html#MinTessellationLevel(最小多边形细分水平)"> MinTessellationLevel(最小多边形细分水平)</a>
+</li> <li> <a href="UsingTerrainCH.html#MaxComponentSize(最大组件尺寸)"> MaxComponentSize(最大组件尺寸)</a>
+</li> <li> <a href="UsingTerrainCH.html#EditorTessellationLevel(编辑器多边形细分水平)"> EditorTessellationLevel(编辑器多边形细分水平)</a>
+</li> <li> <a href="UsingTerrainCH.html#NormalMapLayer(法线贴图层)"> NormalMapLayer(法线贴图层)</a>
+</li> <li> <a href="UsingTerrainCH.html#TesselationDistanceScale(细分距离缩放比例)"> TesselationDistanceScale(细分距离缩放比例)</a>
+</li> <li> <a href="UsingTerrainCH.html#b_MorphingEnabled(启用顶点变形)"> bMorphingEnabled(启用顶点变形)</a>
+</li> <li> <a href="UsingTerrainCH.html#b_MorphingGradientsEnabled(启用坡度顶点变形)"> bMorphingGradientsEnabled(启用坡度顶点变形)</a>
+</li></ul>
+</li> <li> <a href="UsingTerrainCH.html#光照"> 光照</a> <ul>
+<li> <a href="UsingTerrainCH.html#StaticLightingResolution(静态光照分辨率) 和 b_IsOverridingLightResolution(是否覆盖光照分辨率)"> StaticLightingResolution(静态光照分辨率) 和 bIsOverridingLightResolution(是否覆盖光照分辨率)</a>
+</li> <li> <a href="UsingTerrainCH.html#b_EnableSpecular(启用高光)"> bEnableSpecular(启用高光)</a>
+</li></ul>
+</li> <li> <a href="UsingTerrainCH.html#碰撞"> 碰撞</a> <ul>
+<li> <a href="UsingTerrainCH.html#CollisionTesselationLevel(碰撞多边形细分水平)"> CollisionTesselationLevel(碰撞多边形细分水平)</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+现在地形系统已经变为了这样的一个系统，即随着到网格物体距离增加，将会删除一些细节。这允许设计人员在顶点出现时控制细节情况。
+<p />
+<h2><a name="地形属性"></a> 地形属性 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<img alt="Terrain_Properties.jpg" src="rsrc/Three/UsingTerrainCH/Terrain_Properties.jpg" /><br>
+<p />
+<h3><a name="地形"></a> 地形 </h3>
+<p />
+<h4><a name="NumPatchesX（X方向块数量）和_NumPatchesY（Y方向块数量）"></a> NumPatchesX（X方向块数量）和NumPatchesY（Y方向块数量） </h4>
+<p />
+NumPatchesX决定了地形的一个单独的行中包含的patches(块/四边形)的数量。NumPatchesY决定了地形的单独的一列中包含的块的数量。
+<p />
+注意，如果您使得这些维度变小，它将会破坏 高度图/alpha贴图 以及这些块不再使用的其它数据。如果您增加维度，它将会简单地将新的 高度图/alpha贴图以及其它数据填充为0。
+<p />
+地形的总大小有以下公式决定：
+<p />
+<em>SizeX = NumPatchesX * DrawScale * DrawScale3D.X</em>
+<p />
+<em>SizeY = NumPatchesY * DrawScale * DrawScale3D.Y</em>
+<p />
+<h4><a name="MaxTesselationLevel（最大多边形细分水平）"></a> MaxTesselationLevel（最大多边形细分水平） </h4>
+<p />
+这是在进行详细细分时，可以浓缩成一个单独的块的最大块数量(行和列)。这个值必须是2的幂数，1 &lt;= MaxTesselationLevel &lt;= 16。
+<p />
+注意这意味着，NumPatchesX 和 NumPatchesY所使用的值必须是MaxTesselationLevel的倍数。
+<p />
+在这个实例中，以下的截图显示了一个NumPatchesX为4、NumPatchesY为4、且可能的3个多边形细分水平中的每一个的MaxTesselationLevel都为4。最左边是具有全部细节的情形，出现了由块组成的4x4网格。中间的图片是具有一半细节的情形，显示了由块组成的2x2的网格。最右边的图片的细节级别最低，仅用一个独立的正方形覆盖了原来的区域。
+<p />
+<img alt="Terrain_Tessellation.jpg" src="rsrc/Three/UsingTerrainCH/Terrain_Tessellation.jpg" /><br>
+<p />
+<h4><a name="MinTessellationLevel(最小多边形细分水平)"></a> MinTessellationLevel(最小多边形细分水平) </h4>
+<p />
+在进行详细细分时，可以浓缩成一个正方形的‘子方块’（行和列）的最小数量。注意，如果这个值和MaxTesselationLevel相等，地形将不会细分出任何细节。
+<p />
+<h4><a name="MaxComponentSize(最大组件尺寸)"></a> MaxComponentSize(最大组件尺寸) </h4>
+<p />
+对于引擎来说，地形被分割为由块组成的称为地形组件的矩形组来进行渲染。MaxComponentSize(最大组件尺寸)是地形组件的每行/列中的完全反细分后的正方形最大数量。(地形组件中每 行/列 在完全细分情况下的物理块的最大数量是这个值乘以MaxTesselationLevel的值的积。
+<p />
+一般，所有的组件都是由尺寸为MaxComponentSize的小方块组成的正方形，但是当组成地形的块的分辨率不是MaxComponentSize的方块的倍数时，地形的边缘的某些组件看少去较小。
+<p />
+通过限制MaxTesselationLevel的值来防止一个完全细分组件的顶点缓冲&gt;65536个顶点。
+<p />
+如果MaxTesselationLevel 为16，MaxComponentSize 限制为&lt;=14。<br>
+如果MaxTesselationLevel 为8，MaxComponentSize 限制为&lt;=30。<br>
+<p />
+每个地形组件都是一个不同的DrawMesh调用函数。根据所应用的材质的复杂度不同，该复杂度是地形的块所应用的层以及渲染的细分水平的复杂度的和，组件具有不同的性能消耗。
+<p />
+如果有一个特殊的层被应用到一个地形组件的，其它的组件将没有针对该层的性能消耗。注意，当一个层 ‘渗入’到它的邻接组件时在某种程度上是很难发现的。通过地形浏览器或属性窗口显示的高亮选中的覆盖图对于定位这种情况可能是有帮助的。
+<p />
+<strong>Viewing MaxComponentSize(查看最大组件尺寸):</strong> 要想查看地形组件的尺寸，请选中在视口的Show Flags(显示标志)菜单中的标志 -“Terrain Patches(地形块)”。当启用这项时，地形将会在地形中的每个组件周围描画黄色的盒子。
+<p />
+MaxComponentSize(最大组件尺寸)指出了一个地形的UTerrainComponent实例中所包含的方块的数量 – 数值越大，组成地形的'子快'越少。
+<p />
+组件的数量由以下函数决定：
+<p />
+<em>NumSectionsX = ((NumPatchesX / MaxTesselationLevel) + MaxComponentSize - 1) / MaxComponentSize</em>
+<p />
+<em>NumSectionsY = ((NumPatchesY / MaxTesselationLevel) + MaxComponentSize - 1) / MaxComponentSize</em>
+<p />
+<h4><a name="EditorTessellationLevel(编辑器多边形细分水平)"></a> EditorTessellationLevel(编辑器多边形细分水平) </h4>
+<p />
+这是一个可视化的助手，仅用于编辑器中。它允许设计人员在编辑器的所有视口中选择多边形细分水平来查看地形。当输入的值为1时，地形将会显示为最低的多边形细节水平。这个值必须是2的幂数，并且1 &lt;= EditorTessellationLevel &lt;= MaxTesselationLevel。当设置这个值为0时，地形将会根据在游戏中使用的标准算法来进行细分。
+<p />
+（注意： 目前，在PIE中，这个值仍然可以影响显示的地形。
+<p />
+<h4><a name="NormalMapLayer(法线贴图层)"></a> NormalMapLayer(法线贴图层) </h4>
+<p />
+这是个索引，用于选择一个单独层的法线贴图作为应用到整个地形上的法线贴图的
+<p />
+<h4><a name="TesselationDistanceScale(细分距离缩放比例)"></a> TesselationDistanceScale(细分距离缩放比例) </h4>
+<p />
+这项用于缩放距离值，该值用于决定在那个距离渲染方块时所要使用的多边形细分水平。这个值越高，则将会出现较近的细分细节。
+<p />
+<h4><a name="b_MorphingEnabled(启用顶点变形)"></a> bMorphingEnabled(启用顶点变形) </h4>
+<p />
+这项用于指出在多边形细分水平之间变换时地形应该进行顶点变形。尽管这可视化地移除了在细分水平变化时所发生的潜在的‘跳跃’现象，用户应该意识到它在顶点带宽和着色器指令数量方面的消耗是很昂贵的。
+<p />
+<h4><a name="b_MorphingGradientsEnabled(启用坡度顶点变形)"></a> bMorphingGradientsEnabled(启用坡度顶点变形) </h4>
+<p />
+这用于指出不仅高度只需要进行顶点变形，坡度也应该进行顶点变形。(如果bMorphingEnabled为FALSE，这项没有任何意义。
+在所使用的测试地图中，这个选项的效果并不是非常的显著，所以它被作为二级选项。
+由于额外的顶点尺寸和着色器数量，导致这个模式比标准的定点变形的性能消耗更加昂贵。
+<p />
+<h3><a name="光照"></a> 光照 </h3>
+<p />
+<h4><a name="StaticLightingResolution(静态光照分辨率) 和 b_IsOverridingLightResolution(是否覆盖光照分辨率)"></a> StaticLightingResolution(静态光照分辨率) 和 bIsOverridingLightResolution(是否覆盖光照分辨率) </h4>
+<p />
+这是静态阴影贴图所使用的 贴图像素/块 的尺寸的值。
+一个单独的阴影贴图可以用于每个地形组件，在每个面上将会有多大 (MaxComponentSize * StaticLightingResolution + 1)个像素。
+<p />
+如果不选中bIsOverridingLightResolution，这个值必须是2的幂数，并且1 &lt;= StaticLightingResolution &lt;= MaxTesselationLevel。
+<p />
+如果选中该项，它必须是2的幂数，并且1 &lt;= StaticLightingResolution &lt;= ###。
+<p />
+<h4><a name="b_EnableSpecular(启用高光)"></a> bEnableSpecular(启用高光) </h4>
+<p />
+当选中这项，将会为地形actor启用高光。
+当不选中该项(默认情况)，则动态和静态光照的高光都将会被禁用。
+<p />
+<h3><a name="碰撞"></a> 碰撞 </h3>
+<p />
+<h4><a name="CollisionTesselationLevel(碰撞多边形细分水平)"></a> CollisionTesselationLevel(碰撞多边形细分水平) </h4>
+<p />
+这个多边形细分水平在执行碰撞计算时使用。这个值必须是2的幂数且1 &lt;= CollisionTesselationLevel &lt;= MaxTesselationLevel。
+所以，当值为1时，它将使用最低的细分层次(具有最低的细节)。如果值为MaxTesselationLevel的值，那么它将使用具有完全细节的网格物体作为碰撞数据。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingTerrainCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:37:49 GMT -->
+</html></body>

@@ -1,0 +1,355 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavigationMeshPathDebugging.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:16:42 GMT -->
+<head>
+<title> UDK | NavigationMeshPathDebugging    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">NavigationMeshPathDebugging  </b></div>
+<div id="tooltext">
+<a href="NavigationMeshPathDebuggingJP.html" class="twikiLink">日本語訳</a><br><a href="NavigationMeshPathDebuggingCH.html" class="twikiLink">中国翻译</a><br><a href="NavigationMeshPathDebuggingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/NavigationMeshPathDebugging -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="AIAndNavigationHome.html" class="twikiLink">AI &amp; Navigation</a></b> &gt; Navigation Mesh Path Debugging
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Navigation Mesh Path Debugging"></a> Navigation Mesh Path Debugging </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="NavigationMeshPathDebugging.html#Navigation Mesh Path Debugging"> Navigation Mesh Path Debugging</a> <ul>
+<li> <a href="NavigationMeshPathDebugging.html#Overview"> Overview</a>
+</li> <li> <a href="NavigationMeshPathDebugging.html#Path debug rendering"> Path debug rendering</a>
+</li> <li> <a href="NavigationMeshPathDebugging.html#b_DebugConstraintsAndGoalEvals"> bDebugConstraintsAndGoalEvals</a>
+</li> <li> <a href="NavigationMeshPathDebugging.html#b_UltraVerbosePathDebugging"> bUltraVerbosePathDebugging</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Debugging pathfinding issues can be difficult due to the large size of a typical dataset, and the complex nature of pathfinding.  This document outlines some tools in place to make this process easier.
+<p />
+<h2><a name="Path debug rendering"></a> Path debug rendering </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+To enable path rendering you may run the console command <em>show paths</em>.  This will draw the currently loaded navmesh (including dynamic updates from navmesh obstacles)
+Here is a screenshot
+<p />
+<img alt="showpathsscreenshot.jpg" src="rsrc/Three/NavigationMeshPathDebugging/showpathsscreenshot.jpg" />
+<p /> <ul>
+<li> Red surfaces indicate obstacle mesh surfaces ( surfaces the AI cannot walk through )
+</li> <li> Green surfaces are walkable surfaces (part of the navmesh itself)
+</li> <li> Purple lines along boundaries between polygons indicate connection between polygons.  If there is no purple line along two adjacent polygons AIs cannot get from one to the other
+</li> <li> Other lines (e.g. dashed yellow lines) come from different edge types.  In this case the dashed yellow indicates a coverslip edge
+</li></ul>
+<p />
+On the Pylon you will find some useful options for debugging as well; <ul>
+<li> <strong><em>bDrawEdgePolys</em></strong> - when TRUE a line will be drawn from the center of the edge, to the center of both polygons linked by that edge.  This is useful in debugging what polygons are actually being linked by what edges.  Here is a screenshot with this turned on: <br /> <img alt="showpathsscreenshot_edgepolys.jpg" src="rsrc/Three/NavigationMeshPathDebugging/showpathsscreenshot_edgepolys.jpg" />
+</li> <li> <strong><em>bDrawPolyBounds</em></strong> - when TRUE a yellow wire box will be drawn indicating the calculated bounds of each polygon Screenshot:<br />  <img alt="showpathsscreenshot_showbounds.jpg" src="rsrc/Three/NavigationMeshPathDebugging/showpathsscreenshot_showbounds.jpg" />
+</li></ul>
+<p />
+Also see <a href="UsingNavigationMeshes.html" class="twikiLink">UsingNavigationMeshes</a> for more information on debug rendering.
+<p />
+<h2><a name="b_DebugConstraintsAndGoalEvals"></a> bDebugConstraintsAndGoalEvals </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+On the navigationhandle there exists a bool, which when set to TRUE will cause pathfinds for that navigation handle to print statistics about the path search.
+<p />
+Here is some example output from a simple shortest path search with bDebugConstraintsAndGoalEvals set to TRUE:
+<p />
+<pre>
+&#91;0515.02]Log: ------- PATH CONSTRAINT STATS --------
+&#91;0515.02]Log: Processed: 43 ThrownOut: 0 (0.00&#37; thrown out) AddedPathCost: 0.00 (0.00&#37; total) AddedHeuristic: 0.00 (0.00&#37; total) - (NavMeshPath&#95;MinDistBetweenSpecsOfType&#95;0)
+&#91;0515.02]Log: Processed: 43 ThrownOut: 0 (0.00&#37; thrown out) AddedPathCost: 0.00 (0.00&#37; total) AddedHeuristic: 175.00 (100.00&#37; total) - (NavMeshPath&#95;Toward&#95;0)
+&#91;0515.02]Log: --------------------------------------
+&#91;0515.02]Log: TotalThrownOut: 0 TotalAddedDirectCost: 0.00 TotalAddedHeuristicCost: 175.00
+&#91;0515.02]Log: ------- GOAL EVALUATOR STATS --------
+&#91;0515.02]Log: Threw Out 10 (out of 11 processed (90.91&#37;)) (Responsible for 100.00&#37; of all nodes thrown out) - NavMeshGoal&#95;At&#95;0
+&#91;0515.02]Log: ---------------------------------------
+</pre>
+<p />
+From this output you can get a lot of information.  For example if I had a malfunctioning constraint in the path constraint list that was throwing all nodes out, I could see that it was misbehaving by inspecting the statistics.  This will also print out information about what constraints are adding cost, so you can see which constraints are having the biggest effect on the path search, etc..
+<p />
+<h2><a name="b_UltraVerbosePathDebugging"></a> bUltraVerbosePathDebugging </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<strong>Note:</strong> this code will be in QA_APPROVED_BUILD_DEC_2009, and was checked in with CL 408369
+<p />
+When you still can't figure out what's going on or why an entity can't path to a location, turn on bUltraVerbosePathDebugging.  With this enabled, the next time the enabled AI pathfinds the code will both draw debug info to the screen, as well as dump tomes of information to the log keyed to the on-screen info.
+<p />
+The on screen debug info should help you see the overall shape of the traversal and understand where the pathfind went and what nodes it inspected.  And also with the on-screen tags you can get more detailed information about specific events.
+<p />
+See the screenshot below: <br />
+ <img alt="UltraVerbosePathDebuggingScreenshot.jpg" src="rsrc/Three/NavigationMeshPathDebugging/UltraVerbosePathDebuggingScreenshot.jpg" /> <br /> <ul>
+<li> <font color="#ff0000">Red lines</font> - indicate an attempted pathstep which was denied
+</li> <li> <font color="#ff0000">Red Text</font> - Is a key to a log output line corresponding to that failed traversal.  For example if you see C:21 on an edge you want to know why the AI couldn't path through, search for C:21 in your log window and you will find your reason. An example log line: [0061.15]Log: PATH_DEBUG_MESSAGE[C:21]: Edge does not support this entity (supports returned FALSE) Edge: FNavMeshEdgeBase (Len:30.00 EffecLen:30.00)
+</li> <li> <font color="#008000">Green lines</font> - indicate a successful traversal from one poly to another
+</li> <li> White Text - Is a key to a log output line corresponding to a failed (non terminating) call to EvaluateGoal. An Example log line: [0061.15]Log: Poly (P:16) (polyctr:X=13905.000 Y=-13110.000 Z=129.000) was just given status [EvaluateGoal returned 0] by NavMeshGoal_At_0
+</li> <li> DebugCoordinateSystem - is drawn at the SearchStart
+</li></ul>
+For example, in this screenshot if I wanted to know why the edge marked with C:22 was not allowing the AI to traverse it, I would just need to search the debug output for C:22 and I would find the following:
+<pre>
+&#91;0132.83]Log: PATH&#95;DEBUG&#95;MESSAGE&#91;C:22]: Edge does not support this entity (supports returned FALSE) Edge: FNavMeshCoverSlipEdge (Actor: CoverLink&#95;8 RelItem: 0 MoveDir: -1)
+</pre>
+<p />
+Here is another screenshot demonstrating a wider view of the debug mode in action:
+<p />
+<img alt="ultraverbose_wide.jpg" src="rsrc/Three/NavigationMeshPathDebugging/ultraverbose_wide.jpg" />
+<p />
+Lots of other pertinent info is also printed to the log in this mode, for example working set size at each path step, and reason for path search termination.  Here is some example output:
+<p />
+<pre>
+&#91;0132.82]Log: Poly (P:108) (polyctr:X&#61;12828.750 Y&#61;-15367.500 Z&#61;-127.000) was just given status &#91;EvaluateGoal returned 0] by NavMeshGoal&#95;SquadFormation&#95;0
+&#91;0132.82]Log: PATH&#95;DEBUG&#95;MESSAGE&#91;C:221]: Path constraint NavMeshPath&#95;WithinTraversalDist&#95;0 EvaluatePath rejected this edge! Edge: FNavMeshEdgeBase (Len:60.00 EffecLen:90.00)
+&#91;0132.82]Log: PATH&#95;DEBUG&#95;MESSAGE&#91;C:222]: Edge does not support this entity (supports returned FALSE) Edge: FNavMeshEdgeBase (Len:15.00 EffecLen:30.00)
+&#91;0132.82]Log: PATH&#95;DEBUG&#95;MESSAGE&#91;C:223]: Edge does not support this entity (supports returned FALSE) Edge: FNavMeshEdgeBase (Len:15.00 EffecLen:30.00)
+&#91;0132.82]Log: +++Finished path step 108!, Openlist now has 2 nodes in it.
+&#91;0132.82]Log: Poly (P:109) (polyctr:X&#61;12105.000 Y&#61;-13860.000 Z&#61;127.750) was just given status &#91;EvaluateGoal returned 0] by NavMeshGoal&#95;SquadFormation&#95;0
+&#91;0132.82]Log: PATH&#95;DEBUG&#95;MESSAGE&#91;C:224]: Path constraint NavMeshPath&#95;WithinTraversalDist&#95;0 EvaluatePath rejected this edge! Edge: FNavMeshEdgeBase (Len:60.00 EffecLen:90.00)
+&#91;0132.82]Log: PATH&#95;DEBUG&#95;MESSAGE&#91;C:225]: Edge does not support this entity (supports returned FALSE) Edge: FNavMeshEdgeBase (Len:15.00 EffecLen:30.00)
+&#91;0132.82]Log: +++Finished path step 109!, Openlist now has 1 nodes in it.
+&#91;0132.82]Log: Poly (P:110) (polyctr:X&#61;13800.000 Y&#61;-14482.500 Z&#61;-127.000) was just given status &#91;EvaluateGoal returned 0] by NavMeshGoal&#95;SquadFormation&#95;0
+&#91;0132.82]Log: PATH&#95;DEBUG&#95;MESSAGE&#91;C:226]: Path constraint NavMeshPath&#95;WithinTraversalDist&#95;0 EvaluatePath rejected this edge! Edge: FNavMeshEdgeBase (Len:60.00 EffecLen:120.00)
+&#91;0132.83]Log: PATH&#95;DEBUG&#95;MESSAGE&#91;C:227]: Edge does not support this entity (supports returned FALSE) Edge: FNavMeshEdgeBase (Len:15.00 EffecLen:30.00)
+&#91;0132.83]Log: PATH&#95;DEBUG&#95;MESSAGE&#91;C:228]: Path constraint NavMeshPath&#95;WithinTraversalDist&#95;0 EvaluatePath rejected this edge! Edge: FNavMeshEdgeBase (Len:60.00 EffecLen:120.00)
+&#91;0132.83]Log: PATH&#95;DEBUG&#95;MESSAGE&#91;C:229]: Path constraint NavMeshPath&#95;WithinTraversalDist&#95;0 EvaluatePath rejected this edge! Edge: FNavMeshEdgeBase (Len:75.00 EffecLen:105.00)
+&#91;0132.83]Log: PATH&#95;DEBUG&#95;MESSAGE&#91;C:230]: Edge does not support this entity (supports returned FALSE) Edge: FNavMeshCoverSlipEdge (Actor: CoverLink&#95;48 RelItem: 0 MoveDir: -1)
+&#91;0132.83]Log: +++Finished path step 110!, Openlist now has 0 nodes in it.
+&#91;0132.83]Log: +++++++++ STOPPING PATH SEARCH -- Nodes on openlist: 0 Reason: Path finished, and DetermineFinalGoal returned TRUE.. search was a success!
+</pre>
+<p />
+Also, a quick tool to easily enable this debug mode on a specific AI in game at runtime has been built.
+<strong><em>VerbosePathDebug</em></strong> is a console command you can run which will trace out from where the player is looking, and set bUltraVerbosePathDebugging to true for any pawns in the path.
+<p />
+<p />
+When this bool is on for an AI, and that AI completes a pathfind, previous ultraverbose debug info will be flushed, to make way for the new and the game will be put in playersonly mode to give you a chance to digest the info.  Keep in mind that if multiple pathfinds happen in one frame whichever one happens last will be the one you see drawn on screen.
+<noautolink>
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavigationMeshPathDebugging.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:16:43 GMT -->
+</html></body>

@@ -1,0 +1,387 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/VFXOptimizationConcepts.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:18:49 GMT -->
+<head>
+<title> UDK | VFXOptimizationConcepts    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">VFXOptimizationConcepts  </b></div>
+<div id="tooltext">
+<a href="VFXOptimizationConceptsJP.html" class="twikiLink">日本語訳</a><br><a href="VFXOptimizationConceptsCH.html" class="twikiLink">中国翻译</a><br><a href="VFXOptimizationConceptsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/VFXOptimizationConcepts -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="ParticlesAndEffectsHome.html" class="twikiLink">Particles &amp; Effects</a></b> &gt; <b><a href="ParticleSystemsHome.html" class="twikiLink">Particles Systems</a></b> &gt; <b><a href="VFXOptimization.html" class="twikiLink">VFX Optimization in UE3</a></b> &gt; VFX Optimization: Core Concepts <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="FXArtistHome.html" class="twikiLink">FX Artists</a></b> &gt; <b><a href="VFXOptimization.html" class="twikiLink">VFX Optimization in UE3</a></b> &gt; VFX Optimization: Core Concepts
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="VFX Optimization: Core Concepts"></a> VFX Optimization: Core Concepts </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="VFXOptimizationConcepts.html#VFX Optimization: Core Concepts"> VFX Optimization: Core Concepts</a> <ul>
+<li> <a href="VFXOptimizationConcepts.html#Identifying GPU, Render Thread, and Game Thread issues"> Identifying GPU, Render Thread, and Game Thread issues</a>
+</li> <li> <a href="VFXOptimizationConcepts.html#Targeting GPU Related issues using Pix"> Targeting GPU Related issues using Pix</a>
+</li> <li> <a href="VFXOptimizationConcepts.html#Targeting Game Thread related issues"> Targeting Game Thread related issues</a>
+</li> <li> <a href="VFXOptimizationConcepts.html#Launching your Build"> Launching your Build</a> <ul>
+<li> <a href="VFXOptimizationConcepts.html#Using batch files to launch the build on console"> Using batch files to launch the build on console</a>
+</li> <li> <a href="VFXOptimizationConcepts.html#Using Unreal Front End to launch the build on console"> Using Unreal Front End to launch the build on console</a>
+</li></ul>
+</li> <li> <a href="VFXOptimizationConcepts.html#Troubleshooting batches of FX"> Troubleshooting batches of FX</a> <ul>
+<li> <a href="VFXOptimizationConcepts.html#ParticleSystemAudit"> ParticleSystemAudit</a>
+</li> <li> <a href="VFXOptimizationConcepts.html#FindOnDvDPsysDynamicParameter"> FindOnDvDPsysDynamicParameter</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<p />
+<h2><a name="Identifying GPU, Render Thread, and Game Thread issues"></a> Identifying GPU, Render Thread, and Game Thread issues </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+There are several features of UE3 in place which allow effects artists to trouble shoot performance issues.  First off identifying where your effects are creating bottlenecks will go a long way towards optimizing the correct issue, thereby retaining visual integrity/quality.
+<p />
+One way to monitor for issues while playing through levels is to pull up the <a href="StatsDescriptions.html#StatUnit" class="twikiAnchorLink">STAT UNIT</a> debug overlay.
+<p /> <ol>
+<li> <a href="VFXOptimizationConcepts.html#LaunchGame" class="twikiAnchorLink">launch the game on your console</a>
+</li> <li> hit tab and enter 'stat unit' <br/>   <img src="rsrc/Three/VFXOptimizationConcepts/statunit.jpg" alt="statunit.jpg" width="330" height="255" />
+</li></ol>
+<p />
+The stat unit command displays the time spent for the current frame on the Game Thread, the time spent for the Render thread, and the time spent for the GPU.   It is possible to monitor the different times updated by stat unit to see areas of the level with performance issues.
+<p />
+Keep an eye on the different thread times, if your target framerate is 30fps, all threads should remain below 33.3ms.
+<p />
+If any thread goes over the 33ms and your particles are a suspected culprit, you can use the <code><b>STAT PARTICLES</b></code> command to gauge particle times on the different threads.
+<p />
+<img src="rsrc/Three/VFXOptimizationConcepts/statparticles.jpg" alt="statparticles.jpg" width="624" height="504" />
+<p />
+<code><b>STAT PARTICLES</b></code> lists out multiple statistics relative to Game Thread and Render Thread.  Pay attention to Draw Calls (Render Thread) and Tick Time (Game Thread).
+<p />
+<!--  -->
+<p />
+<h2><a name="Targeting Game Thread related issues"></a> Targeting Game Thread related issues </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Once you have determined you have a Game Thread issue, use the <a href="StatsDescriptions.html#StatParticles" class="twikiAnchorLink">STAT PARTICLES</a> command to verify your findings.
+<p />
+This stat gives quite a bit of information so read over the descriptions on the linked page to help you determine where your costs are highest.  Keep an eye on Particle Tick Time and your Particle Counts.
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>Note:</strong> It is important to remember that a particle system is the sum of the components (emitters/modules) which make up the effect.  The more unique emitters and modules in your system, and the more of those systems in your scene, the higher the Game Thread cost.
+<p />
+If your tick time is high use the <code><b>ParticleTickStats</b></code> command to identify which systems are your main offenders.
+<p />
+The <code><b>ParticleTickStats</b></code> command has 3 arguments:
+<p /> <ul>
+<li> <strong>Single</strong> - This argument will capture a single frame and write out a file
+</li> <li> <strong>Start</strong> - This argument will begin capturing stats
+</li> <li> <strong>Stop</strong> - This argument will end stats so you can see tick time for a duration
+</li></ul>
+<p />
+The ParticleTickStats report is then written out to this directory:
+<p />
+<code>[UE3 Directory]\[YourGame]\Profiling\PSTick-[sys time].csv</code>
+<p />
+The spreadsheet is broken into columns and rows outlining the cost of your effects
+<p />
+<img src="rsrc/Three/VFXOptimizationConcepts/particletickstats.jpg" alt="particletickstats.jpg" width="630" height="42" />
+<p /> <dl>
+<dt> <strong>Total Tick ms</strong>  </dt><dd> Total time spent ticking all instances that Particle System
+</dd> <dt> <strong>Avg Tick ms</strong>  </dt><dd> Avg. time for ticking that Particle System (Total Tick/Ticks)
+</dd> <dt> <strong>Max Tick ms</strong>  </dt><dd> The HIGHEST tick time for an instance of that Particle System
+</dd> <dt> <strong>Ticks</strong>  </dt><dd> Number of INSTANCES of that Particle System
+</dd> <dt> <strong>Avg Active/Tick</strong>  </dt><dd> Avg # of particles active during the Tick of that Particle System (Total Particles/Ticks)
+</dd> <dt> <strong>Max Active/Tick</strong>  </dt><dd> Max # of particles active during the Tick of that particle (in a single instance)
+</dd></dl>
+<p />
+Depending on your platform you will need to browse to the directory through the appropriate means.  This file is comma delineated and can be opened in Excel etc. etc.
+<p />
+Once you have identified Game Thread systems which are offenders there are several paths to take.
+<p /> <ol>
+<li> Reduce particle emission counts on the systems being used.
+</li> <li> Reduce the number of particle systems in the scene.
+</li> <li> Reduce lifetime (the amount of time particle evaluation is calculated) for some of your emitters.
+</li> <li> Check expensive calculations such as collision etc. to ensure the settings you are using are optimal, reduce collisions or the amount of particles/meshes colliding.
+</li> <li> Remove expensive calculations such as collision, dynamic parameters, etc. if necessary.
+</li> <li> Replace Game Thread calculated particle effects with static mesh effects if possible.
+</li> <li> Set Fixed Bounds on your particle system so you do not calculate them each frame.
+</li> <li> Increase LodDistanceCheckTime so you are checking LODs less often (for looping effects with LODMethod set to automatic.)
+</li></ol>
+<p />
+<!--  -->
+<p />
+<h3><a name="Using Unreal Front End to launch the build on console"></a> Using Unreal Front End to launch the build on console </h3>
+<p />
+Unreal FrontEnd can be found in your projects binaries folder
+<p />
+<code>[UE3 Directory]\Binaries\UnrealFrontend.exe</code>
+<p />
+Unreal Front End is a GUI which allows any discipline to quickly cook and deploy a build or a level to see the results of local data on a target platform.  Unreal Front End also can be used as a launching point for your project, with links to the editor and many other tools.  See <a href="UnrealFrontend.html" class="twikiLink">UnrealFrontend</a> for more information on using this tool.
+<p />
+In relation to effects performance we are going to be focusing on using two parameters when launching the game to get a relatively accurate gauge of how well the game is running.  In the Launch Options box the commands -novsync,  -noverifygc,  and -noailogging.
+<p />
+-novsync disables vertical sync (locking fps @ 30) so we can see how much overhead there is in the scene, -noverifygc disables periodic garbage collection which produces a visible hitch every so often, and -noailogging disables ai logging which slows the game considerably, aiLogging and garbabge collection run in the background and slow performance when enabled.  Disabling these will give a closer reproduction of actual frame rate in a final release build, minus disc load time.
+<p />
+<img src="rsrc/Three/VFXOptimizationConcepts/frontend.jpg" alt="frontend.jpg" width="624" height="415" />
+<p />
+When doing any of this testing in a debug build, it is important to remember there is a cost to running the game in debug which will not be visible in a final release build.  Using tools like the stat overlays have a cost and will cause your results to be skewed slightly.
+<p />
+<h2><a name="Troubleshooting batches of FX"></a> Troubleshooting batches of FX </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Several Commandlets exist for the purpose of checking batches of effects for common problems, and outputting spreadsheets which list the offenders.
+<p />
+For an overview of commandlets and explanations of several of the built-in commandlets, see <a href="CommandletHome.html" class="twikiLink">Commandlet Home</a>.
+<p />
+These Commandlets include:
+<p />
+<h3><a name="ParticleSystemAudit"></a> ParticleSystemAudit </h3>
+<p />
+This commandlet will perform an audit on all particle systems that are contained in the database resulting from MineCookedPackages.
+<p />
+<strong>NOTE:</strong> This will be changed to use the 'On DVD' tag, as well as simply checking all existing particle systems.
+<p />
+It will generate csv files containing the following to assist in optimizing/fixing content:
+<p /> <dl>
+<dt> <strong>All particle systems w/ NO LOD levels</strong>  </dt><dd> No LOD levels means the particle system is 'empty'.
+</dd> <dt> <strong>All particle systems w/ a single LOD level</strong>  </dt><dd> These systems should be reviewed to ensure they are not environmental (level placed) effects. In those cases, you typically want to utilize LODs to turn off emitters in the distance.
+</dd> <dt> <strong>All particle systems w/out fixed bounds set</strong>  </dt><dd> All particle systems that can should leverage the fixed relative bounds.
+</dd> <dt> <strong>All particle systems w/ LOD Method of Automatic &amp; a check time of 0.0</strong>  </dt><dd> This indicates a scenario where the particle system will perform its LOD check every frame.
+</dd> <dt> <strong>All particle systems w/ bOrientZAxisTowardCamera enabled</strong>  </dt><dd> These systems will cause problems if your game will support split-screen.
+</dd> <dt> <strong>All particle systems w/ missing materials</strong>  </dt><dd> These systems will render with the default material.
+</dd> <dt> <strong>All particle systems w/ no emitters</strong>  </dt><dd> These systems are 'empty' - should they be deleted?
+</dd> <dt> <strong>All particle systems w/ collision on in at least one emitter</strong>  </dt><dd> Current collision methods are a VERY high cost operation for particles.
+</dd></dl>
+<p />
+<h3><a name="FindOnDvDPsysDynamicParameter"></a> FindOnDvDPsysDynamicParameter </h3>
+<p />
+This Commandlet finds any effects using the dynamic parameter module, referencing a material without a functioning dynamic parameter material expression.  The process is not entirely fool proof, it is good practice to verify the result through the material editor prior to removal of a dynamic parameter module.
+<p />
+Back to <a href="VFXOptimization.html" class="twikiLink">VFX Optimization</a>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/VFXOptimizationConcepts.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:18:50 GMT -->
+</html></body>

@@ -1,0 +1,690 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LevelOptimizationCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:37:49 GMT -->
+<head>
+<title> UDK | LevelOptimizationCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">LevelOptimizationCH  </b></div>
+<div id="tooltext">
+<a href="LevelOptimization.html" class="twikiLink">English Translation</a><br><a href="LevelOptimizationJP.html" class="twikiLink">日本語訳</a><br><a href="LevelOptimizationKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/LevelOptimizationCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt; <b><a href="PerformanceHome.html" class="twikiLink">性能分析及优化</a></b> &gt; 关卡优化指南
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="关卡优化指南"></a> 关卡优化指南 </h1>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="LevelOptimizationCH.html#关卡优化指南">关卡优化指南</a> <ul>
+<li> <a href="LevelOptimizationCH.html#概述"> 概述</a> <ul>
+<li> <a href="LevelOptimizationCH.html#CPU开销"> CPU开销</a>
+</li> <li> <a href="LevelOptimizationCH.html#GPU开销"> GPU开销</a>
+</li> <li> <a href="LevelOptimizationCH.html#统计数据"> 统计数据</a>
+</li></ul>
+</li> <li> <a href="LevelOptimizationCH.html#光照贴图"> 光照贴图</a> <ul>
+<li> <a href="LevelOptimizationCH.html#概述"> 概述</a>
+</li> <li> <a href="LevelOptimizationCH.html#应用"> 应用</a>
+</li> <li> <a href="LevelOptimizationCH.html#光照贴图VS顶点光照">光照贴图VS顶点光照</a>
+</li></ul>
+</li> <li> <a href="LevelOptimizationCH.html#动态阴影"> 动态阴影</a> <ul>
+<li> <a href="LevelOptimizationCH.html#概述"> 概述</a>
+</li> <li> <a href="LevelOptimizationCH.html#动态阴影的性能限制"> 动态阴影的性能限制</a>
+</li></ul>
+</li> <li> <a href="LevelOptimizationCH.html#静态网格物体及其它图元"> 静态网格物体及其它图元</a> <ul>
+<li> <a href="LevelOptimizationCH.html#概述"> 概述</a>
+</li> <li> <a href="LevelOptimizationCH.html#图元统计数据浏览器">图元统计数据浏览器</a>
+</li></ul>
+</li> <li> <a href="LevelOptimizationCH.html#材质">材质</a>
+</li> <li> <a href="LevelOptimizationCH.html#Decals(贴花)"> Decals(贴花)</a>
+</li> <li> <a href="LevelOptimizationCH.html#Skyboxes(天空盒)"> Skyboxes(天空盒)</a> <ul>
+<li> <a href="LevelOptimizationCH.html#概述"> 概述</a>
+</li> <li> <a href="LevelOptimizationCH.html#概要">概要</a>
+</li></ul>
+</li> <li> <a href="LevelOptimizationCH.html#常见属性的解释"> 常见属性的解释</a> <ul>
+<li> <a href="LevelOptimizationCH.html#图元组件">图元组件</a>
+</li> <li> <a href="LevelOptimizationCH.html#光源组件">光源组件</a>
+</li></ul>
+</li> <li> <a href="LevelOptimizationCH.html#其他"> 其他</a> <ul>
+<li> <a href="LevelOptimizationCH.html#Unlit translucency (不带光照的半透明)"> Unlit translucency (不带光照的半透明)</a>
+</li> <li> <a href="LevelOptimizationCH.html#BSP"> BSP</a> <ul>
+<li> <a href="LevelOptimizationCH.html#Lighting flags(光照标志)"> Lighting flags(光照标志)</a>
+</li> <li> <a href="LevelOptimizationCH.html#运行'Clean BSP materials(清除BSP材质)'工具"> 运行'Clean BSP materials(清除BSP材质)'工具</a>
+</li> <li> <a href="LevelOptimizationCH.html#使用'_RemoveSurfaceMaterial(删除表面材质)'">使用'RemoveSurfaceMaterial(删除表面材质)'</a>
+</li> <li> <a href="LevelOptimizationCH.html#关卡">关卡</a>
+</li> <li> <a href="LevelOptimizationCH.html#剔除距离体积">剔除距离体积</a>
+</li></ul>
+</li> <li> <a href="LevelOptimizationCH.html#地形"> 地形</a>
+</li> <li> <a href="LevelOptimizationCH.html#音频"> 音频</a>
+</li> <li> <a href="LevelOptimizationCH.html#贴图">贴图</a>
+</li> <li> <a href="LevelOptimizationCH.html#粒子"> 粒子</a>
+</li> <li> <a href="LevelOptimizationCH.html#动画"> 动画</a>
+</li> <li> <a href="LevelOptimizationCH.html#物理"> 物理</a>
+</li></ul>
+</li> <li> <a href="LevelOptimizationCH.html#其它考虑事项">其它考虑事项</a> <ul>
+<li> <a href="LevelOptimizationCH.html#前一代引擎的优化不再有效">前一代引擎的优化不再有效</a>
+</li> <li> <a href="LevelOptimizationCH.html#在游戏中验证加载的内容(不是编辑器中)"> 在游戏中验证加载的内容(不是编辑器中)</a>
+</li> <li> <a href="LevelOptimizationCH.html#运行 <code>analyzereferencedcontent</code> 命令行开关">运行 analyzereferencedcontent 命令行开关</a>
+</li> <li> <a href="LevelOptimizationCH.html#针对特定游戏平台的调试"> 针对特定游戏平台的调试</a> <ul>
+<li> <a href="LevelOptimizationCH.html#PC"> PC</a>
+</li> <li> <a href="LevelOptimizationCH.html#Playstation 3"> Playstation 3</a>
+</li> <li> <a href="LevelOptimizationCH.html#Xbox 360"> Xbox 360</a> <ul>
+<li> <a href="LevelOptimizationCH.html#Xbox的性能调查工具(PIX)"> Xbox的性能调查工具(PIX)</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<p />
+在虚幻引擎3中，光照和物体间的交互作用占用了CPU和GPU进行关卡渲染时的大部分工作。当优化关卡内容时，通常最好的开始方式是检查物体的光照情况。
+<p />
+同时请查看:<a href="https://udn.epicgames.com/Three/MasteringUnrealLevelOptimization" class="restricted" class="restricted" class="twikiLink">掌握虚幻技术关卡优化</a>
+<p />
+<h3><a name="CPU开销"></a> CPU开销 </h3>
+<p />
+在CPU方面，大部分的光照开销在于要确定需要渲染哪些物体，以及它们是否使用光照环境；并且如果使用光照环境，还要确定它们使用的是哪种类型。因为大多数使用UE3的游戏都有很多具有动态光照的移动物体，所以很容易使用太多的光照环境。然而，您可以使用几个设置来降低光照环境的性能消耗。
+<p />
+这里是一些光照环境设置，按照从最昂贵到最便宜的(在游戏线程上)顺序，也介绍了何时使用相应的设置：
+<p />
+     1) bEnabled=True, bDynamic=True (默认值)
+<p />
+     这些设置应该仅在需要的时候使用，它们将会基于InvisibleUpdateTime 和 MinTimeBetweenFullUpdates进行更新。同一时刻不应该有多余50个这样的项处于活动状态。当它们可见、靠近玩家或者当它们移动时需要进行额外的可见性检测。
+<p />
+     2) bEnabled=True, bDynamic=False, bForceNonCompositeDynamicLights=True
+<p />
+     这些设置的性能消耗是较低的，光照环境仅在第一次调用时更新以后再也不会更新。bForceNonCompositeDynamicLights是允许动态光源影响它们所必须的，它没有任何重大的游戏线程开销。可以有成百个这样的设置，它们唯一的消耗(在第一次更新后)是到动态光源的线性检测(并且仅当拥有者可见时)。这些要比使用预计算阴影的光照看上去要好的多，因为它们可以旋转并且光照仍然可以保持正确。它们通常用于破碎网格物体、GDO以及其他东西。
+<p />
+     3) bEnabled=False, bUsePrecomputedShadows (在图元组件上)=True (必须把它从动态通道中取出并放置到静态光照通道中)
+<p />
+     这些将会进行光照贴图，渲染消耗非常低并且没有游戏线程开销(除了调用UDynamicLightEnvironmentComponent::Tick函数外)。当移动它们时，它们的效果将会错误。
+<p />
+您也可以在控制台中输入'SHOWLIGHTENVS'，然后您将会获得在那帧中所更新的所有光照环境的列表。在UnrealConsole中的输出如下所示：
+<p />
+Log： LE:SP_MyMap_01_S.TheWorld:PersistentLevel.InterpActor_12.DynamicLightEnvironmentComponent_231 No_Detailed_Info_Specified 1
+Log： LE:SP_MyMap_01_S.TheWorld:PersistentLevel.InterpActor_55.DynamicLightEnvironmentComponent_232 No_Detailed_Info_Specified 0
+Log： LE:SP_MyMap_01_S.TheWorld:PersistentLevel.InterpActor_14.DynamicLightEnvironmentComponent_432 No_Detailed_Info_Specified 1
+...
+<p />
+在每行尾部的‘1’意思是bDynamic被设置为TRUE。
+<p />
+另一个命令'GETALL'，您可以尝试搜索关卡中所有的动态光源。
+比如，输入'GETALL DynamicLightEnvironmentComponent bDynamic'将会显示所有DynamicLightEnvironmentComponent和bDynamic的标志。
+<p />
+'SHOWLIGHTENVS' 和 'GETALL'之间的不同是'SHOWLIGHTENVS'显示了那帧中更新的每个光照环境，而'GETALL'显示了那帧中的所有光照环境不管它们是否更新。
+<p />
+另一个重要的CPU消耗是和启动状态改变相关的CPU开销。通过使用我们的多线程渲染器，这个问题通常仅是单CPU系统上的一个要素。
+<p />
+控制台命令 <code>STAT SCENERENDERING</code> 将会列出 <em>被遮挡的图元</em> 、 <em>可见的静态网格物体元素</em> 以及 <em>可见的动态图元</em> ，并且可以决定每帧中渲染多少个独立的图元。
+<p />
+限制PC上的驱动器CPU消耗或GPU消耗时间是很难的。
+现在的GPU不同步的特性导致会出现看上去会比正常花费很多事件的随机调用，事实上当这些调用函数需要等待GPU处理完成后才能继续。引擎将每一帧上与GPU同步，并且在 <code>STAT THREADING</code> 中报告每一个线程的等待时间。较高的 <em>游戏线程空闲时间</em> 意味着渲染线程比较慢，而较高的 <em>渲染线程空闲时间</em> 意味着游戏性代码是瓶颈。在游戏线程空闲时间高的情况下，尝试不同的分辨率可以决定渲染线程是CPU的限制还是GPU的限制。
+<p />
+<h3><a name="GPU开销"></a> GPU开销 </h3>
+<p />
+对于GPU来说，基于每个光源或每个物体渲染一遍的方法对于那些覆盖屏幕空间中未被遮挡的较大区域的物体来说性能消耗是非常大的。GPU的主要限制因素通常是着色器的吞吐量。比如，有一个物体被三个光源照亮，这样除了基于每遍渲染的消耗外，也将会导致光照等式和材质被计算三次。
+<p />
+在较高的分辨率下(比如，1280x720 – 通常称为720P)下，使用30毫秒的刷新时间，即使高端的GPUs都可能成为瓶颈。在这个分辨率下照亮动态场景的最主要的消耗是使用阴影缓存，因为它们使用了非常昂贵的着色器来使阴影的边缘变得模糊。根据相对于视觉保真度的妥协的不同，有很多种方法来解决这个问题。同时，在任何分辨率下的后期处理都是一个可以优化的常量。
+<p />
+针对控制台工具或PC上的<a href="http://developer.nvidia.com/object/nvperfhud_home.html" target="_top">nvPerfHUD</a>可以用于获取关于什么东西消耗时间长以及为什么的更详细的信息。然而，对于一般的优化来说，重要的是您要确保您的关卡遵循以下指导方针。
+<p />
+<h3><a name="统计数据"></a> 统计数据 </h3>
+<p />
+一般来说，统计命令可以用于关卡中各种类型的资源。请参照<a href="StatsDescriptions.html" class="twikiLink">统计信息描述</a>页面获得关于以引擎所支持的统计指令的详细描述。
+<p />
+<p />
+<h2><a name="光照贴图"></a> 光照贴图 </h2>
+<p />
+<h3><a name="概述"></a> 概述 </h3>
+<p />
+光照贴图的好处是同时降低了CPU和GPU的负载。在CPU方面，需要考虑的光源－物体的交互作用变少；置于引擎来说，物体不是和光源相对应的，因为所有的光源信息都已经烘焙到了光照贴图中。在GPU方面，物体不需要进行许多遍的渲染，另外光照贴图的渲染遍数也被压缩到了自发光渲染遍数中来进一步的降低渲染遍数，从而导致状态改变消耗。
+<p />
+可以使用 <code>VIEWMODE LIGHTCOMPLEXITY</code> 以相对应的编辑器按钮来可视化地查看有多少个非光照贴图的光源在影响一个物体。颜色机制如下所示：
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" align="right" class="twikiFirstCol"> 光源 </td><td bgcolor="#eaeaea"> 网格物体颜色 </td></tr>
+<tr><td bgcolor="#ffffff" align="right" class="twikiFirstCol"> 0 </td><td bgcolor="#ffffff"> (R=0,G=0,B=0,A=1) </td></tr>
+<tr><td bgcolor="#eaeaea" align="right" class="twikiFirstCol"> 1 </td><td bgcolor="#eaeaea"> (R=0,G=255,B=0,A=1) </td></tr>
+<tr><td bgcolor="#ffffff" align="right" class="twikiFirstCol"> 2 </td><td bgcolor="#ffffff"> (R=63,G=191,B=0,A=1) </td></tr>
+<tr><td bgcolor="#eaeaea" align="right" class="twikiFirstCol"> 3 </td><td bgcolor="#eaeaea"> (R=127,G=127,B=0,A=1) </td></tr>
+<tr><td bgcolor="#ffffff" align="right" class="twikiFirstCol"> 4 </td><td bgcolor="#ffffff"> (R=191,G=63,B=0,A=1) </td></tr>
+<tr><td bgcolor="#eaeaea" align="right" class="twikiFirstCol"> 5 </td><td bgcolor="#eaeaea"> (R=255,G=0,B=0,A=1) </td></tr>
+</table>
+<p />
+<img alt="lightingcomplexity.jpg" src="rsrc/Three/LevelOptimizationCH/lightingcomplexity.jpg" />
+<p />
+在这个图片中，场景几乎而完全是光照贴图的(黑色)，但添加了一个动态光源来展示如何是关卡呈现绿色。
+<p />
+<h3><a name="应用"></a> 应用 </h3>
+<p />
+总体来说，从性能角度来讲光照贴图明显是有优势的。有两种方式来启用光照贴图的应用，一种是在光源上设置UseDirectLightMap为真，或者在图元(地形、静态网格物体、骨架网格物体…)上设置 <code>bForceDirectLightMap</code> 为真。和其它预计算阴影信息一样，光照贴图仅应用于静态物体上。请参照<a href="LightingReference.html" class="twikiLink">光照参考</a>获得更多信息。
+<p />
+光照贴图的缺点是引擎不知道一个单独的光源对光照贴图的作用，这意味着进行一般的动态阴影是不可能的。换句话说，如果光源是光照贴图的一部分，动态物体不能从那个光源向静态网格物体投射阴影。这个限制的一个解决方法是调制阴影，因为它们可以向任何表面投射阴影，尽管它们也有自己的缺点。
+<p />
+<h3><a name="光照贴图VS顶点光照"></a> 光照贴图VS顶点光照 </h3>
+<p />
+请参照附件中的电子表格<a href="#" target="_top">LightMapVSVertexLightingCosts.xlsx</a>获得关于性能消耗的对比。
+同时，请记住顶点光照和光照贴图的内存处理上是非常不同的。所有的光照贴图数据都被放到动态载入贴图池中，所以这些贴图不会增加实际的内存占用量。然而，顶点光照，当加载关卡后，它将永远地存储在系统内存中，并且具有常量的内存消耗。
+'Stat memory'报告了顶点光照域，一般这个数值应该尽可能地低，并且如果您有内存问题，您所可以做的第一件事情便是确保您在任何可能的时候都在使用光照贴图。
+当使用破裂网格物体时，这个方法尤其有用，因为破裂网格物体多边形数量很高，所以顶点光照实际上非常消耗内存。
+<p />
+<p />
+<h2><a name="动态阴影"></a> 动态阴影 </h2>
+<p />
+<h3><a name="概述"></a> 概述 </h3>
+<p />
+性能问题的另一个潜在的源泉是动态阴影。快速衡量动态阴影是否具有性能影响的方法是通过使用  <code>SHOW DYNAMICSHADOWS</code> 命令来切换动态阴影的开关状态。最好给这个命令绑定一个按键，以便当按下按键时关闭动态阴影，释放按键时打开启用动态阴影。按键绑定可以通过在控制台中输入以下命令完成 - 比如： <code>SETBIND F SHOW DYNAMICSHADOWS | ONRELEASE SHOW DYNAMICSHADOWS</code> 。
+<p />
+<h3><a name="动态阴影的性能限制"></a> 动态阴影的性能限制 </h3>
+<p />
+阴影缓冲的GPU性能消耗直接和阴影椎体的屏幕空间尺寸成比例关系。这意味着使用阴影缓冲的附近角色的性能消耗要比较远的角色高。这也意味着投射动态阴影缓冲的较大的对象要比较小的对象的性能消耗高。请参照 <a href="https://udn.epicgames.com/Three/ShadowBufferFilteringOptions" class="restricted" class="restricted" class="twikiLink">阴影缓冲过滤选项</a>页面获得详细信息。
+<p />
+同时，请参照<a href="ShadowingReference.html" class="twikiLink">阴影参考指南</a>页面和<a href="ModulatedShadows.html" class="twikiLink">调制阴影</a>页面获得关于阴影优化的更多信息。
+<p />
+<p />
+<h2><a name="静态网格物体及其它图元"></a> 静态网格物体及其它图元 </h2>
+<p />
+<h3><a name="概述"></a> 概述 </h3>
+<p />
+性能问题的另一常见原因是静态网格物体。通常，您应该把那些只应用一次或两次的静态网格物体替换为和它们类似的经常使用的网格物体。无论何时，请尝试避免为天空和使用唯一的网格物体。在任何可能的情况下，都要在顶点光照VS光照贴图光照之间进行适当的妥协。您也可以使用图元统计浏览器来查找获得进行优化最合适的方法。
+<p />
+<h3><a name="图元统计数据浏览器"></a> 图元统计数据浏览器 </h3>
+<p />
+以下是图元统计数据浏览器的列栏中的描述(以前的静态网格物体统计数据浏览器)： <ul>
+<li> <strong>Type(类型)</strong> -资源的类型，可以是骨架网格物体、静态网格物体、地形或BSP(模型)。
+</li> <li> <strong>Count(数量)</strong> -关卡中那个网格物体实例的数量。
+</li> <li> <strong>Triangles(三角形)</strong> -每个实例中的三角形的数量。
+</li> <li> <strong>Resource Size(资源大小)</strong> -资源的大小，以K字节为单位，通过"查看资源应用"来展现，仅和静态网格物体和骨架网格物体有关。
+</li> <li> <strong>Lights(光源) (avg LM/ other/ total[平均 光照贴图/其它/总量])</strong> -影响每个实例光照贴图(LM)，非光照贴图(其它的)以及总光源的平均数量。
+</li> <li> <strong>Obj/ Light cost(物体/光源 消耗)</strong> -物体/光源间交互作用的性能消耗。这个数量意味着要想达到最终的光照目的，这个静态网格物体需要被重新渲染的数量。这个值是非光照贴图光源数量乘以所有实例的部分数量的总和得到的值。光照贴图不包含在这个值中，因为它们是作为自发光遍数的一部分进行渲染的，因此可以认为它是“没有性能消耗”的。
+</li> <li> <strong>Triangle cost(三角形消耗)</strong> -为了达到光照效果，需要渲染的三角形的数量。这个数量排除了Z-prepass(Z方向的域渲染遍数)、自发光以及光照贴图，因为无论光源的数量是多少，这些都是常量的性能消耗。
+</li> <li> <strong>Lightmap(光照贴图)</strong> - 光照贴图数据所使用的内存的数量。
+</li> <li> <strong>Shadowmap(阴影贴图)</strong> -阴影贴图数据所使用的内存的数量。
+</li> <li> <strong>LM Res(光照贴图分辨率)</strong> -每个实例的平均光照贴图分辨率。
+</li> <li> <strong>Sections(部分)</strong> -网格物体所具有的部分的数量。
+</li> <li> <strong>Radius (半径)(min/max/avg[最小/最大/平均])</strong> -每个网格物体实例的包围和的 最小/最大/平均 半径。
+</li></ul>
+<p />
+<img alt="primitivestats.jpg" src="rsrc/Three/LevelOptimizationCH/primitivestats.jpg" />
+<p />
+<h2><a name="材质"></a> 材质 </h2>
+场景中的材质的复杂度可以大大地影响场景的GPU性能消耗。使用的动态光源越多，一个昂贵材质的消耗越大。
+编辑器提供了Shader Complexity(着色器复杂度)视图模式，它如下所示：
+<p />
+<img alt="shadercomplexity.jpg" src="rsrc/Three/LevelOptimizationCH/shadercomplexity.jpg" />
+<p />
+绿色的覆盖意味着那个材质非常地偏移，黑色的覆盖意味着它是比较昂贵的材质或者有多个动态光源在影响这个材质。注意，要想看到着色器复杂度的精确展现，必须重新构建关卡的光照。
+优化材质的技巧： <ul>
+<li> 创始并限制读取依赖材质的量，这意味着要修改贴图的UVs，比如BumpOffset。
+</li> <li> 使用材质实例化，并为昂贵的特效使用StaticSwitchParameters，以便它们可以很容易地进行 开/关 切换来进行性能妥协。
+</li> <li> 考虑从那些没有很多高光的材质上移除高光。这将会删除大量的像素着色器指令，并且在很多情况下您不会注意到变化。
+</li> <li> 尝试并限制每个材质中要查找的贴图的数量，要查找的材质的数量越多，GPU获取它需要的贴图的时间便越长。
+</li></ul>
+<p />
+<p />
+<h2><a name="Decals(贴花)"></a> Decals(贴花) </h2>
+<p />
+如果不对放置在关卡中的Static Decals(静态贴花)进行正确地处理，那么它将会快速地耗尽很多性能。如果不检测它们，它们将会投射到不必要的额外的网格物体上，并且这将必须进行渲染的数量猛增。所以应该设置它们仅影响它们需要影响的 静态网格物体/BSP，因为这样可以大量地降低要渲染的部分的数量。
+<p />
+关于适用decals和Decal System(Decal系统)的更多信息，请参照<a href="UnsingDecals.html#Controlling receiving surfaces">UsingDecals#Controlling receiving surfaces（使用Decals#控制接收表面）</a>页面。
+<p />
+<p />
+<h2><a name="Skyboxes(天空盒)"></a> Skyboxes(天空盒) </h2>
+<p />
+<h3><a name="概述"></a> 概述 </h3>
+<p />
+Skyboxes(天空盒)通常包含着非常大的物体，它的 包围盒/球 可以包含非常大的世界区域。这有几个值的注意的副作用。首先，和近裁面相交的物体将不能使用遮挡查询，并且将总是被渲染，仅是网格物体上的每个像素都不可见。这通常不受到光源影响的不被照亮的天空穹顶来说不是什么大问题，因为引擎首先会进行一个次深度渲染来最大化早期硬件的z-rejection。还有一些和状态改变相关的性能消耗，当然如果有很多光源照亮您的天空盒时也会产生额外的性能消耗。
+<p />
+天空盒的边界盒是整个世界的大小，这暗示着世界中每个没有通过光照通道或手动排除功能进行明确地排除的独立光源都会影响天空盒。这使得把skybox(天空盒)actors设置为=bForceDirectLightMap= <strong>TRUE</strong> 并且 <code>bAcceptsDynamicLights</code> <strong>FALSE</strong> ，以便它不会为关卡中的每个单独的动态光源进行重新渲染(比如，枪嘴的火焰)。同时，skybox(天空盒)actors改变为既没有碰撞也不接受decals也是个好主意。
+<p />
+对于skybox(天空盒)中没有被照亮的移动的或旋转的物体来说，通常最好设置 <code>bAcceptsLights</code> 为 <strong>FALSE</strong> ，从而可以无论材质被照亮与否时，都可以避免CPU侧的不必要进行的过多工作。
+<p />
+<h3><a name="概要"></a> 概要 </h3>
+<p />
+关于对skybox(天空盒)操作的概要
+<p /> <ul>
+<li> 禁用碰撞和接受decals的能力；
+</li> <li> 对于未被照亮的物体，设置 <code>bAcceptsLights</code> <strong>FALSE</strong> ；
+</li> <li> 对于其他物体，设置=bAcceptsDynamicLights= <strong>FALSE</strong> ；
+</li> <li> 如果需要，可以使用skybox(天空盒)光照通道，或者设置skybox(天空盒)物体为强制光照贴图或者强制光源上的光照贴图。
+</li> <li> 在任何合适的地方禁用skybox(天空盒)上的 <code>CastShadow(投射阴影)</code> 功能，并且禁用 <code>bCastDynamicShadow</code> 。
+</li></ul>
+<p />
+<p />
+<h2><a name="常见属性的解释"></a> 常见属性的解释 </h2>
+<p />
+<h3><a name="图元组件"></a> 图元组件 </h3>
+<p /> <ul>
+<li> <strong>CastShadow(投射阴影)</strong> 控制图元组件是否应该投射阴影。当前动态图元将不会从静态物体上接受阴影，除非同时这个标志和bCastDynamicSahdow标志。
+</li> <li> <strong>bCastDynamicShadow(是否投射动态阴影)</strong> 控制图元是否在非预计算阴影的情况下投射阴影 – 比如，当图元在一个光源和一个动态物体之间时。这个标志仅在CastShadow设置为TRUE时才有用。目前，动态图元将不会从静态物体上接受阴影，除非这个标志和CastShadow标志都被启用了。
+</li> <li> <strong>bForceDirectLightMap(强制直接光照贴图)</strong> 即使光源可能没有设置为使用光照贴图，但是将强制使用影响这个图元的所有静态光源的光照贴图。这意味着，图元将永远不会从阻挡静态光源的动态物体上接受任何阴影。在动态光源的情况下将可以正确地投射阴影。
+</li> <li> <strong>bAcceptsLights(是否接受光源)</strong> 控制图元是否接受任何光源。一个好的优化应该设置所有不需要光照的物体的这项为FALSE(假)。
+</li> <li> <strong>bAcceptsDynamicLights(是否接受动态光源)</strong> 控制物体是否应该受到动态光源的影响。
+</li> <li> <strong>LightingChannels(光照通道)</strong> 定义了那个光源可以影响这个图元。
+</li></ul>
+<p />
+<h3><a name="光源组件"></a> 光源组件 </h3>
+<p /> <ul>
+<li> <strong>CastShadows(投射阴影)</strong> 控制光源是否投射阴影。
+</li> <li> <strong>CastStaticShadows(投射静态阴影)</strong> 控制光源是否从可以接受静态阴影的物体上投射阴影。
+</li> <li> <strong>CastDynamicShadows(投射动态阴影)</strong> 控制光源是否应该从不接受静态阴影的物体上投射阴影。
+</li> <li> <strong>bForceDynamicLight(强制动态光源)</strong> 强制应用 阴影体积/模板阴影。这可以避免立方体贴图的潜在问题，同时也可以避免静态阴影的内存应用问题。
+</li> <li> <strong>UseDirectLightMap(使用直接光照贴图)</strong> 决定了是否为这个光源使用光照贴图。
+</li> <li> <strong>LightingChannels(光照通道)</strong> 决定了这个光源影响哪些图元。
+</li></ul>
+<p />
+<p />
+<h2><a name="其他"></a> 其他 </h2>
+<p />
+<h3><a name="Unlit translucency (不带光照的半透明)"></a> Unlit translucency (不带光照的半透明) </h3>
+<p />
+Unlit translucency (不带光照的半透明)如果有复杂材质的大量过量描画，将会对性能产生非常严重的影响。测量它的性能影响的最简单的方法是或者通过在控制台通过 <code>SHOW UNLITTRANSLUCENCY</code> 来切换它的应用，或者通过在编辑器视口中取消选中相应的显示标志来完成。
+<p />
+技巧: <ul>
+<li> 通过使用 <code>SHOW UNLITTRANSLUCENCY</code> 来检查目标平台上的性能。
+</li> <li> 使用 <code>VIEWMODE SHADERCOMPLEXITY</code> 命令进行可视化。
+</li> <li> 避免成层，尤其是对锥形光源和填充光源。
+</li> <li> 在可能的地方充分地应用剔除距离。
+</li></ul>
+<p />
+<h3><a name="BSP"></a> BSP </h3>
+<p />
+<h4><a name="Lighting flags(光照标志)"></a> Lighting flags(光照标志) </h4>
+<p />
+主要基于位置把BSP分割为一些块。这意味着独立的BSP部分(模型成分)的大小适度，因此可以受到几个光源的影响。控制 光源/BSP 交互的一种方法是使用BSP光照通道并且设置"Accepts Lights(接受光源)"、"Accepts Dynamic Lights(接受动态光源)" 和 "Force LightMap(强制光照贴图)"表面选项。当改变这些选项时将仅在重新构建BSP时才有效，因为这些标志将会被传递给BSP块，而块将会基于这些选项来进行部分地创建。它们直接和图元组件中的bAcceptsLights(是否接受光源)、bAcceptsDynamicLights(是否接受动态光源)以及bForceDirectLightMap(是否强制直接光照贴图)相对应。通过使用这些标志可以大大地提高那些使用了很多BSP的关卡的性能。
+<p />
+<h4><a name="运行'Clean BSP materials(清除BSP材质)'工具"></a> 运行'Clean BSP materials(清除BSP材质)'工具 </h4>
+<p />
+运行CLEANBSPMATERIALS编辑器命令开关(通过虚幻编辑器的’Tools(工具)’菜单中的'Clean BSP Materials(清除BSP材质)'项来访问)可以清楚那些在最终BSP上不存在的面的画刷所引用的材质。实例包括添加型空间、’共享空间’的多边形(比如邻接的立方体共享一个面)等完全包含的’添加’画刷。
+<p />
+这一，这个操作应该仅在关卡的BSP已经最终定型后在执行。因为如果清楚了隐藏面上的材质引用，当稍后在编辑器BSP导致隐藏的画刷变得可见时，还需要为这些新可见的面重新地分配材质。
+<p />
+这个功能在QA_APPROVED_BUILD_JUN_2007版本中出现的。
+<p />
+<h4><a name="使用'_RemoveSurfaceMaterial(删除表面材质)'"></a> 使用'RemoveSurfaceMaterial(删除表面材质)' </h4>
+<p />
+EngineMaterials(引擎材质)包包含了一种成为RemoveSurfaceMaterial的特殊材质，它可以应用于玩家永远看不到的所有表面。在内部，标记为这种材质的BSP表面将不会向BSP画刷提供可以渲染的三角形，它们也不会接受任何静态光照(以及消耗相关的光照贴图资源)。
+<p />
+标记为RemoveSurfaceMaterial的表面在编辑器及PIE中是可见的，以便设计人员可以根据需要测试表面的可见性以及恢复材质。然而，当游戏真正地在编辑器外面运行时，它们是不可见的。
+<p />
+这个功能在QA_APPROVED_BUILD_JUN_2007版本中出现的。
+<p />
+<h4><a name="关卡"></a> 关卡 </h4>
+<p />
+这里是优化关卡的一些技巧： <ul>
+<li> 请确保skybox(天空盒)是不带光照的，不接受decals(贴花)、光源并且不进行碰撞。
+</li> <li> 在图元数据统计浏览器中，根据数量和实例化的三角形来分类： <ul>
+<li> 清除/降低 需要使用很多的网格物体实例的数量。
+</li> <li> 确保最简单的网格物体用作较高的实例化三角形数量(比如，如果2000个三角形被使用了100次，那么请考虑使用200个三角形列)。
+</li></ul>
+</li> <li> 使用碰撞视图模式来禁用不需要的碰撞。
+</li> <li> 播放游戏来查看什么是可见的，通常添加的玩个物体在游戏正常播放时是不可兼得额，因为编辑器视口不能匹配玩家的移动、眼睛高度等。
+</li> <li> 请确保在世界的下面、几何体的内部等没有隐藏网格物体。
+</li> <li> 把所有不可见的BSP表面标记为不接受光照。
+</li> <li> 在不可见BSP表面上设置默认贴图。
+</li> <li> 使用 <code>VIEWMODE LIGHTCOMPLEXITY</code> 来关卡中没有动态光源的地方是黑色： <ul>
+<li> 仅使用小半径的可切换光源。
+</li> <li> 不使用可切换的定向光源。
+</li></ul>
+</li> <li> 保持静态网格物体和静态网格物体部分的总数量在预算之内。
+</li></ul>
+<p />
+<h4><a name="剔除距离体积"></a> 剔除距离体积 </h4>
+<p />
+现在虚幻引擎暂时使用CullDistance(剔除距离)来基于距离剔除物体。如果您可以剔除您的大部分数量的物体，它将会减少可见元素数量和遮挡时间，这是一个较大的性能提高。
+<p />
+我们不必花费时间来手动地设置CullDistance(剔除距离)，我们可以基于CullDistance Volumes(剔除距离)体积来自动地设置它。CullDistance Volumes是一个体积，并且actor有一个数组。每个添加到数组中的域都有CullDistance(剔除距离)和Size(尺寸)设置。
+<p />
+当您保存关卡时，编辑器将会检查关卡中每个物体的边界球的半径，并基于它最匹配的Size(尺寸)类别来为它自动地分配剔除距离。
+<p />
+要想添加CullDistance(剔除距离)体积，请把构建画刷设置得足够大以便可以包含您的整个关卡，右击"Add Volume(添加体积)"按钮，并列表中选择"CullDistanceVolume(剔除距离体积)"即可。
+<p />
+<img alt="culldistancevolume.jpg" src="rsrc/Three/LevelOptimizationCH/culldistancevolume.jpg" />
+<p />
+要想设置CullDistance Volume(剔除距离体积)，从为您最小的物体创建CullDistance(剔除距离)开始，并调整那个域的距离/尺寸直到您几乎不能看到小物体在距离内 弹入/弹出 为止。然后您在创建下一个最大的物体的剔除距离(使用一个稍微远点的剔除距离)，直到您最终碰到您想自动剔除的最大的网格物体为止。CullDistance(剔除距离)为0意味着它将不会被剔除。在上面的实例图片中，大小为10,000个单位或者更大的网格物体将不会使用CullDistanceVolumes(剔除距离体积)。
+<p />
+应该调整距离直到您不能看到任何明显的弹入弹出为止。
+<p />
+通过设置标志 <code>StaticMeshComponent.Rendering.bAllowCullDistanceVolume=False</code> ，网格物体可以退出CullDistanceVolumes(剔除距离体积)。
+<code>StaticMeshComponent.Rendering.bAllowCullDistanceVolume=False</code>
+<p />
+不可编辑的域 <code>CachedCullDistance</code> 显示了当前剔除距离体积分配给网格物体的剔除距离。
+<p />
+请参照<a href="VisibilityCulling.html" class="twikiLink">可见性剔除</a>页面获得更多信息。
+<p />
+<h3><a name="地形"></a> 地形 </h3>
+<p />
+这里是优化地形的一些技巧： <ul>
+<li> 使用块边界视图。
+</li> <li> 使用线框来清除地检查细分。
+</li> <li> 请参照地形参考指南<sup>?</sup>页面获得更多细节。
+</li></ul>
+<p />
+<h3><a name="音频"></a> 音频 </h3>
+<p />
+这里是关于优化音频的一些技巧： <ul>
+<li> 如果不是绝对需要，请确保不要使用多个音频轨迹。保持音频轨迹在它们自己的载入地图中是个好主意，以便当需要时可以动态地载入载出(这样将不会影响性能，打死你是它将影响整个关卡的预算。
+</li> <li> 通过使用  <code>STAT AUDIO</code>, <code>STAT MEMORY</code> 来检查预算。
+</li> <li> 使用 <code>LISTSOUNDS</code> 来查看当前加载的声音 – 显示了基于每个组存储的波形，以便您知道哪种类型的声音占用了大部分内存。
+</li> <li> <code>LISTWAVES</code> 列出了当前播放的声效(仅PC)。
+</li> <li> <code>LISTAUDIOCOMPONENTS</code> 列出了当前 <em>考虑</em> 的声效。
+</li></ul>
+<p />
+<h3><a name="贴图"></a> 贴图 </h3>
+<p />
+虚幻引擎3使用贴图动态载入池。这意味着所有的动态载入贴图都有完全可知的内存占用量，并且引擎在最高的分辨率下将会尽量仅加载 较大的/距离玩家较近 的贴图。然而，它仍然留下了一种潜在的可能性是您加载太多的贴图，从而导致到处都是模糊的。在这种情况下，修复这个问题的唯一方法是把您的贴图应用降低到可以实现的水平。
+这里是关于优化贴图的一些技巧： <ul>
+<li> 检查STAT STREAMING和动态载入保真度因数。如果数值是1.0，那么您将不需要担心，如果高于1.0，则意味着贴图不适合并且某些贴图将是模糊状态。
+</li> <li> 请使用 <code>LISTTEXTURES</code> 命令来查看加载了哪些贴图。这将会把一系列加载的贴图输入到日志中。这个信息可以被拷贝到excel表格中，并且自动地通过按下"Text to Columns(把文本转换为列)"按钮(在数据下面)并选择Delimited(分界)-&gt;Comma(逗号)-&gt; finish(完成)来把数据组织到相应的 行/列 中。然后按下排序按钮允许您按照升序或降序进行排序。
+</li> <li> 一旦您想excel中输出了一个列表材质，并"Current Size(当前大小)"行中按照降序排序，您将可以使用那个表格来开始分析造成最坏情况的原因…占用最大内存的贴图。
+</li></ul>
+<p />
+<h3><a name="粒子"></a> 粒子 </h3>
+<p />
+这里使一些优化粒子的技巧： <ul>
+<li> 在较小的物体上禁用碰撞(在UT中，Enforcer的武器开火使用了碰撞！)
+</li> <li> 避免过量描画。
+</li> <li> 使用PIX和 <code>VIEWMODE SHADERCOMPLEXITY</code> 。
+</li> <li> 使用 <code>STAT PARTICLES</code> 来查看数量。
+</li> <li> 手动地位常用特效或较大的特效设置边界盒。
+</li> <li> 确保编辑器生成的最大活动数量是正确的。
+</li> <li> 请参照<a href="ParticleSystemReference.html" class="twikiLink">粒子系统参考指南</a>页面获得更多细节。
+</li> <li> 请使用 <code>MEMORYSPLIT</code> ，它将会当前加载的粒子数据中有多少是处于活动状态以及有多少是按照Peak [峰值](一次可以分配给粒子的最大内存)加载的。
+</li></ul>
+<p />
+<h3><a name="动画"></a> 动画 </h3>
+<p />
+以下是优化动画的技巧 <ul>
+<li> 请确保压缩了所有的动画： <ul>
+<li> 如果由于一些原因不能压缩，请追问程序员寻求帮助。
+</li> <li> 事实上应该没有原因可以导致不能压缩；如果它看上去不好，可能是bug。
+</li></ul>
+</li> <li> 把需要进行烘焙和剪切的过场动画缝合到一起。
+</li> <li> <code>OBJ LIST CLASS=ANIMSET</code>.
+</li> <li> <code>OBJ LIST CLASS=ANIMSEQUENCE</code>. <ul>
+<li> 如果加载了一个动画序列，那么在那个动画集中的所有动画序列都会被加载。
+</li></ul>
+</li></ul>
+<p />
+<h3><a name="物理"></a> 物理 </h3>
+<p />
+一般，打开  <em>刚体碰撞视图</em> (您可以在控制台中使用命令 <code>SHOW RIGIDBODY</code> )。然后设置任何可以和车辆或布娃娃进行碰撞的东西的 <em>BlockRigidBody(阻挡钢体)</em> 为 <strong>FALSE</strong> 。对于较大的高结构，您或许想关闭所有网格物体的刚体碰撞并且在它的上面放置一个大的阻挡体积。
+<p />
+<p />
+<h2><a name="其它考虑事项"></a> 其它考虑事项 </h2>
+<p />
+<h3><a name="前一代引擎的优化不再有效"></a> 前一代引擎的优化不再有效 </h3>
+<p />
+在上一代的PC游戏中的常用优化是把具有相同材质的较小的物体融合为一个较大的物体。在这一代的游戏引擎中，由于增加的 物体/光源 间的交互作用，从而导致这个优化是 <strong>不</strong> 可取的。较大的物体将不会被更多的光源触及并且将会不考虑多个动态物体的阴影。
+<p />
+<h3><a name="在游戏中验证加载的内容(不是编辑器中)"></a> 在游戏中验证加载的内容(不是编辑器中) </h3>
+<p />
+您可以运行 <code>OBJ LIST CLASS=SKELETALMESH</code> 命令来确保仅正在使用已经加载的车辆及武器资源。如果结果不是这样的，您可以求助于程序员。比如，在过去，我们遇到过有些地方的Kismet动作引用了太多内容的问题。
+<p />
+其它有用的命令 <ul>
+<li> 音频的LISTSOUNDS命令
+</li> <li> 贴图的LISTTEXTURES命令
+</li></ul>
+<p />
+<h3><a name="运行 <code>analyzereferencedcontent</code> 命令行开关"></a> 运行 <code>analyzereferencedcontent</code> 命令行开关 </h3>
+<p />
+请确保没有使用具有过多凸面外壳的网格物体。同时请尝试优化最常使用的网格物体。优化导致最糟糕情况的材质，特别是使用很多次的材质。
+<p />
+<a href="CommandletList.html#analyzereferencedcontent" class="twikiAnchorLink">CommandletList#analyzereferencedcontent</a>
+<p />
+<h3><a name="针对特定游戏平台的调试"></a> 针对特定游戏平台的调试 </h3>
+<p />
+在您打算发行游戏的平台上进行性能和内存测试是很重要的。编辑器中的调试工具将会帮助您挑选出最糟糕的妨碍物，但是真正优化您要发行的产品的内容的唯一方式是分析它在目标平台上是如何工作的。请参照<a href="StatsDescriptions.html" class="twikiLink">统计信息描述</a>页面获得关于以引擎所支持的统计指令的详细描述。
+<p />
+注意内存是伴随着碎片发生的(不管是系统碎片还是内部的引擎碎片)。这意味着您需要根据您的游戏应用方式来设计相对于总应用量的缓冲百分比。
+<p />
+假设您正在使用200 mbs，那么您将需要根据游戏如何到达那个点来期望碎片的百分比。这个碎片可能会随着游戏会话的增长而变得很糟糕，但是它应该不是线性的。它将会把事情转向更糟糕的程度 (可能是10%或20%)。
+请咨询程序员。 
+<p />
+<h4><a name="PC"></a> PC </h4>
+<p />
+对于PC测试，持续地收集和您的Target Minimum Spec(目标最小规格说明)范围相匹配的PC上统计数据是很重要，同时要去报所有的材质备用选项都可以正确地工作。
+<p />
+<h4><a name="Playstation 3"></a> Playstation 3 </h4>
+<p />
+即将书写相关文档。
+<p />
+<h4><a name="Xbox 360"></a> Xbox 360 </h4>
+<p />
+在实际的开发包上检查所有的贴图动态载入、内存、性能问题以及统计数据是很重要的，因为结果可能根据PC的不同而不同。
+在xbox调试性能问题的最重要的工具是微软的Performance Investigator for Xbox (PIX)。
+<p />
+<h5><a name="Xbox的性能调查工具(PIX)"></a> Xbox的性能调查工具(PIX) </h5>
+<p />
+请参照MDSN上的文档<sup>?</sup>。 <ul>
+<li> <a href="#" target="_top">LightMapVSVertexLightingCosts.xlsx</a>:更新了考虑了N个实例的情况。
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LevelOptimizationCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:37:50 GMT -->
+</html></body>

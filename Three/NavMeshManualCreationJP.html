@@ -1,0 +1,319 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavMeshManualCreationJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:20 GMT -->
+<head>
+<title> UDK | NavMeshManualCreationJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">NavMeshManualCreationJP  </b></div>
+<div id="tooltext">
+<a href="NavMeshManualCreationCH.html" class="twikiLink">中国翻译</a><br><a href="NavMeshManualCreationKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/NavMeshManualCreationJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="ナビゲーションメッシュの手動作成"></a> ナビゲーションメッシュの手動作成 </h1>
+<p />
+<em>ドキュメントの概要: ナビゲーションメッシュの一部を手動で作成する手順の概要と、作成に適した状況の説明。</em>
+<p />
+<em>ドキュメントの変更ログ: <a href="https://udn.epicgames.com/Main/MattTonks" class="restricted" class="restricted" class="twikiLink">Matt Tonks</a> により作成および更新。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="NavMeshManualCreationJP.html#ナビゲーションメッシュの手動作成"> ナビゲーションメッシュの手動作成</a> <ul>
+<li> <a href="NavMeshManualCreationJP.html#概要"> 概要</a>
+</li> <li> <a href="NavMeshManualCreationJP.html#静的メッシュからナビゲーションメッシュへの変換">  静的メッシュからナビゲーションメッシュへの変換</a> <ul>
+<li> <a href="NavMeshManualCreationJP.html#複数の静的メッシュを 1 つの取り込み型パイロンに変換"> 複数の静的メッシュを 1 つの取り込み型パイロンに変換</a>
+</li></ul>
+</li> <li> <a href="NavMeshManualCreationJP.html#警告"> 警告</a>
+</li></ul>
+</li></ul>
+</div>
+<noautolink>
+<h2><a name="概要"></a> 概要 </h2>
+<p />
+状況によっては、メッシュの一部を自動生成以外の方法で作成した方が都合がよいことがあります。このドキュメントでは、その手段のひとつとして、前から存在するメッシュを選択し、それをナビゲーションメッシュに変換するという方法を説明します。そのために、1 つまたは複数の静的メッシュを、特殊な「imported (取り込み型)」パイロンに変換します。
+<p />
+これらの「取り込み型」パイロンは、メッシュの自動生成プロセスの影響を受けず、メッシュが自動生成されてから残りのメッシュとリンクされます。このリンク方法には、直接エッジを追加するか (取り込まれるメッシュが同一面上に近い場合)、または取り込まれるメッシュと生成されたメッシュの間の境界に沿って、生成されたメッシュを細分割するかのいずれかです (後者については後ほど説明します)。
+<p />
+現在のところ、メッシュを手動で作成する方法は 1 つだけで、それは 1 つまたは複数の静的メッシュを特別な「取り込み型」パイロンに変換するというものです。1 つまたは複数の静的メッシュを選択し、右クリックして [Convert Staticmesh to Navmesh] (静的メッシュをナビゲーションメッシュに変換) を選択すると、静的メッシュの頂点データがコードに直接渡され、ナビゲーションメッシュのデータ構造に変換されます。
+<p />
+複数の静的メッシュを選択した場合は、メッシュが一続きになるようにスナップ/配置され、可能な場合には 1 つにつないで (contiguous) (例えばひと続きの境界になるように)、次にその結果を 1 つのナビゲーションメッシュに入れて「取り込み型」パイロンに変換します。一度に複数のメッシュを取り込めるこの機能を利用すれば、ナビゲーションメッシュを自動生成以外の手段で生成しなければならない特別な状況で、手動でメッシュをひとまとめにすることができます。
+<p />
+<h2><a name="静的メッシュからナビゲーションメッシュへの変換"></a> 静的メッシュからナビゲーションメッシュへの変換 </h2>
+<p />
+静的メッシュをナビゲーションメッシュに変換するのは簡単で、右クリックして [Convert Staticmesh to Navmesh] を選択するだけです。<br />
+ <img alt="ConvertSMToNavMesh_0.png" src="rsrc/Three/NavMeshManualCreationJP/ConvertSMToNavMesh_0.png" /> <br />
+<p />
+静的メッシュのジオメトリはほとんどその形のまま使用され、背面などもそのまま含まれるので注意してください。次の図は平面と 2 つの三角形からなるメッシュの例です。
+<br />
+ <img alt="ConvertSMToNavMesh_6.png" src="rsrc/Three/NavMeshManualCreationJP/ConvertSMToNavMesh_6.png" />
+<br />
+<p />
+ナビゲーションメッシュへの変換後は、メッシュがきれいなグリーンとレッドのナビゲーションメッシュに描画されているのが分かります。
+<p />
+不要なポリゴンがひとつに結合されているのも分かります。
+<p />
+さらに、この取り込み型メッシュは、まだ残りの (自動作成による) ナビゲーションメッシュにリンクされていない点にも注意してください。
+<br />
+ <img alt="ConvertSMToNavMesh_1.png" src="rsrc/Three/NavMeshManualCreationJP/ConvertSMToNavMesh_1.png" />
+<br />
+<p />
+新しいナビゲーションメッシュを追加した後でパスをビルドすると、取り込み型メッシュの境界に沿って自動生成メッシュが細分割されます。これは次の図に示されています。
+<br />
+ <img alt="ConvertSMToNavMesh_2.png" src="rsrc/Three/NavMeshManualCreationJP/ConvertSMToNavMesh_2.png" />
+<br />
+<p />
+下側の境界に沿ったパープルの点線を見てください。これは取り込み型ポリゴンと自動生成のベースポリゴンの間のリンクを示しています。
+<p />
+<p />
+<h3><a name="複数の静的メッシュを 1 つの取り込み型パイロンに変換"></a> 複数の静的メッシュを 1 つの取り込み型パイロンに変換 </h3>
+<p />
+複数の静的メッシュを 1 つのパイロンに変換することもできます。これは、ベース形状の中から手動作成のメッシュを選択してひとつにまとめる場合や、非常に単純な複数の静的メッシュ形状 (四角形や円弧など) の中から任意の構造を組み立て、スケーリングや編成によって大きな形状を作る場合に特に便利です。
+<p />
+これを行うには、静的メッシュを一続きに並べてすべてを選択し、[convert to navmesh] をクリックするだけです。この操作には、隣接する静的メッシュに対する許容値 (tolerance) が組み込まれています。つまり、一続きの形状を形成するために、隣接するメッシュをひとつにはめ合わせるための許容範囲です。
+<p />
+以下の図では、単純な四角形を 1 つにまとめます。
+<br />
+ <img alt="ConvertSMToNavMesh_3.png" src="rsrc/Three/NavMeshManualCreationJP/ConvertSMToNavMesh_3.png" />
+<br />
+<p />
+<p />
+変換後の図です。
+<br />
+ <img alt="ConvertSMToNavMesh_4.png" src="rsrc/Three/NavMeshManualCreationJP/ConvertSMToNavMesh_4.png" />
+<br />
+<p />
+最後に、パスが形成された後の図です。
+<br />
+ <img alt="ConvertSMToNavMesh_5JP.PNG" src="rsrc/Three/NavMeshManualCreationJP/ConvertSMToNavMesh_5JP.png" />
+<br />
+<p />
+ここでも、メッシュをリンクするパープルの点線と、取り込み型ポリゴンを 1 つにつなぐパープルの実線があるのがわかります。取り込み型メッシュを作成する場合には特にこれらの線に注意して、メッシュ間とメッシュポリゴン間に適切なリンクが存在することを確認してください。
+<p />
+<h2><a name="警告"></a> 警告 </h2>
+取り込み型メッシュが自動生成メッシュと同一面に位置する場合でも、それらを追加することはできますが、取り込み型メッシュがグリッドから外れている場合は、残りのメッシュにリンクするときにアーチファクトが発生する可能性があります。
+<p />
+また、取り込み型メッシュを AI は暗黙的に信頼しているので、組み立てられる構成のつじつまが合わなくても、AI はそれを信頼してしまい、支離滅裂な振る舞いをしているように見えることがあるので注意してください。
+<noautolink>
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavMeshManualCreationJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:23 GMT -->
+</html></body>

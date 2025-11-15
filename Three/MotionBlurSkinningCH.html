@@ -1,0 +1,386 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MotionBlurSkinningCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:17 GMT -->
+<head>
+<title> UDK | MotionBlurSkinningCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">MotionBlurSkinningCH  </b></div>
+<div id="tooltext">
+<a href="MotionBlurSkinning.html" class="twikiLink">English Translation</a><br><a href="MotionBlurSkinningJP.html" class="twikiLink">日本語訳</a><br><a href="MotionBlurSkinningKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/MotionBlurSkinningCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt; <b><a href="ParticlesAndEffectsHome.html" class="twikiLink">后期处理特效</a></b> &gt; 运动模糊植皮后期处理特效功能<br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="CinematicArtistHome.html" class="twikiLink">过场动画制作人员</a></b> &gt;运动模糊植皮后期处理特效功能
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="运动模糊植皮后期处理特效功能"></a> 运动模糊植皮后期处理特效功能 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlurSkinningCH/3small.png" alt="3small.png" width='355' height='422' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>向不同方向移动的身体部分显示不同的运动模糊方向和强度。</SMALL> </td></tr>
+</table>
+<br>
+<p />
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="MotionBlurSkinningCH.html#运动模糊植皮后期处理特效功能"> 运动模糊植皮后期处理特效功能</a> <ul>
+<li> <a href="MotionBlurSkinningCH.html#概述"> 概述</a>
+</li> <li> <a href="MotionBlurSkinningCH.html#激活该功能"> 激活该功能</a>
+</li> <li> <a href="MotionBlurSkinningCH.html#设置骨架网格物体标志"> 设置骨架网格物体标志</a>
+</li> <li> <a href="MotionBlurSkinningCH.html#实现"> 实现</a> <ul>
+<li> <a href="MotionBlurSkinningCH.html#骨骼数量限制"> 骨骼数量限制</a>
+</li> <li> <a href="MotionBlurSkinningCH.html#着色器变换">着色器变换</a>
+</li></ul>
+</li> <li> <a href="MotionBlurSkinningCH.html#性能"> 性能</a> <ul>
+<li> <a href="MotionBlurSkinningCH.html#CPU数据更新"> CPU数据更新</a>
+</li> <li> <a href="MotionBlurSkinningCH.html#更多的描画函数"> 更多的描画函数</a>
+</li> <li> <a href="MotionBlurSkinningCH.html#顶点贴图获取的GPU消耗"> 顶点贴图获取的GPU消耗</a>
+</li></ul>
+</li> <li> <a href="MotionBlurSkinningCH.html#内存"> 内存</a>
+</li> <li> <a href="MotionBlurSkinningCH.html#不同平台上的支持"> 不同平台上的支持</a>
+</li> <li> <a href="MotionBlurSkinningCH.html#优化："> 优化：</a>
+</li> <li> <a href="MotionBlurSkinningCH.html#有用的控制台命令"> 有用的控制台命令</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+推荐阅读： <a href="MotionBlur.html" class="twikiLink">运动模糊</a>
+<p />
+在实现 <strong>运动模糊植皮</strong> 之前，我们仅支持基于相机和对象运动(平移、旋转、缩放)的 <strong>刚体运动模糊</strong> 。植皮网格物体继承了对象根骨骼的对象运动，该运动可以很好地进行简单对象的运动效果，但对于不适用于角色。躯体的不同部分向不同的方向运动，这需要更加成熟的处理方法。
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlurSkinningCH/PerBoneMotionBlur.jpg" alt="PerBoneMotionBlur.jpg" width='672' height='350' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>左侧: 启动该功能<br>中间： 禁用该功能<br>右侧： 显示为颜色的每个像素速度。</SMALL> </td></tr>
+</table>
+<p />
+植皮运动模糊需要一些额外的CPU和GPU性能，并且会产生额外的内存消耗。由于这个原因，所以该功能应该仅在需要的地方使用。对于所有其他对象来说， <strong>刚体植皮运动模糊</strong> 仍然可用。
+<p />
+<h2><a name="激活该功能"></a> 激活该功能 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+如果平台(请参阅后面的关于这个主题的部分)支持这个功能，可以通过设置ini文件"BaseEngine.ini"中的"MotionBlurSkinning"或者稍后在运行时通过控制台命令 "MotionBlurSkinning"来激活这个功能。
+<p />
+在ini设置中指定的数值和控制台命令所使用的数值是一样的。它不仅允许您切换功能的打开(1)和关闭(0)状态，同时它会覆盖面每个对象的标志，强制使它应用于所有的对象(2)。当使用控制台命令没有额外的参数时可以看到当前状态及一些帮助:
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlurSkinningCH/ConsoleMotionBlurSkinning.jpg" alt="ConsoleMotionBlurSkinning.jpg" width='264' height='137' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>当使用 MotionBlurSkinning命令时的反应。</SMALL> </td></tr>
+</table>
+<p />
+<h2><a name="设置骨架网格物体标志"></a> 设置骨架网格物体标志 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+这个标志是 <strong>bPerBoneMotionBlur</strong> ，可以通过代码(比如!UnrealScript)或者当在关卡中放置对象时进行设置。
+<p />
+     <img src="rsrc/Three/MotionBlurSkinningCH/editorflag.jpg" alt="editorflag.jpg" width='425' height='382' />
+<p />
+<h2><a name="实现"></a> 实现 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+植皮运动模糊正在把每个像素运动向量输出到速度贴图中(目前相机运动是黑色、对象运动是彩色，更多细节请参照： <a href="MotionBlur.html" class="twikiLink">运动模糊</a>）。在渲染完所有的速度后，以下的步骤和 <strong>刚体运动模糊</strong> 或 <strong>植皮运动模糊</strong> 没有差别。
+<p />
+我们把在这帧中使用的所有对象的骨骼数据存储到贴图中，以便在下一帧中使用。这意味着我们总是需要两个贴图，因为我们在同一帧中从一个贴图(GPU)中读取数据然后写入到另一个贴图(CPU)中。这最小化了贴图锁定次数。修改引擎使用三重缓冲,某些人或许必须向这个链中添加另一个缓冲器。
+<p />
+使用顶点着色器常量可以实现这个功能，但是因为这些常量是有限的，我们面临着把数据放入到着色器中的挑战。GPU植皮已经几乎使用了所有的常量，而对于植皮运动模糊我们需要双倍的常量数量(我们既需要当前的骨骼矩阵也需要前一个骨骼矩阵)。打包数据或许是一个选择(比如四个一分组+缩放+位置)，但是没有进一步的更复杂的处理。把描画函数分割为骨骼数量一半的块数是另一种解决这个问题的方法，但是这会降低其他渲染遍数的渲染器性能，并且会给内容准备(烘焙/导入)添加更大的复杂性。
+<p />
+我们决定使用"顶点贴图获取"来实现植皮运动模糊。这个GPU功能并不是在所有硬件上都支持，尤其是早期的 ShaderModel 3.0硬件 (AMD/ATI)不支持该功能。
+<p />
+我们使用CPU中的骨骼数据来更新贴图。为了获得更好的贴图缓存性能，我们使用一维贴图。
+<p />
+我们把网格物体分割成块来遵守骨骼数量的限制(有限的顶点着色器常量)，并通过材质来分割网格物体。
+<p />
+骨骼看上去可能是一样的，因为我们使用了每个块索引，而那些索引对应到了一个骨骼子集上。
+<p />
+<h3><a name="骨骼数量限制"></a> 骨骼数量限制 </h3>
+<p />
+因为我们使用1维的贴图来存放骨骼数据，所以在骨骼数量上有一些限制。我们目前使用宽4096的贴图，每个骨骼需要存储3个贴图像素。请使用 <strong>stat SceneUpdate</strong> 命令来查看这个限制是否影响您。我们仅对附近的对象进行运动模糊处理，对于我们使用的骨骼数量来说，我们并没有把这个当成问题来看待。注意，脸部动画的运动模糊通常不需要!MotionBlurSkinning功能。
+<p />
+<h3><a name="着色器变换"></a> 着色器变换 </h3>
+<p />
+无论是具有植皮运动模糊还是没有运动模糊植皮功能，我们都尝试避免着色器变换。这会保持代码复杂度较低并且一般会具有较少的着色器。我们决定使用静态分支(和一个布尔着色器常量比较)，因为这解决了问题并且经过了驱动程序优化。
+<p />
+在 Xbox360上，我们使用静态分支来避免着色器变换。我们验证确定这和编译出来的一样快。但其他的平台还没使用这个方法(请参照优化部分)。
+<p />
+<h2><a name="性能"></a> 性能 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="CPU数据更新"></a> CPU数据更新 </h3>
+<p />
+植皮运动模糊的CPU消耗不像从先前帧中存储的用于后续帧的数据的性能消耗那样高。因为我们仅是增减双倍的缓存,所以贴图锁定操作是应该不会延迟，但是请确保我们在这上面有一个 <strong>stat(统计数据)</strong> 。通过使用控制台命令 <strong>stat SceneUpdate</strong> ，您可以参看这个数值。
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlurSkinningCH/StatSceneUpdate.jpg" alt="StatSceneUpdate.jpg" width='558' height='236' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>统计数据显示了锁定的CPU事件及已经更新的骨骼数量。</SMALL> </td></tr>
+</table>
+<p />
+<h3><a name="更多的描画函数"></a> 更多的描画函数 </h3>
+<p />
+运动模糊的对象需要在速度渲染那遍进行渲染(以便存储每个像素的运动模糊向量)。如果非植皮运动模糊，我们仅在有对象运动时需要进行这个处理。为了测试植皮对象是否运动，我们需要检测更多的数据。我们还有对此进行优化。这个处理可以完成，但是对于具有很多运动对象的最糟糕的情况，这没有什么作用。
+<p />
+那意味着当为一个没有运动的对象启用运动模糊时(比如，不移动的机器人)，现在就要渲染它并且需要添加更多的描画函数。
+<p />
+<h3><a name="顶点贴图获取的GPU消耗"></a> 顶点贴图获取的GPU消耗 </h3>
+<p />
+当前的方法需要把12个顶点贴图取入到一个非常大的顶点格式中(一个4x3的骨骼矩阵需要4个浮点数，需要对4个骨骼进行植皮)。这意味着需要渲染更多的顶点，渲染速度会更慢。使用这种方法仅渲染附近的对象(速度渲染那遍)，所以渲染器的性能消耗会由于大量的邻近动作而加剧。
+<p />
+当在Xbox360(具有变形顶点的浓密的三角形网格物体)上优化速度渲染时， 我们注意到渲染速度比刚体运动模糊慢60%（所有的对象都移动了，从而不能进行跳跃渲染）。
+<p />
+<h2><a name="内存"></a> 内存 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+这个功能的内存消耗是个常量，因为存放数据的两个贴图的大小是固定的。这避免了重新分配的性能消耗和内存碎片。为了看到占用了多少内存，我们跟踪这个内存。您可以使用 <strong>stat memory</strong> 控制台命令来查看数据：
+<p />
+     <img src="rsrc/Three/MotionBlurSkinningCH/StatMemory.jpg" alt="StatMemory.jpg" width='573' height='107' />
+<p />
+<h2><a name="不同平台上的支持"></a> 不同平台上的支持 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+我们的实现是基于 <strong>顶点贴图获取</strong> 功能的，不是所有GPU都具有该功能。目前，我们在!Direct3D 9 (如果硬件支持它)和Xbox360上支持植皮运动模糊。在Playstation 3平台上添加这个功能是非常简单的，但是性能速度太慢(如果实现贴图获取和较高的顶点数量)。以后将会支持未来的!DirectX版本。目前还没有打算提供移动硬件的支持(性能原因)。
+<p />
+如果平台不能支持该功能，那么引擎就会自动地使用 <strong>刚体植皮运动模糊</strong> 作为替换。
+<p />
+<h2><a name="优化："></a> 优化： </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> 在Xbox360上，可以使用"vfetch"功能而不是使用顶点贴图获取功能。
+</li> <li> 我可以在每个顶点上进行小于4次的骨骼查找(降低了质量但是是可以接受的)。
+</li> <li> 我们可以在运行时检查bPerBoneMotionBlur，以便当它知道对象没有运动时可以禁用游戏代码(很简单但是需要处理游戏代码)。
+</li> <li> 在PC和Playstation 3上使用静态分支。由于有个引擎bug所以我们还不能使用它。作为一个解决方案，我们可以判断浮点数的状态来禁用那个功能(这意味着非植皮对象在速度渲染时着色器性能消耗代价很大)。
+</li> <li> 目前即时仅使用了部分贴图，我们也会锁定整个贴图。
+</li> <li> 通过把所有的骨骼和之前的骨骼比较来测试是否需要速度渲染。
+</li></ul>
+<p />
+<h2><a name="有用的控制台命令"></a> 有用的控制台命令 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <dl>
+<dt> <code><b>MotionBlurSkinning</b></code> </dt><dd> 如上所描述的。
+</dd></dl>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MotionBlurSkinningCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:19 GMT -->
+</html></body>

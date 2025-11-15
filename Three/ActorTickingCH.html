@@ -1,0 +1,377 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ActorTickingCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:15:54 GMT -->
+<head>
+<title> UDK | ActorTickingCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ActorTickingCH  </b></div>
+<div id="tooltext">
+<a href="ActorTicking.html" class="twikiLink">English Translation</a><br><a href="ActorTickingJP.html" class="twikiLink">日本語訳</a><br><a href="ActorTickingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ActorTickingCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<!--  -->
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="UnrealScriptHome.html" class="twikiLink">虚幻脚本</a></b> &gt; Actor 更新 <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="GameplayProgrammingHome.html" class="twikiLink">游戏性编程</a></b> &gt; Actor 更新
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Actor 更新"></a> Actor 更新 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="ActorTickingCH.html#Actor 更新"> Actor 更新</a> <ul>
+<li> <a href="ActorTickingCH.html#概述"> 概述</a>
+</li> <li> <a href="ActorTickingCH.html#TG_PreAsyncGroup"> TG_PreAsyncGroup</a>
+</li> <li> <a href="ActorTickingCH.html#TG_DuringAsyncGroup"> TG_DuringAsyncGroup</a>
+</li> <li> <a href="ActorTickingCH.html#TG_PostAsyncGroup"> TG_PostAsyncGroup</a>
+</li> <li> <a href="ActorTickingCH.html#Actor 产生"> Actor 产生</a>
+</li> <li> <a href="ActorTickingCH.html#组件更新"> 组件更新</a>
+</li> <li> <a href="ActorTickingCH.html#Tick(更新)的代码流程"> Tick(更新)的代码流程</a>
+</li> <li> <a href="ActorTickingCH.html#详细的代码流程 (超出更新之外)"> 详细的代码流程 (超出更新之外)</a> <ul>
+<li> <a href="ActorTickingCH.html#代码流程(每帧)"> 代码流程(每帧)</a>
+</li> <li> <a href="ActorTickingCH.html#为什么它如此重要？"> 为什么它如此重要？</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Actors在每帧之间经过的时间中按照它们在World(世界)的actor列表中出现的顺序基于每帧进行更新。现在，Actors在3个阶段进行更新： 在异步处理之前、异步处理过程中以及异步处理后。被更新的Actor所在的组是由TickGroup编号控制的。如果Actors需要在任何异步工作(物理及后面的其它操作)之前进行更新，那么需要把它分配到TG_PreAsyncWork组中。如果操作失败，那么将会导致不正确的行为 和/或 丢掉一帧的问题。可以同物理及其它线程并行更新的Actors被分配给 TG_DuringAsyncWork组。如果在那个组中的任何Actor调用了接触我们的刚体物理数据的函数，那么将会向日志中输出一个错误，并忽略那个函数调用。这可能会导致内存泄露、无效的场景状态等，所以必须对其进行修复。同样该现象也应用于SpawnActor(), MoveActor(), SetLocation(), SetCollision()等。这些函数将会继续执行，而不会影响物理线程。它们也会向日志中输出错误。最后，依赖于先更新物理的Actor设置它们的组为TG_PostAsyncWork。在这个组中的Actors为了呈现精确的世界状态(车辆、布娃娃等)，它们依赖于物理仿真的结果。在这个阶段可以调用物理和所有Unreal函数来进行移动、生成对象以及碰撞是可以的。
+<p />
+<p />
+这里是把Actors放到更新组中的优势/劣势列表：
+<p />
+<h2><a name="TG_PreAsyncGroup"></a> TG_PreAsyncGroup </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
++可以安全地调用任何Unreal函数或Novodex的物理函数。
+<p />
++更新物理仿真的位置、旋转度等。
+<p />
+-在最后一帧的物理仿真结果上进行操作。
+<p />
+-在处理过程中没有并行处理。
+<p />
+<h2><a name="TG_DuringAsyncGroup"></a> TG_DuringAsyncGroup </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
++可以和物理仿真平行发生。
+<p />
+- 不能安全地调用某些Unreal函数集所有的写入到场景数据中的Novodex的物理函数(但是可以读取场景数据)。
+<p />
+<h2><a name="TG_PostAsyncGroup"></a> TG_PostAsyncGroup </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
++可以安全地调用任何Unreal函数或Novodex的物理函数。
+<p />
++ 在当前帧的物理仿真数据上进行操作。
+<p />
+-在处理过程中没有并行处理。
+<p />
+所以把一个Actor放到给定列表中的一般规则是：
+<p /> <ol>
+<li> 如果它改变碰撞、产生可碰撞的actors，写入到Novodex数据中，那么它应该放入到TG_PreAsyncWork中。一般这样的Actors是Pawns、Weapons(武器)及某些刚体类。
+</li> <li> 如果Actor不能改变碰撞、可以产生可碰撞的Actors（不可碰撞的Actors也可以）或者可以改变Novodex数据，那么Actor应该放入到TG_DuringAsyncWork组中。这是最好的地方，因为更新Actors所消耗的时间隐藏了任何花费在仿真物理所消耗的时间，比如这里2毫秒的更新时间意味着大约有长达2毫秒的仿真时间是没有的。粒子系统、音频、AI处理可以放入到这个组中。
+</li> <li> 如果Actor需要在更新它的Unreal数据前从Novodex 获得数据，那么它必须放到 TG_PostAsyncWork组中。车辆和布娃娃一般会放入到这个组中。
+</li></ol>
+<p />
+<p />
+<h2><a name="Actor 产生"></a> Actor 产生 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+产生一个Actor，意味着不管该Actor的更新组是什么，它(及它的所有组件)都会在产生它的那个组中进行更新。在下一帧中，新产生的Actor将会在它的争取的更新组中进行更新监测。其中有一个例外是在异步任务中产生的Actor，它的更新将会延迟，直到TG_PostAsyncWork发生为止。
+<p />
+<p />
+<h2><a name="组件更新"></a> 组件更新 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+和Actors可以被分割到不同的更新组中一样，组件也可以。前面，Actor在Actor的tick（更新）过程中更新它的所有组件。这个过程仍然会发生，但是需要位于不同组中的组件要放在管理它们的列表中，当更新时， 组件应该使用和分配Actor到一个更新组中一样的标准来分配更新组。
+<p />
+<p />
+<h2><a name="Tick(更新)的代码流程"></a> Tick(更新)的代码流程 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">游戏线程</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">物理线程</font></a> </th></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 遍历世界的Actor列表，并更新这些是 TG_PreAsyncWork组的Actors，然后延迟所有其它Actors的更新 </td><td bgcolor="#ffffff"> 空闲 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 对于每个更新过的Actor，遍历所组件列表来更新TG_PreAsyncWork组中的Actors，延迟所有其它Actors的更新 </td><td bgcolor="#eaeaea"> 空闲 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 通知启动物理线程 </td><td bgcolor="#ffffff"> 启动仿真 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 更新每个位于TG_DuringAsyncWork列表中的Actor </td><td bgcolor="#eaeaea"> 仿真物理 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 对于Actor中的每个组件，根据需要更新延迟的组件。 </td><td bgcolor="#ffffff"> 仿真物理 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 更新每个延迟直到TG_DuringAsycnWork出现的才进行更新的组件 </td><td bgcolor="#eaeaea"> 仿真物理 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 直到物理处理完成之前处于阻塞状态 </td><td bgcolor="#ffffff"> 返回仿真结果 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 更新位于TG_PostAsyncWork列表中的每个Actor。 </td><td bgcolor="#eaeaea"> 空闲 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 更新Actor中的每个组件 </td><td bgcolor="#ffffff"> 空闲 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 更新每个延迟更新直到TG_PostAsycnWork出现的才进行更新的组件 </td><td bgcolor="#eaeaea"> 空闲 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 渲染&amp; 重复 </td><td bgcolor="#ffffff"> 空闲 </td></tr>
+</table>
+<p />
+<p />
+<h2><a name="详细的代码流程 (超出更新之外)"></a> 详细的代码流程 (超出更新之外) </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="代码流程(每帧)"></a> 代码流程(每帧) </h3>
+<p />
+<pre>
+Object ticking
+   Pre-physics
+      controller (input)
+      pawn (script)
+      Components
+         SkeletalMeshComponent: update animations, skeleton controls, then compute the matrices
+   Physics, async
+      pawn physics
+   Post-physics
+   Camera tick
+   Viewport tick
+
+   &#34;server travelling&#34;
+   &#34;client travelling&#34;
+   streaming
+
+Render
+   Calculate VP matrix (ask camera in script, returns cached value)
+   Controller.PreRender
+      UTPawn.PreRender (pretty good thing for licencees to use as well)
+   Render everything
+
+Audio
+
+Callgraph computation
+</pre>
+<p />
+<h3><a name="为什么它如此重要？"></a> 为什么它如此重要？ </h3>
+<p />
+理解更新及渲染顺序对于避免 延迟一帧的问题以及解决调用顺序依赖的问题是至关重要的。比如，相机在所有更新结束后在进行更新，所以所有相机相关的东西(比如第一人称附加或激光点)都必须在PreRender(预渲染器)中完成。但是有时候，比如，对于依赖于相机位置的 <em>动画</em> 将会有延迟1帧的问题，因为动画在Pre-physics过程中发生，Pawn运动在物理过程中发生，相机(从技术上讲)依赖于Pawn的位置，因此洞眼依赖创建了一个循环。要想解决这些问题，那么则需要在每帧中多次计算某些东西。把相机更新和动画更新移动到后期物理中可以允许使得动画具有正确地更新的相机的位置（相机将会在每帧中更新两次，除非在代码中指定不那么做）。
+<p />
+ - Jordan Weitz<sup>?</sup>
+<p />
+<noautolink>
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ActorTickingCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:15:54 GMT -->
+</html></body>

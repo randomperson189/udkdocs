@@ -1,0 +1,596 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PerformanceAndMemory.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:39:41 GMT -->
+<head>
+<title> UDK | PerformanceAndMemory    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">PerformanceAndMemory  </b></div>
+<div id="tooltext">
+<a href="PerformanceAndMemoryJP.html" class="twikiLink">日本語訳</a><br><a href="PerformanceAndMemoryCH.html" class="twikiLink">中国翻译</a><br><a href="PerformanceAndMemoryKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/PerformanceAndMemory -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<strong><font color="#ff0000">This page is superseded by the <a href="PerformanceHome.html" class="twikiLink">Performance, Profiling, &amp; Optimization</a> home page. Please see that page for current information on profiling and optimization in Unreal engine 3.</font></strong>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="UDKProgrammingHome.html" class="twikiLink">Technical &amp; Programming Home</a></b> &gt; Performance and Memory
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Performance and Memory"></a> Performance and Memory </h1>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="PerformanceAndMemory.html#Performance and Memory"> Performance and Memory</a> <ul>
+<li> <a href="PerformanceAndMemory.html#Overview"> Overview</a>
+</li> <li> <a href="PerformanceAndMemory.html#Keeping Your Game Working"> Keeping Your Game Working</a> <ul>
+<li> <a href="PerformanceAndMemory.html#Continuous Integration">Continuous Integration</a>
+</li> <li> <a href="PerformanceAndMemory.html#Content Audit Commandlet">Content Audit Commandlet</a>
+</li> <li> <a href="PerformanceAndMemory.html#Daily Automated Smoke Tests">Daily Automated Smoke Tests</a>
+</li> <li> <a href="PerformanceAndMemory.html#Daily Play Tests">Daily Play Tests</a>
+</li> <li> <a href="PerformanceAndMemory.html#Daily QA Performance/Memory Metrics">Daily QA Performance/Memory Metrics</a>
+</li> <li> <a href="PerformanceAndMemory.html#Fix Up Redirects Commandlet">Fix Up Redirects Commandlet</a>
+</li> <li> <a href="PerformanceAndMemory.html#Sentinel">Sentinel</a>
+</li> <li> <a href="PerformanceAndMemory.html#Set Texture LOD Group Commandlet">Set Texture LOD Group Commandlet</a>
+</li></ul>
+</li> <li> <a href="PerformanceAndMemory.html#General Optimization"> General Optimization</a> <ul>
+<li> <a href="PerformanceAndMemory.html#Just Turn It Off">Just Turn It Off</a>
+</li> <li> <a href="PerformanceAndMemory.html#Looking At A Wall">Looking At A Wall</a>
+</li> <li> <a href="PerformanceAndMemory.html#Spawning N Of A Type To Exaggerate">Spawning N Of A Type To Exaggerate</a>
+</li> <li> <a href="PerformanceAndMemory.html#Hitches"> Hitches</a>
+</li></ul>
+</li> <li> <a href="PerformanceAndMemory.html#Memory"> Memory</a> <ul>
+<li> <a href="PerformanceAndMemory.html#Always Loaded Content">Always Loaded Content</a>
+</li> <li> <a href="PerformanceAndMemory.html#Analyze Referenced Content">Analyze Referenced Content</a>
+</li> <li> <a href="PerformanceAndMemory.html#Content Comparison Commandlet">Content Comparison Commandlet</a>
+</li> <li> <a href="PerformanceAndMemory.html#Hot Spot Reporting in Levels">Hot Spot Reporting in Levels</a>
+</li> <li> <a href="PerformanceAndMemory.html#DVD Footprint">DVD Footprint</a>
+</li> <li> <a href="PerformanceAndMemory.html#Executable Size">Executable Size</a>
+</li> <li> <a href="PerformanceAndMemory.html#Find Duplicate Textures Commandlet">Find Duplicate Textures Commandlet</a>
+</li> <li> <a href="PerformanceAndMemory.html#Histograms For Content">Histograms For Content</a>
+</li> <li> <a href="PerformanceAndMemory.html#Per Poly Collision">Per Poly Collision</a>
+</li> <li> <a href="PerformanceAndMemory.html#Level Optimization">Level Optimization</a>
+</li> <li> <a href="PerformanceAndMemory.html#MemLeakCheck">MemLeakCheck</a>
+</li> <li> <a href="PerformanceAndMemory.html#Memory Profiler">Memory Profiler</a>
+</li> <li> <a href="PerformanceAndMemory.html#Pools That Grow">Pools That Grow</a>
+</li> <li> <a href="PerformanceAndMemory.html#TArray Slack">TArray Slack</a>
+</li> <li> <a href="PerformanceAndMemory.html#Texture Pool">Texture Pool</a>
+</li> <li> <a href="PerformanceAndMemory.html#Unused Animations">Unused Animations</a>
+</li></ul>
+</li> <li> <a href="PerformanceAndMemory.html#GameThread"> GameThread</a> <ul>
+<li> <a href="PerformanceAndMemory.html#AI Logging">AI Logging</a>
+</li> <li> <a href="PerformanceAndMemory.html#Animation">Animation</a>
+</li> <li> <a href="PerformanceAndMemory.html#Cleaning Up Issues Highlighted By Log Messages">Cleaning Up Issues Highlighted By Log Messages</a>
+</li> <li> <a href="PerformanceAndMemory.html#Dynamic Light Environment Updating">Dynamic Light Environment Updating</a>
+</li> <li> <a href="PerformanceAndMemory.html#Garbage Collection">Garbage Collection</a>
+</li> <li> <a href="PerformanceAndMemory.html#Good Use of #if FINAL_RELEASE /`if(`notdefined(FINAL_RELEASE))">Good Use of #if FINAL_RELEASE /`if(`notdefined(FINAL_RELEASE))</a>
+</li> <li> <a href="PerformanceAndMemory.html#LineChecks">LineChecks</a>
+</li> <li> <a href="PerformanceAndMemory.html#Loading Performance">Loading Performance</a>
+</li> <li> <a href="PerformanceAndMemory.html#LOOKING_FOR_PERF_ISSUES">LOOKING_FOR_PERF_ISSUES</a>
+</li> <li> <a href="PerformanceAndMemory.html#Pools In The Engine">Pools In The Engine</a>
+</li> <li> <a href="PerformanceAndMemory.html#NavMesh Performance">NavMesh Performance</a>
+</li> <li> <a href="PerformanceAndMemory.html#Move Actor">Move Actor</a>
+</li> <li> <a href="PerformanceAndMemory.html#Particles">Particles</a>
+</li> <li> <a href="PerformanceAndMemory.html#Per Frame Expensive Updates">Per Frame Expensive Updates</a>
+</li> <li> <a href="PerformanceAndMemory.html#Physics">Physics</a>
+</li> <li> <a href="PerformanceAndMemory.html#Profiling _GameThread">Profiling GameThread</a>
+</li> <li> <a href="PerformanceAndMemory.html#Skeletal Mesh Component Updates">Skeletal Mesh Component Updates</a>
+</li> <li> <a href="PerformanceAndMemory.html#Slow _UnrealScript Function Calls">Slow UnrealScript Function Calls</a>
+</li> <li> <a href="PerformanceAndMemory.html#Spawning Anything Is Slow">Spawning Anything Is Slow</a>
+</li> <li> <a href="PerformanceAndMemory.html#TickableActors List For Objects That Are Event Based">TickableActors List For Objects That Are Event Based</a>
+</li> <li> <a href="PerformanceAndMemory.html#Useful Exec Commands">Useful Exec Commands</a>
+</li></ul>
+</li> <li> <a href="PerformanceAndMemory.html#RenderThread"> RenderThread</a> <ul>
+<li> <a href="PerformanceAndMemory.html#Render Thread Areas To Reduce Fidelity">Render Thread Areas To Reduce Fidelity</a>
+</li> <li> <a href="PerformanceAndMemory.html#Profiling _RenderThread">Profiling RenderThread</a>
+</li></ul>
+</li> <li> <a href="PerformanceAndMemory.html#GPU"> GPU</a> <ul>
+<li> <a href="PerformanceAndMemory.html#DetailMode To Disable">DetailMode To Disable</a>
+</li> <li> <a href="PerformanceAndMemory.html#Dynamic Shadowing">Dynamic Shadowing</a>
+</li> <li> <a href="PerformanceAndMemory.html#Shader Complexity">Shader Complexity</a>
+</li> <li> <a href="PerformanceAndMemory.html#Platform Specific GPU Tools">Platform Specific GPU Tools</a>
+</li> <li> <a href="PerformanceAndMemory.html#The _FreezeAt console command">The FreezeAt console command</a>
+</li></ul>
+</li> <li> <a href="PerformanceAndMemory.html#Network Bandwidth"> Network Bandwidth</a> <ul>
+<li> <a href="PerformanceAndMemory.html#DevNetTraffic">DevNetTraffic</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<p />
+Making a game that both runs well and fits withing memory constraints is an exciting problem that touches upon many systems and many disciplines.  This page is your gateway into a large number of tools and techniques in which to help you win the battle.  Even with the best tools in the world, you still need to instill the mindset of making certain that people are using the minimal amount of data / cpu cycles to create what they want.  The tools and techniques listed here will help you do exactly that.
+<p />
+To do that we break the large problem into a number of sub problems to allow us to focus on each area in as much of an orthogonal way as possible.  This allows multiple people to work/scale independently.
+<p />
+Each section has an overview and then all of the tools/techniques that are applicable to that section.  for each tool/technique we give a brief reason why you want to utilize that tool / technique.  This page is meant to give you a quick overview and point you to a more comprehensive too/technique page that will have all of the details on how to utilize that specific tool/technique.
+<p />
+<h2><a name="Keeping Your Game Working"></a> Keeping Your Game Working </h2>
+<p />
+Keeping your game running is a balancing act between constantly adding new content and features VERSUS fitting within your budgets.  When adding new content, often it will be added with incorrect settings or will be more expensive compared to existing content.  Usually these mistakes are just innocent oversight.  But with the amount of content games are utilizing these days it is hard to track.
+<p />
+The following tools/techniques will help you maintain a working game:
+<p />
+<h3><a name="Continuous Integration"></a> <a href="https://udn.epicgames.com/Three/ContinuousIntegration" class="restricted" class="restricted" class="twikiLink">Continuous Integration</a> </h3>
+<p />
+Find out about build breaks due to bad checkins as soon as possible.
+<p />
+<h3><a name="Content Audit Commandlet"></a> <a href="ContentAuditCommandlet.html" class="twikiLink">Content Audit Commandlet</a> </h3>
+<p />
+Finds "questionable" content that should be looked at and probably fixed.
+<p />
+<h3><a name="Daily Automated Smoke Tests"></a> <a href="https://udn.epicgames.com/Three/DailyAutomatedSmokeTests" class="restricted" class="restricted" class="twikiLink">Daily Automated Smoke Tests</a> </h3>
+<p />
+Catches rarely executed code crashes / issues.
+<p />
+<h3><a name="Daily Play Tests"></a> <a href="https://udn.epicgames.com/Three/DailyPlayTests" class="restricted" class="restricted" class="twikiLink">Daily Play Tests</a> </h3>
+<p />
+Makes certain that the game is always playable and people are not just looking at features in an isolated test level.
+<p />
+<h3><a name="Daily QA Performance/Memory Metrics"></a> <a href="https://udn.epicgames.com/Three/DailyQAPerformanceMemoryMetrics" class="restricted" class="restricted" class="twikiLink">Daily QA Performance/Memory Metrics</a> </h3>
+<p />
+Allows for easy catching of performance / memory regressions.
+<p />
+<h3><a name="Fix Up Redirects Commandlet"></a> <a href="FixUpRedirectsCommandlet.html" class="twikiLink">Fix Up Redirects Commandlet</a> </h3>
+<p />
+Makes certain that there are no redirectors causing content to be loaded when it should not be.
+<p />
+<h3><a name="Sentinel"></a> <a href="https://udn.epicgames.com/Three/Sentinel" class="restricted" class="restricted" class="twikiLink">Sentinel</a> </h3>
+<p />
+Automated system which will gathers performance and memory stats on specified levels.
+<p />
+<h3><a name="Set Texture LOD Group Commandlet"></a> <a href="SetTextureLODGroupCommandlet.html" class="twikiLink">Set Texture LOD Group Commandlet</a> </h3>
+<p />
+Makes certain that textures are in the correct LOD group and fixes incorrect texture settings.
+<p />
+<h2><a name="General Optimization"></a> General Optimization </h2>
+<p />
+For all of the optimizations you need to do for your game here the following techniques are universally good to apply when working.
+<p />
+This page <a href="PerformanceDebugging.html" class="twikiLink">Performance Debugging</a> also has information about tracking down performance problems, bottlenecks and hitches.
+<p />
+<h3><a name="Just Turn It Off"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_JustTurnItOff" class="restricted" class="restricted" class="twikiLink">Just Turn It Off</a> </h3>
+<p />
+Instead of spending hours optimizing something, sometimes it is better to just turn it off!
+<p />
+<h3><a name="Looking At A Wall"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_LookingAtAWall" class="restricted" class="restricted" class="twikiLink">Looking At A Wall</a> </h3>
+<p />
+Look at a wall and see what is still spending costly cpu cycles when it is not being rendered.
+<p />
+<h3><a name="Spawning N Of A Type To Exaggerate"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_SpawningNOfATypeToExaggerate" class="restricted" class="restricted" class="twikiLink">Spawning N Of A Type To Exaggerate</a> </h3>
+<p />
+Having N of the same type of object really shows what parts are slow without getting drowned by the rest of the engine's functions.
+<p />
+<h3><a name="Hitches"></a> Hitches </h3>
+<p />
+Here are a few STAT commands that are useful for quickly check hitchy things at run-time - typically line checks and path finding. Look at the Max values to spot hitchy frames.
+<p /> <ul>
+<li> <strong>STAT UNITMAX</strong> - Use instead of STAT UNIT, in order to catch hitches better.
+</li> <li> <strong>STAT COLLISION</strong> - Look at "Multi Line Check" and "Single Line Check".
+</li> <li> <strong>STAT NAVMESH</strong> - Look at "Generate Path".
+</li> <li> <strong>STAT SLOW</strong> - Shows all stats that are slower than 10 ms. It seems that you have to type STAT NONE to turn it off.
+</li></ul>
+<p />
+<h2><a name="Memory"></a> Memory </h2>
+<p />
+One of the areas we need to be constantly looking at keeping under control is the amount of Memory the game utilizes. Getting a view into what is using memory is the key to this process.  The following will help you do that.
+<p />
+Also, visit the <a href="MemoryDebugging.html" class="twikiLink">Memory Debugging</a> page to learn about tracking down memory leaks, bloat and fragmentation issues.
+<p />
+<h3><a name="Always Loaded Content"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_AlwaysLoadedContent" class="restricted" class="restricted" class="twikiLink">Always Loaded Content</a> </h3>
+<p />
+Determining what you are always paying the cost for even if it is not being used.  You want to minimize this amount.
+<p />
+<h3><a name="Analyze Referenced Content"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_AnalyzeReferencedContent" class="restricted" class="restricted" class="twikiLink">Analyze Referenced Content</a> </h3>
+<p />
+Looks at a set of maps and shows what content they reference in addition to showing global usage of content for those maps.  Allows you to focus your optimization efforts on the biggest bang for the cost.
+<p />
+<h3><a name="Content Comparison Commandlet"></a> <a href="PerfDebug_ContentComparisonCommandlet.html" class="twikiLink">Content Comparison Commandlet</a> </h3>
+<p />
+Looks at all content and allows you to see the relative costs between assets.
+<p />
+<h3><a name="Hot Spot Reporting in Levels"></a> <a href="HotSpotReportGeneration.html" class="twikiLink">Hot Spot Reporting in Levels</a> </h3>
+<p />
+Instructions on how to create "Hot Spot Reports" for your level designers. These reports can be created by your QA department and are useful in identifying memory dips due to sub-levels streaming in and out. They will allow your LDs to better see which buckets are costing the most memory, and should allow them to optimize their levels to better fit in memory.
+<p />
+<h3><a name="DVD Footprint"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_DVDFootprint" class="restricted" class="restricted" class="twikiLink">DVD Footprint</a> </h3>
+<p />
+Determining what your DVD footprint is and distribution of data on it.
+<p />
+<h3><a name="Executable Size"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_ExecutableSize" class="restricted" class="restricted" class="twikiLink">Executable Size</a> </h3>
+<p />
+You can often bloat your executable by accident.  Knowing what is in your Executable is a good thing.
+<p />
+<h3><a name="Find Duplicate Textures Commandlet"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_FindDuplicateTexturesCommandlet" class="restricted" class="restricted" class="twikiLink">Find Duplicate Textures Commandlet</a> </h3>
+<p />
+Will look at all of the content and find textures that have been duplicated over time.  This will then fix up references to point to just one version of the texture.
+<p />
+<h3><a name="Histograms For Content"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_HistogramsForContent" class="restricted" class="restricted" class="twikiLink">Histograms For Content</a> </h3>
+<p />
+It is often really nice to view asset allocation as a histogram / list of categories with an amount next to them.
+<p />
+<h3><a name="Per Poly Collision"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_PerPolyCollision" class="restricted" class="restricted" class="twikiLink">Per Poly Collision</a> </h3>
+<p />
+Not all meshes need to have per poly collision and turning it off will save memory.
+<p />
+<h3><a name="Level Optimization"></a> <a href="LevelOptimization.html" class="twikiLink">Level Optimization</a> </h3>
+<p />
+Overview of some techniques that Level Designers can utilize to make certain their levels are not doing anything slow.
+<p />
+<h3><a name="MemLeakCheck"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_MemLeakCheck" class="restricted" class="restricted" class="twikiLink">MemLeakCheck</a> </h3>
+<p />
+A command that will list out all of the major memory utilizers.  It allows for fast and easy overview for where memory is going and is diffable.
+<p />
+<h3><a name="Memory Profiler"></a> <a href="https://udn.epicgames.com/Three/MemoryProfiler" class="restricted" class="restricted" class="twikiLink">Memory Profiler</a> </h3>
+<p />
+Tool to see exactly where memory is being allocated.  Useful for tracking down non UObject leaks.
+<p />
+<h3><a name="Pools That Grow"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_PoolsThatGrow" class="restricted" class="restricted" class="twikiLink">Pools That Grow</a> </h3>
+<p />
+There are a number of pools in the engine that will grow over time.
+<p />
+<h3><a name="TArray Slack"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_TArraySlack" class="restricted" class="restricted" class="twikiLink">TArray Slack</a> </h3>
+<p />
+Making certain that your TArrays are not wasting space.
+<p />
+<h3><a name="Texture Pool"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_TexturePool" class="restricted" class="restricted" class="twikiLink">Texture Pool</a> </h3>
+<p />
+The Texture Pool is a fixed size, but what occurs inside that pool depends on the settings that Textures have.
+<p />
+<h3><a name="Unused Animations"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_UnusedAnimations" class="restricted" class="restricted" class="twikiLink">Unused Animations</a> </h3>
+<p />
+Animations that are unused take up precious memory.  This will show you how to find them and remove them.
+<p />
+<h2><a name="GameThread"></a> GameThread </h2>
+<p />
+Every object that is added to the scene takes up some resource.  Usually the most interesting objects take up the most.  In order to have lots of GameThread CPU time for those objects we need to make certain that other objects are not unfairly utilizing resources and that we do the minimal amount of work needed to accomplish our goal.  There are a large number of specialized tools/#defines to help you do that effectively.
+<p />
+To get set up for profiling check out:  <a href="PerformanceDebugging.html" class="twikiLink">PerformanceDebugging</a>
+<p />
+<h3><a name="AI Logging"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_AILogging" class="restricted" class="restricted" class="twikiLink">AI Logging</a> </h3>
+<p />
+Determining what and AI is doing that might be expensive.
+<p />
+<h3><a name="Animation"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_Animation" class="restricted" class="restricted" class="twikiLink">Animation</a> </h3>
+<p />
+How to identify slow areas in animation.
+<p />
+<h3><a name="Cleaning Up Issues Highlighted By Log Messages"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_CleaningUpIssuesHighlightedByLogMessages" class="restricted" class="restricted" class="twikiLink">Cleaning Up Issues Highlighted By Log Messages</a> </h3>
+<p />
+The log is your friend.  Messages that show up in the log should not just be ignored but instead the root cause should be found and fixed.
+<p />
+<h3><a name="Dynamic Light Environment Updating"></a> <a href="PerfDebug_DynamicLightEnvironments.html" class="twikiLink">Dynamic Light Environment Updating</a> </h3>
+<p />
+Dynamic Light Environment have a number of settings to make them both performant and look nice.  Getting the correct settings for the type of asset is vital.
+<p />
+<h3><a name="Garbage Collection"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_GarbageCollection" class="restricted" class="restricted" class="twikiLink">Garbage Collection</a> </h3>
+<p />
+Understanding what is being GarbageCollected and reducing that churn.
+<p />
+<h3><a name="Good Use of #if FINAL_RELEASE /`if(`notdefined(FINAL_RELEASE))"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_GoodUseFINAL_RELEASE" class="restricted" class="restricted" class="twikiLink">Good Use of #if FINAL_RELEASE /`if(`notdefined(FINAL_RELEASE))</a> </h3>
+<p />
+Ways to avoid executing and linking in code that never actually used in your shipping game.
+<p />
+<h3><a name="LineChecks"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_LineChecks" class="restricted" class="restricted" class="twikiLink">LineChecks</a> </h3>
+<p />
+Minimizing the number of line checks done per frame.
+<p />
+<h3><a name="Loading Performance"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_LoadingPerformance" class="restricted" class="restricted" class="twikiLink">Loading Performance</a> </h3>
+<p />
+Determining why levels are taking a long time to stream in.
+<p />
+<h3><a name="LOOKING_FOR_PERF_ISSUES"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_LOOKING_FOR_PERF_ISSUES" class="restricted" class="restricted" class="twikiLink">LOOKING_FOR_PERF_ISSUES</a> </h3>
+<p />
+Utilizing the all powerful #define LOOKING_FOR_PERF_ISSUES 1
+<p />
+<h3><a name="Pools In The Engine"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_PoolsInTheEngine" class="restricted" class="restricted" class="twikiLink">Pools In The Engine</a> </h3>
+<p />
+There are a number of pools that help with spawning performance.  Making certain you are using them.
+<p />
+<h3><a name="NavMesh Performance"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_NavMesh" class="restricted" class="restricted" class="twikiLink">NavMesh Performance</a> </h3>
+<p />
+Determining what actions are causing the NavMesh to be slow.
+<p />
+<h3><a name="Move Actor"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_MoveActor" class="restricted" class="restricted" class="twikiLink">Move Actor</a> </h3>
+<p />
+When there are lots of moving actors determining which ones are slow is important.
+<p />
+<h3><a name="Particles"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_Particles" class="restricted" class="restricted" class="twikiLink">Particles</a> </h3>
+<p />
+Finding which Particle systems are the most costly.
+<p />
+<h3><a name="Per Frame Expensive Updates"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_PerFrameExpensiveUpdates" class="restricted" class="restricted" class="twikiLink">Per Frame Expensive Updates</a> </h3>
+<p />
+Every frame things are occurring.  Some are more expensive than others.  Determining what those are is vital.
+<p />
+<h3><a name="Physics"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_Physics" class="restricted" class="restricted" class="twikiLink">Physics</a> </h3>
+<p />
+Physics is run asynch but can still be expensive.
+<p />
+<h3><a name="Profiling _GameThread"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_ProfilingGameThread" class="restricted" class="restricted" class="twikiLink">Profiling GameThread</a> </h3>
+<p />
+Techniques to use when profiling the GameThread.
+<p />
+<h3><a name="Skeletal Mesh Component Updates"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_SkeletalMeshCompUpdates" class="restricted" class="restricted" class="twikiLink">Skeletal Mesh Component Updates</a> </h3>
+<p />
+Techniques to find out which parts of your Skeletal Meshes are slow.
+<p />
+<h3><a name="Slow _UnrealScript Function Calls"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_SlowUnrealScriptFunctionCalls" class="restricted" class="restricted" class="twikiLink">Slow UnrealScript Function Calls</a> </h3>
+<p />
+UnrealScript optimizing can be one of the fastest gains.  Finding the slowest functions and either converting them to c++ or optimizing what they are doing.
+<p />
+<h3><a name="Spawning Anything Is Slow"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_SpawningAnythingIsSlow" class="restricted" class="restricted" class="twikiLink">Spawning Anything Is Slow</a> </h3>
+<p />
+Constantly spawning objects is slow and we want to avoid that.
+<p />
+<h3><a name="TickableActors List For Objects That Are Event Based"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_TickableActorsListForObjectsThatAreEventBased" class="restricted" class="restricted" class="twikiLink">TickableActors List For Objects That Are Event Based</a> </h3>
+<p />
+Many actors only need to be "active" based on an event and do not need to be ticked every frame.
+<p />
+<h3><a name="Useful Exec Commands"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_UsefulExecCommands" class="restricted" class="restricted" class="twikiLink">Useful Exec Commands</a> </h3>
+<p />
+There are a large number of useful exec commands in the engine.  We detail a number of them.
+<p />
+<h2><a name="RenderThread"></a> RenderThread </h2>
+<p />
+<h3><a name="Render Thread Areas To Reduce Fidelity"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_RenderThreadAreasToReduceFidelity" class="restricted" class="restricted" class="twikiLink">Render Thread Areas To Reduce Fidelity</a> </h3>
+<p />
+When you have splitscreen, the renderthread has to do most things twice.  So in many cases your only option is to reduce the fidelity or disable.
+<p />
+<h3><a name="Profiling _RenderThread"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_ProfilingRenderThread" class="restricted" class="restricted" class="twikiLink">Profiling RenderThread</a> </h3>
+<p />
+Techniques to use when profiling the Render.Thread
+<p />
+<h2><a name="GPU"></a> GPU </h2>
+<p />
+<h3><a name="DetailMode To Disable"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_DetailModeToDisable" class="restricted" class="restricted" class="twikiLink">DetailMode To Disable</a> </h3>
+<p />
+When you have an under performing GPU or are having to rendering too many things sometimes just disabling is the best bet.
+<p />
+<h3><a name="Dynamic Shadowing"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_DynamicShadowing" class="restricted" class="restricted" class="twikiLink">Dynamic Shadowing</a> </h3>
+<p />
+Determining which objects are casting dynamic shadows or very large shadows.
+<p />
+<h3><a name="Shader Complexity"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_ShaderComplexity" class="restricted" class="restricted" class="twikiLink">Shader Complexity</a> </h3>
+<p />
+Making certain that shaders are doing what you think they are doing and not wasting GPU cycles for no visual gain.
+<p />
+<h3><a name="Platform Specific GPU Tools"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_PlatformSpecificGPUTools" class="restricted" class="restricted" class="twikiLink">Platform Specific GPU Tools</a> </h3>
+<p />
+Each platform has a number of specific GPU tools to help you profile effectively.
+<p />
+<h3><a name="The _FreezeAt console command"></a> <a href="PerfDebug_FreezeAt.html" class="twikiLink">The FreezeAt console command</a> </h3>
+<p />
+The console command allows to lock the view to a given view to allow better profiling.
+<p />
+<h2><a name="Network Bandwidth"></a> Network Bandwidth </h2>
+<p />
+<h3><a name="DevNetTraffic"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_DevNetTraffic" class="restricted" class="restricted" class="twikiLink">DevNetTraffic</a> </h3>
+<p />
+Shows exactly what is being sent to clients.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PerformanceAndMemory.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:39:43 GMT -->
+</html></body>

@@ -1,0 +1,336 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PerfDebug_FreezeAt.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:41:01 GMT -->
+<head>
+<title> UDK | PerfDebug_FreezeAt    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">PerfDebug_FreezeAt  </b></div>
+<div id="tooltext">
+<a href="PerfDebug_FreezeAtJP.html" class="twikiLink">日本語訳</a><br><a href="PerfDebug_FreezeAtCH.html" class="twikiLink">中国翻译</a><br><a href="PerfDebug_FreezeAtKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/PerfDebug_FreezeAt -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="TechnicalHome.html" class="twikiLink">Technical &amp; Programming Home</a></b> &gt; <b><a href="PerformanceAndMemory.html" class="twikiLink">Performance and Memory</a></b> &gt; The FreezeAt console command
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="The _FreezeAt console command"></a> The FreezeAt console command </h1>
+<p />
+<em>Document Summary: The FreezeAt console command and the FreezeAtConsole variable allow to lock the view to a given position. This is handy for more accurate render profiling.</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="PerfDebug_FreezeAt.html#The _FreezeAt console command"> The FreezeAt console command</a> <ul>
+<li> <a href="PerfDebug_FreezeAt.html#The _FreezeAt console command"> The FreezeAt console command</a>
+</li> <li> <a href="PerfDebug_FreezeAt.html#The _FreezeAtPosition console variable"> The FreezeAtPosition console variable</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="The _FreezeAt console command"></a> The FreezeAt console command </h2>
+<p />
+In order to use the FreezeAt command you need a position and an orientation (6 numbers). This data can be generated by the BugIt console command (written to a file, along with the screenshot) or by using the FreezeAt command:
+<p />
+<div class="codesnippet">
+<pre>
+FreezeAt here
+</pre>
+</div>
+<p />
+The command will output the position to the console/log, freezes at the given position and copies a string to the clipboard. This string can be used
+to freeze the view at level startup. Fore more details on this look at the FreezeAtPosition console variable.
+<p />
+The command also modifies the state of some things (that might change): <ul>
+<li> "RenderTimeFrozen" console variable
+</li> <li> Console command "Pause"
+</li></ul>
+<p />
+The console command help provides detailed info (use the ? parameter):
+<p />
+<div class="codesnippet">
+<pre>
+This console command allows to lock the camera in order to provide more deterministic render profiling.
+The view position and rotation is stored in the console variable &#34;FreezeAtPosition&#34;
+&#34;FreezeAt&#34; without parameters toggle between frozen and not frozen.
+&#34;FreezeAt here&#34; returns the current position to allow to come back to this position.
+&#34;FreezeAt x y z wx wy wz&#34; directly freezes at the given position.
+See also &#34;RenderTimeFrozen&#34; CONSOLE variable help (this console variable is modified)
+Examples:
+ FreezeAt
+ FreezeAt here
+ FreezeAt 2819.5520 416.2633 75.1500 65378 -25879 0
+</pre>
+</div>
+<p />
+<h2><a name="The _FreezeAtPosition console variable"></a> The FreezeAtPosition console variable </h2>
+<p />
+The FreezeAtPosition console variable stores the position that the FreezeAt command is using. Console variables can be loaded through the ConsoleVariables.ini file (in Engine/Config). Simply by adding a line like the following:
+<p />
+<div class="codesnippet">
+<pre>
+FreezeAtPosition &#61; 2819.5520 416.2633 75.1500 65378 -25879 0
+</pre>
+</div>
+<p />
+If on engine startup the variable has a valid position the FreezeAt command is activated automatically.
+<p />
+The console variable help provides detailed info (use the ? parameter):
+<p />
+<div class="codesnippet">
+<pre>
+This console variable stores the position and rotation for the FreezeAt command which allows
+to lock the camera in order to provide more deterministic render profiling.
+The FreezeAtPosition can be set in the ConsoleVariables.ini.
+The number syntax if the same as the one used by the BugIt command:
+ The first three values define the position, the next three define the rotation.
+Example:
+ FreezeAtPosition 2819.5520 416.2633 75.1500 65378 -25879 0
+</pre>
+</div>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+</noautolink>
+<p />
+<style type="text/css">
+<!--
+div.codesnippet
+{
+	margin:0px 10px;
+	padding:0px 10px;
+	background:#f0f0f0;
+	font:12px Courier;
+	max-height:500px;
+	overflow:auto;
+	border:1px inset #989898;
+}
+-->
+</style>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PerfDebug_FreezeAt.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:41:02 GMT -->
+</html></body>

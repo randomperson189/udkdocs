@@ -1,0 +1,412 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ConfigSavegameSystemCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:24:51 GMT -->
+<head>
+<title> UDK | ConfigSavegameSystemCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ConfigSavegameSystemCH  </b></div>
+<div id="tooltext">
+<a href="ConfigSavegameSystem.html" class="twikiLink">English Translation</a><br><a href="ConfigSavegameSystemJP.html" class="twikiLink">日本語訳</a><br><a href="ConfigSavegameSystemKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ConfigSavegameSystemCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="InputOutputHome.html" class="twikiLink">输入 / 输出</a></b> &gt; 使用配置系统保存游戏
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="使用配置系统保存游戏"></a> 使用配置系统保存游戏 </h1>
+<hr size="1" noshade="noshade">
+<p />
+_文档概述：本文档解释了如何使用标准的配置系统来创建一个保存游戏系统。
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="ConfigSavegameSystemCH.html#使用配置系统保存游戏"> 使用配置系统保存游戏</a> <ul>
+<li> <a href="ConfigSavegameSystemCH.html#概述"> 概述</a>
+</li> <li> <a href="ConfigSavegameSystemCH.html#Sapitu"> Sapitu</a> <ul>
+<li> <a href="ConfigSavegameSystemCH.html#=Sapitu= 类"> Sapitu 类         </a> <ul>
+<li> <a href="ConfigSavegameSystemCH.html#项数据库"> 项数据库</a>
+</li> <li> <a href="ConfigSavegameSystemCH.html#人物"> 人物</a>
+</li> <li> <a href="ConfigSavegameSystemCH.html#武器项创建"> 武器项创建</a>
+</li></ul>
+</li> <li> <a href="ConfigSavegameSystemCH.html#=_SapituCharacter= 类"> SapituCharacter 类</a>
+</li> <li> <a href="ConfigSavegameSystemCH.html#=_SapituInventory= 类"> SapituInventory 类</a>
+</li> <li> <a href="ConfigSavegameSystemCH.html#=_SapituItem="> SapituItem</a>
+</li></ul>
+</li> <li> <a href="ConfigSavegameSystemCH.html#保存游戏存储"> 保存游戏存储</a>
+</li> <li> <a href="ConfigSavegameSystemCH.html#使用 Sapitu"> 使用 Sapitu</a>
+</li> <li> <a href="ConfigSavegameSystemCH.html#下载"> 下载</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<hr size="1" noshade="noshade">
+虚幻引擎的配置系统是非常强大的，它的应用不仅仅是保存各种设置。本文档展现了它为 RPG 的游戏创建保存游戏系统的方法。
+<p />
+通过灵活地应用 UI 数据仓库系统和 <code>PerObjectConfig</code> 命令可以获得保存游戏系统。
+<p />
+在您开始学习这篇文档之前，请阅读 ConfigurationFiles（配置文档）页面来了解配置文件在虚幻引擎中的工作原理。
+<p />
+<h2><a name="Sapitu"></a> Sapitu </h2>
+<hr size="1" noshade="noshade">
+Sapitu（它是 Savegames Are Possible In The UDK（在 UDK 中保存游戏是可能的）的简称）为 RPG 游戏实现了一个简单的保存游戏系统。它具有存储人物及其它的武器的能力。
+<p />
+<a href="#" target="_top">您可以从这里下载这个实例的完整源代码</a>。
+<p />
+Sapitu 被分为 4 个类。下载资料同时包含了 2 个额外的类： <code>SapituGame</code> 和 <code>SapituPC</code> ，这些类仅用于从游戏中使用 Sapitu 系统。
+<p />
+Sapitu 的 4 个类如下所示：
+<p /> <ul>
+<li> <code>Sapitu</code> : 这是一个主要类，用于管理保存游戏系统的各种资源。
+</li> <li> <code>SapituCharacter</code> : 这个类存储了人物信息。
+</li> <li> <code>SapituInventory</code> : 这个类是可以属于一个 <code>SapituCharacter</code> 的武器项。
+</li> <li> <code>SapituItem</code> : 这个类被用作为数据库目录，用于创建 <code>SapituInevntory</code> 项。这个类的实例在系统中是只读的。
+</li></ul>
+<p />
+<h3><a name="=Sapitu= 类"></a> <code>Sapitu</code> 类 </h3>
+这个类定义了一些方法来管理新的人物的创建及加载。它也包含了创建新的武器项的方法，并且它保留一个到项数据库的引用。
+<p />
+<h4><a name="项数据库"></a> 项数据库 </h4>
+方法 <code>loadItemDB</code> 初始化了 <code>SapituItem</code> 实例的数据库。它要求所有的 <code>SapituItem</code> 定义都在配置文件中。这是虚幻引擎中的 UI 数据仓库系统的一部分。这个系统在 UT3 也用于查找关于游戏类型、地图以及武器的信息。
+<p />
+<code>getItem</code> 方法提供了一种在当前数据库中查找指定的对象名称的实际 <code>SapituItem</code> 实例的方法。这个名称（或者标识符）是一个内部名称。在您的最终游戏中，或许永远都不会把这个名称显示给玩家。
+<p />
+武器系统使用项数据库来查找武器项的静态定义。并且也需要引用该数据库来创建新的武器项。
+<p />
+<h4><a name="人物"></a> 人物 </h4>
+<code>Sapitu</code> 类也是加载和创建 <code>SapituCharacter</code> 实例的入口点。人物系统使用正常的配置系统和 <code>PerObjectConfig</code> 类命令。
+<p />
+<code>getCharacters</code> 方法返回所有注册的人物的 ID 的列表。与数据库中的项的标示符一样，这是指向 <code>Object.name</code> 的属性。它不是一个用户优化的名称，但是它是一个内部的标示符。在加载及创建人物的过程中需要这个标识符。由于使用名称的使用的方法决定，名称有一个重要的限制。名称中不应该包含空格及各种其它的非字母字符。最好遵守只为 id 使用字母字符的原则。
+<p />
+人物的加载和创建实际上是类似的。这两个操作都是使用以下代码完成的：
+<p />
+<pre>
+myChar = new(none, "MyCharId") class'SapituCharacter';
+</pre>
+<p />
+New 操作符中的第二个参数是很重要的。这个参数决定了要创建的对象的名称。因为 <code>SapituCharacter</code> 被定义为  <code>PerObjectConfig</code> ，所以它将加载具有那个给定名称的对象的配置。
+<p />
+因为我们想对在 Sapitu 中加载和创建新的任务之间加以区别，所以我们首先将会检测给定的标示符是否存在，然后在决定接受或拒绝加载或创建操作。
+<p />
+人物的加载是通过创建合适的实例来完成的。我们也需要初始化它的武器。=SapituCharacter= 存储了一系列的 <code>SapityInventory</code> 项的标示符 ( <code>SapituCharacter.inventoryRecord</code> )。通过使用类似的方式创建这些选项并将其添加到武器项 实例 <code>SapituCharacter.inventory</code> 的列表中。请参照 <code>loadCharacter</code> 方法获得具体实现。
+<p />
+<h4><a name="武器项创建"></a> 武器项创建 </h4>
+武器项需要以特殊的方式进行创建。一个武器项是基于 特定的 <code>SapituItem</code> 实例的。
+<code>createInventory</code> 方法将会基于给定的 <code>SapituItem</code> 创建新的武器。它为武器实例构建一个唯一的标示符，然后执行专用的 <code>new(none, inventoryId) class'SapituInventory'</code> 构造函数来创建武器项。进行这项操作后，它将会初始化 <code>SapituItem</code> 实例中松散定义的各种变量，比如关卡、权重及值。
+<p />
+创建的武器项不属于任何任务，事实上，它没有被保存到 save 文件中。所以，当您退出游戏时，这个实例也将消失。当人物的武器项在它的 inventory（武器库）中时，这些项将由任务实例来保存。
+<p />
+<h3><a name="=_SapituCharacter= 类"></a> <code>SapituCharacter</code> 类 </h3>
+这个类的定义如下
+<p />
+<pre>
+class SapituCharacter extends Object config(Sapitu) perobjectconfig;
+</pre>
+<p />
+这意味着在类中的某些变量将会被保存在配置文件 <code>UDKSapitu.ini</code> 中，并且会为每个对象创建一个独立的部分。后面是 <code>perobjectconfig</code> 类命令的结果。当保存实例时，对象的名称是很重要的，因为它定义了部分名称的一部分。
+<p />
+这个类为人物名称（它是用户友好的名称）、生命值等定义了各种配置变量。人物的武器库可以按照不同的方式来存储。因为对象变量不能是一个配置变量，我们将会记录所有武器项（它们是字符串）的标识符。然后保存那个列表。这意味着需要额外的管理来管理这些武器库。
+<p />
+必须使用 <code>addInventory</code> 和 <code>removeInventory</code> 方法来添加和删除武器项。这些方法既更新 <code>inventory</code> 也更新 <code>inventoryRecords</code> 数组。不能直接修改 <code>inventory</code> 数组。=Sapitu= 在加载过程中执行了这个操作，但这是特殊情况。
+<p />
+另外，必须以一种可替换的方法来保存人物。您不能直接地调用 <code>SaveConfig</code> ，因为那不能正确地保存武器。=save= 方法将会迭代整个武器数组，同时在每项上调用 <code>SaveConfig</code> 函数，然后在它们的本身上调用 <code>SaveConfig</code> 。这种方式将可以正确地保存属于这个人物的所有东西。
+<p />
+注意： <code>SapituCharacter</code> 和 <code>SapituInventory</code> 实例都不能保存在 Sapitu 系统中的其它任何地方。
+<p />
+<h3><a name="=_SapituInventory= 类"></a> <code>SapituInventory</code> 类 </h3>
+<p />
+这个类是武器项的一个真正实例。它是基于 <code>SapituItem</code> 类的特定实例的。这个类的声明方法和 <code>SapituCharacter</code> 一样。
+<p />
+因为这个实例是基于 <code>SapituItem</code> 的，所以关于重新创建适当的引用时需要特别地小心。它可以通过前面提到的 <code>Sapitu</code> 类来完成。
+<p />
+<h3><a name="=_SapituItem="></a> <code>SapituItem</code> </h3>
+<p />
+这个类定义了从中创建武器项的项类型。这个类应该被认为是一个随机的数据库入口。
+<p />
+和  <code>SapituCharacter</code> 和 <code>SapituInventory</code> 类不一样，这个类是 <code>UDKUIResourceDataProvider</code> 的子类。没有把它声明为 <code>config</code> ，因为父类已经定义为 config 类。它被声明为 <code>PerObjectconfig</code> 。
+<p />
+和其它的类一样，这也定义了一组 <code>config</code> 变量。这些变量用于创建一个项定义。
+<p />
+同时注意，在 defaultproperties 部分中的 <code>bSearchAllInis=true</code> 入口。这个变量是 UI 数据库
+系统的一部分。它定义了数据库系统将会仔细检查所有配置文件来找到这项的对象。
+<p />
+<code>SapituItems</code> 的加载不能通过之前提到的 <code>new(none,id)</code> 构造器来完成。要想获得声明的 <code>SapituItem</code>，您可以使用以下代码：
+<p />
+<pre>
+class'UDKUIDataStore_MenuItems'.static.GetAllResourceDataProviders(class'SapituItem', ProviderList);
+</pre>
+<p />
+（请参照 <code>Sapitu.loadItemDB</code> 方法）
+<p />
+<code>SapituItems</code> 是通过手动定义的。在运行时，它将永远不会改变。要想声明一个项，只要简单地创建一个配置文件。然后像这样添加项即可：
+<p />
+<pre>
+[sword1 SapituItem]
+DisplayName=Short sword
+level=(min=1,max=10)
+weight=(base=10,levelMult=0.5)
+value=(base=5,levelMult=1)
+</pre>
+<p />
+请参阅源代码中的 <code>UDKGame\Config\SapituItemDB.ini</code> 文件获取更多示例。
+<p />
+<h2><a name="保存游戏存储"></a> 保存游戏存储 </h2>
+<hr size="1" noshade="noshade">
+人物和武器项保存在文件 <code>UDKGame\Config\UDKSapitu.ini</code> 中。请参照下载资料中的文件来查看一个现有的“savegame（保存游戏）”。注意，所有的人物和武器都保存在同一个文件中。
+<p />
+同时要注意保存为纯文本。您可能担心潜在的欺骗。但是对于离线的单玩家游戏来说，您可以总是通过修改 save game（保存游戏）来进行欺骗。这个 save game（保存游戏）是纯文本还是二进制文件无关紧要。
+<p />
+<h2><a name="使用 Sapitu"></a> 使用 Sapitu </h2>
+<hr size="1" noshade="noshade">
+要使用这个系统玩游戏，简单地编译源代码并运行游戏即可，如下所示是：
+<p />
+<pre>
+udk examplemap?game=sapitu.sapitugame
+</pre>
+<p />
+<code>SapituPC</code> 类定义了一些您在使用这个系统时可以使用的一组控制台命令：
+<p /> <ul>
+<li> createChar name
+</li> <li> saveChar
+</li> <li> loadChar charId
+</li> <li> printChars
+</li> <li> showChar
+</li> <li> createRandomItem
+</li> <li> createItem baseItem
+</li> <li> pickupItem itemId
+</li> <li> pickupAll
+</li> <li> findItems
+</li> <li> listItemTypes
+</li></ul>
+<p />
+<h2><a name="下载"></a> 下载 </h2>
+<hr size="1" noshade="noshade"> <ul>
+<li> <a href="#" target="_top">Sapitu-source.zip</a>: 源代码
+</li> <li> <a href="#" target="_top">Sapitu-source-2010-04.zip</a>: 源代码（2010 年 4 月版本）
+</li></ul>
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ConfigSavegameSystemCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:24:51 GMT -->
+</html></body>

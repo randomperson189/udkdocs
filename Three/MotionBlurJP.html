@@ -1,0 +1,400 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MotionBlurJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:07 GMT -->
+<head>
+<title> UDK | MotionBlurJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">MotionBlurJP  </b></div>
+<div id="tooltext">
+<a href="MotionBlur.html" class="twikiLink">English Translation</a><br><a href="MotionBlurCH.html" class="twikiLink">中国翻译</a><br><a href="MotionBlurKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/MotionBlurJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px; font:10px Verdana;" >
+<b><a href="WebHomeJP.html" class="twikiLink">UE3 ホーム</a></b> &gt; <b><a href="PostProcessEffectsHomeJP.html" class="twikiLink">ポストプロセス エフェクト</a></b> &gt; ポストプロセス機能 モーション ブラー
+</div>
+<p />
+<hr size="1" noshade="noshade">
+<h1><a name="ポストプロセス機能 モーション ブラー"></a> ポストプロセス機能 モーション ブラー </h1>
+<hr size="1" noshade="noshade">
+<p />
+
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlur/camera_motionblur.jpg" width='512' height='256' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>左 : モーション ブラーが無効<br>右 : モーション ブラーが有効 (カメラの素早い動きを伴って)</SMALL> </td></tr>
+</table>
+<br>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="MotionBlurJP.html#ポストプロセス機能 モーション ブラー"> ポストプロセス機能 モーション ブラー </a> <ul>
+<li> <a href="MotionBlurJP.html#概要"> 概要 </a>
+</li> <li> <a href="MotionBlurJP.html#実装"> 実装 </a>
+</li> <li> <a href="MotionBlurJP.html#方向性ブラー"> 方向性ブラー </a>
+</li> <li> <a href="MotionBlurJP.html#パラメータの調節"> パラメータの調節 </a>
+</li> <li> <a href="MotionBlurJP.html#モーション ブラーとのインタラクション"> モーション ブラーとのインタラクション </a>
+</li> <li> <a href="MotionBlurJP.html#既知の制約と問題"> 既知の制約と問題 </a>
+</li> <li> <a href="MotionBlurJP.html#便利なコンソール コマンド"> 便利なコンソール コマンド </a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+モーション ブラーは静止画像と動画で見られるエフェクトです。カメラにおいては、シャッターが短時間開いていることによってフィルムに光が当たります。そのため、速く動く物体はブラーされて見えます。モーション ブラーは人間の目にも知覚されます。これは、人間の目の中にあるセンサーが、一定時間に渡って反応するためです (像が時間をかけて消えていくからです)。モーション ブラーは、大抵フレームレートが 20 ～ 30 の動画やスクリーンショットにおいて見られます。
+<p />
+我々が実装したモーション ブラー ポストプロセスは、 <strong>カメラ モーション ブラー</strong> と <strong>オブジェクト モーション ブラー</strong> を表現することができます。オブジェクトのモーションについては、スクリーン ピクセルそれぞれにつき 1 個の 2D 速度ベクターを生成します。この情報は毎フレーム更新され、中間的な速度テクスチャに保存されます。この情報はこの後に続く解像度半減ポストプロセスによって使用され、それによって、解像度が半分になったモーション ブラー画像が生成されます。この画像は最高の解像度のシーン画像とブレンドされることによって、必要な部分の解像度を高く保つことができます。モーション ブラーされた画像を生成するには、少数のテクスチャ ルックアップを平均化させています。複数の画像が表示される (例 :  5 個のテクスチャ ルックアップを平均化すると 5 個のゴースト画像が現れる可能性があります) ことを回避するために、最大スクリーン速度を設けます。モーション ブラーを半分の解像度で実行すれば、パフォーマンス上有益であるばかりではなく、ごく少数のテクスチャ ルックアップを使用して非表示にすることもできます。
+<p />
+技術関連トピックの詳細については、 <a href="MotionBlurSkinningJP.html" class="twikiLink">モーション ブラーのスキニング</a> <a href="MotionBlurSoftEdgeJP.html" class="twikiLink">MotionBlurSoftEdge</a> を参照してください。
+<p />
+<h2><a name="実装"></a> 実装 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+2 種類のモーション ブラーは適切に追加されているため、動きを調整した際はエフェクトも低減します。例えば、移動しているオブジェクトをカメラが追跡する場合などはこれに該当します。このメソッドは、用意されているシーン画像データを使用した場合にのみ機能するため、エフェクトをすべて低減できるとは限りません。通常、モーション ブラーは非常に細微なエフェクトであるため、近似値を使うだけで十分な結果が得られることが多い。
+<p />
+パフォーマンスを向上させるため、モーション ブラーの画像は、プリパスから uber ポスト プロセスのパスにおいて半分の解像度で生成されます。またこれは、結果の画像をアップスケールする必要があること、およびモーション ブラー以外の画像を必要に応じてマスク（ごくわずかの画像移動）する必要があること意味します。
+<p />
+
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlur/motionmblurtransiation.jpg" alt="motionmblurtransiation.jpg" width='625' height='501' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>前方に進んでいるプレイヤーは、およそ画像のコーナーあたりでモーション ブラーを知覚します。 <br> 最高解像度の画像が半分の解像度のモーション ブラー画像とソフトにブレンドされていることが分かります。 </SMALL> </td></tr>
+</table>
+<p />
+デバッグでは、「visualizetexture」コマンドでブレンド マスクに注目します。高解像度が使用されている部分のアルファ チャンネルは白、半解像度バッファのブラー コンテントが使用されている部分は黒くなっています。
+<p />
+<img src="rsrc/Three/MotionBlur/motionblurmask.jpg" alt="motionblurmask.jpg" width='841' height='528' />
+<p />
+なお、プレーヤーの視点を回転させると、モーション ブラーが発生します。これは正常な状態ですが、プレーヤーによっては不要に感じることもあります。視点は通常、画像内の特定ポイントに焦点を当ててそれを追います。
+このため、視界にはモーション ブラーが発生しないことになります。これをシミュレートするには、視点を適切に追跡するか、あるいは、目の動きをシミュレート（多くの場合は成功しない）する必要があります。対策：モーション ブラーを少なくする。モーション ブラーをマスクして画面の外周エリアのみに効果を反映させる。重要なプレイ場面ではモーション ブラーを制限する。フレーム レートを上げる。
+<p />
+<strong>camera motion blur (カメラのモーション ブラー)</strong> に関しては、前のビュー マトリクス、現在のビュー マトリクス、およびピクセル深度から、状況に応じて 2D モーション ベクターを計算することができます。 <strong>object motion blur (オブジェクトのモーション ブラー)</strong> に関しては、すべてのモーション ブラー オブジェクト (小さいオブジェクトやゆっくり移動するオブジェクトは、パフォーマンス上の理由から除外される) のジオメトリを「ベロシティ テクスチャ」と呼ばれるテクスチャにレンダリングすることにより、ピクセル単位でベクターを計算することをお勧めします。このテクスチャのデータは、コンソールの <strong>VisualizeTexture</strong> コマンドを使用して確認できます。
+<p />
+
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlur/perobjectmotionblur.jpg" alt="perobjectmotionblur.jpg" width='818' height='243' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>左 : ゲームにある回転する羽根です。 <br>右 : 同じシーンを VisualizeTexture コンソールコマンドを使用して表示しています。 </SMALL> </td></tr>
+</table>
+<p />
+ベロシティ テクスチャの色は、モーション ベクターの方向と強度を表しています。以下の画像は、赤と緑のチャンネルが、モーション ベクターの定義にどのように使用されているかを表したものです (円は最大ベロシティ)。
+<p />
+
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlur/colormeaning.jpg" alt="colormeaning.jpg" width='256' height='256' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>ベロシティ テクスチャの色は、オブジェクトのモーションを示しています。 <br>黒は、カメラ / オブジェクト モーションなし のために残しています。 <br>青とアルファ チャンネルは、放射ブラー機能に使用できます。 </SMALL> </td></tr>
+</table>
+<p />
+<strong>剛体</strong> については、平行移動、回転、スケーリングなど、すべての行列変換に対応しています。その後、ボーン <strong>アニメーション</strong> のサポートを追加しました。この方法は、特別なハードウェア上の機能を必要とするとともにパフォーマンスに影響を及ぼすため、デフォルトでは有効になっていません。これ以上の情報については、 <a href="MotionBlurSkinningJP.html" class="twikiLink">モーション ブラーのスキニング</a> をご覧ください。
+<p />
+
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlur/PerBoneMotionBlur.jpg" alt="PerBoneMotionBlur.jpg" width='672' height='350' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>モーション ブラー スキニングによって、体の各部を異なる方向に動かすことができます。 </SMALL> </td></tr>
+</table>
+<p />
+<h2><a name="方向性ブラー"></a> 方向性ブラー </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+理想的には、画像コンテントを動きの方向に応じてピクセルに配分できるようにします。しかしネイティブでこれを導入すると、非常に処理が遅くなります。現時点では、バイリニア フィルタリングされた複数のテクスチャ参照をベースとした収集処理によって、これに近い効果を実現しています。シーン テクスチャの半解像度バージョンを使用している限りは、パフォーマンスも良く、スムーズな動きさえも実現しています。極端な動きにおいては、ベクターは非常に大きくなります。複数の画像を使用した際の影響を避けるため、動きを 2D ディスクに固定することもできます (<strong>Max Velocity</strong> (最大ベロシティ) を参照)。
+<p />
+入力が HDR 画像であるとともに、モーション ブラー後にトーンマッピングを実施するため、明るい画像コンテンツがはっきりとした線を形成するのが分かります。このエフェクトは、現実のカメラでも見られるため、望ましいものです。
+<p />
+
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlur/HDRMotionBlur.jpg" alt="HDRMotionBlur.jpg" width='302' height='189' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>明るいオブジェクト (HDR コンテンツ) がモーション ブラーのおかげでより明るく表示されています。 </SMALL> </td></tr>
+</table>
+<p />
+収集処理は高速で、画像コンテンツが動く方向に応じたブラーを発生させることができますが、これ以上の工夫がない限りは、動くオブジェクトの前にある静的な領域に画像コンテンツがリークしてしまいます。このような問題を修正するには、これらのケースをマスクアウトするとともに、ブラーが生じる領域を、動いているオブジェクトの範囲内に限定します。しかし、これだけではまだ正しく表示されません。と言うのも、オブジェクトはその内部でブラーするものの、コンテンツの外側ではブラーしないからです。これを解決するには、 <a href="MotionBlurSoftEdgeJP.html" class="twikiLink">MotionBlurSoftEdge</a> 機能を使用します。
+<p />
+
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlur/MotionBlurSoftEdgeNumbers2.jpg" alt="MotionBlurSoftEdgeNumbers2.jpg" width='326' height='221' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>SoftEdge 機能を使用することによってモーション ブラーが、動いているオブジェクトの外でも表示されるようになります。 </SMALL> </td></tr>
+</table>
+<p />
+モーション ブラー エフェクトは、放射状のブラーと組み合わされます (メソッド ズームを使用した場合は Photoshop の放射状のぼかしと同様になる)。両方のエフェクトには多数の共通点があるため、効率上の理由でメソッドが統合されました。両方のメソッドには共通のモーション ベクターが 1 つあり、両方のエフェクトを多用した場合は処理落ちが発生します。しかし、これが発生することはほとんどありません。
+<p />
+<img src="rsrc/Three/MotionBlur/RadialBlur.jpg" alt="RadialBlur.jpg" width='850' height='558' />
+<p />
+<h2><a name="パラメータの調節"></a> パラメータの調節 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+ポスト プロセス チェーンでは、uber ポスト プロセス ノードで以下のプロパティを設定できます。モーション ブラー ノードを使用する必要はありませんが、モーション ブラー用に uber ポスト プロセス ノードが必要になり、同じ設定を適用する必要があります。
+<p />
+     <img src="rsrc/Three/MotionBlur/editorsettings.jpg" alt="editorsettings.jpg" width='265' height='122' />
+<p />
+<strong>Max Velocity (最大ベロシティ)</strong> では、サイズを指定してディスクでの動きを制限できます (画面幅に応じてサイズ調節され、縦サイズに関係なく常に円状になる)。この数値は、適切なサイズの特定の内部定数に対する乗数となっています。1 未満に設定するとベクターがさらに制限され、1 を越えた数値にするとブラーが増加しますが、同じサンプル カウントを維持すると結果に悪影響が出ます (複数の画像)。
+<p />
+     <img src="rsrc/Three/MotionBlur/motionclamp.jpg" alt="motionclamp.jpg" width='384' height='129' />
+<p />
+<strong>Motion Blur Amount</strong> (モーション ブラーの量) では、モーション ブラー ベクターを拡大縮小できます。この数値を最初に調節し、Max Velocity (最大ベロシティ) を高い数値に固定することをお勧めします。このように設定しない場合は、スケール (拡大縮小) の変化を確認できません。最終的には、非常に小さい半径に対して、高い数値を設定することになる場合も考えられます。これにより、ごくわずかな動きでもブラーが発生し、モーション ブラーなしの場合より、全体的な効果が悪化する可能性もあります。
+<p />
+     <img src="rsrc/Three/MotionBlur/motionscale.jpg" alt="motionscale.jpg" width='384' height='128' />
+<p />
+<strong>Full Motion Blur</strong> (完全モーション ブラー) チェックボックスでは、カメラのモーション ブラーを無効にすることができます。その場合も、オブジェクトのモーション ブラーは有効のまま維持されます。
+<p />
+<strong>Camera Rotation Threshold</strong> (カメラ回転閾値) カメラのモーション ブラーが無効になるまでにカメラが回転できる最大角度を設定します (カメラカットに便利です)。
+<p />
+<strong>Camera Translation Threshold</strong> (カメラ移動閾値) カメラのモーション ブラーが無効になるまでにカメラが移動できる最大距離を設定します (これもカメラカットに便利です)。
+<p />
+チェーンでの設定は、ポスト プロセス ボリュームによって上書きすることができます。
+<p />
+アクタには、 <strong>Motion Blur Scale</strong> (モーション ブラー スケール) があります。カメラとともに動くオブジェクト (例: プラットフォーム) 上のモーション ブラーを無効にするには、その値がかつては必要でした。しかし、これはもう必要がなくなりました。モーション ブラーが、このような関連づけられた動きを正しく処理できるようになったからです。新たな実装が実現した場合に、この値は除去されるか非アクティブ化されることになります。
+<p />
+<h2><a name="モーション ブラーとのインタラクション"></a> モーション ブラーとのインタラクション </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+現実の世界では、ブルームが見られるのは大量の光が同一の方向 (スクリーン上の位置) からやってくる場合です。モーション ブラーは、明るい領域の範囲をより広いスクリーン領域に拡散させます。最近の変更 (2010年10月28日) によって、このエフェクトがシミュレートされました。
+<p />
+
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlur/BloomAfterMotionBlur.jpg" alt="BloomAfterMotionBlur.jpg" width='554' height='224' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>新たなメソッドを使用した場合、ブルームがよりぼんやりと表示され、動いているオブジェクトのパス上により大きく広がっていることに注目してください。 </SMALL> </td></tr>
+</table>
+<br>
+<p />
+<p />
+このエフェクトが見えるのは次の場合です。すなわち、オブジェクトが素早い動きをするか、カメラの動きが速い場合で、なおかつ、正しく設定 (大きな最大ベロシティ、大きなモーション ブラー量、ブルーム閾値対オブジェクトの輝度  <a href="MotionBlurSoftEdgeJP.html" class="twikiLink">MotionBlurSoftEdge</a> ) されている場合です。こうすることによって、以前はブルームしていた明るいコンテンツは、より大きく広がります。また、モーション ブラーをもっと目立たなくさせることもできます。
+<p />
+<h2><a name="既知の制約と問題"></a> 既知の制約と問題 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> Matinee で行われるようなカメラカットが、モーション ブラーについて問題を起こします。現在のところ、カメラが大きく回転したり移動したりする時にモーション ブラーが無効にするという方法に頼っています。これらの値の閾値は、両方とも、カスタマイズすることができます。理想的には、Matinee がイベントを発生させることによって、ユーザーエラーの原因を 1 つ減らせれば良いのですが、このような修正が行われても、まだ他に問題は残るでしょう (例: ゲームコード)。一番良いのは、常にカメラを動かし、ジャンプスイッチやカメラスイッチをいろいろと操作することでしょう。これを実装するのはもっと難しいのです。と言うのも、カメラオブジェクトはフレーム毎に (ビュー単位で) 再作成されているからです。
+</li> <li> 最大ベロシティが非常に大きいと、イメージが複数表示されます。(ピクセル単位のランダム化を試みましたが、結果は思わしくありませんでした。パフォーマンスを犠牲にしてサンプルの数を増やすと良い結果を得られるので、われわれは今後このためのオプションを追加する可能性があります。)
+</li> <li> モーションブラーが、低解像度でのシーン入力に基づいており、uber ポストプロセス パスにおいてアップ サンプリングされつつある低解像度のテクスチャにレンダリングされます。これは可視化できます。マスクの調整が有効になることもあります (未公開)。
+</li> <li> より快適な編集のために、エディタの中ではモーション ブラーを無効にしています。このことは、放射ブラーにも影響します。
+</li></ul>
+<p />
+<h2><a name="便利なコンソール コマンド"></a> 便利なコンソール コマンド </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <dl>
+<dt> <code><b>show postprocess</b></code> </dt><dd> ポストプロセスをすべて同時に有効または無効にします。
+</dd> <dt> <code><b>visualizetexture</b></code> </dt><dd> 中間バッファを調べます。(例: 低解像度モーション ブラー入力、ベロシティ テクスチャ、モーション ブラー出力)
+</dd> <dt> <code><b>MotionBlurMaxVelocity</b></code> (モーション ブラー 最大ベロシティ)  </dt><dd> ポストプロセスの設定項目をオーバーライドします。(調整およびデバッグのため)
+</dd> <dt> <code><b>MotionBlurAmount</b></code> (モーション ブラー量)  </dt><dd> ポストプロセスの設定項目をオーバーライドします。(調整およびデバッグのため)
+</dd> <dt> <code><b>MotionBlurSoftEdge</b></code> (モーション ブラー SoftEdge)  </dt><dd> <a href="MotionBlurSoftEdgeJP.html" class="twikiLink">MotionBlurSoftEdge</a> を参照してください。
+</dd> <dt> <code><b>MotionBlurSkinning</b></code> (モーション ブラー スキニング)  </dt><dd> <a href="MotionBlurSkinningJP.html" class="twikiLink">モーション ブラーのスキニング</a> を参照してください。
+</dd> <dt> <code><b>set skeletalmeshcomponent bforcerefpose 1</b></code> </dt><dd> アニメートされたオブジェクトのためのスキニングを無効にします。
+</dd> <dt> <code><b>slomo 0.1</b></code> </dt><dd> ワールドのシミュレーション速度を落とします。（デフォルト値は「1」）
+</dd></dl>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MotionBlurJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:07 GMT -->
+</html></body>

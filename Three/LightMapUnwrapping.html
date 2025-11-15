@@ -1,0 +1,413 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LightMapUnwrapping.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:09:56 GMT -->
+<head>
+<title> UDK | LightMapUnwrapping    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">LightMapUnwrapping  </b></div>
+<div id="tooltext">
+<a href="LightMapUnwrappingJP.html" class="twikiLink">日本語訳</a><br><a href="LightMapUnwrappingCH.html" class="twikiLink">中国翻译</a><br><a href="LightMapUnwrappingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/LightMapUnwrapping -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="StaticMeshHome.html" class="twikiLink">Static Meshes</a></b> &gt; Unwrapping UVs for Lightmaps <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="EnvironmentArtistHome.html" class="twikiLink">Environment Artist</a></b> &gt; Unwrapping UVs for Lightmaps
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Unwrapping UVs for Lightmaps"></a> Unwrapping UVs for Lightmaps </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="LightMapUnwrapping.html#Unwrapping UVs for Lightmaps"> Unwrapping UVs for Lightmaps</a> <ul>
+<li> <a href="LightMapUnwrapping.html#On Creating Lightmaps"> On Creating Lightmaps</a>
+</li> <li> <a href="LightMapUnwrapping.html#Examples"> Examples</a>
+</li> <li> <a href="LightMapUnwrapping.html#Lightmap Coordinates Index"> Lightmap Coordinates Index</a>
+</li> <li> <a href="LightMapUnwrapping.html#Contiguous UVs and Padding"> Contiguous UVs and Padding</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="On Creating Lightmaps"></a> On Creating Lightmaps </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Lightmaps are probably the most difficult part of environment art creation. We rely on them to for clean light and shadow detail. They must be uniquely unwrapped so every part of the model has its own representative space to receive light and dark information.
+<p />
+It's important to remember that the lightmap resolution is tiny compared to the resolution of the texture UV's. It's also important to understand that  the more a level needs optimized the lower the level designers will turn the resolution of the lightmaps down, even as far as 8 by 8 or 16 by 16 in the case of smaller objects. This trend requires that we leave a lot of 'padding' around each section of the lightmap UV's so that the areas that are dark do not bleed into the light areas and destroy the shadows illusion of correctness in-game.
+<p />
+There are 3 methods of creating lightmaps-
+<p /> <ul>
+<li> <strong>BOX UNWRAP</strong>
+</li></ul>
+<p />
+Often this is the most reliable method of unwrapping the lightmaps because most environment models are block shapes that are combined or repeated to create a structure. A contiguous mesh ( everything connected with no separate elements ) is often very helpful way of building to allow more efficient lightmap unwraps because you can just fold out the majority of the design connected together.
+<p />
+This works well because of the resolution of the lightmaps being so low, a gradient from light to dark works more easily if its across one chunk, when it is spread out across a number of fragmented sections, more padding is required inbetween those chunks in order for them to light correctly.
+<p />
+This often drives the need for the lightmap resolution to be higher and we have to try to avoid this as much as we can. Sometimes there is no way to avoid the need for a lower resolution and we have to add much more padding that we would like to compensate.
+<p />
+<p /> <ul>
+<li> <strong>PLANAR UNWRAP</strong>
+</li></ul>
+<p />
+This is most useful for simple flat designs like BSP style walls with few bevels or extrusions. It's also very useful for large building facade pieces, such as a tenement buildings. Planar unwraps are greatly helped by the use of contiguous meshs because it is more a matter of relaxing the mesh UV's and adding coverage to the bevels  by hand that are not lighting correctly in-game.
+<p />
+It requires a lot of back and forth sometimes but a good rule of thumb is to make sure there is more space horizontally on the unwrap than vertically because shadow casting generally comes in from the side at a slightly elevated angle rather from straight down.
+<p />
+So horizontal space allows more room for sharper shadow information because of the tendency of the level designers lighting choices to create more interesting shadows than would occur if they used top down lighting.
+<p />
+<p />
+<p /> <ul>
+<li> <strong>CYLINDRICAL UNWRAP</strong>
+</li></ul>
+<p />
+		Most of the other shapes in an environment break down into variants of a cylindrical shape if they are not boxes or flat plane based shapes. A cylindrical shape compensates well for many designs that have sides as well as a front but now a back section or we would use the Box Unwrap method.
+<p />
+<p />
+<p />
+<h2><a name="Examples"></a> Examples </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<img src="rsrc/Three/LightMapUnwrapping/BoxUnwrap1.jpg" alt="BoxUnwrap1.jpg" width="720" height="964" />
+<p />
+This was a contiguous mesh so it was easy to box unwrap and just fold it out horizontally to use as much of the lightmap resolution as possible. The bottom faces highlighted in the middle image were split off from the whole because they will almost always render black and if they were connected to the rest of the UV's they would bleed dark across it where it ought not to be.
+<p />
+The reverse is true of the detached top faces shown in the bottom image, they will always be bright. The top image shows the texture UV's.
+<p />
+<p />
+<img src="rsrc/Three/LightMapUnwrapping/BoxUnwrap2.jpg" alt="BoxUnwrap2.jpg" width="720" height="594" />
+<p />
+This method of connecting as much as we safely can allows us to have a near perfect lightmap in-game at the resolution of 32 by 32 units. There are no seams at all so there's no subtle dark lines where there ought not to be.
+<p />
+<p />
+<p />
+<img src="rsrc/Three/LightMapUnwrapping/BruteForce.jpg" alt="BruteForce.jpg" width="720" height="323" />
+<p />
+Sometimes you need to just force pieces together with brute force. It is worth is to have a clean surface without interruptions to the lightmap. Stretching by a 1 to 1 ratio doesn't really matter with lightmaps as much as coverage does so an area that is too thin but a 1 to 1 ration will not light correctly because of bleed, but a 1 to 7 ration with twice the coverage looks great. Here you can also see I split the interior of the negative cuts because they will always be dark and we need to avoid the bleed from those across the exterior.
+<p />
+<p />
+<img src="rsrc/Three/LightMapUnwrapping/Facade1.jpg" alt="Facade1.jpg" width="720" height="358" />
+<p />
+With large facade pieces like this Planar unwraps work well. This mesh is contiguous so that aids our work here, but the same principal works with meshs that have a few vertical or horizontal elements. As long as you place things on the lightmap UV's in the most representative layout that matches the lowpoly, it will work the same albeit with the need for a bit of padding in case some side sections render black when stacked together with other pieces.
+<p />
+<p />
+<img src="rsrc/Three/LightMapUnwrapping/Facade2.jpg" alt="Facade2.jpg" width="720" height="729" />
+<p />
+You can see here that that the contiguous mesh layout allowed me to more easily lay the UV's out in a way that mirrors the low-poly mesh. I still move the sides, top &amp; bottom caps away from the main section to allow for those bleed issues and I ensure the padding around those, the main and the windows at the top have the same amount of padding.
+<p />
+<p />
+Sometimes your design won't adhere to any of these simple rules of thumb, if a design has a lot of negative space with a few separate elements we need to fragment the lightmaps and add much more padding.
+<p />
+<p />
+<img src="rsrc/Three/LightMapUnwrapping/NegativeSpaces.jpg" alt="NegativeSpaces.jpg" width="720" height="353" />
+<p />
+You can see some pretty aggressive distortion on the intersecting vertical pieces that hold the rails together, we just forced together the 2 sides with the middle &amp; center sections in each of those 3 pieces.
+<p />
+With the circular rail interiors I split out one side on its own whilst the other i attached the inner and outer faces. This was done so there would be smooth lightmap shading across 3/4 of those areas and only one break in the lightmap on the other side, which you can't see due to the straight metal beam on top of it.
+<p />
+<img src="rsrc/Three/LightMapUnwrapping/railingame.jpg" alt="railingame.jpg" width="720" height="546" />
+<p />
+<p />
+<p />
+Some designs just work against what works based, designs like the one below.
+<p />
+<p />
+<img src="rsrc/Three/LightMapUnwrapping/Fragmented.jpg" alt="Fragmented.jpg" width="720" height="484" />
+<p />
+When there are so many separate elements we have no choice but to crank up the texture resolution or we would waste so much space on the lightmap due to padding enough  between each section that it would look terrible in-game. So I planned on this being a 128by128 lightmap knowing also that it would still not look perfect, there would be some bleed but hopefully not so much as to ruin the object.
+<p />
+<p />
+<img src="rsrc/Three/LightMapUnwrapping/GirderINGAME.jpg" alt="GirderINGAME.jpg" width="720" height="344" />
+<p />
+Sometimes it's easy to just project near flat and relax the UV's because there are clear and distinct contiguous sections that can easily be connected together like in the case of the model below.
+<p />
+<img src="rsrc/Three/LightMapUnwrapping/easy.jpg" alt="easy.jpg" width="720" height="323" />
+<p />
+This design is essentially just a capped Cylinder a Planar base so I use those 2 basic methods to unwrap the UV's. The ground section cog is easy to just Planar unwrap down on the Z axis, then apply a relax modifier and adjust things a little to make sure nothing is getting too little coverage thanks to thin 1 to 1 ratio problems on the bevels.
+<p />
+The mid section was a clear case as much as a base, a cylindrical unwrap that I forced to be straight by hand to get the most coverage and use of the space. As always we are more concerned with coverage than 1 to 1 representations of each little facet of the low-poly mesh. I did an upward Z axis Planar unwrap for the underside of the top lion head sporting section and followed up with relax.
+<p />
+Splitting the model like this had the advantage of putting the seams at genuine seam sections in the low-poly design so it looks natural that there is a little break in the lighting there. Splitting your lightmap uv's at sections where there are sharp deep recesses or crevices is a good rule of thumb for choosing where to separate sections in a way that aids the look of the model in-game rather and downgrades it.
+<p />
+<img src="rsrc/Three/LightMapUnwrapping/FountainINGAME.jpg" alt="FountainINGAME.jpg" width="720" height="604" />
+<p />
+<p />
+<p />
+<p />
+<h2><a name="Lightmap Coordinates Index"></a> Lightmap Coordinates Index </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<p />
+By default, the first set of UVs (index 0) of a static mesh will be used when generating lightmaps for static lighting. This means the same set of coordinates that is used for applying materials to the mesh will aslo be used for lightmaps. This is quite often not ideal. One reason for this is that the UVs used for generating lightmaps need to be unique, meaning that each face of the mesh must not overlap any other face within the UV space.
+<p />
+<p />
+<p />
+The reason for this should be fairly obvious: if the faces share the same UV space, the portion of the lightmap corresponding to theat space will be applied to both the faces. This can be great for diffuse and other textures as it allows the texture resolution to be higher for each face. It will result in inaccurate lighting, however. Static meshes have a property called <code>LightmapCoordinateIndex</code> that allows a specific set of UVs to be used for lightmap generation. By setting this property to point to a set of UVs that are unique and properly set up for lightmaps, static meshes can enjoy the best of both worlds: better texture resolution for diffuse textures and accurate lighting from lightmaps.
+<p />
+<h2><a name="Contiguous UVs and Padding"></a> Contiguous UVs and Padding </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Groups of triangles with contiguous UVs are called UV charts.
+<p />
+<img src="rsrc/Three/LightMapUnwrapping/uvs_charts.jpg" alt="uvs_charts.jpg" width="" height="" />
+<p />
+Padding between UV charts is necessary to prevent bleeding artifacts. Padding around the edges of the lightmap UV layout, however, is not necessary as <a href="Lightmass.html" class="twikiLink">Lightmass</a> automatically pads around the edges by enough to prevent bleeding artifcats.  Note when you are setting up padding between UV charts that 4 texels are usually required to avoid all bleeding, as DXT compression operates on 4x4 texel blocks.
+<p />
+<img src="rsrc/Three/LightMapUnwrapping/uvs_padding.jpg" alt="uvs_padding.jpg" width="" height="" />
+<p />
+This means that for a lightmap resolution of 32, the padding between the UV charts should be 12.5% of the entire UV space. However, keep in mind that placing more padding btween UV charts will result in more lightmap memory being wasted at higher lightmap resolutions.The more contiguous you can make the lightmap UVs for a mesh, the better off you will be. This will reduce the amount of padding necessary and allow for increased resolution. Prior to Lightmass being implemented or when relying mostly on vertex lighting, meshes may have been created by modeling elements seperately and merging them together.
+<p />
+<img src="rsrc/Three/LightMapUnwrapping/old_mesh_seperate.jpg" alt="old_mesh_seperate.jpg" width="821" height="364" />
+<p />
+This is less than ideal when relying on lightmaps and using Lightmass, though. It doesn't allow for good, contiguous lightmaps UVs.
+<p />
+<img src="rsrc/Three/LightMapUnwrapping/old_mesh_uvs.jpg" alt="old_mesh_uvs.jpg" width="396" height="397" />
+<p />
+Instead you end up with fragmented lightmaps with polygons that are inside the model and rendered as black which bleeds across to other parts of the mesh. Another potential pitfall is relying on automatic unwrapping as it, too, can lead to these same issues.
+<p />
+<img src="rsrc/Three/LightMapUnwrapping/old_mesh_ingame.jpg" alt="old_mesh_ingame.jpg" width="692" height="424" />
+<p />
+The best method of creating meshes and laying out their UVs for lightmaps is to model the entire mesh as one contiguous element and lay out the UVs manually.
+<p />
+<img src="rsrc/Three/LightMapUnwrapping/new_mesh_contiguous.jpg" alt="new_mesh_contiguous.jpg" width="821" height="383" />
+<p />
+This leads to contiguous lightmap UVs which eradicate seams and promote efficient lightmaps.
+<p />
+<img src="rsrc/Three/LightMapUnwrapping/new_mesh_uvs.jpg" alt="new_mesh_uvs.jpg" width="396" height="397" />
+<p />
+The end result is a mesh that is lit properly without any bleeding artifacts.
+<p />
+<img src="rsrc/Three/LightMapUnwrapping/new_mesh_ingame.jpg" alt="new_mesh_ingame.jpg" width="692" height="424" />
+<p />
+An added benefit of this method is that it also generally reduces the number of tris needed for the model.
+<p />
+<img src="rsrc/Three/LightMapUnwrapping/old_mesh.jpg" alt="old_mesh.jpg" width="417" height="413" /> <img src="rsrc/Three/LightMapUnwrapping/new_mesh.jpg" alt="new_mesh.jpg" width="416" height="428" />
+<p />
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LightMapUnwrapping.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:10:01 GMT -->
+</html></body>

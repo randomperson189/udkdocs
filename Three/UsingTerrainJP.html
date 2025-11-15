@@ -1,0 +1,386 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingTerrainJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:32:18 GMT -->
+<head>
+<title> UDK | UsingTerrainJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">UsingTerrainJP  </b></div>
+<div id="tooltext">
+<a href="UsingTerrain.html" class="twikiLink">English Translation</a><br><a href="UsingTerrainCH.html" class="twikiLink">中国翻译</a><br><a href="UsingTerrainKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/UsingTerrainJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="Terrain(テレイン) の使用"></a> Terrain(テレイン) の使用 </h1>
+<p />
+<em>ドキュメントの概要: テレインの設定の概要。</em>
+<p />
+<em>ドキュメントの変更ログ:  <a href="https://udn.epicgames.com/Main/ScottSherman" class="restricted" class="restricted" class="twikiLink">Scott Sherman</a> により作成。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="UsingTerrainJP.html#Terrain(テレイン) の使用"> Terrain(テレイン) の使用</a> <ul>
+<li> <a href="UsingTerrainJP.html#テレインの概観"> テレインの概観</a>
+</li> <li> <a href="UsingTerrainJP.html#テレイン プロパティ"> テレイン プロパティ</a> <ul>
+<li> <a href="UsingTerrainJP.html#Terrain"> Terrain</a> <ul>
+<li> <a href="UsingTerrainJP.html#NumPatchesX と _NumPatchesY"> NumPatchesX と NumPatchesY</a>
+</li> <li> <a href="UsingTerrainJP.html#MaxTesselationLevel"> MaxTesselationLevel</a>
+</li> <li> <a href="UsingTerrainJP.html#MinTessellationLevel"> MinTessellationLevel</a>
+</li> <li> <a href="UsingTerrainJP.html#MaxComponentSize"> MaxComponentSize</a>
+</li> <li> <a href="UsingTerrainJP.html#EditorTessellationLevel"> EditorTessellationLevel</a>
+</li> <li> <a href="UsingTerrainJP.html#NormalMapLayer"> NormalMapLayer</a>
+</li> <li> <a href="UsingTerrainJP.html#TesselationDistanceScale"> TesselationDistanceScale</a>
+</li> <li> <a href="UsingTerrainJP.html#b_MorphingEnabled"> bMorphingEnabled</a>
+</li> <li> <a href="UsingTerrainJP.html#b_MorphingGradientsEnabled"> bMorphingGradientsEnabled</a>
+</li></ul>
+</li> <li> <a href="UsingTerrainJP.html#ライティング"> ライティング</a> <ul>
+<li> <a href="UsingTerrainJP.html#StaticLightingResolution と b_IsOverridingLightResolution"> StaticLightingResolution と bIsOverridingLightResolution</a>
+</li> <li> <a href="UsingTerrainJP.html#b_EnableSpecular"> bEnableSpecular</a>
+</li></ul>
+</li> <li> <a href="UsingTerrainJP.html#衝突"> 衝突</a> <ul>
+<li> <a href="UsingTerrainJP.html#CollisionTesselationLevel"> CollisionTesselationLevel</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="テレインの概観"></a> テレインの概観 </h2>
+テレインは、メッシュ増加距離のメッシュからディテールが削除されたシステムに変更されました。これにより頂点が存在する場合に、デザイナーによるディテールのコントロールが可能になりました。
+<p />
+<p />
+<h2><a name="テレイン プロパティ"></a> テレイン プロパティ </h2>
+<p />
+<p />
+<img alt="Terrain_Properties.jpg" src="rsrc/Three/UsingTerrainJP/Terrain_Properties.jpg" /><br>
+<p />
+<h3><a name="Terrain"></a> Terrain </h3>
+<p />
+<h4><a name="NumPatchesX と _NumPatchesY"></a> NumPatchesX と NumPatchesY </h4>
+<p />
+テレインの一行内にある、モザイク式でないクワッドの数は NumPatchesX により決定し、一列内にあるテッセレートでないクワッドの数はNumPatchesYにより決定します｡
+<p />
+アーティストにとっては、モデルのスプライン パッチがこれに似ています｡細分化されたケージの内で一番低いもののパッチの数がこれに当たります｡
+<p />
+これらの寸法を小さくすると、パッチに使われなくなったハイト マップ/アルファ マップのデータは破壊されることに注意してください｡寸法を大きくすると、新しいハイト マップ/アルファ マップには単にゼロが記入されます｡
+<p />
+テレイン全体のサイズは、以下の式で決定されます。:
+<p />
+<em>SizeX = NumPatchesX * DrawScale * DrawScale3D.X</em>
+<p />
+<em>SizeY = NumPatchesY * DrawScale * DrawScale3D.Y</em>
+<p />
+<h4><a name="MaxTesselationLevel"></a> MaxTesselationLevel </h4>
+<p />
+これは、テッセレートされたパッチのひとつの行/列内にあるクワッドの最大数です｡２の倍数である必要があり、1 &lt;= MaxTesselationLevel&lt;= 16 です。
+<p />
+NumPatchesX と NumPatchesY に使用されている値は MaxTesselationLevel　の倍数で無ければならないことに注意してください。
+<p />
+例として、以下のショットは、3 つのあり得るモザイク化レベルのそれぞれで、4 つの NumPatchesX、4 つの NumPatchesY、4 つの MaxTesselationLevel を持ったテレインを表しています。いちばん左のショットは、パッチの 4x4 グリッドを持つフル ディテールです。真ん中のショットは、細分化したパッチの 2x2 グリッドを持つハーフを表しています。いちばん右のショットは最も低いレベルで、オリジナルのエリアを 1 つのクワッドでカバーしています。
+<p />
+<img alt="Terrain_Tessellation.jpg" src="rsrc/Three/UsingTerrainJP/Terrain_Tessellation.jpg" /><br>
+<p />
+<h4><a name="MinTessellationLevel"></a> MinTessellationLevel </h4>
+<p />
+これは、ディテールをテッセレートするのに細分化する 「サブクワッド」 (列とコラム) の最小数です。値が MaxTesselationLevel と同等な場合、テレインはディテールをまったくテッセレートしないことに注意してください。
+<p />
+<h4><a name="MaxComponentSize"></a> MaxComponentSize </h4>
+<p />
+エンジンでは、テレインはレンダリングのためのテレイン コンポネントと呼ばれるパッチの矩形のグループに分割されます。 MaxComponentSizeは、テレイン コンポネントのひとつの行/列に位置する完全な非テッセレートされたクワッドの最大数です。 (テレインコンポーネントの単一の行/列にある完全なテッセレーションディティールでの物理パッチの最大数は、単にこの数にMaxTesselationLevelを掛けたものです)
+<p />
+基本的に、すべてのコンポネントは MaxComponentSize のパッチの正方形ですが、パッチの解像度が MaxComponentSize の倍数でないテレインでは、端の方に小さめのコンポネントが配置されます｡
+<p />
+これは、完全にテッセレートされたコンポネントの頂点バッファが &gt; 65536 の頂点になるのを防ぐために MaxTesselationLevel によって制限されています。
+<p />
+MaxTesselationLevel が 16 の場合、MaxComponentSize は &lt;= 14 に限られています。<br>
+MaxTesselationLevel が 8 の場合、MaxComponentSize は &lt;= 30 に限られています。<br>
+<p />
+<p />
+各テレイン コンポネントは、それぞれ異なる DrawMesh 呼び出しです。パフォーマンスの結果は、割り当てられているマテリアルの複合度により様々です｡複合度は、テレインのパッチに割り当てられたレイヤーと、レンダリングされたテッセレートレベルによって決まります｡
+<p />
+ひとつのテレイン コンポネントに特定のレイヤーが割り当てられた場合、これは他のコンポネントには作用しません｡レイヤーが周囲のコンポネントに「こぼれて」いても、これはなかなか見えにくいことに注意してください｡テレイン ブラウザまたはプロパティ ウィンドウによって露出したハイライト オーバーレイを使用すると、検出しやすくなるでしょう｡
+<p />
+<strong>MaxComponentSizeをビューする:</strong> テレインのコンポーネントのサイズを見るには、[フラグを表示]（Show Flags）メニューにある [テレイン パッチ] の、ビューポート上のフラグを確認します｡これが有効の場合、テレインの各コンポネントの周りに黄色いボックスがレンダリングされます。
+<p />
+MaxComponentSize とは、テレインのひとつの UTerrainComponent に含まれるパッチの数です。この数が多いほど、テレインの「サブ ピース」の数は少なくなります｡
+<p />
+コンポネントの数は、以下によって決定します:
+<p />
+<em>NumSectionsX = ((NumPatchesX / MaxTesselationLevel) + MaxComponentSize - 1) / MaxComponentSize</em>
+<p />
+<em>NumSectionsY = ((NumPatchesY / MaxTesselationLevel) + MaxComponentSize - 1) / MaxComponentSize</em>
+<p />
+<h4><a name="EditorTessellationLevel"></a> EditorTessellationLevel </h4>
+<p />
+これはエディタのみで使用される可視化ヘルパーです。これを使用することにより、デザイナーがエディタのビューポートすべてにあるテレインをみるため、テッセレーションレベルを選択することができます。  1 を入力時、テレインは最低ディティールレベルで表示されます。値は２乗でなければならず、また 1 &lt;= EditorTessellationLevel &lt;= MaxTesselationLevelでなければなりません。 0に設定時、ゲーム時に使用される標準アルゴリズムに沿ってテレインはテッセレートします。
+<p />
+(注記: 現在、PIEでは、この値はテレインの表示に影響します。)
+<p />
+<h4><a name="NormalMapLayer"></a> NormalMapLayer </h4>
+<p />
+これは、テレイン全体に適用される法線マップとしてのシングル レイヤー法線マップを選択するためのハック インデックスです。
+<p />
+<h4><a name="TesselationDistanceScale"></a> TesselationDistanceScale </h4>
+<p />
+これは、クワッドをレンダリングしたいテッセレートレベルを決定するのに用いられる距離値を測るために使用されます。値が高ければ高いほど、接近したディテールのテッセレートが起きます。
+<p />
+<h4><a name="b_MorphingEnabled"></a> bMorphingEnabled </h4>
+<p />
+これは、テッセレートレベル間でテレインが頂点をモーフするべきかどうかを示すのに使用されます。移行の際に起きる潜在的な不自然な動きを可視的に削除しますが、頂点処理能力の面でも、シェーダ指示カウントの面でもより高いことに注意してください。
+<p />
+<h4><a name="b_MorphingGradientsEnabled"></a> bMorphingGradientsEnabled </h4>
+<p />
+これは、高さの値だけでなく、傾きもモーフされるべきであるということを示すのに使用されます。(bMorphingEnabled が FALSE だと意味を成しません。)
+このオプションの効果は、使用されたテスト マップでは大して顕著ではなかったので、二次的なオプションとして作成されました。
+このモードは、追加の頂点サイズとシェーダ指示カウントのため、標準のモーフよりも負荷がより高いです。
+<p />
+<p />
+<h3><a name="ライティング"></a> ライティング </h3>
+<p />
+<h4><a name="StaticLightingResolution と b_IsOverridingLightResolution"></a> StaticLightingResolution と bIsOverridingLightResolution </h4>
+<p />
+これは静的シャドウ マップに使用するテクセル/パッチのサイズの数です｡
+各テレイン コンポネントにはそれぞれ別個のシャドウ マップが使われ、一辺につき最大(MaxComponentSize  * StaticLightingResolution  + 1）ピクセルです｡２の倍数である必要があり、1 &lt;= StaticLightingResolution &lt;= MaxTesselationLevelです。
+<p />
+bIsOverridingLightResolution がチェックされない場合は、1 &lt;= StaticLightingResolution &lt;= MaxTesselationLevel で 2 の累乗でなければいけません。
+<p />
+チェックされている場合は、1 &lt;= StaticLightingResolution &lt;= ### で 2 の累乗でなければいけません。
+<p />
+<h4><a name="b_EnableSpecular"></a> bEnableSpecular </h4>
+<p />
+これがチェックされると、terrain アクタ用にspecular (スペキュラー)ライティングが有効にされます。
+このチェックをはずすと（デフォルト設定）、スペキュラーライティングは動的および静的ライティングの両方に無効化されます。
+<p />
+<h3><a name="衝突"></a> 衝突 </h3>
+<p />
+<h4><a name="CollisionTesselationLevel"></a> CollisionTesselationLevel </h4>
+<p />
+これは衝突演算を実行するときに使用されるテッセレートレベルです。値は、1 &lt;= CollisionTesselationLevel &lt;= MaxTesselationLevel で 2 の累乗でなければいけません。
+従って、値が 1 の場合、最も低いテッセレートレベル (最小のディテール) を使用します。MaxTesselationLevel の値は、完全にディテールされたメッシュを衝突データとして使います。
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingTerrainJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:32:19 GMT -->
+</html></body>

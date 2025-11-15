@@ -1,0 +1,442 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavMeshConstraintsAndGoalEvaluatorsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:35 GMT -->
+<head>
+<title> UDK | NavMeshConstraintsAndGoalEvaluatorsCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">NavMeshConstraintsAndGoalEvaluatorsCH  </b></div>
+<div id="tooltext">
+<a href="NavMeshConstraintsAndGoalEvaluators.html" class="twikiLink">English Translation</a><br><a href="NavMeshConstraintsAndGoalEvaluatorsJP.html" class="twikiLink">日本語訳</a><br><a href="NavMeshConstraintsAndGoalEvaluatorsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/NavMeshConstraintsAndGoalEvaluatorsCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="AIAndNavigationHome.html" class="twikiLink">AI &amp; 导航</a></b> &gt; 导航网格物体路径约束及目标点求值器
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="导航网格物体路径约束及目标点求值器"></a> 导航网格物体路径约束及目标点求值器 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#导航网格物体路径约束及目标点求值器"> 导航网格物体路径约束及目标点求值器</a> <ul>
+<li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#概述"> 概述</a> <ul>
+<li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#为什么？"> 为什么？</a>
+</li></ul>
+</li> <li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#路径约束"> 路径约束</a>
+</li> <li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#路径目标点求值器"> 路径目标点求值器</a>
+</li> <li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#Constraint（约束）/_GoalEval（目标点求值器）池"> Constraint（约束）/GoalEval（目标点求值器）池</a>
+</li> <li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#示例使用情况"> 示例使用情况</a>
+</li> <li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#目前的路径约束及它们的应用的总结"> 目前的路径约束及它们的应用的总结</a> <ul>
+<li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#NavMeshPath_AlongLine"> NavMeshPath_AlongLine</a>
+</li> <li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#NavMeshPath_EnforceTwoWayEdges"> NavMeshPath_EnforceTwoWayEdges</a>
+</li> <li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#NavMeshPath_MinDistBetweenSpecsOfType"> NavMeshPath_MinDistBetweenSpecsOfType</a>
+</li> <li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#NavMeshPath_SameCoverLink"> NavMeshPath_SameCoverLink</a>
+</li> <li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#NavMeshPath_Toward"> NavMeshPath_Toward</a>
+</li> <li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#NavMeshPath_WithinDistanceEnvelope"> NavMeshPath_WithinDistanceEnvelope</a>
+</li> <li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#NavMeshPath_WithinTraversalDist"> NavMeshPath_WithinTraversalDist</a>
+</li></ul>
+</li> <li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#目前的路径目标点求值器及其应用的总结"> 目前的路径目标点求值器及其应用的总结</a> <ul>
+<li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#NavMeshGoal_At"> NavMeshGoal_At</a>
+</li> <li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#NavMeshGoal_ClosestActorInList"> NavMeshGoal_ClosestActorInList</a>
+</li> <li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#NavMeshGoal_Filter"> NavMeshGoal_Filter</a>
+</li> <li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#NavMeshGoal_GenericFilterContainer"> NavMeshGoal_GenericFilterContainer</a>
+</li> <li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#NavMeshGoal_Null"> NavMeshGoal_Null</a>
+</li> <li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#NavMeshGoal_PolyEncompassesAI"> NavMeshGoal_PolyEncompassesAI</a>
+</li> <li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#NavMeshGoal_Random"> NavMeshGoal_Random</a>
+</li> <li> <a href="NavMeshConstraintsAndGoalEvaluatorsCH.html#NavMeshGoal_WithinDistanceEnvelope"> NavMeshGoal_WithinDistanceEnvelope</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<hr size="1" noshade="noshade">
+<p />
+本文档对路径约束及路径目标点求值程序的目的及应用进行了概述，因为它们和寻路及一般的路径遍历相关。
+<p />
+<h3><a name="为什么？"></a> 为什么？ </h3>
+这些模块化的自定义的约束的出现允许 AI 程序员只需要很少的代码修改便可以运行特定的路径搜索来满足游戏的特定需要。过去，如果您想执行类似于 <em>查找远离实体的从 A-&gt;B 的路径</em> 的操作，您必须在 native 代码中的路径消耗函数中添加这种特殊的情况，并且对于每一种新的情况都需要执行这个操作。很快便会发现这是不实用的。对于您需要的用于进行特定路径搜索的每个自定义考虑项（约束）的不同组合，都要针对每个新的搜索添加新的代码。
+<p />
+而我们的方法是把关系的对象打包到称为 <strong>PathConstraints</strong> 的自包含对象中，这里可以添加在寻路过程中考虑的所有信息。所以，如果您正在尝试查找到您的目的地的最短路径，那么您可以简单地添加一个 <strong>Path_TowardGoal</strong> 约束，这样您将会获得 AI 程序员所熟知的经典的线性的 A* 启发式搜索。然而，如果您想进行更加复杂的操作，比如查找避开触发器从 A -&gt; B 的最短路径，您将需要简单地添加 <strong>Path_TowardGoal</strong> 约束和一个（假想的） <strong>Path_AvoidFire</strong> 约束。这是很容易完成，并且可以通过脚本访问它们，所以通过拼凑自定义的、一次性的路径搜索来满足您的精确地特定情况是很容易的。
+<p />
+然而，约束只是成功的一半。您也需要具备指出路径搜索的结束条件并在遍历路径的过程中标记数据。这便是路径目标点求值器设计的目的所在。 它们既指出了搜索何时完成（比如，当我们找到一个有效的目标节点时），也处理了计算得出的数据的标记和存储。比如，在战争机器中，当搜索掩体时，则会使用一个 <em>掩体目标点求值器</em> 。 这个自定义的目标点求值器将会继续搜索直到找到满足条件的掩体节点为止，它将会跟踪到现在为止找到的掩体节点，并沿着路线记录它们。最基本的(经常使用的)路径目标求值程序是 <strong>Goal_AtActor</strong> ，当找到了包含着搜索的目标点的导航网格物体多边形时，它将会简单地停止搜索。这是您在查找从 A-&gt;B 之间的最短路径的目标求值器。
+<p />
+约束和目标求值器存储在<a href="NavigationMeshTechnicalGuide.html" class="twikiLink">导航句柄</a>上的两个列表上。<!--  -->
+<p />
+<p />
+<h2><a name="路径约束"></a> 路径约束 </h2>
+<hr size="1" noshade="noshade">
+正如上面所提到的，路径约束既可以修改存储的实际距离 (g)，也可以修改启发式距离 (h)。最近，路径约束也可以在特定的节点上返回 false，这意味着这个节点是完全不适合的并且根本不应该将其添加到打开列表。
+<p />
+可以应用路径约束的情况： <ul>
+<li> 朝向目标点的遍历（比如，通过首先尝试朝向目标点的节点来优化搜索）。
+</li> <li> 通过或条件性地限制不能遍历的区域来限制遍历（比如，触发器、熔岩、仅用户优化的门）。
+</li> <li> 远离不需要的对象来调整遍历（比如，敌人玩家）。
+</li></ul>
+<p />
+不应该/不能 应用路径约束的情况： <ul>
+<li> 收集/存储 数据时（如果前一个约束返回 false，那么您的约束可能不会被调用）。
+</li></ul>
+<p />
+<!--  -->
+<p />
+<h2><a name="路径目标点求值器"></a> 路径目标点求值器 </h2>
+<hr size="1" noshade="noshade">
+路径目标点求值器稍微有点复杂，因为它们处理了大多数的节本寻路函数，比如决定开始节点和结束节点，以及一旦由于任何原因导致搜索终止，那么那个节点来调用‘目标节点’。 目标点求值器建立了搜索、决定了什么时候完成、并且当找到目标点时将会把找到的路径保存到导航句柄中。
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>注意：</strong> 列表中的 <em>第一个</em> 路径目标点求值器有特殊的意义。它作为主要的求值器，因此它将控制搜索的初始化（比如 seedworkingset（搜索工作的节点集合）、initializesearch（初始化搜索））
+<p />
+这里是典型的路径目标点求值器的所做的事<!--  -->： <ol>
+<li> <strong>InitializeSearch()</strong> - 这个函数在路径搜索的开始阶段进行调用。这允许目标求值器设置它进行搜索过程所需要的任何东西。默认的功能是查找到包含 <strong>SearchStart</strong> 的多边形，并设置它为 <strong>AnchorPoly</strong> 。
+</li> <li> <strong>SeedWorkingSet()</strong> - 它是家下来调用的函数。 这个函数负责向打开列表填充一个或多个多边形来供其进行搜索。 默认的功能是简单地把锚点多边形添加到工作集中。
+</li></ol>
+<p />
+现在我们进入了路径搜索的主循环。 <ol>
+<li> <strong>EvaluateGoal()</strong> - 当最好的节点离开工作集后调用这个函数… 这个函数将会在每个节点上依次调用称为 EvaluateGoal() 的整个路径目标求值器列表。 这使得列表中的每个目标点求值器都有机会标记多边形以及当找到适当的节点时调用停止函数来终止搜索。
+</li> <li> <strong>DetermineFinalGoal()</strong> - 只要路径完成，便会调用这个函数。（或者因为找到了一个目标点或者因为已经搜索过了要测试的所有的节点）这允许目标点求值器来执行最终的计算并决定实际的最佳目标点是什么（如果存在）。这里函数的默认行为是判断是否找到了目标点，但是在更加复杂的求值器比如 <strong>Goal_AtCover</strong> 中，最终的结果由到目前为止所访问的多边形来决定最适合的目标点是什么。
+</li> <li> <strong>SaveResultingPath()</strong> - 是求值器中最后调用的函数。在几乎所有的目标点求值器上，这个函数简单地反向遍历前面的节点链来按照从开始节点到目标点的顺序来保存路径。 但是，这允许自定义的求值器来在这里执行一些不同的操作。比如， <strong>Goal_ClosestActorInList</strong> （按照从目标点到开始点进行寻路）是按照顺序的顺序来存储路径的，因为它反转到了开始点（请参照以下获得关于这个求值器的更多信息）。
+</li> <li> <strong>NotifyExceededMaxPathVisits()</strong> - 是在例外情况下调用的一个函数。当访问的多边形的数量超过 navigation handle（导航句柄）上的 <strong>MaxPathVisits</strong> 参数时，将会调用这个函数。在大多数情况下，这意味着失败（比如，在最大的样本范围内没有找到目标点）。但是有时这仅意味着搜索完成（比如 <strong>Goal_Null</strong> 仅在搜索完所有节点或者碰到最大的访问范围时才停止搜索..这对于找到一个区域内的最佳节点是有用的）。
+</li></ol>
+<p />
+唯一需要新的路径目标点求值器实现的函数是 <strong>EvaluateGoal()</strong> 。这是目标点求值器的主要函数（也就是，它决定了什么时候找到有效地目标点）。
+<p />
+有很多影响 <strong>EvaluateGoal()</strong> 操作方式的布尔值。我们所进行的 99% 的遍历使用的都是默认设置（并且实际上大多数遍历仅有一个目标点求值器，所以这些值实际是没有使用），但是对于目标点求值器的组合来说，添加这些布尔值可以使得事情变得更加简单：
+<p /> <ul>
+<li> <strong>bUseORforEvaluateGoal</strong> （在 UNavigationHandle 上） - 默认情况下，为了判断搜索的结束与否， <strong>所有</strong> 的目标点求值器都会从 <strong>EvaluateGoal()</strong> 中返回 true。 这个返回值可以通过使用 navigation handle（导航句柄）上的 <strong>bUseORforEvaluateGoal</strong> 来进行修改。（当返回值为 true 时，如果从目标求值器中的任何 <strong>EvaluateGoal()</strong> 中返回 true，那么搜索将会终止）。
+</li> <li> <strong>bAlwaysCallEvaluateGoal</strong> （在 GoalEvaluator 上） - 当特定的目标点求值器的这项为 true 时，那么即使目标点求值器已经判定了当前的节点是否是最终目标点，仍然会调用目标求值器的 <strong>EvaluateGoal()</strong> 函数。 这对于需要针对每个路径迭代存储信息或计算某些数据的目标点求值器是有用的。
+</li></ul>
+<p />
+<p />
+<h2><a name="Constraint（约束）/_GoalEval（目标点求值器）池"></a> Constraint（约束）/GoalEval（目标点求值器）池 </h2>
+<hr size="1" noshade="noshade">
+为了防止不断地新建不必要的路径约束和目标点求值器，可以根据需要新建它们并缓存它们。 这允许在不需要新建及垃圾回收大量约束的情况下重新使用缓存的约束及目标点求值器。
+<p />
+为了达到这个目的，您应该永远都不要直接地新建 PathConstraint 或 GoalEvaluator。反之，您应该在 NavigationHandle 上调用 <strong>CreatePathConstraint()</strong> 或 <strong>CreatePathGoalEvaluator()</strong> 函数。在还没有缓存一个约束或者检索到一个缓存的副本，那么它将新建一个该约束的副本。
+<p />
+作为缓存过程的一部分，当从句柄中清除一个约束时，将会调用 <strong>Recycle()</strong> 事件。在这个函数中，所有的状态都将会被清除并重置为默认值。 当重写 PathConstraint 和 GoalEvaluator 时，重写这个函数并清除任何可能成为您的衍生类一部分的任何新的状态是很重要的，以便您不会使用来自循环使用的约束的旧数据。
+<p />
+<p />
+<h2><a name="示例使用情况"></a> 示例使用情况 </h2>
+<hr size="1" noshade="noshade">
+在 约束/求值器 上实现一个静态函数是很方便的，您仅需要调用它将该约束或求值器添加到句柄列表即可。这里是 <strong>Path_TowardGoal</strong> 约束的一个这样的静态函数实例：
+<p />
+<div class="codetitlebar">
+Path_TowardGoal.uc
+</div>
+<div class="codesnippet">
+<pre>
+static function bool TowardGoal(NavigationHandle NavHandle, Actor Goal)
+{
+  local NavMeshPath&#95;Toward Con;
+
+  if (NavHandle !&#61; None &#38;&#38; Goal !&#61; None)
+  {
+    Con &#61; NavMeshPath&#95;Toward(NavHandle.CreatePathConstraint(default.class));
+    if (Con !&#61; None)
+    {
+      Con.GoalActor &#61; Goal;
+      NavHandle.AddPathConstraint( Con );
+      return TRUE;
+    }
+  }
+
+  return FALSE;
+}
+</pre>
+</div>
+<p />
+正如您所看到的，它调用了 <strong>CreatePathConstraint()</strong> 函数来获得该类的缓存版本，然后调用了 <strong>AddPathConstraint()</strong> 将它放到约束列表中，以便在搜索时使用。*AddPathConstraint()* 、 <strong>AddGoalEvaluator()</strong> 和 <strong>ClearConstraints()</strong> 是为您的遍历指定约束条件的界面。
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>注意：</strong> 通常没有必要调用 <strong>ClearConstraints()</strong> 函数，因为在您调用 <strong>FindPath()</strong> 后，将会自动地清除约束。
+<p />
+关于 <strong>FindPath()</strong> 及其应用的更多信息，可以在<a href="NavigationMeshTechnicalGuide.html" class="twikiLink">导航网格物体技术指南</a>页面找到。 同时，请确保阅读<a href="NavigationMeshPathDebugging.html" class="twikiLink">导航网格物体路径调试</a>页面来获得关于如何调试您的路径搜索的更多信息。
+<p />
+<p />
+<h2><a name="目前的路径约束及它们的应用的总结"></a> 目前的路径约束及它们的应用的总结 </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="NavMeshPath_AlongLine"></a> NavMeshPath_AlongLine </h3>
+随着与指定方向的距离越来越远，这个约束项节点添加启发式消耗。
+<p />
+<h3><a name="NavMeshPath_EnforceTwoWayEdges"></a> NavMeshPath_EnforceTwoWayEdges </h3>
+它将过滤掉不可以双向行走的边。（防止出现 AI 进入到它们内部无法出来的情况）。
+<p />
+<h3><a name="NavMeshPath_MinDistBetweenSpecsOfType"></a> NavMeshPath_MinDistBetweenSpecsOfType </h3>
+它将会沿着先前走过的链的每步返回，从而确保在某种类型的边之间有最小的距离。 （比如，确保在覆盖物之间有最小的距离）。
+<p />
+<h3><a name="NavMeshPath_SameCoverLink"></a> NavMeshPath_SameCoverLink </h3>
+它只允许那些其中包含指定 CoverLink 中的掩体的多边形。
+<p />
+<h3><a name="NavMeshPath_Toward"></a> NavMeshPath_Toward </h3>
+这将会根据到传入的目标点的距离来添加启发式消耗。 可以使用这个约束来使得正常的路径搜索偏向您的特定目标点。
+<p />
+<h3><a name="NavMeshPath_WithinDistanceEnvelope"></a> NavMeshPath_WithinDistanceEnvelope </h3>
+允许用户指定在路径的有效范围，它可以或者把节点抛出到这个范围之外或者随着它们远离范围而使节点处于不利位置。 （比如，我想查找在距离我的某个最大范围值之内的一个点）
+<p />
+<h3><a name="NavMeshPath_WithinTraversalDist"></a> NavMeshPath_WithinTraversalDist </h3>
+将会否决那些超过指定值的路径
+<p />
+<p />
+<h2><a name="目前的路径目标点求值器及其应用的总结"></a> 目前的路径目标点求值器及其应用的总结 </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="NavMeshGoal_At"></a> NavMeshGoal_At </h3>
+最简单最常用的目标点求值器。 当找到包含目标点的多边形时将会结束搜索。
+<p />
+<h3><a name="NavMeshGoal_ClosestActorInList"></a> NavMeshGoal_ClosestActorInList </h3>
+它是其中的一个比较有趣的求值器。 这个求值器可以有效地找到距离要求的实体最近的 actor（以路径距离为单位）。 这可以通过执行反向的搜索来完成。 工作集将会由包含列表中要搜索的 actor 的所有多边形所填充，然后将会继续搜索，直到找到包含 searchstart（搜索开始节点）的多边形为止。 这时，路径是按照正向顺序进行保存的，因为我们已经进行了反向搜索。
+<p />
+<h3><a name="NavMeshGoal_Filter"></a> NavMeshGoal_Filter </h3>
+这是一个具有辅助作用的基类，它主要用于那些将要与 NavMeshGoal_GenericFilterContainer 结合使用的过滤器中。这些目标应该只会回答“这是一个有效的最终目标吗？这个问题，不会做其他任何事情。
+<p />
+<!-- <ul>
+<li> <strong>NavMeshGoalFilter_MinPathDistance</strong> -
+</li> <li> <strong>NavMeshGoalFilter_NotNearOtherAI</strong> -
+</li> <li> <strong>NavMeshGoalFilter_OutOfViewFrom</strong> -
+</li> <li> <strong>NavMeshGoalFilter_OutSideOfDotProductWedge</strong> -
+</li> <li> <strong>NavMeshGoalFilter_PolyEncompassesAI</strong> -
+</li></ul>
+-->
+<p />
+<h3><a name="NavMeshGoal_GenericFilterContainer"></a> NavMeshGoal_GenericFilterContainer </h3>
+这个目标求职器在它没有离开路径之前不会停止，而且只会返回内存消耗最少的节点。
+<p />
+<h3><a name="NavMeshGoal_Null"></a> NavMeshGoal_Null </h3>
+这个目标求值器将会简单地保持搜索，直到达到迭代次数的最大值或者搜索完所有节点为止。这对于找到某个区域的最佳节点是有用的。（比如，可以和 <strong>NavMeshPath_WithinDistanceEnvelope</strong> 约束结合使用，在给定的最大范围内查找最远的多边形）。
+<p />
+<h3><a name="NavMeshGoal_PolyEncompassesAI"></a> NavMeshGoal_PolyEncompassesAI </h3>
+这个目标求值器将会扔掉无法完全适合这个实体搜索的多边形，这通常用于开放端路径搜索（例如，查找任何不在某个半径范围内的多边形），因为边可能会支持允许遍历进入到多边形的实体，但是这个实体可能不需要完全与这个多边形内部相适应，尽管他可以穿过它。
+<p />
+<h3><a name="NavMeshGoal_Random"></a> NavMeshGoal_Random </h3>
+这个目标求职器在它没有离开路径之前不会停止，而且会返回一个随机遍历的节点。
+<p />
+<h3><a name="NavMeshGoal_WithinDistanceEnvelope"></a> NavMeshGoal_WithinDistanceEnvelope </h3>
+这个目标求值器会扔掉节点（多边形），前提是它们位于指定的距离范围外。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavMeshConstraintsAndGoalEvaluatorsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:35 GMT -->
+</html></body>

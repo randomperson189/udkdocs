@@ -1,0 +1,455 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TerrainsFromDEMsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:40:56 GMT -->
+<head>
+<title> UDK | TerrainsFromDEMsCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">TerrainsFromDEMsCH  </b></div>
+<div id="tooltext">
+<a href="TerrainsFromDEMs.html" class="twikiLink">English Translation</a><br><a href="TerrainsFromDEMsJP.html" class="twikiLink">日本語訳</a><br><a href="TerrainsFromDEMsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/TerrainsFromDEMsCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<h1><a name="DEM 中的地形：使用数字高程模型"></a> DEM 中的地形：使用数字高程模型 </h1>
+<p />
+ <em>文档概述：有关使用 DEM 文件创建地形的信息。</em>
+<p />
+<em>原作者 David Green<sup>?</sup>。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="TerrainsFromDEMsCH.html#DEM 中的地形：使用数字高程模型"> DEM 中的地形：使用数字高程模型</a> <ul>
+<li> <a href="TerrainsFromDEMsCH.html#数字高程模型概况"> 数字高程模型概况</a>
+</li> <li> <a href="TerrainsFromDEMsCH.html#DEM 数据分辨率"> DEM 数据分辨率</a>
+</li> <li> <a href="TerrainsFromDEMsCH.html#等高线以及立体图分辨率"> 等高线以及立体图分辨率</a>
+</li> <li> <a href="TerrainsFromDEMsCH.html#增加 DEM 分辨率"> 增加 DEM 分辨率</a>
+</li> <li> <a href="TerrainsFromDEMsCH.html#DEM 数据（虚幻单位）"> DEM 数据（虚幻单位）</a>
+</li> <li> <a href="TerrainsFromDEMsCH.html#DEM 文件格式"> DEM 文件格式</a>
+</li> <li> <a href="TerrainsFromDEMsCH.html#DEM 转换软件"> DEM 转换软件</a>
+</li> <li> <a href="TerrainsFromDEMsCH.html#DEM 数据源"> DEM 数据源</a>
+</li> <li> <a href="TerrainsFromDEMsCH.html#采集可以在虚幻引擎中使用的 DEM 数据"> 采集可以在虚幻引擎中使用的 DEM 数据</a>
+</li> <li> <a href="TerrainsFromDEMsCH.html#将高度贴图导入到虚幻引擎"> 将高度贴图导入到虚幻引擎</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<p />
+<h2><a name="数字高程模型概况"></a> 数字高程模型概况 </h2>
+<p />
+数字高程模型 ("DEM") 是一个包含高程样本点的栅格化网格，这些样本点通常可以从一个远程灵敏系统得到，例如，绕轨道运行的雷达卫星。可以将这个数据转换为灰标高度贴图或已经进行测量的位置的 3 维网格物体形式。当前使用的 DEM 数据的分辨率和质量变化范围相当大，由于大部分数据分辨率都很低，以至于它只适用于 GIS 或高空成像和立体着色渲染。
+<p />
+DEM 数据不应该与实际的光栅影像混为一谈，例如可以在 <a href="http://earth.google.com/" target="_top">http://earth.google.com/</a> 上看到 GoogleEarth 或 <a href="http://hirise.lpl.arizona.edu/" target="_top">http://hirise.lpl.arizona.edu/</a> 上看到 Mars HiRISE 项目。光栅影像包含照相机摄制的标准直观图片，但是 DEM 数据通常使用一个雷达或激光或同等高度测量系统。
+<p />
+无法简单地将照相机数据转换为高度贴图高度数据，因为图片像素数据不会直接表示每个位置的高度。由于这其中有很多影响因素，所以衍生的高度数据可能会很难从照片中解压缩出来，例如，主要光源光线事件的角度以及对由此产生的光源和阴影的特效。
+<p />
+地形数据还提供 Contour Line Map（等高线地图）格式，其中包括单色和高程颜色类型，以及与等高线图格式相似但只使用颜色表示高度的 Color Relief（颜色立体）格式。很多等高线和颜色立体地图都来源于陆地测量，所以它们不包含遥感数据文件的分辨率和精度。
+<p />
+<p />
+<strong>航空摄影图像：</strong>
+<p />
+<img alt="USGS-VolgaRiverDelta.gif" src="rsrc/Three/TerrainsFromDEMsCH/USGS-VolgaRiverDelta.gif" />
+<p />
+<small>
+Volga River Delta - <a href="http://eros.usgs.gov/imagegallery/imageDetail.php?page=38&amp;img=Volga+River+Delta&amp;id=2055&amp;col=Earth+As+Art" target="_top">U.S. 地质勘测</a>
+</small>
+<p />
+<strong>等高线图：</strong>
+<p />
+<img alt="USGS-Contour.gif" src="rsrc/Three/TerrainsFromDEMsCH/USGS-Contour.gif" />
+<p />
+<small>
+State of New Hampshire, U.S.A. -  <a href="http://www.usgs.gov/" target="_top">U.S. 地质勘测</a>
+</small>
+<p />
+<strong>着色的立体图像：</strong>
+<p />
+<img alt="NAG-ShadedRelief.gif" src="rsrc/Three/TerrainsFromDEMsCH/NAG-ShadedRelief.gif" />
+<p />
+<small>
+美国新墨西哥州 - <a href="http://nationalatlas.gov/" target="_top">国家地图制作</a>
+</small>
+<p />
+<strong>通过 DEM 数据创建的虚幻地形</strong>
+<p />
+<img alt="DGAscraeus.jpg" src="rsrc/Three/TerrainsFromDEMsCH/DGAscraeus.jpg" />
+<p />
+<small>
+<a href="http://www.lilchips.com/dgunreal" target="_top">David Green</a>
+</small>
+<p />
+<p />
+<h2><a name="DEM 数据分辨率"></a> DEM 数据分辨率 </h2>
+<p />
+大多数 DEM 数据文件都存储为矩形光栅图像，16 位二进制或 ASCII 高度值的 x*y 样本点。这里提供了一些软件实用程序，它可以直接将各种 DEM 格式转换为虚幻编辑器 G16 高度贴图格式，例如，G16Ed 或 HMCS 和 HMES 软件应用程序。其他 GIS 和政府或大学转换实用程序可能提供中间转换文件格式，例如，转换为 RAW16 或 TIF-16，它们可以更加轻而易举地转换为 UnrealEd 的 G16 格式。
+<p />
+目前最常用的 DEM 文件是 Earth 和 Mars，这些行星中其中每个在不同的位置分辨率都不同。
+<p />
+DEM 文件分辨率可以通过 <em>弧分</em> 和 <em>弧秒</em> ，或者是它们各自的空间距离（以米为单位）进行计算。最常见的 DEM 分辨率是 10、30 和 90 米，其中包含当前在 1 到 5 米可以使用的最高分辨率数据，尽管这个高分辨率数据非常少见，而且通常不供公众使用。弧秒或米分辨率是数据文件中每个样本点之间的距离。
+<p />
+地面的海拔，一个弧分或 <em>一分钟转过的角度</em> 近似等于 1.151 米（6076.115 英尺）或 1.852 千米（即 1852 米），也就是 1 海里。
+<p />
+三分之一弧秒 (1/3") 通常指的是 10 米（10.3 米或 33.79 英尺）。
+<p />
+一个弧秒（1" 或 1/60 弧分）通常指的是 30 米（30.86 米或 101.2 英尺）。
+<p />
+三个弧秒 (3") 通常指的是 90 米（92.6 米或 303.6 英尺）。
+<p />
+三十弧秒 (30") 近似等于 1 千米（926 米或 3038.06 英尺）。
+<p />
+<p />
+<h2><a name="等高线以及立体图分辨率"></a> 等高线以及立体图分辨率 </h2>
+<p />
+使用等高线图获取高度贴图信息可能会遇到的问题是图像肯定是一组可以显示高度合理改变区域的常用定义的线。扫描并将这个数据转换为实际的地图的指定网格区域的 x*y 高度点。具体地说，设计的软件需要执行边检测并对每个等高线进行跟踪，然后从中推断高度参数和曲线。等高线图上的地形细节的实际分辨率非常低。
+<p />
+使用立方图和着色的立体图获取高度贴图信息可能会遇到的问题是通常情况下立体图都来源于等高线（从地形角度上讲）图，其中高程大小可以通过系数 10 放大，可以辨别地质特征。着色的立方体图同时还包含光源和阴影渲染，可以提供更好的 3 维视图，它不会轻易地从基本的高度数据中被删除。
+<p />
+等高和立体图以 1:x 比例关系进行缩放。下面一些常用比例值及其等价关系：
+<p />
+1:24,000 比例地图为 7.5 分钟。一个 7.5 分钟的四边形包含一块大约 64 平方米的区域。
+<p />
+1:62,500 比例地图为 15 分钟。1:63,360 中一英寸代表一米。
+<p />
+1:100,000 比例地图，维度线间隔为 30 分钟，而经度线间隔为 60 分钟。30 x 60 分钟四边形，地图上的一厘米代表地面距离为一千米。
+<p />
+<p />
+<h2><a name="增加 DEM 分辨率"></a> 增加 DEM 分辨率 </h2>
+<p />
+尽管可以向低分辨率 DEM 文件中添加细节，例如，向 30 米或 10 米数据文件中添加噪点，您只是无法重新生成显示在这个数据文件中的准确初始高度数据。将 DEM 数据文件作为随后使用其他噪点或地形（腐蚀等等）修改的高度贴图的源传递高度数据，最后生成不再代表源的 DEM，因为初始高度点将会被改变。
+<p />
+<p />
+<h2><a name="DEM 数据（虚幻单位）"></a> DEM 数据（虚幻单位） </h2>
+<p />
+<em>对于适合作为视频游戏地形使用的 DEM 数据分辨率，快捷答案是 5 米及更小。10 米及以上的 DEM 数据对于地形设计来说分辨率太低。</em>
+<p />
+虚幻引擎 2、2.5 和 3 都是用了 1 虚幻单位 = 2 厘米的默认标度。
+因此，1 米 = 50 虚幻单位。
+<p />
+使用这个默认的引擎比例系数，常用的 DEM 分辨率数据与下面的虚幻单位间隔相对应：
+<p /> <ul>
+<li> 在样本点之间，1 米 DEM 数据 = 1x50 = 50 虚幻单位
+</li> <li> 在样本点之间，5 米 DEM 数据 = 5x50 = 250 虚幻单位
+</li> <li> 在样本点之间，10 米 DEM 数据 = 10x50 = 500 虚幻单位
+</li> <li> 在样本点之间，30 米 DEM 数据 = 30x50 = 1500 虚幻单位
+</li> <li> 在样本点之间，90 米 DEM 数据 = 90x50 = 4500 虚幻单位
+</li></ul>
+<p />
+在虚幻引擎 2 和 2.5 的虚幻编辑器 3 中，512 的 TerrainInfo.TerrainScale.X/.Y 的结果是每个地形四边形的大小为 512 虚幻单位。一个 10 米 DEM 的 TerrainScale.X/.Y 大小为 500，或者近似于标准的 2 的幂指数值 512 的四边形地形。最常用的 TerrainScale 大小为 128 和 256，所以 512 至少是预期高度贴图分辨率的 1/4。
+<p />
+在虚幻引擎 3 的虚幻编辑器中，Terrain.Display.DrawScale3D.X/.Y 分辨率为 512 会使每个地形四边形大小为 512 虚幻单位（在正常的多边形细分情况下，例如， MaxTesselationLevel = 1 且 MinTesselationLevel = 1）。一个 10 米 DEM 的 DrawScale3D.X/.Y 大小为 500，或者近似于标准的 2 的幂指数值 512 的四边形地形。最常用的 DrawScale 大小为 128 和 256，所以 512 至少是预期高度贴图分辨率的 1/4。
+<p />
+在将 10 米 DEM 数据的分辨率与通常在大多数视频游戏地图中使用的分辨率相比时，可以手动创建或通过算法高度贴图软件生成，2.5 到 5 米数据相当于通常用于获取一个恰当看上去正确的地形的分辨率。2.5 和 5 米近似于每个四边形分别为 128 和 256 虚幻单位。
+<p />
+因为大多数 DEM 数据至少是这个样本空间的 2 倍，例如， 10 米数据，或者只相当于预期视频游戏的四分之一或者十六分之一，在大多数情况下，DEM 数据的分辨率和质量不足以作为视频游戏地图地形的源。
+最常见的公有 DEM 数据是 30 米和 90 米，而且对于视频游戏地图设计需要肯定是没用的。
+<p />
+在缩放为 256 而不是 500 的情况下可以使用 10 米数据，但是，这可能意味着地形细节和特征将会是它们实际大小的 1/4。
+<p />
+<p />
+<h2><a name="DEM 文件格式"></a> DEM 文件格式 </h2>
+<p />
+下面的文件扩展名对应的比较常见的数字高程模型格式。
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">扩展名</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">格式</font></a> </th></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> .ddf </td><td bgcolor="#ffffff"> USGS DEM </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> .dem </td><td bgcolor="#eaeaea"> Vista Pro Binary DEM </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> .dem </td><td bgcolor="#ffffff"> USGS DEM </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> .hgt </td><td bgcolor="#eaeaea"> SRTM（航天飞机雷达地形测绘使命） </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> .tif </td><td bgcolor="#ffffff"> GeoTIFF </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> .dem </td><td bgcolor="#eaeaea"> Vista Pro Binary DEM </td></tr>
+</table>
+<p />
+<p />
+<h2><a name="DEM 转换软件"></a> DEM 转换软件 </h2>
+<p />
+这里提供了一些软件应用程序和实用程序，可以将 DEM 文件转换为各种其他格式，这些格式最终可以转换为一个供高度贴图软件和 UnrealEd 使用的格式。在这里没有推荐特定的应用程序，因为 DEM 数据类型和工具的种类如此繁多，功能何不相同。根据工作室要求不同，选择的软件也有所不同。一些支持一个或多个 DEM 格式（其中包括 HMCS、HMES 和 Leveller）转换的常见应用程序，此外还有很多非商业性、行政管理和学术性的工具供阅读和转换各种 DEM 格式，其中包括 3DEM、Kashmir3D、LandSerf、MicroDEM、Wilbur、EarthSlot、LandView、World Wind 以及很多其他格式。
+<p />
+<p />
+<h2><a name="DEM 数据源"></a> DEM 数据源 </h2>
+<p />
+在 <a href="http://www.usgs.gov/" target="_top">U.S. 地质勘测</a>网站上可以找到大多数连接到航空相片、卫星图和遥感数据的当前源的链接。注意，绝大多数这些数据的副本需要付费。下面是只是这么多可以使用的 DEM 数据源中的一部分。
+<p />
+<strong>5 米</strong>
+<p />
+UTAH AGRC <br>
+有限的 US 数据区域。<br>
+<a href="http://agrc.utah.gov/agrc_sgid/dem_5m.html" target="_top">http://agrc.utah.gov/agrc_sgid/dem_5m.html</a>
+<p />
+<strong>10 米</strong>
+<p />
+NED <br>
+10 米和 30 米数据集合。10 米只是受限的 US 区域。<br>
+<a href="http://ned.usgs.gov/" target="_top">http://ned.usgs.gov/</a>
+<p />
+<strong>30 米</strong>
+<p />
+USGS <br>
+<a href="http://www.usgs.gov/pubprod/" target="_top">http://www.usgs.gov/pubprod/</a>
+<p />
+<strong>90 米</strong>
+<p />
+SRTM: 航天飞机雷达地形测绘使命 <br>
+<a href="http://srtm.usgs.gov/" target="_top">http://srtm.usgs.gov/</a> <br>
+90 米数据由初始的 30 米数据平均而来。<br>
+初始的 30 米数据集合使用干涉测量法得到。<br>
+30m x 30m 三维空间取样，绝对垂直测高精度 &lt;= 16m，相对垂直测高精度 &lt;= 10m，而绝对水平圆精度 &lt;= 20m。
+<p />
+加拿大地形测绘数据 <br>
+<a href="http://maps.nrcan.gc.ca/index_e.php" target="_top">http://maps.nrcan.gc.ca/index_e.php</a>
+<p />
+<strong>1 千米</strong>
+<p />
+SRTM30: 航天飞机雷达地形测绘使命，30 弧秒 (1km) 集 <br>
+<a href="http://topex.ucsd.edu/WWW_html/srtm30_plus.html" target="_top">http://topex.ucsd.edu/WWW_html/srtm30_plus.html</a> <br>
+926 米数据。
+<p />
+GTOPO30: 地形 30 弧秒集 <br>
+<a href="http://edc.usgs.gov/products/elevation/gtopo30/gtopo30.html" target="_top">http://edc.usgs.gov/products/elevation/gtopo30/gtopo30.html</a> <br>
+926 米数据。
+<p />
+<p />
+<h2><a name="采集可以在虚幻引擎中使用的 DEM 数据"></a> 采集可以在虚幻引擎中使用的 DEM 数据 </h2>
+<p />
+<strong>Voids</strong>
+<p />
+DEM 数据集通常在数据中包含“无效值”或者无效值所在区域。这些无效值通常包含 0 或 65535 各自的最小或最大数据值，而且在必然产生的可视化数据中显示为洞或尖峰。
+<p />
+有些 DEM 供应商提供了 DEM 数据集的简洁或“完整”版本，其中无效值中丢失的数据已经使用其他 DEM 集合中的数据或者是基于周围数据的平均值填充。
+<p />
+使用未完成的其中包含无效值的 DEM 数据，需要手动修复这个数据集或在导入到虚幻编辑器中之前校正地形顶点。可以通过手动编辑源文件中的数据集，通过在虚幻编辑器中手动绘制无效值，或者通过使用第三方软件完成这项操作，其中这些软件支持使用基于周围数据的插入式填充值在用户指定范围外校正数据的 DEM 自动修复功能。
+<p />
+<strong>基础高度和高度范围缩放</strong>
+<p />
+16 位值 DEM 数据集合通常不在供游戏地图使用的预期基础高度（0 = 海拔位置）或者高度缩放范围。在大多数情况下，关卡设计师应该调整数据高度范围，这样它可以从 16 位范围的三分之一扩展为二分之一，使网格物体顶点 Z 间隔尺寸更合适，然后集中数据，使这个地形的中点与虚幻编辑器的原点对齐，这样这块地形就可以非常合适地卡在 KillZ 和 StallZ 位置之间。
+<p />
+<p />
+<h2><a name="将高度贴图导入到虚幻引擎"></a> 将高度贴图导入到虚幻引擎 </h2>
+<p />
+只要 DEM 数据的格式可以转换为 G16，例如，RAW-16 或 TIF-16，就可以在虚幻编辑器中使用。
+<p />
+请参阅<a href="TerrainHeightmaps.html" class="twikiLink">地形高度贴图</a>页面了解有关导入 G16 高度贴图的信息。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TerrainsFromDEMsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:40:57 GMT -->
+</html></body>

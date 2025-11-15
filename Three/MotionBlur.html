@@ -1,0 +1,392 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MotionBlur.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:16:20 GMT -->
+<head>
+<title> UDK | MotionBlur    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">MotionBlur  </b></div>
+<div id="tooltext">
+<a href="MotionBlurJP.html" class="twikiLink">日本語訳</a><br><a href="MotionBlurCH.html" class="twikiLink">中国翻译</a><br><a href="MotionBlurKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/MotionBlur -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="PostProcessEffectsHome.html" class="twikiLink">Post Process Effects</a></b> &gt; MotionBlur Post Process Effect <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="CinematicArtistHome.html" class="twikiLink">Cinematic Artist</a></b> &gt; MotionBlur Post Process Effect
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="MotionBlur Post Process Effect"></a> MotionBlur Post Process Effect </h1>
+<hr size="1" noshade="noshade">
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlur/camera_motionblur.jpg" width='512' height='256' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>Left: without motion blur<br>Right: with motion blur (and quick camera movement)</SMALL> </td></tr>
+</table>
+<br>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="MotionBlur.html#MotionBlur Post Process Effect"> MotionBlur Post Process Effect</a> <ul>
+<li> <a href="MotionBlur.html#Overview"> Overview</a>
+</li> <li> <a href="MotionBlur.html#Implementation"> Implementation</a>
+</li> <li> <a href="MotionBlur.html#Directional blurring"> Directional blurring</a>
+</li> <li> <a href="MotionBlur.html#Tweaking the parameters"> Tweaking the parameters</a>
+</li> <li> <a href="MotionBlur.html#Interaction with motion blur"> Interaction with motion blur</a>
+</li> <li> <a href="MotionBlur.html#Known limitations and issues"> Known limitations and issues</a>
+</li> <li> <a href="MotionBlur.html#Useful console commands"> Useful console commands</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Motion blur is a effect seen in still images and movies. In cameras the shutter is open for a short period of time to give light to the film media. Because of that fast moving objects appear blurred. In the human eye motion blur is perceived because the sensors in the human eye also have some reaction over time (the image fades over time). Motion blur is mostly visible in movie like frame rate (20 - 30) and on screen shots.
+<p />
+The motion blur post process we implemented features <strong>camera motion blur</strong> and <strong>object motion blur</strong>. For the object motion we generated a 2D velocity vector for each screen pixel. This information is updated each frame and stored in the intermediate velocity texture. A following half resolution post process uses this information to generate a half resolution motion blurred image. This is blended with the full resolution scene image to keep the image resolution high where needed. We generate the motion blurred image by averaging a few texture lookups. To avoid the appearance of multiple images (e.g. averaging 5 texture lookups can appear as 5 ghost images) we limit the maximum screen velocity. Doing motion blur in half resolution helps performance and also further hides using only a few texture lookups.
+<p />
+Further technical topics: <a href="MotionBlurSkinning.html" class="twikiLink">MotionBlurSkinning</a> <a href="MotionBlurSoftEdge.html" class="twikiLink">MotionBlurSoftEdge</a>
+<p />
+<h2><a name="Implementation"></a> Implementation </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+As we properly add the two types of motions together we also can see the effect of reduced motion blur when the movements align (e.g. when the camera follows a moving object with similar speed). As the method only can operate with the provided scene image data not all effects can be reproduced. Motion blur is usually a very subtle effect so approximations often give good results.
+<p />
+For better performance we generate the motion blurred image in half resolution in a pre pass to the uber post processing pass. That also means we need to upscale the resulting image and we need to mask out the not motion blurred images where appropriate (very little image movement).
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlur/motionmblurtransiation.jpg" alt="motionmblurtransiation.jpg" width='625' height='501' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>A forward moving player perceives motion blur mostly near the image corners.<br>You can see the full resolution image softly blends with half resolution motion blur image.</SMALL> </td></tr>
+</table>
+<p />
+For debugging purpose you can look at the blend mask with the "visualizetexture" command. The alpha channel is white where full resolution is uses and black where the half resolution buffer with the blurred content is:
+<p />
+<img src="rsrc/Three/MotionBlur/motionblurmask.jpg" alt="motionblurmask.jpg" width='841' height='528' />
+<p />
+Note that rotating the player view results in motion blur. That is expected but might be not what the player likes to see. Normally the eye would focus on some interesting points in the image and follow them.
+For the eye the motion blur would disappear. In order to simulate this effect we would have to do proper eye tracking or simulate eye behavior (likely to fail in many cases). Alternatives: less motion blur, mask
+the motion blur to affect mostly the outer areas of the screen, limit motion blur for critical game play cases, higher frame rate.
+<p />
+For <strong>camera motion blur</strong> the 2D motion vector can be computed on the fly way from the previous view matrix, the current view matrix and the pixel depth. For <strong>object motion blur</strong> we compute the vector per pixel by rendering the geometry of all motion blurred objects (small objects and slowly moving objects are culled for performance reasons) into the so called velocity texture. The data in this texture can be seen when using the <strong>VisualizeTexture</strong> console command:
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlur/perobjectmotionblur.jpg" alt="perobjectmotionblur.jpg" width='818' height='243' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>Left: Rotating blades as seen in the game.<br>Right: The same scene shown with the VisualizeTexture console command.</SMALL> </td></tr>
+</table>
+<p />
+The color in the velocity texture represents the motion vector direction and strength. The following image illustrates how the red and green channel is used to define a motion vector (the circle represents the max velocity):
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlur/colormeaning.jpg" alt="colormeaning.jpg" width='256' height='256' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>The color in the velocity texture indicates the object motion.<br>Black is reserved for camera/no object motion.<br>The blue and alpha channel might be used by the radial blur feature.</SMALL> </td></tr>
+</table>
+<p />
+We support all matrix transformations for <strong>rigid bodies</strong> like translation, rotation and scale. Later we added support for bone <strong>animation</strong>. As this method requires some special hardware features and has performance implications it is not enabled by default. More can be found here: <a href="MotionBlurSkinning.html" class="twikiLink">MotionBlurSkinning</a>
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlur/PerBoneMotionBlur.jpg" alt="PerBoneMotionBlur.jpg" width='672' height='350' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>Motion blur skinning allows to have parts of the body moving in different directions.</SMALL> </td></tr>
+</table>
+<p />
+<h2><a name="Directional blurring"></a> Directional blurring </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Ideally we distribute the image content to pixels in the motion direction. A naive implementation of that would be very slow. We currently approximate it by a gather operation based on multiple bilinear filtered texture lookups. As we read a half resolution version of the scene texture we have good performance and even the motion appear smooth. For extreme motions the vector can be quite large. In order to avoid the effect of having multiple images the motion can be clamped in a 2D disc (see <strong>Max Velocity</strong>).
+<p />
+As we have an HDR image as input and do tone mapping after the motion blur we can see bright image content forming sharp lines. This is desirable as this effect can be seen with real cameras as well.
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlur/HDRMotionBlur.jpg" alt="HDRMotionBlur.jpg" width='302' height='189' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>Bright objects (HDR content) appear brighter thanks to motion blur.</SMALL> </td></tr>
+</table>
+<p />
+The gather operation is fast and blurs image content in the motion direction but without further effort image content would leak into areas that are static and are in front of the moving object (e.g. the 3rd person player). To fix this we mask out those cases and only blur within the moving object. This alone however would appear incorrect as objects are blurry within but don't blur their content outside of the object borders. This can be solved by using the <a href="MotionBlurSoftEdge.html" class="twikiLink">Motion Blur SoftEdge</a> feature.
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlur/MotionBlurSoftEdgeNumbers2.jpg" alt="MotionBlurSoftEdgeNumbers2.jpg" width='326' height='221' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>SoftEdge allows motion blur to appear outside of the moving object.</SMALL> </td></tr>
+</table>
+<p />
+The motion blur effect is combined with radial blur feature (similar to the radial blur in Photoshop when using the method zoom). Both effects share a lot of similarities and the combined method was done for efficiency. As both methods share one motion vector you might see some glitches when both effects are used extensively. Luckily those cases are very rare.
+<p />
+<img src="rsrc/Three/MotionBlur/RadialBlur.jpg" alt="RadialBlur.jpg" width='850' height='558' />
+<p />
+<h2><a name="Tweaking the parameters"></a> Tweaking the parameters </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+In the post processing chain you find the following properties in the uber post processing node (no need to use the motion blur node, the uber post process node is required for motion blur and bring the same settings):
+<p />
+     <img src="rsrc/Three/MotionBlur/editorsettings.jpg" alt="editorsettings.jpg" width='265' height='122' />
+<p />
+The <strong>Max Velocity</strong> limits the motion in a disk with the specified size (scales with the screen width, always circular no matter what height). The value is a multiplier to some internal constant of a reasonable size. A number below 1 limits the vectors further, bigger than 1 allows stronger blur but as we keep the same sample count the result suffer (multiple images).
+<p />
+     <img src="rsrc/Three/MotionBlur/motionclamp.jpg" alt="motionclamp.jpg" width='384' height='129' />
+<p />
+The <strong>Motion Blur Amount</strong> allows to scale the motion blur vectors. It's better to tweak this value first and leave the Max Velocity clamp higher otherwise you don't even see the change in the scale. You might end up with a high amount clamped very at a small radius. Even small motions will result in blurrring and the overall effect might be worse than having motion blur disabled.
+<p />
+     <img src="rsrc/Three/MotionBlur/motionscale.jpg" alt="motionscale.jpg" width='384' height='128' />
+<p />
+The <strong>Full Motion Blur</strong> checkbox allows to disable camera motion blur. Object motion blur will still be active.
+<p />
+The <strong>Camera Rotation Threshold</strong> the maximum angle them camera can rotate at maximum until the camera motion blur is disabled (this is useful for camera cuts).
+<p />
+The <strong>Camera Translation Threshold</strong> the distance camera can move at maximum until the camera motion blur is disabled (again useful for camera cuts).
+<p />
+Note that the settings in the chain can be overwritten by post processing volumes.
+<p />
+In the Actor you can find the <strong>Motion Blur Scale</strong>. That value was once needed to disable motion blur on object that move with the camera (e.g. platforms). This is no longer needed as the motion blur now correctly handles such relative movements. The value will be removed soon or reactivated if we realize me miss some cases with the new implementation.
+<p />
+<h2><a name="Interaction with motion blur"></a> Interaction with motion blur </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+In real world bloom can be observed if large quantities of light are coming from the same direction (position on the screen). Motion blur can ditribute the quantity of a bright area to a bigger screen area. A recent change (10/28/2010) simulates the this effect.
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlur/BloomAfterMotionBlur.jpg" alt="BloomAfterMotionBlur.jpg" width='554' height='224' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>Note that withe the new method the bloom appears dimmer and is more spread over the path of the moving object.</SMALL> </td></tr>
+</table>
+<br>
+<p />
+<p />
+The effect becomes visible with quickly moving objects or fast camera movement and the right settings (big max velocity, big motion blur amount, bloom threshold vs. object brightness <a href="MotionBlurSoftEdge.html" class="twikiLink">MotionBlurSoftEdge</a>). Then bright content that was blooming before is more spread out and this can also make the motion blur appearing less prominent.
+<p />
+<h2><a name="Known limitations and issues"></a> Known limitations and issues </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> Camera cuts like the ones done in Matinee are problematic for motion blur. We currently rely on the motion blur getting disabled with bigger camera rotations or translations. The threshold for both values can be use customized. Ideally Matinee would generate an event so there is one less point for a user error. However even if that gets fixed there might be others remaining (e.g. game code). Ideally we always move the camera and a jump or camera switch is handled differently. This is a bit more tricky to implement as the camera object is getting recreated each frame (per view).
+</li> <li> High high max velocity results in appears as multiple images (We tried to randomize this per pixel but the result wasn't good enough. More samples help at the cost of performance so we might add an option for that).
+</li> <li> Motion blur is based on half resolution scene input and renders to a half resolution texture that is getting upsampled in the uber post processing pass. That can be visible. Tweaking the masking might help (not exposed yet).
+</li> <li> For better editing experience we have motion blur disabled in the editor. This also affect the Radial blur.
+</li></ul>
+<p />
+<h2><a name="Useful console commands"></a> Useful console commands </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <dl>
+<dt> <code><b>show postprocess</b></code> </dt><dd> to enable/disable the postprocessing altogether
+</dd> <dt> <code><b>VisualizeTexture</b></code> </dt><dd> to look at the intermediate buffers (e.g. half resolution motion blur input, velocity texture or the motion blur output)
+</dd> <dt> <code><b>MotionBlurMaxVelocity</b></code> </dt><dd> to override the postprocess setting (for tweaking and debugging)
+</dd> <dt> <code><b>MotionBlurAmount</b></code> </dt><dd> to override the postprocess setting (for tweaking and debugging)
+</dd> <dt> <code><b>MotionBlurSoftEdge</b></code> </dt><dd> see <a href="MotionBlurSoftEdge.html" class="twikiLink">MotionBlurSoftEdge</a>
+</dd> <dt> <code><b>MotionBlurSkinning</b></code> </dt><dd> see <a href="MotionBlurSkinning.html" class="twikiLink">MotionBlurSkinning</a>
+</dd> <dt> <code><b>set skeletalmeshcomponent bforcerefpose 1</b></code> </dt><dd> to disable skinning for the animated objects
+</dd> <dt> <code><b>slomo 0.1</b></code> </dt><dd> to slow down the world simulation (1 to set it back to the default value)
+</dd></dl>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MotionBlur.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:16:23 GMT -->
+</html></body>

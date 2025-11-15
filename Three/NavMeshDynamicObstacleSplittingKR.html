@@ -1,0 +1,496 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavMeshDynamicObstacleSplittingKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:34:11 GMT -->
+<head>
+<title> UDK | NavMeshDynamicObstacleSplittingKR    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">NavMeshDynamicObstacleSplittingKR  </b></div>
+<div id="tooltext">
+<a href="NavMeshDynamicObstacleSplitting.html" class="twikiLink">English Translation</a><br><a href="NavMeshDynamicObstacleSplittingJP.html" class="twikiLink">?¥æœ¬èªè¨³</a><br><a href="NavMeshDynamicObstacleSplittingCH.html" class="twikiLink">ä¸?›½ç¿»è¯‘</a><br>
+
+<!-- Three/NavMeshDynamicObstacleSplittingKR -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHomeKR.html" class="twikiLink">UE3 ??/a></b> &gt; <b><a href="AIAndNavigationHomeKR.html" class="twikiLink">AI?€ ?´ë¹„ê²Œì´??/a></b> &gt; ?´ë¹„ê²Œì´??ë©”ì‹œ ?™ì  ?¥ì• ë¬?ë¶„í•  ê¸°ìˆ ??ê°œìš”
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="?´ë¹„ê²Œì´??ë©”ì‹œ ?™ì  ?¥ì• ë¬?ë¶„í•  ê¸°ìˆ ??ê°œìš”"></a> ?´ë¹„ê²Œì´??ë©”ì‹œ ?™ì  ?¥ì• ë¬?ë¶„í•  ê¸°ìˆ ??ê°œìš” </h1>
+<hr size="1" noshade="noshade">
+<em>ë¬¸ì„œ ë³€ê²½ë‚´?? <a href="https://udn.epicgames.com/Main/MattTonks" class="restricted" class="restricted" class="twikiLink">Matt Tonks</a> ?‘ì„±. <a href="https://udn.epicgames.com/Main/JamesTan" class="restricted" class="restricted" class="twikiLink">James Tan</a> ?˜ì •. <a href="https://udn.epicgames.com/Main/SungjinHong" class="restricted" class="restricted" class="twikiLink">?ì„±ì§?/a> ë²ˆì—­.</em>
+<div class="twikiToc"> <ul>
+<li> <a href="NavMeshDynamicObstacleSplittingKR.html#?´ë¹„ê²Œì´??ë©”ì‹œ ?™ì  ?¥ì• ë¬?ë¶„í•  ê¸°ìˆ ??ê°œìš”"> ?´ë¹„ê²Œì´??ë©”ì‹œ ?™ì  ?¥ì• ë¬?ë¶„í•  ê¸°ìˆ ??ê°œìš”</a> <ul>
+<li> <a href="NavMeshDynamicObstacleSplittingKR.html#ê°œìš”"> ê°œìš”</a>
+</li> <li> <a href="NavMeshDynamicObstacleSplittingKR.html#?˜ì´ ?ˆë²¨ ê°œìš”"> ?˜ì´ ?ˆë²¨ ê°œìš”</a> <ul>
+<li> <a href="NavMeshDynamicObstacleSplittingKR.html#ê³„ì¸µêµ¬ì¡°"> ê³„ì¸µêµ¬ì¡°</a>
+</li> <li> <a href="NavMeshDynamicObstacleSplittingKR.html#?”ì²­??ë¹Œë“œ"> ?”ì²­??ë¹Œë“œ</a>
+</li></ul>
+</li> <li> <a href="NavMeshDynamicObstacleSplittingKR.html#êµ¬í˜„ ?¸ë??¬í•­"> êµ¬í˜„ ?¸ë??¬í•­</a> <ul>
+<li> <a href="NavMeshDynamicObstacleSplittingKR.html#GetBoundingShape()"> GetBoundingShape()</a>
+</li> <li> <a href="NavMeshDynamicObstacleSplittingKR.html#PreserveInternalPolys()"> PreserveInternalPolys()</a>
+</li></ul>
+</li> <li> <a href="NavMeshDynamicObstacleSplittingKR.html#Interface_NavMeshPathObject ?€ ?¨ê»˜ ?¬ìš©"> Interface_NavMeshPathObject ?€ ?¨ê»˜ ?¬ìš©</a>
+</li> <li> <a href="NavMeshDynamicObstacleSplittingKR.html#AddObstacleEdge()"> AddObstacleEdge()</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="ê°œìš”"></a> ê°œìš” </h2>
+<hr size="1" noshade="noshade">
+?™ì ?¼ë¡œ ë³€ê²½ë˜???í™©???°ë¼ ?¤í–‰?œê°„???´ë¹„ê²Œì´??ë©”ì‹œ(?€ AI ?´ë¹„ê²Œì´???íƒœ)???í–¥???¼ì¹  ???ˆì—ˆ?¼ë©´ ?˜ëŠ” ?í™©??ì¢…ì¢… ?ˆìŠµ?ˆë‹¤. ?¬ê¸°?œëŠ” ?´ë¹„ê²Œì´??ë©”ì‹œ ?œìŠ¤?œìœ¼ë¡?ê·??‘ì—…???´ë–»ê²??´ë£¨?´ì????Œì•„ë³´ê² ?µë‹ˆ??
+<p />
+<h2><a name="?˜ì´ ?ˆë²¨ ê°œìš”"></a> ?˜ì´ ?ˆë²¨ ê°œìš” </h2>
+<hr size="1" noshade="noshade">
+ê¸°ë³¸ ê°œë…?€ <strong>Interface_NavMeshPathObstacle</strong> (?¸í„°?˜ì´???´ë¹„ ë©”ì‹œ ?¨ì“° ?¥ì• ë¬??€ ?´ë¹„ê²Œì´??ë©”ì‹œë¥??´ë–¤ ëª¨ì–‘?¼ë¡œ ë¶„í• ? ì?ë¥??˜í??´ëŠ” ?¸í„°?˜ì´?¤ë? ?¬ìš©?ì—ê²??œê³µ?©ë‹ˆ?? AI ê°€ ?Œì•„?¤ë‹ ??ì£¼ì˜ë¥??´ì•¼ ?˜ëŠ” ?¥ì• ë¬¼ì´ ê²Œì„ ?”ë“œ???ˆë¡œ ?¤ì–´???Œë§ˆ?? ?¬ìš©?ëŠ” <strong>RegisterObstacleWithNavMesh()</strong> (?¥ì• ë¬¼ì„ ?´ë¹„ ë©”ì‹œë¡??±ë¡ ?¨ìˆ˜)ë¥??¸ì¶œ?˜ê³ , ê·¸ëŸ¬ë©?ê¸°ì¡´ ë©”ì‹œ???´ë¦¬ê³?ì¤??´ëŠ ê²ƒì´ ???¥ì• ë¬¼ì— ?í–¥??ë°›ëŠ”ì§€ ?ë‹¨?˜ì—¬, ?„ìš”?˜ë‹¤ë©??œê³µ??ëª¨ì–‘?¼ë¡œ ë©”ì‹œë¥?ë¶„í• ?©ë‹ˆ??
+<p />
+<img src="rsrc/Three/NavMeshDynamicObstacleSplittingKR/splittery_base_visualKR.png"/>
+<p />
+???´ë?ì§€?ì„œ???´ë¦¬ê³??·ìœ¼ë¡?êµ¬ì„±??ê¸°ë³¸ ë©”ì‹œê°€ ?ë¸Œ ëª¨ì–‘?????¥ì• ë¬?ëª¨ì–‘ ì£¼ë??¼ë¡œ ?˜ë‰©?ˆë‹¤. ?¥ì• ë¬?ëª¨ì–‘?€ ?´ë³´??ë³µì¡?´ë„ ?˜ë©°, ì¶•ì„ ë§ì¶”ì§€ ?Šì•„???©ë‹ˆ?? ?¨ì? ë³¼ë¡??ëª¨ì–‘?´ê¸°ë§??˜ë©´ ?©ë‹ˆ??
+<p />
+<h3><a name="ê³„ì¸µêµ¬ì¡°"></a> ê³„ì¸µêµ¬ì¡° </h3>
+ë©”ì‹œê°€ ?¥ì• ë¬?ì£¼ë??¼ë¡œ ?˜ë‰  ???¤ì œë¡?ë²Œì–´ì§€???‘ì—…?€, ê¸°ì¡´ ?´ë¦¬ê³??ë¦¬???ˆë¡œ??ë©”ì‹œë¥?ë§Œë“œ??ê²ƒì…?ˆë‹¤. ?´ëŸ° ?ìœ¼ë¡?AI ê°€ ?í–¥ë°›ì? ?´ë¦¬ê³¤ì„ ?¬ìš©???Œë§ˆ??ì°¾ì•„ë³´ëŠ” ?¼ì¢…??ê³„ì¸µêµ¬ì¡°ë¥??•ì„±?©ë‹ˆ?? ì¤‘ê°„ (?ëŠ” ?¬ì¹­) ë©”ì‹œë¥?ê°–ëŠ” ?´ë¦¬ê³¤ì„ ?µí•´ ê¸¸ì°¾ê¸°ë? ???ŒëŠ”, ê·¸ëƒ¥ ê·??´ë¦¬ê³¤ì˜ ?ì??ì„œ ê¸¸ì°¾ê¸°ë? ?˜ê¸° ë³´ë‹¨, ?´ë‹¹ ?œë¸Œë©”ì‹œë¥?ì°¾ì•„ë³´ê²Œ ?©ë‹ˆ??
+<p />
+<h3><a name="?”ì²­??ë¹Œë“œ"></a> ?”ì²­??ë¹Œë“œ </h3>
+AI ê°€ ?¥ì• ë¬¼ì— ?í–¥ë°›ì? ê²ƒìœ¼ë¡??œê¹…???´ë¦¬ê³¤ì„ ?µí•´ ê¸¸ì°¾ê¸??”ì²­?????? ?´ë‹¹ ?¥ì• ë¬?ì£¼ë??¼ë¡œ ?´ë¦¬ê³¤ì´ ë¶„í• ?˜ì? ?Šì? ?íƒœ?¼ë©´ ë°”ë¡œ ê·???ë¶„í• ?œí‚µ?ˆë‹¤. ì¦??¥ì• ë¬¼ì„ ?±ë¡?˜ìë§ˆì ë¶„í• ?˜ëŠ” ê²ƒì´ ?„ë‹Œ?? ê·??´ìœ ???¥ì• ë¬??±ë¡ ë¹„ìš©???´ë–»ê²Œë“  ê²½ê°?œí‚¤ê¸??„í•¨?…ë‹ˆ?? ?ˆë? ?¤ì–´ ?±ë¡ê³??´ì œê°€ ë§¤ìš° ?ì£¼ ?¼ì–´?˜ëŠ” ?¥ì• ë¬¼ì´ ?ˆëŠ” ê²½ìš°?¼ë©´, ?´ëŸ° ë¹„ì‹¼ ?¥ì• ë¬?ì²˜ë¦¬??AI ê°€ ?¤ì œë¡??í–¥ë°›ì? ë©”ì‹œ ?°ì´?°ì— ?ˆì„ ?Œë§Œ ??ì£¼ë©´ ??ê²ƒì…?ˆë‹¤.
+<p />
+ì¶”ê??ìœ¼ë¡??´ë¦¬ê³¤ì´ ë¶„í• ?˜ê³  ?˜ë©´, ?´ë‹¹ ì§€?¤ë©”?¸ë¦¬ë¥??µí•˜??ê¸¸ì°¾ê¸°ì— ê´€?¨ëœ ì¶”ê? ë¹„ìš©?€ ë°œìƒ?˜ì? ?ŠìŠµ?ˆë‹¤. ì¦??¥ì• ë¬??±ë¡???ˆì–´ ê³„ì‚° ë¹„ìš©?€ ????ë²ˆë§Œ ?¼ì–´?œë‹¤???»ì…?ˆë‹¤. ?í•œ ë©”ì‹œ??ë¶€ëª?êµ¬ì¡°ê°€ ë°”ë€Œê³  ?ˆì????Šìœ¼ë¯€ë¡? ?¥ì• ë¬¼ì´ ?œê±°?ì„ ???ë˜ ?íƒœë¡??Œë¦¬??ë¹„ìš©?€ ê±°ì˜ ê³µì§œ?…ë‹ˆ??
+<p />
+<p />
+<h2><a name="êµ¬í˜„ ?¸ë??¬í•­"></a> êµ¬í˜„ ?¸ë??¬í•­ </h2>
+<hr size="1" noshade="noshade">
+?¨ì“° ?¥ì• ë¬¼ì˜ ë§¤ìš° ê°„ë‹¨???ˆì œë¡?NavMeshObstacle ë¥?ë´…ì‹œ??
+<p />
+?¬ê¸°??ë³´ë©´ ?¥ì• ë¬¼ì„ ì¼œê³ /?„ëŠ” ?¤ì¦ˆë©?ë¡œì§??ëª?ê°€ì§€ ë³????ˆìŠµ?ˆë‹¤ë§? ?¬ë°Œ??ë¶€ë¶„ì? ?¬ê¹?ˆë‹¤:
+<p />
+<div class="codetitlebar">
+NavMeshObstacle.uc
+</div>
+<div class="codesnippet">
+<pre>
+cpptext
+{
+  /&#42;&#42;
+   &#42; ???¨ìˆ˜??out&#95;polyshape ë¥????¤ë¸Œ?íŠ¸??ë³¼ë¡ ê²½ê³„ ëª¨ì–‘???˜í??´ëŠ”
+   &#42; ë²„í…??ë¦¬ìŠ¤?¸ë¡œ ì±„ì›?ˆë‹¤.
+   &#42; &#64;param out&#95;PolyShape - ???¥ì• ë¬¼ì˜ ê²½ê³„ ?´ë¦¬ëª¨ì–‘???€??ë²„í…??ë²„í¼ë¥??´ëŠ” ì¶œë ¥ ë°°ì—´?…ë‹ˆ??
+   &#42; &#64;return ì°¸ì´ë©????¤ë¸Œ?íŠ¸??ë°”ë¡œ ?¥ì• ë¬???• ???©ë‹ˆ?? (ê±°ì§“?´ë©´ ???¥ì• ë¬¼ì? ë©”ì‹œ???í–¥???¼ì¹˜ì§€ ?ŠìŠµ?ˆë‹¤.)
+   &#42;/
+  virtual UBOOL GetBoundingShape(TArray&#60;FVector&#62;&#38; out&#95;PolyShape);
+
+  virtual UBOOL PreserveInternalPolys() { return TRUE; }
+}
+</pre>
+</div>
+<p />
+ë§¤ìš° ê¸°ë³¸?ì¸ ?¨ì“° ?¥ì• ë¬¼ì…?ˆë‹¤. ?„ì¬ ??ëª¨ë“  ?¥ì• ë¬¼ì´ ê·?ëª¨ì–‘???°ë¼ ë©”ì‹œë¥?ë¶„í• ?˜ë ¤ ?˜ê³  ?ˆìŠµ?ˆë‹¤.
+<p />
+???¤í¬ë¦??·ì—?œëŠ” ?ˆì œ ?¨ì“° ?¤ë¸Œ?íŠ¸ë¥?ê»ë‹¤(unregister)ê°€ ì¼ ë‹¤(register) ê°„ì£¼??ë´…ì‹œ?? <br />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>ì£?</strong> ?„ë˜ ?¤í¬ë¦??·ì—??<strong>PreserveInternalGeo()</strong> ê°€ <strong>ì¼œì ¸</strong> ?ˆëŠ”?? ?´ì— ?€?´ì„œ???˜ì¤‘???ì„¸???Œì•„ ë´…ì‹œ?? <br />
+<p />
+?„ì§ ë©”ì‹œ?€ ?±ë¡?˜ì? ?Šì? ?”ë“œ???¥ì• ë¬¼ì…?ˆë‹¤. ë©”ì‹œ???ˆì— ?¥ì• ë¬¼ì´ ?“ì—¬ ?ˆëŠ” ì»¤ë‹¤?€ ?´ë¦¬ê³??˜ë‚˜ë¡?êµ¬ì„±?˜ì–´ ?ˆìŠµ?ˆë‹¤. <br />
+<img src="rsrc/Three/NavMeshDynamicObstacleSplitting/Obstacle_Disabled.png" />
+<p />
+(?¤í–‰?œê°„?? ?¥ì• ë¬¼ì´ ?±ë¡?˜ê³  ë©”ì‹œê°€ ë¶„í• ???´í›„??ë©”ì‹œ?…ë‹ˆ?? <br />
+<img src="rsrc/Three/NavMeshDynamicObstacleSplitting/Obstacle_Enabled.png" />
+<p />
+???ˆì œ ?¤ë¸Œ?íŠ¸ê°€ ?•ì˜???¨ìˆ˜ë¥??????´í´ ë´…ì‹œ??
+<p />
+<h3><a name="GetBoundingShape()"></a> GetBoundingShape() </h3>
+ë°”ìš´??ëª¨ì–‘ êµ¬í•˜ê¸??¨ìˆ˜, ???¤ë¸Œ?íŠ¸??êµ¬í˜„?€ ?´ë ‡?µë‹ˆ??
+<p />
+<div class="codesnippet">
+<pre>
+UBOOL ANavMeshObstacle::GetBoundingShape(TArray&#60;FVector&#62;&#38; out&#95;PolyShape)
+{
+  out&#95;PolyShape.AddItem(Location + FRotationMatrix(Rotation).TransformFVector(FVector(200.f,200.f,0.f)));
+  out&#95;PolyShape.AddItem(Location + FRotationMatrix(Rotation).TransformFVector(FVector(-200.f,200.f,0.f)));
+  out&#95;PolyShape.AddItem(Location + FRotationMatrix(Rotation).TransformFVector(FVector(-200.f,-200.f,0.f)));
+  out&#95;PolyShape.AddItem(Location + FRotationMatrix(Rotation).TransformFVector(FVector(200.f,-200.f,0.f)));
+  return TRUE;
+}
+</pre>
+</div>
+<p />
+ë³´ì‹œ?¤ì‹œ??ê·¸ì? ?¨ìˆœ???¬ê°?•ì„ ?œê³µ?©ë‹ˆ?? ???¨ìˆ˜ê°€ ?˜ëŠ” ?¼ì´?¼ê³¤, ?¥ì• ë¬¼ì˜ ê²½ê³„ë¥??˜í??´ëŠ” ?´ë¦¬ê³¤ì„ ?œê³µ?˜ëŠ” ê²?ë¿ì…?ˆë‹¤. ?¥ì• ë¬¼ì´ ?¤íƒœ??ë©”ì‹œ??ê²½ìš°, ë©”ì‹œ??ê²½ê³„ë¥??¬ìš©?˜ì—¬ ?„ì? ë¹„ìŠ·???‘ì—…????ì£¼ë©´ ?©ë‹ˆ??
+<p />
+??ê°€ì§€ ê¸°ì–µ??ê²ƒì?, ???¨ìˆ˜???¥ì• ë¬??±ë¡ ?´í›„ ë©”ì‹œê°€ ì²˜ìŒ ë¶„í• ???????œë²ˆë§??¸ì¶œ?œë‹¤??ê²ƒì…?ˆë‹¤. ?¥ì• ë¬¼ì´ ?±ë¡?˜ê³  ê·?ì£¼ìœ„ë¡?ë©”ì‹œê°€ ë¶„í• ?˜ê³  ?˜ë©´, ?¥ì• ë¬¼ì? ?±ë¡???´ì œ?????¬ë“±ë¡í•  ?Œê¹Œì§€ ê³ ë ¤?˜ì? ?ŠìŠµ?ˆë‹¤.
+<p />
+<h3><a name="PreserveInternalPolys()"></a> PreserveInternalPolys() </h3>
+?´ë? ?´ë¦¬ê³?ë³´ì¡´ ?¨ìˆ˜, ???¨ìˆ˜ê°€ ?˜ëŠ” ?¼ì´?¼ê³¤, ë¶„í•  ?„ë¡œ?¸ìŠ¤?”ëŸ¬ ?¥ì• ë¬??ˆì— ?ˆëŠ” ì§€?¤ë©”?¸ë¦¬ë¥?ê·??ë¦¬??? ì??œí‚¬ì§€ ?¼ëŸ¬ì£¼ëŠ” ê²ƒì´ ?„ë??…ë‹ˆ?? ?„ì˜ ?¤í¬ë¦??·ì—??ë³´ë©´, ?¥ì• ë¬??ˆì— ì§€?¤ë©”?¸ë¦¬ê°€ ? ì??˜ê³ , ?˜ë¨¸ì§€ ë©”ì‹œ?€ ?°ê²°??ê²ƒì„ ë³????ˆìŠµ?ˆë‹¤.
+<p />
+<img src="rsrc/Three/NavMeshDynamicObstacleSplittingKR/splittery_visualKR.png" />
+<p />
+<p />
+?¨ì“° ?¥ì• ë¬¼ì— ?ˆì–´ ë§ˆì?ë§??œê?ì§€ ì¤‘ìš”??ë¶€ë¶„ì?, ?¥ì• ë¬??´ë????´ë¦¬ê³¤ê³¼ (?´ë? ì§€?¤ë©”?¸ë¦¬ë§?ë³´ì¡´?˜ëŠ” ?¥ì• ë¬¼ì˜) ?¸ë? ?¬ì´??ì¶”ê????ì? ì¢…ë¥˜ë¥?ì§€?œí•˜??ê¸°ëŠ¥?…ë‹ˆ?? ?¥ì• ë¬??´ë????´ë¦¬ê³¤ì—???¸ë????´ë¦¬ê³¤ìœ¼ë¡?ë§í¬(?ì?)ê°€ ë§Œë“¤?????Œë§ˆ?? ê·??¥ì• ë¬¼ì˜ <strong>AddObstacleEdge()</strong> (?¥ì• ë¬??ì? ì¶”ê? ?¨ìˆ˜)ë¥??¸ì¶œ?˜ì—¬ ê·??‘ì—…???©ë‹ˆ??
+<p />
+<img src="rsrc/Three/NavMeshDynamicObstacleSplitting/AddObstacleEdge.png" />
+<p />
+?´ë ‡ê²??˜ë©´ ?¬ìš©?ê? ?‰ìœ„ë¥???–´?°ê³ , ?¥ì• ë¬¼ì— ?í•©???ì? ì¢…ë¥˜ë¥?ë¬´ì—‡?´ë“  ì¶”ê??????ˆìŠµ?ˆë‹¤. ê¸°ë³¸ ?‰ìœ„???¨ì? ëª¨ë“  AI ê°€ ?¨ì“° ?¥ì• ë¬¼ì˜ ?´ì™¸ë¶€ë¥??¤ê°ˆ ???ˆë‹¤ ?¼ëŸ¬ì£¼ëŠ” ë³´í†µ ?ì?ë¥?ì¶”ê??˜ëŠ” ê²ƒì…?ˆë‹¤. ê·¸ëŸ¬???¨ì“° ?¥ì• ë¬¼ì„ ?¤ì–´ê°€ê±°ë‚˜ ?˜ê°ˆ ???…íŠ¹???‰ìœ„ë¥??˜ë„ë¡??˜ë ¤??ê²½ìš°?? <strong>Inteface_NavMeshPathObject</strong> ??êµ¬í˜„?˜ëŠ” ê²ƒì´ ì¢‹ì„ ???ˆìŠµ?ˆë‹¤.
+<p />
+<p />
+<h2><a name="Interface_NavMeshPathObject ?€ ?¨ê»˜ ?¬ìš©"></a> Interface_NavMeshPathObject ?€ ?¨ê»˜ ?¬ìš© </h2>
+<hr size="1" noshade="noshade">
+?”íˆ <strong>AddObstacleEdge()</strong> ë¥???–´?°ê²Œ ?˜ëŠ” ê²½ìš°?? <a href="https://udn.epicgames.com/Three/NavMeshPathObjectsKR" class="restricted" class="restricted" class="twikiLink">Path ?¤ë¸Œ?íŠ¸</a> ??ë§í¬?˜ëŠ” ?ì?ë¥?ì¶”ê????Œì…?ˆë‹¤. ?ˆë? ?¤ë©´ <strong>Interface_NavMeshPathObstacle</strong> ?€ <strong>Interface_NavMeshPathObject</strong> ????êµ¬í˜„?˜ëŠ” ?¥ì• ë¬¼ì„ ë§Œë“¤ ???ˆìŠµ?ˆë‹¤.
+<p />
+?´ê²Œ ??? ìš©?œì?ë¥?ê·¸ë ¤ë³´ë ¤ë©? ?ˆë²¨???œì‘???´í›„ ?¼ë§ˆ ?ˆë‹¤ê°€ ë°”ë‹¥??ë¿Œë ¤ì§?ê¸°ë¦„ ?…ë©?´ë? ?ê°??ë³´ë©´ ?©ë‹ˆ??
+<p />
+ê¸°ë¦„ ?…ë©?´ì— ?€???„ìš”???‘ì—…?€: <ul>
+<li> AI ê°€ ?…ë©?´ë? ?Œì•„ê°€?„ë¡ ?˜ê¸° ?„í•´, ?…ë©??ëª¨ì–‘ ì£¼ìœ„ë¡??¤íƒœ???´ë¹„ê²Œì´??ë©”ì‹œë¥?ë¶„í• ?œì¼œ???©ë‹ˆ??
+</li> <li> AI ê°€ ?…ë©?´ë? ?¼í•  ???ˆë‹¤ë©?ê·¸ëŸ¬?„ë¡ ?˜ê¸° ?„í•´, ?…ë©?´ì— ?¤ì–´ê°??Œì˜ ë¹„ìš©??ì¶”ê??œí‚¤??ë°©ë²•??ê°•êµ¬?´ì•¼ ?©ë‹ˆ??
+</li></ul>
+<p />
+ì¦???ê²½ìš°, ?„ì˜ ê°œìš”?€ë¡?<strong>Interface_NavMeshPathObstacle</strong> ??êµ¬í˜„?˜ì—¬ ë©”ì‹œ???¥ì• ë¬?ëª¨ì–‘???±ë¡???¤ìŒ, <strong>Interface_NavMeshPathObject</strong> ??êµ¬í˜„?˜ì—¬ ?…ë©???´ë??€ ?¸ë?ë¥??°ê²°?˜ëŠ” ?ì????€???¸í„°?˜ì´?¤ë? ë§ˆë ¨, ê·??ì?ë¥?ê°€ë¡œì?ë¥´ëŠ” ë¹„ìš©???˜ì •?????ˆë„ë¡??©ë‹ˆ??
+<p />
+ì¦??„ì˜ ëª©ë¡?€ ?¤ì œë¡??¤ìŒê³?ê°™ì´ ?€?´ë³¼ ???ˆìŠµ?ˆë‹¤: <ul>
+<li> <strong>Interface_NavMeshPathObstacle::GetBoundingShape()</strong> êµ¬í˜„
+</li> <li> ?ì ˆ???œê°„???¥ì• ë¬??±ë¡
+</li> <li> <strong>AddObstacleEdge()</strong> ë¥???–´?¨ì„œ ë³´í†µ???ì? ?€??ê¸°ë¦„ ?…ë©?´ì— ?°ê²°??PathObject ?ì?ë¥?ì¶”ê?
+</li> <li> <strong>Interface_NavMeshPathObject::CostFor()</strong> êµ¬í˜„ (<a href="https://udn.epicgames.com/Three/NavMeshPathObjectsKR" class="restricted" class="restricted" class="twikiLink">Nav Mesh Path Objects KR</a> ì°¸ê³ )
+</li></ul>
+<p />
+<h2><a name="AddObstacleEdge()"></a> AddObstacleEdge() </h2>
+<hr size="1" noshade="noshade">
+ì§€ê¸ˆê¹Œì§€ ?ì„¸???¤ë£¨ì§€ ?Šì? ê²ƒì? <strong>AddObstacleEdge()</strong>, ?¥ì• ë¬??ì? ì¶”ê? ?¨ìˆ˜ ë¿ì´?? ???¨ìˆ˜ë¥??ì„¸???¤ì—¬??ë´…ì‹œ??
+<p />
+<div class="codesnippet">
+<pre>
+/&#42;&#42;
+ &#42; ???¨ìˆ˜?????¥ì• ë¬??´ë? ?´ë¦¬ê³¤ê³¼ ?¸ë? ?´ë¦¬ê³¤ì„ ?‡ëŠ” ?ì?ê°€ ì¶”ê??????¸ì¶œ?©ë‹ˆ??
+ &#42; ê¸°ë³¸ ?‰ìœ„??ê·¸ëƒ¥ ë³´í†µ ?ì? ì¶”ê??´ê³ , (?¨ì“° ?¤ë¸Œ?íŠ¸ë¥??¥ì• ë¬¼ì— ?°ê²°?œë‹¤? ê?) ?¹ë³„??ë¹„ìš©?´ë‚˜ ?‰ìœ„ë¥?ì¶”ê??˜ë ¤ë©???–´?ë‹ˆ??
+ &#42; &#64;param Status - ?„ì¬ ?ì????íƒœ (, ì¶”ê?ê°€ ?„ìš”??ê²ƒì´ ë¬´ì—‡?¸ê? ???…ë‹ˆ??
+ &#42; &#64;param inV1 - ?ì???ì²«ì§¸ ë²„í…???„ì¹˜?…ë‹ˆ??
+ &#42; &#64;param inV2 - ?ì????˜ì§¸ ë²„í…???„ì¹˜?…ë‹ˆ??
+ &#42; &#64;param ConnectedPolys - ???ì?ê°€ ?°ê²°?˜ëŠ” ?´ë¦¬ê³¤ì…?ˆë‹¤.
+ &#42; &#64;param bEdgesNeedToBeDynamic - ì¶”ê????ì?ê°€ ?™ì ?´ì–´???˜ëŠ”ì§€ (, ì¦??¤ë¥¸ ë©”ì‹œ???ì?ë¥?ì¶”ê??˜ëŠ”ì§€) ?…ë‹ˆ??
+ &#42; &#64;param PolyAssocatedWithThisPO - ?°ê²°???´ë¦¬ê³?ë°°ì—´ ?Œë¼ë¯¸í„°???¸ë±?¤ë¡œ, ê·?ë°°ì—´???´ëŠ ?´ë¦¬ê³¤ì´ ???¨ì“° ?¤ë¸Œ?íŠ¸??ê´€?¨ë˜?ˆëŠ”ì§€ë¥??˜í??…ë‹ˆ??
+ &#42; &#64;return ë°©ê¸ˆ ë¬´ìŠ¨ ?¼ì´ ë²Œì–´ì¡ŒëŠ”ì§€ (?´ë–¤ ?‰ë™??ì·¨í–ˆ?”ì?)ë¥??˜í??´ëŠ” ?´ê±°?•ì„ ë°˜í™˜?©ë‹ˆ??
+ &#42;         ?¤ë¥¸ ?¥ì• ë¬¼ì— ?˜í•´ ?´ë–¤ ?™ë°˜ ?‰ë™??ì·¨í•´???˜ëŠ”ì§€ ê²°ì •?˜ê³  ì½”ë“œë¥??¸ì¶œ?˜ëŠ” ???¬ìš©?©ë‹ˆ??
+ &#42;/
+virtual EEdgeHandlingStatus AddObstacleEdge( EEdgeHandlingStatus Status, const FVector&#38; inV1, const FVector&#38; inV2, TArray&#60;FNavMeshPolyBase&#42;&#62;&#38; ConnectedPolys, UBOOL bEdgesNeedToBeDynamic, INT PolyAssocatedWithThisPO);
+</pre>
+</div>
+<p />
+ë©”ì‹œ ë¶„í• ???„ë£Œ???´í›„, ?ˆë¡œ ?ê¸´ ?´ë¦¬ê³?ì£¼ë??¼ë¡œ ?™ì  ë¶„í•  ì½”ë“œë¥??¤í–‰?˜ì—¬, ê·????´ë¦¬ê³¤ì„ ì£¼ë? ?”ë“œ???°ê²°?œì¼œ ë´…ë‹ˆ?? ?°ê²°??ë§Œí•œ ?´ë¦¬ê³¤ì„ ì°¾ìœ¼ë©? ?œì•ˆ???ì?ë¥?ê°€ì§€ê³????¨ìˆ˜ë¥??¸ì¶œ?˜ê³ ???? PathObstable ?€ ?ì ˆ???‰ë™ ë°©ì¹¨??ê²°ì •?©ë‹ˆ??
+<p />
+???¨ìˆ˜??ê°€??ê¹Œë‹¤ë¡œìš´ ë¶€ë¶„ì?, ?¤ë¥¸ ë°©í–¥???ì?ê°€ ì¶”ê??˜ì—ˆ?”ì?ë¥??Œë ¤ì£¼ëŠ” ?±ê???Status ?Œë¼ë¯¸í„°ê°€ ?°ë¼ë¶™ëŠ”?¤ëŠ” ê²ƒì…?ˆë‹¤. ?¼ë°©?µí–‰ ?ì?ê°€ ?„ìš”??ê²½ìš°ê°€ ?ˆê¸° ?Œë¬¸?¸ë°?? ?ˆë? ?¤ì–´ AI ê°€ ?¨ì“° ?¥ì• ë¬¼ì„ ?˜ê?ê¸°ëŠ” ?´ë„ ?˜ëŒ???¤ì–´ê°€ì§€??ëª»í•˜ê²????ì?ê°€ ?ˆì„ ???ˆìŠµ?ˆë‹¤.
+<p />
+ê²°ê³¼?ìœ¼ë¡??ì?ë¥?ì¶”ê????ŒëŠ” ë°©ê¸ˆ ë¬´ì—‡???ˆëŠ”ì§€ë¥?ë°˜í™˜??ì£¼ì–´, ?¸ì¶œ?˜ëŠ” ì½”ë“œê°€ ?¤ë¥¸ ë°©í–¥?ë„ ?”í´???ì?ë¥?ì¶”ê???ì¤˜ì•¼ ?˜ëŠ”ì§€ë¥??????ˆë„ë¡??´ì•¼ ?©ë‹ˆ?? ë¬¼ë¡ , ??ê°œì˜ PathObstacle ë¥??œë¡œ ê°€ê¹Œì´ ?ì–´, ???¤ì— ì»¤ìŠ¤?€ ?ì?ë¥?ì¶”ê??˜ëŠ” ê²ƒë„ ê°€?¥í•©?ˆë‹¤.
+<p />
+?”í´??êµ¬í˜„???´í´ë³´ë©´:
+<p />
+<div class="codesnippet">
+<pre>
+EEdgeHandlingStatus IInterface&#95;NavMeshPathObstacle::AddObstacleEdge( EEdgeHandlingStatus Status, const FVector&#38; inV1, const FVector&#38; inV2, TArray&#60;FNavMeshPolyBase&#42;&#62;&#38; ConnectedPolys, UBOOL bEdgesNeedToBeDynamic, INT PolyAssocatedWithThisPO)
+{
+  return EHS&#95;AddedNone;
+}
+</pre>
+</div>
+<p />
+?„ë¬´ê²ƒë„ ?˜ì? ?Šì•˜?¤ê³  ?˜í???ê²ƒì„ ë³????ˆìœ¼?? ì½”ë“œë¥??¸ì¶œ?˜ë©´ ?´ë¦¬ê³??¬ì´???”í´???ì?ë¥?ì¶”ê??´ì•¼ ?¨ì„ ?•ë‹ˆ??
+<p />
+?´ì œ ?¨ì“° ?¥ì• ë¬??ì‹ ?ê²Œ ?°ê²°???¨ì“° ?¤ë¸Œ?íŠ¸ ?ì?ë¥?ì¶”ê??˜ëŠ” ?ˆì œë¥??´í´ë³´ê² ?µë‹ˆ??
+<p />
+<div class="codesnippet">
+<pre>
+EEdgeHandlingStatus UAIAvoidanceCylinderComponent::AddObstacleEdge( EEdgeHandlingStatus Status, const FVector&#38; inV1, const FVector&#38; inV2, TArray&#60;FNavMeshPolyBase&#42;&#62;&#38; ConnectedPolys, UBOOL bEdgesNeedToBeDynamic, INT PolyAssocatedWithThisPO)
+{
+  // ?ì?ë¥?ì¶”ê??˜ë ¤??ë°©í–¥???´ë? ?ì?ê°€ ì¶”ê??˜ì–´ ?ˆìœ¼ë©? ?¨ì“° ?¥ì• ë¬?ì¶©ëŒ???ˆì„ ???ˆìŠµ?ˆë‹¤.
+  // (ì¦??´ë? ?ì?ê°€ ì¶”ê????¤ë¥¸ ?¥ì• ë¬¼ì— ?¤ì´ë°›í˜”?¼ë‹ˆ, ê·¸ëƒ¥ ? ë‚˜??ê±°ì£ )
+  if(Status &#61;&#61; EHS&#95;AddedBothDirs)
+  {
+    return Status;
+  }
+
+  // ?´ë? ?¤ë¥¸ ?´ë¦¬ê³¤ì—????PO ë¡??˜ëŒ???¤ì–´ê°€???ì? ?¬ì¸?¸ê? ?ˆëŠ” ê²½ìš°, ? ë‚©?ˆë‹¤.
+  if( (PolyAssocatedWithThisPO &#61;&#61; 0 &#38;&#38; Status &#61;&#61; EHS&#95;Added1to0) &#124;&#124;
+    (PolyAssocatedWithThisPO &#61;&#61; 1 &#38;&#38; Status &#61;&#61; EHS&#95;Added0to1) )
+  {
+    return Status;
+  }
+
+  TArray&#60;FNavMeshPolyBase&#42;&#62; ReversedConnectedPolys&#61;ConnectedPolys;
+
+  // ??PO ??ê´€?¨ëœ ?´ë¦¬ê³??ìœ¼ë¡??¤ì‹œ ?ì?ë¥?ì¶”ê??˜ê³ ?„ë‹ˆ, ?„ìš”?˜ë‹¤ë©??œì„œë¥?ë§ë°”ê¿‰ë‹ˆ??
+  if(PolyAssocatedWithThisPO &#61;&#61; 0)
+  {
+    ReversedConnectedPolys.SwapItems(0,1);
+  }
+
+  UNavigationMeshBase&#42; Mesh &#61; ReversedConnectedPolys(0)-&#62;NavMesh;
+
+  if( Mesh &#61;&#61; NULL )
+  {
+    return Status;
+  }
+
+  // ë©”ì‹œ???ì?ë¥?ì¶”ê??©ë‹ˆ??
+  TArray&#60;FNavMeshPathObjectEdge&#42;&#62; CreatedEdges;
+  Mesh-&#62;AddDynamicCrossPylonEdge&#60;FNavMeshPathObjectEdge&#62;(inV1,inV2,ReversedConnectedPolys,TRUE, &#38;CreatedEdges);
+
+  // ?ì?ë¡œì˜ ë¦¬í¼?°ìŠ¤ë¥??¡ì•„?¤ê? ???¨ì“° ?¤ë¸Œ?íŠ¸??ë°”ì¸?©í•©?ˆë‹¤.
+  FNavMeshPathObjectEdge&#42; NewEdge &#61; (CreatedEdges.Num() &#62; 0) ? CreatedEdges(0) : NULL;
+  checkSlowish(CreatedEdges.Num() &#60;2);
+
+  if(NewEdge &#61;&#61; NULL)
+  {
+    return Status;
+  }
+
+  // ???ì?ë¥????Œí”¼ ë³¼ë¥¨??ë°”ì¸?©í•©?ˆë‹¤.
+  if(NewEdge !&#61; NULL)
+  {
+    NewEdge-&#62;PathObject &#61; GetOwner();
+    NewEdge-&#62;InternalPathObjectID &#61; 0;
+  }
+
+  // ?€???´ë¦¬?ì„œ ?ŒìŠ¤ ?´ë¦¬ê¹Œì? ?ì?ë¥?ì¶”ê??ˆìŒ???˜í??…ë‹ˆ??
+  if(Status &#61;&#61; EHS&#95;AddedNone)
+  {
+    if(PolyAssocatedWithThisPO &#61;&#61; 0)
+    {
+      return EHS&#95;Added1to0;
+    }
+    else
+    {
+      return EHS&#95;Added0to1;
+    }
+  }
+  else
+  {
+    // ?¬ê¸°ê¹Œì? ?”ë‹¤??ê²ƒì?, ?„êµ°ê°€ ë°˜ë? ë°©í–¥???´ë? ?ì?ë¥?ì¶”ê??ˆë‹¤???»ì…?ˆë‹¤.
+    return EHS&#95;AddedBothDirs;
+  }
+
+}
+</pre>
+</div>
+<p />
+??ê²½ìš° ?¥ì• ë¬¼ì? ë³´í†µ???ì? ?€???ì‹ ?ê²Œ ?°ê²°??PathObject ?ì?ë¥?ì¶”ê??˜ë ¤ ???Œì?ë§? <strong>?¤ë¡œì§€</strong> ?¥ì• ë¬?ë°”ê¹¥???´ë¦¬ê³¤ì—???ˆì˜ ?´ë¦¬ê³¤ìœ¼ë¡??°ê²°???Œë§Œ ê·¸ë ‡?µë‹ˆ?? ?¬ê¸°?œì˜ ë¡œì§ ?€ë¶€ë¶„ì? ê·¸ì? ?´ë¦¬ê³??œì„œê°€ ?¬ë°”ë¥¸ì?, ë§ë°”??ê³³ì? ?†ëŠ”ì§€ ?±ì„ ê²°ì •?˜ì—¬ ?ì?ê°€ ?¬ë°”ë¥?ë°©í–¥?¼ë¡œ ì¶”ê??˜ë„ë¡??˜ëŠ” ê²ƒì…?ˆë‹¤.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavMeshDynamicObstacleSplittingKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:34:11 GMT -->
+</html></body>

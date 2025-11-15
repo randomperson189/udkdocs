@@ -1,0 +1,617 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/HUDTechnicalGuideCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:30:41 GMT -->
+<head>
+<title> UDK | HUDTechnicalGuideCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">HUDTechnicalGuideCH  </b></div>
+<div id="tooltext">
+<a href="HUDTechnicalGuide.html" class="twikiLink">English Translation</a><br><a href="HUDTechnicalGuideJP.html" class="twikiLink">日本語訳</a><br><a href="HUDTechnicalGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/HUDTechnicalGuideCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="UIAndHUDHome.html" class="twikiLink">用户界面 &amp; HUD</a></b> &gt; HUD 技术指南
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="HUD技术指南"></a> HUD技术指南 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="HUDTechnicalGuideCH.html#HUD技术指南">HUD技术指南</a> <ul>
+<li> <a href="HUDTechnicalGuideCH.html#概述"> 概述</a>
+</li> <li> <a href="HUDTechnicalGuideCH.html#HUD类型"> HUD类型</a> <ul>
+<li> <a href="HUDTechnicalGuideCH.html#画布HUD"> 画布HUD</a>
+</li> <li> <a href="HUDTechnicalGuideCH.html#Scaleform GFx HUD"> Scaleform GFx HUD</a>
+</li></ul>
+</li> <li> <a href="HUDTechnicalGuideCH.html#HUD类"> HUD类</a> <ul>
+<li> <a href="HUDTechnicalGuideCH.html#HUD属性"> HUD属性</a>
+</li> <li> <a href="HUDTechnicalGuideCH.html#HUD函数"> HUD函数</a>
+</li></ul>
+</li> <li> <a href="HUDTechnicalGuideCH.html#MobileHUD"> MobileHUD</a> <ul>
+<li> <a href="HUDTechnicalGuideCH.html#MobileHUD属性"> MobileHUD属性</a>
+</li> <li> <a href="HUDTechnicalGuideCH.html#MobileHUD函数"> MobileHUD函数</a>
+</li></ul>
+</li> <li> <a href="HUDTechnicalGuideCH.html#UDKHUD"> UDKHUD</a> <ul>
+<li> <a href="HUDTechnicalGuideCH.html#UDKHUD属性"> UDKHUD属性</a>
+</li> <li> <a href="HUDTechnicalGuideCH.html#UDKHUD 函数"> UDKHUD 函数</a>
+</li></ul>
+</li> <li> <a href="HUDTechnicalGuideCH.html#Texture Atlas（贴图组合）图标坐标"> Texture Atlas（贴图组合）图标坐标</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+平视显示仪(HUD)用于玩家玩游戏的过程中向玩家快速并方便地传递游戏状态信息。HUD可以包括很多信息片段，比如玩家的当前生命值、他们所持或拥有的武器或物品、显示其他玩家或物品位置的世界地图、玩家的分数等。这些信息是通过在世界的顶部描画的图形和文本来传递的。
+<p />
+有些游戏的HUDs比其他游戏更加复杂。对于大部分FPS游戏来说，它们的HUD是非常简单的。这意味向玩家传达一些一看就能明白的信息，并且不妨碍玩家看到世界地图。这是很重要的，因为第一人称射击游戏的节奏非常快，瞬息间就是生死之别。对于角色扮演游戏，HUD可能会更加复杂，它此时不仅仅是HUD，更像是一个用户界面。
+<p />
+事实上，用户界面和HUD两者之间的界限已经变得非常地模糊，更多的取决于您个人举得HUD应该具有哪些功能而判定，但是这已经超出了本文的讨论范围。本文是一个创建HUD的指南，并且详细介绍了虚幻引擎3中创建HUD的可用功能。
+<p />
+<h2><a name="HUD类型"></a> HUD类型 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+在虚幻引擎3中有两种基本类型的HUDs，它们是：
+<p /> <ul>
+<li> Canvas(画布) - 使用Canvas类来描画HUD图形。
+</li> <li> Scaleform GFx - 使用Scaleform GFx集成来显示HUD图形和菜单。
+</li></ul>
+<p />
+这两种类型的HUDs相互之间并不排斥。如果适合您的需要，您可以同时使用二者。
+<p />
+<h3><a name="画布HUD"></a> 画布HUD </h3>
+<p />
+Canvas类提供了向屏幕上描画图形和文本所需的所有工具。在使用虚幻引擎制作的很多游戏中都是用了这个方法，并且对于大多数游戏来说这是一个可行的解决方案。这个方法没有提供非常好的输入处理或动画，这使得它不适合创建菜单或复杂的用户界面。
+<p />
+关于使用Canvas类创建HUD的更多信息，请参照<a href="CanvasTechnicalGuide.html" class="twikiLink">画布技术指南</a>。
+<p />
+<h3><a name="Scaleform GFx HUD"></a> Scaleform GFx HUD </h3>
+<p />
+虚幻引擎3中集成的Scaleform GFx也适合于创建游戏中的HUDs、菜单及用户界面。随之而来的是在Flash中设置页面的性能消耗，但是这使得设计人员可以自己设计界面而不需要完全地依赖程序原来程序中进行布局。
+<p />
+关于使用 Scaleform GFx创建HUD的更多信息，请参照 <a href="ScaleformTechnicalGuide.html" class="twikiLink">Scaleform技术指南</a>。
+<p />
+<h2><a name="HUD类"></a> HUD类 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+HUD负责决定将向屏幕上描画的内容及所有获取及处理要显示的信息的逻辑。每个玩家有它自己的HUD类实例(HUD类的子类的实例)，该实例是在游戏视口初始化时创建的。创建玩家的HUD实例的整个过程如下所示：
+<p />
+<img src="rsrc/Three/HUDTechnicalGuideCH/HUD_CreateFlow.jpg" alt="HUD_CreateFlow.jpg" width="552" height="480" />
+<p />
+每次更新，玩家的HUD执行它的  <code>PostRender()</code> 事件，该事件将启动重新渲染HUD的内容到屏幕上的过程。=PostRender()= 事件反过来调用主描画函数 <code>DrawHUD()</code> 。每次更新的事件调用序列如下所示：
+<p />
+<img src="rsrc/Three/HUDTechnicalGuideCH/HUD_DrawFlow.jpg" alt="HUD_DrawFlow.jpg" width="552" height="480" />
+<p />
+然后 <code>DrawHUD()</code> 函数可以调用其它的更加专用的描画函数来往屏幕上描画独立的HUD元素。比如，可能有一个仅负责描画世界地图的函数 <code>DrawMinimap()</code> ，还有一些其它的描画玩家或点数的函数。
+<p />
+<h3><a name="HUD属性"></a> HUD属性 </h3>
+<p />
+<strong>Debug(调试)</strong>
+<p /> <ul>
+<li> <strong>bShowDebugInfo(是否显示调试信息)</strong> - 如果该项为TRUE，那么当前的ViewTarget(查看目标)的调试属性将会显示在屏幕上。
+</li> <li> <strong>DebugDisplay(调试显示)</strong> - 该项是字符串数组，当 <code>bShowDebugInfo</code> 为TRUE时，它指出了显示当前的ViewTarget对象的哪些调试信息。基本的引擎类型包括"人工智能"、"物理"、"武器"、"网络"、"相机"和"碰撞"。
+</li></ul>
+<p />
+<strong>Display(显示)</strong>
+<p /> <ul>
+<li> <strong>Canvas(画布)</strong> - 用于描画HUD到其上面的Canvas对象。*注意:* 每一帧都会赋予一个新的画布，仅从HUD::PostRender()事件中向画布上进行描画。请参照<a href="CanvasTechnicalGuide.html" class="twikiLink">画布技术指南</a>获得关于使用Canvas类的更多信息。
+</li> <li> <strong>PlayerOwner(玩家拥有者)</strong> - 引用拥有那个HUD的PlayerController(玩家控制器)，比如本地PlayerController。
+</li> <li> <strong>PostRenderedActors(后期渲染的对象)</strong> - 一个对象数组，它们需要调用它们的 <code>NativePostRenderFor()</code> 和 <code>PostRenderFor()</code> 函数来描画HUD层。
+</li> <li> <strong>WhiteColor/GreenColor/RedColor(白色/绿色/红色)</strong> - 预制的白色、绿色和红色变量。
+</li> <li> <strong>bShowHUD(是否显示HUD)</strong> - 如果该项为TRUE，则HUD可见。
+</li> <li> <strong>bShowScores(是否显示分数)</strong> - 如果该项为TRUE，那么记分板可见。
+</li> <li> <strong>bShowBadConnectionAlert(是否显示坏的连接警告)</strong> - 如果该项为TRUE，那么将会在HUD上显示坏的连接的指示标记。这是根据延迟和包丢失在native代码中设置的。
+</li> <li> <strong>RenderDelta(渲染器时间间隔)</strong> - 自从上一次更新所过去的时间量，以秒为单位。
+</li> <li> <strong>LastHUDRenderTime(上一次HUD渲染时间)</strong> - 存放了当计算 <code>RenderDelta</code> 时所使用的上一次渲染时间。
+</li></ul>
+<p />
+<strong>消息</strong>
+<p /> <ul>
+<li> <strong>ConsoleMessages(控制台消息)</strong> - 要显示的消息的数组。
+</li> <li> <strong>ConsoleColor(控制台消息颜色)</strong> - 当显示控制台消息时所使用的颜色。
+</li> <li> <strong>ConsoleMessageCount(控制台消息数量)</strong> - ConsoleMessages数组中可以保持的控制台消息的最大数量。
+</li> <li> <strong>ConsoleFontSize(控制台消息的字体大小)</strong> -
+</li> <li> <strong>MessageFontOffset(消息字体偏移量)</strong> - 当决定使用哪个字体时应用到LocalMessages(本地消息)上的FontSize（字体大小）的偏移量。
+</li> <li> <strong>MaxHUDAreaMessageCount（最大HUD区域消息数量）</strong> - 要显示的LocalMessages(本地消息)的最大数量。
+</li> <li> <strong>LocalMessages(本地消息)</strong> - 要显示的LocalMessages (本地消息)的数组。
+</li> <li> <strong>ConsoleMessagePos[X/Y](控制台消息位置[X/Y])</strong> - 在屏幕上显示控制台消息的水平和垂直位置。
+</li> <li> <strong>KismetTextInfo(Kismet文本信息)</strong> - 要显示的Kismet DrawText(描画文本)信息的数组。
+</li> <li> <strong>bMessageBeep(消息Beep音）</strong> - 如果为TRUE，那么当显示任何新的控制台消息时都会发出嘟嘟的声音。
+</li></ul>
+<p />
+<strong>Viewport（视口)</strong>
+<p /> <ul>
+<li> <strong>HUDCanvasScale(HUD画布比例)</strong> - 在[0，1]范围内所使用的屏幕空间的量(针对TV)。
+</li> <li> <strong>Size[X/Y]</strong> - 视口水平方向和垂直方向上的尺寸，以像素为单位。。。
+</li> <li> <strong>Center[X/Y](中心[X/Y])</strong>  - 视口的水平方向和垂直方向的中心。
+</li> <li> <strong>Ratio[X/Y](比率[X/Y])</strong> - 当前视口的水平方向及垂直方向的尺寸和原始分辨率1024x768的比率值。
+</li></ul>
+<p />
+<h3><a name="HUD函数"></a> HUD函数 </h3>
+<p />
+<strong>Debug(调试)</strong>
+<p /> <ul>
+<li> <strong>ShowDebug [DebugType]</strong> - 切换显示玩家的当前 ViewTarget（视图目标）的属性。 <ul>
+<li> <strong>DebugType(调试类型)</strong> - 要显示或隐藏的属性。基本引擎所支持的值，包括"人工智能"、"物理"、"武器"、"网络"、"相机"和"碰撞"。
+</li></ul>
+</li> <li> <strong>ShowDisplayDebug [DebugType]</strong> - 决定当前是否设置显示指定的调试信息，比如它在 <code>DebugDisplay</code> 数组中。 <ul>
+<li> <strong>DebugType(调试类型)</strong> - 要选中的属性。基本引擎所支持的值，包括"人工智能"、"物理"、"武器"、"网络"、"相机"和"碰撞"。
+</li></ul>
+</li> <li> <strong>ShowDebugInfo [out_YL] [out_YPos]</strong> - HUD基本调试信息渲染的入口点。通过 "showdebug" 控制台命令来激活及控制。可以重载它来基于每个游戏显示自定义的调试信息。 <ul>
+<li> <strong>out_YL</strong> - 当前字体的高度。
+</li> <li> <strong>out_YPos</strong> -画布上的垂直位置。=out_YPos += out_YL= 给出了描画下一行调试信息的文本的位置。
+</li></ul>
+</li> <li> <strong>DrawRoute [Target]</strong> - 描画ViewTargets的调试信息，ViewTargets是相对于它们当前路径的机器人。 <ul>
+<li> <strong>Target</strong> - 引用Pawn (机器人)，以便描画它的路径信息。
+</li></ul>
+</li></ul>
+<p />
+<strong>Display(显示)</strong>
+<p /> <ul>
+<li> <strong>ToggleHUD</strong> - 它是切换HUD可见性的可执行函数，通过 <code>bShowHUD</code>  变量实现。
+</li> <li> <strong>ShowHUD</strong> - 通过调用 <code>ToggleHUD()</code> 函数来切换HUD可见性的可执行函数。
+</li> <li> <strong>ShowScores</strong> - 通过调用 <code>SetShowScores()</code> 函数来切换游戏中积分板的可见性的可执行函数。
+</li> <li> <strong>SetShowScores [bNewValue]</strong> - 设置游戏中记分板的可见性的函数，通过 <code>bShowScores</code> 变量实现。 <ul>
+<li> <strong>bNewValue</strong> - <code>bShowScores</code> 变量的新值。
+</li></ul>
+</li> <li> <strong>DisplayBadConnectionAlert(显示不良连接的警告)</strong> - 用于显示不良连接警告信息的函数基类。子类需要重载这个函数。
+</li></ul>
+<p />
+<strong>Drawing(描画)</strong>
+<p /> <ul>
+<li> <strong>PreCalcValues</strong> - 计算并分配Size[X/Y]、Center[X/Y]和Ratio[X/Y]的值。
+</li> <li> <strong>PostRender</strong> - HUD的主要描画函数。引擎在每帧中都会调用它。
+</li> <li> <strong>DrawHUD</strong> - 主要的游戏HUD描画函数。在任何消息之前进行调用。子类应该重载这个函数来处理针对特定游戏的HUD描画。
+</li> <li> <strong>Draw2DLine [X1] [Y1] [X2] [Y2] [LineColor]</strong> - 在屏幕的2D空间中描画一条直线。 <ul>
+<li> <strong>[X/Y]1</strong> - 描画直线开始处的水平和垂直位置，以像素为单位。
+</li> <li> <strong>[X/Y]2</strong> - 描画直线结束处的水平和垂直位置，以像素为单位。
+</li> <li> <strong>LineColor</strong> - 描画直线时所使用的颜色。
+</li></ul>
+</li> <li> <strong>Draw3DLine [Start] [End] [LineColor]</strong> - 在屏幕的3D空间中描画一条直线。 <ul>
+<li> <strong>Start</strong> - 一个向量，在世界空间中指出了直线的起始点。
+</li> <li> <strong>End</strong> - 一个向量，在世界空间中指出了直线的结束点。
+</li> <li> <strong>LineColor</strong> - 描画直线时所使用的颜色。
+</li></ul>
+</li> <li> <strong>DrawText [Text] [Position] [TextFont] [FontScale] [TextColor]</strong> - 向屏幕描画一个文本字符串。 <ul>
+<li> <strong>Text</strong> - 要描画到屏幕上的字符串。
+</li> <li> <strong>Position</strong> - 一个二维向量，指出了在屏幕上描画文本的水平位置(X)和垂直位置(Y)。
+</li> <li> <strong>TextFont</strong> - 描画文本所使用的字体。
+</li> <li> <strong>FontScale</strong> - 一个二维向量，指出了文本在水平(X方向)和垂直方向的缩放比例。
+</li> <li> <strong>TextColor</strong> - 向屏幕上描画文本时所使用的颜色。
+</li></ul>
+</li> <li> <strong>DrawActorOverlays [Viewpoint] [ViewRotation]</strong> - Native函数。为这真描画的actors描画覆盖层，并把acotors本身添加到PostRenderedActors 数组中。 <ul>
+<li> <strong>Viewpoint</strong> - 玩家相机的当前位置。
+</li> <li> <strong>ViewRotation</strong> - 玩家相机的当前旋转值。
+</li></ul>
+</li> <li> <strong>AddPostRenderedActor [A]</strong> - 添加一个Actor到 <code>PostRenderedActors</code> 列表中。 <ul>
+<li> <strong>A</strong> - 引用指向那个要添加到数组中的Actor。
+</li></ul>
+</li> <li> <strong>RemovePostRenderedActor [A]</strong> - 从 <code>PostRenderedActors</code> 列表中删除一个Actor。 <ul>
+<li> <strong>A</strong> - 引用那个要从数组中删除的Actor。
+</li></ul>
+</li> <li> <strong>GetFontSizeIndex [FontSize]</strong> - 返回和给定字体尺寸相对应的字体。 <ul>
+<li> <strong>FontSize</strong> - 字体的尺寸，以便用于获得那个字体。
+</li></ul>
+</li></ul>
+<p />
+<strong>一般</strong>
+<p /> <ul>
+<li> <strong>PlayerOwnerDied</strong> - 它是一个函数存根，当 HUD的 <code>PlayerOwner</code> 死亡时调用它。子类需要重载这个类。
+</li> <li> <strong>OnLostFocusPause [bEnable]</strong> - 由于主窗口的聚焦丢失而暂停或取消暂停游戏。 <ul>
+<li> <strong>bEnable</strong> - 如果为TRUE，启用暂停状态。否则，禁用暂停状态。
+</li></ul>
+</li></ul>
+<p />
+<strong>消息</strong>
+<p /> <ul>
+<li> <strong>ClearMessage [M]</strong> - 清除给定的LocalMessage(本地消息)。 <ul>
+<li> <strong>M</strong> - 引用要清除的HUDLocalizedMessage 。
+</li></ul>
+</li> <li> <strong>Message [PRI] [Msg] [MsgType] [LifeTime]</strong> - 用于添加新的控制台消息的封装函数。调用 <code>AddConsoleMessage()</code> 。 <ul>
+<li> <strong>PRI</strong> - 引用发送消息的玩家的PlayerReplicationInfo 。
+</li> <li> <strong>Msg</strong> - 消息的文本。
+</li> <li> <strong>MsgType</strong> - 消息类型,也就是'Say(对话)', 'TeamSay(团队对话)'等.
+</li> <li> <strong>LifeTime</strong> - 可选。显示消息所持续的时间，以秒为单位。
+</li></ul>
+</li> <li> <strong>AddConsoleMessage [M] [InMessageClass] [PRI] [LifeTime]</strong> - 添加一个新的要显示的ConsoleMessage 。 <ul>
+<li> <strong>M</strong> - 消息的文本。
+</li> <li> <strong>InMessageClass</strong> - 新消息的类(LocalMessage或其子类)。
+</li> <li> <strong>PRI</strong> - 引用指向和消息相关联的玩家的PlayerReplicationInfo。
+</li> <li> <strong>LifeTime</strong> - 可选。显示消息所持续的时间，以秒为单位。
+</li></ul>
+</li> <li> <strong>DisplayConsoleMessages</strong> - 把尚未描画的ConsoleMessages描画到屏幕上。
+</li> <li> <strong>LocalizedMessage [InMessageClass] [RelatedPRI_1] [RelatedPRI_2] [CriticalString] [Switch] [Position] [LifeTime] [FontSize] [DrawColor] [OptionalObject]</strong> - 添加要显示的新的LocalMessage的封装函数。调用 <code>AddLocalizedMessage()=。同时，如果消息类的 =bIsSpecial</code> 属性是 FALSE，那么则把消息添加为控制台消息。 <ul>
+<li> <strong>InMessageClass</strong> - 新消息的类(LocalMessage或其子类)。
+</li> <li> <strong>RelatedPRI_1</strong> - 引用和消息相关联的玩家的第一个PlayerReplicationInfo。这个消息类定义了如何使用PRI(玩家复制信息)。
+</li> <li> <strong>RelatedPRI_2</strong> -  引用和消息相关联的玩家的第二个PlayerReplicationInfo。这个消息类定义了如何使用PRI(玩家复制信息)。
+</li> <li> <strong>CriticalString</strong> - 消息的文本。
+</li> <li> <strong>Switch</strong> - 消息开关。消息了类决定了如何使用开关。
+</li> <li> <strong>Position</strong> - 消息在屏幕上的垂直位置。
+</li> <li> <strong>LifeTime</strong> - 消息显示的持续时间量，以秒为单位。
+</li> <li> <strong>FontSize</strong> - 显示消息所使用的字体大小。使得该字体大小偏移 <code>MessageFontOffset</code> 的量，并得到的值传给 <code>GetFontSizeIndex()</code> 函数来获得显示那个消息所使用的字体。
+</li> <li> <strong>DrawColor</strong> -显示消息时所使用的颜色。
+</li> <li> <strong>OptionalObject</strong> - 可选。. 到和消息相连的对象的引用。这个消息类定义了如何使用那个对象。
+</li></ul>
+</li> <li> <strong>AddLocalizedMessage [Index] [InMessageClass] [CriticalString] [Switch] [Position] [LifeTime] [FontSize] [DrawColor] [MessageCount] [OptionalObject]</strong> - 添加一个真正的消息到 <code>LocalMessages</code> 数组。 <ul>
+<li> <strong>Index</strong> - <code>LocalMessages</code> 数组中用于放置新的消息的索引。
+</li> <li> <strong>InMessageClass</strong> - 新消息的类(LocalMessage或其子类)。
+</li> <li> <strong>CriticalString</strong> - 消息的文本。
+</li> <li> <strong>Switch</strong> - 消息开关。消息了类决定了如何使用开关。
+</li> <li> <strong>Position</strong> - 消息在屏幕上的垂直位置。
+</li> <li> <strong>LifeTime</strong> - 消息显示的持续时间量，以秒为单位。
+</li> <li> <strong>FontSize</strong> - 显示消息所使用的字体大小。使得该字体大小偏移 <code>MessageFontOffset</code> 的量，并得到的值传给 <code>GetFontSizeIndex()</code> 函数来获得显示那个消息所使用的字体。
+</li> <li> <strong>DrawColor</strong> -显示消息时所使用的颜色。
+</li> <li> <strong>MessageCount</strong> - 可选。当前 <code>LocalMessages</code> 数组中消息的数量。
+</li> <li> <strong>OptionalObject</strong> - 可选。. 到和消息相连的对象的引用。这个消息类定义了如何使用那个对象。
+</li></ul>
+</li> <li> <strong>GetScreenCoords [PosY] [ScreenX] [ScreenY] [InMessage]</strong> - 计算在屏幕上描画LocalMessage的位置。 <ul>
+<li> <strong>PosY</strong> - 消息的垂直位置。
+</li> <li> <strong>ScreenX</strong> - 输出。输出水平位置，以像素为单位。
+</li> <li> <strong>ScreenY</strong> - 输出。输出垂直位置，以像素为单位。
+</li> <li> <strong>InMessage</strong> - 输出。为其获取屏幕位置的消息。
+</li></ul>
+</li> <li> <strong>DrawMessage [i] [PosY] [DX] [DY]</strong> - 执行设置来显示一个LocalMessage，并调用 <code>DrawMessageText()</code> 来显示那个消息。 <ul>
+<li> <strong>i</strong> - 要显示的消息的 <code>LocalMessages</code> 数组中的索引值。
+</li> <li> <strong>PosY</strong> - 消息在屏幕上的垂直位置。
+</li> <li> <strong>DX</strong> - 输出。输出消息的文本的宽度。
+</li> <li> <strong>DY</strong> - 输出。输出消息的文本的高度。
+</li></ul>
+</li> <li> <strong>DrawMessageText [LocalMessage] [ScreenX] [ScreenY]</strong> - 描画LocalMessage 的文本到屏幕上。 <ul>
+<li> <strong>LocalMessage</strong> - 要显示其文本的LocalMessage。
+</li> <li> <strong>ScreenX</strong> - 在屏幕上描画消息文本的水平位置，以像素为单位。
+</li> <li> <strong>ScreenY</strong> -  在屏幕上描画消息文本的垂直位置，以像素为单位。
+</li></ul>
+</li> <li> <strong>DisplayLocalMessages</strong> - 执行LocalMessages的布局然后进行显示。
+</li> <li> <strong>DisplayKismetMessages</strong> - 显示所有未定的Kismet DrawText(描画文本)消息。
+</li></ul>
+<p />
+<h2><a name="MobileHUD"></a> MobileHUD </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+MobileHUD类继承于基类HUD ，并且添加了一些新功能，以满足在移动设备上显示HUD所需的额外要求，比如触摸控制。如果您的游戏是针对移动设备部署的，那么您的HUD应该继承MobileHUD类或者MobileHUD类的子类。
+<p />
+<h3><a name="MobileHUD属性"></a> MobileHUD属性 </h3>
+<p />
+<strong>Controls(控制)</strong>
+<p /> <ul>
+<li> <strong>JoystickBackground</strong> - The texture containing the graphic for the background of the joystick elements.
+</li> <li> <strong>JoystickBackgroundUVs</strong> - 这个TextureUVs(贴图UVs) 指出了 <code>JoystickBackground</code> 贴图中图像的坐标。
+</li> <li> <strong>JoystickHat</strong> - 这个贴图包含了实际的游戏控制杆元素的图像。
+</li> <li> <strong>JoystickHatUVs</strong> -这个TextureUVs(贴图UVs) 指出了 <code>JoystickHat</code> 贴图中图像的坐标。
+</li> <li> <strong>ButtonImages</strong> - 这是个贴图数组，包含了屏幕上按钮的图形。
+</li> <li> <strong>ButtonUVs</strong> -这是个TextureUVs（贴图UVs）数组指出了  <code>ButtonImages</code> 中贴图的坐标。
+</li> <li> <strong>ButtonFont</strong> -  描画屏幕上按钮的标签所使用的文字。
+</li> <li> <strong>ButtonCaptionColor</strong> - 当描画屏幕上按钮的标签时所使用的颜色。
+</li> <li> <strong>TrackballBackground</strong> - 这个贴图包含了跟踪球元素的背景图像。
+</li> <li> <strong>TrackballBackgroundUVs</strong> - 这个TextureUVs(贴图UVs)指出了 <code>TrackballBackground</code> 贴图中图像的坐标。
+</li> <li> <strong>TrackballTouchIndicator</strong> - 这个贴图包含了跟踪球触摸指示器的背景图像。
+</li> <li> <strong>TrackballTouchIndicatorUVs</strong> - 这个TextureUVs(贴图UVs)指出了  <code>TrackballTouchIndicator</code> 贴图中图像的坐标。
+</li> <li> <strong>SliderImages</strong> - 一个贴图数组，包含了屏幕上滑动条的图像。
+</li> <li> <strong>SliderUVs</strong> - 这个TextureUVs(贴图UVs)数组指出了 <code>SliderImages</code> 贴图中图像的坐标。
+</li></ul>
+<p />
+<strong>Debug(调试)</strong>
+<p /> <ul>
+<li> <strong>bDebugTouches</strong> - 如果为真，则显示关于触摸的调试信息。
+</li> <li> <strong>bDebugZones</strong> - 如果为TRUE，将会显示关于各种移动设备输入区域的相关调试信息。
+</li> <li> <strong>bDebugZonePresses</strong> - 如果为TRUE，仅当按下时显示关于各种移动设备输入区域的相关调试信息。
+</li></ul>
+<p />
+<strong>一般</strong>
+<p /> <ul>
+<li> <strong>bShowGameHUD</strong> - 如果该项为TRUE，那么将显示标准的游戏 HUD。这为了支持完全地隐藏HUD并仍然支持ShowHUD命令所提供的。
+</li> <li> <strong>bShowMobileHUD</strong> - 如果这项为TRUE，将显示移动设备HUD （也就是输入区域等）。
+</li> <li> <strong>bForceMobileHUD</strong> - 如果该项为 TURE，那么即使在非移动平台上也显示HUD。
+</li></ul>
+<p />
+<strong>倾斜</strong>
+<p /> <ul>
+<li> <strong>bShowMobileTilt</strong> - 如果这项为TRUE，那么将会显示设备倾斜。
+</li> <li> <strong>MobileTilt[X/Y]</strong> - 用于显示设备倾斜的水平位置和垂直位置。
+</li> <li> <strong>MobileTiltSize</strong> - 显示设备倾斜的尺寸。
+</li></ul>
+<p />
+<h3><a name="MobileHUD函数"></a> MobileHUD函数 </h3>
+<p />
+<strong>Drawing(描画)</strong>
+<p /> <ul>
+<li> <strong>ShowMobileHUD</strong> - 返回是否显示移动设备HUD。
+</li> <li> <strong>RenderMobileMenu</strong> - 移动设备HUD菜单描画函数。当完成移动设备HUD描画后 <code>PostRender()</code> 调用该函数。
+</li></ul>
+<p />
+<strong>Zones(区域)</strong>
+<p /> <ul>
+<li> <strong>DrawInputZoneOverlays</strong> - 主要的移动设备HUD描画函数，在其他对象上描画输入区域。当完成主要的HUD描画后， <code>PostRender()</code> 调用该函数。
+</li> <li> <strong>DrawMobileZone_Button [Zone]</strong> - 为给定的输入区域描画一个按钮。 <ul>
+<li> <strong>Zone</strong> - 为其描画按钮的移动设备输入区域。
+</li></ul>
+</li> <li> <strong>DrawMobileZone_Joystick [Zone]</strong> - 为给定的输入区域描画一个控制杆。 <ul>
+<li> <strong>Zone</strong> - 用于描画控制杆的移动设备输入区域。
+</li></ul>
+</li> <li> <strong>DrawMobileZone_Trackball [Zone]</strong> - 为给定区域描画一个跟踪球。 <ul>
+<li> <strong>Zone</strong> - 为其描画跟踪球的移动设备输入区域。
+</li></ul>
+</li> <li> <strong>DrawMobileZone_Slider [Zone]</strong> - 为给定区域描画一个滑动条。 <ul>
+<li> <strong>Zone</strong> - 为其描画滑动条的移动设备输入区域。
+</li></ul>
+</li> <li> <strong>DrawMobileTilt [MobileInput]</strong> - 使用给定MobilePlayerInput的倾斜信息描画设备倾斜。 <ul>
+<li> <strong>MobileInput</strong> - 将要显示的提供倾斜信息的MobilePlayerInput (移动设备玩家输入)。
+</li></ul>
+</li></ul>
+<p />
+<h2><a name="UDKHUD"></a> UDKHUD </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+UDKHUD是派生层次最高的HUD类，它仍然包含native功能。
+<p />
+<h3><a name="UDKHUD属性"></a> UDKHUD属性 </h3>
+<p /> <ul>
+<li> <strong>GlowFonts</strong> - 这种字体用于描画具有闪光或光溢出效果的脉冲字体。数组中的 [0]元素存放着闪光的字体。[1]元素存放着描画正常文本的字体。
+</li> <li> <strong>PulseDuration</strong> - 文本产生闪光脉冲的时间长度。
+</li> <li> <strong>PulseSplit</strong> - 当达到这个时间时脉冲将会从淡出效果变为淡入效果。
+</li> <li> <strong>PulseMultiplier</strong> - 文本产生脉冲效果现象的程度 - 注意这个值将会和 1.0相加。(所以 PulseMultipler= 0.5 = 1.5)
+</li> <li> <strong>TextRenderInfo</strong> - FontRenderInfo结构体存放了在字体渲染中使用的信息。这应该在HUD子类的默认属性中进行设置，并把它传入给任何需要它的 <code>Canvas.DrawText()</code> 函数。
+</li> <li> <strong>ConsoleIconFont</strong> - 用于特定游戏机平台的字体。
+</li> <li> <strong>BindTextFont</strong> - 当这些字体没有在ConsoleIconFont中通过按钮表示时，这种字体用于显示输入绑定。
+</li></ul>
+<p />
+<h3><a name="UDKHUD 函数"></a> UDKHUD 函数 </h3>
+<p /> <ul>
+<li> <strong>DrawGlowText [Text] [X] [Y] [MaxHeightInPixels] [PulseTime] [bRightJustified]</strong> - 描画具有闪光或光溢出效果的脉冲字体。 <ul>
+<li> <strong>Text</strong> - 要显示的文本字符串。
+</li> <li> <strong>[X/Y]</strong> - 用于在屏幕上描画文本的水平位置和垂直位置。
+</li> <li> <strong>MaxHeightInPixels</strong> - 可选的。文本的最大高度。
+</li> <li> <strong>PulseTime</strong> - 可选的。一次字体闪光所占用的时间。
+</li> <li> <strong>bRightJustified</strong> - 可选的。如果该项为TRUE，那么文本将会对齐到画布的当前的剪切区域的右侧边缘处。
+</li></ul>
+</li> <li> <strong>TranslateBindToFont [InBindStr] [DrawFont] [OutBindStr]</strong> - 把其中具有潜在漏掉的顺序数据转换为应该显示的字体和字符串。 <ul>
+<li> <strong>InBindStr</strong> - 包含漏掉数据的字符串。
+</li> <li> <strong>DrawFont</strong> - 输出. 输出用于描画字符串的字体；是ConsoleIconFont 或BindTextFont。
+</li> <li> <strong>OutBindStr</strong> - 输出。输出剥离了漏掉数据的字符串。
+</li></ul>
+</li> <li> <strong>DisplayHit [HitDir] [Damage] [damageType]</strong> - 显示一个碰撞效果，展示伤害来源的方向。 <ul>
+<li> <strong>HitDir</strong> - 指出了伤害来源方向的向量。
+</li> <li> <strong>Damage</strong> - 所施加的伤害量。
+</li> <li> <strong>damageType</strong> -伤害的类型。
+</li></ul>
+</li></ul>
+<p />
+<h2><a name="Texture Atlas（贴图组合）图标坐标"></a> Texture Atlas（贴图组合）图标坐标 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+在HUD中使用的图形(图标、图片等)通常是作为一个贴图组合的一部分来存储的。这意味着多个图标或图片存储在一个单独的贴图中，然后描画那个贴图的一个特定部分来显示任何特定的图标。
+<p />
+<img src="rsrc/Three/HUDTechnicalGuideCH/texture_atlas.jpg" width="800" height="400" alt="texture_atlas.jpg" />
+<p />
+贴图组合中的独立图标是通过使用坐标来访问的。虚幻引擎3中使用的标准方法是指出开始对贴图进行采样的位置的左上角像素的水平位置和垂直位置，及要采样的长度和宽度(通常通过 <code>U</code> and <code>V=来指定。） 这些坐标通常存储在结构体中，也就是 =MobileHUD.TextureUVs</code> 或 <code>UIRoot.TextureCoordinates</code> 中。
+<p />
+<img src="rsrc/Three/HUDTechnicalGuideCH/atlas_coords.jpg" width="800" height="400" alt="atlas_coords.jpg" />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/HUDTechnicalGuideCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:30:42 GMT -->
+</html></body>

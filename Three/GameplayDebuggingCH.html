@@ -1,0 +1,581 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GameplayDebuggingCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:16:03 GMT -->
+<head>
+<title> UDK | GameplayDebuggingCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">GameplayDebuggingCH  </b></div>
+<div id="tooltext">
+<a href="GameplayDebugging.html" class="twikiLink">English Translation</a><br><a href="GameplayDebuggingJP.html" class="twikiLink">日本語訳</a><br><a href="GameplayDebuggingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/GameplayDebuggingCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="GameplayProgrammingHome.html" class="twikiLink">游戏性编程</a></b> &gt; 游戏性调试
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="游戏性调试"></a> 游戏性调试 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="GameplayDebuggingCH.html#游戏性调试"> 游戏性调试</a> <ul>
+<li> <a href="GameplayDebuggingCH.html#概述"> 概述</a>
+</li> <li> <a href="GameplayDebuggingCH.html#远程控制"> 远程控制</a>
+</li> <li> <a href="GameplayDebuggingCH.html#属性查看和操作"> 属性查看和操作</a> <ul>
+<li> <a href="GameplayDebuggingCH.html#对象数据管理"> 对象数据管理</a> <ul>
+<li> <a href="GameplayDebuggingCH.html#EditActor"> EditActor</a>
+</li> <li> <a href="GameplayDebuggingCH.html#EditObject"> EditObject</a>
+</li> <li> <a href="GameplayDebuggingCH.html#EditDefault"> EditDefault</a>
+</li> <li> <a href="GameplayDebuggingCH.html#EditArchetype"> EditArchetype</a>
+</li></ul>
+</li> <li> <a href="GameplayDebuggingCH.html#静态对象数据检查"> 静态对象数据检查</a> <ul>
+<li> <a href="GameplayDebuggingCH.html#GetAll"> GetAll</a>
+</li> <li> <a href="GameplayDebuggingCH.html#GetAllState"> GetAllState</a>
+</li></ul>
+</li> <li> <a href="GameplayDebuggingCH.html#动态对象数据检查"> 动态对象数据检查</a> <ul>
+<li> <a href="GameplayDebuggingCH.html#DisplayAll"> DisplayAll</a>
+</li> <li> <a href="GameplayDebuggingCH.html#DisplayAllState"> DisplayAllState</a>
+</li> <li> <a href="GameplayDebuggingCH.html#DisplayClear"> DisplayClear</a>
+</li></ul>
+</li> <li> <a href="GameplayDebuggingCH.html#对象数据修改"> 对象数据修改</a> <ul>
+<li> <a href="GameplayDebuggingCH.html#设置"> 设置</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="GameplayDebuggingCH.html#游戏性代码分析"> 游戏性代码分析</a>
+</li> <li> <a href="GameplayDebuggingCH.html#STAT命令"> STAT命令</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+这里是关于使用 UE3 的运行时游戏性调试功能的快速指南。在实现新功能、actor 或游戏性元素的时候，第一次很少完全按照计划运行。当游戏正在运行的时候可以在运行中快速调整属性值或轻松地查看属性值、Actor 状态或其他信息对于提高流程效率是非常必要的。虚幻引擎 3 中包含几种功能，以控制台命令和应用程序的形式，它们可以使调试过程尽量简单高效。这些功能对于在不需要重新编译引擎或重新启动游戏的情况下进行调整、查看变量以及跟踪问题是很有用的；其中每个都是消耗时间的过程。
+<p />
+<a name="RemoteControl"></a>
+<h2><a name="远程控制"></a> 远程控制 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<img src="rsrc/Three/GameplayDebuggingCH/remotecontrol.jpg" alt="remotecontrol.jpg" width="346" height="599" style="float:left;margin-right:20px;" />
+<p />
+RemoteControl 是一个特殊的窗口，可以在游戏运行的时候打开，提供有关游戏某方面的信息和控制。
+<p />
+当这个窗口在游戏窗口外部并且使用 wxWindows 进行创建，那么在禁用 wxWindows 的情况下不可用，默认情况下是这样的，通过在虚幻编辑器内部运行<a href="PlayInEditor.html" class="twikiLink">在编辑器中播放</a>游戏会话。要启用 wxWindows 和 RemoteControl，游戏必须通过 <code>-wxwindows</code> <a href="CommandLineArguments.html" class="twikiLink">命令行参数</a>运行。
+<p />
+要了解有关使用这个功能的更多信息和完整指南，请参阅<a href="RemoteControl.html" class="twikiLink">远程控制</a>页面。
+<div style="clear:both;"></div>
+<p />
+<h2><a name="属性查看和操作"></a> 属性查看和操作 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+在游戏中查看 Actor 的属性并且能够在运行中修改它们，不只可以在调试的时候受益多多，而且也有助于调整和调节游戏性元素的行为。在使用特定设置控制台命令的过程中提供了可以查看和调节 Actor 属性的功能。
+<p />
+<h3><a name="对象数据管理"></a> 对象数据管理 </h3>
+<p />
+这些<a href="ConsoleCommands.html" class="twikiLink">控制台命令</a>允许您为游戏中对象甚至是这个类默认对象打开属性窗口，然后可以在运行时进行查看或修改。注意，有一个 <code>None</code> 种类，它包含了没有声明为 <code>var()</code> 的所有变量，从而使您具有访问所有对象数据的完整访问权限。
+<p />
+由于这些命令依赖于游戏窗口外部的属性窗口，这些窗口是使用 wxWindows 创建的，如果启用了 wxWindows，不会提供这些命令，默认情况是这样的。要启用 wxWindows 以及诸如此类的控制台命令，游戏必须通过 <code>-wxwindows</code> <a href="CommandLineArguments.html" class="twikiLink">命令行参数</a>运行。
+<p />
+<strong>注意：</strong> 它同时也会启用<a href="GameplayDebuggingCH.html#RemoteControl" class="twikiAnchorLink">远程控制</a>。如果您愿意，您还可以添加 <code>-norc</code> <a href="CommandLineArguments.html" class="twikiLink">命令行参数</a>禁用<a href="GameplayDebuggingCH.html#RemoteControl" class="twikiAnchorLink">远程控制</a>窗口。
+<p />
+<h4><a name="EditActor"></a> EditActor </h4>
+<p />
+<code>editactor</code> 控制台命令可以使游戏中的 actor 的属性出现在属性窗口中。这个命令只对由 Actor 扩展而来的类有效。这个命令可以选取一个名称或一个类作为一个参数。可以选择传递 <code>trace</code> 参数替换使玩家相机当前瞄准的 <code>Actor</code> 得以使用的名称或类。
+<p />
+如果指定了一个 <code>Actor</code> 名称，那么无论是否带有 <code>name=</code> 前缀，都会显示该 Object（对象）的属性。
+<p />
+<pre>
+editactor name&#61;UTPawn&#95;0
+</pre>
+<p />
+这将会打开 <code>UTPawn_0</code> 对象的属性窗口。
+<p />
+如果指定了一个类，那么会显示这个类或者其子类的第一个 <code>Actor</code> 的属性。
+<p />
+<pre>
+editactor class&#61;UTPawn
+</pre>
+<p />
+它将会选择第一个 <code>UTPawn</code> 。在这个实例中，它最有可能打开的是当前玩家的 <code>UTPawn</code> 的属性。
+<p />
+如果指定了 <code>trace</code> 参数，那么会显示要瞄准的 <code>Actor</code> 的属性。
+<p />
+<pre>
+editactor trace
+</pre>
+<p />
+它将会打开相机瞄准的对象的属性窗口。
+<p />
+<strong>示例使用：</strong>
+<p />
+在创建新载具的实例中，无疑需要对载具的属性进行精细调整，使其符合要求的驾驶感觉。设置默认属性设置是 .ini 文件中的属性值将需要启动游戏，彻底检验当前值，关闭游戏，调整值，再次启动游戏，测试值等等。很明显它比理想情况要少，而且在某种程度上效率不是很高。使用 <code>editactor</code> 命令允许在游戏运行的过程中甚至是在玩家坐在准备进行彻底测试的载具中的时候调整载具的所有属性。对于调节游戏性来说，它是一种非常有效和直观的方法。
+<p />
+这里最简单的方法可能就是使用 <code>trace</code> 参数，就只瞄准提到的载具，但是指定这个类也很简单。
+<p />
+对于载具，您不太可能会知道载具的具体名称，因为它们通常都是从工厂中动态生成的，而且没有直接放在地图中。
+<p />
+<img src="rsrc/Three/GameplayDebuggingCH/editactor_trace.jpg" alt="editactor_trace.jpg" width="640" height="480" /><img src="rsrc/Three/GameplayDebuggingCH/editactor.jpg" alt="editactor.jpg" width="640" height="480" />
+<p />
+<h4><a name="EditObject"></a> EditObject </h4>
+<p />
+<code>editobject</code> 控制台命令可以使游戏中的特定对象的属性出现在属性窗口中。从功能上看，该命令与 <code>editactor</code> 命令具有相同的功能，但是它没有限制类必须通过 <code>Actor</code> 扩展，而且它没有可选的 <code>trace</code> 参数。
+<p />
+<strong>注意：</strong> 在虚幻引擎内通过 Play In Editor（在编辑器中播放）会话运行地图时， 这个命令可能不适用于某些类或对象。
+<p />
+如果指定了一个 <code>Object</code> 名称，那么无论是否带有 <code>name=</code> 前缀，都会显示该 Object（对象）的属性。
+<p />
+<pre>
+editobject GameThirdPersonCamera&#95;0
+editobject name&#61;GameThirdPersonCamera&#95;0
+</pre>
+<p />
+这两个命令的功能使相同的，而且都会显示 <code>GameThirdPersonCamera_0</code> 对象的属性。
+<p />
+如果指定了一个类，那么会显示这个类或者其子类的第一个 <code>Object</code> 的属性。
+<p />
+<pre>
+editobject class&#61;GameThirdPersonCamera
+</pre>
+<p />
+它将会选择第一个 <code>GameThirdPersonCamera</code> 。在这个实例中，它最有可能打开的是当前玩家的 <code>GameThirdPersonCamera</code> 的属性。
+<p />
+<strong>示例使用：</strong>
+<p />
+实现除第一人称之外的相机通常需要与玩家网格物体之间具有一定的偏移量，而其他角度可能需要调节。当然，要想使相机偏移适当的距离得到预期的外观和感觉是需要一定技巧的。您肯定不希望一直在代码和需要使用每个调整进行编译的测试之间周旋。如果您也使用的是与模块化系统（ <code>GameFramework</code> 示例中的一部分）相似的系统， 那么表示您处理的是对象而不是 actor。=editobject= 命令使您可以在游戏运行的情况下轻松地查看并修改这些模块的属性，这样可以使您的相机调整过程变得非常简单和直观。
+<p />
+通过使用 <code>editobject</code> 命令并向它传递相机模块的类，显示并调节模块的属性，使偏移量刚好合适。
+<p />
+<pre>
+editobject class&#61;UDNCameraModule
+</pre>
+<p />
+它将会打开当前使用的相机模块的属性窗口。
+<p />
+<img src="rsrc/Three/GameplayDebuggingCH/editobject_0.jpg" alt="editobject.jpg" width="712" height="502" /><img src="rsrc/Three/GameplayDebuggingCH/editobject_1.jpg" alt="editobject.jpg" width="712" height="502" />
+<p />
+<h4><a name="EditDefault"></a> EditDefault </h4>
+<p />
+<code>editdefault</code> 控制台命令可以使类默认对象的属性可用，类似于使用 <code>editobject</code> 控制台命令指定一个类。这个类可以使用 <code>class=</code> 前缀指定，但是它不是必需的。 该命令非常适用于频繁生成的类，例如，实时策略游戏中的射弹或药物。
+<p />
+<strong>注意：</strong> 在虚幻引擎内通过 Play In Editor（在编辑器中播放）会话运行地图时不允许使用这个命令。
+<p />
+<strong>示例使用：</strong>
+<p />
+如果您经常在代码和测试之间周旋，那么调整射弹的行为可能会是一件非常困难的事。在您测试的过程中直接在游戏内部编辑默认值，经过简化会极大地改善这个过程的效率。
+<p />
+只需使用 <code>editdefault</code> 命令，并向它传递一个射弹类的名称：
+<p />
+<pre>
+editdefault UTProj&#95;LinkPlasma
+editdefault class&#61;UTProj&#95;LinkPlasma
+</pre>
+<p />
+这两个命令的功能相同，都会显示 <code>UTProj_LinkPlasma</code> 类的默认射弹，然后可以对这个类进行修改，允许您调整这个类以后使用的所有实例的行为。
+<p />
+<img src="rsrc/Three/GameplayDebuggingCH/editdefault.jpg" alt="editdefault.jpg" width="350" height="500" />
+<p />
+<h4><a name="EditArchetype"></a> EditArchetype </h4>
+<p />
+<code>editarchetype</code> 控制台命令提供原型属性。通过使用这个命令将路径(Package.Group.Name)传递给原型来指定要编辑的原型。 和 <code>editdefault</code> 命令一样，这个命令对于那些作为频繁生成的物体的模板使用的原型（例如，实时策略游戏中的射弹或单位）或者作为数据定义或内容持有者使用的原型来说非常有用。
+<p />
+除了可以编辑这个原型的属性，还可以在属性窗口中使用https://udn.epicgames.com/pub/Three/GameplayDebuggingCH/arch_save_button.jpg按钮将这些设置保存到软件包中的原型中，这些它们就不会弄丢了。
+<p />
+<strong>注意：</strong> 在虚幻引擎内通过 Play In Editor（在编辑器中播放）会话运行地图时不允许使用这个命令。
+<p />
+<strong>示例使用：</strong>
+<p />
+假设您将一个武器类设置为将原型作为它的射弹的模板使用。这样可以轻松地调整射弹的外观和行为，不需要修改和重新编译脚本。但是，它通常还需要运行游戏和测试、关闭游戏，然后进行更改，运行游戏和测试等等。通过使用 <code>editarchetype</code> 命令，可以在游戏运行的过程中进行一些修改来得到一个简单高效的工作流程。
+<p />
+这个射弹使用的是原型的当前设置：
+<p />
+<img src="rsrc/Three/GameplayDebuggingCH/arch_before.jpg" alt="arch_before.jpg" width="640" height="360" />
+<p />
+只需使用 <code>editarchetype</code> 命令，然后将这个原型的路径传递给它：
+<p />
+<pre>
+editarchetype UDNProjectiles.RedPlasma
+</pre>
+<p />
+<img src="rsrc/Three/GameplayDebuggingCH/arch_editwindow.jpg" alt="arch_editwindow.jpg" width="338" height="470" />
+<p />
+通过修改这个属性，射弹的外观和行为会实时发生改变：
+<p />
+<img src="rsrc/Three/GameplayDebuggingCH/arch_after.jpg" alt="arch_after.jpg" width="640" height="360" />
+<p />
+如果您对设置满意，那么请在属性窗口中按下https://udn.epicgames.com/pub/Three/GameplayDebuggingCH/arch_save_button.jpg按钮将当前设置保存到原型。
+<p />
+<h3><a name="静态对象数据检查"></a> 静态对象数据检查 </h3>
+<p />
+这些<a href="ConsoleCommands.html" class="twikiLink">控制台命令</a>用于在游戏运行时查看对象数据的静态截图。它们将会捕获执行命令时特定数据的值，然后在控制台中显示这个数据，同时将其输出到日志记录中。
+<p />
+<h4><a name="GetAll"></a> GetAll </h4>
+<p />
+<code>getall</code> 控制台命令可以为特定类的所有对象返回一个特定变量值，并将其显示在屏幕上，通过按下 '~' 键可以看到，然后将它们输出到日志记录中。这个命令后面紧接着就是要访问的类中的类名称和变量。
+<p />
+<strong>示例使用：</strong>
+<p />
+在实现一个新的自定义相机系统时，运行游戏彻底检验这个新相机只是为了看看它是否按照预期进行工作，这样做可能会令人失望。相机可能会无法正常工作，但是它可能只是一些非常简单的问题，例如，首先是还没有创建以及正确分配相机。向代码中添加日志记录声明，运行游戏，关闭游戏，查看日志记录，了解结果是一种查看是否已经分配相机的方法。但是，如果您可以在游戏运行的过程中刚好在游戏中查看到，那么会更加容易，效率会更高。=getall= 命令可以使它成为现实。
+<p />
+通过使用这个命令并将其传递到您的自定义 <code>PlayerController</code> 类以及其内部包含的相机变量的名称，将会在控制台的这个地方显示这个变量的当前值，可以立即让您知道是否已经正确分配相机或者其他地方是否存在问题。
+<p />
+<pre>
+getall UDNPlayerController PlayerCamera
+</pre>
+<p />
+它将会在游戏中控制台内列出内存中每个 <code>UDNPlayerController</code> actor 的 <code>Name</code> 和 <code>PlayerCamera</code> 。
+<p />
+<img src="rsrc/Three/GameplayDebuggingCH/getall.jpg" alt="getall.jpg" width="640" height="480" />
+<p />
+因为 <code>PlayerCamera</code> 有一个值不是 <code>None</code> ，所以您知道已经正确分配了相机。
+<p />
+<strong>其他参数：</strong>
+<p />
+还可以使用这个命令通过制定一些可选参数获取特定类的单独实例的特定变量的值。
+<p /> <ul>
+<li> <strong>Name=</strong> - 会显示具有这个 <code>Name</code> 的 <code>Object</code> 的特定变量值。
+</li> <li> <strong>Outer=</strong> - 会显示特定类的所有实例的特定变量值，将这个 <code>Object</code> 作为它的 <code>Outer</code> 。
+</li></ul>
+<p />
+此外，可以显示其他特殊信息以及特定变量值。
+<p /> <ul>
+<li> <strong>SHOWDEFAULTS</strong> - 会显示除当前值之外的特定变量的默认值。
+</li> <li> <strong>SHOWPENDINGKILLS</strong> - 会显示实例，即使它们是孤立和搁置的删除。
+</li> <li> <strong>DETAILED</strong> - 会显示有关通过 <code>GetDetailedInfoInternal()</code> 函数的实例的详细信息。
+</li></ul>
+<p />
+<h4><a name="GetAllState"></a> GetAllState </h4>
+<p />
+<code>getallstate</code> 控制台命令会返回特定类的所有对象的当前状态，并将其显示在游戏中的控制台上，通过按下 '~' 键可以看到，然后将它们输出到日志记录中。该命令后面紧跟着就是要访问的类的名称。
+<p />
+<strong>示例使用：</strong>
+<p />
+<pre>
+getallstate UTPawn
+</pre>
+<p />
+它将会在游戏中的控制台上列出内存中每个 <code>UTPawn</code> 的当前状态。
+<p />
+<img src="rsrc/Three/GameplayDebuggingCH/getallstate.jpg" alt="getallstate.jpg" width="640" height="480" />
+<p />
+它会为您提供一个有关 <code>UTPawns</code> 在游戏中进行的操作的快速概述。它可以快速地指出异常现象，例如，在生成机器人而且有一个 <code>UTPawn</code> 还处于 <code>Dying</code> 状态时进行截图，您在屏幕截图中看到的异常现象。
+<p />
+<h3><a name="动态对象数据检查"></a> 动态对象数据检查 </h3>
+<p />
+这些<a href="ConsoleCommands.html" class="twikiLink">控制台命令</a>用于在对象数据随着时间不断变化的时候检查它。它们将会显示一系列数据，它们会直接在屏幕上更新每一帧，覆盖游戏将其作为 HUD 的一部分。
+<p />
+<h4><a name="DisplayAll"></a> DisplayAll </h4>
+<p />
+<code>displayall</code> 控制台命令可以为特定类的所有对象返回一个特定变量值，并将其显示在屏幕上。这个命令后面紧接着就是要访问的类中的类名称和变量。
+<p />
+<strong>示例使用：</strong>
+<p />
+<pre>
+displayall UTPawn Location
+</pre>
+<p />
+它会列出屏幕上的每个 <code>UTPawn</code> 的 <code>Name</code> 和 <code>Location</code> ，更新每一帧。
+<p />
+<img src="rsrc/Three/GameplayDebuggingCH/displayall.jpg" alt="displayall.jpg" width="640" height="480" />
+<p />
+<h4><a name="DisplayAllState"></a> DisplayAllState </h4>
+<p />
+<code>displayallstate</code> 控制台命令会返回特定类的所有对象的当前状态，然后将其显示在屏幕上。该命令后面紧跟着就是要访问的类的名称。
+<p />
+<strong>示例使用：</strong>
+<p />
+创建游戏中真实可信的 AI 是一项困难的任务，但是如果没有一种可以在 AI 进行交互的时候密切注视所有 AI 的方法，那么创建 AI 将会变得更加困难。=displayallstate= 命令会使创建它的其中一方面内容变得快速简便。您可以在屏幕上显示每个 AI 的当前状态，在它们做出新的决定时更新每一帧。
+<p />
+通过使用这个命令并将其传递给 AI 实体的类，您会随时具有有关您的 AI 的概述。
+<p />
+<pre>
+displayallstate UTBot
+</pre>
+<p />
+它将会在屏幕上列出内存中每个 <code>UTBot</code> 的当前状态，更新每一帧，这样可以非常容易地看到每个机器人具体都做了什么。
+<p />
+<img src="rsrc/Three/GameplayDebuggingCH/displayallstate.jpg" alt="displayallstate.jpg" width="640" height="480" />
+<p />
+<h4><a name="DisplayClear"></a> DisplayClear </h4>
+<p />
+<code>displayclear</code> 控制台命令会清除当前在屏幕上显示的所有对象数据。这个命令不带任何参数。
+<p />
+<strong>示例使用：</strong>
+<p />
+<pre>
+displayclear
+</pre>
+<p />
+它将会通过前面的 <a href="GameplayDebuggingCH.html#DisplayAll" class="twikiAnchorLink">DisplayAll</a> or <a href="GameplayDebuggingCH.html#DisplayAllState" class="twikiAnchorLink">DisplayAllState</a> 命令清除在屏幕上显示的对象数据。
+<p />
+<img src="rsrc/Three/GameplayDebuggingCH/displayclear_before.jpg" alt="displayclear.jpg" width="640" height="480" /><img src="rsrc/Three/GameplayDebuggingCH/displayclear_after.jpg" alt="displayclear.jpg" width="640" height="480" />
+<p />
+<h3><a name="对象数据修改"></a> 对象数据修改 </h3>
+<p />
+<h4><a name="设置"></a> 设置 </h4>
+<p />
+<code>set</code> 控制台命令将会为特定类的所有实例设置变量值以及类默认对象。该命令后面紧接着就是类名称、类中要修改的变量以及要设置这个变量的值。它对于调整 RTS 中的武器、射弹、机器人和药品等等非常有效。
+<p />
+<strong>注意：</strong> 在虚幻引擎内通过 Play In Editor（在编辑器中播放）会话运行地图时不允许使用这个命令。
+<p />
+<strong>示例使用：</strong>
+<p />
+平衡武器是一项需要技巧的工作，要不断调整属性获取合适的组合，这样就不会出现一种武器强于其他武器的情况。没有人真的愿意尝试通过求助于在代码中更改属性然后进行编译和测试完成这项操作。因为实际上您希望一次影响所有武器实例，所以 <code>editactor</code> 命令不会剪切它。但是，=set= 命令对于这样的任务非常适用。
+<p />
+通过使用这个命令然后向其传递一个类名称、变量名称以及该变量的值，修改当前存在的这个类的所有实例以及或许可能会生成的实例的值会变得很容易。
+<p />
+<pre>
+set utweap&#95;linkgun maxammocount 150
+</pre>
+<p />
+它会增加所有链接枪可以装的最大弹药数。
+<p />
+<img src="rsrc/Three/GameplayDebuggingCH/set.jpg" alt="set.jpg" width="640" height="480" />
+<p />
+<h2><a name="游戏性代码分析"></a> 游戏性代码分析 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Gameplay Profiler（游戏性分析器）是一种可以提供在执行虚幻脚本游戏性代码时需要消耗时间的详细统计的工具。
+<p />
+<img src="rsrc/Three/GameplayDebuggingCH/gameplayprofiler.jpg" alt="gameplayprofiler.jpg" width="800" height="812" />
+<p />
+要获取详细的概述，请参阅<a href="GameplayProfiler.html" class="twikiLink">游戏性分析器</a>页面。
+<p />
+
+<p />
+有关用于分析游戏性的命令行参数的更多信息，请参阅<a href="https://udn.epicgames.com/Three/GameplayProfiling" class="restricted" class="restricted" class="twikiLink">游戏性分析</a>页面。
+<p />
+<h2><a name="STAT命令"></a> STAT命令 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+STAT 命令对于快速查看执行您的代码某些特定部分所需要的时间非常有用。=STAT GAME= 命令尤其有效，因为它会显示您的脚本更新每个 tick 所需要的累计时间。
+<p />
+<img src="rsrc/Three/GameplayDebuggingCH/statgame.jpg" alt="statgame.jpg" width="640" height="480" />
+<p />
+要了解有关它和其他 STAT 命令的更多信息，请参阅<a href="StatsDescriptions.html" class="twikiLink">统计数据描述</a>页面。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GameplayDebuggingCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:16:08 GMT -->
+</html></body>

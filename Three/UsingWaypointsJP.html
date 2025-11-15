@@ -1,0 +1,402 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingWaypointsJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:26 GMT -->
+<head>
+<title> UDK | UsingWaypointsJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">UsingWaypointsJP  </b></div>
+<div id="tooltext">
+<a href="UsingWaypoints.html" class="twikiLink">English Translation</a><br><a href="UsingWaypointsCH.html" class="twikiLink">中国翻译</a><br><a href="UsingWaypointsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/UsingWaypointsJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="Waypoint の使用"></a> Waypoint の使用 </h1>
+<p />
+<em>ドキュメント概要: パス ノードのセットアップと AI パスの使用に関するガイドとレファレンス。</em>
+<p />
+<em>ドキュメントの変更ログ: Richard Nalezynski<sup>?</sup> により作成。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="UsingWaypointsJP.html#Waypoint の使用"> Waypoint の使用</a> <ul>
+<li> <a href="UsingWaypointsJP.html#概観"> 概観</a>
+</li> <li> <a href="UsingWaypointsJP.html#ベーシック パス"> ベーシック パス</a> <ul>
+<li> <a href="UsingWaypointsJP.html#パス ノード"> パス ノード</a>
+</li></ul>
+</li> <li> <a href="UsingWaypointsJP.html#パスのビルド"> パスのビルド</a> <ul>
+<li> <a href="UsingWaypointsJP.html#ビルドされたパスをビューする"> ビルドされたパスをビューする</a>
+</li> <li> <a href="UsingWaypointsJP.html#パス カラーリング"> パス カラーリング</a>
+</li></ul>
+</li> <li> <a href="UsingWaypointsJP.html#パスのデバッギング"> パスのデバッギング </a>
+</li> <li> <a href="UsingWaypointsJP.html#高度なパス"> 高度なパス</a> <ul>
+<li> <a href="UsingWaypointsJP.html#Doors"> Doors</a>
+</li> <li> <a href="UsingWaypointsJP.html#JumpPads"> JumpPads</a>
+</li> <li> <a href="UsingWaypointsJP.html#JumpDests"> JumpDests</a>
+</li> <li> <a href="UsingWaypointsJP.html#Lifts"> Lifts</a>
+</li> <li> <a href="UsingWaypointsJP.html#Ladders"> Ladders</a>
+</li> <li> <a href="UsingWaypointsJP.html#VolumePathNode"> VolumePathNode</a>
+</li> <li> <a href="UsingWaypointsJP.html#Cover Links"> Cover Links</a>
+</li></ul>
+</li> <li> <a href="UsingWaypointsJP.html#パスサイズの変更 (プログラマー向け)"> パスサイズの変更 (プログラマー向け)</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="概観"></a> 概観 </h2>
+<p />
+このドキュメントは、レベル内でナビゲーション ネットワークをどのようにしてセットアップすれば、NPC がレベル内のいかなるポイントへ効率的にナビゲートできるかを解説します。このドキュメントは、レベル デザイナーを対象にしています。より技術的なディスカッションは、 <a href="WaypointsTechnicalGuideJP.html" class="twikiLink">ウェイポイントテクニカルガイド</a> を参照してください。
+<p />
+<p />
+<h2><a name="ベーシック パス"></a> ベーシック パス </h2>
+<p />
+<h3><a name="パス ノード"></a> パス ノード </h3>
+<p />
+レベル デザイナーは <code><b>PathNodes</b></code> (<code><b>NavigationPoint</b></code> のサブクラス) を、NPC が上を歩くことができるようなレベル内のサーフェス、または NPC が泳ぐことのできるようなボリュームに設置します。==PlayerStarts== もまた <code><b>NavigationPoints</b></code> であり、同じようなナビゲーション関数を実行します。さらにパスをビルドする際に、 <code><b>InventorySpots</b></code> は自動的にレベル内のすべてのピックアップの場所に設置されます (これらは非可視ですが、そこへのパス接続は可視となっています)。
+<p />
+<code><b>PathNodes</b></code> が接続するには、 <strong>1200</strong> Unreal ユニット以上離れていてはいけません (この値を変更するため、プログラマは <code>nPath.h</code> の <strong>MAXPATHDIST</strong> を変更することができます)。2 つの <code><b>NavigationPoints</b></code> がお互い近過ぎる (重複する) と、AI ナビゲーションの問題の原因となるので、避けなければいけません。 <code><b>PathNodes</b></code> を設置する場合、レベルのすべてのエリアが <code><b>PathNode</b></code> または何らかの <code><b>NavigationPoint</b></code> にカバーされているようことを確認してください。NPC が 1200 ユニット未満の <code><b>PathNode</b></code> にまったく妨げられずに (例: 障害物などがなく、避けることなく) 歩いていくことができれば、エリアはカバーされていることになります。
+<p />
+<img alt="NavigationAIJP.gif" src="rsrc/Three/UsingWaypointsJP/NavigationAIJP.gif" />
+<p />
+<p />
+<h2><a name="パスのビルド"></a> パスのビルド </h2>
+<p />
+<code><b>PathNodes</b></code> を設置した後、レベル デザイナーは、 <em>Build (ビルド)</em> メニューから <em>AI Paths (AI パス)</em> を選ぶことで (または、 <em>Build (ビルド)</em> メニューから <em>Rebuild All(すべてをリビルド)</em> を選択してフル リビルドをすることで) <code><b>NavigationPoints</b></code> 間の接続をビルドすることができます。どのパスがビルドされるかの文字サイズの範囲は、パスのビルド(ファイルの [Engine.Engine] セクションにあるScoutClassName ini エントリにより定義されます)に使用されているScout クラスのPathSizes 配列により決定されます。
+<p />
+レベルがたくさんのパスを持つと、すべてのパスをリビルドするのに時間がかかります。パスの設置の微調整をするには、 <em>Build Options (ビルド オプション)</em> メニューの <em>Build Changed Paths (ビルド変更されたパス)</em> ボタンを使用します。これは、追加された、削除された、または移動された <code><b>NavigationPoints</b></code> 間のパスのみをリビルドします。しかしながら、保存してレベルを再生する前に、フル パスリビルドが必要となります。
+<p />
+<h3><a name="ビルドされたパスをビューする"></a> ビルドされたパスをビューする </h3>
+<p />
+一度パスがビルドされると、どのビューポートにもある <em>Toggle Show Flags (フラグ表示の切り替え)</em> メニューにある <em>Show Paths(パスを表示)</em> オプション フラグを使用することにより、さまざまなレベル ビュー ウィンドウでビューすることができます。
+<p />
+パスはラインとして 1 つの <code><b>NavigationPoint</b></code> からもう 1 つの <code><b>NavigationPoint</b></code> へ表示されます。NPC がパスをどちらの方向へも行き来できる場合、それぞれの方向を指し示す矢印を持つ 2 つのラインがあります。そうでない場合、ラインは、パスでどちらの方向に進むことができるかという矢印を示します。
+<p />
+パスを使用する NPC がたとえ小さくても、 <code><b>PathNode</b></code> 位置を常に微調整して、接続するパスをできる限り幅広くすることが良いでしょう。NPC は角をスムーズに曲がる、またはパスを横向きで行ったり来たりするので、広いパスは結果的により自然な移動に見えます。
+<p />
+<p />
+<h3><a name="パス カラーリング"></a> パス カラーリング </h3>
+<p />
+一度ビルドされると、パスはさまざまな色で表示され、パスに関する大切な情報を示します。ナビゲーション グラフ エッジのデフォルト パス カラーリングは以下のように定義されます。
+<p /> <ul>
+<li> <strong>オレンジ色</strong> - 空を飛ぶパス、狭い
+</li> <li> <strong>明るいオレンジ色</strong> - 空を飛ぶパス、広い
+</li> <li> <strong>明るい紫色</strong> - (通常のジャンプ能力よりもより高い) ハイ ジャンプを必要とする
+</li> <li> <strong>青色</strong> - 狭いパス
+</li> <li> <strong>緑色</strong> - 通常の幅
+</li> <li> <strong>白色</strong> - 幅広いパス
+</li> <li> <strong>ピンク色</strong> - 非常に幅広いパス
+</li> <li> <strong>黄色</strong> - 強制されたパス
+</li> <li> <strong>紫色</strong> - (使用するのに「知力」が必要となる)「高度な」パス
+</li> <li> <strong>赤色</strong> - 「一方通行」のパス (例: ノード A-&gt;B へ行くが、B-&gt;A へは行かない reachspec がある) (備考: 最近のビルドでは、一方通行の状況を簡単に見つけられるように赤色の破線に変更された。)
+</li></ul>
+<p />
+<p />
+<p />
+<h2><a name="パスのデバッギング"></a> パスのデバッギング </h2>
+<p />
+パスのビルド後、ウィンドウがパスエラーおよび警告と共にエディタにポップアップします。エラーをクリックすると、その NavigationPoint を見ることができます。ウィンドウは <em>Tools (ツール)</em> の <em>Check map for errors...(マップのエラーをチェックする)</em> を選択することでもアクセスすることができます。
+<p />
+レベルが完全にパスされ、パスが定義された後、 <em>Tools (ツール)</em> メニューの <em>Review Paths (パスをレビュー)</em> オプションを使用します。以下のアイテムがチェックされます。
+<p />
+<p />
+AI NPC が混乱していたり、変な挙動をしていたりする場合は、以下のコンソール コマンドが使用可能です。
+<p /> <ul>
+<li> <code>Viewclass Pawn</code> - 問題の AI NPC をビューします。
+</li> <li> <code>ShowDebug</code> - AI NPC が何を考え、どのパスを進んでいるかを見ます。
+</li> <li> <code>RememberSpot</code> - レベルにいる間、ナビゲーション パスをチェックする際に場所をマークします。その後、 <code>ShowDebug</code> (他をビューせずに) を使用することで、マークされた場所に継続的にアップデートされたパスを表示します。
+</li></ul>
+<p />
+より詳細な解説やマップ チェック エラーに関しては、 <a href="MapErrorsJP.html" class="twikiLink">マップ チェック エラー</a> ページを参照してください。
+<p />
+<p />
+<h2><a name="高度なパス"></a> 高度なパス </h2>
+<p />
+<h3><a name="Doors"></a> Doors </h3>
+<p />
+<code><b>Door</b></code> <code><b>NavigationPoints</b></code> は、ドアとしての役割を果たす <code><b>Mover</b></code> と同時に設置されるべきです (その位置に基づいて、2 つのエリア間の移動を許可したりブロックしたりします)。 <code><b>Door</b></code> は影響を受けるエリアの中心に設置されるべきです (通常、ドアに使用される実際の静的メッシュの真ん中ですが、地面に触れるぐらい低い場所です)。また、必要に応じてアップデートされるべき <code><b>Door</b></code> <code><b>NavigationPoint</b></code> の大事なプロパティがいくつかあります。
+<p /> <ul>
+<li> <strong>DoorTag</strong> - この <code><b>Door</b></code> が関連付けられる <code><b>Mover</b></code> のタグです。
+</li> <li> <strong>DoorTrigger</strong> - <code><b>Door</b></code> がトリガされると、これが <code><b>Door</b></code> を開けるトリガ アクタのタグです。
+</li> <li> <strong>bInitiallyClosed</strong> - <code><b>Mover</b></code> のデフォルト状態が移動を許可するかどうか (<em>false</em> の場合) または防ぐか (<em>true</em>  の場合、デフォルト値) です。
+</li> <li> <strong>bBlockedWhenClosed</strong> - <code><b>Mover</b></code> が閉じていると、NPC にはそれを開ける方法がありません (デフォルトで <em>false</em>)。
+</li></ul>
+<p />
+<code><b>Movers</b></code> は <strong>bAutoDoor</strong> プロパティを持つようになりました。TRUE に設定されると、 <code>Door=</code> <code><b>PathNode</b></code> はその <code><b>Mover</b></code> に自動的に生成されます。これは、ほとんどの <code><b>Doors</b></code> で動作します。
+<p />
+<h3><a name="JumpPads"></a> JumpPads </h3>
+<p />
+<code><b>JumpPads</b></code> は、それらに触れるいかなる <code><b>Pawn</b></code> をも指定された方向へ投げます。 <code><b>JumpPad</b></code> の <strong>ForcedPaths[]</strong> 配列プロパティの最初の入力内で、目的地 <code><b>PathNode</b></code> を指定することにより、 <code><b>JumpPads</b></code> はセットアップされます。適切なジャンプ速度は、パスがリビルドされる際に自動的に計算されます。何らかの理由で自動的に生成される速度に問題がある場合は、 <code><b>JumpPad</b></code> の <strong>JumpModifier</strong> ベクトル プロパティの設定が可能です。
+<p />
+<h3><a name="JumpDests"></a> JumpDests </h3>
+<p />
+ジャンプして上がるには高すぎる、しかしながらその下のパスにリンクしているような場所では、 <code><b>JumpDests</b></code> が <code><b>PathNodes</b></code> の代わりに使用されるべきです。 <code><b>JumpSpots</b></code> は低重力にある NPC に、または何らかのジャンプ ブーストがある場合に使用されます。ボットが <code><b>JumpSpot</b></code> にジャンプするパスは、 <code><b>JumpSpot</b></code> を <strong>ForcedPath[]</strong> 配列プロパティ入力の 1 つに持っていなければいけません。
+<p />
+<h3><a name="Lifts"></a> Lifts </h3>
+<p />
+リフトとして使用される <code><b>Mover</b></code> は、決して <strong>BumpOpenTimed</strong> 状態を使用してはいけません (代わりに <strong>StandOpenTimed</strong> を使用します)。 <code><b>Lifts</b></code> として使用される <code><b>Movers</b></code> は、それらに 2 タイプの <code><b>NavigationPoints</b></code> が関連付けられています。 <code><b>LiftCenter</b></code> はリフトの中心に設置されるべきです。 <code><b>LiftExit</b></code> は、==Lift== からの各出口に設置します (しかし、そこに立っている NPC が <code><b>Lift</b></code> を妨げないように十分距離が取られていなければいけません)。 <code><b>LiftCenter</b></code> と <code><b>LiftExits</b></code> の両方とも <strong>LiftTag</strong> プロパティを持っています。これは、 <code><b>Mover</b></code> のタグに設定されなければいけません。さらに、リフトがトリガされると、 <code><b>LiftCenter</b></code> の <strong>LiftTrigger</strong> プロパティ内のトリガしているアクタのタグを付けます。  <code><b>LiftExits</b></code> も任意のプロパティである <strong>SuggestedKeyFrame</strong> を持ち、これは <code><b>LiftExit</b></code> が使用できる際に、ムーバーのキーフレーム番号に設定することができます。これは、いくつかの状況で NPC によるナビゲーションを改善させる場合があります。
+<p />
+<h3><a name="Ladders"></a> Ladders </h3>
+<p />
+(<code><b>LadderVolume</b></code> が選択されている際に、方向を示す矢印として表示される <strong>WallDir</strong> プロパティを調整することにより)  <code><b>LadderVolumes</b></code> は、登られる壁に面して正しい方向に置かなければいけません。大抵の場合、レベル デザイナーは、パスがビルドされた際に Ladder <code><b>NavigationPoints</b></code> が自動的に <code><b>LadderVolume</b></code> の上と下に追加されるようにします。しかしながら、自動的に設置される Ladder に問題がある場合は、レベル デザイナーは <code><b>LadderVolume</b></code> <strong>bAutoPath</strong> プロパティを <em>false</em> に設定した後に、手動で Ladder を設置することができます。Ladder の中心は <code><b>LadderVolume</b></code> 内になければいけません。==LadderVolume== はその下部分が床に触れていて、上部分は少なくとも Ladder を使用する一番大きな NPC の高さ分エッジがはみ出ていなければいけません。
+<p />
+<h3><a name="VolumePathNode"></a> VolumePathNode </h3>
+<p />
+VolumePathNodes は、ボリュームによりナビゲーションをサポートするのに役に立ちます。例えば、水泳時や飛行時などです。VolumePathNodeの衝突シリンダーはナビゲート可能なボリュームとして表記されます。パスのビルド中、衝突シリンダーは障害物が到達するまで、初期の半径およびレベルデザイナー(StartingRadius およびStartingHeight プロパティを使用)により指定された高さから調節されます。これは、最高の結果を得るため、位置(ナビゲート可能な中点などからの開始)やVolumePathNode のシリンダーサイズの開始を調節するのに有意義です。VolumePathNodes は、他のオーバーラッピングしているVolumePathNodesに接続されます。また、NavigationPoints もそれらのボリュームに接続されます。さらに、VolumePathNode シリンダの直下にあるNavigationPoints は、パスのビルド中に接続性がテストされます。VCTF-SandstormなどのようなUTGame ビークルレベルは、VolumePathNodesを使用して実演されます。
+<p />
+<p />
+<h3><a name="Cover Links"></a> Cover Links </h3>
+<p />
+<code><b>CoverLinks</b></code> は <a href="https://udn.epicgames.com/Three/GearsOfWarJP" class="restricted" class="restricted" class="twikiLink">Gears of War</a> のために開発されました。以下の設定が使用されます。 <ul>
+<li> <strong>bCircular</strong> = 円柱の回りのカバーのような、円形のカバーを作成するにはこれをチェックします。通常は、円柱のどちらかの側に位置して、お互いを向くように置かれた 2 つのカバー ノードで行われます。
+</li> <li> <strong>bClaimAllSlots</strong> = AI がここにカバー (避難) した場合、他の AI はこのスポットに避難しようとしません。
+</li> <li> <strong>MaxFireLinkDist</strong> = カバー スロット間で AI ファイア リンクを作成するために、カバー スロットが他のカバー スロットをクエリーする最大の距離です (Gears AI にそのカバーにいる間、どこを撃てばいいかを教えます)。
+</li> <li> <strong>bCanPopUp</strong> = スロットが、アクタが立ち上がりそこから撃つのに適しているかどうかをデザイナーに教えます。
+</li> <li> <strong>bAllowPopUp</strong> = アクタが立ち上がり、そこから撃つことができるようにしたい場合、このフラグを設定します。
+</li> <li> <strong>bAllowMantle</strong> = アクタがこのカバーを登ることができるようにしたい場合、このフラグを設定します。
+</li> <li> <strong>bAllowCoverslip</strong> = アクタがこのカバーをスリップできるようにしたい場合、このフラグを設定します (エッジのみで動作します)。
+</li> <li> <strong>bAllowSwatTurn</strong> = アクタがこのカバーへ、またはこのカバーからスワット ターンをできるようにしたい場合、このフラグを設定します (これも、エッジのみで動作します)。
+</li></ul>
+<p />
+スリップとスワットに関しては、 <a href="https://udn.epicgames.com/Three/GearsOfWarJP" class="restricted" class="restricted" class="twikiLink">Gears of War</a> では、「カバー スリップ」はカバーのエッジに向かって素早く走ることを意味します。スワット ターンは、出入り口のような場所で左、または右に素早く動くことを意味します。
+<p />
+カバー システムは <a href="https://udn.epicgames.com/Three/GearsOfWarJP" class="restricted" class="restricted" class="twikiLink">Gears of War</a> アセットとゲームプレイを考慮して作成されたものなので、特定のオブジェクトには 100% 適用できるわけではないことを理解しておいてください。
+<p />
+<h2><a name="パスサイズの変更 (プログラマー向け)"></a> パスサイズの変更 (プログラマー向け) </h2>
+<p />
+パスタイプはコード(JumpやFlyingノードのため)およびScout (エンティティの異なるサイズのため)のデフォルトプロパティの両方により定義されます。
+<p />
+異なるサイズを定義するには、Scout クラスにある <code>PathSizes</code> 配列を変更します。こちらがデフォルト値になります :
+<p />
+<pre>
+        PathSizes(0)&#61;(Desc&#61;Human,Radius&#61;48,Height&#61;80)
+        PathSizes(1)&#61;(Desc&#61;Common,Radius&#61;72,Height&#61;100)
+        PathSizes(2)&#61;(Desc&#61;Max,Radius&#61;120,Height&#61;120)
+        PathSizes(3)&#61;(Desc&#61;Vehicle,Radius&#61;260,Height&#61;120)
+</pre>
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingWaypointsJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:26 GMT -->
+</html></body>

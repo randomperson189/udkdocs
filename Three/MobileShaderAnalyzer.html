@@ -1,0 +1,474 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MobileShaderAnalyzer.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:31:13 GMT -->
+<head>
+<title> UDK | MobileShaderAnalyzer    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">MobileShaderAnalyzer  </b></div>
+<div id="tooltext">
+<a href="MobileShaderAnalyzerCH.html" class="twikiLink">中国翻译</a><br><a href="MobileShaderAnalyzerKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/MobileShaderAnalyzer -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="Mobile Shader Analyzer"></a> Mobile Shader Analyzer </h1>
+<p />
+<em>Document Summary: Describes the Mobile Shader Analyzer tool, used to assess the creation of shader keys for mobile development and help inform how to reduce them.</em>
+<p />
+<em>Document Changelog: Initial revision.</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="MobileShaderAnalyzer.html#Mobile Shader Analyzer"> Mobile Shader Analyzer</a> <ul>
+<li> <a href="MobileShaderAnalyzer.html#Overview"> Overview</a>
+</li> <li> <a href="MobileShaderAnalyzer.html#Preparing Data"> Preparing Data</a> <ul>
+<li> <a href="MobileShaderAnalyzer.html#Main Data"> Main Data</a>
+</li> <li> <a href="MobileShaderAnalyzer.html#Warming Data"> Warming Data</a>
+</li> <li> <a href="MobileShaderAnalyzer.html#Launching the Tool"> Launching the Tool</a>
+</li></ul>
+</li> <li> <a href="MobileShaderAnalyzer.html#Application Areas"> Application Areas</a> <ul>
+<li> <a href="MobileShaderAnalyzer.html#Main List View"> Main List View</a>
+</li> <li> <a href="MobileShaderAnalyzer.html#Item Description Pane"> Item Description Pane</a>
+</li> <li> <a href="MobileShaderAnalyzer.html#Subitem Pane"> Subitem Pane</a>
+</li> <li> <a href="MobileShaderAnalyzer.html#Status Bar"> Status Bar</a>
+</li> <li> <a href="MobileShaderAnalyzer.html#Filter Box"> Filter Box</a>
+</li> <li> <a href="MobileShaderAnalyzer.html#Report Options"> Report Options</a>
+</li> <li> <a href="MobileShaderAnalyzer.html#Utilities"> Utilities</a>
+</li></ul>
+</li> <li> <a href="MobileShaderAnalyzer.html#General Usage"> General Usage</a> <ul>
+<li> <a href="MobileShaderAnalyzer.html#Loading your data"> Loading your data</a>
+</li> <li> <a href="MobileShaderAnalyzer.html#Changing Displayed Data"> Changing Displayed Data</a>
+</li> <li> <a href="MobileShaderAnalyzer.html#Filtering"> Filtering</a>
+</li> <li> <a href="MobileShaderAnalyzer.html#Examining Data"> Examining Data</a> <ul>
+<li> <a href="MobileShaderAnalyzer.html#A Brief Aside – Shader Keys"> A Brief Aside – Shader Keys</a>
+</li> <li> <a href="MobileShaderAnalyzer.html#Key View"> Key View</a>
+</li> <li> <a href="MobileShaderAnalyzer.html#Material View"> Material View</a>
+</li></ul>
+</li> <li> <a href="MobileShaderAnalyzer.html#Utilities"> Utilities</a> <ul>
+<li> <a href="MobileShaderAnalyzer.html#Create Report"> Create Report</a>
+</li> <li> <a href="MobileShaderAnalyzer.html#Find Similar Keys"> Find Similar Keys</a>
+</li> <li> <a href="MobileShaderAnalyzer.html#Material Comparison"> Material Comparison</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="MobileShaderAnalyzer.html#Optimizing Shader Counts"> Optimizing Shader Counts</a> <ul>
+<li> <a href="MobileShaderAnalyzer.html#The Fastest, Smallest Shader: The One that Doesn’t Exist"> The Fastest, Smallest Shader: The One that Doesn’t Exist</a>
+</li> <li> <a href="MobileShaderAnalyzer.html#Tradeoffs: Performance vs. Load Time"> Tradeoffs: Performance vs. Load Time</a>
+</li> <li> <a href="MobileShaderAnalyzer.html#Find Unique Keys"> Find Unique Keys</a>
+</li> <li> <a href="MobileShaderAnalyzer.html#Check for Overly Iterated Keys"> Check for Overly Iterated Keys</a>
+</li> <li> <a href="MobileShaderAnalyzer.html#Look for Unnecessary Settings"> Look for Unnecessary Settings</a>
+</li></ul>
+</li> <li> <a href="MobileShaderAnalyzer.html#Wrapup"> Wrapup</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<p />
+The Mobile Shader Analyzer (MSA) is a tool used to examine the mobile shaders and materials cooked for an application.  Through various methods of reporting the tool can help to reduce the number of created keys, which can help improve application load time performance (the compilation and warming of shader keys can contribute greatly to iOS load times).
+<p />
+<h2><a name="Preparing Data"></a> Preparing Data </h2>
+<h3><a name="Main Data"></a> Main Data </h3>
+<p />
+To create the test data for this application, you must cook your maps in the UFE tool using the command line switch “-DebugFullMaterialReport”.  Note that you MUST do a complete rebuild for this to work correctly (“-full”, or delete the contents of your Cookedxxx folder).  An incremental cook will load cached shader keys, resulting in incorrect data and empty material strings for all cached keys.  Generally you will want to cook all your game content at this time, or materials/shaders may be missed.
+Once you have cooked your game content, you should see the file FullMaterialData.xml in your <your game>\CookedIPhone\DebugLogs folder.  That name can be changed with the “-DebugMaterialLog=<newname>” cooker switch if desired.  You should copy the created XML file to a safe location as subsequent full cooks will delete the entire Cookedxxx folder.
+<p />
+<h3><a name="Warming Data"></a> Warming Data </h3>
+<p />
+On some occasions you may also be interested in what shaders were warmed during execution of various parts of your application.  To obtain this data, run the application on device with the “-DebugShowWarmedKeys” command line option to the application.  The application will output key warming information to the debug output stream within the debugger, or Unreal Console if you are running a debug executable.  You need to save the debug output of the application as a text file (you can grab all the output, not just the warming information) and save it as a text file to your host PC.
+NOTE: Due to the implementation of this feature, it is currently only available to code licensees that can produce a debug executable to test with.
+<p />
+<h3><a name="Launching the Tool"></a> Launching the Tool </h3>
+<p />
+Run <a href="MobileShaderAnalyzer.html" class="twikiLink">MobileShaderAnalyzer</a>.exe located in your UE3/UDK Binaries folder.
+Upon launch you should see the application as seen below (Figure 1)
+<p />
+<p /> <ul>
+<li> Figure 1 - Main Application: <br />     <img src="rsrc/Three/MobileShaderAnalyzer/image002.jpg" alt="image002.jpg" width='623' height='416' />
+</li></ul>
+<p />
+<h2><a name="Application Areas"></a> Application Areas </h2>
+<p />
+<h3><a name="Main List View"></a> Main List View </h3>
+<p />
+This area lists all items (shader keys or materials) based upon the current Report Options and Filter
+<p />
+<h3><a name="Item Description Pane"></a> Item Description Pane </h3>
+<p />
+Displays detailed information about the current single selection from the Main List View
+<p />
+<h3><a name="Subitem Pane"></a> Subitem Pane </h3>
+<p />
+Displays some additional information about the current selection in the Item Description Pane
+<p />
+<h3><a name="Status Bar"></a> Status Bar </h3>
+<p />
+Displays information such as the number of items currently listed in the Main List View
+<p />
+<h3><a name="Filter Box"></a> Filter Box </h3>
+<p />
+Allows filter terms to be input and applied to the data in the Main List View
+<p />
+<h3><a name="Report Options"></a> Report Options </h3>
+<p />
+Controls what set of data is displayed in the Main List View
+<p />
+<h3><a name="Utilities"></a> Utilities </h3>
+<p />
+Various utilities used to examine, compare or export results
+<p />
+<h2><a name="General Usage"></a> General Usage </h2>
+<p />
+<h3><a name="Loading your data"></a> Loading your data </h3>
+<p />
+Click the ‘Load XML’ button and browse to your generated XML data file.  This will load all key/material data into the application, and will show the default view (All Keys) as seen below (Figure 2)
+<p /> <ul>
+<li> Figure 2 - Default Application View: <br />     <img src="rsrc/Three/MobileShaderAnalyzer/image004.jpg" alt="image004.jpg" width='624' height='416' />
+</li></ul>
+<p />
+Note that the Status Bar will show you the number of keys and materials shown in the Main List View, which in this case also equals the total number cooked for your application.
+<p />
+Any single shader key may originate from a multitude of materials.  Only the first material in the list is displayed in the Main List View.
+<p />
+<h3><a name="Changing Displayed Data"></a> Changing Displayed Data </h3>
+<p />
+You can use the dropdown box in the Report Options section of the tool to change what data is displayed in the Main List.  The options are: <ul>
+<li> All Keys – Show all keys generated for the application
+</li> <li> All Materials – Show all materials generated for the application
+</li> <li> Keys from few (use limit) materials – This view will show all keys that are only created from X number of materials, with the default being 1.  X can be changed from the Limit box below the main report dropdown.  This is one of the more useful views when attempting to reduce shader keys, as described below in the ‘Optimizing Materials’ section.
+</li> <li> Materials creating unique (use limit) keys – Similar to the above option, this will display all the materials that create keys that only come from X materials.  Again you can change X with the Limit box. See the ‘Optimizing Materials’ section for more detail on this view
+</li></ul>
+<p />
+<h3><a name="Filtering"></a> Filtering </h3>
+<p />
+You can also filter all result in the Main List View regardless of the Report mode.  Filtering is purely text based, using the materials name strings as well as the Code Flag names within the keys.
+The filter box can accept multiple arguments in a comma separated list.  You can use an ‘inverse’ filter (filter thing not containing the search term) using a “!” prefix before your term.  All searching is case-insensitive.
+For example, to filter the view only on items created for low end shaders, but without additive blending, you could type:
+<p />
+<code>lowend,!BLEND_additive</code>
+<p />
+Regardless of the filter text present, the filtering can be toggled on and off with the ‘Apply Text Filter’ button.  The button text will reflect the current state (on/off) of filtering, as will the color behind the search text (green=actively filtering, orange=filtering off)
+If you have generated warming data (see Warming Data), you can also filter using that data.  Select the ‘Load Warm Data’ button and browse to your output text file generated from the device.  When displaying keys in the Main List View, all keys that were warmed will be highlighted in green.  You can completely filter these in or out with the Warm Filter radio buttons in the Filter area.
+<p />
+<h3><a name="Examining Data"></a> Examining Data </h3>
+<p />
+<h4><a name="A Brief Aside – Shader Keys"></a> A Brief Aside – Shader Keys </h4>
+<p />
+In the mobile pipeline all shaders are assembled using a combination of parts based upon the settings from the material.  A single material will generally create many shader keys, as many of the settings are iterated by the engine based upon both general rules and user-selected settings from the material.  For instance, if a material is marked to be used with skinned vertices, the engine doesn’t know if the material will also be applied to an unskinned mesh, so 2 versions of the shader will be created.  Versions of the shader will be created for both the normal rendering pass as well as the shadow pass.  With enough of these iterated settings stacked on top of each other, the number of permutations grows.  This can lead to a single material generating dozens of shaders.
+All of the unique settings per shader are assigned a single bit in the final signature for the shader, referred to in this tool as the Code String for the shader (this value is the actual unique shader key for each shader).  If a shader key is the exact same as an already created key, the shader is not unique and will only be created once.
+<p />
+See <a href="MobileMaterialReference.html" class="twikiLink">MobileMaterialReference</a> for more information on Shader Keys and Mobile Materials.
+<p />
+<h4><a name="Key View"></a> Key View </h4>
+<p />
+If you are using a Report mode that lists shader keys in the Main List View, you will see the list of keys displayed in 3 main columns: Code String, Number of Materials (NumMats) and the first material in the list of materials that co-generated this key (FirstMat).  All of these columns may be clicked upon in the tool to sort by.
+Often knowing the code string for the first material is not that helpful.  To see more detailed information on any key, select it in the Main List View to populate the Item Description Pane with a better breakdown of the selected key (see Figure 3)
+<p /> <ul>
+<li> Figure 3 - Detailed Information in the Item Description Pane: <br />     <img src="rsrc/Three/MobileShaderAnalyzer/image006.jpg" alt="image006.jpg" width='623' height='265' />
+</li></ul>
+<p />
+The Item Description Pane will show a textual description for every unique (non-default) setting in the key, as well as show the complete list of materials that co-created this key. Selecting any of the materials in this view will populate the SubItem Pane with more information on that material, as seen in Figure 4.
+<p /> <ul>
+<li> Figure 4 - Showing Additional Material Info in the SubItem<sup>?</sup> Display: <br />     <img src="rsrc/Three/MobileShaderAnalyzer/image008.jpg" alt="image008.jpg" width='623' height='310' />
+</li></ul>
+<p />
+<p />
+<h4><a name="Material View"></a> Material View </h4>
+<p />
+If you are using a Report mode that lists materials in the Main List View, you will see a list of all the materials in 2 columns: Name and number of keys generated by the material (NumKeys), as seen in Figure 5.  As with key view all columns are sortable.
+Selecting a material from the Main List View will populate the Item Description Pane with detailed information on the material, namely the list of all shader keys that the material created.  Selecting any of these keys in the Item Description Pane will populate the Subitem Pane with additional information on the key: the number of materials that create this key, and the first listed material to do so.
+<p /> <ul>
+<li> Figure 5 - Displaying Materials: <br />     <img src="rsrc/Three/MobileShaderAnalyzer/image010.jpg" alt="image010.jpg" width='623' height='416' />
+</li></ul>
+<p />
+<p />
+<h3><a name="Utilities"></a> Utilities </h3>
+<p />
+There are several utility functions available to help during your analysis:
+<p />
+<h4><a name="Create Report"></a> Create Report </h4>
+<p />
+Clicking this button will prompt you to create and save a new text file on your system.  The text file will be populated with the current contents of the Main List View, including any filtering.  Depending on your Report mode this will be a list of keys and key data or materials.  If you select the ‘Simple Report’ checkbox, any material reports will only contain the names of the displayed materials, making the final text file easy to parse if you are passing a list of materials to look at to another person.
+<p />
+<h4><a name="Find Similar Keys"></a> Find Similar Keys </h4>
+<p />
+If the Main List View is displaying keys, selecting one of them and clicking the ‘Find Similar Keys’ button will search through all loaded keys to find keys ‘close’ to the selected.  ‘Close’ is defined as being only 1 setting away additive, subtractive or both (so by turning on one feature bit, off another bit, or both).  A report window will pop up displaying all found keys that fit this criterion (see Figure 6).  Within this view you will see the list of similar keys, and what would need to change in each of them to make them match, with features that would need to be removed marked in red, features to be added marked in green.
+<p />
+<p /> <ul>
+<li> Figure 6 - Find Similar Keys Report: <br />     <img src="rsrc/Three/MobileShaderAnalyzer/image012.jpg" alt="image012.jpg" width='251' height='369' />
+</li></ul>
+<p />
+<h4><a name="Material Comparison"></a> Material Comparison </h4>
+<p />
+Sometimes you will want to compare two materials to see if they are the same.  For example if you have 2 materials that both generate 40 keys, you may want to know if they are the exact same 40 keys or differ in some fashion.  To check, select your first material in the Main List View (must be in a Report mode that displays materials) and click the ‘Set Cur as Compare Mtl’ button.  Then select your second material and click ‘Compare Materials’. You will see a popup similar to Figure 7.  This box will display how many keys are ‘similar’ between the two materials, and show detail on what makes them similar (using a similar definition of closeness as in the Find Similar Keys report above).
+<p /> <ul>
+<li> Figure 7 - Material Compare Results: <br />     <img src="rsrc/Three/MobileShaderAnalyzer/image014.jpg" alt="image014.jpg" width='263' height='386' />
+</li></ul>
+<p />
+<p />
+<p />
+<h2><a name="Optimizing Shader Counts"></a> Optimizing Shader Counts </h2>
+<p />
+This section will detail some of the common workflows using this tool to help reduce overall shader usage in your title, as well as general content creation tips to consider during development of your application.  Reducing your shader counts will help your application load faster.  Having a reduced number of shaders also helps to ensure that your compiled shaders will fit into your application’s shader cache (iOS), enabling faster second-boot times until your application is fully evicted from memory.
+<p />
+<h3><a name="The Fastest, Smallest Shader: The One that Doesn’t Exist"></a> The Fastest, Smallest Shader: The One that Doesn’t Exist </h3>
+<p />
+One of the most important things to try from the outset of you application is to use Master Materials and Material Instance Constants as much as possible.  There is very little key iteration possible when using child materials derived from a master material, so your materials will tend to create a large number of keys, but all will map to the same generated set of keys.
+<p />
+<h3><a name="Tradeoffs: Performance vs. Load Time"></a> Tradeoffs: Performance vs. Load Time </h3>
+<p />
+Another content creation tip involves a tradeoff between performance and shader counts (which is often a consideration using Master Materials as well).  If you have 2 shader keys that are very close in nature, you can enable the missing feature on the ‘smaller’ of the two keys, and pass a default texture/value for that setting when possible.  For example if one key uses a mesh color value and another is similar other than that one key, you can enable mesh color value on the first material, and just pass in white/white texture/etc.  This will add varying complexity/bandwidth concerns to your shaders, so care must be taken to ensure you can afford the performance hit.  This key merging can be slow to do asset by asset, so again using Master Materials is essentially doing the same thing on a larger scale and is preferred.
+<p />
+<h3><a name="Find Unique Keys"></a> Find Unique Keys </h3>
+<p />
+One of the first things to check for in your title is ‘unique’ keys, which is to say keys that come from very few materials.  This means that there is some feature or set of features in that material that no other materials in the application use.  If this uniqueness can be eliminated, or merged with other keys as mentioned above, then key totals can be reduced.
+To check for this, use the ‘Keys from few (use limit) Materials’ Report mode, and set the limit accordingly (1 is a good start).  Usually from the Item Description View on each key it will become apparent what makes that key/material so unique.  The ‘Find Similar Keys’ tool can help here as well.
+You can also use the ‘Materials creating unique (use limit) keys’ Report mode to list the offending materials here, then export the material list for others to go examine
+<p />
+<h3><a name="Check for Overly Iterated Keys"></a> Check for Overly Iterated Keys </h3>
+<p />
+Select the ‘All Materials’ Report mode, then sort by the number of keys per material in descending order.  Often materials creating a large number of keys are using Master Materials, which is generally a good thing.  You can ensure this by using the Compare Material functionality to compare two materials with the same number of keys generated and see if they are identical.  Other times however, materials creating a large number of keys points to a problem of having too many iterated bits selected, often either accidentally, or without anyone knowing they were creating so many keys.  If a material creating a large number of keys is not using a Master Material, or is not sharing those keys with other materials, you want to know why.
+Switch back to ‘All Keys’ Report mode, then filter off the name of the material in question.  This will display all keys created by that material.  By selecting each key you can either visually check what makes the key unique, or use Find Similar Materials to see how the keys differ from its siblings.  Often this will reveal that many iterated settings in the material are forcing a combinatory explosion of keys, which can often be eliminated.  Some common examples: <ul>
+<li> Skinning.  If you see both skinned and non-skinned iterations of shaders that you know will ALWAYS be used on skinned meshes, you can add the material to your application’s DefaultEngine.ini, under the MobileMaterialCookSettings section.  Add a ‘+SkinningOnlyMaterials=<mymaterialname>’ line under this section.  During cook only the skinned version of this shader will be created, instantly halving the number of keys created by this material. Example:
+</li></ul>
+<p />
+<div class="codesnippet">
+<pre>
+&#91;MobileMaterialCookSettings]
++SkinningOnlyMaterials&#61;M&#95;FireChest
++SkinningOnlyMaterials&#61;M&#95;IceChest
+</pre>
+</div>
+<p /> <ul>
+<li> Fog.  The engine will generate unfogged and fogged versions of shaders, switching between the two automatically for performance reasons.  If your application does not make use of fogging, you can disable this shader iteration by setting bMobileMinimizeFogShaders=true under the [SystemSettings] section in your application’s DefaultSystemSettings.ini
+</li> <li> Particle settings.  There are many particle settings that force iteration of an on/off state within the shaders.  If you see toggling of any key settings that you aren’t making use of, disable that feature in the material.
+</li></ul>
+<p />
+<h3><a name="Look for Unnecessary Settings"></a> Look for Unnecessary Settings </h3>
+<p />
+Another useful practice is to filter the All Materials view by keywords of settings that you don’t expect to see.  For example, filter off ‘beam’ to see all materials with beam particle settings.  You can check for various blend modes, emissive settings, shadow and fog features and more.  Check for materials set as particles that shouldn’t be, skinned materials that will never be used on skinned objects, etc.
+<p />
+<h2><a name="Wrapup"></a> Wrapup </h2>
+This tool will not fix any of your content, but instead gives you to information to know how many shaders your application is creating, and where they are coming from and why.  With periodic analysis you should be able to keep your shader usage in check throughout your entire development cycle.
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MobileShaderAnalyzer.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:31:13 GMT -->
+</html></body>

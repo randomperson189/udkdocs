@@ -1,0 +1,444 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingStaticMeshActorsKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:33:17 GMT -->
+<head>
+<title> UDK | UsingStaticMeshActorsKR    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">UsingStaticMeshActorsKR  </b></div>
+<div id="tooltext">
+<a href="UsingStaticMeshActors.html" class="twikiLink">English Translation</a><br><a href="UsingStaticMeshActorsJP.html" class="twikiLink">日本語訳</a><br><a href="UsingStaticMeshActorsCH.html" class="twikiLink">中国翻译</a><br>
+
+<!-- Three/UsingStaticMeshActorsKR -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHomeKR.html" class="twikiLink">UE3 홈</a></b> &gt; <b><a href="StaticMeshHomeKR.html" class="twikiLink">스태틱 메시</a></b> &gt; 스태틱 메시 액터 (StaticMeshActor) 사용하기<br/>
+<b><a href="WebHomeKR.html" class="twikiLink">UE3 홈</a></b> &gt; <b><a href="LevelDesignerHomeKR.html" class="twikiLink">레벨 디자이너</a></b> &gt; 스태틱 메시 액터 (StaticMeshActor) 사용하기
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="스태틱 메시 액터 사용하기"></a> 스태틱 메시 액터 사용하기 </h1>
+<hr size="1" noshade="noshade">
+<em>문서 변경내역: <a href="https://udn.epicgames.com/Main/JeffWilson" class="restricted" class="restricted" class="twikiLink">Jeff Wilson</a> 작성. <a href="https://udn.epicgames.com/Main/SungjinHong" class="restricted" class="restricted" class="twikiLink">홍성진</a> 번역.</em>
+<div class="twikiToc"> <ul>
+<li> <a href="UsingStaticMeshActorsKR.html#스태틱 메시 액터 사용하기">  스태틱 메시 액터 사용하기</a> <ul>
+<li> <a href="UsingStaticMeshActorsKR.html#개요"> 개요</a>
+</li> <li> <a href="UsingStaticMeshActorsKR.html#놓기"> 놓기</a>
+</li> <li> <a href="UsingStaticMeshActorsKR.html#다른 액터로/에서 변환"> 다른 액터로/에서 변환</a>
+</li> <li> <a href="UsingStaticMeshActorsKR.html#머티리얼 덮어쓰기"> 머티리얼 덮어쓰기</a>
+</li> <li> <a href="UsingStaticMeshActorsKR.html#콜리전"> 콜리전</a>
+</li> <li> <a href="UsingStaticMeshActorsKR.html#디스턴스 컬링"> 디스턴스 컬링</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<p />
+<h2><a name="개요"></a> 개요 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+스태틱 메시는 언리얼 엔진 3 에서 렌더링 가능한 지오메트리 유형 중 기본적인 것 중 하나입니다. 월드를 채우는 데 이런 메시를 사용하기 위해서는 스태틱 메시 액터가 사용됩니다. 하나의 스태틱 메시를 표시하는 액터 종류이며, 플레이 도중 <span><span id="comment_1_controller" class="comment_controller" onclick="ToggleComment(1);">움직이거나 수정할 수 없는</span><span id="comment_1_container"></span></span>, 다른 말로 <strong>정적인</strong> (static, 스태틱) 것입니다. 이런 액터는 맵 안의 월드 지오메트리 대부분을 만드는 데 사용됩니다.
+<p />
+<div id="comment_1" style="display:none;">
+<span style="width:480px;position:absolute;">
+<div class="standalonecontentsection">
+<div class="close_button" onclick="CloseComment(1);">x</div>
+스태틱 메시 액터는 자체적으로 수정 또는 애니메이션 불가능합니다만, 스태틱 메시는 <a href="WorldPositionOffsetKR.html" class="twikiLink">WorldPositionOffset</a> 머티리얼 입력을 사용하는 버텍스 셰이더를 통해 그 버텍스를 수정할 수는 있으며, 거기 적용된 머티리얼을 파라미터를 통해 수정할 수 있습니다.
+</div>
+</span>
+</div>
+<p />
+<div class="header_img">
+<img src="rsrc/Three/UsingStaticMeshActors/staticmeshactor.jpg" alt="staticmeshactor.jpg" />
+</div>
+<p />
+<h2><a name="놓기"></a> 놓기 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+스태틱 메시 액터는 보통의 액터를 놓는 방식을 사용해서 맵에 놓을 수 있습니다. 뷰포트의 우클릭 맥락 메뉴를 통해서든지, <a href="ContentBrowserReferenceKR.html" class="twikiLink">콘텐츠 브라우저</a> 에서 뷰포트로 드래그 앤 드롭을 하든지요.
+<p />
+<strong>맥락 메뉴</strong>
+<p /> <ol>
+<li> 콘텐츠 브라우저에서, 맵에 추가하려는 스태틱 메시를 스태틱 메시 액터로 선택합니다. <br/>   <img src="rsrc/Three/UsingStaticMeshActors/place_select.jpg" alt="place_select.jpg" width="524" height="178" />
+</li> <li> 뷰포트 안 메시를 추가하려는 곳에 우클릭을 하고 맥락 메뉴에서 <strong>Add StaticMesh: [메시 애셋 경로]</strong> 를 선택합니다. 위치는 정확하지 않아도 됩니다. 메시의 위치, 방향, 스케일은 나중에 언제든 재조정할 수 있습니다. <br/>   <img src="rsrc/Three/UsingStaticMeshActors/place_context_add.jpg" alt="place_context_add.jpg" width="800" height="402" />
+</li> <li> <a href="PropertyWindowKR.html" class="twikiLink">프로퍼티 창</a> 에서 보듯이 스태틱 메시가 맵에 스태틱 메시 액터로 놓입니다. <br/>   <img src="rsrc/Three/UsingStaticMeshActors/place_complete.jpg" alt="place_complete.jpg" width="800" height="402" />
+</li></ol>
+<p />
+<strong>드래그 앤 드롭</strong>
+<p /> <ol>
+<li> 콘텐츠 브라우저에서 맵에 추가하려는 스태틱 메시를 스태틱 메시 액터로 선택합니다. <br/>   <img src="rsrc/Three/UsingStaticMeshActors/place_select.jpg" alt="place_select.jpg" width="524" height="178" />
+</li> <li> 콘텐츠 브라우저에서 스태틱 메시를 좌클릭한 후 (마우스 버튼을 누른 채) 콘텐츠 브라우저에서 뷰포트에 메시를 놓고자 하는 위치로 끌어다 놓습니다. 위치는 정확하지 않아도 됩니다. 메시의 위치, 방향, 스케일은 나중에 언제든 재조정할 수 있습니다. <br/>   <img src="rsrc/Three/UsingStaticMeshActors/place_drag.jpg" alt="place_drag.jpg" width="800" height="402" />
+</li> <li> 왼쪽 버튼을 놓으면 <a href="PropertyWindowKR.html" class="twikiLink">프로퍼티 창</a> 에서 보듯 맵에 메시를 스태틱 메시 액터로 놓습니다. <br/>   <img src="rsrc/Three/UsingStaticMeshActors/place_complete.jpg" alt="place_complete.jpg" width="800" height="402" />
+</li></ol>
+<p />
+<h2><a name="다른 액터로/에서 변환"></a> 다른 액터로/에서 변환 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+스태틱 메시 액터는 뷰포트의 우클릭 맥락 메뉴를 통해 스태틱 메시를 표시하는 다른 종류의 액터로/에서 변환 가능합니다. 기존에 KActor 또는 InterpActor 로 맵에 놓았던 메시를 스태틱 메시 액터로 변환하고자, 또는 그 반대로 하고자 할 때 편하게 쓸 수 있습니다.
+<p />
+<strong>스태틱 메시 액터로 변환</strong>
+<p /> <ol>
+<li> 뷰포트에서 스태틱 메시 액터로 변환하려는 액터를 선택합니다. <br/>   <img src="rsrc/Three/UsingStaticMeshActors/convert_select.jpg" alt="convert_select.jpg" width="800" height="402" />
+</li> <li> 액터에 우클릭하고 <strong>변환 &gt; [현재 액터 종류]를 스태틱 메시 액터로 변환</strong> 을 선택합니다. <br/>   <img src="rsrc/Three/UsingStaticMeshActors/convert_context.jpg" alt="convert_context.jpg" width="800" height="402" />
+</li> <li> <a href="PropertyWindowKR.html" class="twikiLink">프로퍼티 창</a> 에서 보듯이 액터가 스태틱 메시 액터로 변환되었습니다. <br/>   <img src="rsrc/Three/UsingStaticMeshActors/convert_complete.jpg" alt="convert_complete.jpg" width="800" height="402" />
+</li></ol>
+<p />
+<strong>스태틱 메시 액터에서 변환</strong>
+<p />
+스태틱 메시 액터를 다른 종류로 변환하는 과정도 위의 스태틱 메시 액터로 변환하는 과정과 똑같습니다. 스태틱 메시 액터가 변환될 수 있는 액터 종류는 다음과 같습니다:
+<p /> <ul>
+<li> KActor
+</li> <li> <a href="UsingInterpActorsKR.html" class="twikiLink">무버 (InterpActor)</a>
+</li> <li> <a href="InteractiveFoliageActorKR.html" class="twikiLink">인터랙티브 포울리지 액터</a>
+</li> <li> <a href="FractureToolKR.html" class="twikiLink">프랙처 스태틱 메시</a>
+</li></ul>
+<p />
+<h2><a name="머티리얼 덮어쓰기"></a> 머티리얼 덮어쓰기 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+StaticMesh 에 적용된 머티리얼(들)은 액터 단위별로 덮어쓸 수 있습니다. 이로써 하나의 스태틱 메시 애셋을 하나의 맵이든 전체 게임에 걸쳐서든 여러 번 활용하면서 독특한 모양새를 낼 수 있습니다. 스태틱 메시 액터의 <em>StaticMeshComponent</em> 내 <strong>Rendering</strong> 범주에 있는 <strong>Materials</strong> 프로퍼티는 <a href="StaticMeshEditorUserGuideKR.html" class="twikiLink">스태틱 메시 에디터</a> 를 통해 스태틱 메시에 적용된 머티리얼에 직접 매핑되는 머티리얼 배열입니다. 머티리얼은 배열에 수동으로 할당할 수도 있고, 콘텐츠 브라우저에서 뷰포트의 메시로 직접 드래그 앤 드롭하여 할당할 수도 있습니다.
+<p />
+<strong>수동 할당</strong>
+<p /> <ol>
+<li> 뷰포트에서 새로운 머티리얼을 할당하려는 스태틱 메시 액터를 선택하고 <strong>F4</strong> 키를 눌러 프로퍼티 창에서 그 프로퍼티를 엽니다. <br/>   <img src="rsrc/Three/UsingStaticMeshActors/material_properties.jpg" alt="material_properties.jpg" width="800" height="402" />
+</li> <li> <em>StaticMeshComponent</em> 의 <strong>Rendering</strong> 범주에서 <img alt="add_item_button.jpg" src="rsrc/Three/UsingStaticMeshActors/add_item_button.jpg" /> 버튼을 클릭하여 <strong>Materials</strong> 배열에 새 항목을 추가합니다. 스태틱 메시에 머티리얼 슬롯이 하나 이상 있는 경우, 배열의 항목이 스태틱 메시의 머티리얼 슬롯에 일치하도록 아이템을 하나 이상 추가해 줘야 할 수도 있습니다.
+</li> <li> 콘텐츠 브라우저에서 맵의 스태틱 메시 액터에 적용하려는 머티리얼을 선택합니다. <br/>   <img src="rsrc/Three/UsingStaticMeshActors/material_select.jpg" alt="material_select.jpg" width="524" height="178" />
+</li> <li> 머티리얼을 할당할 <strong>Materials</strong> 배열 내 상응하는 항목에 대해 <img alt="use_selected_button.jpg" src="rsrc/Three/UsingStaticMeshActors/use_selected_button.jpg" /> 버튼을 누릅니다. 메시에 머티리얼이 적용되어 나타납니다. <br/>   <img src="rsrc/Three/UsingStaticMeshActors/material_complete.jpg" alt="material_complete.jpg" width="800" height="402" />
+</li></ol>
+<p />
+<p />
+<strong>드래그 앤 드롭</strong>
+<p /> <ol>
+<li> 콘텐츠 브라우저에서 맵의 스태틱 메시 액터에 적용하려는 머티리얼을 선택합니다. <br/>   <img src="rsrc/Three/UsingStaticMeshActors/material_select.jpg" alt="material_select.jpg" width="524" height="191" />
+</li> <li> 콘텐츠 브라우저에서 머티리얼에 좌클릭한 후 (왼쪽 버튼을 누른 채) 콘텐츠 브라우저에서 뷰포트 내 머티리얼을 적용하려는 스태틱 메시 액터 부분으로 끌어다 놓습니다. <br/>   <img src="rsrc/Three/UsingStaticMeshActors/material_drag.jpg" alt="material_drag.jpg" width="800" height="402" />
+</li> <li> 왼쪽 버튼을 떼면 머티리얼이 적용됩니다. 이제 메시에 머티리얼이 적용되어 나타나며, 프로퍼티 창의 <strong>Materials</strong> 배열도 업데이트됩니다. <br/>   <img src="rsrc/Three/UsingStaticMeshActors/material_complete.jpg" alt="material_complete.jpg" width="800" height="402" />
+</li></ol>
+<p />
+<h2><a name="콜리전"></a> 콜리전 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+스태틱 메시 액터는 기본적으로 <em>COLLIDE_BlockAll</em> <strong>Collision Type</strong> 을 사용합니다. 월드의 모든 액터와 트레이스를 막는다는 뜻입니다. 스태틱 메시 액터는 일반적으로 월드 지오메트리를 놓는 데 사용되기에, 보통은 바람직한 일입니다. 그러나 콜리전 계산에는 비용이 들기에 다른 액터와 충돌할 필요가 없는 스태틱 메시 액터는 콜리전을 꺼 주는 것이 좋습니다. 예를 들어 플레이어가 도달할 수 없는 배경이나 작은 장식으로 사용되는 스태틱 메시 액터는 실제로 아무 것도 막을 필요가 없을 것입니다.
+<p />
+선택된 스태틱 메시 액터는 장식 메시로 콜리전이 필요치 않을 것입니다.<br/>
+<img src="rsrc/Three/UsingStaticMeshActors/collision_deco.jpg" alt="collision_deco.jpg" width="900" height="453" />
+<p />
+창 밖에 선택된 스태틱 메시 액터는 플레이어가 절대 도달할 수 없는 배경이 됩니다.<br/>
+<img src="rsrc/Three/UsingStaticMeshActors/collision_unreachable.jpg" alt="collision_unreachable.jpg" width="900" height="453" />
+<p />
+<strong>Collision Types</strong> 콜리전 타입
+<p />
+<strong>Collision Type</strong> 프로퍼티는 여러가지 콜리전 세팅을 단순한 방식으로 노출시키는 메서드입니다. 언리얼 에디터에서 이 값을 바꾸면 액터의 <strong>CollideActors</strong>, <strong>BlockActors</strong>, <strong>BlockNonZeroExtent</strong>, <strong>BlockZeroExtent</strong>, <strong>BlockRigidBody</strong> 같은 로우 레벨 플랙과, <strong>CollisionComponent</strong> 도 콜리전 타입 설명에 일치하도록 설정됩니다.
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Collision Type</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">설명</font></a> </th></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <em>COLLIDE_CustomDefault</em> </td><td bgcolor="#ffffff"> 프로그래머 설정 콜리전. default properties 에 설정된 디폴트로 콜리전을 복원시킵니다. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <em>COLLIDE_NoCollision</em> </td><td bgcolor="#eaeaea"> 이 액터는 다른 액터나 트레이스를 막지도 접촉하지도 않습니다. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <em>COLLIDE_BlockAll</em> </td><td bgcolor="#ffffff"> 이 액터는 다른 액터나 트레이스를 막습니다. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <em>COLLIDE_BlockWeapons</em> </td><td bgcolor="#eaeaea"> 이 액터는 즉시 적중 무기같은 zero extent 트레이스만 막습니다. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <em>COLLIDE_TouchAll</em> </td><td bgcolor="#ffffff"> 이 액터는 다른 액터와 트레이스를 접촉합니다. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <em>COLLIDE_TouchWeapons</em> </td><td bgcolor="#eaeaea"> 이 액터는 즉시 적중 무기같은 zero extent 트레이스만 접촉합니다. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <em>COLLIDE_BlockAllButWeapons</em> </td><td bgcolor="#ffffff"> 이 액터는 다른 액터와 non-zero extent 트레이스만 막습니다. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <em>COLLIDE_TouchAllButWeapons</em> </td><td bgcolor="#eaeaea"> 이 액터는 다른 액터와 non-zero extent 트레이스만 접촉합니다. </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <em>COLLIDE_BlockWeaponsKickable</em> </td><td bgcolor="#ffffff"> <em>COLLIDE_BlockWeapons</em> 와 같은 효과에다 플레이어 물리에 액터가 차이도록도 합니다. </td></tr>
+</table>
+<p />
+<strong>Collision Properties</strong> 콜리전 프로퍼티
+<p /> <dl>
+<dt> <strong>Collide Complex</strong> 복잡 콜리전  </dt><dd> 켜면 이 액터의 단순화된 콜리전 지오메트리는 무시되고 폴리곤 단위로 콜리전을 계산합니다. 단순화된 콜리전 지오메트리는 언리얼 에디터에서나 3D 콘텐츠 제작 프로그램에서 생성됩니다. 폴리곤별 콜리전은 non-zero extent 트레이스, 즉 총알이 정확히 충돌하게 하는 데 좋습니다. 폴리곤별 콜리전은 비싸니 액터 이동에는 추천할 만하지 않습니다.
+</dd> <dt> <strong>Block Rigid Body</strong> 리짓 바디 막기  </dt><dd> 켜면 PhysX 를 사용하는 액터는 이 액터와 충돌합니다.
+</dd> <dt> <strong>No Encroach Check</strong> 침입 검사 없음  </dt><dd> 켜면 이 액터가 움직일 때 침입 검사를 하지 않습니다. 이 옵션을 켜면 게임 속도가 빨라지지만, 액터는 트리거를 건드리거나, 액터를 밀거나, 볼륨에 들어가고 나오거나 하지 못합니다.
+</dd> <dt> <strong>Path Colliding</strong> 패쓰 충돌  </dt><dd> 켜면 이 액터는 언리얼 에디터에서 패쓰를 빌드할 때 길을 막을 수 있습니다.
+</dd> <dt> <strong>Collision Component</strong> 콜리전 컴포넌트  </dt><dd> 이 액터의 콜리전을 계산하는 데 사용되는 컴포넌트를 가리킵니다.
+</dd></dl>
+<p />
+<h2><a name="디스턴스 컬링"></a> 디스턴스 컬링 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+스태틱 메시 액터의 표시여부(visibility)는 (<strong>Rendering</strong> 범주 아래 있는) <strong><em>StaticMeshComponent</em></strong> 의 <strong>MinDrawDistance</strong> 와 <strong>MaxDrawDistance</strong> 프로퍼티를 사용해서 카메라와의 거리에 따라 제어할 수 있습니다. 이 두 프로퍼티로 카메라에서 어느 거리에 있는 액터의 스태틱 메시가 렌더링시킬지, 그 최소 최대 거리를 지정할 수 있습니다.
+<p />
+<img src="rsrc/Three/UsingStaticMeshActors/distance_cull.jpg" alt="distance_cull.jpg" width="900" height="300" />
+<p />
+메시가 렌더링되는 거리를 조절하는 기능은 (위에서처럼) 플레이어가 너무 멀리 있어 메시를 감추고자 할 때도 간단히 사용할 수 있습니다. 또는 저해상도 메시(들)의 최소 거리가 고해상도 메시(들)의 최대 거리와 같을 때 위치가 같은 스태틱 메시 액터를 여럿 놓아서, 하나 이상의 고해상도 메시를 저해상도 프록시로 (또는 다수의 고해상도 메시 대신 하나의 프록시로) 맞바꾸는데 사용할 수도 있습니다.
+<p />
+<img src="rsrc/Three/UsingStaticMeshActors/distance_swap.jpg" alt="distance_swap.jpg" width="900" height="300" />
+<p />
+물론 그냥 스태틱 메시에 있는 LOD 시스템을 사용해도 위와 똑같은 기능을 낼 수 있지만, 이 방법으로는 언리얼 에디터에서 <a href="MeshSimplificationToolKR.html" class="twikiLink">메시 단순화 툴</a> 을 사용하여 기존 메시의 저해상도 버전을 만들 수 있으니 레벨 디자이너가 직접 구성할 수 있게 됩니다. 그리고 예전에 언급했듯이, 고해상도 메시 다수를 저해상도 프록시 하나로 대체할 수 있기에 폴리곤 뿐만 아니라 드로 콜 수도 낮출 수 있습니다. <a href="MassiveLODKR.html" class="twikiLink">Massive LOD</a> 기본 시스템도 같은 개념입니다.
+<p />
+UE3 의 스태틱 메시나 다른 지오메트리 표시여부 제어법 관련 자세한 정보는 <a href="VisibilityCullingKR.html" class="twikiLink">Visibility Culling KR</a> 페이지를 확인하시기 바랍니다.
+<p />
+</noautolink>
+<p />
+<script type="text/javascript">
+function ToggleComment(id)
+{
+	var container = document.getElementById('comment_' + id + '_container');
+	var comment = document.getElementById('comment_' + id);
+	//var controller = document.getElementById('comment_' + id + '_controller');
+
+	if(container.innerHTML == '')
+	{
+		container.innerHTML = comment.innerHTML;
+		//controller.style.cursor = 'auto';
+		//controller.onclick = function(){};
+	}
+	else
+	{
+		container.innerHTML = '';
+	}
+}
+function CloseComment(id)
+{
+	var container = document.getElementById('comment_' + id + '_container');
+	//var controller = document.getElementById('comment_' + id + '_controller');
+
+	container.innerHTML = '';
+	//controller.style.cursor = 'pointer';
+	//controller.onclick = function(){OpenComment(id);};
+}
+
+</script>
+<style type="text/css">
+.close_button
+{
+	background:#d0d0d0;
+	padding:2px 4px 4px;
+	cursor:pointer;
+	position:absolute;
+	top:0px;
+	right:0px;
+	font-size:10px;
+	font-weight:bold;
+	border:1px solid #000000;
+	-moz-border-radius:0px 8px 0px 0px;
+	-webkit-border-radius:0px 8px 0px 0px;
+	color:#000000;
+}
+.comment_controller
+{
+	display:inline;
+	border-bottom:1px dashed #000000;
+	cursor:pointer;
+}
+</style>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingStaticMeshActorsKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:33:17 GMT -->
+</html></body>

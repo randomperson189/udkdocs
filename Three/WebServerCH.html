@@ -1,0 +1,740 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/WebServerCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:24:51 GMT -->
+<head>
+<title> UDK | WebServerCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">WebServerCH  </b></div>
+<div id="tooltext">
+<a href="WebServer.html" class="twikiLink">English Translation</a><br><a href="WebServerJP.html" class="twikiLink">日本語訳</a><br><a href="WebServerKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/WebServerCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="InputOutputHome.html" class="twikiLink">输入 / 输出</a></b> &gt; 网络服务器
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="网络服务器"></a> 网络服务器 </h1>
+<hr size="1" noshade="noshade">
+<p />
+_文档概述：描述了 UT3 中实现的 HTTP WebServer（网络服务器）的应用及它的 API。
+<p />
+<em>文档变更记录：由 <a href="https://udn.epicgames.com/Main/MichielHendricks" class="restricted" class="restricted" class="twikiLink">Michiel Hendricks</a> 发表的内容。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="WebServerCH.html#网络服务器"> 网络服务器</a> <ul>
+<li> <a href="WebServerCH.html#概述"> 概述</a>
+</li> <li> <a href="WebServerCH.html#结构"> 结构</a>
+</li> <li> <a href="WebServerCH.html#HTTP 请求处理"> HTTP 请求处理</a>
+</li> <li> <a href="WebServerCH.html#创建网络应用程序"> 创建网络应用程序</a> <ul>
+<li> <a href="WebServerCH.html#处理请求"> 处理请求</a>
+</li> <li> <a href="WebServerCH.html#产生一个响应"> 产生一个响应</a>
+</li></ul>
+</li> <li> <a href="WebServerCH.html#API"> API</a> <ul>
+<li> <a href="WebServerCH.html#WebApplication"> WebApplication</a>
+</li> <li> <a href="WebServerCH.html#WebRequest"> WebRequest</a>
+</li> <li> <a href="WebServerCH.html#WebResponse"> WebResponse</a>
+</li> <li> <a href="WebServerCH.html#WebServer（网络服务器）"> WebServer（网络服务器）</a>
+</li> <li> <a href="WebServerCH.html#WebConnection"> WebConnection</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<hr size="1" noshade="noshade">
+该文档将会介绍如何使用 Web Server（网络服务器）以及如何创建新的 Web Application（网络应用程序）。对于供 webserver 使用的网络连接的底层基础信息，请参照 <a href="TcpLink.html" class="twikiLink">TcpLink</a> 页面。
+<p />
+本文档假设您已经具备了 HTTP 协议方面的基本知识。这里不需要您知道关于 HTTP 的详细信息，但是懂得一些基本信息还是有帮助的。
+<p />
+Webserver（网络服务器）仅支持 HTTP 协议的一个子集。但是网络应用程序可以扩展这个功能。它仅支持 GET 和 POST 请求。
+<p />
+<h2><a name="结构"></a> 结构 </h2>
+<hr size="1" noshade="noshade">
+以下类构成了网络服务器的功能：
+<p /> <dl>
+<dt> <code>WebServer</code>  </dt><dd> 这是网络服务器的入口点，它可以管理连接和应用程序。
+</dd> <dt> <code>WebConnection</code>  </dt><dd> 这个类是网络服务器的 <em>acceptor</em> 类。对于每个连接到网络服务器的客户端来说，都会创建一个这个类的实例。它管理连接并且再把请求传向网络应用程序之前对其进行预处理。
+</dd> <dt> <code>WebRequest</code>  </dt><dd> 这个类包含了网络服务器接收到的 HTTP 请求。
+</dd> <dt> <code>WebResponse</code>  </dt><dd> 这个类实现了给请求提供响应的功能。
+</dd> <dt> <code>WebApplication</code>  </dt><dd> 这个类的实现负责处理请求并产生响应。当使用网络服务器时，这是您将要扩展的类。
+</dd></dl>
+<p />
+<h2><a name="HTTP 请求处理"></a> HTTP 请求处理 </h2>
+<hr size="1" noshade="noshade"> <ol>
+<li> 客户端可以连接到这个网络服务器。
+</li> <li> 创建一个新的 <code>WebConnection（网络连接）</code> ， <code>WebServer</code> 中的连接计数器的值增加。
+</li> <li> 调用 <em>WebConnection.Accepted</em> 。 <ol>
+<li> 启动“关闭计时器”。一个连接仅持续打开 30 秒。
+</li></ol>
+</li> <li> <em>WebConnection.ReceivedText</em> 。连接正在接收这个请求 <ol>
+<li> 当还在处理请求报头时，把数据分割为行。
+</li> <li> 处理请求报头 <ol>
+<li> 处理请求 URL 中提供的请求变量
+</li> <li> 如果是 GET 请求： <ol>
+<li> 创建 <code>WebRequest</code> 和 <code>WebResponse</code> 实例。
+</li> <li> 查找相关的网络应用程序。
+</li> <li> 如果没有找到 webapplication（网络应用程序），则使用到默认应用程序的 HTTP 重定向（如果设置了）来进行反应。
+</li></ol>
+</li> <li> 如果是 POST 请求： <ol>
+<li> 创建 <code>WebRequest</code> 和 <code>WebResponse</code> 实例。
+</li> <li> 查找相关联的网络应用程序。
+</li></ol>
+</li> <li> 处理报头，通过 <em>WebRequest.ProcessHeaderString</em> 来完成。 <ol>
+<li> 如果是 <code>Authorization: Basic</code> 的情况，则解码用于验证的用户名和密码。
+</li> <li> 如果是 = Content-Length = ，则设置 <code>ContentType</code> 变量。
+</li> <li> 如果是 <code>Content-Length</code> ，则设置 <code>ContentLength</code> 变量。
+</li></ol>
+</li></ol>
+</li> <li> 检查请求： <ol>
+<li> 如果没有创建 <code>WebResponse</code> ，则使用“HTTP 400 错误”做出响应。
+</li> <li> 如果没有找到网络应用程序，则使用“HTTP 400 错误”做出响应。
+</li></ol>
+</li> <li> 如果 <code>WebRequest.ContentLength</code> 的值大于 0 并且它是一个 POST 请求，则读取额外的数据。
+</li> <li> &dagger;调用 <em>WebApplication.PreQuery</em> 。如果结果为 true： <ol>
+<li> 1. &dagger;调用 <em>WebApplication.Query</em> 。
+</li> <li> &dagger;调用 <em>WebApplication.PostQuery</em> 。
+</li></ol>
+</li> <li> 开始清除： <ol>
+<li> 复原所有变量。
+</li> <li> 关闭连接。
+</li></ol>
+</li></ol>
+</li></ol>
+<p />
+&dagger;这是您将要创建的部分。
+<p />
+<h2><a name="创建网络应用程序"></a> 创建网络应用程序 </h2>
+<hr size="1" noshade="noshade">
+要扩展这个网络服务器的功能，您通常需要创建一个网络应用程序。您可以通过创建 <code>WebApplication</code> 的子类来完成，并且您至少要实现 <em>WebApplication.Query</em> 方法。
+<p />
+在 <code>IpDrv</code> 中，您会找到一个称为 <code>HelloWeb</code> 的实现示例。
+<p />
+当您的网络应用程序注册后，网络服务器将仅使用它。要注册一个网络应用程序，您需要更新网络服务器配置。编辑 <code>??Web.ini</code> 文件并更新 <code>[IpDrv.WebServer]</code> 项：
+<pre>
+Applications[x]=MyPackage.MyWebApplication
+ApplicationPaths[x]=/myweb
+</pre>
+这里的 <code>x</code> 是一个空的数组元素。您最多可以由 10 个网络应用程序。可以通过 <code>http://ip:port/myweb</code> 来获得您的网络应用程序。
+<p />
+当网络服务器启动后，它会创建并初始化所有网络应用程序。对于这个网络应用程序来说， <code>path</code> 变量将会被设置为 <code>ApplicationPaths</code> 的值。实现 <em>init()</em> 函数来执行您的网络应用程序的一些初始化操作。当网络服务器关闭时，它将会调用 <em>CleanupApp()</em> 函数。在那个函数中，您应该使得您创建的所有 actor 引用都无效（也就是设置变量为 <code>none</code> 。).
+<p />
+正如在<a href="#HTTP Request process">请求过程</a>中所显示的，这个网络应用程序的第一个函数是 <em>PreQuery(..)</em> 。如果这个函数返回为真（默认的行为），那么随后它将会调用 <em>Query(..)</em> 和 <em>PostQuery(..)</em> 函数。这三个函数都接收同样的 2 个参数：  <code>WebRequest</code> 和 <code>WebResponse</code> 实例。正如类的名称所预示的， <code>WebRequest</code> 实例包含了关于用户的 HTTP 请求的信息。而 <code>WebResponse</code> 实例可以用于产生对请求的响应。 <code>WebRequest</code> 实例的 <code>URI</code> 变量将会包含产生的相对的 URL。网络应用程序路径已经从原始的 URI 中剥离出来。
+<p />
+<h3><a name="处理请求"></a> 处理请求 </h3>
+客户端的请求存储在传入到您的网络应用程序的 <em>Query</em> 函数中。
+<p />
+或许在 <code>WebRequest</code> 中重要的发送变量是 <code>URI</code> 变量。它将包含网络应用程序字段中包含该请求页面。比如，如果客户端产生了请求<code>http://ip:port/myweb/some/page?foo=bar</code>，那么 <code>URI</code> 变量的值是 <code>/some/page</code> 。已经删除了网络应用程序的前缀。并且会将请求变量存储到其他地方。
+<p />
+为了获得 GET 或 POST 请求的变量，您需要使用 <em>GetVariable</em> 、 <em>GetVariableCount</em> 、 <em>GetVariableNumber</em> 和 <em>GetVariables</em> 函数。 <em>GetVariable</em> 函数允许您获得给定请求的第一个值。在先前的发送实例  <em>GetVariable("foo")</em> 中将会返回 <code>bar</code> 。在某些情况下，您会有一些具有同样名称的多个请求变量，比如： <code>http://ip:port/myweb/some/page?foo=bar&amp;quux</code>。在这种情况下，您可以使用 <em>GetVariableCount("foo")</em> 来获得那个变量的数值，并使用  <em>GetVariableNumber("foo", X)</em> 来获得每个值。
+<p />
+您也可以通过 <em>GetHeader</em> 和 <em>GetHeaders</em> 函数读取请求的报头。HTTP 报头 <code>Content-Type</code> 、 <code>Content-Length</code> 、 <code>Authentication</code> 是在特殊的变量中进行处理并存储的。 <code>Content-Type</code> 和 <code>Content-Length</code> 仅在 POST 请求中使用。仅会为基础的验证请求处理 <code>Authentication</code> 请求报头。在这种情况下， <code>WebRequest</code> 对象中的 <code>username（用户名）</code> 和 <code>password（密码）</code> 将会包含解码值。
+<p />
+以下实例显示了处理请求的一般方法：
+<p />
+<pre>
+function Query(WebRequest Request, WebResponse Response)
+{
+    // Each "page" is handled by a separate function（分辨使用函数来处理每个“页面”）
+    switch (request.URI)
+    {
+        case "/page1"
+            doPage1(request, response);
+            break;
+        case "/page2"
+            doPage2(request, response);
+            break;
+        // 等等
+    }
+}
+
+function doPage1(WebRequest Request, WebResponse Response)
+{
+    if (request.getVariable("action") ~= "save")
+    {
+        // save incomming settings（保存输入的设置）
+    }
+    // produce a response（产生一个响应）
+}
+</pre>
+<p />
+<h3><a name="产生一个响应"></a> 产生一个响应 </h3>
+当您的网络应用程序没有提供响应时，网络服务器不会提供任何默认响应。只有在一些非常特殊的情况下，它才会为客户端生成一些有用的信息。所以产生内容是您的网络服务器的责任。
+<p />
+<code>WebResponse</code> 对象用于对客户端产生响应。生成一个响应的最基本的方法是通过使用 <em>SendText</em> 方法来返回内容。但是一般您会想执行的更多一些或者使用或多或少的静态内容，而不是通过虚幻脚本持续地生成响应。
+<p />
+通过 <code>WebResponse</code> 对象生成响应的基本流程是：
+<p /> <ol>
+<li> 定义内容: <em>AddHeader</em>, <em>Subst</em>, <em>ClearSubst</em>, <em>LoadParsedUHTM</em>, <code>headers</code>, <code>CharSet</code>
+</li> <li> <em>HTTPResponse</em>
+</li> <li> <em>SendStandardHeaders</em>
+</li> <li> 发送内容：	<em>IncludeUHTM</em>, <em>SendText</em>, <em>IncludeBinaryFile</em>
+</li></ol>
+<p />
+前三步完全是可选的步骤。
+<p />
+<code>WebResponse</code> 生成几个标准的 HTTP 报头，在自定义报头之前将会发送这些标准报头。它们是：
+<p />
+   $ Server（服务器）： "UnrealEngine IpDrv Web Server Build ..."
+   $ Content-Type（内容类型）： <em>SendStandardHeaders</em> 函数中提供了 <code>ContentType</code> 变量的值
+   $ Cache-Control（缓存控制）： "max-age=...",网络服务器中的 <code>ExpirationSeconds</code> 的值
+   $ Expires（过期时间）： "...", 网络服务器中的 <code>ExpirationSeconds</code> 的值
+   $ Connection（连接）： “Close（关闭）”。网络服务器一次仅处理一个请求。
+<p />
+有三种常见的创建响应数据的方法：
+<p /> <ol>
+<li> 手动文本发送
+</li> <li> 按原样发送文件
+</li> <li> 处理后的 UHTM 文件
+</li></ol>
+<p />
+<h4><a name="发送手动创建的文本"></a> 发送手动创建的文本 </h4>
+通过使用 <em>SendText</em> 函数，您可以设置发送手动地创建的文档来对网络浏览器做出响应。请参照 <code>HelloWeb</code> 类来获得网络应用程序使用这个方法的示例。
+<p />
+<h4><a name="以不做任何修改的方式发送文件"></a> 以不做任何修改的方式发送文件 </h4>
+WebResponse 对象提供了 <em>IncludeBinaryFile</em> 函数，这个函数允许您把文件按照它在磁盘上的存储的方式将其发送到客户端。这个方法一般用于发送像图片这样的静态文件，请参照 <code>ImageServer</code> 类。
+<p />
+您可以包含的文件必须位于 <code>UDK/Web</code> 目录中。
+<p />
+<em>注意：</em> 这个 <em>IncludeBinaryFile</em> 不能确保发送响应报头。所以您需要在调用 IncludeBinaryFile 之前调用 SendStandardHeaders 函数。
+<p />
+<h4><a name="处理后的 UHTM 文件"></a> 处理后的 UHTM 文件 </h4>
+UHTM 是一个模板系统，它处理文本文件并替换某些变量及指令。这些文件不是必须是 HTML 文件，也可以使用其它任何文本文件。
+<p />
+有两种特殊的结构。第一种是有一些会被取代的变量。您可以通过以下结构来创建一个替换变量 (substituted variable)： <code>&lt;%var_name%&gt;</code> ，这里的 <code>var_name</code> 是变量的名称。您可以通过使用 <em>Subst</em> 函数为这个变量设置值。需要注意的是 SGML 中的变量都不可以被替换。所以它仍然是<code>&lt;!-- &lt;%var_name%&gt; --&gt;</code>。
+<p />
+第二个结构是<code>&lt;!-- #include file="file.inc" --&gt;</code>。这将会在当前文件中的此位置包含文件 <code>file.inc</code> 。也会对被包含文件的额外变量和包含指令进行处理。
+<p />
+<em>LoadParsedUHTM</em> 和 <em>IncludeUHTM</em> 函数将会处理该文件。_LoadParsedUHTM_ 函数会将处理后的文件作为字符串返回，而 <em>IncludeUHTM</em> 会将这个处理后的文件发送到网络浏览器上。一般，您使用 <em>LoadParsedUHTM</em> 来为新的替换变量创建一个值。
+<p />
+<h2><a name="API"></a> API </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="WebApplication"></a> WebApplication </h3>
+<p />
+<h4><a name="Fields（字段）"></a> Fields（字段） </h4>
+<p />
+<h5><a name="Path（路径）"></a> Path（路径） </h5>
+<p />
+这个域将被设置为网络应用程序的配置的基本路径。请使用这个字段来创建适当的链接。
+<p />
+<h4><a name="函数"></a> 函数 </h4>
+<p />
+<h5><a name="Init"></a> Init </h5>
+<code>function Init()</code>
+<p />
+只要创建 WebApplication（网络应用程序）实例后便会调用这个函数。使用这个函数来执行某些重要的初始化操作。建议您不要在这个方法中执行太多的动作。最好把完全的初始化延迟到这个网络应用程序的第一个请求为止。
+<p />
+<h5><a name="CleanupApp"></a> CleanupApp </h5>
+<code>function CleanupApp()</code>
+<p />
+在网络服务器被销毁前调用。在这个方法中将您的网络应用程序中到所有 actor 的引用都设置为 <code>none</code> ，从而可以防止内存泄露。
+<p />
+<h5><a name="PreQuery"></a> PreQuery </h5>
+<code>function bool PreQuery(WebRequest Request, WebResponse Response)</code>
+<p />
+调用这个函数来检查网络应用程序是否想要处理给定的查询。如果返回假，则不会调用 <em>Query</em> 和 <em>PostQuery</em> 方法。
+<p />
+<h5><a name="查询"></a> 查询 </h5>
+<code>function Query(WebRequest Request, WebResponse Response)</code>
+<p />
+当 <em>PreQuery</em> 函数返回真后调用这个函数。
+<p />
+<h5><a name="PostQuery"></a> PostQuery </h5>
+<code>function PostQuery(WebRequest Request, WebResponse Response)</code>
+<p />
+当 <em>Query</em> 函数返回后调用这个函数。
+<p />
+<h3><a name="WebRequest"></a> WebRequest </h3>
+<p />
+<h4><a name="Fields（字段）"></a> Fields（字段） </h4>
+<p />
+<h5><a name="RemoteAddr"></a> RemoteAddr </h5>
+<p />
+产生这个请求的客户端的地址。
+<p />
+<h5><a name="URI"></a> URI </h5>
+<p />
+请求 URL。在通过网络应用程序进行处理的时候，会将该字段从网络应用程序前缀中剥离出来。
+<p />
+<h5><a name="Username"></a> Username </h5>
+<p />
+当请求中包含了基本的 HTTP Authentication 报头时解码用户名。请参照 RFC 2617 来获得关于这项的更多信息。
+<p />
+<h5><a name="Password"></a> Password </h5>
+<p />
+当请求中包含了节本的 HTTP Authentication 报头时解码密码。
+<p />
+<h5><a name="ContentLength"></a> ContentLength </h5>
+<p />
+POST 请求中的字节数。
+<p />
+<h5><a name="ContentType"></a> ContentType </h5>
+<p />
+PSOT 数据中的内容类型。
+<p />
+<h5><a name="RequestType"></a> RequestType </h5>
+<p />
+将会根据请求种类将其发送到 <code>Request_GET</code> 或 <code>Request_POST</code> 。
+<p />
+<h4><a name="函数"></a> 函数 </h4>
+<p />
+<h5><a name="DecodeBase64"></a> DecodeBase64 </h5>
+<code>native final function string DecodeBase64(string Encoded)</code>
+<p />
+解码 base64 编码的字符串。
+<p />
+<h5><a name="EncodeBase64"></a> EncodeBase64 </h5>
+<code>native final function string EncodeBase64(string Decoded)</code>
+<p />
+将字符串编码为 base64 格式。
+<p />
+<h5><a name="AddHeader"></a> AddHeader </h5>
+<code>native final function AddHeader(string HeaderName, coerce string Value)</code>
+<p />
+向数据结构中添加一个请求报头。这个函数在请求处理的过程中使用。您不能从网络应用程序中调用这个函数。
+<p />
+<h5><a name="GetHeader"></a> GetHeader </h5>
+<code>native final function string GetHeader(string HeaderName, optional string DefaultValue)</code>
+<p />
+获得给定请求报头的值。如果请求中不存在报头，那么将返回默认值。注意，如果有多个具有同样名称的请求报头，那么仅返回最后一个接收到的报头。报头名称是区分大小写的。
+<p />
+<h5><a name="GetHeaders"></a> GetHeaders </h5>
+<code>native final function GetHeaders(out array<string> headers)</code>
+<p />
+获得所有接收到的报头的名称。
+<p />
+<h5><a name="AddVariable"></a> AddVariable </h5>
+<code>native final function AddVariable(string VariableName, coerce string Value)</code>
+<p />
+注册一个接收到的请求变量。这个函数在请求处理的过程中用于在内部使用。不能从网络应用程序中使用这个函数。
+<p />
+<h5><a name="GetVariable"></a> GetVariable </h5>
+<code>native final function string GetVariable(string VariableName, optional string DefaultValue)</code>
+<p />
+获得一个请求变量的值。如果请求变量不存在，则返回默认值。变量的名称是区分大小写的。如果接收到了具有同样名称的多个变量，那么仅返回一个值。请使用 <em>GetVariableNumber</em> 和 <em>GetVariableCount</em> 来分别获得每个值。
+<p />
+<h5><a name="GetVariableCount"></a> GetVariableCount </h5>
+<code>native final function int GetVariableCount(string VariableName)</code>
+<p />
+返回给定请求变量的变量数量。如果值大于 1，您应该使用 <em>GetVariableNumber</em> 来获取每个值。
+<p />
+<h5><a name="GetVariableNumber"></a> GetVariableNumber </h5>
+<code>native final function string GetVariableNumber(string VariableName, int Number, optional string DefaultValue)</code>
+<p />
+获得给定的请求变量值。如果变量不存在或者没有那个数量个变量，那么将返回默认值。
+<p />
+<h5><a name="GetVariables"></a> GetVariables </h5>
+<code>native final function GetVariables(out array<string> varNames)</code>
+<p />
+获得接收的请求变量的名称。
+<p />
+<h3><a name="WebResponse"></a> WebResponse </h3>
+<p />
+<h4><a name="Fields（字段）"></a> Fields（字段） </h4>
+<p />
+<h5><a name="报头"></a> 报头 </h5>
+<p />
+这个数组中包含了将要发送到远程主机的所有报头。它包含了要发送的报头。您可以修改这个数组目录或者通过使用 <em>AddHeader</em> 函数。当内容已经发出后，对于这个字段的修改将不会产生效果。
+<p />
+<h5><a name="IncludePath"></a> IncludePath </h5>
+<p />
+这是网络服务器可以发送或处理的文件放置的基本目录的相对路径。
+<p />
+<h5><a name="连接"></a> 连接 </h5>
+<p />
+它是 <code>WebConnection</code> 实例，用于通过这个实例来发送响应。您不应该使用这个变量来写数据。
+<p />
+<h4><a name="函数"></a> 函数 </h4>
+<p />
+<h5><a name="FileExists"></a> FileExists </h5>
+<code>native final function bool FileExists(string Filename)</code>
+<p />
+当给定的文件名存在于网站的包含目录时返回真。这可以在像 <code>ImageServer</code> 类的静态服务器上使用，来决定给定文件是否存在，如果不存在， <code>WebApplication</code> 可以返回 HTTP 404 Not Found 错误。
+<p />
+<h5><a name="Subst"></a> Subst </h5>
+<code>native final function Subst(string Variable, coerce string Value, optional bool bClear)</code>
+<p />
+修改在 <em>IncludeUHTM</em> 和 <em>LoadParsedUHTM</em> 函数中使用的替换变量。第三个可选的参数允许您删除一个先前声明的变量。
+<p />
+<h5><a name="ClearSubst"></a> ClearSubst </h5>
+<code>native final function ClearSubst()</code>
+<p />
+删除所有的注册的替换变量。
+<p />
+<h5><a name="IncludeUHTM"></a> IncludeUHTM </h5>
+<code>native final function bool &nbsp; IncludeUHTM(string Filename)</code>
+<p />
+加载一个 UHTM 文件并处理它。处理结果将直接被发送到远程主机。当文件被正确地包含及处理时这个函数返回为真。提供的文件名称必须存在于子树中，正如在 <code>IncludePath</code> 字段中所声明的。
+<p />
+<h5><a name="IncludeBinaryFile"></a> IncludeBinaryFile </h5>
+<code>native final function bool &nbsp; IncludeBinaryFile(string Filename)</code>
+<p />
+以不做任何修改的方式将文件发送到远程客户端。注意，和 <em>IncludeUHTM</em> 不同，这个函数不能确保已经发送了响应报头。因此，在调用这个方法之前，请确保已经发送了报头。
+<p />
+<h5><a name="LoadParsedUHTM"></a> LoadParsedUHTM </h5>
+<code>native final function string LoadParsedUHTM(string Filename)</code>
+<p />
+与 <em>IncludeUHTM</em> 函数类似，一个主要的不同之处是它返回处理后的文件作为结果，并且不会把它发送到远程客户端。您可以使用这个函数来创建更多复杂的 UHTM 模板。
+<p />
+<h5><a name="GetHTTPExpiration"></a> GetHTTPExpiration </h5>
+<code>native final function string GetHTTPExpiration(optional int OffsetSeconds)</code>
+<p />
+创建一个 现在时间+ OffsetSeconds 的 RFC 1123 格式的日期时间。这个事件用于构成 <code>Expires</code> 的响应报头。
+<p />
+<h5><a name="SendText"></a> SendText </h5>
+<code>event SendText(string Text, optional bool bNoCRLF)</code>
+<p />
+发送一串文本数据到远程主机。如果 <code>bNoCRLF</code> 是真，那么将不会添加 DOS 行结束符 (0x13 0x10)。这个函数可以确保在发送文本数据之前发送报头。
+<p />
+<h5><a name="SendBinary"></a> SendBinary </h5>
+<code>event SendBinary(int Count, byte B[255])</code>
+<p />
+发送二进制数据到远程主机。这个函数不能确保发送报头。
+<p />
+<h5><a name="HTTPResponse"></a> HTTPResponse </h5>
+<code>function HTTPResponse(string Header)</code>
+<p />
+发送 HTTP 响应代码。默认情况下，将会使用这个函数发送一个响应 200 OK，这样您就可以发送一个其他的响应。请参照 HTTP RFC 获得关于 HTTP 响应代码的更多细节。HTTP 响应应该在报头参数中给出。例如：
+<p />
+<code>HTTPResponse("HTTP/1.0 404 Not Found");</code>
+<p />
+<h5><a name="HTTPHeader"></a> HTTPHeader </h5>
+<code>function HTTPHeader(string Header)</code>
+<p />
+发送响应报头。这将可以保证在发送报头之前已经发送了 HTTP 响应代码。您不应该调用这个方法来发送报头。最好通过 <em>AddHeader</em> 函数或直接修改 <code>Headers</code> 域来排队报头。
+<p />
+<h5><a name="AddHeader"></a> AddHeader </h5>
+<code>function AddHeader(string header, optional bool bReplace=true)</code>
+<p />
+将一个报头 添加/更新 到报头列表中。将会最先在可能的情况下发送这个报头。如果想完全地删除特定的报头，可以简单地是它的值为空即可，比如 "X-Header:"。
+<p />
+要想添加具有同样名称的多个报头（设置缓存的报头时需要这种情况），您需要直接地编辑报头数组。
+<p />
+<h5><a name="SendHeaders"></a> SendHeaders </h5>
+<code>function SendHeaders()</code>
+<p />
+发送排队的报头。这个函数是通过 <em>SendStandardHeaders</em> 在内部调用的。您不应该使用这个函数。
+<p />
+<h5><a name="HTTPError"></a> HTTPError </h5>
+<code>function HTTPError(int ErrorNum, optional string Data)</code>
+<p />
+这是一个用于发送常见的 HTTP 相应代码的快速方法。比如 400 Bad Request, 401 Unauthorized, 404 Not Found 这样的 HTTP 响应代码。
+<p />
+它将会包含一个具有错误信息的内联的 HTML 响应。您或许想使用更加友好的用户响应来处理这些响应。这是一个便捷的方法。
+<p />
+<h5><a name="SendStandardHeaders"></a> SendStandardHeaders </h5>
+<code>function SendStandardHeaders( optional string ContentType, optional bool bCache )</code>
+<p />
+发送标准的报头及所有自定义的报头。当调用这个函数后，您可以安全地包含响应数据。
+<p />
+<code>ContentType</code> 变量用于设置 "Content-Type" 响应报头。它默认是 "text/html"。
+<p />
+如果 <code>bCache</code> 为真，那么它也会包含具有缓存指令的一些报头。这时，它使用了 <code>WebServer.ExpirationSeconds</code> 的值。
+<p />
+这里仅实现了 "Connection: Close" 报头。仅当没有设置报头时才使用其它的默认报头。
+<p />
+<h5><a name="重定向"></a> 重定向 </h5>
+<code>function Redirect(string URL)</code>
+<p />
+发送一个针对重定向客户端到一个不同的 URL 响应 302 Document Moved HTTP 的便捷方法。
+<p />
+<h5><a name="SentText"></a> SentText </h5>
+<code>function bool SentText()</code>
+<p />
+如果已经发送了响应数据则返回为真。这时，您不能再发送报头。
+<p />
+<h5><a name="SentResponse"></a> SentResponse </h5>
+<code>function bool SentResponse()</code>
+<p />
+当已经发送了 HTTP 响应代码时返回为真。当执行完这个函数后，您不能改变响应代码。但您仍然可以发送报头。
+<p />
+<h3><a name="WebServer（网络服务器）"></a> WebServer（网络服务器） </h3>
+<p />
+这可类不能被继承，它仅描述了一些重要的元素。
+<p />
+<h4><a name="Fields（字段）"></a> Fields（字段） </h4>
+<p />
+<h5><a name="ServerName"></a> ServerName </h5>
+<p />
+这个可选的配置域用于为网络服务器分配主机名。这不会影响主机的行为。它将会使用这个名称来更新 <code>ServerURL</code> 字段，而不是使用本地 IP。
+<p />
+<h5><a name="应用程序"></a> 应用程序 </h5>
+<p />
+加载的网络应用程序的完全符合要求的类名称。这个变量和 ApplicationPaths 字段的关联是十分密切的。您最多可以定义 10 个网络应用程序。
+<p />
+<h5><a name="ApplicationPaths"></a> ApplicationPaths </h5>
+<p />
+与该网络应用程序相关联的路径。路径的顺序是很重要的，第一个匹配的路径具有优先权。
+<p />
+<h5><a name="bEnabled"></a> bEnabled </h5>
+<p />
+这个可配置的域可以使您轻而易举地启用或禁用网络服务器。
+<p />
+<h5><a name="ListenPort"></a> ListenPort </h5>
+<p />
+定义了网络服务器的监听端口。网络服务器仅接受绑定到这个端口上。
+<p />
+<h5><a name="MaxConnections"></a> MaxConnections </h5>
+<p />
+网络服务器支持的可以同时连接到它的最大连接数量。这个值不应该太高，因为它会影响游戏的性能。
+<p />
+<h5><a name="DefaultApplication"></a> DefaultApplication </h5>
+<p />
+要使用的默认网络应用程序。这是 Applications 字段中的一个索引。当不能为请求 URL 找到网络应用程序时，那么用户会被重定向到这个网络应用程序。=WebConnection= 使用这个字段。
+<p />
+<h5><a name="ExpirationSeconds"></a> ExpirationSeconds </h5>
+<p />
+一个可配置的域，用于提供定义过期时间的通用位置。WebReponse 类使用它类为可能被缓存的响应设定过期时间。
+<p />
+<h5><a name="ServerURL"></a> ServerURL </h5>
+<p />
+这个域是在网络服务器启动的过程中产生的。它包含了网络服务器的基础 url。
+<p />
+<h4><a name="函数"></a> 函数 </h4>
+<p />
+<h5><a name="GetApplication"></a> GetApplication </h5>
+<code>function WebApplication GetApplication(string URI, out string SubURI)</code>
+<p />
+这个函数返回了给定的 URI 的网络应用程序。这个方法的第二个参数是没有网络应用程序路径的前缀的 URI。
+<p />
+<h3><a name="WebConnection"></a> WebConnection </h3>
+<p />
+这可类不能被继承，它仅描述了一些重要的元素。
+<p />
+<h4><a name="Fields（字段）"></a> Fields（字段） </h4>
+<p />
+<h5><a name="MaxValueLength"></a> MaxValueLength </h5>
+<p />
+这个可配置项定义了允许一个请求变量具有的最大长度。它会把传入的值删减为这个长度。为了处理请求，将这个值设置的足够大是很重要的。这个值供 <code>WebRequest</code> 类使用。
+<p />
+<h5><a name="MaxLineLength"></a> MaxLineLength </h5>
+<p />
+请求的单独一行的最大长度。在 GET 请求中，这个值限制了变量的长度（'?' 后面的东西）。但是在 POST 数据中，它也限制了单独一行的长度。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/WebServerCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:24:51 GMT -->
+</html></body>

@@ -1,0 +1,495 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavMeshDynamicObstacleSplitting.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:40 GMT -->
+<head>
+<title> UDK | NavMeshDynamicObstacleSplitting    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">NavMeshDynamicObstacleSplitting  </b></div>
+<div id="tooltext">
+<a href="NavMeshDynamicObstacleSplittingJP.html" class="twikiLink">日本語訳</a><br><a href="NavMeshDynamicObstacleSplittingCH.html" class="twikiLink">中国翻译</a><br><a href="NavMeshDynamicObstacleSplittingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/NavMeshDynamicObstacleSplitting -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="AIAndNavigationHome.html" class="twikiLink">AI &amp; Navigation</a></b> &gt; Navigation Mesh Dynamic Obstacle Splitting Technical Overview
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="Navigation Mesh Dynamic Obstacle Splitting Technical Overview"></a> Navigation Mesh Dynamic Obstacle Splitting Technical Overview </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="NavMeshDynamicObstacleSplitting.html#Navigation Mesh Dynamic Obstacle Splitting Technical Overview"> Navigation Mesh Dynamic Obstacle Splitting Technical Overview</a> <ul>
+<li> <a href="NavMeshDynamicObstacleSplitting.html#Overview"> Overview</a>
+</li> <li> <a href="NavMeshDynamicObstacleSplitting.html#High level overview"> High level overview</a> <ul>
+<li> <a href="NavMeshDynamicObstacleSplitting.html#Hierarchy"> Hierarchy</a>
+</li> <li> <a href="NavMeshDynamicObstacleSplitting.html#Build on-demand"> Build on-demand</a>
+</li></ul>
+</li> <li> <a href="NavMeshDynamicObstacleSplitting.html#Implementation details"> Implementation details</a> <ul>
+<li> <a href="NavMeshDynamicObstacleSplitting.html#GetBoundingShape()"> GetBoundingShape()</a>
+</li> <li> <a href="NavMeshDynamicObstacleSplitting.html#PreserveInternalPolys()"> PreserveInternalPolys()</a>
+</li></ul>
+</li> <li> <a href="NavMeshDynamicObstacleSplitting.html#Use in conjunction with Interface_NavMeshPathObject"> Use in conjunction with Interface_NavMeshPathObject</a>
+</li> <li> <a href="NavMeshDynamicObstacleSplitting.html#AddObstacleEdge()"> AddObstacleEdge()</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<hr size="1" noshade="noshade">
+In lots of situations it is useful to be able to affect the navigation mesh (and the state of AI navigation) at runtime based on dynamically changing situations. This document outlines how this is done with the navigation mesh system.
+<p />
+<h2><a name="High level overview"></a> High level overview </h2>
+<hr size="1" noshade="noshade">
+The basic idea is that <strong>Interface_NavMeshPathObstacle</strong> provides the user with an interface for specifying shapes which the Navigation Mesh should be split around. Whenever a new obstacle enters the game world that the AI needs to navigate around, the user calls <strong>RegisterObstacleWithNavMesh()</strong> which will then determine which polygons in the existing mesh are affected by this obstacle, and split them around the shape provided if necessary.
+<p />
+<img src="rsrc/Three/NavMeshDynamicObstacleSplitting/splittery_base_visual.png"/>
+<p />
+In the image the default mesh consisting of four polygons is split around the shape of an obstacle taking the shape of a cube. Your obstacles can be more complex than this, and off axis even. The only restriction here is that the shape provided is convex.
+<p />
+<h3><a name="Hierarchy"></a> Hierarchy </h3>
+When the mesh is split around obstacles, what it's really doing is creating a new mesh in place of existing polygons.  In this way it forms a sort of hierarchy which is consulted whenever AIs use affected polygons. When path finding through a polygon which has an intermediate (or imposter) mesh, that sub-mesh will be consulted and pathed on rather than just pathing from that polygon's edges.
+<p />
+<h3><a name="Build on-demand"></a> Build on-demand </h3>
+When an AI requests to path through a polygon which has been tagged as affected by an obstacle, if the polygon has not yet been split about that obstacle it will be split at that time.  This is not done right after obstacle registration.  This is to alleviate the cost of obstacle registration somewhat. For example if you had an obstacle which was being registered and unregistered with the system very frequently, the expensive part of dealing with this obstacle would only be done when an AI was in need of affected mesh data.
+<p />
+Additionally once the polygon has been split there is no additional cost associated with pathing through that geometry.  This means that registering obstacles only incurs a computational cost once. Also since the parent structure of the mesh is not being changed, when an obstacle is removed returning to the original makeup is virtually free.
+<p />
+<p />
+<h2><a name="Implementation details"></a> Implementation details </h2>
+<hr size="1" noshade="noshade">
+For a very simple example of a path obstacle consider NavMeshObstacle.
+<p />
+Here you will see some kismet logic for enabling/disabling the obstacle, but the interesting part is this:
+<p />
+<div class="codetitlebar">
+NavMeshObstacle.uc
+</div>
+<div class="codesnippet">
+<pre>
+cpptext
+{
+  /&#42;&#42;
+   &#42; this function should populate out&#95;polyshape with a list of verts which describe this object&#39;s
+   &#42; convex bounding shape
+   &#42; &#64;param out&#95;PolyShape - output array which holds the vertex buffer for this obstacle&#39;s bounding polyshape
+   &#42; &#64;return TRUE if this object should block things right now (FALSE means this obstacle shouldn&#39;t affect the mesh)
+   &#42;/
+  virtual UBOOL GetBoundingShape(TArray&#60;FVector&#62;&#38; out&#95;PolyShape);
+
+  virtual UBOOL PreserveInternalPolys() { return TRUE; }
+}
+</pre>
+</div>
+<p />
+This is a pretty basic path obstacle. Currently all this obstacle is going to do is split the mesh about its shape.
+<p />
+Consider these screen shots of this example path object disabled(unregistered), and then enabled(registered): <br />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>Note:</strong> In the screen shots below <strong>PreserveInternalGeo()</strong> is <strong>on</strong>, more on this shortly <br />
+Here is an obstacle in the world which has not yet been registered with the mesh.  The mesh consists of one large polygon with an obstacle placed inside it.<br />
+<img src="rsrc/Three/NavMeshDynamicObstacleSplitting/Obstacle_Disabled.png" />
+<p />
+Here is the mesh after the obstacle has been registered and the mesh split (at runtime): <br />
+<img src="rsrc/Three/NavMeshDynamicObstacleSplitting/Obstacle_Enabled.png" />
+<p />
+Let's walk through both of the functions this example object has defined.
+<p />
+<h3><a name="GetBoundingShape()"></a> GetBoundingShape() </h3>
+Here is this object's implementation.
+<p />
+<div class="codesnippet">
+<pre>
+UBOOL ANavMeshObstacle::GetBoundingShape(TArray&#60;FVector&#62;&#38; out&#95;PolyShape)
+{
+  out&#95;PolyShape.AddItem(Location + FRotationMatrix(Rotation).TransformFVector(FVector(200.f,200.f,0.f)));
+  out&#95;PolyShape.AddItem(Location + FRotationMatrix(Rotation).TransformFVector(FVector(-200.f,200.f,0.f)));
+  out&#95;PolyShape.AddItem(Location + FRotationMatrix(Rotation).TransformFVector(FVector(-200.f,-200.f,0.f)));
+  out&#95;PolyShape.AddItem(Location + FRotationMatrix(Rotation).TransformFVector(FVector(200.f,-200.f,0.f)));
+  return TRUE;
+}
+</pre>
+</div>
+<p />
+As you can see it's just providing a simple square. All this function is doing is providing a polygon that describes the boundary of the obstacle. If your obstacle was a static mesh, you might use the mesh's bounds to do something similar to the above.
+<p />
+One important thing to remember is that this function is called only once when the mesh is first being split around the obstacle after it was registered. Once the obstacle is registered and the mesh is split around it, the obstacle won't be re-considered unless you unregister it and then register it again.
+<p />
+<h3><a name="PreserveInternalPolys()"></a> PreserveInternalPolys() </h3>
+All this function does is tell the splitting process whether geometry inside the obstacle should be kept in place.  As you can see from the above screen shots Geometry inside the obstacle has been kept, and linked in with the rest of the mesh.
+<p />
+<img src="rsrc/Three/NavMeshDynamicObstacleSplitting/splittery_visual.png" />
+<p />
+<p />
+One last important part of path obstacles is the ability to dictate what type of Edge is added betweeen polygons inside the obstacle and outside (for obstacles preserving internal geometry only).  Whenever a link (Edge) is going to be made between polygons inside an obstacle to polygons outside, that obstacle's <strong>AddObstacleEdge()</strong> function will be called to do this.
+<p />
+<img src="rsrc/Three/NavMeshDynamicObstacleSplitting/AddObstacleEdge.png" />
+<p />
+This allows you the user to override the behavior and add whatever edge type is appropriate for your obstacle. The default behavior will simply add a normal Edge telling all AI they can move between the interior and the exterior of the path obstacle.  There are many cases where you might need custom behavior when entering or exiting a path obstacle though, and in those cases you probably want to implement <strong>Inteface_NavMeshPathObject</strong> as well.
+<p />
+<p />
+<h2><a name="Use in conjunction with Interface_NavMeshPathObject"></a> Use in conjunction with Interface_NavMeshPathObject </h2>
+<hr size="1" noshade="noshade">
+One very common case for overriding <strong>AddObstacleEdge()</strong> is to add edges which link to a <a href="https://udn.epicgames.com/Three/NavMeshPathObjects" class="restricted" class="restricted" class="twikiLink">Path Object</a>. For example you can create an obstacle which implements both <strong>Interface_NavMeshPathObstacle</strong> and <strong>Interface_NavMeshPathObject</strong>.
+<p />
+To illustrate why this is useful consider the case of a puddle of oil sprayed on the ground sometime after the level has started.
+<p />
+For our oil puddle we want the following: <ul>
+<li> We need the static navigation mesh to be split around the shape of the puddle to give us the granularity we need for getting AIs around the puddle
+</li> <li> We need a way to supply additional cost of entering the oil puddle so AIs avoid it if they can
+</li></ul>
+<p />
+So in this case, we would implement <strong>Interface_NavMeshPathObstacle</strong> as outlined above in order to register the obstacle's shape with the mesh, and then we would also implement <strong>Interface_NavMeshPathObject</strong> in order to allow an interface for edges linking the inside of the puddle with the outside to modify the cost of traversing those edges.
+<p />
+So our list from above really turns into the following: <ul>
+<li> implement <strong>Interface_NavMeshPathObstacle::GetBoundingShape()</strong>
+</li> <li> register the obstacle at the proper time
+</li> <li> override <strong>AddObstacleEdge()</strong> to add PathObject edges linked to the oil puddle instead of adding regular edges
+</li> <li> Implement <strong>Interface_NavMeshPathObject::CostFor()</strong> (see <a href="https://udn.epicgames.com/Three/NavMeshPathObjects" class="restricted" class="restricted" class="twikiLink">Path Object Documentation</a>)
+</li></ul>
+<p />
+<h2><a name="AddObstacleEdge()"></a> AddObstacleEdge() </h2>
+<hr size="1" noshade="noshade">
+The only thing we haven't talked about in detail already is <strong>AddObstacleEdge()</strong>, so let's examine the function in more detail.
+<p />
+<div class="codesnippet">
+<pre>
+/&#42;&#42;
+ &#42; This function is called when an edge is going to be added connecting a polygon internal to this obstacle to another polygon which is not
+ &#42; Default behavior just a normal edge, override to add special costs or behavior (e.g. link a pathobject to the obstacle)
+ &#42; &#64;param Status - current status of edges (e.g. what still needs adding)
+ &#42; &#64;param inV1 - vertex location of first vert in the edge
+ &#42; &#64;param inV2 - vertex location of second vert in the edge
+ &#42; &#64;param ConnectedPolys - the polys this edge links
+ &#42; &#64;param bEdgesNeedToBeDynamic - whether or not added edges need to be dynamic (e.g. we&#39;re adding edges between meshes)
+ &#42; &#64;param PolyAssocatedWithThisPO - the index into the connected polys array parmaeter which tells us which poly from that array is associated with this path object
+ &#42; &#64;return returns an enum describing what just happened (what actions did we take) - used to determien what accompanying actions need to be taken
+ &#42;         by other obstacles and calling code
+ &#42;/
+virtual EEdgeHandlingStatus AddObstacleEdge( EEdgeHandlingStatus Status, const FVector&#38; inV1, const FVector&#38; inV2, TArray&#60;FNavMeshPolyBase&#42;&#62;&#38; ConnectedPolys, UBOOL bEdgesNeedToBeDynamic, INT PolyAssocatedWithThisPO);
+</pre>
+</div>
+<p />
+After the mesh has been split and the dynamic splitter code will run around new polygons and try to link them to the world around them.  When it finds a potential polygon to link to, it will call this function with the proposed edge, and let the PathObstacle then determine the proper course of action.
+<p />
+The trickiest part of this function is that there is this pesky Status parameter being passed around which tells you whether there has been an edge added in the other direction yet.  This is needed because in some cases you only want edges going in one direction.  For example you might want edges that allow AIs to leave a path obstacle but not go back in.
+<p />
+Consequently when you add edges you need to return what you just did, so that the calling code knows whether it needs to add a default edge in the other direction.  Also it's possible to have two PathObstacles adjacent to each other which both want to add custom edges.
+<p />
+So if you look at the default implementation:
+<p />
+<div class="codesnippet">
+<pre>
+EEdgeHandlingStatus IInterface&#95;NavMeshPathObstacle::AddObstacleEdge( EEdgeHandlingStatus Status, const FVector&#38; inV1, const FVector&#38; inV2, TArray&#60;FNavMeshPolyBase&#42;&#62;&#38; ConnectedPolys, UBOOL bEdgesNeedToBeDynamic, INT PolyAssocatedWithThisPO)
+{
+  return EHS&#95;AddedNone;
+}
+</pre>
+</div>
+<p />
+You can see it's indicating that it hasn't done anything, so the calling code knows to then add default edges between polygons.
+<p />
+Now we'll look at an example of a path obstacle adding path object edges linked to itself.
+<p />
+<div class="codesnippet">
+<pre>
+EEdgeHandlingStatus UAIAvoidanceCylinderComponent::AddObstacleEdge( EEdgeHandlingStatus Status, const FVector&#38; inV1, const FVector&#38; inV2, TArray&#60;FNavMeshPolyBase&#42;&#62;&#38; ConnectedPolys, UBOOL bEdgesNeedToBeDynamic, INT PolyAssocatedWithThisPO)
+{
+  // if an edge has already been added in the direction we want to add an edge then there is probably a conflicting pathobstacle (e.g. we&#39;re butted
+  // up against another obstacle which has already added an edge.. so just bail)
+  if(Status &#61;&#61; EHS&#95;AddedBothDirs)
+  {
+    return Status;
+  }
+
+  // if there is already an edge point back into this PO from the other poly, bail
+  if( (PolyAssocatedWithThisPO &#61;&#61; 0 &#38;&#38; Status &#61;&#61; EHS&#95;Added1to0) &#124;&#124;
+    (PolyAssocatedWithThisPO &#61;&#61; 1 &#38;&#38; Status &#61;&#61; EHS&#95;Added0to1) )
+  {
+    return Status;
+  }
+
+  TArray&#60;FNavMeshPolyBase&#42;&#62; ReversedConnectedPolys&#61;ConnectedPolys;
+
+  // so we want to add an edge back into the poly associated with this PO, so swap the order if we need to
+  if(PolyAssocatedWithThisPO &#61;&#61; 0)
+  {
+    ReversedConnectedPolys.SwapItems(0,1);
+  }
+
+  UNavigationMeshBase&#42; Mesh &#61; ReversedConnectedPolys(0)-&#62;NavMesh;
+
+  if( Mesh &#61;&#61; NULL )
+  {
+    return Status;
+  }
+
+  // Add the edge to the mesh
+  TArray&#60;FNavMeshPathObjectEdge&#42;&#62; CreatedEdges;
+  Mesh-&#62;AddDynamicCrossPylonEdge&#60;FNavMeshPathObjectEdge&#62;(inV1,inV2,ReversedConnectedPolys,TRUE, &#38;CreatedEdges);
+
+  // grab a reference to the edge, and bind it to this pathobject
+  FNavMeshPathObjectEdge&#42; NewEdge &#61; (CreatedEdges.Num() &#62; 0) ? CreatedEdges(0) : NULL;
+  checkSlowish(CreatedEdges.Num() &#60;2);
+
+  if(NewEdge &#61;&#61; NULL)
+  {
+    return Status;
+  }
+
+  // bind new edge to this avoidance vol
+  if(NewEdge !&#61; NULL)
+  {
+    NewEdge-&#62;PathObject &#61; GetOwner();
+    NewEdge-&#62;InternalPathObjectID &#61; 0;
+  }
+
+  // indicate that we added an edge from dest poly to src poly
+  if(Status &#61;&#61; EHS&#95;AddedNone)
+  {
+    if(PolyAssocatedWithThisPO &#61;&#61; 0)
+    {
+      return EHS&#95;Added1to0;
+    }
+    else
+    {
+      return EHS&#95;Added0to1;
+    }
+  }
+  else
+  {
+    // if we get here that means someone should have already added an edge in the opposite direction
+    return EHS&#95;AddedBothDirs;
+  }
+
+}
+</pre>
+</div>
+<p />
+In this case the obstacle wants to add a PathObject edge linked to itself instead of a normal edge, but <strong>only</strong> from polygons outside the obstacle linking to polygons inside. So most of the logic here is just determining if the order of the polygons is right, and if not swapping things around so the edge gets added in the right direction.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavMeshDynamicObstacleSplitting.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:41 GMT -->
+</html></body>

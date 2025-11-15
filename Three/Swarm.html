@@ -1,0 +1,341 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/Swarm.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:11:37 GMT -->
+<head>
+<title> UDK | Swarm    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">Swarm  </b></div>
+<div id="tooltext">
+<a href="SwarmJP.html" class="twikiLink">日本語訳</a><br><a href="SwarmCH.html" class="twikiLink">中国翻译</a><br><a href="SwarmKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/Swarm -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="Unreal Swarm - Massive Application Distribution for Unreal Engine 3"></a> Unreal Swarm - Massive Application Distribution for Unreal Engine 3 </h1>
+<p />
+<em>Document Summary: A high-level and technical overview of Unreal Swarm, a general application and task distribution system.</em>
+<p />
+<em>Document Changelog: Created by <a href="https://udn.epicgames.com/Main/DerekCornish" class="restricted" class="restricted" class="twikiLink">Derek Cornish</a> with contributions by <a href="https://udn.epicgames.com/Main/DanielWright" class="restricted" class="restricted" class="twikiLink">Daniel Wright</a>; updated by Richard Nalezynski<sup>?</sup>.</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="Swarm.html#Unreal Swarm - Massive Application Distribution for Unreal Engine 3"> Unreal Swarm - Massive Application Distribution for Unreal Engine 3 </a> <ul>
+<li> <a href="Swarm.html#Intended Audience"> Intended Audience</a>
+</li> <li> <a href="Swarm.html#What is Unreal Swarm?"> What is Unreal Swarm?</a>
+</li> <li> <a href="Swarm.html#Using Swarm"> Using Swarm</a>
+</li> <li> <a href="Swarm.html#Swarm FAQ"> Swarm FAQ</a> <ul>
+<li> <a href="Swarm.html#Why am I not getting distribution?"> Why am I not getting distribution?</a>
+</li> <li> <a href="Swarm.html#How does the Swarm Agent start and stop?"> How does the Swarm Agent start and stop?</a>
+</li> <li> <a href="Swarm.html#What do the bars mean in the Visualizer?"> What do the bars mean in the Visualizer?</a>
+</li></ul>
+</li> <li> <a href="Swarm.html#Setup and Configuration"> Setup and Configuration</a> <ul>
+<li> <a href="Swarm.html#Setting up Swarm"> Setting up Swarm</a> <ul>
+<li> <a href="Swarm.html#Setting up for Local-only Job Execution"> Setting up for Local-only Job Execution</a>
+</li> <li> <a href="Swarm.html#Setting up for Distributed Job Execution"> Setting up for Distributed Job Execution</a>
+</li> <li> <a href="Swarm.html#Distribution Configuration Details"> Distribution Configuration Details</a>
+</li></ul>
+</li> <li> <a href="Swarm.html#Swarm Agent Settings"> Swarm Agent Settings</a>
+</li> <li> <a href="Swarm.html#Swarm Agent Logging"> Swarm Agent Logging</a>
+</li></ul>
+</li> <li> <a href="Swarm.html#Developing with Swarm"> Developing with Swarm</a> <ul>
+<li> <a href="Swarm.html#Swarm API Structure"> Swarm API Structure</a>
+</li> <li> <a href="Swarm.html#Swarm Agent Cache"> Swarm Agent Cache</a> <ul>
+<li> <a href="Swarm.html#Cache Cleanup"> Cache Cleanup</a>
+</li></ul>
+</li> <li> <a href="Swarm.html#Swarm Agent Versioning"> Swarm Agent Versioning</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="Intended Audience"></a> Intended Audience </h2>
+<p />
+This document is intended for those interested in a high-level view of the system and general users, including level designers and artists.
+<p />
+<p />
+<h2><a name="What is Unreal Swarm?"></a> What is Unreal Swarm? </h2>
+<p />
+Demanding applications are often designed to take advantage of every ounce of processing power your system can muster, with performance ideally multiplying perfectly with each additional processor core. This is what makes moving from dual-core to quad-core, or from quad-core to 8-core, so incredibly useful for these applications.
+<p />
+<a href="Lightmass.html" class="twikiLink">Unreal Lightmass</a>, the high-quality static global illumination solver in Unreal Engine 3, is one of those applications because of its extreme computational needs. Even on an 8-core system, rebuilding lighting for a large or complex level can take enough time that iteration performance can suffer. Enter Unreal Swarm.
+<p />
+<img alt="AgentInAction2.PNG" src="rsrc/Three/Swarm/AgentInAction2.png" />
+<p />
+
+<p />
+<p />
+<h2><a name="Using Swarm"></a> Using Swarm </h2>
+<p />
+For the most part, Swarm will automatically start up, perform its tasks, and shut down without any intervention from the user. The Editor can start it up on demand when you do a Lightmass lighting build, and the Swarm Agent will keep track of the Editor that launched it and shut itself down once the Editor closes. The defaults in the application are set by your Swarm administrator and if you have questions that go beyond the FAQ and other documentation on this page, ask them for further assistance.
+<p />
+So, although Swarm is designed to be quiet and hands-off, there will always be exceptions. And thus, the FAQ.
+<p />
+<p />
+<h2><a name="Swarm FAQ"></a> Swarm FAQ </h2>
+<p />
+<h3><a name="Why am I not getting distribution?"></a> Why am I not getting distribution? </h3>
+<p />
+Remote Swarm Agents may decline to work on your job for a few different reasons, the most common among them is that they're already busy working on someone else's. Another possibility is that they have determined that they are too busy to take on a job at that time, often caused by the machine doing something else resource intensive such as compiling or cooking. In the <code>Swarm Status</code> tab of the Agent window, you should see a full list of all remote agents that could potentially help with your build. If one of them isn't currently available, you'll see a white bar ticking along with the rest of the build, and if you mouse-over the bar you'll see "Waiting for remote to become available".
+<p />
+Also, a more advanced way to peek at the available remote agents, even when not doing a build is to click on the <code>Log</code> tab and select <code>Ping Remote Agents</code> from the <code>Network</code> menu. You'll see a list of the remote machines and their current state.
+<p />
+<h3><a name="How does the Swarm Agent start and stop?"></a> How does the Swarm Agent start and stop? </h3>
+<p />
+If the Agent isn't already running, it will start up automatically when you do a Lightmass lighting build from within the Editor. If the Editor starts up the Agent this way, the Agent will keep tabs on it and shut itself down when the Editor closes. Otherwise, the Agent remains running to be ready to manage jobs at any time.
+<p />
+Keep in mind that while the Agent is running, if you click the 'X' on the Agent window, it will only hide the window (we want to keep it running). An Agent tray icon will still be available however, and you can double-click it to bring the window back up. If you want to manually shut the Agent down, either select "File" -&gt; "Exit" from the Agent menu, or right-click the tray icon and select "Exit". Don't forget that if the Agent started automatically from the Editor, it'll shut itself down automatically as well when you exit the Editor. Don't worry, if you shut down the Agent manually, then do another Lightmass lighting build, it will start right back up.
+<p />
+<h3><a name="What do the bars mean in the Visualizer?"></a> What do the bars mean in the Visualizer? </h3>
+<p />
+For each machine working on your lighting build, including your own, a set of bars is displayed indicating status and progress. Each machine may have multiple threads executing simultaneously which is indicated by the multiple horizontal lines per machine. A legend is provided at the bottom of the window to describe what the colors mean and you can also mouse-over the bars for more details.
+<p />
+<img alt="AgentInAction2Decorated.PNG" src="rsrc/Three/Swarm/AgentInAction2Decorated.png" />
+<p />
+<h2><a name="Setup and Configuration"></a> Setup and Configuration </h2>
+<p />
+
+<p />
+<h3><a name="Swarm Agent Settings"></a> Swarm Agent Settings </h3>
+<p /> <dl>
+<dt> <em>CacheFolder</em> </dt><dd> The location of the Agent's local cache folder. This should be located on a fast disk with sufficient free space.
+</dd> <dt> <em>MaximumCacheSize</em> </dt><dd> The maximum size, in gigabytes, that the cache maintenance routine will attempt to keep the disk usage of the cache.
+</dd> <dt> <em>MaximumJobsToKeep</em> </dt><dd> The maximum number of Jobs, including all logs, binaries, and output files, to keep at any time.
+</dd> <dt> <em>ShowDeveloperMenu</em> </dt><dd> Enables the <code>DeveloperSettings</code> tab in the Agent. Recommended ONLY for developers and QA.
+</dd> <dt> <em>AvoidLocalExecution</em> </dt><dd> Setting this to <strong>True</strong> will cause the Agent to attempt to schedule tasks <em>only</em> onto remote machines, avoiding local execution if possible. If no remote machines are available, it will schedule the tasks locally until remote help becomes available.
+</dd> <dt> <em>EnableStandaloneMode</em> </dt><dd> Prevents distribution of jobs to remote machines, forcing local-only execution.
+</dd> <dt> <em>BringToFront</em> </dt><dd> If <strong>True</strong>, when a job starts the Agent window will be brought to the front and the <code>Visualizer</code> tab selected.
+</dd> <dt> <em>TextFont</em> </dt><dd> The font used within the Agent window's tabs such as <code>Log</code>, <code>Visualizer</code>, and <code>Settings</code>.
+</dd> <dt> <em>Verbosity</em> </dt><dd> The level of detail logged out to the <code>Log</code> tab.
+</dd></dl>
+<p />
+<h3><a name="Swarm Agent Logging"></a> Swarm Agent Logging </h3>
+<p />
+By default, everything the Agent does is logged out to a file on disk located in the Logs folder within the <em>CacheFolder</em>. A new log is started at the end and beginning of every job, so that some logical splitting of logs is performed. The default logging level to the Agent's <code>Log</code> tab is <code>Informative</code>. The default logging level to the file on disk is <code>ExtraVerbose</code>.
+<p />
+
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/Swarm.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:11:38 GMT -->
+</html></body>

@@ -1,0 +1,888 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TerrainAdvancedTexturesCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:38:07 GMT -->
+<head>
+<title> UDK | TerrainAdvancedTexturesCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">TerrainAdvancedTexturesCH  </b></div>
+<div id="tooltext">
+<a href="TerrainAdvancedTextures.html" class="twikiLink">English Translation</a><br><a href="TerrainAdvancedTexturesJP.html" class="twikiLink">日本語訳</a><br><a href="TerrainAdvancedTexturesKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/TerrainAdvancedTexturesCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt; <b><a href="TerrainHome.html" class="twikiLink">地形系统</a></b> &gt;地形高级贴图
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="地形高级贴图"></a> 地形高级贴图 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="TerrainAdvancedTexturesCH.html#地形高级贴图">地形高级贴图</a> <ul>
+<li> <a href="TerrainAdvancedTexturesCH.html#概述"> 概述</a>
+</li> <li> <a href="TerrainAdvancedTexturesCH.html#地图贴图注意事项">地图贴图注意事项</a>
+</li> <li> <a href="TerrainAdvancedTexturesCH.html#设计实例化材质">设计实例化材质</a>
+</li> <li> <a href="TerrainAdvancedTexturesCH.html#材质表达式构建块"> 材质表达式构建块</a>
+</li> <li> <a href="TerrainAdvancedTexturesCH.html#复杂材质设计的注意事项"> 复杂材质设计的注意事项</a>
+</li> <li> <a href="TerrainAdvancedTexturesCH.html#细节贴图：添加近距离细节">细节贴图：添加近距离细节</a>
+</li> <li> <a href="TerrainAdvancedTexturesCH.html#法线贴图：添加凸凹细节">法线贴图：添加凸凹细节</a>
+</li> <li> <a href="TerrainAdvancedTexturesCH.html#多-ＵＶ混合：通过标量混合来降低平铺块效果"> 多-ＵＶ混合：通过标量混合来降低平铺块效果</a>
+</li> <li> <a href="TerrainAdvancedTexturesCH.html#随机平铺蒙板：随机化贴图映射来降低贴图平铺效果"> 随机平铺蒙板：随机化贴图映射来降低贴图平铺效果</a>
+</li> <li> <a href="TerrainAdvancedTexturesCH.html#大型贴图:混合贴图来获得多样性"> 大型贴图:混合贴图来获得多样性</a>
+</li> <li> <a href="TerrainAdvancedTexturesCH.html#超大蒙板：在顶点级别之外增加地形的细节"> 超大蒙板：在顶点级别之外增加地形的细节</a>
+</li> <li> <a href="TerrainAdvancedTexturesCH.html#贴图打包:实现大贴图平铺设置"> 贴图打包:实现大贴图平铺设置</a>
+</li> <li> <a href="TerrainAdvancedTexturesCH.html#1:1覆盖图:在地形上平铺多个高分辨率贴图"> 1:1覆盖图:在地形上平铺多个高分辨率贴图</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+地形贴图是一个庞大的主题，它有各种各样的方法和解决方案。这个指南将会覆盖几个在虚幻引擎3中管理视频游戏地形贴图时的常见问题，同时也介绍了一些改善地形贴图质量和增加细节的方法。这个指南按照不断增加的复杂程度分为几个部分对各种贴图问题及解决方案进行介绍。
+<p />
+ <strong>注意</strong> ：这是一个高级指南，我们假设您已经熟悉以下事情：
+<p /> <ul>
+<li> 使用类似于Adobe PhotoShop的软件来创建并编辑数字图像。
+</li> <li> 创建并编辑图像颜色通道(RGB)及alpha通道。
+</li> <li> 什么是彩色图像和灰度化图像，以及它们的不同和用途。
+</li> <li> <a href="ImportingTextureTutorial.html" class="twikiLink">导入贴图</a> 和 设置 <a href="TextureProperties.html" class="twikiLink">贴图属性</a>。
+</li> <li> <a href="MaterialBasics.html" class="twikiLink">材质基础</a>
+</li> <li> 创建并使用<a href="MaterialsTutorial.html" class="twikiLink">材质</a>以及<a href="MaterialEditorUserGuide.html" class="twikiLink">材质编辑器</a>。
+</li> <li> <a href="TerrainDesign.html" class="twikiLink">地形设计</a> – TerrainMaterials(地形材质) 和TerrainLayerSetups(地形层设置)。
+</li> <li> <a href="UsingTerrain.html" class="twikiLink">使用地形</a> 和 <a href="SettingUpTerrain.html" class="twikiLink">设立地形</a>
+</li> <li> 使用 <a href="TerrainEditorUserGuide.html" class="twikiLink">地形编辑</a> 对话框
+</li></ul>
+<p />
+如果您需要进一步的信息或者如果您需要 <em>复习</em> 这些主题中的任何一个，请参照相应的UDN页面。
+<p />
+当设计地形的贴图系统时，主要考虑了两个主要事项：性能和真实细节。在大多数情况下，在当前渲染硬件和软件情况下，两方面会有一些妥协，因为较高性能将会导致较低的真实度，或者较高的视觉质量将会严重地降低性能。
+<p />
+<img alt="DGTerrainExamples.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGTerrainExamples.jpg" />
+<h2><a name="地图贴图注意事项"></a> 地图贴图注意事项 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+当关卡设计人员尝试创建一种真实的可视化的地理地形风格时，会遇到很多麻烦的技术和美术问题。
+<p />
+<h3><a name="贴图缩放"></a> 贴图缩放 </h3>
+<p />
+在大多数情况下，应用到地形上的UV缩放都需要进行调整，以便贴图风格在近景视图中看上去是相对正确的。通常草叶或小石头也行该被缩放为它们在现实世界中的尺寸。这带来的一个问题是当您从远距离看这些东西时，贴图块变得更加的明显，并且特定尺寸的贴图只能包含特定数量的细节和种类，通常贴图分辨率越小，平铺块看上去越明显同时细节越低。
+<p />
+如果贴图UV缩放比例的值设置的很小，贴图平铺块通常是非常明显的。
+<p />
+如果贴图UV缩放比例的值设置的很大，贴图平铺块通常不会那么明显并且它们在远处的细节具有很多变化，但是在相机镜头附近的地形通常看上去是模糊的，并且贴图中的物体的细节缩放比例比如草或岩石看上去比真实世界中的要大。
+<p />
+<h3><a name="贴图平铺"></a> 贴图平铺 </h3>
+<p />
+由于创建用于地形的贴图的分辨率通常是512x512、1024x1024 或2048x2048，所以要获得覆盖到表面包含多种细节种类并且贴图块在视觉上没有失真的贴图是很难得。在大多数情况下，贴图上视觉上的不同，比如贴图的色调和亮度的改变、或者特定细节比如在贴图中心的大的岩石块，当沿着相机视图从远处看时，都会导致贴图平铺块变得更加的明显。
+<p />
+<h3><a name="Fillrate(填充率)"></a> Fillrate(填充率) </h3>
+<p />
+因为地形通常用于创建较大的室外场景，通常它将会覆盖大部分的屏幕区域，一般为50%到75%。随着地形材质复杂性的增加，它需要更大的处理能力来创建渲染到屏幕上贴图像素的贴图。具有较低GPUs和较低填充率的视频适配器将会导致较慢的渲染时间和较低的性能。
+<p />
+<h3><a name="虚幻引擎"></a> 虚幻引擎 </h3>
+<p />
+虚幻引擎中的地形系统对于可以应用的材质的数量和可以执行的着色器指令的数量有特定的限制。精确的数值随着层设计和特定食品适配器硬件的限制而不同。Shader Model 2 and 3视频适配器支持16个 Texture Samplers(贴图采样器)。用于每个地形材质中的每个特定贴图将需要这些采样器其中的一个。注意，在大多数情况下，Shader Model 2视频适配器可以渲染的地形材质层设置不如Shader Model 3复杂。在本指南的后面，将会对 Texture Samplers(贴图采样器)进行详细的介绍。
+<p />
+由于硬件和渲染的这些限制，在设计整个地形材质设置时使用较少的独立贴图、材质以及尽可能低的指令数量来获得期望的贴图效果是明智的。
+<p />
+<p />
+<h2><a name="设计实例化材质"></a> 设计实例化材质 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+虚幻引擎材质系统支持的一个功能叫做<a href="InstancedMaterials.html" class="twikiLink">材质实例化</a>。这从本质上允许使用基于各种各样Parent Material(父项材质)的新材质。Parent Material(父项材质)可以包括一个或多个 <em>Parameter(参数)</em> 类型表达式，它们被暴露在Material Instance(材质实例)上，允许您在不需要另一个独立材质产生性能消耗情况下，对Parent Material(父项材质)属性的子集进行修改。实例化的材质不需要进行性能消耗昂贵的材质编译。
+<p />
+一个简单的实例便是，一个 Parent Material(父项材质)和一个用于提供不同颜色的<a href="InstancedMaterials.html" class="twikiLink">材质实例</a>。当您可以通过简单地暴露一个父项的参数，从而可以在它的任何实例化的副本中改变它的RGB色调时，那么就没有必要创建两个单独的材质了。
+<p />
+使用<a href="InstancedMaterials.html" class="twikiLink">材质实例化</a>和 <em>Parameter(参数)</em> 表达式，一个父项材质可以有多个具有不同颜色、透明度以及混合等材质实例。
+<p />
+材质中最常用的参数类型表达式包括 <em>ScalarParameter(标量参数)</em> 和 <em>VectorParameter(向量参数)</em> 表达式。ScalarParameter(标量参数)和 <em>Constant(常量)</em> 表达式类似，因为它仅有一个浮点型值；而VectorParameter(向量参数)表达式和  <em>Constant4Vector(4维常量向量)</em> 类似，因为它有4个浮点型值，ARGB。
+<p />
+每个参数类型表达式都有一个"ParameterName(参数名)"属性，它用于为在材质的任何实例中可以看到的参数指定一个名称。您通常应该使用一个具有描述意义的名称，比如"DiffuseColor(漫反射颜色)" 或 "BlendAmount(混合量)"。
+<p />
+注意，当使用<a href="InstancedMaterials.html" class="twikiLink">材质实例</a>时，每个材质名称和参数名称必须是唯一的，否则当为地形组件进行最终的材质编译时，渲染的材质可能是不正确的。为多个参数使用相同的名称将会导致编译的材质为所有具有相同名称的实例使用那个名称第一次出现时所设置的值。
+<p />
+<img alt="UE3MatInstExample.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3MatInstExample.gif" />
+<p />
+<p />
+<h2><a name="材质表达式构建块"></a> 材质表达式构建块 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+我们为地形设计的很多复杂的材质系统都会为每个地形层贴图使用一系列常用的"building blocks(构建块)"。所以首先我们将解释并描述一下这些材质部分的功能。
+<p />
+<h3><a name="漫反射贴图亮度和色彩"></a> 漫反射贴图亮度和色彩 </h3>
+<p />
+要想降低地形上的贴图的采样数以及游戏的总贴图数量，一个简单的做法便是创建一个亮度和色彩修改器。不再需要创建具有不同亮度或色彩的一个贴图多个版本，比如创建一个浅棕色和茶褐色的沙漠，只要使用Multiply Expression(乘法表达式)来修改RGB通道中的VectorParameter(向量表达式)参数的值便可以修改材质中的贴图。
+<p />
+改变VectorParameter(向量参数)的RGB属性来修改贴图的亮度和色彩。值为1.0为默认值。VectorParameter表达式中的 (向量参数)的A (alpha)属性值可以保留为默认值1.0。
+<p />
+<img alt="UE3MatBrightTint.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3MatBrightTint.gif" />
+<p />
+<h4><a name="漫反射贴图"></a> 漫反射贴图 </h4>
+<p />
+当使用灰度化细节贴图来补偿具有较大缩放比例的漫反射贴图的近景视图质量时，通常需要调整细节贴图的亮度级别以便它不会改变漫反射贴图的总体亮度。通过设置细节贴图属性的UnpackMax可以完成这个工作，但是那样亮度将会被固定为那个值。通过使用Multiply Expression(乘法表达式)，可以通过修改ScalerParameter(标量)参数表达式的值来修改RGBA通道，我们可以根据需要修改细节贴图的每个实例的亮度。
+<p />
+改变ScalerParameter(标量参数)属性来修改贴图的亮度。值1.0为默认值。
+<p />
+<img alt="UE3MatDetailBright.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3MatDetailBright.gif" />
+<p />
+<h3><a name="法线贴图细节材质混合及强度"></a> 法线贴图细节材质混合及强度 </h3>
+<p />
+NormalMaps(法线贴图)通常可以在很大程度上提高地形上使用的较大的岩石贴图的真实性，比如峭壁悬崖的面和秃山。由于贴图尺寸以及普通贴图分辨率为1024x1024 或 2048x2048的限制，所以漫反射岩石贴图通常会在TerrainMaterial(地形材质)中被缩放为一个较大的尺寸来模仿现实世界中的视觉效果。如果玩家可以接近这些岩石贴图，那么较大的贴图缩放比例通常会导致在岩石上出现一种模糊的大像素画外观。除了在漫反射岩石贴图上使用细节贴图外，也可以在NormalMap(法线贴图)上使用细节贴图。
+<p />
+当混合两个NormalMap(法线贴图)时，必须移除其中一个材质的Blue(蓝色)通道，或者它从本质上忽略凸凹情况的渲染。在把细节法线贴图和主要法线贴图混合到一起之前，可以使用VectorParameter(向量参数) 和 Multiply(乘法表达式)来去除细节法线贴图中的Blue(蓝色)通道。VectorParameter(向量参数)表达式的R和G通道也可以调整为1.0以上的值来增加细节贴图的凸凹强度。
+<p />
+<img alt="UE3MatNormalDetailStrength.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3MatNormalDetailStrength.gif" />
+<p />
+<h3><a name="蒙板混合关卡"></a> 蒙板混合关卡 </h3>
+<p />
+以下出现的某些自定义材质使用灰度化蒙板来执行一些函数，比如贴图混合。通过使用ScalerParameter(标量参数)表达式来控制Multiply Expression(乘法表达式)，从而可以在直接在材质中修改混合权重Mask(蒙板)来进行简化值的调整并允许进行实例化。把Clamp Expression(区间限定表达式)和Constant(常量)1连接到它的Max节点上，来确保Max的范围总是在0.0到1.0之间。
+<p />
+<img alt="UE3MatMaskBlendLevel.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3MatMaskBlendLevel.gif" />
+<p />
+<h3><a name="Desaturation Expression(冲淡颜色表达式)"></a> Desaturation Expression(冲淡颜色表达式) </h3>
+<p />
+Desaturation Expression(冲淡颜色表达式)用于修改现有贴图，降低颜色饱和度。这可以用于修改地形贴图，使它在地形地理系统中提供更加自然的阴影混合，比如自然的岩石颜色或枯草的颜色。它也可以通过重新使用Materials(材质)中修改的类似贴图，改变它们的颜色、饱和度、亮度等等，从而降低发行游戏或地图中所需要的总的贴图数量。
+<p />
+<img alt="UE3MatDesaturate.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3MatDesaturate.gif" />
+<p />
+<p />
+<h2><a name="复杂材质设计的注意事项"></a> 复杂材质设计的注意事项 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="命名规则"></a> 命名规则 </h3>
+<p />
+要想改善包的组织结构并更加便利地重新使用引擎的对象，对于所有创建的资源都应该使用这个简单但严格的命名规则。推荐的命名惯例系统如下所示：
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> TX_TextureName_D </td><td bgcolor="#eaeaea"> 漫反射贴图 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> TX_TextureName_DO </td><td bgcolor="#ffffff"> 在alpha通道具有不透明性的漫反射贴图 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> TX_TextureName_DS </td><td bgcolor="#eaeaea"> 在alpha通道具有高光的漫反射贴图。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> TX_TextureName_N </td><td bgcolor="#ffffff"> 法线贴图 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> TX_TextureName_O </td><td bgcolor="#eaeaea"> 不透明贴图 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> TX_TextureName_S </td><td bgcolor="#ffffff"> 高光贴图 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> MAT_MaterialName </td><td bgcolor="#eaeaea"> 材质 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> TM_MaterialName </td><td bgcolor="#ffffff"> 地形材质 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> TLS_SetupName </td><td bgcolor="#eaeaea"> 地形层设置 </td></tr>
+</table>
+<p />
+对于自定义的贴图，请使用以下命名惯例：
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> TX_Detail[name] </td><td bgcolor="#eaeaea"> 具有8-位灰度化或打包的位面板的细节贴图。 </td><td bgcolor="#eaeaea"> eg. TX_DetailRock1 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> TX_Macro[name] </td><td bgcolor="#ffffff"> 具有8-位灰度化或打包的位面板的macro(大型)贴图。 </td><td bgcolor="#ffffff"> eg. TX_MacroDirt </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> TX_Mask[name] </td><td bgcolor="#eaeaea"> 8-位灰度化或打包的位面板的蒙板贴图。 </td><td bgcolor="#eaeaea"> eg. TX_MaskRandom </td></tr>
+</table>
+<p />
+当使用细节、macro(大型)以及蒙板贴图的打包的位面板版本时，通常最好根据每个位面板的内容来命名贴图，以便在应用它们时可以根据它本身名称进行自我说明。比如，一个细节贴图TX_DetailRockGrassDirt将包含三个8-位的压缩贴图到RGB位面板中，这里的R=Rock、G=Grass、B=Dirt。在这个例子中没有使用Alpha通道，所以事实上它可以提供第四个细节贴图。
+<p />
+<h3><a name="注释组和表达式描述"></a> 注释组和表达式描述 </h3>
+<p />
+当构建复杂的材质系统时，使用材质表达式Description(描述)功能和Comment(注释)对象是一个明智的选择。这将大大地改善复杂材质布局的组织结构和可读性。每个表达式包含一个称为"Desc"描述属性，它可以被设置为一个文本字符串，作为那个特定表达式的函数或值的注释。
+<p />
+可以通过右击材质编辑器工作区并从弹出的菜单中选择 <em>Comment(注释)</em> 或者通过按下“C”键来添加注释对象。注释对象可以包围许多个现有的表达式，从而提供一个材质功能块的一个图形化的 <em>group box(组框)</em> 。当添加一个新的注释对象时，它将会自动地调整大小来包围在当前选中的一组表达式的周围。
+<p />
+表达式描述：
+<p />
+<img alt="UE3ExpressionDesc.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3ExpressionDesc.gif" />
+<p />
+注释框：
+<p />
+<img alt="UE3CommentBox.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3CommentBox.gif" />
+<p />
+<h3><a name="修改已分配的设置"></a> 修改已分配的设置 </h3>
+<p />
+当对已经分配给地形对象的TerrainLayerSetup执行实质性的修改时，比如在数组中插入或都删除材质项，改变数组中的项的顺序或者修改一个材质项或多个材质项的Noise(噪声)、Height(高度)或者Slope(坡度)属性，通过先不从地形对象中分配TerrainLayerSetup可以很大地提高性能。通常这仅在您插入或删除一项或如果您已经知道Noise(噪声)、Height(高度)或者Slope(坡度)的正确属性值时有用，因为丢失了渲染的地形视图在屏幕上的视觉反馈。然而，对于那些像删除多个材质项的重大改变，一般从地形对象中取消分配那个TerrainLayerSetup，进行改变，然后重新分配TerrainLayerSetup的过程是很快的。
+<p />
+如果您正在把资源直接存储到地形文件中，请确保在保存地图之前重新分配TerrainLayerSetups给地形对象，或者使用 <em>automatic unused asset culling(自动剔除未使用的资源)</em> 功能来从地图文件中删除未使用的资源。
+<p />
+<h3><a name="重新缓存地形材质"></a> 重新缓存地形材质 </h3>
+<p />
+当对地形材质系统进行改变时，比如修改材质、TerrainMaterials、TerrainLayerSetups以及这些对象的布局顺序，在编辑器视口中当前渲染的地图或许不能进行更新来显示这些改变。点击左侧工具箱图标 <em>Terrain Editing Mode(地形编辑模式)</em> 图标来显示<a href="TerrainEditorUserGuide.html" class="twikiLink">地形编辑</a>对话框，然后点击 <em>Recache Terrain Materials(重新缓冲地形材质)</em> "RM"按钮来强制进行重新缓冲。一旦出现 <em>Recache terrain shaders(重新缓冲地形着色器)</em> 提示信息对话框，地形系统将会使用最新的地形设置。
+<p />
+<img alt="UE3RecacheMaterials.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3RecacheMaterials.gif" />
+<p />
+<h3><a name="GPU着色器支持"></a> GPU着色器支持 </h3>
+<p />
+当需要对最终用户硬件的较老的安装基础进行支持时，关卡设计和地形复杂度的级别必须被缩减到相应的级别，以便可以维持一个具有合理视觉质量的可使用的渲染器系统。对于具有8个或较少的Texture Mapping Units (纹理贴图单元)的Shader Model 2.0的视频硬件来说，本文档中的很多技术可能都太复杂的并且性能要求较高的。
+<p />
+在ATI系列中，这应该是范围从9600 到 X800的适配器。X1000系列或更高的系列支持Shader Model 2.0或更高的，然而在X1000 和 HD2000系列中的较低的模型或许被限制在4 或 8个TMU's(纹理贴图单元)。
+<p />
+在NVidia系列中，这应该是从Riva到GeForce 4再到GeForce 5000的系列。6000系列及更高的系列都支持Shader Model 3.0或者更高的模型，然而，在6000、7000 和 8000 s中的较低的模型一般都限制在2、4、或8个TMU's(纹理贴图单元)。
+<p />
+DirectX D3DCAPS报告了一些涉及到Pixel Shaders(像素着色器)操作的支持标准。
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 设备性能 </td><td bgcolor="#eaeaea"> 描述 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> PixelShader1xMaxValue </td><td bgcolor="#ffffff"> 可以存储在寄存器中的值的范围是[-PixelShader1xMaxValue, PixelShader1xMaxValue]。这仅在版本ps_1_1 到 ps_1_4中有效。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> MaxSimultaneousTextures </td><td bgcolor="#eaeaea"> 对于固定的功能通道，贴图取色器的数量是MaxTextureBlendStages除以MaxSimultaneousTextures后所得的值。像素着色器的贴图样本的数量在下面的表格中进行了显示。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> PixelShaderVersion </td><td bgcolor="#ffffff"> 硬件所支持的像素着色器的版本。支持等于或小于这个像素着色器版本值的版本。 </td></tr>
+</table>
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Pixel Shader Version像素着色器版本 </td><td bgcolor="#eaeaea"> 贴图着色器的数量 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> ps_1_1 到 ps_1_3 </td><td bgcolor="#ffffff"> 4个贴图着色器 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> ps_1_4 </td><td bgcolor="#eaeaea"> 6个贴图着色器 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> ps_2_0 to ps_3_0 </td><td bgcolor="#ffffff"> 16个贴图着色器 </td></tr>
+</table>
+|固定功能的像素着色器| MaxTextureBlendStages/MaxSimultaneousTextures 贴图着色器。
+<p />
+<p />
+<h3><a name="材质复杂度:超出的贴图着色器或者具有太多指令"></a> 材质复杂度:超出的贴图着色器或者具有太多指令 </h3>
+<p />
+虚幻引擎3中的地形系统使用GPU来执行网格物体渲染和贴图，因此，渲染能力受到GPU单元的功能列表和性能的限制，比如Fill Rate(填充速率)、Pixel Shader(像素着色器)的版本以及Pixel Shader Engines(像素着色器引擎)的数量、Texture Samplers(贴图取样器)的数量以及Texture Mapping Units（纹理贴图单元）的数量。
+<p />
+地形网格物体基于Terrain.MaxComponentSize属性被分为长方形的块。比如，MaxComponentSize的值为16，将会导致把每个由16x16地形patches(块)组成的大块作为一个分离的网格物体渲染调用函数(一个DrawMesh函数)来处理。每个分离的网格物体渲染调用函数也受到GPU的所有Texture Samplers(贴图取样器)可以管理的贴图数量的限制。所以那个Pixel Shader(像素着色器)版本的总Texture Samplers(贴图取样器)数量决定了每个地形组件中可以渲染的贴图的数量。如果Texture Samplers(贴图取样器)数量在一个地形组件中是超出的，那么地形将会渲染一个具有多色错误的贴图。
+<p />
+每个地形层设置，总是会为标准的光照贴图保留三个Texture Samplers(贴图取样器)(以便获得支持法线贴图的三个光源方向)，或者为一个“简单的”光照贴图保留一个Texture Samplers(贴图取样器)，这样仅在PCs上获得具有较低细节的反馈图像。控制台游戏机不支持简单的光照贴图，所以它们总是要求为光照贴图保留三个Texture Samplers(贴图取样器)。除此之外，TerrainLayerSetup(s)中的每个地形的TextureMaterial项都需要一个 <em>weight map(权重贴图)</em> 来决定特定贴图层在贴图块上的渲染位置。每个权重贴图是一个8-位的灰度化蒙板，所以它需要一个ARGB 32-位贴图的位面板，并且这些贴图中作为ARGB通道的打包的四个位面板。所以一个单独的合成权重贴图至多可以管理4个贴图层。
+<p />
+一个实例地形设置，比如6个不同的贴图层将需要以下数量的Texture Samplers(材质取样器)： <ul>
+<li> 3个光照贴图的Texture Samplers(材质取样器)
+</li> <li> 6个层的Texture Samplers(材质取样器)
+</li> <li> 2个权重贴图的Texture Samplers(材质取样器)，一个用于所有的4个位面板，一个仅用于2个位面板
+</li></ul>
+<p />
+注意在低档的视频系统上，地形层将会退化为简单的低细节版本，它仅使用一个光照贴图和简化的后退后的贴图。
+<p />
+当设计地形层设置时，如果地形显示了错误的贴图，避免这个问题的方法是降低每个组件的独立贴图的数量。这可以通过以下的一个或多个操作来实现： <ul>
+<li> 删除不必要的细节贴图
+</li> <li> 把多个灰度化细节贴图结合到一个单独的ARGB贴图的多个位面板中。
+</li> <li> 删除不必要的法线贴图
+</li> <li> 移除一个或多个漫反射贴图层
+</li> <li> 通过在多个层上重新使用一个或多个漫反射贴图来降低离散漫反射贴图的总数量，比如仅使用一个沙漠贴图，但是使用材质表达式来提供任何其它的染色或亮度，而不是使用两个变种的离散贴图。
+</li> <li> 把用于大型贴图和alpha贴图的自定义的灰度化蒙板组合到一个单独贴图的位面板中。
+</li> <li> 把多个贴图组合到一个单独的贴图坐标系中，正如以下其中一个技术所概括的。
+</li> <li> 简化材质表达式来降低总的指令数量。
+</li> <li> 如果可以，替换一些静态网格物体细节，比如悬崖，以便可以降低总的贴图数量。
+</li></ul>
+<p />
+<h3><a name="把细节贴图及蒙板打包到位面板中"></a> 把细节贴图及蒙板打包到位面板中 </h3>
+<p />
+要想在贴图取样器上进行保存，如果地形材质设置包含多个灰度化细节贴图或者自定义贴图大型蒙板或者超大蒙板，可以把这些贴图打包到一个贴图的位面板中，它是一个32-位的ARGB贴图可以提供4个打包贴图。
+<p />
+在Corel PhotoPaint中，可以通过从 <em>Image(图像)</em> 菜单上选择 <em>Combine Channels(组合通道)</em> 功能把三个8-位的图像打包为一个24-位的图像。选择这三个图像中的每一个并把它们分别分配给R, G 和 B通道。通过在 <em>Mask</em> 菜单上选择 <em>Load from disk(从磁盘中加载)</em> 项加载第四个8-位 图像，把它进行打包，从而产生一个32位的图像。当把它保存为32-位文件，比如.tga格式时，Mask(蒙板)会变为Alpha通道。
+<p />
+<img alt="CPPCombine.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/CPPCombine.gif" />
+<p />
+在Adobe PhotoShop中，可以通过在 <em>Channels Palette(通道调色板)</em> 中选择 <em>Merge Channels(混合通道)</em> 功能来把3个8-位的图像打包成一个24-位的图像。选择颜色通道的模式和数值，然后指定哪个图像分配给R, G 和B通道。
+<p />
+<img alt="APSMerge.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/APSMerge.gif" />
+<p />
+如果所有被打包的细节贴图的UV平铺值是一样的，那么一次最多可以打包4个8-位的灰度化细节贴图到一个单独的贴图位面板中。因为通常所有地形材质的细节贴图通常的缩放比例是一样的，比如8x 或16x，打包通常会按照4：1的比例来降低所需要的贴图取样器的数量。
+<p />
+<img alt="DGPackBitplanes.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/DGPackBitplanes.gif" />
+<img alt="DGPackBitplanesMat.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/DGPackBitplanesMat.gif" />
+<p />
+以同样的方式，多个 <em>Macro(大型)</em> 贴图和  <em>Super Masks(超大的蒙板)</em> 也可以被打包到一个单独贴图的位面板中，从而降低独立贴图和所需要的贴图取样器的数量。这个例子中，把4个Super Masks(超大的蒙板)打包到位面板中。在本指南的Super Masks(超大的蒙板)部分可以看到地形的屏幕截图。
+<p />
+<img alt="DGSuperMasks.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/DGSuperMasks.gif" />
+<p />
+<p />
+<h2><a name="细节贴图：添加近距离细节"></a> 细节贴图：添加近距离细节 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+当应用具有较大贴图块缩放比例大小的地形贴图时，比如TerrainMaterial.Material.MappingScale的值大于2，那么当玩家靠近应用这些材质的地形区域时，所看到视觉效果可能是模糊的。
+<p />
+添加细节贴图到材质中时将会通过引入平铺的具有高分辨率的细节来改善贴图的外观。细节贴图通常是一个无缝的平铺的8-位灰度化图像，通常分辨率为128x128。
+<p />
+这里是Epic的虚幻引擎内容中的一些细节贴图的例子:
+<p />
+<img alt="UE3DetailExamples.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3DetailExamples.gif" />
+<p />
+在这个地形实例中，我们将添加一个细节贴图到以下的Rock(岩石的)漫反射贴图上，该漫反射贴图的TerrainMaterial.Material.MappingScale值为16，所以当从一个较近的距离看它时，它是非常模糊地。
+<p />
+<img alt="UE3DetailRock.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3DetailRock.gif" />
+<p />
+选中的表达式提供了这个材质中的细节贴图的设置： <ul>
+<li> Texture Sample = 细节贴图
+</li> <li> TexCoord =相对于主要的漫反射岩石贴图来说细节贴图的平铺量，可以根据需要进行调整。
+</li> <li> 标量参数"Detail Brightness(细节贴图的亮度)"=细节贴图的亮度混合值，者支持材质实例化。如果没有使用实例化，可以使用一个Constant(常量)拉力替换这个表达式。
+</li> <li> Multiply =用于调整材质混合中细节总体亮度的Detail Adjust(细节调整)乘数。
+</li></ul>
+<p />
+如果材质的亮度和细节贴图的亮度不一致，可以通过调整ScalarParameter(标量参数)和Multiply(乘法)表达式来把它们调整为一样的亮度。第二个Multiply(乘法)表达式(Diffuse * Detail)将会把岩石的漫反射贴图和细节贴图混合到一起。
+<p />
+正如前面所提到的，UnpackMax的细节贴图的属性也可以被调整为2或3，而不是在材质中使用ScalarParameter(标量) 和 Multiply(乘法)表达式进行调整。这将以不为这个参数进行材质实例化作为妥协，来稍微地降低了材质指令的总数。
+<p />
+<img alt="UE3DetailMaterial.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3DetailMaterial.gif" />
+<p />
+正如这些前后对比屏幕截图所示，添加了细节贴图的材质大大地提高了地形贴图的视觉效果。
+<p />
+<img alt="DGDetailOff.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGDetailOff.jpg" />
+<p />
+<img alt="DGDetailOn.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGDetailOn.jpg" />
+<p />
+<p />
+<h2><a name="法线贴图：添加凸凹细节"></a> 法线贴图：添加凸凹细节 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+虚幻引擎中用于向场景中的任何材质添加真实性的最有用的功能是NormalMaps(法线贴图)。NormalMaps可以给贴图添加三维立体化效果。当在类似于岩石、沙砾及草地的地形贴图上使用法线贴图时，将会在视觉细节上有一个很大的提高。
+<p />
+可以从许多源来创建法线贴图。可以通过使用类似于NVidia Texture Tools 或 ATI NormalMapGenerator的工具来从漫反射贴图来创建法线贴图。也可以在通过大多数绘图软件使用这些和NVidia 和 ATI类似的工具来从8-位的灰度化高度图图像创建法线贴图。
+<p />
+<img alt="DGNormalFromDiffuse.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/DGNormalFromDiffuse.gif" />
+<p />
+在这个地形实例中，我们将在以下沙漠漫反射贴图和材质上同时显示法线贴图和细节法线贴图。标准的法线贴图可以添加和漫反射贴图分辨率一样的三维立体化效果，而细节法线贴图可以为法线贴图添加具有更高分辨率的细节。
+<p />
+<img alt="UE3NormalSand.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3NormalSand.gif" />
+<p />
+在具有标准法线贴图版本的材质中，法线贴图只是简单地连接到Normal节点作为一个Texture Sample(贴图样本)表达式。
+<p />
+<img alt="UE3NormalMaterial.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3NormalMaterial.gif" />
+<p />
+在具有细节法线贴图版本的材质中，我们构建了一个普通的NormalMap(法线贴图)混合器，它由标准的法线贴图Texture Sample(贴图样本)组成，并且细节法线贴图设置添加在法线贴图Texture Sample(贴图样本)上，正如选中的表达式所示： <ul>
+<li> Texture Sample =细节法线贴图
+</li> <li> TexCoord =相对于主要的标准的法线贴图来说细节法线贴图的平铺量，可以根据需要进行调整。
+</li> <li> VectorParameter(向量参数) "Detail NM Strength" =细节法线贴图的强度混合值，这支持材质实例化。如果没有使用实例化，这个表达式可以用一个Constant3Vector(3维常量向量)代替。
+</li> <li> Multiply =用于调整材质混合中的细节法线贴图的总体混合值的Detail Adjust(细节调整)乘数。
+</li></ul>
+<p />
+VectorParameter(向量参数)和Multiply(乘法)表达式允许您在两个法线贴图之间调整相对的法线贴图3D深度，另外它也在移除细节法线贴图Texture Sample(贴图样本)的B组件上起到了非常重要的作用，否则这个B组件将会降低材质的总的法线贴图深度。因此，VectorParameter表达式的B组件通常设置为0.0。
+<p />
+Add(加法)表达式把标准NormalMap(贴图)细节法线贴图和Detail NormalMap(细节法线贴图)混合到一起。
+<p />
+<img alt="UE3NormalMaterialDetailed.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3NormalMaterialDetailed.gif" />
+<p />
+正如在这些前后对比的屏幕截图中所看到，添加到材质上的法线贴图为地形贴图添加了大量的三维的视觉效果。细节法线贴图版本也通过添加更加精细的细节进一步增加了立体效果。
+<p />
+<img alt="DGNormalOff.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGNormalOff.jpg" />
+<p />
+<img alt="DGNormalOn.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGNormalOn.jpg" />
+<p />
+<img alt="DGNormalOnDetailed.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGNormalOnDetailed.jpg" />
+<p />
+对于地形材质设置超出贴图取样器的情况，删除法线贴图和细节法线贴图应该是要采取的首选项操作之一。漫反射细节贴图通常会比法线贴图和细节法线贴图增加更好的视觉效果。
+<p />
+如果正在使用的引擎版本在地形系统中启用了Specular(高光)，那么请确保在所有的地形材质中关闭Specular(高光)功能。在这种特殊情况下，法线贴图将会有个趋势使得地形看上去更加平滑或有型。由于性能原因引擎中的地形上的高光在默认情况下是禁用的。
+<p />
+<p />
+<h2><a name="多-ＵＶ混合：通过标量混合来降低平铺块效果"></a> 多-ＵＶ混合：通过标量混合来降低平铺块效果 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+其中一个用于改善地形贴图并降低明显的平铺块效果的性能消耗较低的方法是在两个不同的UV尺寸上混合一个贴图。同一个贴图使用两次的好处是当编译它时仅需要一个Texture Sampler(贴图取样器)。所以，尽管这个技术确实只增加了少量的着色器质量，但是它却不需要额外的Texture Samplers Texture Sampler(贴图取样器)，而通常Texture Samplers却是您首先用完的资源。
+<p />
+这种方法对于较小细节的贴图是最有效的，比如泥土、草地和沙漠。对于具有较详细细节的贴图比如绝壁岩石以及包含较深斑纹的贴图来说，这种方法看上去可能不是那么自然。
+<p />
+<img alt="UE3MultiuvGrass.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3MultiuvGrass.gif" />
+<p />
+这个材质由标准的漫反射贴图和另一个同样的Texture Sample(贴图样本)的副本组成，并且一个TexCoord(贴图坐标)表达式连接到该副本的UV节点上，通过设该TexCoord的值来时的UV缩放比例增大2到4倍。对于TexCoord表达式来说，设置它的值为0.5将会导致比例增大两倍，设置值为0.25将会导致比例增大4倍。
+<p />
+如果想翻转贴图并尽可能地降低在较远的距离时贴图的明显的平铺块，你也可以为TexCoord平铺块提供负值。在这个例子中，值-0.25在翻转贴图的同时使得贴图缩放为原来的4倍。
+<p />
+第三个选项将缩放后的贴图旋转90度或270度，从而帮助降低可视化的平铺块效果，这可以通过以下说明的Rotator(旋转器)表达式来完。
+<p />
+在标准贴图和贴图的缩放副本中都添加上亮度乘数。这将通过它本身把总体的贴图亮度调整回漫反射贴图的亮度，比如是它本身乘以0.5的灰度，那么将会导致灰度变为较暗0.25 (0.5 * 0.5 = 0.25)。
+<p />
+"Brighten Amount(变亮量)"Constant(常量表达式)用于指出每个Texture Sample亮度要增加的量，一般该值为4。如果您希望在任何材质实例版本中暴露这些值，可以使用ScalarParameter(标量参数)表达式来替换Constant(常量)表达式。
+<p />
+在这个实例中，贴图的缩放版本也可以使用一个Desaturation(冲淡颜色)表达式把贴图冲淡25%，因为在这个特定实例中，当两个绿色的贴图相乘到一起时使得绿色的草贴图的颜色变得非常的绿。
+<p />
+<img alt="UE3MultiuvMaterial.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3MultiuvMaterial.gif" />
+<p />
+如果您想使用一个缩放贴图的Rotator（旋转器）版本而不是简单地翻转贴图，你可以添加一个Rotator(旋转器)、一个TexCoord(贴图坐标)和一个Constant(常量)表达式来替换连接到Texture Sample的UV输入端节点的那个TexCoord表达式。
+<p />
+设置e Rotator.CenterX 和 .CenterY的值为0.5，即贴图的中心(50%)，并设置Rotator.Speed为1.0。
+<p />
+设置TexCoord.UTiling 和 .VTiling为期望的缩放尺寸，0.5代表2倍，0.25代表4倍等。
+<p />
+现在Constant(常量)表达式的值决定了贴图的固定旋转量。当Rotator.Speed值1.0时，要完全旋转360度的Constant(常量)值是2*pi或者近似值6.28318。所以进行90度的旋转时常量的值是1.570795、180度的旋转时常量的值是3.14159、270度的旋转时常量的值是4.712385。
+<p />
+注意：Rotator.Speed决定了贴图旋转的Constant常量的范围。速度为2.0，则导致0到360度旋转对应的Constant常量值是0到pi(3.14159)。速度为0.5，则导致0到360度旋转对应的Constant常量值是0到4*pi (12.56636)。
+<p />
+<img alt="UE3MultiuvMatRotate.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3MultiuvMatRotate.gif" />
+<p />
+正如您在实例屏幕截图中所看到的，第一张图像中的草地贴图的平铺块是非常明显的。把贴图按照4倍的缩放比例混合到它自己本身时降低了平铺块效果，并且使得材质在远镜头距离和近镜头距离上的视觉效果都更加令人满意。
+<p />
+<img alt="DGMultiuvOff.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGMultiuvOff.jpg" />
+<p />
+<img alt="DGMultiuvOn.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGMultiuvOn.jpg" />
+<p />
+<img alt="DGMultiuvOnNear.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGMultiuvOnNear.jpg" />
+<p />
+<p />
+<h2><a name="随机平铺蒙板：随机化贴图映射来降低贴图平铺效果"></a> 随机平铺蒙板：随机化贴图映射来降低贴图平铺效果 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+这种方法对于使用多个重复UV标度的贴图类型上的视觉效果上不理想的重叠的贴图块是不适用的。但是它在颜色一致的贴图上的效果是很好的，比如沙漠和尘土，尤其使这些人为制作的平铺贴图比如混凝土板或者金属电镀。这个技术的一个局限性贴图在所有面上都是必须无缝的。
+<p />
+材质使用了两次源贴图，降低了所需要的Texture Samplers(贴图取样器)的数量。第一个源TextureSample(贴图样本)正常地进行使用，第二个源TextureSample(贴图样本)使用一个Rotator(旋转器)将其旋转了90、180 或270度。
+<p />
+设置这个材质的下一个要求是蒙板贴图，且该蒙板贴图可以在黑色背景上的随机地飞溅白色像素。在材质中使用白色和黑色像素值来决定在渲染地形表面时使用源贴图的正常版本还是旋转后的版本。
+<p />
+蒙板贴图是一个64x64的8-位灰度化贴图或24-位的彩色贴图，并且当导入时，它的属性应该设置CompressionNoAlpha = true(真)，Compression Settings = TC_Default或TC_Grayscale。当导入蒙板贴图后，在贴图查看器中编辑贴图的属性并设置Filter = TF_Nearest。如果过滤器没有设置为这个值，贴图将会变得模糊，材质将不能按照需要工作。
+<p />
+<img alt="UE3RandomTileMask.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3RandomTileMask.gif" />
+<p />
+第一个源TextureSample(贴图样本)进行正常的应用。
+<p />
+第二个源TextureSample(贴图样本)，设置它的Rotator.CenterX 和 .CenterY 属性的值为0.5，即贴图的中心(50%)，并设置Rotator.Speed为1.0。设置TexCoord.UTiling 和 .VTiling都为1.0。
+<p />
+现在Constant(常量)表达式的值决定了贴图的固定旋转量。当Rotator.Speed值1.0时，要完全旋转360度的Constant(常量)值是2*pi或者近似值6.28318。所以进行90度的旋转时常量的值是1.570795、180度的旋转时常量的值是3.14159、270度的旋转时常量的值是4.712385。
+<p />
+连接到蒙板TextureSample(贴图样本)上的UVs输入端的TexCoord表达式应该设置为1/texture_size，在这个例子中是1/64 或0.015625。如果需要，你也可以使用一个16x16 (1/16 = 0.0625) 或 32x32 (1/32 = 0.03125)的蒙板贴图。我们不使用128x128贴图的原因是1/128 = 0.0078125，而虚幻引擎表达式仅支持6个小数位，所以如果TexCoord值为1/128，它将会被上舍入到0.007813，这可能会导致可视化的位移异常。
+<p />
+材质中的LinearInterpolate (Lerp)(线性插值)表达式将会根据Alpha输入端的值来切换A:B输入端。通过在Alpha输入端使用一个随机的像素蒙板，我们使得Lerp(线性插值)表达式根据像素是黑色还是白色来选择使用正常的贴图版本还是旋转后的贴图版本。
+<p />
+您也可以使用这个功能来创建一个材质覆盖层，它可以根据在蒙版贴图中所描画的白色相对于黑色像素的设计来创建一种正常风格的及旋转风格的贴图。
+<p />
+<img alt="UE3RandomTileMaterial.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3RandomTileMaterial.gif" />
+<p />
+正如在下面的前后对比屏幕截图中所示的，泥土贴图包含一个可见的平铺块线，通过随机地算转后使得那条线变得不再那么明显。
+<p />
+<img alt="DGRandomTileOff.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGRandomTileOff.jpg" />
+<p />
+<img alt="DGRandomTileOn.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGRandomTileOn.jpg" />
+<p />
+<h2><a name="大型贴图:混合贴图来获得多样性"></a> 大型贴图:混合贴图来获得多样性 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Macro Texture(大型贴图)系统降低了材质的平铺块的视觉效果，同时通过根据Macro(大型)蒙板在两个贴图之间进行混合增加了地形贴图的多样性。大型贴图设置的主要要求是两个源贴图可以很好地混合到一起，比如草地和泥土或者泥土和岩石，以及使用一个无缝的可平铺的灰度化贴图作为大型的混合蒙板。
+<p />
+大型混合蒙板的尺寸可以是128x128 到 1024x1024之间的任何尺寸，可以根据项目分配的可用资源大小和地形区域上进行混合时所期望的多样性来决定。大型混合蒙版贴图是一个8-位的灰度化图像，它可以在任何绘图软件中进行创建，最好使用完全的8-位深度。它可以作为DXT1或者G8 8-bit灰度化图像导入到UnrealEd中。请记住正如在本指南前面所描述的使用位面板打包技术最多可以把4个大型蒙板组合到一个单独的贴图中，它将被保存在前面的贴图取样器中，但是有个限制是它只能具有一个单独的TexCoord  <em>Macro Size(大型蒙版的尺寸)</em> 。
+<p />
+这个例子中，材质将会使用这里显示的大型贴图，但是您可以使用任何无缝模式的大型贴图。请记住在地形上很高的高度上，可能会看到你所使用的模式，所以蒙版模式的越随机所得到的效果越好。
+<p />
+<img alt="UE3MacroTexture.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3MacroTexture.gif" />
+<p />
+大型材质相对来讲是简单的，它由两个源TextureSamples和一个Macro设置表达式组成，正如当前在下面的材质截图中选中的情况。Macro设置被连接到LinearInterpolate(线性插值)表达式的Alpha输入端，以便大型贴图中的灰度化值0到255决定在两个源贴图间的混合量。
+<p />
+Macro设置本身，使用了以下表达式： <ul>
+<li> TextureSample =包含大型贴图。
+</li> <li> TexCoord =相对于地形来决定大型贴图的尺寸。地形上的混合平铺块的范围可以从很小的区域到很大的区域。这通常设置值为0.25 (4倍) 或 0.125 (8倍)或者更小的值。
+</li> <li> Multiply(乘法) 和它的Constant(常量) = "Macro Mix Level"允许您对灰度化大型贴图的混合层次进行微调，可以通过把它的灰度值调高或者调低来实现。如果你想使用实例化的材质，这个Constant(常量)表达式也可以被替换为ScalarParameter(标量参数)表达式。
+</li> <li> Clamp(区间限定) 和它的Constant(常量)=限定大型贴图的输出级别在值0.0和1.0之间。使用大于1.0的值将可能会冲掉地形上的材质。
+</li></ul>
+<p />
+<img alt="UE3MacroMaterial.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3MacroMaterial.gif" />
+<p />
+正如截图中所显示的前后对比图，当泥土贴图和草地贴图混合后，草地贴图的平铺块看上去不是那么明显并且具有更多的多样性。第三个屏幕截图显示了在俯视视图下的地形，在这里您会更加容易地看到两个贴图间的混合。
+<p />
+<img alt="DGMacroOff.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGMacroOff.jpg" />
+<p />
+<img alt="DGMacroOn.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGMacroOn.jpg" />
+<p />
+<img alt="DGMacroOnTop.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGMacroOnTop.jpg" />
+<p />
+<p />
+<h2><a name="超大蒙板：在顶点级别之外增加地形的细节"></a> 超大蒙板：在顶点级别之外增加地形的细节 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+目前地形层描画系统受到地形网格物体顶点的分辨率的限制。地形网格物体顶点的数量和内部的高度图上的顶点数量一样，因此每个层的  <em>weightmap(权重贴图)</em> 都和底下的地形高度图的分辨率一样。换句话说，一个256x256块的地形在内部包含一个257x257高度图，允许一层描绘一个分辨率为257x257的混合像素。尽管这对于大多数地形层的细节描画来说是很好的，但是有一些实例仍需要更加细节程度的贴图描画。注意，_weightmap(权重贴图)_ 通常也被指为 <em>alphamap(alpha贴图)</em> 。它在地形层混合系统中提供了一个和32-位图像中的或者一个绘图程序比如PhotoShop的alpha通道类似的功能。
+<p />
+如果我们进一步检查当前地形系统的细节和实现，在一个顶点上进行完全强度的混合将会在描画的顶点上产生一个菱形的加权重的长方形样式，如下图所示。这是一个地形层设置图片，一个白色的贴图层描画到一个灰色的贴图层上面，并且地形层顶点覆盖在它的上面。描画的顶点的权重贴图值为255，而所有的周围顶点的权重值为0。
+<p />
+这在描画层的贴图的真实分辨率中便会有一些限制。层的贴图的最小描画宽度是2 x DrawScale3D.X,.Y，正如以下的图片所示，因为从顶点混合出的贴图覆盖了一个2x2的块区域。所以当一个地形的DrawScale3D.X,.Y为256[虚幻单位]时，以默认的引擎比例尺1 虚幻单位= 2 厘米计算，这将导致层贴图的最小描画宽度为10.24 米 (2 x 5.12米) 或者33.6 英尺 (2 x 16.8ft)。
+<p />
+为了把这个放置到透视图中并进行缩放，许多常见的双车道公路都是由两个3.5米宽的小路加上额外的路臂宽度来构成的。所以在对比中，在一个256 DrawScale的地形上描画的一个独立顶点和双车道公路的宽度近似一样的。通常这对于描画类似于人行道、沟渠、小溪等这样的地形层来说是太宽的。可以通过降低地形的DrawScale3D来解决这个问题可能会导致地形太密集以及由于要在平截头体中要渲染较多数量的块而产生帧频率冲突。
+<p />
+<img alt="UE3SuperMaskDefault.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3SuperMaskDefault.gif" />
+<p />
+如果我们检查一个完全描画的地形的权重贴图文件，我们将会看到一些和这个例子类似的东西，该例子是一个256x256的地形并且它的悬崖上有256x256的权重贴图(这些块在大约30度到90度之间有一个斜坡)。把这个地形的分辨率和页面上在它下面的实例Super Mask(超大蒙板)贴图的分辨率相比较。注意为了匹配页面，这个单一的Super Mask (超大蒙板) 的高分辨率已经从1024x1024降低为880x880。
+<p />
+<img alt="DGSuperMaskUE3.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/DGSuperMaskUE3.gif" />
+<p />
+<img alt="DGSuperMask.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/DGSuperMask.gif" />
+<p />
+现在的视频适配器所支持的贴图分辨率达到了8192x8192，它是当前地形系统中的可能使用的细节为256x256权重贴图的1024 (32x32)倍。举个例子，分辨率为8192的Super Mask(超大蒙板)和标准的256x256地形相比将会提高层的贴图细节，使它从10.24米降低为0.32米(从33.6英尺降低为1.05英尺)。
+<p />
+通常使用这个高的分辨率的资源使用是非常昂贵的，并且使用这些高分辨率的文件进行工作也会变得更加困难，所以使用分辨率为1024x1024 或 2048x2048的Super Masks(超大蒙板)进行工作是比较容易的。同时这也仍然可以提供出比大多数地形设置更高的细节级别，一个1024x1024的Super Mask(超大蒙板)的细节比128x128 的地型大64倍。
+<p />
+Super Masks(超大蒙板)是简单的高分辨率8-位贴图，它定义了在哪里渲染特定的贴图层。这个alpha通道和不透明蒙板非常类似。Super Masks(超大蒙板)可以由精通Photshop的美术工作人员手动地绘制或者通过使用各种软件应用程序的各种方法来自动创建。
+<p />
+在这个实例地形中，为地形上的三个不同的地理部分通过算法创建了三个高分辨率1024x1024的蒙板，这些地理形态包括坚硬的山脊、腐蚀的缺口以及水面区域周围的海滩。当把它们打包到一个单独的RGB 24-位贴图的位面板中时，这三个蒙板的外观如以下图片所示。然后把这个贴图导入到UnrealEd中，设置为标准的CompressionNoAlpha DXT1格式。注意下图是把实际贴图分辨率降低为512x512的版本，以便它可以很容易地和这个网页相匹配。
+<p />
+<img alt="DGSuperMasks.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/DGSuperMasks.gif" />
+<p />
+一旦创建了Super Mask(超大蒙板)贴图并把它导入到了UnrealEd中，使用这个贴图的材质设置是相对简单的，以为内每个Super Mask(超大蒙板)位面板每个表达式 <em>block(块)</em> 从本质上是一样的。
+正如下面的材质图像所显示的: <ul>
+<li> 一个LinearInterpolate(线性插值)表达式基于Super Mask(超大蒙板)的R位面板混合了Base和Ridge贴图。
+</li> <li> 一个LinearInterpolate(线性插值)表达式基于Super Mask(超大蒙板)的G位面板混合入了Erosion贴图。
+</li> <li> 一个LinearInterpolate(线性插值)表达式基于Super Mask(超大蒙板)的B位面板混合入了Beach贴图。
+</li> <li> 连接到TextureSamples的UVs输入节点的TexCoord(贴图坐标)表达式指出了平铺量，它和TerrainMaterial对象的UTiling、VTiling属性类似。
+</li></ul>
+<p />
+每个Super Mask(超大蒙板)层的每个表达式  <em>块</em> 也可以通过改进来使用本指南显示的很多其他贴图技术。如果需要，细节贴图可以和每个TextureSample进行混合。通过为每个层的NormalMap(法线贴图)连同一样的Super Mask Texture Sample (超大蒙板贴图样本) 的RGB节点输出端使用一个类似的LinearInterpolate(线性插值)设置，便可以为所有的层实现NormalMaps(法线贴图)。
+<p />
+<img alt="UE3SuperMaskMaterial.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3SuperMaskMaterial.gif" />
+<p />
+通用浏览器中的最终材质如下所示，从本质上来说，地形层贴图的布局覆盖为1：1。
+<p />
+<img alt="UE3SuperMaskMaterial.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3SuperMaskMaterial.gif" />
+<p />
+创建一个新的TerrainMaterial(地形材质)，并把Super Mask Material(超大蒙板材质)分配给Material(材质)属性。设置TerrainMaterial MappingScale属性的分辨率和地形的分辨率一样，也就是，地形块的数量。在这个例子中，我们使用了一个256x256块的地形。这将会把Super Mask Material(超大蒙板材质)按照1：1的比例渲染到地形上。
+<p />
+<img alt="UE3SuperMaskTMat.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3SuperMaskTMat.gif" />
+<p />
+这个屏幕截图是使用1024x1024的Super Mask s(超大蒙板)系统作为材质层的256x256地形的最终屏幕截图，它提供的描画细节是正常描画的6倍。
+<p />
+<img alt="DGSuperMask.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGSuperMask.jpg" />
+<p />
+<h3><a name="使用1:1的法线贴图来增加地形的“分辨率”"></a> 使用1:1的法线贴图来增加地形的“分辨率” </h3>
+<p />
+通过使用和法线贴图增加一般网格物体的细节一样的方法，也可以通过添加一个1024x1024或者具有更加精细细节的NormalMap(法线贴图)来提高地形分辨率细节。这个法线贴图是在随着256x256的地形高度图不断增加的4x4分辨率下根据算法创建的。导入这个法线贴图，并像应用标准的法线贴图一样把它一样把它应用到材质的Normal节点上。
+<p />
+<img alt="UE3SuperMaskNmap.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3SuperMaskNmap.gif" />
+<p />
+以下的前后对比图显示了应用法线贴图后的不同。注意为了获得良好的效果，已经增加了NormalMap(法线贴图)的深度。
+<p />
+<img alt="DGSuperMaskNoNorm.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGSuperMaskNoNorm.jpg" />
+<p />
+<img alt="DGSuperMaskNorm.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGSuperMaskNorm.jpg" />
+<p />
+<p />
+<h2><a name="贴图打包:实现大贴图平铺设置"></a> 贴图打包:实现大贴图平铺设置 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+当贴图需要的贴图取样器的数量比当前可用的贴图取样器多时，可以把多个子贴图打包到一个较大的平铺贴图中。通过使用创造性的表达式，便可以“精确地”把平铺块中的每个独立的贴图应用到独立的层上。
+<p />
+当执行贴图平铺时需要在性能消耗和材质复杂度之间进行妥协。相比之下，4个独立的贴图的性能消耗是  <em>贴图选择</em> ，而贴图平铺则需要在像素着色器中进行 <em>子贴图选择</em> ，那么在贴图坐标转为大的平铺贴图时便会带来性能消耗。同时在平铺块中也需要额外的美术工作时间来修改源贴图，以便他们包括可能的 <em>边缘填充</em> 。把4个或更多的贴图打包到一个贴图中的主要优点是，降低了贴图采样器的使用个数，从而允许设置更多的地形贴图层。
+<p />
+注意，由于这个技术通常会在地形的各种位置产生小的贴图缝隙，所以它仅能在游戏设计允许的时候才进行应用。对于玩家或相机要靠近的地形表面，如果使用这个技术，问题可能非常明显，除非使用网格物体或植被来覆盖那些缝隙。
+<p />
+在平铺贴图中的每个独立贴图将会应给进行很好的匹配，否则它将会使用边缘填充来阻止任何的坐标渗透错误问题。如果没有解决或者纠正这个问题，当在地形上进行渲染时，沿着每个子贴图的边缘将会看到一些较细的平铺块线。解决这个问题的最好的方法是或者在每个贴图快上使用一样的贴图，比如4个停机坪的变种(比如，基本的公路、具有两条实线的公路、具有一条实线一条虚线的公路和具有两条虚线的公路)，或者编辑贴图使它们至少具有1个像素的边缘填充。比如一个1024x1024的贴图可以通过把它重新调整为1022x1022后复制一个单独的像素边缘到它的外边缘来进行边缘填充。当在使用边缘填充时，将需要调整Constant2Vector(2维常量向量)的值以便可以提取出一个稍稍比1024小的子贴图区域。这通常意味着StartX,Y的值将会稍稍地变大，而EndX,Y的值将稍稍地变小。调整的量也会根据TexCoord(贴图坐标)平铺的量变化，所以这里不提供调整值的“最佳值”。到目前为止，通过简单地使用具有较好匹配的子贴图要比花时间尝试删除在不同子贴图间的较粗的接头线要容易的多。
+<p />
+在这个例子中，贴图平铺块中有4个1024x1024的贴图被打包到一个分辨率为2048x2048 2x2的单独的平铺文件中。这仅允许您使用一个贴图来在地形上放置岩石、泥土、草地和苔藓。
+<p />
+导入的象限贴图如下所示。请确保指定适当的LODGroup，从而可以支持较大的2048x2048贴图尺寸，来防止使用较低的默认mip等级。
+<p />
+<img alt="UE3QuadTex.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3QuadTex.gif" />
+<p />
+在这个例子的地形设置中，在4个独立的Materials(材质)将使用象限贴图，一个象限对应每个平铺块。也可以把贴图平铺设置其它的地形层方法结合使用，比如Super Masks，从而把整个地形层设置结合到一个单独的材质系统中。
+<p />
+这些是那4个材质：
+<p />
+<img alt="UE3QuadMats.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3QuadMats.gif" />
+<p />
+如果我们检查在每个材质中所使用的表达式，我们会发现从本质上来说几乎所有的设置都是一样的，仅有较少的表达式的值是不同的，这些值用于设置子贴图的 U/VTiling 量并指定提取那个子贴图平铺块。
+<p />
+注意，地形的层材质平铺是通过这些材质中的TextureCoordinate进行设置的，而不是通过TerrainMaterial.MappingScale属性进行设置的。
+<p /> <ul>
+<li> TexCoord:指出了贴图的UTiling 和 VTiling的量。常用的值是4、8或16。
+</li> <li> Frac:复制TexCoord中指定的值的小数部分，以便坐标仅通过子贴图进行平铺。
+</li> <li> Constant2Vector:说明了提取出的贴图块的EndX,Y的坐标，对于一个2x2的贴图块来说这个值应该是1/2 或 0.5。
+</li> <li> Constant2Vector:说明了提取出的贴图块的StartX,Y的坐标，对于一个2x2的贴图块来说，根据提取出的平铺块的不同，这个值将是0.0 或 0.5。
+</li> <li> TextureSample:指出了贴图平铺块
+</li></ul>
+<p />
+注意，仅有的不同是用于指出提取贴图块的坐标Start X,Y 和 End X,Y的值的TexCoord UTiling,VTiling 和Constant2Vector的值。这里显示的材质中左上方的坐标为(0.0,0.0)、右上方为(0.5,0.0)、左下方为(0.0,0.5)、右下方位(0.5,0.5)。
+<p />
+<img alt="UE3QuadMat0.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3QuadMat0.gif" />
+<p />
+<img alt="UE3QuadMat1.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3QuadMat1.gif" />
+<p />
+<img alt="UE3QuadMat2.gif" src="#" />
+<p />
+<img alt="UE3QuadMat3.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3QuadMat3.gif" />
+<p />
+接下来的步骤创建一个必须的 TerrainMaterial (地形材质)对象，为每个材质创建一个，并创建TerrainLayerSetup (地形层设置)。<br>
+TerrainMaterial.MappingScale必须设置为地形的大小，以块为单位。也就是256x256的地形设置为256。
+<p />
+在这个实例中，TerrainLayerSetup(地形设置)在它们的TerrainMaterials中使用了4个程序上的元素，并且设置了高度和坡度属性，以便结果有各种不同的悬崖和平原层的变种。
+<p />
+<img alt="UE3QuadTObjs.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3QuadTObjs.gif" />
+<p />
+最终的地形如下所示：
+<p />
+<img alt="DGQuadTex.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGQuadTex.jpg" />
+<p />
+<p />
+<h2><a name="1:1覆盖图:在地形上平铺多个高分辨率贴图"></a> 1:1覆盖图:在地形上平铺多个高分辨率贴图 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+当前的视频硬件和次世代的游戏引擎支持较大的分辨率比如2048, 4096 和8192。这个功能支持可以和卫星的<a href="TerrainsFromDEMs.html" class="twikiLink">DEMs</a>(数字高程模型)和高分辨率航空彩色图片的可用性和质量的提高结合使用。
+<p />
+通过把一个DEM高度图和一个或多个航空彩色图片相结合，将会创建一个比内置TerrainLayerSetup的程序上的Height(高度)和Slope(坡度)系统具有更高细节的真实的地形系统。使用一个或多个高分辨率的航空彩色图片所提供的贴图的多样性也要比简单地使用4或5个分离的贴图比如岩石、泥土以及草地产生的贴图种类要广。如果可用的DEM高度图和航空图片仅是10米或15米或者具有较低的空间分辨率，这将仍然可以和周围的地形进行很好的工作比如游戏用地周围的山脉。在一个高分辨率的游戏区域的边界周围设置两个具有叫低分辨率的地形设置时，便可以使用这个覆盖图贴图功能进行构建。
+<p />
+因为每个独立的地形actor仅使用一个1:1覆盖贴图，所以这样是不会用光Texture Samplers(贴图取样器)的，并且通常会使得地形渲染要比具有多个贴图的权重贴图驱动的层设置要快。
+<p />
+San Francisco的某一部分设置了一个中等分辨率的DEMo高度图数据，它通过使用内部软件、重新取样把分辨率降低为513x513，然后将其转换为虚幻的G16格式来进行创建的。一个513x513的地形会使得地形具有512x512个块。
+<p />
+<img alt="DGOverlayDem.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/DGOverlayDem.gif" />
+<p />
+从在线服务中获得了一个高分辨率为17254x15490的航空彩色图片。然后把这个图片加载到标准的绘图应用程序中，剪切为和DEM高度图区域一样的位置。然后把剪切的贴图重新采样为一个具有适当大小，尺寸为2的倍数，以便在UnrealEd中进行应用，这个例子中重新采样后的分辨率为2048x2048。当导入高分辨率贴图时，请确保选择适当的LODGroup，以便支持最大的贴图mip尺寸。
+<p />
+<img alt="UE3OverlayTex.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3OverlayTex.jpg" />
+<p />
+<small>
+<strong>原始图片版权 Geosage.com</strong>
+</small>
+<p />
+为那个贴图创建一个基本的材质。把TextureSample连接到Diffuse(漫反射)节点上。
+<p />
+创建了基本的TerrainMaterial(地形材质)后，把那个材质分配给它。TerrainMaterial.MappingScale必须设置为地形的尺寸，以块为单位，比如，在我们的例子中，一个512x512的地形的TerrainMaterial.MappingScale设置为512。也就是256x256的地形设置为256。
+<p />
+创建一个基本的TerrainLayerSetup，把TerrainMaterial分配给它。然后把TerrainLayerSetup分配给Terrain(地形)actor。
+<p />
+<img alt="UE3OverlayMat.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3OverlayMat.gif" />
+<p />
+这个实例中，该地形放置在San Francisco的海港处，向内朝向山脉。
+<p />
+<img alt="DGOverlay.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGOverlay.jpg" />
+<p />
+<h3><a name="具有多个平铺块的展开的覆盖图"></a> 具有多个平铺块的展开的覆盖图 </h3>
+<p />
+覆盖图技术的展开版本包括使用多个展开的平铺的高分辨率贴图，比如一个大型的16384x16384地形平铺系统展开为一个2x2布局的8192x8192的贴图。使用这种方法，便可以使用那些类似于GIS(物理信息系统)以及其它的现实世界中的可见地形的非常复杂的高分辨率地形贴图。
+<p />
+地形高度图使用我们想渲染渲染的区域的高分辨率的DEM数据获得的。在这个实例中，512x512快的高度图被重新调整为513x513。这个高度图然后被转换为G16格式并通过<a href="TerrainEditorUserGuide.html" class="twikiLink">地形编辑</a>对话框被导入到地形中。
+<p />
+需要记住的一个技巧是，您可以使用高分辨率的DEM高度图作为1:1的法线贴图的源，从而提高地形的视觉效果的细节。比如，如果源DEM数据的分辨率是2048x2048，游戏中的最终分辨率是256x256，那么可以把源DEM数据转换为一个分辨率为2048x2048的法线贴图，并按照1：1的覆盖图应用在地形上，从而提高地形分辨率细节的视觉效果。
+<p />
+<img alt="DGOverlayTileDem.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/DGOverlayTileDem.gif" />
+<p />
+然后使用和高度图区域具有同样大小的高分辨率卫星图像作为覆盖图贴图。在这个实例中，使用一个15米的像集来提供一个13,000x13,000的贴图，把这个贴图重新取样为8192x8192，然后把它分隔为4096x4096的象限贴图。每个象限贴图应该从两个内部边复制一个或多个像素条带到两个外部边缘，以便删除地形上的任何缝隙线。8192x8192的忒图可以作为一个单独的Texture Sample在材质中进行应用，但是这限制了地形只能用于较新版本的视频适配器。通过使用4096的贴图，我们便提高了视频硬件的支持能力。
+<p />
+和从高分辨率的DEM创建法线贴图的方式类似，如果卫星图片的高分辨率版本是清晰的，并且具有和地形性对垂直的光源，那么也可以直接从这个卫星图片上来产生法线贴图。
+<p />
+<img alt="DGOverlayTileTex.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGOverlayTileTex.jpg" />
+<p />
+然后把4个分辨率为4096x4096的贴图导入到UnrealEd中。然后为它们设置 CompressionNoAlpha 和 LODGroup来支持大小为4096的贴图 。ATTACHURL%/UE3OverlayTileTex.gif
+<p />
+然后在绘图软件中创建一个 <em>象限蒙板</em> 贴图，它是一个具有3个黑色像素和一个白色像素的2x2贴图。这用于蒙板来决定源象限贴图在地形的哪个位置进行渲染。白色的像素决定了贴图在那个位置进行渲染。如果要实现的是一个较大的平铺系统，比如3x3 或 4x4个平铺块，那么可以根据需要来创建这个蒙板。
+<p />
+贴图将会作为不压缩的格式导入，因为它仅是一个2x2的贴图 ，所以不需要进行压缩。
+<p />
+以下是贴图被缩放的清晰可见的较大尺寸时的屏幕截图。<br>
+<p />
+<img alt="UE3OverlayTileMask.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3OverlayTileMask.gif" />
+<p />
+实际的材质是一个组简单的TextureSamples(贴图样本)，并且把TexCoord连接到它的UVs节点上来提供所需要的2x2平铺块。
+<p />
+然后把象限蒙板用作为Alpha输入端来设置通过LinearInterpolate表达式把每个TextureSample渲染到那个象限上。连接到象限蒙板的UVs节点的TexCoords(贴图坐标)用于适当地翻转贴图，以便白色的像素处于期望的象限位置。
+<p />
+<img alt="UE3OverlayTileMat.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3OverlayTileMat.gif" />
+<p />
+然后创建一个TerrainMaterial。它的Material.MappingScale的属性设置为地形的大小，以块为单位，在这个例子中是512。然后把这个材质分配到Material.Material属性中。
+<p />
+创建TerrainLayerSetup。向它的数组中添加一个元素，并且把那个TerrainMaterial分配给Materials[0].Material属性。
+<p />
+然后把TerrainLayerSetup分配到Terrain(地形)actor的Layers(层)数组中。
+<p />
+<img alt="UE3OverlayTileTobj.gif" src="rsrc/Three/TerrainAdvancedTexturesCH/UE3OverlayTileTobj.gif" />
+<p />
+这个实例是夏威夷考艾岛的地形。高度图是513x513，平铺覆盖材质是4个4096x4096的贴图，分辨率4096x4096法线贴图是从8192x8192的源覆盖贴图中衍生出来的。
+<p />
+<img alt="DGOverlayTile.jpg" src="rsrc/Three/TerrainAdvancedTexturesCH/DGOverlayTile.jpg" />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TerrainAdvancedTexturesCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:38:23 GMT -->
+</html></body>

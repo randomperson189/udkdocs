@@ -1,0 +1,606 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ScaleformActionScriptBestPracticesCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:28:05 GMT -->
+<head>
+<title> UDK | ScaleformActionScriptBestPracticesCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ScaleformActionScriptBestPracticesCH  </b></div>
+<div id="tooltext">
+<a href="ScaleformActionScriptBestPractices.html" class="twikiLink">English Translation</a><br><a href="ScaleformActionScriptBestPracticesJP.html" class="twikiLink">日本語訳</a><br><a href="ScaleformActionScriptBestPracticesKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ScaleformActionScriptBestPracticesCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="UIAndHUDHome.html" class="twikiLink">用户界面 &amp; HUD</a></b> &gt; <b><a href="https://udn.epicgames.com/Three/ScaleFormHome" class="restricted" class="restricted" class="twikiLink">Scaleform GFx</a></b> &gt; Scaleform GFx ActionScript最佳实践方案
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Scaleform GFx _ActionScript最佳实践方案"></a> Scaleform GFx ActionScript最佳实践方案 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="ScaleformActionScriptBestPracticesCH.html#Scaleform GFx _ActionScript最佳实践方案"> Scaleform GFx ActionScript最佳实践方案</a> <ul>
+<li> <a href="ScaleformActionScriptBestPracticesCH.html#概述"> 概述</a>
+</li> <li> <a href="ScaleformActionScriptBestPracticesCH.html#ActionScript大致说明"> ActionScript大致说明</a> <ul>
+<li> <a href="ScaleformActionScriptBestPracticesCH.html#Loops(循环)"> Loops(循环)</a>
+</li> <li> <a href="ScaleformActionScriptBestPracticesCH.html#函数"> 函数</a>
+</li> <li> <a href="ScaleformActionScriptBestPracticesCH.html#变量/属性"> 变量/属性</a>
+</li></ul>
+</li> <li> <a href="ScaleformActionScriptBestPracticesCH.html#通用优化小技巧"> 通用优化小技巧</a> <ul>
+<li> <a href="ScaleformActionScriptBestPracticesCH.html#Flash时间轴"> Flash时间轴</a>
+</li></ul>
+</li> <li> <a href="ScaleformActionScriptBestPracticesCH.html#通用性能优化"> 通用性能优化</a> <ul>
+<li> <a href="ScaleformActionScriptBestPracticesCH.html#运行"> 运行</a>
+</li> <li> <a href="ScaleformActionScriptBestPracticesCH.html#on_ClipEvent和 on Events"> onClipEvent和 on Events</a>
+</li> <li> <a href="ScaleformActionScriptBestPracticesCH.html#on_EnterFrame"> onEnterFrame</a>
+</li> <li> <a href="ScaleformActionScriptBestPracticesCH.html#Var 关键字"> Var 关键字</a>
+</li> <li> <a href="ScaleformActionScriptBestPracticesCH.html#预缓存"> 预缓存</a>
+</li> <li> <a href="ScaleformActionScriptBestPracticesCH.html#复杂表达式"> 复杂表达式</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<hr size="1" noshade="noshade">
+ActionScript不会被编译到本机代码，相反它会被转化到字节代码，这样做比翻译语言更快，但是不及编译好的本机代码快。 虽然ActionScript运行很慢，但通常制约性能的因素是在多数多媒体显示设备上，如图形、音频和视频设备，而不是代码。
+<p />
+许多优化技术并不针对ActionScript，而只是针对在没有优化编译器的情况下使用任意语言撰写代码的著名技术。 比如说，如果从循环中移除那些不会随着每个循环迭代而改变的项，而改为放置在循环外，则循环就会快一些。
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>注意</strong>: ActionScript接下来在这篇文档中的缩写是AS <br/>
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>注意</strong>: Virtual Machine接下来在这篇文档中的缩写是VM
+<p />
+<h2><a name="ActionScript大致说明"></a> ActionScript大致说明 </h2>
+<hr size="1" noshade="noshade">
+<p />
+以下的优化可以提升AS的执行速度。
+<p /> <ul>
+<li> 将SWFs发布到Flash Versio 8或者更高的版本。
+</li> <li> AS用得越少，文件性能就会越好。 请保持针对所给任务而撰写的代码数量的最小化。 AS首先应该用在互动方面，而不是用在创建图形元素方面。 如果您的代码着重使用了attachMovie调用，请重新考虑怎样来搭建FLA文件。
+</li> <li> 少量使用脚本动画；使用时间轴动画通常表现较好。
+</li> <li> 请不要执行过多的字符串操作
+</li> <li> 请不要过多使用一个"if"状态的循环视频剪辑以防中止。
+</li> <li> 请不要使用using on()或onClipEvent()事件处理器。 可以使用EnterFrame, onPress等。
+</li> <li> 在一个帧上尽量少放主要AS逻辑。 相反地，在函数中大量加入重要的代码。 重要的是，比起那些直接位于帧里或老式的事件处理器里的资源代码，Flash AS编译器可以生成更快速的资源代码。 就象时间轴控制(gotoAndPlay, 运行、停止等)和其他非重要逻辑那样，在帧中保持简单的逻辑是可以接受的。
+</li> <li> 请不要在有若干动画的长时间轴的视频短片中使用"长距离" gotoAndPlay/gotoAndStop。 <ol>
+<li> 万一执行了gotoAndPlay/gotoAndStop，则目标帧离现有帧越远， gotoAndPlay/gotoAndStop 时间轴控制所耗费的性能越多。 这样执行gotoAndPlay/gotoAndStop性能消耗最多的是从第一帧到最后一帧。
+</li> <li> 万一回到了gotoAndPlay/gotoAndStop，目标帧离时间轴开始的地方越远，对时间轴控制的性能消耗得越多。 这样回到 gotoAndPlay/gotoAndStop消耗性能最多的是从最后一帧到最后第二帧。
+</li></ol>
+</li> <li> 使用带有短时间轴的视频短片  gotoAndPlay/gotoAndStop性能消耗很大程度上取决于关键帧的数量和时间轴动画的复杂程度。 所以如果您要通过调用gotoAndPlay/gotoAndStop进行导航，就不要创建冗长而复杂的时间轴。 而是要把视频短片分割为若干个独立的视频短片，它们有更短的时间轴和更少的gotoAndPlay/gotoAndStop调用。
+</li> <li> 如果要同时更新很多内容，则有必要开发一套系统，这套系统能让这些内容更新成组的形式。 基于C++，使用一个GFxMovie::SetVariableArray调用可以从C++传输大量数据到AS。 这个调用接下来引出一个在上传数组上瞬间更新多个对象的单个调用。 将多个调用集合在一次调用中比对每个单一对象进行多次调用快很多倍。
+</li> <li> 不要试图在一个单个帧中执行太多的进程，否则GFx可能就没有时间来渲染Stage，用户也会觉得速度太慢。 相反，取消在较小块里执行的工作、让GFx在规定帧速率刷新Stage(状态)没有出现运行速度下降的情况。
+</li> <li> 不要过度使用Object(对象)类。 <ol>
+<li> 数据类型注释必须精确，因为它使编译器类检测识别bug。 当没有合理的选项时，只选择Object类。
+</li></ol>
+</li> <li> 请不要使用eval()函数或者数组访问操作器。 我们常用的做法是设置本地引用一次，这样效率更高。
+</li> <li> 将Array.length在一个循环之前分配到一个变量来充当它的条件，而不是使用 myArr.length自身。 比如：
+</li></ul>
+<p />
+    使用以下代码：
+<p />
+<div class="codesnippet">
+<pre>
+var fontArr:Array &#61; TextField.getFontList();
+var arrayLen:Number &#61; fontArr.length;
+‎for (var i:Number &#61; 0; i &#60; arrayLen; i++) {
+  trace(fontArr&#91;i]);
+}
+</pre>
+</div>
+<p />
+    Instead of:
+<p />
+<div class="codesnippet">
+<pre>
+var fontArr:Array &#61; TextField.getFontList();
+for (var i:Number &#61; 0; i &#60; fontArr.length; i++) {
+  trace(fontArr&#91;i]);
+}
+</pre>
+</div>
+<p /> <ul>
+<li> 巧妙、按类别管理事件。 在调用事件监听器数组前，使用条件来检测监听器(没有设成null)是否存在来保证数组的紧凑性。
+</li> <li> 显然，在发行针对对象的引用之前，通过调用removeListener()从对象中移除监听器。
+</li> <li> 尽量减少在包名称里的关卡数量以缩短启动的时间。 当启动时，AS VM要创建一系列的对象，每个关卡一个对象。 还有，在创建每个关卡对象前，AS编译器添加一个"if"条件来检测关卡是否已经创建。 这样根据包的格式 "com.xxx.yyy.aaa.bbb",VM会创建一个格式为"com", "xxx", "yyy", "aaa", "bbb" 的对象，并且在创建每个VM前会有一个"if"操作码来检测对象是否存在。 象 objects/classes/这样深入嵌套的函数访问速度也是很慢的，因为解析名称需要解析每一个关卡 (先解析"com", 其次是"xxx", 然后是"xxx"中的"yyy", 等等).。 为了避免这个附加内容消耗性能，一些Flash开发者在编译SWF之前，使用预处理器软件，来减少对单一关卡独立识别器的路径，比如c58923409876.functionName()。
+</li> <li> 如果一个应用程序包括多个使用同一个AS类的SWF文件，那么在编译中就会把那些类从所选的SWF文件中剔除。 这对降低内存运行的要求有所帮助。
+</li> <li> 如果在时间轴里关键帧上的AS需要许多时间来完成运行，请考虑分割代码在多个关键帧上执行。
+</li> <li> 当发布最终SWF文件时，从代码中移除trace()状态。 要执行该操作，在Publish Settings(发布设置)对话框里的Flash标签中选中Omit Trace Actions复选框，然后把它们注掉或删除。 这是一个使任何跟踪状态失效的高效方法，它在运行时用来调试。
+</li> <li> 继承增加了方法调用的数量并使用更多的内存。 一个包括所有其所需功能的类在运行时比一个从某超级类那里继承其部分功能的类更加高效。 这样，进在类的扩展性和代码的高效性上进行权衡方面进行设计就十分必要了。
+</li> <li> 当一个SWF加载另一个包括一个自定义AS类的SWF文件时(如下例： foo.bar.CustomClass)然后卸载这个SWF文件，这个类的定义仍然在内存中。 要节约内存，显然要删除在卸载SWF文件中的任何自定义类。 使用删除状态并指定完全符合要求的类名称，如下例所示： delete foo.bar.CustomCLass
+</li> <li> 不是所有的代码要运行每个帧，对那些非全程使用的重要项使用flip flop(每个帧只要交替部分代码的地方)。
+</li> <li> 尽可能少使用onEnterFrames。
+</li> <li> 预先计算数据表格，而不是使用数学函数。 <ol>
+<li> 如果运用了太多的数学方法，请考虑预先计算它们的数值，并把它们存储在(pseudo)变量数组中。 把这些数值从一个数据表格中提取出来比在运行中使用GFx来执行要快得多。
+</li></ol>
+</li></ul>
+<p />
+<p />
+<h3><a name="Loops(循环)"></a> Loops(循环) </h3> <ul>
+<li> 请注意优化循环以及任何重复动作。
+</li> <li> 限制所用循环的数量及每个循环所包括的代码量
+</li> <li> 一旦帧不再使用，停止基于帧的循环
+</li> <li> 不要从一个循环中多次调用一个函数。
+</li> <li> 在循环中最好有一个包含小函数的内容。
+</li></ul>
+<p />
+<p />
+<h3><a name="函数"></a> 函数 </h3> <ul>
+<li> 任何时候，只要可能，不要调用深入嵌套的函数。
+</li> <li> 不要在函数中使用“with”状态。 该操作关闭优化。
+</li></ul>
+<p />
+<p />
+<h3><a name="变量/属性"></a> 变量/属性 </h3> <ul>
+<li> 不要引用不存在的变量、对象或函数。
+</li> <li> 在任何可能的时候，使用"var"关键帧。 在函数中使用"var"关键帧特别重要，因为AS编译器通过索引使用内部注册码直接访问连接到本地变量，，而不是把它们放到哈希表格中按名称访问。
+</li> <li> 当本地变量要满员时，不要使用类变量或全局变量。
+</li> <li> 限制使用全局变量，因为如果定义它们的视频短片被移除了，它们将不再被回收
+</li> <li> 当不再需要变量时，将它们删除或设置成null。 这样数据就标识为垃圾回收 删除变量在运行时对优化内存使用是很有用的，因为垃圾数据从SWF文件中移除。 删除变量比把变量设置成null要好。
+</li> <li> 请尝试直接访问属性，而不是使用AS收集器和设定器方法，因为这两个工具会比其他方式调用更加损耗性能。
+</li></ul>
+<p />
+<p />
+<h2><a name="通用优化小技巧"></a> 通用优化小技巧 </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="Flash时间轴"></a> Flash时间轴 </h3>
+时间轴帧和图层是Flash授权场景中两个重要的组成部分。 这些区域显示在哪里放置物件，并决定您文档的工作方式。 怎样设置和使用时间轴与库影响到整个FLA文件和它们整体的使用范围和性能。
+<p /> <ul>
+<li> 尽量少使用基于帧的循环。 一个基于帧的动画依赖于应用软件的帧速率，它同基于时间的模型相反，基于时间的模型相并不同帧数相关。
+</li> <li> 一旦循环不再使用，则停止基于帧的循环。
+</li> <li> 如果可以，在多个帧中之间分拆复杂代码块
+</li> <li> 有几百行代码的脚本只是一个处理器，它同有上百个基于补间动画的帧的时间轴一样敏感。
+</li> <li> 评估内容来判断通过简化或时间轴是否能轻松地实现动画/互动并使用AS来制作模块。
+</li> <li> 不要使用默认的图层名称(如Layer 1,Layer 2)，因为当有复杂的文件参与其中，系统会将物件错误记忆或定位。
+</li></ul>
+<p />
+<h2><a name="通用性能优化"></a> 通用性能优化 </h2> <ul>
+<li> 合并变换来获取较好的性能有很多方法。 比如，人工计算一个矩阵而不是嵌套三个变换。
+</li> <li> 如果运行变慢超时，请检查内存泄漏。 请确认处理了不再使用的文件。
+</li> <li> 在授权时，不要使用过多的trace()状态或动态更新文本域，因为这些因素非常影响性能。 尽量不要频繁去更新(比如，除非当某些内容有所变化，否则不要经常更新)
+</li> <li> 如果可以应用，则放置包含AS的多个图层和一个在时间轴里图层栈顶部针对帧标签的图层。 比如，命名一个包含AS动作是一个常规的好方法。
+</li> <li> 不要将帧动作放在不同的图层，而是要在一个图层中集合所有的动作。 这会简化AS代码的管理并通过删除那些由于多次AS执行传入而消耗性能的内容来提升性能。
+</li></ul>
+<p />
+<h3><a name="运行"></a> 运行 </h3>
+如果执行运行时间太长，在此有七个优化方案：
+<p /> <ul>
+<li> 不要在每一个帧上执行AS。 也不要在EnterFrame处理器上执行，否则会导致每个帧上都会调用代码。
+</li> <li> 使用事件操控编程操作，只有在发生修改时，通过一个明确的调用通知来修改文本域和用户界面状态数值。
+</li> <li> 在不可见视频短片中停止动画(_visible属性应设为true，使用stop()函数来停止动画)。 这但不包括来自运行列表中的那些视频短片。 请注意，即使父类视频短片已经停止，也要停止在这个层上的每一单个视频短片，这点是十分必要的。
+</li> <li> 这里有一个涉及到_global.noInvisibleAdvance扩展使用的技术可供选择。 这个扩展可能对在没有停止每个不可见视频短片的情况下，从运行列表中排除不可见视频组有用。 如果将该扩展属性设置为"true"(真值)，则不会将不可见视频短片添加到运行列表中(包括它们的子类)，这样性能就得到了提升。 请记住，这个技术并不全是Flash可以编译的。 请确保Flash文件不依赖于在隐藏视频中所运行的每帧的任一类型。 请不要忘记通过将 _global.gfxExtensions设成真(True)，以使用这个(或者其他任何)扩展来开启GFx扩展。
+</li> <li> 减少正在运行的视频短片的数量。 限制视频短片不必要的嵌套，因为每个嵌套都会在运行中增加对性能的负担。
+</li> <li> 减少时间轴动画、关键帧数量和形状补间动画。
+</li> <li> 在GFx2.2或更早的版本中，可以避免静态视频短片运行在屏幕上可见，但不需要一个通过设将MovieClip.noAdvance属性设置为真(true)的一个进程和 onEnterFrame函数。 应将_global.gfxExtensions设成真值(ture)启用GFx扩展来使用该扩展。 请注意在大多数情况下，在gfX3.0和以后的版本中，不需要进行该操作。 GFx 3.0根本不会运行或处理停止的视频短片，因为它不再在运行中处理整个渲染图形，而是保留一个激活列表。 有了这项改进， noAdvance/noInvisibleAdvance就不再重要了，因为它们的主要目标是跳过部分图形处理。 它们仍然可能用在onEnterFrame的禁用或一些动画对象上，但是它已经不再是必要因素，并且通过其他方式也可以达到目的，比如移除 onEnterFrame处理器自身。
+</li></ul>
+<p />
+<h3><a name="on_ClipEvent和 on Events"></a> onClipEvent和 on Events </h3>
+不要使用onClipEvent()和on()事件。 相反，要使用onEnterFrame,onPress等，这样做有以下几个理由：
+<p /> <ul>
+<li> 函数样式的事件处理器在运行时可以安装和卸载。
+</li> <li> 这个在函数中的字节代码比起在旧版的onClipEvent和处理器上已经进行较好的优化。 主要的优化是预缓存 _global, arguments, super等，并针对本地变量使用256个了内部注册号。 这个优化只用于函数。
+</li></ul>
+<p />
+当您需要在执行第一帧之前安装onLoad函数样式的处理器时，这里只有一个问题。 在这个事例中，您可以使用没有归档的事件处理器 onClipEvent(construct)来安装onEnterFrame:
+<p />
+<div class="codesnippet">
+<pre>
+onClipEvent(construct) {
+  this.onLoad &#61; function() {
+    //function body
+  }
+}
+</pre>
+</div>
+<p />
+或者使用onClipEvent(load)从它这里调用一个常规函数。 但是这个步骤并没有什么作用，因为调用额外函数会增加性能负担。
+<p />
+<h3><a name="on_EnterFrame"></a> onEnterFrame </h3>
+尽量不要使用 onEnterFrame事件处理器，或最低限度，在必要的时候对它们进行安装和移除，而不是总是执行它们。 采用太多的onEnterFrame处理器会大大降低性能。 请考虑使用setInterval和setTimeout函数作为选择。 当使用setInterval时：
+<p /> <ul>
+<li> 请不要忘记在不再需要处理器的时候调用clearInterva。
+</li> <li> 如果setInterval和setTimeout比onEnterFrame使用频率高，那么它们可能比onEnterFrame速度慢 使用时间间隔的保守值来避免这个情况。
+</li></ul>
+<p />
+要移除onEnterFrame处理器可以使用删除操作器：
+<p />
+<div class="codesnippet">
+<pre>
+delete this.onEnterFrame;
+delete mc.onEnterFrame;
+</pre>
+</div>
+<p />
+不要将空值或未定义值赋予到onEnterFrame(比如，这个onEnterFrame=null)，因为这个操作不会完全移除onEnterFrame处理器。 GFx会试图解析这个处理器，因为带有onEnterFrame名称的部分仍然存在。
+<p />
+<h3><a name="Var 关键字"></a> Var 关键字 </h3>
+* 在任何可能的时候，使用"var"关键字。 在函数中这样操作尤为重要，因为AS编译器通过索引使用内部注册码直接访问连接到本地变量，，而不是把它们放到哈希表格中按名称访问 使用这个var关键字可以使AS函数的执行速度加倍。
+<p />
+Un-optimized Code:
+<div class="codesnippet">
+<pre>
+var i &#61; 1000;
+countIt &#61; function() {
+  num &#61; 0;
+  for(j&#61;0; j&#60;i; j++) {
+    j++
+    num +&#61; Math.random();
+  }
+  displayNumber.text &#61; num;
+}
+</pre>
+</div>
+<p />
+优化代码：
+<p />
+<div class="codesnippet">
+<pre>
+var i &#61; 1000;
+countIt &#61; function() {
+  var num &#61; 0;
+  var ii &#61; i;
+  for(var j&#61;0; j&#60;ii; j++) {
+    j++;
+    num +&#61; Math.random();
+  }
+  displayNumber.text &#61; num;
+}
+</pre>
+</div>
+<p />
+<h3><a name="预缓存"></a> 预缓存 </h3>
+预缓存通常访问在本地变量(带有var关键字)中的只读对象编号。
+<p />
+未优化的代码:
+<p />
+<div class="codesnippet">
+<pre>
+function foo(var obj:Object) {
+  for (var i &#61; 0; i &#60; obj.size; i++) {
+    obj.value&#91;i] &#61; obj.num1 &#42; obj.num2;
+  }
+}
+</pre>
+</div>
+<p />
+优化代码：
+<p />
+<div class="codesnippet">
+<pre>
+function foo(var obj:Object) {
+  var sz &#61; obj.size;
+  var n1 &#61; obj.num1;
+  var n2 &#61; obj.num1;
+  for (var i &#61; 0; i &#60; sz; i++) {
+    obj.value&#91;i] &#61; n1&#42;n2;
+  }
+}
+</pre>
+</div>
+<p />
+在其他情况中使用预缓存也同样高效。 一些其他的示例包括
+<p />
+<div class="codesnippet">
+<pre>
+var floor &#61; Math.floor
+var ceil &#61; Math.ceil
+num &#61; floor(x) ? ceil(y);
+var keyDown &#61; Key.isDown;
+var keyLeft &#61; Key.LEFT;
+if (keyDown(keyLeft)) {
+  // do something;
+}
+</pre>
+</div>
+<p />
+预缓存长路径
+<p />
+不要重复使用长路径，比如：
+<p />
+<div class="codesnippet">
+<pre>
+mc.ch1.hc3.djf3.jd9.&#95;x &#61; 233;
+mc.ch1.hc3.djf3.&#95;x &#61; 455;
+</pre>
+</div>
+<p />
+在本地变量中预缓存部分文件路径：
+<p />
+<div class="codesnippet">
+<pre>
+var djf3 &#61; mc.ch1.hc3.djf3;
+djf3.&#95;x &#61; 455;
+var jd9 &#61; djf3.jd9;
+jd9.&#95;x &#61; 223;
+</pre>
+</div>
+<p />
+<h3><a name="复杂表达式"></a> 复杂表达式 </h3>
+请不要使用c语言样式的复杂表达式，如：
+<p />
+<div class="codesnippet">
+<pre>
+this&#91;&#95;global.mynames&#91;queue]]&#91;&#95;global.slots&#91;i]].gosplash.text &#61; &#95;global.MyStrings&#91;queue];
+</pre>
+</div>
+<p />
+将这些表达式分成小块，立即存储在本地变量中：
+<p />
+<div class="codesnippet">
+<pre>
+var &#95;splqueue &#61; this&#91;&#95;global.mynames&#91;queue]];
+var &#95;splstring &#61; &#95;global.MyStrings&#91;queue];
+var slot&#95;i &#61; &#95;global.slots&#91;i];
+&#95;splqueue&#91;slot&#95;i].gosplash.text &#61; &#95;splstring;
+</pre>
+</div>
+<p />
+当这些分割部分里有多重引用的情况下，这点十分重要，比如在以下的循环中：
+<p />
+<div class="codesnippet">
+<pre>
+for(i&#61;0; i&#60;3; i++) {
+  this&#91;&#95;global.mynames&#91;queue]]&#91;&#95;global.slots&#91;i]].gosplash.text &#61; &#95;global.MyStrings&#91;queue];
+  this&#91;&#95;global.mynames&#91;queue]]&#91;&#95;global.slots&#91;i]].gosplash2.text &#61; &#95;global.MyStrings&#91;queue];
+   this&#91;&#95;global.mynames&#91;queue]]&#91;&#95;global.slots&#91;i]].gosplash2.text &#61; &#95;global.MyStrings&#91;queue];
+}
+</pre>
+</div>
+<p />
+这是一个对先前的循环所作的改进：
+<p />
+<div class="codesnippet">
+<pre>
+var &#95;splqueue &#61; this&#91;&#95;global.mynames&#91;queue]];
+var &#95;splstring &#61; &#95;global.MyStrings&#91;queue];
+for (var i&#61;0; i&#60;3; i++) {
+  var slot&#95;i &#61; &#95;global.slots&#91;i];
+  &#95;splqueue&#91;slot&#95;i].gosplash.text &#61; &#95;splstring;
+  &#95;splqueue&#91;slot&#95;i].gosplash2.text &#61; splstring;
+  &#95;splqueue&#91;slot&#95;i].gosplash2.textColor &#61; 0x000000;
+}
+</pre>
+</div>
+<p />
+以上代码可以稍后优化。 如果可能，删除对相同数组元素的多重引用。 在本地变量中预存解析对象：
+<p />
+<div class="codesnippet">
+<pre>
+var &#95;splqueue &#61; this&#91;&#95;global.mynames&#91;queue]];
+var &#95;splstring &#61; &#95;global.MyStrings&#91;queue];
+for (var i&#61;0; i&#60;3; i++) {
+  var slot&#95;i &#61; &#95;global.slots&#91;i];
+  var elem &#61; &#95;splqueue&#91;slot&#95;i];
+  elem.gosplash.text &#61; &#95;splstring;
+  var gspl2 &#61; elem.gosplash2;
+  gspl2.text &#61; splstring;
+  gspl2.textColor &#61; 0x000000;
+}
+</pre>
+</div>
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ScaleformActionScriptBestPracticesCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:28:05 GMT -->
+</html></body>

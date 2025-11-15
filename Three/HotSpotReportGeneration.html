@@ -1,0 +1,456 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/HotSpotReportGeneration.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:26 GMT -->
+<head>
+<title> UDK | HotSpotReportGeneration    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">HotSpotReportGeneration  </b></div>
+<div id="tooltext">
+<a href="HotSpotReportGenerationJP.html" class="twikiLink">日本語訳</a><br><a href="HotSpotReportGenerationCH.html" class="twikiLink">中国翻译</a><br><a href="HotSpotReportGenerationKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/HotSpotReportGeneration -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="PerformanceHome.html" class="twikiLink">Performance, Profiling, and Optimization</a></b> &gt; <b><a href="MemoryProfilingHome.html" class="twikiLink">Memory Usage and Profiling</a></b> &gt; Hot Spot Report Generation
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Hot Spot Report Generation"></a> Hot Spot Report Generation </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="HotSpotReportGeneration.html#Hot Spot Report Generation"> Hot Spot Report Generation</a> <ul>
+<li> <a href="HotSpotReportGeneration.html#Overview"> Overview</a>
+</li> <li> <a href="HotSpotReportGeneration.html#Creating Raw _MemLeakCheck Data"> Creating Raw MemLeakCheck Data</a>
+</li> <li> <a href="HotSpotReportGeneration.html#Creating CSVs To Pull Data From"> Creating CSVs To Pull Data From</a>
+</li> <li> <a href="HotSpotReportGeneration.html#Parsing For Overall Trending Data"> Parsing For Overall Trending Data</a>
+</li> <li> <a href="HotSpotReportGeneration.html#Parsing Individual Level CSVs"> Parsing Individual Level CSVs</a>
+</li> <li> <a href="HotSpotReportGeneration.html#Preparing 'Human-Friendly' Hot Spot Reports For Level Designers"> Preparing 'Human-Friendly' Hot Spot Reports For Level Designers</a>
+</li> <li> <a href="HotSpotReportGeneration.html#Items To Be Called Out"> Items To Be Called Out</a>
+</li> <li> <a href="HotSpotReportGeneration.html#Items To Avoid"> Items To Avoid</a>
+</li> <li> <a href="HotSpotReportGeneration.html#Preparing A Followup Hot Spot Report"> Preparing A Followup Hot Spot Report</a>
+</li> <li> <a href="HotSpotReportGeneration.html#Long Duration Runs"> Long Duration Runs</a>
+</li> <li> <a href="HotSpotReportGeneration.html#Cold Spot Reports"> Cold Spot Reports</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The below article explains how to create "Hot Spot Reports" for your level designers. These reports will be created by your QA department and are useful in identifying memory dips due to sub-levels streaming in and out. They will allow your LDs to better see which buckets are costing the most memory, and should allow them to optimize their levels to better fit in memory.
+<p />
+<h2><a name="Creating Raw _MemLeakCheck Data"></a> Creating Raw MemLeakCheck Data </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+To get the raw data that we will use to plot the memory status for SP levels you will need to do the following:
+<p />
+<ol>
+<li>Load up UnrealConsole, and connect to the instance of the game that will be used for this test.</li>
+<li>Launch into DebugConsole executable in the build you intend to capture from. </li>
+<li>Load into the SP level you intend to do a capture for. </li>
+<li>Once in the level use the following command:
+<div style="margin:20px 0px;">
+	<div style="margin: 0px 10px; padding: 0px 10px;background:#f0f0f0;font:12px Courier;">
+	<code>DoMemLeakchecking 30</code>
+	</div>
+<p />
+	The 30 denotes the number of seconds between memleakcheck captures. You can increase or decrease the frequency as necessary, but generally you will want to keep this number consistent in order to properly track trending over time.
+</div>
+</li>
+<li>Turn on <code>stat levels</code> to be able track when the P-level is going to change. </li>
+<li>Progress through the entire P-level and transition to next P-level. </li>
+<li>After 2 captures into the P-level that you transition into back out to the main menu and/or reboot. </li>
+<li><font color="#ff0000"><b>Always reboot before starting another level capture.</b></font></li>
+<li>The memleakcheck files will be created in the following folder, depending on the platform being profiled:
+	<div style="margin:20px 0px;">
+		<ul>
+		    <li>For PC/UDK:
+				<div style="margin:20px 0px;">
+					<div style="margin: 0px 10px; padding: 10px;border:1px solid #000;font:12px Courier;">
+					<code>[install]\[GameName]\Profiling\MEMLEAKS</code>
+					</div>
+				</div>
+			</li>
+		    <li>For iOS (after backing up the documents directory to PC. See <a href="UnrealiPhonePackager-2.html#Deployment Tools">Deployment Tools</a> for info on backing up the documents directory.):
+				<div style="margin:20px 0px;">
+					<div style="margin: 0px 10px; padding: 10px;border:1px solid #000;font:12px Courier;">
+					<code>[install]\[GameName]\iOS_Backups\[DeviceName]\Profiling\MemLeaks</code>
+					</div>
+		   		</div>
+		   	</li>
+<!--  -->
+		</ul>
+	</div>
+</li>
+<li>Each memleakfile will be parsed into a folder named after the level it was started in.
+<div style="margin:20px 0px;">
+	For example, if you began a capture in <strong>level-a</strong>, and progressed into <strong>level-b</strong> and <strong>level-c</strong> captures for this entire run would be in the <strong>level-a</strong> folder.
+</div>
+</li>
+<li>Copy these memleakcheck files/folders into a location that can be reached easily. </li>
+</ol>
+<p />
+<h2><a name="Creating CSVs To Pull Data From"></a> Creating CSVs To Pull Data From </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<ol>
+<li>Launch the memleakcheckdiffer.exe from the following folder:
+<div style="margin:20px 0px;">
+	<div style="margin: 0px 10px; padding: 10px;border:1px solid #000;font:12px Courier;">
+	<code>..\Binaries\</code>
+	</div>
+</div>
+</li>
+<li>In the MemLeakCheckDiffer, Choose <code>File &gt; Open</code> all Memleak files in a folder and sub-folders </li>
+<li>Browse, and Navigate to the folder where you placed your memleakcheck files. </li>
+<li>Wait for the folders to populate the MemLeakCheckDiffer. </li>
+<li>Once all of the folders have populated MemLeakCheckDiffer window, choose to <code>Generate Overall Report</code>.</li>
+<li>CSVs for each level will be generated, and a GlobalSummary CSV will also be created. </li>
+<li>CSVs are located inside the folder that your MemLeakCheck files were placed. </li>
+</ol>
+<p />
+<h2><a name="Parsing For Overall Trending Data"></a> Parsing For Overall Trending Data </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<ol>
+<li>Open the GlobalSummary spreadsheet in Excel. </li>
+<li>To more easily visualize the content data, hide all of the rows outside of the following:
+<div style="margin:20px 0px;"> <ul>
+<li> LowestTFP
+</li> <li> AnimSequenceClasses
+</li> <li> SkeletalMesh_Classes
+</li> <li> SoundNodeWave
+</li> <li> StaticMesh_Classes
+</li></ul>
+</div>
+</li>
+<li>Highlight these 5 rows starting with the bucket name and ending with the last value in the row. </li>
+<li>After they are selected, choose to <code>Insert &gt; Line Graph</code>. </li>
+<li>This will give you a quick glimpse of the state of each of the content buckets as well as overall memory trending on the level. </li>
+</ol>
+<p />
+<h2><a name="Parsing Individual Level CSVs"></a> Parsing Individual Level CSVs </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+After you have an idea of where the dips are you will need to work to figure out which content buckets grew to cause the memory change to happen. This is a matter of finding the lowest memory value from a particular dip, and taking the values of the buckets from the dip and subtracting from it the value of the buckets before the dip began. This will allow you to easily tell which content buckets caused the most problems at this location.
+<p />
+For example if the level had 10 MB of AnimSequence Class data before a dip, and once the dip begins it increased to 25 MB in this bucket the LD and other devs will know that something that required a lot of animation data was loaded here, and this to cause the level to go low on memory.
+<p />
+This data should be included along with each dip whenever possible. Simply letting the LD know how much the content buckets changed along w/ the sub-levels that were loaded when a dip occurs can often be enough to allow them to work out what needs to be shifted around or what might need to be trimmed from the level.
+<p />
+<h2><a name="Preparing 'Human-Friendly' Hot Spot Reports For Level Designers"></a> Preparing 'Human-Friendly' Hot Spot Reports For Level Designers </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+When preparing a hot spot report for a level designer you need to keep in mind that you want to deliver as much actionable information as possible. This means they will need to know what was going on when the memory dipped. To this end we make sure to include a list of the new sub-levels that streamed in when the memory began to go lower.
+<p />
+We also provide a bugit location that can take the LD directly to the area of the level before the dip occurs in order to allow them to look around at this location in the editor or in game to make they are familiar with what is going on here and how much might need to be changed.
+<p />
+Below is an example of our hot spot reports:
+<p />
+<div style="margin: 0px 10px; padding: 10px;border:1px solid #000;">
+The lowest memory reached during this test was 20 MB when the following sublevels were loaded :
+<p /> <ul>
+<li> SP_Example_W
+</li> <li> SP_Example_02_boss
+</li> <li> SP_Example_02_S
+</li> <li> SP_Example_03
+</li> <li> SP_Example_04
+</li></ul>
+<p />
+From the graph below you can see there are 2 dips below the 30 MB mark:
+<p />
+<img src="rsrc/Three/HotSpotReportGeneration/examplegraph.jpg" alt="examplegraph.jpg" width="800" height="418" />
+<p />
+<strong>1st Dip</strong>
+<p />
+The following bugit loc will take you to the area of the level directly before this dip occurs:
+<p />
+<div style="margin: 0px 10px; padding: 0px 10px;background:#f0f0f0;font:12px Courier;">
+<pre>
+BugItGo -1858.2000 -2162.7903 1572.0010 64073 -16686 0&#61;
+</pre>
+</div>
+<p />
+During this dip Anim Sequence Classes increased 15 MB, Skeletal Mesh Classes increased 5 MB, Sound Node Waves increased 5 MB, and Static Mesh Classes increased 2 MB.
+<p />
+The following new sublevel(s) streamed in between the 3rd and 6th captures where the first part of this dip occurs:
+<p /> <ul>
+<li> SP_Example _Cine
+</li></ul>
+<p />
+<strong>2nd Dip</strong>
+<p />
+The following bugit loc will take you to the area of the level directly before 2nd dip occurs:
+<p />
+<div style="margin: 0px 10px; padding: 0px 10px;background:#f0f0f0;font:12px Courier;">
+<pre>
+BugItGo 904.3768 261.3029 1761.1804 -4788 -20256 72
+</pre>
+</div>
+<p />
+During this dip Anim Sequence Classes increased 10 MB, Skeletal Mesh Classes increased 2.5 MB, Sound Node Waves increased 5 MB, and Static Mesh Classes increased 1 MB.
+<p />
+The following sub-levels streamed in during this 2nd  dip, between the 8th and 12th captures:
+<p /> <ul>
+<li> SP_Example_02_boss
+</li> <li> SP_Example_02_S
+</li> <li> SP_Example_03
+</li></ul>
+<p />
+</div>
+<p />
+<h2><a name="Items To Be Called Out"></a> Items To Be Called Out </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Any large changes in a single bucket where a dip occurs is usually a good thing to call out. In many cases things like cinematics will cause certain buckets to go up a large amount because of bugs that are simple fixes like turning bake and prune on. It is always good to get all of the low hanging fruit such as this as quickly as possible.
+<p />
+<h2><a name="Items To Avoid"></a> Items To Avoid </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+When compiling a hot-spot report you will want to avoid calling out buckets that the LDs can't have an effect on. You also want to determine if there are any buckets that aren't giving actionable data. In the case of our tests Texture pool stats were not a valid bucket to look at for memory because of the way they were capped was different than what was being recorded.
+<p />
+<h2><a name="Preparing A Followup Hot Spot Report"></a> Preparing A Followup Hot Spot Report </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Followup reports allows LDs to see how much improvement or decline has happened since they received the first memory report. It is important to send out a follow-up report when memory has improved  (even when the memory is good enough that another report isn't necessary) to help the LD understand the changes they are making are having a positive impact.
+<p />
+The ultimate goal is to get and keep the levels in memory, and having LDs looking forward to seeing how their level currently stacks up is a big part of making that happen.
+<p />
+<h2><a name="Long Duration Runs"></a> Long Duration Runs </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Once enough levels are in memory it is time to begin doing longer duration memory runs on multiple levels. To do this you merely need to find a large stretch of levels without blockers and start the <code>domemleakchecking 30</code> command and play as far as possible. We run with <code>reducepoolsize</code> during these runs so we can get the longest stretch possible.
+<p />
+Using this data you can compare the difference between the individual level runs and continuous runs to get a basic memory delta between the two. Looking at this delta will give you an idea of how much overhead you will need to start building into individual levels, and will help to locate any memory leaks that may be happening.
+<p />
+<h2><a name="Cold Spot Reports"></a> Cold Spot Reports </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Once memory dips have been resolved, and the game is within memory constraints (and if time permits) a cold spot report system can be implemented. What this means is that the same process to gather memory over time is done, but now you will want to concentrate on what areas have room to add rather than need to cut back. Done early enough this will allow LDs to flesh out areas better that are well within memory constraints.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/HotSpotReportGeneration.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:27 GMT -->
+</html></body>

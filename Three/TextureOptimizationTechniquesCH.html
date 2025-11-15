@@ -1,0 +1,425 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TextureOptimizationTechniquesCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:09 GMT -->
+<head>
+<title> UDK | TextureOptimizationTechniquesCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">TextureOptimizationTechniquesCH  </b></div>
+<div id="tooltext">
+<a href="TextureOptimizationTechniques.html" class="twikiLink">English Translation</a><br><a href="TextureOptimizationTechniquesJP.html" class="twikiLink">日本語訳</a><br><a href="TextureOptimizationTechniquesKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/TextureOptimizationTechniquesCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="MaterialsAndTexturesHome.html" class="twikiLink">材质 &amp; 贴图</a></b> &gt;贴图优化技术<br/>
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt; <b><a href="PerformanceHome.html" class="twikiLink">性能分析及优化</a></b> &gt; <b><a href="ContentProfilingHome.html" class="twikiLink">内容分析及优化</a></b> &gt; 贴图优化技术
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="贴图优化技术"></a> 贴图优化技术 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="TextureOptimizationTechniquesCH.html#贴图优化技术"> 贴图优化技术</a> <ul>
+<li> <a href="TextureOptimizationTechniquesCH.html#概述"> 概述</a>
+</li> <li> <a href="TextureOptimizationTechniquesCH.html#内容评定"> 内容评定</a>
+</li> <li> <a href="TextureOptimizationTechniquesCH.html#主要材质默认值">主要材质默认值</a>
+</li> <li> <a href="TextureOptimizationTechniquesCH.html#检查材质引用"> 检查材质引用</a>
+</li> <li> <a href="TextureOptimizationTechniquesCH.html#通道合并和联合"> 通道合并和联合</a>
+</li> <li> <a href="TextureOptimizationTechniquesCH.html#最后总结"> 最后总结</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+当进行游戏开发时，内存和磁盘空间的使用是个永恒的问题。当内容占用了大量的内存和磁盘空间时，罪魁祸首可能就是所使用的贴图。一般情况下这是由于添加到内存池中的贴图没有进行仔细的规划及有效地利用通道合并。
+<p />
+本文介绍了一些清除低效率的贴图应用的技术，从而尽早制作出更加巧妙的、更加高效的内容，而不是等到项目结束再做处理。
+<p />
+<h2><a name="内容评定"></a> 内容评定 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+如果您在开发过程中遇到了磁盘空间相关的问题，运行对磁盘中内容的评定可能会对哪些地方可以节约内存有进一步的理解。这通常是个快速的过程，因为大部分评定都是基于目测。在通用浏览器中看一下包中的贴图就可以很快地知道哪些地方浪费了磁盘空间。
+<p />
+比如：
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/assessment.jpg" alt="assessment.jpg" width="644" height="580" />
+<p />
+<h2><a name="主要材质默认值"></a> 主要材质默认值 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+其中一个不必把大材质加入到游戏内容中的情况是使用主要材质应用。当使用主要材质中的贴图样本参数时，贴图必须应用到那个参数上，但是通常不会看到它，因为每个子材质会根据特定需要覆盖那个材质。
+<p />
+以下显示的包中的 <em>T_Test_Mask</em> 贴图就是这种情况的一个很好的例子。通过检查主要材质，我们可以看到它被应用到了贴图样本参数上。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/master_default.jpg" alt="master_default.jpg" width="481" height="319" />
+<p />
+这个贴图尺寸为512x512，这个材质在实际游戏中从来没有用过或看见过，它只是作为主要材质中的默认值。问题主要材质中的任何贴图都会进入到子项中，不管子项材质是否会覆盖它。这问题可以通过使用简单的8x8个像素的黑色贴图简单地替换这个贴图来解决，该黑色贴图应该存放在通用的包中，以供很多具有类似设置的主要材质重复使用。同时需要注意的是，如果您有一个法线贴图使用贴图样本参数的材质，那么需要使用一个独立的占位符贴图，因为您一般总是想用一个法线贴图作为法线贴图的占位符。
+<p />
+<h2><a name="检查材质引用"></a> 检查材质引用 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+当分析材质时，注意那些不是通道合并效果一部分的贴图(比如，它不是RGB图像中的一个单独的通道)。这些是很容易修复的主要的浪费资源的贴图。示例如下所示：
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/effect_no_pack.jpg" alt="effect_no_pack.jpg" width="599" height="316" />
+<p />
+这个效果使用了看上去是灰度贴图的RGB输出，所以该贴图显然不是通道合并贴图的一部分。为了进一步调查，通过按下 <img alt="find_in_browser.jpg" src="#" /> 按钮将它同步到浏览器中，找到贴图样本的 <code>Texture</code>  属性。在这个示例中，您可以看到贴图是个 512x512噪声平铺图。
+<p />
+下一步是找出是否有其他任何对象使用该贴图。右击贴图并从关联菜单中选择 <em>Find All Materials Using This Texture(找到使用这个贴图的所有材质)</em> 。这个命令是非常有用的，因为它会产生一个使用了正在讨论的贴图的材质集合。第一次运行该命令时较慢(根据游戏内容的尺寸不同在某些实例中大约花费5分钟的时间)。但是，一般在第一次运行之后会非常快的。
+<p />
+一旦生成了集合，选中它查看正在引用该贴图的其他资源。
+<p />
+在这个示例中，有很少的几个材质，所以它可可能在游戏中大量内容中共享。这没有暗示删除它将会获得内存节约，但是请记住这点，以便在需要更深层的优化的情况中使用。
+<p />
+<h2><a name="通道合并和联合"></a> 通道合并和联合 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+检查以前的包，可能有三个贴图是浪费空间的：
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/assessment_waste.jpg" alt="assessment_waste.jpg" width="644" height="580" />
+<p />
+每个贴图是一个尺寸为1024x1024的自发光贴图，具有三个颜色通道。同时，注意如何仅使用了每个贴图的一小部分。所有这些黑色像素正在不必要地占用内存。这里的问题是双重的，但是解决方案非常简单： 通过把每个贴图放到一个单独的通道中并剪辑它们使其使用尽可能少的贴图像素，从而来把贴图合并成一个单一的贴图中。
+<p />
+自发光贴图应用这种优化是非常理想的，因为它们柔弱、容易剪辑、并且没有太多细节。它们一般也不会对材质的整体外观造成很大影响。当然，如果不是这种情况，那么可能这个优化对那些特殊贴图和情况并不理想。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/emissive_mesh.jpg" alt="emissive_mesh.jpg" width="900" height="453" />
+<p />
+通过剪辑这些自发光贴图然后执行‘通道合并’可以节约大量的内存空间。首先，剪辑所有的自发光贴图，使它们适合256x256大小的区域。在某些情况下可能不仅仅是简单的剪辑。比如，您或许要沿着水平方向或垂直放下剪辑，然后沿着另一个方向缩放来压扁贴图。然后您可以在材质中展开压扁的材质，看一下显示是否正常。柔和的自发光贴图应该仍然是很好的。但是对于具有尖锐边缘的自发光贴图来说这就不是那么好了。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/emissive_crop.jpg" alt="emissive_crop.jpg" width="768" height="256" />
+<p />
+现在，在Photoshop中，我将对这些自发光贴图进行通道合并，这意味着我将把每个自发光贴图存储到编译的3通道贴图中的每个颜色通道中。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/emissive_pack.jpg" alt="emissive_pack.jpg" width="557" height="258" />
+<p />
+<font color="#ff0000"><b>关于颜色合贴图一个有用的注意事项是，我们使用的压缩格式是DXT1，它通过压缩机制中的方法把额外的数据位存储到贴图的绿色通道中。因此，如果您有一个需要较高频率细节的或者是非常精细的高光贴图，那么可以把它放到绿色通道中以获得最好的质量。</b></font>
+<p />
+现在，即时把贴图大小剪辑为256,贴图仍然有可能具有大量的内存空间浪费。如果空间就是那些，并且在材质中已经对贴图进行了剪辑和偏移，那么为什么没有获得质量提升哪？ 通过获取一个贴图的高分辨率源美术资源，您可以在那个自发光贴图的高分辨率版本中进行剪辑，从而增加了那个通道中贴图的质量但是仍然使用同样的空间大小。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/emissive_highres.jpg" alt="emissive_highres.jpg" width="512" height="256" />
+<p />
+同时需要注意的是如果您正在想“如果我要包含第四个自发光贴图，那么我为什么向贴图中添加另一个通道哪？” <font color="#ff0000"><b>这里的问题是4个通道的贴图压缩为DXT5而不是DXT1，从压缩的角度来讲，DXT5的alhha通道是全分辨率，这意味着它占用和三个组合的颜色通道一样的内存。</b></font> 这是为什么DXT5占用空间较大的原因。
+<p />
+这时，您可以保存并导出通道合并的贴图。
+<p />
+现在，需要设置主要材质以便支持剪辑和偏移自发光贴图。这确实给着色器添加了一些复杂性(6个指令)，但是因为您的贴图池占用量或许已经很高了，所以使用这几个指令是值得的。
+<p />
+如果您恰好知道主要着色器因为贴图而延迟，这意味着它需要花费更多的时间来处理贴图样本，那么处理像素着色器指令所以添加几个指令根本不会影响性能。您可以从材质的PIX捕获物中找到这个现象，并使用微软性能分析工具分析它。
+<p />
+最初，着色器仅直接获得自发光贴图。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/emissive_no_offset.jpg" alt="emissive_no_offset.jpg" width="236" height="178" />
+<p />
+我们需要可以在材质上偏移和到处移动贴图，所以可以添加一些简单的着色器数学表达式来处理这些情况，使用基于每个材质实例的参数。
+<p />
+<span style="font:italic 10px arial;">(点击获得完整尺寸)</span>
+<p />
+<a href="rsrc/Three/TextureOptimizationTechniquesCH/emissive_offset.jpg" Target="NEW"><img src="rsrc/Three/TextureOptimizationTechniquesCH/emissive_offset_small.jpg" alt="emissive_offset_small.jpg" width="900" height="382" /></a>
+<p />
+Static Switch Parameter(静态开关参数)允许您决定是否基于每个实例剪辑自发光贴图。<font color="#ff0000"><b>静态开关作为一个二进制开关工作，这意味着如果您设置它为打开状态，它仅使用连接到“A”输入端的着色器指令；如果设置它为关闭状态，那么它将使用“B”端的指令。这意味着除非您“选择那样做”，否则您不会有额外的性能消耗。</b></font>
+<p />
+<em>关于开关的一个有用的注意事项，<font color="#ff0000"><b>总是使用动词来命名开关参数是个好主意。</b></font>比如，从切换开关创建一个动作。这将告诉第一次看到这个材质的人这两个选项的意思。比如，如果您将一个开关命名为"CroppedEmissive(剪辑自发光贴图)"，然后您查看着色器，您怎么知道那个选项对应哪个状态哪？ 如果命名为"UseCroppedEmissive(使用剪辑自发光贴图功能)"，别人一看名称就知道这个开关的动作、它所处的状态及是否选中了值。所以总是以动词命名开关参数。</em>
+<p />
+这里的参数是非常简单的，参数 <em>Char_Emissive_CropOffset</em> 允许自发光贴图的X和 Y坐标轴闪光以便进行操作，然后X和Y缩放参数允许您独立地在一个坐标轴或另一个轴上缩放贴图。这允许您展开任何"压扁"的自发光贴图！
+<p />
+有几种方法可以改进这个数学表达式，或许还会节约一两个指令，但是这个方法是向别人展示您所具有的不同选项的最好方法。
+<p />
+接下来，您需要选择要使用RGB通道合并贴图的哪个通道。添加一个StaticComponentMaskParameter到材质中允许选择性地使用新的合并贴图中的任何颜色通道，通过在着色器链中仅传入三个可能通道中其中一个来完成。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/emissive_channel_mask.jpg" alt="emissive_channel_mask.jpg" width="841" height="187" />
+<p />
+现在，点击主要着色器上的Apply（应用）按钮，并打开其中一个使用主要材质作为父项的实例，以便您可以测试查看修改是否能够正常运作。
+<p />
+首先，打开静态开关来使用剪辑的自发光贴图。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/emissive_usecropped.jpg" alt="emissive_usecropped.jpg" width="399" height="19" />
+<p />
+然后，应用新的合并贴图到自发光插槽中：
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/emissive_texture.jpg" alt="emissive_texture.jpg" width="399" height="19" />
+<p />
+选择要使用的颜色通道(这里是red(红色)):
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/emissive_componentmask.jpg" alt="emissive_componentmask.jpg" width="399" height="95" />
+<p />
+设置缩放参数为2，从而使得自发光贴图的大小正好适合材质。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/emissive_scale.jpg" alt="emissive_scale.jpg" width="399" height="38" />
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/emissive_wrap.jpg" alt="emissive_wrap.jpg" width="490" height="489" />
+<p />
+<font color="#ff0000"><b>好了，现在它看上去还是不正确的。为什么不正确哪？ 因为这个贴图不是CLAMPED。默认情况下，任何新到入到UE3中的贴图在它的贴图属性中都将其设置为WRAP。这意味着，如果平铺贴图，它经不断的重复。在浏览器中双击贴图，并设置它为CLAMP 。</b></font>
+<p />
+<img src="#" alt="emissive_texclamp.jpg" width="340" height="38" />
+<p />
+在这里，同时设置这些标志：
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/emissive_preserveborder.jpg" alt="emissive_preserveborder.jpg" width="340" height="57" />
+<p />
+因为我们贴图的所有边缘像素都是黑色，所以这意味着无论显示哪个mip级别它们敬爱那个总是黑色的。这将防止当您距离贴图非常远时出现模糊现象。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/emissive_clamp.jpg" alt="emissive_clamp.jpg" width="490" height="489" />
+<p />
+效果好了一些！ 现在，使用参数偏移贴图。目测操作就可以足够好，但是如果您愿意，可以在photoshop中进行数学操作，从知道要输入到这些框中的精确的剪辑值。在这个示例中，由于一致性，它恰好对齐，必须要偏移。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/emissive_cropoffset.jpg" alt="emissive_cropoffset.jpg" width="399" height="95" />
+<p />
+在材质实例中修改自发光颜色，并检查它：
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/emissive_color.jpg" alt="emissive_color.jpg" width="399" height="95" />
+<p />
+在其他使用新的合并自发光贴图饿材质实例上执行同样的过程。这里，您可以看到最终的结果：
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/emissive_mesh_final.jpg" alt="emissive_mesh_final.jpg" width="900" height="453" />
+<p />
+现在要去掉没有使用的贴图。为了达到这个目的，我们使用了consolidate（联合）命令:
+<p />
+选中3个旧贴图和我们刚制作的新贴图。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/emissive_select.jpg" alt="emissive_select.jpg" width="644" height="573" />
+<p />
+右击，选择Consolidate(联合)。<font color="#ff0000"><b>这将会删除这三个旧贴图，将它们永久地重定向为第四个贴图。您可以在包上执行这个处理，但是安全起见，动手前请勾掉EVERYTHING 。这个操作不能回复，所以使用时要小心！</b></font>
+<p />
+将弹出对话框：
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniquesCH/emissive_consolodate.jpg" alt="emissive_consolodate.jpg" width="502" height="224" />
+<p />
+选择新合并的自发光贴图，然后点击 <img alt="consolidate_button.jpg" src="rsrc/Three/TextureOptimizationTechniquesCH/consolidate_button.jpg" /> 按钮。其他三个贴图永远地消失了，但是新贴图仍然存在。再次说明， <strong>一定要小心！</strong> 否则会导致很严重的问题！  确保保存包。
+<p />
+<h2><a name="最后总结"></a> 最后总结 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> 当打包UVs时，尽量把自发光贴图紧密地合并到一起！ 这使得剪辑它们变得更加容易，并且节约内存。
+</li> <li> 在开始设计时就设置类似的处理，以减少最后的麻烦。
+</li> <li> 有时候着色器复杂度妥协相对于所节约的空间来说并不值得。这种情况很少，具体问题具体分析。一般应该总是值得的。
+</li> <li> 如果质量可以，即使不剪辑您的自发光贴图，通道合并这些自发光贴图仍然是个好主意。
+</li> <li> <em>Consolidate(联合)...</em> 和 <em>Find All Materials Using This Texture(查找使用这个贴图的材质)</em> 是强大的工具。
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TextureOptimizationTechniquesCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:15 GMT -->
+</html></body>

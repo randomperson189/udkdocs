@@ -1,0 +1,420 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/InstrumentingGameStatistics.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:40:45 GMT -->
+<head>
+<title> UDK | InstrumentingGameStatistics    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">InstrumentingGameStatistics  </b></div>
+<div id="tooltext">
+<a href="InstrumentingGameStatisticsJP.html" class="twikiLink">日本語訳</a><br><a href="InstrumentingGameStatisticsCH.html" class="twikiLink">中国翻译</a><br><a href="InstrumentingGameStatisticsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/InstrumentingGameStatistics -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="Collecting Game Statistics In Your Game"></a> Collecting Game Statistics In Your Game </h1>
+<p />
+<em>Document Summary: This document details the structures, functionality and procedures necessary to successful instrument your game with stats collection.</em>
+<p />
+<em>Document Changelog: Initial Version by <a href="https://udn.epicgames.com/Main/JoshMarkiewicz" class="restricted" class="restricted" class="twikiLink">Josh Markiewicz</a> 05/11/2009. Updated by <a href="https://udn.epicgames.com/Main/JeffWilson" class="restricted" class="restricted" class="twikiLink">Jeff Wilson</a>.</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="InstrumentingGameStatistics.html#Collecting Game Statistics In Your Game"> Collecting Game Statistics In Your Game</a> <ul>
+<li> <a href="InstrumentingGameStatistics.html#Overview"> Overview</a>
+</li> <li> <a href="InstrumentingGameStatistics.html#File Format"> File Format</a>
+</li> <li> <a href="InstrumentingGameStatistics.html#Data Structures"> Data Structures</a>
+</li> <li> <a href="InstrumentingGameStatistics.html#Events"> Events</a>
+</li> <li> <a href="InstrumentingGameStatistics.html#GameplayEventWriter"> GameplayEventWriter</a> <ul>
+<li> <a href="InstrumentingGameStatistics.html#Starting A Log Session"> Starting A Log Session</a>
+</li> <li> <a href="InstrumentingGameStatistics.html#Logging Events"> Logging Events</a>
+</li> <li> <a href="InstrumentingGameStatistics.html#Ending A Log Session"> Ending A Log Session</a>
+</li></ul>
+</li> <li> <a href="InstrumentingGameStatistics.html#GameplayEventReader"> GameplayEventReader</a> <ul>
+<li> <a href="InstrumentingGameStatistics.html#Open The Stats File"> Open The Stats File</a>
+</li> <li> <a href="InstrumentingGameStatistics.html#Walk The Data Stream"> Walk The Data Stream</a>
+</li> <li> <a href="InstrumentingGameStatistics.html#Handle Each Event"> Handle Each Event</a>
+</li> <li> <a href="InstrumentingGameStatistics.html#Close The File"> Close The File</a>
+</li> <li> <a href="InstrumentingGameStatistics.html#Filtering The Data"> Filtering The Data</a>
+</li> <li> <a href="InstrumentingGameStatistics.html#Summary"> Summary</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<p />
+The idea behind statistics gathering in engine was to provide game designers with useful data captured during play sessions throughout game development.  It must be flexible, fast, and exhaustive.  Flexible to rapidly change with the needs of designers, fast in that it can capture lots of data in realtime without disrupting gameplay, and exhaustive for historical comparison and data mining.  To that end, the system uses lightweight data structures streamed to disk with buffered I/O and versioning support.  Effort was made to make sure that older files will always be readable even as the data captured or their format changes.
+<p />
+Since a gameplay session is never the same twice, the file format has to support the streaming of data in any order.  This is defined below.
+<p />
+Once you've collected some data, head on over to the <a href="GameStatsVisualizerReference.html" class="twikiLink">reference on using the Game Stats Visualizer</a>.
+<p />
+
+<p />
+<h2><a name="Events"></a> Events </h2>
+<p />
+All events supported initially by the engine are defined in GameStats.uci.  Event IDs have been organized into logical groupings, with game specific identifiers starting above 1000.  You can keep your assignment organized however you wish, making sure they are unique of course.  By using the macros and events defined in this file, you can begin to record information about your play sessions.   See GameStats.uci for more information on the support event types already defined.
+<p />
+<h2><a name="GameplayEventWriter"></a> GameplayEventWriter </h2>
+<p />
+This class handles all the writing of the data to disk.  It handles file creation, buffering, and closing.  Use the various logging functions defined to record information about your playsessions.  Of course you can override functionality as you wish.
+<p />
+<h3><a name="Starting A Log Session"></a> Starting A Log Session </h3>
+<p />
+<pre>StartLogging(optional float HeartbeatDelta)</pre>
+<p />
+This function is called at the beginning of a recorded session and opens up the file for writing.  A guaranteed unique and platform limitation aware filename is chosen and created in the <em>Stats</em> folder of your game's main directory.  If the heartbeat parameter is specified, then the system will get a call to Poll() every HeartbeatDelta seconds.  By default, all active player controllers positions and orientations are logged at this time. The information gathered can be extended to capture/update whatever information deemed relevant to your game.
+<p />
+To add game stats logging to your game, your custom GameInfo class must create a new insatnce of a GameplayEventsWriter (or subclass thereof) which is responsible for logging the events. This should be done in the <em>PostBeginPlay()</em> function of your GameInfo subclass.
+<p />
+<div style="margin:10px;background:#e0e0e0;font:12px Courier;">
+<pre>
+function PostBeginPlay()
+{
+   local class&#60;GameplayEventsWriter&#62; GameplayEventsWriterClass;
+
+    //Code snipped...
+
+   //Optionally setup the gameplay event logger
+   if (bLogGameplayEvents &#38;&#38; GameplayEventsWriterClassName !&#61; &#34;&#34;)
+   {
+      GameplayEventsWriterClass &#61; class&#60;GameplayEventsWriter&#62;(FindObject(GameplayEventsWriterClassName, class&#39;Class&#39;));
+      if ( GameplayEventsWriterClass !&#61; None )
+      {
+         `log(&#34;Recording game events with&#34;&#64;GameplayEventsWriterClass);
+         GameplayEventsWriter &#61; new(self) GameplayEventsWriterClass;
+         //Optionally begin logging here
+         //GameplayEventsWriter.StartLogging(0.5f);
+      }
+      else
+      {
+         `log(&#34;Unable to record game events with&#34;&#64;GameplayEventsWriterClassName);
+      }
+   }
+   else
+   {
+      `log(&#34;Gameplay events will not be recorded.&#34;);
+   }
+
+    //Code snipped...
+}
+</pre>
+</div>
+<p />
+You'll notice the <em>bLogGameplayEvents</em>, <em>GameplayEventsWriterClassName</em>, and <em>GameplayEventsWriter</em> variable being used. Those are defined in the UTGame class. If your game does not extend from UTGame, you would need to define similar variables to be used.
+<p />
+The code above creates an instance of the class specified in the *Game.ini file if logging is enabled for your custom gametype. It also has a commented section that optionally starts logging immediately which could be uncommented if your game should begin logging stats immediately.  StartLogging() can be called wherever relevant for the game. Some gametypes that use a delayed start for the match use the StartMatch() function to begin logging of stats.
+<p />
+<h3><a name="Logging Events"></a> Logging Events </h3>
+<p />
+GameStats.uci already contains numerous useful macros for logging gameplay data.  They are implemented generically so that fewer functions can fill many needs.  Typically a game event identifier stored as a particular generic data type should be enough to capture intent.  There are more complicated logging functions that store player position, orientation, weapons used during the event and/or other pieces of information.  The point is that while a single ID and a generic container isn't much by itself, it becomes game specific, context specific, and completely up to the user how the data is interpreted later.
+<p />
+Functions exist to properly create, find, and index various metadata (team, player, weapon, etc) for space savings within the data file.
+<p />
+A new category, GameStats, has been assigned to the output for stats collection.  You can unsuppress it in the logs to see realtime output of recorded events.
+<p />
+In order to log an event, the appropriate function must be called in the GameplayEventWriter passing it the required information. Using the pre-defined macros in the GameStats.uci file, makes this process fairly painless. For example, to log each player kill and death event, `RecordKillEvent might be used inside the Killed() function in your GameInfo subclass.
+<p />
+<div style="margin:10px;background:#e0e0e0;font:12px Courier;">
+<pre>
+// Monitor killed messages
+function Killed( Controller Killer, Controller KilledPlayer, Pawn KilledPawn, class&#60;DamageType&#62; DamageType )
+{
+    //code snipped...
+
+    if ( KilledPRI !&#61; None )
+    {
+        `RecordKillEvent(NORMAL, Killer, DamageType, KilledPlayer);
+
+    //code snipped...
+}
+</pre>
+</div>
+<p />
+Obviously no two games are exactly the same, so access to various variables needed may limit where the predefined macros may be called. it may be necessary to define your own macros for logging your own events using the data available.
+<p />
+In the code snippet above, <strong>NORMAL</strong> represents the GAMEEVENT_PLAYER_KILL_NORMAL event, <strong>Killer</strong> is the controller of the player doing the killing, <strong>DamageType</strong> is the class representing the type of damage done to cause the death, and <strong>KilledPlayer</strong> is the controller for the player dying.  RecordKillEvent will take this information and record a kill event in the data stream, adding appropriate entries into the PlayerList metadata array for the killer and killee as necessary then using those indices inside the stream itself.
+<p />
+<h3><a name="Ending A Log Session"></a> Ending A Log Session </h3>
+<p />
+<pre>EndLogging()</pre>
+<p />
+Called at the end of the session, EndLogging() writes out the remaining footer data, validates the header, and finally closes the recording file.  If this function is not called, then the file is considered invalid and cannot be read by the file readers.
+<p />
+The EndLogging() function in UTGame contains the basic functionality for ending the stat logging process. If your game does not extend from UTGame, then you would need to add similar functionality to your GameInfo subclass.
+<p />
+<div style="margin:10px;background:#e0e0e0;font:12px Courier;">
+<pre>
+function EndLogging(string Reason)
+{
+   if (GameplayEventsWriter !&#61; None)
+   {
+      GameplayEventsWriter.EndLogging();
+   }
+
+   Super.EndLogging(Reason);
+}
+</pre>
+</div>
+<p />
+
+<p />
+<h3><a name="Summary"></a> Summary </h3>
+<p />
+Refer to the UTGame source code for examples of how instrumenting your code should work.
+<p />
+Instrumentation checklist: <ul>
+<li> Declaration of the gameplay stats variables in the derived GameInfo class
+</li> <li> Starting and stopping logging of the gameplay session <ul>
+<li> Create an instance of a writer class during PostBeginPlay() of the derived GameInfo class
+</li> <li> Start logging in PostBeginPlay() or in StartMatch(), depending on the game's design
+</li> <li> End logging typically in the EndLogging() function
+</li></ul>
+</li> <li> Any custom events not included in engine must be added to the SupportedEvents array inside the derived GameplayEventsWriter class
+</li> <li> Be sure to include GameStats.uci in each .uc used for logging <ul>
+<li> When including the file inside of the derived GameInfo.uc file, add it in the following way         <pre>
+         `define GAMEINFO(dummy)
+         `include(UTGame\UTStats.uci);
+         `undefine(GAMEINFO)
+         </pre>         This allows the include file to make an optimization that doesn't require accessing the WorldInfo.  In order to log events in other files, just use         <pre>
+         `include(UTGame\UTStats.uci)
+         </pre>         without the defines.  The macros inside the include directive assume that WorldInfo is accessible directly.  If not, the logging functions can be called directly.
+</li></ul>
+</li> <li> Add an entry into the game's DefaultGame.ini to tell the game what class is responsible for logging events and to enable/disable logging         <pre>
+         &#91;XXXGame.XXXGame]
+         GameplayEventsWriterClassName&#61;XXXGame.XXXGameplayEventsWriter
+         bLogGameplayEvents&#61;&#60;true/false&#62;
+         </pre>
+</li> <li> Add an entry into the game's DefaultEditor.ini to specify what game stats database class to use and to setup SQL database connection information for DB upload.  This is necessary for visualization of the data in the editor.         <pre>
+         &#91;UnrealEd.GameStatsBrowser]
+         GameStatsDBClassname&#61;XXXEditor.XXXGameStatsDatabase
+         RemoteConnectionIP&#61;&#34;XXX.XXX.XXX.XXX&#34;
+         ConnectionString&#61;&#34;Provider&#61;sqloledb;Data Source&#61;&#60;database name&#62;;Initial Catalog&#61;GameStats;Trusted&#95;Connection&#61;Yes&#34;
+         RemoteConnectionStringOverride&#61;&#34;Data Source&#61;&#60;database name&#62;;Initial Catalog&#61;GameStats;Integrated Security&#61;True;Pooling&#61;False;Asynchronous Processing&#61;True;Network Library&#61;dbmssocn&#34;
+         </pre>
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/InstrumentingGameStatistics.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:40:45 GMT -->
+</html></body>

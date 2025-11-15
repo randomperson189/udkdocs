@@ -1,0 +1,474 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MobileShaderAnalyzerKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:32:35 GMT -->
+<head>
+<title> UDK | MobileShaderAnalyzerKR    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">MobileShaderAnalyzerKR  </b></div>
+<div id="tooltext">
+<a href="MobileShaderAnalyzer.html" class="twikiLink">English Translation</a><br><a href="MobileShaderAnalyzerCH.html" class="twikiLink">中国翻译</a><br>
+
+<!-- Three/MobileShaderAnalyzerKR -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="Mobile Shader Analyzer (모바일 셰이더 분석기)"></a> Mobile Shader Analyzer (모바일 셰이더 분석기) </h1>
+<p />
+<em>문서 요약: 모바일 개발용으로 생성되는 셰이더 키 평가용 툴 Mobile Shader Analyzer (모바일 셰이더 분석기) 에 대한 설명과, 그 간소화 방법에 대한 정보입니다.</em>
+<p />
+<em>문서 변경내역: Bryant Freitag<sup>?</sup> 작성. <a href="https://udn.epicgames.com/Main/SungjinHong" class="restricted" class="restricted" class="twikiLink">홍성진</a> 번역.</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="MobileShaderAnalyzerKR.html#Mobile Shader Analyzer (모바일 셰이더 분석기)"> Mobile Shader Analyzer (모바일 셰이더 분석기)</a> <ul>
+<li> <a href="MobileShaderAnalyzerKR.html#개요"> 개요</a>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#데이터 준비하기"> 데이터 준비하기</a> <ul>
+<li> <a href="MobileShaderAnalyzerKR.html#메인 데이터"> 메인 데이터</a>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#데이터 워밍"> 데이터 워밍</a>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#툴 실행하기"> 툴 실행하기</a>
+</li></ul>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#어플리케이션 영역"> 어플리케이션 영역</a> <ul>
+<li> <a href="MobileShaderAnalyzerKR.html#메인 리스트 뷰"> 메인 리스트 뷰</a>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#항목 설명 패널"> 항목 설명 패널</a>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#하위항목 패널"> 하위항목 패널</a>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#상태 바"> 상태 바</a>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#필터 박스"> 필터 박스</a>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#Report 옵션"> Report 옵션</a>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#유틸리티"> 유틸리티</a>
+</li></ul>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#일반적인 사용법"> 일반적인 사용법</a> <ul>
+<li> <a href="MobileShaderAnalyzerKR.html#데이터 로드하기"> 데이터 로드하기</a>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#표시된 데이터 변경하기"> 표시된 데이터 변경하기</a>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#필터링"> 필터링</a>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#데이터 조사하기"> 데이터 조사하기</a> <ul>
+<li> <a href="MobileShaderAnalyzerKR.html#잠깐 여담 - 셰이더 키"> 잠깐 여담 - 셰이더 키</a>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#키 뷰"> 키 뷰</a>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#머티리얼 뷰"> 머티리얼 뷰</a>
+</li></ul>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#유틸리티"> 유틸리티</a> <ul>
+<li> <a href="MobileShaderAnalyzerKR.html#리포트 작성"> 리포트 작성</a>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#비슷한 키 찾기"> 비슷한 키 찾기</a>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#머티리얼 비교"> 머티리얼 비교</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#셰이더 수 최적화하기"> 셰이더 수 최적화하기</a> <ul>
+<li> <a href="MobileShaderAnalyzerKR.html#가장 빠르고 작은 셰이더: 존재조차 하지 않는 그것"> 가장 빠르고 작은 셰이더: 존재조차 하지 않는 그것</a>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#퍼포먼스냐 로드 시간이냐 그것이 문제로다"> 퍼포먼스냐 로드 시간이냐 그것이 문제로다</a>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#고유 키 찾기"> 고유 키 찾기</a>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#과도히 반복된 키 검사"> 과도히 반복된 키 검사</a>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#불필요한 세팅 찾기"> 불필요한 세팅 찾기</a>
+</li></ul>
+</li> <li> <a href="MobileShaderAnalyzerKR.html#정리"> 정리</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<p />
+<h2><a name="개요"></a> 개요 </h2>
+<p />
+Mobile Shader Analyzer (모바일 셰이더 분석기 , MSA) 는 어플리케이션 용으로 쿠킹되는 모바일 셰이더와 머티리얼을 조사하는 데 사용되는 툴입니다. 다양한 리포트를 통해 키 생성량을 줄이는 데 도움이 되며, 그 결과 어플리케이션 로드 시간과 퍼포먼스를 향상시킬 수 있습니다 (셰이더 키 컴파일과 워밍 시간이 iOS 로드 시간에 크게 영향을 끼치기 때문입니다).
+<p />
+<h2><a name="데이터 준비하기"></a> 데이터 준비하기 </h2>
+<h3><a name="메인 데이터"></a> 메인 데이터 </h3>
+<p />
+이 어플리케이션에 쓸 테스트 데이터 생성을 위해서는, UFE 툴에서 명령줄 스위치 "-DebugFullMaterialReport" 를 사용하여 맵을 쿠킹해야 합니다. 참고로 이 방법의 정상 작동을 위해서는 반드시 완전 리빌드( "-full" 옵션을 붙이거나 Cookedxxx 폴더 내용을 지우거나 )해야 합니다. 점증형 쿠킹을 하면 캐시된 셰이더 키를 로드하게 되어, 모든 캐시된 키에 대해 빈 머티리얼 스트링과 잘못된 데이터가 나오게 됩니다. 보통 여기서 모든 게임 콘텐츠를 쿠킹하지 않으면 머티리얼/셰이더를 잃게 됩니다.
+게임 콘텐츠를 쿠킹하고나면 [게임이름]\CookedIPhone\DebugLogs 폴더에 FullMaterialData<sup>?</sup>.xml 파일이 보입니다. 원한다면 파일 이름을 바꿀 수가 있는데, 쿠커 스위치 "-DebugMaterialLog=[새이름]" 을 붙이면 됩니다. 앞으로 풀 쿠킹을 하면 Cookedxxx 폴더 전체가 삭제되니 생성된 XML 파일은 안전한 위치로 복사하시기 바랍니다.
+<p />
+<h3><a name="데이터 워밍"></a> 데이터 워밍 </h3>
+<p />
+가끔 어플리케이션의 여러 부분을 실행하는 와중에 어떤 셰이더가 워밍되었나 알고싶을 수가 있습니다. 그 데이터를 얻기 위해서는 디바이스에서 어플리케이션을 실행할 때 "-DebugShowWarmedKeys" 명령줄 옵션을 붙입니다. 그러면 디버거 내, 또는 디버그 실행파일을 실행중인 경우 언리얼 콘솔 내 디버그 출력 스트림 창에 키 워밍 정보가 출력됩니다. 어플리케이션의 디버그 출력 정보는 텍스트 파일로 저장하고, 호스트 PC 에 텍스트 파일로 저장할 수 있습니다 (워밍 정보뿐만 아니라 모든 출력을 갈무리할 수 있습니다).
+주: 구현상의 이유로, 이 기능은 현재 테스트할 디버그 실행파일을 만들 수 있는 코드 라이선시만 사용할 수 있습니다.
+<p />
+<h3><a name="툴 실행하기"></a> 툴 실행하기 </h3>
+<p />
+UE3/UDK Binaries 폴더에 있는 <a href="MobileShaderAnalyzer.html" class="twikiLink">MobileShaderAnalyzer</a>.exe 를 실행시킵니다.
+실행 이후 아래(그림 1)와 같은 어플리케이션을 확인할 수 있습니다.
+<p />
+<p /> <ul>
+<li> 그림 1 - 메인 어플리케이션: <br />     <img src="rsrc/Three/MobileShaderAnalyzer/image002.jpg" alt="image002.jpg" width='623' height='416' />
+</li></ul>
+<p />
+<h2><a name="어플리케이션 영역"></a> 어플리케이션 영역 </h2>
+<p />
+<h3><a name="메인 리스트 뷰"></a> 메인 리스트 뷰 </h3>
+<p />
+이 영역은 현재 'Report' 옵션과 'Filter' 에 따라 모든 항목(셰이더 키와 머티리얼)이 나열됩니다.
+<p />
+<h3><a name="항목 설명 패널"></a> 항목 설명 패널 </h3>
+<p />
+메인 리스트 뷰에서 현재 선택된 하나에 대한 상세 정보가 표시됩니다.
+<p />
+<h3><a name="하위항목 패널"></a> 하위항목 패널 </h3>
+<p />
+항목 설명 패널에 현재 선택된 것에 대한 추가 정보가 약간 표시됩니다.
+<p />
+<h3><a name="상태 바"></a> 상태 바 </h3>
+<p />
+현재 메인 리스트 뷰에 표시된 항목 수와 같은 정보가 표시됩니다.
+<p />
+<h3><a name="필터 박스"></a> 필터 박스 </h3>
+<p />
+검색어를 입력받아 메인 리스트 뷰의 데이터에 적용할 수 있도록 합니다.
+<p />
+<h3><a name="Report 옵션"></a> Report 옵션 </h3>
+<p />
+메인 리스트 뷰에 표시할 데이터 세트를 조절합니다.
+<p />
+<h3><a name="유틸리티"></a> 유틸리티 </h3>
+<p />
+결과 확인, 비교, 익스포트에 사용되는 다양한 유틸리티입니다.
+<p />
+<h2><a name="일반적인 사용법"></a> 일반적인 사용법 </h2>
+<p />
+<h3><a name="데이터 로드하기"></a> 데이터 로드하기 </h3>
+<p />
+'Load XML' 버튼을 누르고 생성된 XML 데이터 파일을 찾아봅니다. 그러면 어플리케이션에 모든 키/머티리얼 데이터가 로드되며, 기본 뷰(모든 키)가 아래(그림 2)와 같이 표시됩니다:
+<p /> <ul>
+<li> 그림 2 - 기본 어플리케이션 뷰: <br />     <img src="rsrc/Three/MobileShaderAnalyzer/image004.jpg" alt="image004.jpg" width='624' height='416' />
+</li></ul>
+<p />
+메인 리스트 뷰에 표시되는 키와 머티리얼 갯수, 이 경우 어플리케이션용으로 쿠킹된 총 갯수가 상태 바에 표시됩니다.
+<p />
+하나의 셰이더 키도 다수의 머티리얼에서 올 수 있습니다. 리스트의 첫 머티리얼만 메인 리스트 뷰에 표시됩니다.
+<p />
+<h3><a name="표시된 데이터 변경하기"></a> 표시된 데이터 변경하기 </h3>
+<p />
+툴의 'Report' 옵션 에 있는 드롭다운 박스를 사용하여 메인 리스트에 표시할 데이터를 바꿀 수 있습니다. 옵션은: <ul>
+<li> All Keys - 어플리케이션 용으로 생성된 모든 키를 표시합니다.
+</li> <li> All Materials - 어플리케이션 용으로 생성된 모든 머티리얼을 표시합니다.
+</li> <li> Keys from few (use limit) materials - (기본값은 1 인) X 개의 머티리얼에서만 생성된 모든 키를 표시합니다. X 는 메인 리포트 드롭다운 아래 'Limit' 박스에서 바꿀 수 있습니다. 셰이더 키를 줄이고자 할 때 매우 유용한 뷰 중 하나로, 자세한 내용은 '머티리얼 최적화하기' 부분에 설명되어 있습니다.
+</li> <li> Materials creating unique (use limit) keys - 위의 옵션과 비슷하나 X 개의 머티리얼에서만 오는 키를 생성하는 머티리얼을 전부 표시합니다. 마찬가지로 X 는 Limit 박스로 바꿀 수 있습니다. 이 뷰에 대한 세부사항은 '머티리얼 최적화하기' 부분을 참고하시기 바랍니다.
+</li></ul>
+<p />
+<h3><a name="필터링"></a> 필터링 </h3>
+<p />
+리포트 모드와 상관없이 메인 리스트 뷰의 모든 결과물을 걸러낼 수도 있습니다. 필터링은 순수히 텍스트 기반으로, 머티리얼 이름은 물론 키 안의 Code Flag 이름도 사용됩니다.
+필터 박스에는 쉼표로 구분해서 인수를 여럿 넣을 수 있습니다. 검색어 앞에 "!" 를 붙이는 'inverse' (반전) 필터를 사용하면 검색어가 들어가지 않은 것들만 찾아낼 수도 있습니다. 모든 검색은 대소문자를 구별합니다.
+예를 들어, 저사양 셰이더용으로 생성되었으면서도 애디티브 블렌딩이 적용되지 않은 것만 검색하는 검색어는 다음과 같습니다:
+<p />
+<code>lowend,!BLEND_additive</code>
+<p />
+필터 텍스트의 존재 유무와는 상관없이 'Apply Text Filter' 버튼을 통해 필터를 켜고 끌 수 있습니다. 버튼의 글자에 현재 필터링 (on/off) 상태가 반영되며, 검색어 배경색에도 (녹색=필터링 적용중, 주황=필터링 중지) 마찬가지입니다.
+워밍 데이터를 생성했다면 (데이터 워밍 부분 참고), 그 데이터를 필터에 적용할 수도 있습니다. 'Load Warm Data' 버튼을 누른 다음 디바이스에서 생성된 출력 텍스를 찾습니다. 메인 리스트 뷰에 표시되는 키 중 워밍되었던 키는 전부 녹색으로 강조되어 보입니다. 이에 대한 필터는 Filter 부분의 동글 버튼으로 완전히 껐다 켰다 할 수 있습니다.
+<p />
+<h3><a name="데이터 조사하기"></a> 데이터 조사하기 </h3>
+<p />
+<h4><a name="잠깐 여담 - 셰이더 키"></a> 잠깐 여담 - 셰이더 키 </h4>
+<p />
+모바일 파이프라인에서 모든 셰이더는 머티리얼의 세팅에 따른 부속 조합을 통해 조립됩니다. 일반적으로 하나의 머티리얼은 다수의 셰이더 키를 생성해 내는데, 머티리얼의 일반 규칙과 사용자 설정 세팅에 따라 세팅 다수를 엔진이 반복처리하기 때문입니다. 예를 들어 어느 한 머티리얼이 스킨입힌 버텍스에 사용되도록 마킹되어 있고, 또 그 머티리얼이 스킨없는 메시에도  적용된다는 것을 엔진은 모른다 칩시다. 그렇게 되면 두 가지 버전의 셰이더가 생성됩니다. 정상 렌더링 패스는 물론 섀도우 패스용 셰이더 버전도 생성됩니다. 이렇게 반복처리되는 세팅이 계속 겹쳐 쌓이다 보면 순열 갯수가 늘어나게 됩니다. 하나의 머티리얼이 셰이더를 한 다스씩 만들어내는 것입니다.
+셰이더마다의 고유 세팅은 전부 셰이더에 대한 최종 시그너처 내 단일 비트에 할당되며, 이 툴에서 셰이더에 대한 Code String 으로 레퍼런스됩니다 (이 값이 각 셰이더에 대한 실제 고유 셰이더 키입니다). 셰이더 키가 이미 생성되어 있는 키와 똑같다면, 그 셰이더는 고유하지 않은 것으로, 한 번만 생성됩니다.
+<p />
+모바일 머티리얼과 셰이더 키 관련 상세 정보는 <a href="MobileMaterialReferenceKR.html" class="twikiLink">모바일 머티리얼 참고서</a> 를 확인해 주시기 바랍니다.
+<p />
+<h4><a name="키 뷰"></a> 키 뷰 </h4>
+<p />
+메인 리스트 뷰에 셰이더 키가 나열되는 리포트 모드를 사용중인 경우, 키 리스트가 크게 세 열에 나열되는 것을 볼 수 있습니다. Code String (코드 문자열), NumMats<sup>?</sup> (Number of Materials , 머티리얼 갯수), FirstMat<sup>?</sup> (이 키와 공히 생성된 머티리얼 목록 내 첫 머티리얼) 인데요. 툴에서 이 열을 클릭하면 그에 맞게 정렬시킬 수 있습니다.
+첫 머티리얼의 코드 문자열을 아는 것이 종종 그다지 도움이 되지는 않습니다. 어느 키에 대한 상세 정보를 확인하려면, 메인 리스트 뷰에서 선택하여 항목 설명 패널에 띄우면 선택된 키에 대한 더욱 자세한 분석 내용을 볼 수 있습니다 (그림 3 참고).
+<p /> <ul>
+<li> 그림 3 - 항목 설명 패널의 상세 정보: <br />     <img src="rsrc/Three/MobileShaderAnalyzer/image006.jpg" alt="image006.jpg" width='623' height='265' />
+</li></ul>
+<p />
+항목 설명 패널에는 키에 있는 (기본값 이외) 고유 설정마다의 원문 설명은 물론, 이 키를 공동 생성한 머티리얼 전체 목록이 표시됩니다. 이 뷰에 있는 머티리얼을 선택하면 그에 대한 상세 정보가 그림 4 와 같이 하위 항목 패널에 채워집니다.
+<p /> <ul>
+<li> 그림 4 - 하위항목 패널 표시된 부가 머티리얼 정보: <br />     <img src="rsrc/Three/MobileShaderAnalyzer/image008.jpg" alt="image008.jpg" width='623' height='310' />
+</li></ul>
+<p />
+<p />
+<h4><a name="머티리얼 뷰"></a> 머티리얼 뷰 </h4>
+<p />
+머티리얼 리스트 뷰에 머티리얼을 나열하는 리포트 모드를 사용중인 경우, 모든 머티리얼이 두 열로 표시됩니다. 머티리얼이 생성한 키의 Name (이름)과 NumKeys<sup>?</sup> (수) 로, 그 모습은 그림 5 와 같습니다. 키 뷰와 마찬가지로 모든 열이 정렬 가능합니다.
+메인 리스트 뷰의 머티리얼을 선택하면 그에 대한 상세 정보가 항목 설명 패널에 채워지는데, 다른 말로 해당 머티리얼이 생성한 셰이더 키가 전부 나열되는 것입니다. 항목 설명 패널의 키를 선택하면 하위항목 패널에 그에 대한 부가 정보, 즉 이 키가 생성한 머티리얼 수와 그렇게 생성된 리스트 상의 첫 머티리얼이 하위항목 패널에 채워집니다.
+<p /> <ul>
+<li> 그림 5 - 머티리얼 표시: <br />     <img src="rsrc/Three/MobileShaderAnalyzer/image010.jpg" alt="image010.jpg" width='623' height='416' />
+</li></ul>
+<p />
+<p />
+<h3><a name="유틸리티"></a> 유틸리티 </h3>
+<p />
+분석 과정에서 사용할 수 있는 유용한 유릴리티가 여럿 있습니다:
+<p />
+<h4><a name="리포트 작성"></a> 리포트 작성 </h4>
+<p />
+Create Report 버튼을 누르면 새로운 텍스트 파일을 만들어 시스템에 저장하는 창을 띄웁니다. 텍스트 파일은 메인 리스트 뷰의 현재 내용물로 채워지며, 필터링도 포함합니다. 리포트 모드에 따라 키 리스트가 될 수도, 키 데이터나 머티리얼이 될 수도 있습니다. 'Simple Report' 체크박스를 선택하면 머티리얼 리포트에는 표시된 머티리얼의 이름만 포함되어, 다른 사람에게 전해줘도 알아보기 쉬운 살펴볼 머티리얼 목록 텍스트 파일을 만들 수 있습니다.
+<p />
+<h4><a name="비슷한 키 찾기"></a> 비슷한 키 찾기 </h4>
+<p />
+메인 리스트 뷰에 키가 표시중일 때 하나를 클릭한 뒤 'Find Similar Keys' 버튼을 누르면 로드된 키 전부를 대상으로 선택된 것에 '가까운' 키를 검색합니다. '가까운' 이란 더하든 빼든 둘 다든(, 즉 한 비트를 켜거나, 다른 비트를 끄거나, 둘 다거나) 세팅 하나가 다른 것입니다. 이러한 조건에 맞아 검색된 모든 키가 리포트 창에 뜹니다 (그림 6 참고). 이 뷰에서 비슷한 키 목록을 확인, 제거할 것은 빨강으로 추가할 것은 초록으로 마킹되어 각각에서 무엇을 바꿔야 일치될 것인지 알 수 있습니다.
+<p />
+<p /> <ul>
+<li> 그림 6 - 비슷한 키 찾기 리포트: <br />     <img src="rsrc/Three/MobileShaderAnalyzer/image012.jpg" alt="image012.jpg" width='251' height='369' />
+</li></ul>
+<p />
+<h4><a name="머티리얼 비교"></a> 머티리얼 비교 </h4>
+<p />
+가끔은 두 머티리얼이 같은지 비교하고플 때가 있습니다. 예를 들어 키를 40 개 생성하는 머티리얼이 둘 있는데, 그 40 키가 똑같은지 약간 다른지 알고 싶을 때가 있습니다. 확인을 위해서는 먼저 메인 리스트 뷰에서 첫 머티리얼을 선택한 다음 (머티리얼이 표시 리포트 모드에 있어야 합니다) 'Set Cur as Compare Mtl' 버튼을 누릅니다. 그런 다음 두 번째 머티리얼을 선택한 다음 'Compare Material' 버튼을 누릅니다. 그림 7 과 같은 창이 뜹니다. 이 창에는 그 두 머티리얼의 키가 몇 개나 '비슷한지' 표시되며, (위의 비슷한 키 찾기 리포트에서의 '비슷함' 과 비슷한 정의를 사용하여) 무엇때문에 비슷한지 세부사항이 표시됩니다.
+<p /> <ul>
+<li> 그림 7 - 머티리얼 비교 결과: <br />     <img src="rsrc/Three/MobileShaderAnalyzer/image014.jpg" alt="image014.jpg" width='263' height='386' />
+</li></ul>
+<p />
+<p />
+<p />
+<h2><a name="셰이더 수 최적화하기"></a> 셰이더 수 최적화하기 </h2>
+<p />
+여기서는 타이틀 전체적으로 사용되는 셰이더 사용량 감소를 위해 이 툴을 사용하는 흔한 방법 몇 가지에다 어플리케이션 개발 도중에 고려할 일반적인 콘텐츠 제작 팁도 곁들여서 다뤄보겠습니다. 셰이더 수를 줄이면 어플리케이션 로딩 속도를 빠르게 하는 데 도움이 됩니다. 셰이더 수가 줄어들면 컴파일된 셰이더가 어플리케이션의 (iOS) 셰이더 캐시에도 잘 들어맞아, 어플리케이션이 메모리에서 완전 퇴거되지 않는 한 두 번째 부팅 시간이 더욱 빨라집니다.
+<p />
+<h3><a name="가장 빠르고 작은 셰이더: 존재조차 하지 않는 그것"></a> 가장 빠르고 작은 셰이더: 존재조차 하지 않는 그것 </h3>
+<p />
+어플리케이션 초기부터 노려야 할 가장 중요한 것 중 한가지는, '마스터 머티리얼'과 '머티리얼 인스턴스 불변'을 가급적 많이 사용하는 것입니다. 마스터 머티리얼에서 파생된 자손 머티리얼 사용시 가능한 키 반복작업은 매우 적은지라 머티리얼이 많은 수의 키를 만들어 내는 경향이 있겠지만, 그 모두 동일한 생성 키 세트에 매핑됩니다.
+<p />
+<h3><a name="퍼포먼스냐 로드 시간이냐 그것이 문제로다"></a> 퍼포먼스냐 로드 시간이냐 그것이 문제로다 </h3>
+<p />
+또하나의 콘텐츠 제작 팁이라면 퍼포먼스와 셰이더 수 사이의 득실관계를 따지는 것입니다 (자주 마스터 머티리얼 사용시의 고려사항이 되기도 합니다). 천성적으로 매우 비슷한 셰이더 키가 둘 있다면, 그 두 키 중 '작은' 것에 없는 기능을 켠 다음 가능할 때 그 세팅에 대한 기본 텍스처/값을 전해 줍니다. 예를 들어 하나의 키가 메시 컬러 값을 사용하고 있는데 다른 하나가 그 키 하나 말고는 비슷하다 할 때, 첫 머티리얼에서 메시 컬러 값을 켠 다음 하양/하양 텍스처/등의 값을 전해주기만 하면 됩니다. 이렇게 하면 셰이더의 복잡도/대역폭이 다양해 질 염려가 생기게 되므로, 퍼포먼스에 감당할 수 없을만큼 영향을 끼치지는 않는지 유의해야 합니다. 이러한 키 병합 작업을 애셋마다 한다는 것은 느린 작업이 될 수 있기에, 여기서도 다시 한 번 마스터 머티리얼이 본질적으로 같은 작업을 대규모로 해 주니 좋다는 점을 확인할 수 있습니다.
+<p />
+<h3><a name="고유 키 찾기"></a> 고유 키 찾기 </h3>
+<p />
+타이틀에서 가장 먼저 점검해야 할 것 중 하나는 '고유'(unique) 키, 다른 말로 극소수의 머티리얼에서 오는 키 입니다. 즉 어플리케이션의 다른 머티리얼에서는 사용하지 않는 기능(군)이 해당 머티리얼에 있다는 뜻입니다. 이러한 고유성을 없애거나 위에 말한 대로 다른 키에 병합시킬 수 있다면, 키의 총 갯수를 줄일 수 있습니다.
+고유 키 확인을 위해 'Keys from few (use limit) Materials' 리포트 모드를 사용하여 Limit 값을 적절히 설정합니다 (처음엔 1 이 좋습니다). 보통 각 키의 항목 설명 창을 보면 무엇때문에 어떤 키/머티리얼이 고유해 지는지 명확히 알 수 있습니다. '비슷한 키 찾기' 기능도 도움이 됩니다.
+'Materials creating unique (use limit) keys' 리포트 모드를 사용해서 문제가 되는 머티리얼 리스트를 익스포트한 다음 다른 사람더러 확인해 보게 할 수도 있습니다.
+<p />
+<h3><a name="과도히 반복된 키 검사"></a> 과도히 반복된 키 검사 </h3>
+<p />
+'All Materials' 리포트 모드를 선택한 다음 머티리얼당 키 수를 내림차순 정렬합니다. 보통 키를 많이 만들어내는 머티리얼은 마스터 머티리얼을 사용하는 좋은 경우이지요. 반복된 키 검사는 Compare Material 기능을 사용하여 같은 갯수의 키를 생성하는 두 개의 머티리얼이 같은지 비교해 보면 됩니다. 그러나 다수의 키를 생성하는 머티리얼은 가끔은 실수로, 가끔은 부지불식간에 과도 반복되는 비트가 있는 문제가 생길 수 있습니다. 마스터 머티리얼을 사용하지도 않는 머티리얼이 다수의 키를 생성하거나, 그 키를 다른 머티리얼과 공유하지 않는다면 왜 그런지 알아야 겠지요.
+'All Keys' 리포트 모드로 돌아가서 필터에 문제가 되는 머티리얼 이름을 넣습니다. 그 머티리얼이 생성한 키가 전부 표시됩니다. 각각의 키를 선택하여 무엇때문에 그 키가 고유해진 것인지 시각적으로 확인하거나, '비슷한 머티리얼 찾기' 기능을 사용하여 그 키가 동기간과 어떻게 다른지 알아볼 수 있습니다. 머티리얼에 과도히 반복된 세팅으로 인해 키 조합 대폭발이 일어났구나, 자주 있는 일로 해결 가능한 일입니다. 흔한 예를 들자면: <ul>
+<li> 스키닝 입니다. 셰이더 반복 버전 중 스킨이 있는 버전과 없는 버전이 다 있는데 이건 확실히 스킨입힌 메시에서만 사용된다! 그렇다면 어플리케이션 DefaultEngine.ini 의 MobileMaterialCookSettings 아래 해당 머티리얼을 '+SkinningOnlyMaterials=[그 머티리얼 이름]' 줄을 추가해 줍니다. 쿠킹 도중 이 셰이더의 스킨입힌 버전만 생성되어, 이 머티리얼이 생성하는 키의 수를 바로 절반으로 줄일 수 있습니다. 예:
+</li></ul>
+<p />
+<div class="codesnippet">
+<pre>
+&#91;MobileMaterialCookSettings]
++SkinningOnlyMaterials&#61;M&#95;FireChest
++SkinningOnlyMaterials&#61;M&#95;IceChest
+</pre>
+</div>
+<p /> <ul>
+<li> 포그 입니다. 엔진은 퍼포먼스 상의 이유로 셰이더의 포그 적용 버전과 미적용 버전을 생성한 다음 그 둘을 자동으로 전환합니다. 포그 기능을 사용하지 않는 어플리케이션이라면, 어플리케이션의 DefaultSystemSettings.ini 의 [SystemSettings] 섹션 아래 bMobileMinimizeFogShaders=true 설정을 해 주는 것으로 이러한 셰이더 중복을 피할 수 있습니다.
+</li> <li> 파티클 세팅입니다. 셰이더 안에는 강제로 on/off 상태를 반복처리하는 파티클 세팅이 많이 있습니다. 활용하고 있지 않은 키 세팅 토글을 확인했다면, 머티리얼에서 그 기능을 꺼 주세요.
+</li></ul>
+<p />
+<h3><a name="불필요한 세팅 찾기"></a> 불필요한 세팅 찾기 </h3>
+<p />
+또 하나 유용한 실전 팁이라면 All Materials 뷰의 필터에 보고싶지 않은 세팅 키워드를 입력하는 것입니다. 예를 들어 'beam' 필터로 빔 파티클 세팅이 있는 모든 머티리얼을 확인할 수 있습니다. 다양한 블렌드 모드, 이미시브 세팅, 섀도우와 포그 세팅같은것도 확인할 수 있습니다. 파티클로 쓰일 일이 없는데 파티클로 설정된 머티리얼, 스킨입힌 오브젝트에서는 절대 사용될 일이 없는 스킨입힌 머티리얼 같은 것을 찾아 보세요.
+<p />
+<h2><a name="정리"></a> 정리 </h2>
+이 툴은 콘텐츠를 수정하는 툴이 아닌, 어플리케이션이 셰이더를 얼마나 많이 만들어내고 있고, 또 어디서 왜 만들고 있는지 정보를 알려주는 툴입니다. 주기적인 분석을 통해 전체 개발 과정에 걸쳐 셰이더 사용량 점검 상태를 유지할 수 있을 것입니다.
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MobileShaderAnalyzerKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:32:37 GMT -->
+</html></body>

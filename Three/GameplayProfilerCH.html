@@ -1,0 +1,359 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GameplayProfilerCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:16:08 GMT -->
+<head>
+<title> UDK | GameplayProfilerCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">GameplayProfilerCH  </b></div>
+<div id="tooltext">
+<a href="GameplayProfiler.html" class="twikiLink">English Translation</a><br><a href="GameplayProfilerJP.html" class="twikiLink">日本語訳</a><br><a href="GameplayProfilerKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/GameplayProfilerCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="PerformanceHome.html" class="twikiLink">性能、分析及优化</a></b> &gt;游戏性分析器<br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="GameplayProgrammingHome.html" class="twikiLink">游戏性编程</a></b> &gt; 游戏性分析器
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="游戏性分析器"></a> 游戏性分析器 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="GameplayProfilerCH.html#游戏性分析器">游戏性分析器</a> <ul>
+<li> <a href="GameplayProfilerCH.html#概述"> 概述</a>
+</li> <li> <a href="GameplayProfilerCH.html#创建Profile">创建Profile</a>
+</li> <li> <a href="GameplayProfilerCH.html#查看Profile">查看Profile</a>
+</li> <li> <a href="GameplayProfilerCH.html#输出"> 输出</a> <ul>
+<li> <a href="GameplayProfilerCH.html#Actor/类 的调用图表"> Actor/类 的调用图表</a>
+</li> <li> <a href="GameplayProfilerCH.html#Function summary（函数概述）"> Function summary（函数概述）</a>
+</li> <li> <a href="GameplayProfilerCH.html#Class hierarchy(Class的层次结构)"> Class hierarchy(Class的层次结构)</a>
+</li> <li> <a href="GameplayProfilerCH.html#Function call graph（函数调用图）"> Function call graph（函数调用图）</a>
+</li> <li> <a href="GameplayProfilerCH.html#Aggregate function summary（合计函数概要）"> Aggregate function summary（合计函数概要）</a>
+</li> <li> <a href="GameplayProfilerCH.html#合计的函数调用图表"> 合计的函数调用图表</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+游戏性分析器是个工具，它在分析会话过程中利用了捕获的数据，使您可以更深入地挖掘游戏性代码来分析执行函数所花费的时间。它可以替换Script Profiler(脚本分析器)。
+<p />
+<img src="rsrc/Three/GameplayProfilerCH/gp.jpg" alt="gp.jpg" width="640" height="443" />
+<p />
+<h2><a name="创建Profile"></a> 创建Profile </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+任何时候，您都可以通过在控制台运行 <code><b>PROFILEGAME START</b></code> <a href="ConsoleCommands.html" class="twikiLink">控制台命令</a>来开始对游戏性进行分析，通过运行 <code><b>PROFILEGAME STOP</b></code> 命令来停止分析。可替换地，您可以使用 <code><b>PROFILEGAME 10</b></code> 来捕获10秒钟的游戏性。
+<p />
+这将会在您的游戏 <code>[GameName]\Profiling\</code> 文件夹中写入一个 <code>.gprof</code>  文件，游戏机平台的文件将会自动地复制到主机PC上。需要注意的是文件很快就会变得很大，所以最好进分析热点区域附近，大约10-30秒即可。
+<p />
+<h2><a name="查看Profile"></a> 查看Profile </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+启动游戏性分析器可执行文件 <code><b>GameplayProfiler.exe</b></code> ，然后按下 <strong>File Open(打开文件)</strong>  按钮并导航到你想打开的.gprof文件或者简单地在命令行中传入文件名称。
+<p />
+<strong>注意</strong> ： 游戏性分析器的可执行文件可以在UE3或UDK发布包的Binaries目录中找到。
+<p />
+<h2><a name="输出"></a> 输出 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+加载并分析完数据文件后，将会通过几个选卡为您呈现一个具有时间和帧数的图表，显示了以各种方式细分的当前帧的分析数据。
+<p />
+默认选择帧0。通过在图表中左击或者手动地在图表上方的 <strong>Frame(帧)</strong> 文本域中输入帧编号来选择一个新帧。当前帧在图表中高亮显示为红色的垂直线。
+<p />
+您可以通过按下鼠标左键并进行拖拽来在您想查看的区域上创建区域选择来在图表上进行放大。点击帧轴左侧的小圆圈或者时间轴顶部将会沿着各自的轴缩回原样。
+<p />
+图表中的<font color="#008000">绿色线</font>显示了帧时间，以毫秒为单位，<font color="#0000ff">蓝色线</font>显示了跟踪的actor的 tick(更新)/脚本 时间以及它和帧时间的关系。比如，并不是所有的峰值都和脚本或游戏性更新有关，这允许我们辨别并跟踪那些和脚本或游戏性有关的峰值。
+<p />
+<strong>Time Threshold(时间阈值)</strong> 可以使得仅显示超出那个时间的数据。您可以使用该项来仅显示某个数量级的事件，从而使得找到问题区域变得更加容易。
+<p />
+当启用  <strong>Show Native Timing Data(显示Native时间数据)</strong> 时，则除了显示脚本时间数据外还会显示循环计数器范围中花费的时间。这个数据一般要求使用StatsViewer进行分析。可以在游戏性分析器中直接地随同脚本数据一同查看该数据使得跟踪问题变得更加简单和快速。
+<p />
+在标签中显示的数据是具有颜色编码区分的，使得您更加容易地知道它是哪种类型的数据。
+<p />
+<img src="rsrc/Three/GameplayProfilerCH/gp_colorcoding.jpg" alt="gp_colorcoding.jpg" width="900" height="300" />
+<p />
+数据类型是：
+<p /> <ul>
+<li> <font color="#0000ff">蓝色</font> - 脚本函数
+</li> <li> <font color="#ff0000">红色</font> - Native代码
+</li> <li> <font color="#800080">紫色</font> - 关卡
+</li> <li> <font color="#008000">绿色</font> - Actors
+</li> <li> <font color="#808000">橄榄色</font> - 组件
+</li> <li> <font color="#ff6600">橙色</font> - 类
+</li></ul>
+<p />
+同时，将会显示任何相关资源的名称。比如，如果数据是针对SkeletalMeshComponent(骨架网格物体组件)的，那么将会显示应用到该组件上的骨架网格物体的名称。
+<p />
+<img src="rsrc/Three/GameplayProfilerCH/gp_assetname.jpg" alt="gp_assetname.jpg" width="589" height="238" />
+<p />
+<h3><a name="Actor/类 的调用图表"></a> Actor/类 的调用图表 </h3>
+<p />
+这个视图分割为了两个单独的调用图表。左侧是选中帧的 level(关卡) -&gt; actor -&gt; component(组件)/ function(函数) 层次机构，它分别地显示了每个实例；右侧是按照actor class(actor类别) -&gt; actor -&gt; component(组件)/ function(函数)进行分组的。
+<p />
+您可以使用左侧来查看多关卡情境下哪个关卡是热点关卡(通常会在永久性关卡中产生一个对象)或者查看某些对象的相对消耗。
+<p />
+当您正在调查哪种类型的对象消耗时间时右侧的视图是有用的，同时在该视图中您也可以看到这里具有的某个类的实例个数。那里显示的inclusive(非独占)和exclusive (独占)数值代表着在剔除前树结构中inclusive(非独占的)和exclusive (独占的)子节点的数量。较大的inclusive(非独占的)值通常意味着调用了大量的不同的脚本函数。
+<p />
+<img src="rsrc/Three/GameplayProfilerCH/gp_callgraph.jpg" alt="gp_callgraph.jpg" width="900" height="624" />
+<p />
+<h3><a name="Function summary（函数概述）"></a> Function summary（函数概述） </h3>
+<p />
+这个视图显示了选中帧中调用的每个脚本函数，及它们的独占时间和非独占时间，每个函数的调用次数及其独占时间和非独占时间的比率。您可以简单地点击某一栏，使它按降序排列。唯一的例外是函数名称栏，它总是按照升序排列。
+<p />
+<img src="rsrc/Three/GameplayProfilerCH/gp_functionsummary.jpg" alt="gp_functionsummary.jpg" width="900" height="624" />
+<p />
+<h3><a name="Class hierarchy(Class的层次结构)"></a> Class hierarchy(Class的层次结构) </h3>
+<p />
+Class的层次结构是基于每个类的视图，它把性能消耗具体到actor、actor组件和函数顶层节点上。需要注意的是大多数actor组件和函数所占用时间已经考虑载了actor时间中，所以您不能简单地把它们相加。
+<p />
+这个视图可以用于简单地查看类的层次结构，比如，查看更新AI花费了多少时间或者在执行UnrealScript是花费了多少时间。
+<p />
+<img src="rsrc/Three/GameplayProfilerCH/gp_classhierarchy.jpg" alt="gp_classhierarchy.jpg" width="900" height="624" />
+<p />
+<h3><a name="Function call graph（函数调用图）"></a> Function call graph（函数调用图） </h3>
+<p />
+这个标签面板显示了当前选中帧的函数调用图。
+<p />
+<img src="rsrc/Three/GameplayProfilerCH/gp_functiongraph.jpg" alt="gp_functiongraph.jpg" width="900" height="624" />
+<p />
+<h3><a name="Aggregate function summary（合计函数概要）"></a> Aggregate function summary（合计函数概要） </h3>
+<p />
+这个标签面板和function summary(函数概要)面板类似，只是它把整个捕获的时间间隔的信息聚集到一起了。它把独占时间、非独占时间和函数调用数量聚集起来，最大独占时间和最大非独占时间分别是单独帧的最大值，其它的值是帧平均值。
+<p />
+<img src="rsrc/Three/GameplayProfilerCH/gp_aggsummary.jpg" alt="gp_aggsummary.jpg" width="900" height="624" />
+<p />
+<h3><a name="合计的函数调用图表"></a> 合计的函数调用图表 </h3>
+<p />
+所有执行的函数的调用图表，是在整个捕获期间的函数调用的合计信息。
+<p />
+<img src="rsrc/Three/GameplayProfilerCH/gp_aggcallgraph.jpg" alt="gp_aggcallgraph.jpg" width="900" height="624" />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GameplayProfilerCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:16:10 GMT -->
+</html></body>

@@ -1,0 +1,577 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/VolumetricLightingGuide.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:16:31 GMT -->
+<head>
+<title> UDK | VolumetricLightingGuide    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">VolumetricLightingGuide  </b></div>
+<div id="tooltext">
+<a href="VolumetricLightingGuideJP.html" class="twikiLink">日本語訳</a><br><a href="VolumetricLightingGuideCH.html" class="twikiLink">中国翻译</a><br><a href="VolumetricLightingGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/VolumetricLightingGuide -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="LightingAndShadowsHome.html" class="twikiLink">Lighting &amp; Shadows</a></b> &gt; Volumetric Lighting Guide <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="ParticlesAndEffectsHome.html" class="twikiLink">Particle &amp; Effects</a></b> &gt; <b><a href="FogEffectsHome.html" class="twikiLink">Fog Effects</a></b> &gt; Volumetric Lighting Guide <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="LightingArtistHome.html" class="twikiLink">Lighting Artist</a></b> &gt; Volumetric Lighting Guide
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Volumetric Lighting Guide"></a> Volumetric Lighting Guide </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="VolumetricLightingGuide.html#Volumetric Lighting Guide"> Volumetric Lighting Guide</a> <ul>
+<li> <a href="VolumetricLightingGuide.html#Overview"> Overview</a>
+</li> <li> <a href="VolumetricLightingGuide.html#Package Structure"> Package Structure</a> <ul>
+<li> <a href="VolumetricLightingGuide.html#Archetypes"> Archetypes</a>
+</li></ul>
+</li> <li> <a href="VolumetricLightingGuide.html#Placing them in the world"> Placing them in the world</a>
+</li> <li> <a href="VolumetricLightingGuide.html#Creating an instance"> Creating an instance</a>
+</li> <li> <a href="VolumetricLightingGuide.html#Types of Volumetrics"> Types of Volumetrics</a> <ul>
+<li> <a href="VolumetricLightingGuide.html#Falloff Spheres"> Falloff Spheres</a>
+</li> <li> <a href="VolumetricLightingGuide.html#FogSheets"> FogSheets</a>
+</li> <li> <a href="VolumetricLightingGuide.html#LightBeams"> LightBeams</a>
+</li> <li> <a href="VolumetricLightingGuide.html#Fog Environments"> Fog Environments</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+This document outlines the usage of volumetric lighting effects commonly used in Epic’s own Unreal Engine 3 titles. These effects all use unlit translucent materials applied to simple geometric primitives to appear volumetric, even though they are not.
+<p />
+The source content required to place these volumetrics is now in the EngineVolumetrics.upk content package. This means that licensees can directly reference them in their own titles. It will be included as of the June QA Build of 2007.
+<p />
+NOTE: If you are seeking true Volumetric Fog that correctly handles the camera being inside of the fog, please refer to <a href="FogVolumes.html" class="twikiLink">FogVolumes</a>.
+<p />
+<h2><a name="Package Structure"></a> Package Structure </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+There are currently four kinds of volumetric lighting primitives:
+<p /> <ol>
+<li> FalloffSpheres
+</li> <li> FogSheets
+</li> <li> Lightbeams
+</li> <li> FogEnvironments
+</li></ol>
+<p />
+All these materials have much in common (with the exception of FogEnvironments); they are simple emissive materials each with a different type of Opacity to hide the edges of their static mesh counterparts.
+<p />
+Again, all of these Volumetric Light effects are stored in the EngineVolumetrics.upk content package.
+<p />
+In the EngineVolumetrics package are four groups, one for each type.
+<p />
+<img alt="01-enginevolumetrics-gb.gif" src="rsrc/Three/VolumetricLightingGuide/01-enginevolumetrics-gb.gif" />
+<p />
+As you can see from the image, each type has two groups. The materials and meshes from each group are meant to be used together. Do not try putting a fogsheet material on a lightbeam mesh for example.
+<p />
+<h3><a name="Archetypes"></a> Archetypes </h3>
+<p />
+Falloffspheres, FogEnvironments, FogSheets and Lightbeams are all have something in common: their static mesh counterparts all require static mesh property changes that can be tiresome to keep setting over and over again. To streamline the process of adding them to the world, archetypes have been created with the correct actor properties preset. There is one archetype for each volumetric primitive type. They are all in the ‘mesh’ subgrounps and their names correspond to those of the static meshes they reference.
+<p />
+To gain understanding of Archetypes, please see <a href="UsingArchetypes.html" class="twikiLink">UsingArchetypes</a>.
+<p />
+<p />
+The advantage of archetypes is that the actor properties can be preset and changes are propagated from the referenced archetype.
+<p />
+For your information, the flags that have been set on the archetypes are listed here:
+<p />
+CollisionType=COLLIDE_NoCollision
+<p />
+bAcceptsDynamicLights=False
+<p />
+bAcceptsLights=False
+<p />
+bForceDirectLightmap=False
+<p />
+bUsePrecomputedShadowing=False
+<p />
+CastShadow=False
+<p />
+bAcceptsDecals=False
+<p />
+bAcceptsDecalsDuringGameplay=False
+<p />
+bAcceptsFoliage=False
+<p />
+bUseAsOccluder=False
+<p />
+<img alt="0-ev-properties.gif" src="rsrc/Three/VolumetricLightingGuide/0-ev-properties.gif" />
+<p />
+The only class that deviates is the FogEnvironment archetype, which has DepthPriorityGroup=SDPG_Foreground set, and bAllowCulldistanceVolume=False
+<p />
+<p />
+<h2><a name="Placing them in the world"></a> Placing them in the world </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Select the archetype for the primitive you want in the Generic Browser, right click the world and select “Add Archetype: *”
+<p />
+<img alt="01-ev-archetypegb.gif" src="rsrc/Three/VolumetricLightingGuide/01-ev-archetypegb.gif" />
+<p />
+<p />
+<h2><a name="Creating an instance"></a> Creating an instance </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Now that you have a volumetric primitive in the world that has the correct static mesh settings and already references the proper parent material, all you have to do is make a new material instance for it.
+<p />
+Right click the newly added static mesh, expand the ‘Materials-&gt;’ menu, then expand the ‘M_EV_*_Master_01’ menu and select “Create New InstanceConstant”.
+<p />
+<img alt="04-ev-newinstance.gif" src="rsrc/Three/VolumetricLightingGuide/04-ev-newinstance.gif" />
+<p />
+Give the instance a name that describes what you intend to use it for briefly so that you may recognize it when browsing later. Creating an instance in this way will place it in the level package for the level you have placed it in. It will also automatically open the material instance editor for the newly created instance.
+<p />
+For a complete explanation material instancing, see the <a href="InstancedMaterials.html" class="twikiLink">InstancedMaterials</a> page.
+<p />
+<p />
+<h2><a name="Types of Volumetrics"></a> Types of Volumetrics </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Now the various material instance settings will be described for each type. All other specific information regarding each of the volumetric primitive types will be listed under each specific section as well.
+<p />
+<h3><a name="Falloff Spheres"></a> Falloff Spheres </h3>
+<p />
+A falloff sphere is the simplest volumetric primitive. It gets used to fake a faint glow coming off of a light, or even a corona effect.
+<p />
+<h4><a name="Parent Material"></a><a name=" Parent Material"></a>  Parent Material </h4>
+<p />
+It has a simple color vector for the emissive, and uses the Dot Product with CameraVector and TangentVector(0,0,1) to hide the edges; It also pixel depth to fade out when near the camera so you don’t notice the clipping.
+<p />
+It has optional depthbiasedblending toggled via StaticSwitchParameter. Usage is explained in the Instance Settings. Since there is no way to texture a sphere without seams somewhere (at least without using many overlapping samples) there is no option for texture panning overlay.
+<p />
+<img alt="05-ev-falloffsphere-mat.gif" src="rsrc/Three/VolumetricLightingGuide/05-ev-falloffsphere-mat.gif" />
+<p />
+<h5><a name="Instance Settings"></a><a name=" Instance Settings"></a>  Instance Settings </h5>
+<p />
+Here is the full list of exposed instances for FalloffSpheres:
+<p />
+<h6><a name="ScalarParameters:"></a><a name=" _ScalarParameters:"></a>  ScalarParameters: </h6>
+<p />
+Density: Tweaks the DepthBias of the depthbiasedalpha. It only has an effect if the UseDepthBiasedAlpha SwitchParameter is set to on.
+<p />
+Opacity: Multiplies the opacity output of the beam by the specified value.
+<p />
+FalloffExponent: Changes the edge falloff that is given by the dot product (cameravector,tangentvector).
+<p />
+Distance: Controls the distance at which fading occurs to hide camera intersection.
+<p />
+<h6><a name="StaticSwitchParameters"></a><a name=" _StaticSwitchParameters"></a>  StaticSwitchParameters </h6>
+<p />
+UseDepthBiasedAlpha: Default is OFF. Turning this on adds depthbiasedalpha which hides the intersection with world and players. Cost: 12 instructions
+<p />
+<h6><a name="VectorParameters"></a><a name=" _VectorParameters"></a>  VectorParameters </h6>
+<p />
+Color: The simple emissive color of the falloffsphere. Remember the Alpha controls brightness.
+<p />
+<img alt="05-ev-fs-instance.gif" src="rsrc/Three/VolumetricLightingGuide/05-ev-fs-instance.gif" />
+<p />
+<h4><a name="Static Mesh Information"></a><a name=" Static Mesh Information"></a>  Static Mesh Information </h4>
+<p />
+The mesh is a simple sphere primitive with cylindrically unwrapped UVs.
+<p />
+<h3><a name="FogSheets"></a> FogSheets </h3>
+<p />
+Fogsheets are essentially just 2 polygon sheets of geometry with translucent materials applied. They can be placed in any environment to create distance separation between foreground and background elements, or to create isolated pockets of haze. Often you do not want a dense heightfog in an entire level as it may wash out areas that must be dark. You can use fogsheets to get dense fog only where you want it.
+When used well fogsheets can add clarity to a busy scene by highlighting key areas. The use of the fogsheet in the arched doorway in the bottom shot draws the player in that direction. “Follow the light”.
+<p />
+Some examples of fogsheet use in Gears of War:
+<p />
+<img alt="07-ev-fogsheet-examples.jpg" src="rsrc/Three/VolumetricLightingGuide/07-ev-fogsheet-examples.jpg" />
+<p />
+Large FogSheets should be used in moderation; stacking multiples of them nearby should be avoided as that will cause a large amount of overdraw.
+<p />
+<h4><a name="Parent Material"></a><a name=" Parent Material"></a>  Parent Material </h4>
+<p />
+The material for fogsheets is very similar that of the FalloffSpheres. It has a parameter for color, depthbiasedalpha, as well as panning texture overlay for hazy movement.
+<p />
+<img alt="06-ev-fogsheet-mat.gif" src="rsrc/Three/VolumetricLightingGuide/06-ev-fogsheet-mat.gif" />
+<p />
+<h5><a name="Instance Settings"></a><a name=" Instance Settings"></a>  Instance Settings </h5>
+<p />
+Here is the full list of exposed instances for FogSheets:
+<p />
+<h6><a name="ScalarParameters"></a><a name=" _ScalarParameters"></a>  ScalarParameters </h6>
+<p />
+Density: Tweaks the DepthBias of the depthbiasedalpha. It only has an effect if the UseDepthBiasedAlpha SwitchParameter is set to on.
+<p />
+Opacity: Multiplies the opacity output of the beam by the specified value.
+<p />
+FalloffExponent: Changes the edge falloff that is given by the dot product (cameravector,tangentvector).
+<p />
+Distance: Controls the distance at which fading occurs to hide camera intersection.
+<p />
+TextureContrast: Controls the contrast of the optional panning texture overlay. Setting it to 0 will make the texture overlay = 1 and be pointless. Setting it to 1 makes the texture output at its unaltered values. Only takes effect if the UseTextureOverlay switch parameter is on.
+<p />
+PanningSpeed: Controls the speed at which panning the optional texture overlay moves.
+<p />
+TextureScale: Controls the scaling of the optional texture overlay.
+<p />
+<h6><a name="StaticSwitchParameters"></a><a name=" _StaticSwitchParameters"></a>  StaticSwitchParameters </h6>
+<p />
+UseDepthBiasedAlpha: Default is OFF. Turning this on adds depthbiasedalpha which hides the intersection with world and players. Cost: 12 instructions
+<p />
+UseTextureOverlay: Default is OFF. Turning it on adds two panning textures to the fogsheet for smokey motion. Cost: 9 instructions
+<p />
+<h6><a name="TextureParameters"></a><a name=" _TextureParameters"></a>  TextureParameters </h6>
+<p />
+MultiplyTexture1: The first texture used in the optional texture overlay.
+<p />
+MultiplyTexture2: The second texture used in the optional texture overlay.
+<p />
+FalloffTexture: Allows you to override the texture used in the opacity. The default is a blurry white dot texture.
+<p />
+<h6><a name="VectorParameters"></a><a name=" _VectorParameters"></a>  VectorParameters </h6>
+<p />
+Color: The simple emissive color of the fogsheet. Remember the Alpha controls brightness.
+<p />
+<img alt="06-ev-fogsheet-instance.gif" src="rsrc/Three/VolumetricLightingGuide/06-ev-fogsheet-instance.gif" />
+<p />
+<h4><a name="Static Mesh Information"></a><a name=" Static Mesh Information"></a>  Static Mesh Information </h4>
+<p />
+Uses a simple 2 polygon plane mesh with a single planar map.
+<p />
+<h3><a name="LightBeams"></a> LightBeams </h3>
+<p />
+Lightbeams are probably the most commonly used type of volumetric primitive. On UT we have them coming from most powerful light sources to draw attention to them.
+<p />
+<h4><a name="Parent Material"></a><a name=" Parent Material"></a>  Parent Material </h4>
+<p />
+The material for lightbeams is one of the most complex volumetric types. It has to handle falloff when viewed from multiple angles and still appear to be a volumetric shape. To achieve this it uses the Y coordinate from the UV’s of the mesh while the X coordinate is generated from the reflection vector. This allows the material to map a falloff texture to the cone in such a way that it’s camera facing along the cone’s axis. It then combines another form of spherical falloff to prevent it from breaking when viewed from underneath.
+<p />
+To see a full tutorial explaining the creation of this lightbeam material and static mesh, please see <a href="VolumetricLightbeamTutorial.html" class="twikiLink">VolumetricLightbeamTutorial</a>. Recreating this material is the best way to learn how these volumetrics work.
+<p />
+<img alt="08-ev-lightbeam-mat.gif" src="rsrc/Three/VolumetricLightingGuide/08-ev-lightbeam-mat.gif" />
+<p />
+<h5><a name="Instance Settings"></a><a name=" Instance Settings"></a>  Instance Settings </h5>
+<p />
+Here is the full list of exposed instances for Lightbeams:
+<p />
+<h6><a name="ScalarParameters:"></a><a name=" _ScalarParameters:"></a>  ScalarParameters: </h6>
+<p />
+Density: Tweaks the DepthBias of the depthbiasedalpha. It only has an effect if the UseDepthBiasedAlpha SwitchParameter is set to on.
+<p />
+Opacity: Multiplies the opacity output of the beam by the specified value.
+<p />
+FalloffExponent: Changes the edge falloff that is given by the dot product (cameravector,tangentvector).
+<p />
+Distance: Controls the distance at which fading occurs to hide camera intersection.
+<p />
+TextureContrast: Controls the contrast of the optional panning texture overlay. Setting it to 0 will make the texture overlay = 1 and be pointless. Setting it to 1 makes the texture output at its unaltered values. Only takes effect if the UseTextureOverlay switch parameter is on.
+<p />
+PanningSpeed: Controls the speed at which panning the optional texture overlay moves.
+<p />
+TextureScaleX: Controls the X scaling of the optional texture overlay.
+<p />
+TextureScaleY: Controls the Y scaling of the optional texture overlay.
+<p />
+<h6><a name="StaticSwitchParameters"></a><a name=" _StaticSwitchParameters"></a>  StaticSwitchParameters </h6>
+<p />
+<h6><a name="TextureParameters"></a><a name=" _TextureParameters"></a>  TextureParameters </h6>
+<p />
+MultiplyTexture1: The texture used in the optional texture overlay.
+<p />
+FalloffTexture: Allows you to override the falloff texture used in the opacity. The is a cone shaped texture rendered in photoshop using the lighting effects filter.
+<p />
+<h6><a name="VectorParameters"></a><a name=" _VectorParameters"></a>  VectorParameters </h6>
+<p />
+Color: The simple emissive color of the lightbeam. Remember the Alpha controls brightness.
+<p />
+<img alt="08-ev-lightbeam-instance.gif" src="rsrc/Three/VolumetricLightingGuide/08-ev-lightbeam-instance.gif" />
+<p />
+<h4><a name="Static Mesh Information"></a><a name=" Static Mesh Information"></a>  Static Mesh Information </h4>
+<p />
+The EngineVolumetrics package already has three cone variants with different angles. To make more variants, create a cylinder with a tapered edge and unwrap it so that there is only one seam in the UV’s. It is important to have clean UV’s since the material calculations are done in tangent space and sloppy UV’s could cause visual distortion later on. The more tessellated your mesh is, the smoother the falloff will be for the end result (a 16-sided cylinder with 4 vertical slices is fine).
+To see a full tutorial explaining the creation of this lightbeam material and static mesh, please see <a href="VolumetricLightbeamTutorial.html" class="twikiLink">VolumetricLightbeamTutorial</a>.
+<p />
+<h3><a name="Fog Environments"></a> Fog Environments </h3>
+<p />
+A fog environment is different from all the other volumetric types. It is an unlit translucent material meant to be rendered in the foreground DPG, essentially replacing heightfog.
+<p />
+Use is sparingly and only if it is absolutely needed as it is will be rendering a translucency pass on the entire screen at all times.
+<p />
+It has two separate hemispheres to change the color and opacity of the fog on different sides. On Unreal Tournament 3, Epic uses this to make levels have team colored fog in CTF Maps.
+<p />
+For it to work, the FogEnvironment mesh must be in the SDPG_Foreground DepthPriorityGroup. The FogEnvironment archetype already has this set, but you will need to set it yourself if you are not using the archetypes.
+<p />
+The mesh should then be scaled up using its Drawscale, and place such that it’s bounds extend beyond anywhere the player camera could go.
+<p />
+<img alt="09-ev-fe-settings.gif" src="rsrc/Three/VolumetricLightingGuide/09-ev-fe-settings.gif" />
+<p />
+Note that because fogenvironments use the scene depth to do their fog blending, they do not handle translucent objects as well as heightfog does, so fog environments are not recommended for use in levels that contain lots of translucency in them.
+<p />
+<h4><a name="Parent Material"></a><a name=" Parent Material"></a>  Parent Material </h4>
+<p />
+The material for FogEnvironments uses the texture coordinates of the mesh to generate the hemispheres and the height blending. The mesh has multiple UV coordinates: one is a top-down planar map; the other is a side planar map. Using these coordinate values alone the shader constructs what it needs to for blending to occur. It also gives you control of the blend. The exact controls are described under the instance section.
+<p />
+<img alt="09-ev-fogenvironment-mat.gif" src="rsrc/Three/VolumetricLightingGuide/09-ev-fogenvironment-mat.gif" />
+<p />
+<h5><a name="Instance Settings"></a><a name=" Instance Settings"></a>  Instance Settings </h5>
+<p />
+Here is the full list of exposed instances for Lightbeams:
+<p />
+<h6><a name="ScalarParameters:"></a><a name=" _ScalarParameters:"></a>  ScalarParameters: </h6>
+<p />
+Falloff: Falloff exponent of the scene depth. Changes how rapidly the fog accumulates.
+<p />
+Density: sets the density of the fog environment. Values are similar to those of heightfog density.
+<p />
+StartDistance: allows you to push or pull the distance at which the fog calculations start.
+BlendPower: Controls the exponent of the hemisphere blend. Tweak in Tandem with BlendOffset.
+<p />
+BlendOffset: a simple offset to control the location of the hemisphere blend intersection.
+<p />
+Opacity1: Multiplies the opacity for the first hemisphere.
+<p />
+Opacity2: multiplies the opacity for the second hemisphere.
+<p />
+HeightDensity: controls the sharpness of the vertical falloff of the fog.
+<p />
+HeightOffset: offsets the height falloff of the fog.
+<p />
+SideDesaturation: Sets the amount of desaturation that occurs at the point of intersection between two hemispheres. Used to remove the nasty pink color that occurs at the center transition point between Red and Blue; a common case for its primary usage – Red and Blue team coloration.
+<p />
+SideDesaturationPower: Controls how far out the desaturation reaches from the center of the hemisphere intersection.
+<p />
+<h6><a name="StaticSwitchParameters"></a><a name=" _StaticSwitchParameters"></a>  StaticSwitchParameters </h6>
+<p />
+UseSideDesaturation: Default is OFF. Turning this on allows you to remove the nasty pink color that occurs at the center transition point between Red and Blue; a common case for its primary usage – ctf maps. Cost: 11 instructions
+<p />
+<h6><a name="VectorParameters"></a><a name=" _VectorParameters"></a>  VectorParameters </h6>
+<p />
+Color1: The simple emissive color of the first hemisphere. Remember the Alpha controls brightness.
+<p />
+Color2: The simple emissive color of the second hemisphere. Remember the Alpha controls brightness.
+<p />
+<img alt="09-ev-fe-instance.gif" src="rsrc/Three/VolumetricLightingGuide/09-ev-fe-instance.gif" />
+<p />
+<h4><a name="Static Mesh Information"></a><a name=" Static Mesh Information"></a>  Static Mesh Information </h4>
+<p />
+The static mesh is a simple sphere (like the one falloffsphere uses) but has specific UV coordinate sets. One is a top-down planar map; the other is a side planar map.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/VolumetricLightingGuide.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:16:34 GMT -->
+</html></body>

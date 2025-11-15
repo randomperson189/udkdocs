@@ -1,0 +1,324 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CustomLightingCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:20:13 GMT -->
+<head>
+<title> UDK | CustomLightingCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">CustomLightingCH  </b></div>
+<div id="tooltext">
+<a href="CustomLighting.html" class="twikiLink">English Translation</a><br><a href="CustomLightingJP.html" class="twikiLink">日本語訳</a><br><a href="CustomLightingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/CustomLightingCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="MaterialsAndTexturesHome.html" class="twikiLink">材质 &amp; 贴图</a></b> &gt; 自定义光照 <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="LightingAndShadowsHome.html" class="twikiLink">光照 &amp; 阴影</a></b> &gt; 自定义光照 <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="LightingArtistHome.html" class="twikiLink">光照师</a></b> &gt; 自定义光照
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="自定义光照"></a> 自定义光照 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<em>文档变更记录: 由 <a href="https://udn.epicgames.com/Main/DanielWright" class="restricted" class="restricted" class="twikiLink">Daniel Wright</a> 创建。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="CustomLightingCH.html#自定义光照"> 自定义光照</a> <ul>
+<li> <a href="CustomLightingCH.html#概述"> 概述</a>
+</li> <li> <a href="CustomLightingCH.html#版本"> 版本</a>
+</li> <li> <a href="CustomLightingCH.html#设置"> 设置</a>
+</li> <li> <a href="CustomLightingCH.html#与光照类型进行交互"> 与光照类型进行交互</a>
+</li> <li> <a href="CustomLightingCH.html#输入端"> 输入端</a>
+</li> <li> <a href="CustomLightingCH.html#为动态光照重新构建 Phong 光照模型"> 为动态光照重新构建 Phong 光照模型</a>
+</li> <li> <a href="CustomLightingCH.html#传输与双面"> 传输与双面</a>
+</li> <li> <a href="CustomLightingCH.html#其他"> 其他</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+光照模型定义了诸如自发光 (Emissive)、漫反射 (Diffuse) 等的材质输入端和诸如方向 (Direction)、颜色 (Color) 等的光照属性的结合方式，从而获得最终的颜色。在 UE3 中内置的光照模型是 Phong，它允许基于像素进行漫反射和高光光照。自定义光照模型允许您制作您想要的对原型有益的任何光照模型。在着色器代码中实现最终的光照模型是一个好主意，因为这样可以得到很大的优化。
+<p />
+<h2><a name="版本"></a> 版本 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+附有定向光照贴图的自定义光照操作在 <a href="https://udn.epicgames.com/Three/BuildUpgradeNotes#QA_APPROVED_BUILD_DEC_2009" class="restricted" class="restricted" class="twikiAnchorLink">QA_APPROVED_BUILD_DEC_2009</a> 中已经发生改变，使用现有高光 (Specular) 和高光强度 (SpecularPower) 材质输入端替代 CustomLighting 输入端。
+<p />
+<h2><a name="设置"></a> 设置 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+要想使用自定义光照模型，您仅需要打开材质编辑器并设置光照模型 (LightingModel) 为 MLM_Custom。
+<p />
+<h2><a name="与光照类型进行交互"></a> 与光照类型进行交互 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+自定义光照 (Custom Lighting) 只为您提供 LightVector，因此只可以处理那些光线来自于一个单向的光源类型，例如动态点、点和定向光源。它们都是零区域的光源。对于其他光源类型，Custom Lighting 执行只依靠于标准的 Phong 光照，使用不同的材质输入。这个操作会使 Custom Lighting 更加复杂，但是允许它被作为 Phong 的一个完整替换使用。
+<p />
+<h2><a name="输入端"></a> 输入端 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+   CustomLighting - CustomLighting 输入端是大多数自定义光照的灵活性所在之处。对于任何影响表面动态零区域的光源，这个输入端将会被计算，并将光照向量 (LightVector) 设置为光源的方向。类似于 CameraVector、LightVector 等的输入端都在切线空间内，所以把 max(dot(lightvector, float3(0,0,1)), 0)链接到自定义光照 (CustomLighting) 的输入端将会产生一个使用表面法线（在切线空间中是 0,0,1）的基本的 lambert 漫反射光照。这是唯一可以依赖 LightVector 的输入。 <ul>
+<li> CustomLightingDiffuse - 对于区域动态光源（当前只有 SH 光源与光照环境和天空光源结合使用）和定向光照贴图漫反射，这个输入端会被计算。它必须不会依赖 LightVector 节点。
+</li> <li> Specular and SpecularPower - 这些输入端可以与自定义光照结合使用，但是前提条件是通过定向光照贴图计算高光光照。通过使用高光 (Specular) 和高光强度 (SpecularPower) 输入端，您可以通过自定义光照 (Custom Lighting) 获取相同的光照贴图高光，正如您使用 Phong 那样。   自发光 (Emissive)、不透明度 (Opacity) 和不透明蒙板 (Opacity Mask) 的使用和 Phong 一样。
+</li> <li> 没有使用漫反射 (Diffuse) 和漫反射 (DiffusePower)。
+</li> <li> 法线仍然影响Reflection Vector(反射向量)，但是它不用于光照，使用定向光照贴图的时候除外。
+</li></ul>
+<p />
+<h2><a name="为动态光照重新构建 Phong 光照模型"></a> 为动态光照重新构建 Phong 光照模型 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+这里是一个显示了如何使 Phong 光照模型和自定义光照模型产生相同效果的例子。这是一个使用 Phong 光照模型的材质:
+<p />
+<img alt="PhongCropped.jpg" src="rsrc/Three/CustomLightingCH/PhongCropped.jpg" />
+<p />
+这是使用自定义光照的等同的光照模型：
+<p />
+<img alt="PhongThroughCustomLightingCropped.jpg" src="rsrc/Three/CustomLightingCH/PhongThroughCustomLightingCropped.jpg" />
+<p />
+下面是一个并排显示的对比图，左边柱子使用的是自定义光照，右边柱子使用的是 Phong 材质，分别被主光源和定向光照贴图照亮。注意，在这两种情况中看到的主光源发出的高光以及定向光照贴图上的高光（投影区域）情况。
+<p />
+<img alt="SideBySideCropped.jpg" src="rsrc/Three/CustomLightingCH/SideBySideCropped.jpg" />
+<p />
+<h2><a name="传输与双面"></a> 传输与双面 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+下面是一个可以使用传输和双面光照的 Phong 材质：
+<p />
+<img alt="PhongTransmissionTwoSided.jpg" src="rsrc/Three/CustomLightingCH/PhongTransmissionTwoSided.jpg" />
+<p />
+这是同等重要使用自定义光照的光照模型。不需要连接传输 (Transmission) 输入端，但是天空光源和 SH 光源目前无法正确处理与自定义光照相结合的传输。
+<p />
+<img alt="CustomTransmissionTwoSided.jpg" src="rsrc/Three/CustomLightingCH/CustomTransmissionTwoSided.jpg" />
+<p />
+<h2><a name="其他"></a> 其他 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+自定义光照可以和动态光照及光照贴图协同工作。目前还没有办法访问每个光源除了 LightVector 以外的属性，比如亮度、颜色等。同时自定义光照不允许您控制光源的衰减度。其他这些光源属性可以自动应用于 CustomLighting 输入端。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CustomLightingCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:20:14 GMT -->
+</html></body>

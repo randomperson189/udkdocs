@@ -1,0 +1,1681 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingSkeletalControllersKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:33:00 GMT -->
+<head>
+<title> UDK | UsingSkeletalControllersKR    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">UsingSkeletalControllersKR  </b></div>
+<div id="tooltext">
+<a href="UsingSkeletalControllers.html" class="twikiLink">English Translation</a><br><a href="UsingSkeletalControllersJP.html" class="twikiLink">日本語訳</a><br><a href="UsingSkeletalControllersCH.html" class="twikiLink">中国翻译</a><br>
+
+<!-- Three/UsingSkeletalControllersKR -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHomeKR.html" class="twikiLink">UE3 홈</a></b> &gt; <b><a href="AnimationHomeKR.html" class="twikiLink">애니메이션</a></b> &gt; 스켈레탈 콘트롤러 사용하기 <br/>
+<b><a href="WebHomeKR.html" class="twikiLink">UE3 홈</a></b> &gt; <b><a href="AnimatorHomeKR.html" class="twikiLink">애니메이터</a></b> &gt; 스켈레탈 콘트롤러 사용하기
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="스켈레탈 콘트롤러 사용하기"></a> 스켈레탈 콘트롤러 사용하기 </h1>
+<hr size="1" noshade="noshade">
+<em>문서 변경내역: <a href="https://udn.epicgames.com/Main/JamesGolding" class="restricted" class="restricted" class="twikiLink">James Golding</a> 작성. <a href="https://udn.epicgames.com/Main/LaurentDelayen" class="restricted" class="restricted" class="twikiLink">Laurent Delayen</a>, <a href="https://udn.epicgames.com/Main/JamesTan" class="restricted" class="restricted" class="twikiLink">James Tan</a> 업데이트. <a href="https://udn.epicgames.com/Main/SungjinHong" class="restricted" class="restricted" class="twikiLink">홍성진</a> 번역.</em>
+<div class="twikiToc"> <ul>
+<li> <a href="UsingSkeletalControllersKR.html#스켈레탈 콘트롤러 사용하기"> 스켈레탈 콘트롤러 사용하기</a> <ul>
+<li> <a href="UsingSkeletalControllersKR.html#개요"> 개요</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#스켈콘트롤 노드"> 스켈콘트롤 노드</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#스켈콘트롤러 새로 추가하기"> 스켈콘트롤러 새로 추가하기</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#기존 스켈콘트롤러 수정하기"> 기존 스켈콘트롤러 수정하기</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#체이닝과 공유하기"> 체이닝과 공유하기</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#언리얼스크립트에서 스켈콘트롤 노드 리퍼런스하기"> 언리얼스크립트에서 스켈콘트롤 노드 리퍼런스하기</a> <ul>
+<li> <a href="UsingSkeletalControllersKR.html#SkelControl 프로퍼티"> SkelControl 프로퍼티</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#Limb (팔다리)"> Limb (팔다리)</a> <ul>
+<li> <a href="UsingSkeletalControllersKR.html#SkelControlLimb"> SkelControlLimb</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#SkelControlFootPlacement"> SkelControlFootPlacement</a>
+</li></ul>
+</li> <li> <a href="UsingSkeletalControllersKR.html#Recoil (반동)"> Recoil (반동)</a> <ul>
+<li> <a href="UsingSkeletalControllersKR.html#GameSkelControl_Recoil"> GameSkelControl_Recoil</a>
+</li></ul>
+</li> <li> <a href="UsingSkeletalControllersKR.html#Single Bone"> Single Bone</a> <ul>
+<li> <a href="UsingSkeletalControllersKR.html#SkelControlSingleBone"> SkelControlSingleBone</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#SkelControl_Handlebars"> SkelControl_Handlebars</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#SkelControl_Multiply"> SkelControl_Multiply</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#SkelControl_TwistBone"> SkelControl_TwistBone</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#SkelControlWheel"> SkelControlWheel</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UDKSkelControl_Damage / _UTSkelControl_Damage"> UDKSkelControl_Damage / UTSkelControl_Damage</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UDKSkelControl_DamageHinge / _UTSkelControl_DamageHinge"> UDKSkelControl_DamageHinge / UTSkelControl_DamageHinge</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UDKSkelControl_DamageSpring / _UTSkelControl_DamageSpring"> UDKSkelControl_DamageSpring / UTSkelControl_DamageSpring</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UDKSkelControl_HoverboardSuspension / _UTSkelControl_HoverboardSuspension"> UDKSkelControl_HoverboardSuspension / UTSkelControl_HoverboardSuspension</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UDKSkelControl_HoverboardSwing / _UTSkelControl_HoverboardSwing"> UDKSkelControl_HoverboardSwing / UTSkelControl_HoverboardSwing</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UDKSkelControl_HoverboardVibration / _UTSkelControl_HoverboardVibration"> UDKSkelControl_HoverboardVibration / UTSkelControl_HoverboardVibration</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UDKSkelControl_HugGround / _UTSkelControl_HugGround"> UDKSkelControl_HugGround / UTSkelControl_HugGround</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UDKSkelControl_PropellerBlade"> UDKSkelControl_PropellerBlade</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UDKSkelControl_Rotate / _UTSkelControl_Rotate"> UDKSkelControl_Rotate / UTSkelControl_Rotate</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UDKSkelControl_SpinControl / _UTSkelControl_SpinControl"> UDKSkelControl_SpinControl / UTSkelControl_SpinControl</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UDKSkelControl_TurretConstrained / _UTSkelControl_TurretConstrained"> UDKSkelControl_TurretConstrained / UTSkelControl_TurretConstrained</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UDKSkelControl_VehicleFlap"> UDKSkelControl_VehicleFlap</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UTSkelControl_CicadaEngine"> UTSkelControl_CicadaEngine</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UTSkelControl_JetThruster"> UTSkelControl_JetThruster</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UTSkelControl_MantaBlade"> UTSkelControl_MantaBlade</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UTSkelControl_MantaFlaps"> UTSkelControl_MantaFlaps</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UTSkelControl_Oscillate"> UTSkelControl_Oscillate</a>
+</li></ul>
+</li> <li> <a href="UsingSkeletalControllersKR.html#미분류"> 미분류</a> <ul>
+<li> <a href="UsingSkeletalControllersKR.html#SkelControl_CCDIK"> SkelControl_CCDIK</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#SkelControlLookAt"> SkelControlLookAt</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#SkelControlSpline"> SkelControlSpline</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#SkelControlTrail"> SkelControlTrail</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UDKSkelControl_CantileverBeam / _UTSkelControl_CantileverBeam"> UDKSkelControl_CantileverBeam / UTSkelControl_CantileverBeam</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UDKSkelControl_LockRotation / _UTSkelControl_LockRotation"> UDKSkelControl_LockRotation / UTSkelControl_LockRotation</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UDKSkelControl_LookAt / _UTSkelControl_LookAt"> UDKSkelControl_LookAt / UTSkelControl_LookAt</a>
+</li> <li> <a href="UsingSkeletalControllersKR.html#UDKSkelControl_MassBoneScaling / _UTSkelControl_MassBoneScaling"> UDKSkelControl_MassBoneScaling / UTSkelControl_MassBoneScaling</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="UsingSkeletalControllersKR.html#내려받기"> 내려받기</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="개요"></a> 개요 </h2>
+<hr size="1" noshade="noshade">
+스켈콘트롤(SkelControl) 을 사용하면 스켈레탈 메시에 있는 본이나 본 세트를 프로그래밍적으로 변경할 수 있습니다. 애니메이션 블렌딩을 할 때 쓰는 툴, 애님트리 에디터로 셋업할 수 있고요. 애님노드 와 스켈콘트롤 을 연결할 수는 없는데, 편의를 위해 같은 작업공간에 두었을 뿐, 별개의 시스템이기 때문입니다. 루트 애님트리 박스로 흘러들어가는 애니메이션에서, 스켈콘트롤 로 각각의 본을 어떻게든 수정하는 것이라 생각하면 됩니다.
+<p />
+<h2><a name="스켈콘트롤 노드"></a> 스켈콘트롤 노드 </h2>
+<hr size="1" noshade="noshade">
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControllerNode.jpg" alt="SkelControllerNode.jpg" width='620' height='311' />
+<p /> <ol>
+<li> 사용자가 설정한 스켈콘트롤러 노드 이름과 스켈콘트롤러 이름입니다.
+</li> <li> 스켈콘트롤러 출력 단자입니다.
+</li> <li> 세기 슬라이더로, 스켈콘트롤러 세기를 설정할 수 있습니다.
+</li> <li> 스켈콘트롤러 노드로 정의된 <strong>블렌드 인 시간</strong> 과 <strong>블렌드 아웃 시간</strong> 을 사용하여 블렌딩이 세졌다 약해졌다 하는 것을 토글합니다.
+</li> <li> 스켈콘트롤러 입력 단자입니다.
+</li> <li> 현재 스켈콘트롤러 세기입니다.
+</li></ol>
+<p />
+<h2><a name="스켈콘트롤러 새로 추가하기"></a> 스켈콘트롤러 새로 추가하기 </h2>
+<hr size="1" noshade="noshade">
+<p />
+캐릭터의 머리가 특정 타겟을 바라보도록 하기 위한 콘트롤러를 예로 들어 추가해 보겠습니다:
+<p />
+ 1. 파랑 애님트리 박스를 우클릭한 다음 '스켈콘트롤 체인 추가' 를 선택합니다. <br>
+<img src="rsrc/Three/UsingSkeletalControllers/AddSkelControl_0.jpg" alt="AddSkelControl_0.jpg" width='800' height='615' />
+<p />
+ 2. 뜨는 팝업창에서 제어하려는 본을 선택할 수 있습니다. 참고로 각 본에는 콘트롤 체인을 하나만 가질 수 있습니다. <br>
+<img src="rsrc/Three/UsingSkeletalControllers/AddSkelControl_1.jpg" alt="AddSkelControl_1.jpg" width='800' height='615' />
+<p />
+ 3. 헤드 본을 선택하면 애님트리에 'Head' 라벨이 붙은 녹색 단자가 새로 생깁니다. <br>
+<img src="rsrc/Three/UsingSkeletalControllers/AddSkelControl_2.jpg" alt="AddSkelControl_2.jpg" width='800' height='615' />
+<p />
+ 4. 배경에 우클릭하고 SkelControlLookAt 을 새로 만듭니다. <br>
+<img src="rsrc/Three/UsingSkeletalControllers/AddSkelControl_3.jpg" alt="AddSkelControl_3.jpg" width='800' height='615' />
+<p />
+ 5. SkelControlLookAt 을 Head 단자에 연결합니다. <br>
+<img src="rsrc/Three/UsingSkeletalControllers/AddSkelControl_4.jpg" alt="AddSkelControl_4.jpg" width='800' height='615' />
+<p />
+<h2><a name="기존 스켈콘트롤러 수정하기"></a> 기존 스켈콘트롤러 수정하기 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+기존 스켈레탈 본 체인에 대한 본을 삭제하거나 변경하려면 파란 애님트리 박스에 연결된 녹색 박스에 우클릭합니다. 뜨는 맥락 메뉴에서 옵션을 찾을 수 있습니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControllerContextMenu.jpg" alt="SkelControllerContextMenu.jpg" width='431' height='248' />
+<p />
+<h2><a name="체이닝과 공유하기"></a> 체이닝과 공유하기 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+스켈콘트롤 은 체인으로 묶어 적용해 주면 연쇄시킬 수 있습니다. 즉 SkelControlLookAt 에 이어 약간의 로테이션을 추가하여 SkelControlSingleBone 을 적용하면, 본이 먼저 타겟을 바라본 다음 그 로테이션만큼 움직입니다.
+<p />
+스켈콘트롤 은 여러 본에 공유될 수도 있습니다. 즉 여러 본이 같은 타겟을 가리키도록 하려는 경우, 하나의 SkelControlLookAt 에 여러 본을 연결하기만 하면 됩니다.
+<p />
+<h2><a name="언리얼스크립트에서 스켈콘트롤 노드 리퍼런스하기"></a> 언리얼스크립트에서 스켈콘트롤 노드 리퍼런스하기 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+스켈콘트롤 은 애니메이션 노드와 거의 비슷하게 언리얼스크립트에서 리퍼런스할 수 있습니다. 애님트리 의 각 스켈콘트롤 노드에는 애님트리 안에서 설정할 수 있는 <strong>Control Name</strong> 프로퍼티가 있습니다.
+<p />
+가비지 콜렉터가 청소를 제대로 할 수 있도록 하려면, 소유중인 액터가 소멸될 때 꼭 스켈콘트롤 로의 리퍼런스도 제거해 주는 것이 좋습니다.
+<p />
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+var SkelControl ASkelControl;
+var() Name ASkelControlName;
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  Super.PostInitAnimTree(SkelComp);
+
+  if (SkelComp &#61;&#61; Mesh)
+  {
+    ASkelControl &#61; Mesh.FindSkelControl(ASkelControlName);
+  }
+}
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  ASkelControl &#61; None;
+}
+</pre>
+</div>
+<p />
+<h3><a name="SkelControl 프로퍼티"></a> SkelControl 프로퍼티 </h3>
+모든 스켈콘트롤 에 공통인 프로퍼티가 몇 있습니다.
+<p /> <ul>
+<li> <strong>ControlName</strong> 콘트롤 이름 - 프로그래머가 특정 스켈콘트롤 을 찾아 수정하는 데 사용하는 이름입니다.
+</li> <li> <strong>Control Strength</strong> 콘트롤 세기 - 이 스켈콘트롤의 현재 세기입니다.
+</li> <li> <strong>BlendInTime</strong> 블렌드 인 시간 - 스켈콘트롤 블렌드 인에 얼마나 걸리는지, 초 단위입니다.
+</li> <li> <strong>BlendOutTime</strong> 블렌드 아웃 시간 - 스켈콘트롤 블렌드 아웃에 얼마나 걸리는지, 초 단위입니다.
+</li> <li> <strong>Blend Type</strong> - 블렌딩 처리 방식입니다. <ul>
+<li> <strong>ABT_Linear</strong> - 블렌딩시 선형 보간을 합니다. <a href="http://en.wikipedia.org/wiki/Linear_interpolation">Wiki</a>
+</li> <li> <strong>ABT_Cubic</strong> - 블렌딩시 3차 보간을 합니다. <a href="http://en.wikipedia.org/wiki/Spline_interpolation">Wiki</a>
+</li> <li> <strong>ABT_Sinusoidal</strong> - 블렌딩시 사인 보간을 합니다. <a href="http://en.wikipedia.org/wiki/Trigonometric_interpolation">Wiki</a>
+</li> <li> <strong>ABT_EaseInOutExponent2</strong> - 블렌딩시 "중간"(inbetweening) 보간을 합니다. <a href="http://en.wikipedia.org/wiki/Inbetweening">Wiki</a>
+</li> <li> <strong>ABT_EaseInOutExponent3</strong> - 블렌딩시 "중간"(inbetweening) 보간을 합니다. <a href="http://en.wikipedia.org/wiki/Inbetweening">Wiki</a>
+</li> <li> <strong>ABT_EaseInOutExponent4</strong> - 블렌딩시 "중간"(inbetweening) 보간을 합니다. <a href="http://en.wikipedia.org/wiki/Inbetweening">Wiki</a>
+</li> <li> <strong>ABT_EaseInOutExponent5</strong> - 블렌딩시 "중간"(inbetweening) 보간을 합니다. <a href="http://en.wikipedia.org/wiki/Inbetweening">Wiki</a>
+</li></ul>
+</li> <li> <strong>Post Physics Controller</strong> 피직스 이후 콘트롤러 - 이 SkelControl 은 피직스 패스 이후 적용됩니다.
+</li> <li> <strong>Set Strength From Anim Node</strong> 애님노드에서 세기 설정 - 참이면 콘트롤 세기가 주어진 애님노드와 같아집니다. 노드와 콘트롤러 사이의 전환을 쉽게 만들어 줍니다.
+</li> <li> <strong>Controlled By Anim Metadata</strong> 애님 메타데이터로 제어 - 참이면 웨이트(가중치) 디폴트는 0 이 되며, 애니메이션의 메타데이터는 애니메이션의 웨이트에 따라 노드를 켭니다.
+</li> <li> <strong>Invert Metadata Weight</strong> 메타데이터 웨이트 반전 - 참이면 웨이트(가중치) 디폴트는 1 로, 메타데이터는 그를 0 으로 설정하여 스켈레탈 콘트롤러를 끕니다.
+</li> <li> <strong>Propagate Set Active</strong> 활성화 설정 전파 - 참이면 스켈콘트롤 이 활성화될 때, 체인으로 연결된 다음 것도 활성화됩니다.
+</li> <li> <strong>Strength Anim Node Name List</strong> 세기 애님 노드 이름 목록 - 이 SkelControl 의 콘트롤 세기를 설정하기 위해 조사된 애님 노드 목록입니다. <strong>Set Strength From Anim Node</strong> 와 함께 사용됩니다.
+</li> <li> <strong>BoneScale</strong> 본 스케일 - 스켈콘트롤 이 작업중인 본과 모든 자손 본에 스케일을 적용할 수 있습니다.
+</li> <li> <strong>Ignore When Not Rendered</strong> 렌더되지 않으면 무시 - 메시가 렌더되지 않는 동안에는 이 스켈콘트롤 을 적용하지 않습니다.
+</li> <li> <strong>Ignore At Or Above LOD</strong> 이 이상의 LOD 무시 - 액터에 있는 LOD 가 이 값 이상이면 SkelControl 을 끕니다.
+</li></ul>
+<p />
+스켈콘트롤 로 지정된 대부분의 위치와 로테이션으로 정의되어 있는 '스페이스'(공간) (또는 '리퍼런스 프레임'(좌표계))를 선택할 수 있습니다. 다양한 옵션에 대한 간단한 설명은 이렇습니다:
+<p /> <ul>
+<li> <strong>BCS_WorldSpace</strong> 월드 스페이스 - 월드(절대적) 위치입니다.
+</li> <li> <strong>BCS_ActorSpace</strong> 액터 스페이스 - 액터 원점에 상태적입니다.
+</li> <li> <strong>BCS_ComponentSpace</strong> 컴포넌트 스페이스 - 스켈레탈 메시 컴포넌트 원점에 상대적입니다.
+</li> <li> <strong>BCS_ParentBoneSpace</strong> 부모 본 스페이스 - 스켈콘트롤 이 제어하고 있는 본의 부모 본 좌표계에 상대적입니다.
+</li> <li> <strong>BCS_BoneSpace</strong> 본 스페이스 - 스켈콘트롤 이 제어하고 있는 본에 상대적입니다.
+</li> <li> <strong>BCS_OtherBoneSpace</strong> 다른 본 스페이스 - 스켈레톤 계층구조에 사용자가 지정한 다른 본에 상대적입니다. (스켈콘트롤 에 본을 지정할 수 있는 <strong>본 이름</strong> 옵션이 있습니다).
+</li></ul>
+<p />
+<h3><a name="Limb (팔다리)"></a> Limb (팔다리) </h3>
+<h4><a name="SkelControlLimb"></a> SkelControlLimb </h4>
+<hr size="1" noshade="noshade">
+이 콘트롤은 언리얼 엔진 3 의 인버스 키네마틱스(Inverse Kinematics, 역운동학) 솔버를 사용합니다. 월드 스페이스에서 타겟 위치를 받은 다음, 제어되는 본 위 두 개의 본을 회전시켜 타겟 도달시켜 봅니다. 타겟에 도달할 수 없으면 가급적 가까이에 본을 놓습니다. 팔다리 끝의 타겟 위치 뿐만 아니라, 조인트가 굽을 방향에 대한 타겟도 지정해야 하며, 이는 3D 뷰포트에 분홍 다이아몬드로 표시됩니다.
+<p />
+참고로 Limb 콘트롤러는 팔 계층구조에 롤 본이 있으면 (즉 하완이 상완 롤 본의 자손인 경우) 작동하지 않습니다. 팔이 4 개가 아닌 2 개의 본으로 구성되도록 스켈레톤을 만들어야 합니다. 다음 그림에서 문제를 확인할 수 있습니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/ArmSkelHierarchy.jpg" alt="ArmSkelHierarchy.jpg" width='462' height='645' />
+<p />
+왼쪽은 3D 프로그램에서 볼 수 있는 전형적인 본의 모습이지만, 실시간 스켈레탈 콘트롤에는 효율적이지 않습니다. 이 암 체인에서 IK 로 변환시키면 본이 넷인 IK 체인이 되어 버리는 반면, 오른쪽에 있는 본을 보면 둘 만으로도 가능합니다. 두 상황에서 모두 롤 본은 팔 본의 자손입니다. 차이점이라면 왼쪽은 상완에서 손에 이르기까지 본 넷이 수직 계층구조를 이루고 있는 반면, 오른쪽은 상완에서 손까지 본 둘로 된 계층구조입니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlLimbExample.jpg" alt="SkelControlLimbExample.jpg" width='800' height='399' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>이펙터 위치</strong> 이펙터 위치 - 제어되는 본이 있었으면 하는 위치입니다.
+</li> <li> <strong>Effector Location Space</strong> 이펙터 위치 스페이스 - <strong>이펙터 위치</strong> 이 정의되는 스페이스입니다.
+</li> <li> <strong>Effector Space Bone Name</strong> 이펙터 스페이스 본 이름 - <strong>Effector Location Space</strong> 가 BCS_OtherBoneSpace 라면, 이 이름의 본을 사용합니다.
+</li> <li> <strong>Joint Target Location</strong> 조인트 타겟 위치 - 관절을 굽힐 때 움직일 스페이스 안 위치입니다.
+</li> <li> <strong>Joint Target Location Space</strong> 조인트 타겟 위치 스페이스 - <strong>Joint Target Location</strong> 가 정의되는 스페이스입니다.
+</li> <li> <strong>Joint Target Space Bone Name</strong> 조인트 타겟 스페이스 본 이름 - <strong>Joint Target Location Space</strong> 가 BCS_OtherBoneSpace 라면, 이 이름의 본을 사용합니다.
+</li> <li> <strong>Bone Axis</strong> 본 축 - 본을 따라 향하는 팔다리 안에 있는 본의 축입니다.
+</li> <li> <strong>Joint Axis</strong> 조인트 축 - 조인트 축에 일치시켜야 하는 본의 축입니다. 즉 팔꿈찌의 경우 굽는 기준이 되는 축입니다.
+</li> <li> <strong>Invert Bone Axis</strong> 본 축 반전 - <strong>Bone Axis</strong> 벡터를 반전시킬지 입니다.
+</li> <li> <strong>Invert Joint Axis</strong> 조인트 축 반전 - <strong>Joint Axis</strong> 벡터를 반전시킬지 입니다ㅏ.
+</li> <li> <strong>Maintain Effector Rel Rot</strong> 이펙터 상대적 로테이션 유지 - 참이면 엔드 이펙터 본과 그 부모 본 사이에 상대적 로테이션을 수정합니다. 거짓이면 엔드 본은 이 콘트롤러로 수정되지 않습니다.
+</li></ul>
+<p />
+<h5><a name="언리얼스크립트에서 사용하는 방법"></a><a name=" 언리얼스크립트에서 사용하는 방법"></a>  언리얼스크립트에서 사용하는 방법 </h5>
+이 예제에서는 SkelControlLimb 를 사용하여 약간의 무게를 들어올리는 간단한 폰 애니메이션을 들어 보겠습니다. SkelControlLimb 를 사용하여 월드 스페이스 위치를 손의 목적지로 설정합니다. 손이 가야 할 위치를 마킹하는 데는 다이내믹 트리거를 사용하고요. 마티네를 통해 철봉이 위아래로 움직이면 붙어 있는 다이내믹 트리거도 따라서 움직입니다. 틱 마다 한 번 SkelControlLimb 가 업데이트되는데, <strong>이펙터 위치</strong> 를 다이내믹 트리거와 같은 위치로 설정합니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlLimbPumpingIron.jpg" alt="SkelControlLimbPumpingIron.jpg" width='800' height='593' />
+<p />
+<div class="codetitlebar">
+SkelControlLimbPawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+class SkelControlLimbPawn extends Pawn
+  Placeable;
+
+var(SkelControl) Name LeftArmSkelControlName;
+var(SkelControl) Name RightArmSkelControlName;
+var(SkelControl) Actor LeftArmAttachment;
+var(SkelControl) Actor RightArmAttachment;
+
+var SkelControlLimb LeftArmSkelControl;
+var SkelControlLimb RightArmSkelControl;
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  Super.PostInitAnimTree(SkelComp);
+
+  if (SkelComp &#61;&#61; Mesh)
+  {
+    LeftArmSkelControl &#61; SkelControlLimb(Mesh.FindSkelControl(LeftArmSkelControlName));
+    RightArmSkelControl &#61; SkelControlLimb(Mesh.FindSkelControl(RightArmSkelControlName));
+  }
+}
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  LeftArmSkelControl &#61; None;
+  RightArmSkelControl &#61; None;
+}
+
+simulated event Tick(float DeltaTime)
+{
+  Super.Tick(DeltaTime);
+
+  if (LeftArmSkelControl !&#61; None &#38;&#38; LeftArmAttachment !&#61; None)
+  {
+    LeftArmSkelControl.EffectorLocation &#61; LeftArmAttachment.Location;
+  }
+
+  if (RightArmSkelControl !&#61; None &#38;&#38; RightArmAttachment !&#61; None)
+  {
+    RightArmSkelControl.EffectorLocation &#61; RightArmAttachment.Location;
+  }
+}
+
+defaultproperties
+{
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;PawnMesh
+  End Object
+  Mesh&#61;PawnMesh
+  Components.Add(PawnMesh)
+
+  Physics&#61;PHYS&#95;Falling
+
+  Begin Object Name&#61;CollisionCylinder
+    CollisionRadius&#61;+0030.0000
+    CollisionHeight&#61;+0072.000000
+  End Object
+}
+</pre>
+</div>
+<p />
+<h4><a name="SkelControlFootPlacement"></a> SkelControlFootPlacement </h4>
+<hr size="1" noshade="noshade">
+특수한 SkelControlLimb 타입으로, 캐릭터의 발을 땅에 제대로 딛게 하기 위한 것입니다. 이 콘트롤은 캐릭터의 발 본에 붙여야 합니다. 매 프레임마다 엉덩이 본 위치에서 발 본 위치로 선 검사를 합니다. 아무것도 걸리지 않으면 다리는 바뀌지 않습니다. 뭔가 걸리면 바닥에 발을 딛게 하기 위해 다리를 굽힐 수 있도록 콘트롤에 대한 <strong>이펙터 위치</strong> 를 걸린 위치로 설정합니다. <strong>이펙터 위치</strong> 는 자동으로 설정되기 때문에 콘트롤에서 위젯을 사용하여 수정할 수는 없지만, <strong>조인트 타겟 위치</strong> 를 수정하여 다리를 올바른 방향으로 굽히도록 할 수는 있습니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlFootPlacementExample.jpg" alt="SkelControlFootPlacementExample.jpg" width='800' height='470' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Foot Offset</strong> 발 오프셋 - 생성된 <strong>이펙터 위치</strong> 를 선 검사 반대 방향으로 끌어올리기 위해 적용할 오프셋입니다. 보통 발 본이 발 전체는 아니기 때문에 땅 위의 발 높이를 조절하는 데 쓰입니다.
+</li> <li> <strong>Foot Up Axis</strong> 발 윗축 - <strong>발 방향 땅에 일치</strong> 옵션이 참일 경우, 표면 노멀에 맞출 발 본의 축입니다.
+</li> <li> <strong>Foot Rot Offset</strong> 발 로테이션 오프셋 - <strong>발 방향 땅에 일치</strong> 시킬 때 발에 추가로 적용할 로테이션입니다. 발 본에 윗축이 없을 경우 필요합니다.
+</li> <li> <strong>Invert Foot Up Axis</strong> 발 윗축 반전 - *발 윗축*을 뒤집을지 입니다.
+</li> <li> <strong>Orient Foot To Ground</strong> 발 방향 땅에 일치 - 발 본을 선 검사에 걸린 표면 노멀과 맞추기 위해 로테이트시킬지 입니다.
+</li> <li> <strong>Max Up Adjustment</strong> 최대 위 조절 - 스켈콘트롤 로 발을 들 수 있는 최대치입니다.
+</li> <li> <strong>Max Down Adjustment</strong> 최대 아래 조절 - 스켈콘트롤 로 발을 내릴 수 있는 최대치입니다.
+</li> <li> <strong>Bone Axis</strong> 본 축 - 본의 길이에 맞출 그래픽적인 본 축입니다.
+</li> <li> <strong>Joint Axis</strong> 조인트 축 - 조인트의 힌지(경첩) 축에 맞출 그래픽적인 본 축입니다.
+</li> <li> <strong>Invert Bone Axis</strong> 본 축 반전 - 본의 트랜스폼 구성시 <strong>본 축</strong> 을 반전시키려면 참으로 설정합니다.
+</li> <li> <strong>Invert Joint Axis</strong> 조인트 축 반전 - 본의 트랜스폼 구성시 <strong>조인트 축</strong> 을 반전시키려면 참으로 설정합니다.
+</li> <li> <strong>Rotate Joint</strong> 조인트 로테이트 - 조인트 본 행렬을 새로 만들기 보다는 회전시켜 봅니다.
+</li> <li> <strong>Maintain Effector Rel Rot</strong> 이펙터 상대 로테이션 유지 - 참이면 엔드 이펙터 본과 그 부모 본 사이의 상대 로테이션을 수정합니다. 거짓이면 엔드 본의 로테이션은 이 콘트롤러로 수정되지 않습니다.
+</li> <li> <strong>Take Rotation From Effector Space</strong> 이펙터 스페이스에서 로테이션 받기 - 참이면 이펙터 본의 로테이션은 <strong>이펙터 스페이스 본 이름</strong> 에 지정된 본에서 복사해 옵니다.
+</li></ul>
+<p />
+애님트리 에디터에서 발디딤(풋 플레이스먼트) 테스트를 위한 미리보기 바닥 메시를 표시할 수 있습니다. 툴바의 [바닥 표시] <img src="rsrc/Three/UsingSkeletalControllers/ShowFloorButton.jpg" alt="ShowFloorButton.jpg" width='23' height='20' /> 버튼을 누르면 바닥 메시가 나타납니다. Ctrl 키를 누른 상태면 다음과 같은 조작도 가능합니다:
+<p /> <ul>
+<li> <strong>좌클릭</strong> - 바닥을 X 와 Y 축으로 이동시킵니다.
+</li> <li> <strong>우클릭</strong> - 바닥을 Z 축 중심으로 회전시킵니다.
+</li> <li> <strong>양쪽클릭</strong> - 바닥을 Z 축으로 이동시킵니다.
+</li></ul>
+<p />
+<h5><a name="고급 발디딤"></a><a name=" 고급 발디딤"></a>  고급 발디딤 </h5>
+SkelControlFootPlacement 노드가 거의 알아서 해 주기는 하지만, 씬에 맞춰 제대로 돌아가게 하기 위해서는 SkelControlFootPlacement 노드를 손봐줄 필요가 종종 생깁니다.
+<p />
+<h6><a name="메시 오프셋시키기"></a><a name=" 메시 오프셋시키기"></a>  메시 오프셋시키기 </h6>
+애니메이션은 평지를 기준으로 제작해도, 캐릭터가 땅보다 높은 무언가를 딛게 되면 발디딤 코드가 발을 들어 이상 없어 보이게 만들어 줍니다. 그런데 계단을 내려간다든가 해서 애니메이트되는 땅 레벨 아래에서 콜리전이 발생하는 경우, 발을 공중에 띄워 놓든가 다리를 아랫단까지 길게 들이던가 해야 합니다. 매우 안좋은 상황이죠. 그래서 게임플레이 코드가 전형적으로 취하는 방식은, 양쪽 발에서 실제 바닥까지 최단거리를 알아본 다음 그 오프셋으로 메시를 움직이고 약간의 인터폴레이션을 통해 부드럽게 만들어 줍니다. <!-- 그런 코드 예제는 언리얼 토너먼트 3 소스 코드 UTPawn.cpp 안의 AUTPawn::DoFootPlacement 에서 확인하실 수 있습니다. -->
+<p />
+보시듯이 폰의 콜리전이 폰을 올바른 레벨에 있도록 위치를 잡아주나, 폰이 떠있는 듯 보일 수도 있다는 뜻이기도 합니다. 바로잡기 위해 메시를 찍어누를 트랜슬레이션을 적용해 줍니다. 거기서 발디딤이 나머지를 처리합니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/FootPlacementMeshOffset.jpg" alt="FootPlacementMeshOffset.jpg" width='800' height='593' />
+<p />
+이 방법은 경사면에서도 잘 통합니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/FootPlacementMeshOffsetOnSlopes.jpg" alt="FootPlacementMeshOffsetOnSlopes.jpg" width='800' height='593' />
+<p />
+코드 로직은 그저 왼쪽과 오른쪽 발 본에 붙어 있는 소켓의 X 와 Y 위치를 사용하여 트레이스(추적)할 뿐입니다. Z 위치는 트레이스가 폰이 딛고 서 있는 바닥을 뚫고 나가지 않도록 확인하기 위한 폰의 위치입니다. 걸린 위치를 찾았으면 메시 트랜슬레이션 벡터를 적절히 계산한 다음 메시에 전해 줍니다. (폰이 수영중이거나 해서) 바닥을 찾을 수 없는 경우, 메시 트랜슬레이션은 이번 틱에 적용되지 않습니다. 폰이 낙하중일 때도 전체 프로세스는 중단됩니다.
+<p />
+<div class="codetitlebar">
+AdvancedFootPlacementPawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+class AdvancedFootPlacementPawn extends Pawn
+  Placeable;
+
+var(FootPlacement) float FootTraceRange;
+var(FootPlacement) Name LeftFootSocketName;
+var(FootPlacement) Name RightFootSocketName;
+var(FootPlacement) float TranslationZOffset;
+var(FootPlacement) Name LeftFootPlacementSkelControlName;
+var(FootPlacement) Name RightFootPlacementSkelControlName;
+var SkelControlFootPlacement LeftFootPlacementSkelControl;
+var SkelControlFootPlacement RightFootPlacementSkelControl;
+
+simulated function EnableLeftFootPlacement()
+{
+  SetSkelControlActive(LeftFootPlacementSkelControl, true);
+}
+
+simulated function DisableLeftFootPlacement()
+{
+  SetSkelControlActive(LeftFootPlacementSkelControl, false);
+}
+
+simulated function EnableRightFootPlacement()
+{
+  SetSkelControlActive(RightFootPlacementSkelControl, true);
+}
+
+simulated function DisableRightFootPlacement()
+{
+  SetSkelControlActive(RightFootPlacementSkelControl, false);
+}
+
+simulated function SetSkelControlActive(SkelControlBase SkelControl, bool IsActive)
+{
+  if (SkelControl !&#61; None)
+  {
+    SkelControl.SetSkelControlActive(IsActive);
+  }
+}
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  Super.PostInitAnimTree(SkelComp);
+
+  if (SkelComp &#61;&#61; Mesh)
+  {
+    LeftFootPlacementSkelControl &#61; SkelControlFootPlacement(Mesh.FindSkelControl(LeftFootPlacementSkelControlName));
+    RightFootPlacementSkelControl &#61; SkelControlFootPlacement(Mesh.FindSkelControl(RightFootPlacementSkelControlName));
+  }
+}
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  LeftFootPlacementSkelControl &#61; None;
+  RightFootPlacementSkelControl &#61; None;
+}
+
+simulated event Tick(float DeltaTime)
+{
+  local Vector LeftFootHitLocation, LeftFootHitNormal, LeftFootTraceEnd, LeftFootTraceStart;
+  local Vector RightFootHitLocation, RightFootHitNormal, RightFootTraceEnd, RightFootTraceStart;
+  local Vector DesiredMeshTranslation;
+  local Rotator SocketRotation;
+  local Actor LeftFootHitActor, RightFootHitActor;
+
+  Super.Tick(DeltaTime);
+
+  if (Mesh &#61;&#61; None &#124;&#124; Physics &#61;&#61; PHYS&#95;Falling)
+  {
+    return;
+  }
+
+  Mesh.GetSocketWorldLocationAndRotation(LeftFootSocketName, LeftFootTraceStart, SocketRotation);
+  LeftFootTraceStart.Z &#61; Location.Z;
+  LeftFootTraceEnd &#61; LeftFootTraceStart - (Vect(0.f, 0.f, 1.f) &#42; FootTraceRange);
+  // 왼쪽 발 위치를 찾기 위한 트레이스
+  ForEach TraceActors(class&#39;Actor&#39;, LeftFootHitActor, LeftFootHitLocation, LeftFootHitNormal, LeftFootTraceEnd, LeftFootTraceStart,,, TRACEFLAG&#95;Bullet)
+  {
+    // 월드 지오메트리에 걸리면 쀍
+    if (LeftFootHitActor.bWorldGeometry &#124;&#124; LeftFootHitActor.IsA(&#39;InterpActor&#39;))
+    {
+      break;
+    }
+  }
+
+  // 오른쪽 발 위치를 찾기 위한 트레이스
+  Mesh.GetSocketWorldLocationAndRotation(RightFootSocketName, RightFootTraceStart, SocketRotation);
+  RightFootTraceStart.Z &#61; Location.Z;
+  RightFootTraceEnd &#61; RightFootTraceStart - (Vect(0.f, 0.f, 1.f) &#42; FootTraceRange);
+  // Trace down to find the position for the right foot
+  ForEach TraceActors(class&#39;Actor&#39;, RightFootHitActor, RightFootHitLocation, RightFootHitNormal, RightFootTraceEnd, RightFootTraceStart,,, TRACEFLAG&#95;Bullet)
+  {
+    // 월드 지오메트리에 걸리면 쀍
+    if (RightFootHitActor.bWorldGeometry &#124;&#124; RightFootHitActor.IsA(&#39;InterpActor&#39;))
+    {
+      break;
+    }
+  }
+
+  // 바닥에 접할 거리에 있지 않음
+  if (LeftFootHitActor &#61;&#61; None &#38;&#38; RightFootHitActor &#61;&#61; None)
+  {
+    return;
+  }
+
+  if (LeftFootHitActor !&#61; None &#38;&#38; RightFootHitActor &#61;&#61; None)
+  {
+    DesiredMeshTranslation.Z &#61; (LeftFootHitLocation.Z - Location.Z) + Mesh.default.Translation.Z + TranslationZOffset;
+  }
+  else if (LeftFootHitActor &#61;&#61; None &#38;&#38; RightFootHitActor !&#61; None)
+  {
+    DesiredMeshTranslation.Z &#61; (RightFootHitLocation.Z - Location.Z) + Mesh.default.Translation.Z + TranslationZOffset;
+  }
+  else
+  {
+    // 바라는 메시 트랜슬레이션 조절
+    if (LeftFootHitLocation.Z &#60; RightFootHitLocation.Z)
+    {
+      DesiredMeshTranslation.Z &#61; (LeftFootHitLocation.Z - Location.Z) + Mesh.default.Translation.Z + TranslationZOffset;
+    }
+    else
+    {
+      DesiredMeshTranslation.Z &#61; (RightFootHitLocation.Z - Location.Z) + Mesh.default.Translation.Z + TranslationZOffset;
+    }
+  }
+
+  // 메시 트랜슬레이션 설정
+  Mesh.SetTranslation(DesiredMeshTranslation);
+}
+
+defaultproperties
+{
+  LeftFootSocketName&#61;&#34;LeftFootSocket&#34;
+  RightFootSocketName&#61;&#34;RightFootSocket&#34;
+  FootTraceRange&#61;96.f
+
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;PawnMesh
+  End Object
+  Mesh&#61;PawnMesh
+  Components.Add(PawnMesh)
+
+  Physics&#61;PHYS&#95;Falling
+
+  Begin Object Name&#61;CollisionCylinder
+    CollisionRadius&#61;+0030.0000
+    CollisionHeight&#61;+0072.000000
+  End Object
+}
+</pre>
+</div>
+<p />
+SkelControlFootPlacement 가 제대로 작동하도록 하기 위해 메시가 올바른 위치에 있는지 확인하는 단순한 메서드입니다. 그러나 이 방법은 빠르긴 하지만 폰이 움직이거나 복잡한 동작을 하는 중일 때는 잘 되지 않습니다.
+<p />
+<h6><a name="움직이면서 발디딤"></a><a name=" 움직이면서 발디딤"></a>  움직이면서 발디딤 </h6>
+(가만히 서있지 않고) 움직이면서 발디딤을 처리하기 위한 방법 한 가지는, 발 본 사이의 오프셋(높이)과 (주로 루트 본 위치로 표현되는) 애니메이트되는 땅 레벨을 고려하는 것입니다. 즉 땅의 실제 위치로 발 본을 움직이는 대신 그냥 발 본에 오프셋, 즉 애니메이트되는 땅 높이와 실제 땅 높이의 차를 더합니다. 그러면 애니메이션이 발을 적당히 든 상태로 월드를 따라갑니다. 약간의 인터폴레이션, 스무딩, 메시 오프셋 작업을 좀 해 줘야 괜찮아 보이겠지만, 간단한 솔루션인데도 꽤나 잘 돌아갑니다. 이 시스템은 발 아래 땅 레벨을 항상 모니터링하기에 약간 랙이 끼게 마련입니다. 이 문제를 개선시키는 방법은 발의 착지점을 미리 알아보는 것인데, 그러려면 운동 애니메이션을 분석해서 발의 착지점을 적절히 예상하는 복잡한 시스템이 필요할 것입니다. 아래는 기어즈 오브 워 2 코드를 사용하여 프로토타이핑한 시스템을 찍은 스크린샷입니다.
+<p />
+<img alt="FootPlacementWhileMoving.jpg" src="rsrc/Three/UsingSkeletalControllers/FootPlacementWhileMoving.jpg" />
+<p />
+<h6><a name="바닥 맞춤"></a><a name=" 바닥 맞춤"></a>  바닥 맞춤 </h6>
+바닥 맞춤(Floor Conforming)은 캐릭터 및/또는 그 다리를 경사면에 맞춰 그 발이 경사면에 평행이 되게 하는 것입니다. 가장 간단한 방법은 캐릭터의 스켈레톤에 <strong>IK Foot Bone Setup</strong> 을 하는 것입니다. 기본적으로 "IK Foot Root" 본은 "Root Bone" 에서 오며, "IK Foot Right", "IK Foot Left" 본은 애니메이션의 모든 프레임에서 풋 본에 정확이 일치합니다. 그런 다음 "IK Foot Root" 본을 트랜슬레이트/로테이트하면 경사 방향에 맞춰 발 운동 방향을 맞추기가 매우 쉽습니다. 물론 여기서도 부드러워 보이게 하기 위해 인터폴레이션과 메시 오프셋 작업을 조금 해 줘야 합니다. 게다가 전체 메시를 회전시켜 캐릭터의 몸통을 경사와 경사의 변화에 맞춰 조절하면 조금 더 자연스러워 보일 수 있습니다. 움직일 때는 경사쪽으로 약간, 멈출 때는 반대쪽으로 약간 기울이는 것이죠. 조준 코드에서 메시 로테이션 보정도 매우 쉽게 할 수 있는데, 캐릭터가 공간의 한 점 조준을 유지하도록 하는 것입니다. 아래는 기어즈 오브 워 2 코드를 사용하여 프로토타이핑한 시스템을 찍은 스크린샷입니다.
+<p />
+<img alt="FloorConforming.jpg" src="rsrc/Three/UsingSkeletalControllers/FloorConforming.jpg" />
+<p />
+<h6><a name="움직이는 베이스"></a><a name=" 움직이는 베이스"></a>  움직이는 베이스 </h6>
+캐릭터가 움직이는 베이스, 다른 말로 무버(Mover) 위에 서 있을 때, 무버가 회전하게 되거나 하면 캐릭터는 땅에서 완전히 떨어져 미끄러지는 것으로 보이게 됩니다. 위에서 논한 바닥 맞춤 시스템을 사용하면 도움은 되겠지만, 캐릭터가 베이스에 반해 미끄러지니 발이 전혀 땅에 닿아 있는 것처럼 보이지 않는 것은 어쩔 수 없습니다. 왜 그럴까요? 언리얼은 폰 콜리전에 AABB (Axis Aligned Bounding Box, 축에 맞춘 바운딩 박스)를 사용하기 때문입니다. 그 박스는 무버랑 같이 회전되지 않는 것이죠. 심지어 무버가 회전되면 위아래로 밀리기도 합니다. 그래도 약간의 계산으로 발을 어디에 디딜지 알아내어 필요한 보정 작업을 해줄 수 있습니다. 폰 이전에 무버가 틱되도록도 해야 합니다. 아래는 기어즈 오브 워 코드를 사용하여 프로토타이핑한 시스템을 찍은 스크린샷입니다.
+<p />
+<img alt="FootPlacementMovers.jpg" src="rsrc/Three/UsingSkeletalControllers/FootPlacementMovers.jpg" />
+<p />
+<p />
+<h3><a name="Recoil (반동)"></a> Recoil (반동) </h3>
+<h4><a name="GameSkelControl_Recoil"></a> GameSkelControl_Recoil </h4>
+<hr size="1" noshade="noshade">
+이 스켈콘트롤 은 무기 발사시 팔에 적용되는 반동에 대한 시뮬레이션입니다. 애니메이션을 사용해도 똑같은 효과를 낼 수는 있지만, 다른 스켈콘트롤 과 쌍을 이뤄 사용할 수 있다는 장점이 있습니다. 이 노드로는 보통 하나의 본, 여기서는 b_IK_Gun 에만 영향을 끼치도록 하고 싶을 것입니다. 그 후 SkelControlLimb 를 양쪽 손 본에 사용하여 b_IK_Gun 에 붙은 손 본에 인버스 키네마틱스를 적용합니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlRecoilAnimTree.jpg" alt="SkelControlRecoilAnimTree.jpg" width='800' height='464' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Bone Space Recoil</strong> 본 스페이스 반동 - 참이면 조준은 무시하고 그냥 로컬 본 스페이스에 반동을 적용합니다.
+</li> <li> <strong>Play Recoil</strong> 반동 재생 - 반동 활성화 토글입니다.
+</li> <li> <strong>Recoil</strong> 반동 - 반동 정보입니다. <ul>
+<li> <strong>Time Duration</strong> 기간 - 반동 흔들림의 초 단위 기간입니다.
+</li> <li> <strong>Rot Amplitude</strong> 회전 진폭 - 회전 진폭 벡터입니다.
+</li> <li> <strong>Rot Frequency</strong> 회전 주파수 - 회전 주파수 벡터입니다.
+</li> <li> <strong>Rot Params</strong> 회전 파라미터 - 회전 파라미터입니다.
+</li> <li> <strong>Loc Amplitude</strong> 위치 진폭 - 위치 오프셋 진폭 벡터입니다.
+</li> <li> <strong>Loc Frequency</strong> 위치 주파수 - 위치 오프셋 주파수 벡터입니다.
+</li> <li> <strong>Loc Params</strong> 위치 파라미터 - 위치 파라미터입니다.
+</li></ul>
+</li> <li> <strong>Aim</strong> 조준 - [-1.f, 1.f : -1.f, 1.f] 로 표현되는 조준 벡터입니다.
+</li></ul>
+<p />
+<h5><a name="언리얼스크립트에서 사용하는 방법"></a><a name=" 언리얼스크립트에서 사용하는 방법"></a>  언리얼스크립트에서 사용하는 방법 </h5>
+이 예제에서 폰은 링크건을 0.2 초마다 발사하며, 무기 발사에 따라 팔에 반동이 전해집니다.
+<p />
+<div class="codetitlebar">
+SkelControlRecoilPawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+class SkelControlRecoilPawn extends Pawn
+  Placeable;
+
+var() Name RecoilSkelControlName;
+var() float FireRate;
+
+var GameSkelCtrl&#95;Recoil RecoilSkelControl;
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  Super.PostInitAnimTree(SkelComp);
+
+  if (SkelComp &#61;&#61; Mesh)
+  {
+    RecoilSkelControl &#61; GameSkelCtrl&#95;Recoil(Mesh.FindSkelControl(RecoilSkelControlName));
+  }
+
+  SetTimer(FireRate, true, NameOf(PlayRecoil));
+}
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  RecoilSkelControl &#61; None;
+}
+
+simulated function PlayRecoil()
+{
+  if (RecoilSkelControl !&#61; None)
+  {
+    RecoilSkelControl.bPlayRecoil &#61; true;
+  }
+}
+
+defaultproperties
+{
+  FireRate&#61;0.2f
+
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;PawnMesh
+  End Object
+  Mesh&#61;PawnMesh
+  Components.Add(PawnMesh)
+
+  Physics&#61;PHYS&#95;Falling
+
+  Begin Object Name&#61;CollisionCylinder
+    CollisionRadius&#61;+0030.0000
+    CollisionHeight&#61;+0072.000000
+  End Object
+}
+</pre>
+</div>
+<p />
+<p />
+<h3><a name="Single Bone"></a> Single Bone </h3>
+<h4><a name="SkelControlSingleBone"></a> SkelControlSingleBone </h4>
+<hr size="1" noshade="noshade">
+싱글 본의 로테이션 및/또는 트랜슬레이션을 수정하는 단순한 콘트롤입니다. 이를테면 안테나 회전에 유용하게 쓸 수 있습니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlSingleBone.jpg" alt="SkelControlSingleBone.jpg" width='800' height='385' />
+<p />
+<h5><a name="!"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Apply Translation</strong> 트랜슬레이션 적용 - 트랜슬레이션에 무언가 해 줄 것을 나타냅니다. 거짓이면 다른 모든 트랜슬레이션 세팅이 무시됩니다.
+</li> <li> <strong>Add Translation</strong> 트랜슬레이션 추가 - 참이면 지정된 트랜슬레이션이 애니메이션 결과에 더해집니다. 거짓이면 애니메이트된 트랜슬레이션을 대체합니다.
+</li> <li> <strong>Bone Translation</strong> 본 트랜슬레이션 - 본에 적용할 트랜슬레이션입니다.
+</li> <li> <strong>Bone Translation Space</strong> 본 트랜슬레이션 스페이스 - 트랜슬레이션을 적용할 스페이스입니다.
+</li> <li> <strong>Translation Space Bone Name</strong> 트랜슬레이션 스페이스 본 이름 - <strong>본 트랜슬레이션 스페이스</strong> 가 BCS_OtherBoneSpace 인 경우, 이 이름의 본을 사용합니다.
+</li> <li> <strong>Apply Rotation</strong> 로테이션 적용 - <strong>트랜슬레이션 적용</strong> 과 마찬가지로, 로테이션이 효과를 발휘하려면 참으로 설정해야 합니다.
+</li> <li> <strong>Add Rotation</strong> 로테이션 추가 - 참이면 애니메이션 결과에 로테이션을 더합니다. 거짓이면 기존 로테이션을 대체합니다.
+</li> <li> <strong>Bone Rotation</strong> 본 로테이션 - 본에 실제로 적용할 로테이션입니다.
+</li> <li> <strong>Bone Rotation Space</strong> 본 로테이션 스페이스 - 본 로테이션을 적용할 좌표계입니다.
+</li> <li> <strong>Rotation Space Bone Name</strong> 로테이션 스페이스 본 이름 - <strong>본 로테이션 스페이스</strong> 가 BCS_OtherBoneSpace 인 경우, 이 이름의 본을 사용합니다.
+</li></ul>
+<p />
+<h5><a name="언리얼스크립트에서 사용하는 방법"></a><a name=" 언리얼스크립트에서 사용하는 방법"></a>  언리얼스크립트에서 사용하는 방법 </h5>
+이 예제에서는 폰이 자신을 향하도록 척추 본을 회전시킵니다.
+<p />
+<div class="codetitlebar">
+SkelControlSingleBonePawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+class SkelControlSingleBonePawn extends Pawn
+  Placeable;
+
+var() Name SkelControlSingleBoneName;
+var SkelControlSingleBone SkelControlSingleBone;
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  Super.PostInitAnimTree(SkelComp);
+
+  if (SkelComp &#61;&#61; Mesh)
+  {
+    SkelControlSingleBone &#61; SkelControlSingleBone(Mesh.FindSkelControl(SkelControlSingleBoneName));
+  }
+}
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  SkelControlSingleBone &#61; None;
+}
+
+simulated event Tick(float DeltaTime)
+{
+  local PlayerController PlayerController;
+  local Rotator R;
+
+  Super.Tick(DeltaTime);
+
+  if (SkelControlSingleBone !&#61; None)
+  {
+    PlayerController &#61; GetALocalPlayerController();
+    if (PlayerController !&#61; None &#38;&#38; PlayerController.Pawn !&#61; None)
+    {
+      R &#61; Rotator(Location - PlayerController.Pawn.Location);
+      SkelControlSingleBone.BoneRotation.Yaw &#61; R.Yaw;
+    }
+  }
+}
+
+defaultproperties
+{
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;PawnMesh
+  End Object
+  Mesh&#61;PawnMesh
+  Components.Add(PawnMesh)
+
+  Physics&#61;PHYS&#95;Falling
+
+  Begin Object Name&#61;CollisionCylinder
+    CollisionRadius&#61;+0030.0000
+    CollisionHeight&#61;+0072.000000
+  End Object
+}
+</pre>
+</div>
+<p />
+<h4><a name="SkelControl_Handlebars"></a> SkelControl_Handlebars </h4>
+<hr size="1" noshade="noshade">
+이 콘트롤러는 언리얼 엔진 3 의 비히클 시스템과 작동하도록 디자인되었습니다. SkelControlWheel 에 의해 수정된 휠의 로테이션을 찾아온 다음, 그에 따라 제어되는 본을 조절합니다. 예를 들자면 자동화된 스티어링 휠 셋업이 쉬워지는 것입니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlHandleBar.jpg" alt="SkelControlHandleBar.jpg" width='800' height='327' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Wheel Roll Axis</strong> 휠 롤 축 - 휠을 어느 축 기준으로 굴러가게 할지 입니다.
+</li> <li> <strong>Handlebar Rotate Axis</strong> 핸들바 회전 축 - 스티어링이 일어나는 축입니다.
+</li> <li> <strong>Wheel Bone Name</strong> 휠 본 이름 - 어느 본의 로테이션이 스티어링을 조절하게 할지 입니다.
+</li> <li> <strong>Invert Rotation</strong> 로테이션 반전 - 제어되는 본에 적용할 로테이션을 반전합니다.
+</li></ul>
+<p />
+<h4><a name="SkelControl_Multiply"></a> SkelControl_Multiply </h4>
+<hr size="1" noshade="noshade">
+이 콘트롤러로 예전 스켈레탈 블렌딩 결과를 곱할 수 있습니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlMultiply.jpg" alt="SkelControlMultiply.jpg" width='800' height='321' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Multiplier</strong> 멀티플라이어 - 예전 스켈레탈 블렌딩에 곱해줄 수치를 나타내는 플로트 입니다.
+</li></ul>
+<p />
+<h4><a name="SkelControl_TwistBone"></a> SkelControl_TwistBone </h4>
+<hr size="1" noshade="noshade">
+이 콘트롤러는 절차적으로 트위스트/롤 본을 처리하도록 만들어 졌습니다. 애니메이션 / 리퍼런스 포즈 사이의 <strong>소스 본 이름</strong> 을 알아본 다음, 롤 본에 로테이션을 스케일 포함하여 적용합니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlTwistBone.jpg" alt="SkelControlTwistBone.jpg" width='800' height='321' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Source Bone Name</strong> 소스 본 이름 - 살펴볼 소스 본 이름입니다. 이 스켈콘트롤 에 대한 소스로 왼쪽 앞 팔 본을 사용중이었다면, 이 옵션은 왼쪽 손 본으로 설정해야 합니다.
+</li> <li> <strong>Twist Angle Scale</strong> 트위스트 각 스케일 - 로테이션 각에 적용할 스케일입니다.
+</li></ul>
+<p />
+<p />
+<h4><a name="SkelControlWheel"></a> SkelControlWheel </h4>
+<hr size="1" noshade="noshade">
+이 콘트롤러는 언리얼 엔진 3 의 비히클 시스템과 작동하도록 디자인되었습니다. 비히클은 각 휠에 대해 본이 있는 스켈레탈 메시를 사용합니다. 게임에서 휠을 움직이고 스티어링하기 전, 각각의 휠에 대한 SkelControlWheel 을 만들고 이름을 지어 줘야, 비히클 셋업에서 그 이름으로 콘트롤을 식별할 수 있습니다. 그런 다음 비히클 시스템은 그 아래 돌아가는 시뮬레이션의 수직 이동, 롤, 스티어링에 바퀴를 맞추고자 매 프레임마다 콘트롤을 업데이트합니다. Vehicle 에 저장된 <strong>Steering</strong> 과 <strong>Throttle</strong> 변수를 사용하여 스테이트를 결정합니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlWheel.jpg" alt="SkelControlWheel.jpg" width='800' height='397' />
+<p />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>WheelDisplacement</strong> 휠 디스플레이스먼트 - 휠의 수직 이동 미리보기만을 위한 것입니다. 이 수치를 설정하면 휠을 들어 올립니다.
+</li> <li> <strong>WheelMaxRenderDisplacement</strong> 휠 최대 렌더 디스플레이스먼트 - 휠이 세로 방향 최대로 움직일 수 있는 거리입니다. 휠이 섀시 지오메트리에 먹히지 않도록 하기 위해 사용됩니다.
+</li> <li> <strong>WheelRoll</strong> 휠 롤 - <strong>휠 디스플레이스먼트</strong> 와 비슷하게, 휠 롤을 미리보는 데 사용됩니다. 값이 양수면 차가 전진하는 것처럼 휠을 굴립니다.
+</li> <li> <strong>WheelRollAxis</strong> 휠 롤 축 - 휠이 롤 중심으로 삼을 휠 본의 축입니다.
+</li> <li> <strong>WheelSteering</strong> 휠 스티어링 - 휠의 스티어링 운동을 미리보는 데 사용합니다. 양수는 휠이 오른쪽을 향하도록 움직입니다.
+</li> <li> <strong>WheelSteeringAxis</strong> 휠 스티어링 축 - 휠의 스티어링을 위해 회전해야하는 휠 본의 축입니다.
+</li> <li> <strong>InvertWheelRoll</strong> 휠 롤 반전 - 롤에 대한 로테이션을 반전시킵니다.
+</li> <li> <strong>InvertWheelSteering</strong> 휠 스티어링 반전 - 스티어링에 대한 로테이션을 반전시킵니다.
+</li></ul>
+<p />
+<h4><a name="UDKSkelControl_Damage / _UTSkelControl_Damage"></a> UDKSkelControl_Damage / UTSkelControl_Damage </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러는 언리얼 엔진 3 의 비히클 시스템과 작동하도록 고안된 것입니다. 비히클이 대미지를 입으면서 이 스켈레탈 콘트롤러는 차량이 파손되는 시각적인 면을 만들어 냅니다. 예를 들어 비히클 일부에 대미지를 입히면 스태틱 메시가 떨어져 나가는 식입니다. 이는 대부분 자동 스켈레탈 콘트롤러이지만, BreakApart, BreakApartOnDeath, RestorePart 등을 덮어쓰기 위해 이 스켈레탈 콘트롤러를 서브클래싱할 수 있습니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_Damage.jpg" alt="UDKSkelControl_Damage.jpg" width='800' height='363' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>On Damage Active</strong> 대미지시 활성화 - OnDamage 함수성을 활성화시킬지 입니다.
+</li> <li> <strong>Damage Bone Scale</strong> 대미지 본 스케일 - 대미지시 이 본에 스케일 적용할 값입니다.
+</li> <li> <strong>Damage Max</strong> 대미지 최대 - 스켈레탈 콘트롤이 죽기 전까지 받을 수 있는 최대 대미지입니다.
+</li> <li> <strong>Activation Threshold</strong> 활성화 임계값 - 타겟의 체력이 이 값을 넘어가면 이 콘트롤은 비활성화됩니다.
+</li> <li> <strong>Control Str Follows Health</strong> 콘트롤 세기가 체력을 따름 - 활성화되면 이 스켈레탈 콘트롤러는 나머지 체력의 곱(product)이 아니면 항상 최대로 콘트롤 세기를 생성합니다.
+</li> <li> <strong>Break Mesh</strong> 깨짐 메시 - 스켈레탈 콘트롤러가 깨질 때 스폰시킬 스태틱 메시입니다.
+</li> <li> <strong>Break Threshold</strong> 깨짐 임계값 - 이 값을 넘어가면 스프링이 깨져 보이기 시작합니다.
+</li> <li> <strong>Break Time</strong> 깨짐 시간 - 깨질려는 상태(breaking)에서 깨진 상태(broken)로 가는 데 걸리는 시간입니다.
+</li> <li> <strong>Default Break Dir</strong> 기본 깨짐 방향 - 깨질 때 이 값을 사용하여 벡터를 만듭니다.
+</li> <li> <strong>Damage Scale</strong> 대미지 스케일 - 스폰된 조각에 사용할 스케일입니다. (예를 들어 스태틱 메시 애셋은 하나인데 비히클의 다른 위치, 중심 기준 아래 방향으로 미러링된 곳에서 스폰되는 경우입니다.)
+</li> <li> <strong>PS_Damage On Break</strong> 파시_깨질 때 대미지 - 이 부분이 깨질 때 스폰시킬 파티클 시스템입니다.
+</li> <li> <strong>PS_Damage Trail</strong> 파시_대미지 흔적 - 이 부분이 떨어져 날아갈 때 붙일 (짙고 독하게 흔적을 남기는 연기 트레일같은!) 파티클 시스템입니다.
+</li> <li> <strong>Break Speed</strong> 깨지는 속력 - 각 부분이 떨어져나갈 때 비히클 정리를 위해 부분을 밀어올릴 힘입니다.
+</li> <li> <strong>On Death Active</strong> OnDeath 활성화 - OnDeath 함수성이 활성화되었는지 입니다.
+</li> <li> <strong>On Death Use For Secondary Explosion</strong> 2차 폭발에 OnDeath 사용 - 2차 폭발에 OnDeath 함수성을 활성화시킬지 입니다.
+</li> <li> <strong>Death Percent To Actually Spawn</strong> 실제 스폰시킬 사망시 확률 - OnDeath 활성화시 이 조각을 실제로 스폰시킬 확률입니다.
+</li> <li> <strong>Death Bone Scale</strong> 사망 본 스케일 - 사망시 이 본에 적용할 스케일입니다.
+</li> <li> <strong>Death Static Mesh</strong> 사망 스태틱 메시 - 사망시 스폰시킬 스태틱 메시입니다.
+</li> <li> <strong>Death Impulse Dir</strong> 사망 충격 방향 - 스폰된 비히클 조각이 날아갈 방향입니다.
+</li> <li> <strong>Death Scale</strong> 사망 스케일 - 스폰되는 조각에 사용할 스케일입니다. (예를 들어 스태틱 메시 애셋이 하나 있는데, 비히클 다른 위치에서 중앙 아래로 미러링되어 스폰되는 경우.)
+</li> <li> <strong>PS_Death On Break</strong> 파시_깨질 때 사망 - 이 조각이 부서질 때 스폰시킬 파티클 시스템입니다.
+</li> <li> <strong>PS_Death Trail</strong> 파시_사망 궤적 - 이 조각이 날아갈 때 붙일 파티클 시스템입니다. (예를 들면 자욱하게 따라붙는 연기 궤적 정도)
+</li></ul>
+<p />
+<h5><a name="언리얼스크립트 함수"></a><a name=" 언리얼스크립트 함수"></a>  언리얼스크립트 함수 </h5> <ul>
+<li> <strong>simulated event BreakApart(vector PartLocation, bool bIsVisible)</strong> - 이 이벤트는 스프링이 깨져야 겠다 결정되었을 때 발동됩니다. <ul>
+<li> <strong>PartLocation</strong> - 부분의 월드 위치입니다.
+</li> <li> <strong>bIsVisible</strong> - 참이면 이 부분이 계속해서 보입니다.
+</li></ul>
+</li> <li> <strong>simulated event BreakApartOnDeath(vector PartLocation, bool bIsVisible)</strong> - 이 이벤트는 사망시 스프링이 깨졌을 때 발동됩니다. <ul>
+<li> <strong>PartLocation</strong> - 부분의 월드 위치입니다.
+</li> <li> <strong>bIsVisible</strong> - 참이면 이 부분이 계속해서 보입니다.
+</li></ul>
+</li> <li> <strong>simulated event float RestorePart()</strong> - 이 이벤트는 부분이 치유되었을 때 발동됩니다.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_DamageHinge / _UTSkelControl_DamageHinge"></a> UDKSkelControl_DamageHinge / UTSkelControl_DamageHinge </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러는 뚜껑이나 문처럼 경첩(hinge)이 달린 차량 부속을 시뮬레이션하는 데 사용되는 UDKSkelControl_DamageHinge / UTSkelControl_DamageHinge 확장입니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_Damage.jpg" alt="UDKSkelControl_Damage.jpg" width='800' height='363' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Max Angle</strong> 최대 각 - 이 경첩을 기준으로 열리는 최대각 크기입니다.
+</li> <li> <strong>Pivot Axis</strong> 선회 축 - 이 경첩이 기준으로 삼는 축입니다.
+</li> <li> <strong>AV Modifier</strong> AV 곱수 - 경첩 각을 계산하는 데 사용되는 각속도에 이 값을 곱합니다. 항상 음수여야 합니다.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_DamageSpring / _UTSkelControl_DamageSpring"></a> UDKSkelControl_DamageSpring / UTSkelControl_DamageSpring </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러는 차량의 휀더 / 범퍼에 입는 피해를 시뮬레이션하는 데 사용되는 UDKSkelControl_DamageHinge / UTSkelControl_DamageHinge 확장입니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_Damage.jpg" alt="UDKSkelControl_Damage.jpg" width='800' height='363' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Max Angle</strong> 최대 각 - 이 스프링이 최대로 열리는 각도입니다.
+</li> <li> <strong>Min Angle</strong> 최소 각 - 이 스프링이 최소로 열리는 각도입니다.
+</li> <li> <strong>Falloff</strong> 감쇠 - 스프링이 정상 상태로 얼마나 빨리 되돌아가는지 입니다.
+</li> <li> <strong>Spring Stiffness</strong> 스프링 강성 - 스프링의 뻣뻣한 정도입니다.
+</li> <li> <strong>AV Modifier</strong> AV 곱수 - 경첩의 각을 계산하는 데 사용되는 각속도에 이 값을 곱합니다. 항상 음수값이어야 합니다.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_HoverboardSuspension / _UTSkelControl_HoverboardSuspension"></a> UDKSkelControl_HoverboardSuspension / UTSkelControl_HoverboardSuspension </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러는 언리얼 토너먼트 3 의 호버 보드에, 이동에 반응해서 호버 보드 하부를 움직이는 데 사용됩니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_Hoverboard.jpg" alt="UDKSkelControl_Hoverboard.jpg" width='800' height='415' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Trans Ignore</strong> 트랜스 무시 - 이 정도까지의 세로 이동은 무시합니다.
+</li> <li> <strong>Trans Scale</strong> 트랜스 스케일 - 세로 이동에 대한 스케일입니다.
+</li> <li> <strong>Trans Offset</strong> 트랜스 오프셋 - 세로 이동을 이격시킬 양입니다.
+</li> <li> <strong>Max Trans</strong> 최대 트랜스 - 세로 이동 최대 적용량입니다.
+</li> <li> <strong>Min Trans</strong> 최소 트랜스 - 세로 이동 최소 적용량입니다.
+</li> <li> <strong>Rot Scale</strong> 회전 스케일 - Y 축으로 적용된 로테이션에 대한 스케일입니다. 로테이션은 호버 보드 하부의 서스펜션을 시뮬레이션하는 데 적용됩니다.
+</li> <li> <strong>Max Rot</strong> 최대 회전 - Y 축에 적용가능한 최대 로테이션입니다.
+</li> <li> <strong>Max Rot Rate</strong> 최대 회전율 - 매 초마다 적용되는 최대 회전율입니다.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_HoverboardSwing / _UTSkelControl_HoverboardSwing"></a> UDKSkelControl_HoverboardSwing / UTSkelControl_HoverboardSwing </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러는 언리얼 토너먼트 3 의 호버 보드에, 이동에 반응해서 호버 보드 하부를 움직이는 데 사용됩니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_Hoverboard.jpg" alt="UDKSkelControl_Hoverboard.jpg" width='800' height='415' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Swing History Window</strong> 스윙 히스토리 창 - 스윙 히스토리 창 크기를 설정합니다.
+</li> <li> <strong>Swing Scale</strong> 스윙 스케일 - 입니다.
+</li> <li> <strong>Max Swing</strong> 최대 스윙 - 스윙의 양쪽 방향 최대 크기로, 스윙 결과를 구하는 데 사용됩니다.
+</li> <li> <strong>Max Use Vel</strong> 최대 사용 속도 - 속도의 양쪽 방향 최대 크기로, 스윙 결과를 구하는 데 사용됩니다.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_HoverboardVibration / _UTSkelControl_HoverboardVibration"></a> UDKSkelControl_HoverboardVibration / UTSkelControl_HoverboardVibration </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러는 언리얼 토너먼트 3 의 호버 보드에, 진동을 시뮬레이션하는 데 사용됩니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_Hoverboard.jpg" alt="UDKSkelControl_Hoverboard.jpg" width='800' height='415' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Vib Frequency</strong> 진동 주파수 - 진동을 시뮬레이션하는 데 사용되는 주파수입니다.
+</li> <li> <strong>Vib Speed Amp Scale</strong> 진동 속력 증폭 스케일 - 선속도에 따라 진동을 증폭시키는 데 사용됩니다.
+</li> <li> <strong>Vib Turn Amp Scale</strong> 진동 회전 증폭 스케일 - 각속도에 따라 진동을 증폭시키는 데 사용됩니다.
+</li> <li> <strong>Vib Max Amplitude</strong> 진동 최대 진폭 - 진동을 최대 진폭으로 제약시키는 데 사용됩니다.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_HugGround / _UTSkelControl_HugGround"></a> UDKSkelControl_HugGround / UTSkelControl_HugGround </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러는 본을 땅과 일정한 거리 내 제약 범위 내에 유지시키는 데 사용됩니다. 그 방법은 선 검사를 하여 월드상에 적중 위치를 찾는 것으로 이루어 집니다. 그런 다음 본을 (그 위치로) 옮겨 주면 항상 땅 위에 있는 모양새를 낼 수 있습니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_HugGround.jpg" alt="UDKSkelControl_HugGround.jpg" width='800' height='437' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Desired Ground Dist</strong> 바라는 땅 거리 - 본에서 땅까지 바라는 거리입니다.
+</li> <li> <strong>Max Dist</strong> 최대 거리 - 본의 정상 위치에서 최대로 움직일 수 있는 거리입니다.
+</li> <li> <strong>Parent Bone</strong> 부모 본 - 제어되는 본이 항상 회전 방향으로 삼을 본 이름으로, 옵션입니다.
+</li> <li> <strong>Opposite From Parent</strong> 부모에서 반대 - 참이면 부모 방향이 아닌 반대 방향으로 본을 회전시킵니다.
+</li> <li> <strong>XY Dist From Parent Bone</strong> 부모 본에서 XY 거리 - <strong>ParentBone</strong> 이 지정되고 이 값이 0 보다 크면 제어되는 본은 항상 딱 이 만큼 이격시킵니다.
+</li> <li> <strong>Z Dist From Parent Bone</strong> 부모 본에서 Z 거리 - <strong>ParentBone</strong> 이 지정되고 이 값이 0 보다 크면 제어되는 본은 항상 딱 이 만큼 이격시킵니다.
+</li> <li> <strong>Max Translation Per Sec</strong> 최대 초당 트랜슬레이션 - <strong>BoneTranslation</strong> 의 최대 초당 변화량입니다.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_PropellerBlade"></a> UDKSkelControl_PropellerBlade </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러는 언리얼 엔진 3 의 비히클 시스템과 함께 사용됩니다. 이 콘트롤러는 UDKVehicle 을 확장하는 비히클에만 적용됩니다. 비히클을 운전하는 도중, 프로펠러 날을 회전하여 상승하는 것을 시뮬레이션합니다. 이 효과는 본의 로테이션 yaw 값에만 적용됩니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_PropellerBlade.jpg" alt="UDKSkelControl_PropellerBlade.jpg" width='800' height='321' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Max Rotations Per Second</strong> 최대 초당 회전 - 프로펠러가 초당 최대로 회전할 수 있는 속도를 정의합니다.
+</li> <li> <strong>Spin Up Time</strong> 회전 상승 시간 - 최대 회전 속도까지 상승하는 데 걸리는 시간입니다.
+</li> <li> <strong>Counter Clockwise</strong> 반시계 방향 - 참이면 프로펠러 날을 반시계 방향으로 회전시킵니다.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_Rotate / _UTSkelControl_Rotate"></a> UDKSkelControl_Rotate / UTSkelControl_Rotate </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러를 통해 본 로테이션을 원하는 대로 정의할 수 있습니다. 원하는 본 로테이션으로 회전할 때 본을 얼마만큼의 속력으로 회전시킬지를 나타내는 회전율을 정의하는 것입니다. 이는 원하는 본 로테이션을 간단히 정의함으로써 언리얼스크립트를 통한 본 애니메이션을 단순화시켜 줍니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_Rotate.jpg" alt="UDKSkelControl_Rotate.jpg" width='800' height='454' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Desired Bone Rotation</strong> 바라는 본 로테이션 - 본을 회전시키길 원하는 본 로테이션입니다.
+</li> <li> <strong>Desired Bone Rotation Rate</strong> 바라는 본 회전율 - 본을 회전시킬 때 적용하려는 회전율입니다.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_SpinControl / _UTSkelControl_SpinControl"></a> UDKSkelControl_SpinControl / UTSkelControl_SpinControl </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러는 본에 고정적인 로테이션을 적용합니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_SpinControl.jpg" alt="UDKSkelControl_SpinControl.jpg" width='800' height='444' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Degrees Per Second</strong> 초당 각도 - 본을 초당 몇도로 회전시킬지를 정의합니다.
+</li> <li> <strong>Axis</strong> 축 - 모든 축 값이 0 이면 이 콘트롤러는 아무 것도 하지 않습니다. 축은 정규화되므로, 본은 Degrees Per Second 이당 회전하지 않습니다. <ul>
+<li> <strong>X</strong> - X 축 기준 본 회전입니다. 음수면 반시계 방향 회전입니다.
+</li> <li> <strong>Y</strong> - Y 축 기준 본 회전입니다. 음수면 반시계 방향 회전입니다.
+</li> <li> <strong>Z</strong> - Z 축 기준 본 회전입니다. 음수면 반시계 방향 회전입니다.
+</li></ul>
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_TurretConstrained / _UTSkelControl_TurretConstrained"></a> UDKSkelControl_TurretConstrained / UTSkelControl_TurretConstrained </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러는 연결된 본이 Desired Bone Rotation 에 정의된 로테이션을 향하도록 회전시켜 보기 위해, 언리얼 엔진 3 의 비히클 시스템과 함께 쓰입니다. 터렛 운동 제약을 위한 여러가지 옵션과 함께 확장됩니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_TurretConstrained.jpg" alt="UDKSkelControl_TurretConstrained.jpg" width='800' height='369' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Constrain Pitch</strong> 피치(상하) 제약 - 참이면 피치가 제약됩니다.
+</li> <li> <strong>Constrain Yaw</strong> 요(좌우) 제약 - 참이면 요가 제약됩니다.
+</li> <li> <strong>Constrain Roll</strong> 롤(횡전) 제약 - 참이면 횡전이 제약됩니다.
+</li> <li> <strong>Invert Pitch</strong> 피치 반전 - 참이면 피치를 반대로 적용합니다.
+</li> <li> <strong>Invert Yaw</strong> 요 반전 - 참이면 요를 반대로 적용합니다.
+</li> <li> <strong>Invert Roll</strong> 롤 반전 - 참이면 롤을 반대로 적용합니다.
+</li> <li> <strong>Max Angle</strong> 최대 각 - 최대 각도입니다. <ul>
+<li> <strong>Pitch Constraint</strong> 피치 제약 - 최대 피치 제약입니다.
+</li> <li> <strong>Yaw Constraint</strong> 요 제약 - 최대 요 제약입니다.
+</li> <li> <strong>Roll Constraint</strong> 롤 제약 - 최대 롤 제약입니다.
+</li></ul>
+</li> <li> <strong>Min Angle</strong> 최소 각 - 최소 각도입니다. <ul>
+<li> <strong>Pitch Constraint</strong> 피치 제약 - 최소 피치 제약입니다.
+</li> <li> <strong>Yaw Constraint</strong> 요 제약 - 최소 요 제약입니다.
+</li> <li> <strong>Roll Constraint</strong> 롤 제약 - 최소 롤 제약입니다.
+</li></ul>
+</li> <li> <strong>Steps</strong> 스텝 - 각 터렛이 데이터를 제약시키는 데 여러가지 단계별로 가능하도록 합니다. <ul>
+<li> <strong>StepStartAngle</strong> 스텝 시작 각 - 현재 각도가 이 각도 이상이면, 이 단계가 활성화됩니다.
+</li> <li> <strong>StepEndAngle</strong> 스텝 끝 각 - 현재 각도가 이 각도 이하이면, 이 단계가 활성화됩니다.
+</li> <li> <strong>Max Angle</strong> 최대 각 - 최대 각도입니다.
+</li> <li> <strong>Pitch Constraint</strong> 피치 제약 - 최대 피치 제약입니다.
+</li> <li> <strong>Yaw Constraint</strong> 요 제약 - 최대 요 제약입니다.
+</li> <li> <strong>Roll Constraint</strong> 롤 제약 - 최대 롤 제약입니다.
+</li> <li> <strong>MinAngle</strong> 최소 각 - 최소 각도입니다.
+</li> <li> <strong>Pitch Constraint</strong> 피치 제약 - 최소 피치 제약입니다.
+</li> <li> <strong>Yaw Constraint</strong> 요 제약 - 최소 요 제약입니다.
+</li> <li> <strong>Roll Constraint</strong> 롤 제약 - 최소 롤 제약입니다.
+</li></ul>
+</li> <li> <strong>Lag Degrees Per Second</strong> 초당 지연 각도 - 터렛을 바라는 로테이션으로 회전시킬 때 몇 초나 지연시킬지 입니다.
+</li> <li> <strong>Pitch Speed Scale</strong> 피치 속력 스케일 - 피치 속력 곱수입니다.
+</li> <li> <strong>Desired Bone Rotation</strong> 바라는 본 로테이션 - 본을 회전시키려는 기준 로테이션입니다.
+</li> <li> <strong>Fixed When Firing</strong> 발사시 고정 - 참이면 이 터렛은 현재 연결된 좌석이 발사중일 때 업데이트되지 않습니다.
+</li> <li> <strong>Associated Seat Index</strong> 연결된 좌석 인덱스 - 이 콘트롤과 연결되어 있는 좌석 인덱스입니다.
+</li> <li> <strong>Reset When Unattended</strong> 미사용시 리셋 - 참이면 플레이어가 이 터렛을 제어하지 않을 때 0,0,0 으로 리셋시킵니다.
+</li></ul>
+<p />
+<h5><a name="언리얼스크립트 함수"></a><a name=" 언리얼스크립트 함수"></a>  언리얼스크립트 함수 </h5> <ul>
+<li> <strong>delegate OnTurretStatusChange(bool bIsMoving)</strong> - 터렛의 상태가 변할 때 호출되는 델리게이트입니다. <ul>
+<li> <strong>bIsMoving</strong> - 참이면 터렛이 이동중입니다.
+</li></ul>
+</li> <li> <strong>native final function InitTurret(Rotator InitRot, SkeletalMeshComponent SkelComp)</strong> - 터렛을 초기화시켜, 그 현재 방향이 가리키고자 하는 방향이 되도록 합니다. <ul>
+<li> <strong>InitRot</strong> - 이 로테이션으로 초기화시킵니다.
+</li> <li> <strong>SkelComp</strong> - 콘트롤러가 부착되어 있는 스켈레탈 메시 컴포넌트 입니다.
+</li></ul>
+</li> <li> <strong>native final function bool WouldConstrainPitch(int TestPitch, SkeletalMeshComponent SkelComp)</strong> - 이 콘트롤러가 주어진 피치를 제한시키는 경우 참을 반환합니다. <ul>
+<li> <strong>TestPitch</strong> - 언리얼 로테이터 유닛 단위로, 테스트할 피치입니다.
+</li> <li> <strong>SkelComp</strong> - 이 콘트롤러가 부착될 스켈레탈 메시 컴포넌트 입니다.
+</li></ul>
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_VehicleFlap"></a> UDKSkelControl_VehicleFlap </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러는 언리얼 엔진 3 의 비히클 시스템을 사용하여 차량의 세로 속도에 따라 움직이는 덮개 애니메이션을 만들어 내는 데 쓰입니다. 언리얼 토너먼트 3 에서 Manta 비히클이 점프할 때 뒷 덮개의 애니메이션을 처리하는 데 사용되었습니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_VehicleFlaps.jpg" alt="UDKSkelControl_VehicleFlaps.jpg" width='800' height='335' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Max Pitch</strong> 최대 피치 - 본의 양쪽 방향 피치에 최대로 적용할 수 있는 변화량입니다.
+</li></ul>
+<p />
+<p />
+<h4><a name="UTSkelControl_CicadaEngine"></a> UTSkelControl_CicadaEngine </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러는 언리얼 토너먼트 3 의 Cicada 비히클의 비행 방식 시뮬레이션을 위해 엔진을 움직이는 데 사용됩니다. 비히클의 속도를 사용하여 본의 바람직한 피치를 계산합니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UTSkelControl_CicadaEngine.jpg" alt="UTSkelControl_CicadaEngine.jpg" width='800' height='299' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Forward Pitch</strong> 전방 피치 - 엔진의 최대 피치 각도입니다.
+</li> <li> <strong>Back Pitch</strong> 후방 피치 - 엔진의 최소 피치 각도입니다.
+</li> <li> <strong>Pitch Rate</strong> 피치율 - 본의 피치 변화 속도입니다.
+</li> <li> <strong>Max Velocity</strong> 최대 속도 - 최대 속도입니다.
+</li> <li> <strong>Min Velocity</strong> 최소 속도 - 최소 속도입니다.
+</li> <li> <strong>Max Velocity Pitch Rate Multiplier</strong> 최대 속도 피치율 곱수 - 피치 이동 속도 계산에 사용되는 피치율에 대한 곱수입니다.
+</li></ul>
+<p />
+<p />
+<h4><a name="UTSkelControl_JetThruster"></a> UTSkelControl_JetThruster </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러는 비히클 오너인 경우 추진력에 따라 콘트롤 세기를 업데이트합니다. 액터가 이 콘트롤러를 사용하려면 UDKVehicle 을 서브클래싱 해야 합니다. 추진력에 따라 본을 자동으로 스케일 조절하려는 경우 등에 좋습니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UTSkelControl_JetThruster.jpg" alt="UTSkelControl_JetThruster.jpg" width='800' height='377' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Max Forward Velocity</strong> 최대 전방 속도 - 최대 전방 속도입니다.
+</li> <li> <strong>Blend Rate</strong> 블렌드율 - 바라는 콘트롤 세기로 블렌딩해 들어갈 속도입니다.
+</li></ul>
+<p />
+<p />
+<h4><a name="UTSkelControl_MantaBlade"></a> UTSkelControl_MantaBlade </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러는 <a href="UsingSkeletalControllersKR.html#UDKSkelControl_PropellerBlade" class="twikiAnchorLink">UDKSkelControl_PropellerBlade</a> 를 확장한 것으로, 새로이 추가된 것은 없습니다.
+<p />
+<p />
+<h4><a name="UTSkelControl_MantaFlaps"></a> UTSkelControl_MantaFlaps </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러는 <a href="UsingSkeletalControllersKR.html#UDKSkelControl_VehicleFlap" class="twikiAnchorLink">UDKSkelControl_VehicleFlap</a> 를 확장한 것으로, 새로이 추가된 것은 없습니다.
+<p />
+<p />
+<h4><a name="UTSkelControl_Oscillate"></a> UTSkelControl_Oscillate </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러는 일정한 폭으로 본을 앞뒤로 움직입니다. 최대/최소 이동량은 MaxDelta 라는 단일 값으로 정의되며, 최소량은 이 값의 음수로 결정됩니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UTSkelOscillate.jpg" alt="UTSkelOscillate.jpg" width='800' height='338' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Max Delta</strong> 최대 경과 - 본 최대 이동량입니다.
+</li> <li> <strong>Period</strong> 기간 - 시작 위치(델타 없음)에서 MaxDelta 까지 이동하는 데 걸리는 시간입니다.
+</li> <li> <strong>Current Time</strong> 현재 시간 - 진동에서 현재 시간입니다. 보통 이 값은 언리얼 에디터에서 어떤 식으로든 조절할 필요가 없습니다.
+</li></ul>
+<p />
+<p />
+<h3><a name="미분류"></a> 미분류 </h3>
+<h4><a name="SkelControl_CCDIK"></a> SkelControl_CCDIK </h4>
+<hr size="1" noshade="noshade">
+또다른 IK 타입으로, CCD (Cyclic Coordinate Descent, 순환 좌표 강하)라 부릅니다. 근본적으로는 골에 도달할 때까지 하나씩 천천히 조절하는 식으로, 몇 개의 본에도 작동 가능한 거친 방식입니다. 이러한 알고리즘의 속성때문에 기다란 본 체인에는 매우 느릴 수가 있습니다. 촉수같은 본 체인에 가장 잘 맞습니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlCCD.jpg" alt="SkelControlCCD.jpg" width='800' height='378' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Num Bones</strong> 본 갯수 - 영향끼칠 본 갯수입니다.
+</li> <li> <strong>Max Per Bone Iterations</strong> 본별로 최대 반복처리 횟수 - 퍼포먼스 제어용으로, 각 본을 건드릴 수 있는 최대 횟수입니다.
+</li> <li> <strong>Precision</strong> 정밀도 - 이 정도 언리얼 유닛 거리까지는 골에 도달한 것으로 간주합니다. 약간 오차가 나도 괜찮다면, 이 노드의 퍼포먼스에 확실히 도움됩니다.
+</li> <li> <strong>Start From Tail</strong> 꼬리에서 시작 - 체인의 앞이나 뒤에서부터 시작합니다. 시각적인 결과가 다르게 나타납니다.
+</li> <li> <strong>Angle Constraint</strong> 각도 컨스트레인트 - 라디안 각도 배열입니다. 각각의 본이 가질 수 있는 최대 각도입니다.
+</li> <li> Max Angle Steps 최대 각도 스텝 - 한 스텝에 허용된 최대 로테이션 각도입니다. 본 체인에 고르게 작은 로테이션 스텝을 강제시켜, 접히는(wrapping) 효과를 방지하는 데 도움이 됩니다.
+</li></ul>
+<p />
+<h5><a name="언리얼스크립트에서 사용하는 방법"></a><a name=" 언리얼스크립트에서 사용하는 방법"></a>  언리얼스크립트에서 사용하는 방법 </h5>
+이 예제에서는 캐릭터의 팔에 붙은 체인이 플레이어의 폰으로 나타나는 자신을 향하려 합니다.
+<p />
+<div class="codetitlebar">
+SkelControlCCDIKPawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+class SkelControlCCDIKPawn extends Pawn
+  Placeable;
+
+var() Name LeftSkelControlCCDIKName;
+var() Name RightSkelControlCCDIKName;
+var SkelControl&#95;CCD&#95;IK LeftSkelControlCCDIK;
+var SkelControl&#95;CCD&#95;IK RightSkelControlCCDIK;
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  Super.PostInitAnimTree(SkelComp);
+
+  if (SkelComp &#61;&#61; Mesh)
+  {
+    LeftSkelControlCCDIK &#61; SkelControl&#95;CCD&#95;IK(Mesh.FindSkelControl(LeftSkelControlCCDIKName));
+    RightSkelControlCCDIK &#61; SkelControl&#95;CCD&#95;IK(Mesh.FindSkelControl(RightSkelControlCCDIKName));
+  }
+}
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  LeftSkelControlCCDIK &#61; None;
+  RightSkelControlCCDIK &#61; None;
+}
+
+simulated event Tick(float DeltaTime)
+{
+  local PlayerController PlayerController;
+
+  Super.Tick(DeltaTime);
+
+  if (LeftSkelControlCCDIK !&#61; None &#38;&#38; RightSkelControlCCDIK !&#61; None)
+  {
+    PlayerController &#61; GetALocalPlayerController();
+    if (PlayerController !&#61; None &#38;&#38; PlayerController.Pawn !&#61; None)
+    {
+      LeftSkelControlCCDIK.EffectorLocation &#61; PlayerController.Pawn.Location;
+      RightSkelControlCCDIK.EffectorLocation &#61; PlayerController.Pawn.Location;
+    }
+  }
+}
+
+defaultproperties
+{
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;PawnMesh
+  End Object
+  Mesh&#61;PawnMesh
+  Components.Add(PawnMesh)
+
+  Physics&#61;PHYS&#95;Falling
+
+  Begin Object Name&#61;CollisionCylinder
+    CollisionRadius&#61;+0030.0000
+    CollisionHeight&#61;+0072.000000
+  End Object
+}
+</pre>
+</div>
+<p />
+<h4><a name="SkelControlLookAt"></a> SkelControlLookAt </h4>
+<hr size="1" noshade="noshade">
+본이 특정 타겟을 향하도록 그 로테이션을 조절하는 데 사용되는 콘트롤러입니다. 캐릭터의 머리가 지정된 타겟을 바라보게 만들려는 경우에 사용하면 됩니다. 아래 스크린샷에서는 머리가 파랑 다이아몬드를 바라보고 있습니다. 녹색 원뿔은 머리 운동 최대 범위를 나타냅니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlLookAt.jpg" alt="SkelControlLookAt.jpg" width='906' height='448' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Target Location</strong> 타겟 위치 - 본을 향하게 할 스페이스 안의 위치입니다.
+</li> <li> <strong>Target Location Space</strong> 타겟 위치 스페이스 - <strong>타겟 위치</strong> 가 정의된 스페이스입니다.
+</li> <li> <strong>Target Space Bone Name</strong> 타겟 스페이스 본 이름 - <strong>타겟 위치 스페이스</strong> 가 BCS_OtherBoneSpace 인 경우, 이 이름의 본을 사용합니다.
+</li> <li> <strong>Look At Axis</strong> 룩 앳 축 - 제어되는 본이 타겟을 향해야 하는 경우의 축입니다.
+</li> <li> <strong>Invert Look At Axis</strong> 룩 앳 축 반전 - <strong>룩 앳 축</strong> 쪽이 아니라 그 반대 방향으로 향하도록 합니다.
+</li> <li> <strong>Define Up Axis</strong> 윗 축 정의 - 거짓이면 콘트롤은 <strong>룩 앳 축</strong> 이 타겟을 향하도록 하는 데 필요한 최소 로테이션을 찾습니다. 그 축 중심의 롤은 여전히 애니메이션에서 나옵니다. 참이면 본의 수직축 역시도 정의, 본의 오리엔테이션이 콘트롤러로 완전 정의되도록 합니다.
+</li> <li> <strong>Up Axis</strong> 윗 축 - <strong>윗 축 정의</strong> 옵션이 참이면, 이것이 월드 스페이스에서 위를 향하는 본의 축이 됩니다.
+</li> <li> <strong>Invert Up Axis</strong> 윗 축 반전 - <strong>윗 축</strong> 이 위가 아닌 아래를 향해야 하는 경우입니다.
+</li> <li> <strong>Enable Limit</strong> 한계 켜기 - 타겟 추적을 위해 본에 허용된 로테이션 최대 범위 한계를 켤지 입니다.
+</li> <li> <strong>Show Limit</strong> 한계 표시 - 이 콘트롤을 선택했을 때 3D 뷰포트에 녹색 한계 원뿔을 그릴지 입니다.
+</li> <li> <strong>Max Angle</strong> 최대 앵글 - 이 본이 리퍼런스 포즈를 기준으로 허용된 최대 로테이션으로, 각도 단위입니다.
+</li> <li> <strong>Dead Zone Angle</strong> 데드 존 앵글 - 타겟이 현재 로테이션의 데드 존 앵글 안에 있다면, 업데이트를 하지 않습니다. 본은 타겟이 데드 존 밖으로 움직일 때만 회전됩니다.
+</li></ul>
+<p />
+<strong>타겟 위치 스페이스</strong> 를 BCS_OtherBoneSpace 로 설정하면 캐릭터가 항상 손을 보게 만든다든가 할 수 있습니다.
+<p />
+<h5><a name="언리얼스크립트에서 사용하는 방법"></a><a name=" 언리얼스크립트에서 사용하는 방법"></a>  언리얼스크립트에서 사용하는 방법 </h5>
+이 예제에서 폰은 자신, 좀 더 정확히 자신이 제어중인 폰을 바라봅니다. 그 폰의 가시 거리 밖으로 이동하면 폰이 앞을 바라보도록 블렌딩됩니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlLookAtExample.jpg" alt="SkelControlLookAt.jpg" width='800' height='593' />
+<p />
+<div class="codetitlebar">
+SkelControlLookAtPawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+class SkelControlLookAtPawn extends Pawn;
+
+var() Name SkelControlLookAtName;
+var() float EyeOffset;
+var SkelControlLookAt SkelControlLookAt;
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  Super.PostInitAnimTree(SkelComp);
+
+  if (SkelComp &#61;&#61; Mesh)
+  {
+    SkelControlLookAt &#61; SkelControlLookAt(Mesh.FindSkelControl(SkelControlLookAtName));
+  }
+}
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  SkelControlLookAt &#61; None;
+}
+
+simulated event Tick(float DeltaTime)
+{
+  local PlayerController PlayerController;
+
+  Super.Tick(DeltaTime);
+
+  if (SkelControlLookAt !&#61; None)
+  {
+    PlayerController &#61; GetALocalPlayerController();
+
+    if (PlayerController !&#61; None &#38;&#38; PlayerController.Pawn !&#61; None)
+    {
+      SkelControlLookAt.TargetLocation &#61; PlayerController.Pawn.Location + (Vect(0.f, 0.f, 1.f) &#42; EyeOffset);
+    }
+  }
+}
+
+defaultproperties
+{
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;PawnMesh
+  End Object
+  Mesh&#61;PawnMesh
+  Components.Add(PawnMesh)
+
+  Physics&#61;PHYS&#95;Falling
+
+  Begin Object Name&#61;CollisionCylinder
+    CollisionRadius&#61;+0030.0000
+    CollisionHeight&#61;+0072.000000
+  End Object
+}
+</pre>
+</div>
+<p />
+<h4><a name="SkelControlSpline"></a> SkelControlSpline </h4>
+<hr size="1" noshade="noshade">
+스플라인 콘트롤러는 본 자체를 수정하는 것이 아니라, 그 본 위의 본 체인을 받아다가 스플라인에 맞춥니다. 아래 예제에서는 체인 끝을 위로 움직이기 위해 보통의 SkelControlSingleBone 을 사용하고 있습니다. 그리고 그 위에 있는 네 개의 본을 수정하고자 SkelControlSpline 을 설정, 체인의 시작과 끝을 잇는 스플라인을 만들어 냅니다. 참고로 이 콘트롤은 본 길이가 보존되지 않습니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlSpline.jpg" alt="SkelControlSpline.jpg" width='800' height='308' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Spline Length</strong> 스플라인 길이 - 스플라인에 맞추기 위해 계층구조를 올라가며 수정할 본 갯수입니다.
+</li> <li> <strong>Spline Bone Axis</strong> 스플라인 본 축 - 스플라인을 향하게 할 본 축입니다.
+</li> <li> <strong>Invert Spline Bone Axis</strong> 스플라인 본 축 반전 - <strong>스플라인 본 축</strong> 을 뒤집을지 입니다.
+</li> <li> <strong>End Spline Tension</strong> 끝 스플라인 장력 - (제어되는 본 근처) 스플라인 끝부분이 굽는 정도를 제어합니다.
+</li> <li> <strong>Start Spline Tension</strong> 첫 스플라인 장력 - 스플라인 첫부분이 굽는 정도를 제어합니다.
+</li> <li> <strong>Bone Rot Mode</strong> 본 로테이션 모드 - 스플라인 길이 위의 본 회전 방식을 제어합니다.
+</li></ul>
+<p />
+<strong>본 로테이션 모드</strong> 세팅을 통해 이 콘트롤러가 스플라인 위의 본을 회전시키는 방식을 제어할 수 있습니다:
+<p /> <ul>
+<li> <strong>SCR_NoChange</strong> 변경 없음 - 본의 로테이션은 수정하지 않고, 그냥 스플라인 위에 오도록 옮기기(translate)만 합니다.
+</li> <li> <strong>SCR_AlongSpline</strong> 스플라인 방향 - 본을 회전시켜 그 <strong>스플라인 본 축</strong> 이 스플라인 방향을 향하도록 합니다.
+</li> <li> <strong>SCR_Interpolate</strong> 인터폴레이트 - 연속된 각 본의 로테이션은 체인 양쪽 끝에 있는 본 로테이션을 블렌딩한 것입니다.
+</li></ul>
+<p />
+SCR_Interpolate 세팅을 사용하는 이 콘트롤은 등 맨위에 있는 본의 로테이션을 제어할 때, 스플라인의 나머지 본 방향의 로테이션을 부드럽게 하는 데 유용하게 쓸 수 있습니다.
+<p />
+<p />
+<h4><a name="SkelControlTrail"></a> SkelControlTrail </h4>
+<hr size="1" noshade="noshade">
+트레일(흔적) 콘트롤러는 본 체인을 수정하여 헤드 본, 즉 제어되는 본에서 <strong>체인 길이</strong> 수만큼 떨어진 본 뒤에 흔적을 남기도록 합니다. 애니메이션 데이터에 따라 애니메이트되는 본에 리본, 깃발, 체인같은 것이 붙은 경우 유용하게 쓸 수 있습니다. <a href="PhysicalAnimationKR.html" class="twikiLink">피지컬 애니메이션</a> 을 사용해도 이런 효과를 낼 수는 있지만, 이 방법이 더욱 세밀한 제어가 가능합니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlTrail.jpg" alt="SkelControlTrail.jpg" width='800' height='380' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Chain Length</strong> 체인 길이 - 계층구조에서 제어되는 본 위로 수정할 본 갯수입니다.
+</li> <li> <strong>Chain Bone Axis</strong> 체인 본 축 - 흔적을 향하게 할 본 축입니다.
+</li> <li> <strong>Invert Chain Bone Axis</strong> 체인 본 축 반전 - <strong>체인 본 축</strong> 에 지정된 방향을 반전시킵니다.
+</li> <li> <strong>Limit Stretch</strong> 늘이기 제한 - 리퍼런스 포즈에서 본을 늘일 수 있는 거리를 제한시킵니다.
+</li> <li> <strong>Actor Space Fake Vel</strong> 액터 스페이스 가짜 속도 - 가짜 속+도를 액터 / 월드 스페이스 어디에 적용할지 입니다.
+</li> <li> <strong>Trail Relaxation</strong> 흔적 완화 - 본을 애니메이트되는 위치로 얼마나 빠르게 완화시킬것인지 입니다.
+</li> <li> <strong>Stretch Limit</strong> 늘이기 한계 - <strong>늘이기 제한</strong> 을 켜면 리퍼런스 포즈의 길이 이상으로 본을 얼마나 늘일 수 있는지를 나타냅니다.
+</li> <li> <strong>Fake Velocity</strong> 가짜 속도 - 본에 적용할 가짜 속도입니다.
+</li></ul>
+<p />
+<h5><a name="언리얼스크립트에서 사용하는 방법"></a><a name=" 언리얼스크립트에서 사용하는 방법"></a>  언리얼스크립트에서 사용하는 방법 </h5>
+이 예제에서는 흔적의 Z 가짜 속도가 2 초마다 위아래로 블렌딩됩니다.
+<p />
+<div class="codetitlebar">
+SkelControlTrailPawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+class SkelControlTrailPawn extends Pawn
+  Placeable;
+
+var() Name SkelControlTrailLeftName;
+var() Name SkelControlTrailRightName;
+var() float SinkVelocityZ;
+var() float FloatVelocityZ;
+
+var SkelControlTrail SkelControlTrailLeft;
+var SkelControlTrail SkelControlTrailRight;
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  Super.PostInitAnimTree(SkelComp);
+
+  if (SkelComp &#61;&#61; Mesh)
+  {
+    SkelControlTrailLeft &#61; SkelControlTrail(Mesh.FindSkelControl(SkelControlTrailLeftName));
+    SkelControlTrailRight &#61; SkelControlTrail(Mesh.FindSkelControl(SkelControlTrailRightName));
+  }
+
+  SetTimer(2.f, false, NameOf(SinkTrail));
+}
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  SkelControlTrailLeft &#61; None;
+  SkelControlTrailRight &#61; None;
+}
+
+simulated event Tick(float DeltaTime)
+{
+  Super.Tick(DeltaTime);
+
+  if (SkelControlTrailLeft !&#61; None &#38;&#38; SkelControlTrailRight !&#61; None)
+  {
+    if (IsTimerActive(NameOf(FloatTrail)))
+    {
+      SkelControlTrailLeft.FakeVelocity.Z &#61; Lerp(FloatVelocityZ, SinkVelocityZ, GetTimerCount(NameOf(FloatTrail)) / GetTimerRate(NameOf(FloatTrail)));
+      SkelControlTrailRight.FakeVelocity.Z &#61; Lerp(FloatVelocityZ, SinkVelocityZ, GetTimerCount(NameOf(FloatTrail)) / GetTimerRate(NameOf(FloatTrail)));
+    }
+    else if (IsTimerActive(NameOf(SinkTrail)))
+    {
+      SkelControlTrailLeft.FakeVelocity.Z &#61; Lerp(SinkVelocityZ, FloatVelocityZ, GetTimerCount(NameOf(SinkTrail)) / GetTimerRate(NameOf(SinkTrail)));
+      SkelControlTrailRight.FakeVelocity.Z &#61; Lerp(SinkVelocityZ, FloatVelocityZ, GetTimerCount(NameOf(SinkTrail)) / GetTimerRate(NameOf(SinkTrail)));
+    }
+  }
+}
+
+simulated function FloatTrail()
+{
+  if (SkelControlTrailLeft !&#61; None &#38;&#38; SkelControlTrailRight !&#61; None)
+  {
+    SkelControlTrailLeft.FakeVelocity.Z &#61; FloatVelocityZ;
+    SkelControlTrailRight.FakeVelocity.Z &#61; FloatVelocityZ;
+  }
+
+  SetTimer(2.f, false, NameOf(SinkTrail));
+}
+
+simulated function SinkTrail()
+{
+  if (SkelControlTrailLeft !&#61; None &#38;&#38; SkelControlTrailRight !&#61; None)
+  {
+    SkelControlTrailLeft.FakeVelocity.Z &#61; SinkVelocityZ;
+    SkelControlTrailRight.FakeVelocity.Z &#61; SinkVelocityZ;
+  }
+
+  SetTimer(2.f, false, NameOf(FloatTrail));
+}
+
+defaultproperties
+{
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;PawnMesh
+  End Object
+  Mesh&#61;PawnMesh
+  Components.Add(PawnMesh)
+
+  Physics&#61;PHYS&#95;Falling
+
+  Begin Object Name&#61;CollisionCylinder
+    CollisionRadius&#61;+0030.0000
+    CollisionHeight&#61;+0072.000000
+  End Object
+}
+</pre>
+</div>
+<p />
+<p />
+<h4><a name="UDKSkelControl_CantileverBeam / _UTSkelControl_CantileverBeam"></a> UDKSkelControl_CantileverBeam / UTSkelControl_CantileverBeam </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러는 캔틸레버 빔을 시뮬레이션하는 스프링을 만듭니다. 차량의 안테나같은 것이죠.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_CantileverBeam.jpg" alt="UDKSkelControl_CantileverBeam.jpg" width='800' height='420' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Initial World Space Goal Offset</strong> 초기 World Space Goal 오프셋 - 초기 본에서 World Space Goal 의 (로컬 본 스페이스의) 시작 위치를 얻기 위해 어디로 갈 것인지 입니다.
+</li> <li> <strong>Spring Stiffness</strong> 스프링 강성 - 스프링 시뮬레이션에 적용할 강성(뻣뻣한 정도)를 정의합니다.
+</li> <li> <strong>Spring Damping</strong> 스프링 제동 - 스프링 시뮬레이션에 적용할 제동력을 정의합니다.
+</li> <li> <b><strike>Percent Beam Velocity Transfer 온전한 빔 속도 변환 - 기본 속도를 구하는 데 있어 빔 조각이 얼마나 필요한지 입니다.</strike></b>
+</li></ul>
+<p />
+<h5><a name="언리얼스크립트 함수"></a><a name=" 언리얼스크립트 함수"></a>  언리얼스크립트 함수 </h5> <ul>
+<li> <strong>delegate vector EntireBeamVelocity()</strong> - 전체 빔이 이동하는 속력을 반환합니다. (탱크같은 데서 전체 탱크 효과가 터렛 이동보다 느리게 하려는 델리게이트 입니다.)
+</li></ul>
+<p />
+<h5><a name="상세 설명"></a><a name=" 상세 설명"></a>  상세 설명 </h5>
+웨이트(weight), 무게를 받을 때 이리 저리 굽는 유연한 튜브같은 모양새를 만들어 내기 위해, 이 스켈레탈 콘트롤러는 사물의 스켈레탈 메시 측면에 약간의 꼼수를 부려야 합니다. 어떤 꼼수냐면, 스켈레탈 메시의 버텍스의 가중치를 먹이는 방식에 있습니다. 일단 스켈레탈 메시에는 본이 둘 있습니다. 그 위치는 궁극적으로 그리 중요하지는 않습니다만, 루트 본은 브랜치 본 아래 있어야 합니다.
+<p />
+즉 아래 그림을 튜브라, | 는 튜브의 분절을 나타낸다 상상해 봅시다.
+<p />
+<pre>&#124;&#61;&#61;&#61;&#61;&#124;&#61;&#61;&#61;&#61;&#124;&#61;&#61;&#61;&#61;&#124;&#61;&#61;&#61;&#61;&#124;&#61;&#61;&#61;&#61;&#124;&#61;&#61;&#61;&#61;&#124;&#61;&#61;&#61;&#61;&#124;</pre>
+<p />
+즉 Bone01 (루트) 에 대한 웨이트 세팅은:
+<p />
+0.f, 0.125f, 0.25f, 0.375f, 0.5f, 0.625f, 0.75f, 0.875f, 1.f
+<p />
+Bone02 (브랜치) 에 대한 웨이트 세팅은:
+<p />
+1.f, 0.875f, 0.75f, 0.625f, 0.5f, 0.375f, 0.25f, 0.125f, 0.f
+<p />
+그 다음으로 Bone02 의 스켈레탈 콘트롤러를 사용해야 합니다. 스켈레탈 콘트롤러 자체에는 애님트리 에디터에서 조절할 수 있는 <strong>Look At Target</strong> 이 있습니다. <strong>Spring Stiffness</strong> 과
+<strong>Spring Damping</strong> 을 일정한 값으로 설정하면, <strong>Look At Target</strong> 을 <strong>Initial World Space Goal Offset</strong> 으로 돌려보내려 합니다. 이는 보통 튜브 꼭대기에 설정되나, 다른 위치에 설정하여 다른 효과를 낼 수도 있습니다.
+<p />
+이렇게 설정해 주고 나면 <strong>Target Location</strong> 의 이동에 따라 유연하게 굽는 튜브가 생깁니다. 스프링 세팅때문에 초기 위치로 돌아가려 하는 튜브입니다.
+<p />
+<p />
+<h4><a name="UDKSkelControl_LockRotation / _UTSkelControl_LockRotation"></a> UDKSkelControl_LockRotation / UTSkelControl_LockRotation </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러는 본 로테이션 하나 이상의 컴포넌트를 지정된 값으로 고정시킵니다. 이 콘트롤러의 효과는 애님트리 에디터의 미리보기 창에 보이지 않습니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_LockRotation.jpg" alt="UDKSkelControl_LockRotation.jpg" width='800' height='435' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Lock Pitch</strong> 피치 잠금 - 영향끼칠 본 로테이션 중 피치 컴포넌트를 잠급니다.
+</li> <li> <strong>Lock Yaw</strong> 요 잠금 - 영향끼칠 본 로테이션 중 요 컴포넌트를 잠급니다.
+</li> <li> <strong>Lock Roll</strong> 롤 잠금 - 영향끼칠 본 로테이션 중 롤 컴포넌트를 잠급니다.
+</li> <li> <strong>Lock Rotation</strong> 로테이션 잠금 - 고정시킬 로테이션입니다.
+</li> <li> <strong>Max Delta</strong> 최대 경과 - Lock Rotation 에 이르기 위해 원래 로테이션을 변경할 수 있는 최대 양입니다.
+</li> <li> <strong>Lock Rotation Space</strong> 로테이션 잠금 공간 - 로테이션이 들어가는 공간입니다.
+</li> <li> <strong>Rotation Space Bone Name</strong> 로테이션 공간 본 이름 - LockRotationSpace 이 BCS_OtherBoneSpace 일 때 사용할 본 이름입니다.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_LookAt / _UTSkelControl_LookAt"></a> UDKSkelControl_LookAt / UTSkelControl_LookAt </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러는 하나의 본이 원하는 대상 위치를 바라보도록 회전시킵니다. 이 콘트롤러는 SkelControlLookAt 을 확장하여 축별 회전 한계를 추가하고 원하는 타겟 위치에 자동으로 보간해 가기도 합니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_LookAt.jpg" alt="UDKSkelControl_LookAt.jpg" width='800' height='421' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Limit Yaw</strong> 요 제한 - 참이면 요 축에 한계를 적용합니다. 거짓이면 한계는 무시됩니다.
+</li> <li> <strong>Limit Pitch</strong> 피치 제한 - 참이면 피치 축에 한계를 적용합니다. 거짓이면 한계는 무시됩니다.
+</li> <li> <strong>Limit Roll</strong> 롤 제한 - 참이면 롤 축에 한계를 적용합니다. 거짓이면 한계는 무시됩니다.
+</li> <li> <strong>Yaw Limit</strong> 요 한계 - 요 축에 대한 한계 각도입니다.
+</li> <li> <strong>Pitch Limit</strong> 피치 한계 - 피치 축에 대한 한계 각도입니다.
+</li> <li> <strong>Roll Limit</strong> 롤 한계 - 롤 축에 대한 한계 각도입니다.
+</li> <li> <strong>Show Per Axis Limits</strong> 축별 한계 표시 - 참이면 축별 한계를 나타내는 원뿔을 그립니다.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_MassBoneScaling / _UTSkelControl_MassBoneScaling"></a> UDKSkelControl_MassBoneScaling / UTSkelControl_MassBoneScaling </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+이 콘트롤러는 한 스켈레탈 메시 내 여러 본에 대한 스케일 처리를 조금 더 깔끔하고 효율적으로 처리해 줍니다.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_MassBoneScaling.jpg" alt="UDKSkelControl_MassBoneScaling.jpg" width='800' height='381' />
+<p />
+<h5><a name="프로퍼티"></a><a name=" 프로퍼티"></a>  프로퍼티 </h5> <ul>
+<li> <strong>Bone Scales</strong> 본 스케일 - 스켈레탈 메시에 있는 본에 대한 스케일입니다. 이 배열의 인덱스는 스켈레탈 메시의 본 인덱스에 일치합니다. 본의 인덱스를 찾아내려면 해당 스켈레탈 메시를 애님세트 에디터로 열어 찾아보면 됩니다. 본 인덱스는 본 이름 옆에 수치로 표시됩니다. <br/> <img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_MassBoneScaling_BoneIndices.jpg" alt="UDKSkelControl_MassBoneScaling_BoneIndices.jpg" width='302' height='314' />
+</li></ul>
+<p />
+<h5><a name="언리얼스크립트 함수"></a><a name=" 언리얼스크립트 함수"></a>  언리얼스크립트 함수 </h5> <ul>
+<li> <strong>native final function SetBoneScale(name BoneName, float Scale)</strong> - 본 스케일을 이름으로 설정합니다. 이 콘트롤러가 효과를 발휘하려면 애님트리의 지정된 본에 연결해 줘야 합니다. <ul>
+<li> <strong>Bone Name</strong> - 영향을 끼칠 본 이름입니다.
+</li> <li> <strong>Scale</strong> - 영향을 끼칠 본 스케일입니다.
+</li></ul>
+</li> <li> <strong>native final function float GetBoneScale(name BoneName)</strong> - 주어진 본에 대해 이 콘트롤이 갖는 스케일을 반환합니다. 본의 스케일에 영향을 끼치는 다른 콘트롤러는 계산에 넣지 않습니다. <ul>
+<li> <strong>Bone Name</strong> - 스케일을 반환할 본 이름입니다.
+</li></ul>
+</li></ul>
+<p />
+<p />
+<h2><a name="내려받기"></a> 내려받기 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> <a href="rsrc/Three/UsingSkeletalControllers/SkelControlExamples.zip" target="_top">이 문서에서 사용된 코드와 콘텐츠</a>
+</li> <li> <a href="rsrc/Three/UsingSkeletalControllers/CantileverExample.zip" target="_top">CantileverBeam 스켈레탈 콘트롤러 사용법 데모 콘텐츠</a>
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingSkeletalControllersKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:33:00 GMT -->
+</html></body>

@@ -1,0 +1,331 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/BokehDepthOfFieldCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:43 GMT -->
+<head>
+<title> UDK | BokehDepthOfFieldCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">BokehDepthOfFieldCH  </b></div>
+<div id="tooltext">
+<a href="BokehDepthOfField.html" class="twikiLink">English Translation</a><br><a href="BokehDepthOfFieldJP.html" class="twikiLink">日本語訳</a><br><a href="BokehDepthOfFieldKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/BokehDepthOfFieldCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="DirectX11Rendering.html" class="twikiLink">虚幻引擎3中的DirectX 11</a></b> &gt;Bokeh（散景）景深<br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="PostProcessEffectsHome.html" class="twikiLink">后期处理特效</a></b> &gt; Bokeh（散景）景深
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="散景景深"></a> 散景景深 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="BokehDepthOfFieldCH.html#散景景深"> 散景景深</a> <ul>
+<li> <a href="BokehDepthOfFieldCH.html#概述"> 概述</a>
+</li> <li> <a href="BokehDepthOfFieldCH.html#激活Bokeh景深"> 激活Bokeh景深</a>
+</li> <li> <a href="BokehDepthOfFieldCH.html#Bokeh形状">Bokeh形状</a>
+</li> <li> <a href="BokehDepthOfFieldCH.html#半透明"> 半透明</a>
+</li> <li> <a href="BokehDepthOfFieldCH.html#已知限制(低级细节)"> 已知限制(低级细节)</a>
+</li> <li> <a href="BokehDepthOfFieldCH.html#优化(低级细节)"> 优化(低级细节)</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+以下是使用数码相机拍摄的真实世界的图片，显示了其中有些部分处于焦内有些部分处于焦外的物体。
+<p />
+<img src="rsrc/Three/BokehDepthOfFieldCH/PhotoReference.jpg" alt="PhotoReference.jpg" width='331' height='224' />
+<p />
+焦外部分构成了一个圆形，称为Bokeh（日语）。通过那些严重处于焦外的小亮物体可以看得更加清楚。
+<p />
+我们想模拟这种效果，并接受可以获得高效实时实现的近似效果。和其他很多景深渲染方法一样，我们在后期处理过程中对彩色图像实施这个处理。通过使用基于每个像素的景深信息和所谓的Circle of Confusion(散光圈)函数，我们可以计算某个图像部分应该具有的清晰程度和模糊程度。
+<p />
+<img src="rsrc/Three/BokehDepthOfFieldCH/BokehDOFTeaser.jpg" alt="BokehDOFTeaser.jpg" width='609' height='357' />
+<p />
+这个实时渲染的图像所描画的焦内的对象是清晰，焦外的对象是模糊的。Bokeh形状模拟5叶片镜头光圈。
+<p />
+<h2><a name="激活Bokeh景深"></a> 激活Bokeh景深 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<strong>注意:</strong> 这个功能需要几何体着色支持，目前仅针对Direct3D 11(如何激活它，可以在<a href="DirectX11Rendering.html" class="twikiLink">这里</a>找到)实现了该功能。
+<p />
+打开激活的后期处理链，点击(或添加)Uber后期处理特效。在景深组中，您可以找到相关设置：
+<p />
+<img src="rsrc/Three/BokehDepthOfFieldCH/EditorEffect.jpg" alt="EditorEffect.jpg" width='433' height='83' />
+<p />
+请确保将 <strong>Type (类型)</strong> 设置为 "BokehDOF"。<br>
+<strong>Quality(质量)</strong> 允许您在质量和性能之间进行权衡，但是效果较小。理想情况下，该设置为Low(低级)，仅当有明显效果差异并性能足够好时才提高质量。<br>
+<strong>BokehTexture</strong> 可以是任何2D贴图，但是理想情况下它应该：
+<p /> <ul>
+<li> 是灰度图 (正确的颜色边纹是依赖于屏幕位置的，但是添加颜色变换到图像上可以使其看起来像颜色边纹)。   *不大于128 x 128 (过大则浪费内存)。
+</li> <li> 有黑边 (较大的方块渲染较大的贴图，通过双线性过滤Bokeh形状将具有抗锯齿效果)。
+</li> <li> 是未压缩的或有亮度的。
+</li> <li> 具有适当的亮度 (参照样本)。
+</li></ul>
+<p />
+<h2><a name="Bokeh形状"></a> Bokeh形状 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+美工人员可以在后期处理链中指定Bokeh贴图。以下图像展示了不同的贴图(左下角)如何影响渲染的图像：
+<p />
+     <img src="rsrc/Three/BokehDepthOfFieldCH/BokehShapes.png" alt="BokehShapes.png" width='652' height='357' />
+<p />
+<h2><a name="半透明"></a> 半透明 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+对于不透明对象来说，把景深作为后期处理来实施是非常好的，因为每个像素(或片段)有相关的深度。然而，半透明对象的渲染却不能和后期处理方法很好地协同使用。忽略这个问题，会导致半透明物体或者太清晰或者太模糊(由它们的背景决定)。
+<p />
+我们通过提供控制半透明对象是否受到景深影响的方法来解决了这个问题（不是材质设置，以后我们不需要DX11就可以进行这项操作）：
+<p />
+     <img src="rsrc/Three/BokehDepthOfFieldCH/SeparateTranslucency.jpg" alt="SeparateTranslucency.jpg" width='316' height='139' />
+<p />
+另外，有一个新的材质节点 "DepthOfFieldFunction"，它使您可以调整着色(比如，淡出或混合到一种模糊状态)：
+<p />
+     <img src="rsrc/Three/BokehDepthOfFieldCH/MaterialNode.jpg" alt="MaterialNode.jpg" width='658' height='196' />
+<p />
+<h2><a name="已知限制(低级细节)"></a> 已知限制(低级细节) </h2>
+<p /> <ul>
+<li> 因为该技术使用分辨率为原来一半的图像作为源，所以渗透到错误层中的明亮像素会有较小的失真。
+</li> <li> 该特效可以和全屏抗锯齿(MSAA)协同工作，但是像素中非常亮的部分可能会渗透到错误的层中。可以通过在uberpostprocesseffect MSAA中提高采样来避免这个问题。     。
+</li> <li> 没有处理多个层之间的遮挡。这会导致较小的颜色渗透。
+</li> <li> 所有的焦外模糊效果都不会受到运动模糊的影响 (这意味着或者丢失运动模糊或者丢失 MotionBlurSoftEdge将会柔和其边缘的清晰轮廓)。
+</li></ul>
+<p />
+<h2><a name="优化(低级细节)"></a> 优化(低级细节) </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+为了获得更好的性能，该算法仅应用到半分辨率图像上，稍后再和全分辨率图像重新结合。重新结合的步骤是基于每个像素完成的，忽略MSAA（为了简化和性能）。在某些情况下，这会产生质量问题(可以通过禁用MSAA来验证)。
+<p />
+在当今的显卡上，当使用合理的较小的Bokeh半径时，性能是较好的。较大的半径将迅速导致渲染速度变慢(半径增加2倍，渲染的性能消耗要增加4倍)。
+<p />
+几何体着色器处理2x2的块。如果一个2x2的块的内容是合适的(在代码中定义了启发式功能)，那么将仅产生整个块中的一个小块，否则它将为每个像素产生一个小块(总共4个小块)。以下图像显示了为什么某些区域仅使用一个小块渲染(绿色)，而某些区域需要使用4个小块渲染(红色)，其他东西显示为全分辨率场景颜色。
+<p />
+<img src="rsrc/Three/BokehDepthOfFieldCH/BokehDoFOptimized.jpg" alt="BokehDoFOptimized.jpg" width='346' height='230' />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/BokehDepthOfFieldCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:45 GMT -->
+</html></body>

@@ -1,0 +1,417 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DecalsTechnicalGuideCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:38:28 GMT -->
+<head>
+<title> UDK | DecalsTechnicalGuideCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">DecalsTechnicalGuideCH  </b></div>
+<div id="tooltext">
+<a href="DecalsTechnicalGuide.html" class="twikiLink">English Translation</a><br><a href="DecalsTechnicalGuideJP.html" class="twikiLink">日本語訳</a><br><a href="DecalsTechnicalGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/DecalsTechnicalGuideCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="ParticlesAndEffectsHome.html" class="twikiLink">粒子 &amp; 效果</a></b> &gt; <b><a href="DecalsHome.html" class="twikiLink">贴花</a></b> &gt; 贴花系统技术指南
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="贴花系统技术指南"></a> 贴花系统技术指南 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="DecalsTechnicalGuideCH.html#贴花系统技术指南"> 贴花系统技术指南 </a> <ul>
+<li> <a href="DecalsTechnicalGuideCH.html#概述"> 概述</a>
+</li> <li> <a href="DecalsTechnicalGuideCH.html#DecalComponent 成员变量"> DecalComponent 成员变量</a> <ul>
+<li> <a href="DecalsTechnicalGuideCH.html#材质"> 材质</a>
+</li> <li> <a href="DecalsTechnicalGuideCH.html#Size（尺寸）"> Size（尺寸）</a>
+</li> <li> <a href="DecalsTechnicalGuideCH.html#Planes（平面）"> Planes（平面）</a>
+</li> <li> <a href="DecalsTechnicalGuideCH.html#Tiling（平铺块）"> Tiling（平铺块）</a>
+</li> <li> <a href="DecalsTechnicalGuideCH.html#Hit Information（碰撞信息）"> Hit Information（碰撞信息）</a>
+</li> <li> <a href="DecalsTechnicalGuideCH.html#Clipping（剪辑）"> Clipping（剪辑）</a>
+</li> <li> <a href="DecalsTechnicalGuideCH.html#Static（静态）"> Static（静态）</a> <ul>
+<li> <a href="DecalsTechnicalGuideCH.html#Receivers（接受者）"> Receivers（接受者）</a>
+</li></ul>
+</li> <li> <a href="DecalsTechnicalGuideCH.html#组件"> 组件</a>
+</li> <li> <a href="DecalsTechnicalGuideCH.html#偏移"> 偏移</a>
+</li> <li> <a href="DecalsTechnicalGuideCH.html#Filtering（过滤）"> Filtering（过滤）</a>
+</li> <li> <a href="DecalsTechnicalGuideCH.html#Projection Flags（投射标记）"> Projection Flags（投射标记）</a>
+</li></ul>
+</li> <li> <a href="DecalsTechnicalGuideCH.html#通过脚本创建贴花"> 通过脚本创建贴花</a>
+</li> <li> <a href="DecalsTechnicalGuideCH.html#贴花的生命周期管理"> 贴花的生命周期管理</a>
+</li> <li> <a href="DecalsTechnicalGuideCH.html#性能监测"> 性能监测</a> <ul>
+<li> <a href="DecalsTechnicalGuideCH.html#相关统计数据"> 相关统计数据</a>
+</li> <li> <a href="DecalsTechnicalGuideCH.html#相关显示标志"> 相关显示标志</a>
+</li> <li> <a href="DecalsTechnicalGuideCH.html#全局启用/禁用贴花"> 全局启用/禁用贴花</a>
+</li></ul>
+</li> <li> <a href="DecalsTechnicalGuideCH.html#使用贴花"> 使用贴花</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+该页面会为程序人员提供有关贴花系统和使用贴花的技术详细信息。
+<p />
+<h2><a name="DecalComponent 成员变量"></a> DecalComponent 成员变量 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+以下是 DecalComponent 成员变量的简要描述…
+<p />
+<h3><a name="材质"></a> 材质 </h3>
+<p />
+DecalMaterial 属性代表了要在这个贴花上使用的材质。一个必须最终通向 DecalMaterial 的 MaterialInstance 链。
+<p />
+<h3><a name="Size（尺寸）"></a> Size（尺寸） </h3>
+<p />
+表面上的贴花的尺寸（切线/副法线 方向）： <ul>
+<li> Width/Height（宽度/高度）
+</li></ul>
+<p />
+<h3><a name="Planes（平面）"></a> Planes（平面） </h3>
+<p />
+贴花的大小： <ul>
+<li> NearPlane/FarPlane（近平面/远平面）
+</li></ul>
+<p />
+<h3><a name="Tiling（平铺块）"></a> Tiling（平铺块） </h3>
+<p />
+贴花的 UV 平铺块乘数及偏移量： <ul>
+<li> TileX/TileY
+</li> <li> OffsetX/OffsetY
+</li></ul>
+<p />
+<h3><a name="Hit Information（碰撞信息）"></a> Hit Information（碰撞信息） </h3>
+<p />
+关于贴花平截头体的位置及方位的信息，在渲染数据计算及贴花调试渲染中使用： <ul>
+<li> HitLocation
+</li> <li> HitNormal
+</li> <li> HitTangent
+</li> <li> HitBinormal
+</li></ul>
+<p />
+<h3><a name="Clipping（剪辑）"></a> Clipping（剪辑） </h3>
+<p />
+bNoClip 属性默认为 FAlSE。如果为 TRUE，当计算贴花几何体时使用 "NoClip" 代码路径。这个代码路径不会相对于贴花平截头体对潜在的接受者三角形执行软件剪辑，这是以在贴花渲染过程中的额外的填充为代价的。另外，在 "NoClip" 的贴花材质中使用的贴图的地址模式必须设置为 TA_Clamp，并且使得它们的外侧的边周围的透明边界要足够地宽，从而可以幸免于 mipmapping(贴图分级细分)。
+<p />
+注意，在带光照的顶点的静态网格物体上的带光照的贴花隐含了 bNoClip 的值。
+<p />
+<h3><a name="Static（静态）"></a> Static（静态） </h3>
+<p />
+仅对于通过编辑器放置到关卡中的贴花的 bStaticDecal 属性是 TRUE。可以通过 ADecalActor 的 <code>defaultproperties</code> 代码块将 bStaticDecal 设置为 TURE。
+<p />
+<h4><a name="Receivers（接受者）"></a> Receivers（接受者） </h4>
+<p />
+HitComponent 默认为 NULL。如果它不是 NULL，那么当计算贴花几何体时，仅这个组件被认为是可能的接受者。设置这个属性排除项必须和其它所有可能的接收者取交集，但是这可能会导致意想不到的问题，因为贴花将会仅投射到特定的组件上（这是不好的，比如对于火箭爆炸来说）。
+<p />
+<h3><a name="组件"></a> 组件 </h3>
+<p />
+生成这个贴花的几何体及其相关渲染数据的组件列表。 <code>Receiver</code> 和 <code>RenderData</code> 数组将总是相同的长度，并且 <code>RenderData</code> 的第 i 个元素是 <code>Receiver</code> 的第 i 个元素的数据。这种布局允许接收者 附加/脱离 那些独立于其他内容单独存在的贴花。
+<p />
+<h3><a name="偏移"></a> 偏移 </h3>
+<p />
+当两个或多个贴花重叠时，可以使用 DepthBias 和 SlopeScaleDepthBias 参数来偏移贴花的深度来控制它渲染在其他贴花的上面还是下面。
+<p />
+<h3><a name="Filtering（过滤）"></a> Filtering（过滤） </h3>
+<p />
+正如上面所描述的，Filter（过滤器）包含了一系列的要过滤的 actor，FilterMode 描述了 Filter (FM_Ignore) 的 actor 是否应该被忽略或者是否应该只将它作为受到这个贴花影响的 actor。默认的值是 FM_None，意味着不考虑过滤器
+<p />
+<h3><a name="Projection Flags（投射标记）"></a> Projection Flags（投射标记） </h3>
+<p />
+这些标记控制了贴花是否对其进行投射： <ul>
+<li> bProjectonBackfaces - 三角形的背面
+</li> <li> bProjectOnBSP - BSP
+</li> <li> bProjectOnStaticMeshes - 静态网格物体
+</li> <li> bProjectOnSkeletalMeshes - 骨架网格物体
+</li> <li> bProjectOnTerrain – 地形
+</li></ul>
+<p />
+<h2><a name="通过脚本创建贴花"></a> 通过脚本创建贴花 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+贴花一般是通过调用 DecalManager 的 <code>&gt;SpawnDecal</code> 成员函数来创建的。基本的过程是使用贴花的尺寸、方位、材质以及如何计算贴花的暗示信息来调用 <code>SpawnDecal</code> 函数。
+<p />
+想象一个武器类，它包含 <code>SpawnHitDecal</code> 成员函数，当响应游戏中武器撞击到某个东西的行为时调用这个函数。
+<p />
+这个函数的代码可能如下所示：
+<p />
+<pre>
+// A class containing state/behaviour shared by all weapons in your game. （一个包含了您的游戏中所有武器所共享的 状态/行为 的类。）
+class BaseWeaponClassForYourGame extends Weapon
+
+// ...
+
+// Generates a decal based on a weapon hit; called by functions like eg. SpawnExplosionEffects. （基于武器碰撞生成贴花；由类似于 SpawnExplosionEffects 这样的函数调用。）
+simulated function SpawnHitDecal(ImpactInfo Impact)
+{
+    local DecalComponent         DecalTemplate;
+
+    // Consult eg. the physical material system stored in the impact info（参照存储在碰撞信息中的物理材质系统）
+    // to get decal parameters appropriate for this surface/weapon pairing.（来获得符合这个 表面/武器 配对的贴花参数。）
+    DecalTemplate &#61; Impact.GetDecalTemplate( this );
+
+    // Create a decal based on the decal template.（基于贴花模板创建一个贴花）
+    WorldInfo.MyDecalManager.SpawnDecal( DecalTemplate.DecalMaterial,                // UMaterialInstance used for this decal.（为这个贴花使用的 UMaterialInstance。）
+                              Impact.HitLocation,                         // Decal spawned at the hit location.（在碰撞位置产生的贴花。）
+                              rotator(-Impact.HitNormal),                 // Orient decal into the surface.（将贴花放到表面上。）
+                              DecalTemplate.Width, DecalTemplate.Height,  // Decal size in tangent/binormal directions. （贴花在 切线/副法线 方向的尺寸。）
+                              DecalTemplate.Thickness,                    // Decal size in normal direction.（在法线方向上贴花的尺寸。）
+                              DecalTemplate.bNoClip,                      // If TRUE, use &#34;NoClip&#34; codepath.（如果为 TRUE，则使用 &#34;NoClip&#34; 代码路径。）
+                              FRand() &#42; 360,                              // random rotation（随机旋转）
+                              Impact.HitInfo.HitComponent );               // If non-NULL, consider this component only.（如果为非 NULL，则只考虑这个组件。）
+}
+</pre>
+<p />
+<h2><a name="贴花的生命周期管理"></a> 贴花的生命周期管理 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+单例模式的 DecalManager Actor，可以通过 WorldInfo-&gt;MyDecalManager 来对其进行访问，它管理了临时的贴花。它保存了当前在世界中的所有的贴花列表。基本的实现是简单地检测每个贴花的可配置的生命周期，当时间过期时分离它，但是您可以很容易重写这个类（通过 WorldInfo 中的可配置的 DecalManagerClassPath）来实现不同的行为。
+<p />
+DecalManager 也可以缓存它创建的 DecalComponents。当一个贴花的生命周期结束时，它将会返回到缓冲池中，以后的函数 SpawnDecal() 调用时可以再次使用该组件。这样通过仅保持在最差的情形下保留尽可能多的 DecalComponent 而不是频繁地创建并丢弃对象的操作，可以最小化对象的消耗及垃圾回收所花费的时间。
+<p />
+<h2><a name="性能监测"></a> 性能监测 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="相关统计数据"></a> 相关统计数据 </h3>
+<p />
+引擎统计数据组（通过在游戏控制台中输入 <code>stat engine</code> 来查看）包含了两个和贴花相关的项：DecalDrawCalls，贴花描画调用函数的总数量；DecalTriangles，传入到渲染器的贴花三角形的总数量。同时，游戏统计数据组 ( <code>stat game</code> ) 包含了 DecalTime、监测贴花管理器所花费的时间及贴花的生命周期政策。
+<p />
+<h3><a name="相关显示标志"></a> 相关显示标志 </h3>
+<p />
+有两个显示标记来管理贴花渲染。 <code>SHOW DECALINFO</code> 启用了贴花的调试信息的渲染，包括贴花平截头体及它们的切线基础。 <code>SHOW DECALS</code> 全局地切换贴花是否描画到视口中，包括任何使用 <code>DECALINFO</code> 启用的贴花的调试信息渲染。
+<p />
+<h3><a name="全局启用/禁用贴花"></a> 全局启用/禁用贴花 </h3>
+<p />
+引擎中的 <code>bStaticDecalsEnabled</code> 和 <code>bDynamicDecalsEnabled</code> 配置成员变量可以用于 启用/禁用静态及动态贴花的所有方面（几何体计算、场景附加及渲染等）。这两个值默认都为 <strong>TRUE</strong> ，意味着完全地启用贴花。
+<p />
+<p />
+<h2><a name="使用贴花"></a> 使用贴花 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+关于在关卡中使用编辑器工具放置及操作贴花的更多信息，请参照<a href="UsingDecals.html" class="twikiLink">使用贴花</a>页面。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DecalsTechnicalGuideCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:38:28 GMT -->
+</html></body>

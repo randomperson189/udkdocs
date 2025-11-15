@@ -1,0 +1,315 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/WaypointsTechnicalGuideJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:20 GMT -->
+<head>
+<title> UDK | WaypointsTechnicalGuideJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">WaypointsTechnicalGuideJP  </b></div>
+<div id="tooltext">
+<a href="WaypointsTechnicalGuide.html" class="twikiLink">English Translation</a><br><a href="WaypointsTechnicalGuideCH.html" class="twikiLink">中国翻译</a><br><a href="WaypointsTechnicalGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/WaypointsTechnicalGuideJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="ウェイポイント技術ガイド"></a> ウェイポイント技術ガイド </h1>
+<p />
+<em>ドキュメント概要: パス ノード ベースのネットワークを使用するための AI の接続に関する簡単なガイド。</em>
+<p />
+<em>ドキュメントの変更ログ: <a href="https://udn.epicgames.com/Main/StevePolge" class="restricted" class="restricted" class="twikiLink">Steve Polge</a> により作成、<a href="https://udn.epicgames.com/Main/MattTonks" class="restricted" class="restricted" class="twikiLink">Matt Tonks</a> によりアップデート。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="WaypointsTechnicalGuideJP.html#ウェイポイント技術ガイド"> ウェイポイント技術ガイド</a> <ul>
+<li> <a href="WaypointsTechnicalGuideJP.html#概観"> 概観</a>
+</li> <li> <a href="WaypointsTechnicalGuideJP.html#ウェイポイントとパス ノード"> ウェイポイントとパス ノード</a> <ul>
+<li> <a href="WaypointsTechnicalGuideJP.html#キー ポイントとその他のナビゲーション ポイント"> キー ポイントとその他のナビゲーション ポイント</a>
+</li></ul>
+</li> <li> <a href="WaypointsTechnicalGuideJP.html#コントローラ"> コントローラ</a> <ul>
+<li> <a href="WaypointsTechnicalGuideJP.html#関数"> 関数</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="概観"></a> 概観 </h2>
+<p />
+これは、一連のパス ノードを使用するために AI の接続に関する簡単でかつポイントを押さえたガイドです。
+<p />
+<h2><a name="ウェイポイントとパス ノード"></a> ウェイポイントとパス ノード </h2>
+<p />
+ナビゲーションは、生成前のパス ネットワークに基づきます。このパス ネットワークは、ボットが行き来するエリアの 100% をカバーしないので、エリアはローカライズされたアセスメントや環境のナビゲーションをも実行しなければいけません。そこでこれらの目的のために、衝突トレースを使用してサンプルをしたり、衝突データ ストラクチャ内の近くのオブジェクトの検査をします。
+<p />
+<h3><a name="キー ポイントとその他のナビゲーション ポイント"></a> キー ポイントとその他のナビゲーション ポイント </h3>
+<p />
+<strong>JumpDests/JumpSpots</strong>
+<p />
+JumpDests/JumpSpots は削除されました。reachspec は、2 つのポイントの間に到着するのにジャンプが必要であっても生成されます。AI は、reachspec でフラグの設定を介して、これらのポイントの間にジャンプする必要があるという命令を受けます (フラグに到着を参照してください)。Engine からは削除されたようですが、 <a href="https://udn.epicgames.com/Three/GearsOfWarJP" class="restricted" class="restricted" class="twikiLink">Gears of War</a> には似たようなものがあります。これを、AI が通常ジャンプできないようなポイントに使用しますが、強制的に進めていきます。(例えば、特別な状況で AI に強制的に使用させたいような非常に長い降車地点です。)
+<p />
+<strong>Anchors</strong>
+<p />
+アンカーは、もう 1 つの NavPoint が付いている NavigationPoint です。これは、パス ネットワーク内へのボットのアンカー ポイントです。より具体的に言うと、アンカーはボットが (パスファインドをせずに) 直接達することのできるナビゲーション ポイントです。これが、このボットのパス サーチが始まる場所でもあります。いかなるパス グラフ上のパスファインドの最初のステップは、もっとも適した開始ポイントとエンド ポイントをグラフ上で探し、その間にパスを生成することです。アンカーはボットのパス サーチの開始ポイントを表し、findpathtoward の呼び出し後、アンカーからゴールへのルートができます。
+<p />
+レイキャストが行われるのは、ポイントまたはオブジェクトに直接達することができるかどうかを決定する時 (ランタイム中) のみです。そうは言っても、エディタ内でどのようにパス ネットワークが生成されるかに言及しているのならば、到達可能性を決定するために、確かにナビゲーション ポイント間でレイキャストが行われています (ビルド パス ボタンを押すとこれが起こります)。
+<h2><a name="コントローラ"></a> コントローラ </h2>
+<p />
+<h3><a name="関数"></a> 関数 </h3>
+<p />
+<strong>ReachedDestination</strong>
+<p />
+この関数は、現在 AI が向かっているオブジェクトが 'reached' として考慮されるべきかどうかを確定するために、移動中に AI にクエリーされます。言い換えると、AI はこれを呼び出し、現在の目的地への移動を停止してルート中にある次のオブジェクトに向かって移動を始めるか、または全体的なゴールに達したので完全に移動を停止するかを決定します。この関数は、AI が移動しようとしているアクタの 'reachedby' を呼び出すことに留意してください。これは、AI がいつカスタム オブジェクトへの移動の試みをやめるかに関して、カスタム オブジェクトに決める機会を与えます。これがどのように便利であるかの良い例は、大きなオブジェクトです。通常、AI はオブジェクトの半径内に入るまで、オブジェクトの場所に走って行こうとします。しかし、これがチェックする半径以上に大きい衝突がある場合、当然のことながら問題となります。このようなオブジェクトの場合、そのカスタム寸法を考慮するために、単に reachedby をオーバーライドすることができます。
+<p />
+<strong>ActorReachable</strong>
+<p />
+AI は、オブジェクトが <strong>直接</strong> 到達可能であるかどうかを決定するために、この関数を呼び出します。つまり、AI はオブジェクトに向かって、(ジャンプして越えることのできない) 何にもぶつからずにまっすぐ走っていけるか、ということです。これは、いくつかのことを決定するために移動中に使用されますが、良い例は、目的地にまっすぐ走っていくべきか、パス ネットワークを介してパスするかを決定するのにこの関数を使用する場合です。
+<p />
+<strong>FindPathToward</strong>
+<p />
+この関数はパス ネットワークの行き来を実行して、ボットの位置からパスされたゴールにルートを生成し、そのルート (ボット位置からボット ゴールのウェイポイントの順序付けられたリスト) をコントローラの routecache に設置します。これは、ゴールに達するにはどのウェイポイントに移動すればよいかを、ボットに教えます。
+<p />
+FindPathToward は、最初にボットのアンカーが有効であることを確かめて (そして有効でない場合は新しいものを探して)、その後アンカーからゴールへのルートを生成するためにパス ネットワークを横断することにより、アクタに向かってどのように進むかを決定します。いったんこのルートが生成されると、ボットは ReachedDestination がウェイポイントに到達したと決定するまで、ルートの最初のポイントに向かって直接走ります。これはその後、生成されたルートでボットが次のウェイポイントに走って行くことをトリガします。
+<p />
+FindPathToward はボットの使用するルートを生成するので、ボットがクリップしたり、角を曲がって結果的にスタックしたり、という場合は、何かがおかしいのです。 <code><b>show paths</b></code> を使用して、ライン (reachspecs) が角を通っているかどうかチェックしてみるのが良いでしょう。
+<p />
+<strong>MoveTo</strong>
+<p />
+これは、ボットをパスされたポイントに直接移動させ、到着すると終了させる潜在関数です。この関数はパスファインドをせず、ポーンをターゲットにまっすぐ向かわせるだけです。
+<p />
+<strong>MoveToward</strong>
+<p />
+これは、MoveTo に非常に似ていますが、アクタを目的地として取り、この余分なデータを利用する特別な処理を持っています (ボットがナビゲーション ポイントに向かって移動しているとアンカーを設定するなど)。
+<p />
+<strong>ActorReachable</strong>
+<p />
+例はソース コードを見るのが良いでしょう。UnPawn.cpp 内の APawn::actorReachable で始まります。高いレベルで、この関数が何をするかは以下の通りです。
+<p /> <ol>
+<li> チェックしているアクタが私たちの立っている場所の reachspec 上にあるかどうか、または目的地のアクタが私たちのいるナビゲーション ポイントの範囲内にいるかどうかを決定することによりアーリーアウトしようとします (オフラインで検証されているので、reachspecs/ナビゲーション ポイントは、歩くのに常に有効であると仮定します)。
+</li> <li> 素早くレイキャストを行い、目的地が見えるかどうかをチェックし、見えない場合はアーリーアウトします。
+</li> <li> 目的地のアクタがソリッド グラウンドにいるかどうかをチェックします。
+</li> <li> (物理モードにより) 目的地への移動をシミュレートする APawn::Reachable を呼び出し、そのポイントに到達することができるかどうかを決定します。例えば、ボットが PHYS_Walking にいると、walkreachable を呼び出し、目的地への徒歩での移動をシミュレートし、徒歩/ジャンプで到達可能かどうかを決定します (UnPawn.cpp の APawn::walkReachable を参照)。
+</li></ol>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/WaypointsTechnicalGuideJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:20 GMT -->
+</html></body>

@@ -1,0 +1,422 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingAmbientZonesJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:28:50 GMT -->
+<head>
+<title> UDK | UsingAmbientZonesJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">UsingAmbientZonesJP  </b></div>
+<div id="tooltext">
+<a href="UsingAmbientZones.html" class="twikiLink">English Translation</a><br><a href="UsingAmbientZonesCH.html" class="twikiLink">中国翻译</a><br><a href="UsingAmbientZonesKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/UsingAmbientZonesJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="Ambient Zones (アンビエント ゾーン)"></a> Ambient Zones (アンビエント ゾーン) </h1>
+<p />
+<em>ドキュメント概要: Unreal オーディオ システム内の Ambient Zones (アンビエント ゾーン) に関する情報と使用方法。</em>
+<p />
+<em>ドキュメントの変更ログ: <a href="https://udn.epicgames.com/Main/ZakBelica" class="restricted" class="restricted" class="twikiLink">Zak Belica</a> により作成。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="UsingAmbientZonesJP.html#Ambient Zones (アンビエント ゾーン)"> Ambient Zones (アンビエント ゾーン)</a> <ul>
+<li> <a href="UsingAmbientZonesJP.html#概観"> 概観</a>
+</li> <li> <a href="UsingAmbientZonesJP.html#簡単なガイド"> 簡単なガイド</a>
+</li> <li> <a href="UsingAmbientZonesJP.html#AmbientZones に関する現在の問題"> AmbientZones に関する現在の問題</a>
+</li> <li> <a href="UsingAmbientZonesJP.html#ソリューション: Ambient Zones (アンビエント ゾーン)"> ソリューション: Ambient Zones (アンビエント ゾーン)</a>
+</li> <li> <a href="UsingAmbientZonesJP.html#実装ガイド例"> 実装ガイド例</a> <ul>
+<li> <a href="UsingAmbientZonesJP.html#街中のレストランの例"> 街中のレストランの例</a>
+</li> <li> <a href="UsingAmbientZonesJP.html#垂直な空間の例"> 垂直な空間の例</a>
+</li> <li> <a href="UsingAmbientZonesJP.html#壁のコントロールの例"> 壁のコントロールの例</a>
+</li> <li> <a href="UsingAmbientZonesJP.html#特別なエリアのミックスしたコントロールの例"> 特別なエリアのミックスしたコントロールの例</a>
+</li></ul>
+</li> <li> <a href="UsingAmbientZonesJP.html#実装のヒント"> 実装のヒント</a> <ul>
+<li> <a href="UsingAmbientZonesJP.html#Ambient soundclass に割り当てられた _AmbientSoundSimple アクタと _SoundCues のみが _AmbientZones の影響を受けます。"> Ambient soundclass に割り当てられた AmbientSoundSimple アクタと SoundCues のみが AmbientZones の影響を受けます。</a>
+</li> <li> <a href="UsingAmbientZonesJP.html#AmbientZones のデフォルト値"> AmbientZones のデフォルト値</a>
+</li> <li> <a href="UsingAmbientZonesJP.html#複数の _AmbientZones と大きな半径を持つ _SoundActors 屋内の挙動"> 複数の AmbientZones と大きな半径を持つ SoundActors 屋内の挙動</a>
+</li> <li> <a href="UsingAmbientZonesJP.html#bInside 設定"> bInside 設定</a>
+</li> <li> <a href="UsingAmbientZonesJP.html#ジオメトリのリビルドを忘れない"> ジオメトリのリビルドを忘れない</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="概観"></a> 概観 </h2>
+<p />
+AmbientZones は、コストのかからない屋内/屋外アンビエント オーディオ ソリューションです。AmbientZones の利点には以下のようなものがあります。 <ul>
+<li> 屋内から屋外エリアへのサウンドの遷移を良くします。
+</li> <li> より少ないサウンド アクタの配置ですみ、内部/外部空間のイテレートも少なくて良いので、オーディオ デザイナーの作業を減少させます。
+</li> <li> 屋内と屋外を定義するのに必要とされるサウンド アクタの数の節約により、ゲーム システム オーバーヘッドを減少させます。
+</li></ul>
+<p />
+<h2><a name="簡単なガイド"></a> 簡単なガイド </h2>
+<p /> <ul>
+<li> ReverbVolume を作成し、大きな半径ルーピング サウンドを持つ AmbientSoundSimple をその中に、2 つ目の大きな半径 AmbientSoundSimple ルーピング サウンドをその外に配置します。
+</li> <li> ReverbVolume パラメータを開きます。
+</li> <li> AmbientZone パラメータを表u31034 示するために AmbientZoneSettings を展開します。
+</li></ul>
+<p />
+ <img alt="AmbientZone_Settings.jpg" src="rsrc/Three/UsingAmbientZonesJP/AmbientZone_Settings.jpg" />
+<p /> <ul>
+<li> bInside パラメータを True に設定します。これで ReverbVolume は、アクティブ AmbientZone です。
+</li> <li> ExteriorVolume を .5 に設定します。これは、プレイヤーが AmbientZone 内部にいる場合の AmbientZone 外の AmbientSounds の最終的なボリュームになります。
+</li> <li> ExteriorLPF を .5 に設定します。これは、プレイヤーが AmbientZone 内部にいる場合の AmbientZone 外の AmbientSounds の最終的な LowPassFilter になります。
+</li></ul>
+<p /> <ul>
+<li> InteriorVolume を .2 に設定します。これは、プレイヤーが AmbientZone 外部にいる場合の AmbientZone 内の AmbientSounds の最終的なボリュームになります。
+</li> <li> InteriorLPF を .2 に設定します。これは、プレイヤーが AmbientZone 外部にいる場合の AmbientZone 内の AmbientSounds の最終的な LowPassFilter になります。
+</li></ul>
+<p /> <ul>
+<li> ジオメトリをリビルドし、先に設定した AmbientZone とともに ReverbVolume を入力します。
+</li> <li> AmbientZone 外の AmbientSoundSimple は、そのボリュームが .5 倍になり、LowPassFilter が .5 倍に設定されます。
+</li> <li> ReverbVolume を閉じます。ReverbVolume 外の AmbientSoundSimple が以前のボリュームと LPF 設定に復元されました。ReverbVolume 内の AmbientSoundSimple は、.2 倍のボリュームになり、LPF も .2 倍が適用され、非常に静かになります。
+</li></ul>
+<p />
+<p />
+<h2><a name="AmbientZones に関する現在の問題"></a> AmbientZones に関する現在の問題 </h2>
+<p />
+以前のバージョンのオーディオ システムでは、半径ベースの SoundActors を持つディテールな空間を定義するのが難しいという共通の実装問題がありました。ディテールを達成するのに、さまざまな半径を持つ多くの SoundActors が必要とされたのです。また、レベル ジオメトリは、屋外の空間に向けて開けた (開いた壁や窓) 屋外の空間を含むことがありました。SoundActors は、バック オーディオを再生するのに、球面半径のみを使用するので、レベル ジオメトリを満たすのに小さな半径を持つ多くの SoundActors が必要となりました。この問題の図解は、以下のようになります。屋外空間の真ん中に、ボックスの形をした部屋があります。赤い球は屋外オーディオで、青い球は四角く青いボリュームの屋内オーディオです。サウンドでボックスの形を正確に満たすのに、8 つの Outside Radius SoundActors と 8 つの Inside Radius SoundActors が必要なことに注目してください。
+<p />
+<img alt="AmbientZone_Problem.jpg" src="rsrc/Three/UsingAmbientZonesJP/AmbientZone_Problem.jpg" />
+<p />
+<p />
+<h2><a name="ソリューション: Ambient Zones (アンビエント ゾーン)"></a> ソリューション: Ambient Zones (アンビエント ゾーン) </h2>
+<p />
+AmbientZones と呼ばれるソリューションが、この問題を解決するために実装されました。"AmbientZoneSettings" と呼ばれる新しいパラメータ グループが、すべての Reverb Volumes に追加されました。AmbientZone の設定は、関連付けられた Reverb Volume の内部と外部に位置する SoundActors が、プレイヤーの場所によってどのように変更されるかを定義します。
+<p />
+これがどのように動作するかの簡単な例は、以下のようになっています。四角い緑のボリュームは、AmbientZone ボリューム、紫の球は AmbientZone 内に位置する SoundActor、赤の球は AmbientZone の外に位置する SoundActors です。
+<p />
+<img alt="AmbientZone_Solution.jpg" src="rsrc/Three/UsingAmbientZonesJP/AmbientZone_Solution.jpg" />
+<p />
+<p />
+AmbientZone ボリュームの挙動は以下の通りです。 <ul>
+<li> プレイヤーが AmbientZone の外にいる際、AmbientZone 内に位置する SoundActors には、ボリューム マルチプライヤと LPF エフェクトが適用されています (これらの値は、AmbientZoneSettings で定義されています)。
+</li> <li> プレイヤーが AmbientZone に入ると、その AmbientZone 内に位置する SoundActors が指定されたフェード時間に渡って、1.0 マルチプライヤのボリュームと LPF を両方に返します。同時に、AmbientZone 外に位置するすべての SoundActors は、指定されたフェード時間に渡るボリュームと LPF マルチプライヤが両方に適用されます。ここでも、ボリューム、LPF、フェード時間の値は、AmbientZoneSettings で定義されます。
+</li> <li> プレイヤーが AmbientZone を出ると、AmbientZone の外の SoundActors は、以前のフェード時間を使用するような以前のデフォルト ボリュームと LPF 値に戻り、AmbientZone の中に位置する SoundActors は、そのボリューム マルチプライヤと LPF 値が AmbientZone 用に AmbientZoneSettings を介して変更されます。
+</li></ul>
+<p />
+利用可能なパラメータ:
+<p />
+<img alt="AmbientZone_Settings.jpg" src="rsrc/Three/UsingAmbientZonesJP/AmbientZone_Settings.jpg" />
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">設定</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">使用</font></a> </th></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> bInside </td><td bgcolor="#ffffff"> このボリュームに関して AmbientZone 機能をオンにするかどうか (True、False) です。このパラメータが False に設定されると、AmbientZone ボリュームは新しい 'ExteriorVolume' デフォルトとしての役目を果たします。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> ExteriorVolume </td><td bgcolor="#eaeaea"> (プレイヤーがこの AmbientZone 内にいる場合の屋外サウンドの最終的なボリュームです。) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> ExteriorTime </td><td bgcolor="#ffffff"> ( 新しい屋外ボリュームにフェードしていく時間を秒で表します。) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> InteriorVolume </td><td bgcolor="#eaeaea"> (プレイヤーがこの AmbientZone 外にいる場合の屋内サウンドの最終的なボリュームです。) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> InteriorTime </td><td bgcolor="#ffffff"> ( 新しい屋内ボリュームにフェードしていく時間を秒で表します。) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> ExteriorLPF </td><td bgcolor="#eaeaea"> (内部にいる場合の屋外サウンドに適用される Lowpass フィルタ マルチプライヤ (最大 LPF を適用するには 0.1) です。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> ExteriorLPFTime </td><td bgcolor="#ffffff"> (新しい lowpass フィルタ レベルにフェードしていく時間を秒で表します。) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> InteriorLPF </td><td bgcolor="#eaeaea"> (外部にいる場合の屋内サウンドに適用される Lowpass フィルタ マルチプライヤ (最大 LPF を適用するには 0.1) です。)) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> InteriorLPFTime </td><td bgcolor="#ffffff"> (新しい lowpass フィルタ レベルにフェードしていく時間を秒で表します。) </td></tr>
+</table>
+<p />
+<p />
+<h2><a name="実装ガイド例"></a> 実装ガイド例 </h2>
+<p />
+以下は、この挙動を解説する手助けとなる実例になります。
+<p />
+<h3><a name="街中のレストランの例"></a> 街中のレストランの例 </h3>
+<p />
+マップには、街のストリートに向かって開いているドアを持つレストラン エリアが含まれています。プレイヤーがレストランの外にいる場合、ストリートの交通の音が聞こえ、レストランの音は低いボリュームで、微妙にこもって聞こえます。プレイヤーがレストランに入ると、レストランの音はより大きく鮮明になり、ストリートからの交通の音は大幅に静かになり、こもって聞こえます。プレイヤーがレストランから出ると、以前のオーディオ バランスが復元されます。このエフェクトを達成するには、以下の通りです。 <ul>
+<li> Reverb Volume をレストランの中に、レストランのサイズで作成します。
+</li> <li> Reverb Volume プロパティ内の AmbientZoneSettings を開きます。
+</li> <li> InteriorVolume を .6 に、そして InteriorLPF を .4 に設定します。
+</li> <li> ExteriorVolume を .4 に、そして ExteriorLPF を .2 に設定します。
+</li> <li> 交通音を再生するために、大きな半径を持った AmbientSoundSimple をストリートに配置します。
+</li> <li> レストランの音を再生するために、大きな半径を持った AmbientSoundSimple をレストランに配置します。
+</li> <li> マップ ジオメトリをリビルドします。これは、強制的に Reverb Volume に、その中にどの SoundActors があるかをチェックさせます。
+</li> <li> Reverb Volume に入って、出て、オーディオの変化を聞きます。この例では、すべてのフェード時間はデフォルトの .5 秒に設定されています。
+</li></ul>
+<p />
+<h3><a name="垂直な空間の例"></a> 垂直な空間の例 </h3>
+<p />
+サウンド半径は球形なので、狭い屋内空間で垂直に積み重ねられると、問題の原因となりえます。AmbientZones は、この問題を解決する手助けをします。以下が例になります。
+<p /> <ul>
+<li> 複数階のビル:  大きな半径のアンビエント サウンドは、上下階に流れ出さずに、ビルの各垂直レベルに配置することができます。
+</li> <li> 橋:  サウンドの流出なしに、固有なアンビエント オーディオとリバーブ設定を橋の上下に設定できます。
+</li></ul>
+<p />
+<h3><a name="壁のコントロールの例"></a> 壁のコントロールの例 </h3>
+<p />
+壁:  アンビエント サウンドは部屋の壁に位置し、プレイヤーが壁の反対側 (部屋の外) にいるとオーディオを抑圧します。
+<p />
+<h3><a name="特別なエリアのミックスしたコントロールの例"></a> 特別なエリアのミックスしたコントロールの例 </h3>
+<p />
+街中のディテール:  AmbientZones は、プレイヤーがオーディオのその中心点にいる場合、交通と街の騒音のミックスのコントロールを可能にします。例えば、その AmbientZone 内にいると、街のボリュームを低くするような AmbientZone を屋台の周りにおくことができます。
+<p />
+<p />
+<h2><a name="実装のヒント"></a> 実装のヒント </h2>
+<p />
+<h3><a name="Ambient soundclass に割り当てられた _AmbientSoundSimple アクタと _SoundCues のみが _AmbientZones の影響を受けます。"></a> Ambient soundclass に割り当てられた AmbientSoundSimple アクタと SoundCues のみが AmbientZones の影響を受けます。 </h3>
+<p />
+AmbientZone ボリュームと LPF の変更は、以下のような AmbientSoundSimple アクタに適用されます。
+<p /> <ul>
+<li> AmbientSoundSimple
+</li> <li> AmbientSoundNonLoop
+</li> <li> AmbientSoundSimpleToggleable
+</li></ul>
+<p />
+AmbientZones は、Ambient soundclass に設定された、再生されるすべての SoundCue に適用されます。従って、以下のようなアクタは…
+<p /> <ul>
+<li> AmbientSound
+</li> <li> AmbientSoundMoveable
+</li></ul>
+<p />
+使用される SoundCues が Ambient soundclass に設定されることを前提として、Kismet PlaySound や Matinee サウンドトラック イベントなどと同様、影響されます。
+<p />
+<p />
+<h3><a name="AmbientZones のデフォルト値"></a> AmbientZones のデフォルト値 </h3>
+<p /> <ul>
+<li> WorldInfo -&gt; DefaultAmbientZoneSettings 内の WorldInfo プロパティで設定可能です。
+</li></ul>
+<p />
+<h3><a name="複数の _AmbientZones と大きな半径を持つ _SoundActors 屋内の挙動"></a> 複数の AmbientZones と大きな半径を持つ SoundActors 屋内の挙動 </h3>
+<p />
+AmbientZones に関してもう 1 つ覚えておくべき局面は、SoundActor の減衰半径が十分に大きく、複数の AmbientZones で一度に聞こえる場合、InteriorVolume と InteriorLPF が AmbientZones に渡って加算であるということです。この挙動の目的は、Internal ボリュームと LPF が、別の AmbientZone に入ることによって、オーバーライドされることを防ぐことです。なので、プレイヤーがそのサイレンの AmbientZone の外にいる場合、サイレンの音を低いボリュームになるように LPF とともに設定したとすると、異なる ExteriorVolume と ExteriorLPF 設定を持つ他の AmbientZone に入ると、LPF とともに静かなままになります。この挙動は、「現実世界」のオーディオの挙動を真似するもので、AmbientZone の挙動と同じです。この挙動の例は、以下のようになります。
+<p /> <ul>
+<li> レベルには、2 つの AmbientZones である AmbientZone A と AmbientZone B があります。
+</li> <li> AmbientZone A は、大きな減衰半径 (AmbientZone B 内で聞こえるぐらいに十分に大きい) を持つルーピング サウンドを再生する SoundActor 1 を含んでいて、.5 の InteriorVolume と .4 の InteriorLPF を持ちます。
+</li> <li> AmbientZone B は、1.0 の ExteriorVolume と 0 の ExteriorLPF を持ちます。
+</li> <li> プレイヤーが AmbientZone A の外にいる場合、.5 の InteriorVolume と .4 の InteriorLPF で SoundActor 1 が再生しているのが聞こえます。
+</li> <li> ここでプレイヤーが AmbientZone B に入ります。
+</li> <li> SoundActor 1 のために AmbientZone A を介して設定された InteriorVolume と InteriorLPF は、AmbientZone B の 1.0 の ExteriorVolume と .5 の ExteriorLPF によって掛けられます。これで、プレイヤーが AmbientZone B 内にいる間、SoundActor 1 のボリューム設定が .5 に、そして LPF が .2 に設定されることになります。
+</li></ul>
+<p />
+<h3><a name="bInside 設定"></a> bInside 設定 </h3>
+<p /> <ul>
+<li> この True/False 設定は、AmbientZone をアクティブであるとして定義するのに使用されます。デフォルトで、プレイヤーがいかなる AmbientZones の外にいる場合、すべてのアンビエント soundactors は、デフォルトの 1.0 ボリュームと 1.0 LPF 設定で再生します。
+</li></ul>
+<p />
+<strong>注意</strong>:更新したAmbientZone 機能において、 ボリュームが常に機能の一部として、'Inside'として設定されてしまうため、  <code><b>Inside?</b></code>  の概念は削除されました。
+<p />
+<h3><a name="ジオメトリのリビルドを忘れない"></a> ジオメトリのリビルドを忘れない </h3>
+<p /> <ul>
+<li> サウンド アクタを AmbientZone ボリューム内に配置する場合、レベルのジオメトリをリビルドする必要があります。というのは、この際にサウンド アクタの位置を決定するためにチェックが行われるからです。ジオメトリがリビルドされると、すべての AmbientZone パラメータはエディタ内で自由に変更することができます。
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingAmbientZonesJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:28:51 GMT -->
+</html></body>

@@ -1,0 +1,711 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CharactersTechnicalGuideJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:38 GMT -->
+<head>
+<title> UDK | CharactersTechnicalGuideJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">CharactersTechnicalGuideJP  </b></div>
+<div id="tooltext">
+<a href="CharactersTechnicalGuide.html" class="twikiLink">English Translation</a><br><a href="CharactersTechnicalGuideCH.html" class="twikiLink">中国翻译</a><br><a href="CharactersTechnicalGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/CharactersTechnicalGuideJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px; font:10px Verdana;" >
+<b><a href="WebHomeJP.html" class="twikiLink">UE3 ホーム</a></b> &gt; <b><a href="GameplayHomeJP.html" class="twikiLink">ゲームプレイプログラミング</a></b> &gt; キャラクター技術ガイド
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="キャラクター技術ガイド"></a> キャラクター技術ガイド </h1>
+<hr size="1" noshade="noshade">
+<p />
+<em>2011年7月に UDK に即して最終テスト実施済み</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="CharactersTechnicalGuideJP.html#キャラクター技術ガイド"> キャラクター技術ガイド </a> <ul>
+<li> <a href="CharactersTechnicalGuideJP.html#概要"> 概要 </a>
+</li> <li> <a href="CharactersTechnicalGuideJP.html#Controllers"> Controllers </a> <ul>
+<li> <a href="CharactersTechnicalGuideJP.html#Controller"> Controller </a> <ul>
+<li> <a href="CharactersTechnicalGuideJP.html#Pawn と所有"> Pawn と所有 </a>
+</li> <li> <a href="CharactersTechnicalGuideJP.html#インベントリ"> インベントリ </a>
+</li> <li> <a href="CharactersTechnicalGuideJP.html#移動とナビゲーション"> 移動とナビゲーション </a>
+</li> <li> <a href="CharactersTechnicalGuideJP.html#カメラ / 照準">  カメラ / 照準 </a>
+</li></ul>
+</li> <li> <a href="CharactersTechnicalGuideJP.html#プレーヤー Controller">  プレーヤー Controller </a> <ul>
+<li> <a href="CharactersTechnicalGuideJP.html#概説"> 概説 </a>
+</li> <li> <a href="CharactersTechnicalGuideJP.html#プレーヤー　入力 / 移動"> プレーヤー　入力 / 移動 </a>
+</li></ul>
+</li> <li> <a href="CharactersTechnicalGuideJP.html#AI Controller"> AI Controller </a> <ul>
+<li> <a href="CharactersTechnicalGuideJP.html#意思決定"> 意思決定 </a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="CharactersTechnicalGuideJP.html#Pawn"> Pawn </a> <ul>
+<li> <a href="CharactersTechnicalGuideJP.html#Controller と所有">  Controller と所有 </a>
+</li> <li> <a href="CharactersTechnicalGuideJP.html#インベントリと武器"> インベントリと武器 </a>
+</li> <li> <a href="CharactersTechnicalGuideJP.html#ダメージの受け取り"> ダメージの受け取り </a>
+</li> <li> <a href="CharactersTechnicalGuideJP.html#アニメーション"> アニメーション </a>
+</li> <li> <a href="CharactersTechnicalGuideJP.html#カメラパースペクティブ / 照準"> カメラパースペクティブ / 照準 </a>
+</li></ul>
+</li> <li> <a href="CharactersTechnicalGuideJP.html#プレーヤーの例"> プレーヤーの例 </a> <ul>
+<li> <a href="CharactersTechnicalGuideJP.html#プレーヤー Pawn クラス">  プレーヤー Pawn クラス </a>
+</li> <li> <a href="CharactersTechnicalGuideJP.html#プレーヤー Controller クラス"> プレーヤー Controller クラス </a>
+</li> <li> <a href="CharactersTechnicalGuideJP.html#GameInfo クラス"> GameInfo クラス </a>
+</li></ul>
+</li> <li> <a href="CharactersTechnicalGuideJP.html#NPC の例"> NPC の例 </a> <ul>
+<li> <a href="CharactersTechnicalGuideJP.html#NPC Pawn クラス"> NPC Pawn クラス </a>
+</li> <li> <a href="CharactersTechnicalGuideJP.html#NPC Controller クラス"> NPC Controller クラス </a>
+</li></ul>
+</li> <li> <a href="CharactersTechnicalGuideJP.html#新たなカスタム NPC をテストする"> 新たなカスタム NPC をテストする </a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<p />
+Unreal においてキャラクターは 2 つの部分から成り立っています。それは、Pawn (ポーン) と Controller (コントローラー) の 2 つです。Pawn とは、ワールドにおける、プレーヤーおよび NPC (ノンプレイアブルキャラクター) の身体像のことです。Pawn は、プレーヤーによるコントロールと AI によるコントロールを区別しません。Pawn は、メッシュ、コリジョン、物理をもっていて、これによって、キャラクターとワールド間で起きる物理的インタラクションに関係する機能をすべて処理できるようになります。また、Pawn には、他のプレーヤーや環境からダメージを受ける機能があります。その場合、サウンドの発生やアニメーションの再生がともないます。また、Pawn には、武器を持ったり発砲したり (またはその両方を行う) といったような、あらゆるインベントリの機能も備わっています (ただし、武器の発砲プロセスは、技術的にはコントローラークラスから始動されます)。
+<p />
+各 Pawn は、どの時点においても単一の Controller を持つことができます。Controller は、その名前が示すとおり、何を行うか、どのように行動するかを Pawn に指示します。本質的には、Pawn の背後にある脳に相当します。Controller には数種類あります。たとえば、PlayerController や AIController などです。ただし、それらに共通する主な目的は、ワールドにおいてプレーヤーまたは他の刺激から入力を受け取り、その入力を処理し、それに応じて Pawn を行動させることにあります。たいていの場合、これによって、何らかのコマンドあるいは一連のコマンド群が Pawn に渡されることになります。
+<p />
+通常の状況では、ログイン時に全プレーヤーの Controller が作成されますが、それは GameInfo クラスによって処理されます。その後に、match (試合) が始まる場合は、GameInfo クラスによって各 Controller のために Pawn が作成され、その Controller に割り当てられます。この最後の処理は、 <em>possession (所有)</em> と呼ばれます。その理由は、Pawn が Controller に所有され、Controller の制御のもとに置かれるからです。プレーヤーを完成させるプロセスは、下図のようになります。
+<p />
+<img alt="CreationProcess.jpg" src="rsrc/Three/CharactersTechnicalGuide/CreationProcess.jpg" />
+<p />
+もちろん、いつも上記のようなプロセスである必要はありません。ゲームを構成する世界が、手作業で配置され、動的には生成されないNPC がいる世界の場合もあるでしょう。これらの NPC は、ほとんどの場合、基本 Pawn クラスのサブクラスであるはずです。基本 Pawn クラスは、NPC 自身のための Controller 作成を処理し、NPC 自身をその Controller に割り当てるクラスです。
+<p />
+<p />
+<h2><a name="Controllers"></a> Controllers </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<p />
+Controller は、Pawn に付属させることによってその行動を制御する非物理的な Actor です。プレーヤーまたは環境から得られた情報を使用することによって、Pawn にその情報に応じた行動を取らせるのです。Controller は移動を管理します。移動が、プレーヤーによる入力に対して反応するものであっても、あるいは、ナビゲーションシステムによって生成されたパスを進んだり、各種イベントに基づいて行動を実行しているものであっても同様に管理されます。Pawn がゲーム内で移動するのは、Controller がそのように命じるためです。Controller が制御している Pawn には、イベントが発生します。たとえば、敵の姿や声を見たり聞いたりするようなイベントです。Controller は、これらのイベントについて多数の通知を受け取ります。Controller は、これらのイベントを利用し、そのイベントに応じた適切な行動を Pawn に実装します。
+<p />
+Controller の主要なサブクラスは 2 つあり、 <code><b>PlayerController</b></code> と <code><b>AIController</b></code> がそれに当たります。新しいキャラクターを作成する場合は、これらのクラスのうち 1 つを派生させるか、あるいは、これらのクラスの更なるサブクラスから 1 つを派生させます。これは、どのような種類のキャラクターを作成するかによります。
+<p />
+また、Controller (特に AIController) は、State (状態) を大量に使用します。それによって、Controller が同一クラス内にある関数をオーバーライドすることが可能になるとともに、Controller の現在の状態に応じてさまざまな行動を関数に実行させることが可能になります。さらに、State によって、潜在的なコードおよび潜在的な関数が使用できるようにもなります。たとえば、AI のキャラクターがワールドをナビゲートするときに使用される移動の関数などが利用可能となります。
+<p />
+<h3><a name="Controller"></a> Controller </h3>
+<p />
+基本 Controller クラスには、一般的な関数とイベントが含まれています。これらは、Pawn 一般を制御するためのものであり、Pawn がプレーヤーに制御されているのか、あるいは AI に制御されているのかということに必ずしも対応しているわけではありません。
+<p />
+<h4><a name="Pawn と所有"></a> Pawn と所有 </h4>
+<p />
+以下の関数は、Pawn の所有と所有解除にかかわるものです。
+<p /> <ul>
+<li> <strong>Possess [inPawn] [bVehicleTransition]</strong>  指定された Pawn を、Controller の Pawn に割り当てるとともに、PossessedBy() 関数を呼び出すことによって Pawn に対して通知します。
+</li> <li> <strong>UnPossess</strong>  Controller による Pawn への参照を解除するとともに、UnPossessedBy() 関数を呼び出すことによって、もはや Controller に制御されなくなったことをPawnに対して通知します。
+</li></ul>
+<p />
+<h4><a name="インベントリ"></a> インベントリ </h4>
+<p />
+以下の関数は、ピックアップ (収集されたアイテム) および武器、その他インベントリ固有の機能にかかわるものです。
+<p /> <ul>
+<li> <strong>RatePickup [PickupHolder] [PickupClass]</strong>  ピックアップの望ましさを計算する PickupFactory からのコールバック関数です。
+</li> <li> <strong>HandlePickup [InvetoryItem]</strong>  この関数は、空のプレースホルダーです。オーバーライドすることによって、収集されたアイテムを扱う関数を追加実装できます。
+</li> <li> <strong>FireWeaponAt [inActor]</strong>  Controller が所有する Pawn が、指定されたアクタを標的にして現在アクティブな武器を発砲します。
+</li> <li> <strong>StopFiring</strong>  Controller が所有する Pawn が、現在アクティブな武器の発砲を中止します。
+</li> <li> <strong>SwitchToBestWeapon [bForceNewWeapon]</strong>  Controller が所有するPawnのインベントリにおいて、どの武器が最も有効であるかを計算し、それをアクティブな武器にします。オプションのブールパラメータによって、現在アクティブな武器とは異なる武器を選択できるようになります。これは、そのアクティブな武器が最も有効であるか否かにかかわりなく実行できます。
+</li> <li> <strong>ClientSetWeapon [WeaponClass]</strong>  Controller が所有する Pawn が、指定された武器に変更されます。ただし、Pawn のインベントリにその種の武器が存在することが前提となっています。
+</li></ul>
+<p />
+武器の詳細については、 <a href="WeaponsTechnicalGuideJP.html" class="twikiLink">武器システムのテクニカルガイド</a> を参照してください。
+<p />
+<h4><a name="移動とナビゲーション"></a> 移動とナビゲーション </h4>
+<p />
+次の関数は、所有された Pawn にワールドを潜在的に移動させる場合にかかわるものです。潜在的な移動とは、特定の目的地に行くようにコマンドが与えられることによって、ティックごとに更新されることなく移動が自動化されることを意味します。
+<p /> <ul>
+<li> <strong>MoveTo [NewDestination] [ViewFocus] [DestinationOffset] [bShouldWalk]</strong>  Pawn が指定された目的地まで移動します。あるいは、目的地から指定された任意のオフセットまでの距離内を移動します。その場合、フォーカスは指定された任意のアクタ上に保たれます。この関数は、パスネットワークを使用することによって、Pawn が目的地までナビゲートできるようにします。
+</li> <li> <strong>MoveToDirectNonPathPos [NewDestination] [ViewFocus] [DestinationOffset] [bShouldWalk]</strong>  MoveTo() と同じ機能を持ちますが、パスを通らないで最終目的地に向かって移動する場合にのみ使用される点が異なります。
+</li> <li> <strong>MoveToward [NewTarget] [ViewFocus] [DestinationOffset] [bUseStrafing] [bShouldWalk]</strong>  NewTarget として指定された所定のアクタまで Pawn を移動させます。この関数は、他の Pawn あるいはインベントリアクタに向かって移動する場合、ナビゲーションネットワークを利用します。
+</li> <li> <strong>FindPathTo [aPoint] [MaxPathLength] [bReturnPartial]</strong>  指定された目的地に最も近いナビゲーションノードへのパスを計算し、そのバス沿いにある次のノードを返します。
+</li> <li> <strong>FindPathToward [anActor] [bWeightDetours] [MaxPathLength] [bReturnPartial]</strong>  指定されたアクタに最も近いナビゲーションノードへのパスを計算し、そのバス沿いにある次のノードを返します。
+</li> <li> <strong>FindPathTowardNearest [GoalClass] [bWeightDetours] [MaxPathLength] [bReturnpartial]</strong> 指定されたクラスに最も近いノードへのパスを計算し、そのバス沿いにある次のノードを返します。
+</li> <li> <strong>FindPathToIntercept [Pawn] [InRouteGoal] [bWeightDetours] [MaxPathLength] [bReturnpartial]</strong>  指定された Pawn がワールドを移動するときに、Pawn をインターセプトするパスを計算し、そのバス沿いにある次のノードを返します。
+</li> <li> <strong>PointReachable [aPoint]</strong>  Pawn の移動能力を考慮して、指定された場所に直接到達できるか否かを返します。この関数は、コストが高くなる可能性があるため、できれば使用を避けて ActorReachable() を使うようにしてください。
+</li> <li> <strong>ActorReachable [anActor]</strong>  Pawn の移動能力を考慮して、指定されたアクタに直接到達できるか否かを返します。この関数は、潜在的には PointReachable() よりも最適化されてはいるものの、やはりコストが高くなる可能性があるため、節約して使用してください。
+</li> <li> <strong>FindRandomDest</strong>  ナビゲーションネットワーク上にあるランダムなノードを返します。キャラクターがワールドをぶらつきながら歩くステートを作成する場合に役立ちます。
+</li></ul>
+<p />
+AI およびナビゲーションに関する詳細については、 <a href="AIOverviewJP.html" class="twikiLink">AI システムの概要</a> を参照してください｡
+<p />
+<h4><a name="カメラ / 照準"></a> カメラ / 照準 </h4>
+<p />
+このセクションの関数は、Controller とその Pawn の視点および視線の照準にかかわるものです。
+<p /> <ul>
+<li> <strong>GetPlayerViewPoint [out_Location] [out_Rotation]</strong>  Controller が所有する Pawn の視点を返します。人プレーヤーにとっては、カメラの視点になります。AI に制御されるプレーヤーにとっては、Pawn の目から見た視点になります。基本的な実装では、単に、Controller 自体の位置と回転に相当します。
+</li> <li> <strong>GetActorEyesViewPoint [out_Location] [out_Rotation]</strong>  Controller またはその Pawn が存在している場合、その視点を返します。基本的には、プレーヤーがどの方向をどこから見ているかという情報を返します。
+</li> <li> <strong>IsAimingAt [Target] [Epsilon]</strong>  Controller が現在指定されたターゲットに照準を合わせているか否かを返します。ただし、その場合、指定された誤差の範囲内に照準が位置しているかどうかが考慮されます。Epsilon (イプシロン) の値が 1.0 である場合は、ターゲットに直接照準を合わせています。この値が低くなれば、その分だけ誤差が考慮されることになります。
+</li></ul>
+<p />
+<h3><a name="プレーヤー Controller"></a> プレーヤー Controller </h3>
+<p />
+人プレーヤーから入力を受け取り、ゲーム内で取られる行動に加工する機能は、PlayerController とそのサブクラスで実装されます。たいていの場合、プレーヤーが押したボタンやキーに基づいて、PlayerController が処理する行動には、次のようなものがあります。すなわち、Pawn を移動させたり、カメラを制御したり (Pawn 経由で)、武器を変更または発砲したりといった行動です。以下では、PlayerController クラスの主な関数についていくつか個々に解説していきます。
+<p />
+<h4><a name="概説"></a> 概説 </h4>
+<p />
+次の関数は、実質上一般的なものであり、特定のカテゴリーには分類されません。
+<p /> <ul>
+<li> <strong>Playertick [DeltaTime]</strong>  プレーヤーのための主要な更新用関数です。サイクルごとに実行されます。
+</li> <li> <strong>ConsoleCommand [Command]</strong>  プレーヤーから入力されたコンソールコマンドであるかのように、指定されたコマンドを実行します。
+</li></ul>
+<p />
+<h4><a name="プレーヤー　入力 / 移動"></a> プレーヤー　入力 / 移動 </h4>
+<p />
+この関数は、プレーヤーの入力と移動にかかわるものです。
+<p /> <ul>
+<li> <strong>InitInputSystem</strong>  PlayerController の PlayerInput クラスの新たなインスタンスを生成することによって、入力システムを初期設定します。
+</li> <li> <strong>PlayerMove [DeltaTime]</strong>  現在の移動のために新たな加速値と回転値を計算します。その後、ProcessMove() (プレーヤーが一人の場合またはリッスンサーバーの場合)、または、ReplicateMove() (ネットワーククライアントの場合) のいずれかを呼び出します。基本PlayerController クラスにおいては、この関数はスタブにすぎませんが、PlayerWalking ステートなどのような移動に関係する何らかのステート内においては、オーバーライドされます。この関数は、PlayerTick() 関数によって毎サイクルごとに呼び出されます。
+</li> <li> <strong>ProcessMove [DeltaTime] [newAccel] [DoubleClickMove] [DeltaRot]</strong>  クライアント上で現在の移動を処理します。この関数は、移動のために特別な機能が必要となるある種のステート内で、オーバーライドされます。
+</li> <li> <strong>ReplicateMove [DeltaTime] [newAccel] [DoubleClickMove] [DeltaRot]</strong>  移動に関する処理を開始します。現在の移動をPendingMove リストに保存し、その後、ProcessMove() および ServerMove() (サーバー上で実行される) を呼び出します。
+</li> <li> <strong>ServerMove [TimeStamp] [inAccel] [ClientLoc] [MoveFlags] [ClientRoll] [View]</strong>  この関数は、サーバー上でしか実行されません。MoveAutonomous() を呼び出すことによって､現在の移動を実行します。また、この関数は、更新が必要かどうかについても判断します。判断の根拠となるのは、最後の更新から時間が十分経過したかどうか、あるいは、クライアント上の位置とサーバー上の位置の間に誤差が十分にあるかどうかということです。
+</li> <li> <strong>Move Autonomous [DeltaTime] [MoveFlags] [newAccel] [DeltaRot]</strong>  ProcessMove() を呼び出し、実行に必要な、あらゆる自立的な物理に関する計算を更新します。
+</li> <li> <strong>ClientUpdatePosition</strong>  クライアント上の位置を更新して、サーバ上の位置に一致させます。この関数は、PlayerTick() 関数から呼び出されますが、ServerMove() 関数が必要と認めた場合に限ります。
+</li> <li> <strong>UpdateRotation [DeltaTime]</strong>  プレーヤーの入力に基づいて、Controller の回転および Controller が所有する Pawn の回転を更新します。
+</li> <li> <strong>ProcessViewRotation [DeltaTime] [out_ViewRotation] [DeltaRot]</strong>  プレーヤーの入力に基づいて、プレーヤーの視野の回転を処理するとともに、その結果得られる回転を出力します。この関数は、UpdateRotation() によって呼び出されます。
+</li></ul>
+<p />
+<h3><a name="AI Controller"></a> AI Controller </h3>
+<p />
+Pawn の環境を観察し、そこから得られる情報に基づいて知的な判断を行う機能は、AIController とそのサブクラスによって実装されます。AIController は、基本的に、自身の自己完結型決定ループを使用することによって、意思決定プロセスを継続的に繰り返し、その決定に基づいて適切な行動を実行します。以下で、AIController クラスの主な関数について解説していきます。
+<p />
+<h4><a name="意思決定"></a> 意思決定 </h4>
+<p />
+AI によって制御されるエンティティ (存在物) を扱う場合、意思決定プロセスは極めて重要なものになります。情報を処理するとともに、それに基づいて何を行いどのように振舞うか決定する主体がなければ、NPC キャラクターは単なる立像にすぎません。確かに、すぐれたAI を作成する方法について論じるのは、本ドキュメントが扱うべき範囲からは逸脱します。しかし、AIController クラス構造のどこにどのようにして AI のコードを付け加えるのかということについては、知っておかなければなりません。以下にあげる関数が、意思決定プロセスにおいて主な担い手となります。
+<p />
+注意:  以下の関数は、AIController クラスではなく、UDKBot クラスで実装されます。以下の関数を利用するには、UDKBot クラスまたは UTBot クラスを拡張する必要があります｡
+<p /> <ul>
+<li> <strong>ExecuteWhatToDoNext</strong>  意思決定プロセスにおいて中心となるエントリーポイントです。決定ロジックの大多数を含むべきです。ただし、この関数が実行されるのは物理ティックの間なので、物理ステートを変更するものは一切含んではいけません。
+</li> <li> <strong>WhatToDoNext</strong>  ExecuteWhatToDoNext() が次のティックで呼び出されるようにします。また、物理ティックの間に実行するのが危険なコードも含めることができます。この関数は、LatentWhatToDonext() を使用するため、ステートコード内部から呼び出されることはありません。
+</li> <li> <strong>LatentWhatToDoNext</strong>  WhatToDoNext() の呼び出しをカプセル化するとともに、ティック遅れの意思決定プロセスが開始するのを待機する状態をカプセル化します。この関数がステートコードから呼び出されることによって、次の意思決定ループを待つ間、ステートが中断されます。
+</li></ul>
+<p />
+<p />
+<h2><a name="Pawn"></a> Pawn </h2>
+<p />
+Pawn クラスは、Unreal 内のすべてのプレーヤー、キャラクター、クリーチャー、その他のタイプのエンティティの基本クラスです。すでに述べたように、Pawn クラスは、プレーヤーまたは AI とワールドの間で生じる物理的インタラクションを管轄します。カスタム Pawn クラスを作成する場合は、どのような機能がすでに存在しているかを最初に確認しておきたいものです。それによって、既存の機能をどのようにオーバーライドするかについて適切な判断を下すことができます。ひいては、新しいキャラクターに望ましい振る舞いをすることができるだけではなく、まったく新しい機能を追加することになった場合に、必要となる時間を配分できるようにもなります。その一助となるように、下記で、Pawn クラスの重要な関数について、機能カテゴリー別に解説していきます。
+<p />
+<h3><a name="Controller と所有"></a> Controller と所有 </h3>
+<p />
+次の関数には、Controller と Pawn のインタラクション、および、所有と所有解除にかかわる機能が含まれています。
+<p /> <ul>
+<li> <strong>PossessedBy [controller] [bVehicleTransition]</strong>  この関数は、引数となる Controller を、Pawn の新しい Controller にするとともに、他の必要な動作または初期化を実行します。この関数は、Controller が Pawn を所有する際に、Controller によって呼び出されます。
+</li> <li> <strong>Unpossessed</strong>  Pawn の Controller を解除するとともに、これに関連する他のプロパティをすべてリセットします。この関数がController から呼び出されるのは、Pawn が死亡した場合、または、Controller が Pawn の所有をこれ以上望まなくなった場合です。後者の例としては、Controller が他の Pawn の所有を望む場合があげられます。
+</li> <li> <strong>SpawnDefaultController</strong>  現在Pawnに Controller がない場合、Pawn のために ControllerClass のインスタンスを生成するとともに、Controller が Pawn を所有するようにさせます｡この関数は、Pawn の PostBeginPlay() 関数の中で呼び出され、レベルに配置された Pawn またはゲームプレー中にスポーンされた Pawn が。確実に Controller によって所有されるようにします。
+</li> <li> <strong>DetatchFromController [bDestroyController]</strong>  Controller が Pawn を所有しなくなるようにさせます。また、任意で、所有解除後に Controller を破壊させます。この関数が呼び出されるのは、Pawn が死亡した場合、あるいは、リセットされた場合、破壊されている場合、他の Controller に割り当てられている場合です。
+</li></ul>
+<p />
+<h3><a name="インベントリと武器"></a> インベントリと武器 </h3>
+<p />
+インベントリの機能の大多数は、PostBeginPlay() のイベントで生成される Pawn の InventoryManager によって処理されます。ただし、Pawn もその機能のいくつかを処理したり、コマンドを InventoryManager に送ります。これは、インベントリ固有の関数をいくつか使用することによって行われます。また、Pawn クラスには、武器とその発砲にかかわる関数がいくつか含まれています。これらの関数を以下に列挙します。
+<p /> <ul>
+<li> <strong>AddDefaultInventory</strong>  デフォルトのインベントリにリストされているインベントリアイテムを、Pawn のインベントリに追加します。この関数は、GameInfo クラスの AddDefaultInventory() 関数から呼び出されます。
+</li> <li> <strong>CreateInventory [inventoryClass] [bDoNotActivate]</strong>  指定されたインベントリクラスのインスタンスを生成し、Pawn のインベントリに追加するとともに、新しいインベントリアイテムを返します。この関数は、実際に実行する InventoryManager に呼び出しを送るにすぎません。
+</li> <li> <strong>FindInventoryType [inventoryClass] [bAllowSubclass]</strong>  Pawn のインベントリから指定されたクラスのインスタンスを検索し、見つかった場合は、そのインスタンスを返します。
+</li> <li> <strong>TossInventory [invenetoryItem] [forceVelocity]</strong>  Pawn に、指定されたインベントリアイテムを任意の速度で投げさせるとともに、それを Pawn のインベントリから除外します。
+</li> <li> <strong>ThrowActiveWeapon</strong>  Pawn に、現在のアクティブな武器を地面に向かって投げさせるとともに、それを Pawn のインベントリから除外します。この関数は、実際に実行する TossInventory() 関数にコマンドを送るにすぎません。
+</li> <li> <strong>SetActiveWeapon [newWeapon]</strong>  指定された武器を Pawn のアクティブな武器に設定します。この関数は、実際に実行する InventoryManager にコマンドを送るにすぎません。
+</li> <li> <strong>PlayWeaponSwitch [oldWeapon] [newWeapon]</strong>  古い武器から新しい武器に交換する際のアニメーションを Pawn に再生させるために使用される関数です。この関数は、InventoryManager の ChangeWeapon() 関数によって呼び出されます。
+</li> <li> <strong>StartFire [fireModeNum]</strong>  Pawn に、アクティブな武器を指定された発砲モードで発砲開始させます。この関数は、実際に実行する InventoryManager にコマンドを送ります。
+</li> <li> <strong>StopFire [fireModeNum]</strong>  Pawn に、アクティブな武器の発砲および発砲モードを停止させます。この関数は、実際に実行する InventoryManager にコマンドを送ります。
+</li> <li> <strong>WeaponFired [weapon] [bViaReplication] [hitLocation]</strong>  アクティブな武器の発砲にかかわるエフェクトの生成をデリゲートするために使用される関数です。この関数は、アクティブな武器の PlayFireEffects() 関数を呼び出します。
+</li> <li> <strong>WeaponStoppedFiring [weapon] [bViaReplication]</strong>  アクティブな武器の発砲にかかわるエフェクトをすべて破壊する際、それをデリゲートするために使用される関数です。この関数は、アクティブな武器の StopFireEffects() 関数を呼び出します。
+</li></ul>
+<p />
+<h3><a name="ダメージの受け取り"></a> ダメージの受け取り </h3>
+<p />
+Pawnクラスには、ヒーリング機能の他に、武器や他の環境からダメージを受け取る機能が含まれています。以下に、ダメージとヘルスにかかわる関数を列挙します。
+<p /> <ul>
+<li> <strong>TakeDamage [damage] [instigatedBy] [hitLocation] [momentum] [damageType] [hitInfo] [damageCauser]</strong>  指定された量だけ、Pawnのヘルスを減らします。  <ul>
+<li> <strong>Damage</strong>  ヘルスを減らす量。
+</li> <li> <strong>InstigatedBy</strong>  受け取ったダメージに関わっている Pawn の Controller。
+</li> <li> <strong>HitLocation</strong>  適用されるダメージが由来する位置。
+</li> <li> <strong>Momentum</strong>  ダメージの結果として、Pawn に適用される速度。
+</li> <li> <strong>DamageType</strong>  実行されているダメージの種類を記述するダメージタイプのクラス。
+</li> <li> <strong>HitInfo</strong>  ダメージに関する情報を持つ、任意の TraceHitInfo 構造体。
+</li> <li> <strong>DamageCauser</strong>  実行されているダメージに関わる任意のアクタ。
+</li></ul>
+</li> <li> <strong>HealDamage [amount] [healer] [damageType]</strong>  指定された量だけ、Pawn のヘルスを増やします。それによってもたらされるヘルスの上限は、Pawn が持つ最大ヘルス値です。ただし、Pawn が死亡していないことと、すでにヘルスが満たされていないことがこの関数が発動する条件となります。
+</li> <li> <strong>TakeFallingDamage</strong>  Pawn が落下する速度に基づいて、Pawn にダメージを適用します。この関数は、適切なダメージ量をTakeDamage() 関数に渡します。
+</li> <li> <strong>CrushedBy [otherPawn]</strong> 他の Pawn が当該 Pawn に依拠するようになった場合に、当該 Pawn にダメージを受け取らせます。ダメージの量は、当該 Pawn に依拠するようになった Pawn の速度に基づきます。この関数は、Pawn の BaseChange() 関数から呼び出され、ダメージ量を TakeDamage() 関数に渡します。
+</li> <li> <strong>TakeRadiusDamageOnBones [instigatedBy] [baseDamage] [damageRadius] [damageType] [momentum] [hurtOrigin] [bFullDamage] [damageCauser] [bones]</strong>  半径依存で減じられるダメージを、Pawn のスケルトンメッシュ上のボーンに関するリストに対して適用します。
+</li> <li> <strong>NotifyTakeHit [instigatedBy] [hitLocation] [damage] [damageType] [momentum]</strong>  Pawn がダメージを受けたことを知らされる必要がある、あらゆるものに対して通知を送ります。この関数は、Controller の NotifyTakeHit() 関数を呼び出します。
+</li> <li> <strong>TakeDrowningDamage</strong>  Pawn が水中にいたり、長時間潜水してきたことに基づいて、ダメージを適用します。
+</li></ul>
+<p />
+<h3><a name="アニメーション"></a> アニメーション </h3>
+<p />
+Pawn は、主要なビジュアルコンポーネントとして、スケルトンメッシュを使用します。移動など行動のために再生される大量のアニメーションは、Pawn に割り当てられた AnimTree によって処理されますが、ビルトインされているアニメーションを再生する機能については、制限があるのも事実です。機能の多くは、コマンドを Pawn のスケルトンメッシュコンポーネントに渡すヘルパー関数という形態をとります。これらの関数について以下で解説します。
+<p />
+注意: Pawn の SkeletalMeshComponent には、Mesh 変数によって参照されますが、個々のアニメーションシーケンスを再生するための、アニメーション関連の機能が含まれています。これを使用するには、Pawn の AnimTree における唯一のアニメーションノードが、AnimNodeSequence ノードとなっていなければならないということを忘れないでください。これによって、ブレンディングなど AnimTree システムの高度な機能をすべて失ってしまうことになるでしょうが、上記機能は必要に応じて動作します。
+<p /> <ul>
+<li> <strong>SetMorphWeight [MorphNodeName] [MorphWieght]</strong>  Pawn に割り当てられた AnimTree 内部において、特定のモーフノードの重みを設定します。
+</li> <li> <strong>SetSkelControlScale [SkelControlName] [Scale]</strong>  Pawn に割り当てられた AnimTree 内部において、特定の SkelControl ノードのスケールを設定します。
+</li> <li> <strong>PlayActorFaceFXAnim [AnimSet] [GroupName] [SeqName] [SoundCueToPlay]</strong>  Pawn に、指定された FaceFX 顔アニメーションシーケンスを再生させます。
+</li> <li> <strong>StopActorFaceFXAnim</strong>  現在再生している FaceFX 顔アニメーションシーケンスを停止します。
+</li> <li> <strong>IsActorPlayingFaceFXAnim</strong>  ブーリアン値を返すことによって、Pawn が現在 FaceFX 顔アニメーションを再生しているか否かを知らせます。
+</li></ul>
+<p />
+<h3><a name="カメラパースペクティブ / 照準"></a> カメラパースペクティブ / 照準 </h3>
+<p />
+以下の関数には、次の 2 つの機能が含まれています。すなわち、Pawn が現在の視野ターゲットになっている場合に、プレーヤーのカメラの位置と志向性を制御する機能、および、プレーヤーまたは NPC に向けて、現在の照準を設定する機能です。
+<p /> <ul>
+<li> <strong>CalcCamera [DeltaTime] [out_CamLoc] [out_CamRot] [out_FOV]</strong>  Pawn から眺めた時のカメラの視点を計算します。これがプレーヤーのための主となるカメラ計算となります。
+</li> <li> <strong>GetDefaultCameraMode [controller]</strong>  このPawnのために使用されるべきデフォルトのカメラモードを名前として返します。この関数は、Pawn を所有する時に、Controller によって呼び出されます。
+</li> <li> <strong>ProcessViewRotation [deltaTime]  [out_ViewRotation] [out_DeltaRot]</strong>  プレーヤーの視野の回転を処理するとともに、最終的な視野の回転を out_ViewRotation パラメータとして返します。この関数は、PlayerController の UpdateRotation() 関数から呼び出されます。
+</li> <li> <strong>SetViewRotation [NewRotation]</strong>  Controller が存在する場合、その回転を設定します。Controller が存在しない場合は、Pawn 自体の回転を設定します。
+</li> <li> <strong>GetActorEyesViewPoint [out_Location] [out_Rotation]</strong>  Pawn の目、あるいは、プレーヤーの視点の位置と志向性を返します。第1の人のパースペクティブについては、カメラの位置と志向性と同一です。これは、大多数のトレースが実行される際の起点となる視点ともなります。
+</li> <li> <strong>GetBaseAimRotation</strong>  照準誤差やオートロック、付着といった調整を一切もたない Pawn の照準回転を、Rotator として返します。
+</li> <li> <strong>GetAdjustedAimFor [Weapon] [StartFireLoc]</strong>  中間点によって、照準誤差や自動照準といったあらゆる調整が、基本の照準回転に対して適応されるようになります。デフォルトでは、Controller の GetAdjustedaimFor() 関数にコマンドが渡されます。Pawn のために Controller が存在しない場合は、基本の照準回転を返します。
+</li></ul>
+<p />
+<p />
+<h2><a name="プレーヤーの例"></a> プレーヤーの例 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<p />
+カスタムメッシュを使用してプレーヤー制御のキャラクターを追加する場合について説明します。これには、3 つの新しいクラスが使用されます。Pawn および PlayerController、GameInfo の 3 つのクラスです。この例の目的は、プレーヤーによって制御される新しいキャラクターを作成する際の基本事項を示すことにあります。基本的な実装を終えると、後は単に、利用可能なものを活用するか、独自のカスタム機能を追加してゲームに適する新たなキャラクターを実装していくということになります。
+<p />
+<img alt="Player.jpg" src="rsrc/Three/CharactersTechnicalGuide/Player.jpg" />
+<p />
+<h3><a name="プレーヤー Pawn クラス"></a> プレーヤー Pawn クラス </h3>
+<p />
+この例では、新たな Pawn クラスに機能を少し追加します。ビルトインヘルス再生機能を Pawn クラスに与えてみることにします。Tick() 関数の内部で、指定された量のヘルスが、Pawn の現在の Health に頻繁に追加されるものとします。これを完成するために、クラス変数をいくつか追加しました。さらに、Tick() 関数をオーバーライドして、再生を追加しました。
+<p />
+<div class="codetitlebar">
+UDNPawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+class UDNPawn extends UTPawn;
+
+var float ElapsedRegenTime;
+var float RegenAmount;
+var float RegenTime;
+
+event Tick(float DeltaTime)
+{
+  //calculate elapsed time
+  ElapsedRegenTime +&#61; DeltaTime;
+
+  //has enough time elapsed?
+  if(ElapsedRegenTime &#62;&#61; RegenTime)
+  {
+    //heal the Pawn and reset elapsed time
+    HealDamage(RegenAmount, Controller, class&#39;DamageType&#39;);
+    ElapsedRegenTime &#61; 0.0f;
+  }
+}
+
+defaultproperties
+{
+  //set defaults for regeneration properties
+  RegenAmount&#61;2
+  RegenTime&#61;1
+}
+</pre>
+</div>
+<p />
+<h3><a name="プレーヤー Controller クラス"></a> プレーヤー Controller クラス </h3>
+<p />
+次の新たな PlayerController クラスは、UTPlayerController をごく基本的に拡張したものです。プレーヤーとして使用するキャラクターのクラスを保持する新しいクラス変数を単に追加しています。またその後、ServerSetCharacterClass() 関数を使用して、そのクラス変数を、プレーヤーのキャラクターに設定しています。
+<p />
+<div class="codetitlebar">
+UDNPlayerController.uc
+</div>
+<div class="codesnippet">
+<pre>
+class UDNPlayerController extends UTPlayerController;
+
+var class&#60;UTFamilyInfo&#62; CharacterClass;
+
+simulated event PostBeginPlay()
+{
+   super.PostBeginPlay();
+
+   SetupPlayerCharacter();
+}
+
+/&#42;&#42; Set player&#39;s character info class &#38; perform any other initialization &#42;/
+function SetupPlayerCharacter()
+{
+   //Set character to our custom character
+   ServerSetCharacterClass(CharacterClass);
+}
+
+defaultproperties
+{
+   //Points to the UTFamilyInfo class for your custom character
+   CharacterClass&#61;class&#39;UDNExamples.UDNFamilyInfo&#95;SpaceMarine&#39;
+}
+</pre>
+</div>
+<p />
+<h3><a name="GameInfo クラス"></a> GameInfo クラス </h3>
+<p />
+この場合、新しいゲームタイプが必要となります。新たな Pawn クラスおよび PlayerController クラスの使用を明確化するためです。いずれにしても、ゲーム作成においては、ほぼ、UDK を利用しながらカスタムゲームタイプを使うことになるでしょう。それによって、新規に作成するかわりに、適当なデフォルトのプロパティをクラスに追加するだけで済むようになります。この例では、新たなゲームタイプが作成され、単に、DefaultPawnClass プロパティと PlayerControllerClass プロパティが、それぞれ新しい Pawn と PlayerController を指すように設定されているに過ぎません。
+<p />
+<div class="codetitlebar">
+UDNGame.uc
+</div>
+<div class="codesnippet">
+<pre>
+class UDNGame extends UTDeathMatch;
+
+defaultproperties
+{
+   //Points to your custom Pawn class
+   DefaultPawnClass&#61;class&#39;UDNExamples.UDNPawn&#39;
+
+   //Points to your custom PlayerController class
+   PlayerControllerClass&#61;class&#39;UDNExamples.UDNPlayerController&#39;
+}
+</pre>
+</div>
+<p />
+さてこれで、この新しいゲームタイプを使用してマップを実行する場合、プレーヤーは、ダメージを受けた場合再生し、カスタムキャラクターを使用することになります。
+<p />
+<p />
+<h2><a name="NPC の例"></a> NPC の例 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<p />
+簡単な AI 制御の Pawn について説明するために、新たな Pawn クラスと Controller クラスを作成します。Pawn クラスが、Unreal Editor 内に配置可能になり、メッシュおよびアニメーション、物理プロパティを設定するとともに、使用すべき Controller のクラスを設定するようになります。Controller は、NPC にワールドを歩き回らせます。その際、現在の目的地に NPC が到着するたびに、ランダムな目的地が選択されます。
+<p />
+<img alt="NPC.jpg" src="rsrc/Three/CharactersTechnicalGuide/NPC.jpg" />
+<p />
+<h3><a name="NPC Pawn クラス"></a> NPC Pawn クラス </h3>
+<p />
+この Pawn クラスは、かなり単純です。プロパティが少し追加されていますが、これらは、設計者のために使いやすく作られている既存のプロパティを複製したものにすぎません。SkeletalMeshComponent を使用して、メッシュや AnimTree、AnimSets、PhysicsAsset といったあらゆるビジュアルプロパティを設定します。これに使用されるデフォルト値のいくつかは、デフォルトのプロパティが置かれているブロック内で設定されます。クラスを利用して、使用すべき Controller クラスが、NPC を制御するように設定します。PostBeginPlay() 関数を使用して、既存の ControllerClass 変数を NPCController 変数に設定します。最後に、SetCharacterClassFromInfo() がオーバーライドされていますが、これは何も実行しません。NPC の実装には必要ないからです。
+<p />
+このクラスの完全なソースを以下に示します。
+<p />
+<div class="codetitlebar">
+UDNPawn_NPC.uc
+</div>
+<div class="codesnippet">
+<pre>
+class UDNPawn&#95;NPC extends UTPawn
+   placeable;
+
+var(NPC) SkeletalMeshComponent NPCMesh;
+var(NPC) class&#60;AIController&#62; NPCController;
+
+simulated event PostBeginPlay()
+{
+   if(NPCController !&#61; none)
+   {
+      //set the existing ControllerClass to our new NPCController class
+      ControllerClass &#61; NPCController;
+   }
+
+   Super.PostBeginPlay();
+}
+
+//override to do nothing
+simulated function SetCharacterClassFromInfo(class&#60;UTFamilyInfo&#62; Info)
+{
+}
+
+defaultproperties
+{
+   //Setup default NPC mesh
+   Begin Object Class&#61;SkeletalMeshComponent Name&#61;NPCMesh0
+      SkeletalMesh&#61;SkeletalMesh&#39;CH&#95;LIAM&#95;Cathode.Mesh.SK&#95;CH&#95;LIAM&#95;Cathode&#39;
+      PhysicsAsset&#61;PhysicsAsset&#39;CH&#95;AnimCorrupt.Mesh.SK&#95;CH&#95;Corrupt&#95;Male&#95;Physics&#39;
+      AnimSets(0)&#61;AnimSet&#39;CH&#95;AnimHuman.Anims.K&#95;AnimHuman&#95;BaseMale&#39;
+      AnimtreeTemplate&#61;AnimTree&#39;CH&#95;AnimHuman&#95;Tree.AT&#95;CH&#95;Human&#39;
+   End Object
+   NPCMesh&#61;NPCMesh0
+   Mesh&#61;NPCMesh0
+   Components.Add(NPCMesh0)
+
+   //Points to your custom AIController class - as the default value
+   NPCController&#61;class&#39;Engine.AIController&#39;
+}
+</pre>
+</div>
+<p />
+<h3><a name="NPC Controller クラス"></a> NPC Controller クラス </h3>
+<p />
+Controller クラスは、考えられうる限り最も基本的なナビゲーションの実装にかかわるクラスです。ExecuteWhatToDoNext() 関数は、主要な意思決定関数ですが、これをオーバーライドして、Controller が絶えず Roaming ステートに送られるようにします。このステートは、単に、目的地が存在するか確認したり、現在の目的地に Pawn がすでに到着しているか確認するとともに、必要に応じて新たな目的地を設定し、Controller に対してそれに向かって移動するように命じます。最後に、LatentWhatToDoNext() 関数を呼び出すことによって、次のティックで ExecuteWhatToDoNext() 関数が再度呼び出されるようになります。その際、意思決定ループが最初からもう一度実行されます。
+<p />
+この Controller クラスのソースは以下に示します。
+<p />
+<div class="codetitlebar">
+UDNBot.uc
+</div>
+<div class="codesnippet">
+<pre>
+class UDNBot extends UTBot;
+
+var Actor Destination;
+
+protected event ExecuteWhatToDoNext()
+{
+   //Go to the roaming state
+   GotoState(&#39;Roaming&#39;);
+}
+
+state Roaming
+{
+Begin:
+   //If we just began or we have reached the Destination
+   //pick a new destination - at random
+   if(Destination &#61;&#61; none &#124;&#124; Pawn.ReachedDestination(Destination))
+   {
+      Destination &#61; FindRandomDest();
+   }
+
+   //Find a path to the destination and move to the next node in the path
+   MoveToward(FindPathToward(Destination), FindPathToward(Destination));
+
+   //fire off next decision loop
+   LatentWhatToDoNext();
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h2><a name="新たなカスタム NPC をテストする"></a> 新たなカスタム NPC をテストする </h2>
+<div style="margin-top:-10px;" ><hr size="1" noshade="noshade"></div>
+新たな NPC クラスは、Actor クラスの中に置かれています。search (検索) ウィジェットを使用するほうが簡単な場合があります。
+<p />
+<img src="rsrc/Three/CharactersTechnicalGuide/UDNCTG_ActorClasses.jpg" alt="UDNCTG_ActorClasses.jpg" width='481' height='691' />
+<p />
+コンテンツブラウザ内の [Actor Classes] (Actor クラス) タブにおいてアクタが選択されると、ゲームのビューポート内で右クリックすることによって、コンテクストメニューを表示することができるようになります。コンテクストメニュー内で、 <strong>Add UDN_PawnNPC Here</strong> (ここに UDN_PawnNPC を追加する) というメニュー項目を選択します。
+<p />
+<img src="rsrc/Three/CharactersTechnicalGuide/UDNCTG_AddActor.jpg" alt="UDNCTG_AddActor.jpg" width='541' height='914' />
+<p />
+これによって、NPC がワールド内に置かれます。これで、PIE を使用してゲームをテストできるようになりました。
+<p />
+<img src="rsrc/Three/CharactersTechnicalGuide/UDNCTG_PlacedNPC.jpg" alt="UDNCTG_PlacedNPC.jpg" width='745' height='903' />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CharactersTechnicalGuideJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:38 GMT -->
+</html></body>

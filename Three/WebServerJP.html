@@ -1,0 +1,758 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/WebServerJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:45 GMT -->
+<head>
+<title> UDK | WebServerJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">WebServerJP  </b></div>
+<div id="tooltext">
+<a href="WebServer.html" class="twikiLink">English Translation</a><br><a href="WebServerCH.html" class="twikiLink">中国翻译</a><br><a href="WebServerKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/WebServerJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<h1><a name="WebServer"></a> WebServer </h1>
+<p />
+<em>ドキュメントの概要: UT3 における HTTP WebServer 実装の使い方と API の説明。</em>
+<p />
+<em>ドキュメントの変更ログ: ドキュメント作成。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="WebServerJP.html#WebServer"> WebServer</a> <ul>
+<li> <a href="WebServerJP.html#概要"> 概要</a>
+</li> <li> <a href="WebServerJP.html#構造"> 構造</a>
+</li> <li> <a href="WebServerJP.html#HTTP リクエストのプロセス"> HTTP リクエストのプロセス</a>
+</li> <li> <a href="WebServerJP.html#WebApplication の作成"> WebApplication の作成</a> <ul>
+<li> <a href="WebServerJP.html#リクエストの処理"> リクエストの処理</a>
+</li> <li> <a href="WebServerJP.html#応答の生成"> 応答の生成</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="WebServerJP.html#API"> API</a> <ul>
+<li> <a href="WebServerJP.html#WebApplication"> WebApplication</a> <ul>
+<li> <a href="WebServerJP.html#フィールド"> フィールド</a>
+</li> <li> <a href="WebServerJP.html#関数"> 関数</a>
+</li></ul>
+</li> <li> <a href="WebServerJP.html#WebRequest"> WebRequest</a> <ul>
+<li> <a href="WebServerJP.html#フィールド"> フィールド</a>
+</li> <li> <a href="WebServerJP.html#関数"> 関数</a>
+</li></ul>
+</li> <li> <a href="WebServerJP.html#WebResponse"> WebResponse</a> <ul>
+<li> <a href="WebServerJP.html#フィールド"> フィールド</a>
+</li> <li> <a href="WebServerJP.html#関数"> 関数</a>
+</li></ul>
+</li> <li> <a href="WebServerJP.html#WebServer"> WebServer</a> <ul>
+<li> <a href="WebServerJP.html#フィールド"> フィールド</a>
+</li> <li> <a href="WebServerJP.html#関数"> 関数</a>
+</li></ul>
+</li> <li> <a href="WebServerJP.html#WebConnection"> WebConnection</a> <ul>
+<li> <a href="WebServerJP.html#フィールド"> フィールド</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<p />
+このドキュメントでは、WebServer の使い方と新しい WebApplications の作成方法を説明します。WebServer が使用するネットワーク接続に関する低レベルの情報は、<a href="TcpLinkJP.html" class="twikiLink">TcpLinkJP</a> を参照してください。
+<p />
+このドキュメントは、読者が HTTP プロトコルに関する基本的な知識を持っていることを前提としています。実際には HTTP の詳細まで把握する必要はありませんが、理解していれば役に立ちます。
+<p />
+WebServer は HTTP プロトコルのサブセットのみサポートしていますが、webapplications でこの機能を拡張できます。サポートされているのは GET と POSTリクエストだけです。
+<p />
+<h2><a name="構造"></a> 構造 </h2>
+<p />
+WebServer の機能は以下のクラスで構成されています。
+<p /> <dl>
+<dt> <code>WebServer</code>  </dt><dd> これは WebServer のエントリーポイントで、接続とアプリケーションを管理します。
+</dd> <dt> <code>WebConnection</code>  </dt><dd> このクラスは WebServer <em>acceptor</em> (アクセプタ) クラスです。WebServer に接続するクライアントごとに、このクラスのインスタンスが作成されます。接続と、webapplication にリクエストを渡す前のプリプロセスを管理します。
+</dd> <dt> <code>WebRequest</code>  </dt><dd> このクラスは WebServer が受け取る HTTP リクエストを具現化します。
+</dd> <dt> <code>WebResponse</code>  </dt><dd> このクラスはリクエストへの応答を提供する機能を実装します。
+</dd> <dt> <code>WebApplication</code>  </dt><dd> このクラスの実装は、リクエストの処理と応答の生成を担当します。WebServer を使用する場合、このクラスを拡張します。
+</dd></dl>
+<p />
+<a name="RequestProcess"></a>
+<h2><a name="HTTP リクエストのプロセス"></a> HTTP リクエストのプロセス </h2>
+<p /> <ol>
+<li> クライアントが WebServer に接続します。
+</li> <li> <code>WebConnection</code> が作成され、 <code>WebServer</code> の接続カウンタが増分します。
+</li> <li> <em>WebConnection.Accepted</em> が呼び出されます。 <ol>
+<li> 終了タイマーが開始します。接続は 30 秒間だけオープン状態になります。
+</li></ol>
+</li> <li> <em>WebConnection.ReceivedText</em> 。 接続はリクエストを受け取ります。 <ol>
+<li> リクエストヘッダを処理している間に、データを複数行に分割します。
+</li> <li> リクエストヘッダを処理します。 <ol>
+<li> リクエスト URL にある、提供されたリクエスト変数を処理します。
+</li> <li> GET リクエストの場合: <ol>
+<li> <code>WebRequest</code> と <code>WebResponse</code> インスタンスを作成します。
+</li> <li> 関連する webapplication を見つけます。
+</li> <li> webapplication が見つからない場合、デフォルト アプリケーションへの HTTP リダイレクトを用いて応答します (設定されている場合)。
+</li></ol>
+</li> <li> POST リクエスト の場合: <ol>
+<li> <code>WebRequest</code> と <code>WebResponse</code> インスタンスを作成します。
+</li> <li> 関連する webapplication を見つけます。
+</li></ol>
+</li> <li> ヘッダを処理します。これは <em>WebRequest.ProcessHeaderString</em> が行います。 <ol>
+<li> <code>Authorization: Basic</code> の場合、認証ユーザー名とパスワードを復号化します。
+</li> <li> <code>Content-Length</code> の場合、 <code>ContentType</code> 変数を設定します。
+</li> <li> <code>Content-Length</code> の場合、 <code>ContentLength</code> 変数を設定します。
+</li></ol>
+</li></ol>
+</li> <li> リクエストのチェック: <ol>
+<li> <code>WebResponse</code> が作成されなかった場合、HTTP 400 エラーを返します。
+</li> <li> <code>webapplication</code> が見つからなかった場合、HTTP 404 エラーを返します。
+</li></ol>
+</li> <li> <code>WebRequest.ContentLength</code> が 0 より大きく、これが POST リクエストの場合、追加データを読み取ります。
+</li> <li> &dagger; <em>WebApplication.PreQuery</em> を呼び出します。結果が TRUE の場合: <ol>
+<li> &dagger; <em>WebApplication.Query</em> を呼び出します。
+</li> <li> &dagger; <em>WebApplication.PostQuery</em> を呼び出します。
+</li></ol>
+</li> <li> クリーンアップを初期化します。 <ol>
+<li> すべての変数を設定解除します。
+</li> <li> 接続を閉じます。
+</li></ol>
+</li></ol>
+</li></ol>
+<p />
+&dagger; これらは各ユーザーが作成する部分です。
+<p />
+<h2><a name="WebApplication の作成"></a><a name="_WebApplication の作成"></a> WebApplication の作成 </h2>
+<p />
+WebServer の機能を拡張するには、通常は webapplication を作成します。これを行うには、 <code>WebApplication</code> クラスのサブクラスを作成して、少なくとも <em>WebApplication.Query</em> メソッドを実装します。
+<p />
+<code>IpDrv</code> に、 <code>HelloWeb</code> という実装例を収めてあります。
+<p />
+作成した webapplication を登録すると、その WebServer だけが使用します。webapplication を登録するには、WebServer 構成を更新する必要があります。 <code>??Web.ini</code> ファイルを編集し、 <code>[IpDrv.WebServer]</code> セクションを更新します。
+<pre>
+Applications[x]=MyPackage.MyWebApplication
+ApplicationPaths[x]=/myweb
+</pre>
+ここで、 <code>x</code> はフリースロットで、最高 10 までの webapplication を構成できます。
+webapplication には、 <code>HTTP://ip:port/myweb</code> 経由でアクセスします。
+<p />
+WebServer が開始すると、すべての webapplications を作成して初期化し、この webapplication の <code>path</code> 変数を <code>ApplicationPaths</code> 値に設定します。webapplication の初期化を実行するために <em>init()</em> 関数を実装します。WebServer の終了時には、 <em>CleanupApp()</em> 関数を呼び出します。この関数では、作成したすべてのアクタ参照を null にしてください (変数を <code>none</code> に設定します)。
+<p />
+<a href="WebServerJP.html#RequestProcess" class="twikiAnchorLink">リクエスト プロセス</a> で説明したように、最初に呼び出される webapplication の関数は <em>PreQuery(..)</em> です。この関数が True を返した場合 (デフォルトの動作)、続けて <em>Query(..)</em> と <em>PostQuery(..)</em> 関数を呼び出します。3 つの関数はすべて同じ 2 つの引数 (<code>WebRequest</code> と <code>WebResponse</code>) のインスタンスを受け取ります。クラス名から分かるように、 <code>WebRequest</code> インスタンスにはユーザーが出した HTTP リクエストに関する情報が含まれていて、 <code>WebResponse</code> インスタンスはリクエストへの応答を生成するのに使うことができます。 <code>WebRequest</code> インスタンスの <code>URI</code> 変数には、作成された相対 URL が含まれます。この webapplication のパスは、元の URI から抜き出されたものです。
+<p />
+<h3><a name="リクエストの処理"></a> リクエストの処理 </h3>
+<p />
+クライアントのリクエストは <code>WebRequest</code> インスタンス内に格納され、webapplication の <em>Query</em> に渡されます。
+<p />
+おそらく、 <code>WebRequest</code> 内の最も大切な変数は <code>URI</code>  変数でしょう。これには webapplication ドメイン内のリクエスト ページが含まれています。例えば、クライアントがリクエスト <code>http://ip:port/myweb/some/page?foo=bar</code> を出すと、 <code>URI</code> 変数には値 <code>/some/page</code> が与えられ、webapplication の <code>/myweb</code> 接頭辞が削除されてリクエスト変数は他の場所に格納されます。
+<p />
+GET または POST リクエストのリクエスト変数を取得するには、 <em>GetVariable</em> 、 <em>GetVariableCount</em> 、 <em>GetVariableNumber</em> と <em>GetVariables</em> 関数を用いる必要があります。 <em>GetVariable</em> 関数により、指定されたリクエスト変数の最初の値を求めることができます。前述の <em>GetVariable("foo")</em> の例では、 <code>bar</code> を返します。ときには、<code>http://ip:port/myweb/some/page?foo=bar&amp;quux</code> のように同じ名前のリクエスト変数が複数ある場合があります。このような場合、 <em>GetVariableCount("foo")</em> を使って該当する変数の数を取得し、次に <em>GetVariableNumber("foo, X)</em> を使って各値を得ることができます。
+<p />
+リクエストヘッダも、 <em>GetHeader</em> と <em>GetHeaders</em> 関数を使って読み取ることができます。HTTP ヘッダの <code>Content-Type</code> 、 <code>Content-Length</code> 、 <code>Authentication</code> が処理され、特別な変数として格納されます。 <code>Content-Type</code> と <code>Content-Length</code> は POST リクエストでだけ使用されます。 <code>Authentication</code> リクエストヘッダは基本認証リクエストの場合のみ処理され、 <code>WebRequest</code> オブジェクトの <code>username</code> と <code>password</code> 変数には、複合化した値が格納されます。
+<p />
+以下の例には、リクエストの典型的な処理方法が示されています。
+<p />
+<pre>
+function Query(WebRequest Request, WebResponse Response)
+{
+    // 各 "page" は個別の関数として処理される
+    switch (request.URI)
+    {
+        case "/page1"
+            doPage1(request, response);
+            break;
+        case "/page2"
+            doPage2(request, response);
+            break;
+        // etc.
+    }
+}
+
+function doPage1(WebRequest Request, WebResponse Response)
+{
+    if (request.getVariable("action") ~= "save")
+    {
+        // 受け取った設定を保存
+    }
+    // 応答を生成
+}
+</pre>
+<p />
+<h3><a name="応答の生成"></a> 応答の生成 </h3>
+<p />
+webapplication が応答を提供しないときに、WebServer が提供するデフォルトの応答はありません。クライアントの役に立つ情報を生成することはごく稀です。そのため、webapplication でコンテンツを生成する必要があります。
+<p />
+クライアントへの応答は、 <code>WebResponse</code> オブジェクトを使って生成します。応答の最も基本的な生成方法は、 <em>SendText</em> メソッドを用いてコンテンツを返すことですが、常に UnrealScript (Unreal スクリプト) を用いて応答を生成する代わりに、通常はこれにひと工夫加えたり、ほぼ静的なコンテンツを使いたくなるところです。
+<p />
+<code>WebResponse</code> オブジェクトを用いた応答生成の基本的な流れは以下のとおりです。
+<p /> <ol>
+<li> コンテンツを定義: <em>AddHeader</em> 、 <em>Subst</em> 、 <em>ClearSubst</em> 、 <em>LoadParsedUHTM</em> 、 <code>headers</code> 、 <code>CharSet</code>
+</li> <li> <em>HTTPResponse</em>
+</li> <li> <em>SendStandardHeaders</em>
+</li> <li> コンテンツ送信:	<em>IncludeUHTM</em> 、 <em>SendText</em> 、 <em>IncludeBinaryFile</em>
+</li></ol>
+<p />
+最初の 3 つのステップは完全にオプションです。
+<p />
+<code>WebResponse</code> は、以下に示す標準 HTTP ヘッダ生成しますが、これらはカスタムヘッダの前に送信されるものです。
+<p /> <dl>
+<dt> Server </dt><dd> "UnrealEngine IpDrv Web Server Build ..."
+</dd> <dt> Content-Type </dt><dd> <em>SendStandardHeaders</em> 呼び出しが提供する <code>ContentType</code> 引数の値。
+</dd> <dt> Cache-Control </dt><dd> "max-age=..."、WebServer の <code>ExpirationSeconds</code> の値。
+</dd> <dt> Expires </dt><dd> "..."、WebServer の <code>ExpirationSeconds</code> の値。
+</dd> <dt> Connection </dt><dd> "Close"、WebServer は一度に 1 つのリクエストだけ処理します。
+</dd></dl>
+<p />
+応答データの作成には、3 つの方法がよく使われます。
+<p /> <ol>
+<li> 手動でテキストを送信
+</li> <li> ファイルをそのまま送信
+</li> <li> 処理された UHTM ファイル
+</li></ol>
+<p />
+<h4><a name="手動でテキストを送信"></a> 手動でテキストを送信 </h4>
+<p />
+<em>SendText</em> 関数は、web ブラウザへの応答ドキュメントを手動で作成するのに使います。このメソッドを用いた webapplication の例については、 <code>HelloWeb</code> クラスを参照してください。
+<p />
+<h4><a name="ファイルをそのまま送信"></a> ファイルをそのまま送信 </h4>
+<p />
+WebResponse オブジェクトは、 <em>IncludeBinaryFile</em> 関数 (ディスクに保存されている状態のままのファイルをクライアントに送信する) を提供しています。この関数は、画像など静的ファイルの送信に良く使われます (<code>ImageServer</code> クラスを参照)。
+<p />
+送信に含めるファイルは、 <code>UDK/web</code> ディレクトリ内に置く必要があります。
+<p />
+<em>注意:</em> <em>IncludeBinaryFile</em> は、応答ヘッダが送信されたかどうかの確認を行いません。そのため、 <em>IncludeBinaryFile</em> を呼び出す前に <em>SendStandardHeaders</em> を呼び出す必要があります。
+<p />
+<h4><a name="処理された UHTM ファイル"></a> 処理された UHTM ファイル </h4>
+<p />
+UHTM は、テキストファイルを処理し、特定の変数やディレクティブを置換するのに使われるテンプレートシステムです。これらのファイルは HTML ファイルでなくてもよく、任意のテキストファイルを使用できます。
+<p />
+2 つの特別な構文があります。まず、置換される変数は、構文 <code>&lt;%var_name%&gt;</code> を用いて作成します。 <code>var_name</code> は変数の名前です。変数の値は、 <em>Subst</em> 関数を使って設定します。SGML コメント内部では、変数を置換できないことに注意してください。つまり、<code>&lt;!-- &lt;%var_name%&gt; --&gt;</code> はそのまま残ります。
+<p />
+2 番目の構文は <code>&lt;!-- #include file="file.inc" --&gt;</code> で、これにより、現在のファイルの指定位置にファイル <code>file.inc</code> を読み込みます。読み込んだファイルについても、追加の変数や include ディレクティブを読み取るために処理されます。
+<p />
+<em>LoadParsedUHTM</em> と <em>IncludeUHTM</em> 関数がこのファイルを処理します。 <em>LoadParsedUHTM</em> 関数は処理したファイルを文字列として返すのに対し、 <em>IncludeUHTM</em> は処理した UHTM ファイルを web ブラウザに送信します。通常、新しい置換変数の作成には <em>LoadParsedUHTM</em> を使います。
+<p />
+<h1><a name="API"></a> API </h1>
+<p />
+<h2><a name="WebApplication"></a><a name="_WebApplication"></a> WebApplication </h2>
+<p />
+<h3><a name="フィールド"></a> フィールド </h3>
+<p />
+<h4><a name="Path"></a> Path </h4>
+<p />
+このフィールドは、webapplication に設定されているベースパスに設定されます。
+リンクを適切に作成するのにこのフィールドを使います。
+<p />
+<h3><a name="関数"></a> 関数 </h3>
+<p />
+<h4><a name="Init"></a> Init </h4>
+<code>function Init()</code>
+<p />
+webapplication インスタンスが作成された直後に呼び出します。重要な初期化を行うのに使います。このメソッドを呼び出して色々なことを実行するのは推奨されていません。この webapplication の最初のリクエストが発生するまで、完全な初期化を遅延するほうが良い場合があります。
+<p />
+<h4><a name="CleanupApp"></a><a name="_CleanupApp"></a> CleanupApp </h4>
+<code>function CleanupApp()</code>
+<p />
+WebServer が破壊される前に呼び出します。このメソッドにより、webapplication 内のすべてのアクタ参照を <code>none</code> に設定し、メモリリークを防ぐようにしてください。
+<p />
+<h4><a name="PreQuery"></a><a name="_PreQuery"></a> PreQuery </h4>
+<code>function bool PreQuery(WebRequest Request, WebResponse Response)</code>
+<p />
+この webapplication が指定クエリーを処理するかどうかを調べるために呼び出します。
+False を返した場合、 <em>Query</em> と <em>PostQuery</em> メソッドは呼び出されません。
+<p />
+<h4><a name="Query"></a> Query </h4>
+<code>function Query(WebRequest Request, WebResponse Response)</code>
+<p />
+<em>PreQuery</em> の呼び出しが True を返した後に呼び出します。
+<p />
+<h4><a name="PostQuery"></a><a name="_PostQuery"></a> PostQuery </h4>
+<code>function PostQuery(WebRequest Request, WebResponse Response)</code>
+<p />
+<em>Query</em> の呼び出しが返された後に呼び出します。
+<p />
+<h2><a name="WebRequest"></a><a name="_WebRequest"></a> WebRequest </h2>
+<p />
+<h3><a name="フィールド"></a> フィールド </h3>
+<p />
+<h4><a name="RemoteAddr"></a><a name="_RemoteAddr"></a> RemoteAddr </h4>
+<p />
+このリクエストを作成したクライアントのアドレス。
+<p />
+<h4><a name="URI"></a> URI </h4>
+<p />
+リクエスト URL。このフィールドは、webapplication の接頭辞が処理されるときにそこから取り出します。
+<p />
+<h4><a name="Username"></a> Username </h4>
+<p />
+リクエストが基本 HTTP 認証ヘッダを含む場合に、復号化して取得したユーザー名。この詳細は、RFC 2617 を参照 してください。
+<p />
+<h4><a name="Password"></a> Password </h4>
+<p />
+リクエストが基本 HTTP 認証ヘッダを含む場合に、復号化して取得したパスワード。
+<p />
+<h4><a name="ContentLength"></a><a name="_ContentLength"></a> ContentLength </h4>
+<p />
+POST リクエストのバイト数。
+<p />
+<h4><a name="ContentType"></a><a name="_ContentType"></a> ContentType </h4>
+<p />
+POST データのコンテンツの MIME タイプ。
+<p />
+<h4><a name="RequestType"></a><a name="_RequestType"></a> RequestType </h4>
+<p />
+リクエストの種類に応じて、 <code>Request_GET</code> または <code>Request_POST</code> に設定されます。
+<p />
+<h3><a name="関数"></a> 関数 </h3>
+<p />
+<h4><a name="DecodeBase64"></a><a name="_DecodeBase64"></a> DecodeBase64 </h4>
+<code>native final function string DecodeBase64(string Encoded)</code>
+<p />
+base64 エンコードの文字列を復号化します。
+<p />
+<h4><a name="EncodeBase64"></a><a name="_EncodeBase64"></a> EncodeBase64 </h4>
+<code>native final function string EncodeBase64(string Decoded)</code>
+<p />
+文字列を base64 に符号化します。
+<p />
+<h4><a name="AddHeader"></a><a name="_AddHeader"></a> AddHeader </h4>
+<code>native final function AddHeader(string HeaderName, coerce string Value)</code>
+<p />
+リクエストヘッダをデータ構造に追加します。この関数はリクエストの処理中に使われるもので、webapplication から呼び出すことはありません。
+<p />
+<h4><a name="GetHeader"></a><a name="_GetHeader"></a> GetHeader </h4>
+<code>native final function string GetHeader(string HeaderName, optional string DefaultValue)</code>
+<p />
+指定されたリクエストヘッダの値を取得します。リクエスト内にヘッダが存在しない場合は、デフォルト値を返します。同名のリクエストヘッダが複数存在する場合は、最後に受け取ったヘッダしか返さない点に注意してください。ヘッダの名前では、大文字と小文字が区別されます。
+<p />
+<h4><a name="GetHeaders"></a><a name="_GetHeaders"></a> GetHeaders </h4>
+<code>native final function GetHeaders(out array<string> headers)</code>
+<p />
+受け取ったすべてのヘッダの名前を取得します。
+<p />
+<h4><a name="AddVariable"></a><a name="_AddVariable"></a> AddVariable </h4>
+<code>native final function AddVariable(string VariableName, coerce string Value)</code>
+<p />
+受け取ったリクエスト変数を登録します。この関数はリクエストの処理中に内部で使われるもので、webapplication から使われることはありません。
+<p />
+<h4><a name="GetVariable"></a><a name="_GetVariable"></a> GetVariable </h4>
+<code>native final function string GetVariable(string VariableName, optional string DefaultValue)</code>
+<p />
+リクエスト変数の値を取得します。リクエスト変数が存在しない場合は、デフォルト値を返します。変数名では、大文字と小文字が区別されます。同名の変数を複数受け取った場合、値を 1 つだけ返します。各変数の値を得るには、 <em>GetVariableNumber</em> と <em>GetVariableCount</em> を使います。
+<p />
+<h4><a name="GetVariableCount"></a><a name="_GetVariableCount"></a> GetVariableCount </h4>
+<code>native final function int GetVariableCount(string VariableName)</code>
+<p />
+指定されたリクエスト変数の数を返します。値が 1 より大きい場合、 <em>GetVariableNumber</em> を使って個々の値を取得する必要があります。
+<p />
+<h4><a name="GetVariableNumber"></a><a name="_GetVariableNumber"></a> GetVariableNumber </h4>
+<code>native final function string GetVariableNumber(string VariableName, int Number, optional string DefaultValue)</code>
+<p />
+指定されたリクエスト変数の値を返します。変数が存在しない場合、または指定された数の変数が存在しない場合は、デフォルト値が返されます。
+<p />
+<h4><a name="GetVariables"></a><a name="_GetVariables"></a> GetVariables </h4>
+<code>native final function GetVariables(out array<string> varNames)</code>
+<p />
+受け取ったリクエスト変数の名前を取得します。
+<p />
+<h2><a name="WebResponse"></a><a name="_WebResponse"></a> WebResponse </h2>
+<p />
+<h3><a name="フィールド"></a> フィールド </h3>
+<p />
+<h4><a name="headers"></a> headers </h4>
+<p />
+この配列には、リモートホストに送信されるすべてのヘッダが格納されます。ヘッダが送信されると同時に格納されます。この配列を直接変更することも、 <em>AddHeader</em> 関数を使って変更することもできます。コンテンツの送信時には、このフィールドへの変更は無効になります。
+<p />
+<h4><a name="IncludePath"></a><a name="_IncludePath"></a> IncludePath </h4>
+<p />
+WebServer が送信または処理するファイルが置かれている場所を示す、ベースディレクトリからの相対パス。
+<p />
+<h4><a name="Connection"></a> Connection </h4>
+<p />
+この応答の送信に使われる <code>WebConnection</code> インスタンス。この変数をデータの書込みに使わないでください。
+<p />
+<h3><a name="関数"></a> 関数 </h3>
+<p />
+<h4><a name="FileExists"></a><a name="_FileExists"></a> FileExists </h4>
+<code>native final function bool FileExists(string Filename)</code>
+<p />
+指定されたファイルが web のインクルードディレクトリに存在する場合は True を返します。 <code>ImageServer</code> クラスなど、静的なファイルサーバーの場合にこれを使い、指定ファイルの存在を確認することで、 <code>WebApplication</code> が「HTTP 404 Not Found」エラーを返すようにすることができます。
+<p />
+<h4><a name="Subst"></a> Subst </h4>
+<code>native final function Subst(string Variable, coerce string Value, optional bool bClear)</code>
+<p />
+<em>IncludeUHTM</em> と <em>LoadParsedUHTM</em> 関数の実行中に使われる置換変数の値を変更します。3 番目の引数はオプションで、以前に宣言した変数を消去する場合に使います。
+<p />
+<h4><a name="ClearSubst"></a><a name="_ClearSubst"></a> ClearSubst </h4>
+<code>native final function ClearSubst()</code>
+<p />
+登録済みの置換変数をすべて消去します。
+<p />
+<h4><a name="IncludeUHTM"></a><a name="_IncludeUHTM"></a> IncludeUHTM </h4>
+<code>native final function bool &nbsp; IncludeUHTM(string Filename)</code>
+<p />
+UHTM ファイルを読み込んで処理します。処理の結果は直接リモートホストに送信されます。この関数は、ファイルが適切に読み込まれて処理された場合に True を返します。指定するファイルは、 <code>IncludePath</code> フィールドにより宣言されるサブツリーの下に置く必要があります。
+<p />
+<h4><a name="IncludeBinaryFile"></a><a name="_IncludeBinaryFile"></a> IncludeBinaryFile </h4>
+<code>native final function bool &nbsp; IncludeBinaryFile(string Filename)</code>
+<p />
+ファイルをリモートホストにそのままの状態で送信します。 <em>IncludeUHTM</em> と異なり、この関数は応答ヘッダが送信されたかどうかの確認を行いません。そのため、このメソッドを呼び出す前にヘッダ送信を確認してください。
+<p />
+<h4><a name="LoadParsedUHTM"></a><a name="_LoadParsedUHTM"></a> LoadParsedUHTM </h4>
+<code>native final function string LoadParsedUHTM(string Filename)</code>
+<p />
+<em>IncludeUHTM</em> 関数と似ていますが、処理したファイルを返すだけで、リモートホストに送信しない点が大きく異なります。これを使ってより複雑な UHTM テンプレートを作成できます。
+<p />
+<h4><a name="GetHTTPExpiration"></a><a name="_GetHTTPExpiration"></a> GetHTTPExpiration </h4>
+<code>native final function string GetHTTPExpiration(optional int OffsetSeconds)</code>
+<p />
+現在の日付 + OffsetSeconds から、RFC 1123 に準拠する日付を作成します。これは <code>Expires</code> 応答ヘッダを作成するのに使います。
+<p />
+<h4><a name="SendText"></a><a name="_SendText"></a> SendText </h4>
+<code>event SendText(string Text, optional bool bNoCRLF)</code>
+<p />
+テキストデータの文字列をリモートホストに送信します。 <code>bNoCRLF</code> が True の場合、DOS の行区切り (0x13 0x10) は追加されません。この関数では、テキストデータの送信前に必ず応答ヘッダが送信されます。
+<p />
+<h4><a name="SendBinary"></a><a name="_SendBinary"></a> SendBinary </h4>
+<code>event SendBinary(int Count, byte B[255])</code>
+<p />
+バイナリデータをリモートホストに送信します。この関数は、ヘッダ送信の確認を行いません。
+<p />
+<h4><a name="HTTPResponse"></a> HTTPResponse </h4>
+<code>function HTTPResponse(string Header)</code>
+<p />
+HTTP 応答コードを送信します。デフォルトでは「200 OK」応答が送信されますが、この関数によって代替の応答を送信できます。HTTP 応答コードの詳細は、HTTP RFC を参照してください。HTTP 応答は、header 引数として含める必要があります。以下に例を示します。
+<p />
+<code>HTTPResponse("HTTP/1.0 404 Not Found");</code>
+<p />
+<h4><a name="HTTPHeader"></a> HTTPHeader </h4>
+<code>function HTTPHeader(string Header)</code>
+<p />
+応答ヘッダを送信します。この関数は、HTTP 応答コードがヘッダの送信前に送信されたかどうかを確認します。ヘッダを送信するのにこのメソッドを呼び出さないでください。ヘッダは、 <em>AddHeader</em> 関数を使うか、または直接 <code>Headers</code> フィールドを編集して配列にいれる方が適しています。
+<p />
+<h4><a name="AddHeader"></a><a name="_AddHeader"></a> AddHeader </h4>
+<code>function AddHeader(string header, optional bool bReplace=true)</code>
+<p />
+ヘッダリストにヘッダを追加/更新します。最初に送信可能な時点で送信されます。指定ヘッダを完全に消去するには。"X-Header:" のように空の値を含めます。
+<p />
+同じ名前を持つヘッダを複数追加するには (Set-Cookie ヘッダなどに必要です)、ヘッダ配列を直接編集する必要があります。
+<p />
+<h4><a name="SendHeaders"></a><a name="_SendHeaders"></a> SendHeaders </h4>
+<code>function SendHeaders()</code>
+<p />
+キューに置かれているヘッダを送信します。この関数は <em>SendStandardHeaders</em> が内部で呼び出します。この関数を使用しないでください。
+<p />
+<h4><a name="HTTPError"></a> HTTPError </h4>
+<code>function HTTPError(int ErrorNum, optional string Data)</code>
+<p />
+頻繁に返される HTTP 応答 (400 Bad Request、401 Unauthorized、404 Not Found など) を送信する簡略メソッド。
+<p />
+エラーメッセージと、インラインの HTTP 応答を含めます。大抵このような応答は、ユーザーに分かりやすいような応答を使って各自で処理することをお勧めします。これは便宜上のメソッドです。
+<p />
+<h4><a name="SendStandardHeaders"></a><a name="_SendStandardHeaders"></a> SendStandardHeaders </h4>
+<code>function SendStandardHeaders( optional string ContentType, optional bool bCache )</code>
+<p />
+標準ヘッダとすべてのカスタムヘッダを送信します。この関数を呼び出した後で、安全に応答データを読み込むことができます。
+<p />
+<code>ContentType</code> 引数は、"Content-Type" 応答ヘッダを設定するのに使います。デフォルトの値は "text/html" です。
+<p />
+<code>bCache</code> が True の場合は、キャッシュに関する指図を含むヘッダも含めます。その場合には、 <code>WebServer.ExpirationSeconds</code> の値が使用されます。
+<p />
+"Connection: Close" ヘッダだけが強制実行され、その他のデフォルトヘッダについては、まだ設定されていない場合のみ使用されます。
+<p />
+<h4><a name="Redirect"></a> Redirect </h4>
+<code>function Redirect(string URL)</code>
+<p />
+「302 Document Moved」HTTP 応答メッセージを送り、クライアントを別の URL にリダイレクトする便利なメソッド。
+<p />
+<h4><a name="SentText"></a><a name="_SentText"></a> SentText </h4>
+<code>function bool SentText()</code>
+<p />
+応答データが送信済みの場合は True。この時点では、ヘッダを送信できなくなります。
+<p />
+<h4><a name="SentResponse"></a><a name="_SentResponse"></a> SentResponse </h4>
+<code>function bool SentResponse()</code>
+<p />
+HTTP 応答コードが送信済みの場合は True。この後は、応答 コードを変更できません。ヘッダの送信は続けることができます。
+<p />
+<h2><a name="WebServer"></a><a name="_WebServer"></a> WebServer </h2>
+<p />
+このクラスはサブクラス化されることはないので、注目に値する要素のみ紹介します。
+<p />
+<h3><a name="フィールド"></a> フィールド </h3>
+<p />
+<h4><a name="ServerName"></a><a name="_ServerName"></a> ServerName </h4>
+<p />
+このオプション設定フィールドを使い、WebServer にホスト名を割り当てることができます。サーバーの動作への影響はなく、 <code>ServerURL</code> フィールドの値を、ローカル IP ではなくこの名前に更新するだけです。
+<p />
+<h4><a name="Applications"></a> Applications </h4>
+<p />
+読み込む webapplication の完全修飾クラス名。この変数は ApplicationPaths フィールドと緊密に関係しています。最高 10 の webapplication を定義できます。
+<p />
+<h4><a name="ApplicationPaths"></a><a name="_ApplicationPaths"></a> ApplicationPaths </h4>
+<p />
+webapplication に関連付けるパス。指定順序が大切で、最初に一致するパスが優先権を得ます。
+<p />
+<h4><a name="bEnabled"></a> bEnabled </h4>
+<p />
+この構成可能フィールドを使い、WebServer を簡単に有効/無効にすることができます。
+<p />
+<h4><a name="ListenPort"></a><a name="_ListenPort"></a> ListenPort </h4>
+<p />
+WebServer がリッスンするポートを定義します。WebServer はバインド先としてこのポートだけ認めます。
+<p />
+<h4><a name="MaxConnections"></a><a name="_MaxConnections"></a> MaxConnections </h4>
+<p />
+WebServer がサポートする最大同時接続数。この値を非常に高く設定するとゲームのパフォーマンスに影響を及ぼすので、そのように設定しないでください。
+<p />
+<h4><a name="DefaultApplication"></a><a name="_DefaultApplication"></a> DefaultApplication </h4>
+<p />
+デフォルトで使用する webapplication。Applications フィールドのインデックスです。要求された URL に対応する webapplication が見つからない場合、ユーザーはこの webapplication に転送されます。このフィールドは、 <code>WebConnection</code> クラスが使用します。
+<p />
+<h4><a name="ExpirationSeconds"></a><a name="_ExpirationSeconds"></a> ExpirationSeconds </h4>
+<p />
+期限切れ時間を定義するための汎用的な場所を提供する構成可能フィールド。WebReponse クラスで、キャッシュに送られる可能性のある応答の期限を設定するのに用いられます。
+<p />
+<h4><a name="ServerURL"></a><a name="_ServerURL"></a> ServerURL </h4>
+<p />
+このフィールドには、WebServer の起動時に値が挿入されます。WebServer のベース URL を格納します。
+<p />
+<h3><a name="関数"></a> 関数 </h3>
+<p />
+<h4><a name="GetApplication"></a><a name="_GetApplication"></a> GetApplication </h4>
+<code>function WebApplication GetApplication(string URI, out string SubURI)</code>
+<p />
+このメソッドは、指定 URI に対応する webapplication を返します。このメソッドの 2 番目の引数には、webapplication のパスの接頭辞を外した URI を含めます。
+<p />
+<h2><a name="WebConnection"></a><a name="_WebConnection"></a> WebConnection </h2>
+<p />
+このクラスはサブクラス化されることはないので、注目に値する要素のみ紹介します。
+<p />
+<h3><a name="フィールド"></a> フィールド </h3>
+<p />
+<h4><a name="MaxValueLength"></a><a name="_MaxValueLength"></a> MaxValueLength </h4>
+<p />
+この構成可能な項目では、リクエスト値に許容する最大長さを定義します。値はこの長さに切り捨てられます。この値は、リクエストを処理するのに十分な長さにする必要があります。 <code>WebRequest</code> クラスがこの値を使用します。
+<p />
+<h4><a name="MaxLineLength"></a><a name="_MaxLineLength"></a> MaxLineLength </h4>
+<p />
+リクエストの 1 行の最大長さ。これにより、GET リクエスト内の変数 ('?' に続くテキスト) の長さが制限されるだけでなく、POST データ内の 1 行の長さも制限されます。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/WebServerJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:45 GMT -->
+</html></body>

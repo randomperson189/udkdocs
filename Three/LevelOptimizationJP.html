@@ -1,0 +1,681 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LevelOptimizationJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:32:12 GMT -->
+<head>
+<title> UDK | LevelOptimizationJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">LevelOptimizationJP  </b></div>
+<div id="tooltext">
+<a href="LevelOptimization.html" class="twikiLink">English Translation</a><br><a href="LevelOptimizationCH.html" class="twikiLink">中国翻译</a><br><a href="LevelOptimizationKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/LevelOptimizationJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<h1><a name="レベル最適化ガイド"></a> レベル最適化ガイド </h1>
+<p />
+<em>ドキュメントの概要: レベルコンテンツの最適化ガイド。</em>
+<p />
+<em>ドキュメントの変更ログ: 作成者 <a href="https://udn.epicgames.com/Main/DanielVogel" class="restricted" class="restricted" class="twikiLink">Daniel Vogel</a> 。管理者 Richard Nalezynski<sup>?</sup> 。</em>
+<p />
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="LevelOptimizationJP.html#レベル最適化ガイド"> レベル最適化ガイド</a> <ul>
+<li> <a href="LevelOptimizationJP.html#概要"> 概要 </a> <ul>
+<li> <a href="LevelOptimizationJP.html#CPU オーバーヘッド"> CPU オーバーヘッド</a>
+</li> <li> <a href="LevelOptimizationJP.html#GPU オーバーヘッド"> GPU オーバーヘッド</a>
+</li> <li> <a href="LevelOptimizationJP.html#Stats"> Stats</a>
+</li></ul>
+</li> <li> <a href="LevelOptimizationJP.html#ライトマップ"> ライトマップ</a> <ul>
+<li> <a href="LevelOptimizationJP.html#概要"> 概要</a>
+</li> <li> <a href="LevelOptimizationJP.html#使用方法"> 使用方法</a>
+</li> <li> <a href="LevelOptimizationJP.html#LightMaps (ライトマップ) vs. 頂点ライティング"> LightMaps (ライトマップ) vs. 頂点ライティング</a>
+</li></ul>
+</li> <li> <a href="LevelOptimizationJP.html#ダイナミックシャドウ">ダイナミックシャドウ</a> <ul>
+<li> <a href="LevelOptimizationJP.html#概要"> 概要</a>
+</li> <li> <a href="LevelOptimizationJP.html#ダイナミックシャドウのパフォーマンス制限事項"> ダイナミックシャドウのパフォーマンス制限事項</a>
+</li></ul>
+</li> <li> <a href="LevelOptimizationJP.html#静的メッシュと他のプリミティブ"> 静的メッシュと他のプリミティブ</a> <ul>
+<li> <a href="LevelOptimizationJP.html#概要"> 概要</a>
+</li> <li> <a href="LevelOptimizationJP.html#Primitives Stats ブラウザ"> Primitives Stats ブラウザ</a>
+</li></ul>
+</li> <li> <a href="LevelOptimizationJP.html#マテリアル"> マテリアル</a>
+</li> <li> <a href="LevelOptimizationJP.html#Decal"> Decal</a>
+</li> <li> <a href="LevelOptimizationJP.html#Skyboxes（スカイボックス）"> Skyboxes（スカイボックス）</a> <ul>
+<li> <a href="LevelOptimizationJP.html#概要"> 概要</a>
+</li> <li> <a href="LevelOptimizationJP.html#まとめ"> まとめ</a>
+</li></ul>
+</li> <li> <a href="LevelOptimizationJP.html#共通プロパティの説明"> 共通プロパティの説明</a> <ul>
+<li> <a href="LevelOptimizationJP.html#プリミティブ コンポーネント"> プリミティブ コンポーネント</a>
+</li> <li> <a href="LevelOptimizationJP.html#ライト コンポーネント"> ライト コンポーネント</a>
+</li></ul>
+</li> <li> <a href="LevelOptimizationJP.html#その他"> その他</a> <ul>
+<li> <a href="LevelOptimizationJP.html#Unlit translucency (透明度のアンリット)"> Unlit translucency (透明度のアンリット)</a>
+</li> <li> <a href="LevelOptimizationJP.html#BSP"> BSP</a> <ul>
+<li> <a href="LevelOptimizationJP.html#ライティング関連のフラグ"> ライティング関連のフラグ</a>
+</li> <li> <a href="LevelOptimizationJP.html#'Clean BSP materials' ツールの実行"> 'Clean BSP materials' ツールの実行</a>
+</li> <li> <a href="LevelOptimizationJP.html#'_RemoveSurfaceMaterial' の使用"> 'RemoveSurfaceMaterial' の使用</a>
+</li></ul>
+</li> <li> <a href="LevelOptimizationJP.html#レベル"> レベル</a> <ul>
+<li> <a href="LevelOptimizationJP.html#Cull Distance ボリューム"> Cull Distance ボリューム</a>
+</li></ul>
+</li> <li> <a href="LevelOptimizationJP.html#テレイン"> テレイン</a>
+</li> <li> <a href="LevelOptimizationJP.html#オーディオ"> オーディオ</a>
+</li> <li> <a href="LevelOptimizationJP.html#テクスチャ"> テクスチャ</a>
+</li> <li> <a href="LevelOptimizationJP.html#パーティクル"> パーティクル</a>
+</li> <li> <a href="LevelOptimizationJP.html#アニメーション"> アニメーション</a>
+</li> <li> <a href="LevelOptimizationJP.html#物理"> 物理</a>
+</li></ul>
+</li> <li> <a href="LevelOptimizationJP.html#その他の考慮事項"> その他の考慮事項</a> <ul>
+<li> <a href="LevelOptimizationJP.html#機能前世代の最適化"> 機能前世代の最適化</a>
+</li> <li> <a href="LevelOptimizationJP.html#ゲームに (エディタ内ではなく) ロードするコンテンツの検証"> ゲームに (エディタ内ではなく) ロードするコンテンツの検証 </a>
+</li> <li> <a href="LevelOptimizationJP.html#=analyzereferencedcontent= コマンドレットの実行"> analyzereferencedcontent コマンドレットの実行</a>
+</li> <li> <a href="LevelOptimizationJP.html#プラットフォーム固有のデバッグ"> プラットフォーム固有のデバッグ</a> <ul>
+<li> <a href="LevelOptimizationJP.html#PC"> PC</a>
+</li> <li> <a href="LevelOptimizationJP.html#Playstation 3"> Playstation 3</a>
+</li> <li> <a href="LevelOptimizationJP.html#Xbox 360"> Xbox 360</a> <ul>
+<li> <a href="LevelOptimizationJP.html#Performance Investigator for Xbox (PIX)"> Performance Investigator for Xbox (PIX)</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<p />
+UnrealEngine3 で、ライトとオブジェクト間での相互関係は、レベルをレンダリングするため必要な CPU と GPU 作動の大部分を担っています。レベルを最適化時、どうリットするか検証することから始めるのが一番よいでしょう。
+<p />
+また、以下も確認してみましょう。 <a href="https://udn.epicgames.com/Three/MasteringUnrealLevelOptimizationJP" class="restricted" target="_top">https://udn.epicgames.com/Three/MasteringUnrealLevelOptimizationJP</a>
+<p />
+<h3><a name="CPU オーバーヘッド"></a> CPU オーバーヘッド </h3>
+<p />
+CPU 側から見て最も負荷がかかる部分の一つは、何をレンダリングするかを決める部分です。これについては、その後に起きるレンダラーの変化に対して静的オブジェクトを最適化する必要があります。もう一つは、状態変化によるドライバのオーバーヘッドです。後者の場合、PC 上において短期間における最適化は無理ですが、幸運にもゲーム機器では制限要因にはなりません。ただし、ライト環境のコスト削減のために使用できる設定がいくつかあります。
+<p />
+以下に、ライト環境の設定とそれらを使用する場面を、最もコスト高 (ゲームスレッド上で) の設定から順番に示します。
+<p />
+     1) bEnabled=True, bDynamic=True (デフォルト)
+<p />
+     この設定は必要な場合のみ使用します。 InvisibleUpdateTime と MinTimeBetweenFullUpdates に基づいてライト環境を更新します。この設定のオブジェクトが 50 以上アクティブ状態で存在することは、いかなる場合にも望ましくありません。可視オブジェクトの場合、プレーヤーから近い距離にある場合か、または移動中にビジビリティチェックを実行します。
+<p />
+     2) bEnabled=True, bDynamic=False, bForceNonCompositeDynamicLights=True
+<p />
+     この設定は経済的で、最初のティック時に環境を更新するだけで、その後は更新しません。動的ライトの影響を受けるようにするには bForceNonCompositeDynamicLights が必要で、これによるゲームスレッドのオーバーヘッドはほどんとありません。多数存在しても大丈夫で、唯一のコスト (最初のティックの後) は動的ライトのライン チェックです (このチェックはオーナーが可視状態にある場合のみ)。正しいライティングを維持しながら回転できるので、事前計算したシャドウを使用するよりよく見えます。フラクチャー メッシュ、GDO で使用します。
+<p />
+     3) bEnabled=False, bUsePrecomputedShadows (プリミティブ コンポーネント上)=True (さらに、動的チャネルから取り出して、静的ライティングチャネルに入れる必要がある)
+<p />
+     こららはライトマップ化されるので、レンダリング負荷が小さく、ゲームスレッドのオーバーヘッドは実質上ないはずです (ただし、UDynamicLightEnvironmentComponent::Tick 関数が引き続き呼び出される場合は例外)。移動中には正しく見えません。
+<p />
+さらに、コンソールで 'SHOWLIGHTENVS' と入力すると、そのフレームでティックされるすべての環境のリストを得ることができます。 UnrealConsole に次のような出力結果が表示されます。
+<p />
+Log: LE: SP_MyMap_01_S.TheWorld:PersistentLevel.InterpActor_12.DynamicLightEnvironmentComponent_231 No_Detailed_Info_Specified 1
+Log: LE: SP_MyMap_01_S.TheWorld:PersistentLevel.InterpActor_55.DynamicLightEnvironmentComponent_232 No_Detailed_Info_Specified 0
+Log: LE: SP_MyMap_01_S.TheWorld:PersistentLevel.InterpActor_14.DynamicLightEnvironmentComponent_432 No_Detailed_Info_Specified 1
+...
+<p />
+行末の '1' は、bDynamic が TRUE に設定されていることを意味します。
+<p />
+レベル内のすべての動的ライトを取得できるもうひとつのコマンドは、'GETALL' コマンドです。
+例えば、 'GETALL DynamicLightEnvironmentComponent bDynamic' と入力すると、すべての DynamicLightEnvironmentComponent と  bDynamic フラグが表示されます。
+<p />
+'SHOWLIGHTENVS' と 'GETALL' の違いは、 'SHOWLIGHTENVS' がそのフレームで 'TICKED' されるあらゆる環境を表示するのに対し、 'GETALL' はティックの有無に関わらずすべての環境を表示する点にあります。
+<p />
+もうひとつの主な CPU コストは、ドライバのステート変更に関連するオーバーヘッドです。当社のマルチスレッド レンダラーを使用する場合は、通常これはシングル CPU システム上の 1 要因に過ぎません。
+<p />
+<code>STAT SCENERENDERING</code> コンソールコマンドは、 <em>occluded primitives</em> (オクルード (隠蔽) されたプリミティブ)、 <em>visible static mesh elements</em> (可視できる静的メッシュ要素)、 <em>visible dynamic primitives</em> (可視できる動的プリミティブ)、を一覧表示し、各フレームでレンダリングされるプリミティブの個数を判定するのに使用できます。
+<p />
+PC 上では、ドライバによる CPU オーバーヘッドまたは GPU 消費時間を把握するのは非常に難しく、最近の GPU の非同期性のおかげで、本来なら GPU が処理を終了するまで待機するはずの呼び出しが、一見ランダムに登場し、普通以上の時間を拘束する場合がよくあります。
+エンジンはフレーム単位で GPU と同期をとり、 <code>STAT THREADING</code> でスレッドあたりの待機時間をレポートします。 <em>Game thread idle time</em> (ゲームスレッドのアイドル時間) が高い場合はレンダリングが遅く、 <em>Rendering thread idle time</em> (レンダリングスレッドのアイドル時間) が高い場合はゲームプレイコードがボトルネックになっていることを意味します。ゲームスレッドのアイドル時間数が高い場合には、別の解像度で試してみて、レンダリングスレッドが CPU または GPU のどちらで処理されるかを判断することができます。
+<p />
+<h3><a name="GPU オーバーヘッド"></a> GPU オーバーヘッド </h3>
+<p />
+GPU 側から見て最も負荷がかかる部分の一つは、何をレンダリングするかを決める部分です。これについては、その後に起きるレンダラーの変化に対して静的オブジェクトを最適化する必要があります。もう一つは、状態変化によるドライバのオーバーヘッドです。後者の場合、PC 上において短期間における最適化は無理ですが、幸運にもゲーム機器では制限要因にはなりません。
+<p />
+レンダリング関係のオーバーヘッドを調べる際に STAT VISIBILITY をまずチェックするとよいでしょう。また、STAT OCTREE および/あるいは STAT COLLISION では詳細を掘り下げて調べることができます。STAT GAME はゲームプレーのオーバーヘッドを知るために役立つデータのコレクションで、特にランタイムのマテリアル蓄積など、フレームレートの急上昇を起こす一般的な原因の統計データも集められています。
+<p />
+GPU の動作は非同期的であるため、ドライバー別の CPU オーバーヘッドまたは PC で費やされる GPU 時間を特定するのはかなり困難です。これにより、ランダムコールがさらに多くの GPU 作業を終えるのを待つことになり、通常よりも長い時間がかかることになります。エンジンは GPU の各フレームを同期して、同期にかかった時間を STAT D3D に表示します。ただし、特定の 1 シーンがどれほど GPU に依存しているかを測るために最適の方法は、様々な解像度でそのシーンをレンダリングするか、あるいはコンソール特定のツールを使用して各ステージ別の負荷を調べることです。
+解像度が高い場合 (例えば通称「720P」の 1280x720 など)、30ms のフレーム時間ではハイエンド GPU でもボトルネックになる可能性があります。このような高解像度によるリット (Lit) 状態の動的シーンでは、主な負荷はシャドウバッファの使用から発生します。これは、シャドウエッジをにじませるのに非常に負荷の大きいシェーダーを使用するためです。視覚的な忠実度に関してさまざまなトレードオフを行うことで、これを最適化するアプローチがいくつかあります。また、解像度に関わらず、ポストプロセスは常にオーバーヘッドであり、最適化の対象です。
+<p />
+コンソール専用ツールまたは PC の <a href="http://developer.nvidia.com/object/nvperfhud_home.html" target="_top">nvPerfHUD</a> を使用すると、何に時間を取られているのか、およびその理由に関して詳細な情報を得ることができます。しかし、全般的な最適化に関しては、作成するレベルが以下のガイドラインに準拠していることを確認するだけでも、努力に見合うだけの最大効果が得られるのが普通です。
+<p />
+<h3><a name="Stats"></a> Stats </h3>
+<p />
+通常、レベル内の各種のアセットタイプについてstats コマンドを使用できます。エンジンでサポートされている stat コマンドの詳細な説明は、<a href="StatsDescriptionsJP.html" class="twikiLink">Stats コマンド解説</a> ページを参照してください。
+<p />
+<h2><a name="ライトマップ"></a> ライトマップ </h2>
+<p />
+<h3><a name="概要"></a> 概要 </h3>
+<p />
+ライトマップを使用すると、CPU、GPU 双方の負荷を軽減するという利点が得られます。すべてのライティング情報がライトマップに記録されているため、エンジン側はライトに関する処理から解放され、CPU 側で処理すべきライトとオブジェクトの相互作用が少なくなります。GPU 側においては、オブジェクトを複数のパスでレンダリングする必要がありません。また、ライトマップ パスをエミッシブ パスに組み込むことができるため、パスの数と、ステータス変更によるオーバーヘッドが軽減されます。
+<p />
+<p />
+<code>VIEWMODE LIGHTCOMPLEXITY</code> と、これに関連付けられた [Editor] ボタンを使って、オブジェクトに作用する (ライトマップにない) ライトの数を視覚的に理解することができます。カラースキームは以下のとおりです。
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" align="right" class="twikiFirstCol"> ライト </td><td bgcolor="#eaeaea"> メッシュの色 </td></tr>
+<tr><td bgcolor="#ffffff" align="right" class="twikiFirstCol"> 0 </td><td bgcolor="#ffffff"> (R=0,G=0,B=0,A=1) </td></tr>
+<tr><td bgcolor="#eaeaea" align="right" class="twikiFirstCol"> 1 </td><td bgcolor="#eaeaea"> (R=0,G=255,B=0,A=1) </td></tr>
+<tr><td bgcolor="#ffffff" align="right" class="twikiFirstCol"> 2 </td><td bgcolor="#ffffff"> (R=63,G=191,B=0,A=1) </td></tr>
+<tr><td bgcolor="#eaeaea" align="right" class="twikiFirstCol"> 3 </td><td bgcolor="#eaeaea"> (R=127,G=127,B=0,A=1) </td></tr>
+<tr><td bgcolor="#ffffff" align="right" class="twikiFirstCol"> 4 </td><td bgcolor="#ffffff"> (R=191,G=63,B=0,A=1) </td></tr>
+<tr><td bgcolor="#eaeaea" align="right" class="twikiFirstCol"> 5 </td><td bgcolor="#eaeaea"> (R=255,G=0,B=0,A=1) </td></tr>
+</table>
+<p />
+<img alt="lightingcomplexity.jpg" src="rsrc/Three/LevelOptimizationJP/lightingcomplexity.jpg" />
+<p />
+このイメージでは、シーンのほぼ全体がライトマップ化されていますが (ブラック)、1 つの動的ライトが追加され、レベルをグリーンで現しています。
+<p />
+<p />
+<h3><a name="使用方法"></a> 使用方法 </h3>
+<p />
+総合的に見て、ライトマップのパフォーマンスは極めて優れています。ライトマップを呼出して使用するには 2 つの方法があり、ひとつはライトの UseDirectLightMap （ダイレクトライトマップ使用） の項を「有効」に設定する方法、もうひとつはプリミティブ（テレイン、 StaticMesh 、 SkeletalMesh など）の bForceDirectLightMap （強制ダイレクトライトマップ） の項を「有効」に設定する方法です。あらかじめ演算した他のシャドウイング情報と同じく、ライトマップは静止オブジェクトについてのみ利用可能です。詳細は、 <a href="LightingReferenceJP.html" class="twikiLink">ライティング参照</a> をご参照下さい。
+<p />
+一方、ライトマップでは 1 つのライトがライトマップに及ぼす影響をエンジン側で知り得ないところが欠点といえます。というのも、ダイナミックなシャドウイングが不可能だからです。言い換えれば、あるライトがライトマップの一部である場合、ダイナミック オブジェクトはそのライトによる影を静的メッシュに投影できないということです。
+<p />
+こうした制限により、プレーヤが影を投影すべきオブジェクトにつき、有効なライトを少なくとも 1 つ設置することになります。こうしたプレーヤの陰影効果を提供するのがこのライトの役割です。 bForceDirectLightMap （強制ダイレクトライトマップ） を設定しなければ、プリミティブ毎に平均 1 つ以上のライトマップ以外のライト効果を使う必要があり、その顕著な例が半径の大きなポイントライトや指向性ライトを利用する場合です。 bForceDirectLightMap （強制ダイレクトライトマップ） のフラグはこうした状況の唯一の対処法です。このフラグは、プレーヤ（もしくは他のいかなるダイナミック オブジェクト）の影を投影したくないオブジェクトに設定して下さい。
+<p />
+<h3><a name="LightMaps (ライトマップ) vs. 頂点ライティング"></a> LightMaps (ライトマップ) vs. 頂点ライティング </h3>
+<p />
+コスト比較については、付属のスプレッドシート<a href="#" target="_top">LightMapVSVertexLightingCosts.xlsx</a> 参照してください。
+また、頂点ライティングとライトマップデータはメモリ的に非常に異なる方法で処理される点にも注意してください。すべてのライトマップ データはストリーミングテクスチャ プールに格納され、テクスチャは実際のメモリのフットプリントに加算されません。これに対して、頂点ライティングは常にシステム メモリに格納されるので、レベルのロード時には定量のメモリオーバーヘッドになります。
+ 'Stat memory' は、頂点ライティングフィールドを報告しますが、この数字は出来るだけ低い方が望ましく、メモリの問題がある場合に最初にできることは、可能な範囲でライトマップを使用することです。
+フラクチャー メッシュを使用する場合は、このメッシュによってポリゴン数が極めて増大し、そのため頂点ライティングがメモリをかなり消費してしまうので、この措置が特に当てはまります。
+<p />
+<h2><a name="ダイナミックシャドウ"></a> ダイナミックシャドウ </h2>
+<p />
+<h3><a name="概要"></a> 概要 </h3>
+パフォーマンスに関する問題でもう 1 つ考えられる要因として、ダイナミック シャドウイングがあります。ダイナミック シャドウイングがパフォーマンスに影響を与えるかどうかを検査するには、 <code>SHOW DYNAMICSHADOWS</code> をコンソール コマンドでトグルしてオフにすることです。このコマンドにあるキーをバインドしておくと、キーが押されている間はダイナミック シャドウの表示がオフになり、キーを離すと再び有効になり便利です。これはコンソールから設定できます。例えば、 <code>SETBIND F SHOW DYNAMICSHADOWS | ONRELEASE SHOW DYNAMICSHADOWS</code> となります。
+<p />
+<h3><a name="ダイナミックシャドウのパフォーマンス制限事項"></a> ダイナミックシャドウのパフォーマンス制限事項 </h3>
+<p />
+オブジェクトがポイントまたはスポットライトへ近づき、シャドウ円錐台の FOV が 90 度を越える場合、レンダラーは、シャドウをキューブマップへ切り替えます。これによって著しいパフォーマンスの低下が起こります。ライトがオブジェクトの境界ボックスに入った場合にも同じことが当てはまります。
+<p />
+シャドウバッファの GPU 負荷は、シャドウ円錐台のサイズに正比例します。これは、シャドウバッファを使用している近くのキャラクターの負荷が、遠くのキャラクターよりも大きいことを意味します。これは、ダイナミックシャドウを投げ掛けている大きなオブジェクトの負荷の方が小さなオブジェクトよりも大きいことを意味します。シャドウの最適化に関する他の情報については、<a href="ShadowingReferenceJP.html" class="twikiLink">シャドウイング参照</a> ページと <a href="ModulatedShadowsJP.html" class="twikiLink">Modulated（モジュレート）シャドウ</a> ページを参照してください。
+<p />
+<p />
+<h2><a name="静的メッシュと他のプリミティブ"></a> 静的メッシュと他のプリミティブ </h2>
+<p />
+<h3><a name="概要"></a> 概要 </h3>
+<p />
+パフォーマンス問題の主な根源は静的メッシュにあります。通常、1、2 度しか使わない静的メッシュは、頻繁に使用する同様のメッシュに置換することをお勧めします。スカイボックスにはメッシュを出来るだけ使用しないようにして、頂点ライティングとライトマップ ライティングの間で適度なトレードオフを実施するようにします。さらに、Primitive Stats (プリミティブ統計) ブラウザで <em>bang fot the buck</em> (努力に見合うだけの) 最適化のうち最も効果の高いものを探します (インスタンスあたりの三角形の数でソートします)。
+<p />
+<h3><a name="Primitives Stats ブラウザ"></a> Primitives Stats ブラウザ </h3>
+<p />
+以下は、Primitive Stats ブラウザ (旧称 Static Mesh Stats ブラウザ) の各列の説明です。 <ul>
+<li> <strong>Type</strong> - リソースタイプ。骨格メッシュ、静的メッシュ、テレイン、または BSP (モデル) のいずれか。
+</li> <li> <strong>Count</strong> - レベル内の当該メッシュのインスタンス数。
+</li> <li> <strong>Triangles</strong> - インスタンスあたりの三角形の数。
+</li> <li> <strong>Resource Size</strong> - KByte 単位で "view resource usage" (リソース使用の表示) コマンドによってレポートされるリソースサイズ。このデータは静的/骨格メッシュの場合のみ重要。
+</li> <li> <strong>Lights (avg LM/ other/ total)</strong> - ライトマップの平均ライト数 (LM)、ライトマップにないライト (other)、および各インスタンスに作用するライト数合計。
+</li> <li> <strong>Obj/ Light cost</strong> - オブジェクト/ライトの相互作用のコスト。この数字は、この静的メッシュがライティング目的でレンダリングされる回数を示し、ライトマップにないライトの数と、全インスタンスの合計セクションの数との積になります。ライトマップはエミッシブ パスの一部としてレンダリングされ、そのためコスト "フリー" であることから、この数字には含まれません。
+</li> <li> <strong>Triangle cost</strong> - ライティング目的でレンダリングする必要がある三角形の数。Z-プリパス、エミッシブ、ライトマップはライト数に関係なく常にオーバーヘッドであるため、この数字から除外されています。
+</li> <li> <strong>Lightmap</strong> - ライトマップデータが使用するメモリの量。
+</li> <li> <strong>Shadowmap</strong> - シャドウマップデータが使用するメモリの量。
+</li> <li> <strong>LM Res</strong> - インスタンスあたりの平均のライトマップ解像度。
+</li> <li> <strong>Sections</strong> - このメッシュに含まれるセクションの数。
+</li> <li> <strong>Radius (min/max/avg)</strong> - メッシュの各インスタンスの境界ボックスの最小/最大/平均半径。
+</li></ul>
+<p />
+<img alt="primitivestats.jpg" src="rsrc/Three/LevelOptimizationJP/primitivestats.jpg" />
+<p />
+<h2><a name="マテリアル"></a> マテリアル </h2>
+シーン内のマテリアルの複雑度が、シーンの GPU オーバーヘッドに大きな影響を及ぼす場合があります。使用する動的ライトの数が増えると、高価なマテリアルのコストがさらに上がります。
+エディタでは、次図のような Shader Complexity (シェーダーの複雑度) ビューモードを提供しています。
+<p />
+<img alt="shadercomplexity.jpg" src="rsrc/Three/LevelOptimizationJP/shadercomplexity.jpg" />
+<p />
+淡いグリーンはマテリアルの負荷が小さく、濃くなるほどマテリアルの負荷が大きいか、または複数の動的ライトの影響があることを示しています。この場合、シェーダーの複雑度を正確に表示するには、レベルのライティングをリビルトしなければならない点に注意してください。
+マテリアルの最適化のヒント: <ul>
+<li> Dependent Texture (従属テクスチャ) の読み取り量を出来るだけ制限します。これは、 BumpOffset などテクスチャの UV を編集することになります。
+</li> <li> Material Instancing (マテリアルのインスタンス化) を使用し、負荷の大きいエフェクトには StaticSwitchParameters を使ってオン/オフをトグルできるようにして、パフォーマンスのトレードオフを行います。
+</li> <li> スペキュラー (反射) 性がほとんどないマテリアルからスペキュラーを除外することを検討します。これにより多量のピクセル シェーダーインストラクションが除外されますが、ほとんどの場合は目立ちません。
+</li> <li> 各マテリアルのテクスチャルックアップ回数を出来るだけ少なくします。ルックアップ回数が多いほど、必要なテクスチャを GPU が取得するのにかかる時間が長くなります。
+</li></ul>
+<p />
+<h2><a name="Decal"></a> Decal </h2>
+レベルに配置した静的 Decal は、適切に処理しなければパフォーマンスをたちまちのうちに食いつぶす恐れがあります。放置しておくと、必要のない余分なメッシュに割り付けられ、その結果レンダリングを要するセクションの量が急増します。これらが必要な静的メッシュ/BSP のみに作用するように設定することで、セクション数を大幅に削減できます。
+<p />
+Decal および Decal System の使用法に関する詳細については、Controlling Receiving Surfaces （サーフェス受け取りの制御）に関する<a href="UsingDecalsJP.html" class="twikiLink">Decalシステム参照</a>のページを参照してください。
+<p />
+<h2><a name="Skyboxes（スカイボックス）"></a> Skyboxes（スカイボックス） </h2>
+<p />
+<h3><a name="概要"></a> 概要 </h3>
+<p />
+通常スカイボックスには、その境界がワールドの大半を網羅するようなボックスや球などの非常に大きなオブジェクトが含まれています。これにはいくつかの顕著な副作用があります。一つめは、近くのクリッピング プレーンと交差するオブジェクトについて、たとえメッシュのピクセルが全く見えない場合でも、咬合のクエリーを行わず、常にレンダリングしてしまうことです。これは通常、ライトの影響を受けないアンリット ドームにとっては大きな問題ではありません。これはエンジンが早い段階でハードウェアZ リジェクションの効果を最大限に引き出すために、まずデプス パスをレンダリングするからです。スカイボックスが沢山のライトで照明されている場合は、その状況変化やオーバーヘッドの増加に伴って何らかの剰余が関連する場合もあります。
+<p />
+スカイボックスの境界ボックスはワールド全体であることに注意してください。つまり、ライティングチャンネルまたは手動による除外のいずれかによって明示的に除外されない限り、一つ一つのライトがスカイボックスに影響を与えるということです。このことから、 <code>bForceDirectLightMap</code> を <strong>TRUE</strong> 、 <code>bAcceptsDynamicLights</code> を <strong>FALSE</strong> に設定するべき最有力候補は、スカイボックスアクタです。この設定によりレベル内のダイナミックライト一つ一つが再レンダリングされないようになります(たとえば火花など)。スカイボックス内の光が当たっていない移動/回転オブジェクトの場合、 bAcceptsLights を FALSE に設定し、マテリアルに光が当たっているかどうかに関わらず、CPU 側の作業負担を回避することが最も良い方法です。
+<p />
+スカイボックスでの移動の Unlit やオブジェクトの回転には、マテリアルがリットしているかいないに関係なく行われる必要がある CPU サイドで作動するのを避けるため、 <code>bAcceptsLights</code> を <strong>FALSE</strong> に設定することが最善の方法です。
+<p />
+<h3><a name="まとめ"></a> まとめ </h3>
+<p />
+以下は、スカイボックスの設定に関するまとめです。
+<p /> <ul>
+<li> 衝突を無効にする
+</li> <li> 光が当たっていないオブジェクトについては  <code>bAcceptsLights</code> を <strong>FALSE</strong> に設定する
+</li> <li> その他のオブジェクトについては  <code>bAcceptsDynamicLights</code> を <strong>FALSE</strong> に設定する
+</li> <li> 必要に応じてスカイボックス ライティング チャンネルを使用した上で、スカイボックス オブジェクトにライトマップを強制するか、またはライトにライトマップを強制するよう設定する
+</li> <li> 必要な部分でスカイボックスの <code>CastShadow</code> を無効にし、 <code>bCastDynamicShadow</code> を無効にする
+</li></ul>
+<p />
+<p />
+<h2><a name="共通プロパティの説明"></a> 共通プロパティの説明 </h2>
+<p />
+<h3><a name="プリミティブ コンポーネント"></a> プリミティブ コンポーネント </h3>
+<p /> <ul>
+<li> <strong>CastShadow</strong> は、プリミティブ コンポーネントが影を投げ掛けるかどうかを制御します。現在、このフラグと bCastDynamicSahdow の双方が有効になっていなければ、ダイナミック プリミティブに StaticMesh クトの影は写りません。
+</li> <li> <strong>bCastDynamicShadow</strong> は、たとえばプリミティブがライトとダイナミック オブジェクトの間にある場合など、事前に演算されないシャドウイングにおいて、プリミティブがシャドウを投げ掛けるかどうかを制御します。このフラグは CastShadow が TRUE の場合にのみ使用されます。現在、このフラグと CastShadow の双方が有効になっていなければ、ダイナミック プリミティブに静的オブジェクトの影は写りません。
+</li> <li> ライトがライトマップを利用しないよう設定されていても、 <strong>bForceDirectLightMap</strong> は、プリミティブに影響を与えるすべての静的ライトについてライトマップの使用を強制します。つまり、プリミティブには静的ライトを遮るダイナミック オブジェクトの影は写りません。ダイナミックライトの場合に、正しい影が映ります。
+</li> <li> <strong>bAcceptsLights</strong> は、プリミティブのライト認識の設定を行います。優れた最適化方法で、ライティングが不要なオブジェクトには「無効」と設定します。
+</li> <li> <strong>bAcceptsDynamicLights</strong> は、ダイナミックライトによってオブジェクトが影響されるかどうかを制御します。
+</li> <li> <strong>LightingChannels</strong> は、どのライトがこのプリミティブに影響を与えるかを定義します。
+</li></ul>
+<p />
+<h3><a name="ライト コンポーネント"></a> ライト コンポーネント </h3>
+<p /> <ul>
+<li> <strong>CastShadows</strong> は、ライトが影を投げ掛けるかどうかを制御します。
+</li> <li> <strong>CastStaticShadows</strong> は、静的シャドウイングを受けるオブジェクトの影が、このライトによってできるかどうかを制御します。
+</li> <li> <strong>CastDynamicShadows</strong> は、静的シャドウイングを受けることができないオブジェクトの影が、このライトによってできるかどうかを制御します。
+</li> <li> <strong>bForceDynamicLight</strong> は、キューブマップについて起きる可能性のある問題を避けるためにシャドウボリューム/ステンシルシャドウの使用を強制します。また、静的シャドウイングでにメモリが使用されることを回避します。
+</li> <li> <strong>UseDirectLightMap</strong> は、このライトにライトマップを利用するかどうかを決定します。
+</li> <li> <strong>LightingChannels</strong> は、どのプリミティブにこのライトが影響を与えることができるかを定義します。
+</li></ul>
+<p />
+<p />
+<h2><a name="その他"></a> その他 </h2>
+<p />
+<h3><a name="Unlit translucency (透明度のアンリット)"></a> Unlit translucency (透明度のアンリット) </h3>
+<p />
+複雑なマテリアルによる過度のオーバードロー (無駄な重なり) がある場合、Unlit translucency プロパティの設定によってパフォーマンスに深刻な影響が出る恐れがあります。パフォーマンスへの影響を簡単に測定するには、コンソールでこのプロパティの使用を <code>SHOW UNLITTRANSLUCENCY</code> を使って切り替えるか、またはエディタのビューポートで対応するビューモードフラグを選択解除します。
+<p />
+ヒント: <ul>
+<li> <code>SHOW UNLITTRANSLUCENCY</code> でターゲットプラットフォームのパフォーマンスをチェックする。
+</li> <li> 可視化するには <code>VIEWMODE SHADERCOMPLEXITY</code> を使用する。
+</li> <li> レイヤー化を避ける (特に光円錐などの場合)。
+</li> <li> 可能な場合は CullingDistance を利用する。
+</li></ul>
+<p />
+<h3><a name="BSP"></a> BSP </h3>
+<p />
+<h4><a name="ライティング関連のフラグ"></a> ライティング関連のフラグ </h4>
+BSP は、主に場所に基づいてチャンクに分割されます。これは、個々の BSP セグメント (モデルコンポーネント) が適度な大きさで、複数個のライトを受けることを意味します。ライト/BSP の相互作用を制御する方法のひとつは、BSP ライティング チャネルと、Accepts Light (ライトを認識)、Accepts Dynamic Light (動的ライトを認識)、および Force Lightmap (ライトマップを強制) のサーフェス オプションを使用することです。これらのオプション変更は、BSP がリビルドされると反映され、対応するフラグが BSP チャンクにプロパゲートされ、それらのオプションに基づいてチャンクが部分的にが作成されます。これらはプリミティブコンポーネントの bAcceptsLights 、 bAcceptsDynamicLights および bForceDirectLightMap に直接対応しています。BSP が巧みに使用されたレベルでこれらのフラグを使用すると、レベルのパフォーマンスが大幅に向上します。
+<p />
+<h4><a name="'Clean BSP materials' ツールの実行"></a> 'Clean BSP materials' ツールの実行 </h4>
+エディタの CLEANBSPMATERIALS 実行コマンド (UnrealEd の [Tools] メニューの [Clean BSP Materials] (BSP マテリアルを消去) オプションからアクセスします) を実行すると、最終的な BSP に存在しないフェイスのマテリアル参照をブラシが保持していれば、それらを一掃します。このような参照には、例えば、additive (加算的) 空間に完全に内包された 'add' ブラシ、'cospatial' (共有空間) ポリゴン (フェイスを共有する 2 つの隣接する立方体) などが含まれます。
+<p />
+この操作は、レベルの BSP が完成した後でのみ実行するようにしてください。隠れているフェイスのマテリアル参照が消去されるので、後から BSP を編集して非表示のブラシが見えるようにした場合に、それらのフェイスにマテリアルの割り当てを再度適用することになります。
+<p />
+この機能は QA_APPROVED_BUILD_JUN_2007 (2007 年 6 月 QA 承認ビルド) に搭載されました。
+<p />
+<h4><a name="'_RemoveSurfaceMaterial' の使用"></a> 'RemoveSurfaceMaterial' の使用 </h4>
+EngineMaterials パッケージには RemoveSurfaceMaterial という特別なブラシが含まれていますが、プレーヤーがまったく見ることのないすべての BSP サーフェスにこれを適用するようにしてください。このマテリアルのマークを付けた BSP サーフェスでは BSP メッシュを生成する三角形がレンダリングされず、静的ライティングを受け取りません (つまり、関連ライトマップの資産を消費しません)。
+<p />
+RemoveSurfaceMaterial のマークが付いたサーフェスは、エディタと PIE では見ることができるので、デザイナーはここでサーフェスの視認性をテストし、必要に応じてマテリアルを元の状態に戻すことができます。ただし、エディタ以外の場所でゲームを実行するときには見えません。
+<p />
+この機能は QA_APPROVED_BUILD_JUN_2007 (2007 年 6 月 QA 承認ビルド) に搭載されました。
+<p />
+<h3><a name="レベル"></a> レベル </h3>
+<p />
+レベルの最適化に関するヒントをいくつか紹介します。 <ul>
+<li> スカイボックスがアンリット（Unlit）状態で、Decal とライトを受けず、衝突が発生しないことを確認します。
+</li> <li> Primitive Stats ブラウザで、count（カウント数）と instanced triangle（インスタンスされたトライアングル）を基準にソートします。 <ul>
+<li> あまり使用されないメッシュのインスタンスを除外/削減します。
+</li> <li> インスタンスあたりの三角形数が高い場合はできるだけ簡単なメッシュを使用するようにします (例えば、2000 個の三角形を 100 回使用する場合、Triangle 列が 200 になるようにします)。
+</li></ul>
+</li> <li> 衝突ビューモードを使い、不要な衝突を無効にします。
+</li> <li> ゲームを再生して何が見えるか確認します。エディタの視点はプレーヤーの移動地点や目の高さなどと一致しないので、普通にゲームプレイするときにはまったく見えないメッシュが追加されていることがよくあります。
+</li> <li> ワールドの下、ジオメトリの内側などにメッシュが隠れていないことを確認します。
+</li> <li> 非可視状態にあるすべての BSP サーフェスは、ライティングも受け取らないように設定されていることを確認します。
+</li> <li> 見えない BSP サーフェスにはデフォルトのテクスチャを設定します。
+</li> <li> <code>VIEWMODE LIGHTCOMPLEXITY</code> を使用して、動的ライトがないレベルがブラックであることを確認します。 <ul>
+<li> 小さな半径のトグル可能ライトのみ使用します。
+</li> <li> トグル可能な平行 (directional) ライトを使用しないでください。
+</li></ul>
+</li> <li> 静的メッシュと静的メッシュセクションの数を控えめに抑えます。
+</li></ul>
+<p />
+<h4><a name="Cull Distance ボリューム"></a> Cull Distance ボリューム </h4>
+Unreal Engine では、これまで距離ベースでオブジェクトのカリング (不要なオブジェクトの除去) に CullDistance (カリング距離) が使用されていました。多数のオブジェクトをカリングできる場合は、可視要素の数やオクルージョン時間が削減され、パフォーマンスが大きく飛躍します。
+時間をかけて CullDistance を手動で設定する代わりに、当社ではこれを CullDistanceVolumes に基づいて自動的に割り当てています。CullDistanceVolume とはボリュームの一種で、このアクタには配列があり、配列に追加される各フィールドに CullDistance と Size 設定があります。
+レベルを保存するときに、エディタはレベル内の各オブジェクトのバウンディング球の直径を調べて、その値に最も近い Size カテゴリーに基づいてカリング距離を自動的にを割り当てます。
+culldistance ボリュームを追加するには、レベル全体を包囲する大きさのビルダブラシを使い、[Add Volume] (ボリュームを追加) ボタンを右クリックしてリストから [CullDistanceVolumeJP] を選択します。
+<p />
+<img alt="culldistancevolume.jpg" src="rsrc/Three/LevelOptimizationJP/culldistancevolume.jpg" />
+<p />
+レベルを保存するときに、エディタはレベル内の各オブジェクトのバウンディング球の直径を調べて、その値に最も近い Size カテゴリーに基づいてカリング距離を自動的にを割り当てます。
+culldistance ボリュームの設定では、まず一番小さいオブジェクトの CullDistance を作成し、小さいオブジェクトがほぼ見え隠れするようになるまでそのフィールドの距離/サイズを調整します。次に、その次に大きいものを作成し (culldistance を少し大きくして)、自動的にカリングを実行したい一番大きなメッシュまでこの作業を繰り返します。CullDistance が 0 の場合、カリングされないことを意味します。上図のサンプルイメージでは、10,000 ユニット以上のメッシュは CullDistanceVolume を使用していません。
+カリング距離の調整は、明らかなポッピング (飛び出し) が見えなくなるまで行う必要があります。
+メッシュを CullDistanceVolumes の対象から外すには、次のフラグを設定します。
+<code>StaticMeshComponent.Rendering.bAllowCullDistanceVolume=False</code>
+編集不可能フィールド <code>CachedCullDistance</code> には、Cull Distance ボリュームからメッシュに現在割り当てられているカリング距離が表示されます。
+<p />
+詳細については <a href="VisibilityCullingJP.html" class="twikiLink">Visibility Culling</a> ページを参照してください。
+<p />
+<h3><a name="テレイン"></a> テレイン </h3>
+<p />
+テレインの最適化に関するヒントをいくつか紹介します。 <ul>
+<li> パッチ バウンダリのビューモードを使用する。
+</li> <li> ワイヤーフレームを使ってテッセレーションの正常性テストを行います。
+</li> <li> 詳細については コード用テレイン<sup>?</sup> ページを参照してください。
+</li></ul>
+<p />
+<h3><a name="オーディオ"></a> オーディオ </h3>
+<p />
+オーディオの最適化に関するヒントをいくつか紹介します。 <ul>
+<li> 絶対に必要な場合を除いて、複数のミュージックトラックが使用されていないことを確認します。ミュージックトラックを専用ストリーミング マップに保管して、必要なときにストリームイン/アウトされるようにするのは良いアイデアです (これはパフォーマンスに影響しませんが、レベルの全体的なコストに影響します)。
+</li> <li> <code>STAT AUDIO</code> 、 <code>STAT MEMORY</code> でコストを確認します。
+</li> <li> <code>LISTSOUNDS</code> で現在ロードされているサウンドを確認します。ここには、グループ単位で格納されているサウンドウェーブが表示されるので、どのサウンドタイプがメモリを最も消費しているか分かります。
+</li> <li> <code>LISTWAVES</code> には、現在再生中のサウンドが表示されます (PC のみ)。
+</li> <li> <code>LISTAUDIOCOMPONENTS</code> には、現在 <em>検討中の</em> サウンドが表示されます。
+</li></ul>
+<p />
+<h3><a name="テクスチャ"></a> テクスチャ </h3>
+Unreal Engine 3 ではテクスチャストリーミングプールを使用していますが、これは、すべてのストリーミング テクスチャにはメモリフットプリントの総量があからじめ割り当てられていること、大きなテクスチャ、プレーヤーに近い場所のテクスチャのみを最高の解像度でロードするようにエンジンで配慮していることを意味します。しかし、追加するテクスチャの数が多すぎる場合は、全体的にかすんでしまう可能性を残しています。この場合は、テクスチャの使用量を適度なレベルに削減するのが唯一の解決方法です。
+テクスチャの最適化に関するヒントをいくつか紹介します。 <ul>
+<li> STAT STREAMING とストリーミング補正係数を調べます。この数値が 1.0 の場合は心配ありませんが、1.0 より大きい場合はテクスチャがフィットしていなくて、一部がぼやけています。
+</li> <li> <code>LISTTEXTURES</code> で何がロードされているかを確認します。これは、ログに読み込まれたテクスチャのリストを出力します。この情報を Excel にコピーして、[Text to Columns] (テキストファイル) ボタン ([Data] の下) を押し、[Delimited] (区切られたデータ) -&gt;[Comma] (カンマ) -&gt; [Finish] (完了) を押すと自動的に行/列形式に取り込まれます。次に [Sort] (並べ替え) を押して各行を昇順または降順に並べ替えます。
+</li> <li> listtextures の出力内容を Excel にコピーし、[Current Size] 行を降順にソートしてから、データを使ってワーストケースの原因、つまり最もメモリを要するテクスチャの分析を開始します。
+</li></ul>
+<p />
+<h3><a name="パーティクル"></a> パーティクル </h3>
+<p />
+パーティクルの最適化に関するヒントをいくつか紹介します。 <ul>
+<li> 小さなオブジェクトの衝突を無効にします (UT では Enforcer 武器のスパークで衝突を使用していました...)。
+</li> <li> オーバードローを回避します。
+</li> <li> PIX と <code>VIEWMODE SHADERCOMPLEXITY</code> を使用します。
+</li> <li> <code>STAT PARTICLES</code> でパーティクル数を確認します。
+</li> <li> よく登場するエフェクト、または大きなパーティクルにはバウンディングボックスを手動設定します。
+</li> <li> エディタが自動生成した最大アクティブ数が適正値であることを確認します。
+</li> <li> 詳細については、<a href="ParticleSystemReferenceJP.html" class="twikiLink">パーティクル システム</a> ページを参照してください。
+</li> <li> <code>MEMORYSPLIT</code> を使用し、現在ロードされている Active なパーティクルデータの量と、Peak としてロード可能なデータ量 (パーティクルに一度に割り当て可能な最大メモリ量) を確認します。
+</li></ul>
+<p />
+<h3><a name="アニメーション"></a> アニメーション </h3>
+<p />
+アニメーションの最適化に関するヒントをいくつか紹介します。 <ul>
+<li> すべてのアニメーションが圧縮されていることを確認します。 <ul>
+<li> 圧縮しない理由がある場合は、プログラマーに確認します。
+</li> <li> 圧縮しない理由はないはずで、見かけが良くないのはバグです。
+</li></ul>
+</li> <li> 継ぎ合わせたシネマティクスには、ベイクとプルーニングが必要です。
+</li> <li> <code>OBJ LIST CLASS=ANIMSET</code>
+</li> <li> <code>OBJ LIST CLASS=ANIMSEQUENCE</code>  <ul>
+<li> 1 つのアニメーションシーケンスをロードすると、セット内のすべてのアニメーションシーケンスがロードされます。
+</li></ul>
+</li></ul>
+<p />
+<h3><a name="物理"></a> 物理 </h3>
+<p />
+通常、 <em>rigid body collision view</em> (剛体の衝突ビュー) をオンにします (コンソールで <code>SHOW RIGIDBODY</code> を使用できます)。次に、ビークルまたはラグドールが衝突できないオブジェクトの <em>BlockRigidBody</em> を FALSE に設定します。大型の高層構造物の場合は、すべてのメッシュの剛体衝突をオフにして、大きなブロッキングボリュームをその上にかぶせることをお勧めします。
+<p />
+<p />
+<h2><a name="その他の考慮事項"></a> その他の考慮事項 </h2>
+<p />
+<h3><a name="機能前世代の最適化"></a> 機能前世代の最適化 </h3>
+<p />
+前世代の PC タイトルでよく行われていた最適化は、同じマテリアルを使用する小さなオブジェクトを大きなオブジェクトにマージする、というものでした。現世代ではオブジェクト/ライトの相互作用の影響が増大しているため、これは推奨されていません。大きなオブジェクトは、より多くのライトと接触し、より多くの動的オブジェクトによるシャドウ生成の対象となります。
+<p />
+<h3><a name="ゲームに (エディタ内ではなく) ロードするコンテンツの検証"></a> ゲームに (エディタ内ではなく) ロードするコンテンツの検証 </h3>
+<p />
+<code>OBJ LIST CLASS=SKELETALMESH</code> コマンドを実行して、ロードされたビークルと武器のみが使用されることを確認できます。予想に反する結果が得られた場合は、ゲームプレイ プログラマーと話し合ってください。例えば、以前は特定の Kismet アクションが余計なコンテンツを参照するという問題がありました。
+<p />
+その他の役に立つコマンド: <ul>
+<li> LISTSOUNDS (オーディオの場合)
+</li> <li> LISTTEXTURES (テクスチャの場合)
+</li></ul>
+<p />
+<h3><a name="=analyzereferencedcontent= コマンドレットの実行"></a> <code>analyzereferencedcontent</code> コマンドレットの実行 </h3>
+<p />
+過剰な数の 凸状 Hull (外殻) を含むメッシュが存在しないことを確認します。また、使用頻度の最も高いメッシュを最適化します。ワーストケースのマテリアル (特に使用回数の多いマテリアル) 問題の原因を最適化します。
+<p />
+<a href="CommandletListJP.html#analyzereferencedcontent" target="_top">https://udn.epicgames.com/Three/CommandletList#analyzereferencedcontent</a>
+<p />
+<h3><a name="プラットフォーム固有のデバッグ"></a> プラットフォーム固有のデバッグ </h3>
+出荷予定のプラットフォーム上でパフォーマンスとメモリのテストを実行するのは常に重要なことです。エディタのデバッグツールも深刻な問題の解決に役に立ちますが、出荷する製品のコンテンツを実際に最適化する唯一の方法は、ターゲットプラットフォームの実行状態を分析することです。エンジンでサポートされている stat コマンドの詳細な説明については、<a href="StatsDescriptionsJP.html" class="twikiLink">Stats コマンド解説</a> ページを参照してください。
+<p />
+注意すべき点として、メモリも断片化 (システムフラグメントまたは内部エンジンのフラグメント) します。これは、ゲームがメモリをどのように使用するかに応じて、合計使用量の何割かのバッファが必要であることを意味します。
+<p />
+例えば 200 mbs を使用する場合、ゲームがそこまで使い果たすまでの状況に応じて断片化の割合が予想されます。この断片化はゲーム セッションが長くなるほど悪化しますが、直線的には悪化せず、最悪の可能性に達した時点で (おそらく 10% または 20%) で逆になります。
+プログラマーに相談してください。
+<p />
+<h4><a name="PC"></a> PC </h4>
+PC テスティングでは、常に最小ターゲット仕様の範囲内に適合する PC 上で統計を集め、すべてのマテリアルフォールバック オプションが適切に機能していることを確認する必要があります。
+<p />
+<h4><a name="Playstation 3"></a> Playstation 3 </h4>
+現在執筆中。
+<p />
+<h4><a name="Xbox 360"></a> Xbox 360 </h4>
+devkit を実際に実行し (結果が PC の場合と異なる可能性があるため)、すべてのテクスチャ ストリーミング、メモリおよびパフォーマンス問題や統計を調べることが大切です。
+xbox のパフォーマンス問題のデバッグで最も大切なツールは、Microsoft の Performance Investigator for Xbox (PIX) です。
+<p />
+<h5><a name="Performance Investigator for Xbox (PIX)"></a> Performance Investigator for Xbox (PIX) </h5>
+MDSN の <a href="http://msdn.microsoft.com/en-us/library/bb173085(VS.85).aspx" target="_top">PIX documentation</a> を参照してください。 <ul>
+<li> <a href="#" target="_top">LightMapVSVertexLightingCosts.xlsx</a>: N 個のインスタンスの場合を考慮して内容を更新
+</li></ul>
+<p />
+</noautolink>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LevelOptimizationJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:32:13 GMT -->
+</html></body>

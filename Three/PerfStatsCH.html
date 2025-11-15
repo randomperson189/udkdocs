@@ -1,0 +1,439 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PerfStatsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:16:12 GMT -->
+<head>
+<title> UDK | PerfStatsCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">PerfStatsCH  </b></div>
+<div id="tooltext">
+<a href="PerfStats.html" class="twikiLink">English Translation</a><br><a href="PerfStatsJP.html" class="twikiLink">日本語訳</a><br><a href="PerfStatsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/PerfStatsCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="PerformanceHome.html" class="twikiLink">性能、分析及优化</a></b> &gt;虚幻引擎性能跟踪系统<br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="GameplayProgrammingHome.html" class="twikiLink">游戏性编程</a></b> &gt; 虚幻引擎性能跟踪系统
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="虚幻引擎性能跟踪系统"></a> 虚幻引擎性能跟踪系统 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="PerfStatsCH.html#虚幻引擎性能跟踪系统"> 虚幻引擎性能跟踪系统</a> <ul>
+<li> <a href="PerfStatsCH.html#概述"> 概述</a>
+</li> <li> <a href="PerfStatsCH.html#游戏中的统计数据">游戏中的统计数据</a> <ul>
+<li> <a href="PerfStatsCH.html#竖栏的意思">竖栏的意思</a>
+</li></ul>
+</li> <li> <a href="PerfStatsCH.html#控制台命令">控制台命令</a> <ul>
+<li> <a href="PerfStatsCH.html#统计数据记录"> 统计数据记录</a> <ul>
+<li> <a href="PerfStatsCH.html#统计数据的文件记录"> 统计数据的文件记录</a>
+</li> <li> <a href="PerfStatsCH.html#网络化的统计数据"> 网络化的统计数据</a>
+</li> <li> <a href="PerfStatsCH.html#配置统计数据记录"> 配置统计数据记录</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="PerfStatsCH.html#统计数据查看器">统计数据查看器</a> <ul>
+<li> <a href="PerfStatsCH.html#获得数据"> 获得数据</a> <ul>
+<li> <a href="PerfStatsCH.html#打开现有的统计数据文件"> 打开现有的统计数据文件</a>
+</li> <li> <a href="PerfStatsCH.html#连接到远程游戏">连接到远程游戏</a>
+</li></ul>
+</li> <li> <a href="PerfStatsCH.html#查看数据"> 查看数据</a> <ul>
+<li> <a href="PerfStatsCH.html#添加一个统计数据到图表中"> 添加一个统计数据到图表中</a>
+</li> <li> <a href="PerfStatsCH.html#综合数据"> 综合数据</a>
+</li> <li> <a href="PerfStatsCH.html#缩放查看区域"> 缩放查看区域</a>
+</li> <li> <a href="PerfStatsCH.html#在网络收集信息过程中自动滚动"> 在网络收集信息过程中自动滚动</a>
+</li> <li> <a href="PerfStatsCH.html#调用图表视图"> 调用图表视图</a>
+</li></ul>
+</li> <li> <a href="PerfStatsCH.html#已知问题"> 已知问题</a>
+</li> <li> <a href="PerfStatsCH.html#未来的改进工作"> 未来的改进工作</a>
+</li></ul>
+</li> <li> <a href="PerfStatsCH.html#性能回归测试"> 性能回归测试</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+本文档教书了UE3中用于跟踪游戏性能的各种机制。这个系统提供的数据用于帮助您调整您的关卡创建 和/或 游戏性系统。它也可以通过存储性能信息并随着时间比较这些信息来跟踪关卡的性能。
+<p />
+<h2><a name="游戏中的统计数据"></a> 游戏中的统计数据 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+有两种方法可以查看性能信息： 游戏中和通过外部客户端。游戏中工具都是通过使用控制台命令来激活的(请参照下一部分)，并且信息会显示到hud上，这种方法会受到屏幕空间的限制。如果您需要查看比可以在屏幕空间上描画得更多的统计数据，那么外部客户端是个不错的选择。
+<p />
+可以按照两种方式来查看统计数据： 分组查看或层次化查看。老的统计数据系统仅支持分组查看。组是由程序员创建的，使用“stat groupname”控制台命令来显示组。这样那个组中的所有统计数据都会显示出来。 以下屏幕截图仅显示了既具有非独占时间的数据又有独占时间的数据(请参照控制台命令行部分获得关于如何像那样进行设置的信息)。
+<p />
+自定义统计数据组可以通过 启用/禁用 期望的 组/统计数据 来创建，通过使用"stat save"命令来保存组为一个自定义名称。
+<p />
+<img alt="InGameStats.jpg" src="rsrc/Three/PerfStatsCH/InGameStats.jpg" />
+<p />
+第二种查看统计数据的方法是层次化地查看。这将会把统计数据当成树层次结构对待，这里子项统计数据会包含在父项的总时间内。比如，所有包含的数据都作为统计数据FrameTime(帧时间)的一部分。当您知道某个区域的性能不好并且需要知道是哪个特定区域有问题时，使用这种方式查看统计数据是非常有用的。您可以不断地跟踪信息直到您找到消耗最多时间的叶子节点为止。默认，统计数据包括了非独占时间信息。您可以通过使用控制台命令"stat exclusive"显示独占时间。这显示了不包括其任何子项统计数据在内所消耗的时间。当跟踪查找场景中的哪个部分导致性能问题时这是非常有用的工具。
+<p />
+<img alt="InGameHierStats.jpg" src="rsrc/Three/PerfStatsCH/InGameHierStats.jpg" />
+<h3><a name="竖栏的意思"></a> 竖栏的意思 </h3>
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 竖栏 </td><td bgcolor="#eaeaea"> 意思 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> # </td><td bgcolor="#ffffff"> 当处于层次结构模式时用于导航统计数据层次结构。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> CallCount(调用次数) </td><td bgcolor="#eaeaea"> 指出了在那帧中那个统计数据更新的次数。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> IncAvg(平均包含时间) </td><td bgcolor="#ffffff"> 这是在上几帧中统计数据所消耗的平均非独占时间。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> IncMax </td><td bgcolor="#eaeaea"> 这是在上几帧中统计数据中所消耗的最大时间。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> ExcAvg </td><td bgcolor="#ffffff" align="right"> 这是在上几帧中统计数据在不包括其子项统计数据情况下所消耗的平均时间。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> ExcMax </td><td bgcolor="#eaeaea" align="right"> 这是在上几帧中统计数据在不包括其子项统计数据情况下所消耗的最大时间。 </td></tr>
+</table>
+<p />
+<h2><a name="控制台命令"></a> 控制台命令 </h2>
+<p />
+控制台命令是您在游戏中和统计数据系统交互的方式。统计数据系统支持一组简单的命令，用于在hud上显示游戏中的统计数据的信息。统计数据系统中的所有控制台命令都是以“stat”标示符开始，比如"stat engine"，这将会切换引擎统计数据组的渲染。以下表格显示了引擎所支持的控制台命令及其它们的作用。
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 命令 </td><td bgcolor="#eaeaea"> 结果 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> inclusive </td><td bgcolor="#ffffff"> 切换非独占状态。如果为true，则显示非独占时间。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> exclusive </td><td bgcolor="#eaeaea"> 切换独占状态。如果为true，则显示独占时间。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> cycles </td><td bgcolor="#ffffff"> 切换循环计数器状态。如果为true，那么显示循环计数器统计数据。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> counters </td><td bgcolor="#eaeaea"> 切换计数器状态。如果为true，那么显示计数器统计数据。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> grouped </td><td bgcolor="#ffffff"> 改变分组查看模式的渲染模式。如果已经处于分组模式则禁用渲染。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> hier </td><td bgcolor="#eaeaea"> 改变层次结构查看模式(调用层次图形模式)的渲染模式。如果已经处于层次结构模式则禁用渲染。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> nav "StatNum" </td><td bgcolor="#ffffff"> 沿着调用图形层次结构 向上/向下 移动当前选中的统计数据。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> color "Item" "Color" </td><td bgcolor="#eaeaea"> 改变指项相渲染时使用的颜色。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> list groups </td><td bgcolor="#ffffff"> 把所有统计数据组的名称转存到日志中。请使用showlog来查看。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> list group "GroupName" </td><td bgcolor="#eaeaea"> 把指定组中的所有统计数据转存到日志中。请使用showlog来查看。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> list list sets </td><td bgcolor="#ffffff"> 列出已经保存到GEngineIni中的自定义集合。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> save "SetName" </td><td bgcolor="#eaeaea"> 把当前统计数据保存到GEngineIni文件中名称为 "SetName" 的自定义统计数据集合中。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> name "StatName" </td><td bgcolor="#ffffff"> 切换单独统计数据的渲染器标志。如果为true，统计数据将随同它的组一同渲染。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> none </td><td bgcolor="#eaeaea"> 关闭所有组的统计数据渲染。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> "GroupName" </td><td bgcolor="#ffffff"> 切换那各组的渲染器标志。如果为true，将渲染那个组。 如果 "GroupName(组名称)" 和自定义状态集合的名称相匹配，那么将其用那个自定义集合。 </td></tr>
+</table>
+<p />
+<p />
+<h3><a name="统计数据记录"></a> 统计数据记录 </h3>
+<p />
+这个版本的统计数据系统包含了一个“统计数据提供者”架构。这个架构用于从游戏中收集统计数据并把它们发送到某种形式的外部存储中。在每帧结束处，将会给注册的提供者列表一个数据的简要说明。这个数据可以写入到磁盘中、发送到网络上、集成到另一个API系统中等。Epic支持把每帧统计数据进行基于文件或网络的记录。
+<p />
+<h4><a name="统计数据的文件记录"></a> 统计数据的文件记录 </h4>
+<p />
+这个版本的统计数据系统支持基于文件记录统计数据。系统可以写出两种格式的文件： CSV用于导入到Excel中，XML用于统计数据查看器。CSV格式对于和前面捕获的数据结果进行快速比较是非常好的。它也允许您Excel表格的所有功能。XML格式主要用于当捕获数据以便稍后查看的情况。XML文件是统计数据查看器使用的格式，所以您仅需要加载现有的XML文件到统计数据查看器中就可以查看数据了。
+<p />
+<h4><a name="网络化的统计数据"></a> 网络化的统计数据 </h4>
+<p />
+在最新版本的统计数据系统中还包含了一个通过网络收集统计数据的功能。这允许您为专用服务器收集统计数据，这个处理在以前是不能实现的。它通过UDP收集统计数据，它可以在我们支持的各种 OS/游戏机平台 上进行工作。在 Xbox360上，统计数据还可以通过PIX工具进行捕获。
+<p />
+<h4><a name="配置统计数据记录"></a> 配置统计数据记录 </h4>
+<p />
+统计数据提供者通过MyGameEngine.ini中的一个设置来启用，每个提供者有一个名称，并且使用那个名称来检查INI文件中的配置数据。比如，要想启用统计数据的XMLL文件记录，那么您的Engine.ini文件需要有如下设置：
+<p />
+<pre>
+&#91;StatNotifyProviders]
+XmlStatNotifyProvider&#61;true
+</pre>
+<p />
+以下是Epic提供的提供者完整列表及其默认配置：
+<p />
+<pre>
+&#91;StatNotifyProviders]
+XmlStatNotifyProvider&#61;false
+CsvStatNotifyProvider&#61;false
+StatsNotifyProvider&#95;UDP&#61;true
+PIXNamedCounterProvider&#61;false
+</pre>
+<p />
+也可以通过命令行来启用统计数据提供者。这是通过把提供者名称作为参数来实现的：
+<p />
+utgame.exe ons-testmap -CsvStatNotifyProvider
+<p />
+上面的控制台命令打开了写入到 utgame_stats.csv中的以逗号为分隔记录的统计数据。
+<p />
+<h2><a name="统计数据查看器"></a> 统计数据查看器 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+统计数据查看器是一个外部应用程序，可以分析及收集性能数据。它的UI分割为三个主要部分： 树形视图，显示了所有的可用组，这些组由统计数据组成；列表视图显示了综合信息，比如平均值和 最大/最小 值；图形区域把统计数据作为线性图形进行了显示。图形中的每个点代表了给定帧的那个统计数据的值。可以通过帧滑动图形来在帧数据上 前/后 滑动。根据用户喜好的不同，沿着X轴的值或者代表帧数量或者代表时间。Y轴默认的范围是0到100。缩放比例可以基于每个统计数据进行修改。这对于总是大于100或者总是接近于0的统计数据是有用的。
+<p />
+<h3><a name="获得数据"></a> 获得数据 </h3>
+<p />
+查看器用于查看通过文件记录保存的现有文件(前参照器那面关于文件记录的部分)。它也用于连接一个正在运行的游戏，然后通过网络收集那个游戏的统计数据信息。通过网络收集的信息也可以保存出来以便稍后查看。
+<p />
+<h4><a name="打开现有的统计数据文件"></a> 打开现有的统计数据文件 </h4>
+<p />
+选择 File(文件) | Open(打开)菜单选项，并导航到您的游戏的日志目录。所有的统计数据记录功能都会把它们的文件写入到游戏的日志目录中。
+<p />
+<h4><a name="连接到远程游戏"></a> 连接到远程游戏 </h4>
+<p />
+通过使用 Connect(连接) | Connect To(连接到) 菜单选项可以弹出以下对话框。当第一次创建这个对话框时，它会广播一个通知信息到所有游戏。refresh（刷新）按钮可以重新广播同样的信息。这两种广播都发生在对话框中指定的端口上。如果您有多个游戏团队或者您想隔离出一组服务器，您可以改变游戏监听的端口。为了使得连接过程更加容易，对话框里列出了正在运行的游戏类型及其运行平台。在以下的图片中，我正在PC上运行编辑器的UT版本、在我的PC上运行一个Onslaught游戏，在我的XBox360上运行战争机器。要想从对话框中理出的游戏中收集统计数据，那么可以双击您想收集数据的游戏或者选中它，并选择Connect (连接)按钮。
+<p />
+<img alt="ConnectTo.jpg" src="rsrc/Three/PerfStatsCH/ConnectTo.jpg" />
+<p />
+<h3><a name="查看数据"></a> 查看数据 </h3>
+<p />
+以下图片显示了一个打开的文件的示例，该文件是通过网络收集大量数据后保存的。在那个视图中，我已经向图表显示中添加了两个计数器：FrameTime和SkelCompose。为了帮助稍微低区分这些线，选中的统计数据将总是以粗线条描画。显示区域正在呈现150帧的数据。每个统计数据有和它相关的自己的颜色，可以通过双击在图表下面的列表中的统计数据来进行修改。图表的背景颜色也可以按照同样的方式来修改。要想从显示中删除一个统计数据，您仅需在列表中选中那个统计数据，然后点击删除键即可。
+<p />
+<img alt="ViewingData.jpg" src="rsrc/Three/PerfStatsCH/ViewingData.jpg" />
+<p />
+<p />
+<h4><a name="添加一个统计数据到图表中"></a> 添加一个统计数据到图表中 </h4>
+<p />
+您可以通过从是树状视图中拖拽一个单独的统计数据到图表区域或者通过拖拽一个组到图表区域来向图表中添加统计数据。当拖拽组到图表中时，它会把所有统计数据都添加到显示面板上。
+<p />
+<h4><a name="综合数据"></a> 综合数据 </h4>
+<p />
+统计数据的在列表视图中显示。它显示了统计数据的平均值、最小值、最大值。默认情况下，这些值是针对整个数据集合的，即包括所有帧。您可以通过选择 View(视图)| Ranged Aggregate Data(区间范围内的综合数据) 选项来仅查看特定帧集合的综合数据。当按照范围查看时，随着您滑动过集合数据会进行更新。
+<p />
+<h4><a name="缩放查看区域"></a> 缩放查看区域 </h4>
+<p />
+X轴缩放比例是通过使用F1 (视图| 放大)和F2（视图|缩小）按键来完成。这将会 降低/增加 分布在显示面板上的帧的数量。Y轴缩放比例是通过基于每个统计数据来完成的。
+<p />
+<h4><a name="在网络收集信息过程中自动滚动"></a> 在网络收集信息过程中自动滚动 </h4>
+<p />
+当连接到远程游戏时，图表显示将会自动滚动来显示最新的数据。您可以通过使用F3（视图|自动滚动显示）按键来进行切换。
+<p />
+<h4><a name="调用图表视图"></a> 调用图表视图 </h4>
+<p />
+您可以通过右击统计数据图表中的帧并选择“View Frame N(查看帧N)“选项来查看任何帧的调用图表。这将会弹出一个窗口，以树形结构显示了统计数据的调用图表，如下所示：
+<p />
+<p />
+<img alt="CallGraphView.jpg" src="rsrc/Three/PerfStatsCH/CallGraphView.jpg" />
+<p />
+因为点击精确的帧会有点误差，所以它会把您点击位置附近的帧也添加到视图中。这也有助于向下探索统计数据来跟踪峰值，从而获得不同帧之间对比。所有的时间都是作为非独占时间报告的。
+<p />
+<h3><a name="已知问题"></a> 已知问题 </h3>
+<p />
+还不支持基于每个线程的跟踪。不能正确地处理层次结构信息(仅可以进行分组处理)。
+<p />
+<h3><a name="未来的改进工作"></a> 未来的改进工作 </h3>
+<p />
+较快的网格描画速度。它可以更加灵巧。
+<p />
+支持层次化结构统计数据。
+<p />
+游戏性标记。这些是显示在图表中的物体，但是它们来源于游戏性中的API调用。这对于跟踪 游戏过程中/镜头切换过程中 的峰值或增量是有用的。
+<p />
+Bug修复，Ui改进(网格、鼠标悬在值上的效果，等)。
+<p />
+<h2><a name="性能回归测试"></a> 性能回归测试 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+统计数据系统包含了一个用于比较两次独立运行的性能测试的应用程序。这个应用程序是StatsComparison.exe，它读取两个单独的XML文件，计算综合数据(平均值等)，然后把结果和特定的阈值进行比较。如果性能在那个阈值之内，那么测试通过(应用程序返回0)。如果性能没有落入到阈值范围内，那么应用程序将返回1，意味着测试失败。如果返回值小于0，那么意味着数据中有一些错误，比如丢失文件或损坏文件、无效的的指定统计数据等。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PerfStatsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:16:14 GMT -->
+</html></body>

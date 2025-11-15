@@ -1,0 +1,541 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TerrainDesignCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:38:00 GMT -->
+<head>
+<title> UDK | TerrainDesignCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">TerrainDesignCH  </b></div>
+<div id="tooltext">
+<a href="TerrainDesign.html" class="twikiLink">English Translation</a><br><a href="TerrainDesignJP.html" class="twikiLink">日本語訳</a><br><a href="TerrainDesignKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/TerrainDesignCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt; <b><a href="TerrainHome.html" class="twikiLink">地形系统</a></b> &gt; 地形设计: 指南和信息
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="地形设计：指南和信息"></a> 地形设计：指南和信息 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="TerrainDesignCH.html#地形设计：指南和信息">地形设计：指南和信息</a> <ul>
+<li> <a href="TerrainDesignCH.html#概述"> 概述</a>
+</li> <li> <a href="TerrainDesignCH.html#块的数量"> 块的数量</a>
+</li> <li> <a href="TerrainDesignCH.html#描画比例">描画比例</a>
+</li> <li> <a href="TerrainDesignCH.html#地形块尺寸区域"> 地形块尺寸区域</a>
+</li> <li> <a href="TerrainDesignCH.html#地形尺寸对地图文件大小">地形尺寸对地图文件大小</a>
+</li> <li> <a href="TerrainDesignCH.html#地形尺寸对地图面积"> 地形尺寸对地图面积</a>
+</li> <li> <a href="TerrainDesignCH.html#优化地形">优化地形</a>
+</li> <li> <a href="TerrainDesignCH.html#描画比例XY 及下沉地图资源"> 描画比例XY 及下沉地图资源</a>
+</li> <li> <a href="TerrainDesignCH.html#描画比例Z对高度范围"> 描画比例Z对高度范围</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+虚幻引擎3支持一个灵活的地形系统，它提供了各种视觉风格及应用。该地形系统包括以下系统：基于 <em>heightmap(高度图)</em> 的系统，它可以可视化地描画小山、峡谷、山脉、河流、道路以及其它更多东西的；多层次地形材质系统，它支持真实世界的贴图文件，比如泥土、岩石、沙漠以及泥泞。多层次的装饰系统，它通过渲染类似于绿草、野草、矮树丛以及花、甚至那些小的岩石等东西，为系统提供了额外的灵活性及真实性。通过使用这些系统，您可以很容易地实现各种不同的风景及主题。
+<p />
+<img alt="UE3Terrains.jpg" src="rsrc/Three/TerrainDesignCH/UE3Terrains.jpg" />
+<p />
+<strong>地形创建</strong>
+<p />
+一般使用这两种技术其中的一种来创建地形： 直接在地形网格物体上手动地描画来创建山坡和峡谷；或者导入外部创建的<a href="TerrainHeightmaps.html" class="twikiLink">地形高度图</a>。另外，高度图信息可以从<a href="TerrainsFromDEMs.html" class="twikiLink"> DEMs</a>- Digital Elevation Model(数字高程模型)中获得。展现泥土、草原和岩石的材质层可以使用<a href="TerrainAlphamaps.html" class="twikiLink">地形alpha贴图</a>来创建，<a href="TerrainAlphamaps.html" class="twikiLink">地形alpha贴图</a>可以决定贴图混合到地形中的位置。
+<p />
+<strong>地形应用和地图布局</strong>
+<p />
+地形也可以用于一些小区域，比如城市、围绕起来的院子甚至模仿堆积起来的残骸；或者整个游戏地图可以基于一个大的室外地形设计，这个地形可以由各种地理特点组成比如山脉和峡谷。
+<p />
+地形通常和专门设计的地理网格物体结合使用，从而构建大的石头、孤立的山丘、悬崖甚至水上飞机。其它的网格物体也可以用作为出现在地形上的各种各样的植被。使用地形进行视频游戏的地图设计及布局的地图，通常会使用地形来在游戏播放区域的周围创建不可通行的山脉或悬崖，从而可以限制游戏玩家的运动，并防止他们离开或跌落到游戏地图“世界”的外面。
+<p />
+地形系统在本质上渲染一个X*Y排网格物体三角形，它们的顶点Z值决定了在每个网格的十字交叉处的三角形的海拔高度。其中关卡设计人员面临的一个挑战是它们需要为这个地形网格物体选择适当的布局和分辨率，使得地形相对于性能设置产生最好的视觉质量。
+<p />
+<img alt="UE3TerrainAcc.jpg" src="rsrc/Three/TerrainDesignCH/UE3TerrainAcc.jpg" />
+<p />
+<strong>地形尺寸</strong>
+<p />
+虚幻引擎3支持的最大的世界尺寸是512k x 512k (524288 x 524288) 个<a href="UnrealUnits.html" class="twikiLink">虚幻单位</a>。如果按照默认的引擎单位1UU=2cm(10km x 10km)计算，这大约近似等于10平方千米。游戏性区域的实际尺寸通常远比这个尺寸小，一般基于地形的室外地图的尺寸少于1平方千米。注意，那些放置在最大世界尺寸外面的几何体，比如天空球体，仍然是进行渲染的，但是“世界”几何体必须在这个总的可用区域之内。
+<p />
+地形高度图XY分辨率和通过Terrain.NumPatches设置的一样， 也就是128x128 或 256x256，Display.DrawScale指出了每个地形块的尺寸，这样便最终决定了地形网格物体的总面积。为块尺寸和块数量选择最有效的一组值，从而在地形细节和渲染性能之间寻找最好的平衡。
+<p />
+由于性能和文件大小的原因，我们不推荐您创建大于1024x1024块的地形。比如，一个2048x2048的地形包含8百万个三角形，当在编辑器中运行时速度很慢并且会导致生成一个非常大的地图文件。在大多数情况下，即使块为512x512的地形都可能导致某些技术问题，至于使用如此大的地形是否是个合适的选择，需要尽可能地检查和重新评估地图设计来进行决定。
+<p />
+<strong>高度图 位-深度</strong>
+<p />
+当使用外部高度贴图文件创建地图时，为了将其导入到虚幻引擎地形系统中，通常使用16-位的高度图格式和文件。如果由于标准绘图软件支持的方便选择使用8-位的灰度高度图文件，那么将会导致地形仅使用1/256的可用高度范围。这通常会导致地形呈现出令人不爽的阶梯式的梯田的外观。
+<p />
+当使用外部高度图文件时，我们不推荐您使用标准的绘图软件在高度图上描画细节，因为它仅能在当前的视频软件上编辑和显示8-位的灰度化图。这意味着对于描画到8-位显示系统上的灰度化图的每个单独的颜色来说，实际上有256个高度水平不能真正地显示出来。换句话说，在一个8-位的灰度化显示上，值0(黑色)实际上是从0到255的16-位值，值为1实际上是指256到511的16-位值，等。
+<p />
+<img alt="UE3Terrain16v8.jpg" src="rsrc/Three/TerrainDesignCH/UE3Terrain16v8.jpg" />
+<p />
+<strong>保持在网格上</strong>
+<p />
+地形actor的Advanced.bEdShouldSnap属性应该总是保持为选中状态(True)，以便地形块仍然保持在网格上。这个选项和值为2的幂数的Display.DrawScale 和 Display.DrawScale3D.X/.Y结合使用，将会使得所有的块都能正确地符合到网格的所有边缘上。
+<p />
+一旦地形actor被移动到地形中的某个位置，请确保设置Advanced.bLockLocation为选中状态(true)，从而可以锁定地形actor，并且可以阻止它在编辑器中的意外移动。
+<p />
+<img alt="UE3TerrainLocked.gif" src="rsrc/Three/TerrainDesignCH/UE3TerrainLocked.gif" />
+<p />
+<strong>2的幂数</strong>
+<p />
+通常在使用地形和其它游戏资源时，会遇到短语"power-of-two(2的幂数)"。2的幂数是指根据公式2^n计算出的值，这里的n是任何大于等于0的数。比如2^0 = 1.  2^1 = 2.  2^2 = 4. 2^3 = 8.  2^4 = 16等。一般用于地形的2的幂数的值包括1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024。
+<p />
+<p />
+<h2><a name="块的数量"></a> 块的数量 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+地形actor支持用户自定义的网格物体块(四方形)数量，正如在地形属性中的Terrain.NumPatchesX 和 Terrain.NumPatchesY中所指出的。这两个属性指出了地形网格物体的X 和Y维度上的块的数量。
+<p />
+块的数量和地形的DrawScale相乘来决定地形网格物体在编辑器中将要覆盖的总面积。
+<p />
+<img alt="TerrainPatches.gif" src="rsrc/Three/TerrainDesignCH/TerrainPatches.gif" />
+<p />
+NumPatches属性所支持的精确的数值根据Terrain.MaxTesselationLevel 和 Terrain.MinTesselationLevel而变化。比如，NumPatches的值是否可以是40 或 85 或 甚至 255 或 256，它是根据TesselationLevel的不同而变化的。
+<p />
+如果MaxTesselationLevel 和 MinTesselationLevel属性都设置为1，那么地形尺寸便可以指定任何在1和支持的最大地形尺寸之间的任何尺寸。这允许您创建尺寸为奇数的地形，比如41x79。当TesselationLevel的值为1时的缺点是平截头体中的所有地形三角形都将会描画，且不会使用动态距离LOD细分优化系统。这对于较小的地形块是可以接受的，但是对于大的地形系统，这将会对渲染的地图的帧频率造成影响。
+<p />
+注意： 由于性能和文件大小的原因，我们不推荐您创建大于1024x1024块的地形。比如，一个2048x2048的地形包含8百万个三角形，当在编辑器中运行时速度很慢并且会导致生成一个非常大的地图文件。在大多数情况下，即使块为512x512的地形都可能导致某些技术问题，至于使用如此大的地形是否是个合适的选择，需要尽可能地检查和重新评估地图设计来进行决定。
+<p />
+MinTesselationLevel属性的默认值通常设置为1。如果它被设置为和MaxTesselationLevel属性相同的值，那么结果将会和把它们两个的属性都设置为1一样，不会发生多边形细分。如果MinTesselationLevel设置为MaxTesselationLevel的一半， 也就是Min = 2 和 Max = 4，那么多边形细分区域的数量将会变少并且较远距离的地形将不会具有增加的优化块。换句话说，如果Min:Max的比值为1：4，将会导致两个优化的距离区域，如果Min:Max比值为2：4将会导致仅有一个优化的距离区域。
+<p />
+如果MaxTesselationLevel的设置为除1以外的其它值来启用距离LOD优化系统，那么NumPatches值则必须限定为MaxTesselationLevel值的倍数。比如，如果MaxTesselationLevel是4，那么NumPatches可以是12, 16, 20, 24, ...,等。如果MaxTesselationLevel是8，那么NumPatches的值可以是8, 16, 24, 32, 40, 48, ...,等。强烈推荐您使用动态距离LOD多边形细分优化，尽管这样会限制地形的尺寸仅能为MaxTesselationLevel的倍数。
+<p />
+<img alt="TerrainTesselation.gif" src="rsrc/Three/TerrainDesignCH/TerrainTesselation.gif" />
+<p />
+<p />
+<h2><a name="描画比例"></a> 描画比例 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<strong>Draw Scale X and Y(描画比例X和Y)</strong>
+<p />
+每个地形块的尺寸由地形actor的Display.DrawScale 和 Display.DrawScale3D属性决定。这两组值相乘在一起决定了整个地形块的大小。换句话说，如果DrawScale为1.0，DrawScale3D为256.0，那么将导致块的尺寸是256个虚幻单位(2.0 * 512.0)。如果DrawScale为2.0，DrawScale3D为512.0，那么将导致块的尺寸是1024个虚幻单位(1.0 * 256.0)。如果DrawScale为0.5，DrawScale3D为128.0，那么将导致块的尺寸是64个虚幻单位(1.0 * 256.0)。
+<p />
+DrawScale属性通常应该保持为默认值1.0，可以通过调整DrawScale3D属性的值来修改地形比例从而可以获得默认尺寸256以外的地形尺寸。DrawScale3D包含着关于地形网格物体的每个X、Y和Z 方向的独立的属性。X和Ｙ影响地形网格物体的宽度和长度，而Ｚ影响地形网格物体的深度(海拔范围)。
+<p />
+如果想创建具有特定面积的地图，比如1平方千米，则您必须选择块数量和描画比例的近似值。关于计算这些值的数学表达式是：
+<p />
+地形面积(以<a href="UnrealUnits.html" class="twikiLink">虚幻单位</a>为单位) = ( NumPatchesX * ( DrawScale * DrawScale3D.X )) * ( NumPatchesY * ( DrawScale * DrawScale3D.Y ))
+<p />
+这个计算结果的单位是<a href="UnrealUnits.html" class="twikiLink">Unreal Units(虚幻单位)</a>，可以通过转换公式1 unreal unit=2厘米来将其转换为标准的度量尺寸。这是引擎默认的比例尺大小。不同的游戏使用的引擎可以根据开发人员设置使用不同转换比例。
+<p />
+选择DrawScale的值主要依赖于两个因素，期望的地形细节质量和期望的渲染性能。较高的地形细节需要一个较小的DrawScale，这将会导致在特定的地形区域内产生较多数量的块，然而较快的渲染速度则需要特定的地形区域内具有较少的块，这可以通过设置较大的DrawScale来达到这个目的。
+<p />
+有一个较好的经验方法是，对于小的地形区域，比如包围起来的院子，DrawScale3D.X/Y的范围可以是从32到128之间的值，一般将这个值设置为64。对于大的地形区域，比如完全的室外区域，DrawScale3D.X/Y的值应该在128 和 512之间，一般使用的值是256。
+<p />
+<img alt="TerrainDrawScale.gif" src="rsrc/Three/TerrainDesignCH/TerrainDrawScale.gif" />
+<p />
+<strong>Draw Scale Z(描画比例Z)</strong>
+<p />
+DrawScale3D.Z属性决定了沿着Z方向(上下方向)的每个地形网格物体顶点位置的 <em>间隔尺寸</em> 。DrawScale3D.Z的值越低，高度阶梯越细致；  DrawScale3D.Z值越大，高度阶梯越大。因为总共只有65536高度值，所以DrawScale3D.Z也决定了地形的所有高度范围。
+<p />
+DrawScale3D.Z上还有一些其它的信息，在下面进行了介绍。
+<p />
+<p />
+<h2><a name="地形块尺寸区域"></a> 地形块尺寸区域 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+每个地形块(正方形)的尺寸，由Display.DrawScale 和 Display.DrawScale3D属性决定。这个表格以和虚幻单位等价的英尺和米为单位显示了块的近似尺寸，它基于默认的虚幻引擎度量比例 1虚幻单位等于2厘米的计算公式进行等价计算。英制到米制的转换是1 英寸 = 2.54 cm。
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">DrawScale(描画比例)</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">块尺寸(虚幻单位)</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=2;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">块尺寸(米)</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=3;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">块尺寸(英尺)</font></a> </th></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 64 </td><td bgcolor="#ffffff"> 64 uus </td><td bgcolor="#ffffff"> 1.28m (128cm) </td><td bgcolor="#ffffff"> 4.2ft (50.39 in) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 80 </td><td bgcolor="#eaeaea"> 80 uus </td><td bgcolor="#eaeaea"> 1.60m (160cm) </td><td bgcolor="#eaeaea"> 160.02cm (159.99 cm) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 96 </td><td bgcolor="#ffffff"> 96 uus </td><td bgcolor="#ffffff"> 1.92m (192cm) </td><td bgcolor="#ffffff"> 192.02cm (192.00 cm) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 112 </td><td bgcolor="#eaeaea"> 112 uus </td><td bgcolor="#eaeaea"> 2.24m (224cm) </td><td bgcolor="#eaeaea"> 224.03cm (224.00 cm) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 128 </td><td bgcolor="#ffffff"> 128 uus </td><td bgcolor="#ffffff"> 2.56m (256cm) </td><td bgcolor="#ffffff"> 256.03cm (256.01 cm) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 160 </td><td bgcolor="#eaeaea"> 160 uus </td><td bgcolor="#eaeaea"> 3.20m (320cm) </td><td bgcolor="#eaeaea"> 320.04cm (319.99 cm) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 192 </td><td bgcolor="#ffffff"> 192 uus </td><td bgcolor="#ffffff"> 3.84m (384cm) </td><td bgcolor="#ffffff"> 384.05cm (384.00 cm) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 224 </td><td bgcolor="#eaeaea"> 224 uus </td><td bgcolor="#eaeaea"> 4.48m (448cm) </td><td bgcolor="#eaeaea"> 448.06cm (448.01 cm) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 256 </td><td bgcolor="#ffffff"> 256 uus </td><td bgcolor="#ffffff"> 5.12m (512cm) </td><td bgcolor="#ffffff"> 512.06cm (511.99 cm) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 288 </td><td bgcolor="#eaeaea"> 288 uus </td><td bgcolor="#eaeaea"> 5.76m (576cm) </td><td bgcolor="#eaeaea"> 576.07cm (576.00 cm) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 320 </td><td bgcolor="#ffffff"> 320 uus </td><td bgcolor="#ffffff"> 6.40m (640cm) </td><td bgcolor="#ffffff"> 640.08cm (640.00 cm) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 352 </td><td bgcolor="#eaeaea"> 352 uus </td><td bgcolor="#eaeaea"> 7.04m (704cm) </td><td bgcolor="#eaeaea"> 704.09cm (704.01 cm) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 384 </td><td bgcolor="#ffffff"> 384 uus </td><td bgcolor="#ffffff"> 7.68m (768cm) </td><td bgcolor="#ffffff"> 768.10cm (767.99 cm) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 512 </td><td bgcolor="#eaeaea"> 512 uus </td><td bgcolor="#eaeaea"> 10.24m (1,024cm) </td><td bgcolor="#eaeaea"> 1,024.13cm (1,024.00 cm) </td></tr>
+</table>
+<p />
+<p />
+<h2><a name="地形尺寸对地图文件大小"></a> 地形尺寸对地图文件大小 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+地形的总尺寸、贴图层的数量以及类似于光照贴图分辨率其它的地形属性决定了添加到地图文件大小上的其它资源的量。较大的地形会迅速地向地图中添加很多兆字节到地图文件中。
+<p />
+下面的列表给出了按照以下关卡设置所得到的文件大小： <ul>
+<li> 具有一个地图actor和一个定向光源的空的干净的地图。
+</li> <li> 没有地形层。
+</li> <li> 没有经过烘焙。
+</li></ul>
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=2;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">高度图</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=2;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">三角形数量</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=2;table=2;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">文件大小</font></a> </th></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 64x64 </td><td bgcolor="#ffffff"> 8,192 </td><td bgcolor="#ffffff"> 125kb </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 128x128 </td><td bgcolor="#eaeaea"> 32,768 </td><td bgcolor="#eaeaea"> 3.2MB </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 256x256 </td><td bgcolor="#ffffff"> 131,072 </td><td bgcolor="#ffffff"> 7.2MB </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 512x512 </td><td bgcolor="#eaeaea"> 524,288 </td><td bgcolor="#eaeaea"> 28.7MB </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 1024x1024 </td><td bgcolor="#ffffff"> 2,097,152 </td><td bgcolor="#ffffff"> 110MB </td></tr>
+</table>
+<p />
+下面的列表给出了按照以下关卡设置所得到的文件大小： <ul>
+<li> 具有一个地图actor和一个定向光源的空的干净的地图。
+</li> <li> 一个1024x1024的贴图、一个TerrainMaterial(地形材质)、和一个TerrainLayerSetup(地形层设置)。
+</li> <li> 没有经过烘焙。
+</li></ul>
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=3;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">高度图</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=3;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">三角形数量</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=2;table=3;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">文件大小</font></a> </th></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 64x64 </td><td bgcolor="#ffffff"> 8,192 </td><td bgcolor="#ffffff"> 4MB </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 128x128 </td><td bgcolor="#eaeaea"> 32,768 </td><td bgcolor="#eaeaea"> 6.38MB </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 256x256 </td><td bgcolor="#ffffff"> 131,072 </td><td bgcolor="#ffffff"> 10.6MB </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 512x512 </td><td bgcolor="#eaeaea"> 524,288 </td><td bgcolor="#eaeaea"> 32.9MB </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 1024x1024 </td><td bgcolor="#ffffff"> 2,097,152 </td><td bgcolor="#ffffff"> 118MB </td></tr>
+</table>
+<p />
+<p />
+<h2><a name="地形尺寸对地图面积"></a> 地形尺寸对地图面积 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+这个表格列出了当地形块和描画比例是各种不同常用值时地形尺寸在真实世界中的等价尺寸。
+<p />
+地形尺寸通过以下公式进行计算NumPatches * ( DrawScale * DrawScale3D )= <a href="UnrealUnits.html" class="twikiLink">Unreal Units(虚幻单位)</a>。
+<p />
+1 Unreal Unit = 2厘米.  1 英尺 = 30.48cm 或 0.3048 米。1 米 = 3.280839895 英尺.  1000 米 = 1 千米.  5280 英尺 = 1 英里。
+<p />
+为了决定所期望的地形的总面积，可以从表格中以 米/千米 或 英尺/英里 为单位查找宽度和长度来获得所需要的NumPatches 和 DrawScale。
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=4;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">NumPatches(块数量)</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=4;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">DrawScale(描画比例)</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=2;table=4;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">长度(Unreal Units)</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=3;table=4;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">米</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=4;table=4;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">英尺</font></a> </th></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 64 </td><td bgcolor="#ffffff"> 64 </td><td bgcolor="#ffffff"> 4096 uus </td><td bgcolor="#ffffff"> 81.92 m </td><td bgcolor="#ffffff"> 268.77 ft </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 64 </td><td bgcolor="#eaeaea"> 96 </td><td bgcolor="#eaeaea"> 6144 uus </td><td bgcolor="#eaeaea"> 122.88 m </td><td bgcolor="#eaeaea"> 12,288.01 cm </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 64 </td><td bgcolor="#ffffff"> 128 </td><td bgcolor="#ffffff"> 8192 uus </td><td bgcolor="#ffffff"> 163.84 m </td><td bgcolor="#ffffff"> 16,383.91 cm </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 64 </td><td bgcolor="#eaeaea"> 192 </td><td bgcolor="#eaeaea"> 12288 uus </td><td bgcolor="#eaeaea"> 245.76 m </td><td bgcolor="#eaeaea"> 24,576.02 cm </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 64 </td><td bgcolor="#ffffff"> 256 </td><td bgcolor="#ffffff"> 16384 uus </td><td bgcolor="#ffffff"> 327.68 m </td><td bgcolor="#ffffff"> 32,765.09 cm </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 64 </td><td bgcolor="#eaeaea"> 384 </td><td bgcolor="#eaeaea"> 24576 uus </td><td bgcolor="#eaeaea"> 491.52 m </td><td bgcolor="#eaeaea"> 49,152.05 cm </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 64 </td><td bgcolor="#ffffff"> 512 </td><td bgcolor="#ffffff"> 32768 uus </td><td bgcolor="#ffffff"> 655.36 m </td><td bgcolor="#ffffff"> 65,535.96 cm </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 128 </td><td bgcolor="#eaeaea"> 64 </td><td bgcolor="#eaeaea"> 8192 uus </td><td bgcolor="#eaeaea"> 163.84 m </td><td bgcolor="#eaeaea"> 16,383.91 cm </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 128 </td><td bgcolor="#ffffff"> 96 </td><td bgcolor="#ffffff"> 12288 uus </td><td bgcolor="#ffffff"> 245.76 m </td><td bgcolor="#ffffff"> 24,576.02 cm </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 128 </td><td bgcolor="#eaeaea"> 128 </td><td bgcolor="#eaeaea"> 16384 uus </td><td bgcolor="#eaeaea"> 327.68 m </td><td bgcolor="#eaeaea"> 32,765.09 cm </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 128 </td><td bgcolor="#ffffff"> 192 </td><td bgcolor="#ffffff"> 24576 uus </td><td bgcolor="#ffffff"> 491.52 m </td><td bgcolor="#ffffff"> 49,152.05 cm </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 128 </td><td bgcolor="#eaeaea"> 256 </td><td bgcolor="#eaeaea"> 32768 uus </td><td bgcolor="#eaeaea"> 655.36 m </td><td bgcolor="#eaeaea"> 65,535.96 cm </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 128 </td><td bgcolor="#ffffff"> 384 </td><td bgcolor="#ffffff"> 49152 uus </td><td bgcolor="#ffffff"> 983.04 m </td><td bgcolor="#ffffff"> 98,304.10 cm </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 128 </td><td bgcolor="#eaeaea"> 512 </td><td bgcolor="#eaeaea"> 65536 uus </td><td bgcolor="#eaeaea"> 1.3km (1310.72 m) </td><td bgcolor="#eaeaea"> 4300.26 ft </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 256 </td><td bgcolor="#ffffff"> 64 </td><td bgcolor="#ffffff"> 16384 uus </td><td bgcolor="#ffffff"> 327.68 m </td><td bgcolor="#ffffff"> 32,765.09 cm </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 256 </td><td bgcolor="#eaeaea"> 96 </td><td bgcolor="#eaeaea"> 24576 uus </td><td bgcolor="#eaeaea"> 491.52 m </td><td bgcolor="#eaeaea"> 49,152.05 cm </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 256 </td><td bgcolor="#ffffff"> 128 </td><td bgcolor="#ffffff"> 32768 uus </td><td bgcolor="#ffffff"> 655.36 m </td><td bgcolor="#ffffff"> 65,535.96 cm </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 256 </td><td bgcolor="#eaeaea"> 192 </td><td bgcolor="#eaeaea"> 49152 uus </td><td bgcolor="#eaeaea"> 983.04 m </td><td bgcolor="#eaeaea"> 98,304.10 cm </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 256 </td><td bgcolor="#ffffff"> 256 </td><td bgcolor="#ffffff"> 65536 uus </td><td bgcolor="#ffffff"> 1.3km (1310.72 m) </td><td bgcolor="#ffffff"> 4300.26 ft </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 256 </td><td bgcolor="#eaeaea"> 384 </td><td bgcolor="#eaeaea"> 98304 uus </td><td bgcolor="#eaeaea"> 1.97km (1966.08 m) </td><td bgcolor="#eaeaea"> 1.22 miles (6450.39 ft) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 256 </td><td bgcolor="#ffffff"> 512 </td><td bgcolor="#ffffff"> 131072 uus </td><td bgcolor="#ffffff"> 2.6km (2,621.44 m) </td><td bgcolor="#ffffff"> 2.62 km (262,143.85 cm) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 512 </td><td bgcolor="#eaeaea"> 64 </td><td bgcolor="#eaeaea"> 32768 uus </td><td bgcolor="#eaeaea"> 655.36 m </td><td bgcolor="#eaeaea"> 65,535.96 cm </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 512 </td><td bgcolor="#ffffff"> 96 </td><td bgcolor="#ffffff"> 49152 uus </td><td bgcolor="#ffffff"> 983.04 m </td><td bgcolor="#ffffff"> 98,304.10 cm </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 512 </td><td bgcolor="#eaeaea"> 128 </td><td bgcolor="#eaeaea"> 65536 uus </td><td bgcolor="#eaeaea"> 1.31km (1310.72 m) </td><td bgcolor="#eaeaea"> 4300.26 ft </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 512 </td><td bgcolor="#ffffff"> 192 </td><td bgcolor="#ffffff"> 98304 uus </td><td bgcolor="#ffffff"> 1.97km (1966.08 m) </td><td bgcolor="#ffffff"> 1.22 miles (6450.39 ft) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 512 </td><td bgcolor="#eaeaea"> 256 </td><td bgcolor="#eaeaea"> 131072 uus </td><td bgcolor="#eaeaea"> 2.62km (2621.44 m) </td><td bgcolor="#eaeaea"> 1.63 miles (8600.52 ft) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 512 </td><td bgcolor="#ffffff"> 384 </td><td bgcolor="#ffffff"> 196608 uus </td><td bgcolor="#ffffff"> 3.93km (3932.16 m) </td><td bgcolor="#ffffff"> 2.44 miles (12900.79 ft) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 512 </td><td bgcolor="#eaeaea"> 512 </td><td bgcolor="#eaeaea"> 262144 uus </td><td bgcolor="#eaeaea"> 5.24km (5242.88 m) </td><td bgcolor="#eaeaea"> 3.26 miles (17201.05 ft) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 1024 </td><td bgcolor="#ffffff"> 64 </td><td bgcolor="#ffffff"> 65536 uus </td><td bgcolor="#ffffff"> 1.31km (1310.72 m) </td><td bgcolor="#ffffff"> 4300.26 ft </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 1024 </td><td bgcolor="#eaeaea"> 96 </td><td bgcolor="#eaeaea"> 98304 uus </td><td bgcolor="#eaeaea"> 1.97km (1966.08 m) </td><td bgcolor="#eaeaea"> 1.22 miles (6450.39 ft) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 1024 </td><td bgcolor="#ffffff"> 128 </td><td bgcolor="#ffffff"> 131072 uus </td><td bgcolor="#ffffff"> 2.62km (2621.44 m) </td><td bgcolor="#ffffff"> 1.63 miles (8600.52 ft) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 1024 </td><td bgcolor="#eaeaea"> 192 </td><td bgcolor="#eaeaea"> 196608 uus </td><td bgcolor="#eaeaea"> 3.93km (3932.16 m) </td><td bgcolor="#eaeaea"> 2.44 miles (12900.79 ft) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 1024 </td><td bgcolor="#ffffff"> 256 </td><td bgcolor="#ffffff"> 262144 uus </td><td bgcolor="#ffffff"> 5.24km (5242.88 m) </td><td bgcolor="#ffffff"> 3.26 miles (17201.05 ft) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 1024 </td><td bgcolor="#eaeaea"> 384 </td><td bgcolor="#eaeaea"> 393216 uus </td><td bgcolor="#eaeaea"> 7.86km (7864.32 m) </td><td bgcolor="#eaeaea"> 4.89 miles (25801.57 ft) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 1024 </td><td bgcolor="#ffffff"> 512 </td><td bgcolor="#ffffff"> 524288 uus </td><td bgcolor="#ffffff"> 10.49km (10485.76 m) </td><td bgcolor="#ffffff"> 6.52 miles (34402.1 ft) </td></tr>
+</table>
+<p />
+<p />
+<h2><a name="优化地形"></a> 优化地形 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+虚幻引擎中有很多功能除了为特定目的选择最佳地形尺寸外还可以用于优化地形。
+<p /> <ul>
+<li> DrawScale XY一般使用256和512之间的值并且最好不要低于128。低于128的值将会渲染密集的网格物体，那将会需要很大的渲染力度。
+</li> <li> 要充分地利用内置的距离LOD多边形细分功能，可以通过设置Terrain.MinTesselationLevel 为1并且 Terrain.MaxTesselationLevel为4来获得该功能。禁用多边形细分功能通常会导致在平截头体中渲染更多的地形三角形，从而需要更大的渲染力度。
+</li> <li> 限制应用到地形上的材质的数量。应用的材质越少设置越简单，则渲染速度越快。
+</li></ul>
+<p />
+注意，由于性能原因，目前禁用了地形材质上的高光。如果您在应用一个新的贴图层或增加了现有地形材质的复杂度后看到了较大的颜色块或其它类似的异常的东西，那么就是因为组合的地形材质有太多的贴图或太多的指令以至于不能进行正确地渲染。尽管它依赖于视频适配器硬件，但是一般的限制都是16位的贴图样本。每个地形上结合的层次应该不超过总贴图数量16，其中有3个贴图用于光照贴图、至少有1个用于层混合贴图、通常剩下的12个可用贴图可以用于地形层。层混合贴图被打包到32-位贴图的ARGB组件中，每个贴图最多支持4个混合层。随着要混合的层的数量的增加，混合贴图的数量也随着增加。请确保使用"Check map for errors(检查地图错误)"选项来查看应用到地形上的组合材质是否有<a href="MapErrors.html" class="twikiLink">地图错误</a>。
+<p /> <ul>
+<li> 隐藏地形中永远不能看到的或者放置在其它几何体和资源比如CSG画刷或StaticMesh物体下面的三角形。这可以通过使用Visibility Tool(可见性工具)编辑地形，然后点击您想隐藏的块来实现。设置为隐藏的地形区域必须足够的大，以便可以获得很大的性能提高，从而这样做才值得，换句话说，不要隐藏在每个箱子、桶或树下的一个独立的块。
+</li></ul>
+<p />
+<p />
+<h2><a name="描画比例XY 及下沉地图资源"></a> 描画比例XY 及下沉地图资源 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+正如前面所提到的，地形actor的Advanced.bEdShouldSnap属性应该总是保持为选中状态(True)，以便地形块仍然保持在网格上。这个选项和值为2的幂数的Display.DrawScale 和 Display.DrawScale3D.X/.Y结合使用，将会使得所有的块都能正确地符合到网格的所有边缘上。在大多数情况下，地形块将会为X和Y应用一个正方形的长宽比，因为如果每个块都是正方形，那么任何对于可见性以及沉没到地形中的资源的编辑通常都会被简化。
+<p />
+<strong>为什么地形网格物体XY很重要</strong>
+<p />
+地形DrawScale XY决定了地形网格物体中的每个块的尺寸。这个尺寸也决定了对于给定的顶点高度差来说的地形块的最大倾角。DrawScale XY尺寸越小，则便允许更陡峭的斜坡，这对于有时需要包含陡峭悬崖的地形是有用的。
+<p />
+<img alt="TerrainSlope.gif" src="rsrc/Three/TerrainDesignCH/TerrainSlope.gif" />
+<p />
+当创建类似于CSG(构造实体几何)和静态网格物体的资源来在地图中进行应用时，通常使用的一个惯例是缩放所有的资源以便它们可以正确地匹配到2的幂数的网格空间内。如果地形块的尺寸也缩放为2的幂数，那么陷入到地形中的类似于网格物体建筑物的资源将会整齐地沿着地形块的边缘进行排列，并且这些在内部不可见的块或者沉下资源的下面的块通常可以通过使用Terrain Visibility Tool(地图可见性工具)来进行可能的性能优化。如果资源具有内部，比如建筑物，那么在建筑物内部的地形块必须被隐藏，从而保证它们不会妨碍玩家在建筑内部的运动。
+<p />
+<img alt="UE3TerrainSink.gif" src="rsrc/Three/TerrainDesignCH/UE3TerrainSink.gif" />
+<p />
+<p />
+<h2><a name="描画比例Z对高度范围"></a> 描画比例Z对高度范围 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Display.DrawScale3D.Z指出了在Z方向上要执行的缩放的量。这决定了地形顶点以及三角形可以到达的所有高度范围。当创建一个新的地形时，把DrawScale3D.Z改为一个比默认值256低的值是可取的。推荐该值的范围在64和128之间。
+<p />
+<strong>Z为什么重要</strong>
+<p />
+DrawScale3D.Z在两个地方是非常重要的，它决定了地形可以扩展到的最大高度范围，并且它决定了顶点Z位置的 <em>间隔尺寸</em> ，该间隔尺寸在描画时是个相对值。较小的DrawScale Z值允许您对顶点高度进行更加精细的控制。比如，参考以下表格中的信息，DrawScale3D.Z值为2048，将会导致仅能每隔32厘米或大约1英尺的高度调整一次顶点。如果要调整的地形在一个建筑物或其它插入资源的边缘周围，那么1公尺的移动是非常重要的，因此需要更加精细的编辑控制。
+<p />
+<img alt="TerrainZ.gif" src="rsrc/Three/TerrainDesignCH/TerrainZ.gif" />
+<p />
+<strong>高度范围</strong>
+<p />
+以下表格列出了常用的DrawScale3D.Z值和它所支持的等价的最大高度范围，即从最低到最高的高度图值(0或黑色是最低G16高度，65535或白色是最高G16高度)。在实际应用中DrawScale3D.Z的值很少大于64。如果导入了一个外部G16高度图文件并且它需要DrawScale3D.Z的值大于从64到128之间的值，那么便应该改变高度图，以便它正在使用更多的可用的16-位范围，从而使的任何编辑的间隔尺寸和描画过程中的顶点移动是精致的。
+<p />
+1个Display.DrawScale3D.Z 单位 =总的高度图高度范围的512<a href="UnrealUnits.html" class="twikiLink">Unreal Units</a>，所以这时实际比是1：512。
+把您想使用的总高度范围(以<a href="UnrealUnits.html" class="twikiLink">Unreal Units</a>为单位)和512相除便获得了您应该使用的DrawScale3D.Z的值。
+<p />
+每个梯级的UUs值是最大的高度范围除以16位高度图分为65536所得出的值。
+<p />
+1 Unreal Unit = 2厘米.  1 英尺 = 30.48cm 或 0.3048 米。1 米 = 3.280839895 英尺.  1000 米 = 1 千米.  5280 英尺 = 1 英里。<br>
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=5;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">DrawScale3D.Z</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=5;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Max Altitude(最大高度)</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=2;table=5;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000"> UU/梯级</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=3;table=5;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">范围(米)</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=4;table=5;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">毫米/梯级</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=5;table=5;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">范围(英尺)</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=6;table=5;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">英寸/体积</font></a> </th></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 1 </td><td bgcolor="#ffffff"> 512 uus </td><td bgcolor="#ffffff"> 0.0078125 </td><td bgcolor="#ffffff"> 10.24 m </td><td bgcolor="#ffffff"> 0.15625 </td><td bgcolor="#ffffff"> 33.6 ft </td><td bgcolor="#ffffff"> 0.00615" </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 2 </td><td bgcolor="#eaeaea"> 1024 uus </td><td bgcolor="#eaeaea"> 0.015625 </td><td bgcolor="#eaeaea"> 20.48 m </td><td bgcolor="#eaeaea"> 0.3125 </td><td bgcolor="#eaeaea"> 2,047.95 cm </td><td bgcolor="#eaeaea"> 0.0123" </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 4 </td><td bgcolor="#ffffff"> 2048 uus </td><td bgcolor="#ffffff"> 0.03125 </td><td bgcolor="#ffffff"> 40.96 m </td><td bgcolor="#ffffff"> 0.625 </td><td bgcolor="#ffffff"> 4,095.90 cm </td><td bgcolor="#ffffff"> 0.0246" </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 8 </td><td bgcolor="#eaeaea"> 4096 uus </td><td bgcolor="#eaeaea"> 0.0625 </td><td bgcolor="#eaeaea"> 81.92 m </td><td bgcolor="#eaeaea"> 1.25 </td><td bgcolor="#eaeaea"> 8,192.11 cm </td><td bgcolor="#eaeaea"> 0.0492" </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 16 </td><td bgcolor="#ffffff"> 8,192 uus </td><td bgcolor="#ffffff"> 0.125 </td><td bgcolor="#ffffff"> 163.84 m </td><td bgcolor="#ffffff"> 2.5 </td><td bgcolor="#ffffff"> 16,383.91 cm </td><td bgcolor="#ffffff"> 0.0984" </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 24 </td><td bgcolor="#eaeaea"> 12,288 uus </td><td bgcolor="#eaeaea"> 0.1875 </td><td bgcolor="#eaeaea"> 245.76 m </td><td bgcolor="#eaeaea"> 3.75 </td><td bgcolor="#eaeaea"> 24,576.02 cm </td><td bgcolor="#eaeaea"> 0.148" </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 32 </td><td bgcolor="#ffffff"> 16,384 uus </td><td bgcolor="#ffffff"> 0.25 </td><td bgcolor="#ffffff"> 327.68 m </td><td bgcolor="#ffffff"> 5.0 </td><td bgcolor="#ffffff"> 32,767.83 cm </td><td bgcolor="#ffffff"> 0.197" </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 48 </td><td bgcolor="#eaeaea"> 24,576 uus </td><td bgcolor="#eaeaea"> 0.375 </td><td bgcolor="#eaeaea"> 491.52 m </td><td bgcolor="#eaeaea"> 7.5 </td><td bgcolor="#eaeaea"> 49,152.05 cm </td><td bgcolor="#eaeaea"> 0.295" </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 64 </td><td bgcolor="#ffffff"> 32,768 uus </td><td bgcolor="#ffffff"> 0.5 </td><td bgcolor="#ffffff"> 655.36 m </td><td bgcolor="#ffffff"> 10.0 </td><td bgcolor="#ffffff"> 65,535.96 cm </td><td bgcolor="#ffffff"> 0.394" </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 80 </td><td bgcolor="#eaeaea"> 40,960 uus </td><td bgcolor="#eaeaea"> 0.625 </td><td bgcolor="#eaeaea"> 819.20 m </td><td bgcolor="#eaeaea"> 12.5 </td><td bgcolor="#eaeaea"> 81,919.88 cm </td><td bgcolor="#eaeaea"> 0.492" </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 96 </td><td bgcolor="#ffffff"> 49,152 uus </td><td bgcolor="#ffffff"> 0.75 </td><td bgcolor="#ffffff"> 983.04 m </td><td bgcolor="#ffffff"> 15.0 </td><td bgcolor="#ffffff"> 98,304.10 cm </td><td bgcolor="#ffffff"> 0.591" </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 112 </td><td bgcolor="#eaeaea"> 57,344 uus </td><td bgcolor="#eaeaea"> 0.875 </td><td bgcolor="#eaeaea"> 1.15km (1,146.88 m) </td><td bgcolor="#eaeaea"> 17.5 </td><td bgcolor="#eaeaea"> 3762.73 ft </td><td bgcolor="#eaeaea"> 0.689" </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 128 </td><td bgcolor="#ffffff"> 65,536 uus </td><td bgcolor="#ffffff"> 1.0 </td><td bgcolor="#ffffff"> 1.31km (1,310.72 m) </td><td bgcolor="#ffffff"> 20.0 </td><td bgcolor="#ffffff"> 4300.26 ft </td><td bgcolor="#ffffff"> 0.787" </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 256 </td><td bgcolor="#eaeaea"> 131,072 uus </td><td bgcolor="#eaeaea"> 2.0 </td><td bgcolor="#eaeaea"> 2.62km (2,621.44 m) </td><td bgcolor="#eaeaea"> 40.0 </td><td bgcolor="#eaeaea"> 1.63 miles (8600.52 ft) </td><td bgcolor="#eaeaea"> 1.575" </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 512 </td><td bgcolor="#ffffff"> 262,144 uus </td><td bgcolor="#ffffff"> 4.0 </td><td bgcolor="#ffffff"> 5.24km (5,242.88 m) </td><td bgcolor="#ffffff"> 80.0 </td><td bgcolor="#ffffff"> 3.26 miles (17201.05 ft ) </td><td bgcolor="#ffffff"> 3.15" </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 1024 </td><td bgcolor="#eaeaea"> 524,288 uus </td><td bgcolor="#eaeaea"> 8.0 </td><td bgcolor="#eaeaea"> 10.49km (10,485.76 m) </td><td bgcolor="#eaeaea"> 160.0 </td><td bgcolor="#eaeaea"> 6.52 miles (34402.1 ft) </td><td bgcolor="#eaeaea"> 6.3" </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 2048 </td><td bgcolor="#ffffff"> 1,048,576 uus </td><td bgcolor="#ffffff"> 16.0 </td><td bgcolor="#ffffff"> 20.97km (20,971.52 m) </td><td bgcolor="#ffffff"> 320.0 </td><td bgcolor="#ffffff"> 20.97 km (2,097,152.02 cm) </td><td bgcolor="#ffffff"> 12.6" </td></tr>
+</table>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TerrainDesignCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:38:03 GMT -->
+</html></body>

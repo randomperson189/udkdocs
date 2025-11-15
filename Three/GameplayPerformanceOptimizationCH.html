@@ -1,0 +1,317 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GameplayPerformanceOptimizationCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:16:10 GMT -->
+<head>
+<title> UDK | GameplayPerformanceOptimizationCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">GameplayPerformanceOptimizationCH  </b></div>
+<div id="tooltext">
+<a href="GameplayPerformanceOptimization.html" class="twikiLink">English Translation</a><br><a href="GameplayPerformanceOptimizationJP.html" class="twikiLink">日本語訳</a><br><a href="GameplayPerformanceOptimizationKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/GameplayPerformanceOptimizationCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="PerformanceHome.html" class="twikiLink">性能、分析及优化</a></b> &gt;供游戏性程序员使用的优化方法<br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="GameplayProgrammingHome.html" class="twikiLink">游戏性编程</a></b> &gt; 供游戏性程序员使用的最优化方法
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="供游戏性程序员的使用的性能最优化方法"></a> 供游戏性程序员的使用的性能最优化方法 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="GameplayPerformanceOptimizationCH.html#供游戏性程序员的使用的性能最优化方法"> 供游戏性程序员的使用的性能最优化方法 </a> <ul>
+<li> <a href="GameplayPerformanceOptimizationCH.html#概述"> 概述</a>
+</li> <li> <a href="GameplayPerformanceOptimizationCH.html#广泛性能调查"> 广泛性能调查 </a>
+</li> <li> <a href="GameplayPerformanceOptimizationCH.html#游戏和渲染性能"> 游戏和渲染性能 </a> <ul>
+<li> <a href="GameplayPerformanceOptimizationCH.html#游戏线程分析"> 游戏线程分析</a>
+</li> <li> <a href="GameplayPerformanceOptimizationCH.html#渲染线程分析"> 渲染线程分析</a>
+</li></ul>
+</li> <li> <a href="GameplayPerformanceOptimizationCH.html#常见性能问题"> 常见性能问题 </a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+为追踪虚幻3游戏的内容或特定的游戏表现,有一系列有帮助的工具. 一个被用于 <strong>Infinity Blade Dungeons</strong> 的开发的方法描述于此。
+<p />
+<h2><a name="广泛性能调查"></a> 广泛性能调查 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+首先要跑一遍游戏然后确定哪些是拖慢速度的。 最快的办法是把 <code><b>STAT UNIT</b></code> 设置为开启的状态来看看游戏，渲染或GPU是否速度慢。 如有可能应在  <em>测试</em> 版本上运行。 GPU时间可能无法看，但如大于另两项时间可假设等同于总体框架时间。如有质检团队的报告并分配给相关部门则更好。 一需包括在报告内的有用信息包括：
+<p /> <ul>
+<li> <strong>Average FPS(平均FPS)</strong> - 原始平均fps，有时不包括动画或非互动环节。 这里的原始数字并不特别重要，只要运行数值高于vsync（一般为30），但可用来察看趋势。
+</li> <li> <strong>% over 30(超过30FPS的百分比)</strong> - 超过30fps的时间。 应尽可能高，一般要达到95%或更高。
+</li> <li> <strong>Total Hitches(总顿卡数）</strong> -花费时间超过100ms的帧数。这个值要尽可能低。
+</li> <li> <strong>% Bound by Game and Render（游戏和渲染绑定百分比）</strong> - 哪些慢帧是由游戏或渲染线程造成的。 如果这些值非0，您应该查看一下是如何造成的。 GPU绑定使用的百分比一般看不到，但如果其他两个绑定的百分比数字较低，即使高于30%也属于低的范围，GPU处理用时过长是很可能的原因。
+</li></ul>
+<p />
+<h2><a name="游戏和渲染性能"></a> 游戏和渲染性能 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+有两个工具可用来追溯游戏和渲染缓慢的原因： <a href="GameplayProfiler.html" class="twikiLink">Gameplay Profiler</a> 和 <a href="PerfStats.html" class="twikiLink">Stats Viewer</a> .The Gameplay Profiler(游戏性分析器） 是用来分析游戏线程的最佳工具，Stats Viewer（统计数据查看器）则是用来分析渲染线程的工具。 为获得最准确结果，两个工具都应在游戏的 <em>发布版本</em> 上运行。 为收集需要分析的运行数据，您可以按照UDN的页面上对每个工具操作的步骤来进行，或者由质检团队来按照上述进行设置来运行分析。 他们一般会注意到以毫秒为单位的用时最长的帧。注意帧时再由这些工具计算时并夸大了大约25%，所以不要担心35ms的帧，它们实际上在测试/发行时是30fps. 他们会为Gameplay Profiler(游戏性分析器)创建一个 <code><b>.gprof</b></code> 文件的目录并为Stat Viewer（统计数据查看器）创建 <code><b>.ustats</b></code> 文件。 您可以随后使用合适的工具来打开它们（一般双击即可,可能需要关联文件)
+<p />
+<h3><a name="游戏线程分析"></a> 游戏线程分析 </h3>
+<p />
+如果您开着 <code><b>.gprof</b></code> 文件，您可以开始使用 <strong>Gameplay Profiler</strong> 查看相关问题。 一种方法是在上方图表中深入挖掘缓慢的帧。 点击一个慢帧，并察看 <strong>Frame Actor / Class Call Graph</strong> 标签及 <strong>Frame Function *</strong>  标签。 红色文本是统计信息，绿色文本是脚本调用和更新时间。
+<p />
+<img src="rsrc/Three/GameplayPerformanceOptimizationCH/frame_actor.jpg" alt="frame_actor.jpg" width="900" height="632" />
+<p />
+使用这些标签，您应该能确认某个特定函数调用是否缓慢，或某个actor或actor们的类是否更新迟缓。 如果看上去actor更新或脚本函数不慢，那么使用标签 <strong>Frame Function Summary</strong> 来看一下哪个统计调用占用了所有的时间，并看一下帧函数调用图表来确定哪个统计一直运行在层中。 当您能确认那个造成缓慢的统计后，您可以搜索源看一下所用到的字符串，然后找到该统计及使用该统计的代码。 这可能会给您一个提示，或者您也可以向引擎团队寻求帮助。
+<p />
+另一个优化的办法是尝试整体缓慢的函数和对此函数进行整体最优化。 要达到这个目的，查看 <strong>Aggr function summary</strong> 和 <strong>Aggr function call graph</strong> 就很好。
+<p />
+<img src="rsrc/Three/GameplayPerformanceOptimizationCH/aggr_func_summary.jpg" alt="aggr_func_summary.jpg" width="900" height="196" />
+<p />
+<img src="rsrc/Three/GameplayPerformanceOptimizationCH/aggr_func_call_graph.jpg" alt="aggr_func_call_graph.jpg" width="900" height="224" />
+<p />
+您可以选择单独的统计或函数并且它会在上面的图表中以红色标记该区域的哪些帧是慢速的。 一般来说在此处可使用 <strong>Exclusive time</strong> 来排序，或者使用 <strong>World Tick Time</strong> 来看最大值，因为这个值包含了所有其他的更新。 当您看到自己感兴趣的区域时，您可以点击停顿该区域的某一帧并尝试深入查看是哪个统计或函数造成了该特定帧的慢速。
+<p />
+<h3><a name="渲染线程分析"></a> 渲染线程分析 </h3>
+<p />
+ <strong>Stats Viewer</strong> 可以让您看到渲染线程，最小的更新和脚本时间的相似信息。 当您打开 <code><b>.ustat</b></code> ，您会在右侧看到图表，左侧看到一系列过滤器。 如果您怀疑某个统计，您可以选择它查看该统计图表，但如果查看单独帧将会容易一些。 右键点击右侧的帧并选择 <strong>Open call graph</strong> 。 这可以查看单独的帧并让您查看变慢的元素，标记为红色。 当您看到一处后，您可以把它添加到总体图表中来看一下该统计造成游戏变慢的频率有多少。
+<p />
+<h2><a name="常见性能问题"></a> 常见性能问题 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+这些通用工具可用来追溯问题，能知道过去有哪些东西拖慢将会对您很有帮助。 下面是一份列表，列举了去年里遇到的问题，您的操作可能有所变化：  <ul>
+<li> <strong>Platform specific issues(平台特定问题）</strong> - 这些往往表明游戏或渲染的大量统计时间没有任何更多可用的细节。 这包含了着色器编译，声音问题，内存延迟等。一旦您确认了哪个统计确认了迟缓时间，您可以使用平台特定的本地分析器或与引擎团队讨论来获得额外的帮助。
+</li> <li> <strong>Script call overhead（脚本调用内存消耗）</strong> - 这条在游戏分析器中会很快出现，也很容易通过调整游戏逻辑或移动特定慢速函数到本地来解决。
+</li> <li> <strong>GC Time</strong> - <strong>GC Mark</strong> 和 <strong>GC Sweep</strong> 经常在游戏分析器/统计数据查看器中呈现为大的周期性的延迟. 如果在release（发行）模式下运行而没有 <code><b>-NoVerifyGC</b></code> 则该延迟会变得大得多，所以先要看那个值。 这些是不可能完全消除的，但是最优化GCable对象数量是主要目标。把更多的东西移入启动包并减少对象计数是很好的目标。
+</li> <li> <strong>Pathfinding and line checks（寻路和线性检测）</strong> - 寻路调用和线性检测经常在游戏线程中表现缓慢。 最优化此处的最容易的办法是少做一些。在游戏代码中要注意多余的寻路调用或线性检测。
+</li> <li> <strong>DLE Tick time（动态光照更新时间）</strong> - 在一些场景中动态光照效果的更新时间往往很高。确认只给实际需要的对象做动态光照环境，并对不需要动态光照的任何为actor放置的动态光照环境复位 <code><b>bDynamic</b></code> 。 在手机平台上，您可能需要进一步的优化，比如对您想要做lightmass效果而不想要动态对象的灯取消动态合成标记。
+</li> <li> <strong>Particle Time(粒子时间）</strong> -单独的粒子系统更新的性能消耗往往很大。您可以从游戏分析器中找出粒子系统并让美工对此最优化。或者，您可能需要改变游戏逻辑来减少它们的产生，比如如果一次攻击杀死10个敌人，您只需要在一帧内死亡的前2个敌人上做死亡粒子。 <strong>Update Bounds time</strong>  表明粒子系统需要固定的边界，而动态光照环境更新时间表明它可能正在做不必要的光照更新。这是和内容及游戏非常有关的。看一下 <strong>ParticleTickStats</strong> 获得更多细节。另外，太多的粒子可能会显示为渲染线程的 <strong>Particle update time</strong> ，而这可以通过LOD(层次细节度)或剔除来削减可见粒子的数量。
+</li> <li> <strong>Death and explosions（死亡和爆炸）</strong> - 死亡和爆炸的缓慢是由于不同的原因造成，一般是需要做组件更新，粒子生成和一些逻辑或AI更新。您可能需要把一些元素延迟到下一帧，或如果很多东西一起死亡则您需要把它们一起移除。
+</li> <li> <strong>Component Update time（组件更新时间）</strong> - 特定组件更新时间可能很长，比如骨骼网格。您需要看一下这种类型的组件，也许能把他们移到更为简单的组件类型（比如，100带顶点动画的静态网格比100 骨骼网格消耗的资源更少）
+</li> <li> <strong>Interp actor update time（Interp actor更新时间）</strong> -Interp actor更新起来可能在动态光照环境时间和运动时间上非常消耗资源。一个共同的修复方式是让关卡设计师在非游戏对象上标记"不要侵占" ，因为那会使停止慢速碰撞检测。
+</li> <li> <strong>Transparency Drawing（绘画的透明度）</strong> - 透明的物体经常在渲染线程中变得很慢，尤其是粒子。让美工确认没有叠加很多透明对象，并用LOD大量清除透明对象。
+</li> <li> <strong>Too Much Stuff（加入过多物体）</strong> -一般来说，美工和关卡设计喜欢在游戏里放很多东西。一般放置很多敌人（&gt;10）或放置大量的网格物将使整体拖慢，并需要内容方面的最优化。
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GameplayPerformanceOptimizationCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:16:11 GMT -->
+</html></body>

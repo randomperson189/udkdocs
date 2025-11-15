@@ -1,0 +1,299 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PerfDebug_DynamicLightEnvironmentsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:41:05 GMT -->
+<head>
+<title> UDK | PerfDebug_DynamicLightEnvironmentsCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">PerfDebug_DynamicLightEnvironmentsCH  </b></div>
+<div id="tooltext">
+<a href="PerfDebug_DynamicLightEnvironments.html" class="twikiLink">English Translation</a><br><a href="PerfDebug_DynamicLightEnvironmentsJP.html" class="twikiLink">日本語訳</a><br><a href="PerfDebug_DynamicLightEnvironmentsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/PerfDebug_DynamicLightEnvironmentsCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt; <b><a href="TechnicalHome.html" class="twikiLink">技术&amp;编程 主页</a></b> &gt; <b><a href="PerformanceAndMemory.html" class="twikiLink">性能和内存</a></b> &gt;性能调试:动态光照环境
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="性能调试:动态光照环境"></a> 性能调试:动态光照环境 </h1>
+<p />
+<em>点击<a href="PerformanceDebugging.html" class="twikiLink">这里</a>返回到性能调试页面。</em>
+<p />
+<h2><a name="动态光照环境"></a> 动态光照环境 </h2>
+<p />
+<p />
+<strong>问题:</strong>
+<p />
+<p />
+动态光照环境更新的性能消耗显示为非常昂贵。
+<p />
+<p />
+<p />
+<strong>解决方案:</strong>
+<p />
+<p />
+默认情况下所有的 <strong>InterpActors</strong>  (也就是 Movers)和 <strong>KActors</strong> 都有动态光照环境。当一个动态关照环境更新时，它将会对光源进行线性检测，这样会增加许多CPU消耗。然而，您可以通过进行各种各样的设置来降低动态物体的光照消耗。
+<p />
+这里是一些光照环境设置，按照从最昂贵到最便宜的(在游戏线程上)顺序，也介绍了何时使用相应的设置：
+<p />
+1) <strong>bEnabled=True</strong>, <strong>bDynamic=True</strong> (默认)
+<p />
+这些设置仅在需要的时候使用，它们将会基于 <strong>InvisibleUpdateTime</strong> 和 <strong>MinTimeBetweenFullUpdates</strong> 进行更新。 同一时刻不应该有多余50个这样的项处于活动状态。 当它们可见、靠近玩家或者当它们移动时需要进行额外的可见性检测。
+<p />
+2) <strong>bEnabled=True</strong>, <strong>bDynamic=False</strong>, <strong>bForceNonCompositeDynamicLights=True</strong>
+<p />
+这些设置应该是非常廉价的，环境在第一次更新时进行更新，以后再也不会更新。 <strong>bForceNonCompositeDynamicLights</strong> 可以允许动态光源影响它们，这将没有任何严重的游戏线程性能消耗。 可以有成百个这样的设置，它们唯一的消耗(在第一次更新后)是到动态光源的线性检测(并且仅当拥有者可见时)。 这些要比使用预计算阴影的光照看上去要好的多，因为它们可以旋转并且光照仍然可以保持正确。 它们通常用于破碎网格物体、GDO以及其他东西。 如果您发现这些产生了很多新能消耗，那么可以在代码侧进行一些优化。
+<p />
+3) <strong>bEnabled=False</strong> , <strong>bUsePrecomputedShadows=True</strong> (在图元组件上)。 同时，您必须把它从动态光照通道中取出，并把它放到静态光照通道中。
+<p />
+这些将会进行光照贴图，渲染的性能消耗很低，它们应该没有游戏线程的消耗(除了调用了 <em>UDynamicLightEnvironmentComponent::Tick</em> 函数)。 当移动它们时，它们的效果将会错误。
+<p />
+<p />
+这是个控制台命令，可以用于查看有多少光照环境处于活动状态。在控制台上输入 <strong>SHOWLIGHTENVS</strong> ，您将会获得在那帧中更新的光照环境的所有列表。输入应该是这样的：
+<p />
+<pre>
+Log： LE:SP&#95;MyMap&#95;01&#95;S.TheWorld:PersistentLevel.InterpActor&#95;12.DynamicLightEnvironmentComponent&#95;231 1
+Log： LE:SP&#95;MyMap&#95;01&#95;S.TheWorld:PersistentLevel.InterpActor&#95;55.DynamicLightEnvironmentComponent&#95;232 0
+Log： LE:SP&#95;MyMap&#95;01&#95;S.TheWorld:PersistentLevel.InterpActor&#95;14.DynamicLightEnvironmentComponent&#95;432 1 ...
+</pre>
+<p />
+在每行末尾的‘1’意味着 <strong>bDynamic</strong> 设置为 <strong>TRUE</strong> 。这可以用于引导关卡设计人员来修改它们的地图以便降低更新消耗。
+<p />
+<p />
+<p />
+<p />
+<h2><a name="反馈"></a> 反馈 </h2>
+<p />
+您有关于引擎中性能和内存方面的问题或意见吗？  将您的问题发送到 <strong><a href="mailto&#58;unedit3&#64;udn&#46;epicgames&#46;com">right&#32;here</a>（这里）！</strong>
+<p />
+<p />
+<em>点击<a href="PerformanceDebugging.html" class="twikiLink">这里</a>返回到性能调试页面。</em>
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PerfDebug_DynamicLightEnvironmentsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:41:05 GMT -->
+</html></body>

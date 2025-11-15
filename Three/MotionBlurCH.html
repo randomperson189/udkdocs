@@ -1,0 +1,392 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MotionBlurCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:13 GMT -->
+<head>
+<title> UDK | MotionBlurCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">MotionBlurCH  </b></div>
+<div id="tooltext">
+<a href="MotionBlur.html" class="twikiLink">English Translation</a><br><a href="MotionBlurJP.html" class="twikiLink">日本語訳</a><br><a href="MotionBlurKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/MotionBlurCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="PostProcessEffectsHome.html" class="twikiLink">后期特效</a></b> &gt; 运动模糊后期特效 <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="CinematicArtistHome.html" class="twikiLink">过场动画制作人员</a></b> &gt; 运动模糊后期特效
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="运动模糊后期特效"></a> 运动模糊后期特效 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlurCH/camera_motionblur.jpg" width='512' height='256' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>左侧：没有使用运动模糊<br>右侧：使用运动模糊（以及快速相机运动）</SMALL> </td></tr>
+</table>
+<br>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="MotionBlurCH.html#运动模糊后期特效"> 运动模糊后期特效</a> <ul>
+<li> <a href="MotionBlurCH.html#概述"> 概述</a>
+</li> <li> <a href="MotionBlurCH.html#实现"> 实现</a>
+</li> <li> <a href="MotionBlurCH.html#定向模糊"> 定向模糊</a>
+</li> <li> <a href="MotionBlurCH.html#调整参数"> 调整参数</a>
+</li> <li> <a href="MotionBlurCH.html#与运动模糊之间的交互"> 与运动模糊之间的交互</a>
+</li> <li> <a href="MotionBlurCH.html#已知限制和问题"> 已知限制和问题</a>
+</li> <li> <a href="MotionBlurCH.html#有用的控制台命令"> 有用的控制台命令</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+运动模糊是在定格图片和视频中看到的效果。在相机中，将快门打开一小段时间为电影媒体提供光源。因为这么快速移动的对象看上去是模糊的。在人类眼睛范围内，可以感知到运动模糊，因为人类眼睛中的感应器随着时间也会有一些反应（图片会随时间褪色）。运动模糊是在视频中最常见的，例如，帧速率 (20 - 30) 以及屏幕上的截图。
+<p />
+我们实现的运动模糊后期特效具有 <strong>相机运动模糊</strong> 和 <strong>对象运动模糊</strong> 。对于对象模糊，我们为每个屏幕像素生成了一个2D速度向量。每帧都会对这条信息进行更新，然后将其存储在中间的速度贴图。下面半分辨率后期特效会使用该信息生成一个半分辨率运动模糊的图像。将它与全分辨率场景图片进行混合，在必要的地方保持高图像分辨率。我们通过平均一些贴图查找次数生成这个运动模糊图片。为了避免出现多个图像重影（例如，平均5个贴图查找次数可能会出现5个重影图像），我们限制了最大屏幕速度。进行半分辨率运动模糊可以帮助改善性能，同时可以只使用一些贴图查找次数进一步隐藏。
+<p />
+更多的技术主题：<a href="MotionBlurSkinning.html" class="twikiLink">MotionBlurSkinning</a> MotionBlurSoftEdge（运动模糊软边）<sup>?</sup>
+<p />
+<h2><a name="实现"></a> 实现 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+当我们同时正确添加两种类型运动时，移动对齐后我们还可以看到减弱的运动模糊的特效（例如，在相机以相近的速度跟随一个正在移动的对象时）。由于该方法只能使用给定的场景图像数据进行操作，所以不是所有特效都可以重新生成。运动模糊通常效果非常细微，所以大多数情况下近似值的效果很好。
+<p />
+为了获得更好的性能，我们在预渲染中为 uber 后期处理渲染生成具有一半分辨率的运动模糊的图像。同时也意味着我们需要放大结果图像，而我们需要遮住的不是合理使用运动模糊的图像（很小的图像移动）。
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlurCH/motionmblurtransiation.jpg" alt="motionmblurtransiation.jpg" width='625' height='501' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>一个向前走动的玩家认为运动模糊与图片角落中的情况非常接近。<br>您可以看到全分辨率图片与半分辨率运动模糊图片柔和地混合过渡。</SMALL> </td></tr>
+</table>
+<p />
+为了进行调试，您可以使用 "visualizetexture" 命令看混合蒙板。白色的 alpha 通道使用的是全分辨率，黑色的通道使用的半分辨率，模糊的内容是：
+<p />
+<img src="rsrc/Three/MotionBlurCH/motionblurmask.jpg" alt="motionblurmask.jpg" width='841' height='528' />
+<p />
+注意，旋转玩家视角会形成运动模糊。预计会是这样，但是可能并不是玩家想要看到的结果。正常情况下，眼睛会集中在图片中一些有趣的地方，然后追随着它们。
+对于眼睛而言，运动模糊会消失。为了模拟这种效果，我们将需要进行适当的眼睛追踪或模拟眼睛的行为（在很多情况下可能都会失败）。选择方案： 运动模糊较少，遮住
+运动模糊影响大部分屏幕外部的空间，限制游戏关键环节时的运动模糊，帧速率较高。
+<p />
+对于 <strong>camera motion blur（相机运动模糊）</strong>  ，远离上一个视图矩阵、当前视图矩阵和像素深度时可以计算这个 2D 运动向量。对于 <strong>object motion blur（对象运动模糊）</strong> ，我们通过将所有运动模糊对象的几何体渲染到所谓速度贴图中，计算每像素的向量（由于性能原因，会剔除小对象和移动慢的对象）。在使用 <strong>VisualizeTexture（可视化贴图）</strong> 控制台命令时可以看到该贴图中的数据：
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlurCH/perobjectmotionblur.jpg" alt="perobjectmotionblur.jpg" width='818' height='243' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>左侧：在游戏中看到的叶轮片旋转。<br>右侧：同样的场景通过 VisualizeTexture 控制台命令显示的效果。</SMALL> </td></tr>
+</table>
+<p />
+这个速度贴图中的颜色代表运动向量方向和强度。下面的图片会说明如何使用红色和绿色通道定义一个运动向量（这个圆周代表的是最大速度）：
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlurCH/colormeaning.jpg" alt="colormeaning.jpg" width='256' height='256' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>这个速度贴图中的颜色代表对象运动。<br>黑色为相机/没有对象运动保留。<br>蓝色和 alpha 通道可能会被径向模糊功能使用。</SMALL> </td></tr>
+</table>
+<p />
+我们支持 <strong>刚体</strong> 的所有模型转换，例如，平移、旋转和缩放。在这之后我们添加了对骨骼 <strong>动画</strong> 的支持。由于这种方法需要一些特殊的硬件功能并且会对性能产生影响，所以默认情况下不会启用它。在这里可以了解到更多相关信息： <a href="MotionBlurSkinning.html" class="twikiLink">运动模糊植皮</a>
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlurCH/PerBoneMotionBlur.jpg" alt="PerBoneMotionBlur.jpg" width='672' height='350' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>运动模糊植皮允许身体的各个部分在不同的方向移动。</SMALL> </td></tr>
+</table>
+<p />
+<h2><a name="定向模糊"></a> 定向模糊 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+理想情况是，我们将图片内容分布到运动方向的像素。没有经验的人执行此项操作会很慢。目前。我们通过一个基于多个 bilinear 过滤的贴图查找的集中操作对其进行概略估算。在我们观看该场景贴图半分辨率版时，我们可以获得优质性能，甚至运动看上去也很流畅。对于极限运动，向量可以很大。为了避免有多个图片的效果，可以将该运动固定在一个 2D 磁盘（参见 <strong>最大速度</strong> ）中。
+<p />
+当我们将一个 HDR 图像作为输入数据时，可以看到明亮的图像内容形成尖锐的线，不过暗一点的图像看上去会更加模糊。希望在使用运动模糊的电影中也可以看到这种特效。
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlurCH/HDRMotionBlur.jpg" alt="HDRMotionBlur.jpg" width='302' height='189' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>明亮的对象（HDR 内容）会由于运动模糊而看上去更亮。</SMALL> </td></tr>
+</table>
+<p />
+该集中操作速度很快，而且会模糊运动方向上的图像内容，但是在不进一步进行处理的情况下，图像内容将会露出到静态的区域中，并且会出现在移动对象（例如，第三人称玩家）的前面。为了解决这个问题，我们避免这些情况发生，只在移动对象内部进行模糊。然而，只有在一种情况下会出现错误，那就是在对象只会模糊内部对于对象边界外的内容不进行模糊的时候。通过使用<a href="MotionBlurSoftEdge.html" class="twikiLink">运动模糊软边</a>功能可以解决这个问题。
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlurCH/MotionBlurSoftEdgeNumbers2.jpg" alt="MotionBlurSoftEdgeNumbers2.jpg" width='326' height='221' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>SoftEdge（柔和边缘）能使运动模糊出现在移动对象的外面。</SMALL> </td></tr>
+</table>
+<p />
+将运动模糊效果与径向模糊功能（在使用方法变焦距的时候，与 Photoshop 中径向模糊相似）结合在一起。两种效果有很多相似之处，而且使用这种结合的方法可以提高效率。由于这两种方法共享同一个运动向量，所以您可能会在这两种效果被密集使用的时候发现一些小毛病。幸运的是，这些情况发生得比较少。
+<p />
+<img src="rsrc/Three/MotionBlurCH/RadialBlur.jpg" alt="RadialBlur.jpg" width='850' height='558' />
+<p />
+<h2><a name="调整参数"></a> 调整参数 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+在后期处理链中，您会在 uber 后期处理节点（不需要使用运动模糊节点，uber 后期处理节点对于运动模糊来说是必需的，而且带有相同的设置）：
+<p />
+     <img src="rsrc/Three/MotionBlurCH/editorsettings.jpg" alt="editorsettings.jpg" width='265' height='122' />
+<p />
+<strong>Max Velocity（最大速度）</strong> 会通过指定大小（通过屏幕宽度进行缩放调整，无论高度是多少始终都是圆形的）限制磁盘中的运动。这个值是某个大小合理的内部常量的系数。小于 1 的数可以进一步限制向量，大于 1 的数会使模糊轻度更大，但是因为我们知道同一个样本的确切数目，所以结果有所不同（多个图片）。
+<p />
+     <img src="rsrc/Three/MotionBlurCH/motionclamp.jpg" alt="motionclamp.jpg" width='384' height='129' />
+<p />
+<strong>Motion Blur Amount（运动模糊量）</strong> 允许缩放运动模糊向量。最好首先调整这个值，然后将 Max Velocity（最大速度）限定值设置得高一点，要不然您将无法看到大小的变化。您最后可能会得到一个由小半径限定的高运动模糊量。即使是小运动也会产生模糊，整体效果可能会比禁用运动模糊后差。
+<p />
+     <img src="rsrc/Three/MotionBlurCH/motionscale.jpg" alt="motionscale.jpg" width='384' height='128' />
+<p />
+<strong>Full Motion Blur（全运动模糊）</strong> 复选框允许禁用相机运动模糊。对象运动模糊将仍然处于激活状态。
+<p />
+<strong>Camera Rotation Threshold（相机旋转阙值）</strong> 直到相机运动模糊被禁用之前相机可以旋转的最大角度（它适用于相机切换）。
+<p />
+<strong>Camera Translation Threshold（相机平移阙值）</strong> 直到相机运动模糊被禁用之前相机可以移动的距离（同样适用于相机切换）。
+<p />
+注意，后期处理链中的设置可以被后期处理体积覆盖。
+<p />
+在 Actor 中，您可以找到 <strong>Motion Blur Scale（运动模糊缩放）</strong> 。需要使用这个值一次禁用随相机移动的对象上的运动模糊（例如，平台）。以后不会再需要这个值了，因为运动模糊现在可以正确地处理此类相关运动。如果我们发现我们缺少一些使用新的实现的实例，不久之后将会删除或者重新激活这个值。
+<p />
+<h2><a name="与运动模糊之间的交互"></a> 与运动模糊之间的交互 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+在真实世界中，如果大量光线都来自于同一个方向（屏幕上的位置），那么会看到光溢出现象。运动模糊可以将亮区域数分布到更大的屏幕区域。最近进行的变更 (10/28/2010) 可以仿真这种效果。
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/MotionBlurCH/BloomAfterMotionBlur.jpg" alt="BloomAfterMotionBlur.jpg" width='554' height='224' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>注意，使用新方法后，光溢出变得更暗了，在移动对象的路径上扩散得更多。</SMALL> </td></tr>
+</table>
+<br>
+<p />
+<p />
+在快速移动对象或快速相机移动以及正确设置作用下，效果变得明显（最大速度大，运动模糊量大，光溢出阙值 vs. 对象亮度<a href="MotionBlurSoftEdge.html" class="twikiLink">运动模糊软边</a>）。那么之前出现光溢出现象的亮度高内容扩散得更多，这同时可以使运动模糊变得没那么明显。
+<p />
+<h2><a name="已知限制和问题"></a> 已知限制和问题 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> 对于运动模糊，像在 Matinee 中一样进行相机切换会出现问题。我们目前依赖使用较大的相机旋转或平移禁用运动模糊。可以使用这两个值的自定义阙值。理想情况下，Matinee 将会生成一个事件，这样可以避免发生用户错误。不过，即使这个问题得以解决，仍然还是会有其他问题存在（例如，游戏代码）。理想情况下，我们会一直移动相机，而处理跳跃或相机切换要使用不同的方法。这实现起来需要更多的技巧，因为每帧（每个视图）都会重新创建相机对象。
+</li> <li> 最大速度偏高的话可能会导致出现多个图片（我们尝试在每个像素上随机进行，但是结果不够好。更多的样本会有所帮助，但是性能会受到影响，所以我们可能会为它添加一个选项）。
+</li> <li> 运动模糊以半分辨率输入为基础，渲染到在 uber 后期处理渲染中使采样率增大的半分辨率贴图。这个过程是可见的。调整遮挡过程可能会有所帮助（还没有介绍）。
+</li> <li> 为了获得更多的编辑经验，我们在编辑器中将运动模糊禁用了。这同时也作用于 Radial（径向）模糊。
+</li></ul>
+<p />
+<h2><a name="有用的控制台命令"></a> 有用的控制台命令 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <dl>
+<dt> <code><b>show postprocess</b></code> </dt><dd> 完全启用/禁用后期处理
+</dd> <dt> <code><b>VisualizeTexture</b></code> </dt><dd> 可以查看中间缓冲（例如，半分辨率运动模糊输入，速度贴图或运动模糊输出）
+</dd> <dt> <code><b>MotionBlurMaxVelocity</b></code> </dt><dd> 可以覆盖后期特效设置（进行调整和调试）。
+</dd> <dt> <code><b>MotionBlurAmount</b></code> </dt><dd> 可以覆盖后期特效设置（进行调整和调试）。
+</dd> <dt> <code><b>MotionBlurSoftEdge</b></code> </dt><dd> 请参阅<a href="MotionBlurSoftEdge.html" class="twikiLink">运动模糊软边</a>
+</dd> <dt> <code><b>MotionBlurSkinning</b></code> </dt><dd> 请参阅<a href="MotionBlurSkinning.html" class="twikiLink">运动模糊植皮</a>
+</dd> <dt> <code><b>set skeletalmeshcomponent bforcerefpose 1</b></code> </dt><dd> 禁用动画对象的皮肤
+</dd> <dt> <code><b>slomo 0.1</b></code> </dt><dd> 降低世界仿真速度（1 是将其设置恢复到默认值）
+</dd></dl>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MotionBlurCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:16 GMT -->
+</html></body>

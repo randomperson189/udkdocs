@@ -1,0 +1,322 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ImportingSkeletalLODsJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:30:52 GMT -->
+<head>
+<title> UDK | ImportingSkeletalLODsJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ImportingSkeletalLODsJP  </b></div>
+<div id="tooltext">
+<a href="ImportingSkeletalLODs.html" class="twikiLink">English Translation</a><br><a href="ImportingSkeletalLODsCH.html" class="twikiLink">中国翻译</a><br><a href="ImportingSkeletalLODsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ImportingSkeletalLODsJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<h1><a name="骨格 LOD のインポート"></a> 骨格 LOD のインポート </h1>
+<p />
+<em>ドキュメントの概要：骨格メッシュの低 LOD （ディテールのレベル） バージョンのインポート方を説明。</em>
+<p />
+<em>ドキュメントの変更ログ: AndrewMoise<sup>?</sup> により作成。 <a href="https://udn.epicgames.com/Main/LaurentDelayen" class="restricted" class="restricted" class="twikiLink">Laurent Delayen</a> により更新。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="ImportingSkeletalLODsJP.html#骨格 LOD のインポート"> 骨格 LOD のインポート</a> <ul>
+<li> <a href="ImportingSkeletalLODsJP.html#概要"> 概要</a>
+</li> <li> <a href="ImportingSkeletalLODsJP.html#Low-LOD メッシュの作成"> Low-LOD メッシュの作成</a>
+</li> <li> <a href="ImportingSkeletalLODsJP.html#LOD を表示する"> LOD を表示する</a>
+</li> <li> <a href="ImportingSkeletalLODsJP.html#LOD をインポートする"> LOD をインポートする</a>
+</li> <li> <a href="ImportingSkeletalLODsJP.html#LOD を設定する"> LOD を設定する</a>
+</li> <li> <a href="ImportingSkeletalLODsJP.html#マテリアルと LOD"> マテリアルと LOD</a>
+</li> <li> <a href="ImportingSkeletalLODsJP.html#LOD、ソケット、および物理資産"> LOD、ソケット、および物理資産</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<p />
+骨格メッシュのボーンと頂点のすべてを更新することは、大変コストがかかることがあるため、キャラクターを遠くに見るときは、メッシュのより低い LOD （ディテールのレベル） バージョンを使用することができます。これは、1 つのシーンで多数のキャラクターをレンダリングするときに、重要な最適化になり得ます。
+<p />
+UnrealEngine 3 では、骨格メッシュのためのメッシュ LOD およびボーン LOD の両方をサポートします。ローディテールのメッシュをアーティストが作成し、既存の骨格メッシュに使用するため、LOD としてインポートします。LOD を追加した後は、ゲーム中に LOD がどのような距離で使用されてもコントロールできます。メッシュのより低い LOD バージョンをレンダリングするときは、アニメーション システムは、要求されたボーンのみをアニメーション化して更新します。
+<p />
+UnrealEngine 2 では、骨格メッシュのローポリ バージョンを自動的に生成するためのコードがありました。しかしこの機能は、アーティストが作成した LOD よりもはるかに悪い結果になったため、取り除かれました。
+低LODメッシュを自動的に生成するツールはなく、これはアーティストが手動で(Max, Maya, またはパイプラインにある使用している 3D パッケージのどれでも)行なわなければならず、 <a href="AnimSetEditorUserGuideJP.html" class="twikiLink">アニメーションセットビューア</a> へのインポートも同様に行わなければいけません。
+低ディティールメッシュはアーティストにより作成され、既存のSkeletalMeshに使用するため、LOD としてインポートされます。LODを追加すると、ゲームでどのディスタンスでLODが使用されるかを制御します。メッシュの低LODバージョンをレンダリング時、アニメーションシステムは要求されたボーンのみをアニメーション化し、更新します。
+<p />
+<p />
+<h2><a name="Low-LOD メッシュの作成"></a> Low-LOD メッシュの作成 </h2>
+<p />
+メッシュのより低い LOD バージョンをインポートするときは、含まれるトライアングルとボーンが「ベース」のハイポリ バージョンよりも、少数にすべきです。メッシュを LOD として使用するには以下の条件が必要です。
+<p /> <ul>
+<li> ボーンを取り除く場合、ボーンは、階層の末端からのみ取り除くことができます。したがって、指を取り除くのは、LOD にとって良いアイデアですが、脊椎などからボーンを取り除くことはできません。
+</li> <li> ベース メッシュに対するルート ボーンと LOD は同じである必要があります。
+</li> <li> ベース メッシュの階層と LOD は同じである必要があります。
+</li></ul>
+<p />
+より低い LOD バージョンのメッシュでは、スキンニング コストが減少するので、頂点ごとに影響を一つだけ持たせるのが良い方法である場合がよくあります。「ソフト」な頂点のある LOD をインポートすると、警告がポップアップされますが、この警告は、..Editor.ini ファイル（AnimSetViewer セクションの CheckSingleInfluenceLOD フラグ）で無効にすることができます。
+<p />
+<h2><a name="LOD を表示する"></a> LOD を表示する </h2>
+<p />
+アニメーション セット ビューアのツールバーにはいくつかのボタンがあり、メッシュ用のさまざまな LOD レベルがどのように見えるかが分かります。
+<p />
+<img alt="LODButtons.jpg" src="rsrc/Three/ImportingSkeletalLODsJP/LODButtons.jpg" />
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> オート </td><td bgcolor="#eaeaea"> スクリーン上のメッシュのサイズに基づいて、使用する LOD レベルを自動的に選択します。ゲーム中にメッシュがどのように見えるかをプレビューできます。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> B </td><td bgcolor="#ffffff"> ディスプレイに「ベース」メッシュ（LOD 0 など) を使用するように強制します。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 1 </td><td bgcolor="#eaeaea"> ディスプレイに LOD 1 を使用するように強制します。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 2 </td><td bgcolor="#ffffff"> ディスプレイに LOD 2 を使用するように強制します。この場合、このメッシュのためにインポートされた LOD 2 はないので、グレイになります。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 3 </td><td bgcolor="#eaeaea"> ディスプレイに LOD 3 を使用するように強制します。このメッシュのためにインポートされた LOD 3 はありません。 </td></tr>
+</table>
+<p />
+頂点およびボーン カウントに加えて、現在使用中の LOD を表示する 3D ビューポートの一番上にもいくつか情報があります。アニメーション セット ビューアで、「Show Bones」(ボーンを表示) または「Show Bone Name」(ボーン名を表示) をオンにした場合、現在表示されている LOD のために更新されたボーンのみが表示されます。
+<p />
+<h2><a name="LOD をインポートする"></a> LOD をインポートする </h2>
+<p />
+まず LOD を追加したい骨格メッシュのあるアニメーション セット ビューアを開けます。次に [File] メニューから 「Import Mesh LOD」(メッシュ LOD をインポートする) を選択します。そのメッシュのより低いバージョンを含んだ PSK ファイルを指定するように求められます。インポートする .PSK を選択すると、コンボ ボックスがポップアップされ、そのメッシュをどの LOD レベルとしてインポートするかが選択できます。LOD 0 は、「base」(ベース) または最高のポリ メッシュです。LOD 1 は、一段階下がったもので、以下同様に続きます。既に存在する LOD でのインポートは、既存の LOD メッシュを置換することになります。
+<p />
+インポートが上手く行き、エラーが何も生じなければ、ツールバーにある適切な [Force LOD] (LOD を強制する)ボタンを押して、メッシュが正しく導入されているか確認できます。
+<p />
+<h2><a name="LOD を設定する"></a> LOD を設定する </h2>
+<p />
+LOD が適切に機能するために調整する必要のある設定がいくつかあります。それぞれの LOD レベルには、右側の 「Mesh」 タブの 「LODInfo」配列にエントリがあります。
+<p />
+<img alt="LODInfo.jpg" src="rsrc/Three/ImportingSkeletalLODsJP/LODInfo.jpg" />
+<p />
+このアレイのエントリ 0 は無視してください。「ベース」メッシュを表しています。
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> DisplayFactor<br><nobr>(表示ファクタ)</nobr> </td><td bgcolor="#eaeaea"> LOD を使用する前に、スクリーン上でメッシュをどれくらいの大きさにするかを制御します。数字が小さいほど、遠くにあるメッシュに LOD を使用することを意味します。3D ウィンドウの一番上にメッシュのプレビュー用の現在の表示ファクタが表示されます。それぞれの連続する LOD レベルの表示ファクタは、そのすぐ前よりも小さくする必要があります。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> LODHysteresis<br><nobr>(LOD ヒステリシス)</nobr> </td><td bgcolor="#ffffff"> 2 つの LOD レベルの境界線の真上で、メッシュの「ちらつき」を避けるために、このパラメータで、単純なバージョンから複雑なバージョンに移行するときに、「バイアス」を導入することができます。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> LODMaterialMap<br><nobr>(LOD マテリアル マップ)</nobr> </td><td bgcolor="#eaeaea"> メッシュの LOD バージョンには、ベース メッシュと同じマテリアルを使用する必要があります。しかし、メッシュをインポートするときに、マテリアルは、異なる順序でインポートすることができます。このアレイで、骨格メッシュのマテリアル 配列のどのエレメントを、LOD の各セクションにマップするか選択できます。 </td></tr>
+</table>
+<p />
+<h2><a name="マテリアルと LOD"></a> マテリアルと LOD </h2>
+<p />
+LOD をセットアップする最も簡単な方法は、ベース メッシュと同じマテリアルを LOD に使用することです。それぞれの SkeletalMeshComponent （骨格メッシュのインスタンス）は独自のマテリアル アレイを持っており、これによって骨格メッシュ マテリアル アレイにあるマテリアルをオーバーライドすることが可能です。そのため、あらゆる LOD で使用するマテリアルをすべてこのアレイに保存したいと思われるでしょう。インスタンス単位のオーバーライドの例としては、異なるチーム スキンやフェイスを適用するなどがあります。しかし、ベース メッシュが使用していないマテリアルを使用する LOD をどうしても作成したいというのなら、可能です。骨格メッシュのマテリアル アレイに、ベース メッシュが使用していない新しいエレメントを追加し、そこへ新しいマテリアルを置きます。次に、LODMaterialMap を使用して、その LOD が新しいスロットを指すようにします。
+<p />
+<h2><a name="LOD、ソケット、および物理資産"></a> LOD、ソケット、および物理資産 </h2>
+すべての LOD に現れるボーンだけにソケットを作成することができます。新しいソケットを作成するときは、すべての LOD にあるボーンのみがボーン選択コンボに現われます。ソケットに必要なボーンのない新しい LOD をインポートしようとしても、エラーが生じるだけです。
+<p />
+物理資産が要求するボーンは、たとえ LOD のメッシュに必要なくても、常に更新されています。これは、ボーン単位の衝突検知に使用するのですが、そのとき遠くに居る誰かがそのボーンを変更してはいけないためです。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ImportingSkeletalLODsJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:30:53 GMT -->
+</html></body>

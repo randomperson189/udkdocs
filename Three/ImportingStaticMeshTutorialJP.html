@@ -1,0 +1,342 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ImportingStaticMeshTutorialJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:48 GMT -->
+<head>
+<title> UDK | ImportingStaticMeshTutorialJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ImportingStaticMeshTutorialJP  </b></div>
+<div id="tooltext">
+<a href="ImportingStaticMeshTutorial.html" class="twikiLink">English Translation</a><br><a href="ImportingStaticMeshTutorialCH.html" class="twikiLink">中国翻译</a><br><a href="ImportingStaticMeshTutorialKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ImportingStaticMeshTutorialJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<h1><a name="StaticMesh のインポートのチュートリアル"></a> StaticMesh のインポートのチュートリアル </h1>
+<p />
+<em>ドキュメントの概要： UnrealEngine3 に StaticMesh をインポートするためのチュートリアル</em>
+<p />
+<em>ドキュメントの変更ログ：  <a href="https://udn.epicgames.com/Main/JamesGolding" class="restricted" class="restricted" class="twikiLink">James Golding</a> により作成。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="ImportingStaticMeshTutorialJP.html#StaticMesh のインポートのチュートリアル"> StaticMesh のインポートのチュートリアル</a> <ul>
+<li> <a href="ImportingStaticMeshTutorialJP.html#はじめに"> はじめに</a>
+</li> <li> <a href="ImportingStaticMeshTutorialJP.html#Realtime バンプマッピング： ディテールメッシュとレンダリングメッシュ"> Realtime バンプマッピング： ディテールメッシュとレンダリングメッシュ</a>
+</li> <li> <a href="ImportingStaticMeshTutorialJP.html#エクスポート用にコンテンツを準備する"> エクスポート用にコンテンツを準備する</a> <ul>
+<li> <a href="ImportingStaticMeshTutorialJP.html#UV について"> UV について</a>
+</li> <li> <a href="ImportingStaticMeshTutorialJP.html#法線マップの生成"> 法線マップの生成</a>
+</li></ul>
+</li> <li> <a href="ImportingStaticMeshTutorialJP.html#ジオメトリのエクスポート"> ジオメトリのエクスポート</a>
+</li> <li> <a href="ImportingStaticMeshTutorialJP.html#UnrealEngine3 へのコンテンツの取り込み"> UnrealEngine3 へのコンテンツの取り込み</a>
+</li> <li> <a href="ImportingStaticMeshTutorialJP.html#マテリアルの適用"> マテリアルの適用</a>
+</li> <li> <a href="ImportingStaticMeshTutorialJP.html#衝突"> 衝突</a>
+</li> <li> <a href="ImportingStaticMeshTutorialJP.html#Static Mesh アクタの使用">  Static Mesh アクタの使用</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="はじめに"></a> はじめに </h2>
+<p />
+ここでは、UnrealEngine3 のアートのパイプラインと StaticMesh の基礎について説明します。特に、エンジンに新たに搭載された機能と手順について詳しく見て行きます。新バージョンで変更のなかった機能については UDN の他のページで説明しています。
+<p />
+<p />
+<p />
+<h2><a name="Realtime バンプマッピング： ディテールメッシュとレンダリングメッシュ"></a> Realtime バンプマッピング： ディテールメッシュとレンダリングメッシュ </h2>
+<p />
+UnrealEngine3 では Realtime にバンプマッピングを利用できます。この新しい技術によって斬新なモデリング技術がもたらされました。法線マップは高ポリゴンの「ディテール」メッシュから、ジオメトリのディテールを読み込んだ順に徐々に生成されます。ディテールメッシュが Realtime に稼動することは決してありません。ディテールメッシュは法線マップに情報を与えるために存在します。そのため、ポリゴン数の制限は非常に少なくなり、ディテールの品質はシネマティクスレベルとなります。
+<p />
+<img alt="SideBySideJP.jpg" src="rsrc/Three/ImportingStaticMeshTutorialJP/SideBySideJP.jpg" />
+<p />
+生成された法線マップは、UE3 の低ポリゴンの「レンダリング」メッシュに適用され、最終的には実際よりもかなりポリゴン的に複雑なメッシュが完成します。
+<p />
+<p />
+<h2><a name="エクスポート用にコンテンツを準備する"></a> エクスポート用にコンテンツを準備する </h2>
+<p />
+この時点で、空間の同じ点（おそらくは原点）にディテールメッシュとレンダリングメッシュが生成されています。レンダリングメッシュはアンラップで、UV もうまく設定されているはずです。
+<p />
+<img alt="AtOriginJP.jpg" src="rsrc/Three/ImportingStaticMeshTutorialJP/AtOriginJP.jpg" />
+<p />
+SHTools の作業過程はレンダリングメッシュのアンラップに基づいているため、これは重要です。
+<p />
+<h3><a name="UV について"></a> UV について </h3>
+<p />
+法線マッピングの処理ではアンラップに特別な配慮が必要です。最高の仕上がりには UV がオーバーラップしないことが重要です。ジオメトリの性質上、同じものなら UV をスタックすることができます。たとえば下のイメージのように、メッシュがオーバーラップする部分の形状が違う場合はお勧めしません。:
+<p />
+<img alt="OverlapUVsJP.jpg" src="rsrc/Three/ImportingStaticMeshTutorialJP/OverlapUVsJP.jpg" />
+<p />
+UV は、下のスクリーンショットのようにミラー状のジオメトリの場合にスタックできます。:
+<p />
+<img alt="StackedUVsJP.jpg" src="rsrc/Three/ImportingStaticMeshTutorialJP/StackedUVsJP.jpg" />
+<p />
+ディテールメッシュの場合は、SHTools 処理を機能させるためにテクスチャリングする必要がないため、こうした制限は必ずしも当てはまりません。
+<p />
+<h3><a name="法線マップの生成"></a> 法線マップの生成 </h3>
+<p />
+ディテールメッシュからの法線マップの生成は SHTools プラグイン、または 3DStudio Max、Maya、Softimage XSI のツールで行われます。このチュートリアルは簡単な段階的な説明になります。
+<p />
+SHTools メッシュプロセッサとサーバーは、Max/Maya/XSI が法線マッピングのツールを持つ以前に作成されることに留意してください。現在は通常、これらは法線マップを作成する際に用いられます。法線マップの作成には Maya などの 3D モデリング パッケージを使用することが推奨されます。
+<p />
+<h2><a name="ジオメトリのエクスポート"></a> ジオメトリのエクスポート </h2>
+<p />
+メッシュのエクスポートの詳細なプロセスについては、 <a href="ExportingMeshesTutorialJP.html" class="twikiLink">メッシュのエクスポートのチュートリアル</a>  ページにてご覧いただけます。
+<p />
+注記:法線マップを SHTools で UE3 にエクスポートする (上記にて記載されています) 事は現時点でサポートされていません。
+<p />
+<h2><a name="UnrealEngine3 へのコンテンツの取り込み"></a> UnrealEngine3 へのコンテンツの取り込み </h2>
+<p />
+すべてがエクスポートされ準備ができたので、Unreal Editorでアセットをエンジンに取り込みます。
+<p />
+メッシュのインポートの詳細なプロセスについては、 <a href="ImportingMeshesTutorialJP.html" class="twikiLink">メッシュのインポートのチュートリアル</a>  ページにてご覧いただけます。
+<p />
+Generic ブラウザと新しいパッケージシステムについての詳細は、 <a href="https://udn.epicgames.com/Three/GenericBrowserReferenceJP" class="restricted" class="restricted" class="twikiLink">Generic ブラウザ参照</a> および <a href="UnrealPackagesJP.html" class="twikiLink">Unreal パッケージ</a> をご覧ください。
+<p />
+<h2><a name="マテリアルの適用"></a> マテリアルの適用 </h2>
+<p />
+新たな法線マップ、およびマスク/テクスチャマップをインポートし、新規マテリアルを作成したと仮定します。このプロセスについてさらに知りたい場合は、 <a href="MaterialsTutorialJP.html" class="twikiLink">マテリアルのチュートリアル</a> をご覧ください。
+<p />
+マテリアルに新しくインポートされたメッシュを適用するには、Generic ブラウザにあるアイコンの右ボタンをクリックし、メッシュのプロパティを編集するため、  <em>Properties</em>  をクリックします。これにより <a href="StaticMeshEditorUserGuideJP.html" class="twikiLink">Static Mesh エディタ</a> が立ち上がります。マテリアルセクションを拡張します(左側の 「+」 をクリック)。出てきたフィールドで [None](なし)をクリックします。バックグラウンドが白くなり、[Clear](クリアする)と [Use](使う)という ２ つのボタンが右側に表示されます。Genericブラウザに戻り、対象とするマテリアルをクリックしてハイライト表示にします。
+<p />
+<img alt="MeshMaterial.jpg" src="rsrc/Three/ImportingStaticMeshTutorialJP/MeshMaterial.jpg" />
+<p />
+StaticMesh エディタに戻り、[Use] をクリックして現在選択されているマテリアルに適用します。これで、メッシュにマテリアルが表示されます。他のマテリアルスロットについてもこの作業を繰り返します。
+<p />
+<p />
+<h2><a name="衝突"></a> 衝突 </h2>
+<p />
+StaticMesh の衝突についての詳しい情報は <a href="CollisionReferenceJP.html" class="twikiLink">衝突のテュートリアル</a> をご覧下さい。
+<p />
+<p />
+<p />
+<h2><a name="Static Mesh アクタの使用"></a> Static Mesh アクタの使用 </h2>
+<p />
+レベルへのStatic Mesh アクタの配置のプロセスは非常に簡単です。
+<p /> <ul>
+<li> <a href="https://udn.epicgames.com/Three/GenericBrowserReferenceJP" class="restricted" class="restricted" class="twikiLink">Generic Browser</a> でStaticMesh を選択します。
+</li> <li> レベルで右クリックをし、 'Add Actor'(アクタを追加)へ行き、 'Add StaticMesh'(StaticMeshを追加)を選択します。これでレベルにメッシュが見えます。
+</li></ul>
+<p />
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ImportingStaticMeshTutorialJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:50 GMT -->
+</html></body>

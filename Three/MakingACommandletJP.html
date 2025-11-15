@@ -1,0 +1,437 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MakingACommandletJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:43 GMT -->
+<head>
+<title> UDK | MakingACommandletJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">MakingACommandletJP  </b></div>
+<div id="tooltext">
+<a href="MakingACommandlet.html" class="twikiLink">English Translation</a><br><a href="MakingACommandletCH.html" class="twikiLink">中国翻译</a><br><a href="MakingACommandletKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/MakingACommandletJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="コマンドレットの作成方法"></a> コマンドレットの作成方法 </h1>
+<p />
+<em>ドキュメントの概要: コマンドレット (コマンドライン プログラム) 作成ガイド。</em>
+<p />
+<em>ドキュメントの変更ログ: <a href="https://udn.epicgames.com/Main/JoeGraf" class="restricted" class="restricted" class="twikiLink">Joe Graf</a> により作成および更新。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="MakingACommandletJP.html#コマンドレットの作成方法"> コマンドレットの作成方法</a> <ul>
+<li> <a href="MakingACommandletJP.html#概要"> 概要</a>
+</li> <li> <a href="MakingACommandletJP.html#コマンドレットを作成する"> コマンドレットを作成する</a>
+</li> <li> <a href="MakingACommandletJP.html#Native コードでコマンドレットを作成する方法"> Native コードでコマンドレットを作成する方法</a>
+</li> <li> <a href="MakingACommandletJP.html#便利なヘルプ情報"> 便利なヘルプ情報</a>
+</li> <li> <a href="MakingACommandletJP.html#コマンドレットの使用法"> コマンドレットの使用法</a>
+</li> <li> <a href="MakingACommandletJP.html#よく実行されるコマンドレット タスク"> よく実行されるコマンドレット タスク</a>
+</li> <li> <a href="MakingACommandletJP.html#コマンドレット一覧"> コマンドレット一覧</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<p />
+コマンドレットとは、Unreal Engine の環境内で作動するコマンドライン プログラムです。コンテンツの大幅変更、コンテンツの反復による情報の取得、またはメカニズムのテストを行う際に最もよく利用されます。
+<p />
+基本的には、これらはエンジンにより初期化された小さなアプレットですが、そのほとんどは Windows のコンソール出力の範囲にとどめられています。例えば、=game.exe make= は UnrealScript<sup>?</sup> クラスをコンパイルする <code>make</code> commandlet を実行します。
+<p />
+エンジンは、コマンドラインで渡されたコマンドがコマンドレットかどうかを自動的に判断し、コマンドレットに一致する場合は関連コードを実行します。
+<p />
+UContentCommandlets<sup>?</sup>.cpp と UnPackageUtilities<sup>?</sup> にあるコマンドレットのサンプルを参照してください。
+<p />
+<p />
+<h2><a name="コマンドレットを作成する"></a> コマンドレットを作成する </h2>
+<p />
+コマンドレット用のスクリプトクラスを以下のようにして作成します。:
+<p />
+<pre>
+class HelloWorldCommandlet extends Commandlet;
+
+event int Main( string Params )
+{
+   log( &#34; hello world &#34; );
+
+   return 0;
+}
+</pre>
+<p />
+また、ネイティブなコマンドレットは以下のようになります。:
+<p />
+<pre>
+class HelloWorldCommandlet extends Commandlet
+native;
+
+cpptext
+{
+INT Main(const FString&#38; CmdLine)
+{
+   warnf(TEXT(&#34;hello world&#34;));
+   return 0;
+}
+}
+
+native event int Main( string Params );
+</pre>
+Main() 関数はコマンドレットのエントリ ポイントです。コマンドレットは実行時に文字列をひとつ受け取りますが、ここにはパラメータがすべて含まれています。次の行をご覧下さい。
+<p />
+<pre>
+gamename.exe helloworld param1 param2 param3
+</pre>
+<p />
+この場合、コマンドレットでは 「param1 param2 param3」 をコマンドラインのパラメータとみなします。
+<p />
+<h2><a name="Native コードでコマンドレットを作成する方法"></a> Native コードでコマンドレットを作成する方法 </h2>
+<p />
+コマンドレットは、大半が Native コードの組み込み型クラスとして実装されていますが、この方法によるコマンドレットの作成手順は上記とまったく異なります。ほとんどのコマンドレット宣言は <code>EditorCommandlets.h</code> に保存されています。
+<p />
+<p />
+最初に、ヘッダーファイルで <code>EditorCommandlets.h</code> のようにクラス宣言をします。:
+<pre>
+BEGIN&#95;COMMANDLET(Name,Package)
+ // ここで他のメソッドを宣言します。
+END&#95;COMMANDLET
+</pre>
+コマンドレットにはクラス名 "UNameCommandlet" が与えられ、指定パッケージ内 (Editor など) に格納されます。
+<p />
+次に、.cpp ファイルで (<code>UContentCommandlets.cpp</code> など)、作成するコマンドレットの <code>Main()</code> 関数を実装します。必要に応じて、=virtual CreateCustomEngine()= 関数をオーバーライドすることもできます。詳細については、UCommandlet ソースを参照してください。
+<p />
+<pre>
+INT UNameCommandlet::Main(const FString&#38; Params)
+{
+    // do yer stuff here...
+    return 0;
+}
+</pre>
+<p />
+これで完成、ではありません。これは組み込み型クラスなので、スクリプトシステムにその存在を伝えなければならず、そのために <code>PackageClasses.h</code> ファイルの AUTO_INITIALIZE_REGISTRANTS_EDITOR #define を手動で編集する必要があります。このリストに、作成したコマンドレットの <code>StaticClass()</code> 関数呼び出しを追加します。
+<pre>
+#define AUTO&#95;INITIALIZE&#95;REGISTRANTS&#95;EDITOR \
+   UNameCommandlet::StaticClass(); \
+</pre>
+<p />
+スクリプトを次回にリビルドするときに、コンパイラはリストに追加されたコマンドレット クラスを使用して、アルファベット順にこのファイルをオーバーライドしていきます。
+<p />
+<h2><a name="便利なヘルプ情報"></a> 便利なヘルプ情報 </h2>
+<p />
+コマンドレットにはヘルプ情報機能が組み込まれているので、ユーザーはその機能やオプション内容を十分に把握することができます。コマンドレットに関するヘルプ情報を作成するには、そのコマンドレットが含まれているローカライズテキスト ファイルに、エントリを追加する必要があります。 パッケージが Core にある場合は、Core.int を修正するとヘルプ情報が表示されるようになります。以下に Core に属する 「hello world」 （ハローワールド）のコマンドレット設定例を示します。
+<p />
+<pre>
+&#91;HelloWorldCommandlet]
+HelpDescription&#61;&#34;This commandlet displays hello world&#34; HelpUsage&#61;&#34;gamename.exe helloworld&#34;
+HelpWebLink&#61;&#34;https://udn.epicgames.com/bin/view/Three/MakingACommandlet&#34;
+HelpParamNames&#91;0]&#61;&#34;param1&#34;
+HelpParamDescriptions&#91;0]&#61;&#34;Ignored since helloworld doesn&#39;t need params&#34;
+</pre>
+<p />
+セクション名にはクラス名の一部として 「commandlet」 が含まれていなければなりません。これがない場合、コマンドレットは検出されません。この情報の扱いについては、次のコマンドを実行していただくとお分かり頂けます。
+<p />
+<pre>
+game.exe help help
+game.exe help list
+game.exe help webhelp help
+</pre>
+<p />
+<p />
+<h2><a name="コマンドレットの使用法"></a> コマンドレットの使用法 </h2>
+<p />
+コマンドレットは、実行したいコマンドレット名をゲーム起動時にパラメータとして引き渡して実行します。
+例えば、:
+<p />
+<pre>
+examplegame make -full
+</pre>
+<p />
+UT 内のメイク コマンドレットが起動されます。ネイティブなコマンドレットについてはパッケージ名を指定する必要はありません。メイク コマンドレットがスクリプトのみのものなら、以下を使用して呼び出します。:
+<p />
+<pre>
+examplegame editor.make -full
+</pre>
+<p />
+として実行されて、スタートアップ時には起動されません。また、名前の一部に 「commandlet」 を入れておく必要はありません。指定のコマンドレットを検出する際、スタートアップのコードによって、「commandlet」 が自動的に付加されます。
+<p />
+<p />
+<h2><a name="よく実行されるコマンドレット タスク"></a> よく実行されるコマンドレット タスク </h2>
+<p />
+日常的なタスクには、パッケージ上を反復的に移動し、そのデータを処理するタスクがあります。以下のコードを利用してこれを書き始めることができます (同じコードは <code>UContentCommandlets.cpp</code> の冒頭にもコメントとして挿入されています)。
+<p />
+<pre>
+// 以下のテンプレート コマンドレットは、すべてのパッケージに対して操作を実行する必要があるときに利用できます。
+
+INT UPerformAnOperationOnEveryPackage::Main(const FString&#38; Params)
+{
+   // コマンドライン引数を解析。
+   TArray&#60;FString&#62; Tokens;
+   TArray&#60;FString&#62; Switches;
+
+   const TCHAR&#42; Parms &#61; &#42;Params;
+   ParseCommandLine(Parms, Tokens, Switches);
+
+   // パッケージ ファイルのリストを作成。
+   const TArray&#60;FString&#62; FilesInPath( GPackageFileCache-&#62;GetPackageFileList() );
+   if( FilesInPath.Num() &#61;&#61; 0 )
+   {
+      warnf( NAME&#95;Warning, TEXT(&#34;No packages found&#34;) );
+      return 1;
+   }
+
+   // すべてのファイルを反復処理。
+   for( INT FileIndex &#61; 0 ; FileIndex &#60; FilesInPath.Num() ; ++FileIndex )
+   {
+      const FFilename&#38; Filename &#61; FilesInPath(FileIndex);
+      warnf( NAME&#95;Log, TEXT(&#34;Loading &#37;s&#34;), &#42;Filename );
+
+      UPackage&#42; Package &#61; UObject::LoadPackage( NULL, &#42;Filename, LOAD&#95;None );
+      if( Package &#61;&#61; NULL )
+      {
+         warnf( NAME&#95;Error, TEXT(&#34;Error loading &#37;s!&#34;), &#42;Filename );
+      }
+
+      /////////////////
+      //
+      //  ここに自分のコードを追加。
+      //
+      /////////////////
+
+      TObjectIterator&#60;UStaticMesh&#62; It;...
+
+      UStaticMesh&#42; StaticMesh &#61; &#42;It;
+      if( StaticMesh-&#62;IsIn( Package )
+
+
+
+
+      UObject::CollectGarbage( RF&#95;Native );
+   }
+
+   return 0;
+}
+</pre>
+<p />
+さらに、=PackageHelperFunctions.h= の <code>NormalizePackageNames()</code> を参照されることをお勧めします (これは QA_APPROVED_BUILD_JUNE_2007 (2007 年 6 月 QA 承認ビルド) で登場しました)。この関数は、反復処理するパッケージのフィルタリストを作成することができ、=GPackageFileCache= の単純な反復処理以上の微細な操作を実行できます (詳細はコードを参照)。
+<p />
+<h2><a name="コマンドレット一覧"></a> コマンドレット一覧 </h2>
+<p />
+<a href="CommandletList.html" class="twikiLink">コマンドレット一覧</a> ページを参照してください。
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MakingACommandletJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:43 GMT -->
+</html></body>

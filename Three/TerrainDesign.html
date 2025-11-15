@@ -1,0 +1,541 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TerrainDesign.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:20:47 GMT -->
+<head>
+<title> UDK | TerrainDesign    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">TerrainDesign  </b></div>
+<div id="tooltext">
+<a href="TerrainDesignJP.html" class="twikiLink">日本語訳</a><br><a href="TerrainDesignCH.html" class="twikiLink">中国翻译</a><br><a href="TerrainDesignKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/TerrainDesign -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="TerrainHome.html" class="twikiLink">Terrain System</a></b> &gt; Terrain Design: Guidelines and Information
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Terrain Design: Guidelines and Information"></a> Terrain Design: Guidelines and Information </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="TerrainDesign.html#Terrain Design: Guidelines and Information"> Terrain Design: Guidelines and Information</a> <ul>
+<li> <a href="TerrainDesign.html#Overview"> Overview</a>
+</li> <li> <a href="TerrainDesign.html#Number of Patches"> Number of Patches</a>
+</li> <li> <a href="TerrainDesign.html#Draw Scale"> Draw Scale</a>
+</li> <li> <a href="TerrainDesign.html#Terrain Patch Size Area"> Terrain Patch Size Area</a>
+</li> <li> <a href="TerrainDesign.html#Terrain Size versus Map File Size"> Terrain Size versus Map File Size</a>
+</li> <li> <a href="TerrainDesign.html#Terrain Size versus Map Area"> Terrain Size versus Map Area</a>
+</li> <li> <a href="TerrainDesign.html#Optimizing Terrain"> Optimizing Terrain</a>
+</li> <li> <a href="TerrainDesign.html#Draw Scale XY and Sinking Map Assets"> Draw Scale XY and Sinking Map Assets</a>
+</li> <li> <a href="TerrainDesign.html#Draw Scale Z versus Altitude Range"> Draw Scale Z versus Altitude Range</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Unreal Engine 3 supports a flexible terrain system that provides a wide variety of visual styles and uses.  Many different landscapes can be realized and various themes can be achieved utilizing a <em>heightmap</em> based system that can visually depict hills, valleys, mountains, rivers, roads, and more, plus a multi-layer Terrain Material system that supports real-world texture files such as dirt, rock, sand and mud.  A multi-layer Decoration system provides additional flexibility and realism by rendering foliage such as grass, weeds, bushes and flowers, and even small rocks and debri.
+<p />
+<img alt="UE3Terrains.jpg" src="rsrc/Three/TerrainDesign/UE3Terrains.jpg" />
+<p />
+<strong>Terrain Creation</strong>
+<p />
+Terrain is typically created using one of two techniques: hand-painting directly on the terrain mesh to create the hills and valleys; or importing externally created <a href="TerrainHeightmaps.html" class="twikiLink">terrain heightmaps</a>. Additionally, heightmap information can be acquired <a href="TerrainsFromDEMs.html" class="twikiLink">from DEMs</a> - Digital Elevation Model information. Material layers that represent dirt, grass and rock can be created using <a href="TerrainAlphamaps.html" class="twikiLink">terrain alphamaps</a> that determine where the texture is blended onto the terrain.
+<p />
+<strong>Terrain Use and Map Layout</strong>
+<p />
+Terrain can be used for small areas such as city lots, enclosed courtyards and even to simulate piles of debris; or the entire game map may be based on a large outdoor terrain design that incorporates a variety of geological features such as mountains and valleys.
+<p />
+The terrain is often used in conjunction with specifically-designed geological meshes for large boulders, buttes, cliffs, and even water planes.  Additional meshes are also used for the various foliage that may appear on the terrain.  Map designs and layouts using terrain for video games will often utilize the terrain's ability to create impassable mountains or cliffs around the circumference of the play area, in order to restrict the movement of the game player and prevent them from leaving or falling off of the game map "world".
+<p />
+The terrain system essentially renders an X*Y array of mesh triangles whose vertex Z value determines the altitude of the triangles at each grid intersection.  One of the challenges that level designers face is choosing the appropriate layout and resolution of this terrain mesh in order to provide the best visual quality versus performance setting.
+<p />
+<img alt="UE3TerrainAcc.jpg" src="rsrc/Three/TerrainDesign/UE3TerrainAcc.jpg" />
+<p />
+<strong>Terrain Size</strong>
+<p />
+Unreal Engine 3 supports a maximum world size of 512k x 512k (524288 x 524288) <a href="UnrealUnits.html" class="twikiLink">Unreal Units</a>.  This is equivalent to approximately 10 kilometers squared of area using the default engine unit conversion of 1 UU = 2 cm (10km x 10km).  The actual size of the game play area is usually much less than this, often less than 1 square kilometer for outdoor terrain-based maps.  Note that geometry, such as sky spheres, placed outside of the maximum world size will still render, but "world" geometry is limited to this total available area.
+<p />
+The terrain heightmap XY resolution as set by the Terrain.NumPatches, ie. 128x128 or 256x256, and the Display.DrawScale which specifies the size of each terrain patch, ultimately determine the total area of the final terrain mesh.  Choosing the most effective set of values for patch size and number of patches is required to obtain the best balance between terrain detail and rendering performance.
+<p />
+It is not recommended to create a terrain larger than 1024x1024 patches for both performance and file size reasons.  For example, a 2048x2048 terrain, which is 8 million triangles, is slow to work with in the editor and results in a very large map file size.  In most cases even exceeding a 512x512 terrain can lead into certain technical issues, and the map design should be examined and possibly re-evaluated as to whether using such a large terrain is a proper choice.
+<p />
+<strong>Heightmap Bit-Depth</strong>
+<p />
+When developing maps with external heightmap files for importing into the Unreal Engine terrain system, always work with the proper 16-bit heightmap format and files.  Choosing to work with 8-bit grayscale heightmap files for ease of support in standard paint software results in terrains that are using only 1/256th of the available altitude range.  This normally causes an undesirable stair-stepped terracing look to the terrain.
+<p />
+When working with external heightmap files, it is not recommended to attempt to paint detail on the heightmap using standard paint software, as it can only edit and display 8-bits of grayscale on current video hardware.  This means that for every single color of gray that is painted on an 8-bit display system, there are actually 256 levels of altitude that cannot be shown visually.  In other words, on an 8-bit grayscale display, the value 0 (black) is actually the 16-bit values from 0 to 255, 1 is 256 to 511, etc.  So there is no visual accuracy to the values that you are painting to.
+<p />
+<img alt="UE3Terrain16v8.jpg" src="rsrc/Three/TerrainDesign/UE3Terrain16v8.jpg" />
+<p />
+<strong>Staying on Grid</strong>
+<p />
+The Terrain actor's Advanced.bEdShouldSnap property should always remain checked (true) so that the terrain patches remain on-grid.  This in combination with using a power-of-two Display.DrawScale and Display.DrawScale3D.X/.Y results in patches that properly fit onto the grid on all edges.
+<p />
+Once the Terrain actor has been moved into place in the map, be sure to set the Advanced.bLockLocation to checked (true) to lock the Terrain actor and prevent its accidental movement in the editor.
+<p />
+<img alt="UE3TerrainLocked.gif" src="rsrc/Three/TerrainDesign/UE3TerrainLocked.gif" />
+<p />
+<strong>The Power-of-Two</strong>
+<p />
+Often when working with terrain and other game assets, the phrase "power-of-two" will come up.  Power-of-two numbers are those that are calculated from the formula 2^n where n is any number from 0 and greater.  So 2^0 = 1.  2^1 = 2.  2^2 = 4. 2^3 = 8.  2^4 = 16. etc.  Common power-of-two values used for terrain include 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024.
+<p />
+<p />
+<h2><a name="Number of Patches"></a> Number of Patches </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The Terrain actor supports a user-definable number of mesh patches (quads), as specified by the Terrain Properties for Terrain.NumPatchesX and Terrain.NumPatchesY.  These two properties specify the number of patches for the X and Y dimensions of the terrain mesh.
+<p />
+The number of patches is multiplied by the terrain DrawScale to determine the total area that the terrain mesh will cover in the editor.
+<p />
+<img alt="TerrainPatches.gif" src="rsrc/Three/TerrainDesign/TerrainPatches.gif" />
+<p />
+The specific values that are supported for the NumPatches properties varies depending on the Terrain.MaxTesselationLevel and Terrain.MinTesselationLevel values.  For example, whether NumPatches can be 40 or 85 or even 255 or 256 varies by the TesselationLevel value.
+<p />
+If the MaxTesselationLevel and MinTesselationLevel properties are both set to 1, then any arbitrary terrain size between 1 and the maximum supported size can be specified.  This will allow for the creation of odd-sized terrains such as 41x79.  The drawback to using TesselationLevel values of 1 are that all terrain triangles in the frustum will be rendered without the use of the dynamic distance LOD tesselation optimization system.  This may be acceptable for smaller terrain pieces, but for large terrain systems this will have an impact on the rendered framerate of the map.
+<p />
+Note: It is not recommended to create a terrain larger than 1024x1024 patches for both performance and file size reasons.  For example, a 2048x2048 terrain which is 8 million triangles, is slow to work with in the editor and results in a very large map file size.  In most cases even exceeding a 512x512 terrain can lead into certain technical issues, and the map design should be examined and possibly re-evaluated as to whether using such a large terrain is a proper choice.
+<p />
+The MinTesselationLevel property should normally be set to the default value of 1.  If it is set to the same value as the MaxTesselationLevel property, then the result is the same as setting both properties to 1, no tesselation occurs.  If the MinTesselationLevel is set to a value such as one half of the MaxTesselationLevel, ie. Min = 2 and Max = 4, then the number of tesselation areas will be less and the further distance terrain will not have increased optimization quads.  In other words, a Min:Max of 1:4 results in two optimized distance areas, a Min:Max of 2:4 results in only one optimized distance area.
+<p />
+If the MaxTesselationLevel is set to a value other than 1 to enable the distance LOD optimization system, the values supported by NumPatches is now limited to a multiple of the MaxTesselationLevel value.  For example, if MaxTesselationLevel is 4, NumPatches can be 4, 8, 12, 16, 20, 24, ..., etc.  If MaxTesselationLevel is 8, NumPatches can be 8, 16, 24, 32, 40, 48, ..., etc.  It is highly recommended to use the dynamic distance LOD tesselation optimization, even though this will limit the choice of terrain size to only multiples of the MaxTesselationLevel value.
+<p />
+<img alt="TerrainTesselation.gif" src="rsrc/Three/TerrainDesign/TerrainTesselation.gif" />
+<p />
+<p />
+<h2><a name="Draw Scale"></a> Draw Scale </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<strong>Draw Scale X and Y</strong>
+<p />
+The size of each terrain patch is determined by the Terrain actor's Display.DrawScale and Display.DrawScale3D properties.  These two sets of values are multiplied together to determine the overall terrain patch sizing.  In other words, a DrawScale of 1.0 and a DrawScale3D of 256.0 results in patches that are 256 Unreal Units in size (1.0 * 256.0).  A DrawScale of 2.0 and a DrawScale3D of 512.0 results in patches that are 1024 Unreal Units in size (2.0 * 512.0).  A DrawScale of 0.5 and a DrawScale3D of 128.0 results in patches that are 64 Unreal Units in size (0.5 * 128.0).
+<p />
+The DrawScale property should normally be left at its default value of 1.0, and the DrawScale3D properties should be adjusted to modify the terrain scale for sizes other than the default of 256.  The DrawScale3D includes individual properties for each of the X, Y and Z directions of the terrain mesh.  X and Y affect the width and length of the terrain mesh, while Z affects the height (altitude range) of the terrain mesh.
+<p />
+To create a terrain of a specific area, such as 1 kilometer square, appropriate values for the number of patches and the draw scale must be chosen.  The mathematical formula for this is:
+<p />
+Terrain Area in <a href="UnrealUnits.html" class="twikiLink">Unreal Units</a> = ( NumPatchesX * ( DrawScale * DrawScale3D.X )) * ( NumPatchesY * ( DrawScale * DrawScale3D.Y ))
+<p />
+The result will be in <a href="UnrealUnits.html" class="twikiLink">Unreal Units</a> which can be converted to standard measurements according to the conversion factor of 1 unreal unit = 2 centimeters.  This is the default engine scale size.  Different games using the engine may use different conversion scales as set by the developer.
+<p />
+The set of values chosen for DrawScale will depend on two factors, the desired terrain detail quality, and the desired rendering performance.  Greater terrain detail requires a smaller DrawScale which results in a greater number of patches for a specified terrain area, while faster rendering requires fewer patches for a specified terrain area which is accomplished with a larger DrawScale.
+<p />
+A good rule-of-thumb is that for small terrain areas, such as an enclosed courtyard, DrawScale3D.X/Y can range from 32 to 128 with the common value of 64.  For large terrain areas, such as complete outdoor areas, DrawScale3D.X/Y should be between 128 and 512 with the common value of 256.
+<p />
+<img alt="TerrainDrawScale.gif" src="rsrc/Three/TerrainDesign/TerrainDrawScale.gif" />
+<p />
+<strong>Draw Scale Z</strong>
+<p />
+The DrawScale3D.Z property determines the <em>granularity</em> for each terrain mesh vertex position along the z direction (up and down).  The lower the DrawScale3D.Z value, the finer the altitude steps.  The greater the DrawScale3D.Z value, the larger the altitude steps.  Since there is also only 65536 altitude values in total, the DrawScale3D.Z also determines the total altitude range for the terrain.
+<p />
+There is additional information on DrawScale3D.Z included below.
+<p />
+<p />
+<h2><a name="Terrain Patch Size Area"></a> Terrain Patch Size Area </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The size of each terrain patch (quad) is determined by the Display.DrawScale and Display.DrawScale3D properties.  This table shows the approximate size in equivalent feet and meters based on the default Unreal Engine measurement ratio of 1 Unreal Unit equals 2 centimeters.  Imperial to metric conversion is 1 inch = 2.54 cm.
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">DrawScale</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Patch in UUs</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=2;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Patch in Meters</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=3;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Patch in Feet</font></a> </th></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 64 </td><td bgcolor="#ffffff"> 64 uus </td><td bgcolor="#ffffff"> 1.28m (128cm) </td><td bgcolor="#ffffff"> 4.2ft (50.39 in) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 80 </td><td bgcolor="#eaeaea"> 80 uus </td><td bgcolor="#eaeaea"> 1.60m (160cm) </td><td bgcolor="#eaeaea"> 5.25ft (62.99 in) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 96 </td><td bgcolor="#ffffff"> 96 uus </td><td bgcolor="#ffffff"> 1.92m (192cm) </td><td bgcolor="#ffffff"> 6.3ft (75.59 in) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 112 </td><td bgcolor="#eaeaea"> 112 uus </td><td bgcolor="#eaeaea"> 2.24m (224cm) </td><td bgcolor="#eaeaea"> 7.35ft (88.19 in) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 128 </td><td bgcolor="#ffffff"> 128 uus </td><td bgcolor="#ffffff"> 2.56m (256cm) </td><td bgcolor="#ffffff"> 8.4ft (100.79 in) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 160 </td><td bgcolor="#eaeaea"> 160 uus </td><td bgcolor="#eaeaea"> 3.20m (320cm) </td><td bgcolor="#eaeaea"> 10.5ft (125.98 in) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 192 </td><td bgcolor="#ffffff"> 192 uus </td><td bgcolor="#ffffff"> 3.84m (384cm) </td><td bgcolor="#ffffff"> 12.6ft (151.18 in) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 224 </td><td bgcolor="#eaeaea"> 224 uus </td><td bgcolor="#eaeaea"> 4.48m (448cm) </td><td bgcolor="#eaeaea"> 14.7ft (176.38 in) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 256 </td><td bgcolor="#ffffff"> 256 uus </td><td bgcolor="#ffffff"> 5.12m (512cm) </td><td bgcolor="#ffffff"> 16.8ft (201.57 in) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 288 </td><td bgcolor="#eaeaea"> 288 uus </td><td bgcolor="#eaeaea"> 5.76m (576cm) </td><td bgcolor="#eaeaea"> 18.9ft (226.77 in) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 320 </td><td bgcolor="#ffffff"> 320 uus </td><td bgcolor="#ffffff"> 6.40m (640cm) </td><td bgcolor="#ffffff"> 21ft (251.97 in) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 352 </td><td bgcolor="#eaeaea"> 352 uus </td><td bgcolor="#eaeaea"> 7.04m (704cm) </td><td bgcolor="#eaeaea"> 23.1ft (277.17 in) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 384 </td><td bgcolor="#ffffff"> 384 uus </td><td bgcolor="#ffffff"> 7.68m (768cm) </td><td bgcolor="#ffffff"> 25.2ft (302.36 in) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 512 </td><td bgcolor="#eaeaea"> 512 uus </td><td bgcolor="#eaeaea"> 10.24m (1024cm) </td><td bgcolor="#eaeaea"> 33.6ft (403.15 in) </td></tr>
+</table>
+<p />
+<p />
+<h2><a name="Terrain Size versus Map File Size"></a> Terrain Size versus Map File Size </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The total size of the terrain, the number of texture layers, and other terrain properties such as the lightmap resolution, determines the amount of additional resources added to the map file size.  Larger terrains quickly add a significant number of megabytes to a map file.
+<p />
+Below is a list of file sizes for levels set up as follows: <ul>
+<li> Empty clean map with Terrain actor and one Directional Light.
+</li> <li> No Terrain Layers.
+</li> <li> Uncooked.
+</li></ul>
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=2;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Heightmap</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=2;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Triangles</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=2;table=2;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">File Size</font></a> </th></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 64x64 </td><td bgcolor="#ffffff"> 8,192 </td><td bgcolor="#ffffff"> 125kb </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 128x128 </td><td bgcolor="#eaeaea"> 32,768 </td><td bgcolor="#eaeaea"> 3.2MB </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 256x256 </td><td bgcolor="#ffffff"> 131,072 </td><td bgcolor="#ffffff"> 7.2MB </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 512x512 </td><td bgcolor="#eaeaea"> 524,288 </td><td bgcolor="#eaeaea"> 28.7MB </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 1024x1024 </td><td bgcolor="#ffffff"> 2,097,152 </td><td bgcolor="#ffffff"> 110MB </td></tr>
+</table>
+<p />
+Below is a list of file sizes for levels set up as follows: <ul>
+<li> Empty clean map with Terrain actor and one Directional Light.
+</li> <li> One 1024x1024 Texture, one Material, one TerrainMaterial, one TerrainLayerSetup.
+</li> <li> Uncooked.
+</li></ul>
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=3;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Heightmap</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=3;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Triangles</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=2;table=3;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">File Size</font></a> </th></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 64x64 </td><td bgcolor="#ffffff"> 8,192 </td><td bgcolor="#ffffff"> 4MB </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 128x128 </td><td bgcolor="#eaeaea"> 32,768 </td><td bgcolor="#eaeaea"> 6.38MB </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 256x256 </td><td bgcolor="#ffffff"> 131,072 </td><td bgcolor="#ffffff"> 10.6MB </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 512x512 </td><td bgcolor="#eaeaea"> 524,288 </td><td bgcolor="#eaeaea"> 32.9MB </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 1024x1024 </td><td bgcolor="#ffffff"> 2,097,152 </td><td bgcolor="#ffffff"> 118MB </td></tr>
+</table>
+<p />
+<p />
+<h2><a name="Terrain Size versus Map Area"></a> Terrain Size versus Map Area </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+This table lists the real-world equivalent size for the terrain for various common values for number of patches and draw scale.
+<p />
+The terrain size is calculated as NumPatches * ( DrawScale * DrawScale3D ) = <a href="UnrealUnits.html" class="twikiLink">Unreal Units</a>.
+<p />
+1 Unreal Unit = 2cm.  1 foot = 30.48cm or 0.3048 meters.  1 meter = 3.280839895 feet.  1000 meters = 1 kilometer.  5280 feet = 1 mile.
+<p />
+To determine the total desired area for a terrain, look up the width and length from this table in meters/kilometers or feet/miles to get the required NumPatches and DrawScale.
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=4;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">NumPatches</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=4;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">DrawScale</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=2;table=4;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Length in Unreal Units</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=3;table=4;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Meters</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=4;table=4;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Feet</font></a> </th></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 64 </td><td bgcolor="#ffffff"> 64 </td><td bgcolor="#ffffff"> 4096 uus </td><td bgcolor="#ffffff"> 81.92 m </td><td bgcolor="#ffffff"> 268.77 ft </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 64 </td><td bgcolor="#eaeaea"> 96 </td><td bgcolor="#eaeaea"> 6144 uus </td><td bgcolor="#eaeaea"> 122.88 m </td><td bgcolor="#eaeaea"> 403.15 ft </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 64 </td><td bgcolor="#ffffff"> 128 </td><td bgcolor="#ffffff"> 8192 uus </td><td bgcolor="#ffffff"> 163.84 m </td><td bgcolor="#ffffff"> 537.53 ft </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 64 </td><td bgcolor="#eaeaea"> 192 </td><td bgcolor="#eaeaea"> 12288 uus </td><td bgcolor="#eaeaea"> 245.76 m </td><td bgcolor="#eaeaea"> 806.3 ft </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 64 </td><td bgcolor="#ffffff"> 256 </td><td bgcolor="#ffffff"> 16384 uus </td><td bgcolor="#ffffff"> 327.68 m </td><td bgcolor="#ffffff"> 1074.97 ft </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 64 </td><td bgcolor="#eaeaea"> 384 </td><td bgcolor="#eaeaea"> 24576 uus </td><td bgcolor="#eaeaea"> 491.52 m </td><td bgcolor="#eaeaea"> 1612.6 ft </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 64 </td><td bgcolor="#ffffff"> 512 </td><td bgcolor="#ffffff"> 32768 uus </td><td bgcolor="#ffffff"> 655.36 m </td><td bgcolor="#ffffff"> 2150.13 ft </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 128 </td><td bgcolor="#eaeaea"> 64 </td><td bgcolor="#eaeaea"> 8192 uus </td><td bgcolor="#eaeaea"> 163.84 m </td><td bgcolor="#eaeaea"> 537.53 ft </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 128 </td><td bgcolor="#ffffff"> 96 </td><td bgcolor="#ffffff"> 12288 uus </td><td bgcolor="#ffffff"> 245.76 m </td><td bgcolor="#ffffff"> 806.3 ft </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 128 </td><td bgcolor="#eaeaea"> 128 </td><td bgcolor="#eaeaea"> 16384 uus </td><td bgcolor="#eaeaea"> 327.68 m </td><td bgcolor="#eaeaea"> 1074.97 ft </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 128 </td><td bgcolor="#ffffff"> 192 </td><td bgcolor="#ffffff"> 24576 uus </td><td bgcolor="#ffffff"> 491.52 m </td><td bgcolor="#ffffff"> 1612.6 ft </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 128 </td><td bgcolor="#eaeaea"> 256 </td><td bgcolor="#eaeaea"> 32768 uus </td><td bgcolor="#eaeaea"> 655.36 m </td><td bgcolor="#eaeaea"> 2150.13 ft </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 128 </td><td bgcolor="#ffffff"> 384 </td><td bgcolor="#ffffff"> 49152 uus </td><td bgcolor="#ffffff"> 983.04 m </td><td bgcolor="#ffffff"> 3225.2 ft </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 128 </td><td bgcolor="#eaeaea"> 512 </td><td bgcolor="#eaeaea"> 65536 uus </td><td bgcolor="#eaeaea"> 1.3km (1310.72 m) </td><td bgcolor="#eaeaea"> 4300.26 ft </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 256 </td><td bgcolor="#ffffff"> 64 </td><td bgcolor="#ffffff"> 16384 uus </td><td bgcolor="#ffffff"> 327.68 m </td><td bgcolor="#ffffff"> 1074.97 ft </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 256 </td><td bgcolor="#eaeaea"> 96 </td><td bgcolor="#eaeaea"> 24576 uus </td><td bgcolor="#eaeaea"> 491.52 m </td><td bgcolor="#eaeaea"> 1612.6 ft </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 256 </td><td bgcolor="#ffffff"> 128 </td><td bgcolor="#ffffff"> 32768 uus </td><td bgcolor="#ffffff"> 655.36 m </td><td bgcolor="#ffffff"> 2150.13 ft </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 256 </td><td bgcolor="#eaeaea"> 192 </td><td bgcolor="#eaeaea"> 49152 uus </td><td bgcolor="#eaeaea"> 983.04 m </td><td bgcolor="#eaeaea"> 3225.2 ft </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 256 </td><td bgcolor="#ffffff"> 256 </td><td bgcolor="#ffffff"> 65536 uus </td><td bgcolor="#ffffff"> 1.3km (1310.72 m) </td><td bgcolor="#ffffff"> 4300.26 ft </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 256 </td><td bgcolor="#eaeaea"> 384 </td><td bgcolor="#eaeaea"> 98304 uus </td><td bgcolor="#eaeaea"> 1.97km (1966.08 m) </td><td bgcolor="#eaeaea"> 1.22 miles (6450.39 ft) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 256 </td><td bgcolor="#ffffff"> 512 </td><td bgcolor="#ffffff"> 131072 uus </td><td bgcolor="#ffffff"> 2.6km (2621.44 m) </td><td bgcolor="#ffffff"> 1.63 miles (8600.52 ft) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 512 </td><td bgcolor="#eaeaea"> 64 </td><td bgcolor="#eaeaea"> 32768 uus </td><td bgcolor="#eaeaea"> 655.36 m </td><td bgcolor="#eaeaea"> 2150.13 ft </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 512 </td><td bgcolor="#ffffff"> 96 </td><td bgcolor="#ffffff"> 49152 uus </td><td bgcolor="#ffffff"> 983.04 m </td><td bgcolor="#ffffff"> 3225.2 ft </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 512 </td><td bgcolor="#eaeaea"> 128 </td><td bgcolor="#eaeaea"> 65536 uus </td><td bgcolor="#eaeaea"> 1.31km (1310.72 m) </td><td bgcolor="#eaeaea"> 4300.26 ft </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 512 </td><td bgcolor="#ffffff"> 192 </td><td bgcolor="#ffffff"> 98304 uus </td><td bgcolor="#ffffff"> 1.97km (1966.08 m) </td><td bgcolor="#ffffff"> 1.22 miles (6450.39 ft) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 512 </td><td bgcolor="#eaeaea"> 256 </td><td bgcolor="#eaeaea"> 131072 uus </td><td bgcolor="#eaeaea"> 2.62km (2621.44 m) </td><td bgcolor="#eaeaea"> 1.63 miles (8600.52 ft) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 512 </td><td bgcolor="#ffffff"> 384 </td><td bgcolor="#ffffff"> 196608 uus </td><td bgcolor="#ffffff"> 3.93km (3932.16 m) </td><td bgcolor="#ffffff"> 2.44 miles (12900.79 ft) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 512 </td><td bgcolor="#eaeaea"> 512 </td><td bgcolor="#eaeaea"> 262144 uus </td><td bgcolor="#eaeaea"> 5.24km (5242.88 m) </td><td bgcolor="#eaeaea"> 3.26 miles (17201.05 ft) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 1024 </td><td bgcolor="#ffffff"> 64 </td><td bgcolor="#ffffff"> 65536 uus </td><td bgcolor="#ffffff"> 1.31km (1310.72 m) </td><td bgcolor="#ffffff"> 4300.26 ft </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 1024 </td><td bgcolor="#eaeaea"> 96 </td><td bgcolor="#eaeaea"> 98304 uus </td><td bgcolor="#eaeaea"> 1.97km (1966.08 m) </td><td bgcolor="#eaeaea"> 1.22 miles (6450.39 ft) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 1024 </td><td bgcolor="#ffffff"> 128 </td><td bgcolor="#ffffff"> 131072 uus </td><td bgcolor="#ffffff"> 2.62km (2621.44 m) </td><td bgcolor="#ffffff"> 1.63 miles (8600.52 ft) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 1024 </td><td bgcolor="#eaeaea"> 192 </td><td bgcolor="#eaeaea"> 196608 uus </td><td bgcolor="#eaeaea"> 3.93km (3932.16 m) </td><td bgcolor="#eaeaea"> 2.44 miles (12900.79 ft) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 1024 </td><td bgcolor="#ffffff"> 256 </td><td bgcolor="#ffffff"> 262144 uus </td><td bgcolor="#ffffff"> 5.24km (5242.88 m) </td><td bgcolor="#ffffff"> 3.26 miles (17201.05 ft) </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 1024 </td><td bgcolor="#eaeaea"> 384 </td><td bgcolor="#eaeaea"> 393216 uus </td><td bgcolor="#eaeaea"> 7.86km (7864.32 m) </td><td bgcolor="#eaeaea"> 4.89 miles (25801.57 ft) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 1024 </td><td bgcolor="#ffffff"> 512 </td><td bgcolor="#ffffff"> 524288 uus </td><td bgcolor="#ffffff"> 10.49km (10485.76 m) </td><td bgcolor="#ffffff"> 6.52 miles (34402.1 ft) </td></tr>
+</table>
+<p />
+<p />
+<h2><a name="Optimizing Terrain"></a> Optimizing Terrain </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+There are a number of features in the Unreal Engine for optimizing terrain in addition to choosing the best size for the intended purpose.
+<p /> <ul>
+<li> Use DrawScale XY values between 256 and 512 and preferably no lower than 128.  Values lower than 128 create dense terrain meshes that require a lot of rendering power.
+</li> <li> Make good use of the built-in distance LOD Tesselation feature by setting the Terrain.MinTesselationLevel to 1 and Terrain.MaxTesselationLevel to 4.  Disabling the Tesselation feature usually results in more terrain triangles being rendered in the frustum, requiring more rendering power.
+</li> <li> Limit the number of Materials applied to the terrain.  The fewer and simpler the Material setup, the faster it will render.
+</li></ul>
+<p />
+Note that Specular is currently disabled on Terrain Materials for performance reasons.  If you are experiencing large color blocks or other similar anomalies after applying a new texture layer or increasing the complexity of an existing terrain material, then the combined terrain material set has too many textures or too many instructions to properly render.  Although it is dependant on the video adapter hardware, the common limit is 16 texture samplers.  The combined layers on each terrain component should not exceed a total texture count of 16, with 3 used for the lightmaps and at least 1 used for the layer blend map, leaving usually 12 available textures total for the terrain layers.  The layer blend maps are packed into the ARGB components of 32-bit texture(s), supporting up to four blend layers per texture.  As the number of layers to blend increases, then number of blend maps increases.  Be sure to use the "Check map for errors" option to see if there are <a href="MapErrors.html" class="twikiLink">Map Errors</a> with the combined materials applied to the terrain.
+<p /> <ul>
+<li> Hide the terrain triangles that are never visible or are located under other geometry and assets such as CSG brushes or StaticMesh objects.  This is accomplished by editing the terrain with the Visibility Tool and clicking on the patches that are to be hidden.  The terrain areas that are set hidden must be large enough to have a significant performance increase to be worthwhile, in other words, don't hide one individual patch under each crate or barrel or tree.
+</li></ul>
+<p />
+<p />
+<h2><a name="Draw Scale XY and Sinking Map Assets"></a> Draw Scale XY and Sinking Map Assets </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+As mentioned previously, the Terrain actor's Advanced.bEdShouldSnap property should always remain checked (true) so that the terrain patches remain on-grid.  This in combination with using a power-of-two Display.DrawScale and Display.DrawScale3D.X/.Y results in patches that properly fit onto the grid on all edges.  In most cases, terrain patches will be using a square aspect ratio for the X and Y, since any editing for visibility and sinking of assets into the terrain will usually be simplified if each patch quad is square.
+<p />
+<strong>Why the Terrain Mesh XY Matters</strong>
+<p />
+The terrain DrawScale XY determines the size of each patch in the terrain mesh.  This size also determines the maximum slope angle of the terrain patch for a given vertex altitude difference.  A smaller DrawScale XY size allows for steeper slopes, which at times may be necessary for terrains that include steep cliffs.
+<p />
+<img alt="TerrainSlope.gif" src="rsrc/Three/TerrainDesign/TerrainSlope.gif" />
+<p />
+When creating assets such as CSG (Constructive Solid Geometry) and static meshes for use in maps, it is common practice to scale all assets so that they fit onto the power-of-two grid spacing. If the terrain patches are also scaled to be power-of-two in size, then assets such as static mesh buildings that are sunk into the terrain, will cleanly line up with the edges of the terrain patches, and those patches that are not visible inside or underneath of the sunk asset can often be hidden using the Terrain Visibility Tool for a possible performance increase.  If the asset has an interior, such as a building, the patches of terrain that are inside of the building will have to be hidden in order that they do not interfere with the player movement inside of the structure.
+<p />
+<img alt="UE3TerrainSink.gif" src="rsrc/Three/TerrainDesign/UE3TerrainSink.gif" />
+<p />
+<p />
+<h2><a name="Draw Scale Z versus Altitude Range"></a> Draw Scale Z versus Altitude Range </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The Display.DrawScale3D.Z property specifies the amount of scaling performed in the Z direction.  This determines the overall altitude range that the terrain vertices, and likewise the triangles, can reach.  When creating a new terrain, it is advisable to change the DrawScale3D.Z to a lower value than the default of 256.  A value in the range of 64 to 128 is recommended.
+<p />
+<strong>Why the Z Matters</strong>
+<p />
+The DrawScale3D.Z value has a significant importance in two areas, it determines the maximum altitude range that the terrain can extend, and it determines the <em>granularity</em> of the vertex Z locations which is relevant also for painting.  Smaller DrawScale Z values allow for finer control on vertex altitudes.  For example, referencing the information in the table below, a DrawScale3D.Z value of 2048 results in vertices that can only be adjusted in altitude every 32 cm or approximately 1 foot.  If the terrain is to be adjusted around the edges of a building or other inserted asset, a 1 foot movement is more than likely too significant and finer editing control is required.
+<p />
+<img alt="TerrainZ.gif" src="rsrc/Three/TerrainDesign/TerrainZ.gif" />
+<p />
+<strong>Altitude Ranges</strong>
+<p />
+The following table lists common DrawScale3D.Z values and the equivalent maximum altitude range that it supports from the lowest to highest heightmap value (0 or black is lowest G16 altitude, 65535 or white is highest G16 altitude).  Rarely will the DrawScale3D.Z value be greater than 64 in actual use.  If an external G16 heightmap file is imported and it requires a DrawScale3D.Z of more than 64 to 128, the heightmap should be changed so that it is utilizing more of the available 16-bit range so that any editing granularity is finer, and the vertex movement during painting is finer.
+<p />
+The actual ratio is 1:512 where 1 Display.DrawScale3D.Z unit = 512 <a href="UnrealUnits.html" class="twikiLink">Unreal Units</a> of total heightmap altitude range.
+So divide the desired total <a href="UnrealUnits.html" class="twikiLink">Unreal Units</a> altitude range you want by 512 to get the DrawScale3D.Z that you should use.
+<p />
+UUs per step is the maximum altitude range divided by the 16-bit heightmap range of 65536.
+<p />
+1 Unreal Unit = 2cm.  1 foot = 30.48cm or 0.3048 meters.  1 meter = 3.280839895 feet.  1000 meters = 1 kilometer.  5280 feet = 1 mile. <br>
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=5;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">DrawScale3D.Z</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=5;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Max Altitude</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=2;table=5;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000"> UU/step</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=3;table=5;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Range in Meters</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=4;table=5;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">mm/step</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=5;table=5;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Range in Feet</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=6;table=5;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">in/step</font></a> </th></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 1 </td><td bgcolor="#ffffff"> 512 uus </td><td bgcolor="#ffffff"> 0.0078125 </td><td bgcolor="#ffffff"> 10.24 m </td><td bgcolor="#ffffff"> 0.15625 </td><td bgcolor="#ffffff"> 33.6 ft </td><td bgcolor="#ffffff"> 0.00615" </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 2 </td><td bgcolor="#eaeaea"> 1024 uus </td><td bgcolor="#eaeaea"> 0.015625 </td><td bgcolor="#eaeaea"> 20.48 m </td><td bgcolor="#eaeaea"> 0.3125 </td><td bgcolor="#eaeaea"> 67.19 ft </td><td bgcolor="#eaeaea"> 0.0123" </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 4 </td><td bgcolor="#ffffff"> 2048 uus </td><td bgcolor="#ffffff"> 0.03125 </td><td bgcolor="#ffffff"> 40.96 m </td><td bgcolor="#ffffff"> 0.625 </td><td bgcolor="#ffffff"> 134.38 ft </td><td bgcolor="#ffffff"> 0.0246" </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 8 </td><td bgcolor="#eaeaea"> 4096 uus </td><td bgcolor="#eaeaea"> 0.0625 </td><td bgcolor="#eaeaea"> 81.92 m </td><td bgcolor="#eaeaea"> 1.25 </td><td bgcolor="#eaeaea"> 268.77 ft </td><td bgcolor="#eaeaea"> 0.0492" </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 16 </td><td bgcolor="#ffffff"> 8,192 uus </td><td bgcolor="#ffffff"> 0.125 </td><td bgcolor="#ffffff"> 163.84 m </td><td bgcolor="#ffffff"> 2.5 </td><td bgcolor="#ffffff"> 537.53 ft </td><td bgcolor="#ffffff"> 0.0984" </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 24 </td><td bgcolor="#eaeaea"> 12,288 uus </td><td bgcolor="#eaeaea"> 0.1875 </td><td bgcolor="#eaeaea"> 245.76 m </td><td bgcolor="#eaeaea"> 3.75 </td><td bgcolor="#eaeaea"> 806.3 ft </td><td bgcolor="#eaeaea"> 0.148" </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 32 </td><td bgcolor="#ffffff"> 16,384 uus </td><td bgcolor="#ffffff"> 0.25 </td><td bgcolor="#ffffff"> 327.68 m </td><td bgcolor="#ffffff"> 5.0 </td><td bgcolor="#ffffff"> 1075.06 ft </td><td bgcolor="#ffffff"> 0.197" </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 48 </td><td bgcolor="#eaeaea"> 24,576 uus </td><td bgcolor="#eaeaea"> 0.375 </td><td bgcolor="#eaeaea"> 491.52 m </td><td bgcolor="#eaeaea"> 7.5 </td><td bgcolor="#eaeaea"> 1612.6 ft </td><td bgcolor="#eaeaea"> 0.295" </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 64 </td><td bgcolor="#ffffff"> 32,768 uus </td><td bgcolor="#ffffff"> 0.5 </td><td bgcolor="#ffffff"> 655.36 m </td><td bgcolor="#ffffff"> 10.0 </td><td bgcolor="#ffffff"> 2150.13 ft </td><td bgcolor="#ffffff"> 0.394" </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 80 </td><td bgcolor="#eaeaea"> 40,960 uus </td><td bgcolor="#eaeaea"> 0.625 </td><td bgcolor="#eaeaea"> 819.20 m </td><td bgcolor="#eaeaea"> 12.5 </td><td bgcolor="#eaeaea"> 2687.66 ft </td><td bgcolor="#eaeaea"> 0.492" </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 96 </td><td bgcolor="#ffffff"> 49,152 uus </td><td bgcolor="#ffffff"> 0.75 </td><td bgcolor="#ffffff"> 983.04 m </td><td bgcolor="#ffffff"> 15.0 </td><td bgcolor="#ffffff"> 3225.2 ft </td><td bgcolor="#ffffff"> 0.591" </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 112 </td><td bgcolor="#eaeaea"> 57,344 uus </td><td bgcolor="#eaeaea"> 0.875 </td><td bgcolor="#eaeaea"> 1.15km (1,146.88 m) </td><td bgcolor="#eaeaea"> 17.5 </td><td bgcolor="#eaeaea"> 3762.73 ft </td><td bgcolor="#eaeaea"> 0.689" </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 128 </td><td bgcolor="#ffffff"> 65,536 uus </td><td bgcolor="#ffffff"> 1.0 </td><td bgcolor="#ffffff"> 1.31km (1,310.72 m) </td><td bgcolor="#ffffff"> 20.0 </td><td bgcolor="#ffffff"> 4300.26 ft </td><td bgcolor="#ffffff"> 0.787" </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 256 </td><td bgcolor="#eaeaea"> 131,072 uus </td><td bgcolor="#eaeaea"> 2.0 </td><td bgcolor="#eaeaea"> 2.62km (2,621.44 m) </td><td bgcolor="#eaeaea"> 40.0 </td><td bgcolor="#eaeaea"> 1.63 miles (8600.52 ft) </td><td bgcolor="#eaeaea"> 1.575" </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 512 </td><td bgcolor="#ffffff"> 262,144 uus </td><td bgcolor="#ffffff"> 4.0 </td><td bgcolor="#ffffff"> 5.24km (5,242.88 m) </td><td bgcolor="#ffffff"> 80.0 </td><td bgcolor="#ffffff"> 3.26 miles (17201.05 ft ) </td><td bgcolor="#ffffff"> 3.15" </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 1024 </td><td bgcolor="#eaeaea"> 524,288 uus </td><td bgcolor="#eaeaea"> 8.0 </td><td bgcolor="#eaeaea"> 10.49km (10,485.76 m) </td><td bgcolor="#eaeaea"> 160.0 </td><td bgcolor="#eaeaea"> 6.52 miles (34402.1 ft) </td><td bgcolor="#eaeaea"> 6.3" </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> 2048 </td><td bgcolor="#ffffff"> 1,048,576 uus </td><td bgcolor="#ffffff"> 16.0 </td><td bgcolor="#ffffff"> 20.97km (20,971.52 m) </td><td bgcolor="#ffffff"> 320.0 </td><td bgcolor="#ffffff"> 13.03 miles (68804.2 ft) </td><td bgcolor="#ffffff"> 12.6" </td></tr>
+</table>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TerrainDesign.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:20:50 GMT -->
+</html></body>

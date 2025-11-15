@@ -1,0 +1,573 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PhysicalMaterialSystemJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:32:52 GMT -->
+<head>
+<title> UDK | PhysicalMaterialSystemJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">PhysicalMaterialSystemJP  </b></div>
+<div id="tooltext">
+<a href="PhysicalMaterialSystem.html" class="twikiLink">English Translation</a><br><a href="PhysicalMaterialSystemCH.html" class="twikiLink">中国翻译</a><br><a href="PhysicalMaterialSystemKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/PhysicalMaterialSystemJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<h1><a name="物理マテリアル"></a> 物理マテリアル </h1>
+<p />
+<em>ドキュメントの概要： 物理マテリアル システムについて詳述し、マテリアルベースの効果（インパクト効果、足音サウンドなど）を作成する方法についての例を挙げての序文です。</em>
+<p />
+<em>ドキュメントの変更ログ： 序文作成。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="PhysicalMaterialSystemJP.html#物理マテリアル"> 物理マテリアル</a> <ul>
+<li> <a href="PhysicalMaterialSystemJP.html#概要"> 概要</a>
+</li> <li> <a href="PhysicalMaterialSystemJP.html#物理マテリアル システムの概要"> 物理マテリアル システムの概要</a> <ul>
+<li> <a href="PhysicalMaterialSystemJP.html#プログラマのための詳しい説明"> プログラマのための詳しい説明</a>
+</li></ul>
+</li> <li> <a href="PhysicalMaterialSystemJP.html#物理マテリアルの階層"> 物理マテリアルの階層</a> <ul>
+<li> <a href="PhysicalMaterialSystemJP.html#コンテンツ クリエータのための詳細な説明"> コンテンツ クリエータのための詳細な説明</a>
+</li> <li> <a href="PhysicalMaterialSystemJP.html#階層を使用する"> 階層を使用する</a>
+</li></ul>
+</li> <li> <a href="PhysicalMaterialSystemJP.html#コンテンツの提案"> コンテンツの提案</a>
+</li> <li> <a href="PhysicalMaterialSystemJP.html#サンプル コード"> サンプル コード</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<p />
+本書は、次のセクションに分かれます。<BR><BR>
+   -<a href="PhysicalMaterial.html" class="twikiLink">物理マテリアル システム</a>の概要<BR>
+   -物理マテリアルの階層を作成する方法の説明<BR>
+   -マテリアル ベースの効果のためにその階層を使用する方法<BR>
+   -マテリアル ベースの足音を機能させる方法についてのサンプル コード<BR>
+<p />
+<h2><a name="物理マテリアル システムの概要"></a> 物理マテリアル システムの概要 </h2>
+<p />
+UE3 では、物理マテリアルをマテリアルまたは  <a href="MaterialInstanceConstantJP.html" class="twikiLink">MaterialInstanceConstantJP</a> （マテリアル インスタンス定数） に添付できます。マテリアルに追加のプロパティを持たせるだけとは反対に、添付によって、物理マテリアル システムを複数のマテリアル上で再使用できます。
+<p />
+次に簡単な例を挙げます。
+<p />
+ゲーム中の砂利道に適用した gravelRoad （砂利道） マテリアルがあります。砂利道マテリアルは、gravel （砂利） と呼ばれる物理マテリアルを持ちます。
+<p />
+砂利の物理マテリアルで、足音を立てている PawnType に基づいて再生される様々な足音サウンドをセットしました。
+<p />
+PawnTypeOne が歩くとき、SoundCue A からの音が再生されます。
+<p />
+PawnTypeTwo が歩くとき、SoundCue B からの音が再生されます。
+<p />
+** 同じマテリアルにある2つの物理マテリアルは、単独のマテリアルでサポートされています。衝突が起こると、ラインチェックコードはトライアングルヒットを検出して、ヒット位置でテクスチャUVを取得し、ヒットピクセルが白か黒かを決定するため、マスクテクスチャ内をルックアップします。それに対応している物理マテリアルはリターンされます。
+<p />
+<p />
+<h3><a name="プログラマのための詳しい説明"></a> プログラマのための詳しい説明 </h3>
+<p />
+詳しい説明：
+<p />
+PhysicalMaterial.uc を参照してください。
+<p />
+具体的には：<BR>
+var(PhysicalProperties) export editinline PhysicalMaterialPropertyBase PhysicalMaterialProperty;
+<p />
+PhysicalMaterialPropertyBase.uc に読みたいと思われるようなコメントがあります！
+<p />
+<p />
+<p />
+状況に合った足音サウンドを得て、他のうまくできた物理マテリアル ベースの効果のためのフレームワークを置くために、クラスを作ります。
+<p />
+class MyGamePhysicalMaterialProperty extends PhysicalMaterialPropertyBase<BR>
+collapsecategories<BR>
+editinlinenew<BR>
+hidecategories(Object);
+<p />
+<p />
+var(FootSteps) editinline MyGamePhysicalMaterialFootSteps MyGamePhysicalMaterialFootSteps;
+<p />
+<p />
+次のクラス MyGamePhysicalMaterialFootSteps では、以下のようになっています。
+<p />
+var() SoundCue ProtagonistFootSteps;
+<p />
+var() SoundCue NPCTypeOneFootSteps;
+<p />
+var() SoundCue NPCTypeTwoFootSteps;
+<p />
+などなど。
+<p />
+<p />
+それでは、ポーンがステップを踏むとき（AnimNotify_Footstep またはその他の方法によって）、イベントを適切なポーンに送る eventPlayFootStepSound を呼び出すことができます。そうするとそのイベントが今度は適切なポーンに送られます。これで、ポーンは、タイプと物理マテリアルに基づいて何のサウンドを再生するかを決定できます。
+<p />
+例えば、NPC 鬼が、砂利道を歩いています。鬼が足を踏み eventPlayFootStepSound が呼び出されると、トレースダウンし、物理マテリアルを見つけて、ポーン  タイプに基づいて SoundCue を得て、それを再生します。
+<p />
+注：現在、物理マテリアルを得るためには、トレース ダウンする必要があります。直接、C++ でトレースする方が効率的なのと、大部分のライセンス保持者がゲームに望む機能であるため、 eventPlayFootStepSound で物理マテリアルを渡せるように更新する予定です。状況に合った足音サウンドはすばらしいものです。
+<p />
+明らかに、 PhysicalMaterialシステムとプロパティのフレームワークとでは、上記のように、状況に合ったあらゆる種類の機能が実行できます（例えば、impact sounds, hit effects, decals, footstepsなど）。
+<p />
+<p />
+<p />
+<h2><a name="物理マテリアルの階層"></a> 物理マテリアルの階層 </h2>
+<p />
+プログラミング スタッフが、上記の特定のゲーム クラスを作成すると、コンテンツ チームが、物理マテリアルの階層を作成し始めることができ、ゲーム設計者が要求する効果をマテリアルに配置し始めることができます。
+<p />
+<h3><a name="コンテンツ クリエータのための詳細な説明"></a> コンテンツ クリエータのための詳細な説明 </h3>
+<p />
+ PhysicalMaterial （物理マテリアル）は、var(Parent)PhysicalMaterial Parent ペアレントを持ちます。このため、物理マテリアルの階層を作成することが可能で、したがって（私たちの例の場合では） FootStep （足音サウンド）の階層を作成することが可能です。
+<p />
+以下のようになります。
+<p />
+<pre>
+Default
+^
+|
+Clay
+^
+|
+Wet Clay
+</pre>
+<p />
+これで、コンテンツ チームは、ゲーム ワールドに持っている物理マテリアルに特定的になれます。湿った粘土の足音サウンドも、可能です。湿った粘土の足音サウンドを持っていない場合は、見つかるまで階層を調べて、見つからない場合には、 Default にあるデフォルトの足音サウンドで手を打つことができます。
+<p />
+<p />
+<h3><a name="階層を使用する"></a> 階層を使用する </h3>
+<p />
+これで、コード サポートとパラメタラ化された物理マテリアル階層を持つことになり、物理マテリアルをマテリアルに割り当てることができます。物理マテリアルを割り当てた後は、ゲームで再生されるのを聴くことができるはずです。
+<p />
+<h2><a name="コンテンツの提案"></a> コンテンツの提案 </h2>
+<p />
+足音（例の継続として）を作成するときに、ソース サウンドとピッチの両方をランダム化した、減衰のある足音の SoundCue をサウンド　チームに作ってもらう必要があります。これにより、より説得力のある足音サウンドになります。その上、物理マテリアルシステムに対して正確な抽象化が提供されます。
+<p />
+<p />
+<h2><a name="サンプル コード"></a> サンプル コード </h2>
+<p />
+<table cellpadding="3" cellspacing="0" border="1" bordercolor="#525358"  bgcolor="#BBBBBB" >
+<tr>
+<td>
+<pre>
+/**
+*  C++ ランドからの足音を立てろと告げるイベント。
+**/
+event PlayFootStepSound(int FootDown)
+{
+   local vector PawnLoc;
+   local float CurrHeight;
+
+   local Actor TraceActor;
+
+   local vector out_HitLocation;
+   local vector out_HitNormal;
+   local vector TraceDest;
+   local vector TraceStart;
+   local vector TraceExtent;
+   local TraceHitInfo HitInfo;
+
+   // kk ここでは、tracez0r で下に下に地面の下まで追跡する必要があるぜ、ベイビー！
+   // 注：　これは最終的には C++ ランドに移す予定。
+   PawnLoc = self.Location;
+   CurrHeight = self.GetCollisionHeight();
+
+   TraceStart = PawnLoc;
+   TraceDest = PawnLoc - ( Vect(0, 0, 1 ) * CurrHeight ) - Vect(0, 0, 15 );
+
+   // トレース（追跡）ダウンして何の上に立っているかを見る。
+   TraceActor = Trace( out_HitLocation, out_HitNormal, TraceDest, TraceStart, false, TraceExtent, HitInfo, true );
+
+   //DrawPersistentDebugLine( TraceStart, TraceDest, 255, 0, 0 );
+
+   if( TraceActor != none )
+   {
+      // 実際のサウンドをここでプレイ。
+      ActuallyPlayFootStepSound( FootDown, HitInfo );
+      MakeNoise( 0.1f, 'NOISETYPE_FootStep' );
+   }
+   // そうでないと何にもぶつからず空気をうつだけ。
+   else
+   {
+   //   Log( " We are in the air" );
+   }
+
+}
+
+/**
+* こうすると、どのマテリアルの上に立っているかを見つけ出し、
+* 的確な足音を出します。
+* PhysicalMaterial ツリーを参照してスポーンさせる有効な効果を見つけます。
+*見つからないときは、 .uc file にかかれた効果にデフォルトとして落ち着きます。
+* その武器のために。
+**/
+function ActuallyPlayFootStepSound( int FootDown, TraceHitInfo HitInfo )
+{
+   local PhysicalMaterial ParentPhysMaterial;
+   local SoundCue SC;
+   local SoundCue FootStepSound;
+
+   // XO5 HAX0R
+   // 雨の中にいるのであれば、水の足音をプレイ。
+   //注: 今のところ、テレインはトレースできるマテリアルを返さないため、こうしなければなりません。
+   //if( IsTimerActive( 'DropRainDropsOnToPawn' ) == TRUE )
+   if( bShouldPlayWetFootSteps == TRUE )
+   {
+      Self.PlaySound( SoundCue'FootSteps.SoundCues.Footsteps_Marcus_Water', FALSE, TRUE );
+      return;
+   }
+
+
+   // もしも PhysicalMaterial がないときは、
+   if( HitInfo.PhysMaterial != none )
+   {
+      FootStepSound = GetFootStepSound( HitInfo.PhysMaterial, FootDown );
+   }
+   else
+   {
+      // マテリアルがあるかチェック
+      // マテリアルがなければ、デフォルトの PS_DefaultImpactEffect を使わなければなりません。
+      if( HitInfo.Material != none )
+      {
+         FootStepSound = GetFootStepSound( HitInfo.Material.PhysMaterial, FootDown );
+      }
+      else
+      {
+         // いつも "デフォルトの足音" つまり dirt step （ドロの足音）をプレイ。
+         Self.PlaySound( SoundCue'FootSteps.SoundCues.Footsteps_Marcus_Dirt', FALSE, TRUE );
+         return;
+      }
+   }
+
+
+   // ここでは "hierarchy"（階層） を参照して、もし適応するアトリビュート（要素）の中に見つからず、
+   // 腹ペコの私たちに、コンテンツが何もデータを提供しない場合には、
+   // 多分、何かしらのデフォルトをプレイするコードがあったほうがいいだろう。
+
+   // PhysMaterial （物理マテリアル）が何もなければ。
+   if( HitInfo.PhysMaterial != none )
+   {
+      ParentPhysMaterial = HitInfo.PhysMaterial.Parent;
+   }
+   // ここで、parent phys material （物理マテリアルの親）を設定。
+   else
+   {
+      // material に phys material　があるかをチェック。
+      if( HitInfo.Material.PhysMaterial != none )
+      {
+         ParentPhysMaterial = HitInfo.Material.PhysMaterial.Parent;
+      }
+      else
+      {
+         ParentPhysMaterial = none;
+      }
+   }
+
+
+   // これはツリー上を、 parent が null か、 footstep sound が見つかるまでたどる。
+   // その時点で、脱出（exception (例外)のケースです)。
+   // しかし、 .uc ランドには例外というものは存在しない。
+   while( ( FootStepSound != none )
+      && ( ParentPhysMaterial != none )
+      )
+   {
+      // parent （親）のデータをチェック。
+      FootStepSound = GetFootStepSound( ParentPhysMaterial, FootDown );
+      ParentPhysMaterial = ParentPhysMaterial.Parent;
+   }
+
+
+   // material based effect　（マテリアルベースの効果）を使用
+   if( FootStepSound != none )
+   {
+      //Log( " Playing Sound: " $ FootStepSound );
+      SC = FootStepSound;
+   }
+   // デフォルトの行動をとる。
+   else
+   {
+      //Log( " Playing Default Sound" );
+      SC = SoundCue'FootSteps.SoundCues.Footsteps_Marcus_Dirt';
+   }
+
+   Self.PlaySound( SC, FALSE, TRUE );
+}
+
+
+/**
+*  現在の PhysicalMaterial （物理マテリアル）の Sound （サウンド）が valid （有効）かを確認。
+**/
+function SoundCue GetFootStepSound( PhysicalMaterial PMaterial, int FootDown )
+{
+   local SoundCue Retval;
+
+   Retval = none;
+
+   // 私たちの Specific properties （特定のプロパティ）が exists (見つかった）ので function （関数）を呼び出して脱出。
+   //
+   if( ( none != PMaterial )
+      && ( none != PMaterial.PhysicalMaterialProperty )
+      && ( none != WarPhysicalMaterialProperty(PMaterial.PhysicalMaterialProperty) )
+      && ( none != WarPhysicalMaterialProperty(PMaterial.PhysicalMaterialProperty).WarPhysicalMaterialFootSteps )
+      )
+   {
+      Retval = GetSpecificFootStepSound( WarPhysicalMaterialProperty(PMaterial.PhysicalMaterialProperty).WarPhysicalMaterialFootSteps, FootDown );
+   }
+   else
+   {
+      Retval = none;
+   }
+
+   return Retval;
+}
+
+
+/**
+* それぞれの Object はこれを上書きし、参照されるObject に準じたデータを return (返す)。
+* (例：.  GetSpecificFootStepSound は marcus でコールされたら、
+* marcus footstep sound　をさがし、 locust （虫のバッタ）で コールされたら locust sound をさがす)
+**/
+function SoundCue GetSpecificFootStepSound( WarPhysicalMaterialFootSteps FootStepSounds, int FootDown )
+{
+   local SoundCue Retval;
+
+   // 必要な計算その他を行う。
+   Retval = None;
+
+   return Retval;
+}
+
+
+e.g. in class BigOgre
+
+
+function SoundCue GetSpecificFootStepSound( MyGamePhysicalMaterialFootSteps FootStepSounds, int FootDown )
+{
+   local SoundCue Retval;
+
+   // 必要な計算その他を行う。
+   Retval = SoundCue'FootSteps.SoundCues.Footsteps_Player_Dirt';  // あるいは、これを config にして、
+値を .ini ファイルに保存して、非プログラマーが編集できるようにする。
+
+   return Retval;
+}
+
+</pre>
+</td>
+</tr>
+</table>
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PhysicalMaterialSystemJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:32:52 GMT -->
+</html></body>

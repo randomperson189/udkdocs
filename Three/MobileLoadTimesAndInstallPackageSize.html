@@ -1,0 +1,429 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MobileLoadTimesAndInstallPackageSize.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:26:17 GMT -->
+<head>
+<title> UDK | MobileLoadTimesAndInstallPackageSize    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">MobileLoadTimesAndInstallPackageSize  </b></div>
+<div id="tooltext">
+<a href="MobileLoadTimesAndInstallPackageSizeCH.html" class="twikiLink">中国翻译</a><br><a href="MobileLoadTimesAndInstallPackageSizeKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/MobileLoadTimesAndInstallPackageSize -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="Mobile Load Times and Installed Package Size"></a> Mobile Load Times and Installed Package Size </h1>
+<p />
+<em>Document Summary: Common methods to help reduce application load time and final install size for mobile applications.</em>
+<p />
+<em>Document Changelog: Initial creation</em>
+<p />
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="MobileLoadTimesAndInstallPackageSize.html#Mobile Load Times and Installed Package Size"> Mobile Load Times and Installed Package Size</a> <ul>
+<li> <a href="MobileLoadTimesAndInstallPackageSize.html#Overview"> Overview</a>
+</li> <li> <a href="MobileLoadTimesAndInstallPackageSize.html#Load Times"> Load Times</a> <ul>
+<li> <a href="MobileLoadTimesAndInstallPackageSize.html#Shaders"> Shaders</a> <ul>
+<li> <a href="MobileLoadTimesAndInstallPackageSize.html#Shader Keys"> Shader Keys</a>
+</li></ul>
+</li> <li> <a href="MobileLoadTimesAndInstallPackageSize.html#Reducing Shader Keys"> Reducing Shader Keys</a> <ul>
+<li> <a href="MobileLoadTimesAndInstallPackageSize.html#Mobile Shader Analyzer"> Mobile Shader Analyzer</a>
+</li> <li> <a href="MobileLoadTimesAndInstallPackageSize.html#Iterated Keys"> Iterated Keys</a>
+</li> <li> <a href="MobileLoadTimesAndInstallPackageSize.html#Material Instance Constants"> Material Instance Constants</a>
+</li></ul>
+</li> <li> <a href="MobileLoadTimesAndInstallPackageSize.html#Additional Shader Keys Considerations"> Additional Shader Keys Considerations</a> <ul>
+<li> <a href="MobileLoadTimesAndInstallPackageSize.html#Shader Groups"> Shader Groups</a>
+</li> <li> <a href="MobileLoadTimesAndInstallPackageSize.html#Unwarmed Keys"> Unwarmed Keys</a>
+</li> <li> <a href="MobileLoadTimesAndInstallPackageSize.html#Boot Time Profiling"> Boot Time Profiling</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="MobileLoadTimesAndInstallPackageSize.html#Application Size"> Application Size</a> <ul>
+<li> <a href="MobileLoadTimesAndInstallPackageSize.html#IPA Viewer (iOS)"> IPA Viewer (iOS)</a>
+</li> <li> <a href="MobileLoadTimesAndInstallPackageSize.html#Examining Cooked Data"> Examining Cooked Data</a> <ul>
+<li> <a href="MobileLoadTimesAndInstallPackageSize.html#Helpful Commandlets"> Helpful Commandlets</a> <ul>
+<li> <a href="MobileLoadTimesAndInstallPackageSize.html#!_PkgInfo"> PkgInfo</a>
+</li> <li> <a href="MobileLoadTimesAndInstallPackageSize.html#Mine Cooked Packages"> Mine Cooked Packages</a>
+</li> <li> <a href="MobileLoadTimesAndInstallPackageSize.html#Mine TFC Data"> Mine TFC Data</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+This page lists some common methods used to help determine and reduce your application load time and install size.
+<p />
+<h2><a name="Load Times"></a> Load Times </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="Shaders"></a> Shaders </h3>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Shader compilation is often a large source of startup times on mobile platforms. Generally it is unacceptable to pay this cost on the fly during gameplay, as the compilation time will be noticeable as hitches in framerate.  To avoid hitching the Unreal engine will ‘warm’ most shaders at startup time by precompiling and rendering with them to let the system complete all necessary compilation and shader patching steps.
+At the moment mobile devices do not provide a facility to save precompiled/warmed shaders for direct binary loading later.
+<p />
+<h4><a name="Shader Keys"></a> Shader Keys </h4>
+<p />
+Shaders on mobile platforms in UE3 are distinguished by their unique shader key. Please see the writeup contained within <a href="MobileMaterialReference.html" class="twikiLink">MobileMaterialReference</a> for a description of this implementation. Reducing the number of shader keys is not a simple matter of reducing the total material count in your application, as materials can produce a varying number of keys based on a the specific material settings.
+<p />
+<h3><a name="Reducing Shader Keys"></a> Reducing Shader Keys </h3>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h4><a name="Mobile Shader Analyzer"></a> Mobile Shader Analyzer </h4>
+<p />
+The <a href="MobileShaderAnalyzer.html" class="twikiLink">MobileShaderAnalyzer</a> tool can help assess how many shader keys your application is generating, what materials they were generated from, and how to alter your materials to reduce them.  Refer to the link above for information on the usage of this tool.
+<p />
+<h4><a name="Iterated Keys"></a> Iterated Keys </h4>
+As mentioned in the documentation for the <a href="MobileShaderAnalyzer.html" class="twikiLink">MobileShaderAnalyzer</a>, often materials will iterate multiple versions of some settings since the engine does not know how they will be used.  By explicitly informing the engine of your intention with these materials, you can remove many of the iterated versions from your application:
+<p /> <ul>
+<li> Skinning.  If you see both skinned and non-skinned iterations of shaders that you know will ALWAYS be used on skinned meshes, you can add the material to your application’s DefaultEngine.ini, under the MobileMaterialCookSettings section.  Add a ‘+SkinningOnlyMaterials=<mymaterialname>’ line under this section.  During cook only the skinned version of this shader will be created, instantly halving the number of keys created by this material. Example:
+</li></ul>
+<p />
+<div class="codesnippet">
+<pre>
+&#91;MobileMaterialCookSettings]
++SkinningOnlyMaterials&#61;M&#95;FireChest
++SkinningOnlyMaterials&#61;M&#95;IceChest
+</pre>
+</div>
+<p /> <ul>
+<li> Fog.  The engine will generate unfogged and fogged versions of shaders if fogging is enabled for your title, rendering using the unfogged shader dynamically when possible for performance reasons.  If your application can afford the performance hit of always using the fogged version of the shader, you can disable this shader iteration by setting bMobileMinimizeFogShaders=true under the [SystemSettings] section in your application’s DefaultSystemSettings.ini
+</li> <li> Particle settings.  There are many particle settings that force iteration of an on/off state within the shaders.  If you see toggling of any key settings that you aren’t making use of, disable that feature in the material.
+</li></ul>
+<p />
+<h4><a name="Material Instance Constants"></a> Material Instance Constants </h4>
+An excellent way to minimize shader key creation is to make use of master materials and material instance constants (MICs) as much as possible.  Altering MICs in a child material will generally not add any new permutations to the shader keys created from the master material.  Authoring your content from the start with master materials is a good way to avoid an explosion in shader keys later in the project.  See the <a href="MaterialInstanceConstant.html" class="twikiLink">MaterialInstanceConstant</a> page for more information.
+<p />
+<h3><a name="Additional Shader Keys Considerations"></a> Additional Shader Keys Considerations </h3>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h4><a name="Shader Groups"></a> Shader Groups </h4>
+Shader groups do not help eliminate shader keys, but can be of use by deferring subsets of key warming to other points within the application.  The most common example is map loading.  You can quickly create a shader group for each level in your app, the cooker will then add all keys for that map to its own shader group, and automatically warm these keys upon load of the level.  This will raise your map load times by some amount, but generally lower your overall application loading time significantly.
+Per-map shader groups are created through the Engine.ini file under the MobileShaderGroups section like so:
+<p />
+<div class="codesnippet">
+<pre>
+ &#91;Engine.MobileShaderGroups]
+.ShaderGroup&#61;MyGroup
+.Package&#61;MyMapName
+</pre>
+</div>
+<p />
+Shaders referenced by the MyMapName map will be added a “MyGroup” shader group, and when you load the map, those shaders will be compiled and warmed.
+You can also create shader groups dynamically from your game cooker helper (if you have written one), like the following:
+<div class="codesnippet">
+<pre>
+
+Commandlet-&#62;AddDynamicMobileShaderGroup(FName(&#42;GroupName), FName(&#42;PkgFilename));
+
+</pre>
+</div>
+<p />
+During the game, when you need those shaders compiled, just call
+<div class="codesnippet">
+<pre>
+
+GMobileShaderInitialization.StartCompilingShaderGroup(FName(&#42;ShaderGroupName), TRUE);
+
+</pre>
+</div>
+<p />
+You will want to do this compilation when you have a load screen up or some other static UI so than hitches aren’t visible.
+<p />
+<h4><a name="Unwarmed Keys"></a> Unwarmed Keys </h4>
+Note that there may be instances where some shader keys are not automatically warmed by the engine, generally the case if 3rd party software is tied into the engine rendering pipeline.  You can manually add keys to be warmed at startup by including them within your DefaultEngine.ini file as such:
+<p />
+<div class="codesnippet">
+<pre>
+&#91;Engine.StartupShaderKeys]
+.Key&#61;0x1980000000&#95;0x3000000000000000
+</pre>
+</div>
+<p />
+<h4><a name="Boot Time Profiling"></a> Boot Time Profiling </h4>
+<p />
+Refer to <a href="ProfilingBasics.html" class="twikiLink">ProfilingBasics</a> for tips on profiling boot times.
+<p />
+<h2><a name="Application Size"></a> Application Size </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The following sections discuss tools and methods that you can use to help identify and reduce the overall size of your final application package.
+<p />
+<h3><a name="IPA Viewer (iOS)"></a> IPA Viewer (iOS) </h3>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+For iOS devices your final executable package is compiled to a single .ipa package to be deployed to the device.  The IPAExamine.exe program, located within your UE3/UDK Binaries folder is a command line application used to report on the overall size breakdown of the various files contained within your IPA.
+Detailed help on the tool can be found by typing
+<p />
+<div class="codesnippet">
+<pre>
+IPAExamine /?
+</pre>
+</div>
+<p />
+On the command line.
+The most simple usage is to run
+<p />
+<div class="codesnippet">
+<pre>
+IPAExamine &#60;full path to your ipa file&#62;
+</pre>
+</div>
+<p />
+which will list the contents of the IPA, sorted by extension, with a summary table detailing the size breakdown of each extension type.  Often this step alone is enough to point you toward what aspects of your data can be targeted for overall size reduction.
+<p />
+Note that you can detect if shader is warmed at runtime by enabling the MobileFlashRedForUncachedShaders boolean in your system setting ini.
+<p />
+<h3><a name="Examining Cooked Data"></a> Examining Cooked Data </h3>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+Once you have identified the areas of your install package to target for reduction, you will likely want to dive deeper into that content to figure out what specific assets are most to blame.  Often the largest contributors will be mesh or texture data.  The following tools will help determine if this is the case, and dive deeper into each:
+<p />
+<h4><a name="Helpful Commandlets"></a> Helpful Commandlets </h4>
+<p />
+<h5><a name="PkgInfo"></a><a name="_PkgInfo"></a> PkgInfo </h5>
+<p />
+To examine the contents of your cooked packages (.xxx files), you can use the PkgInfo commandlet, as detailed in the <a href="CommandletList.html" class="twikiLink">CommandletList</a> page.
+For example, the output of the command:
+<p />
+<div class="codesnippet">
+<pre>
+
+Gamename.exe PkgInfo &#60;path to package&#62; -exports –simple –platform&#61;&#60;platform&#62; &#62; myfile.txt
+
+</pre>
+</div>
+<p />
+Can be quickly imported into Excel for deeper analysis of the package contents.
+If you are unsure of why a certain asset was brought into the package, the <a href="CommandletList.html#FindAssetReferencersAnchor" class="twikiAnchorLink">Find Asset Referencers Commandlet</a>, or ‘List Objects that reference this object’ from UnrealEd (making sure ALL packages are loaded first) should provde that information.
+<p />
+<h5><a name="Mine Cooked Packages"></a> Mine Cooked Packages </h5>
+<p />
+Another useful tool is the <a href="MineCookedPackages.html" class="twikiLink">MineCookedPackages</a> commandlet, used to populate a SQL DB with data on most assets cooked for the build.  Detailed instructions can be found on the wiki page linked above.
+<p />
+<h5><a name="Mine TFC Data"></a> Mine TFC Data </h5>
+The Mine Cooked Packages commandlet is extremely powerful, but does not currently take into account editor set LODBias settings on textures, as well as any changes made to the textures due to the texture group settings in your DefaultSystemSettings.ini file (per-device settings are taken into account at runtime, while the ‘base’ settings are used during cook).
+If the setting MinTextureResidentMipCount is set to 0 in your engine.ini [TextureStreaming] section (the default for mobile development), then all cooked textures will reside entirely within your TFC files.  Knowing this, you can create a log file detailing every texture added to your .tfc files and use it as your final texture manifest.  To do this, do a full recook of all your data, passing the –WriteTFCReport flag to the cooker commandlet.  This will output a CSV file (TFC_Generation_Report.txt) to your game folder detailing every texture layer cooked, listed by package and size.
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MobileLoadTimesAndInstallPackageSize.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:26:17 GMT -->
+</html></body>

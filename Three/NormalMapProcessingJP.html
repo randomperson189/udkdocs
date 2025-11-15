@@ -1,0 +1,351 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NormalMapProcessingJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:51 GMT -->
+<head>
+<title> UDK | NormalMapProcessingJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">NormalMapProcessingJP  </b></div>
+<div id="tooltext">
+<a href="NormalMapProcessing.html" class="twikiLink">English Translation</a><br><a href="NormalMapProcessingCH.html" class="twikiLink">中国翻译</a><br><a href="NormalMapProcessingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/NormalMapProcessingJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="法線マップの加工"></a> 法線マップの加工 </h1>
+<p />
+<em>ドキュメントの概要 : 3D パッケージからエクスポートし、「Unreal Engine」にインポートするための法線マップを、適切に加工するためのガイドです。(Kevin Johnstone による)</em>
+<p />
+_ドキュメント変更ログ: 作成者 Josh Marlow<sup>?</sup> 、更新者 <a href="https://udn.epicgames.com/Main/PaulOliver" class="restricted" class="restricted" class="twikiLink">Paul Oliver</a> _
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="NormalMapProcessingJP.html#法線マップの加工"> 法線マップの加工 </a> <ul>
+<li> <a href="NormalMapProcessingJP.html#法線マップの加工について"> 法線マップの加工について </a>
+</li> <li> <a href="NormalMapProcessingJP.html#面取りされたスムージング グループ">面取りされたスムージング グループ </a>
+</li> <li> <a href="NormalMapProcessingJP.html#単一のスムージング グループ">単一のスムージング グループ </a>
+</li> <li> <a href="NormalMapProcessingJP.html#複数のスムージン ググループ">複数のスムージン ググループ </a>
+</li> <li> <a href="NormalMapProcessingJP.html#加工例">加工例</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="法線マップの加工について"></a> 法線マップの加工について </h2>
+<p />
+加工に関する問題は、加工を実行する方法が多数存在することにあります。このことが分かっているため、取り組んでいるデザインのために最も良い結果をもたらす方法がどれであるかを知ることが難しい場合があります。実験と失敗を数回繰り返すことによって、それぞれの方法の長所と短所を理解するというのを慣例化することは役に立ちます。
+<p />
+下記では、最も一般的な方法とそれらの方法がどのようなタイプのデザインに有効であるかということについて明確化しています。
+<p />
+<h2><a name="面取りされたスムージング グループ"></a> 面取りされたスムージング グループ </h2>
+<p />
+        単一のスムージング グループでは、緩すぎ、黒から白への変動が強すぎる場合があります。このことは、ソフトとハードなデザインが組み合わされている場合にしばしば起こります。ゲームにおけるデザインの大多数は、このような形態となるため、面取り (chamfering) が最も一般的な加工方法となります。
+<p />
+        スムージング グループがエッジに沿ってどの程度タイトであるべきかは、面取りによって制御されます。これは、しばしば非常に簡単なワークフローとなります。できるだけフォームに適合させると同時に、すべてのフォーム上で明確にピックアップしているわけではないことが示されるため、スムージング グループにおいて過剰な暗闇から光への移行がないようにします。
+<p />
+<p /> <ul>
+<li> <strong>長所</strong> - 豊かな法線マップ。低ポリゴンにおいてほとんど、あるいはまったく鋭いエッジがない。
+</li> <li> <strong>短所</strong> - 頂点数。再利用ができない。
+</li></ul>
+<p />
+<h2><a name="単一のスムージング グループ"></a> 単一のスムージング グループ </h2>
+<p />
+        単一のスムージング グループがメッシュ全体に使用される場合があります。通常は、岩のモデルにうまく利用することができます。このようなモデルは、すべてのアングルからビューされるようにデザインされるためです。岩のモデルでは、全体とは別になっている小さな露出部や石筍タイプの要素がない限り、モデルから変種を作らないのが普通です。
+        そのため、このような岩のモデルが、単一のスムージング グループにより適することになります。法線マップは、単一の状況で機能すれば良いからです。インゲームにおける岩の変種は、概して、工夫された方法で作られます。各メッシュが回転、スケーリングされ、互いとマージされます。
+        したがって、このようなデザインの場合は、余分な左右および上下の法線マップがあると便利です。これによって、岩の法線マップは、あらゆる角度からより深く「ポップ」することができます。
+<p /> <ul>
+<li> <strong>長所</strong> - 負荷が小さく、ポップに満ちている。
+</li> <li> <strong>短所</strong> - 他のデザインに適用できない。
+</li></ul>
+<p />
+<p />
+<h2><a name="複数のスムージン ググループ"></a> 複数のスムージン ググループ </h2>
+<p />
+        1 個のモデル上で異なるスムージング グループを組み合わせると、生成された法線マップのフラットさを増すことに役立ちます。これが非常に役立つのは、デザインのエッジがソフトではなくハードであるメカニカルなデザイン (例 : 鉄製の梁 (はり)) に対してです。
+        法線マップがフラットになるほど、付加的シェープをより多くサポートすることができるようになるため、この方法はモジュールデザインに最適です。メカニカルなデザインがフラットなストリップにアンラップされる場合は、法線マップにおけるそれらの「トリム」部分が、さまざまな他のフォームにアンラップして適用することができます。多くのデザインは、ディテールを変化させたストリップの組み合わせに過ぎないため、このやり方が非常にうまく機能するのです。
+        この方法は、移植性が高いため、シーンからテクスチャを削除しなければならない生産段階の最終局面における最適化サイクルでとても役立ちます。一連の金属のストリップからなる法線マップがある場合は、多くの場合他のカスタムのデザインをほぼそのとおりにサポートできます。
+<p />
+<p /> <ul>
+<li> <strong>長所</strong> - 非常にクリーンで再利用可能な法線マップ。
+</li> <li> <strong>短所</strong> - 頂点数。
+</li></ul>
+<p />
+<h2><a name="加工例"></a> 加工例 </h2>
+        テストとして、鉄製の梁メッシュを取り上げ、3 つの異なる方法によって加工し、どの方法が目的に最も有用であるかを示してみました。正しい方法はありません。このことをできるだけ早く理解すると役に立ちます。
+<p />
+<img src="rsrc/Three/NormalMapProcessing/GirderHI.jpg" alt="GirderHI.jpg.jpg" width="720" height="191" />
+<p />
+<p />
+        最初は、単一のスムージング グループを使用することによって、法線マップに多くのポップをもたらし、デザインがかなりフラットで退屈である点をカバーするように試みてみました。以下がその結果です。
+<p />
+<p />
+<img src="rsrc/Three/NormalMapProcessing/Normals_SingleSmooth.jpg" alt="Normals_SingleSmooth.jpg.jpg" width="720" height="191" />
+<p />
+<p />
+        法線マップのビューにおいてさえ、問題が生じていることが明らかになっています。横側にあるボルトは、フラットに投影されていますが、中央にあるボルトは、エッジに向かって引き伸ばされており、斜めに角度がついて見えていることが分かります。また、オブジェクト全体に渡って法線が曲がっているため、梁の形を正しく表現していないことも明らかです。
+<p />
+<img src="rsrc/Three/NormalMapProcessing/SingleSmoothINGAME.jpg" alt="SingleSmoothINGAME.jpg.jpg" width="720" height="325" />
+<p />
+<p />
+        インゲームにおいては、ある角度から見ると法線が過大にピローしている (反っている) ことが見て取れます。「Symmetry」モディファイアを使用してコーナーの変種を作成しようとすると、ミラーリング ポイントにおいてシームが生じて、加工の様態が露わになり、フェイク感が出てしまいます。
+	次に、複数のスムージング グループを使用することによって、プロセスを制御して、よりクリーンに仕上げてみます。
+<p />
+<p />
+<img src="rsrc/Three/NormalMapProcessing/NormalsMultiSmooth.jpg" alt="NormalsMultiSmooth.jpg.jpg" width="720" height="191" />
+<p />
+<p />
+        ほとんどうまく機能していますが、それでも、側面部がボルト上で垂直方向にやや曲がっています。また、エッジ部のボルトが、エンドキャップ (これ自体もボルトが歪む問題がある) 近くで、水平方向にやや引っ張られています。この方法は実際上機能しますが、上記問題は、3DS Max のケージメソッドの弱点となっています。長方形モデルに対するエンドキャップまたはスムージング グループにおける裂け目を拙劣に処理します。これは、ケージがフラットに投影するのではなく、わずかに曲がるためです。
+<p />
+<p />
+<img src="rsrc/Three/NormalMapProcessing/MultiSmoothINGAME.jpg" alt="MultiSmoothINGAME.jpg.jpg" width="720" height="325" />
+<p />
+<p />
+        インゲームにおいては、ケージが曲がっているためにエンドキャップが不適切に加工されていることが明らかです。フラットに投影しないため、いくつかの情報が欠落し、その結果、キャップの斜面が側面の斜面ときちんと合わなくなりました。また、作成されたコーナーのいくつかの変種に、シームがわずかにあるのが分かります。
+        しかし、もう少しで完了です。この段階で必要なのは、ちょっとした微調整です。最後 2 つの問題を修正するには、デタッチされた (Detached) スムージング グループのトリックを使用します。
+<p />
+<p />
+<img src="rsrc/Three/NormalMapProcessing/NormalsDetachedSmooth.jpg" alt="NormalsDetachedSmooth.jpg.jpg" width="720" height="191" />
+<p />
+<p />
+        そこで、デタッチされたスムージング グループの方法を使用すると、どのくらいケージがスムージング グループを正しく解釈できるようになるかが分かります。上面のフラットなプレーンは、まっすぐ上に投影し、横はまっすぐ外に向かって投影します。エッジのボルトが歪む問題についても修正してみます。そのためには、低ポリゴンメッシュを高ポリゴンデザインの終端を超えて拡張させます。これが機能する理由は、スムージング グループが、1 つのセクションに関連するのではなく、複数回デザインをタイリングした場合に生じるものに関連するためです。スムージング グループの終端をケージに無視させることによって、BSP テクスチャをタイリングするのと同じように機能させます。
+		横に拡張する低ポリゴンのエリアには、取得すべき高ポリゴンの情報がありません。そのため、それらの UV を、加工すべき情報をもつエリアの側まで移動させます。これは、最初のうちあまり意味がないため面倒なことです。しかし、わたしたちが目指していることは、インゲームにおけるオブジェクトの使用様態に関連して加工することであって、単に UV と高ポリゴン設定に関連して加工することではありません。
+		しばしば、このことが、使用すべき加工方法を選択する際の重要なファクターとなります。アセットがインゲームでどのように使用されるかという私たちの知識に、より基づいています。このケースでは、多数のこれらの梁を横に重ねるように並べ、それらを、加工した長いバージョンにマージするようにします。
+<p />
+<p />
+<p />
+<p />
+<img src="rsrc/Three/NormalMapProcessing/DetachSmoothINGAME.jpg" alt="DetachSmoothINGAME.jpg.jpg" width="720" height="325" />
+<p />
+<p />
+        これで、このメッシュは、インゲームでパーフェクトに見えるようになりました。すべてのボルトがフラットに投影され、歪みもまったくありません。シームのないコーナーの変種もサポートされています。これは、法線がとてもフラットであり、スムージング グループに関連しているためです。
+		これによって、テクスチャがインゲームで複数のモジュール変種をサポートすることができます。下の画像では、ピースを使用してどのくらいの数の特別なピースを作成することができるかを示しています。梁は、「Gears of War 3」に置かれた橋の柵セットの一部となりました。
+<p />
+<p />
+<p />
+<img src="rsrc/Three/NormalMapProcessing/LotsofGirders.jpg" alt="LotsofGirders.jpg.jpg" width="720" height="419" />
+<p />
+<p />
+        法線マップがとてもフラットであるため、予定されていなかった他のデザインをサポートすることができました。これは、よりメカニカルな形状にアンラップしやすいことによります。
+<p />
+<p />
+<p />
+<img src="rsrc/Three/NormalMapProcessing/LotsofGirders2.jpg" alt="LotsofGirders2.jpg.jpg" width="720" height="419" />
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NormalMapProcessingJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:51 GMT -->
+</html></body>

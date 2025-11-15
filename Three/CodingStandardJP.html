@@ -1,0 +1,833 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CodingStandardJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:31:17 GMT -->
+<head>
+<title> UDK | CodingStandardJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">CodingStandardJP  </b></div>
+<div id="tooltext">
+<a href="CodingStandard.html" class="twikiLink">English Translation</a><br><a href="CodingStandardCH.html" class="twikiLink">中国翻译</a><br><a href="CodingStandardKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/CodingStandardJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<h1><a name="コーディング基準"></a> コーディング基準 </h1>
+<p />
+Epic には、簡単なコーディング基準や慣例がいくつかあります。以下の例のほとんどは Unreal Script に関するものですが、この基準や慣例は C++ のコーディングにも適用されるべきです。この文書は、議論や作業のためではなく、Epic の現在のコーディング基準の状態を反映しており、ライセンス取得者に便宜を図るために提供されています。なお、エンジンには、レガシー・コードが数十万行ほどあって、新しいコードを追加したり、昔のコードのリファクタリングを行ったりしながら更新されているので、この基準があまり反映されていないことに注意してください。
+<p />
+コードの慣例は、いくつもの理由で、プログラマにとって重要です。:
+<p /> <ul>
+<li> ソフトウェアの生涯コストの 80% は、メンテナンス コストです。
+</li> <li> 最初にコードを書いたプログラマだけがメンテナンスし続けるようなソフトウェアは、ほとんどありません。
+</li> <li> 慣例化されたコードはソフトウェアの読みやすさを向上させ、エンジニアに、新しいコードをよりすばやく完全に理解することを可能にします。このプロジェクトのライフタイムの間に、弊社が新しいエンジニアやインターンを雇うことは確実であり、このプロジェクトで新たに施された変更は、おそらく以後のプロジェクトでも使われるはずです。
+</li> <li> ソースコードを MOD コミュニティの開発者に公開する際にも、コードを理解しやすくすることは重要です。
+</li> <li> これらの規則の多くは、実際にコンパイラ間の互換性を維持するためにも必要です。
+</li></ul>
+<p />
+<h2><a name="Class (クラス) の構成: クラス名は名詞"></a> Class (クラス) の構成: クラス名は名詞 </h2> <ul>
+<li> クラス コメント ブロック
+</li> <li> クラス宣言
+</li> <li> 変数宣言
+</li> <li> C++ のみ：  ｓtatic （静的） 変数、および、const （定数） 変数
+</li> <li> Public （パブリック） 変数
+</li> <li> Protected （プロテクテッド） 変数
+</li> <li> Private (プライベート) 変数
+</li> <li> cpptext
+</li> <li> コンストラクタ、および、デストラクタ
+</li> <li> BeginPlay( )、Destroyed( ) などを含む
+</li> <li> 機能ごとにグループ化されたメソッドやステート（状態）
+</li> <li> 機能ごとにグループ化されたステートレスな(いかなる状態にも関連付けられていない)ユーティリティ メソッド
+</li> <li> 特定の状態への遷移・脱出に関連するステートレスなメソッドは、対応するステートの直前に置いてください。
+</li> <li> 自動状態およびそれに関連付けられたメソッドがある場合には、他の状態より先に定義してください。
+</li> <li> defaultproperties （デフォルトのプロパティー）
+</li></ul>
+<p />
+<h2><a name="State （状態） の構成: 状態名は形容詞"></a> State （状態） の構成: 状態名は形容詞 </h2> <ul>
+<li> 状態コメント ブロック (メソッド コメントと同様)
+</li> <li> メソッド
+</li> <li> Begin: コード
+</li></ul>
+<p />
+<h2><a name="メソッドの構成: メソッド名は動詞"></a> メソッドの構成: メソッド名は動詞 </h2> <ul>
+<li> メソッド コメント ブロック
+</li> <li> ローカル変数
+</li></ul>
+<p />
+<h2><a name="変数： C++ 固有の型を使う"></a> 変数： C++ 固有の型を使う </h2> <ul>
+<li> UBOOL: ブール値 （4 バイト）。BOOL ではコンパイルされません。
+</li> <li> TCHAR: 文字 (TCHAR のサイズに依存するコードを書かないこと)
+</li> <li> BYTE: 符号なしバイト （1バイト）
+</li> <li> SBYTE: 符号付きバイト (1バイト)
+</li> <li> WORD: 符号なしの 「short」 (2バイト)
+</li> <li> SWORD: 符号付きの 「short」 (2バイト)
+</li> <li> UINT: 符号なし整数 (4バイト)
+</li> <li> INT: 符号付き整数 (4バイト)
+</li> <li> QWORD: 符号なし「4倍長語」 (8バイト)
+</li> <li> SQWORD: 符号付き「4倍長語」 (8バイト)
+</li> <li> FLOAT: 単精度浮動小数点数 (4バイト)
+</li> <li> DOUBLE: 倍精度浮動小数点数 (8バイト)
+</li> <li> PTRINT: ポインタを保持できる整数 (PTRINT のサイズに依存するコードを書かないこと)
+</li></ul>
+<p />
+<h2><a name="コメント"></a> コメント </h2>
+コメントはコミュニケーションであり、コードに_不可欠_なものです。以下は、コメントについて留意すべき事項です （Kernighan &amp; Pike の 「The Practice of Programming」 （プログラミング作法）より)：
+<p /> <ul>
+<li> 自己文書化するようなコードを書いてください。 <br>
+</li></ul>
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> わるい </td><td bgcolor="#eaeaea"> よい </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> t = s + l + b; </td><td bgcolor="#ffffff"> TotalLeaves =  SmallLeaves + LargeLeaves  - SmallAndLargeLeaves; </td></tr>
+</table>
+<br>
+<p /> <ul>
+<li> 明らかなことは書く必要はありません。そのような場合には、コメントを省略するか、何か役に立つことを書いてください。 <br>
+</li></ul>
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> わるい </td><td bgcolor="#eaeaea"> よい </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> //iLeavesをインクリメント（段階的に増加）する </td><td bgcolor="#ffffff"> //まだお茶の葉が残っていることがわかっている </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Leaves++; </td><td bgcolor="#eaeaea"> Leaves++; </td></tr>
+</table>
+<p /> <ul>
+<li> 読みにくいコードは、コメントで誤魔化さず、書き直してください。<br>
+</li></ul>
+ <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> わるい </td><td bgcolor="#eaeaea"> よい </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> //葉の数の合計は </td><td bgcolor="#ffffff"> &nbsp; </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> //大きい葉の数と小さい葉の数の足した数から </td><td bgcolor="#eaeaea"> &nbsp; </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> //大きくかつ小さい葉の数を引いたもの </td><td bgcolor="#ffffff"> &nbsp; </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> t = s + l + b; </td><td bgcolor="#eaeaea"> TotalLeaves = SmallLeaves + LargeLeaves - SmallAndLargeLeaves; </td></tr>
+</table>
+<br> <ul>
+<li> コードを矛盾させないでください。<br>
+</li></ul>
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> わるい </td><td bgcolor="#eaeaea"> よい </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> //iLeavesを絶対インクリメントしないでください。 </td><td bgcolor="#ffffff"> //まだお茶の葉が残っていることがわかっています。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Leaves++; </td><td bgcolor="#eaeaea"> Leaves++; </td></tr>
+</table>
+<p />
+弊社のドキュメンテーション（文書化）スタイルは、<a href="http://java.sun.com/j2se/javadoc/writingdoccomments/" target="_top">Javadoc</a> に基づいています。
+最終的には、説明文書は自動生成される予定です。
+<p />
+以下の例は、クラス、状態、メソッド、変数のコメントの書式を示しています。コメントはコードを補足するものであるということを忘れないでください。実装を文書化するのはコードであり、意図を文書化するのがコメントなのです。したがって、部分的にでも、コードの意図が変わったときには、コメントも更新するようにしてください。
+<p />
+<pre>
+class Tea extends WarmBeverage
+   native, perobjectconfig, transient;
+/&#42;&#42;
+ &#42; このクラスは、たくさんの巧みな処理を行います。
+ &#42; このクラスは、他のいくつかのクラスと連携して働きます。
+ &#42;/
+
+/&#42;&#42;
+ &#42;  中国のお茶の値段を保存する変数。
+ &#42;/
+var float Price;
+
+
+/&#42;&#42;
+ &#42; state Brewing
+ &#42; この state （状態） は、カップの中で Brewing (お茶を入れる際の蒸らしている) 状態を表すために作られました。
+ &#42; 入った時点： デフォルトの状態では、AddBoilingWater が呼ばれます。
+ &#42; 終わった時点： Pour （注ぐ） によって、もしくは、経過時間が長すぎた場合
+ &#42; (GettingBitter （苦くなる） に進む)
+ &#42;/
+state Brewing
+{
+
+/&#42;&#42;
+ &#42; Steep は、指定されたお茶を蒸らす水の量および温度から
+ &#42; 味の差の値を計算します。
+ &#42;
+ &#42; &#64;param    VolumeOfWater - お茶を蒸らすのに使った水の量
+ &#42;           ミリリットル単位の正の数(このメソッドでは正か負かはチェックされません!)
+ &#42;
+ &#42; &#64;param    TemperatureOfWater - 絶対温度での水温。
+ &#42;           273 &#60; temperatureOfWater &#60; 380
+
+ &#42; &#64;param    NewPotency - 蒸らし始めた後のお茶の濃さ。
+ &#42;           0.97～1.04の間である必要があります。
+ &#42;
+ &#42; &#64;return   お茶の濃さの変化を、お茶味覚単位 (TTU)/秒で
+ &#42;           返します
+ &#42;
+ &#42;/
+
+function float Steep (float VolumeOfWater, float TemperatureOfWater,
+                      out float NewPotency)
+{
+}
+}
+</pre>
+<p />
+クラスコメントに含むべき事項 <ul>
+<li> そのクラスが解決する問題の説明がひつようです。このクラスがなぜ作成されたか。
+</li></ul>
+<p />
+状態コメントに含むべき事項 <ul>
+<li> その状態が解決する問題の説明。そのオブジェクトには、なぜそのような状態があるのか。上のクラス関連コードの順番からわかるように、状態に関連しているが、状態の中には含まれない関数は、状態コメントの直前に配置するべきであることに注意してください。
+</li></ul>
+関数コメントは何を意味するのでしょう？ <ul>
+<li> Brewing::Steep は、Steep メソッドが Brewing 状態の中にあることを意味しています。この Unreal Script コメントの中では、C++ のスコープ解決演算子が使われています。
+</li> <li> 次は、この関数の目的です。ここでは、この関数が <em>解決する問題</em> を文書化しています。上で述べたとおり、 <em>意図</em> を文書化するのがコメント、実装を文書化するのがコードです。
+</li> <li>  「入力」のところには、このメソッドの入力パラメータのすべてをリストアップします。各パラメータのコメントには、単位、可能な値の範囲、「不可能な」値、および、ステータス/エラーコードの意味が含まれている必要があります。
+</li> <li> 「入力/出力」のところ(この例では不要なので省かれています)には、関数内部で変更可能な値を関数に渡すパラメータを記します。入力パラメータでもあり、かつ、出力パラメータでもあるものを記します。
+</li> <li> 「出力」のところには、出力のみの (呼出し元によって渡された値は無視される) パラメータのすべてをリストアップします。戻り値の意味や、エラー/障害の場合に何が起こるかも記載する必要があります。
+</li> <li> return には、出力変数と同じように、戻り値として可能性のある値を記載します。
+</li></ul>
+<p />
+<strong>特殊なコメント。</strong> 以下のコメントでは、スラッシュとコメントの間にスペースがないことに注意してください。これにより、検索時に余計なコードにヒットすることが少なくなり、検索が楽になります。<br>
+//@debug      リリースの前に削除されるデバッグ文す。<br>
+//@todo         まだやるべき作業が残っています。説明に従ってください。
+<p />
+デバッグコードは、通常、エンジンから削除されるべきものであることに注意してください。デバッグコードを残す必要がある場合には、コンパイルはされるが、最適化時に削除されるように、#if 0 ではなく if（0） のブロックで囲む必要があります。そして、そのコードがデバッグ用であるという説明、プログラマの名前、および、デバッグコードの目的を記載しておいてください。
+<p />
+<h3><a name="第 ３ 者によるコードの変更"></a> 第 ３ 者によるコードの変更 </h3>
+<p />
+エンジンの中で使われているライブラリ (wxWindows、FaceFX、Novodex など) のコードを変更する際には、変更部分に //@UE3 コメントでタグ付けして、変更理由を記載してください。これにより、その変更を新バージョンのライブラリに組み込んだり、ライセンス取得者が変更部分を発見したりするのが簡単になります。
+<p />
+<h1><a name="命名規則"></a> 命名規則 </h1>
+<p />
+変数、関数、状態、および、クラス名は、曖昧でなく明快で、説明的な名前である必要があります。名前のわかりやすさは、名前のスコープが広いほど重要になります。過度な省略名は避けてください。
+<p />
+変数は1つずつ宣言するようにして、コメントとして変数の意味をつけられるようにしてください。 これは、<a href="http://java.sun.com/j2se/javadoc/writingdoccomments/" target="_top">Javadoc</a> のスタイルの要求事項でもあります。変数の前のコメントは、1行でも複数行でもかまいません。また、間に空白行を挿入することで、変数をグループ化することもできます。
+<p />
+変数名では、ThisIsAGoodVariableName のような言葉ごとの大文字化方式を使ってください。
+「thisIsABadName」 (別名: キャメルケース) や 「this_is_a_bad_name」 (アンダースコア) のような方式は使わないでください。
+<p />
+ブール変数の名前は、真偽を訊ねる疑問文にしてください。また、bool を返す関数の名前も、同じようにしてください。ブール変数には、必ず接頭辞として <em>b</em> を付けてください。
+<p />
+<pre>
+/&#42;&#42;
+ &#42; お茶の重さ(Kg)
+ &#42;/
+var float TeaWeight;
+
+/&#42;&#42; お茶っ葉の数  &#42;/
+var int TeaNumber;
+
+/&#42;&#42; TRUEは、お茶が臭いことを示す &#42;/
+var bool bDoesTeaStink;
+
+/&#42;&#42;
+ &#42; 人間には読めないお茶の FName
+ &#42;/
+var name TeaName;
+
+/&#42;&#42; 人間に読めるお茶の名前 &#42;/
+var String TeaName;
+</pre>
+<p />
+構造型の場合には、変数名の最後にクラス名を付加します。
+<p />
+<pre>
+/&#42;&#42;
+ &#42; 使用するお茶のクラス
+ &#42;/
+var class&#60;Tea&#62; TeaClass;
+
+/&#42;&#42;
+ &#42; お茶を注ぐ音
+ &#42;/
+var Sound TeaSound;
+
+/&#42;&#42;
+ &#42; お茶の画像
+ &#42;/
+var Texture TeaTexture;
+</pre>
+<p />
+C++ コードの場合、デフォルトでは全クラス変数を private （プライベート） にしてください。変数を public （パブリック） にするのは、スクリプトとの相互作用が必要な場合(つまり、XxxClasses.h から生成された変数）だけにしてください。
+<p />
+プロシージャ(戻り値のない関数)の名前には、意味のはっきりした動詞と目的語 (オブジェクト) の並びを使ってください。ただし、メソッドの対象が、そのメソッドが所属するオブジェクト自体である場合は例外です。この場合には、内容から対象がわかるはずなので。「Handle」 や 「Process」 のような動詞は曖昧なので、これらで始まる名前は避けてください。
+<p />
+<pre>
+Tea SomeT;
+SteepTea(SomeT);    // オブジェクトを処理するタイプのメソッド名
+SomeT.Pour();       // Teaから呼び出されるメソッド。動詞だけで十分。
+</pre>
+<p />
+値を返す関数の場合には、戻り値も関数名に取り込んで、関数が返す値を明らかにする必要があります。これは、特にブール関数の場合に重要です。次の 2 つのメソッドの例を考えてみましょう。
+<p />
+<pre>
+function bool CheckTea(Tea t) {...} // TRUE が何を意味するかわからない。
+function bool IsTeaFresh(Tea t) {...} // TRUE はお茶が新鮮であることを示すのが、名前を見れば明らか。
+</pre>
+<p />
+読みやすくするため、状態名やクラス名は、大文字で始まるようにし、名前の途中でも読みやすいように大文字を使ってください。クラス名は名詞にしてください。また、状態名は、対応する状態を表す(形容詞など)ようにしてください。状態は、クラスなしで使われることはないので、常に暗黙のオブジェクトが存在します。
+<p />
+渡された変数は必ず利用するようにしてください。使わない値がある場合には、その値をパラメータ・リストから外すか、パラメータの型だけ残し、パラメータをコメントアウトしてください。
+<p />
+<pre>
+void Update(FLOAT DeltaTime, UBOOL /&#42;bForceUpdate&#42;/);
+</pre>
+<p />
+Unreal Script： 参照渡しのパラメータには、out_ 接頭辞を使うようにしてください。
+<p />
+<pre>
+function PassRefs (out float out&#95;wt, float ht, out int out&#95;x)
+</pre>
+<p />
+<h3><a name="Const"></a> Const </h3>
+<p />
+C++ では、const が使える場合には、必ず const を使うようにしてください。特に、関数パラメータやクラスメソッドでは必須です。const は、コンパイラに対する指示であると同時に、文書化でもあります。
+<p />
+<h3><a name="Virtual （バーチャル、仮想）"></a> Virtual （バーチャル、仮想） </h3>
+<p />
+派生クラスで仮想関数を宣言して、親クラスの仮想関数をオーバーライドする際には、*必ず* virtual キーワードを使うようにしてください。C++ の規格によれば、「virtual」 の動作も継承されるので、必ずしもそうする必要はないのですが、仮想関数宣言では必ず virtual キーワードを使ったほうが、コードははるかに明解になります。
+<p />
+<h1><a name="実行ブロック"></a> 実行ブロック </h1>
+<p />
+<h3><a name="中括弧 { }"></a> 中括弧 { } </h3>
+中括弧論争は醜いものです。Epic では、改行して新しい行に中括弧を置く方式を、長年にわたって使用してきました。ですから、どうかこの方式にしたがってください。
+<p />
+<h3><a name="if - else"></a> if - else </h3>
+if-else 文中の実行ブロックは、すべて中括弧で囲んでください。これにより、編集ミスを防ぐことができます。というのも、中括弧が使われていないと、気づかないうちに if ブロックに行を追加してしまう可能性があるからです。追加した行は、if 式の制御対象にならないので、バグの原因になる可能性があります。もっとひどいときには、条件つきでコンパイルされた行によって、if/else 文がブレークさせられてしまうことがあります。ですから、必ず中括弧を使ってください。
+<p />
+<p />
+<pre>
+if (bHaveUnrealLicense)
+{
+   InsertYourGameHere();
+}
+else
+{
+   CallMarkRein();
+}
+</pre>
+<p />
+多分岐 if 文は、各 else if が最初の if と同じインデント位置に来るようにインデントしてください。この方が読む人から見て構造がわかりやすくなります。
+<p />
+<pre>
+if (TannicAcid &#60; 10)
+{
+   log(&#34;Low Acid&#34;);
+}
+else if (TannicAcid &#60; 100)
+{
+   log(&#34;Medium Acid&#34;);
+}
+else
+{
+   log(&#34;High Acid&#34;);
+}
+</pre>
+<p />
+<h3><a name="タブ"></a> タブ </h3>
+コードのインデントは、実行ブロックごとに行ってください。クラスはブロックに入っていないので、Unreal Script のクラスメンバ関数をインデントする必要はありません。コードのインデントには、スペースではなくタブを使ってください。そうすれば、各プログラマが自分の好きなタブ位置でコードを表示することができます。
+<p />
+<h3><a name="switch 文"></a> switch 文 </h3>
+空の case (複数の case が同じコードを共有する場合) を除き、switch 文中の case の制御が次の case にそのままフォールスルーする場合には、そのことをコメントで明示的に示すようにしてください。つまり、case には、break 、もしくは、フォールスルーを示すコメントのどちらかがあるようにしてください。もちろん、break 以外のコード制御移行コマンド （return、continue など）でもかまいません。
+<p />
+また、default を必ず設けてください。そして、誰かが default の後に新しい case を追加したときのために、default の後にも break を書いておくようにしてください。
+<p />
+<pre>
+switch (condition)
+{
+   case 1:
+      --code--;
+      // フォールスルー
+   case 2:
+      --code--;
+      break;
+   case 3:
+      --code--;
+      return;
+   case 4:
+   case 5:
+      --code--;
+      break;
+   default:
+      break;
+}
+</pre>
+<p />
+<p />
+デフォルトプロパティは、継承された変数の次にクラス変数の順で並べるようにしてください。UE3 の場合、defaultproperties ブロックでは config 変数や localized 変数を定義できなくなったので注意してください。
+<p />
+<pre>
+defaultproperties
+{
+   // Objectから継承した変数
+   bGraphicsHacks&#61;TRUE
+
+   // WarmBeverageから継承した変数
+   bThirsty&#61;FALSE
+
+   // クラス変数
+   bTeaDrinker&#61;TRUE
+}
+</pre>
+<p />
+<h3><a name="論理式（ブーリアン式）"></a> 論理式（ブーリアン式） </h3>
+<p />
+論理式の値としては、必ず TRUE や FALSE を使うようにしてください。true や false を使うと、コンパイラや定義でおかしな問題を引き起こす可能性があるのでやめてください。また、0 や 1 も、読者の誤解を招くので使わないでください。
+<p />
+local bool を宣言してコードを読みやすくすることは、ご遠慮なくやってください。下の 2 番目の例では、DoSomething() が呼び出される条件を変数名によってわかりやすくしています。
+<p />
+<pre>
+if ((Blah-&#62;BlahP-&#62;WindowExists-&#62;Etc &#38;&#38; stuff) &#38;&#38;
+    !(Player exist &#38;&#38; Gamestarted &#38;&#38; player still has pawn &#38;&#38;
+    IsTuesday())))
+{
+   DoSomething();
+}
+</pre>
+<p />
+<em>次のように書き換えた方がよい。</em>
+<p />
+<pre>
+local bool bLegalWindow;
+local bool bPlayerDead;
+
+bLegalWindow &#61; (Blah-&#62;BlahP-&#62;WindowExists-&#62;Etc &#38;&#38; stuff);
+bPlayerDead &#61; (Player exist &#38;&#38; Gamestarted &#38;&#38;
+               player still has pawn &#38;&#38; IsTuesday());
+
+if ( bLegalWindow &#38;&#38; !bPlayerDead )
+{
+   DoSomething();
+}
+</pre>
+<p />
+注意：式の途中で改行する際には、演算子の直後(つまり、演算子が前の行の末尾にくる)で行います。そして、以後の行は、対応する括弧の内側に揃うように配置してください。
+<p />
+また、コードが「単純すぎる」からといって、関数に書き出すことを躊躇しないでください。たとえば、上の bLegalWindow 変数が複数の関数で使われている場合には、(パラメータが簡単に利用できるとすれば)これ単独で関数にしてしまうのもよいでしょう。
+<p />
+<h3><a name="一般的なスタイルの問題"></a> 一般的なスタイルの問題 </h3>
+<p /> <ul>
+<li> <strong>単一の関数に複数の return を書くことを避ける。</strong>  そのせいでコードが極端にわかりにくくならない限りは、return 文は一つだけにしてください。これにより、実行経路の追跡や、デバッグ用の修正が簡単になるので、コードのメンテナンスが楽になります。
+</li> <li> <strong>debugf/warnf/appErrorf 関数に構造体を渡さない。</strong>  FNames や FStrings は、%sで印字できるように、* を使って渡してください。
+</li> <li> <strong>依存距離を最小化する。</strong>  コードが特定の変数値に依存する場合には、その変数が使われる直前で変数値を設定するようにしてください。実行ブロックの冒頭で変数を初期化してから、その値を使うまでの間に 100 行ものコードがあると、依存関係に気づかずにうっかり値を変更される危険が大きくなります。初期化した変数が次の行で使われていれば、変数をその値で初期化した理由も、変数が使われる場所もはっきりします。Berkeley の研究によれば、使用する行から7行より離れたところで宣言されている変数は、誤って使われる可能性が極めて高い (&gt; 80%) ということがわかっています。
+</li> <li> <strong>関数の長さ。</strong>  関数は、60 行より長くしないでください。これは_恣意的な数です_が、印刷したときに関数全体が1ページにを収まる長さです。これより長い関数がある場合には、そのタスクをリファクタリング（わける）する方法を考えてみてください。呼び出しのオーバーヘッドを避けるには、短い関数にしてインライン関数を使うようにしてください。
+</li> <li> <strong>コンパイラの警告を解決する。</strong> コンパイラの警告メッセージは、何かがあるべき形になっていないことを意味しています。コンパイラが警告を出したところは、修正するようにしてください。もし、どうしても解決できない場合には、#pragma を使って警告を抑制してください。ただし、これは最後の手段です。
+</li> <li> <strong>ファイルの最後には空白行を残す。</strong>  .cpp や .h ファイルを gcc でうまく動かすには、空白行が含まれている必要があります。
+</li> <li> <strong>FLOAT から INT への暗黙の型変は避ける。</strong>  この演算は遅いし、どのコンパイラでもコンパイルできるとは限りません。INT に変換する際には、代わりに appTrunc（） 関数を使うようにしてください。これにより、より高速なコードが生成されると同時に、コンパイラ間の互換性が保証されます。
+</li></ul>
+<p />
+<h3><a name="例"></a> 例 </h3>
+<p />
+<pre>
+/&#42;&#42;
+ &#42; このクラスは、さまざまな波形動作を扱うクラスです。
+ &#42; 指定されたゲームパッドで指定された時刻に再生する波形データを管理します。
+ &#42; このクラスは、プレーヤコントローラによって、指定されたゲームパッドの波形を再生/停止/一時停止するために、呼び出されます。
+ &#42; また、UXboxViewport は、このクラスを呼び出して、現在の振動状態情報を取得して、それをゲームパッドに適用します。
+ &#42; この処理は、波形サンプルデータの中で定義された関数を評価することによって実現されます。&#60;BR&#62;
+
+ &#42;
+ 　&#42; 著作権:    Copyright (c) 2005&#60;BR&#62;
+ 　&#42; 会社:      Epic Games Inc.&#60;BR&#62;
+ &#42;/
+class WaveformManager extends Object within PlayerController
+   native
+   transient
+   poolable(1,0);
+
+/&#42;&#42;
+ &#42; プレーヤが、ゲームパッドの振動を無効にしたかどうか (TCR C5-3)。
+  &#42; このコメントは長いので、実際に複数行が必要。
+ &#42;/
+var bool bAllowsForceFeedback;
+
+/&#42;&#42; 現在再生中の波形 &#42;/
+var ForceFeedbackWaveform FFWaveform;
+
+/&#42;&#42;  波形がプレーヤ コントローラによって一時停止されているか &#42;/
+var bool bIsPaused;
+
+/&#42;&#42; 現在再生中の波形サンプル &#42;/
+var int CurrentSample;
+
+/&#42;&#42; 波形開始以後の経過時間 &#42;/
+var float ElapsedTime;
+
+/&#42;&#42; 全波形に対するスケーリング（拡大縮小）の量(ユーザー設定) &#42;/
+var float ScaleAllWaveformsBy;
+
+/&#42;&#42;
+ &#42; ゲームパッドで再生する波形の設定
+ &#42;
+ &#42; &#64;param Waveform 再生する波形データ
+ &#42;/
+シミュレーションされた最終的 function PlayWaveform(ForceFeedbackWaveform Waveform)
+{
+   // 現在のサンプルや継続時間をゼロクリアし、一時停止状態の場合には、それを解除する。
+   CurrentSample &#61; 0;
+   ElapsedTime &#61; 0.0;
+   bIsPaused &#61; FALSE;
+   // 波形が有効であることを確認する
+   if (Waveform !&#61; None &#38;&#38; Waveform.Samples.Length &#62; 0 &#38;&#38;
+      bAllowsForceFeedback &#61;&#61; TRUE)
+   {
+      // 再生する波形を設定する
+      FFWaveform &#61; Waveform;
+   }
+   else
+   {
+      FFWaveform &#61; None;
+   }
+}
+
+/&#42;&#42;
+ &#42; 波形をクリアすることにより、波形を停止する
+ &#42;/
+シミュレーションされた最終的 function StopWaveform()
+{
+   // 現在の波形を削除する
+   FFWaveform &#61; None;
+}
+
+/&#42;&#42;
+ &#42; ゲームパッドでの波形の再生を一時停止/再開する
+ &#42;
+ &#42; &#64;param bPause TRUE なら一時停止、FALSE なら再開
+ &#42;/
+シミュレーションされた最終的 function PauseWaveform(optional bool bPause)
+{
+   // ゲームパッドを一時停止状態に設定する
+   bIsPaused &#61; bPause;
+}
+
+defaultproperties
+{
+   bAllowsForceFeedback&#61;TRUE
+   ScaleAllWaveformsBy&#61;1.0
+}
+
+</pre>
+<p />
+<h2><a name="C++ の関数"></a> C++ の関数 </h2>
+<p />
+<pre>
+/&#42;&#42;
+ &#42; 各サブカメラ効果に対してポスト レンダリングを実行して、結果を蓄積する。
+ &#42; これにより、放射結果がフルスクリーンパスに追加されることを防ぎ、
+ &#42; 放射に 2 パス分のブラーをただで追加することができます。
+ &#42;
+ &#42; &#64;param Viewport   描画するビューポート
+ &#42; &#64;param RI      描画に使われるレンダリング インタフェース
+ &#42;/
+void UUCScreenEmissiveWithBloom::PostRender(UViewport&#42; Viewport,FRenderInterface&#42; RI)
+{
+   guard(UUCScreenEmissiveWithBloom::PostRender);
+
+   checkSlow( EmissiveCamEffect &#38;&#38; BloomCamEffect );
+
+   // 放射のポスト レンダリングの結果が
+   // バックバッファに描画されないようにする
+   EmissiveCamEffect-&#62;DisplayOutput &#61; 0;
+   EmissiveCamEffect-&#62;PostRender( Viewport, RI );
+
+   // カメラの放射効果の結果を、カメラの
+   // ブルームカメラ効果で使うように設定する
+   BloomCamEffect-&#62;EmissiveResultTarget &#61;
+EmissiveCamEffect-&#62;GetEmissiveResultTarget();
+   BloomCamEffect-&#62;PostRender( Viewport, RI );
+
+   unguard;
+}
+
+
+/&#42;&#42;
+ &#42; リンク 0 に結び付けられた整数変数をインクリメントして、
+ &#42; リンク 1 に結び付けられた整数変数と比較し、
+ &#42; その結果に応じてインパルスを発火する。
+ &#42;/
+void USeqCond&#95;Increment::Activated()
+{
+   check(VariableLinks.Num() &#62;&#61; 2 &#38;&#38; &#34;Decrement requires at least 2 variables&#34;);
+
+   // 整数変数を 2 つ確保する
+   INT Value1 &#61; 0;
+   INT Value2 &#61; 0;
+   TArray&#60;INT&#42;&#62; IntValues1;
+   GetIntVars( IntValues1, TEXT(&#34;Counter&#34;) );
+   TArray&#60;INT&#42;&#62; IntValues2;
+   GetIntVars( IntValues2, TEXT(&#34;Comparison&#34;) );
+   // カウンタ変数の全てをインクリメントする
+   for (INT VarIdx &#61; 0; VarIdx &#60; IntValues1.Num(); VarIdx++)
+   {
+      &#42;(IntValues1(VarIdx)) +&#61; IncrementAmount;
+      Value1 +&#61; &#42;(IntValues1(VarIdx));
+   }
+   // リンクされた変数をすべて加算して、実際の値を得る
+   for (INT VarIdx &#61; 0; VarIdx &#60; IntValues2.Num(); VarIdx++)
+   {
+      Value2 +&#61; &#42;(IntValues2(VarIdx));
+   }
+   // 値を比較して出力インパルスを設定する
+   OutputLinks(Value1 &#60;&#61; Value2 - 0 : 1).bHasImpulse &#61; 1;
+}
+</pre>
+<p />
+<h2><a name="C++ のクラス"></a> C++ のクラス </h2>
+<p />
+<pre>
+/&#42;&#42;
+ &#42; 全テンプレート配列の基底クラス。動的配列の割り当てを処理する。
+ &#42; 非効率な並列成長パターンにより、不必要なデータコピーが生じるのを防ぐために、
+ &#42; どの程度を「スラック」メモリを確保するべきかを決めるアルゴリズムを実装している。
+ &#42;/
+class FArray
+{
+public:
+   /&#42;&#42;
+    &#42; 配列ブロックへのアクセスを可能にする
+    &#42;
+    &#42; &#64;return 配列を構成するメモリブロックへのポインタ
+    &#42;/
+   void&#42; GetData()
+   {
+      return Data;
+   }
+
+   /&#42;&#42;
+    &#42; 指定されたインデックスが配列境界の範囲内であるかどうか確認する
+    &#42;
+    &#42; &#64;return インデックスが有効なら TRUE、無効なら FALSE
+
+   UBOOL IsValidIndex( INT i ) const
+   {
+      return i&#62;&#61;0 &#38;&#38; i&#60;ArrayNum;
+   }
+
+   // ...
+
+protected:
+   /&#42;&#42;
+    &#42; 配列を保持するメモリブロックへのポインタ
+    &#42;/
+   void&#42;    Data;
+   /&#42;&#42;
+    &#42; 配列の現在の要素数
+    &#42;/
+   INT      ArrayNum;
+   /&#42;&#42;
+    &#42; 配列が realloc （再配置）することなく保持できる要素の数
+    &#42;/
+   INT      ArrayMax;
+};
+</pre>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CodingStandardJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:31:17 GMT -->
+</html></body>

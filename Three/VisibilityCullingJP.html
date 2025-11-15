@@ -1,0 +1,347 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/VisibilityCullingJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:30:48 GMT -->
+<head>
+<title> UDK | VisibilityCullingJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">VisibilityCullingJP  </b></div>
+<div id="tooltext">
+<a href="VisibilityCulling.html" class="twikiLink">English Translation</a><br><a href="VisibilityCullingCH.html" class="twikiLink">中国翻译</a><br><a href="VisibilityCullingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/VisibilityCullingJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="visibility culling"></a> visibility culling </h1>
+<p />
+<em>ドキュメントの概要: visibility culling プロセスと関連するクラスについての詳細説明。</em>
+<p />
+<em>ドキュメントの変更ログ: <a href="https://udn.epicgames.com/Main/JoeGraf" class="restricted" class="restricted" class="twikiLink">Joe Graf</a> により作成、Andrew Scheidecker<sup>?</sup> と <a href="https://udn.epicgames.com/Main/RyanBrucks" class="restricted" class="restricted" class="twikiLink">Ryan Brucks</a> によりアップデート (2008 年5 月 12 日)。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="VisibilityCullingJP.html#visibility culling"> visibility culling </a> <ul>
+<li> <a href="VisibilityCullingJP.html#概観"> 概観</a>
+</li> <li> <a href="VisibilityCullingJP.html#カリングに影響を与えるプリミティブ プロパティ"> カリングに影響を与えるプリミティブ プロパティ</a>
+</li> <li> <a href="VisibilityCullingJP.html#Cull Distance Volumes"> Cull Distance Volumes</a> <ul>
+<li> <a href="VisibilityCullingJP.html#Cull Distance Volume の追加"> Cull Distance Volume の追加</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="概観"></a> 概観 </h2>
+<p />
+UnrealEngine3のシーン管理では、凸状ゾーンについて錐台検証テストを行った結果「完全に不可視な要素」と分類されたプリミティブをレンダリングしない、というオーソドックスな方法によって可視性をカリングしています。このテストを通過したプリミティブは、可視でレンダリング対象である要素の候補となります。
+<p />
+同様のテストにより、あるライトについて、シーン内のどのプリミティブにその光が当たるかを定義します。visibility culling の場合と同じく、錐台形状およびビューやライトの位置を定義するポイントを情報として与えることにより、該当するプリミティブ候補を検出するクエリーです。錐台形状に属するすべてのポイントのうち、ビュー原点を結ぶラインが「開いた」状態となるポイントが該当とみなされます。
+<p />
+プラットフォーム シーンのレンダリング コードでは、オクルージョンクエリをはじめとする、プラットフォーム仕様の機能を使ったさらに多くのテストが実施されます。
+<p />
+不可視のプリミティブをドロップするためにエンジンが実行する自動visibility culling に加えて、他にもプリミティブのvisibility culling  プロパティを具体的に操作できるようなたくさんの機能があります。
+<p />
+<p />
+<h2><a name="カリングに影響を与えるプリミティブ プロパティ"></a> カリングに影響を与えるプリミティブ プロパティ </h2>
+<p />
+<img alt="ActorProperties.JPG" src="rsrc/Three/VisibilityCullingJP/ActorProperties.jpg" />
+<p />
+以下のプロパティは、プリミティブがオクルードされる方法や、他のプリミティブをオクルードする方法に影響を与えます。
+<p /> <dl>
+<dt> <strong>bAllowCullDistanceVolumes</strong> </dt><dd> デフォルトは True です。True の場合、プリミティブは Cull Distance Volumes (下記参照) により影響されます。Cull distance volume 情報は、CachedCullDistance がプリミティブのセット CullDistance より_低い_場合に、プリミティブのセット CullDistance のみをオーバーライドします。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>CachedCullDistance</strong> </dt><dd> エディット可能なプロパティではありません。このフィールドは、プリミティブが中に存在する CullDistanceVolumes によって設定されたカリングの距離を表示します。このプロパティ スクリーンショットでは、cull distance volume が使用されていないので 0 に設定されています。
+</dd></dl>
+<p /> <dl>
+<dt> <strong>CullDistance</strong> </dt><dd> 0 にデフォルト設定されており、これは、プリミティブが距離のみに基づいてオクルードされることは決してないことを意味します。CullDistance の値は Unreal ユニット内にあるので、プロジェクトのスケールにより好ましい値は変わってきます。Cull distance 、装飾のディテールや手すりなどの小さくて特定の距離になるとほとんど見えなくなるような、非常に小さい、または非常に薄いオブジェクトに実用的です。いわゆる「ポップ」が簡単に見えないような場所を見つけるには、カメラを前や後ろに動かしてCull distance を調節してみてください。
+</dd></dl>
+<p />
+<p />
+<p />
+<h2><a name="Cull Distance Volumes"></a> Cull Distance Volumes </h2>
+<p />
+Cull distance volumes は非常に有用な最適化ツールです。これは、ボリューム内のすべてのプリミティブに、個々のプリミティブのバウンダリに基づいて、自動的にCull distanceを設定します。Cull distance volume 値は、プリミティブのセット CullDistance よりも低い場合のみに使用されます。実装の主な意図は、詳細なインドアベースの大きなアウトドアマップを最適化するためで、Unreal Tournament 3では一般的です。
+<p />
+cull distance volume で、それぞれのエリアが異なる設定を持つような、非常に巧妙なシステムを作ることができます。しかしながらほとんどの場合、レベル全体を含むような 1 つの CullDistanceVolume から始めるのがベストでしょう。UT3 のほとんどのレベルは、レベル全体を取り巻く cull distance volume を使用しています。
+<p />
+<p />
+<h3><a name="Cull Distance Volume の追加"></a> Cull Distance Volume の追加 </h3>
+<p />
+<img alt="addculldistancevolume.JPG" src="rsrc/Three/VisibilityCullingJP/addculldistancevolume.jpg" />
+<p />
+Cull Distance Volume はほかのボリューム タイプと同じように追加することができます。まず、希望のサイズのブラシを作ります (例: レベル全体をカバーするような)。ブラシの作成の詳細については、 <a href="UsingBspBrushesJP.html" class="twikiLink">BSP ブラシの使用</a> ページをご覧ください。‘Add Volume (ボリュームを追加)’ ボタンを右クリックして、ドロップダウン リストから CullDistanceVolume を選択します。
+<p />
+これでワールドに cull distance volume が作成されたので、それを選択し F4 を押すか、ダブルクリックをしてアクタ プロパティ ボックスを開きます。
+<p />
+以下が新しく作成された CullDistanceVolume のプロパティです。:
+<p />
+<img alt="culldistancevolumeproperties.JPG" src="rsrc/Three/VisibilityCullingJP/culldistancevolumeproperties.jpg" />
+<p />
+“CullDistances” と呼ばれる、その中にいくらでもポイントを追加できるような 1 つの配列があります。各ポイントには、「サイズ」とアタッチされたCull distanceがあります。ボリューム内のそれぞれのプリミティブには、プリミティブのバウンダリに一番近いサイズを選び、そのアタッチされた「Cull distance」は、プリミティブの「キャッシュされたCull distance」となります。
+<p />
+TRUE (デフォルト設定) に設定されたbAllowCullDistanceVolume を持つcull distance volumeで囲まれた中心点のついたプリミティブすべては、　CullDistances 配列の設定を基に更新されたcull distanceを持ちます。 0でない限り、より低い値を内部で選ぶコードとしてcull distance volumesと共に動作するプリミティブ上で、 cull distanceを手動で設定するのは意味がありません。CullDistances 配列は、このサイズグループに使用するためのcull distance へのマッピングのサイズ(オブジェクト境界の球体の直径)で、コードはサイズが近いものを検出し、関連したcull distanceに割り当てます。
+<p />
+cull distance volumes のデフォルト設定は、Size=0, CullDistance=02とSize=10000, CullDistance=0の2つのエントリを持ちます。最初のCullDistance を1000 に設定することで、球体直径境界が5000以下のボリューム内の中心点でのオブジェクトは、cull distance 1000の効果が得られ、上記すべてに対しては、cull distance 0(別名no distance culling)の効果が得られます。最適な方法を使用することにより、配列エントリの順を気にすることなく最小のデータのエントリを可能にしました。より小さいオブジェクトのcull distance に影響することなくカリングを無効にするため、ハイエンド上にあるダミーポイントの挿入が必要がないことから、コードはcull distances 間でリニア補間をしません。
+<p />
+cull distance volumesのオーバーラッピングが起きた場合は、エンジンはプリミティブの最高値(最低値0以上)のものを選びます。
+<p />
+<p />
+整理するには、CullDistances 配列内のすべてのサイズを、最小から最大の順に並べておくのがいい方法でしょう。中間値を追加するには ‘insert new item here (ここに新しいアイテムを追加)’ ボタンを使用してください。
+<p />
+新しい cull distance volume を始める際は、いくつかの新しい、増加するサイズを持つ CullDistances とCull distanceを追加します。以下は、設定が最初どのように見えるかという例です。:
+<p />
+<pre>
+0:
+Size: 0
+CullDistance: 1000
+
+1:
+Size: 128
+CullDistance: 2048
+
+1:
+Size: 256
+CullDistance: 4096
+
+2:
+Size: 512
+CullDistance: 8192
+
+3:
+Size: 1024
+CullDistance: 16384
+
+4:
+Size: 2048
+CullDistance: 0
+</pre>
+<p />
+その後、レベル内を飛び回り、目に見えるポップがないかどうか (最初の設定は、そこまでアグレッシブではないかも知れません) をチェックすることができます。そして、微妙な変更を加えたり、既存のCull distanceの間にいくつかの新しいサイズ グループを追加したりすることも可能です。さまざまなプリミティブの「キャッシュされたCull distance」を見ると、それらがどのサイズ カテゴリに属すのかが分かるので有用かも知れません。また、エディタ ビューポート ツールバーの SHOW FLAGS (フラグを表示) ドロップダウン ボックスから ‘Show Bounds (バウンダリを表示)’ を選択することもできます。そして、プリミティブを選択すると、バウンダリを表示するために、プリミティブの周りに球をレンダリングするはずです。バウンダリを測定するには、マウスの真ん中のボタンを押しながらドラッグすることにより、球の直径に定規を描きます。
+<p />
+cull distance volume を正しくするには、少し (かなりの場合もあります) 調節が必要になります。リストの最後のアイテムを、サイズには大きい値で、Cull distanceには 0 を持つような ‘too large for cull distance (Cull distanceには大きすぎる)’ 値にしておくことをお勧めします。これで、大きな山やビルのオブジェクトがカリングされることを防ぐことができます。または、単純にそれらのプリミティブの “AllowCulldistanceVolumes” を無効化することもできますが、これには大変な労力が必要です。
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/VisibilityCullingJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:30:50 GMT -->
+</html></body>

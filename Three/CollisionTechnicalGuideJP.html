@@ -1,0 +1,841 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CollisionTechnicalGuideJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:56 GMT -->
+<head>
+<title> UDK | CollisionTechnicalGuideJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">CollisionTechnicalGuideJP  </b></div>
+<div id="tooltext">
+<a href="CollisionTechnicalGuide.html" class="twikiLink">English Translation</a><br><a href="CollisionTechnicalGuideCH.html" class="twikiLink">中国翻译</a><br><a href="CollisionTechnicalGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/CollisionTechnicalGuideJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHomeJP.html" class="twikiLink">UE3 ホーム</a></b> &gt; <b><a href="StaticMeshHomeJP.html" class="twikiLink">静的メッシュ</a></b> &gt; コリジョンの技術ガイド <br/>
+<b><a href="WebHomeJP.html" class="twikiLink">UE3 ホーム</a></b> &gt; <b><a href="PhysicsHomeJP.html" class="twikiLink">物理</a></b> &gt; コリジョンの技術ガイド <br/>
+<b><a href="WebHomeJP.html" class="twikiLink">UE3 ホーム</a></b> &gt; <b><a href="EnvironmentArtistHomeJP.html" class="twikiLink">背景アーティスト</a></b> &gt; コリジョンの技術ガイド
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="コリジョンの技術ガイド"></a> コリジョンの技術ガイド </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="CollisionTechnicalGuideJP.html#コリジョンの技術ガイド"> コリジョンの技術ガイド </a> <ul>
+<li> <a href="CollisionTechnicalGuideJP.html#概要"> 概要 </a>
+</li> <li> <a href="CollisionTechnicalGuideJP.html#UnrealScript"> UnrealScript </a> <ul>
+<li> <a href="CollisionTechnicalGuideJP.html#アクタのプロパティ"> アクタのプロパティ </a>
+</li> <li> <a href="CollisionTechnicalGuideJP.html#コリジョンのフラグ"> コリジョンのフラグ </a>
+</li> <li> <a href="CollisionTechnicalGuideJP.html#UnrealScript のイベント"> UnrealScript のイベント </a>
+</li> <li> <a href="CollisionTechnicalGuideJP.html#コリジョン チェックの実行"> コリジョン チェックの実行 </a>
+</li></ul>
+</li> <li> <a href="CollisionTechnicalGuideJP.html#コリジョンのタイプ"> コリジョンのタイプ </a> <ul>
+<li> <a href="CollisionTechnicalGuideJP.html#骨格メッシュ コリジョン モデル"> 骨格メッシュ コリジョン モデル </a>
+</li> <li> <a href="CollisionTechnicalGuideJP.html#静的メッシュ コリジョン モデル"> 静的メッシュ コリジョン モデル </a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<div style="margin-top:-10px;" ><hr size="1" noshade="noshade"></div>
+グラフィックスのディテールが増したため、ゲーム内のコリジョンは、必ずシンプルに保つことが重要となります。理由は 2 つあります。1 つは、少数のポリゴンとのコリジョンであれば計算が非常に高速となるからです。もう 1 つの理由は、プレイヤーが小さなジオメトリに妨げられないため格段にスムーズなエクスペリエンスを得ることができるからです。コリジョンのレスポンスは、2 つの異なる部分に分かれます。すなわち、Unreal Collision および PhysX です。このドキュメントでは、Unreal Collision に焦点を当てています。PhysX に関する詳細は、 <a href="PhysicsHomeJP.html" class="twikiLink">ここ</a> をクリックしてください。コリジョン データを作成する方法に関する詳細は、 <a href="CollisionReferenceJP.html" class="twikiLink">コリジョンのリファレンス</a> のページを参照してください。
+<p />
+<h2><a name="UnrealScript"></a> UnrealScript </h2>
+<div style="margin-top:-10px;" ><hr size="1" noshade="noshade"></div>
+Unreal Collision は、「Unreal Engine 1」に起源があります。コリジョン レスポンスの大部分は、UnrealScript で処理されます。また、UnrealScript によってコリジョンのプロパティも設定されます。これにより、Unreal Collision エンジンは、アクタをどのようにシミュレートさせるべきかを知ることができます。
+<p />
+<h3><a name="アクタのプロパティ"></a> アクタのプロパティ </h3>
+コリジョンのセクションには、アクタ (Actor) のプロパティが多数あります。これらのプロパティは、コリジョン レスポンスとアクタの物理シミュレーションを Unreal Collision エンジンがどのように処理すべきかを制御します。
+<p /> <ul>
+<li> <strong>bCollideComplex</strong> - アクタが移動中、当該アクタ上における単純化されたコリジョン モデル (collision hull) を無視し、ポリゴン単位でコリジョンします。単純化されたコリジョン モデルは、Unreal Editor 内、または、3D コンテンツ作成パッケージ内で生成されます。ポリゴン単位のコリジョンは、非ゼロ範囲のトレースに役立ち、弾丸が正確にコリジョンするようになります。ポリゴン単位のコリジョンは、アクタの移動のためには推奨されません。コストが高いためです。
+</li> <li> <strong>BlockRigidBody</strong> - PhysX を使用するアクタが当該アクタとコリジョンするか否かを保持します。
+</li> <li> <strong>bNoEncroachCheck</strong> - 当該アクタが動かされたときに encroachment (侵犯) チェックを無効にする最適化です。このプロパティを有効化することによって、ゲームのスピードは上がりますが、アクタがトリガーにタッチしたり、プレイヤーを押したり、ボリュームに出入りすることはできなくなります。
+</li> <li> <strong>bPathColliding</strong> - Unreal Editor におけるパス作成中に、当該アクタがパスをブロックすることができるか否かを保持します。
+</li> <li> <strong>CollisionComponent</strong> - 当該アクタの移動のために使用されるコンポーネントへの参照です。アクタが PHYS_Walking を使用している場合は、このコンポーネントの座標軸に平行なバウンディング ボックスが、レベルとコリジョンします。アクタが PHYS_RigidBody (剛体) を使用している場合は、このコンポーネントの形状または物理アセットが使用されます。
+</li> <li> <strong>CollisionType</strong> - 複数のコリジョン設定値をレベルデザイナーに簡単にエクスポーズするための方式です。Unreal Editor 内でこの値を変更すると、低レベルのフラグ (例 : アクタおよびその CollisionComponent の CollideActors、BlockActors、BlockNonZeroExtent、BlockZeroExtent、BlockRigidBody) が、Collision Type の説明に合うようにセットされます。  <ul>
+<li> <strong>COLLIDE_CustomDefault</strong> - プログラマー設定のコリジョンです。これが選択されると、default properties (デフォルト プロパティ) 内でセットされているデフォルト値に、コリジョンが戻ります。
+</li> <li> <strong>COLLIDE_NoCollision</strong> - 一切コリジョンしません。
+</li> <li> <strong>COLLIDE_BlockAll</strong> - あらゆるものをブロックします。
+</li> <li> <strong>COLLIDE_BlockWeapons</strong> - ゼロ範囲のトレース (通常は武器) だけをブロックします。
+</li> <li> <strong>COLLIDE_TouchAll</strong> - あらゆるものをタッチします。ただし、ブロックはしません。
+</li> <li> <strong>COLLIDE_TouchWeapons</strong> - ゼロ範囲のトレース (通常は武器) だけをタッチします。
+</li> <li> <strong>COLLIDE_BlockAllButWeapons</strong> - ゼロ範囲のトレース (通常は武器) を除くあらゆるものをブロックします。
+</li> <li> <strong>COLLIDE_TouchAllButWeapons</strong> - ゼロ範囲のトレース (通常は武器) を除くあらゆるものをタッチします。ブロックはしません。
+</li> <li> <strong>COLLIDE_BlockWeaponsKickable</strong> - ゼロ範囲のトレース (通常は武器) だけをブロックします。また、プレイヤーが当該アクタをキックすることができるようにするフラグを有効にします。
+</li></ul>
+</li></ul>
+<p />
+<h3><a name="コリジョンのフラグ"></a> コリジョンのフラグ </h3>
+レベル内に配置するアクタとのコリジョンを Unreal がどのように実行するかを制御するためのフラグがいくつかあります。1 つのフラグが、アクタのプロパティとコンポーネントのプロパティ両方に現れる場合があります。そのような場合は、アクタのプロパティがオーバーライドの役割をします。
+<p /> <ul>
+<li> <strong>CollideActors</strong> - アクタを、Unreal によるコリジョン検知の対象とするためには、true にセットします。
+</li> <li> <strong>BlockActors</strong> - 他のアクタが移動するのを当該アクタがブロックすべきか否かを保持します。たとえば、トリガーは、 <strong>CollideActors</strong> が <strong>true</strong> にセットされ、 <strong>BlockActors</strong> が <strong>false</strong> にセットされることが考えられます。このようにする理由は、2 つのアクタが互いにタッチするときに Unreal が検知するものの、移動しているアクタがそれを切り抜けて移動できるようにするためです。
+</li> <li> <strong>BlockZeroExtent</strong> - ゼロ範囲のトレースはラインチェックです。(通常、弾丸をシミュレートする武器のために使用されます)。  true の場合は、UnrealScript で使用されるゼロ範囲のトレースをアクタがブロックします。
+</li> <li> <strong>BlockNonZeroExtent</strong> - 非ゼロ範囲のトレースは、軸に平行なバウンディング ボックス チェックです。(通常、プレイヤーの移動に使用されます)。true の場合は、UnrealScript で使用される非ゼロ範囲のトレースをアクタがブロックします。
+</li></ul>
+<p />
+<h3><a name="UnrealScript のイベント"></a> UnrealScript のイベント </h3>
+「Unreal Engine 3」でコリジョンが発生すると、関係するアクタ上で UnrealScript のイベントが呼び出されます。これらのイベントは、サブクラス化されたアクタ内でイベントをオーバーライドできるように設計されています。 <img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> * UnrealScript において、イベントと関数に違いはありません。*
+<p />
+<h4><a name="HitWall"></a> HitWall </h4>
+HitWall が呼び出されるのは、アクタが物理的に Wall にコリジョンした場合です。(BSP の場合、Wall は WorldInfo にセットされています)。  <ul>
+<li> <strong>HitNormal</strong> - アクタが wall にヒットする際の法線です。
+</li> <li> <strong>Wall</strong> - 当該アクタがコリジョンするアクタです。
+</li> <li> <strong>WallComp</strong> - 当該アクタがコリジョンするコンポーネントです。BSP の場合、WallComp は None にセットされています。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event HitWall(Vector HitNormal, Actor Wall, PrimitiveComponent WallComp)
+</pre>
+</div>
+<p />
+このイベントの呼び出し方は、ポーンによって変更される場合があることに注意しなければなりません。bDirectHitWall が true にセットされている場合は、必ず、ポーンの HitWall イベントを直接呼び出す必要があります。
+<p />
+<div class="codetitlebar">
+Pawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+var bool bDirectHitWall;
+</pre>
+</div>
+<p />
+HitWall イベントの呼び出し方は、ポーンのコントローラによって変更される場合があることに注意しなければなりません。
+<p />
+NotifyHitWall が呼び出されるのは、ワールド ジオメトリのブロックする部分とポーンがコリジョンした場合です。true を返すことによって、ポーン上における HitWall() の通知を防ぎます。  <ul>
+<li> <strong>HitNormal</strong> - アクタが wall にヒットする際の法線です。
+</li> <li> <strong>Wall</strong> - 当該アクタがコリジョンするアクタです。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Controller.uc
+</div>
+<div class="codesnippet">
+<pre>
+event bool NotifyHitWall(vector HitNormal, actor Wall);
+</pre>
+</div>
+<p />
+NotifyFallingHitWall が呼び出されるのは、落下中に、ワールド ジオメトリのブロックする部分とポーンがコリジョンした場合です。コントローラ内の bNotifyFallingHitWall が true の場合に限って呼び出されます。  <ul>
+<li> <strong>HitNormal</strong> - アクタが wall にヒットする際の法線です。
+</li> <li> <strong>Wall</strong> - 当該アクタがコリジョンするアクタです。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Controller.uc
+</div>
+<div class="codesnippet">
+<pre>
+event NotifyFallingHitWall(vector HitNormal, actor Wall);
+</pre>
+</div>
+<p />
+<h4><a name="Landed"></a> Landed </h4>
+Landed (着地) が呼び出されるのは、アクタが FloorActor に物理的に着地した場合です。(BSP の場合、FloorActor は WorldInfo にセットされています)。  <ul>
+<li> <strong>HitNormal</strong> - 着地の法線です。
+</li> <li> <strong>FloorActor</strong> - 当該アクタが着地するアクタです。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event Landed(vector HitNormal, Actor FloorActor);
+</pre>
+</div>
+<p />
+Landed の呼び出し方は、ポーンのコントローラによって変更される場合があることに注意しなければなりません。
+<p />
+NotifyLanded が呼び出されるのは、ポーンが落下から着地した場合です。true を返すことによって、ポーン上における Landed() の通知を防ぎます。  <ul>
+<li> <strong>HitNormal</strong> - 着地の法線です。
+</li> <li> <strong>FloorActor</strong> - 当該アクタが着地するアクタです。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Controller.uc
+</div>
+<div class="codesnippet">
+<pre>
+event bool NotifyLanded(vector HitNormal, Actor FloorActor);
+</pre>
+</div>
+<p />
+<h4><a name="PhysicsVolumeChange"></a> PhysicsVolumeChange </h4>
+このイベントがトリガーされるのは、PhysicsVolume 変数が変更された場合です。  <ul>
+<li> <strong>NewVolume</strong> - PhysicsVolume にセットされたボリュームです。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event PhysicsVolumeChange(PhysicsVolume NewVolume);
+</pre>
+</div>
+<p />
+<h4><a name="Touch"></a> Touch </h4>
+Touch イベントは、アクタと他のアクタ (Other) が互いとタッチしている場合に、両者の上で呼び出されます。アクタと他のアクタ (Other) がともにコリジョン可能であり、さらに、アクタまたは他のアクタのどちらかが非ブロック コリジョンを使用している必要があります。  <ul>
+<li> <strong>Other</strong> - 当該アクタにタッチしたアクタです。
+</li> <li> <strong>OtherComp</strong> - 当該アクタにタッチしたコンポーネントです。
+</li> <li> <strong>HitLocation</strong> - タッチが発生したワールドの位置です。
+</li> <li> <strong>HitNormal</strong> - 発生したタッチの法線です。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event Touch(Actor Other, PrimitiveComponent OtherComp, vector HitLocation, vector HitNormal);
+</pre>
+</div>
+<p />
+<h4><a name="PostTouch"></a> PostTouch </h4>
+PostTouch が PendingTouch 上で呼び出されるのは、物理が完了した後です。Pending Touch アクタは、(移動が終了した後でエフェクトを追加する必要がある) 移動イベント中にタッチされたアクタです。アクタはともにコリジョン可能であり、かつ、どちらか一方のアクタが非ブロック コリジョンを使用している必要があります。  <ul>
+<li> <strong>Other</strong> - PendingTouch アクタです。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event PostTouch(Actor Other);
+</pre>
+</div>
+<p />
+<h4><a name="UnTouch"></a> UnTouch </h4>
+UnTouch は、他のアクタ (Other) とのタッチが解除 (アンタッチ) されたアクタ上で呼び出されます。たとえば、プレイヤーのポーンが最初にトリガーにタッチすると、プレイヤーのポーンとトリガーがともに Touch イベントを受け取ります。プレイヤーのポーンがトリガーから離れて行くことによってコリジョンがタッチしなくなると、プレイヤーのポーンは、他のアクタ (Other) のパラメータがトリガーとしてセットされた状態で UnTouch を呼び出します。アクタと他のアクタ (Other) がともにコリジョン可能であり、さらに、アクタまたは他のアクタのどちらかが非ブロック コリジョンを使用している必要があります。  <ul>
+<li> <strong>Other</strong> - アンタッチされたアクタです。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event UnTouch(Actor Other);
+</pre>
+</div>
+<p />
+<h4><a name="Bump"></a> Bump </h4>
+Bump がアクタおよび他のアクタ (Other) 上で呼び出されるのは、互いにバンプしたときです。アクタと他のアクタ (Other) はともにコリジョン可能であり、かつ、両者ともブロック コリジョンを使用している必要があります。  <ul>
+<li> <strong>Other</strong> - 当該アクタにバンプしたアクタです。
+</li> <li> <strong>OtherComp</strong> - 当該アクタにバンプしたコンポーネントです。
+</li> <li> <strong>HitNormal</strong> - 発生したバンプの法線です。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event Bump(Actor Other, PrimitiveComponent OtherComp, Vector HitNormal);
+</pre>
+</div>
+<p />
+ポーンのコントローラによって Bump の呼び出され方が変更される場合があることに注意する必要があります。
+<p />
+NotifyBump が呼び出されるのは、ブロックするプレイヤーとポーンがコリジョンした場合です。true を返すことによって、ポーン上における Bump() の通知を防ぎます。
+<p />
+<div class="codetitlebar">
+Controller.uc
+</div>
+<div class="codesnippet">
+<pre>
+event bool NotifyBump(Actor Other, Vector HitNormal);
+</pre>
+</div>
+<p />
+<h4><a name="BaseChange"></a> BaseChange </h4>
+BaseChange が呼び出されるのは、アクタの Base 変数が変更された場合です。これには、Base が None にセットされた場合も含まれます。(これは、アクタが空間に浮いている場合に生じます)。Base 変数は、アクタが現在あるものの上に立っている場合に、そのあるものを指すアクタの参照です。
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event BaseChange();
+</pre>
+</div>
+<p />
+<h4><a name="CollisionChanged"></a> CollisionChanged </h4>
+CollisionChanged が呼び出されるのは、アクタのコリジョン プロパティのいずれかが変更された場合です。
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event CollisionChanged();
+</pre>
+</div>
+<p />
+<h4><a name="EncroachingOn"></a> EncroachingOn </h4>
+EncroachingOn が呼び出されるのは、アクタが他のアクタ (Other) を侵犯し、なおかつ、他のアクタ (Other) を押しのけるための適当な場所がない場合です。   <ul>
+<li> <strong>Other</strong> - 当該アクタによって侵犯されるアクタです。
+</li> <li> <strong>Return</strong> - 異動を中止する場合は true を返します。移動を許可する場合は false を返します。 <img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> PHYS_RigidBody (物理_剛体) アクタの移動を中止してはいけません。Unreal の位置と物理エンジンの位置が不適合となるためです。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event bool EncroachingOn(Actor Other);
+</pre>
+</div>
+<p />
+<h4><a name="EncroachedBy"></a> EncroachedBy </h4>
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event EncroachedBy(Actor Other);
+</pre>
+</div>
+<p />
+<h4><a name="RanInto"></a> RanInto </h4>
+RanInto は、侵犯する際に他のアクタ (Other) を押しのけることに成功したアクタのために呼び出されます。  <ul>
+<li> <strong>Other</strong> - 押しのけられたアクタです。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event RanInto(Actor Other);
+</pre>
+</div>
+<p />
+<h3><a name="コリジョン チェックの実行"></a> コリジョン チェックの実行 </h3>
+<h4><a name="トレース"></a> トレース </h4>
+トレースを実行することによって、ラインがワールド内にあるものとコリジョンするか否かを検知します。  <ul>
+<li> <strong>HitLocation</strong> - ラインがコリジョンしたワールド内の位置です。
+</li> <li> <strong>HitNormal</strong> - ラインがコリジョンした位置のサーフェス法線です。
+</li> <li> <strong>TraceEnd</strong> - トレースが終了するワールド内の位置です。
+</li> <li> <strong>TraceStart</strong> - トレースが開始するワールド内の位置です。
+</li> <li> <strong>bTraceActors</strong> - トレースがアクタに対するものであるか否かを保持します。
+</li> <li> <strong>Extent</strong> - このベクターがゼロに等しい場合 (Vect[0.f, 0.f, 0.f]) は、実行されるトレースが、ゼロ範囲として見なされます。このベクターがゼロではない場合は、非ゼロ範囲のトレースが実行されます。
+</li> <li> <strong>HitInfo</strong> - この構造体にはトレースの結果に関する情報が含まれます。トレースが何ともコリジョンしなかった場合は、無効となります。  <ul>
+<li> <strong>Material</strong> - トレースがヒットしたマテリアルです。
+</li> <li> <strong>PhysMaterial</strong> - トレースがヒットした物理マテリアルです。
+</li> <li> <strong>Item</strong> - トレースがヒットしたものに関する付加的情報です。
+</li> <li> <strong>LevelIndex</strong> - トレースが BSP にヒットした場合に、レベルのインデックスを保持します。
+</li> <li> <strong>BoneName</strong> - トレースが骨格メッシュ コンポーネントにヒットした場合に、ボーンの名前を保持します。
+</li> <li> <strong>HitComponent</strong> - トレースがヒットしたコンポーネントです。
+</li></ul>
+</li> <li> <strong>ExtraTraceFlags</strong> - トレースをどのように実行すべきかということのヒントとなる、付加的なトレースのフラッグです。  <ul>
+<li> <strong>TRACEFLAG_Bullet</strong> - トレースが、静的メッシュ上の単純なコリジョンを常に無視するようになり、常にポリゴン単位のコリジョン検知を実行するようになります。
+</li> <li> <strong>TRACEFLAG_PhysicsVolumes</strong> - トレースが、物理ボリュームに対してコリジョンのチェックをするようになります。
+</li> <li> <strong>TRACEFLAG_SkipMovers</strong> - トレースが InterpActors を無視するようになります。
+</li> <li> <strong>TRACEFLAG_Blocking</strong> - これが設定されると、チェックしているアクタ (トレースが呼び出されたアクタ) をブロックできるアクタ、および、コリジョンしているすべてのものに対して、トレースがコリジョンするようになります。「コリジョンしているすべてのもの」には、レベルのジオメトリ、ポーン、補間されたアクタ、あらゆる他の種類のアクタ、テレイン、ボリュームが含まれます。  	  * <strong>Returned Actor</strong> - トレースがアクタの参照を返します。返り値が None の場合は、トレースが何にもヒットしなかったことになります。トレースが BSP とヒットした場合は、WorldInfo が返されるアクタです。上記以外は、トレースがヒットしたアクタであれば何でも返すことになります。
+</li></ul>
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function Actor Trace(out Vector   HitLocation, out Vector HitNormal, Vector TraceEnd, optional Vector TraceStart, optional bool bTraceActors, optional Vector Extent, optional out TraceHitInfo HitInfo, optional int ExtraTraceFlags);
+</pre>
+</div>
+<p />
+<h4><a name="TraceComponent"></a> TraceComponent </h4>
+InComponent に対してだけトレースを実行します。トレースがヒットした場合は、true を返します。アクタがヒットされたか否かを決定する際に、より高い精度が必要となる場合に役立ちます。  <ul>
+<li> <strong>HitLocation</strong> - ラインがコリジョンしたワールド内の位置です。
+</li> <li> <strong>HitNormal</strong> - ラインがコリジョンした位置のサーフェス法線です。
+</li> <li> <strong>InComponent</strong> - トレース実行の対象となるコンポーネントです。
+</li> <li> <strong>TraceEnd</strong> - トレースが終了するワールド内の位置です。
+</li> <li> <strong>TraceStart</strong> - トレースが開始するワールド内の位置です。
+</li> <li> <strong>Extent</strong> - このベクターがゼロに等しい場合 (Vect[0.f, 0.f, 0.f]) は、実行されるトレースが、ゼロ範囲として見なされます。  このベクターがゼロではない場合は、非ゼロ範囲のトレースが実行されます。
+</li> <li> <strong>HitInfo</strong> - この構造体にはトレースの結果に関する情報が含まれます。トレースが何ともコリジョンしなかった場合は、無効となります。  <ul>
+<li> <strong>Material</strong> - トレースがヒットしたマテリアルです。
+</li> <li> <strong>PhysMaterial</strong> - トレースがヒットした物理マテリアルです。
+</li> <li> <strong>Item</strong> - トレースがヒットしたものに関する付加的情報です。
+</li> <li> <strong>LevelIndex</strong> - トレースが BSP にヒットした場合に、レベルのインデックスを保持します。
+</li> <li> <strong>BoneName</strong> - トレースが骨格メッシュ コンポーネントにヒットした場合に、ボーンの名前を保持します。
+</li> <li> <strong>HitComponent</strong> - トレースがヒットしたコンポーネントです。
+</li></ul>
+</li> <li> <strong>bComplexCollision</strong> - ポリゴン単位のコリジョンを使用する場合は、true にセットします。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function bool TraceComponent(out Vector HitLocation, out Vector HitNormal, PrimitiveComponent InComponent, Vector TraceEnd, optional Vector TraceStart, optional Vector Extent, optional out TraceHitInfo HitInfo, optional bool bComplexCollision)
+</pre>
+</div>
+<p />
+<h4><a name="FastTrace"></a> FastTrace </h4>
+ワールド内でトレースを実行し、何ともコリジョン <strong>しなかった</strong> 場合に true を返します。あるアクタが別のアクタの視線をもつか否かを素早くチェックするために役立ちます。  <ul>
+<li> <strong>TraceEnd</strong> - トレースが終了するワールド内の位置です。
+</li> <li> <strong>TraceStart</strong> - トレースが開始するワールド内の位置です。
+</li> <li> <strong>BoxExtent</strong> - このベクターがゼロに等しい場合 (Vect[0.f, 0.f, 0.f]) は、実行されるトレースが、ゼロ範囲として見なされます。このベクターがゼロではない場合は、非ゼロ範囲のトレースが実行されます。
+</li> <li> <strong>bTraceBullet</strong> - トレースを弾丸のように振舞わせる場合は true にセットします。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function bool FastTrace(Vector TraceEnd, optional Vector TraceStart, optional Vector BoxExtent, optional bool bTraceBullet);
+</pre>
+</div>
+<p />
+<h4><a name="TraceAllPhysicsAssetInteractions"></a> TraceAllPhysicsAssetInteractions </h4>
+骨格メッシュ コンポーネントの物理アセットに対してワールド内でトレースを実行し、ヒットのすべてを返します。  <ul>
+<li> <strong>SkelMeshComp</strong> - トレースの対象となる骨格メッシュ コンポーネントです。
+</li> <li> <strong>EndTrace</strong> - トレースが終了するワールド内の地点です。
+</li> <li> <strong>StartTrace</strong> - トレースが開始されるワールド内の地点です。
+</li> <li> <strong>out_Hits</strong> - トレース結果に関する情報が格納された配列を出力します。  <ul>
+<li> <strong>HitActor</strong> - ヒットしたアクタです。
+</li> <li> <strong>HitLocation</strong> - トレースがヒットした地点のワールド位置です。
+</li> <li> <strong>HitNormal</strong> - トレースがヒットした地点のヒット法線です。
+</li> <li> <strong>RayDir</strong> - トレースの方向です。
+</li> <li> <strong>StartTrace</strong> - トレースが開始した地点のワールド位置です。
+</li> <li> <strong>HitInfo</strong> - この構造体にはトレースの結果に関する情報が含まれます。トレースが何ともコリジョンしなかった場合は、無効となります。  <ul>
+<li> <strong>Material</strong> - トレースがヒットしたマテリアルです。
+</li> <li> <strong>PhysMaterial</strong> - トレースがヒットした物理マテリアルです。
+</li> <li> <strong>Item</strong> - トレースがヒットしたものに関する付加的情報です。
+</li> <li> <strong>LevelIndex</strong> - トレースが BSP にヒットした場合に、レベルのインデックスを保持します。
+</li> <li> <strong>BoneName</strong> - トレースが骨格メッシュ コンポーネントにヒットした場合に、ボーンの名前を保持します。
+</li> <li> <strong>HitComponent</strong> - トレースがヒットしたコンポーネントです。
+</li></ul>
+</li></ul>
+</li> <li> <strong>Extent</strong> - このベクターがゼロに等しい場合 (Vect[0.f, 0.f, 0.f]) は、実行されるトレースが、ゼロ範囲として見なされます。このベクターがゼロではない場合は、非ゼロ範囲のトレースが実行されます。
+</li> <li> ヒットが検知された場合は true を返します。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function bool TraceAllPhysicsAssetInteractions(SkeletalMeshComponent SkelMeshComp, Vector EndTrace, Vector StartTrace, out Array&#60;ImpactInfo&#62; out&#95;Hits, optional Vector Extent);
+</pre>
+</div>
+<p />
+<h4><a name="IsOverlapping"></a> IsOverlapping </h4>
+アクタが A をオーバーラップしている場合は true を返します。  <ul>
+<li> <strong>A</strong> - オーバーラップ状態を検証する際に対象となるもう一方のアクタです。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function bool IsOverlapping(Actor A);
+</pre>
+</div>
+<p />
+<h4><a name="GetBoundingCylinder"></a> GetBoundingCylinder </h4>
+バウンディング シリンダーの半径および高さを返します。(可能な場合)。  <ul>
+<li> <strong>CollisionRadius</strong> - コリジョンの半径です。
+</li> <li> <strong>CollisionHeight</strong> - コリジョンの高さです。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function GetBoundingCylinder(out float CollisionRadius, out float CollisionHeight) const;
+</pre>
+</div>
+<p />
+<h4><a name="IsBlockedBy"></a> IsBlockedBy </h4>
+当該アクタが他のアクタ (Other) にブロックされている場合に true を返します。  <ul>
+<li> <strong>Other</strong> - 当該アクタをブロックしているか否かを検査する際に対象となるもう一方のアクタです。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function bool IsBlockedBy(const Actor Other) const;
+</pre>
+</div>
+<p />
+<h4><a name="TouchingActors"></a> TouchingActors </h4>
+当該アクタにタッチしているアクタをすべて返す関数イタレータです。  <ul>
+<li> <strong>BaseClass</strong> - 返されるアクタのクラスです。
+</li> <li> <strong>Actor</strong> - ラインがコリジョンしたアクタです。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+iterator function TouchingActors(class&#60;Actor&#62; BaseClass, out Actor Actor);
+</pre>
+</div>
+<p />
+<h4><a name="TraceActors"></a> TraceActors </h4>
+ワールド内の 2 地点間に存在するあらゆるアクタと TraceHitInfos を返すイタレータ関数です。ある種のアクタやその他の条件を除外したり含めたりすることができるラインチェックを実行する際に役立ちます。  <ul>
+<li> <strong>BaseClass</strong> - 返されるアクタのクラスです。
+</li> <li> <strong>Actor</strong> - ラインがコリジョンしたアクタです。
+</li> <li> <strong>HitLoc</strong> - ラインがコリジョンしたワールド内の位置です。
+</li> <li> <strong>HitNorm</strong> - ラインがコリジョンした地点のサーフェス法線です。
+</li> <li> <strong>End</strong> - トレースが終了するワールド内の位置です。
+</li> <li> <strong>Start</strong> - トレースが開始されるワールド内の位置です。
+</li> <li> <strong>Extent</strong> - このベクターがゼロに等しい場合 (Vect[0.f, 0.f, 0.f]) は、実行されるトレースが、ゼロ範囲として見なされます。このベクターがゼロではない場合は、非ゼロ範囲のトレースが実行されます。
+</li> <li> <strong>HitInfo</strong> - この構造体にはトレースの結果に関する情報が含まれます。トレースがコリジョンするものがなかった場合は、無効となります。  <ul>
+<li> <strong>Material</strong> - トレースがヒットしたマテリアルです。
+</li> <li> <strong>PhysMaterial</strong> - トレースがヒットした物理マテリアルです。
+</li> <li> <strong>Item</strong> - トレースがヒットしたものに関する付加的情報です。
+</li> <li> <strong>LevelIndex</strong> - トレースが BSP にヒットした場合に、レベルのインデックスを保持します。
+</li> <li> <strong>BoneName</strong> - トレースが骨格メッシュ コンポーネントにヒットした場合に、ボーンの名前を保持します。
+</li> <li> <strong>HitComponent</strong> - トレースがヒットしたコンポーネントです。
+</li></ul>
+</li> <li> <strong>ExtraTraceFlags</strong> - トレースの計算方法に関するヒントとなる、付加的なトレースのフラッグです。  <ul>
+<li> <strong>TRACEFLAG_Bullet</strong> - トレースが弾丸のように振舞っています。
+</li></ul>
+</li></ul>
+<!--      * <strong>TRACEFLAG_PhysicsVolumes</strong> - 物理ボリュームに対するトレースです。  -->
+<!--      * <strong>TRACEFLAG_SkipMovers</strong> - InterpActor (補間アクタ) を無視するトレースです。  -->
+<!--      * <strong>TRACEFLAG_Blocking</strong> - ブロックするアクタのみ検知するトレースです。  -->
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+iterator function TraceActors(class&#60;Actor&#62; BaseClass, out Actor Actor, out Vector HitLoc, out Vector HitNorm, Vector End, optional Vector Start, optional Vector Extent, optional out TraceHitInfo HitInfo, optional int ExtraTraceFlags);
+</pre>
+</div>
+<p />
+<h4><a name="VisibleCollidingActors"></a> VisibleCollidingActors </h4>
+Loc (デフォルトでは呼び出し元の位置) から当該アクタの位置までのトレースがワールドにヒットしない半径範囲 (Radius) 内に存在して、衝突している (bCollideActors が true にセットされている ) 全アクタを返すイタレータ関数です。  <ul>
+<li> <strong>BaseClass</strong> - 返されるアクタのクラスです。
+</li> <li> <strong>Actor</strong> - ラインがコリジョンしたアクタです。
+</li> <li> <strong>Radius</strong> - ボックスの半径です。
+</li> <li> <strong>Loc</strong> - ボックスまたは球体の中心があるワールド位置です。
+</li> <li> <strong>bIgnoreHidden</strong> - 非表示のアクタを無視するか否かを保持します。
+</li> <li> <strong>Extent</strong> - このベクターがゼロに等しい場合 (Vect[0.f, 0.f, 0.f]) は、実行されるトレースが、ゼロ範囲として見なされます。このベクターがゼロではない場合は、非ゼロ範囲のトレースが実行されます。
+</li> <li> <strong>bTraceActors</strong> - 視線チェックを実行することによって、アクタが呼び出し元からビジブルであることを確認するか否かを保持します。
+</li> <li> <strong>InterfaceClass</strong> - このインターフェイスを実装していないアクタを除外します。None の場合は、無視されます。
+</li> <li> <strong>HitInfo</strong> - この構造体にはトレースの結果に関する情報が含まれます。トレースが何ともコリジョンしなかった場合は、無効となります。  <ul>
+<li> <strong>Material</strong> - トレースがヒットしたマテリアルです。
+</li> <li> <strong>PhysMaterial</strong> - トレースがヒットした物理マテリアルです。
+</li> <li> <strong>Item</strong> - トレースがヒットしたものに関する付加的情報です。
+</li> <li> <strong>LevelIndex</strong> - トレースが BSP にヒットした場合に、レベルのインデックスを保持します。
+</li> <li> <strong>BoneName</strong> - トレースが骨格メッシュ コンポーネントにヒットした場合に、ボーンの名前を保持します。
+</li> <li> <strong>HitComponent</strong> - トレースがヒットしたコンポーネントです。
+</li></ul>
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+iterator function VisibleCollidingActors(class&#60;Actor&#62; BaseClass, out Actor Actor, float Radius, optional Vector Loc, optional bool bIgnoreHidden, optional Vector Extent, optional bool bTraceActors, optional class&#60;Interface&#62; InterfaceClass, optional out TraceHitInfo HitInfo);
+</pre>
+</div>
+<p />
+<h4><a name="CollidingActors"></a> CollidingActors </h4>
+一定の半径内に存在してコリジョンしている (bCollideActors が true にセットされている) アクタを返すイタレータ関数です。 bUseOverlapCheck は、オブジェクトの中心が球体内部にあるか否かをチェックするのではなく、球体またはボックスのチェックを使用します。  <ul>
+<li> <strong>BaseClass</strong> - 返されるアクタのクラスです。
+</li> <li> <strong>Actor</strong> - ラインがコリジョンしたアクタです。
+</li> <li> <strong>Radius</strong> - bUseOverlapCheck に応じて、ボックスまたは球体の半径を保持します。
+</li> <li> <strong>Loc</strong> - ボックスまたは球体の中心があるワールド位置です。
+</li> <li> <strong>bUseOverlapCheck</strong> - オブジェクトの中心が球体内部にあるか否かをチェックするのではなく、球体またはボックスのチェックを使用します。
+</li> <li> <strong>InterfaceClass</strong> - このインターフェイスを実装していないアクタを除外します。None の場合は、無視されます。
+</li> <li> <strong>HitInfo</strong> - この構造体にはトレースの結果に関する情報が含まれます。トレースがコリジョンするものがなかった場合は、無効となります。  <ul>
+<li> <strong>Material</strong> - トレースがヒットしたマテリアルです。
+</li> <li> <strong>PhysMaterial</strong> - トレースがヒットした物理マテリアルです。
+</li> <li> <strong>Item</strong> - トレースがヒットしたものに関する付加的情報です。
+</li> <li> <strong>LevelIndex</strong> - トレースが BSP にヒットした場合に、レベルのインデックスを保持します。
+</li> <li> <strong>BoneName</strong> - トレースが骨格メッシュ コンポーネントにヒットした場合に、ボーンの名前を保持します。
+</li> <li> <strong>HitComponent</strong> - トレースがヒットしたコンポーネントです。
+</li></ul>
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+iterator function CollidingActors(class&#60;Actor&#62; BaseClass, out Actor Actor, float Radius, optional Vector Loc, optional bool bUseOverlapCheck, optional class&#60;Interface&#62; InterfaceClass, optional out TraceHitInfo HitInfo);
+</pre>
+</div>
+<p />
+<h4><a name="OverlappingActors"></a> OverlappingActors </h4>
+位置が Loc であり半径が Radius の球体とオーバーラップして、コリジョンしている (bCollideActors が true にセットされている) アクタを返すイタレータ関数です。  <ul>
+<li> <strong>BaseClass</strong> - 返されるアクタのクラスです。
+</li> <li> <strong>out_Actor</strong> - 各イタレーションで返されるアクタです。
+</li> <li> <strong>Radius</strong> - オーバーラップのチェックに用いられる球体の半径です。
+</li> <li> <strong>Loc</strong> - オーバーラップのチェックに用いられる球体の中心です。(オプションです。指定されない場合は、呼び出し元の位置が使用されます)。
+</li> <li> <strong>bIgnoreHidden</strong> - true の場合は、非表示のアクタが無視されます。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+iterator function OverlappingActors(class&#60;Actor&#62; BaseClass, out Actor out&#95;Actor, float Radius, optional Vector Loc, optional bool bIgnoreHidden);
+</pre>
+</div>
+<p />
+<h2><a name="コリジョンのタイプ"></a> コリジョンのタイプ </h2>
+<div style="margin-top:-10px;" ><hr size="1" noshade="noshade"></div>
+ゲーム内で使用することができるコリジョンのタイプがいくつかあります。方式の大半は、閉じられたメッシュをコリジョン モデル (collision hull) として使用します。
+<p />
+<h3><a name="骨格メッシュ コリジョン モデル"></a> 骨格メッシュ コリジョン モデル </h3>
+骨格メッシュによって使用されるコリジョン モデルの作成方法については、 <a href="https://docs.unrealengine.com/5.0/udk/Three/PhysicsAssetEditor/UserGuideJP.html" class="twikiLink">PhAT ユーザーガイド</a> のページを参照してください。
+<p />
+<h3><a name="静的メッシュ コリジョン モデル"></a> 静的メッシュ コリジョン モデル </h3>
+<p />
+静的メッシュ コリジョン モデル (static mesh collision hull) は、静的メッシュの一部として格納されます。静的メッシュ コリジョン モデルは、静的メッシュと同じようにしてインスタンス化されます。したがって、ブロックボリュームよりもメモリ面で効率が良いです。
+<p />
+静的メッシュのブラウザでは、コリジョン モデルの使用方法に関するいくつかのプロパティを変更することができます。
+<p /> <ul>
+<li> <strong>UseSimpleRigidBodyCollision</strong> (シンプルな剛体コリジョンを使用) - デフォルトでは true にセットされています。このプロパティが true であり、なおかつ、コリジョン モデルが存在する場合は、コリジョン モデルが 1 組の凸包に変換されて、静的メッシュに対する物理オブジェクト (例 : ビークルやラグドール) のコリジョンを計算するために使用されます。 UseSimpleRigidBodyCollision が true であり、なおかつ、コリジョン モデルが存在しない場合は、剛体が静的メッシュとコリジョンしません。UseSimpleRigidBodyCollision を false にセットした場合は、物理エンジンが、静的メッシュのポリゴン単位にコリジョンします。したがって、静的メッシュのポリゴンがかなり大きい場合にのみ、このオプションを使用すべきです。
+</li> <li> <strong>UseSimpleBoxCollision</strong> (シンプルなボックス コリジョンを使用) - デフォルトでは true にセットされています。このプロパティが true の場合は、コリジョン モデル (存在する場合) が、非ゼロ範囲のラインチェックに使用されます。これには、プレイヤーの移動のようなものが含まれますが、武器の発砲は含まれません。このプロパティが true にセットされていて、なおかつ、コリジョン モデルが存在する場合は、ポリゴン単位のコリジョンは使用されません。 UseSimpleBoxCollision に false をセットすると、マテリアルに基づき、ポリゴン単位のコリジョンが使用されます。 UseSimpleBoxCollision が true にセットされていて、なおかつ、コリジョン モデルが存在しない場合は、コリジョンが生じません。
+</li> <li> <strong>UseSimpleLineCollision</strong> (シンプルなラインコリジョンを使用) - デフォルトでは true にセットされています。このプロパティが true の場合は、コリジョン モデル (存在する場合) が、ゼロ範囲のラインチェックに使用されます。これには、たいていの武器の発砲やレンズフレアのトレースなどが含まれます。UseSimpleLineCollision が true であり、なおかつ、コリジョン モデルが存在しない場合、もしくは、UseSimpleLineCollision が false にセットされている場合は、マテリアルの設定に基づきポリゴン単位のコリジョンが使用されることになります。
+</li></ul>
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CollisionTechnicalGuideJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:56 GMT -->
+</html></body>

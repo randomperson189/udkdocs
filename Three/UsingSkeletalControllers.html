@@ -1,0 +1,1683 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingSkeletalControllers.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:17:24 GMT -->
+<head>
+<title> UDK | UsingSkeletalControllers    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">UsingSkeletalControllers  </b></div>
+<div id="tooltext">
+<a href="UsingSkeletalControllersJP.html" class="twikiLink">日本語訳</a><br><a href="UsingSkeletalControllersCH.html" class="twikiLink">中国翻译</a><br><a href="UsingSkeletalControllersKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/UsingSkeletalControllers -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="AnimationHome.html" class="twikiLink">Animation</a></b> &gt; Using Skeletal Controllers <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="AnimatorHome.html" class="twikiLink">Animators</a></b> &gt; Using Skeletal Controllers
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Using Skeletal Controllers"></a> Using Skeletal Controllers </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="UsingSkeletalControllers.html#Using Skeletal Controllers"> Using Skeletal Controllers</a> <ul>
+<li> <a href="UsingSkeletalControllers.html#Overview"> Overview</a>
+</li> <li> <a href="UsingSkeletalControllers.html#SkelControl Nodes"> SkelControl Nodes</a>
+</li> <li> <a href="UsingSkeletalControllers.html#Adding a new _SkelController"> Adding a new SkelController</a>
+</li> <li> <a href="UsingSkeletalControllers.html#Modifying an existing _SkelController"> Modifying an existing SkelController</a>
+</li> <li> <a href="UsingSkeletalControllers.html#Chaining and sharing"> Chaining and sharing</a>
+</li> <li> <a href="UsingSkeletalControllers.html#Referencing _SkelControl nodes in Unrealscript"> Referencing SkelControl nodes in Unrealscript</a> <ul>
+<li> <a href="UsingSkeletalControllers.html#SkelControl properties"> SkelControl properties</a>
+</li> <li> <a href="UsingSkeletalControllers.html#Limb"> Limb</a> <ul>
+<li> <a href="UsingSkeletalControllers.html#SkelControlLimb"> SkelControlLimb</a>
+</li> <li> <a href="UsingSkeletalControllers.html#SkelControlFootPlacement"> SkelControlFootPlacement</a>
+</li></ul>
+</li> <li> <a href="UsingSkeletalControllers.html#Recoil"> Recoil</a> <ul>
+<li> <a href="UsingSkeletalControllers.html#GameSkelControl_Recoil"> GameSkelControl_Recoil</a>
+</li></ul>
+</li> <li> <a href="UsingSkeletalControllers.html#Single Bone"> Single Bone</a> <ul>
+<li> <a href="UsingSkeletalControllers.html#SkelControlSingleBone"> SkelControlSingleBone</a>
+</li> <li> <a href="UsingSkeletalControllers.html#SkelControl_Handlebars"> SkelControl_Handlebars</a>
+</li> <li> <a href="UsingSkeletalControllers.html#SkelControl_Multiply"> SkelControl_Multiply</a>
+</li> <li> <a href="UsingSkeletalControllers.html#SkelControl_TwistBone"> SkelControl_TwistBone</a>
+</li> <li> <a href="UsingSkeletalControllers.html#SkelControlWheel"> SkelControlWheel</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UDKSkelControl_Damage / _UTSkelControl_Damage"> UDKSkelControl_Damage / UTSkelControl_Damage</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UDKSkelControl_DamageHinge / _UTSkelControl_DamageHinge"> UDKSkelControl_DamageHinge / UTSkelControl_DamageHinge</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UDKSkelControl_DamageSpring / _UTSkelControl_DamageSpring"> UDKSkelControl_DamageSpring / UTSkelControl_DamageSpring</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UDKSkelControl_HoverboardSuspension / _UTSkelControl_HoverboardSuspension"> UDKSkelControl_HoverboardSuspension / UTSkelControl_HoverboardSuspension</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UDKSkelControl_HoverboardSwing / _UTSkelControl_HoverboardSwing"> UDKSkelControl_HoverboardSwing / UTSkelControl_HoverboardSwing</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UDKSkelControl_HoverboardVibration / _UTSkelControl_HoverboardVibration"> UDKSkelControl_HoverboardVibration / UTSkelControl_HoverboardVibration</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UDKSkelControl_HugGround / _UTSkelControl_HugGround"> UDKSkelControl_HugGround / UTSkelControl_HugGround</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UDKSkelControl_PropellerBlade"> UDKSkelControl_PropellerBlade</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UDKSkelControl_Rotate / _UTSkelControl_Rotate"> UDKSkelControl_Rotate / UTSkelControl_Rotate</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UDKSkelControl_SpinControl / _UTSkelControl_SpinControl"> UDKSkelControl_SpinControl / UTSkelControl_SpinControl</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UDKSkelControl_TurretConstrained / _UTSkelControl_TurretConstrained"> UDKSkelControl_TurretConstrained / UTSkelControl_TurretConstrained</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UDKSkelControl_VehicleFlap"> UDKSkelControl_VehicleFlap</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UTSkelControl_CicadaEngine"> UTSkelControl_CicadaEngine</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UTSkelControl_JetThruster"> UTSkelControl_JetThruster</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UTSkelControl_MantaBlade"> UTSkelControl_MantaBlade</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UTSkelControl_MantaFlaps"> UTSkelControl_MantaFlaps</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UTSkelControl_Oscillate"> UTSkelControl_Oscillate</a>
+</li></ul>
+</li> <li> <a href="UsingSkeletalControllers.html#Uncategorized"> Uncategorized</a> <ul>
+<li> <a href="UsingSkeletalControllers.html#SkelControl_CCDIK"> SkelControl_CCDIK</a>
+</li> <li> <a href="UsingSkeletalControllers.html#SkelControlLookAt"> SkelControlLookAt</a>
+</li> <li> <a href="UsingSkeletalControllers.html#SkelControlSpline"> SkelControlSpline</a>
+</li> <li> <a href="UsingSkeletalControllers.html#SkelControlTrail"> SkelControlTrail</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UDKSkelControl_CantileverBeam / _UTSkelControl_CantileverBeam"> UDKSkelControl_CantileverBeam / UTSkelControl_CantileverBeam</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UDKSkelControl_LockRotation / _UTSkelControl_LockRotation"> UDKSkelControl_LockRotation / UTSkelControl_LockRotation</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UDKSkelControl_LookAt / _UTSkelControl_LookAt"> UDKSkelControl_LookAt / UTSkelControl_LookAt</a>
+</li> <li> <a href="UsingSkeletalControllers.html#UDKSkelControl_MassBoneScaling / _UTSkelControl_MassBoneScaling"> UDKSkelControl_MassBoneScaling / UTSkelControl_MassBoneScaling</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="UsingSkeletalControllers.html#Downloads"> Downloads</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+SkelControls allow you to modify a bone or set of bones in a skeletal mesh programatically. They are set up in the same tool as your animation blending - the AnimTree Editor. You cannot connect AnimNodes and SkelControls together - they are separate systems but displayed in the same workspace for convenience. Think of it as the Animation flowing into the root AnimTree box, and then the SkelControls allowing you to modify each bone in some way after that.
+<p />
+<h2><a name="SkelControl Nodes"></a> SkelControl Nodes </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControllerNode.jpg" alt="SkelControllerNode.jpg" width='620' height='311' />
+<p /> <ol>
+<li> Name of the SkelController node and the name of the SkelController set by the user.
+</li> <li> Output connector for this SkelController.
+</li> <li> Strength slider, this allows you to set the strength of the SkelController.
+</li> <li> Toggle which will blend the strength up or down using <strong>Blend In Time</strong> and <strong>Blend Out Time</strong> defined by the SkelController node.
+</li> <li> Input connector for this SkelController.
+</li> <li> Current strength of the SkelController
+</li></ol>
+<p />
+<h2><a name="Adding a new _SkelController"></a> Adding a new SkelController </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Say you want to add a controller to get the head of a character to look at a particular target:
+<p />
+ 1. Right click on the blue AnimTree box and choose 'Add SkelControl Chain': <br>
+<img src="rsrc/Three/UsingSkeletalControllers/AddSkelControl_0.jpg" alt="AddSkelControl_0.jpg" width='800' height='615' />
+<p />
+ 2. A combo will pop up letting you pick what bone you wish to control. Note that you can only have one control chain for each bone: <br>
+<img src="rsrc/Three/UsingSkeletalControllers/AddSkelControl_1.jpg" alt="AddSkelControl_1.jpg" width='800' height='615' />
+<p />
+ 3. Choose the Head bone and you will see a new green connector in the AnimTree labeled 'Head': <br>
+<img src="rsrc/Three/UsingSkeletalControllers/AddSkelControl_2.jpg" alt="AddSkelControl_2.jpg" width='800' height='615' />
+<p />
+ 4. Right click on the background and create a new SkelControlLookAt: <br>
+<img src="rsrc/Three/UsingSkeletalControllers/AddSkelControl_3.jpg" alt="AddSkelControl_3.jpg" width='800' height='615' />
+<p />
+ 5. Connect the SkelControlLookAt the to Head connector: <br>
+<img src="rsrc/Three/UsingSkeletalControllers/AddSkelControl_4.jpg" alt="AddSkelControl_4.jpg" width='800' height='615' />
+<p />
+<h2><a name="Modifying an existing _SkelController"></a> Modifying an existing SkelController </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+If you want to delete or change the bone for an existing skeletal bone chain; right click on the green box that is on the blue AnimTree box. A context menu then appears with the options to do those actions.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControllerContextMenu.jpg" alt="SkelControllerContextMenu.jpg" width='431' height='248' />
+<p />
+<h2><a name="Chaining and sharing"></a> Chaining and sharing </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+SkelControls can be chained together, and are applied in the order that they are connected. So if you apply a SkelControlLookAt, followed by a SkelControlSingleBone adding some rotation, first the bone will look at the target, and the be offset by that rotation.
+<p />
+SkelControl can also be shared by multiple bones. So if you want many bones to point at the same target, you can use just one SkelControlLookAt and connect multiple bones to it.
+<p />
+<h2><a name="Referencing _SkelControl nodes in Unrealscript"></a> Referencing SkelControl nodes in Unrealscript </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+SkelControls can be reference in Unrealscript in much the same way as Animation nodes. Each SkelControl node in the AnimTree has a <strong>Control Name</strong> property which can be set within the AnimTree.
+<p />
+To ensure that everything gets cleaned up by the garbage collector, it is also good practice to ensure that you remove reference to the SkelControls when the owning actor is destroyed.
+<p />
+<div class="codetitlebar">
+<em>YourActorClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+var SkelControl ASkelControl;
+var() Name ASkelControlName;
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  Super.PostInitAnimTree(SkelComp);
+
+  if (SkelComp &#61;&#61; Mesh)
+  {
+    ASkelControl &#61; Mesh.FindSkelControl(ASkelControlName);
+  }
+}
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  ASkelControl &#61; None;
+}
+</pre>
+</div>
+<p />
+<h3><a name="SkelControl properties"></a> SkelControl properties </h3>
+Some properties are common to all SkelControls.
+<p /> <ul>
+<li> <strong>Control Name</strong> - This is the name used by the programmer to find a particular SkelControl from code and modify it.
+</li> <li> <strong>Control Strength</strong> - This is the current strength of this SkelControl.
+</li> <li> <strong>Blend In Time</strong> - How long it takes, in seconds, for the SkelControl to blend in.
+</li> <li> <strong>Blend Out Time</strong> - How long it takes, in seconds, for the SkelControl to blend out.
+</li> <li> <strong>Blend Type</strong> - How blending should occur <ul>
+<li> <strong>ABT_Linear</strong> - Performs linear interpolation when blending. <a href="http://en.wikipedia.org/wiki/Linear_interpolation">Wiki</a>
+</li> <li> <strong>ABT_Cubic</strong> - Performs cubic interpolation when blending. <a href="http://en.wikipedia.org/wiki/Spline_interpolation">Wiki</a>
+</li> <li> <strong>ABT_Sinusoidal</strong> - Performs sinusoidal interpolation when blending. <a href="http://en.wikipedia.org/wiki/Trigonometric_interpolation">Wiki</a>
+</li> <li> <strong>ABT_EaseInOutExponent2</strong> - Performs "inbetweening" interpolation when blending. <a href="http://en.wikipedia.org/wiki/Inbetweening">Wiki</a>
+</li> <li> <strong>ABT_EaseInOutExponent3</strong> - Performs "inbetweening" interpolation when blending. <a href="http://en.wikipedia.org/wiki/Inbetweening">Wiki</a>
+</li> <li> <strong>ABT_EaseInOutExponent4</strong> - Performs "inbetweening" interpolation when blending. <a href="http://en.wikipedia.org/wiki/Inbetweening">Wiki</a>
+</li> <li> <strong>ABT_EaseInOutExponent5</strong> - Performs "inbetweening" interpolation when blending. <a href="http://en.wikipedia.org/wiki/Inbetweening">Wiki</a>
+</li></ul>
+</li> <li> <strong>Post Physics Controller</strong> - This SkelControl will be applied after the physics pass.
+</li> <li> <strong>Set Strength From Anim Node</strong> - If true, the control strength will be the same as given AnimNode(s). This is to make transitions easier between nodes and Controllers.
+</li> <li> <strong>Controlled By Anim Metadata</strong> - If true, the weight will default to zero and metadata in animation will enable the node based on the animation weight.
+</li> <li> <strong>Invert Metadata Weight</strong> - If true, weight defaults to one and the metadeta will set that to zero, disabling the skeletal controller.
+</li> <li> <strong>Propagate Set Active</strong> - If true, when this SkelControl is made active, the next one in the chain will be made active as well.
+</li> <li> <strong>Strength Anim Node Name List</strong> - List of anim nodes which are polled to set this SkelControl's control strength.  This is used in conjunction with <strong>Set Strength From Anim Node</strong>.
+</li> <li> <strong>Bone Scale</strong> - Allows you to apply scaling to the bone and all child bones that the SkelControl is working on.
+</li> <li> <strong>Ignore When Not Rendered</strong> - Do not apply this SkelControl if the mesh is not currently being rendered.
+</li> <li> <strong>Ignore At Or Above LOD</strong> - Disables the SkelControl if the LOD on the Actor is above or at this value.
+</li></ul>
+<p />
+Most positions and rotations specified by SkelControls allow you to choose the 'space' (or 'reference frame') that it is defined in. Here is a brief explanation of the various options:
+<p /> <ul>
+<li> <strong>BCS_WorldSpace</strong> - As a location in the world.
+</li> <li> <strong>BCS_ActorSpace</strong> - Relative to the Actor origin.
+</li> <li> <strong>BCS_ComponentSpace</strong> - Relative to the Skeletal Mesh Component origin.
+</li> <li> <strong>BCS_ParentBoneSpace</strong> - Relative to the reference frame of the parent bone of the bone that the SkelControl is controlling.
+</li> <li> <strong>BCS_BoneSpace</strong> - Relative to the bone that the SkelControl is controlling.
+</li> <li> <strong>BCS_OtherBoneSpace</strong> - Relative to another bone specified by the user in the skeleton hierarchy (there should be a <strong>BoneName</strong> option in the SkelControl to let you specify which bone).
+</li></ul>
+<p />
+<h3><a name="Limb"></a> Limb </h3>
+<h4><a name="SkelControlLimb"></a> SkelControlLimb </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This control uses Unreal Engine 3's Inverse Kinematic solver. It takes a target location in world space, and attempts to rotate the two bones above the controlled one to reach that target. If the target is not reachable, the bone will be placed as close as possible. As well as specifying the target location for the end of the limb, you also specify a target for the joint to bend towards - this is the pink diamond in the 3D viewport.
+<p />
+Note that the Limb controller does not work if you have roll-bones in the hierarchy of the arm (ie if the lower arm is a child of the upper arm roll bone). You should build your skeletons so that the arm is composed of two bones, and not four bones. The following picture explains the problem.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/ArmSkelHierarchy.jpg" alt="ArmSkelHierarchy.jpg" width='462' height='645' />
+<p />
+The bones on the left are typical in 3D packages but aren't as efficient for real time skeletal controls.  In this arm chain if you wanted to turn this into IK, you would have an IK chain of four bones, when you can get away with only two bones like the bones that are one the right in the above image. The roll bones are children of the arm bones in both situations. The difference is that the left is a straight hierarchy of four bones from the upper arm to the hand, while the right is a hierarchy of two bones from the upper arm to the hand.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlLimbExample.jpg" alt="SkelControlLimbExample.jpg" width='800' height='399' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Effector Location</strong> - The desired location of the controlled bone.
+</li> <li> <strong>Effector Location Space</strong> - The space that <strong>Effector Location</strong>  is defined in.
+</li> <li> <strong>Effector Space Bone Name</strong> - If <strong>Effector Location Space</strong> is BCS_OtherBoneSpace, this is the name of the bone to use.
+</li> <li> <strong>Joint Target Location</strong> - Location in space that the joint will move towards when flexed.
+</li> <li> <strong>Joint Target Location Space</strong> - The space that <strong>Joint Target Location</strong> is defined in.
+</li> <li> <strong>Joint Target Space Bone Name</strong> - If <strong>Joint Target Location Space</strong> is BCS_OtherBoneSpace, this is the name of the bone to use.
+</li> <li> <strong>Bone Axis</strong> - The axis of the bones in the limb that point along the bone.
+</li> <li> <strong>Joint Axis</strong> - The axis of the bone that should be aligned with the joint axis. So for an elbow - this should be the axis around which the elbow bends.
+</li> <li> <strong>Invert Bone Axis</strong> - Whether the <strong>Bone Axis</strong> vector should be inverted.
+</li> <li> <strong>Invert Joint Axis</strong> - Whether the <strong>Joint Axis</strong> vector should be inverted.
+</li> <li> <strong>Maintain Effector Rel Rot</strong> - If true, modify the relative rotation between the end effector bone and its parent bone. If false, the rotation of the end bone will not be modified by this controller.
+</li></ul>
+<p />
+<h5><a name="How to use in Unrealscript"></a><a name=" How to use in Unrealscript"></a>  How to use in Unrealscript </h5>
+In this example, a simple animation is done using SkelControlLimb; which is a pawn lifting some weights. Using SkelControlLimb, a world space location is set as the destination for the hands. Dynamic triggers is used to mark the location where the hands should go. As the iron bar moves up and down using Matinee, the dynamic triggers move along with it as they are attached. Once per tick, the SkelControlLimbs are updated, setting the <strong>Effector Location</strong> to the same location as the dynamic triggers.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlLimbPumpingIron.jpg" alt="SkelControlLimbPumpingIron.jpg" width='800' height='593' />
+<p />
+<div class="codetitlebar">
+SkelControlLimbPawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+class SkelControlLimbPawn extends Pawn
+  Placeable;
+
+var(SkelControl) Name LeftArmSkelControlName;
+var(SkelControl) Name RightArmSkelControlName;
+var(SkelControl) Actor LeftArmAttachment;
+var(SkelControl) Actor RightArmAttachment;
+
+var SkelControlLimb LeftArmSkelControl;
+var SkelControlLimb RightArmSkelControl;
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  Super.PostInitAnimTree(SkelComp);
+
+  if (SkelComp &#61;&#61; Mesh)
+  {
+    LeftArmSkelControl &#61; SkelControlLimb(Mesh.FindSkelControl(LeftArmSkelControlName));
+    RightArmSkelControl &#61; SkelControlLimb(Mesh.FindSkelControl(RightArmSkelControlName));
+  }
+}
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  LeftArmSkelControl &#61; None;
+  RightArmSkelControl &#61; None;
+}
+
+simulated event Tick(float DeltaTime)
+{
+  Super.Tick(DeltaTime);
+
+  if (LeftArmSkelControl !&#61; None &#38;&#38; LeftArmAttachment !&#61; None)
+  {
+    LeftArmSkelControl.EffectorLocation &#61; LeftArmAttachment.Location;
+  }
+
+  if (RightArmSkelControl !&#61; None &#38;&#38; RightArmAttachment !&#61; None)
+  {
+    RightArmSkelControl.EffectorLocation &#61; RightArmAttachment.Location;
+  }
+}
+
+defaultproperties
+{
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;PawnMesh
+  End Object
+  Mesh&#61;PawnMesh
+  Components.Add(PawnMesh)
+
+  Physics&#61;PHYS&#95;Falling
+
+  Begin Object Name&#61;CollisionCylinder
+    CollisionRadius&#61;+0030.0000
+    CollisionHeight&#61;+0072.000000
+  End Object
+}
+</pre>
+</div>
+<p />
+<h4><a name="SkelControlFootPlacement"></a> SkelControlFootPlacement </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This is a special type of SkelControlLimb that is designed to place the feet of a character properly on the ground. You should attach this control to the foot bone of your character. A line check is performed each frame from the position of the hip bone to the position of the foot bone. If nothing is hit, the leg is not changed. If something is hit, the <strong>Effector Location</strong> for the control is set to the hit point, so the leg will bend to place the foot on the ground. Because the <strong>Effector Location</strong> is generated automatically, you cannot modify it using the widget in the control, but you can modify the <strong>Joint Target Location</strong> to get the legs to bend in the correct direction.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlFootPlacementExample.jpg" alt="SkelControlFootPlacementExample.jpg" width='800' height='470' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Foot Offset</strong> - Offset applied to the generated <strong>Effector Location</strong> to pull it back along the line test. This allows you adjust the height of the foot on the ground, as the foot bone is not usually at the sole of the foot.
+</li> <li> <strong>Foot Up Axis</strong> - The axis of the foot bone to align to the surface normal if <strong>Orient Foot To Ground</strong> is true.
+</li> <li> <strong>Foot Rot Offset</strong> - Additional rotation applied to foot when <strong>Orient Foot To Ground</strong>. This can be required if the foot bone does not have an axis that points up.
+</li> <li> <strong>Invert Foot Up Axis</strong> - If we should flip the <strong>Foot Up Axis</strong>.
+</li> <li> <strong>Orient Foot To Ground</strong> - If we should rotate the foot bone so that it aligns itself with the surface normal that was hit by the line check.
+</li> <li> <strong>Max Up Adjustment</strong> - The maximum amount up the foot will be moved by the SkelControl.
+</li> <li> <strong>Max Down Adjustment</strong> - The maximum amount down the foot will be moved by the SkelControl.
+</li> <li> <strong>Bone Axis</strong> - Axis of graphical bone to align along the length of the bone.
+</li> <li> <strong>Joint Axis</strong> - Axis of graphical bone to align along the hinge axis of the joint.
+</li> <li> <strong>Invert Bone Axis</strong> - Set true if you want to invert <strong>Bone Axis</strong> when constructing the transform for the bones.
+</li> <li> <strong>Invert Joint Axis</strong> - Set true if you want to invert <strong>Joint Axis</strong> when constructing the transform for the bones.
+</li> <li> <strong>Rotate Joint</strong> - Experiment to <strong>Rotate Joint</strong> bone, rather than creating a new matrix for it.
+</li> <li> <strong>Maintain Effector Rel Rot</strong> - If true, modify the relative rotation between the end 'effector' bone and its parent bone. If false, the rotation of the end bone will not be modified by this controller.
+</li> <li> <strong>Take Rotation From Effector Space</strong> - If true, rotation of effector bone is copied from the bone specified by <strong>EffectorSpaceBoneName</strong>.
+</li></ul>
+<p />
+In the AnimTree Editor you can display a preview floor mesh for testing foot placement. Press the Show Floor button <img src="rsrc/Three/UsingSkeletalControllers/ShowFloorButton.jpg" alt="ShowFloorButton.jpg" width='23' height='20' /> on the tool bar and the floor mesh will appear. You can move and rotate the floor by holding the Control key and using the following controls:
+<p /> <ul>
+<li> <strong>Left Mouse Button</strong> - Translate floor along X and Y.
+</li> <li> <strong>Right Mouse Button</strong> - Rotate floor around Z.
+</li> <li> <strong>Left + Right Mouse Button</strong> - Translate floor along Z.
+</li></ul>
+<p />
+<h5><a name="Advanced Foot Placement"></a><a name=" Advanced Foot Placement"></a>  Advanced Foot Placement </h5>
+While the foot placement SkelController node does most of the work for you, there are often a lot of situations where you will need to tweak and change the foot placement SkelController node so that it works accordingly to the scene.
+<p />
+<h6><a name="Mesh Offsetting"></a><a name=" Mesh Offsetting"></a>  Mesh Offsetting </h6>
+Animations are authored on a flat ground, so if the character is stepping on something higher than the ground, the foot placement code will raise the foot, and everything will look fine. Now if the collision happens below the animated ground level, for example going down stairs, then either the foot will remain in the air, or the leg will over extend to reach the step below. This is not very good. So typically the game play code would look at the smallest distance to the actual floor from both feet, and move the mesh with that offset, and a bit of interpolation may help to keep things smooth. <!-- You can find an example of such code in the Unreal Tournament 3 source code, AUTPawn::DoFootPlacement in UTPawn.cpp. -->
+<p />
+As you can see, the collision of the pawn has positioned it so it is at the right level, but it would also mean that pawn would look like it's floating. To correct that, a translation was put on the mesh to force it down. From there foot placement handles the rest.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/FootPlacementMeshOffset.jpg" alt="FootPlacementMeshOffset.jpg" width='800' height='593' />
+<p />
+This method also works well on slopes.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/FootPlacementMeshOffsetOnSlopes.jpg" alt="FootPlacementMeshOffsetOnSlopes.jpg" width='800' height='593' />
+<p />
+Code logic simply performs a trace down using the X and Y location of the sockets that have been attached to the left and right foot bones. The Z location is the pawn's location to ensure that the traces don't penetrate through the floor that the pawn is standing on. If the hit locations have been found, the appropriate mesh translation vector is calculated and then passed to the mesh. If no floors were detected (perhaps the pawn is swimming?) then the mesh translation is not applied this tick. The whole process is also aborted if the pawn is falling.
+<p />
+<div class="codetitlebar">
+AdvancedFootPlacementPawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+class AdvancedFootPlacementPawn extends Pawn
+  Placeable;
+
+var(FootPlacement) float FootTraceRange;
+var(FootPlacement) Name LeftFootSocketName;
+var(FootPlacement) Name RightFootSocketName;
+var(FootPlacement) float TranslationZOffset;
+var(FootPlacement) Name LeftFootPlacementSkelControlName;
+var(FootPlacement) Name RightFootPlacementSkelControlName;
+var SkelControlFootPlacement LeftFootPlacementSkelControl;
+var SkelControlFootPlacement RightFootPlacementSkelControl;
+
+simulated function EnableLeftFootPlacement()
+{
+  SetSkelControlActive(LeftFootPlacementSkelControl, true);
+}
+
+simulated function DisableLeftFootPlacement()
+{
+  SetSkelControlActive(LeftFootPlacementSkelControl, false);
+}
+
+simulated function EnableRightFootPlacement()
+{
+  SetSkelControlActive(RightFootPlacementSkelControl, true);
+}
+
+simulated function DisableRightFootPlacement()
+{
+  SetSkelControlActive(RightFootPlacementSkelControl, false);
+}
+
+simulated function SetSkelControlActive(SkelControlBase SkelControl, bool IsActive)
+{
+  if (SkelControl !&#61; None)
+  {
+    SkelControl.SetSkelControlActive(IsActive);
+  }
+}
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  Super.PostInitAnimTree(SkelComp);
+
+  if (SkelComp &#61;&#61; Mesh)
+  {
+    LeftFootPlacementSkelControl &#61; SkelControlFootPlacement(Mesh.FindSkelControl(LeftFootPlacementSkelControlName));
+    RightFootPlacementSkelControl &#61; SkelControlFootPlacement(Mesh.FindSkelControl(RightFootPlacementSkelControlName));
+  }
+}
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  LeftFootPlacementSkelControl &#61; None;
+  RightFootPlacementSkelControl &#61; None;
+}
+
+simulated event Tick(float DeltaTime)
+{
+  local Vector LeftFootHitLocation, LeftFootHitNormal, LeftFootTraceEnd, LeftFootTraceStart;
+  local Vector RightFootHitLocation, RightFootHitNormal, RightFootTraceEnd, RightFootTraceStart;
+  local Vector DesiredMeshTranslation;
+  local Rotator SocketRotation;
+  local Actor LeftFootHitActor, RightFootHitActor;
+
+  Super.Tick(DeltaTime);
+
+  if (Mesh &#61;&#61; None &#124;&#124; Physics &#61;&#61; PHYS&#95;Falling)
+  {
+    return;
+  }
+
+  Mesh.GetSocketWorldLocationAndRotation(LeftFootSocketName, LeftFootTraceStart, SocketRotation);
+  LeftFootTraceStart.Z &#61; Location.Z;
+  LeftFootTraceEnd &#61; LeftFootTraceStart - (Vect(0.f, 0.f, 1.f) &#42; FootTraceRange);
+  // Trace down to find the position for the left foot
+  ForEach TraceActors(class&#39;Actor&#39;, LeftFootHitActor, LeftFootHitLocation, LeftFootHitNormal, LeftFootTraceEnd, LeftFootTraceStart,,, TRACEFLAG&#95;Bullet)
+  {
+    // Block if we&#39;ve hit world geometry
+    if (LeftFootHitActor.bWorldGeometry &#124;&#124; LeftFootHitActor.IsA(&#39;InterpActor&#39;))
+    {
+      break;
+    }
+  }
+
+  // Trace down to find the position for the right foot
+  Mesh.GetSocketWorldLocationAndRotation(RightFootSocketName, RightFootTraceStart, SocketRotation);
+  RightFootTraceStart.Z &#61; Location.Z;
+  RightFootTraceEnd &#61; RightFootTraceStart - (Vect(0.f, 0.f, 1.f) &#42; FootTraceRange);
+  // Trace down to find the position for the right foot
+  ForEach TraceActors(class&#39;Actor&#39;, RightFootHitActor, RightFootHitLocation, RightFootHitNormal, RightFootTraceEnd, RightFootTraceStart,,, TRACEFLAG&#95;Bullet)
+  {
+    // Block if we&#39;ve hit world geometry
+    if (RightFootHitActor.bWorldGeometry &#124;&#124; RightFootHitActor.IsA(&#39;InterpActor&#39;))
+    {
+      break;
+    }
+  }
+
+  // Not in range to touch the ground
+  if (LeftFootHitActor &#61;&#61; None &#38;&#38; RightFootHitActor &#61;&#61; None)
+  {
+    return;
+  }
+
+  if (LeftFootHitActor !&#61; None &#38;&#38; RightFootHitActor &#61;&#61; None)
+  {
+    DesiredMeshTranslation.Z &#61; (LeftFootHitLocation.Z - Location.Z) + Mesh.default.Translation.Z + TranslationZOffset;
+  }
+  else if (LeftFootHitActor &#61;&#61; None &#38;&#38; RightFootHitActor !&#61; None)
+  {
+    DesiredMeshTranslation.Z &#61; (RightFootHitLocation.Z - Location.Z) + Mesh.default.Translation.Z + TranslationZOffset;
+  }
+  else
+  {
+    // Adjust the desired mesh translation
+    if (LeftFootHitLocation.Z &#60; RightFootHitLocation.Z)
+    {
+      DesiredMeshTranslation.Z &#61; (LeftFootHitLocation.Z - Location.Z) + Mesh.default.Translation.Z + TranslationZOffset;
+    }
+    else
+    {
+      DesiredMeshTranslation.Z &#61; (RightFootHitLocation.Z - Location.Z) + Mesh.default.Translation.Z + TranslationZOffset;
+    }
+  }
+
+  // Set the mesh translation
+  Mesh.SetTranslation(DesiredMeshTranslation);
+}
+
+defaultproperties
+{
+  LeftFootSocketName&#61;&#34;LeftFootSocket&#34;
+  RightFootSocketName&#61;&#34;RightFootSocket&#34;
+  FootTraceRange&#61;96.f
+
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;PawnMesh
+  End Object
+  Mesh&#61;PawnMesh
+  Components.Add(PawnMesh)
+
+  Physics&#61;PHYS&#95;Falling
+
+  Begin Object Name&#61;CollisionCylinder
+    CollisionRadius&#61;+0030.0000
+    CollisionHeight&#61;+0072.000000
+  End Object
+}
+</pre>
+</div>
+<p />
+This is a simple method for ensuring that the mesh is in the correct position to ensure that the foot placement SkelControls will work well. However, this method is fast but does not work that well when the pawn is moving or doing complex behavior.
+<p />
+<h6><a name="Foot Placement while moving"></a><a name=" Foot Placement while moving"></a>  Foot Placement while moving </h6>
+One way to achieve foot placement while moving (and not just when standing still) is to take into account the offset (height) between the foot bone, and the animated ground level (which is usually represented by the Root Bone position). Now instead of moving our Foot Bone to where the ground actually is, we just add an offset to the Foot Bone, being the difference between the animated ground height and the actual ground height. Now the animation will properly lift the foot and follow the world. It will require a bit of interpolation, smoothing, and mesh offsetting love to look good, but it is a fairly simple solution to put in place and works fairly well. That system will also tend to lag a little bit as you are monitoring the ground level just below the feet. One way to improve this would be to look ahead where the foot would land, but that would require a more complex system in place which analyzes the locomotion animations to properly predict where the feet will land. Below are screenshots of the system prototyped using the  Gears of War 2 code.
+<p />
+<img alt="FootPlacementWhileMoving.jpg" src="rsrc/Three/UsingSkeletalControllers/FootPlacementWhileMoving.jpg" />
+<p />
+<h6><a name="Floor Conforming"></a><a name=" Floor Conforming"></a>  Floor Conforming </h6>
+Floor Conforming is orienting the character and/or his legs against the slope, so his feet move parallel to the slope. A simple way to achieve this is by having an IK Foot Bone Setup in the character's skeleton. Basically an "IK Foot Root" bone coming of the "Root Bone", and "IK Foot Right", "IK Foot Left" bones matching the foot bones exactly at every frame of animation. Then by translating and rotating the "IK Foot Root" bone, it is pretty easy to orient the feet movement against the direction of the slope. Again, some interpolation and mesh offsetting is required for it to look smooth. Additionally, the whole mesh can be rotated to adjust the torso of the character to the slope, and the change of slope, for it to look more natural. (Leaning  a little into the slope when moving, and against the slope when stopping). Compensating for Mesh rotation in the aiming code is very easy to do, to keep the character aiming at a given point in space. Below are screenshots of the system prototyped using the  Gears of War 2 code.
+<p />
+<img alt="FloorConforming.jpg" src="rsrc/Three/UsingSkeletalControllers/FloorConforming.jpg" />
+<p />
+<h6><a name="Moving Bases"></a><a name=" Moving Bases"></a>  Moving Bases </h6>
+When a character is standing on top of a moving base, or otherwise known as a Mover, if that Mover happens to be rotating, the character will appear to be sliding and completely disconnected from the ground. Doing the Floor Conforming system discussed above will help, but still the character will slide against the base, the feet won't appear grounded at all. Why is that? This is because Unreal uses an AABB (Axis Aligned Bounding Box) for Pawn collision. So that box does not rotate with the Mover. And worse, it is pushed upwards and downwards as the Mover rotates. With a bit of maths though, it is possible to figure out where the feet lie and do the necessary compensations. You also have to ensure that the Mover is ticked before the Pawn. Below are screenshots of the system prototyped using the  Gears of War 2 code.
+<p />
+<img alt="FootPlacementMovers.jpg" src="rsrc/Three/UsingSkeletalControllers/FootPlacementMovers.jpg" />
+<p />
+<p />
+<h3><a name="Recoil"></a> Recoil </h3>
+<h4><a name="GameSkelControl_Recoil"></a> GameSkelControl_Recoil </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This SkelControl simulates the force applied to arms when a weapon is fired. While the same effect could be done using animations, the advantage of using this SkelController is that it allows you to pair it with other SkelControls. Often with this node, you will only want it to affect a single bone, in this case the b_IK_Gun. SkelControlLimb is then used on the left and right hand bones to perform inverse kinematics on the hand bones attached to b_IK_Gun.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlRecoilAnimTree.jpg" alt="SkelControlRecoilAnimTree.jpg" width='800' height='464' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Bone Space Recoil</strong> - If true, aim is ignored and recoil is just applied in local bone space.
+</li> <li> <strong>Play Recoil</strong> - Toggles activation for the recoil.
+</li> <li> <strong>Recoil</strong> - Recoil information. <ul>
+<li> <strong>Time Duration</strong> - Duration in seconds of the recoil shake.
+</li> <li> <strong>Rot Amplitude</strong> - Rotation amplitude vector.
+</li> <li> <strong>Rot Frequency</strong> - Rotation frequency vector.
+</li> <li> <strong>Rot Params</strong> - Rotation parameters.
+</li> <li> <strong>Loc Amplitude</strong> - Location offset amplitude vector.
+</li> <li> <strong>Loc Frequency</strong> - Location offset frequency vector.
+</li> <li> <strong>Loc Params</strong> - Location parameters.
+</li></ul>
+</li> <li> <strong>Aim</strong> - Aim vector represented as [-1.f, 1.f : -1.f, 1.f]
+</li></ul>
+<p />
+<h5><a name="How to use in Unrealscript"></a><a name=" How to use in Unrealscript"></a>  How to use in Unrealscript </h5>
+In this example, the pawn will fire the link gun every 0.2 seconds and the arms will recoil due to the firing of that weapon.
+<p />
+<div class="codetitlebar">
+SkelControlRecoilPawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+class SkelControlRecoilPawn extends Pawn
+  Placeable;
+
+var() Name RecoilSkelControlName;
+var() float FireRate;
+
+var GameSkelCtrl&#95;Recoil RecoilSkelControl;
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  Super.PostInitAnimTree(SkelComp);
+
+  if (SkelComp &#61;&#61; Mesh)
+  {
+    RecoilSkelControl &#61; GameSkelCtrl&#95;Recoil(Mesh.FindSkelControl(RecoilSkelControlName));
+  }
+
+  SetTimer(FireRate, true, NameOf(PlayRecoil));
+}
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  RecoilSkelControl &#61; None;
+}
+
+simulated function PlayRecoil()
+{
+  if (RecoilSkelControl !&#61; None)
+  {
+    RecoilSkelControl.bPlayRecoil &#61; true;
+  }
+}
+
+defaultproperties
+{
+  FireRate&#61;0.2f
+
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;PawnMesh
+  End Object
+  Mesh&#61;PawnMesh
+  Components.Add(PawnMesh)
+
+  Physics&#61;PHYS&#95;Falling
+
+  Begin Object Name&#61;CollisionCylinder
+    CollisionRadius&#61;+0030.0000
+    CollisionHeight&#61;+0072.000000
+  End Object
+}
+</pre>
+</div>
+<p />
+<p />
+<h3><a name="Single Bone"></a> Single Bone </h3>
+<h4><a name="SkelControlSingleBone"></a> SkelControlSingleBone </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This is a simple control that modifies the rotation and/or translation of a single bone. This could be useful for rotating an antenna for example.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlSingleBone.jpg" alt="SkelControlSingleBone.jpg" width='800' height='385' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Apply Translation</strong> - Indicates if anything should be done to the translation. If false, all other translation settings will be ignored.
+</li> <li> <strong>Add Translation</strong> - If true, the specified translation is added to the result of the animation. If false, it will replace the animated translation.
+</li> <li> <strong>Bone Translation</strong> - The translation to apply to the bone.
+</li> <li> <strong>Bone Translation Space</strong> - The space to apply the translation in.
+</li> <li> <strong>Translation Space Bone Name</strong> - If <strong>Bone Translation Space</strong> is BCS_OtherBoneSpace, this is the name of the bone to use.
+</li> <li> <strong>Apply Rotation</strong> - As with <strong>Apply Translation</strong>, this must be true for any rotation changes to take affect.
+</li> <li> <strong>Add Rotation</strong> - If true, rotation is added to animation result. If false, existing rotation is replaced.
+</li> <li> <strong>Bone Rotation</strong> - The actually rotation to apply to the bone.
+</li> <li> <strong>Bone Rotation Space</strong> - Reference frame to apply the bone rotation in.
+</li> <li> <strong>Rotation Space Bone Name</strong> - If <strong>Bone Rotation Space</strong> is BCS_OtherBoneSpace, this is the name of the bone to use.
+</li></ul>
+<p />
+<h5><a name="How to use in Unrealscript"></a><a name=" How to use in Unrealscript"></a>  How to use in Unrealscript </h5>
+In this example, the pawn will rotate its spine bone to face you.
+<p />
+<div class="codetitlebar">
+SkelControlSingleBonePawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+class SkelControlSingleBonePawn extends Pawn
+  Placeable;
+
+var() Name SkelControlSingleBoneName;
+var SkelControlSingleBone SkelControlSingleBone;
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  Super.PostInitAnimTree(SkelComp);
+
+  if (SkelComp &#61;&#61; Mesh)
+  {
+    SkelControlSingleBone &#61; SkelControlSingleBone(Mesh.FindSkelControl(SkelControlSingleBoneName));
+  }
+}
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  SkelControlSingleBone &#61; None;
+}
+
+simulated event Tick(float DeltaTime)
+{
+  local PlayerController PlayerController;
+  local Rotator R;
+
+  Super.Tick(DeltaTime);
+
+  if (SkelControlSingleBone !&#61; None)
+  {
+    PlayerController &#61; GetALocalPlayerController();
+    if (PlayerController !&#61; None &#38;&#38; PlayerController.Pawn !&#61; None)
+    {
+      R &#61; Rotator(Location - PlayerController.Pawn.Location);
+      SkelControlSingleBone.BoneRotation.Yaw &#61; R.Yaw;
+    }
+  }
+}
+
+defaultproperties
+{
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;PawnMesh
+  End Object
+  Mesh&#61;PawnMesh
+  Components.Add(PawnMesh)
+
+  Physics&#61;PHYS&#95;Falling
+
+  Begin Object Name&#61;CollisionCylinder
+    CollisionRadius&#61;+0030.0000
+    CollisionHeight&#61;+0072.000000
+  End Object
+}
+</pre>
+</div>
+<p />
+<h4><a name="SkelControl_Handlebars"></a> SkelControl_Handlebars </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller is designed to work with Unreal Engine 3's vehicle system. This controller looks up the rotation of a wheel that has been modified by a SkelControlWheel, and adjusts it's controlled bone accordingly. This makes it easy to setup an automated steering wheel for example.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlHandleBar.jpg" alt="SkelControlHandleBar.jpg" width='800' height='327' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Wheel Roll Axis</strong> - Axis around which the wheel rolling occurs.
+</li> <li> <strong>Handlebar Rotate Axis</strong> - Axis around which steering occurs.
+</li> <li> <strong>Wheel Bone Name</strong> - Name of the bone whose rotation will control the steering.
+</li> <li> <strong>Invert Rotation</strong> - Inverts the rotation to apply to the controlled bone.
+</li></ul>
+<p />
+<h4><a name="SkelControl_Multiply"></a> SkelControl_Multiply </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller allows you to multiply the results of previous skeletal blends.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlMultiply.jpg" alt="SkelControlMultiply.jpg" width='800' height='321' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Multiplier</strong> - Float which represents how much to multiply the previous skeletal blends by.
+</li></ul>
+<p />
+<h4><a name="SkelControl_TwistBone"></a> SkelControl_TwistBone </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller was made to handle twist/roll bones procedurally. It looks at the rotation of <strong>Source Bone Name</strong> between its animated and reference pose, and applies the rotation with a scale to the roll bone.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlTwistBone.jpg" alt="SkelControlTwistBone.jpg" width='800' height='321' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Source Bone Name</strong> - Source bone name to look at. If you were using the left fore arm bone as the source for this SkelControl then you would set this to the left hand bone.
+</li> <li> <strong>Twist Angle Scale</strong> - How much to scale the rotation angle by.
+</li></ul>
+<p />
+<p />
+<h4><a name="SkelControlWheel"></a> SkelControlWheel </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller is designed to work with Unreal Engine 3's vehicle system. Vehicles use SkeletalMeshes with a bone for each wheel. Before the wheels will move and steer in the game you must create a SkelControlWheel for each one, give it a name, and then use that name to identify the control in the vehicle set up. The vehicle system will then update the control each frame to make the wheel match the vertical movement, roll and steering of the underlying simulation. The <strong>Steering</strong> and <strong>Throttle</strong> variables stored within Vehicle are used to determine the state.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlWheel.jpg" alt="SkelControlWheel.jpg" width='800' height='397' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>WheelDisplacement</strong> - This is just for previewing the vertical movement of the wheel. Setting this number should raise the wheel.
+</li> <li> <strong>WheelMaxRenderDisplacement</strong> - This is the maximum vertical distance that the wheel will be moved. This is used to ensure the wheel will never clip into chassis geometry.
+</li> <li> <strong>WheelRoll</strong> - Similar to WheelDisplacement, this is used to preview the wheel rolling. A positive value should make the wheel roll as if the car is moving forwards.
+</li> <li> <strong>WheelRollAxis</strong> - Which axis of the wheel bone the wheel should roll about.
+</li> <li> <strong>WheelSteering</strong> - Used to preview steering movement of the wheel. A positive number should move the wheel to point to the right.
+</li> <li> <strong>WheelSteeringAxis</strong> - The axis of the wheel bone that the wheel should rotate about to steer.
+</li> <li> <strong>InvertWheelRoll</strong> - Invert rotation for the roll.
+</li> <li> <strong>InvertWheelSteering</strong> - Invert rotation for the steering.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_Damage / _UTSkelControl_Damage"></a> UDKSkelControl_Damage / UTSkelControl_Damage </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller is designed to work with Unreal Engine 3's vehicle system. As vehicles become damaged, this skeletal controller creates the visual aspects of the vehicle breaking up. For example, you can damage parts of the vehicle and static meshes will break off. This is mostly an automatic skeletal controller, however you can subclass this skeletal controller to override BreakApart, BreakApartOnDeath and RestorePart.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_Damage.jpg" alt="UDKSkelControl_Damage.jpg" width='800' height='363' />
+<p />
+<h5><a name="Variables exposed in Unreal Editor"></a><a name=" Variables exposed in Unreal Editor"></a>  Variables exposed in Unreal Editor </h5> <ul>
+<li> <strong>On Damage Active</strong> - Whether the OnDamage functionality is active.
+</li> <li> <strong>Damage Bone Scale</strong> - Value to scale this bone to on damage.
+</li> <li> <strong>Damage Max</strong> - How much damage the skeletal control can take before death.
+</li> <li> <strong>Activation Threshold</strong> - If the health target is above this threshold, this control will be inactive.
+</li> <li> <strong>Control Str Follows Health</strong> - Once activated, does this skeletal controller generate the control strength as a product of the health remaining, or is it always full.
+</li> <li> <strong>Break Mesh</strong> - The static mesh to spawn when the skeletal controller breaks.
+</li> <li> <strong>Break Threshold</strong> - The threshold at which the spring will begin looking like it is going to break.
+</li> <li> <strong>Break Time</strong> - This is the amount of time to go from breaking to broken.
+</li> <li> <strong>Default Break Dir</strong> - When breaking off, use this to build the vector.
+</li> <li> <strong>Damage Scale</strong> - The scale to use for the spawned piece. (i.e. we have one static mesh asset but it is being spawned from different locations on a vehicle which is mirrored down the center.).
+</li> <li> <strong>PS_Damage On Break</strong> - Particle system to spawn when this part breaks.
+</li> <li> <strong>PS_Damage Trail</strong> - Particle system to attach when this part flies off. (e.g. a dark acrid trailing smoke trail!).
+</li> <li> <strong>Break Speed</strong> - Force that pushes the part up when the part is broken off to clear the vehicle.
+</li> <li> <strong>On Death Active</strong> - Whether the OnDeath functionality is active.
+</li> <li> <strong>On Death Use For Secondary Explosion</strong> - Whether the OnDeath functionality is active for the secondary explosion.
+</li> <li> <strong>Death Percent To Actually Spawn</strong> - This is the percent that this piece will actually spawn if OnDeath is active.
+</li> <li> <strong>Death Bone Scale</strong> - Value to scale this bone to on death.
+</li> <li> <strong>Death Static Mesh</strong> - The static mesh to spawn on death.
+</li> <li> <strong>Death Impulse Dir</strong> - The direction which the spawned vehicle piece will fly off in.
+</li> <li> <strong>Death Scale</strong> - The scale to use for the spawned piece.  (i.e. we have one static mesh asset but it is being spawned from different locations on a vehicle which is mirrored down the center.).
+</li> <li> <strong>PS_Death On Break</strong> - Particle system to spawn when this piece breaks.
+</li> <li> <strong>PS_Death Trail</strong> - Particle system to attach when this piece flies off. (e.g. a dark acrid trailing smoke trail!).
+</li></ul>
+<p />
+<h5><a name="Unrealscript functions"></a><a name=" Unrealscript functions"></a>  Unrealscript functions </h5> <ul>
+<li> <strong>BreakApart(vector PartLocation, bool bIsVisible)</strong> - This event is triggered when the spring has decided to break. <ul>
+<li> <strong>PartLocation</strong> - The world location of the part.
+</li> <li> <strong>bIsVisible</strong> - True if this part is still visible or not.
+</li></ul>
+</li> <li> <strong>BreakApartOnDeath(vector PartLocation, bool bIsVisible)</strong> - This event is triggered when the spring has broken on death. <ul>
+<li> <strong>PartLocation</strong> - The world location of the part.
+</li> <li> <strong>bIsVisible</strong> - True if this part is still visible or not.
+</li></ul>
+</li> <li> <strong>RestorePart()</strong> - This event is triggered when the part has been healed.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_DamageHinge / _UTSkelControl_DamageHinge"></a> UDKSkelControl_DamageHinge / UTSkelControl_DamageHinge </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller is an extension of UDKSkelControl_DamageHinge / UTSkelControl_DamageHinge used for simulating damage to parts of the vehicles that are hinged such as hoods and doors.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_Damage.jpg" alt="UDKSkelControl_Damage.jpg" width='800' height='363' />
+<p />
+<h5><a name="Variables exposed in Unreal Editor"></a><a name=" Variables exposed in Unreal Editor"></a>  Variables exposed in Unreal Editor </h5> <ul>
+<li> <strong>Max Angle</strong> - The maximum size of the angle this hinge can open to in degrees.
+</li> <li> <strong>Pivot Axis</strong> - Which axis this hinge opens around.
+</li> <li> <strong>AV Modifier</strong> - The angular velocity that is used to calculate the angle of the hinge will be multipled by this value. This should always be negative.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_DamageSpring / _UTSkelControl_DamageSpring"></a> UDKSkelControl_DamageSpring / UTSkelControl_DamageSpring </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller is an extension of UDKSkelControl_DamageHinge / UTSkelControl_DamageHinge used for simulating damage to fenders / bumpers on the vehicle.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_Damage.jpg" alt="UDKSkelControl_Damage.jpg" width='800' height='363' />
+<p />
+<h5><a name="Variables exposed in Unreal Editor"></a><a name=" Variables exposed in Unreal Editor"></a>  Variables exposed in Unreal Editor </h5> <ul>
+<li> <strong>Max Angle</strong> - The maximum size of the angle this spring can open to in degrees.
+</li> <li> <strong>Min Angle</strong> - The minimum size of the angle this spring can open to in degrees.
+</li> <li> <strong>Falloff</strong> - How fast does the spring return to normal.
+</li> <li> <strong>Spring Stiffness</strong> - How stiff is the spring
+</li> <li> <strong>AV Modifier</strong> - The angular velocity that is used to calculate the angle of the hinge will be multipled by this value. This should always be negative.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_HoverboardSuspension / _UTSkelControl_HoverboardSuspension"></a> UDKSkelControl_HoverboardSuspension / UTSkelControl_HoverboardSuspension </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller is used by Unreal Tournament 3's hover board, for moving the lower part of the hoard board in response to movements.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_Hoverboard.jpg" alt="UDKSkelControl_Hoverboard.jpg" width='800' height='415' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Trans Ignore</strong> - How much vertical translation to ignore.
+</li> <li> <strong>Trans Scale</strong> - Scales the vertical translation.
+</li> <li> <strong>Trans Offset</strong> - How much to offset the vertical translation.
+</li> <li> <strong>Max Trans</strong> - Maximum vertical translation to apply.
+</li> <li> <strong>Min Trans</strong> - Minimum vertical translation to apply.
+</li> <li> <strong>Rot Scale</strong> - Scales the rotation which is applied on the Y axis. Rotation is applied to simulate suspension on the lower part of the hover board.
+</li> <li> <strong>Max Rot</strong> - Maximum rotation that can be applied on the Y axis.
+</li> <li> <strong>Max Rot Rate</strong> - Maximum rotation rate that is applied every second.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_HoverboardSwing / _UTSkelControl_HoverboardSwing"></a> UDKSkelControl_HoverboardSwing / UTSkelControl_HoverboardSwing </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller is used by Unreal Tournament 3's hover board, for moving the lower part of the hoard board in response to movements.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_Hoverboard.jpg" alt="UDKSkelControl_Hoverboard.jpg" width='800' height='415' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Swing History Window</strong> - Sets the size of the swing history window.
+</li> <li> <strong>Swing Scale</strong> - Scales the swing.
+</li> <li> <strong>Max Swing</strong> - Maximum size of the swing, in both directions, used to evaluate the resultant swing.
+</li> <li> <strong>Max Use Vel</strong> - Maximum size of the velocity, in both directions, used to evaluate the resultant swing.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_HoverboardVibration / _UTSkelControl_HoverboardVibration"></a> UDKSkelControl_HoverboardVibration / UTSkelControl_HoverboardVibration </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller is used by Unreal Tournament 3's hover board, for simulating vibrations.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_Hoverboard.jpg" alt="UDKSkelControl_Hoverboard.jpg" width='800' height='415' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Vib Frequency</strong> - Frequency used to simulate the vibration.
+</li> <li> <strong>Vib Speed Amp Scale</strong> - Used for amplifying the vibration based on the linear velocity.
+</li> <li> <strong>Vib Turn Amp Scale</strong> - Used for amplifying the vibration based on the angular velocity.
+</li> <li> <strong>Vib Max Amplitude</strong> - Used for constraining the vibration to a maximum amplitude.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_HugGround / _UTSkelControl_HugGround"></a> UDKSkelControl_HugGround / UTSkelControl_HugGround </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller tries to keep a bone within a certain distance of the ground within its constraints. It does this by casting a line check down to find the world hit location. It then translates the bone, this can give the appearance of things that always sit on the ground.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_HugGround.jpg" alt="UDKSkelControl_HugGround.jpg" width='800' height='437' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Desired Ground Dist</strong> - Desired distance from the bone to ground.
+</li> <li> <strong>Max Dist</strong> - Maximum distance the bone may be moved from its normal location.
+</li> <li> <strong>Parent Bone</strong> - Optional name of a bone that the controlled bone will always be rotated towards.
+</li> <li> <strong>Opposite From Parent</strong> - If true, rotate the bone in the opposite direction of the parent instead of the same direction.
+</li> <li> <strong>XY Dist From Parent Bone</strong> - If <strong>ParentBone</strong> is specified and this is greater than zero always keep the controlled bone exactly this many units away from it.
+</li> <li> <strong>Z Dist From Parent Bone</strong> - If <strong>ParentBone</strong> is specified and this is greater than zero always keep the controlled bone exactly this many units away from it.
+</li> <li> <strong>Max Translation Per Sec</strong> - Maximum amount the <strong>BoneTranslation</strong> may be change per second.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_PropellerBlade"></a> UDKSkelControl_PropellerBlade </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller is used with Unreal Engine 3's vehicle system. This controller is only applied to vehicles that extend UDKVehicle. While the vehicle is being driven, it will simulate propeller blades spinning up. This effect is only applied to the bone's rotational yaw value.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_PropellerBlade.jpg" alt="UDKSkelControl_PropellerBlade.jpg" width='800' height='321' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Max Rotations Per Second</strong> - Defines the maximum rotation rate the propeller can spin at.
+</li> <li> <strong>Spin Up Time</strong> - Time to spin up to the maximum rotation rate.
+</li> <li> <strong>Counter Clockwise</strong> - Set true if you wish to spin the propeller blade counter clock wise.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_Rotate / _UTSkelControl_Rotate"></a> UDKSkelControl_Rotate / UTSkelControl_Rotate </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller allows you to define the desired bone rotation. It also allows you to define the rotation rate, which controls the speed the bone should rotate at when rotating to the desired bone rotation. This simplifies animating bone in Unrealscript by simply defining the desired bone rotation.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_Rotate.jpg" alt="UDKSkelControl_Rotate.jpg" width='800' height='454' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Desired Bone Rotation</strong> - The desired bone rotation where the bone should rotate to.
+</li> <li> <strong>Desired Bone Rotation Rate</strong> - The desired rotation rate to apply when rotating the bone.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_SpinControl / _UTSkelControl_SpinControl"></a> UDKSkelControl_SpinControl / UTSkelControl_SpinControl </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller applies a constant rotation on the bone.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_SpinControl.jpg" alt="UDKSkelControl_SpinControl.jpg" width='800' height='444' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Degrees Per Second</strong> - Defines how many degrees to spin the bone per second.
+</li> <li> <strong>Axis</strong> - If all of the values of the axis are zero, then this controller does nothing. Axis is normalized, so the bone does not spin any more than the Degrees Per Second. <ul>
+<li> <strong>X</strong> - Spins the bone on the X axis. You may use a negative value to spin counter clock wise.
+</li> <li> <strong>Y</strong> - Spins the bone on the Y axis. You may use a negative value to spin counter clock wise.
+</li> <li> <strong>Z</strong> - Spins the bone on the Z axis. You may use a negative value to spin counter clock wise.
+</li></ul>
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_TurretConstrained / _UTSkelControl_TurretConstrained"></a> UDKSkelControl_TurretConstrained / UTSkelControl_TurretConstrained </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller works with Unreal Engine 3's vehicle system to attempt to rotate the connected bone to face the rotational specified in Desired Bone Rotation. This is extended with many options to constrain the turret's movement.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_TurretConstrained.jpg" alt="UDKSkelControl_TurretConstrained.jpg" width='800' height='369' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Constrain Pitch</strong> - If true, then the pitch will be constrained.
+</li> <li> <strong>Constrain Yaw</strong> - If true, then the yaw will be constrained.
+</li> <li> <strong>Constrain Roll</strong> - If true, then the roll will be constrained.
+</li> <li> <strong>Invert Pitch</strong> - If true, then the pitch will be inverted.
+</li> <li> <strong>Invert Yaw</strong> - If true, then the yaw will be inverted.
+</li> <li> <strong>Invert Roll</strong> - If true, then the roll will be inverted.
+</li> <li> <strong>Max Angle</strong> - Maximum angle in degrees. <ul>
+<li> <strong>Pitch Constraint</strong> - Maximum pitch constraint.
+</li> <li> <strong>Yaw Constraint</strong> - Maximum yaw constraint.
+</li> <li> <strong>Roll Constraint</strong> - Maximum roll constraint.
+</li></ul>
+</li> <li> <strong>Min Angle</strong> - Minimum angle in degrees. <ul>
+<li> <strong>Pitch Constraint</strong> - Minimum pitch constraint.
+</li> <li> <strong>Yaw Constraint</strong> - Maximum yaw constraint.
+</li> <li> <strong>Roll Constraint</strong>
+</li></ul>
+</li> <li> <strong>Steps</strong> - Allow each turret to have various steps in which to contrain the data. <ul>
+<li> <strong>StepStartAngle</strong> - If the current angle, in degrees, is equal or above this; then this step is activated.
+</li> <li> <strong>StepEndAngle</strong> - If the current angle, in degrees, is equal or below this; then this step is activated.
+</li> <li> <strong>MaxAngle</strong> - Maximum angle in degrees. <ul>
+<li> <strong>Pitch Constraint</strong> - Maximum pitch constraint.
+</li> <li> <strong>Yaw Constraint</strong> - Maximum yaw constraint.
+</li> <li> <strong>Roll Constraint</strong> - Maximum roll constraint.
+</li></ul>
+</li> <li> <strong>MinAngle</strong> - Minimum angle in degrees. <ul>
+<li> <strong>Pitch Constraint</strong> - Minimum pitch constraint.
+</li> <li> <strong>Yaw Constraint</strong> - Minimum yaw constraint.
+</li> <li> <strong>Roll Constraint</strong> - Minimum roll constraint.
+</li></ul>
+</li></ul>
+</li> <li> <strong>Lag Degrees Per Second</strong> - How long, in seconds, does the turret lag behind when updating its rotation to the desired rotation.
+</li> <li> <strong>Pitch Speed Scale</strong> - Pitch speed modifier.
+</li> <li> <strong>Desired Bone Rotation</strong> - Desired rotation the bone should rotate to.
+</li> <li> <strong>Fixed When Firing</strong> - If true, this turret won't update if the seat it is associated with is currently firing.
+</li> <li> <strong>Associated Seat Index</strong> - The seat index this control is associated with.
+</li> <li> <strong>Reset When Unattended</strong> - If true, this turret will reset to 0, 0, 0 when there isn't a player controlling the turret.
+</li></ul>
+<p />
+<h5><a name="Unrealscript functions"></a><a name=" Unrealscript functions"></a>  Unrealscript functions </h5> <ul>
+<li> <strong>OnTurretStatusChange(bool bIsMoving)</strong> - Delegate which is called when the turret's status changes. <ul>
+<li> <strong>bIsMoving</strong> - True if the turret is moving.
+</li></ul>
+</li> <li> <strong>InitTurret(Rotator InitRot, SkeletalMeshComponent SkelComp)</strong> - Initialises turret, so its current direction is the way it wants to point. <ul>
+<li> <strong>InitRot</strong> - Rotation to initialize to.
+</li> <li> <strong>SkelComp</strong> - Skeletal mesh component that the controller is attached to.
+</li></ul>
+</li> <li> <strong>WouldConstrainPitch(int TestPitch, SkeletalMeshComponent SkelComp)</strong> - Returns true if the given pitch would be limited by this controller. <ul>
+<li> <strong>TestPitch</strong> - Pitch, in Unreal rotator units, to test.
+</li> <li> <strong>SkelComp</strong> - Skeletal mesh component that the controller is attached to.
+</li></ul>
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_VehicleFlap"></a> UDKSkelControl_VehicleFlap </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller uses the Unreal Engine 3's vehicle system to provide animation for flaps that animate based on the vertical velocity of the vehicle. This is used for Unreal Tournament 3's Manta vehicle to animate the back flaps as it jumps.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_VehicleFlaps.jpg" alt="UDKSkelControl_VehicleFlaps.jpg" width='800' height='335' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Max Pitch</strong> - Maximum pitch change in both directions that can be applied to the bone.
+</li></ul>
+<p />
+<p />
+<h4><a name="UTSkelControl_CicadaEngine"></a> UTSkelControl_CicadaEngine </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller is used by Unreal Tournament 3's Cicada vehicle to move the engines to simulate how the vehicle flies. It uses the vehicles velocity to calculate the desired pitch of the bone.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UTSkelControl_CicadaEngine.jpg" alt="UTSkelControl_CicadaEngine.jpg" width='800' height='299' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Forward Pitch</strong> - This holds the maximum amount the engine can pitch.
+</li> <li> <strong>Back Pitch</strong> - This holds the minimum amount the engine can pitch.
+</li> <li> <strong>Pitch Rate</strong> - How fast does the bone change its pitch.
+</li> <li> <strong>Max Velocity</strong> - Maximum velocity.
+</li> <li> <strong>Min Velocity</strong> - Minimum velocity.
+</li> <li> <strong>Max Velocity Pitch Rate Multiplier</strong> - Modifier for the pitch rate used for calculating the pitch movement rate.
+</li></ul>
+<p />
+<p />
+<h4><a name="UTSkelControl_JetThruster"></a> UTSkelControl_JetThruster </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+The controller updates its control strength based on the thrust if the vehicle owner. Acto's must subclass UDKVehicle in order to use this controller. This can be useful for automatically scaling bones based on the thrust of the vehicle for example.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UTSkelControl_JetThruster.jpg" alt="UTSkelControl_JetThruster.jpg" width='800' height='377' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Max Forward Velocity</strong> - Maximum forward velocity.
+</li> <li> <strong>Blend Rate</strong> - Rate to blend the desired control strength.
+</li></ul>
+<p />
+<p />
+<h4><a name="UTSkelControl_MantaBlade"></a> UTSkelControl_MantaBlade </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller extends <a href="UsingSkeletalControllers.html#UDKSkelControl_PropellerBlade" class="twikiAnchorLink">UDKSkelControl_PropellerBlade</a> and does not add anything new.
+<p />
+<p />
+<h4><a name="UTSkelControl_MantaFlaps"></a> UTSkelControl_MantaFlaps </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller extends <a href="UsingSkeletalControllers.html#UDKSkelControl_VehicleFlap" class="twikiAnchorLink">UDKSkelControl_VehicleFlap</a> and does not add anything new.
+<p />
+<p />
+<h4><a name="UTSkelControl_Oscillate"></a> UTSkelControl_Oscillate </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller moves a bone's translation back and forth at a steady pace. The maximum and minimum amount to translate is define as a single value called MaxDelta; with the minimum amount being the negative value of this value.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UTSkelOscillate.jpg" alt="UTSkelOscillate.jpg" width='800' height='338' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Max Delta</strong> - Maximum amount to move the bone.
+</li> <li> <strong>Period</strong> - The amount of time it takes to go from the starting position (no delta) to MaxDelta.
+</li> <li> <strong>Current Time</strong> - Current time of the oscillation. This normally does not need to be adjusted in Unreal Editor however.
+</li></ul>
+<p />
+<p />
+<h3><a name="Uncategorized"></a> Uncategorized </h3>
+<h4><a name="SkelControl_CCDIK"></a> SkelControl_CCDIK </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This is another type of IK, called CCD (Cyclic Coordinate Descent). It is basically a more brute force method that works with any number of bones, by slowly adjusting them one by one until the goal is reached. Because of the nature of this algorithm, it can be very slow for long chain of bones. It is mostly suited for tentacle like bone chains.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlCCD.jpg" alt="SkelControlCCD.jpg" width='800' height='378' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Num Bones</strong> - Number of bones to affect.
+</li> <li> <strong>Max Per Bone Iterations</strong> - Performance control, number of times we're allowed to touch each bone.
+</li> <li> <strong>Precision</strong> - Distance in Unreal Units to consider goal reached. Obviously if you can tolerate some error, it will help the performance of this node.
+</li> <li> <strong>Start From Tail</strong> - Start from front or back of chain. Gives different visual results.
+</li> <li> <strong>Angle Constraint</strong> - Array of Radian angles. Max angle each bone is allowed to have.
+</li> <li> Max Angle Steps - Maximum rotation angle allowed for a step. Helps prevent wrapping effects by forcing small rotation steps uniformly along the bone chain.
+</li></ul>
+<p />
+<h5><a name="How to use in Unrealscript"></a><a name=" How to use in Unrealscript"></a>  How to use in Unrealscript </h5>
+In this example, the chains attached to the arms of the character will try to point to you which is represented by the player's pawn.
+<p />
+<div class="codetitlebar">
+SkelControlCCDIKPawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+class SkelControlCCDIKPawn extends Pawn
+  Placeable;
+
+var() Name LeftSkelControlCCDIKName;
+var() Name RightSkelControlCCDIKName;
+var SkelControl&#95;CCD&#95;IK LeftSkelControlCCDIK;
+var SkelControl&#95;CCD&#95;IK RightSkelControlCCDIK;
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  Super.PostInitAnimTree(SkelComp);
+
+  if (SkelComp &#61;&#61; Mesh)
+  {
+    LeftSkelControlCCDIK &#61; SkelControl&#95;CCD&#95;IK(Mesh.FindSkelControl(LeftSkelControlCCDIKName));
+    RightSkelControlCCDIK &#61; SkelControl&#95;CCD&#95;IK(Mesh.FindSkelControl(RightSkelControlCCDIKName));
+  }
+}
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  LeftSkelControlCCDIK &#61; None;
+  RightSkelControlCCDIK &#61; None;
+}
+
+simulated event Tick(float DeltaTime)
+{
+  local PlayerController PlayerController;
+
+  Super.Tick(DeltaTime);
+
+  if (LeftSkelControlCCDIK !&#61; None &#38;&#38; RightSkelControlCCDIK !&#61; None)
+  {
+    PlayerController &#61; GetALocalPlayerController();
+    if (PlayerController !&#61; None &#38;&#38; PlayerController.Pawn !&#61; None)
+    {
+      LeftSkelControlCCDIK.EffectorLocation &#61; PlayerController.Pawn.Location;
+      RightSkelControlCCDIK.EffectorLocation &#61; PlayerController.Pawn.Location;
+    }
+  }
+}
+
+defaultproperties
+{
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;PawnMesh
+  End Object
+  Mesh&#61;PawnMesh
+  Components.Add(PawnMesh)
+
+  Physics&#61;PHYS&#95;Falling
+
+  Begin Object Name&#61;CollisionCylinder
+    CollisionRadius&#61;+0030.0000
+    CollisionHeight&#61;+0072.000000
+  End Object
+}
+</pre>
+</div>
+<p />
+<h4><a name="SkelControlLookAt"></a> SkelControlLookAt </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This is a controller used for adjusting the rotation of a bone so that it points at a particular target. You could use this for example to make a characters head look at a specified target. In the screen shot below, the head is looking at the blue diamond. The green cone indicates the maximum range that the head is allowed to move.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlLookAt.jpg" alt="SkelControlLookAt.jpg" width='906' height='448' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Target Location</strong> - The location in space that the bone should point at.
+</li> <li> <strong>Target Location Space</strong> - The space that <strong>Target Location</strong> is defined in.
+</li> <li> <strong>Target Space Bone Name</strong> - If <strong>Target Location Space</strong> is BCS_OtherBoneSpace, this is the name of the bone to use.
+</li> <li> <strong>Look At Axis</strong> - The axis if the controlled bone that should point at the target.
+</li> <li> <strong>Invert Look At Axis</strong> - Tells the <strong>Look At Axis</strong> to point away from the target instead of at it.
+</li> <li> <strong>Define Up Axis</strong> - If this is false, the control will find the minimum rotation required to point the <strong>Look At Axis</strong> at the target. The roll around that axis will still be coming from the animation. If this is true, the vertical axis for the bone is defined as well, so the orientation of the bone is then completely defined by the controller.
+</li> <li> <strong>Up Axis</strong> - If <strong>Define Up Axis</strong> is true, this is the axis of the bone that should point up in world space.
+</li> <li> <strong>Invert Up Axis</strong> - If the <strong>Up Axis</strong> should point down rather than up.
+</li> <li> <strong>Enable Limit</strong> - If we should limit the maximum angle that the bone is allowed to rotate to track its target.
+</li> <li> <strong>Show Limit</strong> - If we should draw the green limit cone in the 3D view port when this control is selected.
+</li> <li> <strong>Max Angle</strong> - The maximum angle, in degrees, away from the reference pose that this bone is allowed to be rotated.
+</li> <li> <strong>Dead Zone Angle</strong> - If the target is within the dead zone angle of the current rotation, then an update won't occur. The bone will only be rotated if the target moves further out of the dead zone.
+</li></ul>
+<p />
+By setting TargetLocationSpace to BCS_OtherBoneSpace, you can for example make a character always look at his hand.
+<p />
+<h5><a name="How to use in Unrealscript"></a><a name=" How to use in Unrealscript"></a>  How to use in Unrealscript </h5>
+In this example, a pawn will look at you (to be exact, the pawn that you are controlling). When you move out of its view range, it will then blend back so that the pawn is looking forwards.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlLookAtExample.jpg" alt="SkelControlLookAt.jpg" width='800' height='593' />
+<p />
+<div class="codetitlebar">
+SkelControlLookAtPawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+class SkelControlLookAtPawn extends Pawn;
+
+var() Name SkelControlLookAtName;
+var() float EyeOffset;
+var SkelControlLookAt SkelControlLookAt;
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  Super.PostInitAnimTree(SkelComp);
+
+  if (SkelComp &#61;&#61; Mesh)
+  {
+    SkelControlLookAt &#61; SkelControlLookAt(Mesh.FindSkelControl(SkelControlLookAtName));
+  }
+}
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  SkelControlLookAt &#61; None;
+}
+
+simulated event Tick(float DeltaTime)
+{
+  local PlayerController PlayerController;
+
+  Super.Tick(DeltaTime);
+
+  if (SkelControlLookAt !&#61; None)
+  {
+    PlayerController &#61; GetALocalPlayerController();
+
+    if (PlayerController !&#61; None &#38;&#38; PlayerController.Pawn !&#61; None)
+    {
+      SkelControlLookAt.TargetLocation &#61; PlayerController.Pawn.Location + (Vect(0.f, 0.f, 1.f) &#42; EyeOffset);
+    }
+  }
+}
+
+defaultproperties
+{
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;PawnMesh
+  End Object
+  Mesh&#61;PawnMesh
+  Components.Add(PawnMesh)
+
+  Physics&#61;PHYS&#95;Falling
+
+  Begin Object Name&#61;CollisionCylinder
+    CollisionRadius&#61;+0030.0000
+    CollisionHeight&#61;+0072.000000
+  End Object
+}
+</pre>
+</div>
+<p />
+<h4><a name="SkelControlSpline"></a> SkelControlSpline </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+The spline controller does not the modify the bone itself, but takes a chain of bones above that bone and fits them to a spline. In the example below, we are using a normal SkelControlSingleBone to move the end of the chains up. Then the SkelControlSpline is set to modify the four bones above this - so creates a spline between the start and end of the chains. Note that this control does not maintain bone lengths.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlSpline.jpg" alt="SkelControlSpline.jpg" width='800' height='308' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Spline Length</strong> - The number of bones to walk up the hierarchy and modify to fit to a spline.
+</li> <li> <strong>Spline Bone Axis</strong> - The axis of the bones to point along the spline.
+</li> <li> <strong>Invert Spline Bone Axis</strong> - If the <strong>Spline Bone Axis</strong> should be flipped.
+</li> <li> <strong>End Spline Tension</strong> - Controls the curvature at the end of the spline (near the controlled bone).
+</li> <li> <strong>Start Spline Tension</strong> - Controls the curvature at the beginning of the spline.
+</li> <li> <strong>Bone Rot Mode</strong> - Controls how the bones are rotated along the length of the spline. More info below.
+</li></ul>
+<p />
+The BoneRotMode setting lets you control how the bones along the spline are rotated by this controller:
+<p /> <ul>
+<li> <strong>SCR_NoChange</strong> - The rotation of the bones is not modified, they are just translated to sit on the spline.
+</li> <li> <strong>SCR_AlongSpline</strong> - The bones are rotated so their SplineBoneAxis points along the spline.
+</li> <li> <strong>SCR_Interpolate</strong> - The rotation of each successive bone is a blend between the rotation of the bones at either end of the chain.
+</li></ul>
+<p />
+This control using the SCR_Interpolate setting can be useful when controlling the rotation of a bone at the top of the back, to smooth the rotation along the rest of the bones in the spine.
+<p />
+<p />
+<h4><a name="SkelControlTrail"></a> SkelControlTrail </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+The trail controller modifies a chain of bones so that appears as if they trailing behind the head bone, which is <strong>Chain Length</strong> number of bones away from the controlled bone. It's useful when you have things such as ribbons, flags or chains attached to other bones that animate according to animation data. This effect can also be achieved using <a href="PhysicalAnimation.html" class="twikiLink">physical animation</a>; but this method has more control.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/SkelControlTrail.jpg" alt="SkelControlTrail.jpg" width='800' height='380' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Chain Length</strong> - Number of bones above the controlled one in the hierarchy to modify.
+</li> <li> <strong>Chain Bone Axis</strong> - Axis of the bones to point along the trail.
+</li> <li> <strong>Invert Chain Bone Axis</strong> - Invert the direction specified in <strong>Chain Bone Axis</strong>
+</li> <li> <strong>Limit Stretch</strong> - Limit the amount that a bone can stretch from its ref-pose length.
+</li> <li> <strong>Actor Space Fake Vel</strong> - Whether fake velocity should be applied in actor or world space.
+</li> <li> <strong>Trail Relaxation</strong> - How quickly the bones are relaxed to their animated positions.
+</li> <li> <strong>Stretch Limit</strong> - If <strong>Limit Stretch</strong> is enabled, this indicated how long a bone can stretch beyond its length in the ref-pose.
+</li> <li> <strong>Fake Velocity</strong> - Fake velocity to apply to bones.
+</li></ul>
+<p />
+<h5><a name="Example"></a><a name=" Example"></a>  Example </h5>
+In this example, the trail's fake Z velocity is blended between up and down every two seconds.
+<p />
+<div class="codetitlebar">
+SkelControlTrailPawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+class SkelControlTrailPawn extends Pawn
+  Placeable;
+
+var() Name SkelControlTrailLeftName;
+var() Name SkelControlTrailRightName;
+var() float SinkVelocityZ;
+var() float FloatVelocityZ;
+
+var SkelControlTrail SkelControlTrailLeft;
+var SkelControlTrail SkelControlTrailRight;
+
+simulated event PostInitAnimTree(SkeletalMeshComponent SkelComp)
+{
+  Super.PostInitAnimTree(SkelComp);
+
+  if (SkelComp &#61;&#61; Mesh)
+  {
+    SkelControlTrailLeft &#61; SkelControlTrail(Mesh.FindSkelControl(SkelControlTrailLeftName));
+    SkelControlTrailRight &#61; SkelControlTrail(Mesh.FindSkelControl(SkelControlTrailRightName));
+  }
+
+  SetTimer(2.f, false, NameOf(SinkTrail));
+}
+
+simulated event Destroyed()
+{
+  Super.Destroyed();
+
+  SkelControlTrailLeft &#61; None;
+  SkelControlTrailRight &#61; None;
+}
+
+simulated event Tick(float DeltaTime)
+{
+  Super.Tick(DeltaTime);
+
+  if (SkelControlTrailLeft !&#61; None &#38;&#38; SkelControlTrailRight !&#61; None)
+  {
+    if (IsTimerActive(NameOf(FloatTrail)))
+    {
+      SkelControlTrailLeft.FakeVelocity.Z &#61; Lerp(FloatVelocityZ, SinkVelocityZ, GetTimerCount(NameOf(FloatTrail)) / GetTimerRate(NameOf(FloatTrail)));
+      SkelControlTrailRight.FakeVelocity.Z &#61; Lerp(FloatVelocityZ, SinkVelocityZ, GetTimerCount(NameOf(FloatTrail)) / GetTimerRate(NameOf(FloatTrail)));
+    }
+    else if (IsTimerActive(NameOf(SinkTrail)))
+    {
+      SkelControlTrailLeft.FakeVelocity.Z &#61; Lerp(SinkVelocityZ, FloatVelocityZ, GetTimerCount(NameOf(SinkTrail)) / GetTimerRate(NameOf(SinkTrail)));
+      SkelControlTrailRight.FakeVelocity.Z &#61; Lerp(SinkVelocityZ, FloatVelocityZ, GetTimerCount(NameOf(SinkTrail)) / GetTimerRate(NameOf(SinkTrail)));
+    }
+  }
+}
+
+simulated function FloatTrail()
+{
+  if (SkelControlTrailLeft !&#61; None &#38;&#38; SkelControlTrailRight !&#61; None)
+  {
+    SkelControlTrailLeft.FakeVelocity.Z &#61; FloatVelocityZ;
+    SkelControlTrailRight.FakeVelocity.Z &#61; FloatVelocityZ;
+  }
+
+  SetTimer(2.f, false, NameOf(SinkTrail));
+}
+
+simulated function SinkTrail()
+{
+  if (SkelControlTrailLeft !&#61; None &#38;&#38; SkelControlTrailRight !&#61; None)
+  {
+    SkelControlTrailLeft.FakeVelocity.Z &#61; SinkVelocityZ;
+    SkelControlTrailRight.FakeVelocity.Z &#61; SinkVelocityZ;
+  }
+
+  SetTimer(2.f, false, NameOf(FloatTrail));
+}
+
+defaultproperties
+{
+  Begin Object Class&#61;SkeletalMeshComponent Name&#61;PawnMesh
+  End Object
+  Mesh&#61;PawnMesh
+  Components.Add(PawnMesh)
+
+  Physics&#61;PHYS&#95;Falling
+
+  Begin Object Name&#61;CollisionCylinder
+    CollisionRadius&#61;+0030.0000
+    CollisionHeight&#61;+0072.000000
+  End Object
+}
+</pre>
+</div>
+<p />
+<p />
+<h4><a name="UDKSkelControl_CantileverBeam / _UTSkelControl_CantileverBeam"></a> UDKSkelControl_CantileverBeam / UTSkelControl_CantileverBeam </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller creates a spring to simulate cantilever beams, such as a vehicle antenna.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_CantileverBeam.jpg" alt="UDKSkelControl_CantileverBeam.jpg" width='800' height='420' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Initial World Space Goal Offset</strong> - From the initial bone, where to go to get the starting location for World Space Goal (in local bone space).
+</li> <li> <strong>Spring Stiffness</strong> - Defines the stiffness to apply on the spring simulation.
+</li> <li> <strong>Spring Damping</strong> - Defines the dampening to apply on the spring simulation.
+</li> <li> <b><strike>Percent Beam Velocity Transfer - How much we want the tip of the beam to get of the base velocity.</strike></b>
+</li></ul>
+<p />
+<h5><a name="Unrealscript functions"></a><a name=" Unrealscript functions"></a>  Unrealscript functions </h5> <ul>
+<li> <strong>EntireBeamVelocity()</strong> - Returns the speed the entire beam is travelling at. (a delegate for cases like a tank, where we want the whole tank to effect less than the turret moving).
+</li></ul>
+<p />
+<h5><a name="Detailed explanation"></a><a name=" Detailed explanation"></a>  Detailed explanation </h5>
+This Skeletal Controller requires some trickery on the Skeletal Mesh side of things to make it look like a flexible tube that is bending when "weight" is applied. The trickery involved is the way the vertexes are weighted in the skeletal mesh. The skeletal mesh has two bones. The position of the bones ultimately don't matter so much, but the root bone is below the branch bone.
+<p />
+So imagine this is a tube, with | representing segment breaks along the tube.
+<p />
+<pre>&#124;&#61;&#61;&#61;&#61;&#124;&#61;&#61;&#61;&#61;&#124;&#61;&#61;&#61;&#61;&#124;&#61;&#61;&#61;&#61;&#124;&#61;&#61;&#61;&#61;&#124;&#61;&#61;&#61;&#61;&#124;&#61;&#61;&#61;&#61;&#124;</pre>
+<p />
+So the weight setting for Bone01 (root) is:
+<p />
+0.f, 0.125f, 0.25f, 0.375f, 0.5f, 0.625f, 0.75f, 0.875f, 1.f
+<p />
+And the weight setting for Bone02 (branch) is:
+<p />
+1.f, 0.875f, 0.75f, 0.625f, 0.5f, 0.375f, 0.25f, 0.125f, 0.f
+<p />
+What needs to happen next is that you use the Skeletal Controller on Bone02. Now the skeletal controller itself seems to have a <strong>Look At Target</strong> which you can adjust in the AnimTree. If the <strong>Spring Stiffness</strong> and
+<strong>Spring Damping</strong> is set to some values then it tries to return the <strong>Look At Target</strong> to <strong>Initial World Space Goal Offset</strong>. This usually set to the top of the tube; but it can be set at a different place if a different effect is required.
+<p />
+Once you've done that you've got this flexible tube that bends as the <strong>Target Location</strong> is moving around. Because of the spring settings, it tries to return to its initial position.
+<p />
+<p />
+<h4><a name="UDKSkelControl_LockRotation / _UTSkelControl_LockRotation"></a> UDKSkelControl_LockRotation / UTSkelControl_LockRotation </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller locks one or more components of the bone's rotation to a specified value. This controller's effects is not viewable within the AnimTree Editor preview window.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_LockRotation.jpg" alt="UDKSkelControl_LockRotation.jpg" width='800' height='435' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Lock Pitch</strong> - Locks the pitch component of the bone rotation to affect.
+</li> <li> <strong>Lock Yaw</strong> - Locks the yaw component of the bone rotation to affect.
+</li> <li> <strong>Lock Roll</strong> - Locks the roll component of the bone rotation to affect.
+</li> <li> <strong>Lock Rotation</strong> - The rotation to lock to.
+</li> <li> <strong>Max Delta</strong> - The maximum amount the original rotation can be altered to reach Lock Rotation.
+</li> <li> <strong>Lock Rotation Space</strong> - The space that rotation is in.
+</li> <li> <strong>Rotation Space Bone Name</strong> - Name of bone used if LockRotationSpace is BCS_OtherBoneSpace.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_LookAt / _UTSkelControl_LookAt"></a> UDKSkelControl_LookAt / UTSkelControl_LookAt </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller that rotates a single bone to look at the desired target location. This controller extends SkelControlLookAt to add per-axis rotation limits and to also automatically interpolate to the desired target location.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_LookAt.jpg" alt="UDKSkelControl_LookAt.jpg" width='800' height='421' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Limit Yaw</strong> - If true, then apply limits to the yaw axis. Otherwise limits are ignored.
+</li> <li> <strong>Limit Pitch</strong> - If true, then apply limits to the pitch axis. Otherwise limits are ignored.
+</li> <li> <strong>Limit Roll</strong> - If true, then apply limits to the roll axis. Otherwise limits are ignored.
+</li> <li> <strong>Yaw Limit</strong> - Angular limits, in degrees, for the yaw axis.
+</li> <li> <strong>Pitch Limit</strong> - Angular limits, in degrees, for the pitch axis.
+</li> <li> <strong>Roll Limit</strong> - Angular limits, in degrees, for the roll axis.
+</li> <li> <strong>Show Per Axis Limits</strong> - If true, then draw a cone representing the per-axis limits.
+</li></ul>
+<p />
+<p />
+<h4><a name="UDKSkelControl_MassBoneScaling / _UTSkelControl_MassBoneScaling"></a> UDKSkelControl_MassBoneScaling / UTSkelControl_MassBoneScaling </h4>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+This controller provides a cleaner and more efficient way to handle scaling for many bones in a skeletal mesh.
+<p />
+<img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_MassBoneScaling.jpg" alt="UDKSkelControl_MassBoneScaling.jpg" width='800' height='381' />
+<p />
+<h5><a name="Properties"></a><a name=" Properties"></a>  Properties </h5> <ul>
+<li> <strong>Bone Scales</strong> - Scales for the bones in the skeletal mesh. The indices of this array match the skeletal meshes bone indices. To find out a bone's index, you can look this up by opening the AnimSet Editor for the skeletal mesh in question. This bone index is listed in the number next to the bone name. <br/> <img src="rsrc/Three/UsingSkeletalControllers/UDKSkelControl_MassBoneScaling_BoneIndices.jpg" alt="UDKSkelControl_MassBoneScaling_BoneIndices.jpg" width='302' height='314' />
+</li></ul>
+<p />
+<h5><a name="Unrealscript functions"></a><a name=" Unrealscript functions"></a>  Unrealscript functions </h5> <ul>
+<li> <strong>SetBoneScale(name BoneName, float Scale)</strong> - Sets the scale of a bone by name. This controller must be hooked up to the specified bone in the AnimTree for this to have any effect. <ul>
+<li> <strong>Bone Name</strong> - Name of the bone to affect.
+</li> <li> <strong>Scale</strong> - Scale of the bone to affect.
+</li></ul>
+</li> <li> <strong>GetBoneScale(name BoneName)</strong> - Returns the scale this control has for the given bone. This does not take into account any other controllers that are affecting the bone's scale. <ul>
+<li> <strong>Bone Name</strong> - Name of the bone to return the scale for.
+</li></ul>
+</li></ul>
+<p />
+<p />
+<h2><a name="Downloads"></a> Downloads </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> <a href="rsrc/Three/UsingSkeletalControllers/SkelControlExamples.zip" target="_top">Download</a> the content and code used in this document.
+</li> <li> <a href="rsrc/Three/UsingSkeletalControllers/CantileverExample.zip" target="_top">Download</a> content demonstrating how to use the CantileverBeam skeletal controller.
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingSkeletalControllers.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:17:35 GMT -->
+</html></body>

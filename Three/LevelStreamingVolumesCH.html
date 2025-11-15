@@ -1,0 +1,372 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LevelStreamingVolumesCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:25:42 GMT -->
+<head>
+<title> UDK | LevelStreamingVolumesCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">LevelStreamingVolumesCH  </b></div>
+<div id="tooltext">
+<a href="LevelStreamingVolumes.html" class="twikiLink">English Translation</a><br><a href="LevelStreamingVolumesJP.html" class="twikiLink">日本語訳</a><br><a href="LevelStreamingVolumesKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/LevelStreamingVolumesCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt; <b><a href="LevelStreamingHome.html" class="twikiLink">关卡动态载入</a></b> &gt; 关卡动态载入体积
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="关卡动态载入体积"></a> 关卡动态载入体积 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="LevelStreamingVolumesCH.html#关卡动态载入体积">关卡动态载入体积</a> <ul>
+<li> <a href="LevelStreamingVolumesCH.html#概述"> 概述</a>
+</li> <li> <a href="LevelStreamingVolumesCH.html#把动态载入体积和关卡联系到一起">把动态载入体积和关卡联系到一起</a>
+</li> <li> <a href="LevelStreamingVolumesCH.html#导入细节">导入细节</a>
+</li> <li> <a href="LevelStreamingVolumesCH.html#测试动态载入体积设置">测试动态载入体积设置</a>
+</li> <li> <a href="LevelStreamingVolumesCH.html#关卡动态载入体积优先">关卡动态载入体积优先</a>
+</li> <li> <a href="LevelStreamingVolumesCH.html#关卡动态载入体积的消耗">关卡动态载入体积的消耗</a>
+</li> <li> <a href="LevelStreamingVolumesCH.html#添加滞后作用到卸载请求">添加滞后作用到卸载请求</a>
+</li> <li> <a href="LevelStreamingVolumesCH.html#禁用关卡动态载入体积">禁用关卡动态载入体积</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+本文档对如何使用基于体积的关卡动态载入进行了概述。我们假设读者已经熟悉了在<a href="LevelStreamingHowTo.html" class="twikiLink">如何进行关卡动态载入</a>中所描述的关于关卡动态载入的基本概念。
+<p />
+关卡动态载入体积可以非常容易地控制关卡动态载入。它的实现思想非常简单： 动态载入关卡的 加载/卸载 要求是基于视口是否在任何和那个关卡相关的LevelStreamingVolume体积中来进行处理。
+<p />
+具体来说，关卡动态载入体积可以通过两种方式来进行应用：
+<p /> <ul>
+<li> 在 <strong>游戏</strong> 中，当玩家在那个体积内部时载入关卡，当玩家在体积外部时卸载关卡。
+</li></ul>
+<p /> <ul>
+<li> 在 <strong>编辑器</strong> 中，关卡动态载入体积可以通过基于透视口相机的位置来自动地 隐藏/显示 关卡来预览关卡动态载入。
+</li></ul>
+<p />
+基于体积的关卡动态载入的应用是非常简单的，并且不需要任何Kismet脚本，从而使它成了控制关卡动态载入的理想方式。此外，基于体积的关卡动态载入要比基于脚本的动态载入更加容易维护： 根据加载系统的改变，关卡 加载/卸载 行为可以通过简单地重新调整动态载入体积的大小来进行修改。
+<p />
+<h2><a name="把动态载入体积和关卡联系到一起"></a> 把动态载入体积和关卡联系到一起 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+基于体积的关卡动态载入按照以下方式工作： 每个动态载入关卡可以有一组和它相关联的LevelStreamingVolume类型的体积。每一帧中，引擎迭代每个关卡，并检测玩家市口是否在任何和那个关卡相关的LevelStreamingVolumes(关卡动态载入体积)的内部。如果视口在至少一个LevelStreamingVolume的内部，则会发出加载那个关卡的要求。如果视口在所有LevelStreamingVolumes的外部，关卡将会被标记为卸载状态。
+<p />
+把动态载入体积和关卡关联到一起：
+<p /> <ol>
+<li> 在永久性关卡中放置一个LevelStreamingVolume(像您添加任何其它的体积样，可以通过使用主编辑器工具条中的"Add Volume(添加体积)"按钮来实现)。
+</li> <li> 在关卡浏览器中选择和这个体积相关的关卡，右击来弹出关卡浏览器的关联菜单，并选择"Add Streaming Volumes(添加动态载入体积)"。
+</li></ol>
+<p />
+就是这样。
+<p />
+出现在关卡浏览器关联菜单中的关于LevelStreamingVolume的所有操作列表如下所示：
+<p />
+<img alt="LevelBrowserMenu.jpg" src="rsrc/Three/LevelStreamingVolumesCH/LevelBrowserMenu.jpg" />
+<p /> <ul>
+<li> <strong>Add Streaming Volumes(添加动态载入体积)</strong>:把体积添加到关卡中，保留任何现有的关联。
+</li></ul>
+<p /> <ul>
+<li> <strong>Set Streaming Volumes(设置动态载入体积)</strong>:将关卡的体积精确地设置为选中的体积，销毁任何现有的关联物。
+</li></ul>
+<p /> <ul>
+<li> <strong>Clear Streaming Volumes(清除动态载入体积)</strong>:从选中的关卡中清除动态载入体积关联。
+</li></ul>
+<p /> <ul>
+<li> <strong>Select Associated Streaming Volumes(选择相关连的动态载入体积)</strong>:选择和那个选中关卡相关联的所有体积。
+</li></ul>
+<p />
+由于动态载入体积很容易使视图变得凌乱，所以仅在关卡浏览器中 <strong>1) 可见的</strong>; 和 <strong>2) 选中的</strong> 关卡的LevelStreamingVolumes(关卡动态载入体积)是可见的。所以，如果您取消选定了您刚刚和体积相关联的关卡，您将会但到体积消失在编辑器视口中。在关卡浏览器中再次选中那个关卡，将会使得那个相关联的关卡重新出现。
+<p />
+<h2><a name="导入细节"></a> 导入细节 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> 所有的LevelStreamingVolumes(关卡动态载入体积)必须存在于永久性关卡中。存在与其它关卡中的LevelStreamingVolumes(关卡动态载入体积)将不能用于关卡动态载入，并且当检查地图错误时将会产生警告。
+</li></ul>
+<p /> <ul>
+<li>  仅通过使用"Kismet"动态载入方法添加到世界中的关卡才能使用基于体积的关卡动态载入。
+</li></ul>
+<p /> <ul>
+<li> 如果关卡有多个和其相关联的动态载入体积，那么其它的用于动态载入关卡的方法(也就是距离动态载入和Kismet动态载入)将不能正确运转。
+</li></ul>
+<p /> <ul>
+<li> 一个单独的LevelStreamingVolume(关卡动态载入体积)可以影响多个关卡。同样地，一个单独的关卡可以被多个LevelStreamingVolumes(关卡动态载入体积)影响。
+</li></ul>
+<p /> <ul>
+<li> 基于体积的动态载入对于分隔屏幕也是有效的。所有本地玩家的视口会在发出任何 加载/卸载 命令之前进行考虑。
+</li></ul>
+<p />
+<h2><a name="测试动态载入体积设置"></a> 测试动态载入体积设置 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+在目标平台上在游戏中测试基于体积的关卡动态载入是很重要的。在"Play in Editor(在编辑器中播放)" (PIE)模式下的动态载入将会显示哪里发生 加载/卸载，但是 <strong>在PIE中的动态载入不能代表真实的、游戏中的加载和卸载状态</strong> 。这是因为在PIE中，关卡已经在内存中，所以“加载”关卡是指简单地取消对它的隐藏，因此具有即时性。
+<p />
+为了确保您的动态载入设置可以正常工作，在目标平台上在运行单机游戏中运行关卡是非常重要的。注意，在某些平台上，载入一个关卡需要一定的时间。所以请把您的LevelStreamingVolumes(关卡动态载入体积)调整为适当的大小，以便当玩家到达那个体积时关卡可以正常地载入。关卡载入行为可以通过重新调整和那个关卡相关的LevelStreamingVolumes(关卡动态载入体积)来进行修改。增大体积将会导致相关联的关卡加载速度较快而卸载速度较慢，而缩小体积将会导致加载速度较晚而卸载较早。
+<p />
+<h2><a name="关卡动态载入体积优先"></a> 关卡动态载入体积优先 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<img alt="PrevisButton.jpg" src="rsrc/Three/LevelStreamingVolumesCH/PrevisButton.jpg" />
+<p />
+基于体积的关卡动态载入可以很容易地通过启用透视口的工具条上的"Level Streaming Volume Previs(关卡动态载入体积优先)"按钮进行预览。当启用这个模式时，关卡将会基于透视口相机的位置进行 隐藏/显示。注意，这种 隐藏/显示 将会影响关卡浏览器中的那些可见关卡。
+<p />
+LevelStreamingVolume(关卡动态载入体积)仅可以通过设置LevelStreamingVolume的bEditorPreVisOnly标志来将其标志位编辑器优先。按照这种方式，基于体积的关卡动态载入在使用另一个游戏中动态载入方法的同时仍然可以用于编辑器优先。
+<p />
+<h2><a name="关卡动态载入体积的消耗"></a> 关卡动态载入体积的消耗 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+每一帧中，UWorld::ProcessLevelStreamingVolumes将会迭代每个关卡的每个动态载入关卡，如果任何本地玩家在任何和那个关卡相关的体积中，将开始加载关卡。同样，如果所有的本地玩家都在所有体积的外面时则开始卸载关卡。
+<p />
+UWorld::ProcessLevelStreamingVolumes通过以下方式来探索一致性： 对于每个关卡来说，将会缓存最近包含玩家的体积。将会首先检查这个缓存体积，以便玩家所在的或返回的那个关卡可以快速地被接受。
+<p />
+尽管任何形状的体积都是可以的，但是很显然体积数量越少越好。关卡动态载入体积的消耗上限可以通过未被加载的关卡相关联的关卡动态载入体积的数量的总数来近似地估算。
+<p />
+在"Streaming(动态载入)"统计数据组中存在两个统计数据用于检测关卡动态载入的性能。"Streaming Volumes(动态载入体积)"数据跟踪每一帧中针对玩家视图所测试的LevelStreamingVolumes(关卡动态载入体积)的数量，而"Volume Streaming Tick(动态载入体积时间)"用于跟踪每帧花费在UWorld::ProcessLevelStreamingVolumes上的时间。
+<p />
+<h2><a name="添加滞后作用到卸载请求"></a> 添加滞后作用到卸载请求 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+在一个LevelStreamingVolume(关卡动态载入体积)编辑器上来回穿行的玩家将会产生虚假的 加载/卸载 请求。为了解决这个问题，已经向卸载要求中添加了滞后作用。 对于加载请求没有滞后作用，因为如果关卡需要进行加载，我们总是希望尽快地加载它。
+<p />
+卸载滞后作用的量可以通过修改LevelStreaming物体的MinTimeBetweenVolumeUnloadRequests属性来进行调整（LevelStreaming(关卡动态载入)属性可以通过从关卡浏览器的关联菜单中访问）。默认的滞后时间为2.0秒。
+<p />
+<h2><a name="禁用关卡动态载入体积"></a> 禁用关卡动态载入体积 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+在LevelStreamingVolumes(关卡动态载入体积)上有一个成为bDisabled的属性。当设置它为TRUE时，无论在游戏中还是在编辑器中，动态载入体积代码将会忽略那个体积。bDisabled(是否禁用)可以用于在不需要将LevelStreamingVolume(关卡动态载入体积)从关卡中分离的情况下禁用该LevelStreamingVolume(关卡动态载入体积)。同时，在游戏中可以通过Toggle (切换)Kismet动作来切换关卡的动态载入在Kismet和体积动态载入之间的控制。注意 <strong>在Kismet动态载入和基于体积的动态载入之间进行切换是非常危险的并且是很容易产生错误的</strong> ，所以这个功能应该仅在需要时才使用。
+<p />
+其中bDisabled标志比较有用的一个实例是，想象一个通向由动态载入体积控制的关卡的门。
+<p />
+<img alt="bDisabledUsage.jpg" src="rsrc/Three/LevelStreamingVolumesCH/bDisabledUsage.jpg" />
+<p />
+在上面的图片中，玩家从左边接近，要载入的关卡在门的右侧。动态载入体积向左扩展超出门外，以便关卡在玩家到达门口并打开它时关卡进行被动态载入。在内部，虽然门是锁着的，但是当玩家到达了与另一部分地图中的物体时，门将变为开锁状态。所以，即使动态载入体积扩展到了门外，当门真正地被开锁(“可打开的”)之前，我们也不希望载入在门另一个侧的关卡。
+<p />
+达到这个目标的方法是在编辑器中把关卡动态载入体积标记为bDisabled，然后在Kismet中使用Toggle(切换)动作，当到达目标时设置这个物体上的bDisabled为FALSE。通过这种方式，将会“打开”LevelStreamingVolume(关卡动态载入体积)并且到玩家接近门时，关卡将进行动态载入。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LevelStreamingVolumesCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:25:43 GMT -->
+</html></body>

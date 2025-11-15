@@ -1,0 +1,484 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LightFunctions.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:19:30 GMT -->
+<head>
+<title> UDK | LightFunctions    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">LightFunctions  </b></div>
+<div id="tooltext">
+<a href="LightFunctionsJP.html" class="twikiLink">日本語訳</a><br><a href="LightFunctionsCH.html" class="twikiLink">中国翻译</a><br><a href="LightFunctionsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/LightFunctions -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <a href="LightingAndShadowsHome.html" class="twikiLink">Lighting &amp; Shadows</a> &gt; Light Functions
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="Light Functions"></a> Light Functions </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="LightFunctions.html#Light Functions"> Light Functions</a> <ul>
+<li> <a href="LightFunctions.html#Overview"> Overview </a>
+</li> <li> <a href="LightFunctions.html#Decals vs Light functions"> Decals vs Light functions</a>
+</li> <li> <a href="LightFunctions.html#What material expressions can be used?"> What material expressions can be used?</a> <ul>
+<li> <a href="LightFunctions.html#Texture 2D"> Texture 2D</a>
+</li> <li> <a href="LightFunctions.html#Texture Cube"> Texture Cube</a> <ul>
+<li> <a href="LightFunctions.html#How do I rotate my texture cubed light functions?"> How do I rotate my texture cubed light functions?</a>
+</li></ul>
+</li> <li> <a href="LightFunctions.html#Notes"> Notes</a>
+</li></ul>
+</li> <li> <a href="LightFunctions.html#What type of lights can be used?"> What type of lights can be used?</a>
+</li> <li> <a href="LightFunctions.html#Unreal Editor light function tutorial"> Unreal Editor light function tutorial</a> <ul>
+<li> <a href="LightFunctions.html#Creating the light function"> Creating the light function</a>
+</li> <li> <a href="LightFunctions.html#Adding the light function the light"> Adding the light function the light</a> <ul>
+<li> <a href="LightFunctions.html#Light function properties"> Light function properties</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="LightFunctions.html#Unrealscript light function tutorial"> Unrealscript light function tutorial</a> <ul>
+<li> <a href="LightFunctions.html#Embedded light function"> Embedded light function</a>
+</li> <li> <a href="LightFunctions.html#Adding a light function to a dynamically created light"> Adding a light function to a dynamically created light</a>
+</li></ul>
+</li> <li> <a href="LightFunctions.html#Related Topics"> Related Topics</a>
+</li> <li> <a href="LightFunctions.html#Downloads"> Downloads</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<hr size="1" noshade="noshade">
+Lights functions are mathematical representations of how lights should illuminate the scene in Unreal Engine 3. By default, lights will use a constant value based on the various inputs defined by the light component; such as brightness and color. Light functions allow you to define more interesting set ups to achieve flicking lights, masked lights and strobing lights, textured lights. Light functions use the material system in Unreal Engine 3, making it really easy for artist and level designers to create and modify. Also, because light functions uses the material system, these light functions can be instanced for variations.
+<p />
+<img src="rsrc/Three/LightFunctions/LightFunctionsScreenShot.jpg" alt="LightFunctionsScreenShot.jpg" width='800' height='582' />
+<p />
+<h2><a name="Decals vs Light functions"></a> Decals vs Light functions </h2>
+It's important to remember that light functions are still lights, thus if you wish to project textures while casting light onto objects then a light function is going to be more useful. Light functions can also project texture cubes where as decals cannot. Thus, whether something should cast light or not should be the deciding factor.
+<p />
+<p />
+<h2><a name="What material expressions can be used?"></a> What material expressions can be used? </h2>
+<hr size="1" noshade="noshade">
+Not all the material expressions can be used with light functions. This is because some of the expressions do not make much sense when being used within a light function. Most of the expressions however can be used. All the mathematical and texture sampler expressions work, however ones that are dependent on other render targets or mesh properties are ignored. Review the <a href="MaterialsCompendium.html" class="twikiLink">material expressions compendium</a> as a reference to what and how these expressions work.
+<p />
+<p />
+<h3><a name="Texture 2D"></a> Texture 2D </h3>
+Two dimensional textures can be used but they are best reserved for lights that specify a direction such as directional light and spot light. They can still be used for spot lights, but texture banding occurs. Directional lights can also result in texture banding if the light falls on a near perpendicular surface.
+<p />
+<strong>Point light with a textured light function. Notice the texture banding on the ceiling and floor.</strong>
+<p />
+<img src="rsrc/Three/LightFunctions/LightFunctions_PointLightTexture2D.jpg" alt="LightFunctions_PointLightTexture2D.jpg" width='800' height='578' />
+<p />
+<strong>Spot light with a textured light function. As only a few surfaces receive lighting, minimal texture banding occurs.</strong>
+<p />
+<img src="rsrc/Three/LightFunctions/LightFunctions_SpotLightTexture2D.jpg" alt="LightFunctions_SpotLightTexture2D.jpg" width='800' height='578' />
+<p />
+<strong>Directional light with a textured light function. Notice the texture banding on near perpendicular surfaces such as some of the walls.</strong>
+<p />
+<img src="rsrc/Three/LightFunctions/LightFunctions_DirectionalLightTexture2D.jpg" alt="LightFunctions_DirectionalLightTexture2D.jpg" width='800' height='578' />
+<p />
+<p />
+<h3><a name="Texture Cube"></a> Texture Cube </h3>
+A texture cube is used for cube mapping. Cube mapping is a method of environment mapping, with each of the textures defined as one of the sides of a cube. Cube mapping in this case produces projective texture mapping when used in a light function.
+<p />
+<strong>Point light with a texture cubed light function. No real noticeable texture banding occurs.</strong>
+<p />
+<img src="rsrc/Three/LightFunctions/LightFunctions_PointLightTextureCube.jpg" alt="LightFunctions_PointLightTextureCube.jpg" width='800' height='578' />
+<p />
+<strong>Spot light with a texture cubed light function. No real noticeable texture banding occurs.</strong>
+<p />
+<img src="rsrc/Three/LightFunctions/LightFunctions_SpotLightTextureCube.jpg" alt="LightFunctions_SpotLightTextureCube.jpg" width='800' height='578' />
+<p />
+<strong>Directional light with a texture cubed light function. No real noticeable texture banding occurs.</strong>
+<p />
+<img src="rsrc/Three/LightFunctions/LightFunctions_DirectionalLightTextureCube.jpg" alt="LightFunctions_DirectionalLightTextureCube.jpg" width='800' height='578' />
+<p />
+Does this mean that you should always use a cube map? The answer lies with what kind of projection you're performing and how you want it to affect the scene. Cube maps are very reliant on texture sets that do not create any seams. It's also difficult to pan or rotate a texture cube easily within the material.
+<p />
+<h4><a name="How do I rotate my texture cubed light functions?"></a> How do I rotate my texture cubed light functions? </h4>
+The easiest method to do this, is to actually rotate the light actor. The light vector used in the material will be adjusted by the light actor's rotational value as well.
+<p />
+<img src="rsrc/Three/LightFunctions/LightFunctions_RotatingLightFunction.jpg" alt="LightFunctions_RotatingLightFunction.jpg" width='535' height='783' />
+<p />
+<h3><a name="Notes"></a> Notes </h3>
+Light functions are unable to specify the maximum brightness of a light as that is set by the light component. Light functions however act more as a scale to adjust the final brightness of the light.
+<p />
+A light function is able to output a color, however a light functions color is not evaluated unless the light component itself uses a white color. You can use the Desaturate material expression to adjust light functions which use colored textures.
+<p />
+<p />
+<h2><a name="What type of lights can be used?"></a> What type of lights can be used? </h2>
+<hr size="1" noshade="noshade">
+The only light type that isn't supported are sky lights, however this makes sense since sky lights simply define the ambient light everywhere. Lights can be any these variations; dominant, movable or toggle-able and may cast dynamic shadows if desired. Light functions can no longer be created for static lights; Unreal Editor will fail to create the light function if an inappropriate light was selected.
+<p />
+<p />
+<h2><a name="Unreal Editor light function tutorial"></a> Unreal Editor light function tutorial </h2>
+<hr size="1" noshade="noshade">
+<h3><a name="Creating the light function"></a> Creating the light function </h3>
+To create a new light function, start by creating a new material in the Content Browser. Set the package and group that you want the material to be stored in (it can even be your level, if the light function is level specific), then set what you want to call this light function.
+<p />
+<img src="rsrc/Three/LightFunctions/LightFunctions_0_CreateNewMaterial.jpg" alt="LightFunctions_0_CreateNewMaterial.jpg" width='510' height='510' />
+<p />
+For Unreal Engine 3 to recognize that a material is going to be used as a light function, it must be explicitly set in the material's properties. Do this by expanding out the <strong>Mutually Exclusive Usage</strong> category, and then checking <strong>Used As Light Function</strong>.
+<p />
+<img src="rsrc/Three/LightFunctions/LightFunctions_1_SetUsedAsLightFunction.jpg" alt="LightFunctions_1_SetUsedAsLightFunction.jpg" width='800' height='432' />
+<p />
+Create a simple light function as shown below. This light function smoothly simply interpolates the light darker and brighter.
+<p />
+<img src="rsrc/Three/LightFunctions/LightFunctions_2_SimpleLightFunction.jpg" alt="LightFunctions_2_SimpleLightFunction.jpg" width='800' height='615' />
+<p />
+Close the Material Editor and check yes to save the material. Then save the package.
+<p />
+<h3><a name="Adding the light function the light"></a> Adding the light function the light </h3>
+First thing to make sure is that the light is of an appropriate variation. You can right click on the light actor, and using the context menu switch between the variations. For light functions you will need to make sure to use the <strong>Dominant</strong>, <strong>Moveable</strong> or <strong>Toggle-able</strong> variations.
+<p />
+<img src="rsrc/Three/LightFunctions/LightFunctions_ConvertLight.jpg" alt="LightFunctions_ConvertLight.jpg" width='800' height='800' />
+<p />
+Open the light actor's properties. Expand the <strong>Light</strong> category, and then the <strong>Light Component</strong> object. Within the <strong>Light Component</strong> object, expand the <strong>Light Component</strong> category.
+<p />
+<img src="rsrc/Three/LightFunctions/LightFunctions_3_ExpandCategories.jpg" alt="LightFunctions_3_ExpandCategories.jpg" width='358' height='508' />
+<p />
+Click on the blue arrow next to the <strong>Light Function</strong> field. Then click on <strong>Light Function</strong> within the context menu that appears. This creates a new <strong>Light Function</strong> object.
+<p />
+<img src="rsrc/Three/LightFunctions/LightFunctions_4_CreateNewLightFunction.jpg" alt="LightFunctions_4_CreateNewLightFunction.jpg" width='489' height='508' />
+<p />
+Expand the <strong>Light Function</strong> object, select the light function you made above, and click on the green arrow to set the light function object's <strong>Source Material</strong> field. If you are using a light function that uses textures you can also adjust the scale for projection purposes here.
+<p />
+<img src="rsrc/Three/LightFunctions/LightFunctions_5_LightFunctionSet.jpg" alt="LightFunctions_5_LightFunctionSet.jpg" width='358' height='508' />
+<p />
+<h4><a name="Light function properties"></a> Light function properties </h4> <ul>
+<li> <strong>Source Material</strong> - Material to use for the light function.
+</li> <li> <strong>Scale</strong> - <ul>
+<li> <strong>X</strong> - Adjusts the projection scale on the X axis.
+</li> <li> <strong>Y</strong> - Adjusts the projection scale on the Y axis.
+</li> <li> <strong>Z</strong> - Adjusts the projection scale on the Z axis.
+</li></ul>
+</li> <li> <strong>Disabled Brightness</strong> - Brightness factor applied to the light when the light function is specified but disabled. For example in a scene capture that uses SceneCapView_LitNoShadows. This should be set to the average brightness of the light function's emissive input and should be within 0.f and 1.f.
+</li></ul>
+<p />
+<h2><a name="Unrealscript light function tutorial"></a> Unrealscript light function tutorial </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="Embedded light function"></a> Embedded light function </h3>
+Light functions can be created in the default properties section in Unrealscript. When you've created the light function in Unrealscript, you can then embed the created light function into an attached light component. This is useful if you wish to spawn the light at run time and have it automatically have a light function. You could also do this by creating an archetype of light setup with a light function in Unreal Editor.
+<p />
+<div class="codetitlebar">
+EmbeddedLightFunctionLight.uc
+</div>
+<div class="codesnippet">
+<pre>
+class EmbeddedLightFunctionLight extends PointLightMovable;
+
+defaultproperties
+{
+  // Create the light function in script
+  Begin Object Class&#61;LightFunction Name&#61;MyLightFunction
+    SourceMaterial&#61;Material&#39;LightFunctionAssets.SimpleFlickeringLightFunction&#39;
+  End Object
+
+  // Attach the light function to the light component
+  Begin Object Name&#61;PointLightComponent0
+    Function&#61;MyLightFunction
+  End Object
+
+  bNoDelete&#61;false
+}
+</pre>
+</div>
+<p />
+Once you're compiled this script, you can then find this light in the Actor Classes browser within the Content Browser.
+<p />
+<img src="rsrc/Three/LightFunctions/LightFunctionsFindingEmbeddedLightFunctionLight.jpg" alt="LightFunctionsFindingEmbeddedLightFunctionLight.jpg" width='582' height='669' />
+<p />
+<h3><a name="Adding a light function to a dynamically created light"></a> Adding a light function to a dynamically created light </h3>
+Light functions can also be added to lights that are exist in the level, and are dynamic, or to lights that have been spawned in game. The only downside is that light functions declare their material reference as a constant, so there is currently no way of changing this with Unrealscript. Because of this, you will need to create light functions within Unreal Editor as archetypes. You can then spawn in a new light function based on the archetype, and then assign it to the light component at run time.
+<p />
+<div class="codetitlebar">
+RunTimeLightFunctionLight
+</div>
+<div class="codesnippet">
+<pre>
+class RunTimeLightFunctionLight extends PointLightMovable;
+
+var(Light) const archetype LightFunction LightFunctionArchetype;
+
+function PostBeginPlay()
+{
+  local PointLightComponent PointLightComponent;
+  local LightFunction LightFunction;
+
+  Super.PostBeginPlay();
+
+  PointLightComponent &#61; PointLightComponent(LightComponent);
+  if (PointLightComponent !&#61; None)
+  {
+    if (LightFunctionArchetype !&#61; None &#38;&#38; LightComponent.Function &#61;&#61; None)
+    {
+      LightFunction &#61; new () LightFunctionArchetype.Class(LightFunctionArchetype);
+      if (LightFunction !&#61; None)
+      {
+        LightComponent.SetLightProperties(,, LightFunction);
+      }
+    }
+
+    PointLightComponent.UpdateColorAndBrightness();
+  }
+}
+
+defaultproperties
+{
+  bNoDelete&#61;false
+}
+</pre>
+</div>
+<p />
+To create a light function archetype, go to the Actor Classes browser within the Content Browser. Search for LightFunction, right click on it and click "Create Archetype".
+<p />
+<img src="rsrc/Three/LightFunctions/0_LightFunctionCreateLFArchetype.jpg" alt="0_LightFunctionCreateLFArchetype.jpg" width='582' height='669' />
+<p />
+A pop up will appear, this is where you set where the archetype will be saved. Repeat the process for the RunTimeLightFunctionLight class.
+<p />
+<img src="rsrc/Three/LightFunctions/1_LightFunctionSetLFLocation.jpg" alt="1_LightFunctionSetLFLocation.jpg" width='582' height='669' />
+<p />
+Go back to your Content Browser and double click on your RunTimeLightFunctionLight class. Set the LightFunctionArchetype property field with the LightFunction archetype you created before hand.
+<p />
+<img src="rsrc/Three/LightFunctions/2_LightFunctionCustomizeLightArchetype.jpg" alt="2_LightFunctionCustomizeLightArchetype.jpg" width='1046' height='669' />
+<p />
+This is a Kismet sequence which is able to spawn in archetypes. This is setup to spawn the RunTimeLightFunctionLight archetype.
+<p />
+<img src="rsrc/Three/LightFunctions/3_LightFunctionKismet.jpg" alt="3_LightFunctionKismet.jpg" width='800' height='602' />
+<p />
+<h2><a name="Related Topics"></a> Related Topics </h2>
+<hr size="1" noshade="noshade"> <ul>
+<li> <a href="DevelopmentKitGemsUsingLightFunctions.html" class="twikiLink">Using light functions</a> - Development kit gem which shows you how to make various light functions.
+</li></ul>
+<p />
+<h2><a name="Downloads"></a> Downloads </h2>
+<hr size="1" noshade="noshade"> <ul>
+<li> <a href="rsrc/Three/LightFunctions/LightFunctionExample.zip" target="_top">Download</a> the content used for the Unrealscript light function tutorial.
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LightFunctions.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:19:35 GMT -->
+</html></body>

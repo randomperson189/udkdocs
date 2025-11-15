@@ -1,0 +1,455 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TerrainsFromDEMs.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:38:03 GMT -->
+<head>
+<title> UDK | TerrainsFromDEMs    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">TerrainsFromDEMs  </b></div>
+<div id="tooltext">
+<a href="TerrainsFromDEMsJP.html" class="twikiLink">日本語訳</a><br><a href="TerrainsFromDEMsCH.html" class="twikiLink">中国翻译</a><br><a href="TerrainsFromDEMsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/TerrainsFromDEMs -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<h1><a name="Terrains from DEMs: Using Digital Elevation Models"></a> Terrains from DEMs: Using Digital Elevation Models </h1>
+<p />
+<em>Document Summary: Information on using DEM files to create terrains.</em>
+<p />
+<em>Original author David Green<sup>?</sup>.</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="TerrainsFromDEMs.html#Terrains from DEMs: Using Digital Elevation Models"> Terrains from DEMs: Using Digital Elevation Models</a> <ul>
+<li> <a href="TerrainsFromDEMs.html#Digital Elevation Model Overview"> Digital Elevation Model Overview</a>
+</li> <li> <a href="TerrainsFromDEMs.html#DEM Data Resolution"> DEM Data Resolution</a>
+</li> <li> <a href="TerrainsFromDEMs.html#Contour and Relief Map Resolution"> Contour and Relief Map Resolution</a>
+</li> <li> <a href="TerrainsFromDEMs.html#Increasing DEM Resolution"> Increasing DEM Resolution</a>
+</li> <li> <a href="TerrainsFromDEMs.html#DEM Data in Unreal Units"> DEM Data in Unreal Units</a>
+</li> <li> <a href="TerrainsFromDEMs.html#DEM File Formats"> DEM File Formats</a>
+</li> <li> <a href="TerrainsFromDEMs.html#DEM Conversion Software"> DEM Conversion Software</a>
+</li> <li> <a href="TerrainsFromDEMs.html#DEM Data Sources"> DEM Data Sources</a>
+</li> <li> <a href="TerrainsFromDEMs.html#Preparing DEM Data for use in the Unreal Engine"> Preparing DEM Data for use in the Unreal Engine</a>
+</li> <li> <a href="TerrainsFromDEMs.html#Importing Heightmaps into the Unreal Engine"> Importing Heightmaps into the Unreal Engine</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<p />
+<h2><a name="Digital Elevation Model Overview"></a> Digital Elevation Model Overview </h2>
+<p />
+A Digital Elevation Model ("DEM") is a data file that contains a rasterized grid of elevation sample points usually acquired from a remote sensing system such as an orbiting radar satellite.  This data can be converted into either a grayscale heightmap or a 3-dimensional mesh representation of the location that was surveyed.  The resolution and quality of currently available DEM data varies considerably, with the majority of data being of such low resolution that it is only useful for GIS or high-altitude imaging and shaded relief rendering.
+<p />
+DEM data should not be confused with actual raster photo images, such as seen on GoogleEarth at <a href="http://earth.google.com/" target="_top">http://earth.google.com/</a> or the Mars HiRISE project at <a href="http://hirise.lpl.arizona.edu/" target="_top">http://hirise.lpl.arizona.edu/</a>.  Raster photos contain standard visual images taken with a photographic camera, whereas DEM data is normally accumulated using a radar or laser or similar altitude measurement system.
+<p />
+Photographic data cannot be easily converted to heightmap altitude data, as the image pixel data does not directly represent the altitude of each location.  Derived altitude data would be difficult to extract from photos as many factors would have be accounted for such as the angle of incidence of the main light source rays and the effect on light and shadow caused by this.
+<p />
+Topographical data is also available in Contour Line Map formats which include monochromatic and elevation color styles, and Color Relief format which is similar to Contour but uses only colors to represent altitudes.  Many Contour Line and Color Relief Maps are sourced from land surveying so they do not contain the resolution or accuracy of remote sensing data files.
+<p />
+<p />
+<strong>Aerial Photography Image:</strong>
+<p />
+<img alt="USGS-VolgaRiverDelta.gif" src="rsrc/Three/TerrainsFromDEMs/USGS-VolgaRiverDelta.gif" />
+<p />
+<small>
+Volga River Delta - <a href="http://eros.usgs.gov/imagegallery/imageDetail.php?page=38&amp;img=Volga+River+Delta&amp;id=2055&amp;col=Earth+As+Art" target="_top">U.S. Geological Survey</a>
+</small>
+<p />
+<strong>Contour Map:</strong>
+<p />
+<img alt="USGS-Contour.gif" src="rsrc/Three/TerrainsFromDEMs/USGS-Contour.gif" />
+<p />
+<small>
+State of New Hampshire, U.S.A. -  <a href="http://www.usgs.gov/" target="_top">U.S. Geological Survey</a>
+</small>
+<p />
+<strong>Shaded Relief Image:</strong>
+<p />
+<img alt="NAG-ShadedRelief.gif" src="rsrc/Three/TerrainsFromDEMs/NAG-ShadedRelief.gif" />
+<p />
+<small>
+New Mexico, U.S.A. - <a href="http://nationalatlas.gov/" target="_top">National Atlas Map Maker</a>
+</small>
+<p />
+<strong>Unreal terrain created from DEM data</strong>
+<p />
+<img alt="DGAscraeus.jpg" src="rsrc/Three/TerrainsFromDEMs/DGAscraeus.jpg" />
+<p />
+<small>
+<a href="http://www.lilchips.com/dgunreal" target="_top">David Green</a>
+</small>
+<p />
+<p />
+<h2><a name="DEM Data Resolution"></a> DEM Data Resolution </h2>
+<p />
+Most DEM data files are stored as a rectangular raster image of x*y sample points of 16-bit binary or ASCII altitude values.  There are a number of software utilities available that will convert various DEM formats directly to the UnrealEd G16 heightmap format, such as G16Ed or the HMCS and HMES software applications.  Other GIS and government or university conversion utilities may provide an intermediary conversion file format such as to RAW16 or TIF-16, which can then be more easily converted to UnrealEd's G16 format.
+<p />
+The most common DEM files are currently of the Earth and Mars, with varying resolutions at different locations on each of these planets.
+<p />
+DEM file resolution is measured in <em>arcminutes</em> and <em>arcseconds</em> or their respective spatial distance in meters.  The most common DEM resolutions are 10, 30 and 90 meter, with the highest resolution data currently available at 1 and 5 meters, although this high-resolution data is rare and not usually available to the public.  The arcsecond or meter resolution is the space between each sample point in the data file.
+<p />
+At sea level on Earth, one arcminute or <em>one minute of angle</em> is approximately 1.151 miles (6076.115 feet) or 1.852 kms (1852 meters), which is also 1 nautical mile.
+<p />
+One-third arcsecond (1/3") is commonly referred to as 10 meter (10.3 meters or 33.79 feet).
+<p />
+One arcsecond (1" or 1/60th arcminute) is commonly referred to as 30 meter (30.86 meters or 101.2 feet).
+<p />
+Three arcseconds (3") is commonly referred to as 90 meter (92.6 meters or 303.6 feet).
+<p />
+Thirty arcseconds (30") is approximately 1km (926 meters or 3038.06 feet).
+<p />
+<p />
+<h2><a name="Contour and Relief Map Resolution"></a> Contour and Relief Map Resolution </h2>
+<p />
+The issue with using Contour maps to obtain heightmap information is the fact that the images are essentially a group of lines that show the general definition of an area of reasonable change in altitude.  It is difficult to scan and convert this data into actual x*y altitude points for a specific grid area of the map.  Specially designed software is required that performs edge-detection and tracing of each contour line, and then extrapolates the altitude reference and curve from that.  The actual resolution for terrain detail on Contour maps is very low.
+<p />
+The issue with using Relief and Shaded Relief maps to obtain heightmap information is the fact that Relief maps are usually sourced from a contour line (topographical) map, with the elevation dimension exaggerated by a factor of ten to facilitate the recognition of geological features. Shaded Relief maps also contain light and shadow rendering to provide a better 3-dimensional view, which cannot be easily removed from the underlying altitude data.
+<p />
+Contour and Relief maps are measured in a scale of 1:x.  A few common scale values and their equivalent sizing are:
+<p />
+1:24,000 scale maps are 7.5-minute.  A 7.5-minute quadrangle contains an area of about 64 square miles.
+<p />
+1:62,500 scale maps are 15-minute.  1:63,360 is one inch representing one mile.
+<p />
+1:100,000 scale maps have lines of latitude spaced 30 minutes apart and lines of longitude spaced 60 minutes.  The 30 x 60-minute quadrangle one centimeter on the map represents one kilometer of distance on the ground.
+<p />
+<p />
+<h2><a name="Increasing DEM Resolution"></a> Increasing DEM Resolution </h2>
+<p />
+Although it is possible to add detail to a low resolution DEM file, such as adding noise to a 30 meter or 10 meter data file, you simply cannot reproduce the exact original altitude data that is not present in the data file.  Using a DEM data file as the source for a heightmap that is then modified with other noise or geomorphology (erosion, etc.) passes over the altitude data, results in a DEM that no longer represents the source, as the original altitude points will be changed.
+<p />
+<p />
+<h2><a name="DEM Data in Unreal Units"></a> DEM Data in Unreal Units </h2>
+<p />
+<em>The quick answer as to which DEM Data Resolution is suited for use as video game terrain is 5 meters and smaller.  DEM data that is 10 meters and larger is simply too low in resolution to be useful for terrain design.</em>
+<p />
+The Unreal Engines 2, 2.5 and 3 use a default scale of 1 Unreal Unit = 2 cm.
+Therefore 1 meter = 50 Unreal Units.
+<p />
+Using this default engine scale, the common DEM resolution data is equivalent to the following Unreal Unit spacings:
+<p /> <ul>
+<li> 1 meter DEM data = 1x50 = 50 UUs between sample points
+</li> <li> 5 meter DEM data = 5x50 = 250 UUs between sample points
+</li> <li> 10 meter DEM data = 10x50 = 500 UUs between sample points
+</li> <li> 30 meter DEM data = 30x50 = 1500 UUs between sample points
+</li> <li> 90 meter DEM data = 90x50 = 4500 UUs between sample points
+</li></ul>
+<p />
+In UnrealEd 3 for Unreal Engine 2 and 2.5, a TerrainInfo.TerrainScale.X/.Y of 512 results in a 512 UU size for each terrain quad.  A 10 meter DEM has the TerrainScale.X/.Y size of 500, or a terrain quad of approximately 512 in standard power-of-two values.  The most common TerrainScale sizes are 128 and 256, so 512 is at minimum 1/4 the desired heightmap resolution.
+<p />
+In UnrealEd for Unreal Engine 3, a Terrain.Display.DrawScale3D.X/.Y of 512 results in a 512 UU size for each terrain quad (at normal tesselation, ie. MaxTesselationLevel = 1 and MinTesselationLevel = 1).  A 10 meter DEM has the DrawScale3D.X/.Y size of 500, or a terrain quad of approximately 512 in standard power-of-two values.  The most common DrawScale sizes are 128 and 256, so 512 is at minimum 1/4 the desired heightmap resolution.
+<p />
+When comparing the resolution of 10 meter DEM data to that which is normally used in most video game maps, either hand-created or generated with algorithmic heightmap software, the equivalent of 2.5 to 5 meter data is what is normally used to obtain a proper visually accurate terrain.  2.5 and 5 meters are approximately 128 and 256 UUs per quad respectively.
+<p />
+Since most DEM data is at least twice this sample spacing, ie. 10 meter data, or the equivalent of only one-quarter to one-sixteenth of the desired video game resolution, in most cases DEM data is not of sufficient resolution and quality to be used as a source of video game map terrains.
+The most common public DEM data is 30 meter and 90 meter and is essentially useless for video game map design requirements.
+<p />
+10 meter data could be used if it were scaled at 256 instead of 500, however, this would mean that the terrain detail and features would be almost 1/4 of their real-world size.
+<p />
+<p />
+<h2><a name="DEM File Formats"></a> DEM File Formats </h2>
+<p />
+The following file extensions are for the more common digital elevation model formats.
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Extension</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Format</font></a> </th></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> .ddf </td><td bgcolor="#ffffff"> USGS DEM </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> .dem </td><td bgcolor="#eaeaea"> Vista Pro Binary DEM </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> .dem </td><td bgcolor="#ffffff"> USGS DEM </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> .hgt </td><td bgcolor="#eaeaea"> SRTM (Shuttle Radar Topography Mission) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> .tif </td><td bgcolor="#ffffff"> GeoTIFF </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> .txt </td><td bgcolor="#eaeaea"> Vista Pro ASCII DEM </td></tr>
+</table>
+<p />
+<p />
+<h2><a name="DEM Conversion Software"></a> DEM Conversion Software </h2>
+<p />
+There are a number of software applications and utilities for translating DEM files to various other formats that can eventually be converted to a format usable by heightmap software and UnrealEd.  No specific application is being recommended here since there is such a wide variety of DEM data types and tools with varying features and capabilities.  The choice of software will vary depending on the studio requirements.  A few common applications that support conversion of one or more DEM formats includes HMCS, HMES and Leveller, plus there are numerous non-commercial, government and academic tools for reading and converting various DEM formats, including 3DEM, Kashmir3D, LandSerf, MicroDEM, Wilbur, and EarthSlot, LandView, World Wind, and many others.
+<p />
+<p />
+<h2><a name="DEM Data Sources"></a> DEM Data Sources </h2>
+<p />
+Links to most of the current sources for Aerial Photos, Satellite Imagery, and Remote Sensing data can be found on the <a href="http://www.usgs.gov/" target="_top">U.S. Geological Survey</a> web site.  Note that most of this data has a fee to acquire a copy.  The following are only a few of the many DEM data sources available.
+<p />
+<strong>5 meter</strong>
+<p />
+UTAH AGRC <br>
+Limited US data area. <br>
+<a href="http://agrc.utah.gov/agrc_sgid/dem_5m.html" target="_top">http://agrc.utah.gov/agrc_sgid/dem_5m.html</a>
+<p />
+<strong>10 meter</strong>
+<p />
+NED <br>
+10 meter and 30 meter data sets.  10 meter is limited US areas only. <br>
+<a href="http://ned.usgs.gov/" target="_top">http://ned.usgs.gov/</a>
+<p />
+<strong>30 meter</strong>
+<p />
+USGS <br>
+<a href="http://www.usgs.gov/pubprod/" target="_top">http://www.usgs.gov/pubprod/</a>
+<p />
+<strong>90 meter</strong>
+<p />
+SRTM: Shuttle Radar Topography Mission <br>
+<a href="http://srtm.usgs.gov/" target="_top">http://srtm.usgs.gov/</a> <br>
+90 meter data averaged from the original 30 meter data. <br>
+Original 30 meter data sets obtained using interferometry. <br>
+30m x 30m spatial sampling with &lt;= 16m absolute vertical height accuracy, &lt;= 10m relative vertical height accuracy, and &lt;= 20m absolute horizontal circular accuracy.
+<p />
+Canada Topographical Data <br>
+<a href="http://maps.nrcan.gc.ca/index_e.php" target="_top">http://maps.nrcan.gc.ca/index_e.php</a>
+<p />
+<strong>1 kilometer</strong>
+<p />
+SRTM30: Shuttle Radar Topography Mission, 30 arcsecond (1km) sets <br>
+<a href="http://topex.ucsd.edu/WWW_html/srtm30_plus.html" target="_top">http://topex.ucsd.edu/WWW_html/srtm30_plus.html</a> <br>
+926 meter data.
+<p />
+GTOPO30: Topographical 30 arcsecond sets <br>
+<a href="http://edc.usgs.gov/products/elevation/gtopo30/gtopo30.html" target="_top">http://edc.usgs.gov/products/elevation/gtopo30/gtopo30.html</a> <br>
+926 meter data.
+<p />
+<p />
+<h2><a name="Preparing DEM Data for use in the Unreal Engine"></a> Preparing DEM Data for use in the Unreal Engine </h2>
+<p />
+<strong>Voids</strong>
+<p />
+DEM data sets often contain "voids" or areas of invalid values in the data.  These voids usually contain the minimum or maximum data value of 0 or 65535 respectively, and show as holes or spikes in the resultant visualized version of the data.
+<p />
+Some of the DEM suppliers provide cleaned or "finished" versions of the DEM data sets, where the missing data in the voids has been filled with either data from other DEM sets, or with averaged values based on the surrounding data.
+<p />
+When using unfinished DEM data that contains voids, it is required to manually repair the data set or to correct the terrain vertices after importing into UnrealEd.  This can be accomplished by manually editing the data set in the source file, by hand-painting the voids out within UnrealEd, or by using third-party software that support automated DEM repair features that corrects data outside of the user-specified range by applying interpolated fill values based on surrounding data.
+<p />
+<strong>Base and Altitude Range Scaling</strong>
+<p />
+DEM data sets of 16-bit values are often not located at the desired base (0 = sea level location) or altitude scale range for use in the game map.  In most cases, the level designer should adjust the data altitude range so that it extends over one-third to one-half of the 16-bit range to allow for a good mesh vertex Z granularity, and center the data so that the midpoint of the terrain aligns with the UnrealEd origin so that the terrain comfortably sits between the KillZ and StallZ locations.
+<p />
+<p />
+<h2><a name="Importing Heightmaps into the Unreal Engine"></a> Importing Heightmaps into the Unreal Engine </h2>
+<p />
+Once the DEM data is in a format that can be converted to a G16 such as RAW-16 or TIF-16, it can be used in UnrealEd.
+<p />
+See the <a href="TerrainHeightmaps.html" class="twikiLink">Terrain Heightmaps</a> page for information on importing G16 heightmaps.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TerrainsFromDEMs.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:38:04 GMT -->
+</html></body>

@@ -1,0 +1,412 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ConfigSavegameSystemJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:45 GMT -->
+<head>
+<title> UDK | ConfigSavegameSystemJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ConfigSavegameSystemJP  </b></div>
+<div id="tooltext">
+<a href="ConfigSavegameSystem.html" class="twikiLink">English Translation</a><br><a href="ConfigSavegameSystemCH.html" class="twikiLink">中国翻译</a><br><a href="ConfigSavegameSystemKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ConfigSavegameSystemJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="設定システムを用いた Savegames"></a> 設定システムを用いた Savegames </h1>
+<p />
+<em>ドキュメントの概要: 標準の設定システムを使って savegame システムを作成する方法の説明。</em>
+<p />
+<em>ドキュメントの変更ログ: サンプル コードのバグを修正 (オブジェクト名の末尾に数字を使うことはできない)。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="ConfigSavegameSystemJP.html#設定システムを用いた Savegames"> 設定システムを用いた Savegames</a> <ul>
+<li> <a href="ConfigSavegameSystemJP.html#概要"> 概要</a>
+</li> <li> <a href="ConfigSavegameSystemJP.html#Sapitu"> Sapitu</a> <ul>
+<li> <a href="ConfigSavegameSystemJP.html#=Sapitu= クラス"> Sapitu クラス         </a> <ul>
+<li> <a href="ConfigSavegameSystemJP.html#項目データベース"> 項目データベース</a>
+</li> <li> <a href="ConfigSavegameSystemJP.html#キャラクター"> キャラクター</a>
+</li> <li> <a href="ConfigSavegameSystemJP.html#インベントリ項目の作成"> インベントリ項目の作成</a>
+</li></ul>
+</li> <li> <a href="ConfigSavegameSystemJP.html#=_SapituCharacter= クラス"> SapituCharacter クラス</a>
+</li> <li> <a href="ConfigSavegameSystemJP.html#=_SapituInventory= クラス"> SapituInventory クラス</a>
+</li> <li> <a href="ConfigSavegameSystemJP.html#=_SapituItem="> SapituItem</a>
+</li></ul>
+</li> <li> <a href="ConfigSavegameSystemJP.html#savegame の格納"> savegame の格納</a>
+</li> <li> <a href="ConfigSavegameSystemJP.html#Sapitu を使ってプレイする"> Sapitu を使ってプレイする</a>
+</li> <li> <a href="ConfigSavegameSystemJP.html#まとめ"> まとめ</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<p />
+Unreal Engine の設定 (configuration) システムは非常に強力なシステムで、各種設定の保存以外にも使い道があります。このドキュメントでは、RPG 系ゲームの savegame (ゲーム保存) システムを作成する方法を紹介します。
+<p />
+この savegame システムは、UI データストアシステムと <code>PerObjectConfig</code> ディレクティブを上手く使って完成させています。
+<p />
+このドキュメントの先に進む前に、ConfigurationFiles ドキュメントに目を通して Unreal Engine における設定ファイルの機能を理解しておいてください。
+<p />
+<h2><a name="Sapitu"></a> Sapitu </h2>
+<p />
+Sapitu (「Savegames Are Possible In UDK」の短縮形) は、RPG 系ゲーム用の簡単な savegame システムを実装したもので、キャラクターとそのインベントリを格納することができます。
+<p />
+<a href="rsrc/Three/ConfigSavegameSystem/Sapitu-source.zip" target="_top">このサンプルの完全なソースコードはここからダウンロードできます</a>。
+<p />
+Sapitu は 4 つのクラスに分かれています。ダウンロードファイルには 2 つのクラス (<code>SapituGame</code> と <code>SapituPC</code>) が追加されていますが、これらはゲーム内から Sapitu システムを使ってプレイする場合のみ使用します。
+<p />
+Sapitu の 4 つのクラスは以下のとおりです。
+<p /> <ul>
+<li> <code>Sapitu</code> : savegame システムのさまざまな要素を管理するメインクラス。
+</li> <li> <code>SapituCharacter</code> : キャラクター情報を格納するクラス。
+</li> <li> <code>SapituInventory</code> : <code>SapituCharacter</code> に属するインベントリ項目。
+</li> <li> <code>SapituItem</code> : <code>SapituInevntory</code> 項目を作成するためのデータベースレコードに使われるクラス。このクラスのインスタンスは、システム内部の読取り専用です。
+</li></ul>
+<p />
+<h3><a name="=Sapitu= クラス"></a> <code>Sapitu</code> クラス </h3>
+<p />
+このクラスでは、新しいキャラクターの作成とロードを管理するメソッドが定義されています。新しいインベントリ項目の作成メソッドも含まれていて、項目データベースの参照を管理します。
+<p />
+<h4><a name="項目データベース"></a> 項目データベース </h4>
+<p />
+メソッド <code>loadItemDB</code> は <code>SapituItem</code> インスタンスのデータベースを初期化し、設定ファイル内のすべての <code>SapituItem</code> インスタンスの定義を要求します。これは Unreal エンジンの UI データストアシステムの一部で、UT3 の GameTypes<sup>?</sup>、マップや武器に関する情報を取得するのにも使われています。
+<p />
+<code>getItem</code> メソッドは、指定されたオブジェクト名  (<code>Object.name</code> プロパティ) の実際の <code>SapituItem</code> インスタンスを、現在のデータベースで検索する手段を提供するものです。　この名前 (または ID) は内部名で、完成したゲーム画面でこれをプレーヤーに表示することはまずないでしょう。
+<p />
+項目データベースは、インベントリシステムがインベントリ項目の静的定義を調べ、またはこれを参照して新しいインベントリ項目を作成するのに使用されます。
+<p />
+<h4><a name="キャラクター"></a> キャラクター </h4>
+<p />
+<code>Sapitu</code> クラスは、 <code>SapituCharacter</code> インスタンスのロードおよび作成の開始点にもなります。キャラクターシステムは、通常の設定システムと <code>PerObjectConfig</code> クラスディレクティブを利用します。
+<p />
+<code>getCharacters</code> メソッドは、登録されているすべてのキャラクターの ID リストを返します。
+データベース内の項目の ID と同様に、これも <code>Object.name</code> プロパティを参照します。これはユーザーフレンドリーな名前ではなく、内部の識別子で、キャラクターのロードや作成時にこの ID が要求されます。このように使われるため、この名前には重要な制約事項があり、空白文字や英数字以外の文字を含めることはできません。ID には英数文字だけ使用することをお勧めします。
+<p />
+キャラクターのロードと作成は本当に似ていて、どちらも以下のコードを使用します。
+<p />
+<pre>
+myChar = new(none, "MyCharId") class'SapituCharacter';
+</pre>
+<p />
+このトリックは new 演算子の 2 番目のパラメータに隠されていて、作成するオブジェクトの名前をここで定義します。 <code>SapituCharacter</code> キャラクターは <code>PerObjectConfig</code> と定義されているので、指定されたその名前を持つオブジェクトの設定をロードします。
+<p />
+Sapitu におけるキャラクターのロードと新規作成を明確に区別したいので、指定された ID が存在するかどうかの確認を最初に行い、次にロード/作成を承認または拒否します。
+<p />
+適切なインスタンスを作成することでキャラクターのロードが終わるのではなく、そのインベントリを初期化しなければなりません。 <code>SapituCharacter</code> は、 <code>SapityInventory</code> 項目の ID のリスト (<code>SapituCharacter.inventoryRecord</code>) を格納します。これらの項目は同様の方法で作成され、インベントリ項目のインスタンスのリストに追加されます (<code>SapituCharacter.inventory</code>)。完全な実装については、 <code>loadCharacter</code> メソッドを参照してください。
+<p />
+<h4><a name="インベントリ項目の作成"></a> インベントリ項目の作成 </h4>
+<p />
+インベントリ項目は特別な方法で作成する必要があります。インベントリ項目は特定の <code>SapituItem</code> インスタンスに基づくもので、 <code>createInventory</code> メソッドは、この <code>SapituItem</code> インスタンスから新しいインベントリ項目を作成します。このインベントリ インスタンスに対応する一意の識別子を作成し、特別な <code>new(none, inventoryId) class'SapituInventory'</code> コンストラクタを実行してインベントリ項目を作成します。次に、 <code>SapituItem</code> インスタンスで大まかに定義されている各種の編集 (レベル、ウェイト、値など) を初期化します。
+<p />
+作成されたインベントリ項目はいずれのキャラクターにも属さず、実際のところ save ファイルにも保存されていません。そのため、ここでゲームを終了すると、このインスタンスも失われます。キャラクターインスタンスのインベントリにこのインベントリ項目が存在するときは、これらの項目の保存内容も残ります。
+<p />
+<h3><a name="=_SapituCharacter= クラス"></a> <code>SapituCharacter</code> クラス </h3>
+<p />
+このクラスの定義は次のとおりです。
+<p />
+<pre>
+class SapituCharacter extends Object config(Sapitu) perobjectconfig;
+</pre>
+<p />
+これは、クラスの一部の変数が設定ファイル <code>UTSapitu.ini</code> に保存され、各オブジェクトの変数に個別のセクションが作成されることを意味します。後者は <code>perobjectconfig</code> クラスディレクティブに起因します。セクション名はオブジェクト名を元に作成されるので、インスタンスを保存するときにオブジェクトの名前に注意する必要があります。
+<p />
+このクラスでは、キャラクター名 (人間にも識別しやすい名前)、体力などのさまざまな設定変数を定義します。キャラクターのインベントリは異なる方法で格納します。オブジェクト変数は設定変数にできないので、すべてのインベントリ項目の ID (文字列) を記録し、このリストを代わりに保存します。ということは、インベントリを管理するという追加作業が必要になります。
+<p />
+インベントリ項目の追加と除外は、 <code>addInventory</code> と <code>removeInventory</code> メソッドを使って行う必要があります。これらのメソッドは、 <code>inventory</code> と <code>inventoryRecords</code> 配列の両方を更新します。 <code>inventory</code> 配列を直接変更してはいけません。 <code>Sapitu</code> クラスがロード中にこれを変更しますが、これは特別なケースです。
+<p />
+さらに、キャラクターの保存は別の方法で行う必要があります。 <code>SaveConfig</code> はインベントリを適切に保存しないので、これを直接呼び出すことはできません。 <code>save</code> メソッドはインベントリ配列を反復し、各項目に対して <code>SaveConfig</code> を呼び出し、次に <code>SaveConfig</code> を自己呼び出しします。これにより、このキャラクターに属する内容がすべて適切に保存されます。
+<p />
+注意: <code>SapituCharacter</code> と <code>SapituInventory</code> のいずれのインスタンスも、Sapitu システム内の他の場所には保存されません。
+<p />
+<h3><a name="=_SapituInventory= クラス"></a> <code>SapituInventory</code> クラス </h3>
+<p />
+このクラスは、インベントリ項目の実際のインスタンスです。 <code>SapituItem</code> クラスの特別なインスタンスに基づいて作成され、 <code>SapituCharacter</code> クラスと同じ方法で宣言されます。
+<p />
+このインスタンスは <code>SapituItem</code> に基づいているので、適切な参照を作成し直す際には特に注意が必要です。前述したように、この作業は <code>Sapitu</code> クラスによって行われます。
+<p />
+<h3><a name="=_SapituItem="></a> <code>SapituItem</code> </h3>
+<p />
+このクラスでは、インベントリ項目の作成に使用できる項目タイプを定義します。任意のデータベース項目と考えることができます。
+<p />
+<code>SapituCharacter</code> や <code>SapituInventory</code> クラスとは異なり、このクラスは <code>UTUIResourceDataProvider</code> のサブクラスです。親クラスが既に conifg クラスとして定義されているので、 <code>config</code> として宣言せず、
+<code>PerObjectconfig</code> として宣言します。
+<p />
+他のクラスと同様に、このクラスでも <code>config</code> 変数をいくつか定義します。これらは項目定義の作成に使います。
+<p />
+defaultproperties セクションにある <code>bSearchAllInis=true</code> エントリに注意してください。この変数は UI データストアシステムに属し、この項目のオブジェクトを見つけるために、データストアシステムがすべての設定ファイルを調べることを規定しています。
+<p />
+<code>SapituItems</code> のロードには、前述の<code>new(none,id)</code> コンストラクタを使わないでください。宣言済みの <code>SapituItem</code> をすべてロードするには、以下のコードを使用します。
+<p />
+<pre>
+class'UTUIDataStore_MenuItems'.static.GetAllResourceDataProviders(class'SapituItem', ProviderList);
+</pre>
+<p />
+(<code>Sapitu.loadItemDB</code> メソッドを参照)
+<p />
+<code>SapituItems</code> は手動で宣言します。これは実行時に変更されることはありません。項目を宣言するには設定ファイルを作成し、次のようにエントリを追加します。
+<p />
+<pre>
+[sword1 SapituItem]
+DisplayName=Short sword
+level=(min=1,max=10)
+weight=(base=10,levelMult=0.5)
+value=(base=5,levelMult=1)
+</pre>
+<p />
+その他の例については、ソースファイル内の <code>UTGame\Config\SapituItemDB.ini</code> ファイルを参照してください。
+<p />
+<h2><a name="savegame の格納"></a> savegame の格納 </h2>
+<p />
+キャラクターとインベントリ項目は、ファイル <code>UTGame\Config\UTSapitu.ini</code> に保存されます。
+ダウンロードファイルにある同ファイルで、既存の savegame を参照してください。すべてのキャラクターとインベントリは、同じファイルに保存されます。
+<p />
+さらに、これが標準テキスト形式である点にも注意してください。つまり、不正行為の対象となる可能性があります。
+しかし、オフラインのシングルプレーヤーゲームなら、savegame の改ざんによってこれを常に行うことができるので、
+savegame が標準テキストであってもバイナリファイルであっても関係ありません。
+<p />
+<h2><a name="Sapitu を使ってプレイする"></a> Sapitu を使ってプレイする </h2>
+<p />
+このシステムを使ってプレイするには、次の方法でソースをコンパイルしてゲームを開始します。
+<p />
+<pre>
+udk examplemap?game=sapitu.sapitugame
+</pre>
+<p />
+<code>SapituPC</code> クラスには、このシステムでプレイするのに使える多数のコンソールコマンドが定義されています。
+<p /> <ul>
+<li> createChar name
+</li> <li> saveChar
+</li> <li> loadChar charId
+</li> <li> printChars
+</li> <li> showChar
+</li> <li> createRandomItem
+</li> <li> createItem baseItem
+</li> <li> pickupItem itemId
+</li> <li> pickupAll
+</li> <li> findItems
+</li> <li> listItemTypes
+</li></ul>
+<p />
+<h2><a name="まとめ"></a> まとめ </h2>
+<p />
+ここに示したシステムは、設定システムを使った savegame システムの作成方法の 1 つにすぎません。
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ConfigSavegameSystemJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:45 GMT -->
+</html></body>

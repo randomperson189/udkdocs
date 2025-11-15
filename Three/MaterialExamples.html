@@ -1,0 +1,842 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MaterialExamples.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:12:05 GMT -->
+<head>
+<title> UDK | MaterialExamples    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">MaterialExamples  </b></div>
+<div id="tooltext">
+<a href="MaterialExamplesJP.html" class="twikiLink">日本語訳</a><br><a href="MaterialExamplesCH.html" class="twikiLink">中国翻译</a><br><a href="MaterialExamplesKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/MaterialExamples -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="MaterialsAndTexturesHome.html" class="twikiLink">Materials &amp; Textures</a></b> &gt; Material Examples
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Material Examples"></a> Material Examples </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="MaterialExamples.html#Material Examples"> Material Examples</a> <ul>
+<li> <a href="MaterialExamples.html#Overview"> Overview</a>
+</li> <li> <a href="MaterialExamples.html#Concepts and Techniques"> Concepts and Techniques</a> <ul>
+<li> <a href="MaterialExamples.html#Specularity"> Specularity</a>
+</li> <li> <a href="MaterialExamples.html#Environment Maps"> Environment Maps</a>
+</li> <li> <a href="MaterialExamples.html#Masks"> Masks</a>
+</li> <li> <a href="MaterialExamples.html#Bump Mapping"> Bump Mapping</a> <ul>
+<li> <a href="MaterialExamples.html#Normal Mapping"> Normal Mapping</a>
+</li> <li> <a href="MaterialExamples.html#Offset Bump Mapping"> Offset Bump Mapping</a>
+</li></ul>
+</li> <li> <a href="MaterialExamples.html#Transmission"> Transmission</a>
+</li> <li> <a href="MaterialExamples.html#Edge Lighting"> Edge Lighting</a>
+</li> <li> <a href="MaterialExamples.html#Parameterization"> Parameterization</a>
+</li></ul>
+</li> <li> <a href="MaterialExamples.html#Examples"> Examples</a> <ul>
+<li> <a href="MaterialExamples.html#Shiny"> Shiny</a> <ul>
+<li> <a href="MaterialExamples.html#Matte"> Matte</a>
+</li> <li> <a href="MaterialExamples.html#Glossy"> Glossy</a>
+</li> <li> <a href="MaterialExamples.html#Metallic"> Metallic</a>
+</li> <li> <a href="MaterialExamples.html#Reflection"> Reflection</a>
+</li></ul>
+</li> <li> <a href="MaterialExamples.html#Bump Offset"> Bump Offset</a>
+</li> <li> <a href="MaterialExamples.html#Glow"> Glow</a>
+</li> <li> <a href="MaterialExamples.html#Transparency"> Transparency</a> <ul>
+<li> <a href="MaterialExamples.html#Masked Transparency"> Masked Transparency</a>
+</li> <li> <a href="MaterialExamples.html#Translucency"> Translucency</a>
+</li> <li> <a href="MaterialExamples.html#Depth-Based Transparency"> Depth-Based Transparency</a>
+</li></ul>
+</li> <li> <a href="MaterialExamples.html#Refraction"> Refraction</a>
+</li> <li> <a href="MaterialExamples.html#Sub-Surface Scattering"> Sub-Surface Scattering</a>
+</li> <li> <a href="MaterialExamples.html#Detail"> Detail</a>
+</li> <li> <a href="MaterialExamples.html#Animating UV Coordinates"> Animating UV Coordinates</a> <ul>
+<li> <a href="MaterialExamples.html#Rotating"> Rotating</a>
+</li> <li> <a href="MaterialExamples.html#Panning and Distortion"> Panning and Distortion</a>
+</li></ul>
+</li> <li> <a href="MaterialExamples.html#Facing Effects"> Facing Effects</a> <ul>
+<li> <a href="MaterialExamples.html#Two Tone"> Two Tone</a>
+</li> <li> <a href="MaterialExamples.html#Rim Lighting"> Rim Lighting</a>
+</li></ul>
+</li> <li> <a href="MaterialExamples.html#Simulated HDR"> Simulated HDR</a>
+</li> <li> <a href="MaterialExamples.html#Snow"> Snow</a>
+</li> <li> <a href="MaterialExamples.html#Wet"> Wet</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The Material System in Unreal Engine 3 is very flexible. The types of surface effects that can be created with this system are virtually unlimited. This not only makes the system extremely powerful, but also can be daunting when getting started or attempting to implement a specific effect. This page is intended to be a quick-reference document for different types of material effects and commonly used or interesting material creation techniques in <a href="UnrealEdUserGuide.html" class="twikiLink">UnrealEd</a>. These examples should provide ideas and insight into creating similar effects or completely new effects.
+<p />
+It is assumed that you already have a good grasp of how to import textures, create materials, work with the Material Editor, etc. For a comprehensive reference of all material expressions, see the <a href="MaterialsCompendium.html" class="twikiLink">Materials Reference</a> page; and for working with materials and the Material Editor, see the <a href="MaterialEditorUserGuide.html" class="twikiLink">Material Editor User Guide</a>. See the <a href="MaterialsTutorial.html" class="twikiLink">Materials Tutorial</a> for information on getting texture and material content into the engine.
+<p />
+
+<p />
+<h2><a name="Concepts and Techniques"></a> Concepts and Techniques </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+In this section, several concepts and techniques that are commonly used when creating materials in Unreal Engine 3 are explained.
+<p />
+<h3><a name="Specularity"></a> Specularity </h3>
+<p />
+Specularity is the highlight created on a surface as a result of the light reflecting off it. In general, the shinier the surface the smaller and brighter the specular highlight will be.
+<p />
+<img alt="ex_shiny_specular.jpg" src="rsrc/Three/MaterialExamples/ex_shiny_specular.jpg" />
+<p />
+The Specular input channel on the material node is used to control the color and brightness of the specular highlight, while the SpecularPower input channel controls the falloff or tightness of the highlight.
+<p />
+<h3><a name="Environment Maps"></a> Environment Maps </h3>
+<p />
+Environment mapping, or reflection mapping, can easily be implemented to apply realtime reflections or to give objects the appearance of reflecting the environment through the use of pre-rendered cubemaps.
+<p />
+<img alt="ex_EnvMap.jpg" src="rsrc/Three/MaterialExamples/ex_EnvMap.jpg" />
+<p />
+A <a href="MaterialsCompendium.html#ReflectionVector" class="twikiAnchorLink">ReflectionVector</a> expression passed through a <a href="MaterialsCompendium.html#Transform" class="twikiAnchorLink">Transform</a> (Tangent -&gt; World) is used as the UV texture coordinates for a <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">TextureSample</a> with the environment map assigned. This maps the cubemap (RenderToTextureCube or static cubemap) to the surface of the mesh, causing it to appear reflective.
+<p />
+<img alt="EnvMap_Mat.jpg" src="rsrc/Three/MaterialExamples/EnvMap_Mat.jpg" />
+<p />
+The <a href="RenderToTexture.html" class="twikiLink">RenderToTexture</a> page has information regarding setting up a <a href="RenderToTexture.html#SceneCaptureCubeMapActor" class="twikiAnchorLink">SceneCaptureCubeMapActor</a> for realtime reflections as well as using a SceneCaptureCubeMapActor for <a href="RenderToTexture-2.html#Saving static captures">Saving static captures</a>.
+<p />
+To create a new cubemap manually, right-click in the <a href="ContentBrowserReference.html" class="twikiLink">Content Browser</a>, select <em>New TextureCube</em> from the context menu.
+<p />
+<img alt="newtexcubecb.jpg" src="rsrc/Three/MaterialExamples/newtexcubecb.jpg" />
+<p />
+Another option is to click the <em>New</em> button in the <a href="ContentBrowserReference.html" class="twikiLink">Content Browser</a> and select the <em>TextureCube</em> option in the <em>Factory</em> combobox.
+<p />
+<img alt="TextureCubeFactoryNew.jpg" src="rsrc/Three/MaterialExamples/TextureCubeFactoryNew.jpg" />
+<p />
+Then import the six images of your environment and assign them the slots available in the Face Neg/Pos X/Y/Z properties of the new TextureCube. For each of the sides of the CubeTexture, they will be oriented all with the top of the image being the top most part of the texture, and the top and bottom sides will both share the same top direction as depicted in the below image:
+<p />
+<img alt="ex_layout_TexCube.jpg" src="rsrc/Three/MaterialExamples/ex_layout_TexCube.jpg" />
+<p />
+When assigning the textures into the TextureCube, place them in the following slots:
+<p />
+<img alt="prop_TexCube.jpg" src="rsrc/Three/MaterialExamples/prop_TexCube.jpg" />
+<p />
+Once the TextureCube is set up, assign it to a new TextureSample in the Material Editor.
+<p />
+You can connect the RGB output of the <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">TextureSample</a> to the Diffuse input channel of the Material at this point, but you will get errors. To correct these errors you will need to add a new <a href="MaterialsCompendium.html#ReflectionVector" class="twikiAnchorLink">ReflectionVector</a> expression and a new <a href="MaterialsCompendium.html#Transform" class="twikiAnchorLink">Transform</a> expression. Connect the output of the <a href="MaterialsCompendium.html#ReflectionVector" class="twikiAnchorLink">ReflectionVector</a> to the input of the Transform and then connect the output of the <a href="MaterialsCompendium.html#Transform" class="twikiAnchorLink">Transform</a> to the UVs input of the <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">TextureSample</a>.
+<p />
+<h3><a name="Masks"></a> Masks </h3>
+<p />
+A Mask is a grayscale texture, or a single channel (R, G, B, or A) of a texture, used to limit the area of an effect inside of a material. Quite often, a mask will be contained within a single channel of another texture, such as the alpha channel of the diffuse or normal map. This is a good way to make use of unused channels and keep the number of textures being sampled in the material to a minimum. Technically, any channel of any texture can be thought of and used as a mask.
+<p />
+An example mask might look something like the image below:
+<p />
+<img alt="ex_mask.jpg" src="rsrc/Three/MaterialExamples/ex_mask.jpg" />
+<p />
+Typical ways to use texture masks include using a <a href="MaterialsCompendium.html#Multiply" class="twikiAnchorLink">Multiply</a> expression to multiply some value by the value of the mask, effectively telling the material to use the value only where the value in the mask is greater than 0.0. This will vary the intensity of the value of the effect based on the mask value.
+<p />
+This technique is commonly used with materials that have glowing parts. An Emissive mask is created where the parts that glow are white (or varying shades of gray) while everything else is black. The benefit of this is that it not only allows you to limit where the glow is applied, but you have complete control over the color of the glow inside of the material allowing you to quickly make changes to the color instead of requiring a texture artist to make changes and re-import the texture.
+<p />
+<img alt="ex_mask_emissive.jpg" src="rsrc/Three/MaterialExamples/ex_mask_emissive.jpg" />
+<p />
+Another common use of a mask is to blend between two effects by using the mask as the Alpha input of a <a href="MaterialsCompendium.html#LinearInterpolate" class="twikiAnchorLink">LinearInterpolate</a> expression. This will cause one effect or value to be used where the mask is white and another to be used where the mask is black, with a blending of the two in between.
+<p />
+<img alt="ex_mask_lerp.jpg" src="rsrc/Three/MaterialExamples/ex_mask_lerp.jpg" />
+<p />
+<h3><a name="Bump Mapping"></a> Bump Mapping </h3>
+<p />
+In Unreal Engine 3 there are two main techniques used to create Bump Map Materials. Briefly described they are:
+<p /> <ul>
+<li> Normal Mapping -- Uses XYZ vector information instead of just height info of simple bump maps.
+</li> <li> Offset Bump Mapping -- Virtual height displacement of bumps through modification of texture coordinates in addition to normal mapping.
+</li></ul>
+<p />
+Most of the time, simply using a normal map is enough to add extra detail to a surface. In certain circumstances, the use of offset bump mapping in addition to normal mapping can add a more realistic visual effect.
+<p />
+<h4><a name="Normal Mapping"></a> Normal Mapping </h4>
+<p />
+A Normal Map Material uses XYZ information that is stored as RGB components of a texture that is then translated into the surface angle of the texture. This creates the illusion of depth as light reflects off it differently depending on the Normal direction.
+<p />
+Creating a material that uses normal mapping is extremely simple in Unreal Engine 3. The first thing that is needed is a normal map
+<p />
+<img alt="ex_normalmaptex.jpg" src="rsrc/Three/MaterialExamples/ex_normalmaptex.jpg" />
+<p />
+Once you have your normal map imported and ready to use, it needs to be assigned to a TextureSample and then the RGB outputs of that is connected to the <strong>Normal</strong> input channel of the base Material node.
+<p />
+<img alt="ex_normal.jpg" src="rsrc/Three/MaterialExamples/ex_normal.jpg" />
+<p />
+You can clearly see the lighting interacting with the normal mapped surface giving the appearance of having much more detail. The addition of the diffuse texture being connected to the <strong>Specular</strong> input channel helps illustrate this effect.
+<p />
+<h5><a name="Different settings for Normal Map textures"></a> Different settings for Normal Map textures </h5>
+<p />
+If you are encountering problems with your alpha channel being removed from your normal map or the normal map not giving off the full detail, you can edit the normal map.  If you are going to use the offset shader and your height map is in the alpha channel of your normal map, you need to use a different texture compression than <strong>TC_NormalMap</strong>.  Your normal map should be set to <strong>TC_NormalMapAlpha</strong> so it keeps the alpha channel.  This way you can use the parallax bump mapping shader described above.
+<p />
+If your normal map isn't reporting the lighting information it should be, you may need to change settings on the normal map itself.
+<p />
+This is the result of just importing a common normal map texture without any other editing:
+<p />
+<img alt="normals_bad.jpg" src="rsrc/Three/MaterialExamples/normals_bad.jpg" />
+<p />
+Notice there is not much depth in the texture itself.  When applied to a scene with a dynamic light, there are many errors across brush surfaces.  After tweaking with the texture in the browser (double click the normal map texture in the <a href="ContentBrowserReference.html" class="twikiLink">Content Browser</a> to bring up the settings window) you can achieve better results.
+<p />
+<img alt="normals_good.jpg" src="rsrc/Three/MaterialExamples/normals_good.jpg" />
+<p />
+The settings used for a better normal map are listed here. The <strong>SRGB</strong> check box is not checked. The first 3 channels of <strong>UnpackMin</strong> set to -1.  The LOD Group is - <strong>TEXTUREGROUP_WorldNormalMap</strong>.
+<p />
+These settings gave the normal map more depth.  You will also notice a offset shader is being used.  The compression settings on the normal map is set to <strong>TC_NormalMapAlpha</strong>. The height map is in the alpha channel of the normal map. This is the desired setting for it.  Lowering the <strong>UnpackMin</strong> settings more can give you even more detailed information.  If your normal map isn't showing the desired detail, you should try playing with this.  However, there are chances of distortion.
+<p />
+<h4><a name="Offset Bump Mapping"></a> Offset Bump Mapping </h4>
+<p />
+<img alt="ex_ParallaxBumpShot.jpg" src="rsrc/Three/MaterialExamples/ex_ParallaxBumpShot.jpg" />
+<p />
+Offset Bump Mapping takes the illusion of depth available in normal maps a step further by appearing to displace the pixels from the surface by modifying the UV coordinates in a creative way.  The above screenshot is of a completely flat plane, yet the bricks appear to rise up from the surface, even at this steep angle.
+<p />
+To see the difference between normal maps and offset bump maps look below.  Notice the edges of the bricks in the image on the right.  The bricks on the left have bumpiness but are essentially flat whereas the bricks on the right appear to have actual height.
+<p />
+<img alt="ex_SideBySide.jpg" src="rsrc/Three/MaterialExamples/ex_SideBySide.jpg" />
+<p />
+<h5><a name="Heightmap"></a> Heightmap </h5>
+<p />
+In addition to the usual assortment of textures you might use in a material (Diffuse, Specular, Normal, etc.), when creating a material using offset bump mapping you will also need a <em>heightmap</em>. The heightmap is a grayscale texture where the shades of gray represent height. In the case of our tutorial, this information is in the alpha channel of a separate texture simply for visualization purposes. In many cases, the <em>heightmap</em> will be contained in the alpha channel of the normal map texture.
+<p />
+<img alt="ex_heightmap.jpg" src="rsrc/Three/MaterialExamples/ex_heightmap.jpg" />
+<p />
+<h3><a name="Transmission"></a> Transmission </h3>
+<p />
+Transmission refers to the ability of a surface to pass light through from the opposite side. This effect is similar to what is known as sub-surface scattering (SSS), though it is nowhere near as complex as true SSS.
+<p />
+<img alt="ex_transmission.jpg" src="rsrc/Three/MaterialExamples/ex_transmission.jpg" />
+<p />
+There are two input channels that control the transmission of a material: TransmissionMask and TransmissionColor.
+<p />
+<img alt="ex_transmission_inputs.jpg" src="rsrc/Three/MaterialExamples/ex_transmission_inputs.jpg" />
+<p />
+The TransmissionMask input channel can be used by itself or in conjunction with the TransmissionColor, while the TransmissionColor input channel requires a value to be input to the TransmissionMask to function. When passing a value only to the TransmissionMask input channel, the value controls the color and intensity of the transmission. When used in conjunction with the TransmissionColor input channel, the TransmissionMask is multiplied by the TransmissionColor to calculate the total transmission. This means you can pass a color to the TransmissionColor in the form of a <a href="MaterialsCompendium.html#Constant3Vector" class="twikiAnchorLink">Constant3Vector</a> and pass a <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constant</a> to the TransmissionMask to use to control the instensity of the transmission.
+<p />
+<h3><a name="Edge Lighting"></a> Edge Lighting </h3>
+<p />
+Rim lighting, or edge lighting, is a technique commonly used in film or cinematics where lighting is used to light the silhouette of a character in order to set them apart from the scene or make them the focal point. While this can easily be achieved with normal lights, it requires extra setup and animation to have the lights follow the character. This same basic effect can be done within a material giving greater control over the effect and even using it for other purposes, such as giving a character an ethereal look or simply simulating actual lighting on an unlit surface to save on performance.
+<p />
+<img alt="ex_edgelighting.jpg" src="rsrc/Three/MaterialExamples/ex_edgelighting.jpg" />
+<p />
+<h3><a name="Parameterization"></a> Parameterization </h3>
+<p />
+Parameterization refers to the use of parameter expressions within a material. Parameters can be modified by instances of the material or through code. One of the main advantages of parameterization is that you can create a master material which contains all of the functionality you want a collection of materials to all contain. In this master material, certain aspects, such as <a href="MaterialsCompendium.html#TextureSamples" class="twikiAnchorLink">TextureSamples</a> and key <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constants</a> and <a href="MaterialsCompendium.html#Constant3Vector" class="twikiAnchorLink">Constant3Vectors</a> can be replaced with <a href="MaterialsCompendium.html#TextureSampleParameter2D" class="twikiAnchorLink">TextureSampleParameter2D</a>, <a href="MaterialsCompendium.html#ScalarParameter" class="twikiAnchorLink">ScalarParameter</a>, and <a href="MaterialsCompendium.html#VectorParameter" class="twikiAnchorLink">VectorParameter</a> expressions. Then when instances of the master material are created, those aspects of the material can be modified to create completely different materials visually whithout having to waste time or resources creating a new material from scratch.
+<p />
+See the <a href="InstancedMaterials.html" class="twikiLink">InstancedMaterials</a> and <a href="MaterialInstanceConstant.html" class="twikiLink">MaterialInstanceConstant</a> pages for more information.
+<p />
+<h2><a name="Examples"></a> Examples </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+In this section, you will find examples of complete materials that demonstrate many of the concepts and techniques described above as well as others. The examples start off with materials made with fairly simple node networks and then grow in complexity as you progress.
+<p />
+<h3><a name="Shiny"></a> Shiny </h3>
+<p />
+The examples in this section involve creating surfaces with different types of shininess through the use of <a href="MaterialExamples.html#Specularity" class="twikiAnchorLink">Specularity</a> and <a href="#Environment Maps">Environment Maps</a>.
+<p />
+<h4><a name="Matte"></a> Matte </h4>
+<p />
+<img alt="ex_shiny_matte_preview.jpg" src="rsrc/Three/MaterialExamples/ex_shiny_matte_preview.jpg" />
+<p />
+This surface has a flat appearance, though still having some specular highlight. It can be useful for creating surfaces that do not have much or any gloss to them, such as some plastics and matte painted surfaces.
+<p />
+<img alt="ex_shiny_matte.jpg" src="rsrc/Three/MaterialExamples/ex_shiny_matte.jpg" />
+<p />
+The Diffuse color is a bright red <a href="MaterialsCompendium.html#Constant3Vector" class="twikiAnchorLink">Constant3Vector</a> (1.0, 0.0, 0.0) in the example, but any color or a <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">TextureSample</a> could be used.
+<p />
+The SpecularPower is driven by a <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constant</a> with a value of 5.0 causing the highlight to be very dispersed, while the Specular color is a <a href="MaterialsCompendium.html#Constant3Vector" class="twikiAnchorLink">Constant3Vector</a> whose value is a faded version of the Diffuse (0.67, 0.22, 0.22), causes the highlight to be faint.
+<p />
+<h4><a name="Glossy"></a> Glossy </h4>
+<p />
+<img alt="ex_shiny_glossy_preview.jpg" src="rsrc/Three/MaterialExamples/ex_shiny_glossy_preview.jpg" />
+<p />
+This surface has a very glossy appearance, with a tight and bright specular highlight. It can be useful for creating any sort of glossy surface, such as glass, polished plastic, car paint, etc.
+<p />
+<img alt="ex_shiny_glossy.jpg" src="rsrc/Three/MaterialExamples/ex_shiny_glossy.jpg" />
+<p />
+The Diffuse color is a bright red <a href="MaterialsCompendium.html#Constant3Vector" class="twikiAnchorLink">Constant3Vector</a> (1.0, 0.0, 0.0) in the example, but any color or a <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">TextureSample</a> could be used as well.
+<p />
+The SpecularPower is driven by a <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constant</a> with a value of 75.0 causing the highlight to be very focused, while the Specular color is a <a href="MaterialsCompendium.html#Constant3Vector" class="twikiAnchorLink">Constant3Vector</a> whose value is an overdriven version of the Diffuse (3.0, 1.0, 1.0) causing the highlight to be bright and pronounced.
+<p />
+<h4><a name="Metallic"></a> Metallic </h4>
+<p />
+<img alt="ex_shiny_metallic_preview.jpg" src="rsrc/Three/MaterialExamples/ex_shiny_metallic_preview.jpg" />
+<p />
+This surface has a satin appearance, with a fairly dark diffuse color and a dispersed yet fairly bright specular highlight. It can be useful for creating metallic surfaces or satin finishes such as silk fabric.
+<p />
+<img alt="ex_shiny_metallic.jpg" src="rsrc/Three/MaterialExamples/ex_shiny_metallic.jpg" />
+<p />
+The Diffuse color is a dark red <a href="MaterialsCompendium.html#Constant3Vector" class="twikiAnchorLink">Constant3Vector</a> (0.2, 0.0, 0.0) in the example. Using a darker base color is essential to this effect, as the Specular color is essentially the real color of the surface. If using a <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">TextureSample</a>, you could easily multiply it by a <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constant</a> to darken it to achieve a similar effect.
+<p />
+The SpecularPower is driven by a <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constant</a> with a value of 2.0 causing the highlight to be very dispersed, while the Specular color is a <a href="MaterialsCompendium.html#Constant3Vector" class="twikiAnchorLink">Constant3Vector</a> whose value is a brighter version of the Diffuse (1.0, 0.0, 0.0) causing the highlight to be bright.
+<p />
+<h4><a name="Reflection"></a> Reflection </h4>
+<p />
+<img alt="ex_reflection_preview.jpg" src="rsrc/Three/MaterialExamples/ex_reflection_preview.jpg" />
+<p />
+This material uses a cubemap reflection, or environment map, the give the appearance of a polished surface. It can be useful for creating glass, water, chrome, or any other reflective surface.
+<p />
+<img alt="ex_reflection.jpg" src="rsrc/Three/MaterialExamples/ex_reflection.jpg" />
+<p />
+The Diffuse color is controlled by the environment map, which uses a <a href="MaterialsCompendium.html#ReflectionVector" class="twikiAnchorLink">ReflectionVector</a> passed through a <a href="MaterialsCompendium.html#Transform" class="twikiAnchorLink">Transform</a> (Tangent -&gt; World) for its UV texture coordinates. The environment map is multiplied by a <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constant</a> of 0.375 to tone down the reflectivity.
+<p />
+The SpecularPower value of 2.0 causes the highlight to be very dispersed, while the Specular brightness of 0.125 causes the highlight to be faint. This gives a little contrast but keeps the highlight very dim and lets the reflection handle the rest.
+<p />
+<h3><a name="Bump Offset"></a> Bump Offset </h3>
+<p />
+To access the <em>heightmap</em> create a new Texture Sample with the texture containing the <em>heightmap</em> assigned to it. If using the alpha channel of the normal map, a duplicate of the TextureSample with the normal map assigned will be needed.
+<p />
+Your material network should look something like the one below.
+<p />
+<img alt="ex_bumpoffset_tex.jpg" src="rsrc/Three/MaterialExamples/ex_bumpoffset_tex.jpg" />
+<p />
+Now add a <a href="MaterialsCompendium.html#BumpOffset" class="twikiAnchorLink">BumpOffset</a> expression in the workspace (holding B and left-clicking is a quick shortcut) and place it between the <em>heightmap</em> <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">TextureSample</a> and the other <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">TextureSamples</a> in the material. Connect the alpha channel output (bottom one) of the <em>heightmap</em> <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">Texture Sample</a> to the "Height" input of the <a href="MaterialsCompendium.html#BumpOffset" class="twikiAnchorLink">BumpOffset</a>.
+<p />
+Selecting the <a href="MaterialsCompendium.html#BumpOffset" class="twikiAnchorLink">BumpOffset</a> expression will display its properties. These should be adjusted to get the desired look for the effect.
+<p /> <ul>
+<li> <strong>HeightRatio</strong> - Effectively the ratio between the virtual height of the bumps and the width of the texture.  The default is .05, which means that if one tile of the material is mapped to a 10 ft square, the bump depth will appear to be about 10*.05=.5 ft.  Find a value that looks right for your material.
+</li> <li> <strong>ReferencePlane</strong> - A number between 0 and 1 which represents the bump height which results in no texture coordinate offset.  The default of .5 should work for most cases.  Tweak it if desired.
+</li></ul>
+<p />
+<img alt="ex_bumpoffset.jpg" src="rsrc/Three/MaterialExamples/ex_bumpoffset.jpg" />
+<p />
+The final material network should look something like the one above.  In this case the diffuse material is serving as the material's specular map, which does not have to be the case in your network.
+<p />
+<h3><a name="Glow"></a> Glow </h3>
+<p />
+<img alt="ex_glow_preview.jpg" src="rsrc/Three/MaterialExamples/ex_glow_preview.jpg" />
+<p />
+This material uses the Emissive input channel to cause parts of the surface to glow, meaning it will appear fully lit even when no light is affecting it. This effect can be useful for creating lights (i.e., the physical mesh used as the visual representation of a light in the world), particle effects, and any other surface which should appear to give off light. When used in conjunction with <a href="Lightmass-2.html#Mesh Area Lights from Emissive">Lightmass</a>, the surface itself can actually be used as an area light using the Emissive input channel to give off light.
+<p />
+<span style="font:italic 10px arial;">(Click for full size)</span>
+<p />
+<a href="rsrc/Three/MaterialExamples/ex_glow_full.jpg" Target="NEW"><img src="rsrc/Three/MaterialExamples/ex_glow.jpg" /></a>
+<p />
+The Diffuse color of the material comes from the Alpha channel of the <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">TextureSample</a>.
+<p />
+The R, G, and B channels of the <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">TextureSample</a> are all used as individual masks which are multiplied by red, green, and blue <a href="MaterialsCompendium.html#Constant3Vector" class="twikiAnchorLink">Constant3Vectors</a> respectively. These are then passed through a series of <a href="MaterialsCompendium.html#If" class="twikiAnchorLink">If</a> expressions which compare the output of a <a href="MaterialsCompendium.html#Sine" class="twikiAnchorLink">Sine</a> expression to a couple of <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constant</a> values in order to alternate between the three colors. The output of the final <a href="MaterialsCompendium.html#If" class="twikiAnchorLink">If</a> expression is connected to the Emissive input channel to produce the glowing letters.
+<p />
+<h3><a name="Transparency"></a> Transparency </h3>
+<p />
+These examples use the Opacity or OpacityMask input channels to create transparent materials.
+<p />
+<h4><a name="Masked Transparency"></a> Masked Transparency </h4>
+<p />
+<img alt="ex_transparency_masked_preview.jpg" src="rsrc/Three/MaterialExamples/ex_transparency_masked_preview.jpg" />
+<p />
+This material uses masked transparency, which means the surface is either completely opaque or completely transparent. This can be used to hide parts of a surface, resulting in the surface appearing more complex than the underlying geometry. For instance, tree or plant leaves and other foliage such as grass commonly use simple planes and use this technique to hide the parts of the mesh outside of the leaf's outline.
+<p />
+<img alt="ex_transparency_masked.jpg" src="rsrc/Three/MaterialExamples/ex_transparency_masked.jpg" />
+<p />
+The Diffuse color is driven by a diffuse texture.
+<p />
+The Specular color is obtained from the green channel of the diffuse texture, while the intensity is amplified by multiplying it by a <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constant</a> of 4.0.
+<p />
+The Diffuse texture contains the opacity mask in its alpha channel, which is connected to the OpacityMask input channel. Setting the Blend Mode to BLEND_Masked in the material's properties causes the OpacityMask to be used resulting in only the portion of the material where the opacity mask is white (or has a value greater than the Opacity Mask Clip Value to be exact) being visible.
+<p />
+A <a href="Normal%20Mapping.html">Normal Map</a> is connected to the Normal input channel to increase the detail of the lighting.
+<p />
+The <a href="SoftMasked.html" class="twikiLink">SoftMasked</a> blend mode results in an effect very similar to this and the setup would be identical.
+<p />
+<h4><a name="Translucency"></a> Translucency </h4>
+<p />
+<img alt="ex_transparency_translucency_preview.jpg" src="rsrc/Three/MaterialExamples/ex_transparency_translucency_preview.jpg" />
+<p />
+This material uses translucency to create surfaces that are not completely transparent or opaque, but with varying degrees of transparency.
+<p />
+<span style="font:italic 10px arial;">(Click for full size)</span>
+<p />
+<a href="rsrc/Three/MaterialExamples/ex_transparency_translucency_full.jpg" Target="NEW"><img src="rsrc/Three/MaterialExamples/ex_transparency_translucency.jpg" /></a>
+<p />
+The Diffuse color is a combination of a diffuse texture for the solid parts and uses the specular texture amplified and tinted by using <a href="MaterialsCompendium.html#Multiply" class="twikiAnchorLink">Multiply</a> and <a href="MaterialsCompendium.html#Constant3Vector" class="twikiAnchorLink">Constant3Vector</a> expressions to give the windows their color. A <a href="MaterialExamples.html#Mask" class="twikiAnchorLink">Mask</a> is used to separate out the two and then they are combined with an <a href="MaterialsCompendium.html#Add" class="twikiAnchorLink">Add</a> expression before being connected to the Diffuse input channel.
+<p />
+The Specular color and intensity is driven by the specular texture.
+<p />
+The Opacity is controlled by the same <a href="MaterialExamples.html#Masks" class="twikiAnchorLink">Mask</a> used for the Diffuse color which is inverted using a <a href="MaterialsCompendium.html#OneMinus" class="twikiAnchorLink">OneMinus</a> expression.
+<p />
+A <a href="#Normal Mapping">Normal Map</a> is connected to the Normal input channel to increase the detail of the lighting.
+<p />
+<h4><a name="Depth-Based Transparency"></a> Depth-Based Transparency </h4>
+<p />
+<img alt="ex_transparency_depth_preview.jpg" src="rsrc/Three/MaterialExamples/ex_transparency_depth_preview.jpg" />
+<p />
+This material demonstrates the use of a depth calculation to vary the transparency of the surface based on how far the surface is from the surface behind it. This is similar to the behavior provided by the <a href="MaterialsCompendium.html#DepthBiasAlpha" class="twikiAnchorLink">DepthBiasAlpha</a> expression only it is completely adjustable. This can be extremely useful when creating water materials as it simulate the natural appearance of water as it nears the shore.
+<p />
+<span style="font:italic 10px arial;">(Click for full size)</span>
+<p />
+<a href="rsrc/Three/MaterialExamples/ex_transparency_depth_full.jpg" Target="NEW"><img src="rsrc/Three/MaterialExamples/ex_transparency_depth.jpg" /></a>
+<p />
+The Diffuse color is driven by an <a href="#Environment Maps">Environment Map</a> that has its contrast decreased and is darkened a great deal.
+<p />
+The Opacity is controlled solely by the custom depth calculation. The depth of the current pixel, represented by a <a href="MaterialsCompendium.html#PixelDepth" class="twikiAnchorLink">PixelDepth</a> expression, is subtracted from the depth of the pixel behind it, represented by a <a href="MaterialsCompendium.html#DestDepth" class="twikiAnchorLink">DestDepth</a> expression. The resulting value is then divided by a reference depth specified by a <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constant</a> value of 192.0. This value represents the depth difference at which the surface will become completely opaque. The result is then clamped to the desired range. For this example, the range was left at the default of [0, 1], but other values can be used if you want the surface to never be fully opaque or fully transparent.
+<p />
+The Normals of the surface are the result of a fairly complex network of panning normal maps to give the appearance of ripples.
+<p />
+<h3><a name="Refraction"></a> Refraction </h3>
+<p />
+<img alt="ex_refraction_preview.jpg" src="rsrc/Three/MaterialExamples/ex_refraction_preview.jpg" />
+<p />
+This materials uses transparency and the Distortion input channel to simulate the refraction of light as it passes through the surface. This effect is useful when creating glass or water surfaces as well as particle effects like steam or heat waves.
+<p />
+<span style="font:italic 10px arial;">(Click for full size)</span>
+<p />
+<a href="rsrc/Three/MaterialExamples/ex_refraction_full.jpg" Target="NEW"><img src="rsrc/Three/MaterialExamples/ex_refraction.jpg" /></a>
+<p />
+The Diffuse color is driven by an <a href="#Environment Maps">Environment Map</a> multiplied by a <a href="MaterialsCompendium.html#Fresnel" class="twikiAnchorLink">Fresnel</a> expression with an <em>Exponent</em> of 0.5 to cause the reflection to gradually become more apparent as the surface faces farther away from the camera.
+<p />
+The SpecularPower is driven by a <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constant</a> with a value of 150.0 causing the highlight to be very focused, while the Specular color is a <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constant</a> whose value is 1.0 causing the highlight to be fairly bright.
+<p />
+The Opacity is controlled by the same <a href="MaterialsCompendium.html#Fresnel" class="twikiAnchorLink">Fresnel</a> expression which is multiplied by a <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constant</a> of 0.75.
+<p />
+The Distortion input channel value is calculated by multiplying a <a href="MaterialsCompendium.html#Constant3Vector" class="twikiAnchorLink">Constant3Vector</a> with a  value of (5.0, 5.0, 0.0) by a <a href="MaterialsCompendium.html#Fresnel" class="twikiAnchorLink">Fresnel</a> with an <em>Exponent</em> of 1.0.
+<p />
+<h3><a name="Sub-Surface Scattering"></a> Sub-Surface Scattering </h3>
+<p />
+<img alt="ex_sss_preview.jpg" src="rsrc/Three/MaterialExamples/ex_sss_preview.jpg" />
+<p />
+This material uses the Transmission input channels to simulate a sub-surface scattering effect. This technique is useful when creating skin, wax, or other types of materials that are not transparent, but that light from the opposite side can show through.
+<p />
+<img alt="ex_sss.jpg" src="rsrc/Three/MaterialExamples/ex_sss.jpg" />
+<p />
+The Diffuse color is being driven by a <a href="MaterialsCompendium.html#Constant3Vector" class="twikiAnchorLink">Constant3Vector</a>, though a <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">TextureSample</a> could be used depending on the material being created.
+<p />
+The SpecularPower is driven by a <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constant</a> with a value of 25.0 causing the highlight to be fairly focused, while the Specular color is a <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constant</a> whose value is 0.5 causing the highlight to be fairly faint.
+<p />
+The TransmissionMask in the example has a <a href="MaterialsCompendium.html#Constant3Vector" class="twikiAnchorLink">Constant3Vector</a> with a darkened version of the Diffuse color. This could also be a <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">TextureSample</a> as in the Diffuse color.
+<p />
+<h3><a name="Detail"></a> Detail </h3>
+<p />
+<img alt="ex_detail_preview.jpg" src="rsrc/Three/MaterialExamples/ex_detail_preview.jpg" />
+<p />
+This material combines multiple diffuse and normal maps, one to show larger details at a distance and one to show small details close up. This is commonly used on stone, rock, or concrete materials.
+<p />
+<img alt="ex_detail.jpg" src="rsrc/Three/MaterialExamples/ex_detail.jpg" />
+<p />
+A single <a href="MaterialsCompendium.html#TextureCoordinate" class="twikiAnchorLink">TextureCoordinate</a> expression is multiplied by two <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constants</a>, one witha value of 0.5 and the other 4.0, to be connected to the UVs inputs of the diffuse and normal maps. The <a href="MaterialsCompendium.html#TextureCoordinate" class="twikiAnchorLink">TextureCoordinate</a> multiplied by a value of 0.5 is connected to the UVs input of the diffuse and normal map <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">TextureSamples</a> that will be for the larger, distant details. The <a href="MaterialsCompendium.html#TextureCoordinate" class="twikiAnchorLink">TextureCoordinate</a> multiplied by 4.0 is connected to the UVs input of the diffuse and normal map <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">TextureSamples</a> that are used for the small, close up details. The two diffuse <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">TextureSamples</a> are combined using an <a href="MaterialsCompendium.html#Add" class="twikiAnchorLink">Add</a> expression and then connected to the Diffuse input channel. The two normal map <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">TextureSamples</a> are combined using another <a href="MaterialsCompendium.html#Add" class="twikiAnchorLink">Add</a> expression and connected to the Normal input channel.
+<p />
+The example is for a concrete material so the specular highlight is faint and fairly dispersed.
+<p />
+<h3><a name="Animating UV Coordinates"></a> Animating UV Coordinates </h3>
+<p />
+These examples demonstrate various methods of animating the UV coordinates of textures through the use of <a href="MaterialsCompendium.html#Panner" class="twikiAnchorLink">Panner</a> and <a href="MaterialsCompendium.html#Rotator" class="twikiAnchorLink">Rotator</a> expressions.
+<p />
+<h4><a name="Rotating"></a> Rotating </h4>
+<p />
+<span style="font:italic 10px arial;">(Hover for animated preview)</span>
+<div style="width:400px;" onmouseover="toggleAnimImage('rotating');" onmouseout="toggleAnimImage('rotating');">
+	<div id="rotating_still" style="display:block;">
+		<img alt="ex_rotating_preview.jpg" src="rsrc/Three/MaterialExamples/ex_rotating_preview.jpg" />
+	</div>
+	<div id="rotating_anim" style="display:none;">
+		<img alt="ex_rotating_anim.gif" src="rsrc/Three/MaterialExamples/ex_rotating_anim.gif" />
+	</div>
+</div>
+<p />
+This material uses a <a href="MaterialsCompendium.html#Rotator" class="twikiAnchorLink">Rotator</a> expression to modify the UV texture coordinates of a texture causing it to rotate. This can be used to simulate things that rotate such as wheels, fans, propellers, etc. by connecting a <a href="MaterialsCompendium.html#Time" class="twikiAnchorLink">Time</a> expression to the Time input (connecting nothing to the Time input uses the game time by default as well).
+<p />
+This can also be used to simply rotate a texture for use within a material. For instance, if a texture has vertical lines and you need horizontal lines, a <a href="MaterialsCompendium.html#Rotator" class="twikiAnchorLink">Rotator</a> can be used to rotate the texture instead of creating another version of the texture with horizontal lines. To achieve this, a <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constant</a> can be connected to the Time input of the <a href="MaterialsCompendium.html#Rotator" class="twikiAnchorLink">Rotator</a>. The value of the <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constant</a> should be the radian value of the angle to rotate the texture.
+<p />
+Using a <a href="MaterialsCompendium.html#ScalarParameter" class="twikiAnchorLink">ScalarParameter</a> connected to the Time input of the <a href="MaterialsCompendium.html#Rotator" class="twikiAnchorLink">Rotator</a> allows the rotation to be controlled dynamically during play.
+<p />
+<img alt="ex_rotating.jpg" src="rsrc/Three/MaterialExamples/ex_rotating.jpg" />
+<p />
+A <a href="MaterialsCompendium.html#Rotator" class="twikiAnchorLink">Rotator</a> with a <em>Speed</em> of 5 is connected to the diffuse <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">TextureSample</a>, whose output is connected to the Diffuse input channel of the material node.
+<p />
+The Alpha channel of the diffuse texture contains the opacity mask. This is multiplied by another mask which is a circle in order to eliminate any extraneous visible parts of the rotating texture (i.e., the corners where the rotating texture wraps around). The result of the <a href="MaterialsCompendium.html#Multiply" class="twikiAnchorLink">Multiply</a> is connected to the OpacityMask input channel and the BLEND_Masked blend mode is used.
+<p />
+<h4><a name="Panning and Distortion"></a> Panning and Distortion </h4>
+<p />
+<span style="font:italic 10px arial;">(Hover for animated preview)</span>
+<div style="width:268px;" onmouseover="toggleAnimImage('panning');" onmouseout="toggleAnimImage('panning');">
+	<div id="panning_still" style="display:block;">
+		<img alt="ex_panning_preview.jpg" src="rsrc/Three/MaterialExamples/ex_panning_preview.jpg" />
+	</div>
+	<div id="panning_anim" style="display:none;">
+		<img alt="ex_panning_anim.gif" src="rsrc/Three/MaterialExamples/ex_panning_anim.gif" />
+	</div>
+</div>
+<p />
+This effect combines an offset bump map as a mask over panning power stream texture. The resulting effect creates a great sense of depth in the grates of the final Material the offset somewhat occludes the power stream depending on the viewing angle. It's not perfect occlusion, as that would require geometry, but it creates a convincing feeling of depth. Click on the below image to see the entire set up in the Material Editor (Note: the image is very large and may take a little while to load).
+<p />
+<span style="font:italic 10px arial;">(Click for full size)</span>
+<p />
+<a href="rsrc/Three/MaterialExamples/ex_panning_full.jpg" Target="NEW"><img src="rsrc/Three/MaterialExamples/ex_panning.jpg" /></a>
+<p />
+The Diffuse channel is used to create the panning and masked effect as well as to supply the basic texture for the crate. Passed directly into the Diffuse channel is a Linear Interpolate Modifier that combines the panning effect with the grate.
+<p />
+<img alt="Grate_Texture.jpg" src="rsrc/Three/MaterialExamples/Grate_Texture.jpg" />
+<p />
+The base grate texture (pictured above) is passed into the A channel of the Linear Interpolate Modifier with a <a href="MaterialsCompendium.html#BumpOffset" class="twikiAnchorLink">BumpOffset</a> passed into the Coordinates channel of the Texture Sample for the base texture. The <a href="MaterialsCompendium.html#BumpOffset" class="twikiAnchorLink">BumpOffset</a> is what created the effect of the texture occluding itself.
+<p />
+Into the B channel of the <a href="MaterialsCompendium.html#LinearInterpolate" class="twikiAnchorLink">LinearInterpolate</a> is where the panning power stream effect is created. Starting at the very right of the chain of Modifiers is a <a href="MaterialsCompendium.html#Panner" class="twikiAnchorLink">Panner</a> fed into a rainbow cloud looking <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">TextureSample</a> that causes it to pan in the X direction with a speed of 0.2. Below you can see the texture used in the Texture Sample.
+<p />
+<img alt="WaterDistortion.jpg" src="rsrc/Three/MaterialExamples/WaterDistortion.jpg" />
+<p />
+Then a <a href="MaterialsCompendium.html#ComponentMask" class="twikiAnchorLink">ComponentMask</a> is applied to pass only the red and green components on into an <a href="MaterialsCompendium.html#Add" class="twikiAnchorLink">Add</a> expression. The <a href="MaterialsCompendium.html#Add" class="twikiAnchorLink">Add</a> expression is used to add a <a href="MaterialsCompendium.html#Panner" class="twikiAnchorLink">Panner</a> with SpeedX of 0.0 and SpeedY of 0.2 to the R and G components of the Panning Texture Sample. The result of this <a href="MaterialsCompendium.html#Add" class="twikiAnchorLink">Add</a> expression is that it treats the <a href="MaterialsCompendium.html#Panner" class="twikiAnchorLink">Panner</a> as if it is a texture and adds the color of that Texture to the texture passed into the B channel of the <a href="MaterialsCompendium.html#Add" class="twikiAnchorLink">Add</a> expression. This is due to the Material Editor not distinguishing between colors and numbers.
+<p />
+Now, we see the converse effect of a texture being used as a number value as the resulting <a href="MaterialsCompendium.html#Add" class="twikiAnchorLink">Add</a> expression is passed into the UVs of a simple Beam Texture. By passing in this complicated series of Modifiers into the UVs of another Sample Texture, the resulting texture is distorted and modified so that it pans with more organic irregularities rippling throughout the texture. Below you can see the contrasting results between the base texture and the texture with all of the Modifiers applied.
+<p />
+<table>
+ <tr>
+<td>
+<img alt="PowerBeam.gif" src="rsrc/Three/MaterialExamples/PowerBeam.gif" />
+      </td>
+      <td width="10">
+      <td>
+<img alt="PowerBeamModified.gif" src="rsrc/Three/MaterialExamples/PowerBeamModified.gif" />
+      </td>
+</tr>
+<tr>
+<td>
+<center>The base texture</center>
+      </td>
+      <td width="10">
+      <td>
+<center>Now with Modifiers</center>
+      </td>
+</tr>
+</table>
+<p />
+Now the power beam needs some color so it is fed into a Multiply Modifier where it is multiplied by a green Constant 3 Vector (with R G B values of  0.0, 0.2, and 0.05 respectively). Once colored, it is passed into the B channel of the aforementioned Linear Interpolate Modifier.
+<p />
+All that is left is to apply an Alpha component to the Alpha channel of the Linear Interpolate. In the Alpha component of the base texture for the grate, which is linked into the A channel of the Linear Interpolate, is just such an Alpha layer (shown below):
+<p />
+<img alt="Grate_Alpha.gif" src="rsrc/Three/MaterialExamples/Grate_Alpha.gif" />
+<p />
+With all of these chains of Modifiers linked together into the Linear Interpolate Modifier and then passed into the Diffuse channel, the Material will show a grate texture with a dull green organic power stream flowing behind the grate mask.
+<p />
+The Emissive channel is used solely to brighten the green power stream behind the grate mask. To do this, the Multiply Modifier that is passed into the B channel of the Linear Interpolate is also passed into a second Multiply Modifier and multiplied against a Constant. To make the green power stream extra bright, the Constant R value is set at 20.0. Then the resulting Multiply Modifier is passed into the Emissive channel of the Material.
+<p />
+By applying the same base texture via a Sample Texture Modifier into the Specular channel that is used for the grate in the Diffuse Channel, the glare from lights is reduced.
+<p />
+In the Normal channel is just a regular BumpOffset normal map. This creates the effect that the grate actually occludes itself depending on the viewer's eye position. The normal map pictured below is linked into a BumpOffest with the default HeightRatio and ReferencePlane values, and then that BumpOffset is link back into another instance of the normal map as well as the base texture in the diffuse channel. Lastly, the string of normal maps and BumpOffset Modifier is passed into the Normal channel of the final Material.
+<p />
+Here you can see the base normal map used in this material.
+<p />
+<img alt="Grate_Normal.gif" src="rsrc/Three/MaterialExamples/Grate_Normal.gif" />
+<p />
+<h3><a name="Facing Effects"></a> Facing Effects </h3>
+<p />
+These examples demonstrate direction-based effects, e.g. effects that are dependent on the direction from which the material is being viewed.
+<p />
+<h4><a name="Two Tone"></a> Two Tone </h4>
+<p />
+<img alt="ex_facing_twotone_preview.jpg" src="rsrc/Three/MaterialExamples/ex_facing_twotone_preview.jpg" />
+<p />
+This material simulates a two-tone surface that appears to be one color when viewed from certain directions and another color when viewed from the opposite direction. The surface is also highly <a href="MaterialExamples.html#Glossy" class="twikiAnchorLink">Glossy</a> and uses an <a href="#Environment Maps">Environment Map</a> for reflections. This is similar to some car paints.
+<p />
+<span style="font:italic 10px arial;">(Click for full size)</span>
+<p />
+<a href="rsrc/Three/MaterialExamples/ex_facing_twotone_full.jpg" Target="NEW"><img src="rsrc/Three/MaterialExamples/ex_facing_twotone.jpg" /></a>
+<p />
+The Diffuse color is a compbination of the two-tone effect and an <a href="#Environment Maps">Environment Map</a>. The <a href="#Environment Maps">Environment Map</a> is multipled by a <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constant</a> with a value of 0.1625 to darken it. That is then multiplied by the result of calculation that is similar to the basic <a href="MaterialExamples.html#Specularity" class="twikiAnchorLink">Specularity</a> calculation done behind the scenes. A <a href="MaterialsCompendium.html#LightVector" class="twikiAnchorLink">LightVector</a> and a <a href="MaterialsCompendium.html#ReflectionVector" class="twikiAnchorLink">ReflectionVector</a> are passed into a <a href="MaterialsCompendium.html#DotProduct" class="twikiAnchorLink">DotProduct</a>. The result is then clamped using a <a href="MaterialsCompendium.html#ConstantClamp" class="twikiAnchorLink">ConstantClamp</a> and passed to a <a href="MaterialsCompendium.html#Power" class="twikiAnchorLink">Power</a> as the <em>Base</em> input with an <em>Exp</em> input of 0.5. This entire calculation results in a value of 1.0 when the reflection off the surface points at the light interpolating down to a value of 0.0 when the reflection is perpendicular to the light, which is how <a href="MaterialExamples.html#Specularity" class="twikiAnchorLink">Specularity</a> works. This value is then multiplied by the <a href="#Environment Maps">Environment Map</a>.
+<p />
+The two-tone effect uses a similar setup to the reflection effect described above. A <a href="MaterialsCompendium.html#LightVector" class="twikiAnchorLink">LightVector</a> and a <a href="MaterialsCompendium.html#ReflectionVector" class="twikiAnchorLink">ReflectionVector</a> are passed into a <a href="MaterialsCompendium.html#DotProduct" class="twikiAnchorLink">DotProduct</a>. The result is then clamped using a <a href="MaterialsCompendium.html#ConstantClamp" class="twikiAnchorLink">ConstantClamp</a> and passed to a <a href="MaterialsCompendium.html#Power" class="twikiAnchorLink">Power</a> as the <em>Base</em> input with an <em>Exp</em> input of 3.0. This entire calculation results in a value of 1.0 when the angle the surface is being viewed from is the same as the angle the surface is being lit from interpolating down to a value of 0.0 when viewing the surface perpendicular to the light. This value is used as the <em>Alpha</em> input of a <a href="MaterialsCompendium.html#LinearInterpolate" class="twikiAnchorLink">LinearInterpolate</a> expression. The <em>A</em> and <em>B</em> inputs of the <a href="MaterialsCompendium.html#LinearInterpolate" class="twikiAnchorLink">LinearInterpolate</a> each have a <a href="MaterialsCompendium.html#Constant3Vector" class="twikiAnchorLink">Constant3Vector</a> connected; one is a deep blue (0.01, 0.0, 0.5) and the other is a brighter blue/purple (0.125, 0.0, 1.25). This will cause the purple color to be applied when viewing the surface from the direction of the light and the blue when viewing the surface perpendicular to the light.
+<p />
+The <a href="#Environment Maps">Environment Map</a> network and the two-tone network are then combined using an <a href="MaterialsCompendium.html#Add" class="twikiAnchorLink">Add</a> expression and then connected to the Diffuse input channel of the material node.
+<p />
+The SpecularPower is driven by a <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constant</a> with a value of 1.25 causing the highlight to be dispersed, while the Specular color is a <a href="MaterialsCompendium.html#Constant3Vector" class="twikiAnchorLink">Constant3Vector</a> whose value is a slight variation of the purple color (0.1, 0.0, 1.2) causing the highlight to be noticeable, but not overpowering.
+<p />
+<h4><a name="Rim Lighting"></a> Rim Lighting </h4>
+<p />
+<img alt="ex_rimlighting_preview.jpg" src="rsrc/Three/MaterialExamples/ex_rimlighting_preview.jpg" />
+<p />
+This material demonstrates the creation of "hard-coded" lighting to create a <a href="#Edge Lighting">Edge Lighting</a> effect. A variation of this technique can also be used in unlit materials to simulate lighting, making the material much less intensive to render while still giving the appearance of being lit. Mesh particles sometimes use this effect as they can be expensive to light.
+<p />
+<span style="font:italic 10px arial;">(Click for full size)</span>
+<p />
+<a href="rsrc/Three/MaterialExamples/ex_rimlighting_full.jpg" Target="NEW"><img src="rsrc/Three/MaterialExamples/ex_rimlighting.jpg" /></a>
+<p />
+The Diffuse color is simply controlled by a <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">TextureSample</a>.
+<p />
+The Emissive color is driven by the main effect. A <a href="MaterialsCompendium.html#Constant3Vector" class="twikiAnchorLink">Constant3Vector</a> with a value of (0.0, 0.0, 1.0) is transformed from Tangent to World coordinates; essentailly transforming the tangent normal of the surface to a world normal. This is connected to a <a href="MaterialsCompendium.html#DotProduct" class="twikiAnchorLink">DotProduct</a> along with another <a href="MaterialsCompendium.html#Constant3Vector" class="twikiAnchorLink">Constant3Vector</a> with a value of (1.0, 0.0, 0.0). The second <a href="MaterialsCompendium.html#Constant3Vector" class="twikiAnchorLink">Constant3Vector</a> represents the light direction. This result of the <a href="MaterialsCompendium.html#DotProduct" class="twikiAnchorLink">DotProduct</a> is clamped from [0, 1] and then passed through a <a href="MaterialsCompendium.html#Power" class="twikiAnchorLink">Power</a> with a <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constant</a> of 5.0 connected to the <em>Exp</em> input. This value controls how much fallow there is for the lighting effect. The result is then multiplies by a <a href="MaterialsCompendium.html#Fresnel" class="twikiAnchorLink">Fresnel</a> with an <em>Exponent</em> of 10 and the normal map connected to the <em>Normal</em> input, causing the lighting to only appear around the edge of the mesh even when the lit side is viewed directly. Next, the value is multipled by a <a href="MaterialsCompendium.html#Constant3Vector" class="twikiAnchorLink">Constant3Vector</a> representing the color of the light. Then, the diffuse texture is multiplied in as well. Finally, the value is multipled by a <a href="MaterialsCompendium.html#Constant" class="twikiAnchorLink">Constant</a> with a value of 10.0 which controls the intensity of the edge lighting. The final result is connected to the Emissive input channel.
+<p />
+The Normals of the surface are controlled by a <a href="MaterialsCompendium.html#TextureSample" class="twikiAnchorLink">TextureSample</a> with the normal map applied.
+<p />
+<h3><a name="Simulated HDR"></a> Simulated HDR </h3>
+<p />
+<img alt="ex_HDRCubeMap.jpg" src="rsrc/Three/MaterialExamples/ex_HDRCubeMap.jpg" />
+<p />
+Cube maps with simulated HDR lighting such as the one pictured above, can be easily created with the following modifiers and textures.
+<p />
+<img alt="ex_HDRCubeMap_Mat.jpg" src="rsrc/Three/MaterialExamples/ex_HDRCubeMap_Mat.jpg" />
+<p />
+To create the effect, take a cubesample/reflection texture, isolating the brightest pixels, adding a control to modify the intensity of those isolated pixels, and then adds those back on top of the base cubemap. With this setup, the cubemap itself will be darker while still having control over the highlight brightness.
+<p />
+This replicates the behavior of real world reflections: The bright things being reflected stay bright even on translucent or dark surface reflections. For it to look right on cubemaps sampled from within the editor, you'll need to disable the SRGB flag on the cube texture sample. You can leave it off, but you'll get very dark, contrasty reflections.
+<p />
+With this approach, you first desaturate the cube texture, isolate the bright pixels from that, then multiply that result with the original cube texture to recolor it before finally adding it to itself. This prevents any wrong color info from being introduced and truly only affects the brightness output.
+<p />
+<h3><a name="Snow"></a> Snow </h3>
+<p />
+<img alt="ex_Snow.jpg" src="rsrc/Three/MaterialExamples/ex_Snow.jpg" />
+<p />
+This material simulates a snow material that sparkles.
+<p />
+<span style="font:italic 10px arial;">(Click for full size)</span>
+<p />
+<a href="rsrc/Three/MaterialExamples/ex_Snow_Mat.jpg" Target="NEW"><img src="rsrc/Three/MaterialExamples/ex_Snow_Mat_thumb.jpg" /></a>
+<p />
+First, create one 512x512 sparkle texture (a black background with dispersed white 1 pixel size dots) in the RBG channel and a mask texture in the Alpha channel to be used as a mask for the sparkling effect (using the Cloud filter in Photoshop and heavily contrasted). Also, if your version of the editor has support for importing DDS textures directly, you can manually create the sparkle texture's mipmap levels to work properly at different distances. The mipmap levels are just a portion of the original sparkle texture cropped and pasted onto the next mipmap level and so forth.
+<p />
+In the Material editor, use a <a href="MaterialsCompendium.html#Multiply" class="twikiAnchorLink">Multiply</a> node to mix both the RGB and Alpha channels (both used as separate nodes with different tiling properties). The RBG channel/node has a standard <a href="MaterialsCompendium.html#TextureCoordinate" class="twikiAnchorLink">TextureCoordinate</a> node plugged to it so that you can adjust its tiling. The Alpha channel/node has <a href="MaterialsCompendium.html#ReflectionVector" class="twikiAnchorLink">ReflectionVector</a> through a <a href="MaterialsCompendium.html#ComponentMask" class="twikiAnchorLink">ComponentMask</a> plugged into it to only use the R and G channels and have a permanent size for the mask regardless the distance. Finally, multiply the <a href="MaterialsCompendium.html#Multiply" class="twikiAnchorLink">Multiply</a> node by a ScalarParameter<sup>?</sup> so that you can change the sparkle brightness at will.
+<p />
+The main problem is to get the sparkle effect working at different distances. You will see much better results by manually creating mipmaps than using <a href="MaterialsCompendium.html#PixelDepth" class="twikiAnchorLink">Pixeldepth</a> and the material itself will need less nodes.
+<p />
+<h3><a name="Wet"></a> Wet </h3>
+<p />
+<span style="font:italic 10px arial;">(Hover for animated preview)</span>
+<div style="width:400px;" onmouseover="toggleAnimImage('wet');" onmouseout="toggleAnimImage('wet');">
+	<div id="wet_still" style="display:block;">
+		<img alt="ex_wet_preview.jpg" src="rsrc/Three/MaterialExamples/ex_wet_preview.jpg" />
+	</div>
+	<div id="wet_anim" style="display:none;">
+		<img alt="ex_wet_anim.gif" src="rsrc/Three/MaterialExamples/ex_wet_anim.gif" />
+	</div>
+</div>
+<p />
+This material demonstrates how to create a "wet" surface, where water appears to run down upright surfaces and just pools on horizontal surfaces. The material is set up as a master material which makes use of parameters for things like the diffuse, specular, and normal maps enabling it to be instanced to quickly create varied surfaces all with the ability to be either wet or dry.
+<p />
+<span style="font:italic 10px arial;">(Click for full size)</span>
+<p />
+<a href="rsrc/Three/MaterialExamples/ex_wet_full.jpg" Target="NEW"><img src="rsrc/Three/MaterialExamples/ex_wet.jpg" /></a>
+<p />
+</noautolink>
+<p />
+<script type="text/javascript">
+	function toggleAnimImage(exp)
+	{
+		var still = document.getElementById(exp + "_still");
+		var anim = document.getElementById(exp + "_anim");
+
+		if(anim.style.display == "none")
+		{
+			still.style.display = "none";
+			anim.style.display = "block";
+		}
+		else
+		{
+			still.style.display = "block";
+			anim.style.display = "none";
+		}
+	}
+</script>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MaterialExamples.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:12:25 GMT -->
+</html></body>

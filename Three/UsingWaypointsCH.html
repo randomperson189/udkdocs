@@ -1,0 +1,400 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingWaypointsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:39 GMT -->
+<head>
+<title> UDK | UsingWaypointsCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">UsingWaypointsCH  </b></div>
+<div id="tooltext">
+<a href="UsingWaypoints.html" class="twikiLink">English Translation</a><br><a href="UsingWaypointsJP.html" class="twikiLink">日本語訳</a><br><a href="UsingWaypointsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/UsingWaypointsCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt; <b><a href="AIAndNavigationHome.html" class="twikiLink">AI &amp; 导航</a></b> &gt; 使用路径节点
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Using Waypoints(使用路径节点)"></a> Using Waypoints(使用路径节点) </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="UsingWaypointsCH.html#Using Waypoints(使用路径节点)"> Using Waypoints(使用路径节点)</a> <ul>
+<li> <a href="UsingWaypointsCH.html#概述"> 概述</a>
+</li> <li> <a href="UsingWaypointsCH.html#基本路径">基本路径</a>
+</li> <li> <a href="UsingWaypointsCH.html#构建路径">构建路径</a> <ul>
+<li> <a href="UsingWaypointsCH.html#查看构建的路径">查看构建的路径</a>
+</li> <li> <a href="UsingWaypointsCH.html#路径颜色">路径颜色</a>
+</li></ul>
+</li> <li> <a href="UsingWaypointsCH.html#调试路径">调试路径</a>
+</li> <li> <a href="UsingWaypointsCH.html#高级路径">高级路径</a> <ul>
+<li> <a href="UsingWaypointsCH.html#Doors(门)"> Doors(门)</a>
+</li> <li> <a href="UsingWaypointsCH.html#JumpPads(跳板)"> JumpPads(跳板)</a>
+</li> <li> <a href="UsingWaypointsCH.html#JumpDests(跳跃目的地)"> JumpDests(跳跃目的地)</a>
+</li> <li> <a href="UsingWaypointsCH.html#Lifts(电梯)"> Lifts(电梯)</a>
+</li> <li> <a href="UsingWaypointsCH.html#Ladders(梯子)"> Ladders(梯子)</a>
+</li> <li> <a href="UsingWaypointsCH.html#VolumePathNode(体积路径节点)"> VolumePathNode(体积路径节点)</a>
+</li> <li> <a href="UsingWaypointsCH.html#Cover Links(掩体节点)"> Cover Links(掩体节点)</a>
+</li></ul>
+</li> <li> <a href="UsingWaypointsCH.html#修改路径尺寸(写给程序员)">修改路径尺寸(写给程序员)</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+本文档对如何设立关卡中的导航网络以便使NPCs可以有效地导航到关卡中的任何点的功能进行了描述。它的目标读者是关卡设计人员。关于更多的技术讨论，请参考<a href="WaypointsTechnicalGuide.html" class="twikiLink">路径节点技术指南</a>页面。
+<p />
+<p />
+<h2><a name="基本路径"></a> 基本路径 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+关卡设计人员可以在他们的关卡中NPCs可以在其上面行走的表面上或者NPCs可以在其中漂浮的体积中放置 <code><b>PathNodes(路径节点)</b></code> ( <code><b>NavigationPoint</b></code> 的子类)。==PlayerStarts== 也是 <code><b>NavigationPoints(导航节点)</b></code> ，并且它们执行同样的导航功能。另外， 当构建路径时， <code><b>InventorySpots</b></code> 将会被自动地放置在关卡中每次拾取它们的位置(它们是不可见的，但是您可以看到到它们的连接路径)。
+<p />
+对于要连接的 <code><b>PathNodes(路径节点)</b></code> 来说，它们之间的距离必须小于 <strong>1200</strong> 个虚幻单位(程序员可以修改 <code>nPath.h</code> 文件中的 <strong>MAXPATHDIST</strong> 来改变这个值)。两个 <code><b>NavigationPoints(导航节点)</b></code> 距离太近(重叠)可能会导致AI导航问题，并且应该避免这个问题。当放置 <code><b>PathNodes(路径节点)</b></code> 时，目的是确保关卡的每个区域都会被 <code><b>PathNode(路径节点)</b></code> 或其它的 <code><b>NavigationPoint(导航节点)</b></code> 所覆盖。当一个区域被覆盖后，NPC可以畅通无阻地走到  <code><b>PathNode</b></code> 间距离小于1200个单位的路径节点(也就是说不会在任何东西旁步行停止)。
+<p />
+<img alt="NavigationAI.gif" src="rsrc/Three/UsingWaypointsCH/NavigationAI.gif" />
+<p />
+<p />
+<h2><a name="构建路径"></a> 构建路径 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+当放置了 <code><b>PathNodes(路径节点)</b></code> 后，关卡设计人员可以通过从 <em>Build(构建)</em> 菜单中选择 <em>AI 路径</em> (或通过从 <em>Build(构建)</em> 菜单中选择  <em>Rebuild All(重新构建所有)</em> 来进行完全地重新编译)来构建 <code><b>NavigationPoints(导航节点)</b></code> 之间的连接。对于被构建的路径的角色尺寸大小的范围由用于构建路径的Scout类的PathSizes数组决定。(PathSizes数组定义在您的Engine.ini文件的[Engine.Engine]部分的ScoutClassName ini入口处)。
+<p />
+一旦关卡中具有了大量的路径，那么重新编译所有路径时可能会花费很多的时间。要想调整路径的放置位置，请使用 <em>Build Options(构建选项)</em> 中的 <em>Build Changed Paths(构建更改的路径)</em> 按钮。这将会仅重新构建那些已经被添加、删除或移动的 <code><b>NavigationPoints(导航节点)</b></code> 间的路径。但是，在保存和播放关卡前，将会要求重新构建所有路径。
+<p />
+<h3><a name="查看构建的路径"></a> 查看构建的路径 </h3>
+<p />
+一旦已经构建了路径，便可以通过使用 <em>Show Paths(显示路径)</em> 选项标志来在各种关卡视图窗口中查看它们，这个 <em>Show Paths(显示路径)</em> 选项标志可以在任何视口的 <em>Toggle Show Flags(切换显示标志)</em> 菜单处找到。
+<p />
+路径将会显示为从一个  <code><b>NavigationPoint(导航节点)</b></code> 到另一个导航节点间的连线。如果NPCs在该路径的任何方向都能穿行，那么将会有两条线，同时有箭头物来指明每个方向。否则，线将会在可以穿行的路径方向上显示一个箭头。
+<p />
+尽管使用路径的NPCs是较小的，但是最好总是调整 <code><b>PathNode</b></code> 的位置来使得连接的路径变得尽可能地宽。NPCs将可以在路径中平滑地转换角落或者进行前后扫射，所以较大的路径将会产生比较自热的视觉移动效果。
+<p />
+<h3><a name="路径颜色"></a> 路径颜色 </h3>
+<p />
+一旦构建路径后，路径将会显示为各种各样的颜色，以便指出关于路径的重要信息。导航图边缘的默认的路径颜色的定义如下:
+<p /> <ul>
+<li> <strong>Orange(橘黄色)</strong> -飞行路径，窄路径
+</li> <li> <strong>Light Orange(浅橘黄色)</strong> -飞行路径，宽路径
+</li> <li> <strong>Light Purple(浅紫色)</strong> -需要跳高(高于正常的跳跃能力)
+</li> <li> <strong>Blue(蓝色)</strong> -窄路径
+</li> <li> <strong>Green(绿色)</strong> -正常路径
+</li> <li> <strong>White(白色)</strong> - 宽路径
+</li> <li> <strong>Pink(粉色)</strong> -非常宽的路径
+</li> <li> <strong>Yellow(黄色)</strong> -强制路径
+</li> <li> <strong>Purple(紫色)</strong> - 高级”路径(需要使用"智能")
+</li> <li> <strong>Red(红色)</strong> - “单向”路径(也就是从节点A-&gt;B之间有reachspec(到达说明，而在B-&gt;A之间却没有))。(注意:)
+</li></ul>
+<p />
+<p />
+<h2><a name="调试路径"></a> 调试路径 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+当构建路径后，将会在编辑器中弹出一个窗口，它具有一系列的路径错误及警告。点击错误，将会把您带到出错的NavigationPoint (导航节点)处。也可以通过选择 <em>Tools(工具)</em> 菜单的 <em>Check map for errors(检测地图错误)...</em> 来访问这些错误及警告。
+<p />
+如果一个AI NPC 看上去是令人迷惑的或者做一些令人讨厌的事情，那么可执行以下的控制台命令：
+<p /> <ul>
+<li> <code>Viewclass Pawn</code> -查看有问题的AI NPC。
+</li> <li> <code>ShowDebug</code> -查看哪个AI NPC正在思考，以及它将行走哪条路径。
+</li> <li> <code>RememberSpot</code> -当在关卡中检查导航节点时标记一个位置。然后，使用 <code>ShowDebug</code> (没有查看其它东西)将会为您不断地显示到那个标记位置的更新路径。
+</li></ul>
+<p />
+请参照<a href="MapErrors.html" class="twikiLink">地图错误</a>页面获得关于可能出现的地图检测错误的更多描述。
+<p />
+<p />
+<h2><a name="高级路径"></a> 高级路径 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="Doors(门)"></a> Doors(门) </h3>
+<p />
+<code><b>Door</b></code> <code><b>NavigationPoints</b></code> 必须和任何作为门的 <code><b>Mover</b></code> (基于它的位置，它允许或组织两个区域间的运动)结合放置。==Door== 应该放置在影响区域的中心(一般，放置在用在作为门的实际静态网格物体的中心 – 但是位置要低到接触地面的程度)。还有几个 <code><b>Door(门)</b></code> <code><b>NavigationPoint(导航节点)</b></code> 的重要属性应该根据需要进行更新。
+<p /> <ul>
+<li> <strong>DoorTag(门标签)</strong> 和 <code><b>Door(门)</b></code> 相关联的 <code><b>Mover</b></code> 的标签。
+</li> <li> <strong>DoorTrigger(门触发器)</strong> -如果触发了 <code><b>Door(门)</b></code> ，将会有一个触发器actor的标签用于打开 <code><b>Door(门)</b></code> 。
+</li> <li> <strong>bInitiallyClosed(初始关闭)</strong> - <code><b>Mover</b></code> 的默认状态是否允许运动(如果值为 <em>false</em>  )，或者阻止运动(如果值为 <em>true</em> ，它是默认值)。
+</li> <li> <strong>bBlockedWhenClosed</strong> -如果关闭了 <code><b>Mover</b></code> ，NPC将不会有办法打开它(默认为 <em>false</em> )。
+</li></ul>
+<p />
+现在， <code><b>Movers</b></code> 具有 <strong>bAutoDoor(自动门)</strong> 属性。如果设置为真，将会为那个 <code><b>Mover</b></code> 自动地产生 <code><b>Door(门)</b></code> <code><b>PathNode(路径节点)</b></code> 。这将会对大多数的 <code><b>Door(门)</b></code> 有效。
+<p />
+<h3><a name="JumpPads(跳板)"></a> JumpPads(跳板) </h3>
+<p />
+<code><b>JumpPads(跳板)</b></code> 可以把任何接触它们的 <code><b>Pawn</b></code> 按照特定的方向弹回去。==JumpPads(跳板)== 是通过在 <code><b>JumpPad(跳板)</b></code>  的数组属性 <strong>ForcedPaths[]</strong> 中的第一个元素中指定一个目的地 <code><b>PathNode(路径节点)</b></code> 来实现的。当重新构建路径时将会自动地计算正确的跳跃速度。如果由于任何的原因导致自动产生的速度出现问题，可以设置 <code><b>JumpPads(跳板)</b></code> 的 <strong>JumpModifier</strong> 向量的属性。
+<p />
+<h3><a name="JumpDests(跳跃目的地)"></a> JumpDests(跳跃目的地) </h3>
+<p />
+如果任何地方太高以至于不能跳上去时，则应该使用 <code><b>JumpDests(跳跃目的地)</b></code> 而不是使用 <code><b>PathNodes(路径节点)</b></code> 。==JumpSpots== 将会被低重力的NPCs或者那些有某种跳跃推力的NPCs使用。Bot跳跃到 <code><b>JumpSpot</b></code> 的路径应该把这个 <code><b>JumpSpot</b></code> 放置到它的其中一个 <strong>ForcedPath[]</strong> 数组属性元素内。
+<p />
+<h3><a name="Lifts(电梯)"></a> Lifts(电梯) </h3>
+<p />
+用作为lift的 <code><b>Mover</b></code> 永远都不能使用 <strong>BumpOpenTimed</strong> 状态(而是使用 <strong>StandOpenTimed</strong> 状态)。用作为 <code><b>Lifts</b></code> 的 <code><b>Movers</b></code> 有两种和它们相关的 <code><b>NavigationPoints(导航节点)</b></code> 。==LiftCenter== 应该放在lift的中心。==LiftExit== 应该放置在  <code><b>Lift(电梯)</b></code> 的每个出口处(但是要足够的原，以便NPC站在那里时不会妨碍 <code><b>Lift(电梯)</b></code> )。==LiftCenter== 和 <code><b>LiftExits</b></code> 都有一个 <strong>LiftTag</strong> 属性，它们必须设置为 <code><b>Mover</b></code> 的标签。另外，如果触发了电梯，则要把触发的actor的标签放到 <code><b>LiftCenter</b></code> 的 <strong>LiftTrigger</strong> 属性中。==LiftExits== 还有一个可选属性 <strong>SuggestedKeyFrame</strong> ，当使用 <code><b>LiftExit</b></code> 时，它可以被设置为mover的关键帧数量。这可能会在某种情况下改善NPCs的导航。
+<p />
+<h3><a name="Ladders(梯子)"></a> Ladders(梯子) </h3>
+<p />
+<code><b>LadderVolumes(梯子体积)</b></code> 的方位必须朝向它正在爬的墙壁(通过调整它们的 <strong>WallDir</strong> 属性，当选中 <code><b>LadderVolume</b></code> 时，他显示为方向箭头。)在大多数情况下，关卡设计人员可以允许在构建路径时自动地在 <code><b>LadderVolume</b></code> 的底部及底部添加Ladder(梯子)的 <code><b>NavigationPoints(导航节点)</b></code> 。然而，如果在自动放置梯子时出现任何问题，关卡设计人员可以在设置 <code><b>LadderVolume(梯子体积)</b></code> 的*bAutoPath* 属性为 <em>false</em> 后手动地放置Ladders(梯子)。Ladder(梯子)中心必须在 <code><b>LadderVolume(梯子体积)</b></code> 内。==LadderVolume(梯子体积)== 的底部应该接触地面，顶部应该戳放在高度至少是使用梯子的最大的NPC的高度的墙壁边缘。
+<p />
+<p />
+<h3><a name="VolumePathNode(体积路径节点)"></a> VolumePathNode(体积路径节点) </h3>
+<p />
+VolumePathNode(体积路径节点)对于支持通过体积的导航是有用的，比如，当游泳或飞行。VolumePathNode(体积路径节点)的碰撞圆柱体描述了一个可导航的体积。在路径构建过程中，碰撞圆柱体的尺寸可以通过从关卡设计人员指定的初始半径和高度(使用StartingRadius 和 StartingHeight属性)开始进行调整，直到到达一个阻挡物为止。通过调整位置(从可导航的区域的中间点开始)和VolumePathNode的初始圆柱体大小来获得最佳效果是值得的。VolumePathNodes将会连接到其它重叠的VolumePathNodes以及它们体积内部的NavigationPoints上。另外，在路径构建过程中，也将会对VolumePathNode圆柱体正下面的NavigationPoints进行测试。UTGame的车辆系统，比如VCTF-Sandstorm，示范了VolumePathNodes的应用。
+<p />
+<h3><a name="Cover Links(掩体节点)"></a> Cover Links(掩体节点) </h3>
+<p />
+<code><b>CoverLinks(掩体节点)</b></code> 是为<a href="https://udn.epicgames.com/Three/GearsOfWar" class="restricted" class="restricted" class="twikiLink">战争机器</a>开发的。使用了以下设置： <ul>
+<li> <strong>bCircular</strong> = 选中这项来制作一个圆形的掩体，也就是覆盖围绕一个圆柱。通常使用放置在圆柱体每侧的两个掩体节点来完成，这两个节点指向彼此。
+</li> <li> <strong>bClaimAllSlots</strong> =如果AI进入到这里的掩体中，其它的AI将不会尝试进入到这个区域。
+</li> <li> <strong>MaxFireLinkDist</strong> =为了在一个掩体槽和另一个掩体槽之间建立AI 设计链接，从一个掩体槽到另一个的最大距离(告诉战争机器中的AI，当它们在掩体中时，它们可以射击的地方)。
+</li> <li> <strong>bCanPopUp</strong> =告诉设计人员那个插槽是否认为actor可以从那里站立及进行射击。
+</li> <li> <strong>bAllowPopUp</strong> =如果您想让actor可以从这里进行站立并射击，请设置这个标志。
+</li> <li> <strong>bAllowMantle</strong> =如果您想让actors爬上这个掩体，请设置这个标志。
+</li> <li> <strong>bAllowCoverslip</strong> =如果您想让actors可以沿着这个掩体进行滑动，请设置这个标志(仅对边缘有效)。
+</li> <li> <strong>bAllowSwatTurn</strong> =如果你想让actors可以执行快速转向一个掩体或者快速转离一个掩体的动作，请选中这项(仅对边缘有效)。
+</li></ul>
+<p />
+关于滑动和快速转身，在<a href="https://udn.epicgames.com/Three/GearsOfWar" class="restricted" class="restricted" class="twikiLink">战争机器</a>中滑动意味着围绕一块掩体的边缘快速地向前跑。快速地转身意味着穿过一个打开的空间，然后快速地向左或向右转。
+<p />
+需要理解和记住的是，掩体系统时针对<a href="https://udn.epicgames.com/Three/GearsOfWar" class="restricted" class="restricted" class="twikiLink">战争机器</a>的资源和游戏性来创建的，因此或许不会100%地
+适合于您的特定项目。
+<p />
+<p />
+<h2><a name="修改路径尺寸(写给程序员)"></a> 修改路径尺寸(写给程序员) </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+路径类型既可以通过代码(比如跳跃和飞行节点的粒子)定义也可以在Scout的默认属性中进行定义(对于不同尺寸的实体)。
+<p />
+要想定义不同的尺寸，请修改您的Scout类中的 <code>PathSizes(路径尺寸)</code> 数组。这里是默认值：
+<p />
+<pre>
+        PathSizes(0)&#61;(Desc(描述)&#61;Human,Radius(半径)&#61;48,Height(高度)&#61;80)
+        PathSizes(1)&#61;( Desc(描述)&#61;Common, Radius(半径)&#61;72, Height(高度)&#61;100)
+        PathSizes(2)&#61;( Desc(描述)&#61;Max, Radius(半径)&#61;120, Height(高度)&#61;120)
+        PathSizes(3)&#61;( Desc(描述)&#61;Vehicle, Radius(半径)&#61;260, Height(高度)&#61;120)
+</pre>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingWaypointsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:39 GMT -->
+</html></body>

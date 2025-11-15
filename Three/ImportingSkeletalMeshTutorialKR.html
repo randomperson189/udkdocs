@@ -1,0 +1,351 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ImportingSkeletalMeshTutorialKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:33:38 GMT -->
+<head>
+<title> UDK | ImportingSkeletalMeshTutorialKR    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ImportingSkeletalMeshTutorialKR  </b></div>
+<div id="tooltext">
+<a href="ImportingSkeletalMeshTutorial.html" class="twikiLink">English Translation</a><br><a href="ImportingSkeletalMeshTutorialJP.html" class="twikiLink">日本語訳</a><br><a href="ImportingSkeletalMeshTutorialCH.html" class="twikiLink">中国翻译</a><br>
+
+<!-- Three/ImportingSkeletalMeshTutorialKR -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHomeKR.html" class="twikiLink">UE3 홈</a></b> &gt; <b><a href="SkeletalMeshHomeKR.html" class="twikiLink">스켈레탈 메시</a></b> &gt; 스켈레탈 메시 임포트하기 튜토리얼
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="스켈레탈 메시 임포트하기 튜토리얼"></a> 스켈레탈 메시 임포트하기 튜토리얼 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<em>문서 요약: 애니메이티드 메시와 애니메이션을 언리얼 엔진으로 들여오는 법에 대한 튜토리얼입니다.</em>
+<p />
+<em>문서 변경내역: Chris Sturgill (Demiurge Studios) 작성. <a href="https://udn.epicgames.com/Main/LaurentDelayen" class="restricted" class="restricted" class="twikiLink">Laurent Delayen</a> 업데이트. <a href="https://udn.epicgames.com/Main/SungjinHong" class="restricted" class="restricted" class="twikiLink">홍성진</a> 번역.</em>
+<div class="twikiToc"> <ul>
+<li> <a href="ImportingSkeletalMeshTutorialKR.html#스켈레탈 메시 임포트하기 튜토리얼"> 스켈레탈 메시 임포트하기 튜토리얼</a> <ul>
+<li> <a href="ImportingSkeletalMeshTutorialKR.html#서론"> 서론</a>
+</li> <li> <a href="ImportingSkeletalMeshTutorialKR.html#노멀 맵"> 노멀 맵</a>
+</li> <li> <a href="ImportingSkeletalMeshTutorialKR.html#익스포트할 콘텐츠 준비하기"> 익스포트할 콘텐츠 준비하기</a>
+</li> <li> <a href="ImportingSkeletalMeshTutorialKR.html#UV에 관해서"> UV에 관해서</a> <ul>
+<li> <a href="ImportingSkeletalMeshTutorialKR.html#노멀 맵의 생성"> 노멀 맵의 생성</a>
+</li></ul>
+</li> <li> <a href="ImportingSkeletalMeshTutorialKR.html#애니메이트된 메시 및 애니메이션 익스포트"> 애니메이트된 메시 및 애니메이션 익스포트</a>
+</li> <li> <a href="ImportingSkeletalMeshTutorialKR.html#엔진에 콘텐츠 들여오기"> 엔진에 콘텐츠 들여오기</a>
+</li> <li> <a href="ImportingSkeletalMeshTutorialKR.html#스켈레탈 임포트"> 스켈레탈 임포트</a> <ul>
+<li> <a href="ImportingSkeletalMeshTutorialKR.html#애니메이션 임포트"> 애니메이션 임포트</a>
+</li></ul>
+</li> <li> <a href="ImportingSkeletalMeshTutorialKR.html#스켈레탈 메시 액터의 사용"> 스켈레탈 메시 액터의 사용</a>
+</li> <li> <a href="ImportingSkeletalMeshTutorialKR.html#유용한 콘솔 명령어들"> 유용한 콘솔 명령어들</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="서론"></a> 서론 </h2>
+<hr size="1" noshade="noshade">
+언리얼 엔진 3의 아트 파이프라인에 대한 안내서입니다.
+<p />
+<p />
+<p />
+<h2><a name="노멀 맵"></a> 노멀 맵 </h2>
+<hr size="1" noshade="noshade">
+언리얼 엔진 3 에서는 노멀 맵을 활용할 수 있습니다. 노멀 맵은 베리 하이 폴리곤 메시에서 지오메트리 디테일을 읽은 다음 결과를 UV 매핑된 텍스처로 저장하여 생성됩니다.
+<p />
+<img alt="SoldierSideBySide.jpg" src="rsrc/Three/ImportingSkeletalMeshTutorial/SoldierSideBySide.jpg" />
+<p />
+생성된 노멀 맵은 그 후 UE3의 로우 폴리곤 메시에 적용됩니다. 최종 결과는 폴리곤 측면에서 볼때 실제보다 훨씬 복잡해 보이는 메시가 됩니다. 로우 폴리곤 메시는 그 후 릭되고(rigged) 애니메이트되어 UE3로 익스포트 됩니다.
+<p />
+<h2><a name="익스포트할 콘텐츠 준비하기"></a> 익스포트할 콘텐츠 준비하기 </h2>
+<hr size="1" noshade="noshade">
+이 시점에서 여러분은 하이 폴리곤 메시와 로우 폴리곤 메시를 하나씩 공간 내의 같은 위치에 (아마도 원점에) 가지고 있어야 합니다. 로우 폴리곤 메시를 언래핑하여 그 UV 를 제대로 펼쳐놔야 합니다.
+<p />
+<img alt="AtOriginKR.jpg" src="rsrc/Three/ImportingSkeletalMeshTutorialKR/AtOriginKR.jpg" />
+<p />
+SHTools의 처리는 로우 폴리곤 메시 펼치기에 기반을 두고 있기 때문에, 이 과정은 매우 중요합니다. 이 과정은 또한 3D Studio Max의 새 버전에서도 실행될 수 있습니다.
+<p />
+<h2><a name="UV에 관해서"></a> UV에 관해서 </h2>
+<hr size="1" noshade="noshade">
+노말 매핑 과정은 펼치기에 대해 특별한 배려를 필요로 합니다. 최선의 결과는 UV가 오버랩되지 않도록 하는 것입니다. 관련 도형들이 지오메트리학적으로 똑같다면 UV들을 쌓아놓아도 괜찮습니다.  예를 들면, 아래의 그림에서처럼 메시의 다른 부분들을 오버랩하는 것은 좋지 않습니다:
+<p />
+<img alt="OverlapUVsKR.jpg" src="rsrc/Three/ImportingSkeletalMeshTutorialKR/OverlapUVsKR.jpg" />
+<p />
+아래의 스크린샷에서처럼 좌우가 서로 대칭인 지오메트리 도형 같은 경우에는 UV들을 쌓아놓아도 좋습니다:
+<p />
+<img alt="StackedUVsKR.jpg" src="rsrc/Three/ImportingSkeletalMeshTutorialKR/StackedUVsKR.jpg" />
+<p />
+하이 폴리곤 메시의 경우에는 이러한 제약이 필요 없습니다. 하이 폴리곤 메시는 SHTools를 처리하기 위해 텍스처될 필요가 전혀 없기 때문입니다.
+<p />
+<h3><a name="노멀 맵의 생성"></a> 노멀 맵의 생성 </h3>
+<p />
+하이 폴리곤 메시로부터 노멀 맵을 생성해내는 과정은 SHTools 플러그인, 또는 3DStudio Max, Maya 혹은 Softimage XSI의 도구를 사용해서 다루어집니다.  이 튜토리얼에서는 이를 단계별로 간단히 소개하겠습니다.
+<p />
+SHTools의 메시 처리기 및 서버는 Max/Maya/XSI 의 노멀 매핑 도구 보다 먼저 탄생했다는 점을 기억하십시오. 저희는 현재 노멀 맵을 만들 때 대개 이 도구들을 사용하고 있습니다. 노멀 맵을 작성할 때는 Maya 등 3D 모델링 패키지를 사용할 것을 강력히 추천합니다.
+<p />
+<h2><a name="애니메이트된 메시 및 애니메이션 익스포트"></a> 애니메이트된 메시 및 애니메이션 익스포트 </h2>
+<hr size="1" noshade="noshade">
+메시 익스포트의 자세한 절차는 <a href="ExportingMeshesTutorialKR.html" class="twikiLink">메시 익스포트 튜토리얼</a> 페이지에 수록되어 있습니다.
+<p />
+리그된 로우 폴리곤 메시와 애니메이션 익스포트 과정은 <a href="https://docs.unrealengine.com/udk/Two/ActorXMaxTutorialKR.html" class="twikiLink">ActorXMaxTutorial</a> 에서 상세하게 다루고 있습니다.
+<p />
+주: (위에서 언급한)SHTools를 통해 UE3용으로 노멀 맵을 익스포트 하는 것은 현재 지원되지 않습니다. 그러나 애니메이션 파이프라인은 변경되지 않았기 때문에  Maya로부터 애니메이션 익스포트는 현재 지원되고 있으며 <a href="https://docs.unrealengine.com/udk/Two/ActorXMayaTutorialKR.html" class="twikiLink">ActorXMayaTutorial</a>에 상세하게 다루어져 있습니다.
+<p />
+<h2><a name="엔진에 콘텐츠 들여오기"></a> 엔진에 콘텐츠 들여오기 </h2>
+<hr size="1" noshade="noshade">
+모든 것이 익스포트 되고 준비가 완료되면 언리얼 에디터를 통해 애셋들을 엔진에 임포트할 수 있게 됩니다.
+<p />
+메시 임포트의 자세한 절차는 <a href="ImportingMeshesTutorialKR.html" class="twikiLink">메시 임포트 튜토리얼</a> 페이지에 수록되어 있습니다.
+<p />
+일반 브라우저와 패키지 시스템에 관한 자세한 정보는 <a href="https://udn.epicgames.com/Three/GenericBrowserReferenceKR" class="restricted" class="restricted" class="twikiLink">일반 브라우저 참조</a>와 <a href="UnrealPackagesKR.html" class="twikiLink">언리얼 패키지</a> 페이지를 참고 하십시오.
+<p />
+텍스처 임포트와 머티리얼 작성하기에 관한 것은 <a href="MaterialsTutorialKR.html" class="twikiLink">머티리얼 튜토리얼</a> 페이지에서 다룹니다.
+<p />
+<h2><a name="스켈레탈 임포트"></a> 스켈레탈 임포트 </h2>
+<hr size="1" noshade="noshade">
+PSK 파일들을 언리얼 엔진 내로 임포트에 관한 것은 <a href="ActorXKR.html" class="twikiLink">ActorX</a> 페이지를 참고 하십시오
+<p />
+<h3><a name="애니메이션 임포트"></a> 애니메이션 임포트 </h3>
+<hr size="1" noshade="noshade">
+언리얼 엔진으로 애니메이션 PSA 파일 임포트에 관한 정보는 <a href="ImportingAnimationsTutorialKR.html" class="twikiLink">애니메이션 임포트 튜토리얼</a>을 참고 하십시오.
+<p />
+<h2><a name="스켈레탈 메시 액터의 사용"></a> 스켈레탈 메시 액터의 사용 </h2>
+<hr size="1" noshade="noshade">
+레벨에 스켈레탈 메시 액터를 놓는 법은 매우 간단합니다. <ul>
+<li> <a href="https://udn.epicgames.com/Three/GenericBrowserReferenceKR" class="restricted" class="restricted" class="twikiLink">일반 브라우저</a>에서 스켈레탈 메시를 선택합니다.
+</li> <li> 레벨에 우클릭, '액터 추가'로 간 다음 'SkeletalMesh 추가'를 선택합니다. 레벨에 메시가 생기는 게 보입니다.
+</li></ul>
+<p />
+레벨에서 애니메이션을 재생하는 가장 쉬운 방법은 마티네 액션과 애니메이션 콘트롤 트랙을 사용하는 것입니다. 자세한 정보는 <a href="MatineeUserGuideKR.html" class="twikiLink">Matinee User Guide KR</a> 페이지를 참고하시기 바랍니다.
+<p />
+<h2><a name="유용한 콘솔 명령어들"></a> 유용한 콘솔 명령어들 </h2>
+<hr size="1" noshade="noshade">
+<code>show bones</code> - 스켈레탈 메시의 렌더에 사용된 본 위치를 표시합니다.
+<p />
+그밖의 유용한 명령어들에 관한 것은 <a href="ConsoleCommandsKR.html" class="twikiLink">콘솔 명령어</a> 페이지를 참고 하십시오.
+<p />
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ImportingSkeletalMeshTutorialKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:33:39 GMT -->
+</html></body>

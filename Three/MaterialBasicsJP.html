@@ -1,0 +1,445 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MaterialBasicsJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:55 GMT -->
+<head>
+<title> UDK | MaterialBasicsJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">MaterialBasicsJP  </b></div>
+<div id="tooltext">
+<a href="MaterialBasics.html" class="twikiLink">English Translation</a><br><a href="MaterialBasicsCH.html" class="twikiLink">中国翻译</a><br><a href="MaterialBasicsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/MaterialBasicsJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<h1><a name="マテリアルの基本: 最も一般的な基本マテリアルタイプ作成のためのビジュアルガイド"></a> マテリアルの基本: 最も一般的な基本マテリアルタイプ作成のためのビジュアルガイド </h1>
+<p />
+<em>ドキュメントの概要: 基本的なマテリアル作成のチュートリアル。</em>
+<p />
+<em>ドキュメントの変更ログ: 初稿は David Green<sup>?</sup> 。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="MaterialBasicsJP.html#マテリアルの基本: 最も一般的な基本マテリアルタイプ作成のためのビジュアルガイド"> マテリアルの基本: 最も一般的な基本マテリアルタイプ作成のためのビジュアルガイド</a> <ul>
+<li> <a href="MaterialBasicsJP.html#マテリアルの基本: 概要"> マテリアルの基本: 概要</a>
+</li> <li> <a href="MaterialBasicsJP.html#ディテール テクスチャ"> ディテール テクスチャ</a>
+</li> <li> <a href="MaterialBasicsJP.html#スペキュラーの強化"> スペキュラーの強化</a>
+</li> <li> <a href="MaterialBasicsJP.html#インスタント スペキュラー"> インスタント スペキュラー</a>
+</li> <li> <a href="MaterialBasicsJP.html#スペキュラーの強化"> スペキュラーの強化</a>
+</li> <li> <a href="MaterialBasicsJP.html#法線マップ"> 法線マップ</a>
+</li> <li> <a href="MaterialBasicsJP.html#法線マップの強化"> 法線マップの強化</a>
+</li> <li> <a href="MaterialBasicsJP.html#ディテール法線マップ"> ディテール法線マップ</a>
+</li> <li> <a href="MaterialBasicsJP.html#セルフイルミネーション、エミッシブおよびブルーム"> セルフイルミネーション、エミッシブおよびブルーム</a>
+</li> <li> <a href="MaterialBasicsJP.html#テクスチャ パナー"> テクスチャ パナー</a>
+</li> <li> <a href="MaterialBasicsJP.html#テクスチャ ローテータ"> テクスチャ ローテータ</a>
+</li> <li> <a href="MaterialBasicsJP.html#テクスチャ スケール / テクスチャ タイリング"> テクスチャ スケール / テクスチャ タイリング</a>
+</li> <li> <a href="MaterialBasicsJP.html#マスク付きマテリアル"> マスク付きマテリアル</a>
+</li> <li> <a href="MaterialBasicsJP.html#半透明マテリアル"> 半透明マテリアル</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<p />
+<h2><a name="マテリアルの基本: 概要"></a> マテリアルの基本: 概要 </h2>
+<p />
+このチュートリアルでは、一般的な基本マテリアルタイプを作成するための簡潔なビジュアルガイドを提供します。ここでの作業は、少なくとも <a href="https://udn.epicgames.com/Three/GenericBrowserReferenceJP" class="restricted" class="restricted" class="twikiLink">汎用ブラウザ</a> での <a href="ImportingTextureTutorialJP.html" class="twikiLink">テクスチャのインポート</a> 、および <a href="MaterialEditorUserGuideJP.html" class="twikiLink">マテリアルエディタ</a> の基本的な使い方を理解されていることを前提としています。
+<p />
+<a href="https://udn.epicgames.com/Two/UnrealEngine25" class="restricted" class="restricted" class="twikiLink">Unreal Engine 2.5</a> や Unreal Tournament 2004 のレベルデザインに精通している方は、このチュートリアルに登場する基本マテリアルの多数の名前に聞き覚えがあると思います。これらは UE2.5 の同等のマテリアルと似た機能を提供しています。
+<p />
+これらの基本マテリアル同士は頻繁に組み合わせられ、より複雑なマテリアル シェーダーが生成されます。
+<p />
+<p />
+<h2><a name="ディテール テクスチャ"></a> ディテール テクスチャ </h2>
+<p />
+UE3 のマテリアル システムには UE2.5 のようなディテール テクスチャ プロパティはありませんが、同様の機能は非常に簡単に作成することができます。
+<p />
+UT2004 のディテール テクスチャに似たディテール テクスチャなら非常に効果的です。これらはシームレスでタイル可能なグレースケール テクスチャで、そのバイヤス値はほとんどが中間の 127 グレーに近い値です。
+<p />
+ディテール テクスチャをインポートした後で、その UnpackMax プロパティを 2.0 から 3.0 までの間の値に設定します。通常は Multiply (乗算) 演算中は最終マテリアルが暗くレンダリングされますが、この設定によりアンパックされたテクスチャの明るさが増します。デフォルトの UnpackMax 値は 1.0 です。
+<p />
+TexCoord (テクスチャ座標) デバイスの UTiling と VTiling を、ディテール テクスチャのタイリング量に適した値に設定します。通常これは用途に合わせて 8 から 64 までの範囲で指定します。
+<p />
+これらのディテール テクスチャは、静的メッシュとテレインの両方に使用できます。
+<p />
+<img alt="UE3DetailMaterial.gif" src="rsrc/Three/MaterialBasicsJP/UE3DetailMaterial.gif" />
+<p />
+<img alt="UE3DetailMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsJP/UE3DetailMaterialPreview.jpg" />
+<p />
+<p />
+<h2><a name="スペキュラーの強化"></a> スペキュラーの強化 </h2>
+<p />
+上図に示すように、ベースのディフューズテクスチャから派生したマテリアルスペキュラーが不自然に見えることがよくあります。これは、同様の明るさ (luminance) を持つテクスチャピクセル全体に、スペキュラーエフェクトが均等に適用されるためです。<br>
+スペキュラー効果を際立たせ、NormalMap 深度を高めるために、Power 式を使って派生スペキュラーのコントラストを増やすことができます。<br>
+Power 式はコントラストの調整と同じように機能し、Exp 値が 1.0 の場合は変化がなく、1.0 から 2.0 の間の場合はコントラストが増大します。
+<p />
+Power 式により大きくなったコントラストに数字をかけて、テクスチャの明るさの合計レベルを上げて普通に戻します。Multiply 定数を 16 や 32 などの非常に高い値に設定すると、通常はスペキュラー エフェクトの明るい方のエッジが押出されてブルーミングエフェクトが生じます。
+<p />
+<img alt="UE3SpecularEnhMaterial.gif" src="#" />
+<p />
+<img alt="UE3SpecularEnhMaterialPreview.jpg" src="#" />
+<p />
+<h2><a name="インスタント スペキュラー"></a> インスタント スペキュラー </h2>
+<p />
+マテリアル コレクション内の光沢のあるメタルの場合、ベースのディフューズ テクスチャ自体から直接派生するスペキュラーを簡単に追加することができます。
+<p />
+ディフューズ テクスチャに 1 より大きい定数値をかけて、ピカッと光るスペキュラーのハイライトを作成します。通常は 4 から 8 までの範囲の定数値が最適です。8 を超えるとスペキュラーをブルーム (光のあふれ出しやにじみ) 効果を持つ「輝き」へと変化させます。
+<p />
+注意: スペキュラー効果は、ディフューズ テクスチャのアルファ チャネルの情報から (テクスチャに同様の機能が含まれている場合)、または別の二次的なテクスチャから提供することもできます。これにより、ディフューズ テクスチャ本体から多彩なカスタム スペキュラーを作成して追加することができます。
+<p />
+注意: マテリアルにスペキュラーを追加すると、割り当てられているすべての法線マップの「深度」の質も上がります。
+<p />
+<img alt="UE3SpecularMaterial.gif" src="rsrc/Three/MaterialBasicsJP/UE3SpecularMaterial.gif" />
+<p />
+<img alt="UE3SpecularMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsJP/UE3SpecularMaterialPreview.jpg" />
+<p />
+<h2><a name="スペキュラーの強化"></a> スペキュラーの強化 </h2>
+<p />
+上図に示すように、ベースのディフューズテクスチャから派生したマテリアルスペキュラーが不自然に見えることがよくあります。これは、同様の明るさ (luminance) を持つテクスチャピクセル全体に、スペキュラーエフェクトが均等に適用されるためです。<br>
+スペキュラー効果を際立たせ、NormalMap 深度を高めるために、Power 式を使って派生スペキュラーのコントラストを増やすことができます。<br>
+Power 式はコントラストの調整と同じように機能し、Exp 値が 1.0 の場合は変化がなく、1.0 から 2.0 の間の場合はコントラストが増大します。
+<p />
+Power 式により大きくなったコントラストに数字をかけて、テクスチャの明るさの合計レベルを上げて普通に戻します。Multiply 定数を 16 や 32 などの非常に高い値に設定すると、通常はスペキュラー エフェクトの明るい方のエッジが押出されてブルーミングエフェクトが生じます。
+<p />
+<img alt="UE3SpecularEnhMaterial.gif" src="#" />
+<p />
+<img alt="UE3SpecularEnhMaterialPreview.jpg" src="#" />
+<p />
+<p />
+<h2><a name="法線マップ"></a> 法線マップ </h2>
+<p />
+Unreal エンジンの新機能である法線マップは、マテリアルに 3D のディテールを提供します。
+<p />
+ディフューズと法線テクスチャをインポートします。法線テクスチャの場合は、必ず CompressionSettings (圧縮設定) を TC_Normalmap に、LODGroup (LOD グループ) を TEXTUREGROUP_WorldNormalMap に設定してください。
+<p />
+注意: マテリアルにスペキュラーを追加すると、割り当てられているすべての法線マップの「深度」の質も上がります。
+<p />
+<img alt="UE3NormalMaterial.gif" src="#" />
+<p />
+<img alt="UE3NormalMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsJP/UE3NormalMaterialPreview.jpg" />
+<p />
+<p />
+<h2><a name="法線マップの強化"></a> 法線マップの強化 </h2>
+<p />
+ときにには、Normalmap テクスチャが提供するバンプエフェクトの量が足りないことがあります。<br>
+Normalmap エフェクトまたはその深度を上げるには、NormalMap TextureSample に Constant3Vector を掛けて、B (Blue または Z) ベクトルの値を 1.0 以未満 (0.5 または 0.75 など) に変更します。<br>
+R と G の値を 1.0 より高くすると、Normalmap の深度も増えますが、マテリアル上のすべてのスペキュラーの視覚効果が多少変化します。<br>
+R と G の値は 1.0 から 2.0 の間、B の値は 0.25 から 1.0 の間で自由に調整してください。
+<p />
+B を 1.0 のままにして R と G を 1.0 未満に下げることで、Normalmap の深度の量を減らすこともできます。例えば、R と G を 0.5 にすると、Normalmap 深度がかなり減少します。
+<p />
+<img alt="UE3NormalEnhMaterial.gif" src="#" />
+<p />
+<img alt="UE3NormalEnhMaterialPreview.jpg" src="#" />
+<p />
+<h2><a name="ディテール法線マップ"></a> ディテール法線マップ </h2>
+<p />
+ディテール テクスチャがディフューズ テクスチャに綿密なディテールを加えるのと同様に、ディテール法線マップも法線マップ テクスチャに詳細なディテールを追加することができます。これは最終マテリアルに高解像度のバンプディテールを加えるので、法線マップ テクスチャの解像度が 512x512 などのように低い場合に最も役に立ちます。
+<p />
+ノイズ法線マップとは、ペイント ソフトウェアでグレー値 127 で塗りつぶしてからピクセルノイズをランダムに加算して作成された 1024x1024 のグレースケール テクスチャに過ぎません。このグレースケール テクスチャを次に ATI Compressonator または NVidia nvDXT ツールで処理し、標準の法線マップ ファイルに変換します。
+<p />
+マテリアルの Constant3Vector デバイスを R=1、G=1、B=0 に設定して、Multiply デバイスを使いディテール法線マップからすべてのブルーチャネルを消去します。これを実行しなければ、2 つの法線マップの混合により最終のバンプ ディテールが消去されてしまうので、忘れずに実行します。次に、ディフューズ テクスチャ用に作成したメインの法線マップにディテール法線マップを追加し、2 つの法線マップ テクスチャの合算を生成します。
+<p />
+<img alt="UE3DetailNormalMaterial.gif" src="rsrc/Three/MaterialBasicsJP/UE3DetailNormalMaterial.gif" />
+<p />
+<img alt="UE3DetailNormalMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsJP/UE3DetailNormalMaterialPreview.jpg" />
+<p />
+<p />
+<h2><a name="セルフイルミネーション、エミッシブおよびブルーム"></a> セルフイルミネーション、エミッシブおよびブルーム </h2>
+<p />
+Unreal Engine 3 では、光を放射する自己発光テクスチャの「プッシュ」をサポートしています。UE3 でカラー値を 0.0 から 1.0 の範囲にします。カラー値が 1.0 を超えると、レンダリングにブルーム効果が付与されます。
+<p />
+次の例では、ディフューズ テクスチャ上の自己発光領域を決定するエミッシブ (放射) テクスチャと一緒にディフューズ テクスチャをインポートしています。エミッシブ テクスチャのカラーレベルを 1.0 より大きい値にすることで、輝きを強制します。
+<p />
+エミッシブ テクスチャのサンプルには VectorParameter デバイスの値を乗算しています。このデバイスでは RGBA 値の増加量を指定し、テクスチャの放射カラーが溢れ出るようにします。この 8,0,0,0 という RGBA 値により、赤みを帯びた輝きになります。
+<p />
+このような方法の他にも、グレースケールのエミッシブ テクスチャを使用して、VectorParameter プロパティに適切な RGBA 値を入力するだけで、任意にカスタマイズした放射カラーを指定できます。
+<p />
+<img alt="UE3EmissiveMaterial.gif" src="rsrc/Three/MaterialBasicsJP/UE3EmissiveMaterial.gif" />
+<p />
+<img alt="UE3EmissiveMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsJP/UE3EmissiveMaterialPreview.jpg" />
+<p />
+<p />
+<h2><a name="テクスチャ パナー"></a> テクスチャ パナー </h2>
+<p />
+テクスチャ パナーは、指定された速度でテクスチャをパン移動します。
+<p />
+Panner (パナー) デバイスには SpeedX と SpeedY という、パン速度と方向を指定する 2 つのプロパティがあります。正の値はテクスチャを一方向にパン移動し、負の値は反対方向に移動します。値が小さくなるとパン速度が遅くなり、大きくなると速くなります。
+<p />
+<img alt="UE3TexPannerMaterial.gif" src="rsrc/Three/MaterialBasicsJP/UE3TexPannerMaterial.gif" />
+<p />
+<img alt="UE3TexPannerMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsJP/UE3TexPannerMaterialPreview.jpg" />
+<p />
+<p />
+<h2><a name="テクスチャ ローテータ"></a> テクスチャ ローテータ </h2>
+<p />
+テクスチャ ローテータは、指定された座標オフセットと速度に従いテクスチャを回転させます。Rotator (ローテータ) デバイスには、テクスチャ上の回転の中心座標と回転速度を指定するための 3 つのプロパティがあります。CenterX と CenterY では、テクスチャの回転位置を指定します。設定値 0.0,0.0 は左上隅、0.5,0.5 はテクスチャ中央、1.0,1.0 は右下隅を意味します。正の速度値はテクスチャを時計回り方向に回転させ、負の値は反時計回り方向に回転させます。値が小さくなると回転速度が遅くなり、大きくなると速くなります。
+<p />
+<img alt="UE3TexRotatorMaterial.gif" src="rsrc/Three/MaterialBasicsJP/UE3TexRotatorMaterial.gif" />
+<p />
+<img alt="UE3TexRotatorMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsJP/UE3TexRotatorMaterialPreview.jpg" />
+<p />
+<p />
+<h2><a name="テクスチャ スケール / テクスチャ タイリング"></a> テクスチャ スケール / テクスチャ タイリング </h2>
+<p />
+テクスチャのタイリングまたはスケーリングとは、マテリアルに実行する最も簡単な機能の 1 つです。
+<p />
+テクスチャ サンプル上で TexCoord (テクスチャ座標) デバイスを UV ノードに関連付け、UTiling と VTiling プロパティの値を指定します。値 1.0 はデフォルトのテクスチャ サイズで、小さくなるほどスケールが大きくなり (例えば、0.5 では 2 倍サイズまたは 1/2x のタイリング)、値が大きくなるほどスケールが小さくなります (例えば 2.0 では 1/2 のサイズまたは 2x のタイリング)。
+<p />
+<img alt="UE3TileMaterial.gif" src="rsrc/Three/MaterialBasicsJP/UE3TileMaterial.gif" />
+<p />
+<img alt="UE3TileMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsJP/UE3TileMaterialPreview.jpg" />
+<p />
+<p />
+<h2><a name="マスク付きマテリアル"></a> マスク付きマテリアル </h2>
+<p />
+マスキングは、格子、フェンス、草や葉など、透過部分を持つマテリアルに使用します。マスクを適用するために設定するプロパティはごくわずかです。
+<p />
+マテリアルの透過部分は、メインのディフューズ テクスチャ自体から派生させたり、またはモノクロのマスクやグレースケールのアルファ チャネルのような二次テクスチャに、不透明な (ホワイトまたは明色の) ピクセルと透明な (黒または暗色の) ピクセルを指定して生成することができます。
+<p />
+OpacityMask ノードをマスキングのソースに関連付けます。マテリアルの BlendMode プロパティを BLEND_Masked に設定します。通常 TwoSided (2 面性) チェックボックスは選択状態 (True) にして、オプションとして不透明領域で適切なエッジを得るために OpacityMaskClipValue (不透明マスクのクリップ値) プロパティを調整します。OpacityMaskClipValue では、ピクセルのレンダリング/切り取り位置でのしきい値を決定します。値が小さいほど (0.1 など) ブラックに近づき (0.0 ～ 0.1 までの暗色は描かれません)、0.6 などの高い値はホワイトに近づきます (0.0 ～ 0.6 までの、暗色から明色の範囲は描かれません)。
+<p />
+<img alt="UE3MaskMaterial.gif" src="rsrc/Three/MaterialBasicsJP/UE3MaskMaterial.gif" />
+<p />
+<img alt="UE3MaskMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsJP/UE3MaskMaterialPreview.jpg" />
+<p />
+<p />
+<h2><a name="半透明マテリアル"></a> 半透明マテリアル </h2>
+<p />
+半透明マテリアルは、ガラスや他の部分的に半透明なマテリアルの作成に使用します。半透明効果を得るために使用できる多様なスタイルやマテリアル式設定が用意されています。半透明マテリアルの基本はディフューズ テクスチャサンプルと不透明テクスチャサンプルです。不透明テクスチャをディフューズ テクスチャのアルファ チャネルに合成することで、単体の 32 ビット テクスチャにテクスチャ要件すべてを含めることができます。
+<p />
+マテリアルの BlendMode プロパティを BLEND_Translucent に設定する必要があります。マテリアルの LightingModel プロパティは MLM_Unlit に設定されることがよくあります。ガラスは通常 2 面あるので、マテリアルの TwoSided プロパティは通常 True に設定します。
+<p />
+半透明マテリアルの他のバリエーションには以下が含まれます。
+<p /> <ul>
+<li> テクスチャ サンプルの RGB 出力を、マテリアルの Diffuse (ディフューズ) ノードの代わりに Emissive (エミッシブ) ノードに関連付けます。これにより、リット状態のマテリアルが作成されます。
+</li> <li> テクスチャ サンプルをマテリアルの Distortion (ディストーション) ノードに追加して、ガラス背後のオブジェクトに歪みを引き起こします。  ディフューズまたは不透明テクスチャ、あるいはそれらの派生バージョンをこれに使用することがよくあります。これには LightingModel を MLM_Unlit に設定する必要があります。
+</li> <li> 法線マップの TextureSample を追加し、マテリアルの法線マップノードに関連付けてディテール バンプを提供します。
+</li></ul>
+<p />
+<img alt="UE3TranslucentMaterial.gif" src="rsrc/Three/MaterialBasicsJP/UE3TranslucentMaterial.gif" />
+<p />
+<img alt="UE3TranslucentMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsJP/UE3TranslucentMaterialPreview.jpg" />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MaterialBasicsJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:30:00 GMT -->
+</html></body>

@@ -1,0 +1,596 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PerformanceAndMemoryCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:39:43 GMT -->
+<head>
+<title> UDK | PerformanceAndMemoryCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">PerformanceAndMemoryCH  </b></div>
+<div id="tooltext">
+<a href="PerformanceAndMemory.html" class="twikiLink">English Translation</a><br><a href="PerformanceAndMemoryJP.html" class="twikiLink">日本語訳</a><br><a href="PerformanceAndMemoryKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/PerformanceAndMemoryCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<strong><font color="#ff0000">该页面被<a href="PerformanceHome.html" class="twikiLink">性能、分析 &amp; 优化</a>主页替代。请参阅该页面了解有关虚幻引擎 3 中的分析和优化最新信息。</font></strong>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="UDKProgrammingHome.html" class="twikiLink">技术 &amp; 编程主页</a></b> &gt; 性能和内存
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="性能和内存"></a> 性能和内存 </h1>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="PerformanceAndMemoryCH.html#性能和内存"> 性能和内存</a> <ul>
+<li> <a href="PerformanceAndMemoryCH.html#概述"> 概述</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#保持游戏运行状态"> 保持游戏运行状态</a> <ul>
+<li> <a href="PerformanceAndMemoryCH.html#连续集成">连续集成</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#内容审查命令行开关">内容审查命令行开关</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#日常自动化冒烟测试">日常自动化冒烟测试</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#日常游戏测试">日常游戏测试</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#日常的 QA 性能/内存 测量">日常的 QA 性能/内存 测量</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#修复重定向的命令行开关">修复重定向的命令行开关</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#传送器">传送器</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#设置贴图 LOD 组的命令行开关">设置贴图 LOD 组的命令行开关</a>
+</li></ul>
+</li> <li> <a href="PerformanceAndMemoryCH.html#通用优化"> 通用优化</a> <ul>
+<li> <a href="PerformanceAndMemoryCH.html#Just Turn It Off（只需关闭它）">Just Turn It Off（只需关闭它）</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#Looking At A Wall（面向墙壁）">Looking At A Wall（面向墙壁）</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#产生同种类型的 N 个对象到夸张的程度">产生同种类型的 N 个对象到夸张的程度</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#意外故障"> 意外故障</a>
+</li></ul>
+</li> <li> <a href="PerformanceAndMemoryCH.html#内存"> 内存</a> <ul>
+<li> <a href="PerformanceAndMemoryCH.html#通常加载的内容">通常加载的内容</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#分析引用的内容">分析引用的内容</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#内容比较命令行开关">内容比较命令行开关</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#关卡中的热点报告">关卡中的热点报告</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#DVD 的空间占用">DVD 的空间占用</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#可执行文件大小">可执行文件大小</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#查找副本贴图命令行开关">查找副本贴图命令行开关</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#内容的柱状图">内容的柱状图</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#基于每个多边形的碰撞">基于每个多边形的碰撞</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#关卡优化">关卡优化</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#内存泄露检查">内存泄露检查</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#内存分析器">内存分析器</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#不断增加的对象池">不断增加的对象池</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#TArray 闲置">TArray 闲置</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#贴图池">贴图池</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#未使用的动画">未使用的动画</a>
+</li></ul>
+</li> <li> <a href="PerformanceAndMemoryCH.html#游戏线程"> 游戏线程</a> <ul>
+<li> <a href="PerformanceAndMemoryCH.html#AI 日志记录">AI 日志记录</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#动画">动画</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#清除通过日志消息高亮显示的问题">清除通过日志消息高亮显示的问题</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#动态光照环境更新">动态光照环境更新</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#垃圾回收">垃圾回收</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#充分利用 #if FINAL_RELEASE /`if(`notdefined(FINAL_RELEASE))">充分利用 #if FINAL_RELEASE /`if(`notdefined(FINAL_RELEASE))</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#线性检查">线性检查</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#加载性能">加载性能</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#LOOKING_FOR_PERF_ISSUES">LOOKING_FOR_PERF_ISSUES</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#引擎中的对象池">引擎中的对象池</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#导航网格物体性能">导航网格物体性能</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#移动 Actor">移动 Actor</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#粒子">粒子</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#每帧中性能消耗较大的更新">每帧中性能消耗较大的更新</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#物理">物理</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#分析游戏线程">分析游戏线程</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#骨架网格物体组件更新">骨架网格物体组件更新</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#较慢的虚幻脚本函数调用">较慢的虚幻脚本函数调用</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#生成任何较慢的操作">生成任何较慢的操作</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#基于事件的对象的 _TickableActor 列表">基于事件的对象的 TickableActor 列表</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#有效的可执行命令">有效的可执行命令</a>
+</li></ul>
+</li> <li> <a href="PerformanceAndMemoryCH.html#渲染线程"> 渲染线程</a> <ul>
+<li> <a href="PerformanceAndMemoryCH.html#要降低保真度的渲染线程区域">要降低保真度的渲染线程区域</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#分析渲染线程">分析渲染线程</a>
+</li></ul>
+</li> <li> <a href="PerformanceAndMemoryCH.html#GPU"> GPU</a> <ul>
+<li> <a href="PerformanceAndMemoryCH.html#禁用 _DetailMode（细节模式）">禁用 DetailMode（细节模式）</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#动态阴影">动态阴影</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#着色器复杂度">着色器复杂度</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#平台特定 GPU 工具">平台特定 GPU 工具</a>
+</li> <li> <a href="PerformanceAndMemoryCH.html#FreezeAt 控制台命令">FreezeAt 控制台命令</a>
+</li></ul>
+</li> <li> <a href="PerformanceAndMemoryCH.html#网络带宽"> 网络带宽</a> <ul>
+<li> <a href="PerformanceAndMemoryCH.html#DevNetTraffic">DevNetTraffic</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<p />
+使游戏可以正常运行的同时符合内存约束条件是个大问题，它涉及了很多系统和很多学科。该页面集成了大量可以帮助您正常运行游戏的工具和技术。即使使用世界上最好的工具，您仍然需要灌输确保人们在创建他们想要的东西时使用的是少量的数据 / cpu 循环的思维方式。在这里显示的工具和技术将完全可以帮助您做到这一点。
+<p />
+要做到这一点，我们需要将这个大问题划分成一些小问题，使我们可以尽量使用截然不同的方式集中处理每个区域的问题。这样可以使多人单独进行工作/缩放。
+<p />
+每一项都有一个概述，然后是可以应用到该项上的所有工具/技术，对于每一个工具/技术，我们都给出了您需要采用该工具/技术的简短原因。该页面的目的是为您提供一个快速概述，并指出了一个更全面的工具/技术页面，其中包含有关如何采用特定工具/技术的所有详细信息。
+<p />
+<h2><a name="保持游戏运行状态"></a> 保持游戏运行状态 </h2>
+<p />
+使您的游戏保持运行状态可以使不断添加新内容和功能与控制在您的预算范围内之间达到平衡。在添加新内容时，常常会为它添加不正确的设置，或者与现有的内容相比消耗的性能更多。通常情况下，这些错误只是由于无意疏忽造成的。但是通过游戏这段时间采用的内容量进行跟踪是一件很困难的事情。
+<p />
+下面的工具/技术将会帮助您保持游戏运行状态：
+<p />
+<h3><a name="连续集成"></a> <a href="https://udn.epicgames.com/Three/ContinuousIntegration" class="restricted" class="restricted" class="twikiLink">连续集成</a> </h3>
+<p />
+尽快查找出由于不适当的迁入导致的编译中断。
+<p />
+<h3><a name="内容审查命令行开关"></a> <a href="ContentAuditCommandlet.html" class="twikiLink">内容审查命令行开关</a> </h3>
+<p />
+查找应该评判并极有可能修复的“有问题”的内容。
+<p />
+<h3><a name="日常自动化冒烟测试"></a> <a href="https://udn.epicgames.com/Three/DailyAutomatedSmokeTests" class="restricted" class="restricted" class="twikiLink">日常自动化冒烟测试</a> </h3>
+<p />
+捕获执行代码的罕见的 崩溃/问题。
+<p />
+<h3><a name="日常游戏测试"></a> <a href="https://udn.epicgames.com/Three/DailyPlayTests" class="restricted" class="restricted" class="twikiLink">日常游戏测试</a> </h3>
+<p />
+确定游戏始终可以玩，而人们不只是可以在隔离的测试关卡中查看功能。
+<p />
+<h3><a name="日常的 QA 性能/内存 测量"></a> <a href="https://udn.epicgames.com/Three/DailyQAPerformanceMemoryMetrics" class="restricted" class="restricted" class="twikiLink">日常的 QA 性能/内存 测量</a> </h3>
+<p />
+允许您容易地获得 性能/内存 的衰减情况。
+<p />
+<h3><a name="修复重定向的命令行开关"></a> <a href="FixUpRedirectsCommandlet.html" class="twikiLink">修复重定向的命令行开关</a> </h3>
+<p />
+确保重定向器不会导致加载不应该加载的内容的。
+<p />
+<h3><a name="传送器"></a> <a href="https://udn.epicgames.com/Three/Sentinel" class="restricted" class="restricted" class="twikiLink">传送器</a> </h3>
+<p />
+将会收集与特定关卡相关的性能和内存统计数据的自动系统。
+<p />
+<h3><a name="设置贴图 LOD 组的命令行开关"></a> <a href="SetTextureLODGroupCommandlet.html" class="twikiLink">设置贴图 LOD 组的命令行开关</a> </h3>
+<p />
+确保贴图在正确的 LOD 组中，并修复错误的贴图设置。
+<p />
+<h2><a name="通用优化"></a> 通用优化 </h2>
+<p />
+对于需要在这里为您的游戏进行的所有优化，下面的技术普遍适用于优化过程。
+<p />
+<a href="PerformanceDebugging.html" class="twikiLink">性能调试</a>页面中也包含关于跟踪性能问题、瓶颈和故障的信息。
+<p />
+<h3><a name="Just Turn It Off（只需关闭它）"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_JustTurnItOff" class="restricted" class="restricted" class="twikiLink">Just Turn It Off（只需关闭它）</a> </h3>
+<p />
+有时候最好关闭某些功能来优化性能，而不是花几个小时的时间去优化某些东西。
+<p />
+<h3><a name="Looking At A Wall（面向墙壁）"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_LookingAtAWall" class="restricted" class="restricted" class="twikiLink">Looking At A Wall（面向墙壁）</a> </h3>
+<p />
+面向墙壁，并查看当没有渲染东西时是什么消耗了大量的 CPU 循环。
+<p />
+<h3><a name="产生同种类型的 N 个对象到夸张的程度"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_SpawningNOfATypeToExaggerate" class="restricted" class="restricted" class="twikiLink">产生同种类型的 N 个对象到夸张的程度</a> </h3>
+<p />
+在没有使用其它引擎函数导致速度降低的情况下，那么具有同种类型的 N 个对象实际上就是运行较慢的部分。
+<p />
+<h3><a name="意外故障"></a> 意外故障 </h3>
+<p />
+这里有一些 STAT 命令，可以用于快速检查运行时发生的意外故障，通常是行检查和寻路。查看 Max（最大）值找出发生意外故障的帧。
+<p /> <ul>
+<li> <strong>STAT UNITMAX</strong> - 使用替代 STAT UNIT，以便更好地发现意外故障。
+</li> <li> <strong>STAT COLLISION</strong> - 查看“Multi Line Check（多行检查）”和“Single Line Check（单行检查）”。
+</li> <li> <strong>STAT NAVMESH</strong> - 查看“Generate Path（生成路径）”
+</li> <li> <strong>STAT SLOW</strong> - 显示所有比 10 毫秒慢的统计数据。看上去您必须输入 STAT NONE 将其关闭。
+</li></ul>
+<p />
+<h2><a name="内存"></a> 内存 </h2>
+<p />
+将我们需要持续查看的其中一部分区域控制在游戏可以使用的内存量。查看使用内存的地方，这一点对于这个过程很重要。下面将会帮助您进行该项操作。
+<p />
+请参照<a href="MemoryDebugging.html" class="twikiLink">内存调试页面</a>来跟踪内存泄露、膨胀和碎片问题。
+<p />
+<h3><a name="通常加载的内容"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_AlwaysLoadedContent" class="restricted" class="restricted" class="twikiLink">通常加载的内容</a> </h3>
+<p />
+决定了哪些内容是即使我们不使用也总是需要付出代价加载的内容。您应该最小化这种内容的量。
+<p />
+<h3><a name="分析引用的内容"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_AnalyzeReferencedContent" class="restricted" class="restricted" class="twikiLink">分析引用的内容</a> </h3>
+<p />
+查看一组地图，并显示它们引用的内容，同时显示了这些地图的内容的全局使用情况。从而使您关注于优化对性能造成最大影响的地方。
+<p />
+<h3><a name="内容比较命令行开关"></a> <a href="PerfDebug_ContentComparisonCommandlet.html" class="twikiLink">内容比较命令行开关</a> </h3>
+<p />
+浏览所有内容并使您了解资源之间的相对消耗。
+<p />
+<h3><a name="关卡中的热点报告"></a> <a href="HotSpotReportGeneration.html" class="twikiLink">关卡中的热点报告</a> </h3>
+<p />
+下面的文章会说明如何为您的关卡设计师创建“热点报告”。这些报告将会由您的 QA 部门负责生成，而且可以用于识别由于子关卡动态载入和载出而造成的内存双列直插式封装。它们将允许您的 LD 更清楚地看到消耗最多内存的散列表元，并且应该允许他们优化他们的关卡使其满足内存需求。
+<p />
+<h3><a name="DVD 的空间占用"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_DVDFootprint" class="restricted" class="restricted" class="twikiLink">DVD 的空间占用</a> </h3>
+<p />
+判定您的 DVD 空间中是什么以及数据在它上面的分布情况。
+<p />
+<h3><a name="可执行文件大小"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_ExecutableSize" class="restricted" class="restricted" class="twikiLink">可执行文件大小</a> </h3>
+<p />
+您可能经常无意中就会使您的可执行文件膨胀得很大。所以在是到您的可执行文件中有什么东西是个很好。
+<p />
+<h3><a name="查找副本贴图命令行开关"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_FindDuplicateTexturesCommandlet" class="restricted" class="restricted" class="twikiLink">查找副本贴图命令行开关</a> </h3>
+<p />
+我们将要在所有内容中查找已经复制过多次的贴图。这将会修复那个引用仅指向一个版本的贴图的问题。
+<p />
+<h3><a name="内容的柱状图"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_HistogramsForContent" class="restricted" class="restricted" class="twikiLink">内容的柱状图</a> </h3>
+<p />
+通常按照类别 柱状图/列表 并且在它们旁边写上资源的大小的形式来查看资源分配情况是很好的。
+<p />
+<h3><a name="基于每个多边形的碰撞"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_PerPolyCollision" class="restricted" class="restricted" class="twikiLink">基于每个多边形的碰撞</a> </h3>
+<p />
+并不是所有的网格物体都需要基于每个多边形的碰撞，关闭它将会节约一些内存。
+<p />
+<h3><a name="关卡优化"></a> <a href="LevelOptimization.html" class="twikiLink">关卡优化</a> </h3>
+<p />
+有关一些关卡设计师可以用来确保他们的关卡不会出现慢的情况的技术的概述。
+<p />
+<h3><a name="内存泄露检查"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_MemLeakCheck" class="restricted" class="restricted" class="twikiLink">内存泄露检查</a> </h3>
+<p />
+MemLeakCheck 命令可以列出所有的主要内存使用者。它对内存占用情况进行了快速而简单的概述，并且可以比较。
+<p />
+<h3><a name="内存分析器"></a> <a href="https://udn.epicgames.com/Three/MemoryProfiler" class="restricted" class="restricted" class="twikiLink">内存分析器</a> </h3>
+<p />
+可以具体看到内存分配情况的工具。用于追踪非 UObject 泄露。
+<p />
+<h3><a name="不断增加的对象池"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_PoolsThatGrow" class="restricted" class="restricted" class="twikiLink">不断增加的对象池</a> </h3>
+<p />
+在引擎中会不断增加很多对象池。
+<p />
+<h3><a name="TArray 闲置"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_TArraySlack" class="restricted" class="restricted" class="twikiLink">TArray 闲置</a> </h3>
+<p />
+确保您的 TArray 没有浪费空间。
+<p />
+<h3><a name="贴图池"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_TexturePool" class="restricted" class="restricted" class="twikiLink">贴图池</a> </h3>
+<p />
+Texture Pool（贴图池）的大小是固定的，但是在贴图池中发生的事情是有贴图的设置决定的。
+<p />
+<h3><a name="未使用的动画"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_UnusedAnimations" class="restricted" class="restricted" class="twikiLink">未使用的动画</a> </h3>
+<p />
+未使用的动画占据了宝贵的内存。这里将向您说明如何查找这些未使用的动画并删除它们。
+<p />
+<h2><a name="游戏线程"></a> 游戏线程 </h2>
+<p />
+每个添加到场景中的对象都会占据一些资源。通常最有趣的对象占据的资源最多。为了使这些对象拥有足够的 GameThread CPU 时间，我们需要确保其他对象正确使用资源，而且它们只需要做完成我们的目标所需的最小工作量。这里有大量可以帮助您有效进行这项操作的专门工具/#defines。
+<p />
+对分析迁出进行设置：  <a href="PerformanceDebugging.html" class="twikiLink">性能调试</a>
+<p />
+<h3><a name="AI 日志记录"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_AILogging" class="restricted" class="restricted" class="twikiLink">AI 日志记录</a> </h3>
+<p />
+判定 AI 做的哪些动作是性能消耗比较大的。
+<p />
+<h3><a name="动画"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_Animation" class="restricted" class="restricted" class="twikiLink">动画</a> </h3>
+<p />
+如何识别动画中的较慢的部分。
+<p />
+<h3><a name="清除通过日志消息高亮显示的问题"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_CleaningUpIssuesHighlightedByLogMessages" class="restricted" class="restricted" class="twikiLink">清除通过日志消息高亮显示的问题</a> </h3>
+<p />
+日志是您的好帮手。您不应该忽略日志中显示的信息而是应该查找导致问题的根源并修复它。
+<p />
+<h3><a name="动态光照环境更新"></a> <a href="PerfDebug_DynamicLightEnvironments.html" class="twikiLink">动态光照环境更新</a> </h3>
+<p />
+动态光照环境有一些可以使它们的性能和外观都很好的设置。为资源类型获取正确的设置，这一点非常重要。
+<p />
+<h3><a name="垃圾回收"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_GarbageCollection" class="restricted" class="restricted" class="twikiLink">垃圾回收</a> </h3>
+<p />
+理解要垃圾回收什么并降低要进行垃圾回收的内容的量。
+<p />
+<h3><a name="充分利用 #if FINAL_RELEASE /`if(`notdefined(FINAL_RELEASE))"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_GoodUseFINAL_RELEASE" class="restricted" class="restricted" class="twikiLink">充分利用 #if FINAL_RELEASE /`if(`notdefined(FINAL_RELEASE))</a> </h3>
+<p />
+避免在您发行的游戏中从来没有使用的代码中执行和链接的方法。
+<p />
+<h3><a name="线性检查"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_LineChecks" class="restricted" class="restricted" class="twikiLink">线性检查</a> </h3>
+<p />
+最小化每帧进行的线性检查数量。
+<p />
+<h3><a name="加载性能"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_LoadingPerformance" class="restricted" class="restricted" class="twikiLink">加载性能</a> </h3>
+<p />
+判定为什么加载关卡要花费很长的时间。
+<p />
+<h3><a name="LOOKING_FOR_PERF_ISSUES"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_LOOKING_FOR_PERF_ISSUES" class="restricted" class="restricted" class="twikiLink">LOOKING_FOR_PERF_ISSUES</a> </h3>
+<p />
+使用最强大的选项 #define LOOKING_FOR_PERF_ISSUES 1。
+<p />
+<h3><a name="引擎中的对象池"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_PoolsInTheEngine" class="restricted" class="restricted" class="twikiLink">引擎中的对象池</a> </h3>
+<p />
+引擎中有很多池来帮助我们提高产生对象的性能。请确保您正在使用这些池。
+<p />
+<h3><a name="导航网格物体性能"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_NavMesh" class="restricted" class="restricted" class="twikiLink">导航网格物体性能</a> </h3>
+<p />
+说明了哪些动作会导致 NavMesh（导航网格物体）变慢。
+<p />
+<h3><a name="移动 Actor"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_MoveActor" class="restricted" class="restricted" class="twikiLink">移动 Actor</a> </h3>
+<p />
+在有大量移动 actor 时，确定哪些比较慢很重要。
+<p />
+<h3><a name="粒子"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_Particles" class="restricted" class="restricted" class="twikiLink">粒子</a> </h3>
+<p />
+查找性能消耗较大的粒子系统。
+<p />
+<h3><a name="每帧中性能消耗较大的更新"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_PerFrameExpensiveUpdates" class="restricted" class="restricted" class="twikiLink">每帧中性能消耗较大的更新</a> </h3>
+<p />
+每帧都会发生很多事情。某些事情的性能消耗要比其它的事情大，  判定出这些性能消耗比较大的事情是非常重要的！
+<p />
+<h3><a name="物理"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_Physics" class="restricted" class="restricted" class="twikiLink">物理</a> </h3>
+<p />
+物理是以非同步的方式运行的，但是性能消耗仍然很大。
+<p />
+<h3><a name="分析游戏线程"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_ProfilingGameThread" class="restricted" class="restricted" class="twikiLink">分析游戏线程</a> </h3>
+<p />
+分析游戏线程时使用的技术。
+<p />
+<h3><a name="骨架网格物体组件更新"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_SkeletalMeshCompUpdates" class="restricted" class="restricted" class="twikiLink">骨架网格物体组件更新</a> </h3>
+<p />
+查找您的骨架网格物体哪一部分比较慢的技术。
+<p />
+<h3><a name="较慢的虚幻脚本函数调用"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_SlowUnrealScriptFunctionCalls" class="restricted" class="restricted" class="twikiLink">较慢的虚幻脚本函数调用</a> </h3>
+<p />
+对 UnrealScript 进行优化是获得性能提高的最快方法之一。找到运行最慢的函数，然后或者把它们转换为 C++ 代码或者优化它们所执行的操作。
+<p />
+<h3><a name="生成任何较慢的操作"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_SpawningAnythingIsSlow" class="restricted" class="restricted" class="twikiLink">生成任何较慢的操作</a> </h3>
+<p />
+持续地产生对象的速度很慢，我们要避免那种现象。
+<p />
+<h3><a name="基于事件的对象的 _TickableActor 列表"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_TickableActorsListForObjectsThatAreEventBased" class="restricted" class="restricted" class="twikiLink">基于事件的对象的 TickableActor 列表</a> </h3>
+<p />
+很多 actor 仅需要基于事件来进行“激活”，而不需要每帧都对其进行更新。
+<p />
+<h3><a name="有效的可执行命令"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_UsefulExecCommands" class="restricted" class="restricted" class="twikiLink">有效的可执行命令</a> </h3>
+<p />
+引擎中有很多有用的可执行命令，  我们将详细介绍其中一些命令。
+<p />
+<h2><a name="渲染线程"></a> 渲染线程 </h2>
+<p />
+<h3><a name="要降低保真度的渲染线程区域"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_RenderThreadAreasToReduceFidelity" class="restricted" class="restricted" class="twikiLink">要降低保真度的渲染线程区域</a> </h3>
+<p />
+当您使用分割屏幕时，渲染线程必须把大多数东西都渲染两次。所以在很多情况下，您的唯一选择是降低保真度或禁用它。
+<p />
+<h3><a name="分析渲染线程"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_ProfilingRenderThread" class="restricted" class="restricted" class="twikiLink">分析渲染线程</a> </h3>
+<p />
+优化游戏线程时使用的技术
+<p />
+<h2><a name="GPU"></a> GPU </h2>
+<p />
+<h3><a name="禁用 _DetailMode（细节模式）"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_DetailModeToDisable" class="restricted" class="restricted" class="twikiLink">禁用 DetailMode（细节模式）</a> </h3>
+<p />
+当您的 GPU 性能较低或者有时候必须渲染很多东西时，那么禁用某些功能便是最好的方法。
+<p />
+<h3><a name="动态阴影"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_DynamicShadowing" class="restricted" class="restricted" class="twikiLink">动态阴影</a> </h3>
+<p />
+判定正在投射动态阴影或者非常大的阴影的对象。
+<p />
+<h3><a name="着色器复杂度"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_ShaderComplexity" class="restricted" class="restricted" class="twikiLink">着色器复杂度</a> </h3>
+<p />
+确保着色器在做您想做的事而不是在没有获得任何视觉效果收获地浪费 GPU 循环。
+<p />
+<h3><a name="平台特定 GPU 工具"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_PlatformSpecificGPUTools" class="restricted" class="restricted" class="twikiLink">平台特定 GPU 工具</a> </h3>
+<p />
+每个平台都有很多特定的 GPU 工具来帮您进行有效地分析。
+<p />
+<h3><a name="FreezeAt 控制台命令"></a> <a href="PerfDebug_FreezeAt.html" class="twikiLink">FreezeAt 控制台命令</a> </h3>
+<p />
+控制台命令可以将视图锁定到给定视图，进行更好的分析。
+<p />
+<h2><a name="网络带宽"></a> 网络带宽 </h2>
+<p />
+<h3><a name="DevNetTraffic"></a> <a href="https://udn.epicgames.com/Three/PerfDebug_DevNetTraffic" class="restricted" class="restricted" class="twikiLink">DevNetTraffic</a> </h3>
+<p />
+显示发送到客户端的具体内容。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PerformanceAndMemoryCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:39:43 GMT -->
+</html></body>

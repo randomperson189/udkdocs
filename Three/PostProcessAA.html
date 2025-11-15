@@ -1,0 +1,364 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PostProcessAA.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:22:13 GMT -->
+<head>
+<title> UDK | PostProcessAA    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">PostProcessAA  </b></div>
+<div id="tooltext">
+<a href="PostProcessAAJP.html" class="twikiLink">日本語訳</a><br><a href="PostProcessAACH.html" class="twikiLink">中国翻译</a><br><a href="PostProcessAAKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/PostProcessAA -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<div style="padding:0px 0px 0px 4px; font:10px Verdana;" >
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="PostProcessEffectsHome.html" class="twikiLink">Post Process Effects</a></b> &gt; Post Process Anti Aliasing Effect
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Post Process Anti Aliasing Effect"></a> Post Process Anti Aliasing Effect </h1>
+<hr size="1" noshade="noshade">
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/PostProcessAA/PostProcessAATeaser.jpg" alt="PostProcessAATeaser.jpg" width='664' height='270'/> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <img src="rsrc/Three/PostProcessAA/PostProcessAATeaser2.jpg" alt="PostProcessAATeaser2.jpg" width='332' height='135'/> </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <SMALL>The image shows some distant rocks (for better illustration the top was magnified 2x). <br>left: The image suffer suffers from aliasing (no MSAA)<br>right: The same image after PostProcessingAA was applied.</SMALL> </td></tr>
+</table>
+<br>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="PostProcessAA.html#Post Process Anti Aliasing Effect"> Post Process Anti Aliasing Effect  </a> <ul>
+<li> <a href="PostProcessAA.html#Overview"> Overview </a>
+</li> <li> <a href="PostProcessAA.html#How to activate?"> How to activate? </a>
+</li> <li> <a href="PostProcessAA.html#Implementation details"> Implementation details  </a>
+</li> <li> <a href="PostProcessAA.html#Supported platforms"> Supported platforms </a>
+</li> <li> <a href="PostProcessAA.html#References"> References  </a>
+</li> <li> <a href="PostProcessAA.html#Thanks"> Thanks </a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;" ><hr size="1" noshade="noshade"></div>
+<p />
+Computer generated images often suffer from an aliasing. There are many kinds of aliasing but here we focus on the stair step like appearance of edges that are near vertical or horizontal. The classic approach solving this is to use super sampling (render in higher resolution and downsample) or multi sampling (occlusion like super sampling but shading done per pixel). There has been many improvements in this area but for many reasons (performance, memory and complexity) many games ship with the mentioned image artifacts.
+<p />
+Morphological Antialiasing is a technique that was originally developed by Intel (see reference) that showed that the stair step appearance can be completely removed in a post process. The original technique was complex and CPU based but multiple people worked on SPU and GPU solutions.
+<p />
+The method works very well with most content but it cannot solve all aliasing cases. Problems might arise:   <ul>
+<li> if content gets too small (e.g. wireframe lines)
+</li> <li> if content is slowly moving (e.g. looking at stair cases while moving the camera lightly)
+</li> <li> if content was meant to be hard edged (e.g. hand drawn art or text)
+</li></ul>
+<p />
+Solving the problem in a postprocessing step is tempting because it adds no complexity to the former steps and can be optimized independently from those steps. Note that following passes no longer can clearly associate one depth with one pixel so new artifacts are possible.
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/PostProcessAA/PostProcessAAOrganic.jpg" alt="PostProcessAAOrganic.jpg" width='788' height='440' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>This image clearly shows that the problem of aliasing is mostly visible where there is a strong contrast. Those areas are effectively adressed by the method.<br> However the image as a whole seems to loose a bit of the sharpness. Here MLAA can be tweaked whereas FXAA doesn't offer any control.</SMALL> </td></tr>
+</table>
+<p />
+<h2><a name="How to activate?"></a> How to activate? </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+In the uberpostprocess node in the post processing chain you can find a new group called <strong>Post Process Anti Aliasing</strong>.
+<p />
+<img src="rsrc/Three/PostProcessAA/PostProcessAAEditor.png" alt="PostProcessAAEditor.png" width='431' height='291' />
+<p />
+Change the type to activate, change the method (MLAA or FXAA) and the quality level. The threshold property is only used for the MLAA implementation.
+<p />
+Alternatively you can use the console variable <strong>PostProcessAAType</strong> in game:
+<p />
+<pre>
+Allows to override the post process anti aliasing type.
+ &#60;0: use post process settings (default: -1)
+  0: off
+1-6: FXAA Preset 0:low quality .. 5:very high quality but slow (1 pass)
+  7: MLAA (requires extra render targets (requires bAllowPostprocessMLAA&#61;True in .ini), 3 pass)
+</pre>
+<p />
+Because MLAA requires extra memory it needs to be explicitly enabled. It needs to be activated by changing the following ini setting (e.g. in BaseEngine.ini) from:
+<p />
+<pre>
+   bAllowPostprocessMLAA &#61; False
+</pre>
+<p />
+to:
+<p />
+<pre>
+   bAllowPostprocessMLAA &#61; True
+</pre>
+<p />
+<strong>Note:</strong> The ini setting also can be changed at runtime with the following console command:
+<p />
+<pre>
+   scale toggle bAllowPostprocessMLAA
+</pre>
+<p />
+<h2><a name="Implementation details"></a> Implementation details </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+We integrated an MLAA implementation called FXAA from NVIDIA (see reference) and MLAA from AMD (see reference) into our uber postprocess effect. Thanks to their effort we can provide this feature to UnrealEngine3 users. Both are GPU solutions and produce very good results. They however differ in some implementation details:
+<p />
+FXAA (from NVIDIA): <ul>
+<li> One pass
+</li> <li> Requires anisotropic texture lookup
+</li></ul>
+<p />
+MLAA (from AMD): <ul>
+<li> Three pass
+</li> <li> Multiple levels of different performance/quality
+</li> <li> Requires extra intermediate render target memory (can be optimized)
+</li> <li> Slightly less blurring of inner details
+</li> <li> 45 degree edges appear more wide
+</li></ul>
+<p />
+We recommend to try both methods and the different presets with your own content as the input content can affect the final look a lot.
+<p />
+Because of the extra memory requirements we currently don't advise using MLAA on console. It's possible to change the shader to share memory with other rendertargets but that hasn't been done yet. MLAA and FXAA have a high GPU cost and should only be used on platforms that can handle that. If you consider using the effect for your application you should invest some time to low level optimize the shaders for that platform.
+<p />
+<h2><a name="Supported platforms"></a> Supported platforms </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> FXAA: DX9, DX11, Xbox360, PlayStation3
+</li> <li> MLAA: DX9, DX11 (Xbox360 and PlayStation3 untested)
+</li></ul>
+<p />
+<h2><a name="References"></a> References </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> <strong>Morphological Antialiasing</strong> (MLAA) by Intel <br>      <a href="http://visual-computing.intel-research.net/publications/papers/2009/mlaa/mlaa.pdf" target="_top">http://visual-computing.intel-research.net/publications/papers/2009/mlaa/mlaa.pdf</a>
+</li></ul>
+<p /> <ul>
+<li> FXAA by NVIDIA <br>      <a href="http://developer.download.nvidia.com/assets/gamedev/files/sdk/11/FXAA_WhitePaper.pdf" target="_top">http://developer.download.nvidia.com/assets/gamedev/files/sdk/11/FXAA_WhitePaper.pdf</a>
+</li></ul>
+<p />
+<h2><a name="Thanks"></a> Thanks </h2>
+<div style="margin-top:-10px;" ><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> Intel for developing MLAA
+</li> <li> AMD CAS team for the GPU MLAA implementation
+</li> <li> NVIDIA for the FXAA implementation
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PostProcessAA.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:22:14 GMT -->
+</html></body>

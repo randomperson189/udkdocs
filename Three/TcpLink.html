@@ -1,0 +1,554 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TcpLink.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:18:19 GMT -->
+<head>
+<title> UDK | TcpLink    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">TcpLink  </b></div>
+<div id="tooltext">
+<a href="TcpLinkJP.html" class="twikiLink">日本語訳</a><br><a href="TcpLinkCH.html" class="twikiLink">中国翻译</a><br><a href="TcpLinkKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/TcpLink -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="InputOutputHome.html" class="twikiLink">Input / Output</a></b> &gt; TcpLink
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="TcpLink"></a> TcpLink </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="TcpLink.html#TcpLink"> TcpLink</a> <ul>
+<li> <a href="TcpLink.html#Overview"> Overview</a>
+</li> <li> <a href="TcpLink.html#Modes"> Modes</a> <ul>
+<li> <a href="TcpLink.html#Receive mode"> Receive mode</a>
+</li> <li> <a href="TcpLink.html#Link mode"> Link mode</a>
+</li> <li> <a href="TcpLink.html#Line mode"> Line mode</a>
+</li></ul>
+</li> <li> <a href="TcpLink.html#Link state"> Link state</a>
+</li> <li> <a href="TcpLink.html#Usage"> Usage</a> <ul>
+<li> <a href="TcpLink.html#Client"> Client</a>
+</li> <li> <a href="TcpLink.html#Server"> Server</a>
+</li></ul>
+</li> <li> <a href="TcpLink.html#API"> API</a> <ul>
+<li> <a href="TcpLink.html#Structures"> Structures</a>
+</li> <li> <a href="TcpLink.html#Variables"> Variables</a>
+</li> <li> <a href="TcpLink.html#Functions"> Functions</a>
+</li> <li> <a href="TcpLink.html#Events"> Events</a>
+</li></ul>
+</li> <li> <a href="TcpLink.html#Downloads"> Downloads</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<hr size="1" noshade="noshade">
+The TcpLink class allows you to create a TCP socket from within the UnrealEngine. Through this socket you can connect with other servers on the internet, or you can provide a simple internet service.
+<p />
+A word of caution, this is not a high performance feature. Using it can have a serious impact on the game performance. The performance impact is higher when providing a service. So keep this in mind when using this functionality.
+<p />
+At the bottom of this page you will find a few examples that use the TcpLink.
+<p />
+Included with the engine is an implementation of a HTTP WebServer. This webserver makes use of the TcpLink functionality.
+<p />
+<h2><a name="Modes"></a> Modes </h2>
+<hr size="1" noshade="noshade">
+The TcpLink class has a few modes which control how this class functions. These modes are described below.
+<p />
+<h3><a name="Receive mode"></a> Receive mode </h3>
+TcpLink can operate in two different modes when receiving:
+<p /> <ul>
+<li> Event mode (<code>RMODE_Event</code>)
+</li> <li> Manual mode (<code>RMODE_Manual</code>)
+</li></ul>
+<p />
+<h4><a name="Event mode"></a> Event mode </h4>
+In event mode the native code of TcpLink link will trigger one of the events depending on the <a href="TcpLink.html#LinkMode" class="twikiAnchorLink">Link mode</a>.
+<p />
+In <code>MODE_Text</code> the <em>ReceivedText</em> event is executed. The <em>text</em> argument contains all the text received since the last event.
+<p />
+In <code>MODE_Line</code> the <em>ReceivedLine</em> event is executed. The <em>line</em> argument contains a single line, without the line terminator. Unlike the other events this one can happen more than once per tick.
+<p />
+In <code>MODE_Binary</code> the <em>ReceivedBinary</em> event is executed. The <em>count</em> argument tells how many bytes are in the byte buffer <em>B</em>.
+<p />
+<h4><a name="Manual mode"></a> Manual mode </h4>
+As the name suggests, in manual mode you are responsible for reading the data. This could be done during a tick event or using a timer. It is strongly discouraged to perform multiple reads per tick, as this is a slow and blocking operation.
+<p />
+Reading data can be done using either the <em>ReadText</em> or <em>ReadBinary</em> functions. Both functions return the number of bytes read. The <em>count</em> argument of <em>ReadBinary</em> defines the maximum number of bytes you want to read. Use the the return value to determine the actual number of read bytes.
+<p />
+Unlike in the event mode it does not matter what the link mode is. You can use either function. Use the lightweight <em>IsDataPending</em> function so see if you should even bother reading data.
+<p />
+<h3><a name="Link mode"></a> Link mode </h3>
+There are two different modes in which the TcpLink can operate. The link mode determines which events will be called when the TcpLink operates in receive mode event mode.
+<p />
+Link mode also affects how the <em>SendText</em> method works. When the link mode is set to <code>MODE_Line</code>, then newline terminators are appended to the text that is send using <em>SendText</em>. See line mode for the newline terminator used.
+<p />
+<h3><a name="Line mode"></a> Line mode </h3>
+The line mode controls how new lines are detected when receiving text, and what new line terminators are added with <em>SendText</em>. The line mode is only used when the link mode is set toe <code>MODE_Line</code>.
+<p />
+The line mode is set independently for sending (<em>OutLineMode</em>) and receiving (<em>InLineMode</em>).
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol">  <strong><font color="#000000">Mode</font></strong>  </th><th bgcolor="#dadada">  <strong><font color="#000000">Terminator</font></strong>  </th><td bgcolor="#eaeaea"> &nbsp; </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <code>LMODE_DOS</code> </td><td bgcolor="#ffffff"> <code>\n\r</code> </td><td bgcolor="#ffffff"> &nbsp; </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <code>LMODE_UNIX</code> </td><td bgcolor="#eaeaea"> <code>\n</code> </td><td bgcolor="#eaeaea"> &nbsp; </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <code>LMODE_MAC</code> </td><td bgcolor="#ffffff"> <code>\r\n</code> </td><td bgcolor="#ffffff"> Should not be used. It is incorrect, as old MacOS used just <code>\r</code>. </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <code>LMODE_AUTO</code> </td><td bgcolor="#eaeaea"> <code>\n\r</code> </td><td bgcolor="#eaeaea"> For receiving this splits on <code>\n</code> and removes any leading or trailing <code>\r</code>. </td></tr>
+</table>
+<p />
+<h2><a name="Link state"></a> Link state </h2>
+<hr size="1" noshade="noshade">
+The TcpLink contains a variable which reports the current status of the link: <em>LinkState</em>. Usually you won't need to bother with this, especially not when you're using the events of TcpLink. But in some cases it might be interesting to know what is happening.
+<p /> <dl>
+<dt> <code>STATE_Initialized</code>  </dt><dd> The initial state of the TcpLink. It is ready for being bound. You can use <em>BindPort</em>.
+</dd> <dt> <code>STATE_Ready</code>  </dt><dd> The TcpLink is bound to a port and is ready for establishing a connection. You can either use <em>Open</em> or <em>Listen</em>.
+</dd> <dt> <code>STATE_Listening</code>  </dt><dd> The TcpLink is listening for incoming connections. This is usually the result of a call to <em>Listen</em>.
+</dd> <dt> <code>STATE_Connecting</code>  </dt><dd> A connection attempt is in process. This is the result of a call to <em>Open</em>. The TcpLink is not yet ready for I/O.
+</dd> <dt> <code>STATE_Connected</code>  </dt><dd> A connection has beenestablished, and is ready for I/O.
+</dd> <dt> <code>STATE_ListenClosePending</code>  </dt><dd> The listen socket is queued to be closed. This is the result of calling <em>Close</em>.
+</dd> <dt> <code>STATE_ConnectClosePending</code>  </dt><dd> The client socket is queued to be closed. This is the result of calling <em>Close</em>.
+</dd> <dt> <code>STATE_ListenClosing</code>  </dt><dd> The listen socket is currently closing it's connections. It can not be used for anything, yet.
+</dd> <dt> <code>STATE_ConnectClosing</code>  </dt><dd> The client socket is currently closing it's connections. It can not be used for anything, yet.
+</dd></dl>
+<p />
+<h2><a name="Usage"></a> Usage </h2>
+<hr size="1" noshade="noshade">
+The TcpLink class can be used in two different way, as client or as server.
+<p />
+<h3><a name="Client"></a> Client </h3> <ol>
+<li> Set the appropiate modes.
+</li> <li> <em>BindPort()</em>
+</li> <li> Create <code>IpAddr</code> structure:       * Resove a hostname by using <em>Resolve(...)</em>       * Convert an IP string using <em>StringToIpAddr(..)</em>
+</li> <li> <em>Open(..)</em>
+</li> <li> Wait for <em>Opened()</em> event, or when <em>LinkState</em> is <code>STATE_Connected</code>, or when <em>IsConnected()</em> returns true.
+</li> <li> Read and/or write data
+</li> <li> <em>Close(..)</em>
+</li></ol>
+<p />
+Clients usually use a random free port, thus <em>BindPort</em> should be called without any arguments.
+<p />
+See the <code>TcpLinkClient</code> class in the package below for an example on how to use the TcpLink as a client.
+<p />
+<h3><a name="Server"></a> Server </h3>
+Using the TcpLink for a server is a little bit more complicated. It is strongly advised to divide the server into two classes:
+<p /> <ol>
+<li> General listening class
+</li> <li> Connection accepting class
+</li></ol>
+<p />
+The general listening class will simply listen for connection attempts and spawn a connection-accepting class when a connection is made. The connection-accepting class will actually process the connection. This logic is built into the TcpLink class, all you have to do is set the <em>AcceptClass</em> variable.
+<p />
+The process for the listening class is as follows:
+<p /> <ol>
+<li> Set the appropriate modes.
+</li> <li> Set the listen class
+</li> <li> <em>BindPort(12345)</em>
+</li> <li> <em>Listen()</em>
+</li> <li> [Optional] Respond to <em>GainedChild(..)</em> and <em>LostChild(..)</em> events.
+</li></ol>
+<p />
+A server should listen on a specific port, otherwise the clients do not know to what port they should connect to. It could happen that the port is already bound some an other process. In that case <em>BindPort(..)</em> will return the value 0, meaning that no port was bound. Alternatively you can set the second parameter to true, and it will bind the next available port. The bound port will be returned by the <em>BindPort(..)</em> call. After binding is succesful you can call <em>Listen()</em> to start the server.
+<p />
+When defined a <em>AcceptClass</em> the events <em>GainedChild(..)</em> and <em>LostChild(..)</em> will be called when a new connection is created. You can use this to limit the maximum number of connections to the server. To stop accepting new connections you simply call <em>Close()</em>, and to restart accepting connections simply call <em>Listen()</em> again.
+<p />
+The connection accepting class work pretty much like the client socket right after the connection was established:
+<p /> <ol>
+<li> Wait for <em>Accepted</em> event
+</li> <li> Read and/or write data
+</li> <li> <em>Close(..)</em>
+</li></ol>
+<p />
+When no <em>AcceptClass</em> is set the listening class will receive the <em>Accepted</em> event for every client that connects.
+<p />
+<h2><a name="API"></a> API </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="Structures"></a> Structures </h3>
+<h4><a name="IpAddr"></a><a name="_IpAddr"></a> IpAddr </h4>
+This is a composite of the IP address (IPv4) and port number.
+<p />
+<h3><a name="Variables"></a> Variables </h3> <dl>
+<dt> <em>LinkMode</em>  </dt><dd> See Link mode
+</dd> <dt> <em>InLineMode</em> , <em>OutLineMode</em>  </dt><dd> See Line mode
+</dd> <dt> <em>Port</em>  </dt><dd> The local port
+</dd> <dt> <em>ReceiveMode</em>  </dt><dd> See Receive mode
+</dd> <dt> <em>LinkState</em>  </dt><dd> See Link state
+</dd> <dt> <em>RemoteAddr</em>  </dt><dd> An <code>IpAddr</code> structure containing the information of the side
+</dd> <dt> <em>AcceptClass</em>  </dt><dd> Used in server mode as the class that will process the incoming connection
+</dd></dl>
+<p />
+There are other variables besides the ones listed here, but those are used internally and should be left alone.
+<p />
+<h3><a name="Functions"></a> Functions </h3>
+<h4><a name="IsDataPending"></a><a name="_IsDataPending"></a> IsDataPending </h4>
+<code>native function bool IsDataPending()</code>
+<p />
+Returns true if data is pending on the socket.
+<p />
+<h4><a name="ParseURL"></a><a name="_ParseURL"></a> ParseURL </h4>
+<code>native function bool ParseURL(coerce string URL, out string Addr, out int PortNum, out string LevelName, out string EntryName)</code>
+<p />
+Parses an Unreal URL. Returns true for valid urls. An Unreal URL is not like a URL you are used with in browsers. It might  not be very useful.
+<p />
+<h4><a name="Resolve"></a> Resolve </h4>
+<code>native function Resolve( coerce string Domain )</code>
+<p />
+Resolve the hostname provided as first argument. Hostname resolving is a slow process, therefor the result of function is returned through an event.
+<p />
+In case of a successful resolve the <em>Resolved</em> is called. Otherwise the <em>ResolveFailed</em> event is called.
+<p />
+<h4><a name="GetLastError"></a><a name="_GetLastError"></a> GetLastError </h4>
+<code>native function int GetLastError()</code>
+<p />
+Returns the last error code. A return value of 0 means that there was no error. What the other values mean depends on the underlaying subsystem.
+For MS Windows the error codes are equals to the <a href="http://msdn.microsoft.com/en-us/library/ms740668(VS.85).aspx">WinSock API</a>
+<p />
+<h4><a name="IpAddrToString"></a><a name="_IpAddrToString"></a> IpAddrToString </h4>
+<code>native function string IpAddrToString( IpAddr Arg )</code>
+<p />
+Converts an IpAddr structure to a string. For example: <code>123.123.123.123:45678</code>
+<p />
+<h4><a name="StringToIpAddr"></a><a name="_StringToIpAddr"></a> StringToIpAddr </h4>
+<code>native function bool StringToIpAddr( string Str, out IpAddr Addr )</code>
+<p />
+Parses an IPv4 address + port to an IpAddr structure. Returns true when successful.
+<p />
+<h4><a name="GetLocalIP"></a><a name="_GetLocalIP"></a> GetLocalIP </h4>
+<code>native function GetLocalIP(out IpAddr Arg )</code>
+<p />
+Get the local IP address. This is the first IP address as returned by the underlaying subsystem, and it might not be a routable address. So use it with caution.
+<p />
+<h4><a name="BindPort"></a> BindPort </h4>
+<code>native function int BindPort( optional int PortNum, optional bool bUseNextAvailable )</code>
+<p />
+Bind a port for this TcpLink instance. If no port number is given a random free port is allocated. If the second argument is true the next available free port will be bound if the prefered port is already used. If it is false the binding will simply fail.
+<p />
+The return value is the bound port, or 0 if binding failed.
+<p />
+<h4><a name="Listen"></a> Listen </h4>
+<code>native function bool Listen()</code>
+<p />
+Set the TcpLink to listen mode. Returns true if successful. In listen mode the TcpLink will wait incomming connections. See server mode for more information.
+<p />
+<h4><a name="Open"></a> Open </h4>
+<code>native function bool Open( IpAddr Addr )</code>
+<p />
+Open a connection to a remote host. Either use <em>StringToIpAddr</em> or <em>Resolve</em> to get a valid IpAddr structure.
+<p />
+Returns false if there was an issue initiating the connection. After calling this function the socket is not yet ready for communication. Wait for the <em>Opened</em> event or when <em>IsConnected</em> becomes true.
+<p />
+<h4><a name="Close"></a> Close </h4>
+<code>native function bool Close()</code>
+<p />
+Close the current connection. Use this to stop the TcpLink for listening incoming connections, or to close the connection to the remote host. After closing the connection you can reopen is with <em>Open</em> or <em>Close</em>.
+<p />
+<h4><a name="IsConnected"></a><a name="_IsConnected"></a> IsConnected </h4>
+<code>native function bool IsConnected()</code>
+<p />
+Returns true when the TcpLink is connected to a remote host. In client mode it returns true when a valid connection has been establish to the remote host. In server mode it will only return true when a client is connected.
+<p />
+<h4><a name="SendText"></a><a name="_SendText"></a> SendText </h4>
+<code>native function int SendText( coerce string Str )</code>
+<p />
+Send a string to the remote host. If the link mode is <code>MODE_Line</code> a line terminator is appended. See line mode for more information.
+<p />
+It will return the number of bytes send to the remote host, this might not be the same as the string length.
+<p />
+<h4><a name="SendBinary"></a><a name="_SendBinary"></a> SendBinary </h4>
+<code>native function int SendBinary( int Count, byte B[255] )</code>
+<p />
+Send a number of bytes to the remote host. The <em>count</em> argument defines the number of bytes in the buffer (the second argument) to send to the remote host. You can send a maximum of 255 bytes at the time.
+<p />
+It will return the number of bytes send to the remote host.
+<p />
+<h4><a name="ReadText"></a><a name="_ReadText"></a> ReadText </h4>
+<code>native function int ReadText( out string Str )</code>
+<p />
+Read text from the remote host. This is a blocking operation, it will not return until data has been read. This function should only be used in manual transfer mode.
+<p />
+It returns the number of bytes read, this does not have to be equal to the string length.
+<p />
+<h4><a name="ReadBinary"></a><a name="_ReadBinary"></a> ReadBinary </h4>
+<code>native function int ReadBinary( int Count, out byte B[255] )</code>
+<p />
+Read up to <em>count</em> bytes from the remote host. You can read up to 255 bytes at the time. This function should only be used in manual transfer mode.
+<p />
+It returns the number of bytes read. This can be less that the value provided in <em>count</em>.
+<p />
+<h3><a name="Events"></a> Events </h3>
+<h4><a name="Resolved"></a> Resolved </h4>
+<code>event Resolved( IpAddr Addr )</code>
+<p />
+Called when resolving a hostname successful.
+<p />
+<h4><a name="ResolveFailed"></a><a name="_ResolveFailed"></a> ResolveFailed </h4>
+<code>event ResolveFailed()</code>
+<p />
+Called when the hostname could not be resolved.
+<p />
+<h4><a name="Accepted"></a> Accepted </h4>
+<code>event Accepted()</code>
+<p />
+Called when a client connects to a TcpLink in listen mode, or on a TcpLink which was spawned by a TcpLink in listen mode.
+<p />
+<h4><a name="Opened"></a> Opened </h4>
+<code>event Opened()</code>
+<p />
+Called for a TcpLink as the result of a successful <em>open</em> command.
+<p />
+<h4><a name="Closed"></a> Closed </h4>
+<code>event Closed()</code>
+<p />
+Called when the connection of a TcpLink is closed. This could be the result of either called <em>close</em> or when the remote host closes the connection.
+<p />
+<h4><a name="ReceivedText"></a><a name="_ReceivedText"></a> ReceivedText </h4>
+<code>event ReceivedText( string Text )</code>
+<p />
+Called when the TcpLink receives text when the link mode is <code>MODE_Text</code> and then the receive mode is <code>RMODE_Event</code>.
+<p />
+<h4><a name="ReceivedLine"></a><a name="_ReceivedLine"></a> ReceivedLine </h4>
+<code>event ReceivedText( string Line )</code>
+<p />
+Called when the TcpLink receives text when the link mode is <code>MODE_Line</code> and then the receive mode is <code>RMODE_Event</code>. The text has been stripped from newlines according to the line mode. This event can be called multiple times per tick.
+<p />
+<h4><a name="ReceivedText"></a><a name="_ReceivedText"></a> ReceivedText </h4>
+<code>event ReceivedBinary( int Count, byte B[255] )</code>
+<p />
+Called when the TcpLink receives text when the link mode is <code>MODE_Binary</code> and then the receive mode is  <code>RMODE_Event</code>. The <em>count</em> argument defines how many bytes were written to the byte buffer.
+<p />
+<h2><a name="Downloads"></a> Downloads </h2>
+<hr size="1" noshade="noshade">
+Included in the zip file are a few example uses of the TcpLink class:
+<p /> <dl>
+<dt> <code>TcpLinkClient</code>  </dt><dd> A very simple HTTP client.
+</dd> <dt> <code>TcpLinkServer</code>  </dt><dd> A simple server which will echo every line it receives, this processing is actually handled by the <code>TcpLinkServerAcceptor</code> class.
+</dd> <dt> <code>TcpLinkServerAcceptor</code>  </dt><dd> The class that handles the connections that the <code>TcpLinkServer</code> receives.
+</dd></dl>
+<p /> <ul>
+<li> <a href="rsrc/Three/TcpLink/TcpLinkExamples.zip" target="_top">TcpLinkExamples.zip</a>: TcpLink Examples
+</li></ul>
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TcpLink.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:18:20 GMT -->
+</html></body>

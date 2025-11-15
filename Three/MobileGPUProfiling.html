@@ -1,0 +1,401 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MobileGPUProfiling.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:26:31 GMT -->
+<head>
+<title> UDK | MobileGPUProfiling    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">MobileGPUProfiling  </b></div>
+<div id="tooltext">
+<a href="https://udn.epicgames.com/Three/MobileGPUProfilingJP" class="restricted" class="restricted" class="twikiLink">日本語訳</a><br><a href="MobileGPUProfilingCH.html" class="twikiLink">中国翻译</a><br><a href="MobileGPUProfilingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/MobileGPUProfiling -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="MobileHome.html" class="twikiLink">Mobile Home</a></b> &gt; Mobile GPU Profiling
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Mobile GPU Profiling"></a> Mobile GPU Profiling </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="MobileGPUProfiling.html#Mobile GPU Profiling"> Mobile GPU Profiling</a> <ul>
+<li> <a href="MobileGPUProfiling.html#Overview"> Overview</a>
+</li> <li> <a href="MobileGPUProfiling.html#Measuring GPU time on mobile devices"> Measuring GPU time on mobile devices</a>
+</li> <li> <a href="MobileGPUProfiling.html#ProfileEx to measure the performance impact of some rendering feature"> ProfileEx to measure the performance impact of some rendering feature</a>
+</li> <li> <a href="MobileGPUProfiling.html#Shader cycle count optimizations"> Shader cycle count optimizations</a>
+</li> <li> <a href="MobileGPUProfiling.html#How to adjust global setting features for specific platforms"> How to adjust global setting features for specific platforms</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<span style="font:italic 10px arial;">(Hover to see the alternative state)</span>
+<div style="width:400px;" onmouseover="togglePreviewImage('smoothlayer');" onmouseout="togglePreviewImage('smoothlayer');">
+	<div id="smoothlayer_result" style="display:block;">
+		<img src="rsrc/Three/MobileGPUProfiling/ProfileEx1.jpg" alt="ProfileEx1.jpg" width="546" height="376" />
+	</div>
+	<div id="smoothlayer_original" style="display:none;">
+		<img src="rsrc/Three/MobileGPUProfiling/ProfileEx0.jpg" alt="ProfileEx0.jpg" width="546" height="376" />
+	</div>
+</div>
+<p />
+Rendering performance on mobile hardware is even more challenging than on other platforms. Running on batteries and low heat requirements resulted in stricter limits on memory bandwith, CPU and GPU math performance. Unfortunatly good profiling tools are sparse and hardware comes in many variants. Even the OS version can affect the avilability of features. Here we try to help on that situation by providing a simple mechanism to profile performance and give general hits how to resolve those.
+<p />
+<h2><a name="Measuring GPU time on mobile devices"></a> Measuring GPU time on mobile devices </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Mobile devices do not support timestamp queries, which are used on other platforms to measure GPU times directly, such as the entire frame or the cost of one feature.  For example, the 'profilegpu' command logs out GPU timings for different parts of the frame on D3D9 and D3D11, and 'stat unit' displays frame GPU time.  The result is that the only measurement we can use is the total frame time.  Now the CPU (game thread, rendering thread) is running in parallel with the GPU and the frame time will be the longer of the two.  <strong>This means that in order to use the total frame time to measure the frame GPU time, the current frame must be GPU-bound.</strong>  You can verify that this is the case by looking at 'stat unit'.  If the frame time is larger than the 'Game' or 'Draw' times, then it is GPU bound.  Be careful when disabling many rendering features that you do not become CPU-bound and produce an incorrect measurement!  In the screenshot above, the frame time is only ~2ms larger than the Draw time, so it will quickly become CPU bound when turning off GPU features.
+<p />
+<h2><a name="ProfileEx to measure the performance impact of some rendering feature"></a> ProfileEx to measure the performance impact of some rendering feature </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+This a very simple method that allows profiling of rendering features in absence of a better method ("Ex" as making an experiment).
+You specify a mask of features you want to profile and once enabled it toggles those features every 5 seconds.
+Looking at the frame time you can see the effect this feature has on the frame time. If the frame rate is varying a lot this method is not that useful. To get a stable framerate
+you can put the game into pause more or setup a scene without any movement.
+<p />
+The frame time is automatically shown (not smoothed and only updated once a second).
+<p />
+To activate you set the console variable "ProfileEx".
+<p />
+The latest help text you get through the console:
+<p />
+<div class="codesnippet">
+<pre>
+ProfileEx ?
+        Profile experiment: to profile features only by looking at stat unit (alternating it on/off)
+        This is useful on platforms that don&#39;t support any other profiling functionality.
+        Make sure VSYNC is off and ideally you are in &#34;pause&#34;.
+        &#34;Stat unit&#34; and &#34;StableFrameTime&#34; are activated with the feature.
+        FeatureMask in hex (add to combine, 0 is off, e.g. 0x1a &#61; 0x10 0x08 0x02):
+         0x001: Deferred shadow projection
+         0x002: Depth of Field
+         0x004: Bloom
+         0x008: Shadows (shadow map generation and projection)
+         0x010: Depth resolve (mobile only)
+         0x020: Bloom/DOF blur (mobile only)
+         0x040: Force Gaussian to blur with 4 samples at max
+         0x080: Fog (mobile only)
+         0x100: Translucency
+         0x200: Skeletal meshes
+         0x400: StaticMeshes
+         0x800: Particles (only toggles rendering)
+</pre>
+</div>
+<p />
+Example usage:
+<p />
+<div class="codesnippet">
+<pre>
+ProfileEx 0x100
+        to profile translucency
+</pre>
+</div>
+<p />
+<div class="codesnippet">
+<pre>
+ProfileEx 0x500
+        to profile translucency and static meshes
+</pre>
+</div>
+<p />
+In code you can test for the bits with as little C++ code as this:
+<p />
+<div class="codesnippet">
+<pre>
+if(!GetProfileExState(0x2, View.Family-&#62;CurrentRealTime))
+{
+    // we want to profile with the feature off
+    OutSettings.bEnableDOF &#61; FALSE;
+}
+</pre>
+</div>
+<p />
+This feature is not available in FINAL_RELEASE.
+<p />
+<!--  -->
+<p />
+<h2><a name="How to adjust global setting features for specific platforms"></a> How to adjust global setting features for specific platforms </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Many settings exist in the ini files (e.g. BaseEngine.ini in the section [SystemSettings]), those can be overriden by the specific platfom (see [SystemSettingsMobile] or [SystemSettingsIPad]). A few examples:
+<p />
+<div class="codesnippet">
+<pre>
+MobileFog&#61;True
+MobileHeightFog&#61;False
+MobileSpecular&#61;True
+MobileBumpOffset&#61;True
+MobileNormalMapping&#61;True
+MobileEnvMapping&#61;True
+MobileRimLighting&#61;True
+MobileColorBlending&#61;True
+MobileColorGrading&#61;False
+MobileVertexMovement&#61;True
+MobileOcclusionQueries&#61;False
+; 0 means no sharpening, -0.5 results in sharper textures but slightly slower rendering and more shimmering
+MobileLODBias&#61;-0.5
+</pre>
+</div>
+<p />
+This one we recently introduced and is more experimental:
+<p />
+<div class="codesnippet">
+<pre>
+MobileSceneDepthResolveForShadows&#61; TRUE
+</pre>
+</div>
+<p />
+It can save quite some performance by avoiding a depth buffer resolve. When enabled you might see artifacts as then it might pick up the depth buffer from the former frame. In certain kind of games this might be quite acceptable (e.g. 2D like 3d game: few camera movements, mostly flat ground as shadow receiver).
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<script type="text/javascript">
+	function togglePreviewImage(exp)
+	{
+		var result = document.getElementById(exp + "_result");
+		var original = document.getElementById(exp + "_original");
+
+		if(original.style.display == "none")
+		{
+			result.style.display = "none";
+			original.style.display = "block";
+		}
+		else
+		{
+			result.style.display = "block";
+			original.style.display = "none";
+		}
+	}
+</script>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MobileGPUProfiling.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:26:32 GMT -->
+</html></body>

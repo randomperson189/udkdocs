@@ -1,0 +1,312 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/StaticMeshHomeCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:23:31 GMT -->
+<head>
+<title> UDK | StaticMeshHomeCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">StaticMeshHomeCH  </b></div>
+<div id="tooltext">
+<a href="StaticMeshHome.html" class="twikiLink">English Translation</a><br><a href="StaticMeshHomeJP.html" class="twikiLink">日本語訳</a><br><a href="StaticMeshHomeKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/StaticMeshHomeCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; 静态网格物体
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="静态网格物体"></a> 静态网格物体 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="header_img">
+<img src="rsrc/Three/StaticMeshHomeCH/staticmesh.jpg" alt="staticmesh.jpg" />
+</div>
+<p />
+静态网格物体是一块几何体，它可以组成在视频内存中进行缓存并由显卡渲染的一系列多边形。这可以使它们进行高效渲染，也就是它们可以比其他诸如 BSP 画刷这样的几何体类型更加复杂。不过，由于它们在视频内存中进行缓存，所以可以对它们进行平移、旋转和缩放，但是它们使用任何方法都无法对它们的顶点进行动画处理。
+<p />
+静态网格物体是可以为在虚幻引擎 3 中创建的关卡创建世界几何体的基本单位。这些是在通过内容浏览器导入到虚幻编辑器中的外部建模应用程序（例如，3dsMax、Maya、Softimage 等等）中创建的 3D 模型，保存在软件包中，然后通过各种方法使用，创建可渲染元素。使用虚幻引擎 3 制作的游戏中任何地图的大部分都将由静态网格物体组成，通常形式为 StaticMeshActor。静态网格物体的其他用途是创建诸如门或电梯、刚体物理对象、植被与地形装饰、程序创建的建筑物、游戏目标以及很多其他视觉元素。
+<p />
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<p />
+<!-- Featured Items -->
+<ul class="feature_list">
+	<li>
+		<div class="feature_horiz">
+			<a href="FBXPipeline.html" class="twikiLink"><img src="rsrc/Three/StaticMeshHomeCH/fbx.jpg" alt="fbx.jpg" /></a>
+			<div class="feature_title">
+				<a href="FBXPipeline.html" class="twikiLink">FBX内容通道</a>
+			</div>
+			<div class="feature_content">
+				关于使用FBX通道来创建可以导入到UE3中的资源的技术文档和指南。静态网格物体 - 骨架网格物体 - 材质 - 动画 - 顶点变形目标。
+			</div>
+		</div>
+	</li>
+</ul>
+<div style="clear:left;"><!-- spacer --></div>
+<p />
+<div class="titlebar">
+技术 主题
+</div>
+<div class="contentsection"> <ul>
+<li> <a href="https://udn.epicgames.com/Three/RenderingOverview" class="restricted" class="restricted" class="twikiLink">虚幻渲染结构</a> - 虚幻引擎 3 的细分和渲染结构指南。
+</li></ul>
+</div>
+<p />
+<div class="titlebar">
+内容创建 主题
+</div>
+<div class="contentsection"> <ul>
+<li> <a href="FBXStaticMeshPipeline.html" class="twikiLink">FBX 静态网格物体通道</a> - 有关使用 FBX 导入静态网格物体的指南。
+</li> <li> <a href="LightMapUnwrapping.html" class="twikiLink">光照贴图的 UV 展开</a> - 关于设置 UV 与光照贴图结合使用的最佳实践。
+</li> <li> <a href="NormalMapProcessing.html" class="twikiLink">法线贴图的处理过程</a> - 有关正确处理法线贴图以在虚幻引擎中使用的指南。
+</li> <li> <a href="PivotPainterTool.html" class="twikiLink">支点描画工具</a> - 存储模型支点以及模型顶点数据中的旋转量信息的工具。
+</li> <li> <a href="ModularEnvironmentCreation.html" class="twikiLink">模块化环境创建</a> - 设计在模块化环境中使用的网格物体的指南。
+</li> <li> <a href="StaticMeshEditorUserGuide.html" class="twikiLink">静态网格物体编辑器用户指南</a> - 在虚幻编辑器中使用静态网格物体的指南。
+</li> <li> <a href="MeshSimplificationTool.html" class="twikiLink">网格物体简化工具</a> - 在虚幻编辑器中创建经过参数化简化的网格物体的指南。
+</li> <li> <a href="FractureTool.html" class="twikiLink">破裂的静态网格物体</a> - 创建和使用破裂的静态网格物体的指南。
+</li> <li> <a href="CollisionReference.html" class="twikiLink">碰撞参考指南</a> - 静态网格物体和其他几何体类型的碰撞类型的参考指南。
+</li> <li> <a href="CollisionTechnicalGuide.html" class="twikiLink">碰撞技术指南</a> - 有关碰撞在虚幻引擎3内部的工作原理的技术指南。
+</li></ul>
+</div>
+<p />
+<div class="titlebar">
+关卡创建 主题
+</div>
+<div class="contentsection"> <ul>
+<li> <a href="UsingStaticMeshActors.html" class="twikiLink">StaticMeshActors</a> - 关于在虚幻编辑器中使用StaticMeshActors 的指南。
+</li> <li> <a href="UsingInterpActors.html" class="twikiLink">使用 InterpActor</a> - 有关在虚幻引擎编辑器中使用移动器的信息。
+</li> <li> 使用 KActor<sup>?</sup> - 有关在虚幻引擎编辑器中使用刚体 actor 的信息。
+</li> <li> <a href="StaticMeshMode.html" class="twikiLink">静态网格物体模式</a> - 关于使用静态网格物体模式来放置网格物体的指南。
+</li> <li> <a href="MassiveLOD.html" class="twikiLink">Massive LOD</a> - 在虚幻引擎 3 中使用 Massive LOD 系统创建开放 vistas 的指南。
+</li> <li> <a href="InteractiveStaticMeshes.html" class="twikiLink">交互型静态网格物体</a> - 有关在虚幻编辑器中使用 InteractiveStaticMeshActor 的信息。
+</li> <li> <a href="ProceduralBuildings.html" class="twikiLink">程序化构建建筑物</a> - 创建和使用程序化构建建筑物系统的指南。
+</li> <li> <a href="ProceduralBuildingsTutorial.html" class="twikiLink">程序化建筑物教程</a> - 有关设置示例 ProcBuilding（程序化建筑物）的教程。
+</li> <li> <a href="InteractiveFoliageActor.html" class="twikiLink">交互式植被 Actor</a> - 有关设置和使用交互式植被 actor 的指南。
+</li></ul>
+</div>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/StaticMeshHomeCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:23:32 GMT -->
+</html></body>

@@ -1,0 +1,840 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CollisionTechnicalGuide.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:10:25 GMT -->
+<head>
+<title> UDK | CollisionTechnicalGuide    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">CollisionTechnicalGuide  </b></div>
+<div id="tooltext">
+<a href="CollisionTechnicalGuideJP.html" class="twikiLink">日本語訳</a><br><a href="CollisionTechnicalGuideCH.html" class="twikiLink">中国翻译</a><br><a href="CollisionTechnicalGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/CollisionTechnicalGuide -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="StaticMeshHome.html" class="twikiLink">Static Meshes</a></b> &gt; Collision Technical Guide <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="PhysicsHome.html" class="twikiLink">Physics</a></b> &gt; Collision Technical Guide <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="EnvironmentArtistHome.html" class="twikiLink">Environment Artist</a></b> &gt; Collision Technical Guide
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Collision Technical Guide"></a> Collision Technical Guide </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="CollisionTechnicalGuide.html#Collision Technical Guide"> Collision Technical Guide</a> <ul>
+<li> <a href="CollisionTechnicalGuide.html#Overview"> Overview</a>
+</li> <li> <a href="CollisionTechnicalGuide.html#Unrealscript"> Unrealscript</a> <ul>
+<li> <a href="CollisionTechnicalGuide.html#Actor Properties"> Actor Properties</a>
+</li> <li> <a href="CollisionTechnicalGuide.html#Collision Flags"> Collision Flags</a>
+</li> <li> <a href="CollisionTechnicalGuide.html#Unrealscript Events"> Unrealscript Events</a>
+</li> <li> <a href="CollisionTechnicalGuide.html#Performing collision checks"> Performing collision checks</a>
+</li></ul>
+</li> <li> <a href="CollisionTechnicalGuide.html#Collision Types"> Collision Types</a> <ul>
+<li> <a href="CollisionTechnicalGuide.html#Skeletal mesh collision hulls"> Skeletal mesh collision hulls</a>
+</li> <li> <a href="CollisionTechnicalGuide.html#Static mesh collision hulls"> Static mesh collision hulls</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+As graphical detail has increased, it is important to ensure that collision within the game remains simple. This is because of two reasons; it is much faster to calculate collision against a few polygons and it is a much smoother experience for the player as then the player does not get snagged on a small piece geometry. Collision response is split up into two distinct parts; Unreal Collision and PhysX. This document focuses on Unreal Collision, <a href="PhysicsHome.html" class="twikiLink">click here</a> to read more about PhysX. For information on how to create collision data, see the <a href="CollisionReference.html" class="twikiLink">Collision Reference</a> page.
+<p />
+<h2><a name="Unrealscript"></a> Unrealscript </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+Unreal collision dates back to Unreal Engine 1, and the majority of collision responses is handled with Unrealscript. Unrealscript is also responsible for setting up collision properties, so that the Unreal Collision engine knows how to simulate these actors.
+<p />
+<h3><a name="Actor Properties"></a> Actor Properties </h3>
+There are a number of Actor properties found under the collision section. These properties control how the Unreal Collision engine handles collision responses and physics simulation of these actors.
+<p /> <ul>
+<li> <strong>bCollideComplex</strong> - During Actor movement, ignore simplified collision hulls on this actor, and collide per polygon. Simplified collision hulls are generated in Unreal Editor or within a 3D content creation package. Colliding per polygon is useful for non zero extent traces so that bullets will colliding accurately. Colliding per polygon is not recommended for Actor movement as it is expensive to do so.
+</li> <li> <strong>BlockRigidBody</strong> - Whether Actors using PhysX should collide against this actor.
+</li> <li> <strong>bNoEncroachCheck</strong> - An optimization which turns off the encroachment checking when this Actor is moved. Enabling this speeds up the game, but the actor will not be able to touch triggers, push players, enter or exit volumes.
+</li> <li> <strong>bPathColliding</strong> - Whether this Actor can block paths during path building in Unreal Editor.
+</li> <li> <strong>CollisionComponent</strong> - Reference to the component used for movement of this Actor. If the Actor is using PHYS_Walking, then the axis aligned bounding box of this component will be collided against the level. If the Actor is using PHYS_RigidBody, then the shape or physics asset of this component is used.
+</li> <li> <strong>CollisionType</strong> - This is a method of exposing several collision settings to level designers in a simple way. Changing this value in Unreal Editor will set the low level flags such as CollideActors, BlockActors, BlockNonZeroExtent, BlockZeroExtent and BlockRigidBody on the Actor and its CollisionComponent to match the description of Collision Type. <ul>
+<li> <strong>COLLIDE_CustomDefault</strong> - Programmer set collison. This restores collision to defaults set in the default properties when selected.
+</li> <li> <strong>COLLIDE_NoCollision</strong> - Does not collide at all.
+</li> <li> <strong>COLLIDE_BlockAll</strong> - Blocks everything.
+</li> <li> <strong>COLLIDE_BlockWeapons</strong> - Only blocks zero extent traces, which are usually weapons.
+</li> <li> <strong>COLLIDE_TouchAll</strong> - Touches everything, but does not block.
+</li> <li> <strong>COLLIDE_TouchWeapons</strong> - Only touches zero extent traces, which are usually weapons.
+</li> <li> <strong>COLLIDE_BlockAllButWeapons</strong> - Blocks everything but zero extent traces, which are usually weapons.
+</li> <li> <strong>COLLIDE_TouchAllButWeapons</strong> - Touches everything but zero extent traces, which are usually weapons. This does not block.
+</li> <li> <strong>COLLIDE_BlockWeaponsKickable</strong> - Only blocks zero extent traces, which are usually weapon. Also enable flags to allow this Actor to be kicked around by the player.
+</li></ul>
+</li></ul>
+<p />
+<h3><a name="Collision Flags"></a> Collision Flags </h3>
+There are a number of flags that control how Unreal will perform collision with Actors you place in the level. Sometimes a flag appears in both the Actor properties and the Component properties. In this case the Actor one acts as an override.
+<p /> <ul>
+<li> <strong>CollideActors</strong> - This must be true for the Actor to be considered at all for Unreal collision detection.
+</li> <li> <strong>BlockActors</strong> - This indicates if the Actor should block other Actors from moving. A trigger for example would have <strong>CollideActors</strong> set to <strong>true</strong>, but <strong>BlockActors</strong> set to <strong>false</strong>. This is because the desired effect is for Unreal to detect when the two Actors touch each other, but for the moving Actor to move through it.
+</li> <li> <strong>BlockZeroExtent</strong> - A zero extent trace is a line check, commonly used for weapon that simulate bullets. If this true, then the Actor will block zero extent traces used in Unrealscript.
+</li> <li> <strong>BlockNonZeroExtent</strong> - A non zero extent trace is an axis aligned bounding box check, which is commonly used for player movement. If this is true, then the Actor will block non zero extent traces used in Unrealscript.
+</li></ul>
+<p />
+<h3><a name="Unrealscript Events"></a> Unrealscript Events </h3>
+When collisions occurs in Unreal Engine 3, Unrealscript events are called on the Actors involved. These events are designed so that you can override the event within your sub classed Actors. <img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>Events and functions are no different in Unrealscript</strong>.
+<p />
+<h4><a name="HitWall"></a> HitWall </h4>
+HitWall is called when the Actor has physically colliding into Wall (in the case of BSP, Wall is set to WorldInfo). <ul>
+<li> <strong>HitNormal</strong> - Normal that the Actor hit the wall with.
+</li> <li> <strong>Wall</strong> - Actor that this Actor colliding into.
+</li> <li> <strong>WallComp</strong> - Component that this Actor colliding into. In the case of BSP, WallComp is set to None.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event HitWall(Vector HitNormal, Actor Wall, PrimitiveComponent WallComp)
+</pre>
+</div>
+<p />
+It is important to note that Pawns may change how this event is called. If bDirectHitWall is set true, then always call pawn's HitWall event directly.
+<p />
+<div class="codetitlebar">
+Pawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+var bool bDirectHitWall;
+</pre>
+</div>
+<p />
+It is important to note that a Pawn's Controller may change how HitWall is called.
+<p />
+NotifyHitWall is called when our pawn has collided with a blocking piece of world geometry, return true to prevent HitWall() notification on the pawn. <ul>
+<li> <strong>HitNormal</strong> - Normal that the Actor hit the wall with.
+</li> <li> <strong>Wall</strong> - Actor that this Actor colliding into.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Controller.uc
+</div>
+<div class="codesnippet">
+<pre>
+event bool NotifyHitWall(vector HitNormal, actor Wall);
+</pre>
+</div>
+<p />
+NotifyFallingHitWall is called when our pawn has collided with a blocking piece of world geometry while falling, only called if bNotifyFallingHitWall inside Controller is true. <ul>
+<li> <strong>HitNormal</strong> - Normal that the Actor hit the wall with.
+</li> <li> <strong>Wall</strong> - Actor that this Actor colliding into.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Controller.uc
+</div>
+<div class="codesnippet">
+<pre>
+event NotifyFallingHitWall(vector HitNormal, actor Wall);
+</pre>
+</div>
+<p />
+<h4><a name="Landed"></a> Landed </h4>
+Landed is called when the Actor has physically landed onto FloorActor (in the case of BSP, FloorActor is set to WorldInfo). <ul>
+<li> <strong>HitNormal</strong> - Normal of the landing.
+</li> <li> <strong>FloorActor</strong> - Actor that this Actor landed on.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event Landed(vector HitNormal, Actor FloorActor);
+</pre>
+</div>
+<p />
+It is important to note that a Pawn's Controller may change how Landed is called.
+<p />
+NotifyLanded is called when our pawn has landed from a fall, return true to prevent Landed() notification on the pawn. <ul>
+<li> <strong>HitNormal</strong> - Normal of the landing.
+</li> <li> <strong>FloorActor</strong> - Actor that this Actor landed on.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Controller.uc
+</div>
+<div class="codesnippet">
+<pre>
+event bool NotifyLanded(vector HitNormal, Actor FloorActor);
+</pre>
+</div>
+<p />
+<h4><a name="PhysicsVolumeChange"></a> PhysicsVolumeChange </h4>
+This event is triggered when the PhysicsVolume variable is changed. <ul>
+<li> <strong>NewVolume</strong> - Volume that PhysicsVolume was set to.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event PhysicsVolumeChange(PhysicsVolume NewVolume);
+</pre>
+</div>
+<p />
+<h4><a name="Touch"></a> Touch </h4>
+Touch is called on both Actor and Other when they are touching each other. Both Actor and Other must be collidable, and either Actor or Other must use non blocking collision. <ul>
+<li> <strong>Other</strong> - Actor that touched this Actor.
+</li> <li> <strong>OtherComp</strong> - Component that touched this Actor.
+</li> <li> <strong>HitLocation</strong> - World location where the touch occurred.
+</li> <li> <strong>HitNormal</strong> - Normal of the touch that occurred.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event Touch(Actor Other, PrimitiveComponent OtherComp, vector HitLocation, vector HitNormal);
+</pre>
+</div>
+<p />
+<h4><a name="PostTouch"></a> PostTouch </h4>
+PostTouch is called on the PendingTouch Actor after physics has completed. A Pending Touch Actor is an actor that is touched during a move event, which wants to add an effect after the movement completes. Both Actors must be collidable, and one of the Actors must use non blocking collision. <ul>
+<li> <strong>Other</strong> - PendingTouch Actor.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event PostTouch(Actor Other);
+</pre>
+</div>
+<p />
+<h4><a name="UnTouch"></a> UnTouch </h4>
+UnTouch is called on Actor that untouches Other. For example, if player's pawn initially touches a trigger both the player's pawn and trigger will receive the Touch event. When the player's pawn moves away from the trigger so that their collisions are no longer touching, the player's pawn will call UnTouch with the Other parameter set as the Trigger. Both Actor and Other must be collidable, and either Actor or Other must use non blocking collision. <ul>
+<li> <strong>Other</strong> - Untouched actor.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event UnTouch(Actor Other);
+</pre>
+</div>
+<p />
+<h4><a name="Bump"></a> Bump </h4>
+Bump is called on both Actor and Other when they are bumping into each other. Both Actor and Other must be collidable, and both Actor and Other must use blocking collision. <ul>
+<li> <strong>Other</strong> - Actor that bumped into this Actor.
+</li> <li> <strong>OtherComp</strong> - Component that bumped into this Actor.
+</li> <li> <strong>HitNormal</strong> - Normal of the bump that occurred.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event Bump(Actor Other, PrimitiveComponent OtherComp, Vector HitNormal);
+</pre>
+</div>
+<p />
+It is important to note that a Pawn's Controller may change how Bump is called.
+<p />
+NotifyBump is called when our pawn has collided with a blocking player, return true to prevent Bump() notification on the pawn.
+<p />
+<div class="codetitlebar">
+Controller.uc
+</div>
+<div class="codesnippet">
+<pre>
+event bool NotifyBump(Actor Other, Vector HitNormal);
+</pre>
+</div>
+<p />
+<h4><a name="BaseChange"></a> BaseChange </h4>
+BaseChange is called when the Actor's Base variable has changed. This also includes when Base is set to None; this happens when the Actor is floating in space. The Base variable is an Actor reference pointing to what the Actor is currently standing on.
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event BaseChange();
+</pre>
+</div>
+<p />
+<h4><a name="CollisionChanged"></a> CollisionChanged </h4>
+CollisionChanged is called when any of the Actor's collision properties have been changed.
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event CollisionChanged();
+</pre>
+</div>
+<p />
+<h4><a name="EncroachingOn"></a> EncroachingOn </h4>
+EncroachingOn is called when this Actor is encroaching on Other and we couldn't find an appropriate place to push Other to.  <ul>
+<li> <strong>Other</strong> - Actor that this Actor is encroaching on.
+</li> <li> <strong>Return</strong> - Return true if you wish to abort the move, or false to allow it to move. <img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> Do not abort moves of PHYS_RigidBody Actors as that will cause the Unreal location and physics engine location to mismatch.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event bool EncroachingOn(Actor Other);
+</pre>
+</div>
+<p />
+<h4><a name="EncroachedBy"></a> EncroachedBy </h4>
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event EncroachedBy(Actor Other);
+</pre>
+</div>
+<p />
+<h4><a name="RanInto"></a> RanInto </h4>
+RanInto is called for encroaching actors which successfully moved the other Actor out of the way. <ul>
+<li> <strong>Other</strong> - Actor that was moved out of the way.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event RanInto(Actor Other);
+</pre>
+</div>
+<p />
+<h3><a name="Performing collision checks"></a> Performing collision checks </h3>
+<h4><a name="Trace"></a> Trace </h4>
+Perform a trace to detect if the line collides with anything within the world. <ul>
+<li> <strong>HitLocation</strong> - Where in the world the line collided.
+</li> <li> <strong>HitNormal</strong> - Surface normal of where the line collided.
+</li> <li> <strong>TraceEnd</strong> - A point in the world where the trace ends.
+</li> <li> <strong>TraceStart</strong> - A point in the world where the trace starts.
+</li> <li> <strong>bTraceActors</strong> - Whether the trace against actors or not.
+</li> <li> <strong>Extent</strong> - If this vector is equal to zero (Vect[0.f, 0.f, 0.f]) then the trace performed will be considered as zero extent. If the vector is not zero, then a non zero extent trace is performed.
+</li> <li> <strong>HitInfo</strong> - This struct contains information about the trace results. This may be invalid if the trace did not collide with anything. <ul>
+<li> <strong>Material</strong> - Material that the trace hit.
+</li> <li> <strong>PhysMaterial</strong> - Physical material that the trace hit.
+</li> <li> <strong>Item</strong> - Extra information about the thing that the trace hit.
+</li> <li> <strong>LevelIndex</strong> - Level index if the trace hit BSP.
+</li> <li> <strong>BoneName</strong> - Name of the bone if the trace hit a skeletal mesh component.
+</li> <li> <strong>HitComponent</strong> - Component that the trace hit.
+</li></ul>
+</li> <li> <strong>ExtraTraceFlags</strong> - Extra trace flags that provides hints to how the trace should be performed. <ul>
+<li> <strong>TRACEFLAG_Bullet</strong> - Trace will always ignore simple collision on static meshes and always do per polygon collision detection.
+</li> <li> <strong>TRACEFLAG_PhysicsVolumes</strong> - Trace will check for collisions against physics volumes.
+</li> <li> <strong>TRACEFLAG_SkipMovers</strong> - Trace will ignore InterpActors.
+</li> <li> <strong>TRACEFLAG_Blocking</strong> - If set, then trace will collide against actors that can block the checking actor (the actor where Trace was called from) and all colliding. All colliding includes level geometry, pawns, interpolated actors, any other kind of actor, terrain and volumes.
+</li></ul>
+</li> <li> <strong>Returned Actor</strong> - Trace returns an Actor reference. If the return is None, then the trace did not hit anything. If the trace hit BSP, then the returned Actor is WorldInfo. Otherwise, the trace will return whatever Actor it hit.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function Actor Trace(out Vector   HitLocation, out Vector HitNormal, Vector TraceEnd, optional Vector TraceStart, optional bool bTraceActors, optional Vector Extent, optional out TraceHitInfo HitInfo, optional int ExtraTraceFlags);
+</pre>
+</div>
+<p />
+<h4><a name="TraceComponent"></a> TraceComponent </h4>
+Perform a trace against InComponent only. Returns true if the trace hit. This is useful when more accuracy is required in determining if an Actor was hit or not. <ul>
+<li> <strong>HitLocation</strong> - Where in the world the line collided.
+</li> <li> <strong>HitNormal</strong> - Surface normal of where the line collided.
+</li> <li> <strong>InComponent</strong> - Component to run the trace against.
+</li> <li> <strong>TraceEnd</strong> - A point in the world where the trace ends.
+</li> <li> <strong>TraceStart</strong> - A point in the world where the trace starts.
+</li> <li> <strong>Extent</strong> - If this vector is equal to zero (Vect[0.f, 0.f, 0.f]) then the trace performed will be considered as zero extent. If the vector is not zero, then a non zero extent trace is performed.
+</li> <li> <strong>HitInfo</strong> - This struct contains information about the trace results. This may be invalid if the trace did not collide with anything. <ul>
+<li> <strong>Material</strong> - Material that the trace hit.
+</li> <li> <strong>PhysMaterial</strong> - Physical material that the trace hit.
+</li> <li> <strong>Item</strong> - Extra information about the thing that the trace hit.
+</li> <li> <strong>LevelIndex</strong> - Level index if the trace hit BSP.
+</li> <li> <strong>BoneName</strong> - Name of the bone if the trace hit a skeletal mesh component.
+</li> <li> <strong>HitComponent</strong> - Component that the trace hit.
+</li></ul>
+</li> <li> <strong>bComplexCollision</strong> - Set true if you wish to use per polygon collision.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function bool TraceComponent(out Vector HitLocation, out Vector HitNormal, PrimitiveComponent InComponent, Vector TraceEnd, optional Vector TraceStart, optional Vector Extent, optional out TraceHitInfo HitInfo, optional bool bComplexCollision)
+</pre>
+</div>
+<p />
+<h4><a name="FastTrace"></a> FastTrace </h4>
+Performs a trace within the world, and returns true if it did <strong>not</strong> collide with anything. This is useful for quickly checking if an Actor has line of sight of another Actor. <ul>
+<li> <strong>TraceEnd</strong> - A point in the world where the trace ends.
+</li> <li> <strong>TraceStart</strong> - A point in the world where the trace starts.
+</li> <li> <strong>BoxExtent</strong> - If this vector is equal to zero (Vect[0.f, 0.f, 0.f]) then the trace performed will be considered as zero extent. If the vector is not zero, then a non extent trace is performed.
+</li> <li> <strong>bTraceBullet</strong> - Set true if you want the trace to act like a bullet.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function bool FastTrace(Vector TraceEnd, optional Vector TraceStart, optional Vector BoxExtent, optional bool bTraceBullet);
+</pre>
+</div>
+<p />
+<h4><a name="TraceAllPhysicsAssetInteractions"></a> TraceAllPhysicsAssetInteractions </h4>
+Performs a trace within the world against a skeletal mesh component's physics asset, and returns all of the hits. <ul>
+<li> <strong>SkelMeshComp</strong> - Skeletal mesh component to test the trace against.
+</li> <li> <strong>EndTrace</strong> - A point in the world where the trace ends.
+</li> <li> <strong>StartTrace</strong> - A point in the world where the trace starts.
+</li> <li> <strong>out_Hits</strong> - Outputs an array containing information about the trace's results. <ul>
+<li> <strong>HitActor</strong> - The actor that was hit.
+</li> <li> <strong>HitLocation</strong> - World location of the trace hit location.
+</li> <li> <strong>HitNormal</strong> - Hit normal of the trace hit.
+</li> <li> <strong>RayDir</strong> - Direction of the trace.
+</li> <li> <strong>StartTrace</strong> - World location of where the trace started.
+</li> <li> <strong>HitInfo</strong> - This struct contains information about the trace results. This may be invalid if the trace did not collide with anything. <ul>
+<li> <strong>Material</strong> - Material that the trace hit.
+</li> <li> <strong>PhysMaterial</strong> - Physical material that the trace hit.
+</li> <li> <strong>Item</strong> - Extra information about the thing that the trace hit.
+</li> <li> <strong>LevelIndex</strong> - Level index if the trace hit BSP.
+</li> <li> <strong>BoneName</strong> - Name of the bone if the trace hit a skeletal mesh component.
+</li> <li> <strong>HitComponent</strong> - Component that the trace hit.
+</li></ul>
+</li></ul>
+</li> <li> <strong>Extent</strong> - If this vector is equal to zero (Vect[0.f, 0.f, 0.f]) then the trace performed will be considered as zero extent. If the vector is not zero, then a non extent trace is performed.
+</li> <li> Returns true if any hits were detected.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function bool TraceAllPhysicsAssetInteractions(SkeletalMeshComponent SkelMeshComp, Vector EndTrace, Vector StartTrace, out Array&#60;ImpactInfo&#62; out&#95;Hits, optional Vector Extent);
+</pre>
+</div>
+<p />
+<h4><a name="IsOverlapping"></a> IsOverlapping </h4>
+Returns true if this Actor is overlapping A. <ul>
+<li> <strong>A</strong> - The other actor to test overlapping conditions against.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function bool IsOverlapping(Actor A);
+</pre>
+</div>
+<p />
+<h4><a name="GetBoundingCylinder"></a> GetBoundingCylinder </h4>
+Returns the bounding cylinder radius and height, if possible. <ul>
+<li> <strong>CollisionRadius</strong> - Collision radius.
+</li> <li> <strong>CollisionHeight</strong> - Collision height.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function GetBoundingCylinder(out float CollisionRadius, out float CollisionHeight) const;
+</pre>
+</div>
+<p />
+<h4><a name="IsBlockedBy"></a> IsBlockedBy </h4>
+Returns true if this Actor is blocked by Other. <ul>
+<li> <strong>Other</strong> - The other actor to test if it is blocking this Actor.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function bool IsBlockedBy(const Actor Other) const;
+</pre>
+</div>
+<p />
+<h4><a name="TouchingActors"></a> TouchingActors </h4>
+An iterator function which returns all of the Actors that are touching this Actor. <ul>
+<li> <strong>BaseClass</strong> - Class of Actors to return.
+</li> <li> <strong>Actor</strong> - Actor that the line collided with.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+iterator function TouchingActors(class&#60;Actor&#62; BaseClass, out Actor Actor);
+</pre>
+</div>
+<p />
+<h4><a name="TraceActors"></a> TraceActors </h4>
+An iterator function returns all of the Actors, TraceHitInfos between two points in the world. This is useful for performing line checks which can exclude or include certain types of actors, or other conditions. <ul>
+<li> <strong>BaseClass</strong> - Class of Actors to return.
+</li> <li> <strong>Actor</strong> - Actor that the line collided with.
+</li> <li> <strong>HitLoc</strong> - Where in the world the line collided.
+</li> <li> <strong>HitNorm</strong> - Surface normal of where the line collided.
+</li> <li> <strong>End</strong> - A point in the world where the trace ends.
+</li> <li> <strong>Start</strong> - A point in the world where the trace starts.
+</li> <li> <strong>Extent</strong> - If this vector is equal to zero (Vect[0.f, 0.f, 0.f]) then the trace performed will be considered as zero extent. If the vector is not zero, then a non zero extent trace is performed.
+</li> <li> <strong>HitInfo</strong> - This struct contains information about the trace results. This may be invalid if the trace did not collide with anything. <ul>
+<li> <strong>Material</strong> - Material that the trace hit.
+</li> <li> <strong>PhysMaterial</strong> - Physical material that the trace hit.
+</li> <li> <strong>Item</strong> - Extra information about the thing that the trace hit.
+</li> <li> <strong>LevelIndex</strong> - Level index if the trace hit BSP.
+</li> <li> <strong>BoneName</strong> - Name of the bone if the trace hit a skeletal mesh component.
+</li> <li> <strong>HitComponent</strong> - Component that the trace hit.
+</li></ul>
+</li> <li> <strong>ExtraTraceFlags</strong> - Extra trace flags that provides hints to how the trace should be calculated. <ul>
+<li> <strong>TRACEFLAG_Bullet</strong> - Trace is acting like a bullet.
+</li></ul>
+</li></ul>
+<!--      * <strong>TRACEFLAG_PhysicsVolumes</strong> - Trace against physics volumes. -->
+<!--      * <strong>TRACEFLAG_SkipMovers</strong> - Trace that ignores InterpActors. -->
+<!--      * <strong>TRACEFLAG_Blocking</strong> - Trace that detect blocking actors only. -->
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+iterator function TraceActors(class&#60;Actor&#62; BaseClass, out Actor Actor, out Vector HitLoc, out Vector HitNorm, Vector End, optional Vector Start, optional Vector Extent, optional out TraceHitInfo HitInfo, optional int ExtraTraceFlags);
+</pre>
+</div>
+<p />
+<h4><a name="VisibleCollidingActors"></a> VisibleCollidingActors </h4>
+An iterator function which returns all colliding (bCollideActors is set true) actors within a certain radius for which a trace from Location (which defaults to caller's Location) to that actor's Location does not hit the world. <ul>
+<li> <strong>BaseClass</strong> - Class of Actors to return.
+</li> <li> <strong>Actor</strong> - Actor that the line collided with.
+</li> <li> <strong>Radius</strong> - Radius of the box.
+</li> <li> <strong>Loc</strong> - World location where the center of the box or sphere is.
+</li> <li> <strong>bIgnoreHidden</strong> - Ignored hidden actors.
+</li> <li> <strong>Extent</strong> - If this vector is equal to zero (Vect[0.f, 0.f, 0.f]) then the trace performed will be considered as zero extent. If the vector is not zero, then a non zero extent trace is performed.
+</li> <li> <strong>bTraceActors</strong> - Performs a line of sight check to make sure that actors are visible to the caller.
+</li> <li> <strong>InterfaceClass</strong> - Exclude actors that do not implement this interface. If this is None, then this is ignored.
+</li> <li> <strong>HitInfo</strong> - This struct contains information about the trace results. This may be invalid if the trace did not collide with anything. <ul>
+<li> <strong>Material</strong> - Material that the trace hit.
+</li> <li> <strong>PhysMaterial</strong> - Physical material that the trace hit.
+</li> <li> <strong>Item</strong> - Extra information about the thing that the trace hit.
+</li> <li> <strong>LevelIndex</strong> - Level index if the trace hit BSP.
+</li> <li> <strong>BoneName</strong> - Name of the bone if the trace hit a skeletal mesh component.
+</li> <li> <strong>HitComponent</strong> - Component that the trace hit.
+</li></ul>
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+iterator function VisibleCollidingActors(class&#60;Actor&#62; BaseClass, out Actor Actor, float Radius, optional Vector Loc, optional bool bIgnoreHidden, optional Vector Extent, optional bool bTraceActors, optional class&#60;Interface&#62; InterfaceClass, optional out TraceHitInfo HitInfo);
+</pre>
+</div>
+<p />
+<h4><a name="CollidingActors"></a> CollidingActors </h4>
+An iterator function which returns colliding (bCollideActors is set true) actors within a certain radius. bUseOverlapCheck uses a sphere vs. box check instead of checking to see if the center of an object lies within a sphere. <ul>
+<li> <strong>BaseClass</strong> - Class of Actors to return.
+</li> <li> <strong>Actor</strong> - Actor that the line collided with.
+</li> <li> <strong>Radius</strong> - Radius of the box, or sphere depending on bUseOverlapCheck.
+</li> <li> <strong>Loc</strong> - World location where the center of the box or sphere is.
+</li> <li> <strong>bUseOverlapCheck</strong> - Uses a sphere verses a box check instead of checking to see if the center of an object lies within a sphere.
+</li> <li> <strong>InterfaceClass</strong> - Exclude actors that do not implement this interface. If this is None, then this is ignored.
+</li> <li> <strong>HitInfo</strong> - This struct contains information about the trace results. This may be invalid if the trace did not collide with anything. <ul>
+<li> <strong>Material</strong> - Material that the trace hit.
+</li> <li> <strong>PhysMaterial</strong> - Physical material that the trace hit.
+</li> <li> <strong>Item</strong> - Extra information about the thing that the trace hit.
+</li> <li> <strong>LevelIndex</strong> - Level index if the trace hit BSP.
+</li> <li> <strong>BoneName</strong> - Name of the bone if the trace hit a skeletal mesh component.
+</li> <li> <strong>HitComponent</strong> - Component that the trace hit.
+</li></ul>
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+iterator function CollidingActors(class&#60;Actor&#62; BaseClass, out Actor Actor, float Radius, optional Vector Loc, optional bool bUseOverlapCheck, optional class&#60;Interface&#62; InterfaceClass, optional out TraceHitInfo HitInfo);
+</pre>
+</div>
+<p />
+<h4><a name="OverlappingActors"></a> OverlappingActors </h4>
+An iterator function which returns colliding (bCollideActors is set true) actors which overlap a Sphere from location Loc and Radius radius. <ul>
+<li> <strong>BaseClass</strong> - Class of Actors to return.
+</li> <li> <strong>out_Actor</strong> - Returned Actor at each iteration.
+</li> <li> <strong>Radius</strong> - Radius of sphere for overlapping check.
+</li> <li> <strong>Loc</strong> - Center of sphere for overlapping check. (Optional, caller's location is used otherwise).
+</li> <li> <strong>bIgnoreHidden</strong> - If true, ignore bHidden actors.
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+iterator function OverlappingActors(class&#60;Actor&#62; BaseClass, out Actor out&#95;Actor, float Radius, optional Vector Loc, optional bool bIgnoreHidden);
+</pre>
+</div>
+<p />
+<h2><a name="Collision Types"></a> Collision Types </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+There are a few collision types that you can use within your game. Majority of methods use closed meshes as collision hulls.
+<p />
+<h3><a name="Skeletal mesh collision hulls"></a> Skeletal mesh collision hulls </h3>
+Please see <a href="https://docs.unrealengine.com/5.0/udk/Three/PhysicsAssetEditor/UserGuide.html" class="twikiLink">PhAT User Guide</a> on how to create collision hulls used by Skeletal Meshes.
+<p />
+<h3><a name="Static mesh collision hulls"></a> Static mesh collision hulls </h3>
+<p />
+Static mesh collision hulls are stored as part of a static mesh. Static mesh collision hulls are also instanced in the same way as static meshes, so are more efficient memory wise than blocking volumes.
+<p />
+In the static mesh browser you can change a few properties of how the collision hulls are used:
+<p /> <ul>
+<li> <strong>UseSimpleRigidBodyCollision</strong> - This is set true by default. If this is true and a collision hull is present, then the collision hull will be turned into a set of convex hulls and used for calculating the collision of physics objects (e.g. vehicles or ragdolls) against this static mesh. If UseSimpleRigidBodyCollision is true, and there is no collision hull, rigid bodies will not collide with this static mesh. If you set UseSimpleRigidBodyCollision to false, then the physics engine will collide per polygon of the static mesh; only use this option if the static mesh polygons are fairly large.
+</li> <li> <strong>UseSimpleBoxCollision</strong> - This is set true by default. If this is true, then the collision hull, if present, will be used for non zero extent line checks. This includes things like player movement, but not weapon fire. No per polygon collision will be used if this is true and there is a collision hull. If you set UseSimpleBoxCollision to false, per polygon collision will be used based on the material. There will be no collision if you set UseSimpleBoxCollision to true when you do not have a collision hull.
+</li> <li> <strong>UseSimpleLineCollision</strong> - This is set true by default. If this is true, then the collision hull, if present, will be used for zero extent line checks. This includes most weapon fire, lens flare traces, etc. If you set UseSimpleLineCollision to true when you do not have a collision hull or if you set UseSimpleLineCollision to false, then per polygon collision will be used based on the material settings.
+</li></ul>
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CollisionTechnicalGuide.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:10:25 GMT -->
+</html></body>

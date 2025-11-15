@@ -1,0 +1,417 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/SettingUpTerrainJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:32:17 GMT -->
+<head>
+<title> UDK | SettingUpTerrainJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">SettingUpTerrainJP  </b></div>
+<div id="tooltext">
+<a href="SettingUpTerrain.html" class="twikiLink">English Translation</a><br><a href="SettingUpTerrainCH.html" class="twikiLink">中国翻译</a><br><a href="SettingUpTerrainKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/SettingUpTerrainJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<h1><a name="Unreal Engine での Terrain の設定"></a> Unreal Engine での Terrain の設定 </h1>
+<p />
+<em>ドキュメント概要： テレインをセットアップする手順に関する概要。</em>
+<p />
+<em>ドキュメントの変更ログ： <a href="https://udn.epicgames.com/Main/AlanWillard" class="restricted" class="restricted" class="twikiLink">Alan Willard</a> により作成。Richard Nalezynski<sup>?</sup> により管理。</em>
+<p />
+<p />
+<noautolink>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="SettingUpTerrainJP.html#Unreal Engine での Terrain の設定">Unreal Engine での Terrain の設定</a> <ul>
+<li> <a href="SettingUpTerrainJP.html#Terrain アクタの作成"> Terrain アクタの作成</a>
+</li> <li> <a href="SettingUpTerrainJP.html#テレイン プロパティ"> テレイン プロパティ</a>
+</li> <li> <a href="SettingUpTerrainJP.html#テレインのレイヤーの作成">テレインのレイヤーの作成</a> <ul>
+<li> <a href="SettingUpTerrainJP.html#テレイン マテリアル">テレイン マテリアル</a> <ul>
+<li> <a href="SettingUpTerrainJP.html#Displacement"> Displacement</a>
+</li> <li> <a href="SettingUpTerrainJP.html#Foliage"> Foliage</a>
+</li> <li> <a href="SettingUpTerrainJP.html#Material"> Material</a>
+</li></ul>
+</li> <li> <a href="SettingUpTerrainJP.html#Terrain Layers"> Terrain Layers </a>
+</li></ul>
+</li> <li> <a href="SettingUpTerrainJP.html#Decoration Layers"> Decoration Layers </a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Terrain アクタの作成"></a> Terrain アクタの作成 </h2>
+<p />
+<p />
+[Tools] (ツール) メニューから [New Terrain] (新しいテレイン) を選択します。次に、ワールド内における位置とパッチ数を設定します。[Finish] (完了) を選択して新しいテレインを作成します。
+<p />
+<img alt="terrain_wizard.jpg" src="rsrc/Three/SettingUpTerrainJP/terrain_wizard.jpg" />
+<p />
+テレインを配置するもう 1 つの方法として、Actor ブラウザでアクタツリーの [Info] ブランチを開きます。この下に [Terrein] があります。
+<p />
+<img alt="TerrainInBrowser.jpg" src="rsrc/Three/SettingUpTerrainJP/TerrainInBrowser.jpg" />
+<p />
+これを選択し、メインのエディタ ビューポートへ戻ります｡テレインを配置した際、テレインの左下の角がくる位置を探します（後でテレインは動かすことが出来ます）。テレインを配置する場所を右クリックし、他のアクタとまったく同様の方法で追加します｡これにより、ひとつのテレインのクワッドが突き出したテレイン アクタが作成されます｡これは、テレインのデフォルトはテレインのひとつの行と列に設定されているためです｡
+<p />
+これで、テレイン パッチの 1 つの 4 x 4 のクワッドが突き出したテレイン アクタが作成できるはずです。これは、テレインの初期設定が、MaxTesselationLevel が 4 であるような 4 x 4 のテレイン パッチに設定されているからです。
+<p />
+エディタの非透視図では、これが 2 つの三角形から成る 1 つの四角形として表示されるのが、以下で分かります。透視図では、最大解像度でのレンダリングにより、テレインは パッチの 4 x 4 グリッドとして表示されます。
+<p />
+<p />
+<img alt="Terrain_InitialView.jpg" src="#" />
+<p />
+<p />
+<h2><a name="テレイン プロパティ"></a> テレイン プロパティ </h2>
+<p />
+<img alt="BaseTerrainProp2.jpg" src="rsrc/Three/SettingUpTerrainJP/BaseTerrainProp2.jpg" />
+<p />
+<strong>NumPatchesX</strong> と <strong>NumPatchesY</strong> を好きな値に設定し拡張してください。ここで設定された値は、テッセレーションが行われる前のテレインの最高密度です。デモンストレーションの目的のために、X と Y ボックスに 16 個のパッチがあると仮定します。初期設定のマテリアルがマップされた広く平たいプレーンがあります。次にテレインのためのレイヤー セットアップを作成する必要があります。
+<p />
+テレイン プロパティに関する完全な資料は、 <a href="UsingTerrainJP.html" class="twikiLink">テレインの使用</a> ページを参照してください。
+<p />
+<p />
+<p />
+<h2><a name="テレインのレイヤーの作成"></a> テレインのレイヤーの作成 </h2>
+<p />
+レイヤーはテレイン上で異なる２つの方法で使用されます｡ひとつめは手続き的な設定で、レイヤーにはマテリアルと、そのマテリアルが使われる場所を指定するパラメータのリストが含まれています｡これによりアーティストは、高さと傾斜に基づいてエリアに特定の外観を持たせることが出来ます｡ひとつのレイヤーに複数のテレイン マテリアルを持たせることが可能で、各テレイン マテリアルにはそれぞれテレイン上でどのように使用されるかを指定するパラメータが含まれています｡
+<p />
+テレイン レイヤーが使用されるふたつめの方法は、Unreal Engine 2.0 とそれ以降での方法と似ており、各レイヤーにはひとつのマテリアルが含まれ、アーティストはエリアをペイントするためにどのレイヤーでも使えるというものです｡これらふたつの方法は組み合わせることも出来ます。手続き的なレイヤーはエリアの大半を定義するために使い、マテリアルをひとつ使う方法ではエリアにディテールを加えたり、再定義（原っぱの中の小道をペイントするなど）するために使います｡
+<p />
+<h3><a name="テレイン マテリアル"></a> テレイン マテリアル </h3>
+<p />
+<img alt="TerrainMaterial.jpg" src="rsrc/Three/SettingUpTerrainJP/TerrainMaterial.jpg" />
+<p />
+テレイン マテリアルは、好みのマテリアルをテレイン レイヤーへレンダリングします。その他にもアーティストが変位やフォリッジを加えたり、テレイン上のマテリアルのスケーリングを変えてカスタマイズできる多くのプロパティがあります。
+<p />
+テレイン マテリアルを作成するには、ブラウザで [file](ファイル)-&gt;[New](新規作成)を選択し、 "TerrainMaterial" を選択するか、ブラウザ（または何もないところ）で右クリックして、 "New TerrainMaterial"(新しいテレイン マテリアル) を選択します｡オブジェクトを指定するようプロンプトが表示されます｡これが済んだら、新しいオブジェクトを右クリックして "Property"(プロパティ) を選択します｡これにより、プロパティ ウィンドウが３つのロールアウトとともに開きます｡ Displacement には、このマテリアルでDisplacement マップを利用する際の設定が含まれ、Foliage にはテレイン上でレンダリングするメッシュが数多く含まれ（セクション３で説明）、Material にはテレイン上にピクセル シェイダーをレンダリングするためのプロパティがすべて揃っています｡
+<p />
+<h4><a name="Displacement"></a> Displacement </h4>
+<p />
+変位マップはグレースケールのイメージを使い、テレインの頂点をサーフェスの法線に沿って動かします｡変位マップを作成するには、アルファ チャンネルを保存できるペイント プログラムでテクスチャを作成します｡32ビットの .TGA で保存し、圧縮の設定を TC_DisplacementMap にして Unreal Engine 3.0 へインポートします｡このテクスチャを、TerrainMaterial の DisplacementMap フィールドに使います｡　DisplacementMap  フィールドの下のスケーリング ファクタは、DisplacementMap の強さを調節します｡
+<p />
+<h4><a name="Foliage"></a> Foliage </h4>
+<p />
+Foliage contains an empty array, which can be added to by clicking on the + symbol that appears on the right side of the FoliageMeshes rollout. Adding an entry to this array will reveal a set of options that determine where and how the assigned mesh will render.
+<p />
+<strong>StaticMesh</strong> - Foliage として使うメッシュを入力する
+<p />
+<p />
+<strong>Material</strong> - メッシュに割り当てられているマテリアルをオーバーライドする
+<p />
+<p />
+<strong>Density</strong> - クワッド毎のメッシュの数
+<p />
+<strong>MaxDrawRadius</strong> - メッシュが見える限りの最大距離
+<p />
+<strong>MinTransitionRadius</strong> - メッシュがブレンド/スケール インするのを停止するまでの最大距離
+<p />
+<strong>MinScale</strong> - 一定のスケール モディファイヤ
+<p />
+<strong>MaxScale</strong> - 一定のスケール モディファイヤ
+<p />
+<strong>Seed</strong> - ランダムな配置を設定
+<p />
+<strong>SwayScale</strong> - 風のソースを増幅
+<p />
+<strong>StaticLighting (フラグ)</strong> - Foliage のライティング スタイルのスイッチ
+<p />
+<p />
+<h4><a name="Material"></a> Material </h4>
+<p />
+Material には、シェイダーがテレイン上でどのようにマップされるかを指定するオプションが含まれています｡
+<p />
+<strong>MappingPanU</strong> - U に沿ってデフォルト マッピングをオフセット
+<p />
+<strong>MappingPanV</strong> - V に沿ってデフォルト マッピングをオフセット
+<p />
+<strong>MappingRotation</strong> - デフォルトの回転をオフセット
+<p />
+<strong>MappingScale</strong> - テレイン上でシェイダーを均一にスケール
+<p />
+<strong>MappingType</strong> - テレイン上で使うマッピング プレーンを決定
+<p />
+<strong>Material</strong> - テレイン上で使うシェイダーを決定
+<p />
+<h3><a name="Terrain Layers"></a> Terrain Layers </h3>
+<p />
+<img alt="TerrainLayers.jpg" src="rsrc/Three/SettingUpTerrainJP/TerrainLayers.jpg" />
+<p />
+TerrainLayerSetup のオブジェクトは、Terrain レイヤーを作成するために使われます｡TerrainLayerSetup の作成はテレイン マテリアルの作成とほぼ同じですが、使用するシェイダーを割り当てる代わりに、ここではTerrainMaterialsを割り当てます｡
+<p />
+TerrainLayerSetup はテレイン マテリアルをいくつでも持つことが出来ますが、上から順番に重なるということを覚えておく必要があります｡これは、エントリ [0] はエントリ [1] の上にレンダリングされることを意味します｡
+<p />
+下はTerrainLayerSetup の設定のリストです｡
+<p />
+<strong>UseNoise</strong> - テレイン マテリアルのノイズを有効にするためこのフラグを設定する。
+<p />
+<strong>NoiseScale</strong> - UseNoise が有効になっている場合、ノイズのスケーリングの値を決定。
+<p />
+<strong>NoisePercent</strong> - このマテリアルがどれくらい騒がしくなるかを決定｡ 値は0.00 から 1.00｡
+<p />
+<strong>Min/MaxHeight</strong> - 手続き型テレインのテクスチャリングに使用される｡テレインがプロパティで設定されている範囲内である場合、このマテリアルがレンダリングされるようにする。
+<p />
+<strong>Enabled</strong> - フラグが付いている場合、手続き型テクスチャリングのブランチが有効化される。
+<p />
+<strong>Base</strong> - このマテリアルをクランプするためのワールド スペースの値｡テレインの高さが最低 128 で最大 1024 の間である場合、マテリアルは表示されるのみ｡
+<p />
+<strong>NoiseScale</strong> - ベースの高さに影響を与えるノイズの度数｡値が小さいほどノイズは大きくなる｡
+<p />
+<strong>NoiseAmount</strong> - ベース アマウントに追加されたノイズ量。
+<p />
+<strong>Min/MaxSlope</strong> - 手続き型テレインのテクスチャリングに使用｡テレインの角度がプロパティでの設定範囲内である場合、マテリアルをレンダリングする｡
+<p />
+プロパティのほとんどは <strong>最低/最高</strong> 高さと同じです｡
+<p />
+<strong>Base</strong> 傾斜の角度を意味する｡ 0 は 0 度、1 は 45 度、90 度までは無限大を指す｡
+<p />
+<strong>Alpha</strong> - テレイン上にレンダリングする、テレイン レイヤーのこのセクションの総体的な強さ｡ .5 の値を設定すると、現在のテレイン マテリアルを、テレイン上で半分不透明な状態でレンダリングする｡
+<p />
+<strong>Material</strong> - レイヤーのこの部分で使われるテレイン マテリアル
+<p />
+<p />
+<h2><a name="Decoration Layers"></a> Decoration Layers </h2>
+<p />
+<img alt="DecoLayers.jpg" src="rsrc/Three/SettingUpTerrainJP/DecoLayers.jpg" />
+<p />
+Decoration Layersは、テレインに詳細なオブジェクトを加えるために使います｡これらのオブジェクトはプレーヤーに対しフルで衝突し、ライティングを受け、影を落とします｡
+<p />
+ひとつのDecoration Layersに複数の静的メッシュを持たせることは可能ですが、この場合レイヤーがペイントされる際に、割り当てられるメッシュがレイヤーからランダムに選ばれます｡複数の装飾レイヤーを作成すると、メッシュを配置する際によりしっかりとコントロールすることが出来ます｡
+<p />
+Decoration Layersはテレイン アクタの Terrain プロパティのすぐ下に表示され、レイヤーはその他のエレメントのダイナミック アレイと同様の方法で加えることが出来ます｡これらのレイヤーにはそれぞれ <strong>Name</strong> フィールドがあり、テレイン ツールの中に表示されます｡
+<p />
+ <strong>Name</strong> の下はもうひとつのアレイ、 <strong>Decorations</strong> です。このアレイでエレメントを作成すると、メッシュが何に使われどのように表示されるか、テレインの上ではどのように配されるかが、設定によって明らかになります｡
+<p />
+<strong>Factory</strong> -  <code>StaticMeshFactory</code> を定義します｡ここでは、メッシュが何に使われるのか、メッシュはゲーム内またはエディタでは表示されるのか、影を落とすのか、プレーヤやワールドとはどのように衝突するのかが設定できます｡
+<p />
+<strong>MinScale</strong> - メッシュが表示される最小のスケール。
+<p />
+<strong>MaxScale</strong> - メッシュが表示される最大のスケール。
+<p />
+<strong>Density</strong> - ペインティングの際に配置されるメッシュの密度。
+<p />
+<strong>SlopeRotationBlend</strong> - テレイン上にペイントされるメッシュに渡されるテレイン角度の割合。
+<p />
+<strong>RandSeed</strong> - メッシュの配置のためのランダム シード。
+<p />
+</noautolink>
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/SettingUpTerrainJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:32:18 GMT -->
+</html></body>

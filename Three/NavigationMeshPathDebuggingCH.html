@@ -1,0 +1,355 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavigationMeshPathDebuggingCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:35 GMT -->
+<head>
+<title> UDK | NavigationMeshPathDebuggingCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">NavigationMeshPathDebuggingCH  </b></div>
+<div id="tooltext">
+<a href="NavigationMeshPathDebugging.html" class="twikiLink">English Translation</a><br><a href="NavigationMeshPathDebuggingJP.html" class="twikiLink">日本語訳</a><br><a href="NavigationMeshPathDebuggingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/NavigationMeshPathDebuggingCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt; <b><a href="AIAndNavigationHome.html" class="twikiLink">AI &amp; 导航</a></b> &gt; 导航网格物体路径调试
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="导航网格物体路径调试"></a> 导航网格物体路径调试 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="NavigationMeshPathDebuggingCH.html#导航网格物体路径调试">导航网格物体路径调试</a> <ul>
+<li> <a href="NavigationMeshPathDebuggingCH.html#概述"> 概述</a>
+</li> <li> <a href="NavigationMeshPathDebuggingCH.html#路径调试渲染">路径调试渲染</a>
+</li> <li> <a href="NavigationMeshPathDebuggingCH.html#b_DebugConstraintsAndGoalEvals"> bDebugConstraintsAndGoalEvals</a>
+</li> <li> <a href="NavigationMeshPathDebuggingCH.html#b_UltraVerbosePathDebugging"> bUltraVerbosePathDebugging</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+由于一般数据集较大以及寻路的复杂性导致调试寻路问题是很困难的。本文档概括出了一些工具来使得过程变得简单。
+<p />
+<h2><a name="路径调试渲染"></a> 路径调试渲染 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+要想启用路径渲染功能，您可以运行控制台命令 <em>show paths(显示路径)</em> 。这将会描画出当前加载的导航网格物体(包括从导航网格物体障碍物的动态更新)。
+下面是一个屏幕截图：
+<p />
+<img alt="showpathsscreenshot.jpg" src="rsrc/Three/NavigationMeshPathDebuggingCH/showpathsscreenshot.jpg" />
+<p /> <ul>
+<li> 红色的表面是指障碍物网格物体的表面(AI不能在其上面行走的表面)。
+</li> <li> 绿色的表面是可以行走的表面(导航网格物体本身的一部分)。
+</li> <li> 在多边形之间沿着边界的紫色的线是指多边形之间的连接。如果在两个邻近的多边形之间没有紫色的线，那么AI将不能从一个多边形到另一个多边形。
+</li> <li> 其它的不同边缘类型的线(比如，黄色的虚线)。在这个例子中，黄色的虚线是指条状盖板的边缘。
+</li></ul>
+<p />
+在Pylon上，您也可以找到一些有用的调试选项： <ul>
+<li> <strong><em>bDrawEdgePolys</em></strong> -当它的值为TRUE时，将会从边缘的中心向连接两个多边形的边缘的中心描画一条线。这对于调试哪些多边形正在和哪些边连接是有用的。这里是打开这项的屏幕截图： <br /> <img alt="showpathsscreenshot_edgepolys.jpg" src="rsrc/Three/NavigationMeshPathDebuggingCH/showpathsscreenshot_edgepolys.jpg" />
+</li> <li> <strong><em>bDrawPolyBounds</em></strong> -当这项为真时，将会描画黄色的线框，它是指计算出的每个多边形的边界。屏幕截图：<br />  <img alt="showpathsscreenshot_showbounds.jpg" src="rsrc/Three/NavigationMeshPathDebuggingCH/showpathsscreenshot_showbounds.jpg" />
+</li></ul>
+<p />
+同时请参照<a href="UsingNavigationMeshes.html" class="twikiLink">使用导航网格物体</a>页面获得更多的信息。
+<p />
+<h2><a name="b_DebugConstraintsAndGoalEvals"></a> bDebugConstraintsAndGoalEvals </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+在navigationhandle(导航手柄)上存在一个布尔值，当设置这项为TRUE时，将会使得那个导航手柄的寻路输出关于路径搜索的统计数据。
+<p />
+这里是一个实例，它显示了当设置bDebugConstraintsAndGoalEvals为真时，它是从一个简单最短路径搜索的输出的统计数据。
+<p />
+<pre>
+&#91;0515.02]Log:------- PATH CONSTRAINT STATS(路径约束数据统计) --------
+&#91;0515.02]Log:Processed:43 ThrownOut:0 (0.00&#37; thrown out) AddedPathCost:0.00 (0.00&#37; total) AddedHeuristic:0.00 (0.00&#37; total) - (NavMeshPath&#95;MinDistBetweenSpecsOfType&#95;0)
+&#91;0515.02]Log:Processed:43 ThrownOut:0 (0.00&#37; thrown out) AddedPathCost:0.00 (0.00&#37; total) AddedHeuristic:175.00 (100.00&#37; total) - (NavMeshPath&#95;Toward&#95;0)
+&#91;0515.02]Log:--------------------------------------
+&#91;0515.02]Log:TotalThrownOut:0 TotalAddedDirectCost:0.00 TotalAddedHeuristicCost:175.00
+&#91;0515.02]Log:------- GOAL EVALUATOR STATS --------
+&#91;0515.02]Log:Threw Out 10 (out of 11 processed (90.91&#37;)) (Responsible for 100.00&#37; of all nodes thrown out) - NavMeshGoal&#95;At&#95;0
+&#91;0515.02]Log:---------------------------------------
+</pre>
+<p />
+从这个输出数据中，您可以获得很多信息。比如，如果我们在路径约束类表中有一个故障限制，它拒绝了所有的节点，通过查看统计数据我们可以看到那是一个错误行为。这也会输出关于增加系统消耗的约束，以便您可以看到哪个约束对路径检索由最大的影响等…..。
+<p />
+<h2><a name="b_UltraVerbosePathDebugging"></a> bUltraVerbosePathDebugging </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<strong>注意:</strong> 这个代码在QA_APPROVED_BUILD_DEC_2009版本中出现，代码的迁入变更列表是CL 408369。
+<p />
+当您仍然不知道当前的运行状态或者为什么一个实体不能寻路到一个位置时，可以打开bUltraVerbosePathDebugging项。当启用这项后，在下次启用AI寻路时，代码将会把调试信息描画到屏幕上，并且会把输入到屏幕上的信息保存到日志中。
+<p />
+屏幕调试信息应该可以帮助您看到路线的总体形状并且可以知道寻路进行到了什么地方以及它检查了哪些节点。当然，通过试用屏幕上的标签，您可以获得关于特定事件的更多细节信息。
+<p />
+请参照以下的屏幕截图:<br />
+ <img alt="UltraVerbosePathDebuggingScreenshot.jpg" src="rsrc/Three/NavigationMeshPathDebuggingCH/UltraVerbosePathDebuggingScreenshot.jpg" /> <br /> <ul>
+<li> <font color="#ff0000">Red lines(红线)</font> -指出了被拒绝的路径行走路径。
+</li> <li> <font color="#ff0000">Red Text(红色文字)</font> -它是和那个行走失败的路线相对应的输入到日志输出行中进行查找的关键字。比如，如果您在边缘上看到C:21，您或许想知道AI为什么不能通过，可以在您的日志窗口中输入C:21进行搜索，然后您便找到原因。以下是个日志行的实例： [0061.15]Log:PATH_DEBUG_MESSAGE[C:21]:边缘不支持这个实体(支持返回为FALSE) Edge:FNavMeshEdgeBase (Len:30.00 EffecLen:30.00)。
+</li> <li> <font color="#008000">Green lines(绿线)</font> -是指成功地从一个多边形穿越到另一个多边形。
+</li> <li> White Text(白色字体) -是用于输入日志输入命令行关键字，该关键字和调用EvaluateGoal 失败(没有终止)相对应。一个实例，日志行(log line)： [0061.15]Log:Poly (P:16) (polyctr:X=13905.000 Y=-13110.000 Z=129.000)仅是NavMeshGoal_At_0的给定状态[EvaluateGoal返回0]。
+</li> <li> DebugCoordinateSystem(调试坐标系统) - 在SearchStart处描画。
+</li></ul>
+比如，在这个屏幕截图中，如果我想知道为什么标记为C:22的边缘不允许AI通过它，我将需要在调试输出中所搜C:22，然后我将找到以下信息：
+<pre>
+&#91;0132.83]Log:PATH&#95;DEBUG&#95;MESSAGE&#91;C:22]:边缘不支持这个实体(支持返回为FALSE) Edge:FNavMeshCoverSlipEdge (Actor:CoverLink&#95;8 RelItem:0 MoveDir:-1)
+</pre>
+<p />
+这里是另一个屏幕截图，展示了正在工作中的调试模式的较宽的视图:
+<p />
+<img alt="ultraverbose_wide.jpg" src="rsrc/Three/NavigationMeshPathDebuggingCH/ultraverbose_wide.jpg" />
+<p />
+在这个模式中，也会打印许多其它的相关信息，比如，在每个路径步伐中设置大小，以及路径检索终止的原因。这里是一些示例输出：
+<p />
+<pre>
+&#91;0132.82]Log:Poly (P:108) (polyctr:X&#61;12828.750 Y&#61;-15367.500 Z&#61;-127.000) was just given status &#91;EvaluateGoal returned 0] by NavMeshGoal&#95;SquadFormation&#95;0
+&#91;0132.82]Log:PATH&#95;DEBUG&#95;MESSAGE&#91;C:221]:Path constraint NavMeshPath&#95;WithinTraversalDist&#95;0 EvaluatePath rejected this edge! Edge:FNavMeshEdgeBase (Len:60.00 EffecLen:90.00)。
+&#91;0132.82]Log:PATH&#95;DEBUG&#95;MESSAGE&#91;C:222]:边缘不支持这个实体(支持返回为FALSE) Edge:FNavMeshEdgeBase (Len:15.00 EffecLen:30.00)。
+&#91;0132.82]Log:PATH&#95;DEBUG&#95;MESSAGE&#91;C:223]:边缘不支持这个实体(支持返回为FALSE) Edge:FNavMeshEdgeBase (Len:15.00 EffecLen:30.00)。
+&#91;0132.82]Log:+++Finished path step 108!, Openlist now has 2 nodes in it.
+&#91;0132.82]Log:Poly (P:109) (polyctr:X&#61;12105.000 Y&#61;-13860.000 Z&#61;127.750) was just given status &#91;EvaluateGoal returned 0] by NavMeshGoal&#95;SquadFormation&#95;0
+&#91;0132.82]Log:PATH&#95;DEBUG&#95;MESSAGE&#91;C:224]:Path constraint NavMeshPath&#95;WithinTraversalDist&#95;0 EvaluatePath rejected this edge! Edge:FNavMeshEdgeBase (Len:60.00 EffecLen:90.00)。
+&#91;0132.82]Log:PATH&#95;DEBUG&#95;MESSAGE&#91;C:225]:边缘不支持这个实体(支持返回为FALSE) Edge:FNavMeshEdgeBase (Len:15.00 EffecLen:30.00)。
+&#91;0132.82]Log:+++Finished path step 109!, Openlist now has 1 nodes in it.
+&#91;0132.82]Log:Poly (P:110) (polyctr:X&#61;13800.000 Y&#61;-14482.500 Z&#61;-127.000) was just given status &#91;EvaluateGoal returned 0] by NavMeshGoal&#95;SquadFormation&#95;0
+&#91;0132.82]Log:PATH&#95;DEBUG&#95;MESSAGE&#91;C:226]:Path constraint NavMeshPath&#95;WithinTraversalDist&#95;0 EvaluatePath rejected this edge! Edge:FNavMeshEdgeBase (Len:60.00 EffecLen:120.00)。
+&#91;0132.83]Log:PATH&#95;DEBUG&#95;MESSAGE&#91;C:227]:边缘不支持这个实体(支持返回为FALSE) Edge:FNavMeshEdgeBase (Len:15.00 EffecLen:30.00)。
+&#91;0132.83]Log:PATH&#95;DEBUG&#95;MESSAGE&#91;C:228]:Path constraint NavMeshPath&#95;WithinTraversalDist&#95;0 EvaluatePath rejected this edge! Edge:FNavMeshEdgeBase (Len:60.00 EffecLen:120.00)。
+&#91;0132.83]Log:PATH&#95;DEBUG&#95;MESSAGE&#91;C:229]:Path constraint NavMeshPath&#95;WithinTraversalDist&#95;0 EvaluatePath rejected this edge! Edge:FNavMeshEdgeBase (Len:75.00 EffecLen:105.00)。
+&#91;0132.83]Log:PATH&#95;DEBUG&#95;MESSAGE&#91;C:230]:边缘不支持这个实体(支持返回为FALSE) Edge:FNavMeshCoverSlipEdge (Actor:CoverLink&#95;48 RelItem:0 MoveDir:-1)
+&#91;0132.83]Log:+++Finished path step 110!, Openlist now has 0 nodes in it.
+&#91;0132.83]Log:+++++++++ STOPPING PATH SEARCH -- Nodes on openlist:0 Reason:Path finished, and DetermineFinalGoal returned TRUE.. search was a success!
+</pre>
+<p />
+当然，已经建立了一个可以轻松地在游戏运行时启动特定AI上的调试模式的快速工具。
+<strong><em>VerbosePathDebug</em></strong> 是个控制台命令，您可以运行它，从而可以描绘出玩家正在看向的地方，并且会设置路径中的任何pawns的bUltraVerbosePathDebugging为真。
+<p />
+<p />
+当为一个AI启用这个工具并且那个AI完成了寻路时，之前的非常冗长的调试信息将会被冲掉，从而为新的信息让出控件，同时游戏将会处于仅玩家模式，是您可以挖掘更多的信息。请记住，如果在一帧中发生了多次寻路，那么您看到的描画的屏幕上的路径是最后一次发生寻路的路径。
+<noautolink>
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavigationMeshPathDebuggingCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:36 GMT -->
+</html></body>

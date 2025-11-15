@@ -1,0 +1,472 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavMeshDynamicObstacleSplittingJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:32:48 GMT -->
+<head>
+<title> UDK | NavMeshDynamicObstacleSplittingJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">NavMeshDynamicObstacleSplittingJP  </b></div>
+<div id="tooltext">
+<a href="NavMeshDynamicObstacleSplitting.html" class="twikiLink">English Translation</a><br><a href="NavMeshDynamicObstacleSplittingCH.html" class="twikiLink">中国翻译</a><br><a href="NavMeshDynamicObstacleSplittingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/NavMeshDynamicObstacleSplittingJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="障壁メッシュによるナビゲーションメッシュの動的な分割に関する技術的な概要"></a> 障壁メッシュによるナビゲーションメッシュの動的な分割に関する技術的な概要 </h1>
+<p />
+<em>ドキュメントの概要: ナビゲーションメッシュに配備された動的なメッシュ分割システムに関する技術的な概要と、その使い方の説明。</em>
+<p />
+<em>ドキュメントの変更ログ: <a href="https://udn.epicgames.com/Main/MattTonks" class="restricted" class="restricted" class="twikiLink">Matt Tonks</a> により作成。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="NavMeshDynamicObstacleSplittingJP.html#障壁メッシュによるナビゲーションメッシュの動的な分割に関する技術的な概要"> 障壁メッシュによるナビゲーションメッシュの動的な分割に関する技術的な概要</a> <ul>
+<li> <a href="NavMeshDynamicObstacleSplittingJP.html#概要"> 概要</a>
+</li> <li> <a href="NavMeshDynamicObstacleSplittingJP.html#ハイレベルの概要"> ハイレベルの概要</a>
+</li> <li> <a href="NavMeshDynamicObstacleSplittingJP.html#詳細"> 詳細</a>
+</li> <li> <a href="NavMeshDynamicObstacleSplittingJP.html#Interface_NavMeshPathObject との連動"> Interface_NavMeshPathObject との連動</a>
+</li> <li> <a href="NavMeshDynamicObstacleSplittingJP.html#AddObstacleEdge"> AddObstacleEdge</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<p />
+実行時の動的な変化に対応してメッシュ (および AI ナビゲーション) に影響を与えることができると、結構便利な場合がよくあります。このドキュメントでは、ナビゲーションメッシュ システムでこれがどのように行われるかについて概説します。
+<p />
+<h2><a name="ハイレベルの概要"></a> ハイレベルの概要 </h2>
+基本的には、 <em>Interface_navmeshpathobstacle</em> とは、形状を指定し、その周囲のナビゲーションメッシュを分割するためのインターフェースをユーザーに提供するものです。ゲーム ワールドに新しい障壁 (obstacle) が登場し、AI がそのまわりを迂回しなければならない場合、ユーザーは <em>RegisterObstacleWithNavMesh()</em> を呼び出します。この関数は既存のメッシュ内のどのポリゴンがこの障壁の影響を受けるかを判定し、必要に応じてその形状のまわりのポリゴンを分割します。
+<p />
+次の画像を見てください。<br />
+ <img alt="splittery_base_visualJP.PNG" src="rsrc/Three/NavMeshDynamicObstacleSplittingJP/splittery_base_visualJP.png" /> <br />
+<p />
+デフォルトのメッシュは 4 つのポリゴンで構成され、キューブ形の障壁のまわりで細分割されています。これよりもっと複雑な障壁でも、軸から外れていても構いませんが、唯一の制約は、与える形状は凸状でなければならないという点です。
+<p />
+<strong>Hierarchy:</strong> (階層)
+障壁まわりのメッシュが分割されるとき、実際には既存のポリゴンに代わる新しいメッシュを作成し、この方法によって一種の階層を形成します。これは、影響を受けたポリゴンを AI が使用するときに参照する階層です。中間 (または imposter) メッシュを含むポリゴンを通過するパスの検出時には、そのポリゴンのエッジをたどるのではなく、そのサブメッシュを調べてパスを見つけます。
+<p />
+<strong>Build on-demand</strong>: (オンデマンド作成)
+障壁の影響下にあると印されたポリゴンを AI が通過する必要があるときに、障壁に沿ってポリゴンがまだ分割されていなければ、その時点でポリゴン分割が行われます。障壁の登録直後に行われるのではありません。それは障壁の登録コストを少しでも軽減するためで、例えば、ナビゲーションメッシュシステムへの登録と登録解除が頻繁に行われる障壁でも、このコスト高の処理は、障壁の影響下にあるメッシュのデータを AI が必要とするときだけ発生することになります。
+<p />
+さらに、ポリゴンを一度分割してしまえば、そのジオメトリの通過に関連する追加コストは発生しません。つまり、障壁の登録に伴う計算コストの負担は一度だけで、また、メッシュの親構造は変更されないので、障壁が消えたときに元の構造に戻るコストはほとんどかかりません。
+<p />
+<p />
+<h2><a name="詳細"></a> 詳細 </h2>
+<p />
+非常に簡単なパス障壁の例として、NavMeshObstacle (<code><b>NavMeshObstacle.uc</b></code>) を調べてみましょう。
+<p />
+これには障壁の有効化/無効化に関する kismet ロジックが含まれていますが、興味があるのは以下の部分です。
+<pre>
+cpptext
+{
+   /&#42;&#42;
+    &#42; this function should populate out&#95;polyshape with a list of verts which describe this object&#39;s
+    &#42; convex bounding shape (この関数は、オブジェクトの凸形境界を表現する頂点のリストを out&#95;polyshape に挿入する)
+    &#42; &#64;param out&#95;PolyShape - output array which holds the vertex buffer for this obstacle&#39;s bounding polyshape (この障壁の境界ポリゴン形状の頂点バッファを格納する出力配列)
+    &#42; &#64;return TRUE if this object should block things right now (FALSE means this obstacle shouldn&#39;t affect the mesh) (このオブジェクトが現在ブロックする場合は True を返す。メッシュに影響しない場合は False)。
+    &#42;/
+   virtual UBOOL GetBoundingShape(TArray&#60;FVector&#62;&#38; out&#95;PolyShape);
+
+   virtual UBOOL PreserveInternalPolys() { return TRUE; }
+}
+</pre>
+<p />
+これは非常に基本的なパス障壁で、現在のところ、その振る舞いはこの障壁の形状に沿ってメッシュを分割するだけです。<br />
+次に、このサンプルのパスオブジェクトが無効 (登録解除) 状態にあるスクリーンショットと、有効 (登録) 状態のスクリーンショットを見てみましょう。<br />
+<em>(注意: 以下のスクリーンショットでは、PreserveInternalGeo() がオンになっています。これについては後ほど説明します)</em> <br />
+次の図では、まだメッシュに登録されていない障壁がワールドにあります。このメッシュは大きなポリゴン 1 つで構成され、その内側に障害物が配置されています。<br />
+ <img alt="Obstacle_DisabledJP.PNG" src="rsrc/Three/NavMeshDynamicObstacleSplittingJP/Obstacle_DisabledJP.png" /> <br />
+次は障壁が登録された後のメッシュで、メッシュは (実行時に) 分割されています。<br />
+ <img alt="Obstacle_EnabledJP.PNG" src="rsrc/Three/NavMeshDynamicObstacleSplittingJP/Obstacle_EnabledJP.png" /> <br />
+<p />
+このサンプルオブジェクトを定義する 2 つの関数に目を通してみましょう。
+<p />
+<strong>GetBoundingShape:</strong> <br />
+以下はこのオブジェクトの実装です。
+<pre>
+UBOOL ANavMeshObstacle::GetBoundingShape(TArray&#60;FVector&#62;&#38; out&#95;PolyShape)
+{
+   out&#95;PolyShape.AddItem(Location + FRotationMatrix(Rotation).TransformFVector(FVector(200.f,200.f,0.f)));
+   out&#95;PolyShape.AddItem(Location + FRotationMatrix(Rotation).TransformFVector(FVector(-200.f,200.f,0.f)));
+   out&#95;PolyShape.AddItem(Location + FRotationMatrix(Rotation).TransformFVector(FVector(-200.f,-200.f,0.f)));
+   out&#95;PolyShape.AddItem(Location + FRotationMatrix(Rotation).TransformFVector(FVector(200.f,-200.f,0.f)));
+   return TRUE;
+}
+</pre>
+<p />
+ご覧のとおり、単純な四角形を提供しているだけです。この関数は、障壁の境界を表すポリゴンを提供するだけなのです。障害物が静的メッシュの場合は、そのメッシュの境界を使って上記と同じようなことをしても構いません。
+<p />
+ここで覚えてもらいたい大切なポイントは、この関数は、障壁が登録された後で、それを取り巻くメッシュが最初に分割されるときに一度だけ呼び出される、という点です。障壁が登録され、そのまわりのメッシュが分割されてしまうと、その障壁の登録を解除して再度登録しない限り、障壁はパス検出の対象から外れます。
+<p />
+<p />
+ここでオーバーライドされる次の関数は非常に単純なものです。
+<strong>PreserveInternalPolys:</strong> <br />
+この関数は、分割プロセスに、障壁内部のジオメトリを同じ場所に保つように指示しているだけです。上図のスクリーンショットから分かるように、障壁の内側のジオメトリは維持され、残りのメッシュとリンクされています。<br />
+<p />
+次図はこれを別の画像で示しています。<br />
+ <img alt="splittery_visualJP.PNG" src="rsrc/Three/NavMeshDynamicObstacleSplittingJP/splittery_visualJP.png" /> <br />
+<p />
+<p />
+パス障壁に関する最後の大切な点は、障壁の内側のポリゴンと、外側のポリゴンの間に追加されるエッジのタイプを決定することができることです (内部ジオメトリを維持する障壁のみ)。障壁の内側のポリゴンと外側のポリゴンの間にリンク (エッジ) が作成されるときは常に、その障壁の <strong>AddObstacleEdge</strong> 関数が呼び出されます。<br />
+ <img alt="AddObstacleEdgeJP.PNG" src="rsrc/Three/NavMeshDynamicObstacleSplittingJP/AddObstacleEdgeJP.png" /> <br />
+<p />
+ユーザーはこれをオーバーライドして、障壁に適したタイプのエッジを追加することができます。デフォルトの動作は、通常のエッジを追加し、すべての AI に対してパス障壁の内側と外側の間を通過できると伝えるだけですが、パス障壁への出入り時にカスタムの動作を与えたいことがよくあります。そのような場合には、 <em>inteface_navmeshpathobject</em> も実装する可能性もあるでしょう。
+<p />
+<h2><a name="Interface_NavMeshPathObject との連動"></a> Interface_NavMeshPathObject との連動 </h2>
+AddObstacleEdge のオーバーライドがよく行われるのは、 <a href="https://udn.epicgames.com/Three/NavMeshPathObjectsJP" class="restricted" class="restricted" class="twikiLink">パスオブジェクト</a> にリンクするエッジを追加するケースです。例えば、 <em>interface_navmeshpathobstacle</em> <strong>および</strong> <em>interface_navmeshpathobject</em> の両方を実装する障壁を作成することができます。
+<p />
+これが役に立つ理由を例を挙げて説明してみましょう。ここでは、レベルを開始してしばらくしてから、地面に油のたまりが散布された様子を思い浮かべてください。
+<p />
+油のたまりについては、以下が必要です。 <ul>
+<li> 油たまりの形状に沿って静的ナビゲーションメッシュを分割し、AI がそこを避けて通れるような細かさにメッシュを加工する必要があります。
+</li> <li> 可能な限り AI が油のたまりを避けることができるように、たまりに入る際の追加コストを提供する手段が必要です。
+</li></ul>
+<p />
+つまりこの場合には、障壁の形状をメッシュに登録するために、上記で説明した <em>Interface_NavMeshPathObstacle</em> を実装し、次に、油たまりの内側と外側をリンクするエッジの接合部分 (interface) を作成し、それらのエッジを行き来するコストを変更できるように <em>Interface_NavMeshPathObject</em> も実装します。
+<p />
+しががって、上記のリストは以下のように翻訳されます。 <ul>
+<li> Interface_NavMeshPathObstacle::GetBoundingShape() を実装する
+</li> <li> 適当な時点で障壁を登録する
+</li> <li> AddObstacleEdge をオーバーライドし、通常のエッジではなく、油のたまりにリンクされる PathObject エッジを追加する
+</li> <li> Interface_NavMeshPathObject::CostFor() を実装する (<a href="https://udn.epicgames.com/Three/NavMeshPathObjectsJP" class="restricted" class="restricted" class="twikiLink">パスオブジェクトのドキュメント</a> を参照のこと)
+</li></ul>
+<p />
+<h2><a name="AddObstacleEdge"></a> AddObstacleEdge </h2>
+AddObstacleEdge についてまだ詳細に説明していないので、ここでこの関数を詳しく調べてみましょう。
+<p />
+<pre>
+   /&#42;&#42;
+    &#42; This function is called when an edge is going to be added connecting a polygon internal to this obstacle to another polygon which is not (この関数は、この障壁の内側のポリゴンを外側の別のポリゴンにリンクするエッジが追加されるときに呼び出される)
+    &#42; Default behavior just a normal edge, override to add special costs or behavior (e.g. link a pathobject to the obstacle) (デフォルトの動作は通常のエッジで、それをオーバーライドして、例えばパスオブジェクトを障壁にリンクするなど、特別なコストまたは動作を追加する)
+    &#42; &#64;param Status - current status of edges (e.g. what still needs adding) (エッジの現在のステータス、例えばまだ何を追加する必要があるかなど)
+    &#42; &#64;param inV1 - vertex location of first vert in the edge (エッジの最初の頂点の位置)
+    &#42; &#64;param inV2 - vertex location of second vert in the edge (エッジの 2 番目の頂点の位置)
+    &#42; &#64;param ConnectedPolys - the polys this edge links (このエッジがリンクするポリゴン)
+    &#42; &#64;param bEdgesNeedToBeDynamic - whether or not added edges need to be dynamic (e.g. we&#39;re adding edges between meshes) (メッシュの間にエッジを追加する場合など、追加するエッジが動的である必要があるかどうか。)
+    &#42; &#64;param PolyAssocatedWithThisPO - the index into the connected polys array parmaeter which tells us which poly from that array is associated with this path object (リンクされるポリゴンの配列のインデックス。配列内のどのポリゴンが、このパスオブジェクトと関連付けられているかを示す)
+    &#42; &#64;return returns an enum describing what just happened (what actions did we take) - used to determien what accompanying actions need to be taken (何が起こったか、つまりどのようなアクションが行われたかを示す enum を返す。別の障壁および呼び出しコードが、どのアクションを続けて実行する必要があるかを判定するのに使う)
+    &#42;         by other obstacles and calling code
+    &#42;/
+   virtual EEdgeHandlingStatus AddObstacleEdge( EEdgeHandlingStatus Status, const FVector&#38; inV1, const FVector&#38; inV2, TArray&#60;FNavMeshPolyBase&#42;&#62;&#38; ConnectedPolys, UBOOL bEdgesNeedToBeDynamic, INT PolyAssocatedWithThisPO);
+   </pre>
+<p />
+メッシュが分割された後に、新しいポリゴンの周囲で動的分割 (Dynamic Splittery) コードが実行され、周囲のワールドとのリンクを試みます。リンク可能なポリゴンが見つかると、この関数を呼び出して提供されたエッジを渡し、パス障壁に適切な手段をとらせます。
+<p />
+この関数で注意しなければならないのは、まだ別の方向に追加するエッジがあるかどうかを伝えるために渡される、厄介な Status パラメータです。これが必要なのは、一方向に向かうエッジだけが欲しい状況もあるからです。例えば、AIs がパス障壁の外に出ると中に戻れなくするエッジがこのケースに該当します。
+<p />
+したがって、エッジを追加するときはその直前に何をしたかを返して、呼び出し側のコードがもう一方の方向にデフォルトエッジを追加する必要があるのかどうか判断できるようにする必要があるのです。さらに、相互に近接する 2 つのパス障壁の両方に、カスタムエッジを追加することもできます。
+<p />
+ここでデフォルトの実装を調べてみましょう。
+<pre>
+EEdgeHandlingStatus IInterface&#95;NavMeshPathObstacle::AddObstacleEdge( EEdgeHandlingStatus Status, const FVector&#38; inV1, const FVector&#38; inV2, TArray&#60;FNavMeshPolyBase&#42;&#62;&#38; ConnectedPolys, UBOOL bEdgesNeedToBeDynamic, INT PolyAssocatedWithThisPO)
+{
+   return EHS&#95;AddedNone;
+}
+</pre>
+<p />
+ご覧のとおり、まだ何もしていない、ということを示しています。したがって、呼び出し側のコードは、次にポリゴンの間にデフォルトのエッジを追加しなければならない、ということが分かります。
+<p />
+今度は、パス障壁にリンクされるパスオブジェクトエッジの追加例を見て見ましょう。
+<pre>
+EEdgeHandlingStatus UAIAvoidanceCylinderComponent::AddObstacleEdge( EEdgeHandlingStatus Status, const FVector&#38; inV1, const FVector&#38; inV2, TArray&#60;FNavMeshPolyBase&#42;&#62;&#38; ConnectedPolys, UBOOL bEdgesNeedToBeDynamic, INT PolyAssocatedWithThisPO)
+{
+   // if an edge has already been added in the direction we want to add an edge then there is probably a conflicting pathobstacle (e.g. we&#39;re butted
+   // up against another obstacle which has already added an edge.. so just bail) (追加したい方向に既にエッジが追加されている場合、パス障壁の競合 (既にエッジを追加した別の障壁にぶつかっているなど) の可能性があるので抜ける)
+   if(Status &#61;&#61; EHS&#95;AddedBothDirs)
+   {
+      return Status;
+   }
+
+   // if there is already an edge point back into this PO from the other poly, bail (別のポリゴンからこのパスオブジェクトに戻ってくるエッジ点が既に存在する場合は抜ける)
+   if( (PolyAssocatedWithThisPO &#61;&#61; 0 &#38;&#38; Status &#61;&#61; EHS&#95;Added1to0) &#124;&#124;
+      (PolyAssocatedWithThisPO &#61;&#61; 1 &#38;&#38; Status &#61;&#61; EHS&#95;Added0to1) )
+   {
+      return Status;
+   }
+
+   TArray&#60;FNavMeshPolyBase&#42;&#62; ReversedConnectedPolys&#61;ConnectedPolys;
+
+   // so we want to add an edge back into the poly associated with this PO, so swap the order if we need to (このパスオブジェクトに関連するポリゴンに戻るエッジを追加する。必要に応じて順番を入れ替える)
+   if(PolyAssocatedWithThisPO &#61;&#61; 0)
+   {
+      ReversedConnectedPolys.SwapItems(0,1);
+   }
+
+   UNavigationMeshBase&#42; Mesh &#61; ReversedConnectedPolys(0)-&#62;NavMesh;
+
+   if( Mesh &#61;&#61; NULL )
+   {
+      return Status;
+   }
+
+   // Add the edge to the mesh (メッシュにエッジを追加する)
+   TArray&#60;FNavMeshPathObjectEdge&#42;&#62; CreatedEdges;
+   Mesh-&#62;AddDynamicCrossPylonEdge&#60;FNavMeshPathObjectEdge&#62;(inV1,inV2,ReversedConnectedPolys,TRUE, &#38;CreatedEdges);
+
+   // grab a reference to the edge, and bind it to this pathobject (エッジ参照を取得してこのパスオブジェクトにバインドする)
+   FNavMeshPathObjectEdge&#42; NewEdge &#61; (CreatedEdges.Num() &#62; 0) ? CreatedEdges(0) : NULL;
+   checkSlowish(CreatedEdges.Num() &#60;2);
+
+   if(NewEdge &#61;&#61; NULL)
+   {
+      return Status;
+   }
+
+   // bind new edge to this avoidance vol (新しいエッジをこの回避ボリュームにバインドする)
+   if(NewEdge !&#61; NULL)
+   {
+      NewEdge-&#62;PathObject &#61; GetOwner();
+      NewEdge-&#62;InternalPathObjectID &#61; 0;
+   }
+
+   // indicate that we added an edge from dest poly to src poly (リンク先のポリゴンからリンク元のポリゴンに向かうエッジを追加したことを示す)
+   if(Status &#61;&#61; EHS&#95;AddedNone)
+   {
+      if(PolyAssocatedWithThisPO &#61;&#61; 0)
+      {
+         return EHS&#95;Added1to0;
+      }
+      else
+      {
+         return EHS&#95;Added0to1;
+      }
+   }
+   else
+   {
+      // if we get here that means someone should have already added an edge in the opposite direction (ここに達した場合、誰かが既に反対方向のエッジを追加していることを意味する)
+      return EHS&#95;AddedBothDirs;
+   }
+
+}
+</pre>
+<p />
+これは、通常のエッジではなく、障壁にリンクする PathObject エッジを追加するのですが、ただし障壁の外側のポリゴンから内側のポリゴンに <em>のみ</em> リンクするエッジである、というケースです。そのため、ここで紹介するロジックのほとんどは、ポリゴンの順番が正しいかどうかの判定だけで、正しくない場合には順番を入れ替え、正しい方向にエッジが追加されるようにしています。
+<p />
+<p />
+<p />
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavMeshDynamicObstacleSplittingJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:32:49 GMT -->
+</html></body>

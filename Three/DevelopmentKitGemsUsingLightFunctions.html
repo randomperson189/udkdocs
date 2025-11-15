@@ -1,0 +1,471 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DevelopmentKitGemsUsingLightFunctions.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:19:35 GMT -->
+<head>
+<title> UDK | DevelopmentKitGemsUsingLightFunctions    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">DevelopmentKitGemsUsingLightFunctions  </b></div>
+<div id="tooltext">
+<a href="DevelopmentKitGemsUsingLightFunctionsJP.html" class="twikiLink">日本語訳</a><br><a href="DevelopmentKitGemsUsingLightFunctionsCH.html" class="twikiLink">中国翻译</a><br><a href="DevelopmentKitGemsUsingLightFunctionsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/DevelopmentKitGemsUsingLightFunctions -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<script type="text/javascript">
+function toggleAnimImage(exp)
+{
+  var still = document.getElementById(exp + "_still");
+  var anim = document.getElementById(exp + "_anim");
+
+  if(anim.style.display == "none")
+  {
+    still.style.display = "none";
+    anim.style.display = "block";
+  }
+  else
+  {
+    still.style.display = "block";
+    anim.style.display = "none";
+  }
+}
+</script>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="DevelopmentKitGems.html" class="twikiLink">Unreal Development Kit Gems</a></b> &gt; Using Light Functions
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="Using Light Functions"></a> Using Light Functions </h1>
+<hr size="1" noshade="noshade">
+<p />
+<strong><em>Last tested against UDK June, 2011</em></strong>
+<br>
+<strong><em>PC compatible</em></strong>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Using Light Functions"> Using Light Functions</a> <ul>
+<li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Overview"> Overview</a>
+</li> <li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Textured strobe light"> Textured strobe light</a> <ul>
+<li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Material layout"> Material layout</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Neon strobe light"> Neon strobe light</a> <ul>
+<li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Material layout"> Material layout</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Simple strobe light"> Simple strobe light</a> <ul>
+<li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Material layout"> Material layout</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Textured flickering light"> Textured flickering light</a> <ul>
+<li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Material layout"> Material layout</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Interval flickering light"> Interval flickering light</a> <ul>
+<li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Material layout"> Material layout</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Simple flickering light"> Simple flickering light</a> <ul>
+<li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Material layout"> Material layout</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Cube mapped light"> Cube mapped light</a> <ul>
+<li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Material layout"> Material layout</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Cloud light"> Cloud light</a> <ul>
+<li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Material Layout"> Material Layout</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Cheap shadowed light"> Cheap shadowed light</a> <ul>
+<li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Material layout"> Material layout</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsUsingLightFunctions.html#Downloads"> Downloads</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<hr size="1" noshade="noshade">
+Light functions allow you to create more interesting lighting set ups, such as flickering lights, textured lights, etc. If you've worked with Unreal Engine 2, light functions would be similar to projectors. Light functions uses Unreal Engine 3's material system, which makes it easy to create them.
+<p />
+This development kit gem will demonstrate a variety ways light functions can be used to enhance your game. Please review <a href="LightFunctions.html" class="twikiLink">light functions</a> to read all the technical details about them.
+<p />
+<h2><a name="Textured strobe light"></a> Textured strobe light </h2>
+<hr size="1" noshade="noshade">
+A textured strobe light will regularly flash a scene with a texture projected out from the light vector. This method allows you to easily project textures onto walls and could be useful for situations where you may want to throw caustics from lights in water.
+<p />
+<span style="font:italic 10px arial;">(Hover for animated preview)</span>
+<div style="width:400px;" onmouseover="toggleAnimImage('textured_strobe');" onmouseout="toggleAnimImage('textured_strobe');">
+  <div id="textured_strobe_still" style="display:block;">
+    <img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/TexturedStrobeLightFunction_Thumbnail.jpg" alt="TexturedStrobeLightFunction_Thumbnail.jpg" width='600' height='434' />
+  </div>
+  <div id="textured_strobe_anim" style="display:none;">
+    <img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/TexturedStrobeLightFunction.gif" alt="TexturedStrobeLightFunction.gif" width='600' height='434' />
+  </div>
+</div>
+<p />
+<h3><a name="Material layout"></a> Material layout </h3>
+The way that this material works is by panning and rotating two scaled textures and adding the results; resulting in the caustics. To get the strobing a sine is used to adjust the overall brightness. ConstantBiasScale is used here to shift sine from -1.f - 1.f to 0.f - 1.f. The results are then multiplied and passed to the emissive.
+<p />
+<a href="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/TexturedStrobeLightMaterialLayout.jpg" alt="TexturedStrobeLightMaterialLayout.jpg"><img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/TexturedStrobeLightMaterialLayout_Thumbnail.jpg" alt="TexturedStrobeLightMaterialLayout_Thumbnail.jpg" width='800' height='461' /></a>
+<p />
+<p />
+<h2><a name="Neon strobe light"></a> Neon strobe light </h2>
+<hr size="1" noshade="noshade">
+A neon strobe light is similar to the textured strobe light, except that it projects a textures and alters the light's color. This style of light would be useful for neon signs, projectors and so forth. In this particular example, projector like behavior is created by clamping the texture so that it doesn't tile, and using the light function with a spot light instead of a point light.
+<p />
+<span style="font:italic 10px arial;">(Hover for animated preview)</span>
+<div style="width:400px;" onmouseover="toggleAnimImage('neon_strobe');" onmouseout="toggleAnimImage('neon_strobe');">
+  <div id="neon_strobe_still" style="display:block;">
+    <img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/NeonStrobeLightFunction_Thumbnail.jpg" alt="NeonStrobeLightFunction_Thumbnail.jpg" width='600' height='434' />
+  </div>
+  <div id="neon_strobe_anim" style="display:none;">
+    <img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/NeonStrobeLightFunction.gif" alt="NeonStrobeLightFunction.gif" width='600' height='434' />
+  </div>
+</div>
+<p />
+<h3><a name="Material layout"></a> Material layout </h3>
+The way that this material works is similar to the textures strobe light, but it demonstrates how you would interpolate between two different colors which results in a "neon" like look. This is done by using a biased sine (to shift the sine from -1.f - 1.f to 0.f to 1.f) and linearly interpolated between two colors. This is then multiplied by a texture. The reason why the textured had been clamped and the sample has a constant pan of 0.5f, 0.5f is so that the spotlight would project the texture correctly.
+<p />
+<a href="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/NeonLightMaterialLayout.jpg"><img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/NeonLightMaterialLayout_Thumbnail.jpg" alt="TexturedStrobeLightMaterialLayout_Thumbnail.jpg" width='800' height='568' /></a>
+<p />
+<p />
+<h2><a name="Simple strobe light"></a> Simple strobe light </h2>
+<hr size="1" noshade="noshade">
+A simple strobe light simply brightens and then darkens a room with a predictable time pattern. This is a very simple light function as it just alters the light's brightness at a constant rate.
+<p />
+<span style="font:italic 10px arial;">(Hover for animated preview)</span>
+<div style="width:400px;" onmouseover="toggleAnimImage('simple_strobe');" onmouseout="toggleAnimImage('simple_strobe');">
+  <div id="simple_strobe_still" style="display:block;">
+    <img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/StrobeLightFunction_Thumbnail.jpg" alt="StrobeLightFunction_Thumbnail.jpg" width='600' height='434' />
+  </div>
+  <div id="simple_strobe_anim" style="display:none;">
+    <img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/StrobeLightFunction.gif" alt="StrobeLightFunction.gif" width='600' height='434' />
+  </div>
+</div>
+<p />
+<h3><a name="Material layout"></a> Material layout </h3>
+The way that this material works is by simply outputting the biased sine directly into the emissive.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/SimpleStrobeLightMaterialLayout.jpg" alt="SimpleStrobeLightMaterialLayout" width='744' height='510' />
+<p />
+<p />
+<h2><a name="Textured flickering light"></a> Textured flickering light </h2>
+<hr size="1" noshade="noshade">
+A textured flickering light is handy effect when you want the room to flicker but with shadows being casted randomly. This gives the room a little more atmosphere and dynamics that a simple flickering light wouldn't.
+<p />
+<span style="font:italic 10px arial;">(Hover for animated preview)</span>
+<div style="width:400px;" onmouseover="toggleAnimImage('textured_flickering');" onmouseout="toggleAnimImage('textured_flickering');">
+  <div id="textured_flickering_still" style="display:block;">
+    <img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/TexturedFlickeringLightFunction_Thumbnail.jpg" alt="TexturedFlickeringLightFunction_Thumbnail.jpg" width='600' height='434' />
+  </div>
+  <div id="textured_flickering_anim" style="display:none;">
+    <img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/TexturedFlickeringLightFunction.gif" alt="TexturedFlickeringLightFunction.gif" width='600' height='434' />
+  </div>
+</div>
+<p />
+<h3><a name="Material layout"></a> Material layout </h3>
+The way that this material works is by adding two scaled texture samplers that are rotating and panning. It then ensures that the results are between 0.f and 1.f and then outputs that to the emissive input.
+<p />
+<a href="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/TexturedFlickeringLightMaterialLayout.jpg"><img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/TexturedFlickeringLightMaterialLayout_Thumbnail.jpg" alt="TexturedFlickeringLightMaterialLayout_Thumbnail.jpg" width='800' height='333' /></a>
+<p />
+<p />
+<h2><a name="Interval flickering light"></a> Interval flickering light </h2>
+<hr size="1" noshade="noshade">
+An interval flickering light allows you to adjust the flickering light in an easy manner. This ensures that as you use the light function you can change the rate at which it flickers, by using material instancing.
+<p />
+<span style="font:italic 10px arial;">(Hover for animated preview)</span>
+<div style="width:400px;" onmouseover="toggleAnimImage('interval_flickering');" onmouseout="toggleAnimImage('interval_flickering');">
+  <div id="interval_flickering_still" style="display:block;">
+    <img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/IntervalFlickeringLightFunction_Thumbnail.jpg" alt="IntervalFlickeringLightFunction_Thumbnail.jpg" width='600' height='434' />
+  </div>
+  <div id="interval_flickering_anim" style="display:none;">
+    <img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/IntervalFlickeringLightFunction.gif" alt="IntervalFlickeringLightFunction.gif" width='600' height='434' />
+  </div>
+</div>
+<p />
+<h3><a name="Material layout"></a> Material layout </h3>
+The way that this material works is by using two sines and cosines and adding the results. The interval rate is changed by adjusting the Time value with a scalar parameter called FlickerInterval. The sines and cosines are then added together, floored (which returns the greatest integer), clamps the results and outputs this into the emissive.
+<p />
+<a href="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/IntervaledFlickeringLightMaterialLayout.jpg"><img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/IntervaledFlickeringLightMaterialLayout_Thumbnail.jpg" alt="IntervaledFlickeringLightMaterialLayout_Thumbnail.jpg" width='800' height='283' /></a>
+<p />
+<h2><a name="Simple flickering light"></a> Simple flickering light </h2>
+<hr size="1" noshade="noshade">
+This material works exactly the same way as the interval flickering light except that it doesn't have any parameters that you can alter.
+<p />
+<span style="font:italic 10px arial;">(Hover for animated preview)</span>
+<div style="width:400px;" onmouseover="toggleAnimImage('simple_flickering');" onmouseout="toggleAnimImage('simple_flickering');">
+  <div id="simple_flickering_still" style="display:block;">
+    <img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/FlickeringLightFunction_Thumbnail.jpg" alt="FlickeringLightFunction_Thumbnail.jpg" width='600' height='434' />
+  </div>
+  <div id="simple_flickering_anim" style="display:none;">
+    <img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/FlickeringLightFunction.gif" alt="FlickeringLightFunction.gif" width='600' height='434' />
+  </div>
+</div>
+<p />
+<h3><a name="Material layout"></a> Material layout </h3>
+<p />
+<a href="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/FlickeringLightMaterialLayout.jpg"><img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/FlickeringLightMaterialLayout_Thumbnail.jpg" alt="FlickeringLightMaterialLayout_Thumbnail.jpg" width='800' height='309' /></a>
+<p />
+<p />
+<h2><a name="Cube mapped light"></a> Cube mapped light </h2>
+<hr size="1" noshade="noshade">
+When using textures, you can either use normal 2D textures or you can use a cube map. Cube maps more useful when the light has multiple directions such as point lights. For lights that define a singular direction such as directional lights and spot lights. When using 2D textures for point lights (or other lights with multiple directions) you may see texture stretching or banding. Cube maps solve this problem specifically.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/CubeMappedLightFunction.jpg" alt="CubeMappedLightFunction.jpg" width='600' height='434' />
+<p />
+<h3><a name="Material layout"></a> Material layout </h3>
+This material simply outputs the cube map into the emissive. It's cube map look up coordinates are set to the light vector.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/CubeMappedLightMaterialLayout.jpg" alt="CubeMappedLightMaterialLayout.jpg" width='692' height='510' />
+<p />
+<h2><a name="Cloud light"></a> Cloud light </h2>
+<hr size="1" noshade="noshade">
+This light function simply outputs a wrapped, panning texture to simulate clouds passing by. Simple to add, but adds so much to the scene.
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/CloudLightFunction.jpg" alt="CloudLightFunction.jpg" width='600' height='434' />
+<p />
+<h3><a name="Material Layout"></a> Material Layout </h3>
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/CloudLightMaterialLayout.jpg" alt="CloudLightMaterialLayout.jpg" width='793' height='510' />
+<p />
+<p />
+<h2><a name="Cheap shadowed light"></a> Cheap shadowed light </h2>
+<hr size="1" noshade="noshade">
+This technique can be used to do cheap dynamic shadows. However, because you can a texture, you can create a mask to create shadowed areas. However, be aware that this only works when nothing can come between the light and the object casting the shadow.
+<p />
+<span style="font:italic 10px arial;">(Hover for animated preview)</span>
+<div style="width:400px;" onmouseover="toggleAnimImage('cheap_shadowed');" onmouseout="toggleAnimImage('cheap_shadowed');">
+  <div id="cheap_shadowed_still" style="display:block;">
+    <img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/CheapShadowedLightFunction.jpg" alt="CheapShadowedLightFunction.jpg" width='600' height='434' />
+  </div>
+  <div id="cheap_shadowed_anim" style="display:none;">
+    <img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/CheapShadowedLightFunction.gif" alt="CheapShadowedLightFunction.gif" width='600' height='434' />
+  </div>
+</div>
+<p />
+<h3><a name="Material layout"></a> Material layout </h3>
+<p />
+<a href="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/CheapShadowMaterialLayout.jpg"><img src="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/CheapShadowMaterialLayout_Thumbnail.jpg" alt="CheapShadowMaterialLayout_Thumbnail.jpg" width='800' height='559' /></a>
+<p />
+<h2><a name="Downloads"></a> Downloads </h2>
+<hr size="1" noshade="noshade">
+<p /> <ul>
+<li> <a href="rsrc/Three/DevelopmentKitGemsUsingLightFunctions/LightFunctionGems.zip" target="_top">Download</a> the content used by this gem. (LightFunctionGems.zip)
+</li></ul>
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DevelopmentKitGemsUsingLightFunctions.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:19:44 GMT -->
+</html></body>

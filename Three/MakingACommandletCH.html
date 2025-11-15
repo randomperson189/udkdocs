@@ -1,0 +1,450 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MakingACommandletCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:24:24 GMT -->
+<head>
+<title> UDK | MakingACommandletCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">MakingACommandletCH  </b></div>
+<div id="tooltext">
+<a href="MakingACommandlet.html" class="twikiLink">English Translation</a><br><a href="MakingACommandletJP.html" class="twikiLink">日本語訳</a><br><a href="MakingACommandletKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/MakingACommandletCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<!--  -->
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="CommandletHome.html" class="twikiLink">命令行开关</a></b> &gt; 如何制作命令行开关
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="如何制作命令行开关"></a> 如何制作命令行开关 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="MakingACommandletCH.html#如何制作命令行开关"> 如何制作命令行开关</a> <ul>
+<li> <a href="MakingACommandletCH.html#概述"> 概述</a>
+</li> <li> <a href="MakingACommandletCH.html#如何使用脚本制作命令行开关"> 如何使用脚本制作命令行开关</a>
+</li> <li> <a href="MakingACommandletCH.html#如何在 Native 代码中制作命令行开关"> 如何在 Native 代码中制作命令行开关</a>
+</li> <li> <a href="MakingACommandletCH.html#为用户提供一些帮助信息"> 为用户提供一些帮助信息</a>
+</li> <li> <a href="MakingACommandletCH.html#如何使用命令行开关"> 如何使用命令行开关</a>
+</li> <li> <a href="MakingACommandletCH.html#常见命令行开关任务"> 常见命令行开关任务</a>
+</li> <li> <a href="MakingACommandletCH.html#命令行开关列表"> 命令行开关列表</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+命令行开关是在虚幻引擎环境内部运行的命令行程序。它们大多数用于对内容进行批量修改、迭代内容来获得关于它的信息或者作为单元测试机制。
+<p />
+通常有很多初始化引擎的小应用程序，但是它们大多数都受到 Windows 控制台输出的限制。例如， <code>game.exe make</code> 会执行可以编译 UnrealScript 类的 <code>make</code> 命令行开关。
+<p />
+引擎自动尝试判断您传入到命令行的命令是否是一个命令行开关，如果匹配，它将执行相关代码。
+<p />
+请参阅 UContentCommandlets.cpp 和 UnPackageUtilities 了解有关命令行开关的一些示例。
+<p />
+<p />
+<h2><a name="如何使用脚本制作命令行开关"></a> 如何使用脚本制作命令行开关 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+创建您的命令行开关的脚本类，如下所示：
+<p />
+<pre>
+class HelloWorldCommandlet extends Commandlet;
+
+event int Main( string Params )
+{
+   log( &#34; hello world &#34; );
+
+   return 0;
+}
+</pre>
+<p />
+或者制作native命令行开关：
+<p />
+<pre>
+class HelloWorldCommandlet extends Commandlet
+native;
+
+cpptext
+{
+INT Main(const FString&#38; CmdLine)
+{
+   warnf(TEXT(&#34;hello world&#34;));
+   return 0;
+}
+}
+
+native event int Main( string Params );
+</pre>
+<p />
+Main() 函数是您的命令行开关的入口点。对于给定的命令行开关，将会向其中传入一个包含所有参数的字符串。 注意：
+<p />
+<pre>
+gamename.exe helloworld param1 param2 param3
+</pre>
+<p />
+您的命令行开关将会把字符串 param1 param2 param3 作为命令行参数。
+<p />
+<p />
+<h2><a name="如何在 Native 代码中制作命令行开关"></a> 如何在 Native 代码中制作命令行开关 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+大多数命令行开关是在native代码中作为内部类实现的。以这种方式创建命令行开关的步骤是非常不同的。您将会在 <code>EditorCommandlets.h</code> 中找到大多数命令行开关的声明。
+<p />
+首先，在头文件中声明您的类，比如在 <code>EditorCommandlets.h</code> 中：
+<pre>
+BEGIN&#95;COMMANDLET(Name,Package)
+  // 在这里声明其他的方法。
+END&#95;COMMANDLET
+</pre>
+命令行开关将会有一个名为 "UNameCommandlet" 的类名，它将会被放置在您指定的包中（例如，Editor）。
+<p />
+然后，在 .cpp 文件（例如， <code>UContentCommandlets.cpp</code> ），实现您的命令行开关的 <code>Main()</code> 函数。如果需要，您也可以重载 <code>virtual CreateCustomEngine()</code> 函数。请参阅 UCommandlet 源代码了解更多详细信息。
+<pre>
+INT UNameCommandlet::Main(const FString&#38; Params)
+{
+    // do yer stuff here...
+    return 0;
+}
+</pre>
+<p />
+但是您还没有完成命令行开关的创建！ 因为这是一个内部类，所以您必须通知脚本系统它的存在。为了完成这个过程，您必须手动地编辑 <code>UnrealEdClasses.h</code> 文件，特别是AUTO_INITIALIZE_REGISTRANTS_UNREALED #define。在那个列表中为您的命令行开关添加一个到 <code>StaticClass()</code> 的调用。
+<pre>
+#define AUTO&#95;INITIALIZE&#95;REGISTRANTS&#95;UNREALED \
+   UNameCommandlet::StaticClass(); \
+</pre>
+<p />
+当您下一次重新编译脚本时，编译器将会按照字母顺序使用这个类表中您的 Commandlet(命令行开关)类覆盖这个文件。
+<p />
+<p />
+<h2><a name="为用户提供一些帮助信息"></a> 为用户提供一些帮助信息 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+内置到命令行开关中的一个功能是显示关于该命令行开关的帮助信息，以便用户可以知道它是什么以及它支持的选项。为了是您的命令行开关具有帮助信息，您需要向您的命令行开关所在的本地化文本文件中添加一个元素。如果您的包在Core文件夹中，那么您需要修改Core.int来显示帮助信息。以下是Core中的命令行开关"hello world"的简单设置。
+<p />
+<pre>
+&#91;HelloWorldCommandlet]
+HelpDescription&#61;&#34;This commandlet displays hello world&#34; HelpUsage&#61;&#34;gamename.exe helloworld&#34;
+HelpWebLink&#61;&#34;https://udn.epicgames.com/bin/view/Three/MakingACommandlet&#34;
+HelpParamNames&#91;0]&#61;&#34;param1&#34;
+HelpParamDescriptions&#91;0]&#61;&#34;Ignored since helloworld doesn&#39;t need params&#34;
+</pre>
+<p />
+注意，在部分名称中必须包含 <em>commandlet</em> 作为类名称的一部分。如果没有它，则不能找到这个命令行开关。要想查看怎么使用这个命令，请运行以下命令：
+<p />
+<pre>
+game.exe help help
+game.exe help list
+game.exe help webhelp help
+</pre>
+<p />
+<p />
+<h2><a name="如何使用命令行开关"></a> 如何使用命令行开关 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+要想执行一名命令行开关，您可以运行您的游戏，后面带上您想运行的命令行开关。比如：
+<p />
+<pre>
+examplegame make -full
+</pre>
+<p />
+在ExampleGame中启动make命令行开关。注意，您不必为native命令行开关指定包名称。如果make命令行开关仅是一个基于脚本的命令行开关，那么可以使用以下语句进行调用：
+<p />
+<pre>
+examplegame editor.make -full
+</pre>
+<p />
+因为它不会在启动是进行加载。同时注意不需要名称的 <em>commandlet</em> 部分。当尝试找到指定的命令行开关时，启动代码会自动地附加 _commandlet= 。
+<p />
+<p />
+<h2><a name="常见命令行开关任务"></a> 常见命令行开关任务 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+命令行开关所做的常见任务是迭代所有的包并在它们上面执行一些数据处理。您可以从使用以下代码开始入门（也可以在 <code>UContentCommandlets.cpp</code> 顶部的注释中找到它）：
+<p />
+<pre>
+// 以下是一个模板命令行开关，当您想在所有的包上执行一个操作时，您可以使用这个开关。
+INT UPerformAnOperationOnEveryPackage::Main(const FString&#38; Params)
+{
+   // 解析命令行参数。
+   TArray&#60;FString&#62; Tokens;
+   TArray&#60;FString&#62; Switches;
+
+   const TCHAR&#42; Parms &#61; &#42;Params;
+   ParseCommandLine(Parms, Tokens, Switches);
+
+   // 构建包文件列表。
+   const TArray&#60;FString&#62; FilesInPath( GPackageFileCache-&#62;GetPackageFileList() );
+   if( FilesInPath.Num() &#61;&#61; 0 )
+   {
+      warnf( NAME&#95;Warning, TEXT(&#34;No packages found&#34;) );
+      return 1;
+   }
+
+   // 遍历所有的包来执行一些操作。
+   for( INT FileIndex &#61; 0 ; FileIndex &#60; FilesInPath.Num() ; ++FileIndex )
+   {
+      const FFilename&#38; Filename &#61; FilesInPath(FileIndex);
+      warnf( NAME&#95;Log, TEXT(&#34;Loading &#37;s&#34;), &#42;Filename );
+
+      UPackage&#42; Package &#61; UObject::LoadPackage( NULL, &#42;Filename, LOAD&#95;None );
+      if( Package &#61;&#61; NULL )
+      {
+         warnf( NAME&#95;Error, TEXT(&#34;Error loading &#37;s!&#34;), &#42;Filename );
+      }
+
+      /////////////////
+      //
+      // 在这里进行您想要进行的操作
+      //
+      /////////////////
+
+      TObjectIterator&#60;UStaticMesh&#62; It;...
+
+      UStaticMesh&#42; StaticMesh &#61; &#42;It;
+      if( StaticMesh-&#62;IsIn( Package )
+
+
+
+
+      UObject::CollectGarbage( RF&#95;Native );
+   }
+
+   return 0;
+}
+</pre>
+<p />
+您或许也想查看 <code>PackageHelperFunctions.h</code> 中的 <code>NormalizePackageNames()</code> （它出现在版本QA_APPROVED_BUILD_JUNE_2007中）。这个函数可以创建一个包的过滤列表以便对其进行迭代，除此之外的更加精细的迭代需要在 <code>GPackageFileCache</code> 上进行(请参照代码获得更多细节)。
+<p />
+<p />
+<h2><a name="命令行开关列表"></a> 命令行开关列表 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+请参阅<a href="CommandletList.html" class="twikiLink">命令行开关列表</a>页面。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MakingACommandletCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:24:24 GMT -->
+</html></body>

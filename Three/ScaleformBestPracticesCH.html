@@ -1,0 +1,396 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ScaleformBestPracticesCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:28:08 GMT -->
+<head>
+<title> UDK | ScaleformBestPracticesCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ScaleformBestPracticesCH  </b></div>
+<div id="tooltext">
+<a href="ScaleformBestPractices.html" class="twikiLink">English Translation</a><br><a href="ScaleformBestPracticesJP.html" class="twikiLink">日本語訳</a><br><a href="ScaleformBestPracticesKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ScaleformBestPracticesCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="UIAndHUDHome.html" class="twikiLink">用户界面 &amp; HUD</a></b> &gt; <b><a href="Scaleform.html" class="twikiLink">Scaleform GFx</a></b> &gt; Scaleform GFx内容最佳实践
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Scaleform GFx内容最佳实践"></a> Scaleform GFx内容最佳实践 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="ScaleformBestPracticesCH.html#Scaleform GFx内容最佳实践"> Scaleform GFx内容最佳实践</a> <ul>
+<li> <a href="ScaleformBestPracticesCH.html#概述"> 概述</a>
+</li> <li> <a href="ScaleformBestPracticesCH.html#绘制图元"> 绘制图元</a>
+</li> <li> <a href="ScaleformBestPracticesCH.html#动画剪辑"> 动画剪辑</a>
+</li> <li> <a href="ScaleformBestPracticesCH.html#位图 vs. 向量图形"> 位图 vs. 向量图形</a> <ul>
+<li> <a href="ScaleformBestPracticesCH.html#向量图形"> 向量图形</a>
+</li> <li> <a href="ScaleformBestPracticesCH.html#位图"> 位图</a>
+</li></ul>
+</li> <li> <a href="ScaleformBestPracticesCH.html#动画"> 动画</a>
+</li> <li> <a href="ScaleformBestPracticesCH.html#文本和字体"> 文本和字体</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<hr size="1" noshade="noshade">
+<p />
+在虚幻引擎 3 中开发与 Scaleform GFx 集成结合使用的 Flash 内容时，应该按照注意事项实施优化过程，这样才能获得最佳性能。该文档详细描述了很多这样的最佳实践方案。
+<p />
+<h2><a name="绘制图元"></a> 绘制图元 </h2>
+<hr size="1" noshade="noshade">
+<p />
+绘制图元 (DPs) 是通过 GFx 创建的 3D 网格物体对象渲染 2D Flash 元素，例如在同一层上的形状群组。每个绘制图元单独进行渲染，因此性能消耗非常大。一般情况下，显示性能会随着引入到场景中的 DP 增多而呈现线性减少的趋势；因此尽量减少 DP 数量是一个不错的实践方案。绘制图元的数量可以通过 GFxPlayer HUD（按 (F2) 键）确定，它可以调出 AMP HUD 概要画面。这个画面会显示三角形数量、DP、内存使用情况以及其他优化信息。
+<p />
+下面这些情况有助于减少绘制图元的数量：
+<p /> <ol>
+<li> 梯度渐变填充可以增加 DP 的数量，前提条件是同时在一个形状中使用其中的一些绘制图元。
+</li> <li> 在同一图层，实体填充而没有描边的矢量图形性能消耗非常低。在单独一个图层上只需要一个 DP 代表这些类型形状的数量，即使这些形状使用的是不同的颜色。
+</li> <li> 每个矢量形状（或矢量形状的群组）在它自己的层上都需要一个 DP。
+</li> <li> 描边比填充消耗的内存更多，除非所有描边都是同一个纯色。
+</li> <li> 图层上的每个不同的（不同的颜色）实体描边都可以添加一个 DP。
+</li> <li> 空的动画剪辑不需要 DP；但是，内部包含对象的动画剪辑所需要的 DP 数量是这些对象要求的 DP 数量。
+</li> <li> Alpha、Blends 和 Transparency 效果不会影响需要的 DP 数量；但是，它们将会对渲染性能产生影响。
+</li> <li> Stage 上的每个位图/纹理都需要一个 DP。
+</li> <li> 每个文本字段至少需要一个 DP。添加一个边界/背景将会添加多个 DP。尽管在大多数情况下，所有文本 glyphs 将会使用一个 DP 在纹理中进行渲染，但是大型文本最后可能会被作为向量形状进行渲染，其中每个 glyph 使用的是单独的图元。如果需要向量 glyphs 的剪贴纹理，那么文本字段会使用一个蒙板，它可以再添加一个 DP。目前蒙板会消耗大量性能，而剪贴文本字段将会变本加厉地消耗更多的性能。
+</li></ol>
+<p />
+<h2><a name="动画剪辑"></a> 动画剪辑 </h2>
+<hr size="1" noshade="noshade">
+<p /> <ol>
+<li> 不要隐藏动画剪辑，最好是在不使用它们的时候将它们从时间轴中完全删除，否则它们可能会在 Advance（改进）的过程中占用处理时间。
+</li> <li> 尽量避免大量嵌套动画剪辑，因为这样会影响性能。
+</li> <li> 如果必须隐藏动画剪辑，那么请使用 _visible=false 而不是 _alpha=0。确保您已经通过调用“stop()”函数停止播放隐藏动画剪辑中的动画。否则，仍然会播放不可见动画，以至于影响性能。
+</li></ol>
+<p />
+<h2><a name="位图 vs. 向量图形"></a> 位图 vs. 向量图形 </h2>
+<hr size="1" noshade="noshade">
+<p />
+Flash 内容可以使用向量美术素材和图片进行制作，而 GFx 可以无缝渲染向量和位图图形。但是，每种类型都有各自的优缺点。对于何时使用向量或位图图形，没有明确规定，这通常由几个因素决定。这部分主要讨论的是向量和位图图形之间的一些区别，可以帮助确定内容创作方向。
+<p />
+向量图形在缩放时可以使它们的图形保持光滑，不会像位图那样在缩放的时候看上去像是个盒子或者发生像素失常现象。与位图不同，向量图形需要进行更多的处理才可以生成。尽管简单的纯色形状通常与位图一样快，但是要渲染三角形、形状和填充很多的复杂向量图形需要消耗很多性能。因此，频繁使用向量形状往往会降低整体应用程序性能。一般情形是，尽可能将那些可以生成 200 个三角形以上的向量形状转换为位图。
+<p />
+位图图形可能更适用于某些应用程序，因为它们不像向量一样需要处理很长时间才可以渲染，但是，位图图形相对向量图形而言，需要的内存量明显增加。
+<p />
+<h3><a name="向量图形"></a> 向量图形 </h3>
+<hr size="1" noshade="noshade">
+<p />
+向量图形比其他图片格式更加紧凑，因为向量可以定义运行时渲染图片所需的数学函数对象（点、曲线和填充），而不是未使用的位图图形（像素）数据。但是，将向量数据转换为最终图片相当消耗时间，而且每当外观发生明显变化或图形进行缩放的时候都必须进行转换。如果动画剪辑包含复杂的图形轮廓，它们每帧都会发生改变，那么动画运行的速度可能会变慢。
+<p />
+下面是一些对提高渲染向量图形效率有所帮助的准则：
+<p /> <ul>
+<li> 试试将复杂的向量图形转换为位图，然后测试这样做对性能产生的影响。
+</li> <li> 在使用 alpha 混合时需要注意以下事项 <ul>
+<li> 对于计算机而言，实体填充的描边比 alpha 混合的描边消耗的性能少，因为它们使用的是一个相对来说效率高很多的算法。
+</li> <li> 避免使用透明 (alpha)。Flash 必须检查位于透明形状下方的所有像素，因为它们会大幅降低渲染速度。要隐藏一个剪辑，请将它的 _visible 属性设置为 false 而不是将 _alpha 属性设置为 0。将图形的 _alpha 设置为 100 时，图形渲染速度最快。选择将动画剪辑的时间轴设置为空关键帧（这样可以使动画剪辑没有要显示的内容）通常可以使渲染速度更快。有时候，Flash 仍然会尝试渲染不可见剪辑；通过将剪辑的 _x 和 _y 属性设置为远离舞台可见的位置，同时将 _visible 属性设置为 false，将它从舞台上移开，这样 Flash 就完全不会尝试绘制它了。    * 优化向量形状
+</li> <li> 使用向量图形的过程中，尝试简化形状，尽可能多地删除多余的点。这样将会减少每个向量形状的计算量。
+</li> <li> 使用图元向量，其中包括圆形、方形和线。
+</li> <li> Flash 的绘制性能与每一帧绘制的点数息息相关。通过使用 修改 -&gt; 形状 子菜单，然后选择 光滑、笔直或优化（根据有问题的图形进行选择）优化形状，减少绘制它所需的点数。这样可以帮助减少由 GFx 向量细分代码创建的网格物体数据。
+</li></ul>
+</li> <li> 角落比曲线性能消耗少。 <ul>
+<li> 避免使用曲面和点太多的复杂向量。
+</li> <li> 从数学的角度上看，角落比曲面渲染起来更简单。如果可能，尽量使用平面边，特别是非常小的向量形状。曲面可以使用下面的方法模拟。
+</li></ul>
+</li> <li> 使用渐变填充和渐变描边须小心谨慎。
+</li> <li> 避免图形轮廓（描边）。 <ul>
+<li> 如果可以，尽量不要使用含有向量形状的描边，因为这样做会增加渲染线的数量。
+</li> <li> 向量图片周围的轮廓会对性能产生影响。
+</li> <li> 一个填充只有一个外部形状需要渲染，而轮廓则需要渲染一个内部和一个外部形状。它绘制一条线所需要的工作量是填充的两倍。
+</li></ul>
+</li> <li>  尽量减少使用 Flash 的 Drawing API。如果使用不当，可能会明显增加性能消耗。如果需要，请使用 Drawing API 在动画剪辑上绘制一次。渲染此类自定义动画剪辑对性能不会产生严重的影响。
+</li> <li> 限制使用标记。遮罩的像素将仍然会占用渲染时间，并且对性能会产生负面影响，即使没有绘制它们。多个蒙板对性能所产生的影响与使用的蒙板数成正比。注意，在很多情况下，美术人员使用蒙板所达到的视觉效果不需要蒙板就可以达到。实际上，通常使用蒙板截取出位图的形状。直接在 Flash Studio 中对形状采用位图填充可以更加高效地达到这个目的。它同时还提供了 Scaleform 的专利申请 EdgeAA 抗锯齿的附加效果。
+</li> <li> 尽量将多个对象转换为一个形状，避免生成多余的绘制图元。
+</li> <li> 创建一个形状后，可以平移、旋转并混合它，不需要再使用其他内存。但是，新引入的大形状或进行明显的缩放都会因为要进行细分而消耗更多的内存。
+</li> <li> 启用 EdgeAA 后，由多个纯色组成的形状将会比那些由多个渐变/位图组成的形状渲染得快。在一个形状内部连接渐变/位图的时候应该非常小心，因为这会使绘制图元的数量急剧增加。
+</li></ul>
+<p />
+<h3><a name="位图"></a> 位图 </h3>
+<hr size="1" noshade="noshade">
+<p />
+在创建优化的流线型的动画或图片中，第一步是在创建前概要介绍和计划您的项目。指定您最终想要创建的文件大小、内存使用以及动画的长度，然后在整个开发过程中进行测试，确保您在按计划行事。
+<p />
+除了前面介绍的绘制图元之外，可以影响渲染性能的重要因素还有绘制的表面区域总面积。每当将可见形状或位图放置在 Stage 上时，都需要对它进行渲染，即使在它被其他重叠形状隐藏的情况也不例外，同时它还会消耗视频卡填充率。尽管现在的视频卡比 Flash 软件快一个数量级，画面上的大型重叠 alpha 混合对象还是会大大降低性能，尤其是在低端和早期软件上。由于这个原因，展平重叠的形状和位图，然后明确隐藏遮挡或剪切掉的对象，这些很重要。
+<p />
+隐藏对象的时候，最好是将动画剪辑实例的 _visible 属性设置为 false，而不是在 SWF 文件中将 _alpha 等级更改为 0。虽然 GFx 不会使用 _alpha 值 0 绘制对象，但是由于动画和 ActionScript 它们的子代可能仍然会产生 CPU 处理消耗。如果将实例可见性设置为 false，那么可能会进行 CPU 循环，从而节省内存，这样可以为您的 SWF 文件制作出更加平滑的动画效果，同时为您的应用程序提供更好的整体性能。不要卸载和重新加载资源，而是将 _visible 属性设置为 false，它对处理器没那么敏感。
+<p />
+下面是一些对提高渲染位图图形效率有所帮助的准则：
+<p /> <ul>
+<li> 根据需要考虑通过 ActionScript 加载和卸载大型位图。
+</li> <li> 要点：记录您的 UI 中所使用的图片文件的数量和大小。在UE3中使用'stat gfx'命令看看GFx使用了多少内存。
+</li> <li> 避免大型位图重叠，因为这会影响填充率性能。大面积的透明位图重叠也可能会导致性能变差。
+</li> <li> 以位图在应用程序中所使用的大小为标准导入位图图形；不要导入大的图形然后在 Flash 中挤压它们，因为这样会浪费文件大小和运行时内存。
+</li></ul>
+<p />
+<h2><a name="动画"></a> 动画 </h2>
+<hr size="1" noshade="noshade">
+<p />
+在将动画添加到一个应用程序中时，要考虑 FLA 文件的帧速率。它可以影响最终 SWF 文件的性能。将帧速率设置得太高可能会引发性能问题，尤其是在使用很多资源或使用 AS 创建使用该文档的帧速率进行标记的动画时。
+<p />
+与此同时，帧速率设置还会影响动画播放的流畅程度。例如，将动画设置为每秒 12 帧 (FPS)，即每秒钟可以播放时间轴的 12 帧。如果将该文档的帧速率设置为 24 FPS，那么动画看上去会比设置为 12 FPS 时更流畅。但是，24 FPS 的动画播放速度是帧速率为 12 FPS 的动画的 2 倍，所以播放的总时间（以秒为单位）将会是原来的一半。因此，为了使用更高的帧速率制作 5 秒动画，与较低的帧速率相比，它需要更多的帧来填充这 5 秒，这样可以增加文件总量。
+<p />
+<strong>注意：</strong> 使用 onEnterFrame 时间处理器创建播放的动画时，让动画以文档的帧速率运行，类似于在时间轴上创建动作补间动画。可以代替 onEnterFrame 事件处理器使用的是 setInterval。它与帧速率无关，而是在指定的时间间隔（毫秒）调用函数。与 onEnterFrame 相同，使用 setInterval 调用函数的频率越高，动画就会对资源越敏感。
+<p />
+尽量使用最低帧速率，即可以在运行时渲染播放流畅的动画。这样可以降低对处理器性能的影响。尝试不要使用大于 30 到 40 FPS 的帧速率；超出这个范围的帧速率会增加 CPU 消耗，而且不会明显改善动画的流畅性。*在大多数情况下，可以安全地将 Flash UI 设置为相关游戏目标帧速率的一半。*
+<p />
+下面是一些可以帮助设计师创建高效动画的准则：
+<p /> <ul>
+<li> 舞台上的对象数以及对象移动的速度都会影响整体性能。
+</li> <li> 如果舞台上有大量动画剪辑而且要求它们快速打开/关闭，那么应该使用 _visible = true/false 控制它们的可见性，而不是附加/删除动画剪辑。
+</li> <li> 密切注意补间动画的使用情况。 <ul>
+<li> 避免同时补间很多内容。减少补间动画和/或系列动画的数量，这样才能使它们一个接一个地播放。
+</li> <li> 尽量使用时间轴动作补间动画而不是标准的 Flash Tween 类，因为它的性能消耗少得多。
+</li> <li> Scaleform 推荐使用 CLIK Tween 类 (gfx.motion.Tween) 代替标准的 Flash Tween 类，因为它更小更快更规则。
+</li></ul>
+</li> <li> 使帧速率尽量低，因为高低帧速率之间的差别通常不是很明显。帧速率越高，动画越流畅，但是性能影响会随之增加。一个运行速度为每秒 60 帧的游戏不需要将 Flash 文件设置为 60 FPS。Flash 帧速率应该是得到必需的视觉效果所需的最小值。
+</li> <li> 透明和渐变是处理器敏感任务，使用的时候须谨慎。
+</li> <li> 焦点区域设计合理并进行动画处理，则可以减少屏幕中其他区域的动画效果。
+</li> <li> 在变换过程中暂停不关心的背景动画（例如，令人难以察觉的背景效果）
+</li> <li> 测试添加/删除动画元素权衡它们对性能的影响。
+</li> <li> 适当使用补间缓和。在速度较慢的硬件上，它可以创建一个延迟的“外观”。
+</li> <li> 尽量避免顶点形状变形动画，例如将圆形转换为正方形，因为它们是对 CPU 非常敏感的操作。形状补间动画（顶点变形）对 CPU 的影响非常明显，因为形状每一帧都要进行重新计算；这个影响所产生的性能消耗将取决于形状的复杂性（边、曲线以及交集的数量）。它可能还可以用于某些情景，但是用数字图表表示它，确认消耗是在合理范围内；可以允许四个三角形的补间动画所消耗的性能。从根本上说，就是要注意性能/内存平衡。显示通用形状会使形状进行细分和缓存，这样它在以后的帧中就可以有效显示。顶点变形后，平衡点发生改变，因为形状发生任何变化都会使以前的网格物体被释放，然后创建一个新的网格物体。
+</li> <li> 最有效的动画是平移和旋转。最好避免缩放动画，因为它们可能会导致再次细分（这样做会对性能产生明显影响），最后的网格物体可能会消耗更多的内存。
+</li></ul>
+<p />
+<h2><a name="文本和字体"></a> 文本和字体 </h2>
+<hr size="1" noshade="noshade">
+<p /> <ul>
+<li> 文本 glyph 字体大小应该比字体缓存管理器 SlotHeight 或计划与 gfxexport 结合使用的字体大小小一点（默认为 48 像素）。如果使用了较大的字体，那么将会使用向量，结果因为很多结果 DP 会慢很多（每个向量 glyph 可以生成一个 DP）。
+</li> <li> 如果可以关闭文本字段的边界和背景，因为这样将会保存一个绘制图元。
+</li> <li> 每帧更新文本字段的内容是可以轻易避免的最大性能消耗之一。只是在文本字段的内容真正发生改变或速度最慢的情况下更改文本字段值。例如，如果更新的是可以显示到秒的计时器，那么在帧速率为 30 FPS 的时候无需更新它。而是要记录以前的值，然后只有在新的值与之前的值不同的情况下才会重新为文本字段赋值。
+</li> <li> 切勿使用连接到文本字段（"TextField.variable" 属性）的变量，因为这个文本字段将会在每帧检索并比较这个变量，这样将会影响性能。
+</li> <li> 尽量减少通过重新为“htmlText”属性赋值更新文本。解析 HTML 过程相对来说是性能消耗会更多。
+</li> <li> 使用包含 –fc, -fcl, -fcm 项的 gfxexport 压缩字体，这样可以节省 glyph 形状上的内存（特别是在内嵌的是亚洲字体的情况下）。请参阅“字体概述 (Font Overview)”文档了解更多详细信息。
+</li> <li> 只为字体内嵌需要的符号，或者在需要本地化的情况下使用字体库机制（请再次参阅“Font Overview”文档）。
+</li> <li> 使用必需的 TextField 对象最小数量，尽可能将多个对象结合成一个。通常可以使用一个 DP 渲染单个文本字段，即使它使用的是不同的颜色和字体类型。
+</li> <li> 避免缩放文本字段或使用大的字体；在特定大小之后，文本字段将会切换为向量 glyph，而且每个 glyph 变为一个绘制图元。如果必须要进行剪切（向量 glyph 只有部分可见），那么需要使用蒙板。蒙板都很慢，同时会添加一个额外的绘制图元。剪切栅格化的 glyph 不需要使用蒙板。
+</li> <li> 确保 glyph 缓存足够大可以容纳所有（或大部分）用到的 glyph。如果缓存大小不够，那么某些 glyph 可能会消失，或者由于 glyph 频繁进行栅格化对性能产生严重影响。
+</li> <li> 使用诸如模糊、阴影或挖空滤镜文本效果需要额外的字体缓存空间，同时也会影响性能。如果可以，尽量不要使用文本滤镜。
+</li> <li> 避免在文本字段下面加画横线，因为这样做会添加一个额外的绘制图元。
+</li></ul>
+<!--  -->
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ScaleformBestPracticesCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:28:08 GMT -->
+</html></body>

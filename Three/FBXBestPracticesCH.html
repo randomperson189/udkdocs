@@ -1,0 +1,414 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/FBXBestPracticesCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:34:33 GMT -->
+<head>
+<title> UDK | FBXBestPracticesCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">FBXBestPracticesCH  </b></div>
+<div id="tooltext">
+<a href="FBXBestPractices.html" class="twikiLink">English Translation</a><br><a href="FBXBestPracticesJP.html" class="twikiLink">日本語訳</a><br><a href="FBXBestPracticesKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/FBXBestPracticesCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt; <b><a href="FBXPipeline.html" class="twikiLink">FBX内容通道</a></b> &gt; FBX最佳实践方案
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="FBX 最佳实践方案"></a> FBX 最佳实践方案 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="FBXBestPracticesCH.html#FBX 最佳实践方案"> FBX 最佳实践方案</a> <ul>
+<li> <a href="FBXBestPracticesCH.html#概述"> 概述</a>
+</li> <li> <a href="FBXBestPracticesCH.html#静态网格物体工作流程"> 静态网格物体工作流程</a> <ul>
+<li> <a href="FBXBestPracticesCH.html#有效链接"> 有效链接</a>
+</li></ul>
+</li> <li> <a href="FBXBestPracticesCH.html#骨架网格物体工作流程"> 骨架网格物体工作流程</a> <ul>
+<li> <a href="FBXBestPracticesCH.html#有效链接"> 有效链接</a>
+</li></ul>
+</li> <li> <a href="FBXBestPracticesCH.html#动画工作流程"> 动画工作流程</a> <ul>
+<li> <a href="FBXBestPracticesCH.html#有效链接"> 有效链接</a>
+</li></ul>
+</li> <li> <a href="FBXBestPracticesCH.html#顶点变形目标工作流程"> 顶点变形目标工作流程</a> <ul>
+<li> <a href="FBXBestPracticesCH.html#有效链接"> 有效链接</a>
+</li></ul>
+</li> <li> <a href="FBXBestPracticesCH.html#命名方案"> 命名方案</a>
+</li> <li> <a href="FBXBestPracticesCH.html#场景管理"> 场景管理</a>
+</li> <li> <a href="FBXBestPracticesCH.html#在虚幻编辑器中重新命名内容"> 在虚幻编辑器中重新命名内容</a> <ul>
+<li> <a href="FBXBestPracticesCH.html#有效链接"> 有效链接</a>
+</li></ul>
+</li> <li> <a href="FBXBestPracticesCH.html#整个场景导入/导出"> 整个场景导入/导出</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+该页面包含有关使用供 Epic Games 的美术人员使用的虚幻引擎 3 中的 FBX 内容通道的建议、技巧和最佳实践方案。
+<p />
+<h2><a name="静态网格物体工作流程"></a> 静态网格物体工作流程 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> 将网格物体从您的 3D 应用程序中导出到 FBX 文件。 <ul>
+<li> 供 Epic 的美术人员使用的常见导出设置包括： <ul>
+<li> 启用 <strong>Smoothing Groups（平滑组）</strong>
+</li> <li> 启用 <strong>Tangents and Binormals（切线和副法线）</strong>
+</li> <li> 启用 <strong>Preserve Edge Orientation（保留边朝向）</strong>
+</li></ul>
+</li></ul>
+</li> <li> 使用虚幻编辑器中的内容浏览器导入该 FBX 文件。
+</li></ul>
+<p />
+<img src="rsrc/Three/FBXBestPracticesCH/FBXBestPracticesMaxExportOptions.jpg" alt="FBXBestPracticesMaxExportOptions.jpg" width='594' height='572' />
+<p />
+<h3><a name="有效链接"></a> 有效链接 </h3> <ul>
+<li> <a href="FBXStaticMeshPipeline.html#ExportMesh" class="twikiAnchorLink">导出静态网格物体</a>
+</li> <li> <a href="FBXStaticMeshPipeline.html#ImportMesh" class="twikiAnchorLink">导入静态网格物体</a>
+</li></ul>
+<p />
+<h2><a name="骨架网格物体工作流程"></a> 骨架网格物体工作流程 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> 将网格物体和骨架导出到一个 FBX 文件。 <ul>
+<li> 选择您想要导出的项（网格物体和关节链根），然后‘导出选中项’。
+</li> <li> 供 Epic 的美术人员使用的常见导出设置包括： <ul>
+<li> 禁用 <strong>Smooth Mesh（平滑网格物体）</strong>
+</li> <li> 启用 <strong>Smoothing Groups（平滑组）</strong>
+</li></ul>
+</li></ul>
+</li> <li> 使用虚幻编辑器中的内容浏览器导入该 FBX 文件。
+</li></ul>
+<p />
+<h3><a name="有效链接"></a> 有效链接 </h3>
+<p /> <ul>
+<li> <a href="FBXSkeletalMeshPipeline.html#ExportMesh" class="twikiAnchorLink">导出骨架网格物体</a>
+</li> <li> <a href="FBXSkeletalMeshPipeline.html#ImportMesh" class="twikiAnchorLink">导入骨架网格物体</a>
+</li></ul>
+<p />
+<h2><a name="动画工作流程"></a> 动画工作流程 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> 将动画导出到一个 FBX 文件。 <ul>
+<li> 选择您想要导出的项（如果需要可以是关节链根、网格物体），然后‘导出选中项’。
+</li> <li> 导出设置： <ul>
+<li> 启用 <strong>Animation（动画）</strong>
+</li></ul>
+</li></ul>
+</li> <li> 在虚幻编辑器中的 AnimSet 编辑器中导入该 FBX 文件。
+</li></ul>
+<p />
+<h3><a name="有效链接"></a> 有效链接 </h3>
+<p /> <ul>
+<li> <a href="FBXAnimationPipeline.html#ExportingAnimations" class="twikiAnchorLink">导出动画</a>
+</li> <li> <a href="FBXAnimationPipeline.html#ImportingAnimations" class="twikiAnchorLink">导入动画</a>
+</li></ul>
+<p />
+<h2><a name="顶点变形目标工作流程"></a> 顶点变形目标工作流程 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> 将顶点变形目标导出到一个 FBX 文件。 <ul>
+<li> 选择您想要导出的项（具有 blendshapes/morpher 修饰符的网格物体），然后‘导出选中项’。
+</li> <li> 导出设置： <ul>
+<li> 启用 <strong>Animation（动画）</strong>
+</li> <li> 启用 <strong>Deformed Models/Deformations（变形的模型/变形）</strong> - 所有选项
+</li></ul>
+</li></ul>
+</li> <li> 在虚幻编辑器中的 AnimSet 编辑器中导入该 FBX 文件。
+</li></ul>
+<p />
+<h3><a name="有效链接"></a> 有效链接 </h3>
+<p /> <ul>
+<li> <a href="FBXMorphTargetPipeline.html#ExportingMorphs" class="twikiAnchorLink">导出顶点变形目标</a>
+</li> <li> <a href="FBXMorphTargetPipeline.html#ImportingMorphs" class="twikiAnchorLink">导入顶点变形目标</a>
+</li></ul>
+<p />
+<h2><a name="命名方案"></a> 命名方案 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Epic 的美术人员通常按照命名方案为导出的文件命名：
+<p /> <ul>
+<li> <strong>静态网格物体：</strong> SM_<b>&lt;PackageName&gt;</b>_<b>&lt;AssetName&gt;</b>_<b>&lt;Index&gt;</b>
+</li> <li> <strong>骨架网格物体：</strong> SK_<b>&lt;PackageName&gt;</b>_<b>&lt;AssetName&gt;</b>_<b>&lt;Index&gt;</b>
+</li></ul>
+<p />
+使用一个在项目范围内生效的命名方案可以更容易地组织和识别资源文件。
+<p />
+对于网格物体，您可以选择覆盖导入内容（会出现对话框），所以在 3D 内容创建包中命名不是什么重要的事。对于动画，名称则取自您导出的实际 FBX 文件的名称，而且您始终可以在 AnimSet 编辑器中重新命名它。最后，您通常可以在虚幻编辑器中进行重新命名。
+<p />
+<h2><a name="场景管理"></a> 场景管理 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Epic 的美术人员通常将相近的资源存储在单独的文件中。例如，对于具有三个不同状态的静态网格物体： 正常、销毁和损坏，所有这三个状态都存储在同一个文件中。但是将每个网格物体导出为一个单独的 FBX 文件。
+<p />
+<img src="rsrc/Three/FBXBestPracticesCH/FBXBestPractices_MultipleColumn.jpg" alt="FBXBestPractices_MultipleColumn.jpg" width='410' height='810' />
+<p />
+如果有一个该网格物体将其与骨架绑定的未使用 "export" 文件会更容易。该网格物体将会只用于导出。通过该文件构建这个骨架，但是将它保存到一个单独的骨架文件中。
+<p />
+<img src="rsrc/Three/FBXBestPracticesCH/FBXBestPractices_Character.jpg" alt="FBXBestPractices_Character.jpg" width='800' height='405' />
+<p />
+单独的骨架文件。
+<p />
+<img src="rsrc/Three/FBXBestPracticesCH/FBXBestPractices_CharacterRig.jpg" alt="FBXBestPractices_CharacterRig.jpg" width='800' height='405' />
+<p />
+通常也将每个动画分别存储在它们自己的文件中，这样追踪文件系统中所有不同的动画会很简单。
+<p />
+<h2><a name="在虚幻编辑器中重新命名内容"></a> 在虚幻编辑器中重新命名内容 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+对于静态网格物体和骨架网格物体，您可以在内容浏览器通过右击并选择 "Move or Rename（移动或重新命名）..." 来对它们进行重新命名。这样做之后将会出现一个对话框，它允许您移动或重新命名该静态网格或骨架网格物体。
+<p />
+<img src="rsrc/Three/FBXBestPracticesCH/FBXBestPractices_MoveOrRename.jpg" alt="FBXBestPractices_MoveOrRename.jpg" width='665' height='665' />
+<p />
+对于动画，您可以在 "Anim Sequence（动画序列）" -&gt; "Rename Sequence（重新命名序列）" 下的 AnimSet Viewer（AnimSet 查看器）中重新命名它们。
+<p />
+<img src="rsrc/Three/FBXBestPracticesCH/FBXBestPractices_RenameAnimSequence.jpg" alt="FBXBestPractices_RenameAnimSequence.jpg" width='800' height='516' />
+<p />
+<h3><a name="有效链接"></a> 有效链接 </h3>
+<p /> <ul>
+<li> <a href="AnimSetEditorUserGuide.html#AnimSequence" class="twikiAnchorLink">重新命名导入的动画序列</a>
+</li> <li> <a href="FBXPipeline.html#NamingConventions" class="twikiAnchorLink">导入 FBX 时的命名规则</a>
+</li></ul>
+<p />
+<h2><a name="整个场景导入/导出"></a> 整个场景导入/导出 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+它可以用于导出那些在 Matinee 中创建完成的相机或已经在 Matinee 中进行动画处理的载具路径，并且需要所有这些信息，才能在 3D 内容创建包中重新创建一个过场动画。在 3D 内容创建包中进行调整后，可以将它作为一个 FBX 导出，然后再将它导回到虚幻引擎 3 中。
+<p />
+从 Matinee 导出。
+<p />
+<img src="rsrc/Three/FBXBestPracticesCH/FBXBestPractices_MatineeFileMenu.jpg" alt="FBXBestPractices_MatineeFileMenu.jpg" width='800' height='724' />
+<p />
+选择 FBX 格式，为它取名并点击 OK。
+<p />
+<img src="rsrc/Three/FBXBestPracticesCH/FBXBestPractices_MatineeExportFBX.jpg" alt="FBXBestPractices_MatineeExportFBX.jpg" width='800' height='724' />
+<p />
+在同一个 Matinee 窗口中，您还可以导入或重新导入 FBX 数据。
+<p />
+<img src="rsrc/Three/FBXBestPracticesCH/FBXBestPractices_MatineeImportFBX.jpg" alt="FBXBestPractices_MatineeImportFBX.jpg" width='800' height='724' />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/FBXBestPracticesCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:34:35 GMT -->
+</html></body>

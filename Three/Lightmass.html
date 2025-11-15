@@ -1,0 +1,699 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/Lightmass.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:13:11 GMT -->
+<head>
+<title> UDK | Lightmass    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">Lightmass  </b></div>
+<div id="tooltext">
+<a href="LightmassJP.html" class="twikiLink">日本語訳</a><br><a href="LightmassCH.html" class="twikiLink">中国翻译</a><br><a href="LightmassKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/Lightmass -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="LightingAndShadowsHome.html" class="twikiLink">Lighting &amp; Shadows</a></b> &gt; Lightmass Static Global Illumination <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="LevelDesignerHome.html" class="twikiLink">Level Designer</a></b> &gt; Lightmass Static Global Illumination <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="LightingArtistHome.html" class="twikiLink">Lighting Artist</a></b> &gt; Lightmass Static Global Illumination
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Lightmass Static Global Illumination"></a> Lightmass Static Global Illumination </h1>
+<hr size="1" noshade="noshade">
+<p />
+<em>Document Changelog: Created by <a href="https://udn.epicgames.com/Main/DanielWright" class="restricted" class="restricted" class="twikiLink">Daniel Wright</a>.</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="Lightmass.html#Lightmass Static Global Illumination"> Lightmass Static Global Illumination</a> <ul>
+<li> <a href="Lightmass.html#Overview"> Overview</a>
+</li> <li> <a href="Lightmass.html#Versions"> Versions</a>
+</li> <li> <a href="Lightmass.html#Legacy Support"> Legacy Support</a> <ul>
+<li> <a href="Lightmass.html#Getting old UE3 lighting in a new map"> Getting old UE3 lighting in a new map</a>
+</li> <li> <a href="Lightmass.html#Converting an existing map to use Lightmass"> Converting an existing map to use Lightmass</a>
+</li></ul>
+</li> <li> <a href="Lightmass.html#Lightmass Features"> Lightmass Features</a> <ul>
+<li> <a href="Lightmass.html#Area lights and shadows"> Area lights and shadows</a>
+</li> <li> <a href="Lightmass.html#Signed Distance Field shadows"> Signed Distance Field shadows</a>
+</li> <li> <a href="Lightmass.html#Diffuse Interreflection"> Diffuse Interreflection</a>
+</li> <li> <a href="Lightmass.html#Character lighting"> Character lighting</a> <ul>
+<li> <a href="Lightmass.html#Limitations"> Limitations</a>
+</li></ul>
+</li> <li> <a href="Lightmass.html#Mesh Area Lights from Emissive"> Mesh Area Lights from Emissive</a> <ul>
+<li> <a href="Lightmass.html#Limitations"> Limitations</a>
+</li></ul>
+</li> <li> <a href="Lightmass.html#Translucent shadows"> Translucent shadows</a> <ul>
+<li> <a href="Lightmass.html#Translucent shadow color"> Translucent shadow color</a>
+</li> <li> <a href="Lightmass.html#Translucent shadow sharpness"> Translucent shadow sharpness</a>
+</li> <li> <a href="Lightmass.html#Limitations"> Limitations</a>
+</li></ul>
+</li> <li> <a href="Lightmass.html#Masked shadows"> Masked shadows</a>
+</li> <li> <a href="Lightmass.html#Ambient Occlusion"> Ambient Occlusion</a> <ul>
+<li> <a href="Lightmass.html#Limitations"> Limitations</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="Lightmass.html#Getting the best quality with Lightmass"> Getting the best quality with Lightmass</a> <ul>
+<li> <a href="Lightmass.html#Making lighting noticeable"> Making lighting noticeable</a> <ul>
+<li> <a href="Lightmass.html#Diffuse Textures"> Diffuse Textures</a>
+</li> <li> <a href="Lightmass.html#Lighting Setup"> Lighting Setup</a>
+</li></ul>
+</li> <li> <a href="Lightmass.html#Improving lighting quality"> Improving lighting quality</a> <ul>
+<li> <a href="Lightmass.html#Lightmap resolution"> Lightmap resolution</a>
+</li> <li> <a href="Lightmass.html#Lightmass Solver quality"> Lightmass Solver quality</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="Lightmass.html#Getting the best lighting build times"> Getting the best lighting build times</a>
+</li> <li> <a href="Lightmass.html#Lightmass settings"> Lightmass settings</a> <ul>
+<li> <a href="Lightmass.html#LightmassImportanceVolume"> LightmassImportanceVolume</a>
+</li> <li> <a href="Lightmass.html#Lighting Build Options dialog"> Lighting Build Options dialog</a>
+</li> <li> <a href="Lightmass.html#World Settings"> World Settings</a>
+</li> <li> <a href="Lightmass.html#Light Settings"> Light Settings</a>
+</li> <li> <a href="Lightmass.html#Primitive Component Settings"> Primitive Component Settings</a>
+</li> <li> <a href="Lightmass.html#Base Material Settings"> Base Material Settings</a>
+</li> <li> <a href="Lightmass.html#Material Instance Contant Settings"> Material Instance Contant Settings</a>
+</li></ul>
+</li> <li> <a href="Lightmass.html#Useful Tools"> Useful Tools</a>
+</li> <li> <a href="Lightmass.html#For Programmers"> For Programmers</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Lightmass creates lightmaps with complex light interactions like area shadowing and diffuse interreflection.  It is orthogonal to the rest of the rendering pipeline (dynamic lighting and shadowing), it just replaces the lightmaps and static shadow maps with higher quality ones.
+<p />
+Communication between the UE3 editor and Lightmass is handled by <a href="Swarm.html" class="twikiLink">Unreal Swarm</a>, which manages the lighting build locally and can also distribute the lighting build to remote machines.
+<p />
+The Swarm Agent also tracks lighting build progress and keeps you up to date with which machines are working for you, what they're working on, and how many threads each one is using.  The bar near the bottom shows how much of the build is complete.
+<p />
+The below is from a local build that used 8 threads for lighting.
+<p />
+<img alt="SwarmAgent.jpg" src="rsrc/Three/Lightmass/SwarmAgent.jpg" />
+<p />
+See the <a href="Swarm.html" class="twikiLink">Unreal Swarm</a> page for more information.
+<p />
+<p />
+<h2><a name="Versions"></a> Versions </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Lightmass was first introduced in the <a href="https://udn.epicgames.com/Three/BuildUpgradeNotes#QA_APPROVED_BUILD_JUN_2009" class="restricted" target="_top">QA_APPROVED_BUILD_JUN_2009</a> build.
+<p />
+<p />
+<h2><a name="Legacy Support"></a> Legacy Support </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="Getting old UE3 lighting in a new map"></a> Getting old UE3 lighting in a new map </h3>
+<p />
+As of QA_APPROVED_BUILD_JUNE_2009, new maps will use Lightmass and global illumination by default.  This is controlled by <code><b>bUseGlobalIllumination</b></code> under View-&gt;World Properties-&gt;Lightmass in UnrealEd.  It is also accessible through the Lighting Build Options dialog in UnrealEd.  To get old UE3 lighting, simply disable <code><b>bUseGlobalIllumination</b></code>.
+<p />
+<h3><a name="Converting an existing map to use Lightmass"></a> Converting an existing map to use Lightmass </h3>
+<p />
+Maps created before Lightmass was integrated will have <code><b>bUseGlobalIllumination</b></code> set to <strong>false</strong>, and will continue to use the old UE3 static lighting path.  Here are the steps needed to convert an existing level:
+<p /> <ul>
+<li> Set <code><b>bUseGlobalIllumination</b></code> to <strong>true</strong> or checked.
+</li> <li> Place one or more <a href="Lightmass.html#LightmassImportanceVolume" class="twikiAnchorLink">LightmassImportanceVolumes</a> around the part of your level that needs detailed global illumination.  The radius of these volumes combined will have a huge impact on your build time, so try to encompass  the important parts of your level as tightly as possible.
+</li> <li> Disable or delete any fill lights in the level.  Lightmass will calculate light bounces, so you only need to keep the dominant lights.  Sky lights are much less useful with Lightmass and they just decrease your potential contrast, so it's best to disable these too if they were being used as an ambient term.  Fill lights can of course be kept for more artistic control.
+</li></ul>
+<p />
+<p />
+<h2><a name="Lightmass Features"></a> Lightmass Features </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="Area lights and shadows"></a> Area lights and shadows </h3>
+<p />
+With old UE3 static lighting, lights did not have any surface area.  They were treated as if all light was being emitted from a single point (or a single direction, for directional lights).
+<p />
+Area shadows were approximated by filtering the shadow results in the lightmap texture, which means the shadow penumbra sharpness was dependent on the lightmap resolution, and the penumbra size was the same across all surfaces with the same lightmap resolution.
+<p />
+With Lightmass, all lights are area lights by default.  The shape used by Point and Spot light sources is a sphere, whose radius is set by LightSourceRadius under LightmassSettings.  Directional light sources use a disk, positioned at the edge of the scene.  Light source size is one of the two factors controlling shadow softness, as larger light sources will create softer shadows.  The other factor is distance from the receiving location to the shadow caster.  Area shadows get softer as this distance increases, just like in real life.
+<p />
+In the first image is a directional light with the old UE3 static lighting, the penumbra size is the same everywhere.  In the second image, Lightmass calculated area shadows whose sharpness is controlled by both the light source size and occluder distance.  Notice how the shadow of the pillar is much sharper close to where the pillar meets the ground.
+<p />
+<img alt="7OldUE3Shadows.jpg" src="rsrc/Three/Lightmass/7OldUE3Shadows.jpg" />
+<img alt="7LightmassShadows.jpg" src="rsrc/Three/Lightmass/7LightmassShadows.jpg" />
+<p />
+The light source radius for point and spot lights is drawn in yellow wireframe, while the influence radius is drawn in teal.  In most cases you will want to make sure the light source doesn't intersect any shadow casting geometry, or the light will be emitting on both sides of that geometry.
+<p />
+<img alt="AreaLight.jpg" src="rsrc/Three/Lightmass/AreaLight.jpg" />
+<p />
+<h3><a name="Signed Distance Field shadows"></a> Signed Distance Field shadows </h3>
+<p />
+Lightmass can generate precomputed shadow maps in a different encoding, see the <a href="DistanceFieldShadows.html" class="twikiLink">DistanceFieldShadows</a> page for more info.
+<p />
+<h3><a name="Diffuse Interreflection"></a> Diffuse Interreflection </h3>
+<p />
+Diffuse Interreflection is by far the most visually important global illumination lighting effect.  Light bounces by default with Lightmass, and the Diffuse term of your material controls how much light (and what color) bounces in all directions.  This effect is sometimes called color bleeding.  It's important to remember that diffuse interreflection is incoming light reflecting equally in all directions, which means that it is not affected by the viewing direction or position.
+<p />
+Here's a scene built by Lightmass with a single directional light and only direct lighting shown.  Notice how the size of the shadow penumbras depends on the distance of the occluder.  The areas that are not directly visible to the light are black.  This is the result without global illumination.
+<p />
+<img alt="3DirectOnly.jpg" src="rsrc/Three/Lightmass/3DirectOnly.jpg" />
+<p />
+This is what the first diffuse global illumination bounce looks like.  Notice the shadow behind the chair on the left, this is called an indirect shadow because it is the shadow of the indirect light.  The brightness and color of the diffuse bounce depends on the incoming light and the diffuse term of the material that the light interacts with.  Each bounce is darker than the previous, since some of the light gets absorbed by surfaces instead of being reflected.  The pillar bases get more indirect light than other surfaces because they are closer to the areas in direct light.
+<p />
+<img alt="3FirstBounceOnly.jpg" src="rsrc/Three/Lightmass/3FirstBounceOnly.jpg" />
+<p />
+This is the second diffuse bounce.  The light has become much more attenuated and evenly distributed.
+<p />
+<img alt="3SecondBounceOnly.jpg" src="rsrc/Three/Lightmass/3SecondBounceOnly.jpg" />
+<p />
+And here is the scene with four diffuse bounces combined.  Simulating global illumination creates much more detailed and realistic lighting than manually placing fill lights.  Indirect shadows in particular are not possible with fill lights.
+<p />
+<img alt="3FourBounces.jpg" src="rsrc/Three/Lightmass/3FourBounces.jpg" />
+<p />
+Bounced lighting picks up the diffuse color of the underlying material, as you can see below.  This is where the term 'color bleeding' comes from.  Color bleeding is most noticeable with highly saturated colors.  You can exaggerate the effect by raising DiffuseBoost on the primitive, material or level.
+<p />
+<img src="rsrc/Three/Lightmass/diffusebounce_T.jpg" height="400" />
+<img src="rsrc/Three/Lightmass/diffusebounce_L.jpg" height="400" />
+<p />
+<h3><a name="Character lighting"></a> Character lighting </h3>
+<p />
+Lightmass places samples in a uniform 3d grid inside the <a href="Lightmass.html#LightmassImportanceVolume" class="twikiAnchorLink">LightmassImportanceVolume</a> at a low resolution, and also on top of upward facing surfaces that characters are likely to walk on, at a higher resolution.  Each lighting sample captures indirect lighting from all directions, but not direct lighting.
+<p />
+The first image is a debug visualization of lighting samples placed above the floor, the second image is the same scene in Lit mode.  Notice how the samples above the red tapestry picked up the red bounced light.  The samples are visualized as a single color, but they really capture lighting from all directions.
+<p />
+<img alt="02CharacterLighting.jpg" src="rsrc/Three/Lightmass/02CharacterLighting.jpg" />
+<img alt="02CharacterLightingLit.jpg" src="rsrc/Three/Lightmass/02CharacterLightingLit.jpg" />
+<p />
+<a href="LightEnvironments.html" class="twikiLink">LightEnvironments</a> then lookup the indirect lighting at the position of the actor using these lighting samples.  The indirect lighting affects the color of the light environment shadow, but not the direction.
+<p />
+The character below is lit with the first bounce global illumination from the stairs below.
+<p />
+<img alt="01CharacterLighting.jpg" src="rsrc/Three/Lightmass/01CharacterLighting.jpg" />
+<p />
+<h4><a name="Limitations"></a> Limitations </h4>
+<p /> <ul>
+<li> Currently the light samples can use a lot of memory, their placement could be optimized by having more knowledge about where detailed indirect lighting is needed on characters (i.e. the play area).
+</li> <li> Dynamically lit objects not using light environments will only be affected by direct lighting.
+</li> <li> Light environments outside the LightmassImportanceVolume will have black indirect lighting.
+</li></ul>
+<p />
+<h3><a name="Mesh Area Lights from Emissive"></a> Mesh Area Lights from Emissive </h3>
+<p />
+The emissive input of any material you apply to a static object can be used to create mesh area lights.  Mesh area lights are similar to point lights, but they can have arbitrary shape and intensity across the surface of the light.  Each positive emissive texel emits light in the hemisphere around the texel's normal based on the intensity of that texel.  Each neighboring group of emissive texels will be treated as one mesh area light that emits one color.
+<p />
+The first image shows only the emissive of the underlying materials, and the second image shows the result of the 4 mesh area lights created from those emissive texels (four lights are created because there are four neighboring patches of positive emissive texels).
+<p />
+<img alt="SmallMeshAreaLightsEmissiveOnly.jpg" src="rsrc/Three/Lightmass/SmallMeshAreaLightsEmissiveOnly.jpg" />
+<img alt="SmallMeshAreaLights.jpg" src="rsrc/Three/Lightmass/SmallMeshAreaLights.jpg" />
+<p />
+By default, mesh area lights will NOT be created from emissive areas.  To enable them, check the bUseEmissiveForStaticLighting flag that can be found under the LightmassSettings group of any primitive component.  For BSP surfaces, the option is under surface properties.
+<p />
+<img alt="emissivetexture_T.JPG" src="rsrc/Three/Lightmass/emissivetexture_T.jpg" />
+<p />
+The <code><b>EmissiveLightFalloffExponent</b></code> setting allows you to control the falloff of the light emitted.  It behaves just like a point light's falloff exponent, larger exponents result in light attenuating more quickly as it gets toward the influence radius of the light.  The influence radius of a mesh area light is determined automatically based on the brightness of the light along with the size of the light's emissive surface area.  <code><b>EmissiveBoost</b></code> scales the intensity of all emissive texels, which also affects the influence radius.
+<p />
+Note that mesh area lights add to your build time, they have about the same build time impact as a point light.  Mesh area lights with a smaller influence radius will be faster to calculate lighting for.
+<p />
+<h4><a name="Limitations"></a> Limitations </h4>
+<p /> <ul>
+<li> Mesh area lights on meshes with a lot of triangles will increase build times.  A warning is issued for meshes with &gt; 3000 triangles, and meshes with &gt; 5000 triangles will not be used as a mesh area light regardless of bUseEmissiveForStaticLighting.
+</li></ul>
+<p />
+<h3><a name="Translucent shadows"></a> Translucent shadows </h3>
+<p />
+Light passing through a translucent material that is applied to a static shadow casting mesh will lose some energy, resulting in a translucent shadow.
+<p />
+<img src="rsrc/Three/Lightmass/translucent_T.jpg" height="400" />
+<p />
+<h4><a name="Translucent shadow color"></a> Translucent shadow color </h4>
+<p />
+The amount of light passing through the material is called <code><b>Transmission</b></code> (different from <code><b>TransmissionColor</b></code> and <code><b>TransmissionMask</b></code> in the material editor, which operate on opaque materials), and ranges between 0 and 1 for each color channel.  A value of 0 would be fully opaque, and a value of 1 would mean that the incident light passes through unaffected.  There's no material input for Transmission, so currently it is derived from the other material inputs as follows:
+<p /> <ul>
+<li> Lit materials <ul>
+<li> BLEND_Translucent and BLEND_Additive: Transmission = Lerp(White, Diffuse, Opacity)
+</li> <li> BLEND_Modulate: Transmission = Diffuse
+</li></ul>
+</li> <li> Unlit materials <ul>
+<li> BLEND_Translucent and BLEND_Additive: Transmission = Lerp(White, Emissive, Opacity)
+</li> <li> BLEND_Modulate: Transmission = Emissive
+</li></ul>
+</li></ul>
+<p />
+This means that at an opacity of 0, the material will not filter out incident lighting and there will be no translucent shadow.  At an opacity of 1, incident lighting will be filtered by the material's emissive or diffuse (depending on whether it is lit).  Note that indirect lighting will sometimes wash out the translucent shadows and make them less saturated than the emissive or diffuse of the translucent material.
+<p />
+<h4><a name="Translucent shadow sharpness"></a> Translucent shadow sharpness </h4>
+<p />
+There are several factors controlling translucent shadow sharpness.
+<p />
+In the first image is a large light source was used (directional light with a LightSourceAngle of 5) and in the second, a small light source was used (LightSourceAngle of 0).
+<p />
+<img alt="5LargeLightSource.jpg" src="rsrc/Three/Lightmass/5LargeLightSource.jpg" />
+<img alt="5SmallLightSource.jpg" src="rsrc/Three/Lightmass/5SmallLightSource.jpg" />
+<p />
+In the first image, a small light source was used, but the lightmap resolution was too low to capture the sharp translucent shadows.  In the second image, the material was exported at too low of a resolution (controlled by <code><b>ExportResolutionScale</b></code> in the material editor) to capture the sharp shadows.
+<p />
+<img alt="5LowLightmapResolution.jpg" src="rsrc/Three/Lightmass/5LowLightmapResolution.jpg" />
+<img alt="5LowExportResolutionScale.jpg" src="rsrc/Three/Lightmass/5LowExportResolutionScale.jpg" />
+<p />
+Indirect light is also affected by translucent materials.  The window in this image filters incoming light based on its Transmission, and that light then bounces around the scene with its color modified.
+<p />
+<img alt="TranslucentShadowIndirectLight.jpg" src="rsrc/Three/Lightmass/TranslucentShadowIndirectLight.jpg" />
+<p />
+<h4><a name="Limitations"></a> Limitations </h4>
+<p /> <ul>
+<li> Translucent materials currently do not scatter light, so they will not bleed color onto objects around them.
+</li> <li> The first diffuse bounce is currently not affected by translucent shadows.  This means that first bounce indirect light passing through a translucent material will not be filtered by the material's Transmission.
+</li> <li> Refraction (caustics from transmission) is currently not supported.
+</li></ul>
+<p />
+<h3><a name="Masked shadows"></a> Masked shadows </h3>
+<p />
+Lightmass takes the opacity mask of BLEND_Masked materials into account when calculating shadows.  The part of the material that gets clipped in the editor viewports also does not cause any shadowing, which allows much more detailed shadowing from trees and foliage.
+<p />
+<img src="rsrc/Three/Lightmass/masked.jpg" height="400" />
+<img src="rsrc/Three/Lightmass/masked_L.jpg" height="400" />
+<p />
+<h3><a name="Ambient Occlusion"></a> Ambient Occlusion </h3>
+<p />
+Lightmass calculates detailed indirect shadows automatically, but it can be useful to exaggerate indirect shadows for artistic purposes or to enhance the perception of proximity in a scene.
+<p />
+Ambient occlusion is the indirect shadowing you would get from a uniformly bright upper hemisphere, like an overcast sky.  Lightmass supports calculating ambient occlusion, applying it to direct and indirect illumination, and then baking it into lightmaps.  Ambient occlusion is disabled by default, and can be enabled by checking next to <code><b>bUseAmbientOcclusion</b></code> in View-&gt;World Properties-&gt;Lightmass in UnrealEd.
+<p />
+In the first image is a scene with indirect lighting but no ambient occlusion.  In the second image is the same scene with ambient occlusion applied to both the direct and indirect lighting, note the darkening where objects come together.
+<p />
+<img alt="9NoAO.jpg" src="rsrc/Three/Lightmass/9NoAO.jpg" />
+<img alt="9WithAO.jpg" src="rsrc/Three/Lightmass/9WithAO.jpg" />
+<p />
+Ambient Occlusion settings: <ul>
+<li> <strong>bVisualizeAmbientOcclusion</strong> - Overrides lightmaps with just the occlusion factor when lighting is built.  This is useful for seeing exactly what the occlusion factor is, and comparing the effects of different settings.
+</li> <li> <strong>MaxOcclusionDistance</strong> - Maximum distance for an object to cause occlusion on another object
+</li> <li> <strong>FullyOccludedSamplesFraction</strong> - Fraction of samples taken that must be occluded in order to reach full occlusion.  Note that there is also a per-primitive FullyOccludedSamplesFraction, which allows controlling how much occlusion an object causes on other objects.
+</li> <li> <strong>OcclusionExponent</strong> - Higher exponents increase contrast
+</li></ul>
+<p />
+<strong>Images</strong> <ul>
+<li> <strong>First</strong>: Default AO settings (MaxOcclusionDistance of 200, FullyOccludedSamplesFraction of 1.0, OcclusionExponent of 1.0)
+</li> <li> <strong>Second</strong>: MaxOcclusionDistance of 5.  Low frequency occlusion is removed, only occlusion in corners is left.
+</li> <li> <strong>Third</strong>: FullyOccludedSamplesFraction of 0.8.  Occlusion is shifted darker across all ranges, any areas that were at 80% occluded or above saturate to black.
+</li> <li> <strong>Last</strong>: OcclusionExponent of 2.  The occlusion transitions from midrange to saturated dark much more quickly, occlusion is pushed into corners.
+</li></ul>
+<p />
+<img alt="92Defaults.jpg" src="rsrc/Three/Lightmass/92Defaults.jpg" />
+<img alt="92MaxDist5.jpg" src="rsrc/Three/Lightmass/92MaxDist5.jpg" />
+<img alt="92MaxPct80.jpg" src="rsrc/Three/Lightmass/92MaxPct80.jpg" />
+<img alt="92Exponent2.jpg" src="rsrc/Three/Lightmass/92Exponent2.jpg" />
+<p />
+Ambient Occlusion is nearly free as far as lighting build time goes when NumIndirectLightingBounces is greater than 0.
+<p />
+<h4><a name="Limitations"></a> Limitations </h4>
+<p /> <ul>
+<li> Ambient Occlusion requires a fairly high lightmap resolution to look good, since it changes quickly in corners.  Vertex lightmaps will give strange results, as large areas of meshes will be dark since vertices are often in the corners where ambient occlusion is the highest.
+</li> <li> Preview quality builds do not do a very good job at previewing ambient occlusion, since AO requires pretty dense lighting samples (just like indirect shadows).
+</li></ul>
+<p />
+<p />
+<h2><a name="Getting the best quality with Lightmass"></a> Getting the best quality with Lightmass </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="Making lighting noticeable"></a> Making lighting noticeable </h3>
+<p />
+<h4><a name="Diffuse Textures"></a> Diffuse Textures </h4>
+<p />
+During rendering, lit pixel color is determined as Diffuse * Lighting, so diffuse color directly affects how visible the lighting will be.  High contrast or dark diffuse textures make lighting difficult to notice, while low contrast, mid-range diffuse textures let the lighting details show through.
+<p />
+Compare the lighting clarity between the scene in the first image, build with mid-range diffuse textures, to the scene in the second image also built with Lightmass, but with noisy, dark diffuse textures.  Only the most high-frequency changes are noticeable in the scene in the second image, like the shadow transitions.
+<p />
+<img alt="94MidToneDiffuse.jpg" src="rsrc/Three/Lightmass/94MidToneDiffuse.jpg" />
+<img alt="94DarkDiffuse.jpg" src="rsrc/Three/Lightmass/94DarkDiffuse.jpg" />
+<p />
+The Unlit <a href="ViewModes.html" class="twikiLink">view mode</a> is useful for viewing the Diffuse term.  The scene in the first image looks flatter and more monotone in the Unlit <a href="ViewModes.html" class="twikiLink">view mode</a>, which means the lighting is doing all the work and variations in final pixel color are mostly due to lighting differences.
+<p />
+See the <a href="ViewModes.html" class="twikiLink">View Modes</a> page for more information.
+<p />
+<img alt="94MidToneDiffuseUnlit.jpg" src="rsrc/Three/Lightmass/94MidToneDiffuseUnlit.jpg" />
+<img alt="94DarkDiffuseUnlit.jpg" src="rsrc/Three/Lightmass/94DarkDiffuseUnlit.jpg" />
+<p />
+Using the editor's color picker on several parts of the unlit image we can see that the scene in the first image has diffuse values around 0.5, while the scene in the second image has diffuse values around 0.08.  Looking at the histogram of these unlit images in Photoshop gives a good idea of the distribution of the diffuse textures.  <strong>NOTE: Photoshop shows you color values in gamma space, so a value of 186 (.73) is actually halfway between black and white, NOT a value of 127 (.5).</strong>  The first image shows what the histogram should look like to get noticeable lighting.
+<p />
+<img alt="hist_Spo.jpg" src="rsrc/Three/Lightmass/hist_Spo.jpg" />
+<img alt="hist_UT.jpg" src="rsrc/Three/Lightmass/hist_UT.jpg" />
+<p />
+<h4><a name="Lighting Setup"></a> Lighting Setup </h4>
+<p /> <ul>
+<li> Avoid skylights!  Skylights add a constant ambient term to your level, which reduces contrast in indirectly lit areas.
+</li> <li> Setup lights so that there is high contrast between the directly lit areas and indirectly lit areas.  The contrast will make it easier to pick out where shadow transitions are and will give your level a better sense of depth.
+</li> <li> Setup lights so that the bright areas are not too bright, and the dark areas are not completely black, but still have detail noticeable.  It's important to check out the dark areas on the final target display.
+</li></ul>
+<p />
+<h3><a name="Improving lighting quality"></a> Improving lighting quality </h3>
+<p />
+<h4><a name="Lightmap resolution"></a> Lightmap resolution </h4>
+<p />
+Using texture lightmaps with high resolution is the best way to get detailed, quality lighting.  Vertex lightmaps are tessellation dependent, so they usually cannot represent lighting details like area shadows, and instead they just show the general color of the area the mesh is in.  Using high lightmap resolution has the downsides of taking up more texture pool memory and increasing build times, so it's a tradeoff.  Ideally, most of the lightmap resolution should be allocated around the high visual impact areas and in places where there are high frequency shadows.
+<p />
+<h4><a name="Lightmass Solver quality"></a> Lightmass Solver quality </h4>
+<p />
+Lightmass Solver settings are automatically set appropriately based on what quality of build is requested in the Lighting Build Options dialog.  Production should give good enough quality that the artifacts are not clearly noticeable with a diffuse texture applied.  There is one setting that has a big impact on quality however, and that is StaticLightingLevelScale.  Lowering the scale will generate many more indirect lighting samples, which will increase the quality of indirect lighting and shadowing, at the expense of build time.  In most cases this is only useful for increasing the lighting scale for large levels.
+<p />
+<p />
+<h2><a name="Getting the best lighting build times"></a> Getting the best lighting build times </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+There are several ways to improve your Lightmass build times:
+<p /> <ul>
+<li> Only have high resolution lightmaps in areas that have high-frequency (quickly changing) lighting. Reduce the lightmap resolution for BSP and static meshes that are not in direct lighting or affected by sharp indirect shadows. This will give you high resolution shadows in the areas that are most noticable.
+</li> <li> Surfaces that are never visible to the player should be set to the lowest possible lightmap resolution.
+</li> <li> Use a <a href="Lightmass.html#LightmassImportanceVolume" class="twikiAnchorLink">LightmassImportanceVolume</a> to contain the areas that are most important (just around the playable area).
+</li> <li> Optimize the lightmap resolutions across the map so that build time for meshes is more even.  Use the <a href="LightmassTools.html#LightingTimings" class="twikiAnchorLink">LightmassTools#LightingTimings</a> Dialog to find the slowest objects.  The lighting build can never be faster than the slowest single object, regardless of how many machines are doing the distributed build.
+</li></ul>
+<p />
+<p />
+<h2><a name="Lightmass settings"></a> Lightmass settings </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="LightmassImportanceVolume"></a> LightmassImportanceVolume </h3>
+<p />
+Many maps have meshes out to the edge of the grid in the editor, but the actual playable area that needs high quality lighting is much smaller.  Lightmass emits photons based on the size of the level, so those background meshes will greatly increase the number of photons that need to be emitted, and lighting build times will increase.  The LightmassImportanceVolume controls the area that Lightmass emits photons in, allowing you to concentrate it only on the area that needs detailed indirect lighting.  Areas outside the importance volume get only one bounce of indirect lighting at a lower quality.
+<p />
+An overhead wireframe view of MP_Jacinto is shown in the first image.  The actual playable area that needs high quality lighting is the small green blob at the center.
+<p />
+In the second image, a closeup of the playable area of MP_Jacinto is shown, with the correctly setup LightmassImportanceVolume selected.  The LightmassImportanceVolume reduced the radius of the region to light from 80,000 units to 10,000 units, which is 64x less area to light.
+<p />
+<img alt="JacintoImportanceFar.jpg" src="rsrc/Three/Lightmass/JacintoImportanceFar.jpg" />
+<img alt="JacintoImportanceNear.jpg" src="rsrc/Three/Lightmass/JacintoImportanceNear.jpg" />
+<p />
+LightmassImportanceVolumes are created just like any other volume, just place the builder brush where you want the volume to be created, then right-click the Add Volume button, and select LightmassImportanceVolume, as shown below.
+<p />
+<img alt="VolumeMenu.jpg" src="rsrc/Three/Lightmass/VolumeMenu.jpg" />
+<p />
+At this point, having multiple LightmassImportanceVolumes that bound the area to light more tightly is not a benefit, as lighting will be done using the bounding box that surrounds all of the importance volumes.
+<p />
+<h3><a name="Lighting Build Options dialog"></a> Lighting Build Options dialog </h3>
+<p />
+<img alt="LightingBuildOptions.jpg" src="rsrc/Three/Lightmass/LightingBuildOptions.jpg" />
+<p /> <ul>
+<li> <strong>Build Quality</strong> - Controls how much time is spent building lighting and at what quality lighting is calculated.  Preview is the fastest, lowest quality (but still representative) while Production is the slowest, highest quality that should be used for shipping levels.  Each quality setting is about 3x slower than the one above it.  Preview and Medium will show error coloring, but High and Production will not.
+</li> <li> <strong>Use Lightmass</strong> - Overrides the level's bUseGlobalIllumination for just this lighting build.  <strong>Note: the level's bUseGlobalIllumination will not be permanently changed!</strong>
+</li></ul>
+<p />
+<h3><a name="World Settings"></a> World Settings </h3>
+<p />
+<img alt="worldsettings.JPG" src="rsrc/Three/Lightmass/worldsettings.jpg" />
+<p /> <ul>
+<li> <strong>bUseGlobalIllumination</strong> - Whether the level should use Lightmass or old UE3 direct lighting.  Starting with QA_APPROVED_BUILD_JUNE_2009, new maps will default to true and old maps will be set to false.
+</li> <li> <strong>StaticLightingLevelScale</strong> - Scale of the level relative to the scale of the game.  This is used to decide how much detail to calculate in the lighting and smaller scales will greatly increase build times.  The default is 1.0, meaning this level needs the same lighting scale rest of the game.  A scale of 2 would mean the current level only needs to calculate indirect light interactions that are 2x bigger than the default, and lighting builds will be much faster.  SP_Assault in Gears of War 2 is an example of when to use StaticLightingLevelScale.  The level is huge (taking up 3/4ths of the grid in the editor) and most of the time you are driving through it, not walking, and detailed lighting is not noticeable.  In this level a StaticLightingLevelScale of about 4.0 is appropriate, which greatly reduces build times.
+</li> <li> <strong>NumIndirectLightingBounces</strong> - Number of times light is allowed to bounce off surfaces, starting from the light source. 0 is direct lighting only, 1 is one bounce, etc. Bounce 1 takes the most time to calculate, followed by bounce 2. Successive bounces are nearly free, but also do not add very much light, as light attenuates at each bounce.
+</li> <li> <strong>EnvironmentColor</strong> - Color that rays which miss the scene will pick up.  The environment can be visualized as a sphere surrounding the level, emitting this color of light in each direction.
+</li> <li> <strong>EnvironmentIntensity</strong> - Scales EnvironmentColor to allow an HDR environment color.
+</li> <li> <strong>EmissiveBoost</strong> - Scales the emissive contribution of all materials in the scene.
+</li> <li> <strong>DiffuseBoost</strong> - Scales the diffuse contribution of all materials in the scene.  Increasing DiffuseBoost is an effective way to increase the intensity of the indirect lighting in a scene. The diffuse term is clamped to 1.0 in brightness after DiffuseBoost is applied, in order to keep the material energy conserving (meaning light must decrease on each bounce, not increase).  If raising DiffuseBoost doesn't result in brighter indirect lighting, the diffuse term is being clamped and the Light's IndirectLightingScale should be used to increase indirect lighting instead.
+</li> <li> <strong>SpecularBoost</strong> - Scales the specular contribution of all materials in the scene.  Currently unused.
+</li> <li> <strong>IndirectNormalInfluenceBoost</strong> - Lerp factor that controls the influence of normal maps with directional lightmaps on indirect lighting. A value of 0 gives a physically correct distribution of light, which may result in little normal influence in areas only lit by indirect lighting, but less lightmap compression artifacts. A value of .8 results in 80% of the lighting being redistributed in the dominant incident lighting direction, which effectively increases the per-pixel normal's influence, but causes more severe lightmap compression artifacts.
+</li> <li> <strong>bUseAmbientOcclusion</strong> - Enables static ambient occlusion to be calculated by Lightmass and built into your lightmaps
+</li> <li> <strong>DirectIlluminationOcclusionFraction</strong> - How much of the AO to apply to direct lighting
+</li> <li> <strong>IndirectIlluminationOcclusionFraction</strong> - How much of the AO to apply to indirect lighting
+</li> <li> <strong>MaxOcclusionDistance</strong> - Maximum distance for an object to cause occlusion on another object
+</li> <li> <strong>FullyOccludedSamplesFraction</strong> - Fraction of samples taken that must be occluded in order to reach full occlusion
+</li> <li> <strong>OcclusionExponent</strong> - Higher exponents increase contrast
+</li> <li> <strong>bVisualizeMaterialDiffuse</strong> - Override normal direct and indirect lighting with just the material diffuse term exported to Lightmass.  This is useful when verifying that the exported material diffuse matches up with the actual diffuse.
+</li> <li> <strong>bVisualizeAmbientOcclusion</strong> - Override normal direct and indirect lighting with just the AO term.  This is useful when tweaking ambient occlusion settings, as it isolates the occlusion term.
+</li></ul>
+<p />
+<h3><a name="Light Settings"></a> Light Settings </h3>
+<p />
+For more information on setting up lighting in UE3 view the <a href="LightingReference.html" class="twikiLink">Lighting Reference</a> and <a href="ShadowingReference.html" class="twikiLink">Shadowing Reference</a> pages.
+<p />
+<img alt="lightsettings.JPG" src="rsrc/Three/Lightmass/lightsettings.jpg" />
+<p /> <ul>
+<li> <strong>IndirectLightingSaturation</strong> - 0 will result in indirect lighting being completely desaturated, 1 will be unchanged.
+</li> <li> <strong>IndirectLightScale</strong> - Scales the brightness of indirect lighting from this light.  This is similar to DiffuseBoost in that it will change how much light gets bounced, but different in that it only changes how much light is emitted, not how much light gets attenuated at each bounce.  Also, DiffuseBoost can only increase indirect lighting to a certain point, because Diffuse is clamped to keep its brightness below or equal to 1.0.  IndirectLightScale can increase the indirect lighting intensity by any amount.
+</li> <li> <strong>LightSourceRadius</strong> - (Point and Spot lights only) The radius of the light's emissive sphere, NOT the light's influence, which is controlled by Radius.  A larger LightSourceRadius will result in larger shadow penumbras.
+</li> <li> <strong>LightSourceAngle</strong> - (Directional lights only) The angle, in degrees, of the directional light's emissive disk from a receiver.  Larger angles result in larger shadow penumbras.  Note that this is the angle from the center of the directional light's disk to the edge of the disk, not from one edge to the other.  The Sun's angle is about .25 degrees.
+</li> <li> <strong>ShadowExponent</strong> - Controls the falloff of shadow penumbras, or how fast areas change from fully lit to fully shadowed.
+</li></ul>
+<p />
+<h3><a name="Primitive Component Settings"></a> Primitive Component Settings </h3>
+<p />
+<img alt="primitivesettings.JPG" src="rsrc/Three/Lightmass/primitivesettings.jpg" />
+<p /> <ul>
+<li> <strong>DiffuseBoost</strong> - Scales the diffuse contribution of all materials applied to this object.
+</li> <li> <strong>EmissiveBoost</strong> - Scales the emissive contribution of all materials applied to this object.
+</li> <li> <strong>EmissiveLightExplicitInfluenceRadius</strong> - Direct lighting influence radius.  The default is 0, which means the influence radius should be automatically generated based on the emissive light brightness.  Values greater than 0 override the automatic method.
+</li> <li> <strong>EmissiveLightFalloffExponent</strong> - Direct lighting falloff exponent for mesh area lights created from emissive areas on this primitive.
+</li> <li> <strong>FullyOccludedSamplesFraction</strong> - Fraction of AO samples taken from this object that must be occluded in order to reach full occlusion on other objects.  This allows controlling how much occlusion an object causes on other objects.
+</li> <li> <strong>bShadowIndirectOnly</strong> - If checked, this object will only shadow indirect lighting.  This is useful for grass, since the geometry that is rendered is just a representation of the actual geometry and doesn't necessarily cast accurately shaped shadows.  It's also useful for grass because the resulting shadows would be too high frequency to be stored in precomputed lightmaps.
+</li> <li> <strong>SpecularBoost</strong> - Scales the specular contribution of all materials applied to this object.  Currently unused.
+</li> <li> <strong>bUseEmissiveForStaticLighting</strong> - Allows the mesh's material's emissive to be used to create Mesh Area Lights.
+</li> <li> <strong>bUseTwoSidedLighting</strong> - If checked, this object will be lit as if it receives light from both sides of its polygons.
+</li></ul>
+<p />
+<h3><a name="Base Material Settings"></a> Base Material Settings </h3>
+<p />
+For more information on the material editor see the <a href="MaterialEditorUserGuide.html" class="twikiLink">Material Editor User Guide</a>.
+<p />
+<img alt="materialsettings.JPG" src="rsrc/Three/Lightmass/materialsettings.jpg" />
+<p /> <ul>
+<li> <strong>EmissiveBoost</strong> - Scales the emissive contribution of this material to static lighting.
+</li> <li> <strong>DiffuseBoost</strong> - Scales the diffuse contribution of this material to static lighting.
+</li> <li> <strong>SpecularBoost</strong> - Scales the specular contribution of this material to static lighting.
+</li> <li> <strong>ExportResolutionScale</strong> - Scales the resolution that this material's attributes are exported at. This is useful for increasing material resolution when details are needed.
+</li></ul>
+<p />
+<h3><a name="Material Instance Contant Settings"></a> Material Instance Contant Settings </h3>
+<p />
+For more information on the material instance editor see the <a href="MaterialInstanceEditorUserGuide.html" class="twikiLink">Material Instance Editor User Guide</a>.
+<p />
+<img alt="materialinstance.JPG" src="rsrc/Three/Lightmass/materialinstance.jpg" />
+<p /> <ul>
+<li> <strong>EmissiveBoost</strong> - When checked, overrides the parent's EmissiveBoost.
+</li> <li> <strong>DiffuseBoost</strong> - When checked, overrides the parent's DiffuseBoost.
+</li> <li> <strong>SpecularBoost</strong> - When checked, overrides the parent's SpecularBoost.
+</li> <li> <strong>ExportResolutionScale</strong> - When checked, overrides the parent's ExportResolutionScale.
+</li></ul>
+<p />
+<p />
+<h2><a name="Useful Tools"></a> Useful Tools </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+For information on various tools for lightmass, including debugging strategies and troubleshooting tips, see the <a href="LightmassTools.html" class="twikiLink">Lightmass Tools</a> page.
+<p />
+<p />
+<h2><a name="For Programmers"></a> For Programmers </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Please see the <a href="https://udn.epicgames.com/Three/LightmassTechnicalGuide" class="restricted" class="restricted" class="twikiLink">Lightmass Technical Guide</a> for information on programming and debugging Lightmass.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/Lightmass.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:13:22 GMT -->
+</html></body>

@@ -1,0 +1,364 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PostProcessAACH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:39 GMT -->
+<head>
+<title> UDK | PostProcessAACH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">PostProcessAACH  </b></div>
+<div id="tooltext">
+<a href="PostProcessAA.html" class="twikiLink">English Translation</a><br><a href="PostProcessAAJP.html" class="twikiLink">日本語訳</a><br><a href="PostProcessAAKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/PostProcessAACH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<div style="padding:0px 0px 0px 4px; font:10px Verdana;" >
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="PostProcessEffectsHome.html" class="twikiLink">后期特效</a></b> &gt; 后期抗锯齿效果
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="后期抗锯齿效果"></a> 后期抗锯齿效果 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/PostProcessAACH/PostProcessAATeaser.jpg" alt="PostProcessAATeaser.jpg" width='664' height='270'/> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <img src="rsrc/Three/PostProcessAACH/PostProcessAATeaser2.jpg" alt="PostProcessAATeaser2.jpg" width='332' height='135'/> </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <SMALL>该图片会显示一些远处的岩石（为了使视觉效果更好，顶部被放大了 2 倍）。<br>左图： 该图片受到锯齿影响（没有 MSAA）<br>右图： 同一张图片经过 PostProcessingAA 处理后。</SMALL> </td></tr>
+</table>
+<br>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="PostProcessAACH.html#后期抗锯齿效果"> 后期抗锯齿效果  </a> <ul>
+<li> <a href="PostProcessAACH.html#概述"> 概述 </a>
+</li> <li> <a href="PostProcessAACH.html#如何激活？"> 如何激活？ </a>
+</li> <li> <a href="PostProcessAACH.html#实现具体细节"> 实现具体细节  </a>
+</li> <li> <a href="PostProcessAACH.html#支持的平台"> 支持的平台 </a>
+</li> <li> <a href="PostProcessAACH.html#参考指南"> 参考指南  </a>
+</li> <li> <a href="PostProcessAACH.html#鸣谢"> 鸣谢 </a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;" ><hr size="1" noshade="noshade"></div>
+<p />
+计算机生成的图片通常会出现锯齿现象。这里有很多种锯齿现象，但是在此我们集中研究楼梯的锯齿现象，例如，接近垂直或水平的边的外观。解决这种情况的传统方法是使用超取样（使用较高分辨率进行渲染，然后再对其进行降低采样）或者多采样（诸如超采样但是根据像素进行着色的遮挡）。在这个地方已经进行了很多改进，但是由于很多原因（性能、内存和复杂度），很多游戏都会带有上面涉及的图片失真。
+<p />
+形态学抗锯齿是一项最初由 Intel 开发的技术（请参阅参考指南），它说明了可以在后期中完全删除这个楼梯外观。原始技术是非常复杂的，而且基于 CPU，但是多人致力于 SPU 和 GPU 解决方案。
+<p />
+这种方法中的大多数内容都可以正常合作，但是它无法解决素有的锯齿情况。以下情况可能会发生问题：   <ul>
+<li> 如果内容变得太小（例如，边框线）
+</li> <li> 如果内容移动得较慢（例如，在轻微移动相机的时候查看楼梯的状况）
+</li> <li> 如果计划将内容制作为硬边的（例如，手绘美术作品或文本）
+</li></ul>
+<p />
+在后期处理步骤中解决这个问题是极具挑战的，因为它不会向前面的步骤添加任何复杂度，而且可以脱离这些步骤单独进行优化。注意，下面的渲染不可以再清楚地将一个深度与一个像素关联起来，所以，可能会产生新的失真现象。
+<p />
+<table cellspacing="0" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img src="rsrc/Three/PostProcessAACH/PostProcessAAOrganic.jpg" alt="PostProcessAAOrganic.jpg" width='788' height='440' /> </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <SMALL>该图片清楚地显示了通常在对比强烈的地方会出现锯齿现象。这些区域可以通过这种方法有效地进行定位。<br> 但是，这个图片整体看上去锐化度降低了一些。在这里可以调整 MLAA，不过 FXAA 不会提供任何控件。</SMALL> </td></tr>
+</table>
+<p />
+<h2><a name="如何激活？"></a> 如何激活？ </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+在后期处理链的 uberpostprocess 节点中，您可以找到一个新的名为 <strong>Post Process Anti Aliasing（后期处理抗锯齿）</strong> 的组。
+<p />
+<img src="rsrc/Three/PostProcessAACH/PostProcessAAEditor.png" alt="PostProcessAAEditor.png" width='431' height='291' />
+<p />
+将这个类型变为激活状态，更改方法（MLAA 或 FXAA）和质量等级。阙值属性只适用于 MLAA 实现。
+<p />
+另外，您可以在游戏中使用控制台变量 <strong>PostProcessAAType</strong> ：
+<p />
+<pre>
+允许重写后期处理抗锯齿类型。
+ &#60;0: 使用后期处理设置（默认值： -1)
+  0: 关闭
+1-6: FXAA Preset 0：低质量 .. 5：非常高的质量但是慢（渲染 1 遍）
+  7: MLAA（需要其他渲染目标（要求 .ini 中的 bAllowPostprocessMLAA&#61;True），渲染 3 遍）
+</pre>
+<p />
+因为 MLAA 需要其他内存，所以需要明确地启用它。需要通过以下代码更改下面的 ini 设置（例如，在 BaseEngine.ini 中）激活：
+<p />
+<pre>
+   bAllowPostprocessMLAA &#61; False
+</pre>
+<p />
+改变为：
+<p />
+<pre>
+   bAllowPostprocessMLAA &#61; True
+</pre>
+<p />
+<strong>注意：</strong> 也可以在运行时使用下面的控制台命令更改这个 ini 设置：
+<p />
+<pre>
+   scale toggle bAllowPostprocessMLAA
+</pre>
+<p />
+<h2><a name="实现具体细节"></a> 实现具体细节 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+我们已经将 NVIDIA 制作的名为 FXAA 的 MLAA 实现（详见参考资料）和 AMD 的 MLAA（详见参考资料）集成到我们的 uber 后期特效中。在它们的协助下，我们才可以向虚幻引擎 3 的用户提供这项功能。既是 GPU 解决方案，又可以产生非常好的效果。但是它们的一些具体实现细节还是有所不同的：
+<p />
+FXAA（NVIDIA 制作）： <ul>
+<li> 渲染一遍
+</li> <li> 需要各向异性贴图查找
+</li></ul>
+<p />
+MLAA（AMD 制作）： <ul>
+<li> 渲染三遍
+</li> <li> 不同性能/质量的多个等级
+</li> <li> 需要其他中间渲染目标内存（可以进行优化）
+</li> <li> 内部细节稍微少一些的模糊效果
+</li> <li> 45 度边变得更宽
+</li></ul>
+<p />
+我们推荐尝试使用这两种方法并根据您自己的内容使用不同的预设置，因为输入内容可能会严重影响最终外观。
+<p />
+因为需要额外的内存，所以我们目前不建议在控制台上使用 MLAA。可以更改着色器，与其他渲染目标共享内存，但是还没有进行这项操作。MLAA 和 FXAA 的 GPU 消耗比较高，应该只在那些可以处理消耗高问题的平台上使用。如果您考虑对您的应用程序使用效果，那么应该花时间研究一下这个平台上的低等级优化问题。
+<p />
+<h2><a name="支持的平台"></a> 支持的平台 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> FXAA: DX9, DX11, Xbox360, PlayStation3
+</li> <li> MLAA: DX9, DX11（未经测试的 Xbox360 和 PlayStation3）
+</li></ul>
+<p />
+<h2><a name="参考指南"></a> 参考指南 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> <strong>由 Intel 研制的 Morphological Antialiasing</strong> (MLAA) <br>      <a href="http://visual-computing.intel-research.net/publications/papers/2009/mlaa/mlaa.pdf" target="_top">http://visual-computing.intel-research.net/publications/papers/2009/mlaa/mlaa.pdf</a>
+</li></ul>
+<p /> <ul>
+<li> 由 NVIDIA 研制的 FXAA <br>      <a href="http://developer.download.nvidia.com/assets/gamedev/files/sdk/11/FXAA_WhitePaper.pdf" target="_top">http://developer.download.nvidia.com/assets/gamedev/files/sdk/11/FXAA_WhitePaper.pdf</a>
+</li></ul>
+<p />
+<h2><a name="鸣谢"></a> 鸣谢 </h2>
+<div style="margin-top:-10px;" ><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> Intel 开发研制 MLAA
+</li> <li> AMD CAS 团队实现了 GPU MLAA
+</li> <li> NVIDIA 实现了 FXAA
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PostProcessAACH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:40 GMT -->
+</html></body>

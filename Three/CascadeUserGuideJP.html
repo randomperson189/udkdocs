@@ -1,0 +1,655 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CascadeUserGuideJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:57 GMT -->
+<head>
+<title> UDK | CascadeUserGuideJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">CascadeUserGuideJP  </b></div>
+<div id="tooltext">
+<a href="CascadeUserGuide.html" class="twikiLink">English Translation</a><br><a href="CascadeUserGuideCH.html" class="twikiLink">中国翻译</a><br><a href="CascadeUserGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/CascadeUserGuideJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="Unreal Cascade ユーザーガイド"></a> Unreal Cascade ユーザーガイド </h1>
+<p />
+<em>ドキュメントの概要: Unreal Cascade (パーティクルベースのエフェクトシステム) の使用ガイド。</em>
+<p />
+<em>ドキュメントの変更ログ: <a href="https://udn.epicgames.com/Main/AlanWillard" class="restricted" class="restricted" class="twikiLink">Alan Willard</a> により作成。 <a href="https://udn.epicgames.com/Main/JoeGraf" class="restricted" class="restricted" class="twikiLink">Joe Graf</a> により Wiki ページ作成。 Richard Nalezynski<sup>?</sup> により管理。</em>
+<p />
+<noautolink>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="CascadeUserGuideJP.html#Unreal Cascade ユーザーガイド"> Unreal Cascade ユーザーガイド</a> <ul>
+<li> <a href="CascadeUserGuideJP.html#はじめに"> はじめに</a>
+</li> <li> <a href="CascadeUserGuideJP.html#Cascade の使用"> Cascade の使用</a> <ul>
+<li> <a href="CascadeUserGuideJP.html#Cascade を開く"> Cascade を開く</a>
+</li></ul>
+</li> <li> <a href="CascadeUserGuideJP.html#Cascade の概要"> Cascade の概要</a> <ul>
+<li> <a href="CascadeUserGuideJP.html#Cascade のレイアウト"> Cascade のレイアウト</a>
+</li> <li> <a href="CascadeUserGuideJP.html#メニュー バー"> メニュー バー</a> <ul>
+<li> <a href="CascadeUserGuideJP.html#Edit (編集)"> Edit (編集)</a>
+</li> <li> <a href="CascadeUserGuideJP.html#View (表示)"> View (表示)</a>
+</li> <li> <a href="CascadeUserGuideJP.html#Window (ウィンドウ)"> Window (ウィンドウ)</a>
+</li></ul>
+</li> <li> <a href="CascadeUserGuideJP.html#ツール バー"> ツール バー</a>
+</li> <li> <a href="CascadeUserGuideJP.html#エミッタ リスト"> エミッタ リスト </a>
+</li> <li> <a href="CascadeUserGuideJP.html#カーブ エディタ"> カーブ エディタ</a> <ul>
+<li> <a href="CascadeUserGuideJP.html#グラフへのモジュール追加"> グラフへのモジュール追加</a>
+</li> <li> <a href="CascadeUserGuideJP.html#グラフの操作"> グラフの操作</a> <ul>
+<li> <a href="CascadeUserGuideJP.html#グラフ上の点の作成"> グラフ上の点の作成</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="CascadeUserGuideJP.html#コントロール"> コントロール</a> <ul>
+<li> <a href="CascadeUserGuideJP.html#マウス コントロール"> マウス コントロール</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="CascadeUserGuideJP.html#エミッタに関する作業"> エミッタに関する作業</a> <ul>
+ <li>
+ <ul>
+<li> <a href="CascadeUserGuideJP.html#パーティクルシステムの作成"> パーティクルシステムの作成	</a>
+</li> <li> <a href="CascadeUserGuideJP.html#スプライトエミッタの作成"> スプライトエミッタの作成</a>
+</li> <li> <a href="CascadeUserGuideJP.html#基本的なエミッタ オプション"> 基本的なエミッタ オプション</a>
+</li></ul>
+</li> <li> <a href="CascadeUserGuideJP.html#モジュールの作成"> モジュールの作成</a>
+</li> <li> <a href="CascadeUserGuideJP.html#エミッタのコピー"> エミッタのコピー</a>
+</li> <li> <a href="CascadeUserGuideJP.html#モジュール"> モジュール</a> <ul>
+<li> <a href="CascadeUserGuideJP.html#モジュールについて"> モジュールについて</a>
+</li> <li> <a href="CascadeUserGuideJP.html#モジュールの相互作用"> モジュールの相互作用</a>
+</li> <li> <a href="CascadeUserGuideJP.html#Distribution (分布) のタイプ"> Distribution (分布) のタイプ</a>
+</li></ul>
+</li> <li> <a href="CascadeUserGuideJP.html#パーティクルシステムのディテールレベル (LOD)"> パーティクルシステムのディテールレベル (LOD)</a> <ul>
+<li> <a href="CascadeUserGuideJP.html#Cascade LOD コントロール"> Cascade LOD コントロール</a>
+</li></ul>
+</li> <li> <a href="CascadeUserGuideJP.html#パーティクルシステムにおける LOD レベルの作成"> パーティクルシステムにおける LOD レベルの作成 	</a> <ul>
+<li> <a href="CascadeUserGuideJP.html#LOD Method と Distance の設定"> LOD Method と Distance の設定</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="はじめに"></a> はじめに </h2>
+<p />
+Cascade (カスケード) とは、Unreal Engine でエミッタを用いてパーティクルベースのエフェクトを作成するためのツールです。
+<p />
+<p />
+<h2><a name="Cascade の使用"></a> Cascade の使用 </h2>
+<p />
+<h3><a name="Cascade を開く"></a> Cascade を開く </h3>
+<p />
+<p />
+<h2><a name="Cascade の概要"></a> Cascade の概要 </h2>
+<p />
+<h3><a name="Cascade のレイアウト"></a> Cascade のレイアウト </h3>
+<p />
+<img alt="Cascade.jpg" src="rsrc/Three/CascadeUserGuideJP/Cascade.jpg" />
+<p />
+<p />
+Cascade は 4 つのウィンドウで構成されています。
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <em>1</em> </td><td bgcolor="#eaeaea"> メニューバー<sup>?</sup> と ツールバー<sup>?</sup> </td><td bgcolor="#eaeaea"> 可視化およびナビゲーションツール。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <em>2</em> </td><td bgcolor="#ffffff"> プレビュー ペイン<sup>?</sup> </td><td bgcolor="#ffffff"> 現在のパーティクル システムを (そのシステム内にあるすべてのエミッタを含めて) 表示します。 <em>[Sim]</em> (シミュレーション) ツールバーのオプションを使い、シミュレーション速度を設定します。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <em>3</em> </td><td bgcolor="#eaeaea"> エミッタリスト<sup>?</sup> </td><td bgcolor="#eaeaea"> このペインには、現在のパーティクル システム内にあるすべてのエミッタのリストと、各エミッタ内のすべてのモジュールのリストがあります。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <em>4</em> </td><td bgcolor="#ffffff"> プロパティペイン<sup>?</sup> </td><td bgcolor="#ffffff"> このペインの内容は、選択項目に応じて異なります。システムが選択されていない場合ペインは空白で、エミッタ (モジュールではない) が選択されている場合はそのエミッタのグローバル プロパティと、 <em>SpawnRate</em> のプロパティが表示されます。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <em>5</em> </td><td bgcolor="#eaeaea"> グラフ<sup>?</sup> </td><td bgcolor="#eaeaea"> このグラフ エディタには、相対または絶対時間で変化するプロパティが表示されます。グラフエディタにはモジュールが追加されるので、表示コントロールがあります (このドキュメントの後半で説明します)。 </td></tr>
+</table>
+<p />
+<h3><a name="メニュー バー"></a> メニュー バー </h3>
+<p />
+<h4><a name="Edit (編集)"></a> Edit (編集) </h4>
+<p />
+<strong>Regenerate lowest LOD</strong> (最低 LOD を再生成)
+<p />
+<strong>Save Package</strong> (パッケージを保存)
+<p />
+<h4><a name="View (表示)"></a> View (表示) </h4>
+<p />
+<strong>View Origin Axes</strong> (原点座標を表示)
+<p />
+<strong>View Particle Counts</strong> (パーティクル数を表示)
+<p />
+<strong>View Particle Times</strong> (パーティクルのタイムラインを表示)
+<p />
+<strong>View Particle Distance</strong> (パーティクルの距離を表示)
+<p />
+<strong>View Geometry</strong> (ジオメトリを表示)
+<p />
+<strong>View Geometry Properties</strong> (ジオメトリのプロパティを表示)
+<p />
+<strong>Save Cam Position</strong> (カム位置を保存)
+<p />
+<h4><a name="Window (ウィンドウ)"></a> Window (ウィンドウ) </h4>
+<p />
+<strong>Properties:</strong> (プロパティ) プロパティペインを表示します。
+<p />
+<strong>Unreal Curve Editor:</strong> (Unreal カーブ エディタ) カーブ エディタを表示します。
+<p />
+<strong>Preview:</strong> (プレビュー) プレビューペインを表示します。
+<p />
+<h3><a name="ツール バー"></a> ツール バー </h3>
+<p />
+次図に示すようなツールバーがあります。
+<p />
+<img alt="CascadeToolBar.jpg" src="rsrc/Three/CascadeUserGuideJP/CascadeToolBar.jpg" />
+<p />
+<p />
+ツールバーには以下のコントロールがあります (ツールバーの左から):
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=2;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">アイコン</font></a> </th><th bgcolor="#dadada" align="center"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=2;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">名前</font></a> </th><th bgcolor="#dadada" align="right"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=2;table=2;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">説明</font></a> </th></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#ffffff"> <strong>Restart Sim</strong> (シミュレーションを再開) </td><td bgcolor="#ffffff"> プレビュー ウィンドウのシミュレーションをリセットします。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#eaeaea"> <strong>Restart in Level</strong> (レベル ビューポートで再開) </td><td bgcolor="#eaeaea"> レベル内のパーティクル システムと、システムのインスタンスがあればそれもリセットします。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#ffffff"> <strong>Save Thumbnail Image</strong> (サムネイル画像を保存) </td><td bgcolor="#ffffff"> 現在の回転/オフセットをサムネイルの設定として保存します。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#eaeaea"> <strong>Toggle Orbit Mode</strong> (カメラの軌道モードをトグル) </td><td bgcolor="#eaeaea"> プレビュービューポートのカメラのモード (パーティクル システムを周回、自由移動) を切り替えます。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#ffffff"> <strong>Toggle Wireframe</strong> (ワイヤーフレーム表示をトグル) </td><td bgcolor="#ffffff"> プレビュービューポートで、ワイヤーフレームにパーティクルをレンダリングするかどうかを切り替えます。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#eaeaea"> <strong>Toggle Bounds</strong> (バウンダリの表示をトグル) </td><td bgcolor="#eaeaea"> &nbsp; </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#ffffff"> <strong>Toggle PostProcess</strong> (ポスト処理エフェクトの表示をトグル) </td><td bgcolor="#ffffff"> &nbsp; </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#eaeaea"> <strong>Toggle Grid</strong> (グリッド表示をトグル) </td><td bgcolor="#eaeaea"> &nbsp; </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#ffffff"> <strong>Play</strong> (再生) </td><td bgcolor="#ffffff"> プレビュービューポートでシミュレーションを再生します。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#eaeaea"> <strong>Pause</strong> (一時停止) </td><td bgcolor="#eaeaea"> シミュレーションを停止します。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> &nbsp; </td><th bgcolor="#dadada">  <strong><font color="#000000">100%</font></strong>  </th><td bgcolor="#eaeaea"> シミュレーションを 100 % の速度で実行します。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> &nbsp; </td><th bgcolor="#dadada">  <strong><font color="#000000">50%</font></strong>  </th><td bgcolor="#eaeaea"> シミュレーションを半分の速度で実行します。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> &nbsp; </td><th bgcolor="#dadada">  <strong><font color="#000000">25%</font></strong>  </th><td bgcolor="#eaeaea"> シミュレーションを 1/4 の速度で実行します。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> &nbsp; </td><th bgcolor="#dadada">  <strong><font color="#000000">10%</font></strong>  </th><td bgcolor="#eaeaea"> シミュレーションを 1/10 の速度で実行します。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> &nbsp; </td><th bgcolor="#dadada">  <strong><font color="#000000">1%</font></strong>  </th><td bgcolor="#eaeaea"> シミュレーションを 1/100 の速度で実行します。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#ffffff"> <strong>Toggle Loop System</strong> (ループ再生モードをトグル) </td><td bgcolor="#ffffff"> ループ再生が設定されていないエミッタでも、これによりプレビュービューポートでループ再生されます。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#eaeaea"> <strong>Toggle Realtime</strong> (リアルタイム更新をトグル) </td><td bgcolor="#eaeaea"> プレビュービューポートでエミッタをリアルタイムでプレビューできるようにします。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#ffffff"> <strong>Background Color</strong> (背景色) </td><td bgcolor="#ffffff"> ここでビューポートの背景色を変更できます。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#eaeaea"> <strong>Toggle Wireframe Sphere</strong> (ワイヤーフレーム球の表示をトグル) </td><td bgcolor="#eaeaea"> &nbsp; </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#ffffff"> <strong>Undo</strong> (元に戻す) </td><td bgcolor="#ffffff"> 最後に行った操作を取り消します。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#eaeaea"> <strong>Redo</strong> (やり直し) </td><td bgcolor="#eaeaea"> 最後に取り消した操作をやり直します。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#ffffff"> <strong>Performance Check</strong> (パフォーマンス チェック) </td><td bgcolor="#ffffff"> 現在は未使用。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#eaeaea"> <strong>LOD Slider</strong> (LOD スライダ) </td><td bgcolor="#eaeaea"> 現在は未使用。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#ffffff"> <strong>Jump to Highest LOD Level</strong> (最高  LOD にジャンプ) </td><td bgcolor="#ffffff"> 現在は未使用。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#eaeaea"> <strong>Jump to Higher LOD Level</strong> (次に高い  LOD にジャンプ) </td><td bgcolor="#eaeaea"> 現在は未使用。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#ffffff"> <strong>Add LOD</strong> (Lod を追加) </td><td bgcolor="#ffffff"> 現在は未使用。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#eaeaea"> <strong>Jump to Lower LOD Level</strong> (次に低い  LOD にジャンプ) </td><td bgcolor="#eaeaea"> 現在は未使用。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#ffffff"> <strong>Jump to Lowest LOD Level</strong> (最低 LOD レベルにジャンプ ) </td><td bgcolor="#ffffff"> 現在は未使用。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#eaeaea"> <strong>LOD Selector</strong> (LOD を選択) </td><td bgcolor="#eaeaea"> 現在は未使用。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#ffffff"> <strong>Regenerate lowest LOD</strong> (最低 LOD を再生成) </td><td bgcolor="#ffffff"> 現在は未使用。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#eaeaea"> <strong>Regenerate lowest LOD duplicating highest</strong> (最低 LOD を再生成 (最高 LOD を複製)) </td><td bgcolor="#eaeaea"> 現在は未使用。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#ffffff"> <strong>Delete LOD</strong> (Lod を削除) </td><td bgcolor="#ffffff"> 現在は未使用。 </td></tr>
+</table>
+<p />
+<h3><a name="エミッタ リスト"></a> エミッタ リスト </h3>
+<p />
+EmitterEd ビューポートにエミッタが描かれると、EmitterEd ウィンドウ (#2) にはモジュールの列が含まれ、システムにパーティクルエミッタが 1 つ含まれていることを意味します。各列はエミッタブロックと、それに続く任意の数のモジュールブロックで構成されます。
+<p />
+次図はエミッタブロックです。
+<p />
+<img alt="Cascade_EmitterBlock.jpg" src="rsrc/Three/CascadeUserGuideJP/Cascade_EmitterBlock.jpg" />
+<p />
+エミッタブロックの上には以下のボタンが表示されます (左から右に)。
+<p />
+<img alt="CASC_ModuleEnable.jpg" src="rsrc/Three/CascadeUserGuideJP/CASC_ModuleEnable.jpg" /> / <img alt="CASC_ModuleDisable.jpg" src="rsrc/Three/CascadeUserGuideJP/CASC_ModuleDisable.jpg" />
+このボタンはエミッタを有効/無効にします。エミッタが有効のときは最初の画像、無効のときには 2 番目の画像が表示されます。無効にしたエミッタ上では Tick または Render も呼び出されない点に注意してください。
+<p />
+真ん中のボタンはエミッタのレンダリングモードで、クリックすると次に使用可能なレンダリングモードに替わります。以下のアイコンがサポートされています。
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img alt="CASC_Normal.jpg" src="rsrc/Three/CascadeUserGuideJP/CASC_Normal.jpg" /> </td><td bgcolor="#eaeaea"> エミッタは通常どおりにレンダリングされます。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <img alt="CASC_Cross.jpg" src="rsrc/Three/CascadeUserGuideJP/CASC_Cross.jpg" /> </td><td bgcolor="#ffffff"> エミッタはパーティクルの位置に十字をレンダリングします。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <img alt="CASC_Point.jpg" src="rsrc/Three/CascadeUserGuideJP/CASC_Point.jpg" /> </td><td bgcolor="#eaeaea"> エミッタはパーティクルの位置に点をレンダリングします。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> <img alt="CASC_None.jpg" src="rsrc/Three/CascadeUserGuideJP/CASC_None.jpg" /> </td><td bgcolor="#ffffff"> エミッタは何もレンダリングしません。 </td></tr>
+</table>
+<p />
+エミッタブロックの最後のボタンを次に示します。
+<p />
+<img alt="CASC_CurveEd.jpg" src="rsrc/Three/CascadeUserGuideJP/CASC_CurveEd.jpg" />
+このボタンは関連エミッタ プロパティをカーブ エディタ ウィンドウ (#4) に送信します。
+<p />
+エミッタの各モジュールはエミッタブロックの下に一列に現れます。次図は Cascade におけるモジュールの画像です。
+<p />
+<img alt="Cascade_ModuleBlock.jpg" src="rsrc/Three/CascadeUserGuideJP/Cascade_ModuleBlock.jpg" />
+<p />
+右上のアイコンは関連モジュールデータをカーブ エディタに送信するボタンです。右下のアイコンはモジュールを有効/無効にするボタンです。(注意: 2 つのエミッタで共有されているモジュールを無効にすると、すべてのエミッタ上で無効になります。)
+<p />
+最後のボタンは、プレビュービューポートで 3D 表現のレンダリングが可能なモジュール上にのみ現われます。
+<p />
+<img alt="CASC_Cross.jpg" src="rsrc/Three/CascadeUserGuideJP/CASC_Cross.jpg" /> / <img alt="CASC_None.jpg" src="rsrc/Three/CascadeUserGuideJP/CASC_None.jpg" />
+<p />
+左の画像は 3D <em>プレビュー</em> が描かれることを意味します。右のは現在無効になっていることを意味します。
+<p />
+<p />
+<h3><a name="カーブ エディタ"></a> カーブ エディタ </h3>
+<p />
+<h4><a name="グラフへのモジュール追加"></a> グラフへのモジュール追加 </h4>
+<p />
+グラフエディタにモジュールを追加する作業はとても簡単で、モジュールの左側にグリーンのボックスが現れると、そのモジュールがグラフエディタに追加されます。グラフエディタに現れるモジュールの色は、モジュールの作成時に決められます。これを変更するには、変更したいモジュールのプロパティウィンドウで [Cascade] プロパティセット開き、そこで色を変更します。
+<p />
+<h4><a name="グラフの操作"></a> グラフの操作 </h4>
+<p />
+グラフエディタで項目の右側に現れるイエローのボックスは、そのモジュールのスプライン表示を切り替えます。これらの項目を 1 つ右クリックして、グラフから消去することができます。
+<p />
+<h5><a name="グラフ上の点の作成"></a> グラフ上の点の作成 </h5>
+<p />
+複数点などを追加する前に、編集対象の Distribution (分布) が 'カーブ' タイプ (つまり DistributionFloatConstantCurve) であることを確認してください。
+<p />
+グラフエディタで点を作成するには、目的の値に対するスプラインを Ctrl+ 左クリックします。一番簡単な方法は、前述のチェックボックスを使い他のモジュールをすべてオフにすることです。すべてのモジュールは、時間 0 の単一キーとしてゼロの位置から開始します。タイムライン内でスプラインの任意の位置を Ctrl+ 左クリックすると、そこに点が作成されます。この点は自由自在にドラッグできますが、既に述べたようにスプラインがベクトル (XYZ) を表す場合は、そのベクトルの 3 つのキーすべての時間が移動するのに対し、値は変動しません。
+<p />
+キーポイントを右クリックするとメニューが表示され、そこでキーポイントの時間と値を手動で入力することができます。キーがカラーカーブ内にある場合は、カラーピッカーを使って色を選択できます。
+<p />
+モジュールが ColorOverLife の場合、描かれるスプラインはその時点の色を反映しますが、点はそのスプラインの特定のチャネルを反映する色で描かれます。
+ColorOverLife に関するもう 1 つの違いは、値はすべて 255 以内に制限されるので、その値ラインの上に点をドラッグできないことです。
+<p />
+<img alt="GraphEditor.jpg" src="rsrc/Three/CascadeUserGuideJP/GraphEditor.jpg" />
+<p />
+<p />
+詳細は カーブ エディタ ユーザーガイド<sup>?</sup> ページを参照してください。
+<p />
+<h3><a name="コントロール"></a> コントロール </h3>
+<p />
+<h4><a name="マウス コントロール"></a> マウス コントロール </h4>
+<p />
+Cascade の移動コントロールは以下のとおりです。
+<p />
+プレビューペインでは、左マウスボタンでシーンをパーティクルシステムの中心のまわりに回転、右マウスボタンでズームインとズームアウトを行います。
+<p />
+エミッタペインでは、エミッタまたはモジュールを左クリックしてエミッタを選択します。モジュールを左クリックしてドラッグし、下にエミッタがある任意の位置に移動してドロップします。この方法で、モジュールをスタック内で上または下方向にドラッグしたり、別のエミッタにドラッグできます。右クリックするとそのコンテキストに合わせて、エミッタの新規作成 (空のスペースをクリック)、モジュールの新規作成 (エミッタ内で空のスペースをクリック)、モジュールの削除 (モジュール名をクリック)、エミッタ全体を削除 (上部のメインエミッタモジュールをクリック) を行うためのダイアログが開きます。
+<p />
+モジュールを Shift+ 左クリックするとエミッタ間にインスタンスが作成されます。このモジュールインスタンスは名前の横の + 記号で示され、2 つのモジュールは同じ色を共有します。
+<p />
+モジュールを Ctrl+ 左クリックしてドラッグすると、コピー元からターゲットエミッタにコピーが作成されます。
+<p />
+ミドルボタンをクリックしてドラッグすると、エミッタペイン内でモジュールをパン (移動) します。
+<p />
+エミッタペインでエミッタを選択して、左/右の矢印キーを使い、パーティクル システム全体におけるエミッタの順位を変更します。パーティクルシステムによりエミッタが更新され、Cascade に現れる順に (左から右) レンダリングされます。
+<p />
+プロパティペインで左クリックすると、フィールドが選択されるか、またはプロパティのロールアウトが展開します。
+<p />
+グラフビューのコントロールは、作業中のモードによって変化します。グラフビューには以下の 2 つの操作モードがあります。
+<p />
+パンニングモード: 左クリックしてドラッグするとビューが自在に移動します。マウスホィールを使うと一定の率でズームイン/アウトします。
+<p />
+ズームモード: 左クリックしてドラッグするとグラフが垂直方向にスケーリングされ、右クリックしてドラッグすると水平方向にスケーリングされます。
+<p />
+スプラインが既にグラフ内にある場合、そのスプラインの任意の位置を左クリックすると、クリックした位置にキーが作成されます。キーを左クリックしてドラッグし、移動することができます。ただし、グラフ上に複数の値を持つモジュール (Color Over Lifetime の RGB など) では、キーが作成されるたびにそのモジュールの他のスプラインにも追加され、これらのキーは常に他のキーと同じ時間に保たれるので、例えば Red のキーの時間を前または後に移動すると、Green と Blue のキーも同様に横方向に移動することになります (縦方向には移動しません)。
+<p />
+グラフビューの他の 2 つのボタンは Fit (フィット) ボタンで、左側のボタンは、現在表示されているスプラインの水平方向の範囲にビューをズームまたはパンニングし、右側のボタンは垂直軸上で同じ動作を行います。
+<p />
+<h2><a name="エミッタに関する作業"></a> エミッタに関する作業 </h2>
+<p />
+<h4><a name="パーティクルシステムの作成"></a> パーティクルシステムの作成 </h4>
+<p />
+Unreal Engine 3 でパーティクルシステムを作成するには、Generic ブラウザを開いて [File] (ファイル) &gt;[New] ）(新規作成) の順に開き、ダイアログボックスの下にあるドロップダウンから [Particle System] を選択するか、または Generic ブラウザの空のスペースを右クリックし、コンテキスト メニューから [New Particle System] (新しいパーティクルシステム) を選択します。いずれの方法でも、パッケージ、グループおよび名前の入力を求められます。適切なデータを入力すると、新しいパーティクルシステムが Generic ブラウザに白い輪郭で囲まれて表れます。
+<p />
+<h4><a name="スプライトエミッタの作成"></a> スプライトエミッタの作成 </h4>
+<p />
+Cascade 内部にエミッタを作成する作業は非常に簡単で、Cascade のエミッタ リストを右クリックして [New Sprite Emitter] (新しいスプライトエミッタ) を選択するだけです。Lifetime (存続期間) と Initial Size (初期サイズ) モジュールを伴うエミッタが作成されます (現在これらのモジュールには有用なデフォルト設定が含まれていません。これは将来変更される予定です)。 [Lifetime] を 1 (Min/Max) に、[Size] の X、Y、Z の Min/Max をそれぞれ 30 に設定します。これでパーティクルに有効なレンダリング設定が与えられます。
+<p />
+<h4><a name="基本的なエミッタ オプション"></a> 基本的なエミッタ オプション </h4>
+<p />
+エミッタブロックを右クリックすると、以下のオプションのメニューが表示されます。
+<p />
+<strong>Rename Emitter</strong> (エミッタの名前を変更) - エミッタの名前を変更します (別の方法として、グローバル 設定の EmitterName に進み、新しい名前を入力して変更することもできます)。
+<p />
+<strong>Duplicate Emitter</strong> (エミッタを複製) - パーティクルシステム内のエミッタを複製します。
+<p />
+<strong>Duplicate + Share Emitter</strong> (エミッタを複製して共有) - パーティクルシステム内のエミッタを複製し、複製元のエミッタと複製したエミッタ間ですべてのモジュールを共有します。
+<p />
+<strong>Delete Emitter</strong> (エミッタを削除) - エミッタを削除します (別の方法は、エミッタを選択して Delete キーを押します)。
+<p />
+<strong>Export Emitter</strong> (エミッタをエクスポート) - エミッタを現在の Cascade ウィンドウから Generic ブラウザで選択されているパーティクルシステムにエクスポートします。(エクスポートしたいエミッタを含むパーティクルシステムを開き、Generic ブラウザに移動して目的のターゲットパーティクルシステムを選択し、Cascade ウィンドウに戻って [Export Emitter] を選択します。)
+<p />
+<h3><a name="モジュールの作成"></a> モジュールの作成 </h3>
+<p />
+モジュールの作成は、エミッタの作成とほぼ同じ手順で行います。追加先のエミッタの下にある空白スペースを右クリックし、表示されるドロップダウンリストから目的のモジュールを選択します。
+<p />
+<h3><a name="エミッタのコピー"></a> エミッタのコピー </h3>
+<p />
+コピーしたいエミッタを含むパーティクルシステムを開き、Generic ブラウザでコピー先になるパーティクルシステムを選択し、コピーするエミッタを右クリックして [Emitter] &gt;[Export Emitter] を選択します。別のパーティクルシステムにエミッタのコピーが作成されます。
+<p />
+<h3><a name="モジュール"></a> モジュール </h3>
+<p />
+<h4><a name="モジュールについて"></a> モジュールについて </h4>
+<p />
+時系列で変化する分布タイプにプロパティを変更した場合、モジュールによって「相対時間」を用いるものと、「絶対時間」を用いるものがあります (分布については下記を参照)。
+<p /> <ul>
+<li> 基本的に、絶対時間は含まれているエミッタの時間です。エミッタに 2 秒のループが 3 回設定されている場合、そのエミッタ内のモジュールには、絶対時間が 0 から 2 秒まで 3 回実行されます。
+</li></ul>
+<p /> <ul>
+<li> 相対時間は、各パーティクルの存続期間を示す 0 から 1 までの時間です。
+</li></ul>
+<p />
+現在使用可能なものモジュールの説明は、<a href="ParticleSystemReferenceJP.html" class="twikiLink">ParticleSystemReferenceJP</a> にあります。
+<p />
+<h4><a name="モジュールの相互作用"></a> モジュールの相互作用 </h4>
+<p />
+エミッタ内の各モジュールは、スタックにおけるそれぞれの位置に基づいて他のモジュールと相互に作用します。例えば、Min(x=2, y=2, x=2)、Max(x=-2, y=-2, z=-2) の Initial Location (初期位置) にエミッタを作成し、非常に小さなボックスの中にパーティクルをスポーンさせます。次に、StartVelocityRadial を用いて Initial Velocity (初期速度) を Min、Max いずれも 100 に設定すると、このパーティクルはボックスの中心から離れて移動します。別の Initial Location を追加し、その Max と Min 値の　X、Y、Z を 100 とすると、エミッタ全体を全方向に 100 ユニット移動しますが、新たに作成されたボックスの中心から離れて移動するというパーティクルの動作は変わりません。2 番目の Initial Location モジュールを Initial Velocity モジュールの上に移動すると、パーティクルは中央から外れたボックス位置ではなく、システムの原点から離れて移動します。
+<p />
+<h4><a name="Distribution (分布) のタイプ"></a> Distribution (分布) のタイプ </h4>
+<p />
+詳細については <a href="DistributionsJP.html" class="twikiLink">パーティクル リファレンス</a> ページを参照してください。
+<p />
+<h3><a name="パーティクルシステムのディテールレベル (LOD)"></a> パーティクルシステムのディテールレベル (LOD) </h3>
+<p />
+UnrealEngine3 のパーティクルシステムでも、ディテールレベルのサポートを提供するようになりました。このドキュメントでは、パーティクルシステムにおける LOD レベルの作成と、ゲーム中の用法を取り上げて説明します。
+<p />
+<h4><a name="Cascade LOD コントロール"></a> Cascade LOD コントロール </h4>
+<p />
+次図の Cascade (カスケード) ツールバーセクションに LOD コントロールが含まれています。
+<p />
+<strong>Cascade LOD コントロール</strong>
+<p />
+<img alt="LODTools.jpg" src="rsrc/Three/CascadeUserGuideJP/LODTools.jpg" />
+<p />
+各コントロールの説明は以下のとおりです。
+<p />
+<strong>LOD スライダコントロール</strong>
+<p />
+<img alt="LODSlider.jpg" src="rsrc/Three/CascadeUserGuideJP/LODSlider.jpg" />
+<p />
+上図の LOD スライダは、既存の LOD レベル間で <em>リアルタイム</em> 補間を行うのに使います。最高 LOD レベルは LOD 設定値 0、最低レベルは 100 として表されます。スライダバーを移動するか、またはテキスト編集フィールドに値を入力すると、リアルタイムのプレビュー ウィンドウに異なるレベルが適用されます。 2 つの静的 LOD レベルの間の値が選択された場合、エディタはその値に最も近い 2 つのレベル間で補間を行います。この静的レベルをプレビューし、システムに追加できる見込みがあるかどうか検討することができます。
+<p />
+<strong>Jump to Highest LOD ボタン</strong>  <img alt="LODHighest.jpg" src="rsrc/Three/CascadeUserGuideJP/LODHighest.jpg" />
+<p />
+<em>[Jump to Highest LOD]</em> ボタンを押すと、システムは使用可能な最高静的 LOD に設定されます。
+<p />
+<strong>Jump to Higher LOD ボタン</strong>  <img alt="LODHigher.jpg" src="rsrc/Three/CascadeUserGuideJP/LODHigher.jpg" />
+<p />
+<em>[Jump to Higher LOD]</em> ボタンを押すと、現在の LOD 設定の次に高い使用可能な静的 LOD に設定されます。
+<p />
+<strong>Add LOD ボタン</strong>  <img alt="LODAdd.jpg" src="rsrc/Three/CascadeUserGuideJP/LODAdd.jpg" />
+<p />
+<em>[Add LOD]</em> ボタンを押すと、スライダバーの現在のレベル設定位置に新しい静的 LOD レベルを挿入します。
+<p />
+<strong>Jump to Lower LOD ボタン</strong>  <img alt="LODLower.jpg" src="rsrc/Three/CascadeUserGuideJP/LODLower.jpg" />
+<p />
+<em>[Jump to Lower LOD]</em> ボタンを押すと、現在の LOD 設定の次に低い使用可能な静的 LOD に設定されます。
+<p />
+<strong>Jump to Lowest LOD ボタン</strong>  <img alt="LODLowest.jpg" src="rsrc/Three/CascadeUserGuideJP/LODLowest.jpg" />
+<p />
+<em>[Jump to Lowest LOD]</em> ボタンを押すと、システムは使用可能な最低静的 LOD に設定されます。
+<p />
+<strong>LOD コンボ選択</strong>  <img alt="LODCombo.jpg" src="rsrc/Three/CascadeUserGuideJP/LODCombo.jpg" />
+<p />
+LOD コンボ選択ボタンを使うと、既存の静的 LOD レベルを任意に選択できます。
+<p />
+<strong>Regen Lowest LOD ボタン</strong>  <img alt="LODRegen.jpg" src="#" />
+<p />
+<em>[Regen Lowest LOD]</em> ボタンを押すと、パーティクルシステムは既存する LOD のうち低い方のレベルをすべて消去し、最低レベルを生成し直します。
+<p />
+<strong>Regen Lowest LOD Duplicate ボタン</strong>  <img alt="LODRegenDup.jpg" src="#" />
+<p />
+<em>[Regen Lowest LOD Duplicate]</em> ボタンを押すと、パーティクル システムは既存の LOD のうち低い方のレベルをすべて消去し、最高レベルの完全コピーを最低レベルとして新たに生成します。
+<p />
+<strong>Delete LOD ボタン</strong>  <img alt="LODDelete.jpg" src="rsrc/Three/CascadeUserGuideJP/LODDelete.jpg" />
+<p />
+<em>[Delete LOD]</em> ボタンを押すと、現在選択されている静的 LOD レベルがパーティクル システムから削除されます。
+<p />
+<h3><a name="パーティクルシステムにおける LOD レベルの作成"></a> パーティクルシステムにおける LOD レベルの作成 </h3>
+<p />
+このセクションでは、LOD の完全サポートを備えたパーティクルシステム作成を目指して設計されたザインフローについて議論します。
+<p />
+最高 LOD レベルは、全体的にみて望ましいエフェクトのレイアウトに使用します。最高 LOD レベルでの編集作業中は、モジュールの追加/削除しかできない点に注意してください。この例ではサブ UV エミッタを 1 つ作成し、*1* というテクスチャフレームを赤く表示します。 SubImage Index モジュールを使い、定数インデックスを 0 に設定すると、次図のスクリーンショットのようなシステムが生成されます。
+<p />
+<strong>Highest LOD Level</strong> (最高 LOD レベルにジャンプ)
+<p />
+<img alt="LODLevel_Highest.jpg" src="rsrc/Three/CascadeUserGuideJP/LODLevel_Highest.jpg" />
+<p />
+パーティクルとしては大きなサイズが選択されているので、画像が多少ぼやけていますが、これはゲーム中に発生する LOD レベルの選択について説明するためです。
+<p />
+デザイナーがパーティクルシステムの LOD 作成準備ができたと判断した時点で、 <strong>[Edit]</strong> メニューから <strong>[Regenerate Lowest LOD]</strong> を選択するようにしてください。これにより、最低 LOD レベルが再生成されます (同時に、作成されていた静的 LOD レベルが削除されます)。現在のところ、このメニュー項目は最高 LOD レベルの複製を作成し、そのスポーンレートを下げるだけですが、社内チームからのフィードバックを集めてから、共通モジュールの適切な生成ルーチンを実装する予定です。
+<p />
+最低 LOD レベルを選択してから、適切な外観を得るために値の調整を開始します。ここで注意しなければならないのは、デフォルトでは静的 LOD レベル内のすべてのモジュールが <em>編集不可能</em> であるとマークされている点です。これは、モジュール背景のマーブル模様により示されています (この背景テクスチャは変更可能です)。静的 LOD レベル内のモジュールを編集するには、これを有効にする必要があります。モジュール右クリックしてコンテキスト メニューから <em>[Enable Module]</em> (モジュールを有効にする) を選択します。
+<p />
+この例では、SubImage Index モジュールを編集するために有効にし、そのインデックスを 3 に設定します。この結果、下の図のようにエミッタには <strong>4</strong> がグリーンで表示されます。
+<p />
+<strong>Lowest LOD Level</strong> (最低 LOD レベルにジャンプ)
+<p />
+<img alt="LODLevel_Lowest.jpg" src="rsrc/Three/CascadeUserGuideJP/LODLevel_Lowest.jpg" />
+<p />
+スポーンレートが最高 LOD レベルの 10% に自動的に設定されている点に注意してください。
+<p />
+次のステップでは、最高レベルと最低レベルの間の LOD 設定をスライダバーを使ってプレビューします。このケースでは、スライダ値に 33 を選択し、 <strong>[Add LOD]</strong> ボタンを押して静的 LOD レベルを追加します。 SubImage Index モジュールが有効になり、そのインデックスが 2 に設定されます。この結果、下の図のようにエミッタには <strong>2</strong> がイエローで表示されます。
+<p />
+<strong>LOD レベル 1 (設定 33)</strong>
+<p />
+<img alt="LODLevel_33.jpg" src="rsrc/Three/CascadeUserGuideJP/LODLevel_33.jpg" />
+<p />
+レベル設定 66 でも同じ手順を行います。SubImage Index が 3 に設定され、下の図のようにエミッタには <strong>3</strong> がブルーで表示されます。
+<p />
+<strong>LOD レベル 2 (設定 66)</strong>
+<p />
+<img alt="LODLevel_66.jpg" src="rsrc/Three/CascadeUserGuideJP/LODLevel_66.jpg" />
+<p />
+<h4><a name="LOD Method と Distance の設定"></a> LOD Method と Distance の設定 </h4>
+<p />
+ゲーム中におけるパーティクルシステムの LOD の制御には 2 通りの方法があります。各パーティクルシステムには LODMethod と呼ばれる列挙体があり、LOD の制御方法を提供しています。
+<p />
+1 つ目の有効な値は <em>Direct</em> モードで、これは LODMethod プロパティの <strong>PARTICLESYSTEMLODMETHOD_DirectSet</strong> を選択することで指定します。このモードが選択されているときは、パーティクルシステムはそこで設定されている LOD レベルを使用します。これはゲーム時にスポーンされるエフェクト用のモードで、必要に応じて適切なレベルが設定されることを前提としています。
+<p />
+2 つ目の有効な値は <em>Automatic</em> モードで、これは LODMethod プロパティの <strong>PARTICLESYSTEMLODMETHOD_Automatic</strong> を選択することで指定します。このモードが選択されているときは、スポーン時と、ループエフェクトによりループ再生されるたびに使用する LOD レベルを決定します。レベルを決定するために、カメラからの距離を計算し、LODDistances 配列で適切なレベルを調べます。距離が配列内の項目に等しいか、またはそれより大きいレベルを選択します。
+<p />
+次の図はパーティクルシステムサンプルのプロパティウィンドウを示しています。
+<p />
+<strong>LODDistances プロパティウィンドウ</strong>
+<p />
+<img alt="LODDistanceProperty.jpg" src="rsrc/Three/CascadeUserGuideJP/LODDistanceProperty.jpg" />
+<p />
+この例では、エミッタがカメラから [0..1249] ユニットの距離にある間は LOD 0 (最高レベル) が使用されます。 LOD 1 は [1250..1874]、LOD2 は [1875..2499]、LOD3 は距離が 2500 ユニットを超えたときです。
+<p />
+LODDistanceCheckTime では、Automatic モードに設定された各 ParticleSystemComponent が、実行時に LOD 判定のための距離チェックを実行する頻度を秒単位で設定します。この例では、レベル内のこのパーティクルシステムの各インスタンスは、1/10 秒ごとに距離チェックを実行します。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CascadeUserGuideJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:28:02 GMT -->
+</html></body>

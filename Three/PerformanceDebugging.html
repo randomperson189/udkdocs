@@ -1,0 +1,496 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PerformanceDebugging.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:41:01 GMT -->
+<head>
+<title> UDK | PerformanceDebugging    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">PerformanceDebugging  </b></div>
+<div id="tooltext">
+<a href="PerformanceDebuggingJP.html" class="twikiLink">日本語訳</a><br><a href="PerformanceDebuggingCH.html" class="twikiLink">中国翻译</a><br><a href="PerformanceDebuggingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/PerformanceDebugging -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="Performance Debugging"></a> Performance Debugging </h1>
+<p />
+<em>Summary:  How to debug frame rate problems and hitching in the Unreal Engine.</em>
+<p />
+<em>Document Changelog:  Created and maintained by <a href="https://udn.epicgames.com/Main/MikeFricker" class="restricted" class="restricted" class="twikiLink">Mike Fricker</a>.</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="PerformanceDebugging.html#Performance Debugging"> Performance Debugging</a> <ul>
+<li> <a href="PerformanceDebugging.html#Game Performance Overview"> Game Performance Overview</a>
+</li> <li> <a href="PerformanceDebugging.html#Debugging Performance: Step by step"> Debugging Performance: Step by step</a>
+</li> <li> <a href="PerformanceDebugging.html#Performance Reference"> Performance Reference</a> <ul>
+<li> <a href="PerformanceDebugging.html#Displaying Frame/Thread/GPU time (STAT UNIT)"> Displaying Frame/Thread/GPU time (STAT UNIT)</a>
+</li> <li> <a href="PerformanceDebugging.html#Build configuration"> Build configuration</a>
+</li> <li> <a href="PerformanceDebugging.html#Turn off garbage collection verification"> Turn off garbage collection verification</a>
+</li> <li> <a href="PerformanceDebugging.html#Compile scripts in Final Release mode"> Compile scripts in Final Release mode</a>
+</li> <li> <a href="PerformanceDebugging.html#Disabling VSync"> Disabling VSync</a>
+</li> <li> <a href="PerformanceDebugging.html#Using STAT SLOW"> Using STAT SLOW</a>
+</li> <li> <a href="PerformanceDebugging.html#Profiling the CPU"> Profiling the CPU</a>
+</li> <li> <a href="PerformanceDebugging.html#Profiling code using _StatsViewer"> Profiling code using StatsViewer</a>
+</li> <li> <a href="PerformanceDebugging.html#Using Script Profiling to tune _UnrealScript performance"> Using Script Profiling to tune UnrealScript performance</a>
+</li> <li> <a href="PerformanceDebugging.html#Performance on consoles"> Performance on consoles</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="Game Performance Overview"></a> Game Performance Overview </h2>
+<p />
+The following sections will help you understand the most useful tools for tracking down performance problems, bottlenecks and hitches.
+<p />
+Usually the first order of business is determining whether your frame is limited by CPU or GPU performance, and then using the appropriate tools to narrow down the problem.
+<p />
+If the CPU is running slowly there are many commands and debugging tools available to help with this.  Sometimes there are simply too many actors and other "moving parts" causing a frame to be slow, or maybe a renegade AI class is firing thousands of ray casts per frame.  With some patience you can track these perf issues right down to the individual level actor!
+<p />
+For GPU performance you may need to use PIX to analyze draw events or shader performance, as well as in-game visualization modes and HUD stats.  Sometimes these problems can be traced to content layout or lighting properties.
+<p />
+In either case you may be dealing with sustained frame rate problem or a hitch (large frame time spike.)  For sustained poor frame rate, single-frame capture tools (such as the TRACE command) and sampling profilers (VTune, etc) may be very useful.  For hitches, you'll want to make use of the StatsViewer tool to analyze historical frames using a call graph.
+<p />
+Note that consoles will generally have different performance debugging tools than PC, although many of the Unreal tools will work on multiple platforms.
+<p />
+<p />
+<h2><a name="Debugging Performance: Step by step"></a> Debugging Performance: Step by step </h2>
+<p />
+<strong>Preparing to debug:</strong>
+<p /> <ol>
+<li> First, make sure to always have <a href="PerformanceDebugging.html#StatUnit" class="twikiAnchorLink">STAT UNIT</a> up while you're running the game
+</li> <li> Configure your <a href="PerformanceDebugging.html#BuildConfiguration" class="twikiAnchorLink">build environment</a>.  Use ShippingDebugConsole (LTCG) builds when measuring performance, and Release builds when debugging performance
+</li> <li> Make sure to <a href="PerformanceDebugging.html#TurnOffLogSpam" class="twikiAnchorLink">turn off any log spam</a> or debug code that will taint performance results
+</li> <li> Turn off <a href="PerformanceDebugging.html#TurnOffGCVerify" class="twikiAnchorLink">garbage collection verification</a> because it will contribute to hitching
+</li> <li> Compile scripts in <a href="PerformanceDebugging.html#UseFinalReleaseScripts" class="twikiAnchorLink">Final Release</a> mode
+</li> <li> <a href="PerformanceDebugging.html#TurnOffVSync" class="twikiAnchorLink">Disable VSync</a> so you can identify bottlenecks, even on fast frames
+</li></ol>
+<p />
+<strong>Isolating the type of bottleneck:</strong>
+<p /> <ul>
+<li> Make use of <a href="PerformanceDebugging.html#StatUnit" class="twikiAnchorLink">STAT UNIT</a> to determine why the frame is slow <ul>
+<li> You should be able to isolate whether the issue is a CPU or GPU problem
+</li></ul>
+</li></ul>
+<p />
+<strong>CPU - Tracking down slow C++ or UnrealScript code:</strong>
+<p /> <ul>
+<li> Turn on <a href="PerformanceDebugging.html#StatSlow" class="twikiAnchorLink">STAT SLOW</a> to help identify hitches on the CPU <ul>
+<li> If you see hitches in <em>ScriptTime</em> when using STAT SLOW, then consider using <a href="PerformanceDebugging.html#StatsViewer" class="twikiAnchorLink">StatsViewer</a> or <a href="PerformanceDebugging.html#ScriptProfiling" class="twikiAnchorLink">Script Profiling</a> to drill down into the script timing data in gameplay code.
+</li></ul>
+</li> <li> Capture profiling data for C++ code using platform <a href="PerformanceDebugging.html#ProfilingCPU" class="twikiAnchorLink">CPU sampling tools</a>.
+</li> <li> Capture UnrealScript calls and Stat-based timing data for use with <a href="PerformanceDebugging.html#StatsViewer" class="twikiAnchorLink">StatsViewer</a> <ul>
+<li> This is great for tracking down hitches and script performance bugs!
+</li></ul>
+</li> <li> Use <a href="PerformanceDebugging.html#ScriptProfiling" class="twikiAnchorLink">Script Profiling</a> to find hot spots in UnrealScript code.
+</li></ul>
+<p />
+<strong>GPU - Determining cause of poor rendering performance:</strong> <ul>
+<li> Use <a href="PerformanceDebugging.html#ProfilingGPU" class="twikiAnchorLink">GPU profiling tools</a> to locate slow draw calls, expensive shaders and abusive resource handling.
+</li></ul>
+<p />
+<strong>Guides to solving typical Unreal Engine performance problems:</strong>
+<p /> <ul>
+<li> <a href="https://udn.epicgames.com/Three/PerfDebug_MoveActor" class="restricted" class="restricted" class="twikiLink">MoveActor calls</a>: Calls to MoveActor() are showing up high in the inclusive time
+</li> <li> <a href="PerfDebug_DynamicLightEnvironments.html" class="twikiLink">Dynamic Light Environments</a>: Dynamic light environment updates are showing up as expensive
+</li> <li> <a href="https://udn.epicgames.com/Three/PerfDebug_SkeletalMeshCompUpdates" class="restricted" class="restricted" class="twikiLink">SkeletalMeshComponent updates</a>: Calls to SkeletalMeshComponent::Tick are showing up high in the inclusive time
+</li> <li> <a href="https://udn.epicgames.com/Three/PerfDebug_LineChecks" class="restricted" class="restricted" class="twikiLink">LineChecks</a>: Too much time is being spent in SingleLineCheck/MultiLineCheck
+</li></ul>
+<p />
+<strong>Making sure that level content and assets are optimized:</strong> <ul>
+<li> Often, performance problems will need to be solved by altering or optimizing levels or assets.
+</li> <li> See the <a href="PerformanceDebugging.html#OptimizingContent" class="twikiAnchorLink">content optimization</a> section to learn about the tools available to help.
+</li></ul>
+<p />
+<p />
+<h2><a name="Performance Reference"></a> Performance Reference </h2>
+<p />
+<a name="StatUnit"></a>
+<h3><a name="Displaying Frame/Thread/GPU time (STAT UNIT)"></a> Displaying Frame/Thread/GPU time (STAT UNIT) </h3>
+<p />
+Use the <strong>STAT UNIT</strong> command to determine where your frame time bottleneck is.  <strong>STAT UNIT</strong> will toggle an on-screen HUD that displays Frame time, Game thread time, Render thread (Draw) time and GPU time (if possible.)  This is an invaluable first step for tracking down performance problems -- you should pretty much always have this turned on.
+<p />
+Also, you an use the <strong>STAT FPS</strong> command to display frame rate and frame time on the screen.
+<p />
+<a name="BuildConfiguration"></a>
+<h3><a name="Build configuration"></a> Build configuration </h3>
+<p />
+You'll most certainly want to use either the <strong>Release</strong> or <strong>ShippingDebugConsole</strong> (LTCG) build configuration while testing performance.  <strong>ShippingDebugConsole</strong> provides performance numbers close to that of a shipping title, however certain performance metrics and debugging features (such as Stats capturing) may not be available.  With some minor tweaking, <strong>Release</strong> builds are satisfactory for performance and memory testing, as long as you're looking at results <em>relatively</em>.
+<p />
+<a name="TurnOffLogSpam"></a>
+Note that if you'll be testing with a <strong>Release</strong> build, you should turn off any extraneous logging by either suppressing it with commands or #ifdef'ing it out at compilation time.  For example, <strong>"suppress AILog"</strong> might turn off game-specific AI logging that would slow down C++ and script routines.
+<p />
+<a name="TurnOffGCVerify"></a>
+<h3><a name="Turn off garbage collection verification"></a> Turn off garbage collection verification </h3>
+<p />
+While working on performance you should always have <em>GC Verification</em> turned off, otherwise you can expect massive hitching in <strong>Release</strong> builds at least every 30 seconds or so.  You can do this using one of the following methods:
+<p /> <ul>
+<li> In <em>UnObjGC.cpp</em>, make sure that <strong>VERIFY_DISREGARD_GC_ASSUMPTIONS</strong> is <strong>0</strong>.
+</li> <li> Pass the <strong>-NoVerifyGC</strong> command-line argument.
+</li></ul>
+<p />
+<a name="UseFinalReleaseScripts"></a>
+<h3><a name="Compile scripts in Final Release mode"></a> Compile scripts in Final Release mode </h3>
+<p />
+UnrealScript performance can be drastically different when logging and assertions are enabled.  The easiest way to get performance that's closest to a shipping title is to compile scripts in <strong>Final Release</strong> mode, which automatically strips these expensive calls from the compiled byte code.  You can build <strong>Final Release</strong> scripts through one of the following methods:
+<p /> <ul>
+<li> In <a href="UnrealFrontend.html" class="twikiLink">Unreal Frontend</a>, select the <strong>Cooking</strong> tab and enable the <strong>"Cook Final Release Scripts"</strong> checkbox.  Now, when you run the cooker or launch the game through UFE, <strong>Final Release</strong> scripts will be compiled and used.
+</li> <li> Pass the <strong>-Final_Release</strong> command-line parameter to the <strong>make</strong> commandlet.
+</li></ul>
+<p />
+<a name="TurnOffVSync"></a>
+<h3><a name="Disabling VSync"></a> Disabling VSync </h3>
+<p />
+For best results you may want to turn off <strong>VSync</strong> (waits for vertical retrace before presenting frames.)  Otherwise the frame time will be padded to the game's refresh rate, which can make it more difficult to get an accurate picture.  To turn off <strong>VSync</strong>: <ul>
+<li> Pass the <strong>-NoVSync</strong> command-line option to the game.
+</li> <li> Or, enable the <strong>"No VSync"</strong> checkbox in the <strong>Game</strong> tab of <a href="UnrealFrontend.html" class="twikiLink">Unreal Frontend</a>.
+</li></ul>
+<p />
+<a name="StatSlow"></a>
+<h3><a name="Using STAT SLOW"></a> Using STAT SLOW </h3>
+<p />
+You can use the <strong>STAT SLOW</strong> command to help find performance spikes.  It can help you narrow down hitches by reporting any cycle stats that run longer than a specific duration in a frame (10 ms by default.)  Stats that run slowly will be displayed on the HUD for a little while, making it easier to correlate the spike with game behavior on screen.
+<p />
+To use, enter <strong>STAT SLOW</strong> in the console with the optional arguments what the threshold is in seconds (so 0.01 for 10 ms) and how long to render the stat once it has spiked once. The default is 10 seconds.
+<p />
+<em>Example:</em>   <strong>STAT SLOW 0.01 10</strong>
+<p />
+This will render all cycle stats that have been &gt; 10 ms in the last 10 seconds.
+<p />
+<a name="ProfilingCPU"></a>
+<h3><a name="Profiling the CPU"></a> Profiling the CPU </h3>
+<p />
+After you've isolated your frame bottleneck as a CPU performance issue, one of next steps should be to determine where in your C++ code the time is being spent.  Additionally, you may want to look for hidden performance costs such as Load-Hit-Stores or cache misses.
+<p />
+Most platforms have robust CPU sampling tools available that can provide detailed code metrics and even call graphs for C++ code using data captured from a live session.  For example, on the Windows platform you might use <em>Intel VTune</em> to capture sampling data over a short period to isolate hot spots.  Console platforms have similar tools available, often included with the development tool chain.
+<p />
+You'll want to familiarize yourself with these applications and use them extensively throughout development!
+<p />
+Note that on some consoles, Unreal has some utility functions to help performance single frame CPU/GPU sampling captures.  You can type <strong>TRACE GAME</strong> to initiate a CPU trace, or <strong>TRACE RENDER</strong> to capture GPU data.
+<p />
+Most CPU profilers support capturing sampling data and/or call graph data over a short duration.  This is great for debugging performance issues that involve a sustained poor frame rate.  <em>Sampling captures</em> will usually give you function call hot spots in the C++ code.  This can be useful sometimes, but more often than not you'll find that a <em>Call Graph capture</em> is much more useful!
+<p />
+<em>Call graphs</em> often have more capture-time overhead, but provide detailed information about the <strong>callers</strong> of hot spot functions, which can often lead you straight to the source of a problem!  Even in cases where many objects/actors are calling a single function that shows up as slow, if you're lucky the call graph will lead you back to a particular actor class name or other pattern that hints you to the cause.
+<p />
+Sometimes call graphs will simply show <em>UnrealScript</em> taking up time (calls to <em>ProcessEvent</em>, <em>CallFunction</em>, etc), in which case you'll want to run a <a href="PerformanceDebugging.html#StatsViewer" class="twikiAnchorLink">StatsViewer</a> or <a href="PerformanceDebugging.html#ScriptProfiling" class="twikiAnchorLink">Script Profiling</a> session capture to drill down into those calls.
+<p />
+When dealing with frame <em>hitches</em>, CPU profilers can sometimes be unwieldy due to relatively low sampling frequency.  If the hitch is easily reproducible in game, a good strategy is to initiate the hitch as frequently as possible (ideally many times per frame) while capturing a short CPU profiling session.  If the hitch is more elusive, you'll want to use capture data for use in <a href="PerformanceDebugging.html#StatsViewer" class="twikiAnchorLink">StatsViewer</a> which will provide historical call graph data over many frames.
+<p />
+<a name="StatsViewer"></a>
+<h3><a name="Profiling code using _StatsViewer"></a> Profiling code using StatsViewer </h3>
+<p />
+You can use <strong>StatsViewer</strong> to help track down CPU performance problems.  It also serves as a detailed profiling tool for UnrealScript code!
+<p />
+StatsViewer can display all <strong>UnrealScript function calls</strong> and <strong>game stats</strong> (value counters, cycle timers, etc) along a graph timeline where you can sort and view data, similar to how you would in PIX.  More importantly, it can show you a nice <strong>hierarchical call graph</strong> of scoped cycle stats and script functions.  This lets you quickly see "what's slow" for any given frame!  (Just double click the frame in the graph window.)
+<p />
+Preparation:
+<p /> <ul>
+<li> Make sure <strong>STATS</strong> is defined to <strong>1</strong> in the build you're using (UnBuild.h) <ul>
+<li> This is enabled by default in Debug and Release builds
+</li></ul>
+</li> <li> To profile script code, also make sure <strong>STATS_SLOW</strong> is defined to <strong>1</strong> (UnStats.h) <ul>
+<li> This slows down profiling, but provides detailed call graph data for all UnrealScript calls
+</li></ul>
+</li></ul>
+<p />
+To capture stat data to disk (recommended):
+<p /> <ul>
+<li> Type <strong>"STAT StartFile"</strong> in the console to start capturing stats to disk
+</li> <li> When you're done, type <strong>"STAT StopFile"</strong> to stop logging and finalize the stats file
+</li> <li> To start capturing stats immediately on app startup, pass the <strong>"-StartStatsFile"</strong> parameter
+</li> <li> On consoles, make sure to pass the <strong>-DisableHDDCache</strong> command-line option! <ul>
+<li> This turns off caching of texture mips to the HDD (which contests with stat file writing)
+</li></ul>
+</li> <li> Stat files will be spit out to \UnrealEngine3\<GameName>\Profiling\ folder. <ul>
+<li> On consoles, the stats data will automatically be transferred to the PC through UnrealConsole
+</li></ul>
+</li> <li> Run StatsViewer and load up the file (e.g. <GameName>-07.15-18.58.ustats)
+</li></ul>
+<p />
+To capture live stats from a running game:
+<p /> <ul>
+<li> Load up the game
+</li> <li> Connect the StatsViewer to the Xenon session using <strong>Connect to IP</strong> <ul>
+<li> On Xenon, use the Xenon's "Title IP Address", not the "Debug Channel IP Address" <ul>
+<li> You can find this in UFE by clicking "Show All Target Information"
+</li></ul>
+</li> <li> Make sure the port number is set to <strong>13002</strong>.
+</li></ul>
+</li> <li> Live stats will start streaming in through a UDP connection!
+</li> <li> You can save the captured data out to disk using File -&gt; Save
+</li></ul>
+<p />
+Viewing stats data:
+<p /> <ul>
+<li> Load up a <strong>.ustats</strong> file in StatsViewer tool, or <strong>Connect</strong> to a live game session.
+</li> <li> The interactive graph will show you frame times initially so you can see hitches and trending
+</li> <li> <strong>Drag and drop</strong> stats from the left-hand column onto the graph to display the stat data
+</li> <li> <strong>Click</strong> in the graph to select a frame and view stats data for that frame
+</li> <li> <strong>Double-click</strong> in the graph to <strong>open the Call Graph</strong> for that frame!
+</li> <li> Right click on stats in the left-hand column to "View Frames by Criteria" (e.g. only frames with FPS &lt; 20, etc.)
+</li> <li> Use the menu options to switch viewing modes (frame #s versus time, ranged/overall data)
+</li></ul>
+<p />
+Other notes:
+<p /> <ul>
+<li> Doesn't work in LTCG modes (unless you #define <strong>STATS</strong> locally.)  Use Release.
+</li> <li> Live stat capture is still somewhat buggy (drops frames, scrolling is a bit weird.)
+</li></ul>
+<p />
+For more information about real-time Stats capture, see <a href="PerfStats.html" class="twikiLink">this page</a>.
+<p />
+&nbsp;&nbsp;&nbsp;• GameplayProfiler: This is an overview on how to read and analyze the data from time spent in gameplay code.<br>
+<p />
+<p />
+<a name="ScriptProfiling"></a>
+<h3><a name="Using Script Profiling to tune _UnrealScript performance"></a> Using Script Profiling to tune UnrealScript performance </h3>
+<p />
+<strong>Gameplay Profiler</strong> can provide lots of great information about expensive functions in your script code.  It's extremely fast to capture profiling data and will give you instant access to hot spots over a short sampling duration.
+<p />
+To capture script profiler data:
+<p /> <ul>
+<li> Type <code><b>PROFILEGAME START</b></code> in the console to start capturing data
+</li> <li> When you're done, type <code><b>PROFILEGAME STOP</b></code> to stop capturing and save the data to disk
+</li> <li> Profiling data will be spit out to \UnrealEngine3\<GameName>\Profiling\ folder. <ul>
+<li> On consoles, the stats data will automatically be transferred to the PC through UnrealConsole
+</li></ul>
+</li> <li> Run GameplayProfiler and load up the file (e.g. <GameName>-07.15-18.58.uprof)
+</li></ul>
+<p />
+See the <a href="GameplayProfiler.html" class="twikiLink">Gameplay Profiler</a> documentation for more info.
+<p />
+<em>NOTE:</em>  In many cases the <a href="PerformanceDebugging.html#StatsViewer" class="twikiAnchorLink">StatsViewer</a> tool can actually provide more detailed script profiling data than the GameplayProfiler, at the cost of more runtime overhead.  Just make sure to #define <strong>STAT SLOW</strong> to <strong>1</strong> when capturing stats data, and StatsViewer will display full UnrealScript call graphs for frames!
+<p />
+<h3><a name="Performance on consoles"></a> Performance on consoles </h3>
+<p />
+<em>Console-specific performance info may need to be on sub-pages.</em>
+<p />
+<p />
+For a list of all Stat Commands, please see the <a href="StatsDescriptions.html" class="twikiLink">Stats Descriptions</a> page.
+<p />
+For a list of all Console Commands, please see the <a href="ConsoleCommands.html" class="twikiLink">Console Commands</a> page.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PerformanceDebugging.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:41:01 GMT -->
+</html></body>

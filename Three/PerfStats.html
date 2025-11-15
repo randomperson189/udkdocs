@@ -1,0 +1,438 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PerfStats.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:08:24 GMT -->
+<head>
+<title> UDK | PerfStats    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">PerfStats  </b></div>
+<div id="tooltext">
+<a href="PerfStatsJP.html" class="twikiLink">日本語訳</a><br><a href="PerfStatsCH.html" class="twikiLink">中国翻译</a><br><a href="PerfStatsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/PerfStats -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="PerformanceHome.html" class="twikiLink">Performance, Profiling, &amp; Optimization</a></b> &gt; Unreal Engine Performance Tracking System  <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="GameplayProgrammingHome.html" class="twikiLink">Gameplay Programming</a></b> &gt; Unreal Engine Performance Tracking System
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Unreal Engine Performance Tracking System"></a> Unreal Engine Performance Tracking System </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="PerfStats.html#Unreal Engine Performance Tracking System"> Unreal Engine Performance Tracking System</a> <ul>
+<li> <a href="PerfStats.html#Overview"> Overview</a>
+</li> <li> <a href="PerfStats.html#In-game Stats"> In-game Stats</a> <ul>
+<li> <a href="PerfStats.html#What the columns mean"> What the columns mean</a>
+</li> <li> <a href="PerfStats.html#Console Commands"> Console Commands</a>
+</li> <li> <a href="PerfStats.html#Stats Recording"> Stats Recording</a> <ul>
+<li> <a href="PerfStats.html#File Logging of Stats"> File Logging of Stats</a>
+</li> <li> <a href="PerfStats.html#Networked Stats"> Networked Stats</a>
+</li> <li> <a href="PerfStats.html#Configuring Stat Recording"> Configuring Stat Recording</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="PerfStats.html#Stats Viewer"> Stats Viewer</a> <ul>
+<li> <a href="PerfStats.html#Getting Data"> Getting Data</a> <ul>
+<li> <a href="PerfStats.html#Opening an Existing Stats File"> Opening an Existing Stats File</a>
+</li> <li> <a href="PerfStats.html#Connecting to a Remote Game"> Connecting to a Remote Game</a>
+</li></ul>
+</li> <li> <a href="PerfStats.html#Viewing the Data"> Viewing the Data</a> <ul>
+<li> <a href="PerfStats.html#Adding a Stat to the Graph"> Adding a Stat to the Graph</a>
+</li> <li> <a href="PerfStats.html#Aggregate Data"> Aggregate Data</a>
+</li> <li> <a href="PerfStats.html#Zooming the View Area"> Zooming the View Area</a>
+</li> <li> <a href="PerfStats.html#Auto-scrolling During Network Gathering"> Auto-scrolling During Network Gathering</a>
+</li> <li> <a href="PerfStats.html#Call Graph View"> Call Graph View</a>
+</li></ul>
+</li> <li> <a href="PerfStats.html#Known Issues"> Known Issues</a>
+</li> <li> <a href="PerfStats.html#Future Work"> Future Work</a>
+</li></ul>
+</li> <li> <a href="PerfStats.html#Performance Regression Tests"> Performance Regression Tests</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+This document covers the various mechanisms UE3 has in place for tracking the performance of your game. The data the system provides is meant to help tune your level creation and/or gameplay systems. It can also be used to track performance of levels over time by storing performance information and comparing that over time.
+<p />
+<h2><a name="In-game Stats"></a> In-game Stats </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+There are two ways for viewing the performance information: in-game and via an external client. The in-game tools are all invoked using console commands (see the next section) and are displayed on the hud, which has some screen space limitations. If you need to see more stats than what can be rendered then the external client is a better choice.
+<p />
+Stats can be viewed in two different ways: grouped or hierarchically. The old stats system only supported grouped viewing. Groups are set up by a programmer(s) and are shown using the "stat groupname" console command. All stats in that group are then displayed.  The screen shot below shows timing only data with both inclusive and exclusive values (see the console command section on how to set it up like that).
+<p />
+Custom stat groups can be created by enabling/disabling the desired groups/stats and using "stat save" command to save the group to a custom name.
+<p />
+<img alt="InGameStats.jpg" src="rsrc/Three/PerfStats/InGameStats.jpg" />
+<p />
+The second way to view the stats data is hierarchically. This treats the stats data as a tree structure, where the child stats are included in the parent's total time. For instance, all data is included as part of the stat FrameTime. Viewing stats in this way really helps when you know an area isn't performing well and you need to know which area in particular is the problem. You can keep drilling down through the information until you find the leaf that is consuming the most time. By default, the stats data includes the inclusive timing information. You can also show the exclusive time by using the console command "stat exclusive". This shows the amount of time spent without the inclusion of any child stats. This is an important tool when tracking down which particular part of a scene is causing you performance problems.
+<p />
+<img alt="InGameHierStats.jpg" src="rsrc/Three/PerfStats/InGameHierStats.jpg" />
+<h3><a name="What the columns mean"></a> What the columns mean </h3>
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Column </td><td bgcolor="#eaeaea"> Meaning </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> # </td><td bgcolor="#ffffff"> Used to navigate the stats hierarchy when in hierarchical mode </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> CallCount </td><td bgcolor="#eaeaea"> Indicates the number of times that stat was updated that frame </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> IncAvg </td><td bgcolor="#ffffff"> This is the average inclusive time the stat consumed over the last few frames </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> IncMax </td><td bgcolor="#eaeaea"> This is the maximum time spent in the stat over the last few frames </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> ExcAvg </td><td bgcolor="#ffffff"> The average time, not including child stats, spent in the stat over the last few frames </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> ExcMax </td><td bgcolor="#eaeaea"> The maximum time spent in the stat, not including children, over the last few frames </td></tr>
+</table>
+<p />
+<h3><a name="Console Commands"></a> Console Commands </h3>
+<p />
+Console commands are how you interact with the stats system in game. The stats system supports a simple set of commands for displaying stats information on the hud in game. All console commands in the stats system start with the "stat" identifier, e.g. "stat engine", which toggles the rendering of the engine stats group. Below is a table showing the console commands that are supported and their purpose.
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Command </td><td bgcolor="#eaeaea"> Result </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> inclusive </td><td bgcolor="#ffffff"> Toggles the inclusive state. If true, inclusive times are shown </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> exclusive </td><td bgcolor="#eaeaea"> Toggles the exclusive state. If true, exclusive times are shown </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> cycles </td><td bgcolor="#ffffff"> Toggles the cycle counter state. If true, cycle counter stats are shown </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> counters </td><td bgcolor="#eaeaea"> Toggles the counter state. If true, counter stats are shown </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> grouped </td><td bgcolor="#ffffff"> Changes the rendering mode to group view mode. Disables rendering if already in grouped mode </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> hier </td><td bgcolor="#eaeaea"> Changes the rendering mode to hierarchical view mode (call graph mode). Disables rendering if already in hierarchical mode </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> nav "StatNum" </td><td bgcolor="#ffffff"> Moves the selection of the current stat up/down the call graph hierarchy </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> color "Item" "Color" </td><td bgcolor="#eaeaea"> Changes the color the specified item is rendered with </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> list groups </td><td bgcolor="#ffffff"> Dumps the names of all of the stat groups to the log. Use showlog to view </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> list group "GroupName" </td><td bgcolor="#eaeaea"> Dumps the names of all of the stats in the named group to the log. Use showlog to view </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> list list sets </td><td bgcolor="#ffffff"> List custom sets that have been saved to GEngineIni </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> save "SetName" </td><td bgcolor="#eaeaea"> Saves the current stats to a custom stat set in GEngineIni named "SetName" </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> name "StatName" </td><td bgcolor="#ffffff"> Toggles the render flag for an individual stat. If true, the stat will be rendered with it's group </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> none </td><td bgcolor="#eaeaea"> Turns off stat rendering for all groups </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> "GroupName" </td><td bgcolor="#ffffff"> Toggles the render flag for that group. If true, that group is rendered.  If "GroupName" matches the name of a custom state set, that custom set is enabled. </td></tr>
+</table>
+<p />
+<p />
+<h3><a name="Stats Recording"></a> Stats Recording </h3>
+<p />
+This version of the stats system includes a "stats provider" framework. This framework is used to gather stats data from the game and send that to some form of external storage. At the end of each frame the list of registered providers is given a snapshot of the data. This data can be written to disk, sent across the network, integrated into another API system, etc. Epic provides support for file and networked based recording of per frame stats data.
+<p />
+<h4><a name="File Logging of Stats"></a> File Logging of Stats </h4>
+<p />
+This version of the stats system support file based recording of stats data. There are two formats that the system can write: CSV for importing into Excel and XML which is used by the stats viewer. The CSV format is good for being able quickly compare results from previous data captures. It also allows you to use all of the features that Excel has for charting and so on. The XML format is primarily used when capturing data for review later. The XML file is in the stats viewer's native format so you can just load an existing XML file into and then view the stats data.
+<p />
+<h4><a name="Networked Stats"></a> Networked Stats </h4>
+<p />
+Also included in the latest version is the ability to gather stats data via the network. This allows you to gather stats data for dedicated servers, which was something we've not been able to do before. It collects the stats via UDP and works across the various OS/consoles that we support. On Xbox 360, stats can also be captured by the PIX tool.
+<p />
+<h4><a name="Configuring Stat Recording"></a> Configuring Stat Recording </h4>
+<p />
+Stats providers are enabled via a setting in MyGameEngine.ini. Each provider is given a name and that name is used to check for configuration data in the INI file. For instance, to enable the XML file recording of stats you need to have the following in your Engine.ini file:
+<p />
+<pre>
+&#91;StatNotifyProviders]
+XmlStatNotifyProvider&#61;true
+</pre>
+<p />
+Below is the complete list of providers that Epic provides with their default configurations:
+<p />
+<pre>
+&#91;StatNotifyProviders]
+XmlStatNotifyProvider&#61;false
+CsvStatNotifyProvider&#61;false
+StatsNotifyProvider&#95;UDP&#61;true
+PIXNamedCounterProvider&#61;false
+</pre>
+<p />
+Stats providers can also be enabled via the command line. This is done by treating the provider name as a parameter:
+<p />
+utgame.exe ons-testmap -CsvStatNotifyProvider
+<p />
+The above turns on comma delimited logging of stats which are written to utgame_stats.csv.
+<p />
+<h2><a name="Stats Viewer"></a> Stats Viewer </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The stats viewer is an external application that analyzes and collects performance data. The UI is split into three main areas: the tree view that shows all the of the available groups and the stats that make up the group, the list view that displays aggregate information such as averages and min/max values, and the graph area which displays the stat information as a line graph. Each point on the graph represents the value of that stat for a given frame. The graph can be scrolled forward/backward through the frame data. Along the X axis, the numbers represent either frame numbers or time depending on your user preferences. The Y axis defaults to a range of zero to 100. The scale can be changed on a per stat basis. This is useful for stats that are either always larger than 100 or are very close to zero.
+<p />
+<h3><a name="Getting Data"></a> Getting Data </h3>
+<p />
+The viewer is used to view existing files that were saved using the file recording (see the previous section on file recording). It is also used to connect to a running game where it collects the stats information via the network. Data harvested via the network can also be saved for later review.
+<p />
+<h4><a name="Opening an Existing Stats File"></a> Opening an Existing Stats File </h4>
+<p />
+Choose the File | Open menu option and navigate to your game's log directory. All of the stat recording facilities write their files to the game's log directory.
+<p />
+<h4><a name="Connecting to a Remote Game"></a> Connecting to a Remote Game </h4>
+<p />
+Using the Connect | Connect To menu option brings up the dialog seen below. The dialog broadcasts an announcement message to all games when it is first created. The refresh button re-broadcasts that same message. Both broadcasts happen on the port that is specified in the dialog box. If you have multiple game teams or you want to isolate out a set of servers, you can change which port the game listens on. In order to make connecting easier, the dialog lists the type of game that is running and which platform it's on. In the picture below, I am running the UT version of the editor on my PC, an Onslaught game on my PC, and Gears of War on my Xbox 360. To start collecting stats from a game listed in the dialog, either double-click on the game you want or select it and choose the Connect button.
+<p />
+<img alt="ConnectTo.jpg" src="rsrc/Three/PerfStats/ConnectTo.jpg" />
+<p />
+<h3><a name="Viewing the Data"></a> Viewing the Data </h3>
+<p />
+The picture below is an example of opening a file that was saved after collecting a large amount of data via the network. In that view, I have added two counters, FrameTime and SkelCompose, to the graph display. To help differentiate the lines a bit, the selected stat is always drawn with a bold line. The display area is representing 150 frames of data. Each stat has its own color associated with it, which can be changed by double-clicking on the stat in the list below the graph. The background color for the graph is changed the same way. To remove a stat from the display, you select the stat in the list and hit the delete key.
+<p />
+<img alt="ViewingData.jpg" src="rsrc/Three/PerfStats/ViewingData.jpg" />
+<p />
+<p />
+<h4><a name="Adding a Stat to the Graph"></a> Adding a Stat to the Graph </h4>
+<p />
+You add stats to the graph by either dragging an individual stat from the tree view to the graph area or by dragging a group to the graph area. When dragging a group to the graph area, it adds all stats to the display.
+<p />
+<h4><a name="Aggregate Data"></a> Aggregate Data </h4>
+<p />
+Aggregate data for the stat is shown in the list view. It shows the average, min, and max value for the stats. By default, those values are for the entire data set, which includes all frames. You can choose to view the aggregate data for only the set of frames being drawn by choosing the View | Ranged Aggregate Data. When viewing by range, the data is updated as you scroll through the set.
+<p />
+<h4><a name="Zooming the View Area"></a> Zooming the View Area </h4>
+<p />
+X axis scaling is done using the F1 (View | Zoom In) and F2 (View | Zoom Out) keys. This decreases/increases the number of frames plotted on the display. Y axis scaling is done on a per stat basis.
+<p />
+<h4><a name="Auto-scrolling During Network Gathering"></a> Auto-scrolling During Network Gathering </h4>
+<p />
+While connected to a remote game, the graph display automatically scrolls to show the latest data. You can toggle this by using the F3 (View | Auto-scroll Display) key.
+<p />
+<h4><a name="Call Graph View"></a> Call Graph View </h4>
+<p />
+You can view the call graph for any frame by right clicking on that frame in the stats graph area and choosing the "View Frame N" option. This brings up a window that shows the call graph of stats as a tree, as seen below:
+<p />
+<p />
+<img alt="CallGraphView.jpg" src="rsrc/Three/PerfStats/CallGraphView.jpg" />
+<p />
+Because clicking the exact frame is a bit imprecise, it grabs the frames around where you clicked and adds them to the view too. This also aids with tracking spikes as you can drill down through the stats and get comparisons between the frames. All times are reported as inclusive times.
+<p />
+<h3><a name="Known Issues"></a> Known Issues </h3>
+<p />
+Doesn't support per thread tracking yet. Doesn't properly handle hierarchical info (grouped processing only)
+<p />
+<h3><a name="Future Work"></a> Future Work </h3>
+<p />
+Faster grid painting. It can be smarter.
+<p />
+Hierarchical stats support.
+<p />
+Gameplay markers. These will be items displayed on the graph but come from an API call from gameplay. This is useful for tracking spikes or increases during gameplay/cut scenes.
+<p />
+Bug fixes, ui improvements (grid, mouse over values, etc)
+<p />
+<h2><a name="Performance Regression Tests"></a> Performance Regression Tests </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The stats system includes an application for comparing two separate runs of a performance test. The application, StatsComparison.exe, reads two separate XML files, calculates the aggregate data (average, etc.), and then compares the results with a specific threshold value. If the performance is within that threshold, the test passes (application returns 0). If the performance doesn't fall within the threshold, the application returns 1, meaning the test failed. If it returns a value &lt; 0, it means that there was something wrong with the data, e.g. missing or corrupt file, invalid stat specified, etc.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PerfStats.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:08:26 GMT -->
+</html></body>

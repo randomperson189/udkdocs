@@ -1,0 +1,839 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CollisionTechnicalGuideCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:18:10 GMT -->
+<head>
+<title> UDK | CollisionTechnicalGuideCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">CollisionTechnicalGuideCH  </b></div>
+<div id="tooltext">
+<a href="CollisionTechnicalGuide.html" class="twikiLink">English Translation</a><br><a href="CollisionTechnicalGuideJP.html" class="twikiLink">日本語訳</a><br><a href="CollisionTechnicalGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/CollisionTechnicalGuideCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="StaticMeshHome.html" class="twikiLink">静态网格</a></b> &gt; 碰撞技术指南 <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="PhysicsHome.html" class="twikiLink">物理</a></b> &gt; 碰撞技术指南 <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="EnvironmentArtistHome.html" class="twikiLink">场景美工</a></b> &gt; 碰撞技术指南
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="碰撞技术指南"></a> 碰撞技术指南 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="CollisionTechnicalGuideCH.html#碰撞技术指南"> 碰撞技术指南</a> <ul>
+<li> <a href="CollisionTechnicalGuideCH.html#概述"> 概述</a>
+</li> <li> <a href="CollisionTechnicalGuideCH.html#Unrealscript(虚幻脚本)"> Unrealscript(虚幻脚本)</a> <ul>
+<li> <a href="CollisionTechnicalGuideCH.html#Actor属性"> Actor属性</a>
+</li> <li> <a href="CollisionTechnicalGuideCH.html#碰撞标记"> 碰撞标记</a>
+</li> <li> <a href="CollisionTechnicalGuideCH.html#虚幻脚本事件"> 虚幻脚本事件</a>
+</li> <li> <a href="CollisionTechnicalGuideCH.html#Performing collision checks(表现碰撞检测)"> Performing collision checks(表现碰撞检测)</a>
+</li> <li> <a href="CollisionTechnicalGuideCH.html#碰撞类型"> 碰撞类型</a>
+</li> <li> <a href="CollisionTechnicalGuideCH.html#骨架网格物体碰撞外壳">骨架网格物体碰撞外壳</a>
+</li> <li> <a href="CollisionTechnicalGuideCH.html#静态网格碰撞外壳">静态网格碰撞外壳</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+当创建图形细节时，保证游戏中的碰撞简洁是非常重要的。其中有两个原因，计算碰撞比计算多边形来说速度要快很多，而且对玩家来说加了碰撞，游戏体验就会流畅很多，玩家也不会卡在细小的缝隙中。碰撞响应分为两个不同的部分：虚幻碰撞和Physx 这篇文档主要讲解虚幻碰撞，请参阅 <a href="PhysicsHome.html" class="twikiLink">click here</a> 获取更多关于Physx的信息。请参照<a href="CollisionReference.html" class="twikiLink">Collision Reference(碰撞参考指南)</a>页面获取关于如何撞见碰撞数据的信息。
+<p />
+<h2><a name="Unrealscript(虚幻脚本)"></a> Unrealscript(虚幻脚本) </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+虚幻碰撞可以追溯到虚幻引擎1，碰撞响应的主体通过虚幻脚本进行处理。虚幻脚本也负责设置碰撞属性，这样虚幻碰撞引擎就知道如何模拟这些actor。
+<p />
+<h3><a name="Actor属性"></a> Actor属性 </h3>
+在碰撞选项里能找到很多actor属性。这些属性控制虚幻碰撞引擎如何处理碰撞响应以及这些actor的物理模拟。
+<p /> <ul>
+<li> *bCollideComplex(碰撞复杂度)=  |在 Actor 移动过程中，忽略这个 Actor 上的简化碰撞外壳 ，并碰撞每个多边形。简化碰撞外壳在虚幻编辑器中或3D内容创建包中生成。碰撞每个多边形对非零粗细跟踪来说十分有用，这样子弹就能精确碰撞。碰撞每个多边形不推荐在actor移动中应用，这样对性能要求太高。
+</li> <li> <strong>BlockRigidBody(屏蔽刚体)</strong> - actor是否使用PhysX应该同这个actor进行对碰。
+</li> <li> <strong>bNoEncroachCheck(不进行侵占检查)</strong> - 当移动该actor时关闭encroachment checking(侵占检查)的一种优化处理。启用该项将会加速游戏的运行，但是 Actor 将不能触碰触发器、推动玩家，进入或走出体积。
+</li> <li> <strong>bPathColliding(路径碰撞)</strong> - 在虚幻引擎中该actor是否能在路径构建中屏蔽路径。
+</li> <li> <strong>CollisionComponent(碰撞组件)</strong> - 用于该actor运动的针对组件的引用 如果actor正在使用PHYS_Walking(物理行走)，那么和该组件边界框相对齐的坐标轴会同该关卡碰撞。如果该Actor正在使用PHYS_RigidBody(物理刚体)，那么这个组件的模型或是物理物体正在被使用。
+</li> <li> <strong>CollisionType(碰撞类型)</strong> - 这是为关卡设计师到处多个碰撞设置的一种简便方法。在虚幻编辑器中更改这个数值会在actor和碰撞组件上设置低级关卡标记，如CollideActors(碰撞actor), BlockActors(屏蔽actor), BlockNonZeroExtent(屏蔽非零粗细, BlockZeroExtent(屏蔽非零粗细) 和BlockRigidBody(屏蔽刚体)，来符合碰撞种类的描述。 <ul>
+<li> <strong>COLLIDE_CustomDefault(碰撞_自定义默认)</strong> - 程序员设置碰撞。选中该项时在默认属性中把碰撞恢复到默认设置。
+</li> <li> <strong>COLLIDE_NoCollision(碰撞_无碰撞)</strong> - 不碰撞任何物体。
+</li> <li> <strong>COLLIDE_BlockAll(碰撞_屏蔽所有)</strong> - 屏蔽所有。
+</li> <li> <strong>COLLIDE_BlockWeapons(碰撞_屏蔽武器)</strong> - 只屏蔽通常使用在武器上的零粗细踪迹。
+</li> <li> <strong>COLLIDE_TouchAll(碰撞_触碰所有)</strong> - 触碰所有，但不屏蔽。
+</li> <li> <strong>COLLIDE_BlockWeapons(碰撞_屏蔽武器)</strong> - 只屏蔽通常使用在武器上的零粗细轨迹。
+</li> <li> <strong>COLLIDE_BlockAllButWeapons</strong> - 除了通常使用在武器上的零粗细轨迹踪迹，其他的都屏蔽。.
+</li> <li> <strong>COLLIDE_BlockAllButWeapons</strong> - 除了通常使用在武器上的零粗细踪迹，其他的都触碰。这个不屏蔽。
+</li> <li> <strong>COLLIDE_BlockWeapons(碰撞_屏蔽可脱卸武器)</strong> - 只屏蔽通常使用在武器上的零粗细轨迹。同样启用标记允许玩家更换该actor。
+</li></ul>
+</li></ul>
+<p />
+<h3><a name="碰撞标记"></a> 碰撞标记 </h3>
+这里有许多控制虚幻引擎如何同您放置在关卡中的actor一起表现碰撞的标记 有时候，一个标记同时出现在 Actor 属性和组件属性中。这时Actor1表现为覆盖
+<p /> <ul>
+<li> <strong>CollideActors(碰撞Actors)</strong> - 对于所有要进行虚幻碰撞检测的actor，这项必须为 True(真)。
+</li> <li> <strong>BlockActors(屏蔽 Actors)</strong> - 这说明Actor是否要屏蔽Actor不让它们移动。比如一个触发器将设置 <strong>CollideActors</strong> 为 <strong>true(真)</strong> 但设置 <strong>BlockActors(屏蔽Actor)</strong> 为 <strong>false(假)</strong> 。这是因为期待的效果在两个actor相互碰撞时是给虚幻引擎监测的，而对正在移动的actor来说是要穿过对方的。
+</li> <li> <strong>BlockZeroExtent(屏蔽零粗细)</strong> - 一个零粗细是一种线性检测，通常用在模拟子弹的武器上。如果它是真值(true)，则actor会屏蔽在虚幻脚本中使用的零粗细踪迹。
+</li> <li> <strong>BlockNonZeroExtent(屏蔽非零粗细)</strong> - 一个非零粗细是一种同坐标轴对齐的边界框检测，通常应用在玩家运动上。如果它是真值(true)，则actor会屏蔽在虚幻脚本中使用的非0粗细。
+</li></ul>
+<p />
+<h3><a name="虚幻脚本事件"></a> 虚幻脚本事件 </h3>
+当碰撞在虚幻3引擎中进行时，在所涉及的actor上会调用虚幻脚本事件。之所以要设计这些事件是因为您可以在您的子类actor中覆盖事件。<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>事件和函数在虚幻脚本中没有分别</strong> 。
+<p />
+<h4><a name="HitWall(击打墙)"></a> HitWall(击打墙) </h4>
+当actor在墙里进行物理碰撞，调用HitWall(在BSP中，Wall设置到世界信息)。 <ul>
+<li> <strong>HitNormal(击打法线)</strong> - 用actor敲击墙壁的法线
+</li> <li> <strong>Wall(墙)</strong> - 这个actor碰撞进入的actor
+</li> <li> <strong>Wall(墙组件)</strong> - 这个actor碰撞进入的组件。在BSP中，WallComp(墙组件)设置为无。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event HitWall(Vector HitNormal, Actor Wall, PrimitiveComponent WallComp)
+</pre>
+</div>
+<p />
+需要注意的是，Pawn可以改变该事件的调用方式，这点很重要。如果bDirectHitWall(b直接击打墙)为真(true)，则总是直接调用Pawn的Hitwall事件。
+<p />
+<div class="codetitlebar">
+Pawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+var bool bDirectHitWall;
+</pre>
+</div>
+<p />
+需要注意的是一个Pawn的控制器可以更改HItwall调用的方式，这点很重要。
+<p />
+当我们的Pawn已经同一块世界几何面障碍碰撞时，调用NotifyHitWall(通知Hitwall)；回到真值以防通知在pawn上的Hitwall()。 <ul>
+<li> <strong>HitNormal(击打法线)</strong> - 用actor敲击墙壁的法线
+</li> <li> <strong>Wall(墙)</strong> - 这个actor碰撞进入的actor
+</li></ul>
+<p />
+<div class="codetitlebar">
+Controller.uc
+</div>
+<div class="codesnippet">
+<pre>
+event bool NotifyHitWall(vector HitNormal, actor Wall);
+</pre>
+</div>
+<p />
+当我们的pawn同一块世界几何体障碍在下落时碰撞，则调用NotifyFallingHitWall(通知正在下落的击打墙)；如果bNotifyFallingHitWall(通知正在下落的击打墙)在控制器里为真值(true)则仅调用。 <ul>
+<li> <strong>HitNormal(击打法线)</strong> - 用actor敲击墙壁的法线
+</li> <li> <strong>Wall(墙)</strong> - 这个actor碰撞进入的actor
+</li></ul>
+<p />
+<div class="codetitlebar">
+Controller.uc
+</div>
+<div class="codesnippet">
+<pre>
+event bool NotifyHitWall(vector HitNormal, actor Wall);
+</pre>
+</div>
+<p />
+<h4><a name="着陆"></a> 着陆 </h4>
+当actor已经进行物理着陆(Landed)到FloorActor(地面actor)时，调用Landed(着陆) (在BSP中，FloorActor设置到世界信息) <ul>
+<li> <strong>HitNormal(击打法线)</strong> - 着陆的法线
+</li> <li> <strong>FloorActor(地面actor)</strong> - 用于该actor着陆的actor。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event Landed(vector HitNormal, Actor FloorActor);
+</pre>
+</div>
+<p />
+需要注意的是一个Pawn的控制器可以更改Landed(着陆)调用的方式，这点很重要。
+<p />
+当我们的pawn从一个掉落物体上着陆，则调用NotifyLanded(通知着陆)；返回真值以防通知在这个pawn上的Landed() <ul>
+<li> <strong>HitNormal(击打法线)</strong> - 着陆的法线
+</li> <li> <strong>FloorActor(地面actor)</strong> - 用于该actor着陆的actor。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Controller.uc
+</div>
+<div class="codesnippet">
+<pre>
+event bool NotifyLanded(vector HitNormal, Actor FloorActor);
+</pre>
+</div>
+<p />
+<h4><a name="物理体积改变"></a> 物理体积改变 </h4>
+当物理体积变量改变时触发该事件。 <ul>
+<li> <strong>NewVolume(新体积)</strong> - 设置在物理体积上的体积
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event PhysicsVolumeChange(PhysicsVolume NewVolume);
+</pre>
+</div>
+<p />
+<h5><a name="Touch(触碰)"></a> Touch(触碰) </h5>
+当两个actor和Other(其他)相互触碰时调用touch(触碰)。两个actor和other(其他)必须可以碰撞，并且其中一个actor或者其他(other)必须使用非屏蔽碰撞。 <ul>
+<li> <strong>Other</strong> - 触碰到这个actor的actor
+</li> <li> <strong>OtherComp(其他组件)</strong> - 触碰这个actor的组件
+</li> <li> <strong>HitLocation(击打位置)</strong> - 发生触碰地点的世界位置
+</li> <li> <strong>HitNormal(击打法线)</strong> - 发生触碰的法线。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event Touch(Actor Other, PrimitiveComponent OtherComp, vector HitLocation, vector HitNormal);
+</pre>
+</div>
+<p />
+<h4><a name="PostTouch(后触碰)"></a> PostTouch(后触碰) </h4>
+完成物理后，调用在PendingTouch(搁置触碰)actor上的PostTouch(后触碰) Pending Touch(搁置触碰)actor是一种在运动事件中被触碰的actor，它想在运动完成之后添加一个效果。两个actor必须可以进行碰撞，并且其中一个actor必须使用非屏蔽碰撞。 <ul>
+<li> <strong>Other(其他)</strong> - PendingTouch(搁置触碰) Actor
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event PostTouch(Actor Other);
+</pre>
+</div>
+<p />
+<h4><a name="Untouch(未触碰)"></a> Untouch(未触碰) </h4>
+在没有触碰到other(其他)的actor上调用UnTouch(未碰撞)，调用Untouch(未触碰)。比如，如果玩家的pawn最初触碰到一个触发器时，玩家的pawn和触发器都将收到该触碰事件。当该玩家的pawn从触发器处移开，使碰撞不再触碰彼此，那么玩家的pawn会同其他设置为Trigger(触发器)的参数一起调用UnTouch(未触碰) 两个actor和other(其他)必须可以碰撞，并且其中一个actor或者其他(other)必须使用非屏蔽碰撞。 <ul>
+<li> <strong>Other(其他)</strong> - Untouch(未触碰过的) actor
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event UnTouch(Actor Other);
+</pre>
+</div>
+<p />
+<h4><a name="Bump(撞击)"></a> Bump(撞击) </h4>
+当两个actor和other(其他)相互撞击进入彼此时调用Bump(撞击)。两个actor可other(其他)必须可以碰撞，并且两个actor和other(其他)必须使用屏蔽碰撞。 <ul>
+<li> <strong>Other(其他)</strong> - 撞击进这个actor的actor
+</li> <li> <strong>OtherComp(其他组件)</strong> - 撞击进这个actor的组件
+</li> <li> <strong>HitNormal(击打法线)</strong> - 撞击发生的法线。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event Bump(Actor Other, PrimitiveComponent OtherComp, Vector HitNormal);
+</pre>
+</div>
+<p />
+需要注意的是一个Pawn的控制器可以更改Bump(撞击)调用的方式，这点很重要。
+<p />
+当我们的pawn同一个障碍玩家进行碰撞时调用NotifyBump(通知bump)，回到真值(true)以防通知在pawn上的Bump()
+<p />
+<div class="codetitlebar">
+Controller.uc
+</div>
+<div class="codesnippet">
+<pre>
+event bool NotifyBump(Actor Other, Vector HitNormal);
+</pre>
+</div>
+<p />
+<h4><a name="BaseChange(基础改变)"></a> BaseChange(基础改变) </h4>
+当actor的基础变量改变时调用BaseChange(基础改变) 当Base(基础)设置为无时，也调用BaseChange(基础改变)；当actor在空间漂浮时会发生这种情况。基础变量是一个actor引用，它指向当前actor上的内容。
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event BaseChange();
+</pre>
+</div>
+<p />
+<h4><a name="CollisionChanged(碰撞改变)"></a> CollisionChanged(碰撞改变) </h4>
+当actor碰撞属性中有任何改变，调用CollisionChanged(碰撞改变)。
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event CollisionChanged();
+</pre>
+</div>
+<p />
+<h4><a name="Encroaching(侵占)"></a> Encroaching(侵占) </h4>
+当该actor正在侵占other(其他)，而我们不能找到合适的地方放置other(其他)，则调用EncroachingOn(侵占)  <ul>
+<li> <strong>Other(其他)</strong> - 正在实施侵占的actor
+</li> <li> <strong>Return(返回)</strong> - 如果您想中止这次移动，则回到真值(true)，或者选择False(假值)允许其移动。<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> 请不要中止PHYS_RigidBody(物理刚体) Actor的移动，因为它会导致虚幻引擎的位置和物理引擎位置不匹配。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event bool EncroachingOn(Actor Other);
+</pre>
+</div>
+<p />
+<h4><a name="EncroachedBy(被侵占)"></a> EncroachedBy(被侵占) </h4>
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event EncroachedBy(Actor Other);
+</pre>
+</div>
+<p />
+<h4><a name="RanInto(跑进)"></a> RanInto(跑进) </h4>
+encroaching(侵占)actor调用RanInto(跑进)，这样能成功移开Other(其他)actor <ul>
+<li> <strong>Other(其他)</strong> - 被移开的actor。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+event RanInto(Actor Other);
+</pre>
+</div>
+<p />
+<h3><a name="Performing collision checks(表现碰撞检测)"></a> Performing collision checks(表现碰撞检测) </h3>
+<h4><a name="Trace(踪迹)"></a> Trace(踪迹) </h4>
+如果线同世界内的任何一点有碰撞，则进行踪迹检测。 <ul>
+<li> <strong>HitLocation(击打位置)</strong> - 线在世界中进行碰撞的位置。
+</li> <li> <strong>HitLocation(击打法线)</strong> - 线进行碰撞地点的表面法线。
+</li> <li> <strong>TraceEnd</strong> - 在世界内踪迹中止位置的一点
+</li> <li> <strong>TraceStart(开始跟踪)</strong> - 在世界内踪迹开始位置的一点。
+</li> <li> <strong>bTraceActors(踪迹actor)</strong> - 踪迹是否冲撞actor
+</li> <li> <strong>Extent(粗细)</strong> - 如果这个向量同0相等 (向量[0.f, 0.f, 0.f])，那么进行的踪迹会被认作为0粗细 如果向量不是0的话，那么执行非零粗细跟踪。
+</li> <li> <strong>HitInfo(击打信息)</strong> - 这种结构包括同踪结果有关的信息。如果踪迹没有同任何物体进行碰撞，那这可能是无效的。 <ul>
+<li> <strong>Material(材质)</strong> - 踪迹击打的材质。
+</li> <li> <strong>Material(材质)</strong> - 踪迹击打的物理材质。
+</li> <li> <strong>Item(项)</strong> - 有关踪迹击打的额外信息。
+</li> <li> <strong>LevelIndex(关卡索引)</strong> - 踪迹击打了BSP的关卡索引。
+</li> <li> <strong>BoneName(骨骼名称)</strong> - 踪迹击打一个骨架网格组件的骨骼名称。
+</li> <li> <strong>HitComponent(击打组件)</strong> - 击打踪迹的组件
+</li></ul>
+</li> <li> <strong>ExtraTraceFlags</strong> - 可以提示如何进行追踪的额外踪迹标记 <ul>
+<li> <strong>TRACEFLAG_Bullet</strong> - 踪迹通常都会静态网格物体上的简单碰撞，而且通常都会针对每个多边形进行碰撞检测。
+</li> <li> <strong>TRACEFLAG_PhysicsVolumes</strong> - 踪迹将会检查与物理体积之间的碰撞。
+</li> <li> <strong>TRACEFLAG_SkipMovers</strong> - 踪迹将会忽略InterpActor。
+</li> <li> <strong>TRACEFLAG_Blocking</strong> - 如果设置了这个选项，那么踪迹会与可以拦截检查 actor（从这个 actor 中调用 Trace）和所有相撞的 actor 碰撞。所有相撞包括关卡几何体、pawn、插入的 actor、任何其他种类的 actor、地形和体积。
+</li></ul>
+</li> <li> <strong>Returned Actor(返回actor)</strong> - 踪迹返回到一个actor引用 如果返回为无，那么踪迹将不会击打任何物体。如果踪迹击打到了BSP，则返回actor是WorldInfo(世界信息) 否则，该踪迹会返回到它所击打的任何一个actor
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function Actor Trace(out Vector   HitLocation, out Vector HitNormal, Vector TraceEnd, optional Vector TraceStart, optional bool bTraceActors, optional Vector Extent, optional out TraceHitInfo HitInfo, optional int ExtraTraceFlags);
+</pre>
+</div>
+<p />
+<h4><a name="TraceComponent(踪迹组件)"></a> TraceComponent(踪迹组件) </h4>
+仅表现一个撞击InComponent(在组件内)的踪迹 如果踪迹击打，则回到真值(true)。在要求更加精细地判断是否击打了一个actor时，这是有用的。 <ul>
+<li> <strong>HitLocation(击打位置)</strong> - 线在世界中进行碰撞的位置。
+</li> <li> <strong>HitLocation(击打法线)</strong> - 线进行碰撞地点的表面法线。
+</li> <li> <strong>InComponent(组件中）</strong> - 使踪迹冲撞的组件
+</li> <li> <strong>TraceEnd</strong> - 在世界内踪迹中止位置的一点
+</li> <li> <strong>TraceStart(开始跟踪)</strong> - 在世界内踪迹开始位置的一点。
+</li> <li> <strong>Extent(粗细)</strong> - 如果这个向量同0相等 (向量[0.f, 0.f, 0.f])，那么进行的踪迹会被认作为0粗细 如果向量不是0的话，那么执行非零粗细跟踪。
+</li> <li> <strong>HitInfo(击打信息)</strong> - 这种结构包括同踪结果有关的信息。如果踪迹没有同任何物体进行碰撞，那这可能是无效的。 <ul>
+<li> <strong>Material(材质)</strong> - 踪迹击打的材质。
+</li> <li> <strong>Material(材质)</strong> - 踪迹击打的物理材质。
+</li> <li> <strong>Item(项)</strong> - 有关踪迹击打的额外信息。
+</li> <li> <strong>LevelIndex(关卡索引)</strong> - 踪迹击打了BSP的关卡索引。
+</li> <li> <strong>BoneName(骨骼名称)</strong> - 踪迹击打一个骨架网格组件的骨骼名称。
+</li> <li> <strong>HitComponent(击打组件)</strong> - 击打踪迹的组件
+</li></ul>
+</li> <li> <strong>bComplexCollision(复杂碰撞)</strong> - 如果您想使用每个多边形的碰撞，则设为真值(true)。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function bool TraceComponent(out Vector HitLocation, out Vector HitNormal, PrimitiveComponent InComponent, Vector TraceEnd, optional Vector TraceStart, optional Vector Extent, optional out TraceHitInfo HitInfo, optional bool bComplexCollision)
+</pre>
+</div>
+<p />
+<h4><a name="快速踪迹"></a> 快速踪迹 </h4>
+在世界内表现踪迹，如果它 <strong>没有</strong> 同任何物体碰撞，则返回真值(true)。如果一个actor有另一个actor的视野线，那么对快速检测很有用。 <ul>
+<li> <strong>TraceEnd</strong> - 在世界内踪迹中止位置的一点
+</li> <li> <strong>TraceStart(开始跟踪)</strong> - 在世界内踪迹开始位置的一点。
+</li> <li> <strong>BoxExtent(盒子粗细)</strong> - 如果这个向量同0相等 (向量[0.f, 0.f, 0.f])，那么表现的踪迹会被认作为0粗细 如果向量不是0的话，那么显示非零粗细踪迹。
+</li> <li> <strong>bTraceBullet(踪迹子弹)</strong> - 如果您希望踪迹表现得象子弹一样，则设为真值(true)。
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function bool FastTrace(Vector TraceEnd, optional Vector TraceStart, optional Vector BoxExtent, optional bool bTraceBullet);
+</pre>
+</div>
+<p />
+<h4><a name="TraceAllPhysicsAssetInteractions(跟踪所有物理资源互动)"></a> TraceAllPhysicsAssetInteractions(跟踪所有物理资源互动) </h4>
+在世界内表现踪迹撞击一个骨架网格组件的物理资源，并回到所有的击打。 <ul>
+<li> <strong>SkelMeshComp(骨架网格组件)</strong> - 用来检测踪迹撞击的骨架网格组件。
+</li> <li> <strong>EndTrace(中止踪迹)</strong> - 在世界内踪迹中止位置的一点。
+</li> <li> <strong>TraceStart(开始跟踪)</strong> - 在世界里踪迹开始位置的一点
+</li> <li> <strong>out_Hits(外部_击打)</strong> - 输出一个包括同踪迹结果相关的数组 <ul>
+<li> <strong>HitActor(击打actor)</strong> - 被击打的actor
+</li> <li> <strong>HitLocation(击打位置)</strong> - 踪迹击打位置的世界位置
+</li> <li> <strong>HitComponent(击打组件)</strong> - 踪迹击打的击打法线
+</li> <li> <strong>RayDir</strong> - 踪迹的方向。
+</li> <li> <strong>StartTrace(开始踪迹)</strong> - 踪迹开始位置的世界位置。
+</li> <li> <strong>HitInfo(击打信息)</strong> - 这种结构包括同踪结果有关的信息。如果踪迹没有同任何物体进行碰撞，那这可能是无效的。 <ul>
+<li> <strong>Material(材质)</strong> - 踪迹击打的材质。
+</li> <li> <strong>Material(材质)</strong> - 踪迹击打的物理材质。
+</li> <li> <strong>Item(项)</strong> - 有关踪迹击打的额外信息。
+</li> <li> <strong>LevelIndex(关卡索引)</strong> - 踪迹击打了BSP的关卡索引。
+</li> <li> <strong>BoneName(骨骼名称)</strong> - 踪迹击打一个骨架网格组件的骨骼名称。
+</li> <li> <strong>HitComponent(击打组件)</strong> - 击打踪迹的组件
+</li></ul>
+</li></ul>
+</li> <li> <strong>Extent(粗细)</strong> - 如果这个向量同0相等 (向量[0.f, 0.f, 0.f])，那么进行的踪迹会被认作为0粗细 如果向量不是0的话，那么显示非零粗细踪迹。
+</li> <li> 如果任何踪迹被监测则返回真值(true)
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function bool TraceAllPhysicsAssetInteractions(SkeletalMeshComponent SkelMeshComp, Vector EndTrace, Vector StartTrace, out Array&#60;ImpactInfo&#62; out&#95;Hits, optional Vector Extent);
+</pre>
+</div>
+<p />
+<h4><a name="IsOverlapping(正在覆盖)"></a> IsOverlapping(正在覆盖) </h4>
+如果这个actor正在覆盖A，则返回真值(true)。 <ul>
+<li> <strong>A</strong> - 检测覆盖条件的其他actor
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function bool IsOverlapping(Actor A);
+</pre>
+</div>
+<p />
+<h4><a name="GetBoundingCylinder(绑定圆柱体)"></a> GetBoundingCylinder(绑定圆柱体) </h4>
+如果可能，回到绑定圆柱体的半径和高度。 <ul>
+<li> <strong>CollisionRadius</strong> -碰撞半径/范围
+</li> <li> <strong>CollisionHeight</strong> - 碰撞高度
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function GetBoundingCylinder(out float CollisionRadius, out float CollisionHeight) const;
+</pre>
+</div>
+<p />
+<h4><a name="IsBlockedBy被屏蔽"></a> IsBlockedBy被屏蔽 </h4>
+如果这个actor正在被other屏蔽，则返回真值(true)。 <ul>
+<li> <strong>Other(其他)</strong> - 如果other(其他)正在屏蔽这个acto，那么Other(其他)是用来检测的
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+function bool IsBlockedBy(const Actor Other) const;
+</pre>
+</div>
+<p />
+<h4><a name="TOUCHINGACTORS(触碰actor)"></a> TOUCHINGACTORS(触碰actor) </h4>
+返回所有正在触碰这个actor的所有actor的交互函数。 <ul>
+<li> <strong>BaseClass(基类)</strong> - actor返回的类
+</li> <li> <strong>Actor</strong> - 同线触碰的actor
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+iterator function TouchingActors(class&#60;Actor&#62; BaseClass, out Actor Actor);
+</pre>
+</div>
+<p />
+<h4><a name="TRACEACTORS(踪迹actor)"></a> TRACEACTORS(踪迹actor) </h4>
+一个返回所有actor的交互函数；在世界中两点之间的TraceHitInfos(踪迹击打信息) 这对表现线性检测十分有用，而线性检测可以包括或剔除特定的actor种类，或者其他条件。 <ul>
+<li> <strong>BaseClass(基类)</strong> - actor返回的类
+</li> <li> <strong>Actor</strong> - 同线触碰的actor
+</li> <li> <strong>HitLoc(击打位置)</strong> - 在世界中线所碰撞的位置。
+</li> <li> <strong>HitNorm(击打法线)</strong> - 线进行碰撞处的表面法线。
+</li> <li> <strong>End(中止)</strong> - 在世界内跟踪结束位置的一点。
+</li> <li> <strong>Start(开始)</strong> - 在世界内踪迹开始位置的一点。
+</li> <li> <strong>Extent(粗细)</strong> - 如果这个向量同0相等 (向量[0.f, 0.f, 0.f])，那么进行的踪迹会被认作为0粗细 如果向量不是0的话，那么执行非零粗细跟踪。
+</li> <li> <strong>HitInfo(击打信息)</strong> - 这种结构包括同踪结果有关的信息。如果踪迹没有同任何物体进行碰撞，那这可能是无效的。 <ul>
+<li> <strong>Material(材质)</strong> - 踪迹击打的材质。
+</li> <li> <strong>Material(材质)</strong> - 踪迹击打的物理材质。
+</li> <li> <strong>Item(项)</strong> - 有关踪迹击打的额外信息。
+</li> <li> <strong>LevelIndex(关卡索引)</strong> - 踪迹击打了BSP的关卡索引。
+</li> <li> <strong>BoneName(骨骼名称)</strong> - 踪迹击打一个骨架网格组件的骨骼名称。
+</li> <li> <strong>HitComponent(击打组件)</strong> - 击打踪迹的组件
+</li></ul>
+</li> <li> <strong>ExtraTraceFlags</strong> - 提供踪迹算法提示的额外踪迹标记 <ul>
+<li> <strong>TRACEFLAG_Bullet(跟踪标记_子弹)</strong> - 踪迹的表现就象子弹。
+</li></ul>
+</li></ul>
+<!--      * <strong>TRACEFLAG_PhysicsVolumes(踪迹标记_物理体积)</strong> - 撞到物理体积上的踪迹。-->
+<!--      * <strong>TRACEFLAG_SkipMovers(踪迹标记_跳过移动物体)</strong> - 忽略InterpActor的踪迹。-->
+<!--      * <strong>TRACEFLAG_Blocking(踪迹标记_屏蔽)</strong> - 仅检测障碍actor的踪迹 -->
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+iterator function TraceActors(class&#60;Actor&#62; BaseClass, out Actor Actor, out Vector HitLoc, out Vector HitNorm, Vector End, optional Vector Start, optional Vector Extent, optional out TraceHitInfo HitInfo, optional int ExtraTraceFlags);
+</pre>
+</div>
+<p />
+<h4><a name="VISIBLECOLLIDINGACTORS(可见碰撞actor)"></a> VISIBLECOLLIDINGACTORS(可见碰撞actor) </h4>
+一个在特定的半径中返回所有碰撞actor(b碰撞actor设置为真值)的交互器函数，对这个特定范围来说，它从位置(默认为调用者的位置)到actor位置的踪迹不会击打世界。 <ul>
+<li> <strong>BaseClass(基类)</strong> - actor返回的类
+</li> <li> <strong>Actor</strong> - 同线触碰的actor
+</li> <li> <strong>Radius</strong> - 盒子的范围
+</li> <li> <strong>Loc</strong> - 盒子或球体中心所在的世界位置。
+</li> <li> <strong>bIgnoreHidden</strong> - 被忽略的隐藏actor
+</li> <li> <strong>Extent(粗细)</strong> - 如果这个向量同0相等 (向量[0.f, 0.f, 0.f])，那么进行的踪迹会被认作为0粗细 如果向量不是0的话，那么执行非零粗细跟踪。
+</li> <li> <strong>bTraceActors</strong> - 执行视野线检查，以确保actor对调用者可见。
+</li> <li> <strong>InterfaceClass</strong> - 排除不实现这个界面的actor。如果它的值为无，则忽略它。
+</li> <li> <strong>HitInfo(击打信息)</strong> - 这种结构包括同踪结果有关的信息。如果踪迹没有同任何物体进行碰撞，那这可能是无效的。 <ul>
+<li> <strong>Material(材质)</strong> - 踪迹击打的材质。
+</li> <li> <strong>Material(材质)</strong> - 踪迹击打的物理材质。
+</li> <li> <strong>Item(项)</strong> - 有关踪迹击打的额外信息。
+</li> <li> <strong>LevelIndex(关卡索引)</strong> - 踪迹击打了BSP的关卡索引。
+</li> <li> <strong>BoneName(骨骼名称)</strong> - 踪迹击打一个骨架网格组件的骨骼名称。
+</li> <li> <strong>HitComponent(击打组件)</strong> - 击打踪迹的组件
+</li></ul>
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+iterator function VisibleCollidingActors(class&#60;Actor&#62; BaseClass, out Actor Actor, float Radius, optional Vector Loc, optional bool bIgnoreHidden, optional Vector Extent, optional bool bTraceActors, optional class&#60;Interface&#62; InterfaceClass, optional out TraceHitInfo HitInfo);
+</pre>
+</div>
+<p />
+<h4><a name="COLLIDINGACTORS(碰撞actor)"></a> COLLIDINGACTORS(碰撞actor) </h4>
+在一定范围内返回碰撞(bCollideActors 设置为真值)的一个交互器函数。bUseOverlapCheck(使用覆盖检测)使用一个和球面对盒子检测，而不是检测物体的中心是否在一个球体当中。 <ul>
+<li> <strong>BaseClass(基类)</strong> - actor返回的类
+</li> <li> <strong>Actor</strong> - 同线触碰的actor
+</li> <li> <strong>Radius</strong> - 依赖于bUseOverlapCheck(使用覆盖检测)的球面半径或盒子的面积。
+</li> <li> <strong>Loc</strong> - 盒子或球体中心所在的世界位置。
+</li> <li> <strong>bUseOverlapCheck</strong> - 使用一个和球面对盒子检测，而不是检测物体的中心是否在一个球体当中。
+</li> <li> <strong>InterfaceClass</strong> - 排除不实现这个界面的actor。如果它的值为无，则忽略它。
+</li> <li> <strong>HitInfo(击打信息)</strong> - 这种结构包括同踪结果有关的信息。如果踪迹没有同任何物体进行碰撞，那这可能是无效的。 <ul>
+<li> <strong>Material(材质)</strong> - 踪迹击打的材质。
+</li> <li> <strong>Material(材质)</strong> - 踪迹击打的物理材质。
+</li> <li> <strong>Item(项)</strong> - 有关踪迹击打的额外信息。
+</li> <li> <strong>LevelIndex(关卡索引)</strong> - 踪迹击打了BSP的关卡索引。
+</li> <li> <strong>BoneName(骨骼名称)</strong> - 踪迹击打一个骨架网格组件的骨骼名称。
+</li> <li> <strong>HitComponent(击打组件)</strong> - 击打踪迹的组件
+</li></ul>
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+iterator function CollidingActors(class&#60;Actor&#62; BaseClass, out Actor Actor, float Radius, optional Vector Loc, optional bool bUseOverlapCheck, optional class&#60;Interface&#62; InterfaceClass, optional out TraceHitInfo HitInfo);
+</pre>
+</div>
+<p />
+<h4><a name="OVERLAPPINGACTORS(覆盖actor)"></a> OVERLAPPINGACTORS(覆盖actor) </h4>
+一个返回碰撞actor(bCollideActor设置为真值)的交互器函数，这个actor从位置(Loc)和/半径(radius)覆盖球体 <ul>
+<li> <strong>BaseClass(基类)</strong> - actor返回的类
+</li> <li> <strong>out_Actor</strong> - 在每个交互器中返回了的actor
+</li> <li> <strong>Radius</strong> - 用来进行覆盖检测的球体半径
+</li> <li> <strong>Loc</strong> - 用来进行覆盖检测的球体中心 (可选，否则调用者的位置会被使用)
+</li> <li> <strong>bIgnoreHidden</strong> - 如果为真值，忽略bHidden(隐藏)actor
+</li></ul>
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+iterator function OverlappingActors(class&#60;Actor&#62; BaseClass, out Actor out&#95;Actor, float Radius, optional Vector Loc, optional bool bIgnoreHidden);
+</pre>
+</div>
+<p />
+<h3><a name="碰撞类型"></a> 碰撞类型 </h3>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+您在游戏中可以选择一些碰撞类型。主要的方法是把关闭的网格用作碰撞外壳。
+<p />
+<h3><a name="骨架网格物体碰撞外壳"></a> 骨架网格物体碰撞外壳 </h3>
+请参阅 <a href="https://docs.unrealengine.com/5.0/udk/Three/PhysicsAssetEditor/UserGuide.html" class="twikiLink">PhAT User Guide</a> 学习如何使用骨架网格创建碰撞外壳。
+<p />
+<h3><a name="静态网格碰撞外壳"></a> 静态网格碰撞外壳 </h3>
+<p />
+静态网格碰撞外壳部分以静态网格方式储存。静态网格碰撞外壳用和静态网格一样的方式显示，所以比起屏蔽体积来说更加节省内存。
+<p />
+在静态网格物体浏览器中，您可以改变所使用的碰撞外壳的属性：
+<p /> <ul>
+<li> <strong>UseSimpleRigidBodyCollision</strong> - 这个项目默认为真值。如果这个值是真的(true)，并且碰撞外壳存在，那么碰撞外壳会变成一系列凹凸外壳，它会用来计算物理物体(比如骑车或者破碎娃娃)碰撞冲撞这个静态网格。如果 UseSimpleRigidBodyCollision(使用简化刚体)为真值并且没有碰撞外壳，刚体不会同这个静态网格进行碰撞。如果UseSimpleRigidBodyCollision(使用简化刚体)为假(false)并且物理引擎会同静态网格上的每个多边形进行碰撞，如果静态网格的多边形非常之大，那么仅使用这个选项。
+</li> <li> <strong>UseSimpleRigidBodyCollision(使用简化刚体碰撞)</strong> - 这个项目默认为真值。如果这个是真值(true)，并且碰撞外壳还在的话，则会被用作非零粗细线性检测。这包括像玩家运动这样的事情，但是不包括类似于武器开火的事情。如果这是真值(true)，并且有碰撞外壳，则不会使用多边形碰撞。如果您设置 UseSimpleBoxCollision(使用简单盒子碰撞)为假值(false)，就会根据材质来使用每个多边形碰撞。如果当您没有碰撞模型，如果您设置 UseSimpleBoxCollision(使用简单盒子碰撞)为真值，那就不会有碰撞外壳。
+</li> <li> <strong>UseSimpleRigidBodyCollision(使用简化刚体碰撞)</strong> - 这个项目默认为真值。如果是真值(true)则碰撞外壳如果存在，则会为零粗细线性检测所用。这包括了大多数武器火焰、透镜火光轨迹等等。如果您设置UseSimpleLineCollision(使用简化刚体碰撞)为真值(true)，当您没有碰撞模型，或如果您设置UseSimpleLineCollision(使用简化刚体碰撞)为假(false)，则根据材质设置使用每个多边形碰撞。
+</li></ul>
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/CollisionTechnicalGuideCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:18:10 GMT -->
+</html></body>

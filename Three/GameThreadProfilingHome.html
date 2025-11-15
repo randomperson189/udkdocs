@@ -1,0 +1,802 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GameThreadProfilingHome.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:16:36 GMT -->
+<head>
+<title> UDK | GameThreadProfilingHome    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">GameThreadProfilingHome  </b></div>
+<div id="tooltext">
+<a href="GameThreadProfilingHomeJP.html" class="twikiLink">日本語訳</a><br><a href="https://udn.epicgames.com/Three/GameThreadProfilingHomeCH" class="restricted" class="restricted" class="twikiLink">中国翻译</a><br><a href="GameThreadProfilingHomeKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/GameThreadProfilingHome -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="PerformanceHome.html" class="twikiLink">Performance, Profiling, and Optimization</a></b> &gt; Game Thread Profiling and Optimization
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Game Thread Profiling and Optimization"></a> Game Thread Profiling and Optimization </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="GameThreadProfilingHome.html#Game Thread Profiling and Optimization"> Game Thread Profiling and Optimization</a> <ul>
+<li> <a href="GameThreadProfilingHome.html#Overview"> Overview</a>
+</li> <li> <a href="GameThreadProfilingHome.html#Gameplay Profiler"> Gameplay Profiler</a>
+</li> <li> <a href="GameThreadProfilingHome.html#Stats Viewer"> Stats Viewer</a>
+</li> <li> <a href="GameThreadProfilingHome.html#Level Profiling and Optimization"> Level Profiling and Optimization</a> <ul>
+<li> <a href="GameThreadProfilingHome.html#Dynamic Light Environment Updating"> Dynamic Light Environment Updating</a>
+</li> <li> <a href="GameThreadProfilingHome.html#Loading Performance"> Loading Performance</a>
+</li> <li> <a href="GameThreadProfilingHome.html#Particles"> Particles</a>
+</li> <li> <a href="GameThreadProfilingHome.html#Physics"> Physics</a>
+</li></ul>
+</li> <li> <a href="GameThreadProfilingHome.html#Script Profiling"> Script Profiling</a> <ul>
+<li> <a href="GameThreadProfilingHome.html#Log Messages"> Log Messages</a>
+</li> <li> <a href="GameThreadProfilingHome.html#Garbage Collection"> Garbage Collection</a>
+</li> <li> <a href="GameThreadProfilingHome.html#Per-Frame Expensive Updates"> Per-Frame Expensive Updates</a>
+</li> <li> <a href="GameThreadProfilingHome.html#Slow _UnrealScript Function Calls"> Slow UnrealScript Function Calls</a>
+</li> <li> <a href="GameThreadProfilingHome.html#Spawning Is Slow"> Spawning Is Slow</a>
+</li> <li> <a href="GameThreadProfilingHome.html#UnrealScript _PreProcessor Code Exclusion"> UnrealScript PreProcessor Code Exclusion</a>
+</li> <li> <a href="GameThreadProfilingHome.html#Use _TickableActors List"> Use TickableActors List</a>
+</li> <li> <a href="GameThreadProfilingHome.html#Useful Exec Commands"> Useful Exec Commands</a>
+</li> <li> <a href="GameThreadProfilingHome.html#Line Checks"> Line Checks</a>
+</li></ul>
+</li> <li> <a href="GameThreadProfilingHome.html#Native Code Profiling"> Native Code Profiling</a> <ul>
+<li> <a href="GameThreadProfilingHome.html#Engine Pools"> Engine Pools</a>
+</li> <li> <a href="GameThreadProfilingHome.html#Looking For Perf Issues Define"> Looking For Perf Issues Define</a>
+</li> <li> <a href="GameThreadProfilingHome.html#C++ _PreProcessor Code Exclusion"> C++ PreProcessor Code Exclusion</a>
+</li></ul>
+</li> <li> <a href="GameThreadProfilingHome.html#Player/AI Profiling"> Player/AI Profiling</a> <ul>
+<li> <a href="GameThreadProfilingHome.html#AI Logging"> AI Logging</a>
+</li> <li> <a href="GameThreadProfilingHome.html#Move Actor"> Move Actor</a>
+</li> <li> <a href="GameThreadProfilingHome.html#NavMesh Performance"> NavMesh Performance</a>
+</li> <li> <a href="GameThreadProfilingHome.html#Skeletal Mesh Component Upadtes"> Skeletal Mesh Component Upadtes</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Every gameplay object that is added to the scene takes up some resource; and usually the most interesting objects take up the most resources. In order to have enough GameThread CPU time for those objects you need to make certain that other objects are not unfairly utilizing resources and that all objects do the minimal amount of work needed to accomplish their goal.
+<p />
+<a name="ScriptProfiling"></a>
+<h2><a name="Gameplay Profiler"></a> Gameplay Profiler </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<strong>Gameplay Profiler</strong> can provide lots of great information about expensive functions in your script code.  It's extremely fast to capture profiling data and will give you instant access to hot spots over a short sampling duration.
+<p />
+To capture script profiler data:
+<p /> <ul>
+<li> Type <code><b>PROFILEGAME START</b></code> in the console to start capturing data.
+</li> <li> When you're done, type <code><b>PROFILEGAME STOP</b></code> to stop capturing and save the data to disk.
+</li> <li> Profiling data will be spit out to <code>\[UnrealInstallation]\[GameName]\Profiling\</code> folder. <ul>
+<li> On consoles, the stats data will automatically be transferred to the PC through UnrealConsole.
+</li></ul>
+</li> <li> Run GameplayProfiler and load up the file (e.g. <code>[GameName]-07.15-18.58.uprof</code>).
+</li></ul>
+<p />
+See the <a href="GameplayProfiler.html" class="twikiLink">Gameplay Profiler</a> documentation for more a detailed overview and additional information.
+<p />
+<strong>NOTE:</strong>  In many cases the <a href="GameThreadProfilingHome.html#StatsViewer" class="twikiAnchorLink">Stats Viewer</a> tool can actually provide more detailed script profiling data than the GameplayProfiler, at the cost of more runtime overhead.  Just make sure to #define <strong>STAT SLOW</strong> to <strong>1</strong> when capturing stats data, and StatsViewer will display full UnrealScript call graphs for frames!
+<p />
+<a name="StatsViewer"></a>
+<h2><a name="Stats Viewer"></a> Stats Viewer </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+You can use <strong>StatsViewer</strong> to help track down CPU performance problems. It also serves as a detailed profiling tool for UnrealScript code!
+<p />
+StatsViewer can display all <strong>UnrealScript function calls</strong> and <strong>game stats</strong> (value counters, cycle timers, etc) along a graph timeline where you can sort and view data, similar to how you would in PIX.  More importantly, it can show you a nice <strong>hierarchical call graph</strong> of scoped cycle stats and script functions.  This lets you quickly see "what's slow" for any given frame!  (Just double click the frame in the graph window.)
+<p />
+<strong>Preparation:</strong>
+<p /> <ul>
+<li> Make sure <code>STATS</code> is defined to <code>1</code> in the build you're using (UnBuild.h). <ul>
+<li> This is enabled by default in Debug and Release builds.
+</li></ul>
+</li> <li> To profile script code, also make sure <code>STATS_SLOW</code> is defined to <code>1</code> (UnStats.h). <ul>
+<li> This slows down profiling, but provides detailed call graph data for all UnrealScript calls.
+</li></ul>
+</li></ul>
+<p />
+<strong>To capture stat data to disk (recommended):</strong>
+<p /> <ul>
+<li> Type <code><b>STAT StartFile</b></code> in the console to start capturing stats to disk.
+</li> <li> When you're done, type <code><b>STAT StopFile</b></code> to stop logging and finalize the stats file.
+</li> <li> To start capturing stats immediately on app startup, pass the <code>-StartStatsFile</code> argument to the command line.
+</li> <li> On consoles, make sure to pass the <code>-DisableHDDCache</code> command-line option! <ul>
+<li> This turns off caching of texture mips to the HDD (which contests with stat file writing).
+</li></ul>
+</li> <li> Stat files will be spit out to <code>[UnrealInstallation]\[GameName]\Profiling\</code> folder. <ul>
+<li> On consoles, the stats data will automatically be transferred to the PC through UnrealConsole.
+</li></ul>
+</li> <li> Run StatsViewer and load up the file (e.g. <code>[GameName]-07.15-18.58.ustats</code>).
+</li></ul>
+<p />
+<strong>To capture live stats from a running game:</strong>
+<p /> <ul>
+<li> Load up the game.
+</li> <li> Connect the StatsViewer to the Xenon session using <strong>Connect to IP</strong>. <ul>
+<li> On Xenon, use the Xenon's "Title IP Address", not the "Debug Channel IP Address". <ul>
+<li> You can find this in UFE by clicking "Show All Target Information".
+</li></ul>
+</li> <li> Make sure the port number is set to <strong>13002</strong>.
+</li></ul>
+</li> <li> Live stats will start streaming in through a UDP connection!
+</li> <li> You can save the captured data out to disk using <code>File &gt; Save</code>.
+</li></ul>
+<p />
+<strong>Viewing stats data:</strong>
+<p /> <ul>
+<li> Load up a <strong>.ustats</strong> file in StatsViewer tool, or <strong>Connect</strong> to a live game session.
+</li> <li> The interactive graph will show you frame times initially so you can see hitches and trending.
+</li> <li> <strong>Drag and drop</strong> stats from the left-hand column onto the graph to display the stat data.
+</li> <li> <strong>Click</strong> in the graph to select a frame and view stats data for that frame.
+</li> <li> <strong>Double-click</strong> in the graph to <strong>open the Call Graph</strong> for that frame!
+</li> <li> Right click on stats in the left-hand column to "View Frames by Criteria" (e.g. only frames with FPS &lt; 20, etc.).
+</li> <li> Use the menu options to switch viewing modes (frame #s versus time, ranged/overall data).
+</li></ul>
+<p />
+<strong>Other notes:</strong>
+<p /> <ul>
+<li> Doesn't work in LTCG modes (unless you <code>#define STATS</code> locally.)  Use Release.
+</li> <li> Live stat capture is still somewhat buggy (drops frames, scrolling is a bit weird).
+</li></ul>
+<p />
+For more information about real-time Stats capture, see the <a href="PerfStats.html" class="twikiLink">Performance Tracking System</a>.
+<p />
+<a name="LevelOptimization"></a>
+<h2><a name="Level Profiling and Optimization"></a> Level Profiling and Optimization </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<a name="DleUpdating"></a>
+<h3><a name="Dynamic Light Environment Updating"></a> Dynamic Light Environment Updating </h3>
+<p />
+When profiling a level, it is very possible that Dynamic light environment updates might show up as expensive. When such a situtation is encountered, it is time to take a look at what Actors in the level are using DLEs and what the settings on those are.
+<p />
+All <strong>InterpActors</strong> (aka Movers) and <strong>KActors</strong> have a dynamic light environment by default. When a DLE updates however, it does line checks to light sources, which can add quite a lot of CPU cost. However, there are various options you can set that reduce the cost of lighting on dynamic objects.
+<p />
+Here are the light environment settings from most expensive to least (on the game thread) and when they should be used:
+<p />
+1) <strong>bEnabled=True</strong>, <strong>bDynamic=True</strong> (the default)
+<p />
+These should only be used where needed, they will update based on <strong>InvisibleUpdateTime</strong> and <strong>MinTimeBetweenFullUpdates</strong>.  There probably shouldn't be more than 50 of these active at any given time.  They do extra visibility checks when visible, close to a player or when they are moving.
+<p />
+2) <strong>bEnabled=True</strong>, <strong>bDynamic=False</strong>, <strong>bForceNonCompositeDynamicLights=True</strong>
+<p />
+These should be very cheap, the environment is updated on the first tick and never again.  <strong>bForceNonCompositeDynamicLights</strong> is necessary to allow dynamic lights to affect them, which doesn't have any significant game thread overhead.  There can be hundreds of these, the only cost (after the first tick) will be line checks to dynamic lights (and only when the owner is visible).  These look better than using precomputed shadows because they can rotate and the lighting will still be correct.  They are used by fractured meshes, GDO's, and some other things.  If you guys see significant cost with these then it can probably be optimized quite a bit on the code side.
+<p />
+3) <strong>bEnabled=False</strong>, <strong>bUsePrecomputedShadows=True</strong> (on the primitive component).  Also, you'll have to take it out of the dynamic channel and put it in the static lighting channel.
+<p />
+These will be lightmapped, very cheap to render and should have virtually no game thread overhead (except that the <em>UDynamicLightEnvironmentComponent::Tick</em> function is still called).  They will look wrong when moved.
+<p />
+There is a console command that can be used to see how many light environments are active. Type <strong>SHOWLIGHTENVS</strong> at the console and you will get a list of all environments that got ticked that frame. The output should look like:
+<p />
+<pre>
+Log: LE: SP&#95;MyMap&#95;01&#95;S.TheWorld:PersistentLevel.InterpActor&#95;12.DynamicLightEnvironmentComponent&#95;231 1
+Log: LE: SP&#95;MyMap&#95;01&#95;S.TheWorld:PersistentLevel.InterpActor&#95;55.DynamicLightEnvironmentComponent&#95;232 0
+Log: LE: SP&#95;MyMap&#95;01&#95;S.TheWorld:PersistentLevel.InterpActor&#95;14.DynamicLightEnvironmentComponent&#95;432 1 ...
+</pre>
+<p />
+A '1' at the end of the line means <strong>bDynamic</strong> is set to <strong>TRUE</strong>. This should be used to guide level designers to change their map to reduce update overhead.
+<p />
+<h3><a name="Loading Performance"></a> Loading Performance </h3>
+<p />
+Sometimes you are seeing issues with levels taking a long time to stream in. Usually some specific object is the cause of the long stream in times. We just need to find that object and see why!
+<p />
+There are a number of defines in the engine that deal with loading/streaming:
+<p /> <ul>
+<li> TRACK_SERIALIZATION_PERFORMANCE
+</li> <li> TRACK_DETAILED_ASYNC_STATS
+</li> <li> TRACK_FILEIO_STATS
+</li></ul>
+<p />
+Turn those all on and then load the level and you will get a bunch of stats in the log file that will show you which objects are taking the most time.
+<p />
+<h3><a name="Particles"></a> Particles </h3>
+<p />
+There are usually lots of particles in a scene and not all of them have the same costs. We would like to know if there are any particles that are significantly more costly than others. Additionally, we want to know if there are any particles doing work when they don't need to be.
+<p />
+Setting <code>#define TRACK_DETAILED_PARTICLE_TICK_STATS 1</code> will out put a number of particle tick stats to the log
+<p />
+Additionally, you will wan to look for particles that are updating their bounds every frame. The ContentAudit will have tagged those ParticleSystems, but if you ever see Particles having their bounds being dynamically updated each frame, those are always a good candidate to have a FixedRelativeBoundingBox
+<p />
+Generally, smoke / splash effects that occlude your view of the level make up the majority of slow particle systems.  These cost more than hit effects and sparks because they are large on the screen.  The single most effective way to optimize these is to use fewer particles that are more opaque.  Simplifying the material can have some small gains too, but nothing like reducing the number of layers.
+<p />
+Distortion has quite a bit of constant overhead in each DPG that it is used in.  When you make an effect like a screen damage or blood effect that is placed in the foreground DPG (either by you or gameplay code), it adds this constant overhead to the foreground DPG as well as the world DPG.  You can avoid this by doing the refraction effect using a scene texture lookup in the material.  Using scene texture will change the sort order, but that won't matter for an effect in the foreground DPG.  It will also not handle overlapping effects, but that's rarely noticeable for screen effects.
+<p />
+<h3><a name="Physics"></a> Physics </h3>
+<p />
+Physics simulation of objects via the PhysX physics engine during play can add a great deal of realism and visual polish to your game, but it also has the potential to affect performance. In order to monitor and analyze the physics simulation, Unreal Engine 3 provides some built-in features to visualize and output information. Third party tools are also provided by nVidia which enable very detailed profiling capabilities.
+<p />
+Check out <a href="PhysXProfilingHome.html" class="twikiLink">PhysX Profiling Home</a> for how to use the PhysX profiling tools
+<p />
+Some other useful <a href="ConsoleCommands.html" class="twikiLink">console commands</a> to help you see what physics is doing:
+<p /> <ul>
+<li> LISTAWAKEBODIES:  When you are standing still and nothing is moving around and Physics time is sky high, there might be a body that has not gone to sleep.
+</li> <li> PHYSASSETBOUNDS:  Where are the bounds for the phys assets in the scene
+</li> <li> nxvis collision:  good general command to see what the physics collision scene looks like
+</li></ul>
+<p />
+<h2><a name="Script Profiling"></a> Script Profiling </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="Log Messages"></a> Log Messages </h3>
+<p />
+Lots of information is sent to the log. Over time the amount of debug logging can become overwhelming. Once that occurs real scary issues can be lost amongst the spam. To combat this we want to keep the Log basically empty and when we see issues being logged we want to fix them immediately.
+<p />
+Anytime you see a log warning/message, find out why it is occurring and fix the underlying issue. Don't let them pile up.
+<p />
+<strong>NOTE:</strong> when adding log warning / debug messages PLEASE PLEASE PLEASE add:
+<p /> <ul>
+<li> How to fix / where to look to fix the issue
+</li> <li> What object is emitting the log
+</li></ul>
+<p />
+With those two added data points it makes it almost trivial to fix things!
+<p />
+An example of a log message you might encounter and the fix for it is:
+<p />
+Cooking Convex For __: You will see that message if someone has not set the PreCachedPhysScale. This is causing the game to have to create convex hulls for that object. That is slow and can be done ahead of time and should be
+<p />
+<img src="rsrc/Three/GameThreadProfilingHome/PreCachedPhysScale.jpg" alt="PreCachedPhysScale.jpg" width="900" height="561" />
+<p />
+<h3><a name="Garbage Collection"></a> Garbage Collection </h3>
+<p />
+UnrealEngine3 uses GarbageCollection for part of its memory management strategy. We want to minimize the cost of doing the actual GC. We can do that by minimizing the amount of objects we iterate over and the amount of objects we are constantly spawning and GCing.
+<p />
+See <a href="GarbageCollection.html#Optimizing%20GC%20Performance">Optimizing GC Performance</a> for detailed information.
+<p />
+Also check out: <code>DETAILED_PER_CLASS_GC_STATS</code> in the code. Turning this on will show you the class of the objects that the GarbageCollector is having to look at and GC. When you see a specific type of object you should ask: "can I cache that object?". Caching it in a pool or on the Actor spawning it might be better than constantly spawning it only to have it GC'd
+<p />
+<h3><a name="Per-Frame Expensive Updates"></a> Per-Frame Expensive Updates </h3>
+<p />
+Every frame objects are being updated / computed. Some of those objects take a huge amount of time more than others. This could be due to a large number of attachments, having incorrect collision settings, or inefficient tick() code.
+<p />
+In UnActorComponent.cpp, there are a large number of defines which determine what we collect.
+<p />
+We need to turn the following "on"
+<p /> <ul>
+<li> LOG_DETAILED_COMPONENT_UPDATE_STATS
+</li> <li> LOG_DETAILED_ACTOR_UPDATE_STATS
+</li></ul>
+<p />
+Once those are on you should get a huge amount of data in the logs. The objects at the top of the list are the more expensive ones and should be looked at first.
+<p />
+Additionally, if you have LOTS of small costing objects that are not near the player you should look at trying to find ways to put them into the TickableActors List or some other way to put them to sleep when the player is not around.
+<p />
+<h3><a name="Slow _UnrealScript Function Calls"></a> Slow UnrealScript Function Calls </h3>
+<p />
+Games should be using UnrealScript to quickly prototype functionality. And then once that is up and running profile and see which functions are crazy slow. For those functions we will then either optimize the unrealscript or convert to C++. This provides a quick way to play through the level and have all of the slow ones be logged to a file.
+<p />
+Additionally, this allows you to easily look for functions that are really slow that may happen only a few times but can help cause a hitchy frame.
+<p />
+Turn this define on: <code>SHOW_SLOW_UNREALSCRIPT_FUNCTION_CALLS</code>
+<p />
+Additionally there is <code>SHOW_SLOW_UNREALSCRIPT_FUNCTION_CALLS_TAKING_LONG_TIME_AMOUNT</code> that determines how "slow" the function call needs to be before it is logged.
+<p />
+<h3><a name="Spawning Is Slow"></a> Spawning Is Slow </h3>
+<p />
+There are a lot of things that occur when an object is spawned / ConstructObject into the world.  When AI's are flood spawned into the world that can cause massive hitches.  So we want to reduce that amount.
+<p />
+The engine (on console) will alert you to the fact if you are spawning multiple pawns a frame.
+<p />
+But you should keep in the back of your mind to not just spawn a huge amount of things at once.
+<p />
+Death is a great example of this.  When a pawn dies there is usually:
+<p /> <ul>
+<li> Gore Mesh
+</li> <li> Gibs
+</li> <li> Playing sounds
+</li> <li> Blood particles
+</li> <li> Camera Particles
+</li> <li> Decals
+</li> <li> Death particles
+</li> <li> Bullet impacts (from the bullets that caused the death)
+</li> <li> Bullet impact sounds
+</li></ul>
+<p />
+That is a lot of stuff!   If you were to spawn it all in one frame that would probably cause a hitch.  Delaying a frame or spawning some of those over a number of frames more than likely will not be noticeable and will not cause the engine to hitch.
+<p />
+<h3><a name="UnrealScript _PreProcessor Code Exclusion"></a> UnrealScript PreProcessor Code Exclusion </h3>
+<p />
+In UnrealScript, code can be excluded from shipping builds by using the <code>`if(`notdefined(FINAL_RELEASE))</code> preprocessor command. This can help to keep extraneous code from being included and executed.
+<p />
+<h3><a name="Use _TickableActors List"></a> Use TickableActors List </h3>
+<p />
+Many times you will have a large level with lots of actors in the level that have some sort of logic that is done in Tick(). But when the player is not near them doing that logic is not important. So we need some way to not ever tick those actors so we are not wasting cpu cycles.
+<p />
+Basically to utilize the TickableActors you need to need to be able to get an event from to "turn back on" the object. So Foliage is a great example, do not tick them unless the player has just brushed up against them.
+<p />
+To move the Actor in and out of the TickableActors list you use: <code>SetTickIsDisabled(TRUE/FALSE);</code>
+<p />
+<strong>NOTE:</strong> For things that don't have a nice "event" way to do things you will need to create a manager or some other mechanism to determine when the "asleep" objects should be "woken up"
+<p /> <ul>
+<li> AInteractiveFoliageActor is a good example of an actor that uses this system
+</li></ul>
+<p />
+<h3><a name="Useful Exec Commands"></a> Useful Exec Commands </h3>
+<p />
+Basically, there are  LOTS of nice exec commands which do cool things for perf and memory.  The issue is that they are normally buried in the specific code that deals with that subsystem.   Or they are listed on the page that deals with that subsystem.  So it pretty hard to find them all.
+<p />
+Additionally, not all of them have a standard naming convention.
+<p />
+We try to list out some of the more useful ones here.
+<p />
+Basically, most exec commands need to have a #define turned on somewhere.  So it often best to take the exec command and then FindInFiles for it and see what other things need to be active for it to work.
+<p />
+Also, not all commends output to the log.  Some will create files, some will create data in memory that then needs a "Dump" command before it is logged.
+<p />
+FindInFiles is your friend!
+<p />
+UnPlayer.cpp Exec() function has a large number of exec commands
+UnLevTic.cpp has a large number of G______ vars that are toggled on and off to allow certain logging
+<p /> <ul>
+<li> SHOWSKELCOMPTICKTIME
+</li> <li> SHOWLIGHTENVS
+</li> <li> SHOWISOVERLAPPING
+</li> <li> LISTAWAKEBODIES
+</li> <li> TOGGLECROWDS
+</li> <li> MOVEACTORTIMES
+</li> <li> PHYSASSETBOUNDS
+</li> <li> FRAMECOMPUPDATES
+</li> <li> FRAMEOFPAIN
+</li> <li> SHOWSKELCOMPLODS
+</li> <li> SHOWSKELMESHLODS
+</li> <li> SHOWFACEFXBONES
+</li> <li> SHOWFACEFXDEBUG
+</li> <li> LISTSKELMESHES
+</li> <li> LISTPAWNCOMPONENTS
+</li> <li> TOGGLELINECHECKS / DUMPLINECHECKS / RESETLINECHECKS
+</li></ul>
+<p />
+<p />
+<h3><a name="Line Checks"></a> Line Checks </h3>
+<p />
+<p />
+<strong>Problem:</strong>
+<p />
+<p />
+Too much time is being spent performing Line Checks (calls to SingleLineCheck or MultiLineCheck.)
+<p />
+<p />
+<strong>Solutions:</strong>
+<p />
+1. If you can trace back to the caller of the function which you know of and is obvious, then you should optimize that function to not call as often as it does.
+<p />
+2. If you can't trace back to the caller of the function because the function is used by almost every actor (i.e. MoveActor calling LineCheck or performPhysics calling, at the end, LineCheck), you need to know which actor that was.
+<p />
+You can enable tracing of line checks using the following commands:  <strong>TOGGLELINECHECKS</strong>, <strong>TOGGLELINECHECKSPIKES</strong>, <strong>DUMPLINECHECKS</strong>, <strong>RESETLINECHECKS</strong>
+<p />
+These only work in PC, but this helps to identify who the callers were of the function.  This activates capturing all calls to linecheck and what the callstack was and who the callers were.  If you'd like to flush, use <strong>DUMPLINECHECKS</strong>. The file is stored [Gamename]/Logs/ as csv file.
+<p />
+After line check tracing is enabled, you'll see the following log message coming up:
+<p />
+<em>Log: Line tracing is now enabled.</em>
+<em>Log: Stack tracking is now enabled.</em>
+<em>Log: Script stack tracking is now enabled.</em>
+<p />
+Below is the example of the file, and as you can see, <em>GearPawn_COGMarcus_0</em> called the function 7042 times over 1006 frames.
+You can find how many calls were made by which actor via which function. Also, the log will show <strong>NonZeroExtent</strong> trace or not.
+In this way, you can isolate the issues and bottlenecks to the call and optimize.
+<p />
+<pre>
+Log: Log file open    08/07/08 13:45:23
+Log: Captured 74 unique callstacks totalling 13375 function calls over 1006 frames    averaging 13.30 calls/frame
+Log:    7042
+         UWorld::MultiLineCheck() 0xa0c718   + 39 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unlevact.cpp:2037]
+         UGearGameplayCamera::PreventCameraPenetration() 0x1880c6b  + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\geargame\src\gearcamera.cpp:769]
+         UGearGameplayCamera::PlayerUpdateCameraNative() 0x188f913  + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\geargame\src\gearcamera.cpp:1324]
+         UGearGameplayCamera::execPlayerUpdateCameraNative() 0x18922de  + 21 bytes &#91;File&#61;d:\code\unrealengine3\development\src\geargame\inc\geargamecameraclasses.h:401]
+         UObject::CallFunction() 0x5f9a86   + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:5633]
+         UObject::execFinalFunction() 0x5fbdac   + 28 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:1645]
+         UObject::ProcessInternal() 0x5f637e   + 30 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:5862]
+         UObject::CallFunction() 0x5f9d15   + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:5803]
+         UObject::execVirtualFunction() 0x5fbd7f   + 45 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:1638]
+         UObject::execContext() 0x5efa27   + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:1628]
+         UObject::ProcessInternal() 0x5f637e   + 30 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:5862]
+         UObject::CallFunction() 0x5f9d15   + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:5803]
+         UObject::execVirtualFunction() 0x5fbd7f   + 45 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:1638]
+         UObject::ProcessInternal() 0x5f637e   + 30 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:5862]
+         UObject::ProcessEvent() 0x602baf   + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\core\src\uncorsc.cpp:6012]
+         AActor::ProcessEvent() 0x80d293   + 22 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unactor.cpp:1320]
+         UWorld::Tick() 0xa16256   + 59 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unlevtic.cpp:2998]
+   ....
+
+Log:
+         NonZeroExtent
+         GearPawn&#95;COGMarcus&#95;0 (7042) : No&#95;Detailed&#95;Info&#95;Specified
+
+Log:    358
+         UWorld::MultiLineCheck() 0xa0c718   + 39 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unlevact.cpp:2037]
+         UWorld::MoveActor() 0xa0fc72   + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unlevact.cpp:1416]
+         APawn::physWalking() 0xaa620d   + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unphysic.cpp:838]
+         APawn::startNewPhysics() 0xaa5943   + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unphysic.cpp:469]
+         APawn::performPhysics() 0xa92eb2   + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unphysic.cpp:409]
+         AGearPawn::performPhysics() 0x188a6b4  + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\geargame\src\geargame.cpp:5406]
+         AActor::TickAuthoritative() 0xa00467   + 20 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unlevtic.cpp:721]
+         AActor::Tick() 0xa00571   + 16 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unlevtic.cpp:966]
+         TickActors&#60;FDeferredTickList::FGlobalActorIterator&#62;() 0xa0e7fc   + 0 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine\src\unlevtic.cpp:2329]
+         UWorld::Tick() 0xa15708   + 37 bytes &#91;File&#61;d:\code\unrealengine3\development\src\engine
+   ....
+</pre>
+<p />
+<p />
+It also captures script traces as well, but script trace does not provide actor information yet.
+If you'd like to reset (clear all captures), <strong>RESETLINECHECKS</strong>. Please make sure that you <strong>RESETLINECHECKS</strong> after you turn it off to clear buffer.
+<p />
+<strong>TOGGLELINECHECKSPIKES</strong> takes an argument of the number of line checks in any given frame to set off a dump of the line check information.  For example <strong>TOGGLELINECHECKSPIKES</strong> 50 will only dump statistics in those frames where 50 line checks or more were performed.  This is useful for automating the process and only capturing data in specific frames where thresholds are met.
+<p />
+3. Suggestions
+<p /> <ul>
+<li> Cache: Cache the value for every # of frames and use that if not critical to have the result right at that frame.
+</li> <li> Frame control: Only handle # of line checks in a given frame. If it's over the number, please do it in the next frame.
+</li> <li> Bake: Look for bake solution to reduce run-time calls. If you can bake the information to node or actor, so that you don't have to call in run-time.
+</li></ul>
+<p />
+<p />
+<!--  -->
+<p />
+<h2><a name="Player/AI Profiling"></a> Player/AI Profiling </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="AI Logging"></a> AI Logging </h3>
+<p />
+AIs do a lot of interesting things some of which can be computationally expensive. Utilizing AILogging we can get a view into what they were doing and why they might have gotten stuck or in some loop that is doing expensive actions.
+<p />
+In your DefaultAI.ini under each AIController class set bAILogging=TRUE if you want AILogging.
+<p />
+This will output a log file in your log directory with all of the `AILog() that have been used in your code.
+<p />
+<h3><a name="Move Actor"></a> Move Actor </h3>
+<p />
+When calls to <strong>MoveActor</strong> are showing up high in the inclusive time, there are several reasons for MoveActor showing up as expensive in your game, but they fall into 3 main categories:
+<p /> <ol>
+<li> There are too many MoveActor calls being performed
+</li> <li> The settings on the Actors being moved are causing the function to be expensive
+</li> <li> The Actor being moved has many other Actors attached
+</li></ol>
+<p />
+There are 3 parts of MoveActor function itself that generally contribute to its slowness:
+<p /> <ol>
+<li> An non-zero extent line-check (aka. swept box check) is performed along the movement of the Actor. This is done for physics modes like <em>PHYS_Walking</em>.
+</li> <li> An encroachment overlap check is performed at the new location of the Actor. This is done for movers and vehicles for example.
+</li> <li> To a lesser extent, updating the collision data structure when the Actor moves.
+</li></ol>
+<p />
+There is some logging you can enable that will show you all MoveActor calls executed in a frame.  First define <strong>MOVEACTOR_STATS</strong> to <strong>1</strong> at the top of <em>UnLevAct.cpp</em>.  Additionally, there is SHOW_MOVEACTOR_TAKING_LONG_TIME  which will can be less spammy and just show specific actors that are taking a long time.
+<p />
+Then in the game type <strong>MOVEACTORTIMES</strong> during a period when MoveActor times are high. You will get some logging like this:
+<p />
+<pre>
+   Log: MOVE - GearPawn&#95;COGRedShirt&#95;2 0.037ms 1 0
+   Log: MOVE - GearPointOfInterest&#95;5 0.002ms 0 0
+   Log: MOVE - SkeletalMeshActor&#95;28 0.019ms 0 0
+   Log: MOVE - Emitter&#95;32 0.003ms 0 0
+   Log: MOVE - Emitter&#95;33 0.002ms 0 0
+   Log: MOVE - Emitter&#95;35 0.001ms 0 0
+   Log: MOVE - Emitter&#95;47 0.002ms 0 0
+</pre>
+<p />
+Each line is a call to MoveActor that happened during the frame. Indented lines indicate that the call was a result of the Base moving. So when <em>SkeletalMeshActor_28</em> moved, that caused MoveActor to be called on all the Emitters attached to it. The timing numbers are inclusive - so they include the MoveActor times of attached things. The first number (1 or 0) indicates if the extent line check was performed as part of the move, to see if the actor hit a wall or a trigger. The second number indicates if an encroachment check was performed as part of the move.  Note that physics modes such as <em>PHYS_Walking</em> can result in multiple MoveActor calls in one frame - this is expected.
+<p />
+We will now take a look at the 3 slow parts of MoveActor, and how to avoid doing them.
+<p />
+The extent line check during a move will not be performed if any of the following are true:
+<p /> <ol>
+<li> The actor is considered an 'encroacher' (i.e. in <em>PHYS_RigidBody</em> or <em>PHYS_Interpolating</em>, and <strong>bCollideActors</strong> is <strong>TRUE</strong>)
+</li> <li> <strong>bCollideActors</strong> and <strong>bCollideWorld</strong> are <strong>FALSE</strong>
+</li> <li> There is no <em>CollisionComponent</em>
+</li></ol>
+<p />
+An Actor only really needs to perform the encroachment point-check in the following instances:
+<p /> <ol>
+<li> It needs to push other unreal-physics Actors around (e.g. walking Pawns)
+</li> <li> You need to know when the Actor hits a trigger
+</li> <li> You need the PhysicsVolume of the Actor to be updated
+</li></ol>
+<p />
+If you don't need any of these things (e.g. an effect class attached to a character), you can set the <strong>bNoEncroachCheck</strong> flag on the Actor to <strong>TRUE</strong>.
+<p />
+Setting <strong>bCollideActors</strong> to <strong>FALSE</strong> will stop the Actor being added or updated in the collision octree. This will slightly speed up MoveActor times, but of course will mean the Actor cannot be hit by line checks.
+<p />
+<h3><a name="NavMesh Performance"></a> NavMesh Performance </h3>
+<p />
+The NavigationMesh can be used for a large number of spatial queries. Having a large number of constraints or conversely not enough Constraints which is causing LOTS of polys to be looked at can be slow.
+<p />
+Additionally, it can be modified at runtime which can be slow. If you are doing a lot of obstacle mesh creation each frame that can cause the higher than desired frametimes.
+<p />
+Turning this define on UnNavigationMesh.cpp PERF_NAVMESH_TIMES will output where the time is going inside the navmesh
+<p />
+<h3><a name="Skeletal Mesh Component Upadtes"></a> Skeletal Mesh Component Upadtes </h3>
+<p />
+If calls to <code>SkeletalMeshComponent::Tick()</code> are showing up high in the inclusive time, you need to examine the cause for this. Because of the complexity of animation on many characters in UE3 games, the animation system is often one of the more expensive parts of the engine on CPU. It is important though to know exactly where that time is going, to optimize it as much as possible. There are some logging tools that allow you to see what it going on.
+<p />
+First set the <strong>SHOW_SKELETAL_MESH_COMPONENT_TICK_TIME</strong> define to <strong>1</strong>. Then in the game type <strong>SHOWSKELCOMPTICKTIME</strong> in the console. It will log all <em>SkeletalMeshComponents</em> ticked in a frame, along with how long they took to tick, broken down into sections. The first line is column headers, so you can paste this info into a spreadsheet for more analysis.
+<p />
+<div class="codesnippet">
+<pre>
+&#95;Log: SkelMeshComp: Name SkelMeshName Owner TickTotal UpdatePoseTotal TickNodesTotal UpdateTransformTotal UpdateRBTotal&#95;
+&#95;Log: SkelMeshComp: map&#95;01.TheWorld:PersistentLevel.Pawn&#95;Big&#95;Ogre&#95;0.SkeletalMeshComponent&#95;6 OgreMeshes.Big&#95;Ogre Pawn&#95;Big&#95;Ogre&#95;0 0.006564 0.003211 0.000000 0.000769 0.000000&#95;
+&#95;Log: SkelMeshComp: map&#95;01.TheWorld:PersistentLevel.Weap&#95;Crossbow&#95;1.SkeletalMeshComponent&#95;7 CrossbowMeshes.WoodenCrossbow Pawn&#95;Big&#95;Ogre&#95;0 0.008103 0.000000 0.005938 0.000000 0.000000&#95;
+</pre>
+</div>
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol">  <strong><font color="#000000">SkelMeshName</font></strong>  </th><td bgcolor="#eaeaea"> The name of the mesh used by this SkeletalMeshComponent. </td></tr>
+<tr><th bgcolor="#dadada" class="twikiFirstCol">  <strong><font color="#000000">Owner</font></strong>  </th><td bgcolor="#ffffff"> Name of the Actor to which this SkeletalMeshComponent is attached. </td></tr>
+<tr><th bgcolor="#dadada" class="twikiFirstCol">  <strong><font color="#000000">TickTotal</font></strong>  </th><td bgcolor="#eaeaea"> The total time if took to call Tick on this component. </td></tr>
+<tr><th bgcolor="#dadada" class="twikiFirstCol">  <strong><font color="#000000">UpdatePoseTotal</font></strong>  </th><td bgcolor="#ffffff"> This time includes all animation blending (GetBoneAtoms), controller evaluation and pose matrix building. </td></tr>
+<tr><th bgcolor="#dadada" class="twikiFirstCol">  <strong><font color="#000000">TickNodesTotal</font></strong>  </th><td bgcolor="#eaeaea"> This is how long was spent calling TickAnimNode on all the AnimNodes </td></tr>
+<tr><th bgcolor="#dadada" class="twikiFirstCol">  <strong><font color="#000000">UpdateTransformTotal</font></strong>  </th><td bgcolor="#ffffff"> How long was taken to update the component (updating its transform, attached Actors, and sending info to rendering thread). This time is in addition to the Tick time. </td></tr>
+<tr><th bgcolor="#dadada" class="twikiFirstCol">  <strong><font color="#000000">UpdateRBTotal</font></strong>  </th><td bgcolor="#eaeaea"> If the SkeletalMeshComponent has a physics-engine representation (PhysicsAssetInstance), this is the time take to update it based on the animation results. </td></tr>
+</table>
+<p />
+The first thing to check is that you are not updating animations on meshes that are not required. Here are some methods for improving this:
+<p /> <ol>
+<li> Use streaming levels to only load skeletal mesh instances when required.
+</li> <li> Hide actors using skeletal meshes when not needed. SkeletalMeshActors are put in <strong>'stasis'</strong> when hidden, which causes them not to be ticked at all.
+</li> <li> Set <strong>bUpdateSkelWhenNotRendered</strong> to <strong>FALSE</strong> if possible. Note that this may cause problems if you rely on animation notifies or root motion for gameplay, as characters off the screen will stop animating. This option defaults to <strong>FALSE</strong> for SkeletalMeshActors.
+</li></ol>
+<p />
+Once you have ensured that you are only updating animation for those Actors that are necessary, there are some things you can do to optimize the animation update itself.
+<p /> <ul>
+<li> Avoid too many 'partial blends'. When a blend node has one input at 100%, it is very cheap on the CPU, because data is simply 'passed through'. However, when multiple inputs are blended, this uses a lot more CPU.
+</li> <li> Keep trees small if possible to avoid ticking and blending too many nodes. Change the animations on one node using code, rather than adding a node for every animation.
+</li> <li> Set <strong>bSkipTickWhenZeroWeight</strong> on nodes where possible. This stops nodes being ticked when they are not relevant (ie. zero weight in the final animation blend). This also causes blend nodes to blend to 100% immediately when not relevant, thus avoiding 'partial blends'.
+</li> <li> If you cannot set <strong>bUpdateSkelWhenNotRendered</strong> to <strong>FALSE</strong>, set <strong>bIgnoreWhenNotRendered</strong> on specific SkelControls where possible.
+</li> <li> Set <strong>bForceLocalSpaceBlend</strong> to <strong>TRUE</strong> on AnimNodeBlendPerBones where possible, as this uses less CPU.
+</li></ul>
+<p />
+Other skeletal optimization tips:
+<p /> <ul>
+<li> Reduce number of meshes you have to draw. For example in Gears enemies don't display weapon attachments on their backs.
+</li> <li> Reduce number of Bones, use mesh LODs to reduce complexity at a distance.
+</li> <li> Set <strong>bForceRefpose=TRUE</strong> on <em>SkeletalMeshComponents</em> that don't need to be animated. (Weapons in Gears use this when they're used as attachments, or as pickups).
+</li> <li> Use <em>UAnimTree::SetUseSavedPose()</em> to freeze animation and reduce AnimTree to a single node when character dies and goes to ragdoll.
+</li> <li> <em>AnimNodeSequence</em> nodes with <strong>bSkipTickWhenNotRelevant</strong>, will not extract animation when the mesh is not rendered (they will use a cached frame, unless root motion needs to be extracted). This reduces Animation Extraction cost when meshes are not visible.
+</li> <li> <em>AnimNodeBlendLists</em> which have <strong>bSkipBlendWhenNotRendered=TRUE</strong> and mesh is not rendered, then blends will be skipped. This saves on blending cost, transitions are done instantly.
+</li> <li> If you can share branches within the tree, do so. For instance you have several branches that can potentially use a common path (say for example an AimOffset node, and a looping animation). Do not duplicate this, but have the tree use that same branch. Branches are only evaluated once and cached, so in that example the work will be done only once and can be used in multiple branches.
+</li> <li> A tree can be large and contain many nodes, but for performance you don't want to reduce the number of nodes being ticked each frame (use <strong>bSkipTickWhenZeroWeight</strong> to reduce that number), and design tree so you don't have too many animations extracted and blended at once.
+</li> <li> Use <strong>AnimNodeSlots</strong> to play animations on demand from script, as opposed to having every single animation played existing as a node in the tree. AnimNodeSlots work well for one shot actions. Gears uses these for weapon reloads, weapon switching, all special moves (mantles, swat turn, cover slip, evades), ladder interactions, chainsaw duels, cringes, hit reactions, death animations, button/lever interactions, etc.
+</li> <li> If given two animation, you can't blend from one to another, it means that they don't need to both exist in that same tree. The design philosophy of Gears Marcus' AnimTree if that movement animations and controls (walking, running, idle, cover leaning, pop up) exist in the tree, as well as aiming. Any one time action, such as what is mentioned above, is played on demand through the use of AnimNodeSlots. This greatly reduces the complexity of the AnimTree, and yet allows to play a lot of different animations.
+</li></ul>
+<p />
+</noautolink>
+<p />
+<style type="text/css">
+<!--
+div.codesnippet
+{
+	margin:0px 10px;
+	padding:0px 10px;
+	background:#f0f0f0;
+	font:12px Courier;
+	max-height:500px;
+	overflow:auto;
+	border:2px inset #989898;
+}
+-->
+</style>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GameThreadProfilingHome.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:16:36 GMT -->
+</html></body>

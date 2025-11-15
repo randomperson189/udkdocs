@@ -1,0 +1,413 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LevelStreamingHowToCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:25:41 GMT -->
+<head>
+<title> UDK | LevelStreamingHowToCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">LevelStreamingHowToCH  </b></div>
+<div id="tooltext">
+<a href="LevelStreamingHowTo.html" class="twikiLink">English Translation</a><br><a href="LevelStreamingHowToJP.html" class="twikiLink">日本語訳</a><br><a href="LevelStreamingHowToKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/LevelStreamingHowToCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="LevelStreamingHome.html" class="twikiLink">关卡动态载入</a></b> &gt; 使用关卡动态载入
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="使用关卡动态载入"></a> 使用关卡动态载入 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="LevelStreamingHowToCH.html#使用关卡动态载入"> 使用关卡动态载入</a> <ul>
+<li> <a href="LevelStreamingHowToCH.html#概述"> 概述</a>
+</li> <li> <a href="LevelStreamingHowToCH.html#永久性关卡">永久性关卡</a> <ul>
+<li> <a href="LevelStreamingHowToCH.html#永久性关卡快速指南">永久性关卡快速指南</a>
+</li></ul>
+</li> <li> <a href="LevelStreamingHowToCH.html#通过Kismet脚本进行动态载入">通过Kismet脚本进行动态载入 </a> <ul>
+<li> <a href="LevelStreamingHowToCH.html#脚本动态载入快速指南">脚本动态载入快速指南</a>
+</li></ul>
+</li> <li> <a href="LevelStreamingHowToCH.html#基于距离的动态载入">基于距离的动态载入</a> <ul>
+<li> <a href="LevelStreamingHowToCH.html#距离动态载入快速指南">距离动态载入快速指南</a>
+</li></ul>
+</li> <li> <a href="LevelStreamingHowToCH.html#使用动态载入关卡">使用动态载入关卡</a> <ul>
+<li> <a href="LevelStreamingHowToCH.html#加载和事件">加载和事件</a>
+</li> <li> <a href="LevelStreamingHowToCH.html#在关卡间移动Actors">在关卡间移动Actors</a>
+</li> <li> <a href="LevelStreamingHowToCH.html#优化">优化</a>
+</li></ul>
+</li> <li> <a href="LevelStreamingHowToCH.html#动态载入体积">动态载入体积</a>
+</li> <li> <a href="LevelStreamingHowToCH.html#结论"> 结论</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+根据本文档的说明，虚幻引擎3用户应该可以成功地把实时载入的多个关卡聚拢到一起来创建出一种大的无缝世界的假象。
+<p />
+关于基于体积的关卡动态载入的更多信息，请参照文档<a href="LevelStreamingVolumes.html" class="twikiLink">关卡动态载入体积</a>页面。
+<p />
+<p />
+<h2><a name="永久性关卡"></a> 永久性关卡 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+把您的关卡进行无缝混合到一起的第一步是创建永久性关卡。这可以被当作为主要关卡，它主要用于管理要被动态载入和载出的关卡。
+<p />
+仅需要几步便可以创建一个永久性关卡并向其中添加动态载入关卡：
+<p /> <ol>
+<li> 创建一个新的地图，在看不见的地方添加一个小的立方体(这用于确保它是引擎到目前为止考虑的关卡，这个步骤只需执行一次）。
+</li> <li> 在您想让玩家开始运行的任何地方放置一个playerstart。注意，在永久性关卡中，这个playerstart看上去是浮动在空间中的，但是一旦您动态载入了一个关卡，应该把它移动到第一个动态载入的关卡中的任何您想让它开始播放的地方。当开始播放游戏时，我们将会启动永久性关卡，但是事实上玩家会在您其中的一个动态载入的关卡中移动，而不是在永久关卡中。
+</li> <li> 保存地图，为了达到组织管理目的，您需要为它设置一个名称，并把它标记为永久性关卡。比如，Headquarters_P。
+</li> <li> 打开通用浏览器，并点击“关卡”标签。这里您必须列出您想动态载入的每一个关卡。如果Headquarters由三个地图组成，则需要把那三个地图都添加到这里。这可以通过选择Level，然后Level(关卡)的下拉菜单中选择New From File(从文件中添加新关卡)。您添加的动态载入关卡的顺序是没有关系的，但是以后的虚幻编辑器<sup>?</sup>将允许您重新排列关卡顺序来组织管理关卡。最终您应该可以获得如下图所示的东西。
+</li> <li> <em>注意，将会为您提供关于根据距离或者根据Kismet动态载入您的关卡的选项</em>: <ul>
+<li> 距离动态载入将基于从关卡原点到玩家的距离来加载和卸载关卡。
+</li> <li> Kismet动态载入允许关卡设计人员通过Kismet脚本加载及卸载关卡，因此这个方法比较常用。
+</li></ul>
+</li></ol>
+<p />
+<img alt="streamingImagenew1.jpg" src="rsrc/Three/LevelStreamingHowToCH/streamingImagenew1.jpg" />
+<p />
+<strong>实例1: 添加了三个关卡后的关卡浏览器</strong>
+<p />
+如果您在编辑器窗口或Kismet中进行改变时，标记为"CURRENT(当前)"的关卡是您正在修改的关卡。这允许您很容易地在多个地图上工作，只要它们都是可写的即可。如果您按下保存按钮，它将会保存CURRENT(当前)关卡(或者您可以通过点击Save All Levels(保存所有关卡)按钮来保存当前永久性关卡中包含的所有关卡)。
+<p />
+可见性复选框允许您在编辑器中隐藏及显示关卡，尽管这仅用于可见性控制目的，和当游戏运行时关卡是否需要动态地在入到游戏中没有关系。然而，如果您重新构建关卡，那么在这里不可见的关卡将不会受到影响，所以如果您的关卡非常复杂，这个工具是节约时间的一种很好的方式。
+<p />
+为了永久地从您的永久性关卡中移除动态载入的关卡，可以通过从浏览器中的Level(关卡)下拉菜单中选择Remove level from world(从世界中删除关卡)选项来实现。如果您需要改变关卡的动态载入方法，可以先删除关卡然后重新添加它，并选择您希望在动态载入时想使用的方法。目前，"Load(加载)" 和"Unload(卸载)"功能还处于无效状态，同时Lock/Unlock(锁定/取消锁定)以及Draw Bounding Box(描画边界盒)标志也是无效的。
+<p />
+<img alt="streamingImagenew2.jpg" src="rsrc/Three/LevelStreamingHowToCH/streamingImagenew2.jpg" />
+<p />
+<strong>实例2: 右击并选择"Make Current(使成为当前关卡)"来修改您正在进行处理的关卡。</strong>
+<p />
+<h3><a name="永久性关卡快速指南"></a> 永久性关卡快速指南 </h3>
+<p /> <ul>
+<li> 在虚幻编辑器<sup>?</sup>中创建一个新的地图。
+</li> <li> 添加一个建大的BSP几何体，比如立方体。
+</li> <li> 添加一个playerstart。
+</li> <li> 添加您想动态载入到Level Browser(关卡浏览器)中的关卡。
+</li> <li> 保存并命名地图
+</li></ul>
+<p />
+<p />
+<h2><a name="通过Kismet脚本进行动态载入"></a> 通过Kismet脚本进行动态载入 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+一旦您按照上面描述的方式创建了永久性关卡，您便可以选择您想加载到您的游戏中的动态载入的关卡。这有两个部分：动态载入(加载)关卡以及使关卡可见。要想通过Kismet动态载入您的关卡，只要简单地操作以下几步即可：
+<p /> <ul>
+<li> 打开Kismet
+</li> <li> 放置一个关卡已加载事件(New Event (新建事件)-&gt; Level Loaded(关卡已加载))
+</li> <li> 根据您所拥有的关卡放置尽可能多的关卡动作(New Action[新建Action] -&gt; Level[关卡] -&gt; Stream Level[动态载入关卡])。
+</li> <li> 通过点击Stream Level(动态载入关卡)动作并在LevelName(关卡名称)处输入关卡名称来把您的每个关卡的名称添加到动态载入关卡动作上。
+</li> <li> 把关卡已加载事件连接到Stream Level(动态载入关卡)动作上的每个Load(加载)输入端上。
+</li></ul>
+<p />
+当运行永久关卡时，这个过程将会立即加载您连接的每个关卡。注意，如果地图是玩家一进入世界就立即要看到的地图，那么您可以选择设置您的关卡立即可见(bMakeVisibleAFterLoad)。同时我们也推荐在加载时为那些需要立即可见的动态载入的部分选择bShouldBlockOnLoad项。
+<p />
+<img alt="streamingImagenew3.jpg" src="rsrc/Three/LevelStreamingHowToCH/streamingImagenew3.jpg" />
+<p />
+<strong>实例3: 通过Kismet加载三个动态载入关卡</strong>
+<p />
+这时，您应该可以启动您的永久性关卡并探索您的动态载入关卡了，只要它们在载入时设置为可见状态。如果有一些由于性能原因等没有标记为动态载入的关卡时，您将需要设置触发器或其它的方法使它可见。比如，Headquarters_3对于玩家来说或许太远以至于不能看清它的内部，所以为了节约资源，应该在稍后需要时在设置它可见。有一个称为Change Level Visibility(改变关卡可见性)的动作，它也位于New Action(新建动作) -&gt; Level(关卡)下。这个动作允许您在您的方向上隐藏及取消隐藏动态载入的关卡。如果您在动态载入关卡动作中使用Unload(卸载)事件，关卡将会从内存中取消加载，尽管这样您将需要在使它可见之前使用Load(加载)事件，但这样却做可以释放大量的内存。
+<p />
+<h3><a name="脚本动态载入快速指南"></a> 脚本动态载入快速指南 </h3>
+<p /> <ul>
+<li> 打开Kismet
+</li> <li> 添加一个Level Loaded(关卡已加载)动作和一个StreamLevel(动态载入)关卡动作，把启动事件连接到Load(加载)的输入端。
+</li> <li> 右击动态载入的关卡，把您要动态载入的关卡的名称添加到"LevelName(关卡名称)"文本域中，并选中bMakeVisibleAfterLoad标志。
+</li> <li> 保存关卡，启动游戏。
+</li></ul>
+<p />
+<p />
+<h2><a name="基于距离的动态载入"></a> 基于距离的动态载入 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+如果您选择基于从玩家到关卡的距离来动态载入您的关卡，则需要执行额外的几步。首先，确保在通用浏览器中选择了您的永久性关卡，然后展开在右手侧的WorldInfo类别。右击您现在看到的WorldInfo_#，然后选择"Edit Properties(编辑属性)"。在属性窗口中打开WorldInfo(世界信息)属性，然后打开StreamingLevels(动态载入关卡)属性。您应该会看到列在这里的每个动态载入的关卡。您现在可以在MaxDistance(最大距离)文本域中设置距离玩家多远时将会动态载入关卡。默认情况下，可以把这个想象为那个关卡世界空间中以0，0，0为中心的球体。当玩家进入这个球体时，将会动态载入关卡；当玩家离开球体时，关卡将会卸载关卡。这个球体的位置是可以改变的，并且大多数时候都必须进行改变，因为在大多数情况下下您都想让这个球体完全地包围您正在动态载入的关卡，以便当您靠近关卡时关卡会进行载入；并且当您离开关卡的临近区域时写在关卡。我们打算添加一些方法来可视化这个球体的位置，但是目前这个功能还没有实现。
+<p />
+这种动态载入方法对于您想基于玩家到关卡的距离来多次地加载和卸载关卡的情况是有用的。注意，如果是一个大的地图，当关卡载入时，可能会有一些障碍，因为关卡实际上是正在动态地载入载出动作，而不是隐藏和显示动作。
+<p />
+<img alt="streamingImagenew4.jpg" src="rsrc/Three/LevelStreamingHowToCH/streamingImagenew4.jpg" />
+<p />
+<strong>实例4: 设置基于距离的动态载入</strong>
+<p />
+<h3><a name="距离动态载入快速指南"></a> 距离动态载入快速指南 </h3>
+<p /> <ul>
+<li> 打开通用浏览器
+</li> <li> 点击Level(关卡)标签
+</li> <li> 从通用浏览器的文件菜单中选择Level(关卡)-&gt;New From File(从文件中新建)，并选择您想动态载入的关卡。
+</li> <li> 选择“Distance(距离)”动态载入
+</li> <li> 请确保选中了"Persistent Level(永久性关卡)"，展开右侧的WorldInfo(世界信息)属性。右击WorldInfo_#并选择"Edit Properties(编辑属性)"。
+</li> <li> 现在应该打开了属性菜单，展开WorldInfo，然后再展开StreamingLevels。
+</li> <li> 输入从玩家到关卡的距离，以游戏标尺为单位，该距离用于指出您要将关卡动态载入到世界是所处的距离，把原点改为您想在世界空间中测量距离的位置。
+</li></ul>
+<p />
+<p />
+<h2><a name="使用动态载入关卡"></a> 使用动态载入关卡 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="加载和事件"></a> 加载和事件 </h3>
+<p />
+当加载关卡时，添加一个新的Kismet动作来替换一般用于使很多事件开始运转的Level Startup(关卡启动)动作。这个动作称为Level Loaded And Visible(加载的关卡并可见)。它的基本作用原理和Level Startup(关卡启动)类似，但是设计它的目的是想将它和Change Level Visibility(改变关卡可见性)动作结合使用。无论何时，当使得一个关卡对于玩家可见时，通过CLV动作或者通过动态载入它(如果选中了bMakeVisibleAfterLoad标志)，这将会触发Loaded And Visible(加载和可见)动作。当这个和Remote Events(远程事件)结合使用时，它允许每个动态载入的关卡是他自己的本身独立实体，可以根据需要进行加载和卸载并且可以从其它动态载入的关卡接受或向其发送事件。以下示例中，一旦当主关卡可见，则玩家立即发生电传，同时当触发了另一个关卡的远程事件时将会产生一个角色。
+<p />
+<img alt="streamingImagenew5.jpg" src="rsrc/Three/LevelStreamingHowToCH/streamingImagenew5.jpg" />
+<p />
+*实例5: 动态载入关卡的脚本实例。
+<p />
+<h3><a name="在关卡间移动Actors"></a> 在关卡间移动Actors </h3>
+<p />
+自从DEC 2007 QA-Approved版本后，您可以通过简单的从一个关卡中复制一些Actors(Ctrl + C)，改变当前关卡，然后粘帖(Ctrl + V)它们，便可以把Actors在关卡间移动。然而，这使用了和 <em>MoveSelectedActorsToCurrentLevel</em> 类似的途径，因为为了解决Actors间的潜在引用，必须把它们序列化出到一个 <em>复制的</em> 世界。这个功能在变更列表#203995 和 #206418中引入。
+<p />
+在版本JAN 2007 QA-Approved之前的版本中，当您一次移动大量Actors时，您或许经历过 <em>用光内存</em> 的问题；但是当我们提高了编辑器处理缓冲的性能(和内存应用)时修复了这个问题(变更列表 #206829)。
+<p />
+同时，在版本JAN 2007 QA-Approved中，您可以通过<a href="LevelBrowserReference.html" class="twikiLink">关卡浏览器</a>中的 <em>New Level from Selected Actors(从选中的Actors新建关卡)</em> 按钮来把Actors移动到新建的关卡中(变更列表#206324)。
+<p />
+<h3><a name="优化"></a> 优化 </h3>
+<p />
+由于性能和工作流程的原因，大多数开发人员会发现使用的动态载入关卡越多，所获得的效果越好。然而，目前这个功能将会受到系统限制因素的影响，即放置到一个关卡中的actors不能直接地被另一个关卡的Kismet所引用。尽管可以通过触发和接受远程事件来触发不同动态载入关卡间的事件，但是目前还不能是进行直接地跨关卡引用actors。在上面的图片中，Pathnode_0 和 Pathnode_1必须放置在和这个脚本所在的同一个关卡中，在这个例子中是Headquarters_2。如果这些节点中的任何一个在HQ_1 或 3中，这些动作将不会有效。
+<p />
+自从2007年12月的QA-Approved版本开始，提供了一个功能，可以使得现有关卡切分为动态载入的块变得更加的简单。
+<p /> <ul>
+<li> 在世界中选择一组actors。
+</li> <li> 从关卡浏览器的 <em>Level(关卡)</em> 中选择 <em>New Level from Selected Actors(从选中的Actors新建关卡)</em> 。
+</li> <li> 这将在磁盘上将会创建一个新的动态载入的关卡并被添加到世界中，并且那些选中的actors将会被移动到新建的关卡中。
+</li></ul>
+<p />
+这将会使得创建较小的动态载入关卡部分变得更加的容易！
+<p />
+<p />
+<h2><a name="动态载入体积"></a> 动态载入体积 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+关于基于体积进行关卡动态载入的更多信息，请参照<a href="LevelStreamingVolumes.html" class="twikiLink">关卡动态载入体积</a>页面。
+<p />
+<p />
+<h2><a name="结论"></a> 结论 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+这里总结了如何动态地将关卡载入载出到世界的总体看法。因为关于这个功能的很多方面都是新的并且仍然不断地更新中，所以随着新功能和简化的不断更新，本文档也将会不断的进行更新。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LevelStreamingHowToCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:25:42 GMT -->
+</html></body>

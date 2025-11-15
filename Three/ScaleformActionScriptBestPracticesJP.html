@@ -1,0 +1,605 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ScaleformActionScriptBestPracticesJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:54 GMT -->
+<head>
+<title> UDK | ScaleformActionScriptBestPracticesJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ScaleformActionScriptBestPracticesJP  </b></div>
+<div id="tooltext">
+<a href="ScaleformActionScriptBestPractices.html" class="twikiLink">English Translation</a><br><a href="ScaleformActionScriptBestPracticesCH.html" class="twikiLink">中国翻译</a><br><a href="ScaleformActionScriptBestPracticesKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ScaleformActionScriptBestPracticesJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css"; </style>
+<div style="padding:0px 0px 0px 4px; font:10px Verdana;" >
+<b><a href="WebHomeJP.html" class="twikiLink">UE3 ホーム</a></b> &gt; <b><a href="UIAndHUDHomeJP.html" class="twikiLink">ユーザーインターフェイスと HUD</a></b> &gt; <b><a href="ScaleformJP.html" class="twikiLink">「Scaleform GFx」</a></b> &gt; 「Scaleform GFx」 ActionScript のベストプラクティス
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="「Scaleform GFx」 _ActionScript のベストプラクティス"></a> 「Scaleform GFx」 ActionScript のベストプラクティス </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="ScaleformActionScriptBestPracticesJP.html#「Scaleform GFx」 _ActionScript のベストプラクティス"> 「Scaleform GFx」 ActionScript のベストプラクティス </a> <ul>
+<li> <a href="ScaleformActionScriptBestPracticesJP.html#概要"> 概要 </a>
+</li> <li> <a href="ScaleformActionScriptBestPracticesJP.html#ActionScript のための一般的なガイドライン"> ActionScript のための一般的なガイドライン </a> <ul>
+<li> <a href="ScaleformActionScriptBestPracticesJP.html#ループ"> ループ </a>
+</li> <li> <a href="ScaleformActionScriptBestPracticesJP.html#関数"> 関数 </a>
+</li> <li> <a href="ScaleformActionScriptBestPracticesJP.html#変数 / プロパティ"> 変数 / プロパティ </a>
+</li></ul>
+</li> <li> <a href="ScaleformActionScriptBestPracticesJP.html#一般的な最適化のためのヒント"> 一般的な最適化のためのヒント </a> <ul>
+<li> <a href="ScaleformActionScriptBestPracticesJP.html#Flash のタイムライン"> Flash のタイムライン </a>
+</li> <li> <a href="ScaleformActionScriptBestPracticesJP.html#パフォーマンスに関する一般的な最適化"> パフォーマンスに関する一般的な最適化 </a>
+</li> <li> <a href="ScaleformActionScriptBestPracticesJP.html#advance (進行)"> advance (進行) </a>
+</li> <li> <a href="ScaleformActionScriptBestPracticesJP.html#on_ClipEvent と on イベント"> onClipEvent と on イベント </a>
+</li> <li> <a href="ScaleformActionScriptBestPracticesJP.html#on_EnterFrame"> onEnterFrame </a>
+</li> <li> <a href="ScaleformActionScriptBestPracticesJP.html#Var キーワード"> Var キーワード </a>
+</li> <li> <a href="ScaleformActionScriptBestPracticesJP.html#プレキャッシュ"> プレキャッシュ </a>
+</li> <li> <a href="ScaleformActionScriptBestPracticesJP.html#複雑な式"> 複雑な式 </a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<hr size="1" noshade="noshade">
+ActionScript は、ネイティブ マシンコードにコンパイルされません。バイトコードに変換されます。このバイトコードは、解釈される言語よりも速いが、コンパイルされたネイティブコードよりは低速です。ActionScript は低速になる場合がありますが、たいていのマルチメディア表現においては、グラフィックやオーディオ、ビデオといったアセット (コードではなく) が、しばしばパフォーマンスを縛る要因となっています。
+<p />
+最適化のためのテクニックの多くは、ActionScript に固有のものではありません。最適化コンパイラをともなわないどのような言語でコードを書く場合にも使用されるよく知られたテクニックです。たとえば、各ループ イタレーションで変化しないアイテムをループ内から削除してループの外に置くと、ループが高速化します。
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>注意 :</strong> ActionScript は以降 AS と短縮します。  <br/>
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>注意 :</strong> Virtual Machine (バーチャルマシン) は以降 VM と短縮します。
+<p />
+<h2><a name="ActionScript のための一般的なガイドライン"></a> ActionScript のための一般的なガイドライン </h2>
+<hr size="1" noshade="noshade">
+<p />
+以下の最適化によって、AS の実行速度が向上します。
+<p /> <ul>
+<li> SWF ファイルを Flash バージョン 8 以降にパブリッシュします。
+</li> <li> AS の使用量を減らせば減らすほど、ファイルパフォーマンスが向上します。所定のタスクを実行するために書かれるコードの量を常に最小限にとどめます。AS は主にインタラクティビティのために使用すべきであって、グラフィカルなエレメントを作成するために用いるべきではありません。コードで attachMovie が多用されている場合は、FLA ファイルの構成を再考する必要があります。
+</li> <li> スクリプトによるアニメーションをなるべく少なく使用するようにします。タイムラインによるアニメーションのほうが、通常はパフォーマンスで勝ります。
+</li> <li> 文字列操作を多用しないようにします。
+</li> <li> if 文を使用するループのムービークリップを過度に使用しないことによって、ターミネーション (プログラムの終了) を回避します。
+</li> <li> on() および onClipEvent() イベントハンドラの使用を避けます。代わりに、onEnterFrame、onPress などを使用します。
+</li> <li> フレーム上に 主要 AS ロジックに配置することを最小限にとどめます。代わりに、重要なコードを大量に関数内に配置します。  Flash AS のコンパイラは、旧式のイベントハンドラ (onClipEvent など) または フレーム内部に直接置かれたソースよりも、関数本体内部に置かれたソースの場合のほうが、著しく高速なコードを生成することができます。ただし、フレーム内にシンプルなロジックをとどめておくことは容認されます。たとえば、タイムライン制御 (gotoAndPlay、play、stop など) や他の重要なロジックです。
+</li> <li> 複数のアニメーションをもつ長いタイムラインとともに、ムービークリップ内で「長距離」に及ぶ gotoAndPlay/gotoAndStop を使用することを避けます。  <ol>
+<li> 順送りの gotoAndPlay/gotoAndStop の場合は、現在のフレームからターゲットのフレームが離れているほど、gotoAndPlay/gotoAndStop のタイムライン制御にかかるコストが高くなります。したがって、最もコストが高い順送りの gotoAndPlay/gotoAndStop は、最初のフレームから最後のフレームに進む場合です。
+</li> <li> 逆送りの gotoAndPlay/gotoAndStop の場合は、タイムラインの開始地点からターゲットのフレームが離れているほど、タイムライン制御にかかるコストが高くなります。したがって、最もコストが高い逆送りの gotoAndPlay/gotoAndStop は、最後のフレームから、最後から 1 つ手前のフレームに進む場合です。
+</li></ol>
+</li> <li> 短いタイムラインでムービークリップを使用します。gotoAndPlay/gotoAndStop のコストは、キーフレームの数とタイムラインアニメーションの複雑度に大きく依存します。したがって、gotoAndPlay/gotoAndStop を呼び出すことによって制御する予定の場合は、長く複雑なタイムラインを作成しないようにします。その代わりに、ムービークリップのタイムラインを、独立した複数のムービークリップに分割し、そのタイムラインを短くするとともに、gotoAndPlay/gotoAndStop の呼び出しを減らします。
+</li> <li> 多数のオブジェクトを同時に更新する場合は、これらオブジェクトをグループとして更新することができるシステムを開発することが不可欠です。C++ 側で、GFxMovie::SetVariableArray の呼び出しを使用することによって、大量のデータを C++ から AS に渡します。この呼び出しの後に、アップロードされている配列に基づいて複数のオブジェクトを同時に更新させる呼び出しを続けることができます。複数の呼び出しを 1 つの呼び出しにグループ化することによって、通常、個別のオブジェクトを呼び出す場合の速度の数倍速くなります。
+</li> <li> 1 つのフレームに大量の作業を実行させないようにします。さもなければ、GFx にステージをレンダリングする時間が足りなくなり、ユーザーが速度の低下に気がつく可能性が生じます。実行する作業を小さなかたまりに分割することによって、速度の低下が感知されることなく、所定のフレームレートで GFx がステージをリフレッシュできるようにします。
+</li> <li> Object 型を過度に使用しないようにします。  <ol>
+<li> データ型のアノテーションは、詳細なものにすべきです。そうすることによって、コンパイラによる型チェックでバグを見つけることができるようになります。Object 型は、他によい代替物がない場合にのみ使用すべきです。
+</li></ol>
+</li> <li> eval() および配列アクセス演算子を使用しないようにします。ローカルの参照を一度セットすることが、好ましく効率的であることが多いのです。
+</li> <li> myArr.length  自体を使用するのではなく、条件として使用するループの前に Array.length を変数にアサインします。例 :
+</li></ul>
+<p />
+    以下のコードを使用します。
+<p />
+<div class="codesnippet">
+<pre>
+var fontArr:Array &#61; TextField.getFontList();
+var arrayLen:Number &#61; fontArr.length;
+for (var i:Number &#61; 0; i &#60; arrayLen; i++) {
+  trace(fontArr&#91;i]);
+}
+</pre>
+</div>
+<p />
+    以下のコードは使用しません。
+<p />
+<div class="codesnippet">
+<pre>
+var fontArr:Array &#61; TextField.getFontList();
+for (var i:Number &#61; 0; i &#60; fontArr.length; i++) {
+  trace(fontArr&#91;i]);
+}
+</pre>
+</div>
+<p />
+   event を合理的かつ厳密に管理します。条件を使用して、呼び出す前にリスナーが存在している (null ではない) か否かをチェックすることによって、event リスナー配列をコンパクトに保ちます。  <ul>
+<li> オブジェクトへの参照を解放する前に removeListener() を呼び出すことによって、明示的にリスナーをオブジェクトから削除します。
+</li> <li> パッケージ名においてレベルの数を減らすことによって、起動時間を削減します。起動時に、AS の VM は、オブジェクトのチェーンを作成する必要があります (レベル 1 つにつき 1 つのオブジェクト)。さらに、各レベルのオブジェクトが作成される前に、AS のコンパイラは、if 条件文を加えることによって、レベルがすでに作成されているか否かをチェックします。したがって、com.xxx.yyy.aaa.bbb というパッケージがある場合は、VM が com、xxx、yyy、aaa、bbb というオブジェクトを作成するとともに、オブジェクトがそれぞれ作成される前に、オブジェクトの存在を確認する if オペコードが実行されることになります。objects/classes/functions のように深くネストされたアクセスも低速となります。理由は、名前を解決するために、各レベルをパースする必要があるためです (com を解決し、さらに xxx を解決し、さらに xxx 内部の yyy を解決する)。このような余分なオーバーヘッドを回避するために、パスを、単一レベルの一意な識別子 (c58923409876.functionName() など) にするためのプリプロセッサ ソフトウェアを使用してから SWF をコンパイルするデベロッパーもいます。
+</li> <li> 同一の AS クラスを使用する複数の SWF ファイルからアプリケーションが構成されている場合は、これらのクラスを、コンパイル中における SWF ファイルの選択から除外します。これによって、実行時メモリの要件を削減することができます。
+</li> <li> タイムライン内のキーフレーム上にある AS をコンパイルするのに時間がかなりかかる場合は、コードを分割して、複数のキーフレームにまたがって実行することを検討してみます。
+</li> <li> 最終の SWF ファイルをパブリッシュする際に、trace() 文をコードから削除します。そのためには、[Publish Settings] (パブリッシュの設定) ダイアログボックス内の [Flash] タブ上で、[Omit Trace Actions] (トレースアクションの除外) チェックボックスを選択して、trace() 文をコメントアウトまたは削除します。これによって、実行時のデバッグのために使用されたあらゆる trace() 文を効率的に無効にすることができます。
+</li> <li> 継承は、メソッドの呼びだす回数を増やし、メモリの使用量も増加させます。つまり、必要な機能をすべて含むクラスは、親クラスから機能のいくつかを継承するクラスよりも、実行時の効率が上がります。したがって、クラスの拡張性とコードの効率性の間で、設計上のトレードオフを行わなければならない場合があります。
+</li> <li> ある SWF ファイルが、カスタムの AS クラス (例 : foo.bar.CustomClass) を含む別の SWF ファイルをロードし、さらに、その SWF ファイルをアンロードするならば、クラス定義がメモリに残ってしまいます。メモリを節約するには、アンロードされる SWF ファイルに含まれるカスタムのクラスをすべて明示的に削除します。次の例のように、delete 文を使い、省略されていない完全なクラス名を指定します。delete foo.bar.CustomCLass
+</li> <li> すべてのコードを毎フレーム走らせる必要はありません。100% タイムクリティカルではないアイテムについては、(毎フレーム、コードの一部が交代する) フリップフロップを使用します。
+</li> <li> onEnterFrames はできるだけ使用しないようにします。
+</li> <li> 演算関数を使用せずに、データテーブルを事前計算します。  <ol>
+<li> 大量の演算を実行する場合は、値を事前計算し、その結果を変数の (擬似) 配列に格納することを検討します。データテーブルからこれらの値を取り出すほうが、GFx にオンザフライで演算させるよりもかなり高速です。
+</li></ol>
+</li></ul>
+<p />
+<p />
+<h3><a name="ループ"></a> ループ </h3> <ul>
+<li> ループおよびあらゆる繰り返し動作に焦点を当てます。
+</li> <li> 使用されるループの数とループに含まれるコードの量を制限します。
+</li> <li> フレームベースのループは、必要が無くなり次第停止します。
+</li> <li> ループ内から関数を複数回呼び出さないようにします。
+</li> <li> ループ内に小規模な関数の内容を含めるほうが好ましいです。
+</li></ul>
+<p />
+<p />
+<h3><a name="関数"></a> 関数 </h3> <ul>
+<li> 可能な場合は必ず、深くネストする関数を避けるようにします。
+</li> <li> 関数内で with 文を使用しないようにします。この演算子は、最適化を無効にします。
+</li></ul>
+<p />
+<p />
+<h3><a name="変数 / プロパティ"></a> 変数 / プロパティ </h3> <ul>
+<li> 存在しない変数、オブジェクト、関数を参照しないようにします。
+</li> <li> 可能な場合は必ず、var キーワードを使用します。var キーワードを関数内部で使用することは特に重要です。その理由は、ActionScript のコンパイラがローカル変数へのアクセスを最適化する際に、変数をハッシュテーブルに入れて名前でアクセスするのではなく、インデックスによる直接的なアクセスをともなって内部レジスタを使用するためです。
+</li> <li> ローカル変数で十分である場合に、クラス変数およびグローバル変数を使用しないようにします。
+</li> <li> グローバル変数の使用を制限します。理由は、それらを定義するムービークリップが削除された場合、ガーベジコレクトされなくなるためです。
+</li> <li> 必要がなくなったら、変数を削除するか、null にセットします。こうすることによって、ガーベジコレクションのためのデータがマークされます。変数を削除することによって、実行時のメモリ使用を最適化することができます。これは、不必要なアセットが SWF ファイルから削除されるためです。変数は、null にセットするよりも、削除したほうが好ましいです。
+</li> <li> プロパティは、AS のゲッターおよびセッターメソッドを使用せずに、直接アクセスするようにします。ゲッターおよびセッターは、他のメソッド呼び出しよりもオーバーヘッドが大きくなります。
+</li></ul>
+<p />
+<p />
+<h2><a name="一般的な最適化のためのヒント"></a> 一般的な最適化のためのヒント </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="Flash のタイムライン"></a> Flash のタイムライン </h3>
+タイムラインのフレームとレイヤーは、Flash オーサリング環境の中で重要な 2 つの要素です。これらの領域は、アセットが配置される場所を示すとともに、ドキュメントの機能の仕方を決定します。タイムラインとライブラリの設定様態と使用様態によって、FLA ファイル全体とそのユーザビリティおよびパフォーマンス全般が影響を受けます。
+<p /> <ul>
+<li> フレームベースのループはなるべく使用しないようにします。フレームベースのアニメーションは、FPS と結びついていないタイムベースのモデルとは異なり、アプリケーションのフレームレートに依存します。
+</li> <li> 必要がなくなり次第、フレームベースのループを停止します。
+</li> <li> 複雑なコードのブロックは、可能な場合、 2 つ以上のフレームに分散させます。
+</li> <li> 数百行に及ぶコードをともなうスクリプトは、数百に及ぶフレームベースのトゥイーンと同じ負荷がプロセッサにかかります。
+</li> <li> コンテンツを評価することによって、アニメーション / インタラクションをそのタイムラインで簡単に達成できるのか、あるいは、AS を使用して単純化しモジュール式にできるか判断します。
+</li> <li> デフォルトのレイヤー名  (例 : Layer 1、Layer 2) の使用を避けます。理由は、複雑なファイルを扱う場合、アセットを記憶したり配置する際に混乱するためです。
+</li></ul>
+<p />
+<h3><a name="パフォーマンスに関する一般的な最適化"></a> パフォーマンスに関する一般的な最適化 </h3> <ul>
+<li> パフォーマンスを向上させるために、変換を統合する方法がいくつかあります。たとえば、3 つの変換をネストする代わりに、1 つのマトリックスを手動で計算します。
+</li> <li> 一定時間速度が低下した場合は、メモリリークがないか調べます。必要がなくなったものは必ず破棄します。
+</li> <li> オーサリング時に、多数の trace() 文を使用しないようにします。あるいは、テキストフィールドを動的に更新しないようにします。これらは、パフォーマンスの負担となります。更新はできるだけ少なくします。(すなわち、常に行うのではなく変更があった時にのみ行うようにします)。
+</li> <li> 妥当な場合は、AS を含むレイヤーおよびフレームラベルのためのレイヤーを、タイムラインのレイヤースタックの一番上に配置します。たとえば、AS アクションを含むレイヤーを指定することが、適切で一般的なやり方となります。
+</li> <li> フレームアクションを異なるレイヤーに置かないようにします。すべてのアクションを単一のレイヤーに集中させます。これによって、AS の管理が簡略化されるとともに、複数の AS 実行パスによって引き起こされるオーバーヘッドが除去されるため、パフォーマンスが改善されます。
+</li></ul>
+<p />
+<h3><a name="advance (進行)"></a> advance (進行) </h3>
+advance を実行するのに時間がかかりすぎる場合は、7 つの最適化が考えられます。
+<p /> <ul>
+<li> 毎フレームで AS のコードを実行しないようにします。onEnterFrame ハンドラも避けます。毎フレームコードを呼び出すためです。
+</li> <li> イベント駆動型のプログラミング技法を使用し、変化が生じた場合にのみ、明示的な Invoke (呼び出し) 通知を通じて、テキストフィールドと UI ステートを変更します。
+</li> <li> インビジブルなムービークリップ内でアニメーションを停止します。 (_visible プロパティを true にセットする必要があります。stop() 関数を使用してアニメーションを停止します)。これによって、そのようなムービークリップが Advance リストから除外されることになります。なお、親のムービークリップが停止している場合であっても、階層内にあるあらゆるムービークリップを一つ残らず (子も含めて) 停止する必要があります。
+</li> <li> _global.noInvisibleAdvance 拡張機能の使用が必要となる代替的なテクニックもあります。この拡張機能は、インビジブルなムービークリップのグループを、それぞれを停止させることなく、Advance リストから除外するのに役立つ場合があります。この拡張機能のプロパティが true にセットされている場合は、インビジブルなムービークリップが Advance リストに追加されないため (子を含めて)、パフォーマンスが改善されます。なお、このテクニックが完全に Flash に対応しているわけではないということを覚えておいてください。Flash ファイルが、非表示のムービー内部における、いかなるタイプのフレーム単位の処理にも依存しないようにする必要があります。GFx 拡張機能を有効にすることを忘れないでください。そのためには、_global.gfxExtensions を true にセットすることによって、この (および他の) 拡張機能を使用できるようにします。
+</li> <li> ステージ上のムービークリップの数を減らします。ムービークリップの不必要なネストを抑えます。ネストされたムービークリップそれぞれによって、advance 時に小さなオーバーヘッドが生じます。
+</li> <li> タイムラインアニメーションおよび、キーフレーム、シェイプ トゥイーンを減らします。
+</li> <li> GFx 2.2 およびそれ以前のバージョンでは、ビジブルでスクリーン上にありながら、MovieClip.noAdvance プロパティを true にセットすることによって advance または onEnterFrame を要求しない静的なムービークリップの advance を防ぐことが可能です。GFx 拡張機能を有効にする必要があります。そのためには、_global.gfxExtensions を true にセットすることによって、この拡張機能を使用できるようにします。なお、このことは、たいていのケースにおいて、GFx 3.0 およびそれ以降のバージョンでは必要となりません。GFx 3.0 は、停止したムービークリップを advance または処理することがありません。Advance におけるレンダリング グラフ全体を処理しなくなったためです。その代わりに、アクティブなリストを保持するようになりました。この改善によってnoAdvance/noInvisibleAdvance はめったに必要とならなくなりました。それらの主な目的は、グラフの一部の処理を省略することにあるのです。これらを使用して onEnterFrame またはアニメートされたオブジェクトを無効にすることは依然として可能ですが、これは、他の方法 (onEnterFrame ハンドラそのものを削除するなど) によっても可能です。
+</li></ul>
+<p />
+<h3><a name="on_ClipEvent と on イベント"></a> onClipEvent と on イベント </h3>
+onClipEvent() と on() イベントの使用を避けます。その代わりに、onEnterFrame や onPress を使用するようにします。そうすることには、次のように理由がいくつかあります。
+<p /> <ul>
+<li> 関数スタイルのイベントハンドラは、実行時にインストール可能であり、削除可能であるため。
+</li> <li> 関数内部のバイトコードは、旧式の onClipEvent および on ハンドラ内部にある場合よりも最適化が適切に行われるため。主な最適化は、this および _global、引数、super などをプレキャッシュし、256 の内部レジスタをローカル変数のために使用することにあります。この最適化は、関数にのみ機能します。
+</li></ul>
+<p />
+問題が生じるのは、onLoad 関数スタイルのハンドラを、最初のフレームが実行される前にインストールする必要がある場合だけです。そのような場合は、次のようにして、ドキュメント化されていないイベントハンドラである onClipEvent(construct) を使用して、onEnterFrame をインストールすることができます。
+<p />
+<div class="codesnippet">
+<pre>
+onClipEvent(construct) {
+  this.onLoad &#61; function() {
+    //function body
+  }
+}
+</pre>
+</div>
+<p />
+あるいは、onClipEvent(load) を使用して、通常の関数をそこから呼び出します。ただし、この方法のほうが劣ります。余分な関数コールのために余計なオーバーヘッドが生じるためです。
+<p />
+<h3><a name="on_EnterFrame"></a> onEnterFrame </h3>
+onEnterFrame イベントハンドラの使用を最小限に抑えます。あるいは、最低でも、常に実行するのではなく、必要な場合にインストールおよび削除するようにします。onEnterFrame ハンドラを多用すると、パフォーマンスが顕著に低下する場合があります。代替として、setInterval および setTimeout 関数の使用を検討してください。setInterval を使用する場合は次のことに留意してください。
+<p /> <ul>
+<li> このハンドラが不要になったら、必ず、clearInterval を呼び出します。
+</li> <li> setInterval および setTimeout ハンドラは、onEnterFrame よりも頻繁に実行するならば、onEnterFrame よりも低速になる場合があります。これを避けるためには、時間間隔のために控え目な値を使用します。
+</li></ul>
+<p />
+onEnterFrame ハンドラを削除するには、delete 演算子を使用します。
+<p />
+<div class="codesnippet">
+<pre>
+delete this.onEnterFrame;
+delete mc.onEnterFrame;
+</pre>
+</div>
+<p />
+onEnterFrame に null または未定義をアサインしてはいけません (例 : this.onEnterFrame = null)。その理由は、この操作によって、onEnterFrame ハンドラが完全に削除されることがないためです。onEnterFrame という名前が依然として存在するため、GFx がなおもこのハンドラを削除しようとします。
+<p />
+<h3><a name="Var キーワード"></a> Var キーワード </h3>
+可能な場合は必ず、var キーワードを使用します。var キーワードを関数内部で使用することは特に重要です。その理由は、ActionScript のコンパイラがローカル変数へのアクセスを最適化する際に、変数をハッシュテーブルに入れて名前でアクセスするのではなく、インデックスによる直接的なアクセスをともなって内部レジスタを使用するためです。var キーワードを使用することによって、AS の関数実行速度が倍になります。
+<p />
+以下は、最適化されていないコードです。
+<div class="codesnippet">
+<pre>
+var i &#61; 1000;
+countIt &#61; function() {
+  num &#61; 0;
+  for(j&#61;0; j&#60;i; j++) {
+    j++;
+    num +&#61; Math.random();
+  }
+  displayNumber.text &#61; num;
+}
+</pre>
+</div>
+<p />
+以下は、最適化されたコードです。
+<p />
+<div class="codesnippet">
+<pre>
+var i &#61; 1000;
+countIt &#61; function() {
+  var num &#61; 0;
+  var ii &#61; i;
+  for(var j&#61;0; j&#60;ii; j++) {
+    j++;
+    num +&#61; Math.random();
+  }
+  displayNumber.text &#61; num;
+}
+</pre>
+</div>
+<p />
+<h3><a name="プレキャッシュ"></a> プレキャッシュ </h3>
+ローカル変数 (var キーワードをともなった) において、頻繁にアクセスする読み取り専用のオブジェクト メンバーをプレキャッシュします。
+<p />
+以下は、最適化されていないコードです。
+<p />
+<div class="codesnippet">
+<pre>
+function foo(var obj:Object) {
+  for (var i &#61; 0; i &#60; obj.size; i++) {
+    obj.value&#91;i] &#61; obj.num1 &#42; obj.num2;
+  }
+}
+</pre>
+</div>
+<p />
+以下は、最適化されたコードです。
+<p />
+<div class="codesnippet">
+<pre>
+function foo(var obj:Object) {
+  var sz &#61; obj.size;
+  var n1 &#61; obj.num1;
+  var n2 &#61; obj.num1;
+  for (var i &#61; 0; i &#60; sz; i++) {
+    obj.value&#91;i] &#61; n1&#42;n2;
+  }
+}
+</pre>
+</div>
+<p />
+プレキャッシュは、他のシナリオについても効果的に使用することができます。他の例としては、次のようなものがあります。
+<p />
+<div class="codesnippet">
+<pre>
+var floor &#61; Math.floor
+var ceil &#61; Math.ceil
+num &#61; floor(x) ? ceil(y);
+var keyDown &#61; Key.isDown;
+var keyLeft &#61; Key.LEFT;
+if (keyDown(keyLeft)) {
+  // do something;
+}
+</pre>
+</div>
+<p />
+長いパスをプレキャッシュします。
+<p />
+次のような長いパスを繰り返し使用しないようにします。
+<p />
+<div class="codesnippet">
+<pre>
+mc.ch1.hc3.djf3.jd9.&#95;x &#61; 233;
+mc.ch1.hc3.djf3.&#95;x &#61; 455;
+</pre>
+</div>
+<p />
+ローカル変数においてファイルパスの一部をプレキャッシュします。
+<p />
+<div class="codesnippet">
+<pre>
+var djf3 &#61; mc.ch1.hc3.djf3;
+djf3.&#95;x &#61; 455;
+var jd9 &#61; djf3.jd9;
+jd9.&#95;x &#61; 223;
+</pre>
+</div>
+<p />
+<h3><a name="複雑な式"></a> 複雑な式 </h3>
+次のような、複雑で C スタイルの式を避けます。
+<p />
+<div class="codesnippet">
+<pre>
+this&#91;&#95;global.mynames&#91;queue]]&#91;&#95;global.slots&#91;i]].gosplash.text &#61; &#95;global.MyStrings&#91;queue];
+</pre>
+</div>
+<p />
+この式を小さな部分に分割して、中間的なデータをローカル変数に格納します。
+<p />
+<div class="codesnippet">
+<pre>
+var &#95;splqueue &#61; this&#91;&#95;global.mynames&#91;queue]];
+var &#95;splstring &#61; &#95;global.MyStrings&#91;queue];
+var slot&#95;i &#61; &#95;global.slots&#91;i];
+&#95;splqueue&#91;slot&#95;i].gosplash.text &#61; &#95;splstring;
+</pre>
+</div>
+<p />
+このことは、次のループのように分割された部分に複数の参照が存在する場合は、特に重要です。
+<p />
+<div class="codesnippet">
+<pre>
+for(i&#61;0; i&#60;3; i++) {
+  this&#91;&#95;global.mynames&#91;queue]]&#91;&#95;global.slots&#91;i]].gosplash.text &#61; &#95;global.MyStrings&#91;queue];
+  this&#91;&#95;global.mynames&#91;queue]]&#91;&#95;global.slots&#91;i]].gosplash2.text &#61; &#95;global.MyStrings&#91;queue];
+   this&#91;&#95;global.mynames&#91;queue]]&#91;&#95;global.slots&#91;i]].gosplash2.textColor &#61; 0x000000;
+}
+</pre>
+</div>
+<p />
+次は、この前のループを改良したバージョンです。
+<p />
+<div class="codesnippet">
+<pre>
+var &#95;splqueue &#61; this&#91;&#95;global.mynames&#91;queue]];
+var &#95;splstring &#61; &#95;global.MyStrings&#91;queue];
+for (var i&#61;0; i&#60;3; i++) {
+  var slot&#95;i &#61; &#95;global.slots&#91;i];
+  &#95;splqueue&#91;slot&#95;i].gosplash.text &#61; &#95;splstring;
+  &#95;splqueue&#91;slot&#95;i].gosplash2.text &#61; splstring;
+  &#95;splqueue&#91;slot&#95;i].gosplash2.textColor &#61; 0x000000;
+}
+</pre>
+</div>
+<p />
+上記のコードはさらに最適化することができます。可能な場合には、配列の同一要素への複数の参照を取り除きます。ローカル変数において、解決されたオブジェクトをプレキャッシュします。
+<p />
+<div class="codesnippet">
+<pre>
+var &#95;splqueue &#61; this&#91;&#95;global.mynames&#91;queue]];
+var &#95;splstring &#61; &#95;global.MyStrings&#91;queue];
+for (var i&#61;0; i&#60;3; i++) {
+  var slot&#95;i &#61; &#95;global.slots&#91;i];
+  var elem &#61; &#95;splqueue&#91;slot&#95;i];
+  elem.gosplash.text &#61; &#95;splstring;
+  var gspl2 &#61; elem.gosplash2;
+  gspl2.text &#61; splstring;
+  gspl2.textColor &#61; 0x000000;
+}
+</pre>
+</div>
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ScaleformActionScriptBestPracticesJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:54 GMT -->
+</html></body>

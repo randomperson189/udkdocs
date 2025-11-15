@@ -1,0 +1,1050 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NetworkingOverviewCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:15 GMT -->
+<head>
+<title> UDK | NetworkingOverviewCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">NetworkingOverviewCH  </b></div>
+<div id="tooltext">
+<a href="NetworkingOverview.html" class="twikiLink">English Translation</a><br><a href="NetworkingOverviewJP.html" class="twikiLink">日本語訳</a><br><a href="NetworkingOverviewKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/NetworkingOverviewCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="ReplicationHome.html" class="twikiLink">网络&amp;复制</a></b> &gt; 虚幻网络架构
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="虚幻网络结构"></a> 虚幻网络结构 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="NetworkingOverviewCH.html#虚幻网络结构"> 虚幻网络结构</a> <ul>
+<li> <a href="NetworkingOverviewCH.html#概述"> 概述</a> <ul>
+<li> <a href="NetworkingOverviewCH.html#开始实现网络！">开始实现网络！</a>
+</li> <li> <a href="NetworkingOverviewCH.html#点对点模型">点对点模型</a>
+</li> <li> <a href="NetworkingOverviewCH.html#客户端-服务器模型">客户端-服务器模型</a>
+</li> <li> <a href="NetworkingOverviewCH.html#虚幻网络架构"> 虚幻网络架构</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewCH.html#基本概念">基本概念</a> <ul>
+<li> <a href="NetworkingOverviewCH.html#目标"> 目标</a>
+</li> <li> <a href="NetworkingOverviewCH.html#基本术语"> 基本术语</a>
+</li> <li> <a href="NetworkingOverviewCH.html#更新循环"> 更新循环</a>
+</li> <li> <a href="NetworkingOverviewCH.html#服务器是操纵者"> 服务器是操纵者</a>
+</li> <li> <a href="NetworkingOverviewCH.html#带宽限制">带宽限制</a>
+</li> <li> <a href="NetworkingOverviewCH.html#Replication（复制）"> Replication（复制）</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewCH.html#Actors"> Actors</a> <ul>
+<li> <a href="NetworkingOverviewCH.html#Roles（角色）"> Roles（角色）</a> <ul>
+<li> <a href="NetworkingOverviewCH.html#定义"> 定义</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewCH.html#Relevancy (关联性)"> Relevancy (关联性)</a> <ul>
+<li> <a href="NetworkingOverviewCH.html#定义"> 定义</a>
+</li> <li> <a href="NetworkingOverviewCH.html#在C++中改变相关集合的定义"> 在C++中改变相关集合的定义</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewCH.html#优先次序">优先次序</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewCH.html#Replication (复制)"> Replication (复制)</a> <ul>
+<li> <a href="NetworkingOverviewCH.html#复制概述">复制概述</a> <ul>
+<li> <a href="NetworkingOverviewCH.html#Actor复制"> Actor复制</a>
+</li> <li> <a href="NetworkingOverviewCH.html#变量复制"> 变量复制</a>
+</li> <li> <a href="NetworkingOverviewCH.html#函数调用复制"> 函数调用复制</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewCH.html#示例"> 示例</a>
+</li> <li> <a href="NetworkingOverviewCH.html#UnrealScript: 复制声明"> UnrealScript: 复制声明</a> <ul>
+<li> <a href="NetworkingOverviewCH.html#可靠与不可靠"> 可靠与不可靠</a>
+</li> <li> <a href="NetworkingOverviewCH.html#变量总是可靠的"> 变量总是可靠的</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewCH.html#复制条件">复制条件</a> <ul>
+<li> <a href="NetworkingOverviewCH.html#复制条件指南"> 复制条件指南</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewCH.html#变量复制">变量复制</a> <ul>
+<li> <a href="NetworkingOverviewCH.html#更新机制"> 更新机制</a>
+</li> <li> <a href="NetworkingOverviewCH.html#变量类型注意事项"> 变量类型注意事项</a>
+</li> <li> <a href="NetworkingOverviewCH.html#Actor 属性">  Actor 属性</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewCH.html#函数调用复制">函数调用复制</a> <ul>
+<li> <a href="NetworkingOverviewCH.html#远程路由机制"> 远程路由机制</a>
+</li> <li> <a href="NetworkingOverviewCH.html#可靠函数调用 vs 复制变量"> 可靠函数调用 vs 复制变量</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewCH.html#仿真函数和状态">仿真函数和状态</a>
+</li> <li> <a href="NetworkingOverviewCH.html#复制模式">复制模式</a> <ul>
+<li> <a href="NetworkingOverviewCH.html#最小化服务器侧CPU的使用量"> 最小化服务器侧CPU的使用量</a>
+</li> <li> <a href="NetworkingOverviewCH.html#最小化反应察觉延迟时间"> 最小化反应察觉延迟时间</a>
+</li> <li> <a href="NetworkingOverviewCH.html#ReplicationInfo 类"> ReplicationInfo 类</a>
+</li> <li> <a href="NetworkingOverviewCH.html#使用_ReplicatedEvent()函数"> 使用ReplicatedEvent()函数</a>
+</li> <li> <a href="NetworkingOverviewCH.html#WorldInfo 类"> WorldInfo 类</a>
+</li> <li> <a href="NetworkingOverviewCH.html#GameInfo 类"> GameInfo 类</a> <ul>
+<li> <a href="NetworkingOverviewCH.html#InitGame(初始化游戏)"> InitGame(初始化游戏)</a>
+</li> <li> <a href="NetworkingOverviewCH.html#PreLogin(预登录)"> PreLogin(预登录)</a>
+</li> <li> <a href="NetworkingOverviewCH.html#Login(登录)"> Login(登录)</a>
+</li> <li> <a href="NetworkingOverviewCH.html#PostLogin(登陆后)">PostLogin(登陆后)</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewCH.html#玩家运动及预测"> 玩家运动及预测</a> <ul>
+<li> <a href="NetworkingOverviewCH.html#概述"> 概述</a>
+</li> <li> <a href="NetworkingOverviewCH.html#内部工作方式"> 内部工作方式</a>
+</li> <li> <a href="NetworkingOverviewCH.html#优点">  优点</a>
+</li> <li> <a href="NetworkingOverviewCH.html#运动模式"> 运动模式</a>
+</li> <li> <a href="NetworkingOverviewCH.html#玩家状态同步"> 玩家状态同步</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewCH.html#玩家动画(客户端)">玩家动画(客户端)</a>
+</li> <li> <a href="NetworkingOverviewCH.html#尸体">尸体</a>
+</li> <li> <a href="NetworkingOverviewCH.html#武器开火">武器开火</a>
+</li> <li> <a href="NetworkingOverviewCH.html#射弹">射弹</a>
+</li> <li> <a href="NetworkingOverviewCH.html#武器附加">武器附加</a>
+</li> <li> <a href="NetworkingOverviewCH.html#声音"> 声音</a>
+</li> <li> <a href="NetworkingOverviewCH.html#物理"> 物理</a> <ul>
+<li> <a href="NetworkingOverviewCH.html#Replication(复制)">  Replication(复制)</a>
+</li> <li> <a href="NetworkingOverviewCH.html#仿真">仿真</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewCH.html#性能技巧">性能技巧</a> <ul>
+<li> <a href="NetworkingOverviewCH.html#优化目标">优化目标</a> <ul>
+<li> <a href="NetworkingOverviewCH.html#Native (C++)"> Native (C++)</a>
+</li> <li> <a href="NetworkingOverviewCH.html#欺骗检测及预防"> 欺骗检测及预防</a>
+</li> <li> <a href="NetworkingOverviewCH.html#流量监测"> 流量监测</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewCH.html#网络驱动程序实现">网络驱动程序实现</a> <ul>
+<li> <a href="NetworkingOverviewCH.html#插件网络驱动程序"> 插件网络驱动程序</a>
+</li> <li> <a href="NetworkingOverviewCH.html#因特网驱动程序">因特网驱动程序</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewCH.html#Unreal Wire Protocol(Unreal网络协议)"> Unreal Wire Protocol(Unreal网络协议)</a>
+</li> <li> <a href="NetworkingOverviewCH.html#现在及将来">现在及将来</a>
+</li> <li> <a href="NetworkingOverviewCH.html#有用的链接">有用的链接</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<hr size="1" noshade="noshade">
+多玩家游戏是指多个玩家共享游戏世界: 所有的玩家都感到他们在一个世界中，可以从不同的角度看到那个世界中发生的同一个事件。随着多玩家游戏从最初的以 <em>Doom</em> 为代表的较小的2个玩家模式的游戏演变为大的、稳固的、具有更多游戏交互模式的多玩家游戏，比如 <em>Quake 2</em>, <em><a href="http://www.unreal.com/" target="_top">Unreal</a></em>, 及 <em>Ultima Online</em> ，多个玩家共享游戏世界的底层的技术已经有了巨大的演变。
+<p />
+<h3><a name="开始实现网络！"></a> 开始实现网络！ </h3>
+如果您打算在您的游戏中支持网络化的多玩家游戏，您需要认识到的最重要的一件事情是在您开发游戏的过程中创建它并对其进行测试！ 创建一个有效的网络实现将会对您的游戏对象的设计决策产生很大的影响。 重新设计解决方案是非常难的，并且当在类似于在多个对象上的分割功能没有考虑网络时，具有重要意义的设计决策将可能会在多玩家间导致很多重要的问题。
+<p />
+<h3><a name="点对点模型"></a> 点对点模型 </h3>
+最初是点对点游戏，比如 <em>Doom</em> 和 <em>Duke Nukem</em> 。 在这些游戏中，游戏中的每个机器是对等的。每个机器都可以和其它机器精确地同步它们的输入及时间，在每个完全相同的输入上，每个机器实现相同的精确的游戏逻辑。 对于完全确定的(也就是，具有固定频率、非随机化的)游戏逻辑，则在机器中的所有玩家都感受到相同的真实环境。
+<p />
+这个方法的优点是简单。 缺点是：  <ul>
+<li> <strong>缺乏持续性</strong> 所有的玩家必须一同启动游戏，并且新的玩家不能随意地进入或离开游戏。
+</li> <li> <strong>缺乏玩家可扩展性</strong> 由于网络架构锁步的本性，网络协调的开销和涉及到网络的失败的几率随着玩家的数量呈线性增长。
+</li> <li> <strong>缺乏帧频率可扩展性</strong> 所有的玩家必须以相同的内部帧频率运行，从而使得支持具有不同处速度的各种机器变得困难。
+</li></ul>
+<p />
+<h3><a name="客户端-服务器模型"></a> 客户端-服务器模型 </h3>
+接下来是客户端-服务器架构，最初由 <em>Quake</em> 创建，不久后 <em>Ultima Online</em> 也是用了这个模型。 这里，一个机器是专用“服务器”，它负责做出所有游戏性决定。 另一个机器是“客户端”，它们被认为是渲染终端，它可以把它们的按键发送到服务器上，并且从服务器接收到一系列的对象来进行渲染。 这个改进使得大规模的网络游戏成为可能，因为游戏服务器开始在整个网络上迅速出现。 <em>QuakeWorld</em> 和 <em>Quake 2</em> 稍后扩展了客户端-服务器 架构，为了在使用较低的带宽的过程中增加视觉效果的细节，它把额外的仿真及预测逻辑移动到了客户端。 这里，客户端不仅接受一系列要渲染的对象，同时也接受关于它们的轨道方面的信息，所以客户端可以对对象的运动进行预测。 另外，为了消除在客户端运动中的察觉反应时间，引入了锁步预测协议。
+<p />
+尽管如此，这种方法仍然有一些缺点：
+   当用户及授权用户创建一种新类型的对象(武器、玩家控制等)时，必须创建粘合逻辑来指出这些新对象的仿真及预测方面的信息。  <ul>
+<li> <strong>Difficulties of the prediction model</strong> - 在这个模型中，网络代码和游戏代码是分别独立的模块，然而，为了保持游戏状态合理的同步，每个模块又必须完全地意识到另一个模块的实现。 两个独立的模块之间具有强耦合是我们不希望看到的，因为使得它们的可扩展性变得困难。
+</li></ul>
+<p />
+<h3><a name="虚幻网络架构"></a> 虚幻网络架构 </h3>
+虚幻向多玩家游戏中引入了一个新的方法，术语名称是 <strong>generalized client-server model(广义的客户端-服务器模型)</strong> 。 在这个模型中，服务器仍然控制着游戏状态的变化。 然而，实际上是客户端在本地维护游戏状态的精确子集，并且在大致同样的数据上，客户端可以通过执行和服务器一样的游戏代码来预测游戏的流程，从而最小化了在两个机器间交互的数据的数量。 服务器通过复制相关actors及它们的属性把关于世界的信息发送到客户端。 客户端和服务器也可以通过复制的函数来进行通信，仅在拥有调用函数的Actors的服务器和客户端之间复制函数。
+<p />
+此外， <em>game state(游戏状态)</em> 是通过可扩展的、面向对象的脚本语言- UnrealScript  进行描述的 – 它可以完全地从网络代码中分离出游戏逻辑。网络代码是以这样的方式生成的，即它可以协调任何可以通过语言描述的游戏。 这样便达到了用于增加可扩展性的面向对象的目标，对象的行为应该完全由那个对象描述，而不是根据很难和那个对象的内部实现相关联的其它代码片段引入。
+<p />
+<h2><a name="基本概念"></a> 基本概念 </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="目标"></a> 目标 </h3>
+这里的目标是以非常严格的方式定义了虚幻的网络架构，因为如果不进行精确地定义，将会引入那些很容易被误解的大量的复杂性。
+<p />
+<h3><a name="基本术语"></a> 基本术语 </h3>
+我们精确地定义了我们的基本术语：
+<p /> <ul>
+<li>  <strong>variable(变量)</strong> 是固定名称和可修改的值之间的一个连接。变量的实例包括整型比如 <code>X=123</code> 、浮点型数值比如 <code>Y=3.14</code> 、字符串比如 <code>Team="Rangers"</code> 、向量比如 <code>V=(1.5,2.5,-0.5)</code> 。
+</li> <li>  <strong>object(对象)</strong> 是一个自包含的数据结构，由一组固定的变量组成。
+</li> <li>  <strong>actor</strong> 是一个能够在关卡中到处移动并且可以和那个关卡中的其它actors进行交互的对象。
+</li> <li>  <strong>level(关卡)</strong> 是由一组actors组成的对象。
+</li> <li>  <strong>tick(更新函数)</strong> 是一个操作，假设已经过去了时间量DeltaTime，这个操作会更新整个游戏状态。
+</li> <li>  <strong>game state(游戏状态)</strong> 是指在那个关卡中存在的所有actors的完整集合以及当目前没有进行tick操作时它们的所有变量在某刻的当前值。
+</li> <li>  <strong>client(客户端)</strong> 是一个 <code>Unreal.exe</code> 的运行的实例，它维持一组和世界中发生的事件的近似仿真的相匹配的游戏状态的近似子集，并且可以为玩家渲染世界的近似视图。
+</li> <li>  <strong>server(服务器)</strong> 是一个正在运行的虚幻引擎实例，它负责更新每个独立的关卡并且把游戏状态可靠地传递给所有的客户端。
+</li></ul>
+<p />
+<h3><a name="更新循环"></a> 更新循环 </h3>
+除了tick及game state(游戏状态)以外的上面的所有概念可能都很容易理解。所以这里我们将会进一步介绍这两个概念。 首先，这里是Unreal 的更新循环的简单描述：
+<p /> <ul>
+<li> 如果我是  <em>server(服务器)</em> ，则可以把当前游戏状态传达给我的所有客户端。
+</li> <li> 如果我是 <em>client(客户端)</em> ，则可以把我请求的运动发送到服务器，并且可以从服务器接收心的游戏状态信息，把我的当前世界的近似视图描画到屏幕上。
+</li> <li> 假设自从前一次 tick之后，已经过去了时间量 <code>DeltaTime</code> ， <em>tick</em> 操作将会更新游戏状态。
+</li></ul>
+<p />
+Tick操作涉及了更新关卡中的所有Actors，实现它们的物理，通知他们已经发生的有趣的游戏事件，并且执行任何需要的脚步代码。Unreal中的所有的物理及更新代码的设计都是为了处理经过的时间量。
+<p />
+比如，Unrealde 的运动物理如下所示：
+<p />
+<div class="codesnippet">
+<pre>
+ Position +&#61; Velocity &#42; DeltaTime
+</pre>
+</div>
+<p />
+这增加了帧频率的可扩展性。
+<p />
+当tick操作正在进行中时，游戏状态可以通过执行带代码来不断地进行修改。游戏状态可以通过三种方法来修改：
+<p /> <ul>
+<li> 可以修改Actor中的变量。
+</li> <li> 可以创建一个Actor。
+</li> <li> 可以销毁一个Actor。
+</li></ul>
+<p />
+<h3><a name="服务器是操纵者"></a> 服务器是操纵者 </h3>
+综上所述，服务器的游戏状态是完全地由关卡中的所有actors的所有变量的集合所定义。因为服务器控制着游戏性的流程，所以服务器的游戏状态总是可以被认为是一个真正的游戏状态。 客户端机器上的游戏状态的版本应该总是被认为是和服务器的游戏状态相背离的各种状态的近似对象。 存在于客户端机器上的对象，应该不能被当作代理，因为它们是一个对象的临时的近似的展现而不是对象本身。
+<p />
+当客户端在网络化的多玩家游戏中加载一个关卡来进行应用时，它删除了关卡中除这些设置 <strong>bNoDelete</strong> 为TRUE 或者设置 <strong>bStatic</strong> 为 <code>TRUE</code> 的Actors之外的所有Actors。 其它的和那个客户端(由服务器决定)相关联的Actors将会被从服务器复制到客户端。 有一些Actors(比如GameInfo Actor)将永远不会被复制到客户端。
+<p />
+<h3><a name="带宽限制"></a> 带宽限制 </h3>
+如果网络带宽是无限的，那么网络代码将是非常简单的： 在每次tick结束时，服务器仅会把完整的精确的数据发送到每个客户端，以便客户端可以总是精确地渲染正在服务器上发生的游戏视图。 然而，事实上因特网是28.8k的调制解调器，它可能仅允许1%的带宽来传递完整的精确的更新信息。 尽管消费者的网络连接的速度在不久的将来将会变得更快，但是带宽的增长速度要比摩尔定律中定义的游戏和图形学中的增长速度慢很多。 因此，将永远不会有足够的带宽来满足完全的游戏状态更新。
+<p />
+所以，网络代码的主要目的是使得服务器可以向客户端传达游戏状态的合理的近似值，以便客户端可以在给定的带宽限制下渲染出尽可能地接近共享的游戏世界的交互视图。
+<p />
+<h3><a name="Replication（复制）"></a> Replication（复制） </h3>
+Unreal把“调整服务器和客户端之间的共享游戏世界的合理的近似度”的问题作为“复制”问题对待。 也就是，为了获得近似的共享游戏世界决定在客户端和服务器间传递的一组数据及命令的问题。
+<p />
+<h2><a name="Actors"></a> Actors </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="Roles（角色）"></a> Roles（角色） </h3>
+一般来说，每个Actor有一个  <strong>Role</strong> 和一个 <strong>RemoteRole</strong> 属性，它在服务器和客户端上有不同的值。 服务器上的每个Actor都设置 <strong>Role</strong> 为 <strong>ROLE_Authority</strong> 。
+<p />
+服务器上的Actors可能具有的 <strong>RemoteRole</strong> 值是： <ul>
+<li> <strong>ROLE_AutonomousProxy</strong> - 当被复制到拥有它们的客户端时它们所控制的PlayerControllers和Pawns。
+</li> <li> <strong>ROLE_SimulatedProxy</strong> - 所有其它的复制的Actors
+</li> <li> <strong>ROLE_None</strong> - 永远不会被复制到任何客户端的Actors
+</li></ul>
+<p />
+在服务器上的一个Actor的 <strong>RemoteRole</strong> 是客户端上的那个Actor的 <strong>Role</strong> 。 所有复制到客户端的Actors都会设置 <strong>RemoteRole</strong> 为  <strong>ROLE_Authority</strong> 。
+<p />
+<h4><a name="定义"></a> 定义 </h4>
+<strong>Actor</strong>  定义了 <strong>ENetRole</strong>  枚举值和两个变量 <strong>Role</strong> 和  <strong>RemoteRole</strong> ，如下所示：
+<p />
+<div class="codetitlebar">
+Actor.uc
+</div>
+<div class="codesnippet">
+<pre>
+// Net variables.
+enum ENetRole
+{
+   ROLE&#95;None,              // 根本没有role（角色）。
+   ROLE&#95;SimulatedProxy,    //这个actor的本地仿真代理。
+   ROLE&#95;AutonomousProxy,   //这个actor的本地自治代理。
+   ROLE&#95;Authority,         // 对这个actor的权威控制。
+};
+var ENetRole RemoteRole, Role;
+</pre>
+</div>
+<p />
+<strong>Role</strong> 和 <strong>RemoteRole</strong> 变量描述了本地和远程机器分别对那个actor的控制程度：
+<p /> <ul>
+<li> <strong>Role == ROLE_SimulatedProxy</strong> - 意味着那个actor是临时的仿真物理和动画的近似代理。在客户端，仿真代理实现了它们的基本物理(线性或者受到重力影响的运动及碰撞)，但是它们不能作出任何高级的运动决策。它们仅是进行走动。它们仅使用 <em>simulated</em> 关键字来执行脚本函数；并且它们仅能进入到标记为 <em>simulated</em> 的状态。 这种情况仅能在网络客户端中看到，在网络服务器或者单玩家游戏中永远不会看到。
+</li> <li> <strong>Role == ROLE_AutonomousProxy</strong> - 意味着那个actor是本地玩家。 自治代理为客户端侧的运动预测(而不是仿真)内置了特殊逻辑。 它们可以在客户端上执行任何脚本函数；并且它们可以进入到任何状态。 这种情况仅能在网络客户端中看到，在网络服务器或者单玩家游戏中永远不会看到。
+</li> <li> <strong>Role == ROLE_Authority</strong> -  意味着这个机器对Actor有绝对的权威地控制权。
+</li></ul>
+这种情况适用于单玩家游戏中的所有actors。 它们可以执行任何脚本函数；并且它们可以进入任何状态。
+<p />
+这是服务器上的所有Actors的情况。
+<p />
+在客户端，这种情况适用于由客户端本地产生的Actors，比如为了降低带宽使用在客户端侧实现的特效。
+<p />
+在服务器侧，所有的Actor 都设置 <strong>Role == ROLE_Authority</strong> ，并设置 <strong>RemoteRole</strong> 为其中一种代理类型。在客户端侧，总是可以精确地颠倒和服务器的值相关的 <strong>Role</strong> 和 <strong>RemoteRole</strong> 的值。 这正是 <strong>Role</strong> 和 <strong>RemoteRole</strong> 所期望的。
+<p />
+<strong>ENetRole</strong> 值得大多数意思是通过复制语句在UnrealScript类比如 <strong>Actor</strong> 和 <strong>PlayerPawn</strong> 中定义的。 这里是复制语句如何定义各种role(角色)值的意思的实例：
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>注意:</strong> 这些主要是和虚幻引擎1及虚幻引擎2相关的示例；但是对于虚幻引擎3来说，其核心概念是一样的。
+<p /> <ul>
+<li> 由于在 <strong>Actor.AmbientSound</strong> 类中的这个复制定义，所以 <strong>Actor.AmbientSound</strong> 变量是从服务器端向客户端发送的：  <ul>
+<li> <pre>if(Role &#61;&#61; ROLE&#95;Authority) AmbientSound;</pre>
+</li></ul>
+</li> <li> 由于在 <code>Actor</code> 类中的这个复制定义： <code>if( DrawType==DT_Mesh &amp;&amp; (RemoteRole&lt;=ROLE_SimulatedProxy) ) AnimSequence;</code> ，所以 <code>Actor.AnimSequence</code> 变量是从服务器向客户端发送的，但是仅发送那些渲染为网格物体的actors的变量  <ul>
+<li> <pre>if(DrawType &#61;&#61; DT&#95;Mesh &#38;&#38; RemoteRole &#60;&#61; ROLE&#95;SimulatedProxy) AnimSequence;</pre>
+</li></ul>
+</li> <li> 由于在 <code>Actor</code> 类中的这个复制定义： <code>if( (RemoteRole==ROLE_SimulatedProxy &amp;&amp; (bNetInitial || bSimulatedPawn)) || bIsMover ) Velocity;</code> ，所以当仿真代理最初产生及所有的仿真代理都移动画刷时，服务器将会向客户端发送所有仿真代理的 <code>Velocity</code>  <ul>
+<li> <pre>if((RemoteRole &#61;&#61; ROLE&#95;SimulatedProxy &#38;&#38; (bNetInitial &#124;&#124; bSimulatedPawn)) &#124;&#124; bIsMover) Velocity;</pre>
+</li></ul>
+</li></ul>
+<p />
+通过学习UnrealScript类中的所有复制语句，您可以理解所有角色的内部工作原理。 关于复制来说，在底层真的很少有 “幕后 _技巧_” ： 在底层的C++中，引擎为复制的actors、函数调用及变量提供了基本的机制。在高层次的UnrealScript中，各种网络角色的意思是通过指出根据各种角色应该复制哪些变量和函数来定义的。所以，除了少量的根据条件为仿真代理更新物理及动画的底层C++逻辑外，角色的意思在UnealScript中几乎是自定义的。
+<p />
+<h3><a name="Relevancy (关联性)"></a> Relevancy (关联性) </h3>
+<p />
+<h4><a name="定义"></a> 定义 </h4>
+Unreal 关卡可以是非常大的，任何时候玩家仅看到那个关卡中的Actors的一小部分。 关卡中的大多数其它的Actors是不能被见的、不能被听到的、并且对玩家不会产生重要影响。 服务器认为对客户端可见的或者可以影响客户端的Actors是那个客户端的Actors的集合。 Unreal的网络代码中的一个重要的带宽优化是服务器仅告诉客户端在那个客户端的相关集合中的Actors。
+<p />
+Unreal在决定玩家的Actors相关集合中应用了以下规则(按照顺序)： <ul>
+<li> 如果Actor的 RemoteRole 是 ROLE_None，那么它是不相关的。
+</li> <li> 如果一个Actor 附加到了另一个Actor的骨架上，那么它的相关性由它的附加基础Actor决定。
+</li> <li> 如果 Actor 有 <code>bAlwaysRelevant</code> ，那么它是相关的。
+</li> <li> 如果Actor设置 <code>bOnlyRelevantToOwner=true</code> (用于武器)，那么它仅潜在地和拥有那个Actor的玩家所在的客户端相关联。
+</li> <li> 如果Actor被玩家( <strong>Owner==Player</strong> )拥有，那么它是相关的。
+</li> <li> •如果Actor是隐藏的( <strong>bHidden=true</strong> ),它不进行碰撞( <strong>bBlockPlayers=fals</strong> )而且没有环境声音( <strong>AmbientSound==None</strong> )，那么这个actor 是相关的。
+</li> <li> 如果通过在actor的 <strong>Location(位置)</strong> 和 文件的 <strong>Location(位置)</strong> 之间进行线性线性检测证明 Actor 是可见的，那么它是相关的。
+</li> <li> 如果Actor在小于2到10秒前是可见的(由于某些性能优化导致具体的数值是变化的)，那么它是有关的。
+</li></ul>
+<p />
+<!--  -->
+注意， <strong>bStatic</strong> 和 <strong>bNoDelete</strong> Actors(它仍然在客户端上)也可以被复制。
+<p />
+这些规则的设计目的是更好地获得真正地影响玩家Actors集合的近似值。当然，它是有缺点的： 对于大的Actors来说，线性检测可能会返回假的否定信息(尽管我们使用了一些启发式算法来解决这个问题)，它没有考虑环境声音的声音遮挡等。 然而，这个近似值是这样的，它的错误可能会被和因特网一样的具有延迟时间及包丢失的网络环境中存在的错误所覆盖。
+<p />
+<!--  -->
+<p />
+<h3><a name="优先次序"></a> 优先次序 </h3>
+在基于调制解调器的网络连接的死亡竞技游戏中，服务器几乎没有足够的带宽来告诉客户端需要的任何信息来获得游戏状态，Unreal使用了加载平衡技术来排序所有actors，并基于它们对游戏性的重要程度来给与为每个actor  <em>合理地分配</em> 带宽。
+<p />
+每个Actor有一个称为 <code>NetPriority</code> 的浮点变量。 数值越高，则相对于其它actors来说，那个Actor接收到的带宽越多。优先级为2.0的Actor将会被比优先级为1.0的Actor的更新频率快2倍。 影响优先级的唯一重要的事情是它们的比率；所以显然您不能通过增加所有的优先级来改善Unreal的网络性能。 已经在我们的性能调整中分配的 <code>NetPriority</code> 的值是：
+<p /> <ul>
+<li> <strong>Actor</strong> - 1.0
+</li> <li> <strong>Pawns</strong> - 2.0
+</li> <li> <strong>PlayerController</strong> - 3.0
+</li> <li> <strong>Projectiles</strong> - 2.5
+</li> <li> <strong>Inventory</strong> - 1.4
+</li> <li> <strong>Vehicule</strong> - 3.0
+</li></ul>
+<p />
+<!--  -->
+<p />
+<h2><a name="Replication (复制)"></a> Replication (复制) </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="复制概述"></a> 复制概述 </h3>
+网络代码是基于3个基本元素的，底层的复制操作用于传递服务器和客户端之间的游戏状态方面的信息。
+<p />
+<h4><a name="Actor复制"></a> Actor复制 </h4>
+服务器辨别每个客户端的“相关的”Actors集合(对于客户端可见的actors或者可能从某种程度上立刻影响客户端的视图或运动的Actors)，并且会告诉客户端创建并维持一个那个Actor的“复制”版本。尽管服务器总是具有那个actor的主要版本，但是任何时候很多客户端都可以具有那个actor的近似的复制版本。
+<p />
+当在客户端上生成复制的Actor时，在 <strong>PreBeginPlay()</strong> 和 <strong>PostBeginPlay()</strong> 过程中，仅 <strong>Location</strong> 和 <strong>Rotation</strong> 是有效的(如果设置 <strong>bNetInitialRotation</strong> 为真则有效)。 除了Actors的属性 <strong>bNetTemporary</strong> 和 <strong>bTearOff</strong> 设置为TRUE外，复制的Actors仅能被销毁，因为服务器关闭了它们的复制通道。
+<p />
+Actor的属性复制是可靠的。 这意味着Actor的客户端版本的属性将最终会反映在服务器上的值，并不是所有的属性值的改变都能被复制。 在任何情况下，Actor属性仅从服务器向客户端进行复制；并且仅当这些属性被包含在定义那个属性的Actor类的复制定义时才复制这些属性。
+<p />
+复制定义指出了复制条件，它描述了什么时候及是否复制给定的属性到当前考虑的客户端中。 即使一个 Actor是相关的，那么也并不是要复制它的所有属性。 认真地制定复制条件可以大大地降低带宽的使用。
+<p />
+在复制过程中仅有三个有效的Actor属性，可以根据服务器正在决定为其进行复制的客户端来改变值： <ol>
+<li> <code>bNetDirty 是真</code> 如果通过UnrealScript已经改变了任何复制属性<!--  -->。 这项可以作为一个优化(如果 <strong>bNetDirty</strong>  为假，则不需要判定UnrealScript的复制条件或者判定属性是否仅在脚本中进行了修改)。 请不要使用 <strong>bNetDirty</strong> 来管理频繁地更新的属性的复制。
+</li> <li> <strong>bNetInitial</strong> 直到所有复制的Actor属性的最初复制完成为止，它将一直保持为真。
+</li> <li> <strong>bNetOwner</strong> 如果Actor的最顶层的拥有者是当前客户端拥有的 PlayerController，则这项为真。
+</li></ol>
+<p />
+<h4><a name="变量复制"></a> 变量复制 </h4>
+复制那些用于描述对客户端来说重要的游戏状态的各方面的信息的变量。 也就是，任何时候当服务器侧的变量值发生改变，服务器都会向客户端发送更新的值。 变量在客户端也可能改变 – 在这种情况下新的值将会覆盖它。 变量复制条件是在UrealScript类中的Replication{}代码块中指定的。
+<p />
+<h4><a name="函数调用复制"></a> 函数调用复制 </h4>
+网络游戏中在服务器调用的函数可以被发送到远程客户端，而不是在本地执行。 可替换地，在客户端侧调用的函数可以被发送到服务器，而不是在本地调用。 函数复制是通过 <strong>server</strong> 、 <strong>client</strong> 、 <strong>reliable</strong> 及 <strong>unreliable</strong> 关键字在函数定义中指定的。
+<p />
+<h3><a name="示例"></a> 示例 </h3>
+以下给我了具体示例，请考虑以下情况，您是网络游戏中的一个客户端。 您看到两个对手向你跑来、正在向您射击、并且您听到了它们的射击声。既然所有的游戏状态是在服务器上而不是您的机器上进行维护的，那么您为什么可以看到并听到这些事情发生哪？
+<p /> <ul>
+<li> 您可以看到敌人，因为服务器已经意识到敌人和您是 <em>相关的</em> (也就是它们是可见的)，并且服务器当前正在复制这些Actors 给您。 因此，您(客户端)拥有在您的后面跑动的这两个玩家Actors的本地副本。
+</li> <li> 您可以看到对手正在向您跑来是因为服务器正在复制对手的 <strong>Location</strong> 和 <strong>Velocity</strong> 属性给您。 在从服务器的 <strong>Location</strong> 更新期间，您的客户端在本地模拟了对手的运动。
+</li> <li> 您可以听到枪的射击声是因为服务器正在复制 <strong>ClientHearSound</strong> 函数给您。 无论何时当服务器决定让 <strong>PlayerPawn</strong> 听到声音时，将会为那个 <strong>PlayerPawn</strong> 调用 <strong>ClientHearSound</strong> 函数。
+</li></ul>
+<p />
+所以，此时，Unreal多玩家游戏操作的底层机制应该清楚了。服务器更新游戏状态并做出所有重大的游戏决定。 服务器复制某些Actors到客户端。服务器复制某些变量到客户端。并且，服务器复制某些函数到客户端。
+<p />
+同时也应该清楚的是：并不是所有的Actors都需要被复制。比如，如果一个Actor是中途进入到关卡中并且不在您的视线之内，那么您不需要浪费带宽来发送关于它的信息。 当然，所有的变量都不需要被更新。 比如，服务器使用的用于做出AI决策的变量不需要发送到客户端；客户端仅需要知道他们的显示变量、动画变量以及物理变量。 同时，在服务器上执行的大多数函数是不应该被复制的。 仅那些会导致客户端看到或听到一些东西的函数调用需要被复制。 所以，总的来说，服务器包含了大量的数据，并且仅有一小部分数据影响客户端 – 即那些影响玩家看到、听到或感受到的东西的数据。
+<p />
+因此，下一个逻辑的问题便是”虚幻引擎怎样知道需要复制哪些Actors、变量及函数调用哪？”
+<p />
+答案是，书写actor脚本的程序员负责决定那个脚本中的哪些变量和函数需要被复制。 并且，他负责在那个脚本中书写一小部分称为”复制声明”的代码，从而告诉虚幻引擎在什么条件下需要复制那些东西。举一个真实世界中的例子，考虑在  <strong>Actor</strong> 类中定义的一些东西。
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>注意:</strong> 并不是所有这些变量都在虚幻引擎3的 Actor.uc文件中(但它们存在于虚幻引擎1和虚幻引擎2中); 但是核心概念仍然是有效的。
+<p /> <ul>
+<li> <strong>Location</strong> 变量(一个向量)包含了Actor的位置。 服务器负责维持这个位置，所以服务器需要把那个信息发送到客户端。 所以复制条件是”如果我是服务器，则复制这个变量”。
+</li> <li>  <strong>Mesh</strong> 变量(一个对象引用)引用了需要为那个actor渲染的网格物体。 服务器需要把那个变量发送到客户端，但是仅Actor被渲染为一个网格物体时，才需要发送它，也就是，如果Actor的 <strong>DrawType</strong> 是 <strong>DT_Mesh</strong> 时。 所以复制条件是”如果我是服务器并且 <strong>DrawType</strong> 是 <strong>DT_Mesh</strong> 则复制这个变量”。
+</li> <li> <strong>PlayerPawn</strong> 类中，有一组决定键盘押下和按钮押下的布尔变量，比如 <strong>bFire</strong> 和 <strong>bJump</strong> 。 这些变量是在客户端侧(输入发生的地方)产生的，并且服务器需要知道它们。 所以复制条件是”如果我是客户端，复制这项”。
+</li> <li> <strong>PlayerController</strong> 类中，有一个 <strong>ClientHearSound</strong> 函数，它告诉玩家他或她听到一个声音。 函数在服务器上调用的，但是当然这个声音需要被在客户端玩游戏的真实的人听到。 所以这个函数的复制条件可能是 “如果我是服务器则复制这项”。
+</li></ul>
+<p />
+从上面的实例来看，有几个事情是显而易见的。首先，需要对可能被复制的每个变量和函数附加”复制条件”，也就是，根据东西是否需要被复制的情况来添加一个等于True或False的表达式。第二，这些复制条件需要是双向的： 服务器需要可以复制变量及函数到客户端，并且客户端也需要可以复制它们到服务器。第三，这些”复制条件”可以是非常复杂的，比如”如果我是服务器，并且这是第一次在网络上复制这个Actor，那么复制这项。
+<p />
+因此，我们需要多种方法来描述这些在特定(复杂)条件下需要被复制的变量及函数。表达这些函数的最好的方法是什么哪？ 我们查看了所有的选项，最终总结出UnrealScript(它是一个创建类、变量及代码的一个非常强大的语言)是书写复制条件的最佳工具。
+<p />
+<h3><a name="UnrealScript: 复制声明"></a> UnrealScript: 复制声明 </h3>
+在UnrealScript中，每个类都可以有一个复制声明。 复制声明包含了一个或多个复制定义。 每个复制定义说明由一个复制条件（判断 True 或 False 的声明）和该条件所应用的一个或多个变量组成。
+<p />
+在类中的复制声明仅可以指向在那个类中定义的变量。 这样，如果 <strong>Actor</strong> 类包含一个变量 <strong>DrawType</strong> ，那么您知道到哪里去找它的复制条件： 它可能存在于 Actor 类中。
+<p />
+没有包含复制声明的类也是有效的；这简单地意味着那个类没有定义任何需要复制的新的变量或函数。 事实上，大多数类都不需要复制声明，因为大多数影响显示效果的”有意义”的变量都定义在 <strong>Actor</strong> 类中，并且仅能通过子类进行修改。
+<p />
+如果您在一个类中定义一个新变量，但是您没有将它列在函数复制定义中，这意味着您的变量绝对从来没有被复制过。 这是正常现象；大多数变量不需要被复制。
+<p />
+这里是复制定义的UnrealScript语法的示例，包含在 <strong>replication {}</strong> 语句块中。 这段代码来自 <strong>PlayerReplicationInfo</strong> 类：
+<p />
+<div class="codetitlebar">
+PlayerReplicationInfo.uc
+</div>
+<div class="codesnippet">
+<pre>
+replication
+{
+   //服务器应该发送到客户断的数据。
+   if ( bNetDirty &#38;&#38; (Role &#61;&#61; Role&#95;Authority) )
+      Score, Deaths, bHasFlag, PlayerLocationHint,
+      PlayerName, Team, TeamID, bIsFemale, bAdmin,
+      bIsSpectator, bOnlySpectator, bWaitingPlayer, bReadyToPlay,
+      StartTime, bOutOfLives, UniqueId;
+   if ( bNetDirty &#38;&#38; (Role &#61;&#61; Role&#95;Authority) &#38;&#38; !bNetOwner )
+      PacketLoss, Ping;
+   if ( bNetInitial &#38;&#38; (Role &#61;&#61; Role&#95;Authority) )
+      PlayerID, bBot;
+}
+</pre>
+</div>
+<p />
+<h4><a name="可靠与不可靠"></a> 可靠与不可靠 </h4>
+具有 <strong>unreliable</strong> 关键字的复制函数不能保证它会到达另一方，并且如果它们确实到达了另一方，那么接受它们的次序可能是颠倒的。 阻止不可靠函数被接受的唯一的因素是网络上的包丢失和带宽饱和。 所以，您需要理解这些几率，这里我们将进行一些粗略地估计。 在不同的网络类型中结果是非常不同的，所以我们不做保证：
+<p /> <ul>
+<li> <strong>LAN</strong> - 在局域网游戏中，我们估计99%的时候都能成功地接受非可靠数据。 然而，在游戏过程中，成千上万的东西需要被复制，所以肯定会有一些非可靠性数据会丢失。 因此，即使您想获得最好的LAN性能，为了防止传输线路中丢失非可靠变量，您的代码需要仔细地处理它们。    <strong>因特网</strong> -  在一个典型的低质量的28.8K ISP连接中，在90%-95%的时间内都可以接收到非可靠数据。换句话说，它会非常频繁地丢失数据。
+</li></ul>
+<p />
+要想在可靠和非可靠函数间获得更好的折中妥协，请检查Ureal脚本中的复制定义，并且在它们的重要性和我们做出的可靠性决策间作出权衡。 请注意仅在绝对必要时才使用可靠性函数。
+<p />
+<h4><a name="变量总是可靠的"></a> 变量总是可靠的 </h4>
+总是能保证变量到达另一端，即使在包丢失及带宽饱和的情况下。 但是不能保证这些变量中的改变可以按照发送它们的方式来把它们发送到另一方。 同时，当变量的值最终被同步时，并不是值中的每个改变都会被复制。
+<p />
+<h3><a name="复制条件"></a> 复制条件 </h3>
+这里是一个类的脚本中的复制条件的简单实例
+<p />
+<div class="codetitlebar">
+Pawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+replication
+{
+   if( Role&#61;&#61;ROLE&#95;Authority )
+      Weapon;
+}
+</pre>
+</div>
+<p />
+这个复制条件翻译成汉语的意思是“如果这个Actor的 <strong>Role</strong> 变量的值等于 <strong>ROLE_Authority</strong> ，那么这个Actor的 <strong>Weapon</strong> 变量应该被复制到和这个Actor相关的所有客户端”。
+<p />
+复制条件可以是计算出的值为 <code>True</code> 或 <code>False</code> 的任何表达式(也就是，布尔表达式)。 所以，任何您使用UnrealScript书写的任何表达式都可以，包括比较变量；调用函数；以及使用布尔操作符  <code>!</code> 、 <code>&amp;&amp;</code> 、 <code>||=、 和 =^^</code> 的组合条件。
+<p />
+Actor的 <strong>Role</strong> 变量一般描述了本地机器对Actor的控制程度。 <strong>ROLE_Authority</strong> 意味着“这个机器是服务器，所以它完全地控制所有代理Actor。 <strong>ROLE_SimulatedProxy*意味着“这个机器是客户端，它应该模仿(预测)Actor的物理“。 在稍后的部分将会对 *Role</strong> 进行详细的描述，但是这里给出了概要总结：
+<p /> <ul>
+<li> <strong>if (Role == ROLE_Authority)</strong> - 意味是“如果我是服务器，我应该把这项复制到客户端。”
+</li> <li> <strong>if (Role &lt; ROLE_Authority)</strong> - 意味着“如果我是客户端，我应该把这项复制到服务器。 “
+</li></ul>
+<p />
+由于以下变量具有较高的效用，所以在复制定义中会经常使用让它们：
+<p /> <ul>
+<li> <strong>bIsPlayer</strong> -  这个Actor是否是一个玩家。 玩家的这项为 <code>True</code> ，其它Actors的这项为 <code>False</code> 。
+</li> <li> <strong>bNetOwner</strong> -  说明这个Actor是否被正在为其计算复制条件的客户端所拥有。比如，假设"Fred"有一个 <code>DispersionPistol</code> ，而”Bob”没有任何武器。 当把 <code>DispersionPistol</code> 复制给“Fred”时，它的 <code>bNetOwner</code> 变量将会设置为 <code>True</code> (因为”Fred”拥有武器)。 当把它复制给 “Bob”时，它的 <strong>bNetOwner</strong> 变量将会是 <code>False</code> (因为"Bob"没有武器)。
+</li> <li> <strong>bNetInitial</strong> - 仅在服务器端有效(也就是if <strong>Role==ROLE_Authority</strong> )。 意味着这个Actor是否第一次被复制到客户端。 这对于设置 <strong>Role==ROLE_SimulatedProxy</strong> 的客户端是有用的，因为它使得服务器可以仅发送一次它们的位置及速度信息，随后客户端便可以预测它。
+</li></ul>
+<p />
+<h4><a name="复制条件指南"></a> 复制条件指南 </h4>
+因为变量一般是单向复制的(或者从客户端到服务器，或者从服务器到客户端，但是永远不会有两侧同时传递的情况)，所有的复制条件通常都是以 <strong>Role</strong> 或 <strong>RemoteRole</strong> 的比较开始： 比如, <strong>if(Role == ROLE_Authority)</strong> 或 <strong>if(RemoteRole &lt; ROLE_SimulatedProxy)</strong> 。 如果复制条件不包含  *Role * 或  *RemoteRole * 的比较，那么它可能会出现一些错误。
+<p />
+在网络运行期间将会在服务器侧非常频繁地计算复制条件。 所以请保持它们尽可能地简单。
+<p />
+当复制条件允许调用函数时，请尽量避免这种情况，因为它将会导致很大的性能下降。
+<p />
+复制条件不应该包含任何副作用，因为网络代码可能在任何时候包括您不期望的时候来调用它们。 比如，如果您进行类似于这样的事情 <strong>if(Counter++ &gt; 10)</strong> ...，请尝试查看将会发生什么！
+<p />
+<h3><a name="变量复制"></a> 变量复制 </h3>
+<h4><a name="更新机制"></a> 更新机制 </h4>
+在每次更新检测时，服务器检查它的相关集合中的所有Actors。 检查它们的所有复制变量来查看自从上一次更新后这些变量是否已经改变，并且会计算变量的复制条件来断定是否需要发送变量。只要在连接中有可用带宽，那么将会通过网络把这些变量发送到其它的机器。
+<p />
+因此，客户端接受世界中发生的对于那个客户端可见的或可听到的 <em>重要</em> 事件的更新。关于变量复制需要记住的关键点是：
+<p /> <ul>
+<li> 变量复制仅在tick(更新监测)完成时发生。 因此，如果在一个tick(更新监测)过程中一个变量变为了一个新的值，然后又变回它的原始值，那么将不会复制那个变量。 因此，客户端仅在服务器侧的Actor的变量的状态tick(更新)完成时才将接收那些状态；在tick(更新)过程期间，变量的状态对于客户端是不可见的。
+</li> <li> 当变量相对于它们之前的值发生改变时才复制这些变量。
+</li> <li> 仅当Actor的变量在客户端的相关集合中时，才会把那个变量复制到客户端。 因此，客户端不会具有不在它的相关集合中的Actors的精确数据。
+</li></ul>
+<p />
+UnrealScript中没有全局变量的概念；所以那些属于Actor的实例变量可以被复制。
+<p />
+<h4><a name="变量类型注意事项"></a> 变量类型注意事项 </h4> <ul>
+<li> <strong>Vectors</strong> 和 <strong>Rotators</strong> - 为了提高带宽效率，Unreal量子化了vectors(向量)和rotators(旋转量)的值。 在发送向量的3个分量 <strong>X</strong>  、 <strong>Y</strong> 、 <strong>Z</strong> 之前将会先把它们转化为16-位的带符号整型，因此任何小数值或者超出范围 -32768...32767 的值都将会丢失。 向量的 <strong>Pitch</strong> 、 <strong>Yaw</strong> 、 <strong>Roll</strong> 分量将会转换为 <strong>(Pitch &gt;&gt; 8) &amp; 255</strong> 形式的字节。  所以，在使用vectors(向量)和rotators(旋转量)时您要小心。 如果您绝对必须具有全精度，那么请分别为每个分量使用整型或浮点型的值；所有的其它的数据类型都将会以它们的本身的全部精度发送。
+</li> <li> <strong>一般的结构体</strong> - 这些是通过发送它们的每个组成部分来进行复制的。结构体是作为一个“所有类型或不是任何类型”的数据进行发送。
+</li> <li> <strong>变量数组</strong> 是可以被复制的，但是仅当数组的大小小于448个字节才可以。不能复制动态数组。 <ul>
+<li> <strong>数组</strong> 可以有效地复制它；如果一个大的数组中的一个单独的元素发生了改变，那么仅需要发送那个元素即可。
+</li></ul>
+</li></ul>
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>注意:</strong> 复制规则是可以改变的，某些规则的优先级高于其他规则。 比如，一个结构体中的静态数组总是完整地发送的，因为它位于结构体中！
+<p />
+<h4><a name="Actor 属性"></a> Actor 属性 </h4>
+Actor的属性复制是可靠的。 这意味着Actor的客户端版本的属性将最终会反映在服务器上的值，并不是所有的属性值的改变都能被复制。
+<p /> <ul>
+<li> 属性仅会从服务器复制到客户端。
+</li> <li> 仅包含在定义那个属性的类的复制定义中的属性才会被复制。
+</li></ul>
+<p />
+<h3><a name="函数调用复制"></a> 函数调用复制 </h3>
+<h4><a name="远程路由机制"></a> 远程路由机制 </h4>
+当在网络游戏中调用一个UnrealScript函数并且那个函数具有复制条件时，那么将计算那个条件并执行以下过程：
+<p />
+函数调用被发送到网络连接另一侧的机器上执行。换句话说，函数的名称及它的所有参数都将会被打包成一个数据包，并且稍后将会被传送到另一个机器来执行。当这个过程发生时，函数将会立即返回，而可执行程序将会继续执行。 如果声明函数要返回一个值，那么的返回值将会被设置为0(或者其它数据类型的0的等价物，比如vectors(向量)的 <code>0,0,0</code> ，object(对象)的 <code>None</code> 等)。 任何输出参数都是不会受到影响的。 换句话说，UnrealScript将永远不会无所事事地等待复制函数调用的完成，所以它永远都不会发生死锁。 并且，复制函数调用将会被发送到远程机器来执行，而本地代码将会继续执行。
+<p />
+和复制变量不一样，Actor上的函数调用仅可以从服务器复制到拥有那个Actor的客户端(玩家)。 所以，复制函数仅在 <code>PlayerController</code> (也就是，拥有它们的玩家)、 <code>Pawn</code> (也就是一个Controller拥有的玩家 avtars，该Controller用于控制它们的)、 <code>Inventory</code> 的子类(也就是，武器和拾取物项目，它们由当前携带它们的玩家所拥有)的子类中有用。 这也就是说，函数调用仅能被复制到一个Actor(拥有它的玩家)；它们不能进行多点传送。
+<p />
+如果在客户端调用了具有关键字标记 <em>server</em> 的函数，那么这个函数将会被复制到服务器。 相反，如果在服务器上调用了一个具有关键字标记  <em>client</em> 的函数，那么这个函数将会被复制到拥有那个Actor的客户端。
+<p />
+和复制变量不同，当复制调用函数被调用时，将会立即把它们发送到远程机器，并且无论带宽怎样，将总是复制它们。因此，如果您制作了太多的复制函数调用，那么很可能会用掉所有可用带宽。 无论有多少可用带宽，复制的函数都会对其进行使用，剩下的带宽才用于复制变量。 因此，如果您使用复制函数调用充斥了整个网络连接中，那么您阻挡变量复制，这将会导致在视觉上您看不到其它Actors的更新，或者会看到它们以非常不稳定的动作进行更新。
+<p />
+在UnrealScript中没有全局函数，所以没有“复制全局函数”的概念。 函数总是以一个特定Actor的概念来进行调用。
+<p />
+<h4><a name="可靠函数调用 vs 复制变量"></a> 可靠函数调用 vs 复制变量 </h4>
+太多的复制函数可能会充斥可用带宽(因为无论有多少可用带宽，它们都会进行复制)，而复制变量是根据可用带宽量来自动地进行扼杀和分配的。
+<p />
+函数调用仅在实际地被调用并且在UnrealScript执行过程中时进行复制；而变量仅在当没有正在执行的脚本代码并且在每个当前更新结束时进行复制。
+<p />
+一个Actor上的函数调用仅会被复制到拥有那个actor的客户端上，而Actor的变量将会被复制到和那个actor相关的所有客户端。
+<p />
+<h2><a name="仿真函数和状态"></a> 仿真函数和状态 </h2>
+<hr size="1" noshade="noshade">
+在客户端上，很多Actor都是以“proxies(代理)”的方式存在的，这意味着Actors的近似副本是由服务器创建并发送到客户端的，从而可以在游戏性过程中在客户端从视觉上和听觉上获得合理的近似效果。
+<p />
+在客户端，这些代理Actor总是会使用客户端侧的物理来到处移动并且影响环境，所以在任何时候都可以调用它们的函数。 比如，一个仿真代理  <strong>TarydiumShard * 射弹可能会飞行到哑巴代理  *Tree * Actor中。 当Actors进行碰撞时，引擎将尝试调用它们的 *Touch</strong> 函数来告诉它们发生了碰撞。根据情境的不同，客户端需要执行某些函数调用，而忽略其它的函数。 比如，在客户端不应该调用 <strong>Skaarj</strong> 的 <strong>Bump</strong> 函数，因为它的 <strong>Bump</strong> 函数会尝试实现游戏性逻辑，而游戏性逻辑应该发生在服务器上。 所以，不应该调用 <strong>Skaarj</strong> 的 <strong>Bump</strong> 函数。然而，应该调用 <strong>TarydiumShard</strong> 射弹的 <strong>Bump</strong> 函数，因为它停止了物理，并在客户端生成了一个特效Actor。
+<p />
+UnrealScript函数可以可选地使用 <strong>simulated</strong> 关键字来使得程序员更好地控制在代理actors上执行哪些函数。对于代理actors来说(也就是，具有 <strong>Role == ROLE_SimulatedProxy</strong> 的actors)，仅会调用声明时使用了 <strong>simulated</strong> 关键字的函数。 所有其它的函数都将会被跳过。
+<p />
+这里是一个典型的仿真函数的示例：
+<p />
+<div class="codesnippet">
+<pre>
+simulated function HitWall( vector HitNormal, actor Wall )
+{
+  SetPhysics(PHYS&#95;None);
+  MakeNoise(0.3);
+  PlaySound(ImpactSound);
+  PlayAnim(&#39;Hit&#39;);
+}
+</pre>
+</div>
+<p />
+所以，  <strong>simulated</strong> 意味着“将总是为代理Actors执行这个函数”。
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>注意</strong>: 请确保仿真函数的子类的实现在它们定义中也具有 <strong>simulated</strong> 关键字! 当这种情况出现时，Unrealsript编译器将发出警告。
+<p />
+仿真状态和仿真函数类似。
+<p />
+<h2><a name="复制模式"></a> 复制模式 </h2>
+<hr size="1" noshade="noshade">
+在虚幻引擎及Epic发行的游戏中一般的复制模式的目的是：
+<p />
+<h3><a name="最小化服务器侧CPU的使用量"></a> 最小化服务器侧CPU的使用量 </h3> <ul>
+<li> 最小化复制actors的消耗 <!--  --> <ul>
+<li> 最小化潜在地复制的Actors的数量(这些Actor具有 <strong>RemoteRole</strong> != <strong>ROLE_None</strong> )
+</li> <li> 最小化在任何给定更新中需要基于每个客户端判定相关性时要检查的Actors的数量。
+</li> <li> 最小化在任何给定更新中每个客户端上的实际地相关的Actors的数量。
+</li> <li> 最小化在任何给定更新中每个客户端上需要检查的每个复制actor的属性的数量。
+</li> <li> 避免不必要地设置 <strong>bNetDirty</strong> 。
+</li></ul>
+</li> <li> 最小化Actor更新检测的消耗 <ul>
+<li> 避免在服务器上生成不必要的Actors(粒子特效等)。
+</li> <li> 避免执行和游戏性没有关联的代码。
+</li></ul>
+</li> <li> 最小化处理接收到的复制函数的消耗 <ul>
+<li> 最小化需要接收和处理的函数的数量。
+</li></ul>
+</li></ul>
+<p />
+随着玩家数量的增加，复制Actors的消耗占据了服务器执行时间的主要部分，因为消耗随着玩家的数量呈几何增长而不是线性增长(因为可能需要复制的Actors的数量和玩家的数量呈比例增长)。
+<p /> <ul>
+<li> 最小化带宽的使用量 <ul>
+<li> 每个客户端上的相关Actors的数量
+</li> <li> 属性更新的频率
+</li> <li> 发送的包的数量
+</li></ul>
+</li></ul>
+<p />
+解压 <strong>DevNetTraffic</strong> 来查看所有复制的Actors及属性的记录。 控制台命令 <strong>Stat Net</strong> 也是有用的。 使用<a href="NetworkProfiler.html" class="twikiLink">网络分析器</a>来检查虚幻引擎正在发送及接收的包也是有用的。
+<p />
+<h3><a name="最小化反应察觉延迟时间"></a> 最小化反应察觉延迟时间 </h3>
+使得客户端基于玩家输入预测拥有actors的客户端的行为；在从服务器接收到确认信息前模拟这个行为(如果必要可以进行校正)。 我们为Pawn运动和Weapon(武器)处理使用这个模型，但是对于Vehicles没有使用这个模型，因为保存及重新播放物理仿真的复杂性超过了车辆处理所减少的反应时间所带来的好处，此时一般因特网的反应时间和一般真实世界中的车辆控制的反应时间没有那么大的不同。
+<p />
+<h3><a name="ReplicationInfo 类"></a> ReplicationInfo 类 </h3>
+ReplicationInfo类设置 <strong>bAlwaysRelevant</strong> 为 TRUE。 可以通过设置一个较低的 <strong>NetUpdateFrequency</strong> 来改善服务器的性能。 无论何时，当复制的属性改变时，可以改变 <strong>NetUpdateTime</strong> 的值来进行强制复制。 服务器性能也可以通过设置 <strong>bSkipActorPropertyReplication</strong> 和 <strong>bOnlyDirtyReplication</strong> 为TRUE(真)来进行改善<!--  --> 。
+<p />
+<h3><a name="使用_ReplicatedEvent()函数"></a> 使用ReplicatedEvent()函数 </h3>
+当复制标记为关键字 <strong>Repnotify</strong> 的属性时，将会使用修改的属性的名称作为参数来调用UnrealSript的 <strong>ReplicatedEvent()</strong> 事件。 这个系统提供了一种基于一个独立复制的属性更新来初始化多个属性或组件的有效方法。比如， <strong>Vehicle.bDriving</strong> 改变导致会调用 <strong>DrivingStatusChanged()</strong> 函数。我们在虚幻竞技场中使用了这个功能来控制引擎声音及其它的客户端侧特效的开关状态。同样，当 <strong>UTCarriedObject</strong> 收到team属性时，它将会更新客户端的特效，包括改变组件的属性，比如应用到网格物体的材质或者动态光照的颜色。
+<p />
+当客户端上的本地 <strong>PlayerController</strong> 拥有 <strong>PlayerReplicationInfo</strong> 更新它的team属性或者owner属性时，它将会在所有actors上调用 <strong>NotifyLocalPlayerTeamReceived()</strong> 。
+<p />
+这个函数也用于延迟初始化代码的执行，直到所需要的属性已经复制完成为止。注意，如果属性相对于默认值没有发生改变，那么将没有复制事件，所以在这种情况下，您需要确保对actor进行了合理的初始化。
+<p />
+<h3><a name="WorldInfo 类"></a> WorldInfo 类 </h3>
+在网络游戏中每个游戏世界实例都有一个NetMode。 <strong>WorldInfo</strong> 类定义了 <strong>ENetMode</strong> 枚举值及相应的  <strong>NetMode</strong> 变量，如下所示:
+<p />
+<div class="codesnippet">
+<pre>
+var enum ENetMode
+{
+  NM&#95;Standalone,        // 单机游戏。
+  NM&#95;DedicatedServer,   // 专用服务器，没有本地客户端。
+  NM&#95;ListenServer,      // 监听服务器。
+  NM&#95;Client             // 仅客户端，没有本地服务器。
+} NetMode;
+</pre>
+</div>
+<p />
+<strong>NetMode</strong> 属性通常用于控制在不同的游戏实例类型中所执行的代码。
+<p />
+<h3><a name="GameInfo 类"></a> GameInfo 类 </h3>
+<strong>GameInfo</strong> 类实现了游戏规则。服务器(专用服务器和单玩家服务器)都具有一个 <strong>GameInfo</strong> 子类，在UnrealScript中作为  <strong>WorldInfo.Game</strong> 访问。 对于Unreal中的每种游戏类型来说，都有一个特殊的 <strong>GameInfo</strong> 子类。比如，一些现有的类是 UTGame、UTDeathmatch、UTTeamGame。
+<p />
+网络游戏中的客户端没有 <strong>GameInfo</strong> 。 也就是，在客户端侧 <strong>WorldInfo.Game == None</strong> 。 客户端不应该有 <strong>GameInfo</strong> ，因为服务器实现了所有的游戏性规则，并且客户端的大多数代码调用函数不需要知道游戏规则。
+<p />
+<strong>GameInfo</strong> 实现了广泛的功能，比如识别玩家的来去、为死者分配荣誉、决定是否应该重新生成武器等。 这里，我们仅介绍和网络编程直接相关的 <strong>GameInfo</strong> 函数。
+<p />
+<h4><a name="InitGame(初始化游戏)"></a> InitGame(初始化游戏) </h4>
+<div class="codesnippet">
+<pre>
+event InitGame(string Options, out string ErrorMessage);
+</pre>
+</div>
+<p />
+当服务器(无论是在网络游戏中还是在单玩家游戏中)第一次启动时调用这个函数。这使得服务器可以解析启动的URL选项。比如，如果服务器以 "Unreal.exe MyLevel.unr?game=unreali.teamgame"启动， <strong>Options</strong> 字符串是 <strong>"?game=unreali.teamgame"</strong> 。如果 <strong>Error</strong> 设置为非空字符串，那么游戏将会由于致命错误而失败。
+<p />
+<h4><a name="PreLogin(预登录)"></a> PreLogin(预登录) </h4>
+<div class="codesnippet">
+<pre>
+event PreLogin(string Options, string Address, out string ErrorMessage, out string FailCode);
+</pre>
+</div>
+<p />
+当网络客户端登录时立即调用这个函数。这使得服务器可以拒绝玩家。这是服务器应该验证玩家的密码(如果有)、执行玩家限制等的地方。
+<p />
+<h4><a name="Login(登录)"></a> Login(登录) </h4>
+<div class="codesnippet">
+<pre>
+event PlayerController Login(string Portal, string Options, out string ErrorMessage);
+</pre>
+</div>
+<p />
+当调用 <strong>PreLogin()</strong> 函数后没有返回错误的字符串时则调用 <strong>Login()</strong> 函数。它负责通过使用 <strong>Options</strong> 字符串中的参数来生成玩家。如果成功，它将会返回它生成的 <strong>PlayerController</strong> Actor。 <strong>Login()</strong> 和 <strong>PostLogin()</strong> 也用于在单机游戏中创建 <strong>PlayerController</strong> 。
+<p />
+如果 <strong>Login</strong> 函数返回 <strong>None</strong> ，则预示着登录失败，然后它将会为Error设置一个字符串。 <strong>Login()</strong> (登录)失败应该作为最后采取的手段。如果您将要登录失败，那么使它在 <strong>PreLogin</strong> 函数中失败要比在 <strong>Login</strong> 函数中失败的效率高很多。
+<p />
+<h4><a name="PostLogin(登陆后)"></a> PostLogin(登陆后) </h4>
+<div class="codesnippet">
+<pre>
+event PostLogin(PlayerController NewPlayer);
+</pre>
+</div>
+<p />
+当登录成功后调用 <strong>PostLogin()</strong> 函数。这是可以调用赋值函数的第一个地方。
+<p />
+<h3><a name="玩家运动及预测"></a> 玩家运动及预测 </h3>
+<h4><a name="概述"></a> 概述 </h4>
+如果在Unreal中使用纯粹的客户端-服务器模式，那么玩家的运动将是非常缓慢的。在反应时间为300毫秒的网络连接中，当您按下前进按键时，您会看到您自己运动300毫秒。当您按下鼠标左键时，您将会看到您自己旋转了300毫秒。这是非常糟糕的。
+<p />
+为了消除客户端-服务器的延迟，虚幻使用和始创者QuakeWorld类似的预测机制。必须要提到的是玩家预测机制的实现是完全在UnrealScript中完成的。它是一个在 <strong>PlayerController</strong> 类中实现的高级功能，而不是网络代码的功能：Unreal的客户端运动预测完全是基于网络代码的各种复制功能设计的。
+<p />
+<h4><a name="内部工作方式"></a> 内部工作方式 </h4>
+您可以通过查看  <strong>PlayerPawn</strong> 脚本来精确地查看Unreal的玩家预测的工作原理。因为代码的工作原理有点复杂，所以这里对它进行了简单的描述。
+<p />
+这种方法可以被描述为锁步 预测/校正 算法。客户端考虑了(游戏杆、鼠标、键盘)和物理力(重力、浮力、区域速度)，并把它的运动描画为3D加速度矢量。在复制函数调用 <strong>ServerMove</strong> 中，客户端把它的加速度及各种输入相关的信息及它的当前时间戳(客户端侧的 <strong>WorldInfo.TimeSeconds</strong> 当前值)发送到服务器端。
+<p />
+<div class="codesnippet">
+<pre>
+server function ServerMove(float TimeStamp, vector InAccel, vector ClientLoc, byte MoveFlags, byte ClientRoll, int View)
+</pre>
+</div>
+<p />
+然后客户端调用它的 <strong>MoveAutonomous</strong> 在本地执行这个同样的运动，并且它使用 <strong>SavedMove</strong> 类把这个运动存储在一个记忆的运动的链接列表中。正如您可以看到的，如果客户端永远不从服务器收到任何信息，客户端可以像在单玩家游戏中那样没有延迟地自由移动。
+<p />
+当服务器接收到一个 <strong>ServerMove</strong> 函数调用时(通过网络复制)，服务器将会在服务器上立即执行运动。它从当前的 ServerMove 的 <strong>TimeStamp</strong> 和前一个 ServerMove 的 <strong>TimeStamp</strong> 推断出运动的 <strong>DeltaTime</strong> 。 通过这种方式，服务器正在和客户端执行一样的基本运动逻辑。然而，服务器看到的东西可能和客户端稍微有点不同。比如，如果一个怪物正在到处跑动，客户端或许认为它所在的位置可能和服务器认为它所在的位置是不同的(因为客户端仅能和服务器达到粗略的近似同步)。因此，当调用了 <strong>ServerMove</strong> 函数后，客户端和服务器在客户端实际移动多远的问题上可能不能达成一致。在任何速率下，服务器是权威的，并且它完全地负责决定客户端的位置。 一旦服务器已经处理了客户端的 <strong>ServerMove</strong> 函数，它将调用通过网络传递到客户端的 <strong>ClientAdjustPosition</strong> 函数。
+<p />
+<div class="codesnippet">
+<pre>
+client function ClientAdjustPosition(float TimeStamp, name newState, EPhysics newPhysics, float NewLocX, float NewLocY, float NewLocZ, float NewVelX, float NewVelY, float NewVelZ, Actor NewBase)
+</pre>
+</div>
+<p />
+现在，客户端接收了一个 <strong>ClientAdjustPosition</strong> 函数，它必须尊重服务器在这个位置上的控制权。所以，客户端设置它的精确位置及速度为 <strong>ClientAdjustPosition</strong> 函数中所指定的值。尽管，服务器在 <strong>ClientAdjustPosition</strong> 中指定的值反映了客户端在过去的某个时间点的实际位置。 但是，客户端想要预测在当前的时刻处它应该在哪里。所以，现在客户端运行在它的链接列表中 <strong>SavedMove</strong> 的所有值。所有在 <strong>ClientAdjustPosition</strong> 调用函数的 <strong>TimeStamp</strong> 之前的移动都将会被丢弃。在那个 <strong>TimeStamp</strong> 之后发生的所有移动将会通过在它们中进行循环并为每次移动调用 <strong>MoveAutonomous</strong> 函数来重新运行它们。
+<p />
+通过这种方法，在任何时候，客户端总是在一半的ping时间之前提前预测服务器已经告诉它的东西。 并且，它的本地运动完全不会有延迟。
+<p />
+<h4><a name="优点"></a> 优点 </h4>
+这种方法是完全地具有预测性的，并且它是两全其美的：在所有情况下，服务器仍然是完全地具有权威性的。 近乎在所有的时候，客户端运动位置精确地反映了服务器实现的客户端运动，所以很少校正客户端的位置。仅在很少的情况下，比如玩家被一个火箭击中的情况下，或者撞击到一个敌人的情况下才需要重新校正客户端的位置。
+<p />
+<h4><a name="运动模式"></a> 运动模式 </h4>
+以下图表帮助解释了在服务器和客户端上的运动模式，包括错误调整。
+<p />
+<table><tr><th width="50%">服务器</th><th width="20"></th><th width="50%">客户端</th></tr>
+<tr><td></td><td></td><td><b>ReplicateMove()</b></td></tr>
+<tr><td></td><td></td><td>调用这个函数替代 ProcessMove()。 根据玩家输入进行 pawn 物理更新，保存（在 PlayerController SavedMoves 中）并复制结果。SavedMove 可以是子类，保存游戏指定的运动输入和结果。ReplicateMove() 也会尝试结合复制的运动来保存上游带宽并改善服务器性能。</td></tr>
+<tr><td align="right"><b>ServerMove()</b></td><td>&lt;-</td><td><b>CallServerMove()</b></td></tr>
+<tr><td>根据接收到的输入进行 pawn 物理更新，然后将结果与客户端发送的结果对比。 注意根据客户端计时器进行运动更新。 如果客户端已经积聚了一个严重的位置错误，那么请求校正。否则，请求确认运动适宜。</td><td></td><td>发送一个或两个当前运动（根据帧速率和可以使用的带宽），它们附带客户端时钟时间戳记。每次发送两个运动可以保存带宽，但是会增加校正的延迟时间。在包丢失的情况下也可以调用 OldServerMove() 重新发送最近的“重要”运动。</td></tr>
+<tr><td align="right"><b>SendClientAdjustment()</b></td><td>-&gt;</td><td><b>ClientAckGoodMove()</b></td></tr>
+<tr><td>推迟到 PlayerController 记号的末端的客户端相应可以在多个 ServerMoves() 接收到这个记号的情况下避免发送多个响应。 如果没有错误，那么确认运动适宜。</td><td></td><td>根据时间戳记的环回时间更新 ping，通过以前的时间戳记清除保存的运动。</td></tr></table>
+<p />
+<table><tr><th width="50%">服务器</th><th width="20"></th><th width="50%">客户端</th></tr>
+<tr><td align="right"><b>SendClientAdjustment()</b></td><td>-&gt;</td><td><b>ClientAdjustPosition()</b></td></tr>
+<tr><td>推迟到 PlayerController 记号的末端的客户端相应可以在多个 ServerMoves() 接收到这个记号的情况下避免发送多个响应。 如果有错误，请调用 ClientAdjustPosition() 确认运动适宜。</td><td></td><td>使用校正时间戳记之前的时间戳记清除 SavedMoves。 将 Pawn 移动到服务器指定的位置，然后设置 bUpdatePosition。</td></tr>
+<tr><td></td><td></td><td><b>ClientUpdatePosition()</b></td></tr>
+<tr><td></td><td></td><td>在 bUpdatePosition 为 true 的情况下通过 PlayerTick() 调用这个函数。重新播放所有未完成的 SavedMoves 使 Pawn 返回当前客户端时间。</td></tr></table>
+<p />
+<!-- <img alt="Networking-PlayerMovementReplication.JPG" src="rsrc/Three/NetworkingOverviewCH/Networking-PlayerMovementReplication.JPG" />
+<p />
+<img alt="Networking-PlayerMovementReplication_ErrorAdjustment.JPG" src="rsrc/Three/NetworkingOverviewCH/Networking-PlayerMovementReplication_ErrorAdjustment.JPG" /> -->
+<p />
+<h4><a name="玩家状态同步"></a> 玩家状态同步 </h4>
+PlayerController代码假设客户端和服务器总是尝试运行完全一样的状态； <strong>ClientAdjustPosition()</strong> 包括了那个状态，以便如果它进入了不同的状态，可以更新客户端。在这些服务器需要改变状态而客户端不能模拟那个状态来改变其本身的情况下，则会使用 <strong>ClientGotoState()</strong> 来强制它立即进入那个状态。它不支持 处理/同步 UnrealScript的状态栈功能( <strong>PushState()</strong> / <strong>PopState()</strong> )，并且我们不推荐您对 PlayerControllers 使用这个功能。
+<p />
+<h3><a name="玩家动画(客户端)"></a> 玩家动画(客户端) </h3>
+如果动画没有游戏性相关性，则根本不需要在服务器上执行它。这可以通过SkeletalMeshComponent的 <strong>bUpdateSkelWhenNotRendered</strong> 和 <strong>IgnoreControllersWhenNotRendered</strong> 属性以及基于每个骨架的控制器的 <strong>SkelControlBase::bIgnoreWhenNotRendered</strong> 来控制。 客户端测的动画是通过的检查Pawn状态(物理、Pawn属性)来驱动的。
+<p />
+对于动画驱动的运动来说，根骨骼运动会被转换为 加速度/速度，并且转化后的东西是最终被复制的值。所以动画仍然是锁定在原位的(相对于Actor)，然后通过传入 加速度/速度 到根骨骼运动中，从而移动actor。
+<p />
+对于 服务器/客户端 来说，这不会产生比非跟骨骼运动更多的消耗。
+<p />
+<h3><a name="尸体"></a> 尸体 </h3>
+如果 <strong>bTearoff</strong> 为真，这个Actor将不再被复制到新的客户端，并且在已经复制了这个Actor的客户端上 <em>关闭</em> (变为一个 <strong>ROLE_Authority</strong> )它。当接收到 <strong>bTearOff</strong> 时，会调用 <strong>TornOff()</strong> 事件。 正在死亡的Pawn上的默认的实现函数是 <strong>PlayDying()</strong> 。
+<p />
+<h3><a name="武器开火"></a> 武器开火 </h3>
+武器开火和玩家运动的方式类似： <ul>
+<li> 一旦玩家输入要求开火，客户端将会立即播放开火特效(声音、动画、枪嘴火焰)，并调用 <strong>ServerStartFire()</strong> 和 <strong>ServerStopFire()</strong> 函数来要求服务器开火。 <ul>
+<li> 除了客户端和服务器版本的相关属性不能同步的少数情况外，客户端有足够的状态信息(弹药数量、武器时间状态等。)来正确地预测武器是否可以正确地开火。
+</li></ul>
+</li> <li> 服务器的生成 射弹/损害(产生射弹)。射弹被复制到客户端。
+</li></ul>
+<p />
+<h3><a name="射弹"></a> 射弹 </h3>
+这个实例对于简单的可预测的射弹是有用的： <ul>
+<li> <strong>bNetTemporary</strong> 设置为true。 <ul>
+<li> 当初始化复制后，关闭Actor通道并且将永远不会再更新Actor。客户端将会销毁那个Actor。
+</li> <li> 保存带宽以及服务器属性复制测试。
+</li></ul>
+</li> <li> <strong>bReplicateInstigator</strong> 设置为true。 <ul>
+<li> 所以射弹可以正常地和发起者进行交互。
+</li></ul>
+</li> <li> 生成客户端特效  <ul>
+<li> 注意，在客户端生成的Actors在那个客户端上具有 ROLE_Authority，它们不存在于服务器或其它的客户端上。
+</li> <li> 根本不需要在服务器上产生这些特效也不需要复制它们。
+</li></ul>
+</li></ul>
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>缺点:</strong> 如果关闭了目标 和/或 射弹的客户端仿真，那么将会有错误地碰撞或丢失目标。由于这个原因请不要将其用于 <em>一击必杀</em> 型的射弹。
+<p />
+<h3><a name="武器附加"></a> 武器附加 </h3>
+由于性能和最小化同步导致的问题的原因，请避免是复制actors的所有相互关联的组。
+<p />
+在 <em>虚幻竞技场</em> 中，武器仅被复制到它拥有的客户端中。Weapon Attachments(武器附加)不会被复制，它是在客户端侧产生的并且是通过某些复制的Pawn属性进行控制的。 Pawns复制 <strong>FlashCount</strong> 和 <strong>FiringMode</strong> ，UT Pawns复制 <strong>CurrentWeaponAttachmentClass</strong> 。 Pawn中的 <strong>ViewPitch</strong> 属性是这种形式应用的另一个实例。
+<p />
+<h3><a name="声音"></a> 声音 </h3>
+对于每个能听到的声音，都会在它们的每个PlayerController上调用 <strong>ClientHearSound()</strong> 函数。在负责声音的Actor上调用 <strong>ClientCreateAudioComponent()</strong> 函数。如果Actor不存在于客户端中，那么将通过使用由 <strong>WorldInfo</strong> 创建的音频组件在复制的位置播放声音。PlayerController中的 <strong>ClientPlaySound()</strong> 函数用于在客户端播放没有位置的声音。
+<p />
+在任何可能的时候尝试在客户端播放仿真声音！
+<p />
+<h3><a name="物理"></a> 物理 </h3>
+<h4><a name="Replication(复制)"></a> Replication(复制) </h4>
+物理仿真即在客户端上运行也在服务器上运行。从服务器向客户端发送更新。以下结构体用于描述刚体的物理状态，并且它会被复制的(正如在 <strong>Actor</strong> 中所定义的)：
+<p />
+<div class="codesnippet">
+<pre>
+struct RigidBodyState
+{
+  var vector Position;
+  var Quat Quaternion;
+  var vector LinVel; // RBSTATE&#95;LINVELSCALE times actual (precision reasons)
+  var vector AngVel; // RBSTATE&#95;ANGVELSCALE times actual (precision reasons)
+  var int bNewData;
+};
+</pre>
+</div>
+<p />
+使用结构体的目的是为了使得所有属性可以同时改变。Vector(向量)被压缩为整型分辨率，以便在发送之前对它们进行缩放。压缩Quats以便仅发送3个值；第四个值是从其他3个值中推断出来的。
+<p />
+对于物理复制来说，有两种类型的校正： <ul>
+<li> 小的校正及对象移动： 进行20%的位置调整、相对于目标进行80%的额外速度调整
+</li> <li> 大的校正或对象停止： 100%的位置调整。
+</li></ul>
+<p />
+<h4><a name="仿真"></a> 仿真 </h4>
+以下情景描述的了物理仿真： <ul>
+<li> <strong>ROLE_SimulatedProxy</strong> Actor仿真 <ul>
+<li> 客户端基于接收到的位置和速度持续地更新仿真actor的位置。
+</li> <li> 如果 <strong>bUpdateSimulatedPosition</strong> 为真，则服务器持续地向客户端发送 <em>权威的</em> 位置更新(否则，在Actor的初始复制后将不会发送位置更新)。   *在其它客户端上的Pawns
+</li> <li> 和其它Actors不同，仿真的Pawn不会在客户端上执行正常的物理函数。这意味着在不拥有pawns的客户端上将永远不会调用物理事件(比如 <strong>Landed()</strong> )。
+</li> <li> Pawn的物理模式是从它的位置和 <strong>bSimulateGravity</strong> 标志推测出来的，并且它的预测位置是基于复制的速度进行更新的。 <ul>
+<li> 如果Pawn在客户端上不适合复制的位置并且具有从世界上掉下来的危险，可以设置 <strong>bSimGravityDisabled</strong> 标志，临时关闭了重力仿真。
+</li></ul>
+</li></ul>
+</li> <li> <strong>PHYS_RigidBody</strong> Actors (Vehicles, KActors, 等.) <ul>
+<li> 客户端和服务器都仿真对象，但是服务器向客户端周期性地发送 <em>权威性的</em> 更新(当对象处于激活状态时)。然后客户端<!--  -->移动对象来匹配服务器上的版本。 <ul>
+<li> 如果错误低于可接受的阈值，那么可以通过改变速度来使得位置变得集中而不是对齐位置，尝试平稳地进行操作。
+</li></ul>
+</li> <li> 当所有的属性必须以同步的方式接收时，请为原子性复制使用 <strong>RigidBodyState</strong> 结构体。
+</li></ul>
+</li></ul>
+<p />
+对于Ragdoll(布娃娃)物理来说，仅复制胯部的位置。通常完全地 <em>去掉</em> 及不复制它们也是可以的。
+<p />
+对于Vehicles[车辆]( <strong>PHYS_RigidBody</strong> Actors)来说，有以下网络操作流程： <ol>
+<li> 在客户端按下按键
+</li> <li> 发送输入(控制杆、方向盘、上升)到服务器 – 调用了复制函数 <code>ServerDrive</code> 。
+</li> <li> 生成输出(OutputBrake, OutputGas等)；将其打包为可以复制到客户端的结构体 – 在服务器上调用了 <strong>ProcessCarInput</strong> 函数。
+</li> <li> 在服务器和客户端上更新车辆：使用输出(OutputBrake, OutputGas等)来把 力/力矩 应用到 车轮/车辆上 – 在客户端和服务器上调用了 <strong>UpdateVehicle</strong> 函数。
+</li></ol>
+<p />
+<h2><a name="性能技巧"></a> 性能技巧 </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="优化目标"></a> 优化目标 </h3>
+这里的目标是在给定的带宽限制下最大化发送可见的重要细节的量。由于带宽是在运行时决定的，所以在书写多玩家游戏中所使用的Actors的脚本时您的目标应该是保持带宽的使用量最小化。在我们的脚本中使用的技术包括： 
+<p />
+无论何时都要尽可能地使用 <strong>ROLE_SimulatedProxy</strong> 和仿真运动。比如，几乎所有的Unreal射弹都使用 <strong>ROLE_SimulatedProxy</strong> 。只有一个例外是Razorjack，玩家可以在游戏过程中操作它，因此服务器必须持续地向客户端更新位置。
+<p />
+要想快速地获得特效，可以完全地在客户端侧生成特效。比如，我们的大多数射弹使用了仿真的 <strong>HitWall</strong> 函数来在客户端侧生成它们的特效。 因为这些特效仅具有装饰效果而不会影响游戏性，所以完全地在客户端侧执行它们不会有任何的问题。
+<p />
+<!--  -->
+<p />
+当复制标记为关键字 <strong>Repnotify</strong> 的属性时，将会使用修改的属性的名称作为参数来调用UnrealSript的 <strong>ReplicatedEvent()</strong> 事件。请参照 Replication Patterns(复制模式)部分获得关于如何使用这个来节约网络带宽的更多信息。
+<p />
+微调每个类的默认的 <strong>NetPriority</strong> 。射弹及玩家需要具有高优先级，完全用于修饰作用的特效可以具有较低的优先级。Unreal默认提供的是较好的第一遍渲染猜测，但是您总是可以通过微调它们来获得一些改进。
+<p />
+当玩家第一次被复制到客户端时，它的所有变量都会被初始化为它们的类的默认值。以后，将仅复制那些和最近的已知值不同的变量。因此，您应该设计您的类，以便尽可能多的变量可以自动地设置它们类的默认值。比如，如果一个Actor应该总是设置 <code>LightBrightness</code> 的值为123，可以用两种方法来实现：(1)设置 <code>LightBrightness=类的默认值为123，或者(2)在Actor的 =BeginPlay</code> 函数中初始化 <code>LightBrightness</code> 为123。第一种方法的效率更高，因为将永远不需要复制 <code>LightBrightness</code> 的值。 第二种方法中，每次Actor第一次变为和那个客户端相关时都需要复制 <strong>LightBrightness</strong> 。
+<p />
+同时，请意识到以下几种情形： <ul>
+<li> 如果不能序列化Actor的引用，那么将不清除 <strong>bNetInitial</strong> 和 <strong>bNetDirty</strong> (因为它不和客户端相关)。这意味着服务器将会继续尝试复制那个属性，从而消耗CPU周期。<!--  -->
+<p />
+<h4><a name="欺骗检测及预防"></a> 欺骗检测及预防 </h4>
+在 <em>虚幻竞技场</em> 中我们遇到了以下类型的网络相关的欺骗： <ul>
+<li> Speedhack(速度欺骗) <ul>
+<li> 利用了我们使用客户端的时钟进行运动更新的事实。
+</li> <li> 通过验证当客户端和服务器在差异非常大的速率下时它们的时钟不再移动来进行内置检测。
+</li> <li> 具有大量包丢失的假阳性。
+</li></ul>
+</li> <li> Aimbots(自动瞄准)- UnrealScript和外部版本。
+</li> <li> Wall hacks(防火墙) 和 radars (雷达)- UnrealScript和外部版本。
+</li></ul>
+<p />
+<h4><a name="流量监测"></a> 流量监测 </h4>
+<!--  -->
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NetworkingOverviewCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:15 GMT -->
+</html></body>

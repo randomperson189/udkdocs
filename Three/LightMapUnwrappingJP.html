@@ -1,0 +1,309 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LightMapUnwrappingJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:50 GMT -->
+<head>
+<title> UDK | LightMapUnwrappingJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">LightMapUnwrappingJP  </b></div>
+<div id="tooltext">
+<a href="LightMapUnwrapping.html" class="twikiLink">English Translation</a><br><a href="LightMapUnwrappingCH.html" class="twikiLink">中国翻译</a><br><a href="LightMapUnwrappingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/LightMapUnwrappingJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="ライトマップのアンラッピング"></a> ライトマップのアンラッピング </h1>
+<p />
+<em>本書の概要: ライトマップは 使用している UV 座標で特別な制約を有する。その制約についての説明。</em>
+<p />
+<em>本書の変更ログ: 初期バージョン</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="LightMapUnwrappingJP.html#ライトマップのアンラッピング"> ライトマップのアンラッピング</a> <ul>
+<li> <a href="LightMapUnwrappingJP.html#テクスチャの X 軸上でミラーする"> テクスチャの X 軸上でミラーする</a>
+</li> <li> <a href="LightMapUnwrappingJP.html#ミラーした一部のライトマップ UV の分割"> ミラーした一部のライトマップ UV の分割</a>
+</li> <li> <a href="LightMapUnwrappingJP.html#パディングを設置する場所"> パディングを設置する場所</a>
+</li> <li> <a href="LightMapUnwrappingJP.html#警告"> 警告</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="テクスチャの X 軸上でミラーする"></a> テクスチャの X 軸上でミラーする </h2>
+<p />
+これは、ライトマップテクスチャと頂点ライトマップに影響します。
+<p />
+ライトマップは、3 方向にライティングを格納し、実際の各標準ピクセルに基づきそれらをブレンドします。この 3 方向は、タンジェントスペースで固定されるため、 ワールドスペースでは、テクスチャ座標と同じくミラーされます。使用されている方向は、テクスチャの x 軸上でのみ対称的です。ワールドスペースの同じ方向は、ミラーシームの両側やUV マップで使用されていることを確認してください。  ミラーリングシームができるだけ垂直に近くなるようにしてください。
+<p />
+両側のミラーシームで、同じワールドスペース方向を使用することは重要です。なぜならば、それがライトマップの精度左右するからです。もし異なる方向が使用された場合は、片面のシームでの精度が落ちてしまい、ライトマップで可視的なシームの原因となります。
+<p />
+タンジェントベースは、最初の UV セットからビルドされます。そのため、テクスチャの X 軸にミラーリングが必要なテクスチャ座標です。
+<p />
+<h2><a name="ミラーした一部のライトマップ UV の分割"></a> ミラーした一部のライトマップ UV の分割 </h2>
+<p />
+メッシュのラ　イトマップ UV は、ミラーシームで数個のテクセルに分割される必要があります。 これは、2 等分されたもの上でのテクセルが、一緒にブレンドされないため必要です。また、ライトマップ、または双線形テクスチャフィルタリングに適用されたスムージングフィルタが原因で、テクセルが互いに近い場合にもブレンドされません。
+<p />
+例として、Torlan からこの壁を取り除くと、テクスチャスペースは x 軸上で法線マップをミラーリングすることにより確保されました。
+<p />
+<img alt="UV1.jpg" src="rsrc/Three/LightMapUnwrappingJP/UV1.jpg" />
+<p />
+ライトマップ情報の生成に使用された 2 番目の UVW 座標は、通常、下記のような見やすいユニークなアンラップを有しています。
+<p />
+<img alt="UV2.jpg" src="rsrc/Three/LightMapUnwrappingJP/UV2.jpg" />
+<p />
+ゲーム内のシームを防ぐには、 ミラーした半分を選択し、
+<p />
+<img alt="UV3.jpg" src="rsrc/Three/LightMapUnwrappingJP/UV3.jpg" />
+<p />
+テクスチャ上にあるミラーしたセクションを分割します。
+<p />
+<img alt="UV4.jpg" src="rsrc/Three/LightMapUnwrappingJP/UV4.jpg" />
+<p />
+ゲーム内で資産が表示されると、以前にあったシームがなくなります。
+<p />
+<img alt="UV5.jpg" src="rsrc/Three/LightMapUnwrappingJP/UV5.jpg" />
+<p />
+かわりに、思ったとおりの仕上がりになり、テクスチャスペースもまだ確保されています。
+<p />
+<img alt="UV6.jpg" src="rsrc/Three/LightMapUnwrappingJP/UV6.jpg" />
+<p />
+<h2><a name="パディングを設置する場所"></a> パディングを設置する場所 </h2>
+<p />
+<a href="LightmassJP.html" class="twikiLink">LightmassJP</a> を使用すると、ライトマップ UV レイアウトのエッジ周りのパディングが、もはや必要ありません。Lightmass はアーチファクトのにじみを防ぐために、自動的に 1 テクセルのパディングをするので、UV レイアウトで追加のパディングをすることは、ライトマップ メモリの無駄につながります。
+<p />
+<img alt="LightmapUVPaddingWasteJP.JPG" src="rsrc/Three/LightMapUnwrappingJP/LightmapUVPaddingWasteJP.jpg" />
+<p />
+UV チャート間のパディング (隣接する UV を持つ三角形のグループで、上記の画像には 2 つあります) は、いまだに必要です。UV チャート間のパディングの量は、メッシュに使用されるもっとも低い解像度によります。すべてのアーチファクトを避けるには、UV チャート間に約 4 つのライトマップ テクセルが存在する必要があるので、ライトマップ解像度が 32 の場合、UV チャート間のパディングは、UV 空間全体の 12.5% となるべきです。しかしながら、UV チャート間にパディングを入れれば入れるほど、高い解像度のライトマップでは、ライトマップ メモリの無駄がどんどん増えていきます。
+<p />
+<h2><a name="警告"></a> 警告 </h2>
+<p />
+<strong>このページのガイドラインは、ディフューズ静的ライティングからのシームを避ける手助けをしますが、ライトマップ スペキュラーにはシームがまだあります。</strong> ライトマップ スペキュラーが原因によるシームを避ける唯一の方法は、ライティングを動的に計算するライト (Movable、Toggleable、または Dominant )) を使用することです。ドミナント ライトに関する詳細な情報は、  <a href="DominantLightsJP.html" class="twikiLink">ドミナントライト</a> を参照してください。DomintLight を使用しているときでも、間接照明がライトマップ内にあるので、間接照明からのライトマップ スペキュラーがシームを起こしますが、これはそんなに顕著ではないはずです。
+<p />
+このシームを完全になくすための変更時、テクスチャの解像度は、 1024-2048 であることを念頭においてください。ライトマップは、約128 スクエアピクセルのため、オブジェクトに使用する、ライトマップ解像度での資産のライティングビルドを伴ったゲーム内変更をテストすることは重要です。
+極小の隙間を残すことは、低ライトマップ解像度上で小さなアーチファクトを残します。
+<p />
+ライトマップ テクスチャ座標内のすべてのシームは、視覚的なアーチファクトを作り出してしまうことに留意してください。これは、理論と実践の両方で容認できないかもしれませんが、適切なライトマップ UV 作成により、アーティストにのみしか認識されないぐらいまでシーム アーチファクトを減少させることができます。(完全な半分ではなく) 4 分の 3 のミラーリング オフセットを使用することが推奨されます。従って、顔の場合、鼻を少し過ぎます。
+<p />
+アセットのコストの減少 VS うまく隠された視覚的アーチファクトという意味では、トレードオフはパフォーマンス改善の 1 つであることに留意してください。
+<p />
+一般的に、頂点ライトマップがシームを完全に避ける唯一の方法です。
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LightMapUnwrappingJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:51 GMT -->
+</html></body>

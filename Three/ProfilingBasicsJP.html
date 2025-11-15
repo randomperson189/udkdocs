@@ -1,0 +1,377 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ProfilingBasicsJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:30:40 GMT -->
+<head>
+<title> UDK | ProfilingBasicsJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ProfilingBasicsJP  </b></div>
+<div id="tooltext">
+<a href="ProfilingBasics.html" class="twikiLink">English Translation</a><br><a href="ProfilingBasicsCH.html" class="twikiLink">中国翻译</a><br><a href="ProfilingBasicsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ProfilingBasicsJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px; font:10px Verdana;" >
+<b><a href="WebHomeJP.html" class="twikiLink">UE3 ホーム</a></b> &gt; <b><a href="PerformanceHomeJP.html" class="twikiLink">パフォーマンス、プロファイリング、最適化</a></b> &gt; 基本的なプロファイリングと最適化のテクニック
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="基本的なプロファイリングと最適化のテクニック"></a> 基本的なプロファイリングと最適化のテクニック </h1>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="ProfilingBasicsJP.html#基本的なプロファイリングと最適化のテクニック"> 基本的なプロファイリングと最適化のテクニック </a> <ul>
+<li> <a href="ProfilingBasicsJP.html#概要"> 概要 </a>
+</li> <li> <a href="ProfilingBasicsJP.html#STAT コマンド"> STAT コマンド </a>
+</li> <li> <a href="ProfilingBasicsJP.html#プロファイリング環境の準備"> プロファイリング環境の準備 </a> <ul>
+<li> <a href="ProfilingBasicsJP.html#STAT UNIT"> STAT UNIT </a>
+</li> <li> <a href="ProfilingBasicsJP.html#ビルドの設定"> ビルドの設定 </a>
+</li> <li> <a href="ProfilingBasicsJP.html#ガベージコレクション検証を無効にする"> ガベージコレクション検証を無効にする </a>
+</li> <li> <a href="ProfilingBasicsJP.html#Final Release モードでスクリプトをコンパイルする"> Final Release モードでスクリプトをコンパイルする </a>
+</li> <li> <a href="ProfilingBasicsJP.html#VSync を無効にする"> VSync を無効にする </a>
+</li> <li> <a href="ProfilingBasicsJP.html#STAT SLOW を使用する"> STAT SLOW を使用する </a>
+</li></ul>
+</li> <li> <a href="ProfilingBasicsJP.html#ヒントとこつ"> ヒントとこつ </a> <ul>
+<li> <a href="ProfilingBasicsJP.html#機能を無効にする"> 機能を無効にする </a>
+</li> <li> <a href="ProfilingBasicsJP.html#ウォールを調べる"> ウォールを調べる </a>
+</li> <li> <a href="ProfilingBasicsJP.html#同一タイプを任意の数スポーンする"> 同一タイプを任意の数スポーンする </a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<div style="margin-top:-10px;" ><hr size="1" noshade="noshade"></div>
+<p />
+以下のセクションでは、パフォーマンス問題およびボトルネック、処理落ちのために非常に便利なツールについて解説します。
+<p />
+大概、最初にやるべきことは、フレームが CPU または GPU によって制限されているか否かを判断するとともに、適切なツールを使用して、問題を絞り込んでいくことです。
+<p />
+CPU の動作が緩慢である場合は、これに対処できるコマンドおよびデバッギングツールが多数用意されています。時として、単にアクタと他「動く部分」の過剰な数が原因になって、フレームが遅くなっている場合があります。また、意図した動きをしない AI クラスがフレームごとに数千の光線キャストをアクティベートしている場合もあります。忍耐力を持ってすれば、これらのパフォーマンス上の問題を追跡することによって個別レベルのアクタまでたどっていくことができます!
+<p />
+GPU パフォーマンスについては、PIX を使用して、描画イベントやシェーダーパフォーマンス、インゲームのビジュアル化モードおよび HUD 統計情報を分析しなければならないことがあります。これらの問題をたどっていくと、コンテンツのレイアウトか、あるいは光源のプロパティに行き着く可能性があります。
+<p />
+いずれのケースでも、持続的なフレームレートの問題または処理落ち (フレームタイムの激増) に対処することになるでしょう。持続する低いフレームレートについては、単一フレーム キャプチャ ツール (TRACE コマンドなど) とサンプリング プロファイラー (VTune など) が有効です。処理落ちについては、StatsViewer ツールを使用することによって、コールグラフを使った経時的なフレーム分析を行う必要があるでしょう。
+<p />
+なお、「Unreal」のツールの多くは複数のプラットフォームで動作しますが、コンソールのパフォーマンス デバッギング ツールは PC のものと異なっているのが普通です。
+<p />
+<h2><a name="STAT コマンド"></a> STAT コマンド </h2>
+<div style="margin-top:-10px;" ><hr size="1" noshade="noshade"></div>
+<p />
+デバッグやテスト、ゲームのプロファイルを行う際、意味あるデータをゲーム内で直接素早く調べ評価できることが必須となります。STAT コンソールコマンドの使用を通じて、「Unreal Engine 3」は、ゲームおよびエンジンのさまざまな点に関して、任意の数の統計を表示する機能を提供しています。この統計データは、HUD としてスクリーンにレンダリングされます。
+<p />
+<a href="StatsDescriptionsJP.html" class="twikiLink">Stat コマンド解説</a> のページには、利用可能な全 stat (統計) コマンドの完全なリスト、および、各コマンドによって示される各種メトリックスに関する解説が掲載されています。
+<p />
+<h2><a name="プロファイリング環境の準備"></a> プロファイリング環境の準備 </h2>
+<div style="margin-top:-10px;" ><hr size="1" noshade="noshade"></div>
+<p /> <ol>
+<li> まず、ゲームが稼働しているときに <a href="ProfilingBasicsJP.html#StatUnit" class="twikiAnchorLink">STAT UNIT</a> を起動します。 <!--  -->
+</li> <li> <a href="ProfilingBasicsJP.html#TurnOffLogSpam" class="twikiAnchorLink">あらゆる長いスパムを無効にする</a> か、パフォーマンス結果を阻害するであろうコードをデバッグします。
+</li> <li> 処理落ちの原因になるため、 <a href="ProfilingBasicsJP.html#TurnOffGCVerify" class="twikiAnchorLink">ガベージコレクション検証</a> を無効にします。 <!--  -->
+</li> <li> <a href="ProfilingBasicsJP.html#TurnOffVSync" class="twikiAnchorLink">VSync を無効に</a> して、ボトルネックを特定します。これは高速のフレームでも行います。
+</li></ol>
+<p />
+<a name="StatUnit"></a>
+<h3><a name="STAT UNIT"></a> STAT UNIT </h3>
+<p />
+<strong>STAT UNIT</strong> コマンドを使用することによって、フレームタイムのボトルネックの場所を特定します。 <strong>STAT UNIT</strong> によって、オンスクリーンの HUD が切り替えられます。この HUD は、フレームタイム、ゲームスレッドタイム、レンダリングスレッド (描画) タイム、GPU タイムを (可能であるならば) 表示するためのものです。 <strong>STAT UNIT</strong> は、パフォーマンス問題を追跡する際に、非常に重要な第 1 ステップです。ほぼ常時有効にしておくべきです。
+<p />
+また、 <strong>STAT FPS</strong> コマンドを使用することによって、スクリーン上にフレームレートとフレームタイムを表示できます。
+<p />
+<!--  -->
+<p />
+<a name="TurnOffGCVerify"></a>
+<h3><a name="ガベージコレクション検証を無効にする"></a> ガベージコレクション検証を無効にする </h3>
+<p />
+パフォーマンスに対処する際は、常に _GC (ガベージコレクション) 検証を無効にします。そうでないと、少なくとも約 30 秒ごとに <strong>Release</strong> ビルドで大量の処理落ちが発生することになります。以下の方法のうちどちらかを利用することができます。
+<!--  -->
+<p />
+<a name="UseFinalReleaseScripts"></a>
+<h3><a name="Final Release モードでスクリプトをコンパイルする"></a> Final Release モードでスクリプトをコンパイルする </h3>
+<p />
+UnrealScript のパフォーマンスは、ロギングとアサーションが有効になっている場合、大きく異なる可能性があります。出荷タイトルに極めて近似したパフォーマンスを得るには、 <strong>Final Release</strong> モードでスクリプトをコンパイルするのが簡単です。これによって、高価なコールを、コンパイルされるバイトコードから自動的に除去することができます。 <strong>Final Release</strong> スクリプトをビルドするには、以下のいずれかの方法を利用します。
+<p /> <ul>
+<li> <a href="UnrealFrontendJP.html" class="twikiLink">Unreal Frontend</a> において、 [*Cooking*] タブを選択し、 [*Cook Final Release Scripts*] のチェックボックスを有効にする。これによって、クッカを実行するか UFE を通じてゲームを起動すると、 <strong>Final Release</strong> スクリプトがコンパイルされて使用されることになります。
+</li> <li> <strong>-Final_Release</strong> コマンドライン 引数を <strong>make</strong> コマンドレットに渡す。
+</li></ul>
+<p />
+<!--  -->
+<p />
+<a name="TurnOffVSync"></a>
+<h3><a name="VSync を無効にする"></a> VSync を無効にする </h3>
+<p />
+最善の結果を得るには、 <strong>VSync</strong> を無効にしなければならない場合があります。 (<strong>VSync</strong> は、フレームを表示する前に vertical retrace (垂直復帰) を待ちます)。そうしなければ、フレームタイムがゲームのリフレッシュレートにパディングされ、正確なピクチャーを得ることが一層難しくなります。  <strong>VSync</strong> を無効にするには、次のいずれかの方法をとります。  <ul>
+<li> <strong>-NoVSync</strong> コマンドライン オプションをゲームに渡す。
+</li> <li> <a href="UnrealFrontendJP.html" class="twikiLink">Unreal Frontend</a> の [*Game*] タブで、[*No VSync*] (VSync なし) のチェックボックスを有効にする。
+</li></ul>
+<p />
+<a name="StatSlow"></a>
+<h3><a name="STAT SLOW を使用する"></a> STAT SLOW を使用する </h3>
+<p />
+STAT SLOW コマンドを使用することによって、パフォーマンスの突出部分を検出することができます。これによって、処理落ちを絞り込むことができるようになります。それには、フレームにおける特定の時間 (デフォルトでは 10ms) よりも長いあらゆるサイクル統計情報をレポートします。 統計値がゆっくりと実行されるため、しばらくの間 HUD で表示され、スクリーン上でゲームの動作と突出部分を容易に関連づけることができるようになります。
+<p />
+これを使用するには、閾値を秒 (10 秒は 0.01 になる) で表したもの、および、突出した統計値をレンダリングする期間を指定するオプション引数とともに <strong>STAT SLOW</strong> をコンソールに入力します。デフォルトでは 10 秒になっています。
+<p />
+*例 : * <code>STAT SLOW 0.01 10</code>
+<p />
+これによって、最後の 10 秒で 10 ms以上のあらゆるサイクル統計値がレンダリングされます。
+<p />
+<h2><a name="ヒントとこつ"></a> ヒントとこつ </h2>
+<div style="margin-top:-10px;" ><hr size="1" noshade="noshade"></div>
+<p />
+以下のセクションでは、パフォーマンス問題をプロファイリングする際に重要となるヒントとこつについて取り上げます。
+<p />
+<h3><a name="機能を無効にする"></a> 機能を無効にする </h3>
+<p />
+ゲームにはすばらしい機能が数多くありますが、通常、コストがやや高くなります。通常はそれでも構わないのですが、こうした負荷の大きい機能を数多く開始したときや、複雑なシーンにおいて、これらの機能のためにシーンのスピードが遅くなってしまうようだと事態は異なります。何時間もかけて最適化を行い、20-40% の改善を達成しても、シーンのスピードアップには十分ではないかもしれません。これに代わる方法は、その機能を単に無効にすることです！  大量の殺りくが行われているために気づかれないかもしれないことや、はるか遠くにあるものなどについては、この方法が非常に効果的です。
+<p />
+また、「不必要な機能を無効にする」ことは、プロファイリング実行にも役立つテクニックです。あるものの最適化に時間を費やす価値があるかどうかを把握することも、時に必要です。「今この機能を無効にしたら、フレームタイムの予算はどうなるだろうか」と考えているのであれば、いっそその機能を完全に無効にしてみるのが良いのです。
+<p />
+<strong>使用例</strong>
+<p /> <ul>
+<li> プレーヤーからはるか遠くにいる敵については、地面に少量の血のデカールを発生させる必要がないことがよくあります（例、狙撃された血のエフェクト）。
+</li> <li> プレーヤーが絶対に近寄れないことを LD がわかっている敵（例、到達不可能な崖の上にいる敵）は、血まみれになったり武器を落としたりする必要はありません。
+</li> <li> 複雑な SkeletalControl を最適化する代わりに、オーナーが見えない時には更新しないことです。
+</li> <li> 布地がシーンではない場合、シミュレートすべきではありません!
+</li></ul>
+<p />
+<h3><a name="ウォールを調べる"></a> ウォールを調べる </h3>
+<p />
+見えないときに更新される必要のないものをコードが更新しているケースが非常に多くあります。あるレベルに行ってウォールのほうを向き、通常のプロファイリングの全てを実行すると、オブジェクトが間違って、必要のないときに、自動的に更新しているかどうかがよくわかります。
+<p />
+もちろん、見えないときでも自動的に更新する必要のあるものもあります。しかし、オブジェクトの多くは常に更新していなくても何とかなるものです。
+<p />
+<h3><a name="同一タイプを任意の数スポーンする"></a> 同一タイプを任意の数スポーンする </h3>
+<p />
+多数の同じタイプの敵が攻撃してくると、ゲームが遅くなることがよくあります。その敵のタイプの何かが遅いのです。問題は、残りのエンジンが邪魔をしているために、何が遅れているのかがわかりにくいことです。この問題を回避するには、テストレベルを取得し、これらの敵を任意の数だけそこにスポーンさせてプロファイリングします。これによって、問題のある場所が簡単にわかります。
+<p />
+以上は、簡単に使えるテクニックです。それには次のようにします。
+<p /> <ul>
+<li> 問題のありそうな複数のオブジェクトをテストレベルに置きます
+</li> <li> プロファイリング実行！
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ProfilingBasicsJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:30:40 GMT -->
+</html></body>

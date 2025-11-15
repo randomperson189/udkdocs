@@ -1,0 +1,423 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GameplayDebuggingJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:39 GMT -->
+<head>
+<title> UDK | GameplayDebuggingJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">GameplayDebuggingJP  </b></div>
+<div id="tooltext">
+<a href="GameplayDebugging.html" class="twikiLink">English Translation</a><br><a href="GameplayDebuggingCH.html" class="twikiLink">中国翻译</a><br><a href="GameplayDebuggingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/GameplayDebuggingJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="ゲームプレイのデバッグ"></a> ゲームプレイのデバッグ </h1>
+<p />
+<em>ドキュメントの概要: ゲームの実行時のデバッグに利用できる機能やコマンドのリスト。</em>
+<p />
+<em>ドキュメントの変更ログ: <a href="https://udn.epicgames.com/Main/JeffFarris" class="restricted" class="restricted" class="twikiLink">Jeff Farris</a> により作成。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="GameplayDebuggingJP.html#ゲームプレイのデバッグ"> ゲームプレイのデバッグ</a> <ul>
+<li> <a href="GameplayDebuggingJP.html#概要"> 概要</a>
+</li> <li> <a href="GameplayDebuggingJP.html#プロパティの検査と操作"> プロパティの検査と操作</a> <ul>
+<li> <a href="GameplayDebuggingJP.html#editactor"> editactor</a>
+</li> <li> <a href="GameplayDebuggingJP.html#editobject"> editobject</a>
+</li> <li> <a href="GameplayDebuggingJP.html#editdefault"> editdefault</a>
+</li></ul>
+</li> <li> <a href="GameplayDebuggingJP.html#便利なコンソール コマンド"> 便利なコンソール コマンド</a> <ul>
+<li> <a href="GameplayDebuggingJP.html#オブジェクト データを調べる"> オブジェクト データを調べる</a> <ul>
+<li> <a href="GameplayDebuggingJP.html#getall"> getall</a>
+</li> <li> <a href="GameplayDebuggingJP.html#getallstate"> getallstate</a>
+</li></ul>
+</li> <li> <a href="GameplayDebuggingJP.html#値の変化を確認する"> 値の変化を確認する</a> <ul>
+<li> <a href="GameplayDebuggingJP.html#displayall"> displayall</a>
+</li> <li> <a href="GameplayDebuggingJP.html#displayallstate"> displayallstate</a>
+</li> <li> <a href="GameplayDebuggingJP.html#displayclear"> displayclear</a>
+</li></ul>
+</li> <li> <a href="GameplayDebuggingJP.html#値を操作する"> 値を操作する</a> <ul>
+<li> <a href="GameplayDebuggingJP.html#set"> set</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<p />
+このドキュメントでは、UE3 ランタイムデバッグ機能の一部の使い方を簡単に示しています。エンジンのリビルドやゲームを再起動する手間をかけずに、調整を加えたり、変数のチェックや問題の追究を行うのに非常に便利な機能です。
+<p />
+<p />
+<h2><a name="プロパティの検査と操作"></a> プロパティの検査と操作 </h2>
+<p />
+これらの <a href="ConsoleCommandsJP.html" class="twikiLink">コンソールコマンド</a> を使ってゲーム内オブジェクトのプロパティウィンドウを開き、実行時に参照または操作を行うことができます。None カテゴリーには、var() で宣言されていないすべての変数が含まれるので、これによりオブジェクトのデータに完全にアクセスできます。
+<p />
+wxWindows が無効になっている場合 (デフォルト設定)、これらのコマンドは利用できない点に注意してください。コマンドを有効にするには、コマンドラインで -wxwindows <a href="URLParametersJP.html" class="twikiLink">パラメータ</a> を指定してゲームを実行してください。必要に応じて、-norc を追加して <a href="RemoteControlJP.html" class="twikiLink">リモートコントロール</a> ウィンドウを無効にすることもできます。
+<p />
+<h3><a name="editactor"></a> editactor </h3>
+<p />
+<code>editactor</code> は、名前またはクラスを引数に取ります。次に例を示します。
+<p />
+<pre>
+   editactor name&#61;gearpawn&#95;cogmarcus&#95;1
+</pre>
+<p />
+オブジェクト gearpawn_cogmarcus_1 のプロパティ ウィンドウを開きます。
+<p />
+クラスを指定すると、それに最も近い Actor が選択されます。
+<p />
+次に例を示します。
+<p />
+<pre>
+   editactor class&#61;pawn
+</pre>
+<p />
+この場合、おそらく自分のプレーヤーである Pawn が選択されます。
+<p />
+<h3><a name="editobject"></a> editobject </h3>
+<p />
+editactor と同様に、 <code>editobject</code> は name 引数を取ることができます。他の引数が指定されていない場合は、"name=" であると見なされます。
+<p />
+次に例を示します。
+<p />
+<pre>
+editobject gearpawn&#95;cogmarcus&#95;1
+editobject name&#61;gearpawn&#95;cogmarcus&#95;1
+</pre>
+<p />
+この 2 つは同じように機能します。
+<p />
+クラスのデフォルトオブジェクトを編集することもできます。次に例を示します。
+<p />
+<pre>
+editobject gearpawn
+</pre>
+<p />
+デフォルトの GearPawn にアクセスして編集できるようにします。頻繁にスポーンされるクラス (発射物など) の場合に便利です。
+<p />
+<h3><a name="editdefault"></a> editdefault </h3>
+<p />
+クラスのデフォルトオブジェクトへのアクセスには Editdefault も使用できます。"class=" 形式を取ることができますが、その必要はありません。つまり、
+<p />
+<pre>
+editdefault gearpawn
+editdefault class&#61;gearpawn
+</pre>
+<p />
+は同じように機能します。
+<p />
+<p />
+<h2><a name="便利なコンソール コマンド"></a> 便利なコンソール コマンド </h2>
+<p />
+<h3><a name="オブジェクト データを調べる"></a> オブジェクト データを調べる </h3>
+<p />
+これらの <a href="ConsoleCommandsJP.html" class="twikiLink">コンソールコマンド</a> は、ゲームの実行中にオブジェクト データを調べるのに便利です。
+<p />
+<h4><a name="getall"></a> getall </h4>
+<p />
+特定のクラスのすべてのオブジェクトについて、特定の変数の値を返します。構文は次のとおりです。
+<p />
+<pre>
+   getall &#60;classname&#62; &#60;variable&#62;
+</pre>
+<p />
+次に例を示します。
+<p />
+<pre>
+   getall gearpawn location
+</pre>
+<p />
+メモリ内にあるすべての GearPawn アクタの名前と位置のリストを表示します。
+<p />
+<h4><a name="getallstate"></a> getallstate </h4>
+<p />
+getall と似ていますが、これは指定クラスのすべてのインスタンスのステータスのリストを返します。構文は次のとおりです。
+<p />
+<pre>
+   getallstate &#60;classname&#62;
+</pre>
+<p />
+次に例を示します。
+<p />
+<pre>
+   getallstate gearpawn
+</pre>
+<p />
+これは、すべての GearPawn のステートを一覧表示します。
+<p />
+<h3><a name="値の変化を確認する"></a> 値の変化を確認する </h3>
+<p />
+これらの <a href="ConsoleCommandsJP.html" class="twikiLink">コンソールコマンド</a> は getall/getallstate と似ていますが、画面の各フレームに結果を出力します。時間の経過に伴う値の変化を確認するのに便利です。
+<p />
+<h4><a name="displayall"></a> displayall </h4>
+<p />
+これは getall と同じように使います。
+<p />
+<pre>
+   displayall &#60;classname&#62; &#60;variable&#62;
+</pre>
+<p />
+次に例を示します。
+<p />
+<pre>
+   displayall gearpawn location
+</pre>
+<p />
+画面上のすべてのポーンの位置を描写し、フレームごとに更新します。
+<p />
+<h4><a name="displayallstate"></a> displayallstate </h4>
+<p />
+getallstate と同様に機能します。次に例を示します。
+<p />
+<pre>
+   displayallstate gearpawn
+</pre>
+<p />
+<h4><a name="displayclear"></a> displayclear </h4>
+<p />
+画面上の現在のデバッグ表示をすべて消去します。引数は取りません。
+<p />
+<h3><a name="値を操作する"></a> 値を操作する </h3>
+<p />
+<h4><a name="set"></a> set </h4>
+<p />
+<code>set</code> コンソールコマンドは、実行時に変数を設定するのに使います。オブジェクトすべてのインスタンスはもちろん、クラスのデフォルトオブジェクトの変数も設定します。構文は次のとおりです。
+<p />
+<pre>
+   set &#60;classname&#62; &#60;variable&#62; &#60;value&#62;
+</pre>
+<p />
+次に例を示します。
+<p />
+<pre>
+   set geargameplaycamera bDrawDebug 1
+</pre>
+<p />
+これは、Gears の三人称視点カメラのデバッグレンダリングを有効にするブール値をオンにします。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GameplayDebuggingJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:39 GMT -->
+</html></body>

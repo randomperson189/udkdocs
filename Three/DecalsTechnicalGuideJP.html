@@ -1,0 +1,412 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DecalsTechnicalGuideJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:32:45 GMT -->
+<head>
+<title> UDK | DecalsTechnicalGuideJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">DecalsTechnicalGuideJP  </b></div>
+<div id="tooltext">
+<a href="DecalsTechnicalGuide.html" class="twikiLink">English Translation</a><br><a href="DecalsTechnicalGuideCH.html" class="twikiLink">中国翻译</a><br><a href="DecalsTechnicalGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/DecalsTechnicalGuideJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="Decal システム テクニカルガイド"></a> Decal システム テクニカルガイド </h1>
+<p />
+<em>ドキュメントの概要: Decal を使用する作業の技術的およびプログラミング的な情報。</em>
+<p />
+<em>ドキュメントの変更ログ: Dave Burke<sup>?</sup> により作成。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="DecalsTechnicalGuideJP.html#Decal システム テクニカルガイド"> Decal システム テクニカルガイド </a> <ul>
+<li> <a href="DecalsTechnicalGuideJP.html#概要"> 概要</a> <ul>
+<li> <a href="DecalsTechnicalGuideJP.html#DecalComponent メンバ変数"> DecalComponent メンバ変数</a> <ul>
+<li> <a href="DecalsTechnicalGuideJP.html#マテリアル"> マテリアル</a>
+</li> <li> <a href="DecalsTechnicalGuideJP.html#サイズ"> サイズ</a>
+</li> <li> <a href="DecalsTechnicalGuideJP.html#平面"> 平面</a>
+</li> <li> <a href="DecalsTechnicalGuideJP.html#タイリング"> タイリング</a>
+</li> <li> <a href="DecalsTechnicalGuideJP.html#Hit 情報"> Hit 情報</a>
+</li> <li> <a href="DecalsTechnicalGuideJP.html#クリッピング"> クリッピング</a>
+</li> <li> <a href="DecalsTechnicalGuideJP.html#静的Decal"> 静的Decal </a>
+</li> <li> <a href="DecalsTechnicalGuideJP.html#レシーバー"> レシーバー</a>
+</li> <li> <a href="DecalsTechnicalGuideJP.html#コンポーネント"> コンポーネント</a>
+</li> <li> <a href="DecalsTechnicalGuideJP.html#バイアス"> バイアス</a>
+</li> <li> <a href="DecalsTechnicalGuideJP.html#フィルタリング"> フィルタリング</a>
+</li> <li> <a href="DecalsTechnicalGuideJP.html#投影フラグ"> 投影フラグ</a>
+</li></ul>
+</li> <li> <a href="DecalsTechnicalGuideJP.html#スクリプトからのDecal 作成"> スクリプトからのDecal 作成</a>
+</li> <li> <a href="DecalsTechnicalGuideJP.html#Decal の有効期間の管理"> Decal の有効期間の管理</a>
+</li> <li> <a href="DecalsTechnicalGuideJP.html#パフォーマンスのモニタリング"> パフォーマンスのモニタリング</a>
+</li></ul>
+</li> <li> <a href="DecalsTechnicalGuideJP.html#関連した統計値"> 関連した統計値</a> <ul>
+ <li>
+ <ul>
+<li> <a href="DecalsTechnicalGuideJP.html#関連した_ShowFlags"> 関連したShowFlags</a>
+</li> <li> <a href="DecalsTechnicalGuideJP.html#Decal のグローバルな有効化/無効化"> Decal のグローバルな有効化/無効化</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="DecalsTechnicalGuideJP.html#Decalの使用"> Decalの使用</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<p />
+<h3><a name="DecalComponent メンバ変数"></a> DecalComponent メンバ変数 </h3>
+<p />
+以下は DecalComponent メンバ変数の簡単な説明です。
+<p />
+<p />
+<h4><a name="マテリアル"></a> マテリアル </h4>
+<p />
+DecalMaterial プロパティは、この Decal で使用するマテリアルを表わします。MaterialInstance チェーンは最終的に DecalMaterial に到達する必要があります。
+<p />
+<h4><a name="サイズ"></a> サイズ </h4>
+<p />
+サーフェス上のDecal のサイズ (接線/従法線方向)。 <ul>
+<li> Width/Height
+</li></ul>
+<p />
+<h4><a name="平面"></a> 平面 </h4>
+<p />
+Decal のサイズ: <ul>
+<li> NearPlane/FarPlane
+</li></ul>
+<p />
+<h4><a name="タイリング"></a> タイリング </h4>
+<p />
+Decal UV のタイリング乗数とオフセット: <ul>
+<li> TileX/TileY
+</li> <li> OffsetX/OffsetY
+</li></ul>
+<p />
+<h4><a name="Hit 情報"></a> Hit 情報 </h4>
+<p />
+Decal 錐台の位置と方向に関する情報。レンダーデータの計算時と、Decal のデバッグレンダリングに使用します。 <ul>
+<li> HitLocation
+</li> <li> HitNormal
+</li> <li> HitTangent
+</li> <li> HitBinormal
+</li></ul>
+<p />
+<h4><a name="クリッピング"></a> クリッピング </h4>
+<p />
+bNoClip プロパティのデフォルト値は FALSE です。TRUE の場合、Decal のジオメトリ計算に "NoClip" コードパスが使用されます。このコードパスにより、ソフトウェアベースによるクリップ (Decal 錐台に対するレシーバー三角形のクリップ) は実行されず、その分Decal のレンダリング中にフィルを追加します。さらに、"NoClip" Decal マテリアルに使用するテクスチャのアドレスモードを TA_Clamp に設定し、ミップマッピングに十分対応できる幅の透明なボーダーを外側エッジの周囲に設ける必要があります。
+<p />
+bNoClip は、頂点リットの静的メッシュ上にある Lit Decal を意味しますので注意してください。
+<p />
+<h4><a name="静的Decal"></a> 静的Decal </h4>
+<p />
+bStaticDecal プロパティは、エディタを使用してレベルに配置された Decal の場合のみ TRUE になります。ADecalActor の <code>defaultproperties</code> ブロックによってblock.bStaticDecal は TRUE に設定されます。
+<p />
+<h4><a name="レシーバー"></a> レシーバー </h4>
+<p />
+HitComponent のデフォルト値は NULL です。NULL 以外の値の場合、Decal ジオメトリの計算時にこのコンポーネントはレシーバーになる可能性があると見なされます。このプロパティを設定すると、レシーバーの可能性となるすべてのコンポーネントと交差する必要性がなくなりますが、Decal が指定コンポーネントにしか投影されないため、望ましくない結果が生じる可能性があります (たとえば、ロケット爆破の場合などにはよくありません)。
+<p />
+<h4><a name="コンポーネント"></a> コンポーネント </h4>
+<p />
+この Decal に対して生成されるジオメトリのコンポーネントと、それらに関連するレンダーデータのリスト。=Receiver= と <code>RenderData</code> 配列の長さは常に同じで、=RenderData= の i 番目の項目は <code>Receiver</code> i のデータです。このレイアウトにより、レシーバーは他から独立して Decal に関連付けまたは関連付け解除を行うことができます。
+<p />
+<h4><a name="バイアス"></a> バイアス </h4>
+<p />
+2 つ以上のDecal が重なり合うときに、DepthBias と SlopeScaleDepthBias パラメータを使用してDecal の深度にバイヤスをかけ、他のDecal の下または上にレンダリングされるように制御します。
+<p />
+<h4><a name="フィルタリング"></a> フィルタリング </h4>
+<p />
+前述のとおり、Filter にはフィルタするアクタのリストが含まれます。FilterMode では Filter リストのアクタを無視するか (FM_Ignore)、またはこの Decal により影響を受けるアクタのみに制限するか (FM_Affect) を指定します。デフォルト値は FM_None で、Filter は考慮されません。
+<p />
+<h4><a name="投影フラグ"></a> 投影フラグ </h4>
+<p />
+Decal の投影先を制御するフラグは以下のとおりです。 <ul>
+<li> bProjectonBackfaces - 三角形のバックフェイス (背面)
+</li> <li> bProjectOnBSP - BSP
+</li> <li> bProjectOnStaticMeshes - 静的メッシュ
+</li> <li> bProjectOnSkeletalMeshes - 骨格メッシュ
+</li> <li> bProjectOnTerrain - テレイン
+</li></ul>
+<p />
+<h3><a name="スクリプトからのDecal 作成"></a> スクリプトからのDecal 作成 </h3>
+<p />
+通常Decal は、DecalManager の <code>&gt;SpawnDecal</code> メンバ関数を呼び出して作成します。基本的なプロセスは、=SpawnDecal= を呼び出し、Decal のサイズ、方向、マテリアル、Decal の計算方法に関するヒントを指定するだけです。
+<p />
+ゲーム中に武器が何かに命中したときに、それに反応して <code>SpawnHitDecal</code> を含む weapon クラスが呼び出される場合を考えてください。
+<p />
+この関数は次のようなコードです。
+<p />
+<pre>
+// ゲーム内のすべての武器が共有するステート/動作で構成されるクラス。
+class BaseWeaponClassForYourGame extends Weapon
+
+// ...
+
+// 武器の命中に基づいてDecal を生成。SpawnExplosionEffects などの関数により呼び出される。
+simulated function SpawnHitDecal(ImpactInfo Impact)
+{
+    local DecalComponent         DecalTemplate;
+
+    // impact (インパクト) 情報に格納される物理マテリアルシステムなどを調べて、
+    // このサーフェス/武器のペアに適したDecal のパラメータを取得する。
+    DecalTemplate &#61; Impact.GetDecalTemplate( this );
+
+    // Decal テンプレートに基づいてDecal を作成する。
+    WorldInfo.MyDecalManager.SpawnDecal( DecalTemplate.DecalMaterial,                // このDecal に使用する UMaterialInstance
+                              Impact.HitLocation,                         // 命中位置にスポーンされるDecal 。
+                              rotator(-Impact.HitNormal),                 // サーフェスにDecal を正しく配置する。
+                              DecalTemplate.Width, DecalTemplate.Height,  // Decal サイズ (接線/従法線方向)。
+                              DecalTemplate.Thickness,                    // Decal サイズ (法線方向)。
+                              DecalTemplate.bNoClip,                      // TRUE の場合、&#34;NoClip&#34; コードパスを使用する。
+                              FRand() &#42; 360,                              // ランダムな回転
+                              Impact.HitInfo.HitComponent );               // non-NULL の場合、このコンポーネントのみが対象。
+}
+</pre>
+<p />
+<h3><a name="Decal の有効期間の管理"></a> Decal の有効期間の管理 </h3>
+<p />
+一時的なDecal は、単体の DecalManager Actor (WorldInfo-&gt;MyDecalManager からアクセス可能) が管理し、ワールドに現存するDecal のリストを管理します。基本的な実装では、各Decal の構成可能な有効期間をカウントダウンして、有効期間が終了するとDecal をデタッチしますが、このクラスは簡単にオーバーライドでき (WorldInfo の構成可能な DecalManagerClassPath を使用して) 動作を変更することができます。
+<p />
+また、DecalManager はDecal が作成する DecalComponents もプールします。Decal の有効期間が完了するとプールに戻され、そのコンポーネントは将来の SpawnDecal() 呼び出し時に再利用されます。この方法により、オブジェクトを常時作成して破棄する代わりに、最悪の状況でも必要な数の DecalComponents だけを提供して、オブジェクトのオーバーヘッドとガーベジコレクションの回数を最小限に抑えています。
+<p />
+<h3><a name="パフォーマンスのモニタリング"></a> パフォーマンスのモニタリング </h3>
+<p />
+<h2><a name="関連した統計値"></a> 関連した統計値 </h2>
+<p />
+エンジンの統計値グループ (ゲーム内コンソールで <code>stat engine</code> を入力して可視化します) には、Decal に関連する 2 つの項目があります。Decal 描画呼び出しの合計数を示す DecalDrawCalls と、レンダラーに渡されるDecal 三角形の合計数を示す DecalTriangles です。また、ゲーム統計グループ (<code>stat game</code>) には、Decal マネージャがカウントに費やした時間を示す DecalTime と、Decal の有効期間ポリシーがあります。
+<p />
+<h4><a name="関連した_ShowFlags"></a> 関連したShowFlags </h4>
+<p />
+Decal のレンダリングを管理する 2 つの showflag があります。 <code>SHOW DECALINFO</code> は、Decal 錐台や接線ベースを含む、Decal のデバッグ情報の表示を有効にします。 <code>SHOW DECALS</code> は、Decal をビューポートに描くかどうかの選択をグローバル単位で切り替えます。これには、 <code>DECALINFO</code> で有効にされたDecal のデバッグ情報レンダリングもすべて含まれます。
+<p />
+<h4><a name="Decal のグローバルな有効化/無効化"></a> Decal のグローバルな有効化/無効化 </h4>
+<p />
+エンジンの <code>bStaticDecalsEnabled</code> と <code>bDynamicDecalsEnabled</code> 設定メンバ変数を使用して、静的または動的Decal を全面的に (ジオメトリ計算、シーンの関連付け、レンダリングなど) を有効/無効にすることができます。いずれの変数もデフォルトでは <strong>TRUE</strong> に設定されていて、Decal が完全に有効であることを意味します。
+<p />
+<h2><a name="Decalの使用"></a> Decalの使用 </h2>
+<p />
+エディタツールを使ったレベル内へのDecal配置や操作に関する詳細は、<a href="UsingDecalsJP.html" class="twikiLink">Decalシステムの参照</a> ページを参照してください。
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DecalsTechnicalGuideJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:32:45 GMT -->
+</html></body>

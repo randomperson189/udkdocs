@@ -1,0 +1,548 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NetworkingOverviewJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:30:40 GMT -->
+<head>
+<title> UDK | NetworkingOverviewJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">NetworkingOverviewJP  </b></div>
+<div id="tooltext">
+<a href="NetworkingOverview.html" class="twikiLink">English Translation</a><br><a href="NetworkingOverviewCH.html" class="twikiLink">中国翻译</a><br><a href="NetworkingOverviewKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/NetworkingOverviewJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="Unreal ネットワーク アーキテクチャ"></a> Unreal ネットワーク アーキテクチャ </h1>
+<p />
+<em>ドキュメントの概要:Unreal ネットワーク アーキテクチャの概要。  <a href="https://udn.epicgames.com/Main/TimSweeney" class="restricted" class="restricted" class="twikiLink">Tim Sweeney</a> により作成。</em>
+<p />
+<em>ドキュメントの変更ログ: <a href="https://udn.epicgames.com/Main/StevePolge" class="restricted" class="restricted" class="twikiLink">Steve Polge</a> によりポート化および更新。 Richard Nalezynski<sup>?</sup> により更新および管理。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="NetworkingOverviewJP.html#Unreal ネットワーク アーキテクチャ"> Unreal ネットワーク アーキテクチャ</a> <ul>
+<li> <a href="NetworkingOverviewJP.html#概要"> 概要</a> <ul>
+<li> <a href="NetworkingOverviewJP.html#ネットワーキングをゼロから実装する"> ネットワーキングをゼロから実装する</a>
+</li> <li> <a href="NetworkingOverviewJP.html#ピアツーピア形式"> ピアツーピア形式</a>
+</li> <li> <a href="NetworkingOverviewJP.html#クライアント サーバー形式"> クライアント サーバー形式</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewJP.html#Unreal ネットワーク アーキテクチャ"> Unreal ネットワーク アーキテクチャ</a> <ul>
+<li> <a href="NetworkingOverviewJP.html#基本コンセプト"> 基本コンセプト</a>
+</li> <li> <a href="NetworkingOverviewJP.html#アクタ"> アクタ</a>
+</li> <li> <a href="NetworkingOverviewJP.html#役割"> 役割</a> <ul>
+<li> <a href="NetworkingOverviewJP.html#関連性"> 関連性</a>
+</li> <li> <a href="NetworkingOverviewJP.html#優先順位の決定"> 優先順位の決定</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewJP.html#複製"> 複製</a> <ul>
+<li> <a href="NetworkingOverviewJP.html#複製の概要"> 複製の概要</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewJP.html#UnrealScript: 複製命令文"> UnrealScript: 複製命令文</a> <ul>
+<li> <a href="NetworkingOverviewJP.html#複製条件"> 複製条件</a>
+</li> <li> <a href="NetworkingOverviewJP.html#変数の複製"> 変数の複製</a>
+</li> <li> <a href="NetworkingOverviewJP.html#関数呼出しの複製"> 関数呼出しの複製</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewJP.html#シミュレーション関数と状態"> シミュレーション関数と状態</a>
+</li> <li> <a href="NetworkingOverviewJP.html#複製のパターン"> 複製のパターン</a> <ul>
+<li> <a href="NetworkingOverviewJP.html#=_ReplicationInfo= クラス"> ReplicationInfo クラス</a>
+</li> <li> <a href="NetworkingOverviewJP.html#ReplicatedEvent() の使用"> ReplicatedEvent() の使用</a>
+</li> <li> <a href="NetworkingOverviewJP.html#=_WorldInfo= クラス"> WorldInfo クラス</a>
+</li> <li> <a href="NetworkingOverviewJP.html#=_GameInfo= クラス"> GameInfo クラス</a>
+</li> <li> <a href="NetworkingOverviewJP.html#プレイヤ動作と予測"> プレイヤ動作と予測</a>
+</li> <li> <a href="NetworkingOverviewJP.html#プレイヤ アニメーション (クライアント側)"> プレイヤ アニメーション (クライアント側)</a>
+</li> <li> <a href="NetworkingOverviewJP.html#死んだ体"> 死んだ体</a>
+</li> <li> <a href="NetworkingOverviewJP.html#武器発砲"> 武器発砲</a>
+</li> <li> <a href="NetworkingOverviewJP.html#投射物"> 投射物</a>
+</li> <li> <a href="NetworkingOverviewJP.html#武器添付"> 武器添付</a>
+</li> <li> <a href="NetworkingOverviewJP.html#サウンド"> サウンド</a>
+</li> <li> <a href="NetworkingOverviewJP.html#物理"> 物理</a>
+</li></ul>
+</li> <li> <a href="NetworkingOverviewJP.html#パフォーマンスに関するヒント"> パフォーマンスに関するヒント</a>
+</li> <li> <a href="NetworkingOverviewJP.html#ネットワークドライバの実装"> ネットワークドライバの実装</a>
+</li> <li> <a href="NetworkingOverviewJP.html#Unreal ワイヤー プロトコル"> Unreal ワイヤー プロトコル</a>
+</li> <li> <a href="NetworkingOverviewJP.html#Unreal の今、そして、これから"> Unreal の今、そして、これから</a>
+</li> <li> <a href="NetworkingOverviewJP.html#役立つリンク"> 役立つリンク</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<h2><a name="概要"></a> 概要 </h2>
+<p />
+マルチプレイヤ ゲームで最も大切なこと。 それはリアリティーの共有です。つまり、各プレイヤが、自分達は同じワールドに共存し、そこで繰り広げられる出来事をそれぞれの視点から見ているというリアリティーを感じられるということです。  マルチプレイヤ ゲームは、Doom のような 2 プレイヤ用の小型モデムに始まり、 <em>Quake 2</em> 、 <em><a href="http://www.unreal.com/" target="_top">Unreal</a></em> 、そして <em>Ultima Online</em> といった、大きくて継続性があり、フリーな対話も実現したものへと変遷し、そのリアリティー共有を支えるテクノロジーは驚くべき進歩を遂げました。
+<p />
+<h3><a name="ネットワーキングをゼロから実装する"></a> ネットワーキングをゼロから実装する </h3>
+1 つ気づいていただきたい重要な点は、ゲーム内にネットワークされたマルチプレイやをサポートする予定がある場合には、まず最初にビルドインして、ゲームを開発するのと同じようにテストしてください ! 効果的なネットワークの実装のビルドは、ゲームオブジェクトのデザイン決定に重大な影響を与えます。 ソリューションの改良は難しく、手間が大変かかります。 ソリューションを後から組み込むことは難しく、ネットワーキング (多数のオブジェクト上への機能分配など) を考慮に入れる前は理にかなっていた設計上の決定事項が、マルチプレーヤーゲームで深刻な問題を引き起こす可能性があります。
+<p />
+<h3><a name="ピアツーピア形式"></a> ピアツーピア形式 </h3>
+<p />
+最初に登場したのは、 <em>Doom</em> や <em>Duke Nukem</em>.といったピアツーピア形式のゲームでした。ゲーム中はどの端末も同等であることがこれらのゲームの特徴です。両機で入力内容とそのタイミングが完全にシンクロし、全く同じ入力により全く同じゲームロジックが実行される、というものでした。完全なる確定的ゲームロジック（例えば定率、非ランダムなど)であったため、マシンでプレイヤが体験するリアリティーは同じものでした。
+<p />
+この種のゲームの長所は単純性でした。一方の短所は次の通りです。  <ul>
+<li> <strong>継続性がない</strong> プレイヤ全員が同時にゲーム開始しなければならず、追加プレイヤの参加ややめたい人が途中で抜けることは出来ませんでした。
+</li> <li> <strong>プレイヤの拡張性がない</strong> ネットワークが横並び構造をとっているため、連動負荷やネットワーク誘発エラーがプレイヤ数に比例して増加してしまいます。
+</li> <li> <strong>フレームレート拡張性の欠如</strong> プレイヤ全員が同じ内部フレームレートで実行する必要があったため、非常に多様なマシンスピードに対応するのは困難でした。
+</li></ul>
+<p />
+<h3><a name="クライアント サーバー形式"></a> クライアント サーバー形式 </h3>
+<p />
+さて、続いて登場したのは単体クライアント サーバー アーキテクチャですが、これは <em>Quake</em> で初開発され、続いて <em>Ultima Online</em> で採用されました。この構造では、一台のマシンを「サーバー」に設定して、ゲームプレーのあらゆる意思決定をここで行っていました。その他のマシンは「クライアント」とし、ここでのキー入力がサーバーに送られ、その結果レンダリングするオブジェクトリストを受信する、という単なるレンダリング端末でした。この技術によって、インターネット上いたる所でゲームサーバーが起動される、大規模なインターネット ゲーム環境が実現されました。後に、使用帯域幅を低く抑えつつ画像詳細度を上げるため、クライアントサーバー アーキテクチャは、シミュレーションと予測ロジックをクライアント側に移行した <em>QuakeWorld</em> と <em>Quake 2</em> へと拡張されました。この構造では、クライアントはレンダリングするオブジェクトのリストに限らず軌道情報をも受信するため、クライアント側でオブジェクトの動きをある程度予測することが出来ました。さらに、気になるクライアント動作のズレを解消すべく、横並び式の予測プロトコルが開発されました。
+<p />
+しかし、この手法にもいくつかの欠点がありました。  <ul>
+<li> <strong>非制限無期限でない</strong> ユーザーやライセンシーが新種のオブジェクト（武器、プレイヤ コントロールなど)を作成した場合、こうした新規オブジェクトのシミュレーションや予測といった点を定義するため、グルーロジックを加えなければなりません。
+</li></ul>
+予測モデルが難しい：このモデルではネットワークコードとゲームコードが別々のモジュールですが、ゲーム状況がうまく同期し続けるためには、両モジュールが互いに他方の実行内容を完全に把握している必要があります。（完全に)別々のモジュール同士を強く結合させることは、拡張性の低下につながるため望ましくありません。
+<p />
+<h1><a name="Unreal ネットワーク アーキテクチャ"></a> Unreal ネットワーク アーキテクチャ </h1>
+<p />
+そこで、Unreal は、マルチプレイヤ ゲームに汎用クライアントサーバー モデルという新しい手法を採用しました。このモデルでも、ゲームのステートを司る役目はやはりサーバーにあります。しかし実際には、クライアントが自機のゲーム状況の一部を受け持って常に正確に保ち、サーバーとほぼ同じデータに基づいたサーバー同様のコード実行により予測を行います。 これにより、二機間で交換しなければならないデータ量は最小化されます。  サーバーは、複製される関連アクタとその複製されたプロパティにより、クライアントにワールドの情報を送信します。  クライアントとサーバーはまた、関数が呼ばれるアクタを有するサーバーとクライアント間でのみ複製された関数を通して通信しあいます。
+<p />
+さらに、 <em>ゲーム状況</em> は、拡張オブジェクト指向スクリプト言語によってクライアント独自で記述されており、ゲームロジックはネットワークコードから完全に切り離されます。この言語による記述が可能ならどんなゲームでも統合可能となるため、ネットワークコードは汎用化されます。これにより、拡張性を高めるオブジェクト指向のねらい、つまり、あるオブジェクトの内部実行はハードウェアに組み込まれた他種コードで記述しない、オブジェクトの挙動は完全にそのオブジェクトで記述する、といったコンセプトが達成されます。
+<p />
+<p />
+<h2><a name="基本コンセプト"></a> 基本コンセプト </h2>
+<p />
+<strong>ねらい</strong>
+<hr />ここでは Unreal のネットワーク構成を非常に厳密に解説します。 複雑な内容がかなりあるため、誤解を招かないために厳密に説明します。
+<p />
+<strong>基本用語</strong>
+<hr />以下に基本用語を詳しくご紹介します。
+<p /> <ul>
+<li> <strong>variable</strong> とは、ひとつの固定名と修正可能な値の関連性をいいます。変数に関連付けられる値の例としては、「X=123」のような整数、「Y=3.14」のような浮動小数点数、「Team=”Rangers”」のような文字列、そして「V=(1.5,2.5,-0.5」といったベクトル、などがあります。
+</li> <li> <strong>オブジェクト</strong> とは、ある固定の変数セットからなる内蔵データ構造です。
+</li> <li> <strong>アクタ</strong> とは、レベル内を単独で動き回り、レベル内の他のアクタと相互に作用することのできるオブジェクトです。
+</li> <li> <strong>レベル</strong> とは、ある一連のアクタを含むオブジェクトです。
+</li> <li> <strong>Tick(ティック)</strong> とは、DeltaTime という不定長の時間が経過に伴い実行される、ゲーム状況全てを更新するオペレーションです。
+</li> <li> <strong>ゲーム 状況</strong> とは、ティック実行中でないある時点における、あるレベル内に存在する全アクタ一式、およびその変数の現在の値のことです。
+</li> <li> <strong>クライアント</strong> とは、ワールドで発生するイベントの大まかなシミュレーションに適した、ゲーム状況の近似サブセットを維持する Unreal.exe の実行中インスタンスです。
+</li> <li> <strong>サーバー</strong> は、単一レベルのチック処理を統括し、ゲーム 状況を間違いなく全クライアントに伝達する <code>Unreal.exe</code> の実行中インスタンスです。
+</li></ul>
+<p />
+<strong>更新ループ</strong>
+<hr />上記コンセプトは、チックとゲーム状況での例外の可能性を除けば、いずれも汎用的です。そこで、これらについてより詳細にご説明します。はじめに、Unreal の更新ループについて簡単にご説明しましょう。
+<p /> <ul>
+<li> <em>サーバー</em> ならば、全クライアントとカレント ゲーム状況を交信する。
+</li> <li> <em>クライアント</em> ならば、要求動作をサーバーへ送り、新規ゲーム 状況情報をサーバーから受信し、画面に現在のワールドの概観をレンダリングする。
+</li> <li> 前回の <em>Tick(ティック)</em> から、任意の時間 <code>DeltaTime</code> （デルタタイム) が経過したら、 <em>Tick(ティック)処理</em> によりゲーム状況を更新する。
+</li></ul>
+<p />
+Tick(ティック)処理の内容は、レベル内の全アクタの更新とそれらの物理演算の実行、発生したゲームイベントのアクタへの通知、およびスクリプトコードの実行などです。Unreal の物理や更新コードはすべて、可変量の経過時間に対処できるように設計されています。
+<p />
+例えば、Unreal の運動物理は以下のとおりです。
+<p />
+<pre>
+ Position +&#61; Velocity &#42; DeltaTime
+</pre>
+<p />
+これにより、フレームレートの高い拡張性が実現されます。
+<p />
+Tick(ティック)処理の間、ゲーム状況は実行コードにより常に修正されます。次の 3 つのケースにおいて、ゲーム状況は変更されます。
+<p /> <ul>
+<li> アクタ変数が修正された場合
+</li> <li> アクタが作成された場合
+</li> <li> アクタが破壊された場合
+</li></ul>
+<p />
+<strong>サーバーこそ真</strong>
+<hr />上記から、サーバーのゲーム状況は、あるレベル内の全アクタの変数すべてによって完全かつ簡潔に定義されています。サーバーはゲームプレー フローの権威であり、サーバーのゲーム状況が常に真のゲーム状況とみなされます。クライアントマシンのゲーム状況 バージョンは常に、サーバーのゲーム状況から逸脱した多様な近似ステートであると考えます。クライアントマシンに存在するアクタはプロキシと捉えられますが、これはアクタがオブジェクトそのものではなくオブジェクトの暫定的な近似描写であるためです。
+<p />
+ネットワークされたマルチプレイヤゲームで使用するため、クライアントがレベルをロード時、 <code>TRUE</code> に設定されている <code>bNoDelete</code> または <code>TRUE</code> に設定されている <code>bStatic</code> を持つアクタを除き、レベルにあるアクタすべてが削除されます。 クライアント(サーバーにより決定される)に関連する他のアクタは、サーバーからクライアントに複製されます。 複数のアクタは( GameInfo アクタなど)は、決してサーバーに複製されません。
+<p />
+<strong>帯域幅の制限</strong>
+<hr />ネットワーク帯域幅が無制限だったなら、ネットワークコードはいとも簡単なものとなります。例えば、サーバーは各チック終了時に、各クライアントに向けてゲーム状況のありのまま全てを送信するだけでよいからです。 そうすれば、クライアント側では常にサーバーで進行するゲーム通りのビューがレンダリングされます。しかしながら、実際のインターネットでは、28.8K モデムの場合、正確な更新情報すべての交換に必要とされる容量の 1% 程度でしかありません。ユーザーのインターネット接続環境は今後も益々早くなって行きますが、帯域幅の改良スピードは、ゲームやグラフィックの進歩度を示す「Moore の法則」をはるかに下回っているのです。つまり、ゲーム状況アップデートを完全にカバーできる帯域幅が得られる日が来ることはないでしょう。
+<p />
+さて、ネットワークコードの主たる目的は、サーバーからクライアントへの、適度に近似したゲーム状況の配信です。 これにより、帯域幅の制限を守りつつリアリティーが共有できる程度にインタラクティブなワールドのビューのレンダリングが、クライアント側で実現されます。
+<p />
+<strong>複製</strong>
+<hr />Unreal では「サーバー・クライアント間のリアリティー共有に適した近似調整」という一般的問題を「複製」の問題とみなします。つまり、近似リアリティー共有を実現するためにサーバー・クライアント間で行われる、一連のデータおよびコマンドの定義に関する問題です。
+<p />
+<p />
+<h2><a name="アクタ"></a> アクタ </h2>
+<p />
+<h2><a name="役割"></a> 役割 </h2>
+<p />
+通常、すべてのはアクタは <code>Role</code> と <code>RemoteRole</code> プロパティを持ちます。それらは、サーバーとクライアントで異なる値を持ちます。 サーバーのすべてのアクタは、 <code>ROLE_Authority</code> に設定する <code>Role</code> を持ちます。
+<p />
+サーバーのすべてのアクタは、 <code>RemoteRole</code> を持つ可能性があります。 <ul>
+<li> <code>ROLE_AutonomousProxy</code> (所有するクライアントを複製時、PlayerControllers と Pawn を操作)
+</li> <li> <code>ROLE_SimulatedProxy</code> (他の複製されたすべてのアクタ)
+</li> <li> <code>ROLE_None</code> (クライアントに複製されたことがないアクタ)
+</li></ul>
+<p />
+サーバー上のアクタの <code>RemoteRole</code> は、クライアント上にあるアクタの <code>Role</code> です。 すべてのアクタは、 <code>ROLE_Authority</code> に設定される <code>RemoteRole</code> を持つクライアントに複製されます。
+<p />
+<strong>定義</strong>
+<code>Actor</code> （アクタ) クラスは <code>ENetRole</code> エミュレーションと  <code>Role</code> 、 <code>RemoteRole</code> の 2 つの変数を以下の様に定義します。:
+<p />
+<pre>
+// ネット変数
+enum ENetRole
+{
+ROLE&#95;None,              // 役割なし
+ROLE&#95;SimulatedProxy,   // このアクタのプロキシをローカルでシミュレーションする
+ROLE&#95;AutonomousProxy,   // このアクタのプロキシはローカルで自立する
+ROLE&#95;Authority,         // アクタのコントロール権限
+};
+var ENetRole RemoteRole, Role;
+</pre>
+<p />
+<code>Role</code> や <code>RemoteRole</code> といった変数はローカルおよびリモートのマシンをどの程度コントロールするのかが個々にアクタについて記述されています。
+<p /> <ul>
+<li> <code>Role==ROLE_SimulatedProxy</code> は、アクタが物理とアニメーションをシミュレーションする一時的近似プロキシであることを意味します。クライアント側で、シミュレーションされたプロキシが基本物理（直線や重力関連の動きや衝突)を実行しますが、高度な動きの決定はせずにそのまま進みます。     それらは、 <em>simulated</em> キーワードを持つスクリプト関数のみを実行することができ、 <em>simulated</em> とマークされた状態のみを入力できます。
+</li></ul>
+これはネットワーク クライアントでのみ生じる状況で、ネットワーク サーバーや単一プレイヤのゲームでは起り得ません。  <ul>
+<li> <code>Role==ROLE_AutonomousProxy</code> はアクタがローカルプレイヤであることを意味します。自立プロキシには、クライアント側で動作を（シミュレーションというよりも)予測するために組み込まれた特別なロジックがあります。  クライアントであらゆるスクリプト関数を実行することができ、あらゆる状態を入力することもできます。
+</li></ul>
+これはネットワーク クライアントでのみ生じる状況で、ネットワーク サーバーや単一プレイヤのゲームでは起り得ません。  <ul>
+<li> <code>Role==ROLE_Authority</code> は、アクタのコントロールに関し絶対的権限を有するということです。
+</li></ul>
+これは単一プレイヤのゲームにおける全てのアクタにあてはまります。  クライアントであらゆるスクリプト関数を実行することができ、あらゆる状態を入力することもできます。
+<p />
+これはまた、サーバー上の全てのアクタにもあてはまります。
+クライアント上では、使用帯域幅を減らすためにクライアント側でなされた特別な措置といった、ローカルでクライアントによって Spwan(スポーン) されたアクタにあてはまります。
+サーバー側では、全てのアクタに <code>Role==ROLE_Authority</code> があり、 <code>RemoteRole</code> はあるプロキシタイプに設定されます。クライアント側では、 <code>Role</code> と <code>RemoteRole</code> はサーバーの設定値と比較して、常にその反対に設定されます。これは <code>Role</code> と <code>RemoteRole</code> の意味合いからして当然のことです。
+<p />
+<code>ENetRole</code> の値のほとんどは、 <code>Actor</code> や <code>PlayerPawn</code> といった UnrealScript のクラスにおける複製命令文で定義されます。複製命令文で様々な役割値の意味を定義する例を挙げてみます。
+<p /> <ul>
+<li>  <code>Actor</code> クラスにある複製定義により、 <code>Actor.AmbientSound</code> （アクタ.アンビエントサウンド) 変数は、サーバーからクライアントへ送信されます。: <code>if(Role==ROLE_Authority) AmbientSound;</code>
+</li> <li> アクタクラスの複製定義により、 <code>Actor.AnimSequence</code> （アクタ.アニメーション シーケンス) 変数は、サーバーからクライアントへ送信されますが、これは、メッシュとしてレンダリングされたアクタのみだけです。: <code>if( DrawType==DT_Mesh &amp;&amp; (RemoteRole&lt;=ROLE_SimulatedProxy) ) AnimSequence;</code>
+</li> <li> <code>PlayerPawn</code> クラスにある複製定義のため、クライアントは、 <code>Fire</code> と <code>AltFire</code> 関数のサーバーへの呼び出しを複製します。:  <code>if( Role&lt;ROLE_Authority ) Fire, AltFire;</code>
+</li> <li> <code>Actor</code> クラスにある複製定義により、シュミレーションされたプロキシの <code>Velocity</code> が初めてスポーンされた時、サーバーはクライアントにそれと移動ブラシを送信します。 <code>if( (RemoteRole==ROLE_SimulatedProxy &amp;&amp; (bNetInitial || bSimulatedPawn)) || bIsMover ) Velocity;</code>
+</li></ul>
+<p />
+すべての UnrealScript のクラスにある複製命令文を学習することにより、全ての役割の内部処理が理解できるようになります。複製に関する、非常に小さな「舞台裏のマジック」があるのです。低級の C++ では、アクタ、関数呼出し、そして変数の複製に関する基本構造をエンジンが供給します。高級の UnrealScript では、様々な役割に基づいてどの変数や関数が複製されるべきかを支持することにより、様々なネットワークの役割の意味が定義されています。ですから、役割の意味が UnrealScript 自身で定義されたものなのです。 ただし、物理やアニメーションをシミュレーション プロキシ用に条件付で更新する、C++ の舞台裏ロジックは別です。
+<p />
+
+<h3><a name="関連性"></a> 関連性 </h3>
+<p />
+<strong>定義</strong>
+<hr />Unreal のレベルは巨大になることが多く、プレイヤに見えるレベル内アクタは、どんな時もほんの一部だけです。その他のレベル内アクタのほとんどは不可視で、オーディオも無効で、プレイヤに影響する効果も全くありません。サーバーが可視もしくはクライアントへの効果有効と判断した一連のアクタは、そのクライアントにとってのアクタの関連セットとみなされます。Unreal のネットワークコードにおける帯域幅最適化機能では、サーバーがクライアントにクライアントの関連セットにあるアクタのみを通知します。
+<p />
+Unreal では以下のルールを (順番に) 適用して、プレーヤーに関連するアクタのセットを決定します。 <ul>
+<li> アクタの RemoteRole が ROLE_Noen の場合、関連性はありません。
+</li> <li> アクタが別のアクタの骨組みにアタッチされている場合、そのベースの関連性によって関連性が決定されます。
+</li> <li> アクタの <code>bAlwaysRelevant</code> が設定されている場合、関連性があります。
+</li> <li> アクタに <code>bOnlyRelevantToOwner=true</code> が設定されている場合 (Inventory に使用)、唯一の可能性としてそのアクタのオーナープレーヤーのクライアントと関連性があります。
+</li></ul>
+<p /> <ul>
+<li> アクタが <code>static=true</code> (固定=有効) または <code>bNoDelete=true</code> (非削除=有効) の場合、関連している。
+</li> <li> アクタが <code>ZoneInfo</code> （ゾーン情報) クラスの場合、関連している。
+</li> <li> アクタがプレイヤ（ <code>Owner==Player</code> )に所有されいる場合、関連している。
+</li> <li> アクタが <code>Weapon</code> （武器) で、可視アクタにより所有されている場合、関連している。
+</li> <li> アクタが、非表示 （ <code>bHidden=true</code> （非表示=有効))、衝突なし（ <code>bBlockPlayers=false</code> （プレイヤをブロック=無効))、そしてアンビエントサウンドがない（ <code>AmbientSound==None</code> （環境音==なし))の場合、アクタは、関連していない。
+</li> <li> アクタが、アクタの <code>Location</code> （場所) とプレイヤの <code>Location</code> の間での視線チェックにより可視の場合、関連している。
+</li> <li> アクタが 2～10 秒以内前（正確な秒数は行われるパフォーマンス最適化によって異なる)に可視だった場合、関連アクタである。
+</li></ul>
+<p />
+これらのテストは、仮想関数 <code>AActor::IsNetRelevantFor()</code> で実装されています。
+ <code>bStatic</code> と <code>bNoDelete</code> のアクタ (クライアントに滞在する) も複製されることに注意してください。
+<p />
+以上のルールは、プレイヤに必ず影響を与えるアクタセットを適度に近似するよう設定されたものです。もちろん、これで完全ではありません。例えば、大きなアクタの視線チェックには時折偽陰性がみられますし（これには経験則で対処されますが)、環境音の閉塞状態も確認しない、といったことです。とはいえ、近似でのエラーは、インターネットというかなりの待ち時間が必要でパケット損失が常である、ネットワーク環境につきもののエラーによって引き起こされているのです。
+<p />
+
+<code>Repnotify</code> キーワードでマークされたプロパティが複製されると、UnrealScript の <code>ReplicatedEvent()</code> イベントが呼び出され、変更されたプロパティの名前をパラメータとして渡します。ネットワーク帯域幅の節約にこれをどのように利用できるかについては、「複製のパターン」セクションを参照してください。
+<p />
+クラスごとに <code>NetPriority</code> （ネット プライオリティ) のデフォルト設定をうまく調整します。発射物やプレイヤには極めて高いプライオリティを、単なる装飾効果には低いプライオリティをあてます。Unreal で設定されているデフォルトは、当初の見込み適正値ですが、必要に応じて調整して状況改善して下さい。
+アクタがクライアントに初めて複製されると、変数は全て各クラスのデフォルト値に初期化されます。続いて、最終値と異なる変数のみが複製されます。つまり、なるべく多くの変数が自動的にクラスのデフォルトに設定されるよう、クラスを自分で設計すると便利です。  例えば、アクタは  <code>LightBrightness</code> 値、123 を常に持つようにする場合には 2 つの方法があります。 (1)  <code>LightBrightness</code> のデフォルト値を 123 に設定するか、 (2) アクタの <code>BeginPlay</code> 関数で、initialize <code>LightBrightness</code> を 123 に初期化します。 <code>LightBrightness</code> 値は複製がまったく必要でないため、 最初の方法のほうが効率的です。2 つ目の方法は、アクタが最初にクライアントに関連づけられるたびに <code>LightBrightness</code> の複製が必要です。
+<p />
+また、次の状況にも気をつけてください: <ul>
+<li> アクタ参照をシリアライズできない場合、=bNetInitial= と <code>bNetDirty</code> はクリアされません (その参照はクライアントとの関連性がないため)。つまり、サーバーはこのプロパティの複製を続けることになり、CPU サイクルのコストが上がります。この問題の回避例として、Native の複製コード (Base、Controller および Instigator の複製) を参照してください。
+</li> <li> 配列の複製はやめてください。配列メンバの値が 1 つでも変わると配列全体が複製されるからです。
+</li> <li> プロパティ (ベクトルと回転) は、複製のため切り詰められます。
+</li></ul>
+<p />
+<strong>Native (C++)</strong>
+<hr />サーバーの CPU 使用の最適化には、Native の複製関数を使用します。 <ul>
+<li> クラス定義用の <code>NativeReplication</code> キーワード
+</li> <li>  <code>AActor::GetOptimizedRepList()</code> のクラスバージョンを実装する。
+</li> <li>  各複製プロパティの <code>RepIndex</code> を生成するため、スクリプト <code>Replication{}</code> 定義が必要。
+</li> <li> 場合によって意は、APickupFactory バージョンのような、 <code>GetOptimizedRepList()</code> を大量に最適化できます。
+</li> <li> <code>AActor::IsNetRelevantFor()</code>  <ul>
+<li> Pawn (1 つのクライアントのみの単一パス時、 Pawn の関連性に基づき、Weapon Attachment(武器添付)のようなものが関連しているため) の総関連キャッシング: <code>bCachedRelevant</code> flag.
+</li></ul>
+</li></ul>
+<p />
+<strong>不正行為検出と防止</strong>
+<hr />弊社では、 <em>Unreal Tournament</em> にて次のタイプのネットワーク関連の不正行為に直面しています。: <ul>
+<li> Speedhack <ul>
+<li> 動作更新にクライアントクロックを使用している事実の利用
+</li> <li> クライアントと過度に異なる率で進まないサーバーを確認することによる、Built-in 検出。
+</li> <li> 大幅なパケット損失を伴った偽陽性
+</li></ul>
+</li> <li> Aimbots - UnrealScript と社外バージョン
+</li> <li> Wall hack と Radar - UnrealScript と社外バージョン
+</li></ul>
+<p />
+<strong>トラフィックの監視</strong>
+<hr />ネットワーク トラフィックを監視するため、ライセンシーは以下の記述とエンジンをコンパイルすることができます。
+<p />
+<hr />サーバーの CPU 使用の最適化には、Native の複製関数を使用します。
+<p />
+これは、 <code>DevNetTraffic</code> ( <em>Debug</em> で自動) を通してネットワークの統計地集計を有効化します。 ネットワークの統計地を非抑制にするには、ゲームエンジン構成で <strong>Suppress[#]=DevNetTraffic</strong> をコメントアウトします。
+<p />
+ <code>DevNetTraffic</code> がある場合は、ネットワークデータ全体の要約データがログに書かれているマシンで受け取ります。 要するに、サーバーにより送信されたデータを見るには、クライアント側でこれを行ってください。 クライアントにより送信されたデータを見るには、サーバー側でこれを行ってください。ログに書かれたデータは非常に冗長な形式で、全てのパケットにタイムスタンプがあり、全ての複製アクタ、変数そして関数呼出しに要約がついています。
+<p />
+下記のコンソールコマンドは、非抑制的なネットワーク統計地集計に使用されます。
+<pre>
+unsuppress DevNetTraffic
+</pre>
+<p />
+<p />
+<h2><a name="ネットワークドライバの実装"></a> ネットワークドライバの実装 </h2>
+<p />
+<strong>プラグイン形式ネットワークドライバ</strong>
+<hr />Unreal の提供するネットワーク環境は、C++ の <code>UNetDriver</code> （Uネットドライバ) クラスに基づく、プラグイン式インターフェースが採用されています。Unreal Engine では <code>UNetDriver</code> （Uネットドライバ) クラスを通してあらゆるネットワーク問題を処理します。 そして、Unreal.ini ファイルにデフォルトは以下のように定義されている最適なネットワークドライバを、同時に読み込みます。
+<p />
+<pre>
+&#91;Engine.Engine]
+NetworkDevice&#61;IpDrv.TcpNetDriver
+</pre>
+<p />
+Unreal のサポートする最新インターネット環境は、 <code>TcpNetDriver</code> という名の UDP ネットワークドライバです。しかし、 <code>UNetDriver</code> の新規サブクラスを作成し、 <code>TcpNetDriver</code>  のソースを、新規関数を実装する際の参考にして、新種のネットワーク環境を作ることも可能です。実際、Maverick Software のチームが、このインターフェースを利用して Unreal の Mac 版用に AppleTalk ドライバを作成した例があります。
+<p />
+ネットワークドライバは、接続開始、接続終了、データ送信、そして不確実なデータの受信を行います。しかし、データのコンテンツは Unreal Wire Protocol （Unreal ワイヤープロトコル) で定義されており、ネットワークドライバ側では全く感知しません。つまり、 <code>UNetDriver</code> h では交信中の情報内容が全く把握されておらず、ただ送る、受け取る、を行っています。特徴は以下のようになります。
+<p />
+<strong>コネクション方式</strong> <code>UNetDriver</code> は <code>UNetConnection</code> サブクラスの定義する一連の接続を維持します。 <code>UNetDriver</code>  は、コネクションレス プロトコル（UDP など)階層の初めにあり、接続保守、タイムアウト管理などのための独自の内部ロジックが必ず含まれます。
+<code>UNetDriver</code> は、ストリーム方式ではなく、パケット方式です。全てのデータは <code>0...MAX_PACKET_SIZE</code> （最大パケットサイズ) の大きさの個別パケットにある <code>UNetDriver</code> を通じて送受信されます。
+<p />
+パケットは不確実に送信されます。パケットの確実な送受信は全て、=UNetDriver= には非可視なハイレベルで処理されます。あるマシンから別のマシンへと送られたパケットは到達したりしなかったり、また複数回到達したり、ということもあります。更に、到達したパケットの処理不良や大幅な遅延の可能性もあります。
+<p />
+パケット自体は決して損傷しません。パケットが受信されたら、そのサイズとコンテンツは送り側のそれと同じものが保証されます。
+<p />
+<strong>インターネットドライバ</strong>
+<hr />Unreal のインターネットは、不確実なコネクションレスの通信に標準インターネット プロトコルである UDP をベースにしています。Unreal のクライアント サーバー間のゲームプレイは全て、UDP アドレス（クライアントとサーバーがそれぞれ 32 ビットインターネットアドレス、16 ビットポート番号を持つ)の一定かつ不変な組み合わせによって調整されます。  デフォルトのポート番号は <code>Unreal.ini</code> 構成ファイルにあります。
+<p />
+つまり、Unreal の UDP パケットは非常にプロキシが容易で、プロキシでの内容把握がないまま、ユーザーが意識することなくプロキシ可能です。
+<p />
+<p />
+<h2><a name="Unreal ワイヤー プロトコル"></a> Unreal ワイヤー プロトコル </h2>
+<p />
+Unreal のワイヤー プロトコルではパケットのコンテンツをビットストリームで定義します。プロトコルでは、変数や関数の複製、アクタ作成、アクタ破壊、ファイル転送、そしてパケットの信頼性の高低の交換（種々の環境で両タイプが使われる)といった、様々なテーマについて処理します。
+<p />
+このプロトコルは効率性と信頼性を改善するために何度も大幅に変更されていますが、今後パケットフォーマットを文書化する予定はありません。
+<p />
+言い忘れてはならないのが、このプロトコルは Unreal パッケージ ファイルのフォーマットのデータ構造 (<a href="UnrealPackagesJP.html" class="twikiLink">Unreal パッケージ</a> ドキュメントで説明しています) と密接な関係があるため、外部アプリケーションがこれを解析して何かに役立てるのは非常に難しいであろうということです。ソースコードとコメントを読むのが一番役に立つでしょう。
+<p />
+<h2><a name="Unreal の今、そして、これから"></a> Unreal の今、そして、これから </h2>
+<p />
+<em>Unreal のネットワーク アーキテクチャを語るとき、「強力」、「総合的」、「複雑」、そして「習得が困難」といった表現がよく使われます。そして今、力強さや単純性、そして特定の問題の解決のための実用的ニーズなど、現在のソリューションが実現されるべく、ゲーム開発の中でアーキテクチャは非常に顕著な進化を遂げました。</em>
+<p />
+<em>プログラミングの簡便性という視点で考えた理想的なネットワーク アーキテクチャは、クライアントがまさに単なるレンダリング端末であるかのように振舞うクライアントサーバー モデルです。しかし、以前にもお話したとおり、回線容量の進歩とハードウェアの進歩の比率を分析してみると、単なるクライアントサーバー モデルでは予測可能な未来など非現実的となってしまう状況にあることが分かります。</em>
+<p />
+<em>つまり、クライアント側での豊かな物理シミュレーション力と、スクリプト実行のほとんどが次世代ネットワークエンジンに匹敵します。Unreal では、汎用ネットワークモデルはオブジェクト、オブジェクト変数、そしてオブジェクト関数呼出しの汎用複製に基づいて定義されています。このモデルは、いかなる特定のシミュレーションモデルに決め打ちすることもなく、豊かなシミュレーション性能を提供します。</em>
+<p />
+<em>Unreal の広範なネットワーク アーキテクチャこそ、最高のものだと強く確信しています。現在の方向を確定する一方で調査した分野には、データベース複製、UnixRPC、CORBA 分散オブジェクト モデル、そして JAVA RPC があります。一般的結論は、優れたアイデアがいくつもありますが、インターネット技術やゲーム開発者にある制限に圧力をかけるようなものは何もない、ということです。Real-time 3D （リアルタイム 3D) のようなその他の調査分野でも、全く同じことが言えると思います。</em>
+<p />
+<em>今後このモデルが拡張と進歩を遂げるであろう分野が沢山あります。マルチキャスト複製関数を追加すると、可変複製せずに処理可能なシミュレーション量を増やせます。ピア プロキシモデルの拡張により、サーバー間で NPC オブジェクトの現実的リアルタイム フローを可能にするサーバーのバックボーンが生成されます。複製オブジェクトモデルは、ユーザーインターフェースやチャットシステムといったエンジンの他分野に拡張される場合もあります。分散したユーザー修正可能なシステムの性質を維持しつつも、 _Ultima Online</em>  のワールドなどのより豊かで持続性のあるゲーム環境にこのアーキテクチャが適用される可能性が濃厚となっています。数年内に、ネットワーク機能はゲーム開発の極めて注目される分野となることでしょう。
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+<p />
+-Tim Sweeney
+<p />

@@ -1,0 +1,336 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PerfDebug_FreezeAtCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:41:38 GMT -->
+<head>
+<title> UDK | PerfDebug_FreezeAtCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">PerfDebug_FreezeAtCH  </b></div>
+<div id="tooltext">
+<a href="PerfDebug_FreezeAt.html" class="twikiLink">English Translation</a><br><a href="PerfDebug_FreezeAtJP.html" class="twikiLink">日本語訳</a><br><a href="PerfDebug_FreezeAtKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/PerfDebug_FreezeAtCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt; <b><a href="TechnicalHome.html" class="twikiLink">技术&amp;编程 主页</a></b> &gt; <b>性能和内存<sup>?</sup></b> &gt;FreezeAt控制台命令
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="FreezeAt 控制台命令"></a> FreezeAt 控制台命令 </h1>
+<p />
+ <em>文档概要：FreezeAt控制台命令和FreezeAtConsole变量允许您锁定视图到给定位置。这对于进行更加精确的渲染分析是非常便利的。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="PerfDebug_FreezeAtCH.html#FreezeAt 控制台命令">FreezeAt 控制台命令</a> <ul>
+<li> <a href="PerfDebug_FreezeAtCH.html#FreezeAt 控制台命令">FreezeAt 控制台命令</a>
+</li> <li> <a href="PerfDebug_FreezeAtCH.html#FreezeAtPosition控制台变量">FreezeAtPosition控制台变量</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="FreezeAt 控制台命令"></a> FreezeAt 控制台命令 </h2>
+<p />
+为了使用FreezeAt命令，您需要一个位置和一个方位(6 个数字)。这个数据通过BugIt控制台命令或FreezeAt命令生成(随同屏幕截图写入到一个文件中)。
+<p />
+<div class="codesnippet">
+<pre>
+FreezeAt here
+</pre>
+</div>
+<p />
+这个命令将会向 控制台/日志 输出位置，冻结在给定位置并复制一个字符串到剪切板。这个字符串可以用于在
+关卡启动时冻结视图。关于使用这个功能的更多信息请参照FreezeAtPosition控制台变量。
+<p />
+这个命令也修改一些东西(可能会改变的东西)的状态： <ul>
+<li> "RenderTimeFrozen" 控制台变量
+</li> <li> 控制台命令"Pause"
+</li></ul>
+<p />
+这个控制台命令帮助提供详细信息(使用?参数)：
+<p />
+<div class="codesnippet">
+<pre>
+这个控制台命令允许锁定相机，以便提供更加确定的渲染分析。
+这个视图位置和旋转度将会存储在控制台变量 &#34;FreezeAtPosition&#34;中。
+没有参数的&#34;FreezeAt&#34;命令用于在冻结和不冻结之间切换。
+&#34;FreezeAt here&#34;返回当前的位置，以便可以返回到这个位置。
+&#34;FreezeAt x y z wx wy wz&#34; 直接冻结在给定位置处。
+同时请参照&#34;RenderTimeFrozen&#34; 控制台变量的帮助(这个控制台变量修改了)。
+实例：
+ FreezeAt
+ FreezeAt here
+ FreezeAt 2819.5520 416.2633 75.1500 65378 -25879 0
+</pre>
+</div>
+<p />
+<h2><a name="FreezeAtPosition控制台变量"></a> FreezeAtPosition控制台变量 </h2>
+<p />
+FreezeAtPosition存放FreezeAt正使用的位置。可以通过ConsoleVariables.ini（在Engine/Config目录中）来加载控制台变量。可以简单地按照以下例子添加一行：
+<p />
+<div class="codesnippet">
+<pre>
+FreezeAtPosition &#61; 2819.5520 416.2633 75.1500 65378 -25879 0
+</pre>
+</div>
+<p />
+如果在引擎启动时，这个变量具有有效位置，那么将自动激活FreezeAt命令。
+<p />
+这个控制台变量帮助提供详细信息(使用?参数)：
+<p />
+<div class="codesnippet">
+<pre>
+这个控制台变量存放了FreezeAt命令允许锁定相机的位置和旋转值，
+从而可以提供更加确定的渲染分析。
+可以在 ConsoleVariables.ini中设置FreezeAtPosition。
+数值的语法和buglt命令使用的语法一样：
+ 前三个值定义了位置，接下来的三个值定义了旋转值。
+示例：
+ FreezeAtPosition 2819.5520 416.2633 75.1500 65378 -25879 0
+</pre>
+</div>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+</noautolink>
+<p />
+<style type="text/css">
+<!--
+div.codesnippet
+{
+	margin:0px 10px;
+	padding:0px 10px;
+	background:#f0f0f0;
+	font:12px Courier;
+	max-height:500px;
+	overflow:auto;
+	border:1px inset #989898;
+}
+-->
+</style>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PerfDebug_FreezeAtCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:41:38 GMT -->
+</html></body>

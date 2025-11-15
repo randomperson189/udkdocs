@@ -1,0 +1,368 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MorphTargetsJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:40 GMT -->
+<head>
+<title> UDK | MorphTargetsJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">MorphTargetsJP  </b></div>
+<div id="tooltext">
+<a href="MorphTargets.html" class="twikiLink">English Translation</a><br><a href="MorphTargetsCH.html" class="twikiLink">中国翻译</a><br><a href="MorphTargetsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/MorphTargetsJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="Morph Target(モーフターゲット)"></a> Morph Target(モーフターゲット) </h1>
+<p />
+<em>ドキュメントの概要：静的 Morph Target のインポート、アニメーション ツリーへの追加およびコードからのコントロールについての概要。</em>
+<p />
+<em>ドキュメントの変更ログ：<a href="https://udn.epicgames.com/Main/ShaneCaudle" class="restricted" class="restricted" class="twikiLink">Shane Caudle</a> により作成、<a href="https://udn.epicgames.com/Main/LinaSong" class="restricted" class="restricted" class="twikiLink">Lina Song</a> により管理。</em>
+<div class="twikiToc"> <ul>
+<li> <a href="MorphTargetsJP.html#Morph Target(モーフターゲット)">  Morph Target(モーフターゲット) </a> <ul>
+<li> <a href="MorphTargetsJP.html#概要"> 概要</a>
+</li> <li> <a href="MorphTargetsJP.html#Morph Target をインポートする">  Morph Target をインポートする</a>
+</li> <li> <a href="MorphTargetsJP.html#モーフ ターゲットのアニメーション"> モーフ ターゲットのアニメーション</a>
+</li> <li> <a href="MorphTargetsJP.html#Morph Target をプレビューする">  Morph Target をプレビューする</a>
+</li> <li> <a href="MorphTargetsJP.html#Morph Target の制御"> Morph Target の制御</a>
+</li> <li> <a href="MorphTargetsJP.html#アニメーション ツリーに Morph Target を追加する"> アニメーション ツリーに Morph Target を追加する</a> <ul>
+<li> <a href="MorphTargetsJP.html#Matinee でのモーフ ターゲットの使用"> Matinee でのモーフ ターゲットの使用</a>
+</li></ul>
+</li> <li> <a href="MorphTargetsJP.html#プログラマー向け: ゲーム内での Morph Target 修正"> プログラマー向け: ゲーム内での Morph Target 修正</a>
+</li> <li> <a href="MorphTargetsJP.html#CPU および GPU スキニングでの注意"> CPU および GPU スキニングでの注意</a>
+</li> <li> <a href="MorphTargetsJP.html#例"> 例</a> <ul>
+<li> <a href="MorphTargetsJP.html#コンテンツ"> コンテンツ</a>
+</li> <li> <a href="MorphTargetsJP.html#プレーヤーのカスタマイズ: Fatness (隆起や豊満さの表現)"> プレーヤーのカスタマイズ: Fatness (隆起や豊満さの表現)</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<p />
+ Morph Target は、リアルタイムでメッシュを修正する一つの方法ですが、ボーンベースの骨格アニメーションよりもコントロールがあります。静的 Morph Target は、少し何らかの方法で異なっている既存のメッシュのバージョンです。例えば、3 D モデリング問題でキャラクターに「笑っている」バージョンを作成し、それを「笑う」 Morph Target としてインポートするとします。その後ゲーム中にこの Morph Target を適用して、フェイスの頂点を修正して、キャラクターに笑わせることができますが、各頂点の動き方には非常に大きなコントロールが働きます。
+<p />
+UnrealEngine 3 における Morph Target は、加算方式で適用されます。つまり、口の周りの頂点のみが修正されるところに「笑う」ための Morph Target が一つあり、目の周りの頂点にのみ影響する「眉を上げる」ための別の Morph Target が一つある場合、これらの両方の Morph Target を適用すると、笑いと眉の両方の動きが生じます。これにより、例えば、複数のターゲットを一緒に組み合わせて、様々な顔のポーズを作成できます。
+<p />
+ Morph Target と従来の骨格アニメーションは、共に機能します。 Morph Target は、ボーン変形が適用される前に、骨格メッシュに適用されます。 Morph Target は、メッシュの参照ポーズ メッシュに基づいて作成し、次に、インポートするときに、頂点をベース メッシュと対照して、異なるもののみを保存します。
+<p />
+<p />
+<h2><a name="Morph Target をインポートする"></a> Morph Target をインポートする </h2>
+<p />
+3D モデリング パッケージで、参照ポーズに新しい Morph Target を作成したいメッシュを取り、希望通りにそれを修正します。次に、そのメッシュを新しい .PSK ファイルとしてエクスポートします。
+<p />
+UnrealEd で、AnimSets ビューアを開けます。 Morph Target は、 MorphTargetSet に保存されています（これは、 AnimSequences および AnimSets と非常に似た方法で機能します）。左のパネルに _Morph _ タブが見えます。このスイッチを入れると、現在ロードされている MorphTargetSets を示すコンボが現れ、次に、そのセットの MorphTargets を示す下にリスト ボックスが現れます。
+<p />
+<img alt="morph_asv.jpg" src="rsrc/Three/MorphTargetsJP/morph_asv.jpg" />
+<p />
+.PSK ファイルを Morph Target としてインポートするためには、新しい Morph Target を追加したい MorphTargetSet をまず選択します。ファイル メニューから [New MorphTargetSet](新しい MorphTargetSet) を選択して、新しい MorphTargetSet を作成できます。次に、 <em>Mesh (メッシュ)</em> タブに戻り、 Morph Target の骨格メッシュを選択します。最後に、ファイル メニューで、[Import MorphTarget](Morph ターゲットをインポートする)を選択します。インポートする PSK ファイルと新しい Morph Target に与える名前を指示するように求められます。インポートが成功すると、 _ Morph _ タブの下に MorphTargetSet のためのリストの中に新しい Morph Target が見えます。複数のモーフ ターゲットを (モーフターゲット名を入力するステップを省略して) インポートしたい場合は、[Import MorphTarget Using File name] (ファイル名を使ってモーフターゲットインポート) を選択します。この場合、インポートしたファイル名がモーフターゲット名に使われます。
+<p />
+LOD レベルが必要な数より多く骨格メッシュに含まれる場合、それらの LOD のモーフ ターゲットもそれぞれインポートする必要があります。これを行なうには、[File] (ファイル) メニューの [Import MorphTarget LOD] オプションを使用します。LOD 0 のモーフ ターゲットをベース骨格メッシュの LOD 0 のメッシュから生成しなければならないのと同様に、新しいモーフターゲットの LOD レベルもベース骨格メッシュの同じ LOD から頂点順に生成し、適切に合わせる必要があります。ベースメッシュに LOD が複数存在しても、それらのモーフターゲットが存在しない場合は、メッシュが下位の LOD に下がったときにモーフターゲットが適用されない点に注意してください。
+<p />
+<h2><a name="モーフ ターゲットのアニメーション"></a> モーフ ターゲットのアニメーション </h2>
+<p />
+(Maya 8.5 (2008、2009) でサポートされています)
+<p />
+ActorX でカーブデータを PSA ファイル形式でエクスポートし、アニメーションとしてインポートすることができます。この場合、アニメーションに必要なモーフターゲットを MorphTargetSets に含める必要があり、そのモーフターゲットの名前は Maya ファイルの BlendCurve の名前と同じでなければなりません。例えば、Maya ファイルの BlendCurve の名前が "blink" で、これをアニメーションとしてエクスポートする場合、MorphTargetSet (SkeletalMeshComponent にリンクされます) に "blink" という名前のモーフターゲットがなければ、アニメーションは機能しません。アニメーションを AnimSetVeiwer でプレビューするには、目的の MorphTargetSets を PreviewMorphTargetSets に追加します。
+<p />
+これにより、インポートしたアニメーションが AnimTree で AnimNodeSequence やブレンドに使用できるようになります。同じモーフターゲットを変化させるアニメーションが複数ある場合は、ウェイトが加算されます。
+<p />
+<p />
+<h2><a name="Morph Target をプレビューする"></a> Morph Target をプレビューする </h2>
+<p />
+[Morph Target] タブにはモーフターゲットのリストとスライダがあり、モーフターゲットのスライダを使ってウェイトを変更することができます。
+<p />
+<img alt="morph_preview.jpg" src="#" />
+<p />
+<strong>Rename Morph Target</strong> (モーフターゲットの名前変更)
+<p />
+編集ボックスを使ってモーフターゲットの名前を変更することができますが、既にアニメーションで使用されているモーフターゲットの名前を変更すると、アニメーションが無効になります。ただし、MorphNodePose (または他の MorphTarget 関連ノード) の使用には、ノードが正しく設定されていれば差し支えありません 。
+<p />
+<strong>Delete Morph Target</strong> (モーフターゲットの削除)
+<p />
+削除するモーフ ターゲットを先に選択してから、[Delete Morph Target] メニューを使って削除します。[Select All] (すべて選択) を使ってすべての項目を選択/選択解除することができます。
+<p />
+<strong>Update Morph Target</strong> (モーフ ターゲットを更新)
+<p />
+ベースメッシュが変更されている場合 (影響度の変更など)、モーフターゲットビューアを開くと再マッピングしてよいかどうかの確認を求められます。モーフターゲット (元のメッシュの) が正しくマッピングされていなければ、これは機能しません。[Update Morph Target] メニューはモーフターゲットセットでも使うことができます。
+<p />
+<p />
+<h2><a name="Morph Target の制御"></a> Morph Target の制御 </h2>
+<p />
+モーフの制御は、FaceFX、Matinee、またはコードを使用して行うことができます。
+<p />
+<p />
+<p />
+<h2><a name="アニメーション ツリーに Morph Target を追加する"></a> アニメーション ツリーに Morph Target を追加する </h2>
+<p />
+<img alt="morph_animtree.jpg" src="rsrc/Three/MorphTargetsJP/morph_animtree.jpg" />
+<p />
+一度に複数の Morph Target を一緒にブレンドすることを可能にするためには、アニメーション ツリーを使用します。アニメーション ツリー エディタで、_ Morph _ とラベルされたルート「アニメーション」ノードに対する入力が見えます。これは、様々なタイプの Morph  ノードを接続するためのものです。 Morph  ノードには 2 つの主要なタイプがあります。
+<p /> <ul>
+<li> <strong>Morph Pose</strong> - これは、 MorphTargetSet からの静的 Morph Target です。
+</li> <li> <strong>Morph Weight</strong>  - これは、子ノードが適用される「強さ」をコントロールするために使用するノードです。このタイプのノードには、上にスライダーがあり、エディタでウェイトを修正することができます。結果をご覧ください。
+</li></ul>
+<p />
+ Morph  ノードをアニメーション ツリーに追加し始める前に、プレビューで使用したい MorphTargetSet をまず追加する必要があります。ルート アニメーション ノードを選択し、プレビュー  Morph  セット アレイを展開して、そこに Morph  ノードを追加します。アニメーション ツリーに Morph  ポーズ ノードを配置するとき、使用する Morph Target 名を伝えます。アニメーション ツリーは、 Morph Target 名を見つけるために指定された MorphTargetSet を検索します。実際のゲームでは、骨格メッシュ コンポネントの Morph  セット アレイを代わりに使用します。
+<p />
+ Morph Target のブレンドは、骨格アニメーションを一緒にブレンドするのとは異なる働きをします。これは、 Morph Target は、様々な入力の間の補間である結果ではなく、加算的に組み合わせられるものだからです。このことは、例えば、複数の Morph Target を一つのノードの入力に接続できることを意味します。
+<p />
+<p />
+AnimTrees (アニメーション ツリー) の詳細については、<a href="AnimTreeEditorUserGuideJP.html" class="twikiLink">AnimTree エディタ ユーザーガイド</a> を参照してください。
+<p />
+<p />
+<h3><a name="Matinee でのモーフ ターゲットの使用"></a> Matinee でのモーフ ターゲットの使用 </h3>
+<p />
+Matinee でモーフを使用するには:
+<p /> <ol>
+<li> AnimTree (アニメーション ツリー) を作成し、MorphNodeWeight (モーフノード ウェイト) を経由してMorphPoses (モーフポーズ) が モーフトラックに入るようにします。
+</li> <li> MorphNodeWeight に NodeName (ノード名) を与えます。マチネでこれを操作するときにこの名前が使用されます。
+</li> <li> AnimTree ビューアにモーフを表示します。これには、AnimTree を選択してその PreviewSkelMesh (骨格メッシュのプレビュー) と PreviewMorphSets (モーフセットのプレビュー) を設定します。
+</li> <li>  [Add Actor] (アクタを追加) を右クリックして [Add SkeletalMeshMAT] (骨格メッシュ MAT を追加) を選択し、骨格メッシュをワールドに追加します。これにより、AnimTree が使用できるようになります。
+</li> <li> メッシュを選択し、そのプロパティで SkeletalMeshactpr/SkeletalMeshComponent/SkeletalMeshComponent に進み、AnimTreeTemplate と MorphSets をそれぞれ作成したオブジェクトに設定します。
+</li> <li> Matinee を作成し、メッシュの NewSkeletalMeshGroup (新規骨格メッシュグループ) を追加してそれを右クリックし、モーフウェイトを追加します。モーフウェイトを選択したら、そのプロパティの MorphNodeName セクションに、AnimTree にある MorphNodeWeight の NodeName を追加します。これでキーフレームを追加して、他の Matinee トラックのようにアニメーション化できるようになります。同時に複数の MorphWeight トラックを追加して合成することもできます。モーフのシーケンスをアニメーション化する場合は、1 つのモーフをオフにすると同時に他をオンにする必要があります。
+</li></ol>
+<p />
+AnimTree の詳細については、 <a href="MatineeUserGuideJP.html" class="twikiLink">UnrealMatinee ユーザーガイド</a> を参照してください。
+<p />
+
+<p />
+<h2><a name="例"></a> 例 </h2>
+
+<p />
+<h3><a name="コンテンツ"></a> コンテンツ </h3>
+<p />
+マップ UTGame/DemoContent/TestMaps/MorphTest.ut3 には、MorphTestActor.uc クラスを使用し、 Morph Target と同時に使用される SkelControls（骨格コントロール）の単純な使用法を実証します。ヘッドには、移動するアクタを追跡するためのコントローラを使用し、ヘッドからアクタまでの距離に基づいてアニメーション ツリーにあるノードのウェイトをコントロールします。この例のための資産は、UTGame/DemoContent/Packages/MorphingTest.upk にあります。
+
+<p />
+<h3><a name="プレーヤーのカスタマイズ: Fatness (隆起や豊満さの表現)"></a> プレーヤーのカスタマイズ: Fatness (隆起や豊満さの表現) </h3>
+<p />
+キャラクターのカスタマイズとして、ボーンをスケーリングして <em>Fatness</em> (隆起や豊満さ) を表現するには、モーフ ターゲットの利用が非常に適しています。この場合、複数のモーフ ターゲットを使用してベースメッシュのさまざまな部位に筋肉や膨らみを付けることができます。例えば、右腕の二頭筋、左足ふくらはぎ、腹用などに、それぞれモーフ ターゲットを 1 つずつ用意します。次に、各部位との適切なブレンドが得られる割合に相当するウェイトを指定して、これらをメッシュに適用します。もちろん、身体の各部位を個別に変形する必要がない場合は、ベースメッシュに対して最大の膨張度を持つモーフ ターゲットを 1 つだけ作成し、必要に応じてそれをスケーリングすることもできますが、個別化によりはるかに多くの多様性を創り出せるのは自明のことです。
+<p />
+モーフ ターゲットにより変化する頂点のデルタ値のみメモリに格納されるので、メモリのコストはそれらの頂点の数に依存します。モーフィングはGPU で処理されるため、各種のモーフ ターゲットが累積された後の GPU ベースのスキンメッシュなら、パフォーマンスのオーバーヘッドはわずかです。そのため、アクティブなモーフ ターゲットやウェイトのセットを変更しない限り、基本的にパフォーマンスコストはかかりません。
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MorphTargetsJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:27:40 GMT -->
+</html></body>

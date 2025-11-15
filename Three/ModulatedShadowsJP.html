@@ -1,0 +1,352 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ModulatedShadowsJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:07 GMT -->
+<head>
+<title> UDK | ModulatedShadowsJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ModulatedShadowsJP  </b></div>
+<div id="tooltext">
+<a href="ModulatedShadows.html" class="twikiLink">English Translation</a><br><a href="ModulatedShadowsCH.html" class="twikiLink">中国翻译</a><br><a href="ModulatedShadowsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ModulatedShadowsJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<h1><a name="Modulated(モジュレート)シャドウ"></a> Modulated(モジュレート)シャドウ </h1>
+<p />
+<em>ドキュメントの概要: モジュレートシャドウとは、シャドウバッファおよびシャドウボリュームの両手法によるダイナミックシャドウを用いた、ノーマルシャドウに代わるシャドウ表現。ここではその用法とユーザー設定について説明。ノーマルシャドウに関する情報については「<a href="ShadowingReferenceJP.html" class="twikiLink">シャドウイングのリファレンス</a>」を参照。</em>
+<p />
+<em>ドキュメントの変更ログ:  <a href="https://udn.epicgames.com/Main/DanielWright" class="restricted" class="restricted" class="twikiLink">Daniel Wright</a> により作成。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="ModulatedShadowsJP.html#Modulated(モジュレート)シャドウ"> Modulated(モジュレート)シャドウ</a> <ul>
+<li> <a href="ModulatedShadowsJP.html#概要"> 概要</a>
+</li> <li> <a href="ModulatedShadowsJP.html#バージョン"> バージョン</a>
+</li> <li> <a href="ModulatedShadowsJP.html#関連した設定"> 関連した設定</a> <ul>
+<li> <a href="ModulatedShadowsJP.html#LightShadowMode"> LightShadowMode</a>
+</li> <li> <a href="ModulatedShadowsJP.html#ModShadowColor"> ModShadowColor</a>
+</li> <li> <a href="ModulatedShadowsJP.html#ShadowFalloffExponent"> ShadowFalloffExponent</a>
+</li> <li> <a href="ModulatedShadowsJP.html#ModShadowFadeoutExponent"> ModShadowFadeoutExponent</a>
+</li> <li> <a href="ModulatedShadowsJP.html#ModShadowFadeoutTime"> ModShadowFadeoutTime </a>
+</li></ul>
+</li> <li> <a href="ModulatedShadowsJP.html#モジュレートシャドウを使う理由"> モジュレートシャドウを使う理由 </a>
+</li> <li> <a href="ModulatedShadowsJP.html#モジュレートシャドウのはたらき"> モジュレートシャドウのはたらき</a>
+</li> <li> <a href="ModulatedShadowsJP.html#制限事項"> 制限事項</a> <ul>
+<li> <a href="ModulatedShadowsJP.html#ダブルシャドウイング"> ダブルシャドウイング</a>
+</li> <li> <a href="ModulatedShadowsJP.html#エミッシブのアーチファクト"> エミッシブのアーチファクト</a>
+</li> <li> <a href="ModulatedShadowsJP.html#ジオメトリを透過した陰影処理"> ジオメトリを透過した陰影処理</a>
+</li> <li> <a href="ModulatedShadowsJP.html#シャドウバッファのフィルタリング"> シャドウバッファのフィルタリング</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<p />
+モジュレートシャドウは、ノーマルシャドウでのパフォーマンス低下問題を解決すると同時に、より豊かなシャドウの表現力をアーティストに提供するために開発されました。本文における「ノーマルシャドウ」とは、単にモジュレートシャドウでないものを指し、シャドウ技術の一種を表すものではありません。
+<p />
+モジュレートシャドウは、投影されたシャドウとシャドウボリュームと共に機能するものです。
+<p />
+<h2><a name="バージョン"></a> バージョン </h2>
+<p />
+ModShadowFadeoutTime 機能は QA_APPROVED_BUILD_JUNE_2007(2007年６月認証ビルド)にて導入されましたが、シャドウは  QA_APPROVED_BUILD_AUGUST_2007 (2007年8月認証ビルド) の時点までフェードすることがありませんでした。Modulate-Better shadow モードが2008年１月QA 認証ビルドに追加されました。
+<p />
+<h2><a name="関連した設定"></a> 関連した設定 </h2>
+<p />
+<img alt="ModShadowOptions.jpg" src="rsrc/Three/ModulatedShadowsJP/ModShadowOptions.jpg" />
+<br><br>
+<p />
+<h3><a name="LightShadowMode"></a> LightShadowMode </h3>
+<p />
+この光源について採用されているシャドウイングのタイプを制御します。
+<p /> <ul>
+<li> LightShadow_Normal -  <strong>デフォルト状態であり、ダイナミック リットによるシャドウにはメッシュが必要です。</strong>  This is a very これは非常に重要な意味合いです。なぜかというと、lightmap が影投影をしているライトから寄与を含む場合、ライトマップされたジオメトリがノーマルシャドウを受け取れないからです。ノーマルシャドウは余分なレンダーターゲットスペースを必要とするため、Xbox 360でコスト的に非常に高いです。これは、他のレンダーターゲットが保存され、後にリストアされる必要があるからです。
+</li> <li> LightShadow_Modulate - この光源からのモジュレートシャドウを有効にします。 wこれが一番コストの安いモードです。モジュレートシャドウは特定のライトをマスキングするのではなく、シーンカラーを倍にすることで機能します。
+</li> <li> LightShadow_ModulateBetter - Modulate と同じ機能をしますが、モジュレートシャドウは背面やコンポーネントのエミッシブが１以上になっているピクセルでマスクされます。ModulateBetter は、キャスターやマスクを演算するためのすべてのレシーバーの余分なレンダリングパスを追加します。
+</li></ul>
+<p />
+<h3><a name="ModShadowColor"></a> ModShadowColor </h3>
+<p />
+モジュレートシャドウの色を調整します。
+<p />
+<h3><a name="ShadowFalloffExponent"></a> ShadowFalloffExponent </h3>
+<p />
+スポットライトやポイントライトの距離を基にしてフォールオフするシャドウのレートです。  値が高ければそれだけフォールオフの発生がより早く起こります。値1.0は直線のフォールオフに相当します。
+<p />
+<h3><a name="ModShadowFadeoutExponent"></a> ModShadowFadeoutExponent </h3>
+<p />
+これは ModShadowFadeoutTime がゼロ以上の時、フェードアウトとフェードインカーブを制御します。
+<p />
+<h3><a name="ModShadowFadeoutTime"></a> ModShadowFadeoutTime </h3>
+<p />
+これがゼロ以上の場合、モジュレートシャドウはキャスターが最後に可視になった時間を基にフェードアウトします。  またキャスターが最初に可視になった時間を基にフェードインします。これは他のルームでキャラクターのシャドウをフェードアウトするのに使われ、そうでない限り、シャドウが壁をとおってしまいます。エディタでリアルタイムが必ずアップデートされているようにしてください、そうでないと正確に作動しません。フェードはフレームレート依存のため、ヒッチが好ましくないアーチファクトを引き起こします。
+<p />
+<h2><a name="モジュレートシャドウを使う理由"></a> モジュレートシャドウを使う理由 </h2>
+<p />
+オブジェクトの動的シャドウは、ノーマルシャドウを使う各ライト用に描画されます。厳密にはこのシャドウは現在の光源から来ているライトの不足部分です。これはさらに物理的に正しいモデルですが、深刻な意味合いが含まれています。典型的なシーンは複数のライトを同じエリアに持ちますが、パフォーマンス的な理由のためそのライトの一つだけが動的シャドウを投影します。  この場合、シャドウカラーが影の付いたサーフェスに影響しているライトに完全に依存しています。シャドウは非常に不鮮明です。なぜなら、影投影光源がサーフェスでライト全体の一部しか寄与しないためです。シャドウはライトの欠乏部分です。  この場合でシャドウカラーを微調整し、さらに暗くするのはアーティストにとって非常に難しいでしょう。理由としては、影投影ライトをさらに明るくするよう(または、より近く、より少ない減衰など)に要求し、シーンのライティングをだめにしてしまうからです。
+<br><br>
+ノーマルシャドウは一度 lightmap がビルドされると静的ジオメトリ上に投影しません。モジュレートシャドウはシーン全体に投影しこの問題を解決します。
+<br><br>
+キャラクターに影響をしている３つのライトのあるシーン。１つのみがノーマルシャドウを投影しています。シャドウは非常に薄いことに留意してください<br>
+<p />
+<img alt="ThreeNormal.jpg" src="rsrc/Three/ModulatedShadowsJP/ThreeNormal.jpg" />
+<p />
+<h2><a name="モジュレートシャドウのはたらき"></a> モジュレートシャドウのはたらき </h2>
+<p />
+以上のような訳でモジュレートシャドウが画像に導入されます。つまり、アーティストはモジュレートシャドウを使うと、ダイナミック オブジェクトに持たせるシャドウを一つにまとめられるようになり、そのシャドウを投影するライトのプロパティ修正なしに、色の編集などを行えるようになるのです。<br><br>
+<p />
+モジュレートシャドウでは、物理的整合性がノーマルシャドウに比べ低くなりますが、パフォーマンスと操作性の利点を考えて一般にオフセットとなっています。シャドウで ModShadowColor （モジュレートシャドウ色） が適用されているライティングでは、各パス処理のたびに、現在のライトをマスクアウトするのではなく減衰バッファまでレンダリング処理します。その結果、サーフェスを照らすライトの数に関係なくシャドウはより濃くなります。これは、ある光源から発生するシャドウが、その光源だけではなく全ての光源からの光に影響するからです。
+<br><br>
+キャラクタを 3 つのライトが照らしている同じシーンで、ひとつのライトだけがモジュレートシャドウを投影している例です。シャドウがくっきりしている所にご注目下さい。&lt;<br>
+<img alt="ThreeMod.jpg" src="rsrc/Three/ModulatedShadowsJP/ThreeMod.jpg" />
+<p />
+ポイントライト用のモジュレートシャドウには、ライトの半径により半径減衰が決まります。これはスポットライトでも同様ですが、相違点は減衰がコーンの内側か外側かに影響を受けることです。尚、指向性ライトに距離減衰はありません。
+<p />
+<h2><a name="制限事項"></a> 制限事項 </h2>
+<p />
+<h3><a name="ダブルシャドウイング"></a> ダブルシャドウイング </h3>
+<p />
+モジュレートシャドウがシーンカラーに対して調整することから、シャドウが重なるエリアは２重に影がつけられます。  これの回避策はプリミティブの近くでシャドウペアレントをすることです。例えば、Gears of war １ではすべての武器は２重シャドウイングを防ぐため、ポーンにシャドウペアレント化されています。コンテンツのシャドウペアレントの方法については <a href="AttachingActors.html#b_ShadowParented" class="twikiAnchorLink">AttachingActors#b_ShadowParented</a> をご覧ください。こーでシャドウペアレントをするには、 PrimitiveComponent's SetShadowParent メソッドを使ってください。
+<p />
+<p />
+<h3><a name="エミッシブのアーチファクト"></a> エミッシブのアーチファクト </h3>
+<p />
+モジュレートシャドウは、エミッシブライトをはじめとした、本来陰影処理すべきでないシーンの色にも波及してしまいます。  Tこの回避策は Modulate-Better シャドウモードを使用することです。これはモジュレートシャドウが、任意のチャンネルのエミッシブが1以上のピクセルにより影響を受けるのを防ぎます。
+<p />
+<h3><a name="ジオメトリを透過した陰影処理"></a> ジオメトリを透過した陰影処理 </h3>
+<p />
+現在の仕様では、編集シャドウがジオメトリを透過して投影してしまいます。明らかに違和感が出てしまう場合は、ライトの配置を工夫して下さい。手動ライトの調整では、こうした状況を回避しづらいのですが、 <a href="LightEnvironmentsJP.html" class="twikiLink">ライト環境</a> を用いると格段に作業しやすくなります。時折、これは ModShadowFadeoutTimeを使うことにより緩和されます。バックフェースのシャドウは Modulate-Better シャドウモードで回避されます。
+<p />
+.<br><br>
+<p />
+これらの投影によるアーチファクトを実際に回避する唯一の方法は、ノーマルシャドウの使用ですが、通常ノーマルシャドウはモジュレートシャドウよりもかなりのコスト高になります。 <a href="DominantLightsJP.html" class="twikiLink">ドミナントライト</a> はこの例外の 1 つで、1 つのライトからノーマルシャドウを投影させて、コストを下げることができます。
+<p />
+<p />
+<h3><a name="シャドウバッファのフィルタリング"></a> シャドウバッファのフィルタリング </h3>
+<p />
+モジュレートシャドウを用いた結果のひとつに、ある同じ光源から投影されているシャドウと裏面色が同じ色でなくなってしまう、ということがあります。ですから、シャドウが裏面をきっちりとカバーしていないと違和感が出てしまいます。この問題は、VSM などデプス オフセットを用いるシャドウバッファのフィルタリング技術に関するものです。詳しくは、 <a href="https://udn.epicgames.com/Three/ShadowBufferFilteringOptionsJP" class="restricted" class="restricted" class="twikiLink">シャドウバッファ フィルタリングのオプション</a> と <a href="https://udn.epicgames.com/Three/ShadowBufferFilteringTechJP" class="restricted" class="restricted" class="twikiLink">シャドウバッファ フィルタリングの技術</a> をご覧下さい。
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ModulatedShadowsJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:08 GMT -->
+</html></body>

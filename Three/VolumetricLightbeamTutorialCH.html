@@ -1,0 +1,442 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/VolumetricLightbeamTutorialCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:26:03 GMT -->
+<head>
+<title> UDK | VolumetricLightbeamTutorialCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">VolumetricLightbeamTutorialCH  </b></div>
+<div id="tooltext">
+<a href="VolumetricLightbeamTutorial.html" class="twikiLink">English Translation</a><br><a href="VolumetricLightbeamTutorialJP.html" class="twikiLink">日本語訳</a><br><a href="VolumetricLightbeamTutorialKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/VolumetricLightbeamTutorialCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="LightingAndShadowsHome.html" class="twikiLink">光照 &amp; 阴影</a></b> &gt; 体积感光束教程 <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt; <b><a href="ParticlesAndEffectsHome.html" class="twikiLink">粒子 &amp; 特效</a></b> &gt;<b><a href="FogEffectsHome.html" class="twikiLink">雾特效</a></b> &gt; 体积感光束教程
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="体积感光束教程"></a> 体积感光束教程 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="VolumetricLightbeamTutorialCH.html#体积感光束教程"> 体积感光束教程</a> <ul>
+<li> <a href="VolumetricLightbeamTutorialCH.html#概述"> 概述</a>
+</li> <li> <a href="VolumetricLightbeamTutorialCH.html#教程内容"> 教程内容</a>
+</li> <li> <a href="VolumetricLightbeamTutorialCH.html#LightBeams"> LightBeams</a> <ul>
+<li> <a href="VolumetricLightbeamTutorialCH.html#创建静态网格物体"> 创建静态网格物体</a>
+</li> <li> <a href="VolumetricLightbeamTutorialCH.html#创建材质"> 创建材质</a> <ul>
+<li> <a href="VolumetricLightbeamTutorialCH.html#FalloffTexture"> FalloffTexture</a>
+</li> <li> <a href="VolumetricLightbeamTutorialCH.html#设置材质"> 设置材质</a> <ul>
+<li> <a href="VolumetricLightbeamTutorialCH.html#修复失真问题"> 修复失真问题</a> <ul>
+<li> <a href="VolumetricLightbeamTutorialCH.html#查看 Underneath 中显示有问题的地方"> 查看 Underneath 中显示有问题的地方</a>
+</li> <li> <a href="VolumetricLightbeamTutorialCH.html#相机交叉"> 相机交叉</a>
+</li> <li> <a href="VolumetricLightbeamTutorialCH.html#世界对象相交光束"> 世界对象相交光束</a>
+</li></ul>
+</li> <li> <a href="VolumetricLightbeamTutorialCH.html#最后加工"> 最后加工</a> <ul>
+<li> <a href="VolumetricLightbeamTutorialCH.html#摇拍烟雾"> 摇拍烟雾</a>
+</li> <li> <a href="VolumetricLightbeamTutorialCH.html#其他参数"> 其他参数</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li> <li> <a href="VolumetricLightbeamTutorialCH.html#最后总结"> 最后总结</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+设计该指南的目的是作为一个供创建令人信服的体积感光束使用的材质技术简介使用。我们会使用一个应用于锥形的静态网格物体的不带光照半透明物体材质，使用衰减隐藏边缘。
+<p />
+这些年来，游戏引擎一直使用类似的技术仿造体积感光束的外观，但是最常见的技术是存在严重缺陷的。 您如何才能制作一个从各个角度看都是正确的仿造光束？ 玩家穿过光束会怎么样？ 光束与世界几何体相交会怎么样？ 通过一些功能强大的材质表达式的帮助，虚幻引擎 3 可以轻松解决所有这些问题 - 并且会进行一些调整。
+<p />
+<h2><a name="教程内容"></a> 教程内容 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+该教程会重新创建在 EngineVolumetrics（引擎体积感）包中发现的 Master Lightbeam（主要光束）材质。
+<p />
+已经完成的材质的全名是： \\Build\UnrealEngine3-Build\Engine\Content\EngineVolumetrics.LightBeam.Materials.M_EV_Lightbeam_Master_01
+<p />
+还要注意： \\Build\UnrealEngine3-Build\Engine\Content\EngineVolumetrics.LightBeam.Materials.M_EV_Lightbeam_Master_01_1sided_01 应该在不需要看到光束的内部时使用。最终，由于性能原因我们最常使用的是单面的版本。
+<p />
+EngineVolumetrics 是一个包含四个组的包，这四个组可以包含四个体积类型。FalloffSpheres、FogEnvironments、Fogsheets 和 Lightbeams。在所有这些体积图元类型中，选择 lightbeam 作为教程材质，因为它将所有这些类型的大多数技术结合到了一个材质中。说明各种体积图元类型以及如何使用它们的页面是<a href="VolumetricLightingGuide.html" class="twikiLink">体积感光束指南</a>。
+<p />
+由于该材质被用作为很多实例的父代材质，所以该教程也会向您说明如何使用参数配置材质作为实例。为了获取完整的说明材质实例，请参阅<a href="InstancedMaterials.html" class="twikiLink">实例化的材质</a>页面。
+<p />
+<p />
+<h2><a name="LightBeams"></a> LightBeams </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+可以创建无限种可能性，但是我们会从一个简单的圆锥形衰减类型光束开始创建。这些可以通过很多不同的方式使用；它们可以是光源发出的很小并且微弱的光，或者缩放到像从云层缝隙中发出的那种太阳光束那样的光。它们应该符合关卡现有气氛；具有厚雾效果的关卡应该使用比晴空关卡更厚的光束。当然，这完全取决于美术人员的心情。
+<p />
+需要三个步骤创建这些光束。
+1) 创建会定义光束的形状的 Static Mesh（静态网格物体）。
+2) 创建衰减贴图。
+3) 创建 Material（材质）并调整值直到所有失真现象消失。
+<p />
+<img alt="lightbeams.jpg" src="rsrc/Three/VolumetricLightbeamTutorialCH/lightbeams.jpg" />
+<p />
+<h3><a name="创建静态网格物体"></a> 创建静态网格物体 </h3>
+<p />
+EngineVolumetrics 包已经有三个不同角度的锥形变体，但是它们都有相同的 UV。这部分将会向您说明为了制作更多要使用该材质的自定义锥形网格物体您需要做哪些操作。
+<p />
+创建一个边锥形化的圆柱并将其展开，这样在 UV 中就只有一条光束。由于材质计算在切线空间中进行，有一个整洁的 UV 这一点非常重要，而不整洁的 UV 可能会导致以后的视频扭曲。您的网格物体细分的越多，最终结果的衰减系数越平滑（16 面的圆柱分成 4 个垂直切片效果会很好）。
+<p />
+这三个已经在 EngineVolumetrics 中的锥形变体应该足以应付大多数情况。
+<p />
+<img alt="UDNLightmaps_Mesh01.jpg" src="rsrc/Three/VolumetricLightbeamTutorialCH/UDNLightmaps_Mesh01.jpg" />
+<p />
+<h3><a name="创建材质"></a> 创建材质 </h3>
+<p />
+材质创建是流程中最棘手的部分。首先，我们会获取最基础等级的光束功能，然后我们会一次一个地解决每一个失真问题。
+<p />
+<h4><a name="FalloffTexture"></a> FalloffTexture </h4>
+<p />
+首先，我们需要创建一个衰减贴图。衰减贴图的外观是形成最终结果的外观的主要原因。已经在 Photoshop 中使用 Render（渲染）-&gt;Light Effects（光效）过滤创建完整的衰减贴图。在顶部描绘了一条模糊的黑色线。
+<p />
+\\Build\UnrealEngine3-Build\Engine\Content\EngineVolumetrics.LightBeam.Materials. T_EV_LightBeam_Falloff_01
+<p />
+<p />
+<img alt="T_LT_Light_UDNLightbeams_Materials_Falloff01.jpg" src="rsrc/Three/VolumetricLightbeamTutorialCH/T_LT_Light_UDNLightbeams_Materials_Falloff01.jpg" />
+<p />
+要记录下来的重要质量是贴图所有边周围完全是黑色，而且贴图的顶部是渐渐变为黑色。这可以帮助隐藏 Static Mesh（静态网格物体）的顶部边的位置。请确保将该贴图属性设置为 Clamp（固定）。在该材质中它的贴图样本将会是 TextureSample2DParameter，这样您就可以在您的光束上使用各种不同的衰减贴图。
+<p />
+<h4><a name="设置材质"></a> 设置材质 </h4>
+<p />
+现在，我们准备开始创建材质。创建一个新的材质并在材质设置中设置以下选项：
+<p />
+BlendMode: BLEND_Translucent
+LightModel: MLM_Unlit
+TwoSided: True
+<p />
+<img alt="UDNLightmaps_Material_start.jpg" src="rsrc/Three/VolumetricLightbeamTutorialCH/UDNLightmaps_Material_start.jpg" />
+<p />
+我们只会使用到两个材质输入字段： Emissive（自发光）和 Opacity（不透明）。自发光字段应该只包含光束的颜色信息。目前，将一个简单的 VectorParameter (1, 1, 1, 1) 用于自发光。VectorParameter 的 Alpha 通道通过 RGB 进行控制。它可以让您使用 Alpha 修改 Brightness（亮度），这样您就可以使用颜色选取器选择 RGB 值（它只支持小于 1 的值），而且如果您愿意，仍然可以使光束随意发散。可以更改颜色的照明独立这一功能通常很有用。
+<p />
+不透明字段是大多数魔法发生的地方。它会处理光束的衰减而且会包含贴图信息来添加灰尘或滚动的烟雾。
+<p />
+我们会使用如上不透明所示的衰减贴图。对于衰减贴图的贴图坐标，我们会使用 Reflection Vector（反射向量）生成 X 分量，而 Y 分量由 Static Mesh（静态网格物体）的 UV 提供。这会使贴图沿着 X 轴面向相机的方向，相对于静态网格物体旋转。生成 X 分量需要一番工夫。
+<p />
+反射向量输出数字的范围是从 -1 到 1。由于我们将要使用结果作为贴图坐标，所以我们希望数字范围是 0-1。. 我们只需通过乘以 0.5 然后再加上 0.5 就可以将 Reflection（反射）向量的范围变为 0-1。
+<p />
+只要范围是正确的，AppendVector 表达式会在 Static Mesh（静态网格物体）的 UV 中将我们的 Generated X 坐标与 Y 坐标组合。这个 AppendVector 的输出即可将 UV 提供给我们的 FalloffTexture
+<p />
+<img alt="UDNLightmaps_material01.jpg" src="rsrc/Three/VolumetricLightbeamTutorialCH/UDNLightmaps_material01.jpg" />
+<p />
+我们的光束现在的样子如下所示：
+<p />
+<img alt="UDNLightmaps_Lightbeam01.jpg" src="rsrc/Three/VolumetricLightbeamTutorialCH/UDNLightmaps_Lightbeam01.jpg" />
+<p />
+虽然这是一个很好的初始点，但是我们的光束材质绝不可能完成。看一看我们可以引入到场景中的失真：
+<p />
+<img alt="UDNLightmaps_artifacting01.jpg" src="rsrc/Three/VolumetricLightbeamTutorialCH/UDNLightmaps_artifacting01.jpg" />
+<p />
+正像我在该指南的简介中提到的一样，这些问题中每一个都可以通过使用合适的材质表达式解决。
+<p />
+<h5><a name="修复失真问题"></a> 修复失真问题 </h5>
+<p />
+<h6><a name="查看 Underneath 中显示有问题的地方"></a> 查看 Underneath 中显示有问题的地方 </h6>
+<p />
+我们现在正在使用的方法（仅限于 X 通道衰减）可以使我们的光束在从侧面浏览时看上去很强烈，但是从底部角中浏览光束时会有点帮助。要修正从底部浏览时光束显示的方式，我们将会使用另一个衰减贴图，并将其与我们现有的衰减贴图相乘。我将一个模糊点作为第二个衰减贴图使用。
+<p />
+<img alt="T_LT_Light_UDNLightbeams_Materials_Falloff02.jpg" src="rsrc/Three/VolumetricLightbeamTutorialCH/T_LT_Light_UDNLightbeams_Materials_Falloff02.jpg" />
+<p />
+请确保将该贴图属性设置为 Clamp（固定）。
+<p />
+和以前很相像，我们使用反射向量生成第二个衰减贴图的贴图坐标。对于该贴图的贴图坐标，我们将会使用���射向量中的 X 和 Y 分量。ReflectionVector(X,Y) 会乘以一个常量对其进行少量调整更好地隐藏这些边。我使用的是 0.3，也可以使用其他值。
+<p />
+<img alt="UDNLightmaps_material02.jpg" src="rsrc/Three/VolumetricLightbeamTutorialCH/UDNLightmaps_material02.jpg" />
+<p />
+从底部浏览时光束的样子应该如下所示：
+<p />
+<img alt="UDNLightmaps_artifacting_fixed01.jpg" src="rsrc/Three/VolumetricLightbeamTutorialCH/UDNLightmaps_artifacting_fixed01.jpg" />
+<p />
+硬边应该不再可见。如果您还可以看到硬边，您只需调整衰减贴图或 ReflectionVector(X,Y) 的乘数。
+<p />
+<h6><a name="相机交叉"></a> 相机交叉 </h6>
+<p />
+使用 PixelDepth 节点，我们可以取样半透明材质中任何像素的深度。我们会使用它逐渐减弱这个立即在相机前面的像素。我们可以通过将深度与一个常量相乘控制发生逐渐减弱的距离。对于常量，使用名为‘Distance（距离）’的标量参数，这样可以根据实例更改它。通常情况下，您会希望根据您放置的光束的大小更改这个值。很大的光束应该从更远一点的地方逐渐减弱，而小光束可以使相机在开始逐渐减弱之前靠得很近。合适的默认值是 0.005。
+<p />
+将该结果限定为其中一个最大值，这一点很重要。只需乘以以前的衰减贴图结果。
+<p />
+ <img alt="UDNLightmaps_material03.jpg" src="rsrc/Three/VolumetricLightbeamTutorialCH/UDNLightmaps_material03.jpg" />
+<p />
+在距离前后都已经使用了淡入淡出：
+<p />
+ <img alt="UDNLightmaps_artifacting_fixed02.jpg" src="rsrc/Three/VolumetricLightbeamTutorialCH/UDNLightmaps_artifacting_fixed02.jpg" />
+<p />
+<h6><a name="世界对象相交光束"></a> 世界对象相交光束 </h6>
+<p />
+我们可以使用 DepthBiasedAlpha 根据与世界几何体的交集淡入淡出光束。
+<p />
+添加 DepthBiasedBlendAlpha 节点并将它的 BiasScale 设置为 500 的近似值。一个名为‘Density（目标）’的标量参数用于节点的 Bias（偏移）输入中，允许通过材质实例进一步调整偏移的深度。
+<p />
+由于该材质被认为是实例的父代，而且 depthbiasedalpha 是一个相当昂贵的表达式，所以我们会为它提供 StaticSwitchParameter，这样就可以切换它的开关。对它进行设置，它的默认值是 OFF（关闭）。
+<p />
+<img alt="UDNLightmaps_material04.jpg" src="rsrc/Three/VolumetricLightbeamTutorialCH/UDNLightmaps_material04.jpg" />
+<p />
+虽然 DepthBiasedAlpha 技术并不完美（它不会使光束的阴影具有体积感），但是它可以出色地完成删除场景中的明显失真现象这项工作。
+<p />
+<img alt="UDNLightmaps_artifacting_fixed03.jpg" src="rsrc/Three/VolumetricLightbeamTutorialCH/UDNLightmaps_artifacting_fixed03.jpg" />
+<p />
+<h5><a name="最后加工"></a> 最后加工 </h5>
+<p />
+<h6><a name="摇拍烟雾"></a> 摇拍烟雾 </h6>
+<p />
+我们有人会使用 StaticSwitchParameter 提供可以在光束中启用摇拍的烟雾贴图的选项。如果您制作了其他光束网格物体，那么应该会从 0 到 1 整齐地按照圆柱展开 UV，这样烟雾贴图就可以在平铺显示的地方没有接缝的情况下进行摇拍。
+<p />
+添加了一个贴图参数。它有几个其他参数可以控制它的行为。由于光束常常会根据它们的长度进行缩放，所以这个贴图 X 和 Y 刻度有单独的参数。它还有用于控制摇拍速度和对比度的参数。
+<p />
+有以下参数：
+TextureContrast: 使用常量 1 线性插入这个贴图。
+TextureScaleX: X 轴上的刻度
+TextureScaleY: Y 轴上的刻度
+PanningSpeed: 乘以时间控制摇拍速度。
+<p />
+下面是一个屏幕截图：
+<p />
+<img alt="UDNLightmaps_material05.jpg" src="rsrc/Three/VolumetricLightbeamTutorialCH/UDNLightmaps_material05.jpg" />
+<p />
+<h6><a name="其他参数"></a> 其他参数 </h6>
+<p />
+最后，我们会添加一个其他乘数和一个名为“Opacity（不透明）”的 Scalar Parameter（标量参数）以便将光束的不透明最终控制权限授予材质实例。
+<p />
+<img alt="UDNLightmaps_material05.jpg" src="rsrc/Three/VolumetricLightbeamTutorialCH/UDNLightmaps_material05.jpg" />
+<p />
+<p />
+<h2><a name="最后总结"></a> 最后总结 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+这就是最后材质的样子。使用 21 个指令时，该光束消耗的性能比大多数带光照的材质小很多。打开 UseDepthBiasedAlpha 和 UseTextureOverlay 会使指令增加到 39，所以使用这些 StaticSwitchParameters 很明智。
+<p />
+在重视下一代引擎的光照功能的同时，不要低估无光照材质的功能也很重要。
+<p />
+<img alt="UDNLightmaps_mat_complete.jpg" src="rsrc/Three/VolumetricLightbeamTutorialCH/UDNLightmaps_mat_complete.jpg" />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/VolumetricLightbeamTutorialCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:26:07 GMT -->
+</html></body>

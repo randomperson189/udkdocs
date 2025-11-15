@@ -1,0 +1,524 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/Steam.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:21:35 GMT -->
+<head>
+<title> UDK | Steam    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">Steam  </b></div>
+<div id="tooltext">
+<a href="SteamJP.html" class="twikiLink">日本語訳</a><br><a href="SteamCH.html" class="twikiLink">中国翻译</a><br><a href="SteamKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/Steam -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<h1><a name="Steam"></a> Steam </h1>
+<p />
+<em>Document Summary: How to use and implement the Steam Integration in UnrealEngine3.</em>
+<p />
+<em>Document Changelog: Created by <a href="https://udn.epicgames.com/Main/JohnScott" class="restricted" class="restricted" class="twikiLink">John Scott</a>, updated for <a href="Steam.html#SteamPipe" class="twikiAnchorLink">SteamPipe</a> by <a href="https://udn.epicgames.com/Main/JoshMarkiewicz" class="restricted" class="restricted" class="twikiLink">Josh Markiewicz</a>.</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="Steam.html#Steam"> Steam</a> <ul>
+<li> <a href="Steam.html#Using the Steam client"> Using the Steam client</a> <ul>
+<li> <a href="Steam.html#To get the initial game (after setting up the Content Server)"> To get the initial game (after setting up the Content Server)</a>
+</li> <li> <a href="Steam.html#To get an update (after setting up the Content Server)"> To get an update (after setting up the Content Server)</a>
+</li></ul>
+</li> <li> <a href="Steam.html#Using _SteamPipe for Content Delivery"> Using SteamPipe for Content Delivery</a> <ul>
+<li> <a href="Steam.html#Steam SDK directory structure and the \sdk\tools\steampipe\ directory"> Steam SDK directory structure and the \sdk\tools\steampipe\ directory</a>
+</li> <li> <a href="Steam.html#Creating some local directory structure"> Creating some local directory structure </a>
+</li> <li> <a href="Steam.html#Run _SteamCmd.exe"> Run SteamCmd.exe</a>
+</li> <li> <a href="Steam.html#Creating Depot Build Config Files"> Creating Depot Build Config Files</a>
+</li> <li> <a href="Steam.html#Create App Build File"> Create App Build File</a>
+</li> <li> <a href="Steam.html#Running the App Build File Script"> Running the App Build File Script</a>
+</li> <li> <a href="Steam.html#Managing the Build"> Managing the Build</a>
+</li> <li> <a href="Steam.html#Steam Local Content Server (Mongoose)"> Steam Local Content Server (Mongoose)</a>
+</li></ul>
+</li> <li> <a href="Steam.html#Deprecated_ Using the Steam Content Tool"> Deprecated Using the Steam Content Tool</a> <ul>
+<li> <a href="Steam.html#Deprecated_ Using the GUI to create an initial build with solution and project files"> Deprecated Using the GUI to create an initial build with solution and project files</a>
+</li> <li> <a href="Steam.html#Deprecated_ Using Steam Script to create new versions"> Deprecated Using Steam Script to create new versions</a>
+</li> <li> <a href="Steam.html#Notes"> Notes</a>
+</li></ul>
+</li> <li> <a href="Steam.html#Deprecated_ Running the Steam Content Server"> Deprecated Running the Steam Content Server</a> <ul>
+<li> <a href="Steam.html#Deprecated_ From a Command Prompt"> Deprecated From a Command Prompt</a>
+</li> <li> <a href="Steam.html#Deprecated_ As a Service"> Deprecated As a Service</a>
+</li> <li> <a href="Steam.html#Deprecated_ Notes"> Deprecated Notes </a>
+</li></ul>
+</li> <li> <a href="Steam.html#Using Steam in Game"> Using Steam in Game</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Using the Steam client"></a> Using the Steam client </h2>
+<p />
+<h3><a name="To get the initial game (after setting up the Content Server)"></a> To get the initial game (after setting up the Content Server) </h3>
+<p /> <ul>
+<li> Get the latest Steam SDK, and copy sdk/client/Steam.exe and sdk/client/Steam.cfg to a local folder <ul>
+<li> Licensees can copy it from '//depot/UnrealEngine3/Development/External/Steamworks/sdk/client/...'
+</li> <li> UDK users can register and download from here <a href="https://partner.steamgames.com/home" target="_top">https://partner.steamgames.com/home</a>
+</li></ul>
+</li> <li> SteamPipe content delivery <ul>
+<li> Make 'steam_dev.cfg' in the same directory as the client and add @LocalContentServer "content server ip"
+</li></ul>
+</li> <li> ContentTool <strong><em>deprecated</em></strong> <ul>
+<li> Make 'steam.cfg' writable and set the 'SdkContentServerAdrs' to the IP of where you are running your local content server
+</li></ul>
+</li> <li> Run 'Steam.exe'
+</li> <li> Right mouse click on your game (in our case 'Unreal Development Kit') on the 'My games' tab and install
+</li> <li> After installation is complete, right mouse click and 'Launch game'
+</li></ul>
+<p />
+<h3><a name="To get an update (after setting up the Content Server)"></a> To get an update (after setting up the Content Server) </h3>
+<p /> <ul>
+<li> Updates are retrieved automatically as long as the Steam client is running <ul>
+<li> Restart the Steam client if you do not wish to wait for the polling interval
+</li></ul>
+</li></ul>
+<p />
+<strong>Notes (pertains to deprecated ContentTool only)</strong>
+<p /> <ul>
+<li> If you get an update, but the local content server has a fresh complete (non iterative) build, then the client will get confused. To fix this, delete all but 'Steam.exe' and 'Steam.cfg' in your local folder and start again. <ul>
+<li> During initial development, this tends to happen a lot.
+</li></ul>
+</li></ul>
+<p />
+<a name="SteamPipe"></a>
+<h2><a name="Using _SteamPipe for Content Delivery"></a> Using SteamPipe for Content Delivery </h2>
+<p />
+SteamPipe is Valve's newer and more efficient means of delivering content to the Steam Client.  It consists of two parts; the "Content Builder", an executable SteamCmd.exe and all the config scripts necessary to describe agame and its content, and the "Content Server", a web service that can be run locally to server the game images.
+<p />
+Before getting started, make sure to talk to your Steam Technical Account Manager to get an AppId and set of DepotIds for your game.
+<p />
+All the documentation for SteamPipe can be found at <a href="https://partner.steamgames.com/documentation/steampipe" target="_top">Valve's partner website</a>  <ul>
+<li> Follow the directions under <strong>"Steam Build Account"</strong> to create a build account that will make the game
+</li> <li> Follow the directions <strong>"Initial Setup for New SteamPipe Apps"</strong> to configure the metadata related to the game
+</li></ul>
+<p />
+<h3><a name="Steam SDK directory structure and the \sdk\tools\steampipe\ directory"></a> Steam SDK directory structure and the \sdk\tools\steampipe\ directory </h3>
+<p />
+The SteamPipe tool resides under the \ContentBuilder\ directory structure <ul>
+<li> <em>\Builder\</em> directory contains steamcmd.exe the main tool used to create builds
+</li> <li> <em>\Scripts\</em> contains the build scripts for the game depots  (this can be changed, Epic stores the script (.vdf) files in the \MyGame\Build\Steam directory for organizational purposes)
+</li> <li> <em>\Content\</em> contains all the game files to build into depots (this can be changed, Epic uses a root \SteamContent\ directory on the build machine)
+</li> <li> <em>\Output\</em> contains the build logs, depot cache and intermediate files (this can be changed, Epic uses a root \SteamContent\ directory on the build machine)
+</li></ul>
+<p />
+<h3><a name="Creating some local directory structure"></a> Creating some local directory structure </h3>
+<p />
+Create a \SteamContent\ directory off of the build machine root (although it can technically be anywhere). This folder should contain two additional folders <ul>
+<li> <em>\ContentBuilder\</em> <ul>
+<li> Make a directory called 'output' where the game image cache will reside
+</li> <li> Contains *.csd and *.csm files which are the actual caches, they are ok to delete from time to time but will make the next build slower
+</li></ul>
+</li> <li> <em>\ContentServer\</em> <ul>
+<li> This is part of the directory structure of the Mongoose webserver, contains the actual build image
+</li> <li> Make a directory called 'htdocs' where the actual game images and the files related to serving content
+</li> <li> This is the root directory displayed if you go to the webserver via a browser
+</li></ul>
+</li></ul>
+<p />
+<h3><a name="Run _SteamCmd.exe"></a> Run SteamCmd.exe </h3>
+<p />
+The first time SteamCmd.exe is run, it will download and populate its directory with all the files it needs, much like the Steam client
+<p />
+<strong>NOTE:</strong> If the tool errors and complains about proper login, the build account is protected by Steam Guard.  Check the email address specified for the build account for a Steam Guard code, and run
+<strong>steamcmd.exe "set_steam_guard_code emailedcodehere"</strong>, before trying again.
+<p />
+<strong>NOTE:</strong> If running steamcmd.exe results in the following error: "SteamUpdater: Error: Steam needs to be online to update. Please confirm your network connection and try again."
+Resolution: Go to Internet Options-&gt;Connections-&gt;Lan Settings and check Automatically detect settings.  (This is on their FAQ but hard to find and bit me personally)
+<p />
+<h3><a name="Creating Depot Build Config Files"></a> Creating Depot Build Config Files </h3>
+There are sample scripts in the sdk \ContentBuilder\scripts folder, but it looks something like this:
+<p />
+<pre>
+&#34;DepotBuildConfig&#34;
+{
+  &#34;DepotID&#34; &#34;&#60;yourdepotid&#62;&#34;
+
+  // include all files recursively
+  &#34;FileMapping&#34;
+  {
+    &#34;LocalPath&#34; &#34;&#42;&#34;
+    &#34;DepotPath&#34; &#34;.&#34;
+    &#34;recursive&#34; &#34;1&#34;
+  }
+
+  // but exclude all symbol files
+  // &#34;FileExclusion&#34; &#34;&#42;.pdb&#34;
+}
+</pre>
+<p />
+<h3><a name="Create App Build File"></a> Create App Build File </h3>
+<p />
+The app build file connects all the depot build configs into one game image and looks something like this:
+<p />
+<pre>
+&#34;appbuild&#34;
+{
+   &#34;appid&#34;   &#34;&#60;yourappid&#62;&#34;
+   &#34;desc&#34; &#34;&#60;descriptive build name&#62;&#34; // description for this build
+   &#34;buildoutput&#34; &#34;D:\SteamContent\ContentBuilder\output\MyGame\&#34; // build output folder for .log, .csm &#38; .csd files, relative to location of this file
+   &#34;contentroot&#34; &#34;D:\Builds\UE3\&#34; // root content folder, relative to location of this file
+   &#34;setlive&#34;   &#34;local&#34; // branch to set live after successful build, none if empty
+   &#34;preview&#34; &#34;0&#34; // to enable preview builds
+   &#34;nobaseline&#34; &#34;0&#34; // build without using baseline manifest
+   &#34;local&#34;   &#34;D:\SteamContent\ContentServer\htdocs&#34;   // set to file path of local content server
+   &#34;depotsskipped&#34; &#34;0&#34; // if not partial build, fail if not all depots are included
+
+   &#34;depots&#34;
+   {
+      &#34;&#60;firstdepotid&#62;&#34; &#34;depot&#95;build&#95;&#60;depotid&#62;.vdf&#34;
+   }
+}
+</pre>
+<p />
+There are three build types support by SteamPipe: <ul>
+<li> <strong>"Preview"</strong> builds only output logs and file manifests and are used for rapid iteration when setting up the build
+</li> <li> <strong>"Local"</strong> Builds for the Local Content Server (LCS "the Mongoose server") for faster downloads and local storage of the game image
+</li> <li> <strong>"SteamPipe"</strong> Builds and uploads to Valve servers for content delivery
+</li></ul>
+<p />
+<h3><a name="Running the App Build File Script"></a> Running the App Build File Script </h3>
+<p />
+The example below would run the above app build script to create the game image with one depot defined
+<p />
+<strong>builder\steamcmd.exe +login account password +run_app_build ..\scripts\app_build.vdf +quit</strong>
+<p />
+The first time you may want to run with "preview" set to "1" to ensure the manifest is correct, after that has been verified set it back to "0"
+<p />
+<strong>NOTE:</strong> If the build errors and complains about proper login, the build account is protected by Steam Guard.  Check the email address specified for the build account for a Steam Guard code, and run
+steamcmd.exe "set_steam_guard_code emailedcodehere", before trying again.
+<p />
+<h3><a name="Managing the Build"></a> Managing the Build </h3>
+<p />
+After a successful run of the app build script, the build can be managed via <a href="https://partner.steamgames.com/apps" target="_top">Valve's admin website</a> (under App Admin, Technical Data, then Builds tabs)
+<p />
+Follow the directions in the <a href="https://partner.steamgames.com/documentation/steampipe" target="_top">SteamPipe documentation</a> to setup the metadata on the backend further
+<p />
+<h3><a name="Steam Local Content Server (Mongoose)"></a> Steam Local Content Server (Mongoose) </h3>
+<p />
+The Local Content Server (LCS) is a webserver hosted by the build machine to deliver content to the Steam Client, documented on the Steam partner website <a href="https://partner.steamgames.com/documentation/steampipeLCS" target="_top">here</a>.
+<p />
+The mongoose web server can be found in the <em>\ContentBuilder\</em> directory of the sdk directory structure
+<p /> <ul>
+<li> Configure the webserver to know where the output files will be hosted via the mongoose.conf file <ul>
+<li> Set the <strong>document_root</strong> variable to the directory that was created locally on the build machine <em>C:\SteamContent\ContentServer\htdocs\</em> for example
+</li> <li> This will match the <strong>"local"</strong> value specified in the app build file
+</li></ul>
+</li> <li> Launch the webserver mongoose-3.1.exe and there will appear an "m" icon in the system tray <ul>
+<li> The executable can be run independently or as a service.   To run it as a service, right click the system tray icon once the server has launched and select "Install Service"
+</li></ul>
+</li> <li> Connect to 127.0.0.1 and verify the server is up and running, click on the depot directory reference in the webpage to verify it is accessing the right location
+</li> <li> Once it is running as a service, you can run the executable again to get the system tray icon to appear so that you can "Uninstall Service"
+</li></ul>
+<p />
+See the <a href="https://partner.steamgames.com/documentation/steampipeLCS" target="_top">SteamPipe content server</a> page on the Steam partner website, for additional information on setting this up.
+<p />
+<p />
+<h2><a name="Deprecated_ Using the Steam Content Tool"></a> <strong><em>Deprecated</em></strong> Using the Steam Content Tool </h2>
+<p />
+There are two methods, using the GUI and using Steam Script.
+<p />
+<h3><a name="Deprecated_ Using the GUI to create an initial build with solution and project files"></a> <strong><em>Deprecated</em></strong> Using the GUI to create an initial build with solution and project files </h3>
+<p /> <ul>
+<li> Copy the build you wish to publish (e.g. 'C:\Builds\UnrealEngine3') locally
+</li> <li> Run the content tool (part of the Steam SDK) 'sdk/tools/ContentTool.exe'
+</li> <li> Click the 'New Solution' button
+</li> <li> Click 'Next'
+</li> <li> Solution Section: Type in the 'Solution Name' (UTGame) and the location to 'C:\SteamGame'
+</li> <li> Click 'Next'
+</li> <li> Application Section: Type in the 'Application Name' ('Unreal Development Kit' - this is what appears in the GUI), File Delivery is 'Loose Files' and 'Application ID' is 13260
+</li> <li> Click 'Next'
+</li> <li> Depot Section: Name is 'UTGame', Type is 'Content', 'Project Location' is 'C:\SteamGame', 'Depot Location' to 'C:\SteamGame\Depot', and 'Depot ID' to 13261
+</li> <li> Click 'Next'
+</li> <li> Click on the listbox entry to the right of <root> and type 'C:\Builds\UnrealEngine3'
+</li> <li> Click 'Finish' (It will list files that it found to add to the project - click OK to synchronise the depot)
+</li> <li> Click on the 'Solution Properties' button near the top left of the GUI; it's just below the text of 'Solution Explorer'
+</li> <li> Expand out the tree views 'Launch Options -&gt; Label = Default -&gt; Command line = Unreal Development Kit'
+</li> <li> Right mouse click and change the command line to 'Binaries\Win32\UDKGame.exe'
+</li> <li> Close that window, save when prompted.
+</li> <li> Click the 'Build' toolbar button (this will take some time)
+</li> <li> 'C:\SteamGame\Depot' will now contain '13261_0.dat', '13261_0.blob' and 'UTGame.depot' (this is appid_version.dat and appid_version.blob)
+</li> <li> From the Publish menu, select 'Publish to Local Testing Server', this will copy '13261_0.dat', '13261_0.blob' and 'ContentDescriptionDB.xml' to the local server.
+</li> <li> Run the Content Server
+</li></ul>
+<p />
+<h3><a name="Deprecated_ Using Steam Script to create new versions"></a> <strong><em>Deprecated</em></strong> Using Steam Script to create new versions </h3>
+<p /> <ul>
+<li> Spawn a DOS box
+</li> <li> Run '//depot/UnrealEngine3/Development/External/Steamworks/sdk/tools/ContentTool.com' /verbose /console /filename '//depot/UnrealEngine3/UDKGame/Build/Steam/SteamMakeVersion.smd'
+</li> <li> Copy the new files from 'C:\SteamGame\Depot' to 'C:\Steam\DepotRoot'
+</li> <li> Copy 'C:\SteamGame\ContentDescriptionDB.xml' to 'C:\Steam\DepotRoot'
+</li> <li> Stop then start the content server so it detects the update.
+</li></ul>
+<p />
+<h3><a name="Notes"></a> Notes </h3>
+<p /> <ul>
+<li> The update process is automated in the build system; check //depot/UnrealEngine3/Development/Builder/Scripts/Build/SteamVersion.build for details
+</li> <li> Be very careful when editing .sts and .spj files as seemingly innocuous changes can cause problems. Also, don't change the relative paths at all; this also causes problems.
+</li></ul>
+<p />
+<h2><a name="Deprecated_ Running the Steam Content Server"></a> <strong><em>Deprecated</em></strong> Running the Steam Content Server </h2>
+<p />
+There are two methods to running the content server; from a command prompt or as a service.
+<p />
+<h3><a name="Deprecated_ From a Command Prompt"></a> <strong><em>Deprecated</em></strong> From a Command Prompt </h3>
+<p /> <ul>
+<li> Spawn a DOS box
+</li> <li> Run '//depot/UnrealEngine3/Development/External/Steamworks/sdk/tools/contentserver/contentserver.exe' /verbose /DepotPath 'C:\SteamGame\LocalTestServer'
+</li> <li> Watch lots of debug spew fly by, but you should see mention of 13261_0 right at the end
+</li> <li> Steam clients can now connect and download this build
+</li></ul>
+<p />
+<h3><a name="Deprecated_ As a Service"></a> <strong><em>Deprecated</em></strong> As a Service </h3>
+<p /> <ul>
+<li> Move 'C:\SteamGame\LocalTestServer' to 'C:\Steam\DepotRoot' (unless you're using ContentServerCfg.txt to set the depot path for the service; see below)
+</li> <li> Spawn a DOS box
+</li> <li> Run '//depot/UnrealEngine3/Development/External/Steamworks/sdk/tools/contentserver/contentserver.exe' /install (this automatically starts the service)
+</li> <li> Steam clients can now connect and download this build
+</li></ul>
+<p />
+<h3><a name="Deprecated_ Notes"></a> <strong><em>Deprecated</em></strong> Notes </h3>
+<p /> <ul>
+<li> The content server generally works very well and seamlessly handles a lot of the typical network nightmares.
+</li> <li> I have found two notable exceptions <ul>
+<li> The content server does <strong>not</strong> detect new versions, to register a new version you need to restart the service.
+</li> <li> The depot location when running as a service cannot be set from the commandline.  When running as a service, it can only be set via a file named ContentServerCfg.txt located in the same directory as ContentServer.exe.  Otherwise the default value of \Steam\DepotRoot is used (the path is relative to the root of the volume).  The syntax of this file is similar to UE3 .ini files; so for example, to change the depot location from \Steam\DepotRoot to \LocalContentServer, ContentServerCfg.txt would need to contain the following two lines:
+</li></ul>
+</li></ul>
+<p />
+<pre>
+           &#91;ClientContent]
+           DepotRootPath &#61; &#34;\LocalContentServer&#34;
+</pre>
+<p />
+<h2><a name="Using Steam in Game"></a> Using Steam in Game </h2>
+<p />
+Simply having the Steam client running when launching the game will allow you to access all the Steam features. If the Steam client is not running, the networking layer will fall back internally to the common online subsystem (which basically has the functionality of OnlineSubsystemPC).
+<p />
+The authentication system is quite simple; if you don't 'own' the game, you can't play on a server. Ask Valve for your own app id to test network connectivity with your games; the 'Unreal Development Kit' app id is owned by everyone.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/Steam.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:21:35 GMT -->
+</html></body>

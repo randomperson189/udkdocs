@@ -1,0 +1,420 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/InstrumentingGameStatisticsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:40:45 GMT -->
+<head>
+<title> UDK | InstrumentingGameStatisticsCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">InstrumentingGameStatisticsCH  </b></div>
+<div id="tooltext">
+<a href="InstrumentingGameStatistics.html" class="twikiLink">English Translation</a><br><a href="InstrumentingGameStatisticsJP.html" class="twikiLink">日本語訳</a><br><a href="InstrumentingGameStatisticsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/InstrumentingGameStatisticsCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="在您的游戏中收集游戏统计数据"></a> 在您的游戏中收集游戏统计数据 </h1>
+<p />
+ <em>文档概要：该文档详细描述了成功在您的游戏中装备统计数据收集必需的结构、功能和流程。</em>
+<p />
+ <em>文档变更记录：初始版本由 <a href="https://udn.epicgames.com/Main/JoshMarkiewicz" class="restricted" class="restricted" class="twikiLink">Josh Markiewicz</a> 于 2009 年 5 月 11 日创建，由 <a href="https://udn.epicgames.com/Main/JeffWilson" class="restricted" class="restricted" class="twikiLink">Jeff Wilson</a> 进行更新。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="InstrumentingGameStatisticsCH.html#在您的游戏中收集游戏统计数据"> 在您的游戏中收集游戏统计数据</a> <ul>
+<li> <a href="InstrumentingGameStatisticsCH.html#概述"> 概述</a>
+</li> <li> <a href="InstrumentingGameStatisticsCH.html#文件格式"> 文件格式</a>
+</li> <li> <a href="InstrumentingGameStatisticsCH.html#数据结构"> 数据结构</a>
+</li> <li> <a href="InstrumentingGameStatisticsCH.html#事件"> 事件</a>
+</li> <li> <a href="InstrumentingGameStatisticsCH.html#GameplayEventWriter"> GameplayEventWriter</a> <ul>
+<li> <a href="InstrumentingGameStatisticsCH.html#启动日志会话"> 启动日志会话</a>
+</li> <li> <a href="InstrumentingGameStatisticsCH.html#记录事件"> 记录事件</a>
+</li> <li> <a href="InstrumentingGameStatisticsCH.html#结束记录会话"> 结束记录会话</a>
+</li></ul>
+</li> <li> <a href="InstrumentingGameStatisticsCH.html#GameplayEventReader"> GameplayEventReader</a> <ul>
+<li> <a href="InstrumentingGameStatisticsCH.html#打开统计数据文件"> 打开统计数据文件</a>
+</li> <li> <a href="InstrumentingGameStatisticsCH.html#数据流工作流程"> 数据流工作流程</a>
+</li> <li> <a href="InstrumentingGameStatisticsCH.html#处理每个事件"> 处理每个事件</a>
+</li> <li> <a href="InstrumentingGameStatisticsCH.html#关闭文件"> 关闭文件</a>
+</li> <li> <a href="InstrumentingGameStatisticsCH.html#过滤数据"> 过滤数据</a>
+</li> <li> <a href="InstrumentingGameStatisticsCH.html#小结"> 小结</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<p />
+在引擎中收集统计数据的原理是为游戏设计师提供整个游戏开发的游戏会话过程中捕获的有效数据。它必须具有灵活性、快速性和全面性。灵活性体现在可以根据设计师的需求快速进行更改，快速是因为它可以在不破坏游戏性的情况下实时捕获大量数据，全面表现在历史记录比较和数据探勘。对另一端，系统可以使用通过缓冲 I/O 和版本控制支持动态载入到磁盘上的轻量级数据结构。尽量确保可以始终读取早期的文件，即使该数据已经被捕获或者它们的格式已经发生变化。
+<p />
+因为绝对不可能两次经历同样的游戏会话，所以文件格式必须支持以任何顺序动态载入的数据。定义如下。
+<p />
+您收集了一些数据后，可以访问<a href="GameStatsVisualizerReference.html" class="twikiLink">有关使用游戏统计数据查看器的参考资料</a>。
+<p />
+
+<p />
+<h2><a name="事件"></a> 事件 </h2>
+<p />
+初始状态引擎支持的所有事件都定义在 GameStats.uci 中。将事件 ID 组成条理分明的群组，其中游戏指定标识符从 1000 以上计起。您可以按照您的意愿组织您的任务，当然要确保它们是唯一的。通过使用该文件中定义的宏指令和事件，您可以开始记录与您的游戏会话相关的信息。请参阅 GameStats.uci 了解更多有关已经定义的支持事件类型的信息。
+<p />
+<h2><a name="GameplayEventWriter"></a> GameplayEventWriter </h2>
+<p />
+这个类可以处理数据到磁盘的全部写入操作。它可以处理文件创建、缓冲和关闭。使用各种已经定义的记录函数记录有关您的游戏会话的信息。当然，只要您愿意，可以覆盖功能。
+<p />
+<h3><a name="启动日志会话"></a> 启动日志会话 </h3>
+<p />
+<pre>StartLogging(optional float HeartbeatDelta)</pre>
+<p />
+在记录会话开头会调用这个函数，打开这个文件进行编写。选择保证是唯一并且对平台限制严格的文件名称，然后将它创建在您的游戏主目录 <em>Stats</em> 文件夹中。如果心跳参数已经指定，那么系统会在每 HeartbeatDelta 时间间隔调用 Poll()。默认情况下，会在这个时候记录所有处于活动状态的玩家控制器位置和方位。可以扩展收集到的信息以获取/更新所有被认定与您的游戏相关的信息。
+<p />
+要将游戏统计数据记录添加到您的游戏中，您自定义的 GameInfo 类必须创建一个负责记录事件的 GameplayEventsWriter 的新实例（或者是它的子类）。这个过程应该在您的 GameInfo 子类的 <em>PostBeginPlay()</em> 函数中进行。
+<p />
+<div style="margin:10px;background:#e0e0e0;font:12px Courier;">
+<pre>
+function PostBeginPlay()
+{
+   local class&#60;GameplayEventsWriter&#62; GameplayEventsWriterClass;
+
+    //省略代码...
+
+   //可以选择设置游戏事件记录器
+   if (bLogGameplayEvents &#38;&#38; GameplayEventsWriterClassName !&#61; &#34;&#34;)
+   {
+      GameplayEventsWriterClass &#61; class&#60;GameplayEventsWriter&#62;(FindObject(GameplayEventsWriterClassName, class&#39;Class&#39;));
+      if ( GameplayEventsWriterClass !&#61; None )
+      {
+         `log(&#34;Recording game events with&#34;&#64;GameplayEventsWriterClass);
+         GameplayEventsWriter &#61; new(self) GameplayEventsWriterClass;
+         //可以选择在这里开始记录
+         //GameplayEventsWriter.StartLogging(0.5f);
+      }
+      else
+      {
+         `log(&#34;Unable to record game events with&#34;&#64;GameplayEventsWriterClassName);
+      }
+   }
+   else
+   {
+      `log(&#34;Gameplay events will not be recorded.&#34;);
+   }
+
+    //省略代码...
+}
+</pre>
+</div>
+<p />
+您会注意到使用的是 <em>bLogGameplayEvents</em> 、 <em>GameplayEventsWriterClassName</em> 和 <em>GameplayEventsWriter</em> 变量。在 UTGame 类中定义它们。如果您的游戏没有通过 UTGame 扩展，那么您需要定义类似的变量供使用。
+<p />
+如果您自定义的游戏类型启用了记录，那么上面的代码可以创建一个在 *Game.ini 文件中指定的类的实例。它还包含可以选择立即开始记录的注释部分，在您的游戏可以立即开始记录统计数据的情况下可以去除这部分注释。在与该游戏相关的地方可以调用 StartLogging()。某些使用匹配的延迟开始时间的游戏类型可以使用 StartMatch() 函数开始记录统计数据。
+<p />
+<h3><a name="记录事件"></a> 记录事件 </h3>
+<p />
+GameStats.uci 已经包含大量可以用于记录游戏数据的宏指令。通常情况下会执行它们，这样可以满足很多需求的函数会越来越少。一般会将游戏事件标识符存储为应该足以达到目标的特殊通用数据类型。提供了更多复杂的记录函数，可以存储玩家在事件过程中的位置、方位以及用过的武器和/或其他方面信息。重点是一个单独的 ID 和通用容器本身大部分并不是取决于自己的，而是由指定游戏、指定关联及完全由用户决定稍后如何插入数据。
+<p />
+使用这些函数是为了正确地创建、查找和索引各种元数据（团队、玩家、武器等等），节省数据文件中的空间。
+<p />
+已经将一个新类别 GameStats 赋给统计数据集合的输出结果。您可以在日志中解压缩它，查看记录事件的实时输出结果。
+<p />
+为了记录事件，必须在 GameplayEventWriter 中调用相应的函数，同时向它传递需要的信息。在 GameStats.uci 文件中使用预定义宏指令，使这个过程可以十分轻松地完成。例如，为了记录每个玩家 PK 和死亡事件，可能要在您的 GameInfo 子类的 Killed() 函数内使用 `RecordKillEvent。
+<p />
+<div style="margin:10px;background:#e0e0e0;font:12px Courier;">
+<pre>
+// 监控伤害的消息
+function Killed( Controller Killer, Controller KilledPlayer, Pawn KilledPawn, class&#60;DamageType&#62; DamageType )
+{
+    //省略代码...
+
+    if ( KilledPRI !&#61; None )
+    {
+        `RecordKillEvent(NORMAL, Killer, DamageType, KilledPlayer);
+
+    //省略代码...
+}
+</pre>
+</div>
+<p />
+肯定不会有两个完全一样的游戏，所以访问可以限制调用预定义的宏指令所需要的各种变量，可能必需定义您自己的宏指令才能记录您自己使用现有数据的事件。
+<p />
+在上面的省略代码中， <strong>NORMAL</strong> 指的是 GAMEEVENT_PLAYER_KILL_NORMAL 事件， <strong>Killer</strong> 可以控制玩家 PK 过程， <strong>DamageType</strong> 是表示所进行的致命伤害类型的类，而 <strong>KilledPlayer</strong> 可以控制玩家死亡过程。RecordKillEvent 将会提取该信息并将杀害事件记录在数据流中，按要求将相应的条目添加到杀人者和被杀者的 PlayerList 元数据数组，然后使用数据流内部的那些索引。
+<p />
+<h3><a name="结束记录会话"></a> 结束记录会话 </h3>
+<p />
+<pre>EndLogging()</pre>
+<p />
+在会话结束时调用，EndLogging() 可以编写剩余的尾文件数据，验证头文件并最终关闭记录文件。如果没有调用这个函数，那么可以认为该文件无效，该文件的阅读器无法读取这个文件。
+<p />
+UTGame 中的 EndLogging() 函数包含可以结束统计数据记录过程的基本功能。如果您的游戏没有通过 UTGame 扩展，那么您需要将类似的功能添加到您的 GameInfo 子类中。
+<p />
+<div style="margin:10px;background:#e0e0e0;font:12px Courier;">
+<pre>
+function EndLogging(string Reason)
+{
+   if (GameplayEventsWriter !&#61; None)
+   {
+      GameplayEventsWriter.EndLogging();
+   }
+
+   Super.EndLogging(Reason);
+}
+</pre>
+</div>
+<p />
+
+<p />
+<h3><a name="小结"></a> 小结 </h3>
+<p />
+参考 UTGame 源代码，了解有关如何装备您的代码的工作流程。
+<p />
+装备清单： <ul>
+<li> 在衍生的 GameInfo 类中声明游戏性统计数据变量
+</li> <li> 开始和停止记录游戏性会话 <ul>
+<li> 在调用衍生的 GameInfo 类的 PostBeginPlay() 过程中创建一个编写类实例
+</li> <li> 在 PostBeginPlay() 还是在 StartMatch() 中开始记录，这取决于游戏的设计
+</li> <li> 通常在 EndLogging() 函数中结束记录
+</li></ul>
+</li> <li> 必须将任何不包含在引擎中的自定义事件添加到衍生的 GameplayEventsWriter 类内部的 SupportedEvent 数组中
+</li> <li> 确保在每个用于记录的 .uc  文件中都包含 GameStats.uci <ul>
+<li> 如果在衍生的 GameInfo.uc 文件内部包括这个文件，那么使用下面的方法添加这个文件         <pre>
+         `define GAMEINFO(dummy)
+         `include(UTGame\UTStats.uci);
+         `undefine(GAMEINFO)
+         </pre>         它允许 include 文件进行优化，不需要访问 WorldInfo。为了将事件记录在其他文件中，只需使用         <pre>
+         `include(UTGame\UTStats.uci)
+         </pre>         没有定义。在 include 指令内部的宏指令认为可以直接访问 WorldInfo。如果不可以，可以直接调用记录函数。
+</li></ul>
+</li> <li> 将一个条目添加到游戏的 DefaultGame.ini 中，通知游戏负责记录事件以及启用/禁用记录的类         <pre>
+         &#91;XXXGame.XXXGame]
+         GameplayEventsWriterClassName&#61;XXXGame.XXXGameplayEventsWriter
+         bLogGameplayEvents&#61;&#60;true/false&#62;
+         </pre>
+</li> <li> 将条目添加到游戏的 DefaultEditor.ini 中，指定 DB 上传可以使用和设置 SQL 数据库连接信息的游戏统计数据库类。它对于编辑器中的数据可视化来说是必需的。         <pre>
+         &#91;UnrealEd.GameStatsBrowser]
+         GameStatsDBClassname&#61;XXXEditor.XXXGameStatsDatabase
+         RemoteConnectionIP&#61;&#34;XXX.XXX.XXX.XXX&#34;
+         ConnectionString&#61;&#34;Provider&#61;sqloledb;Data Source&#61;&#60;database name&#62;;Initial Catalog&#61;GameStats;Trusted&#95;Connection&#61;Yes&#34;
+         RemoteConnectionStringOverride&#61;&#34;Data Source&#61;&#60;database name&#62;;Initial Catalog&#61;GameStats;Integrated Security&#61;True;Pooling&#61;False;Asynchronous Processing&#61;True;Network Library&#61;dbmssocn&#34;
+         </pre>
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/InstrumentingGameStatisticsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:40:45 GMT -->
+</html></body>

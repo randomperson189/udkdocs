@@ -1,0 +1,413 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/FluidSurfaces.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:21:38 GMT -->
+<head>
+<title> UDK | FluidSurfaces    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">FluidSurfaces  </b></div>
+<div id="tooltext">
+<a href="FluidSurfacesJP.html" class="twikiLink">日本語訳</a><br><a href="FluidSurfacesCH.html" class="twikiLink">中国翻译</a><br><a href="FluidSurfacesKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/FluidSurfaces -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="ParticlesAndEffectsHome.html" class="twikiLink">Particle &amp; Effects</a></b> &gt; <b><a href="FluidSurfacesHome.html" class="twikiLink">Fluid Surfaces</a></b> &gt; Fluid Surfaces Guide
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Fluid Surfaces Guide"></a> Fluid Surfaces Guide </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="FluidSurfaces.html#Fluid Surfaces Guide"> Fluid Surfaces Guide</a> <ul>
+<li> <a href="FluidSurfaces.html#Overview"> Overview</a>
+</li> <li> <a href="FluidSurfaces.html#Simulation and Detail sub-grids"> Simulation and Detail sub-grids</a>
+</li> <li> <a href="FluidSurfaces.html#Activation and deactivation"> Activation and deactivation</a>
+</li> <li> <a href="FluidSurfaces.html#Generating waves"> Generating waves</a>
+</li> <li> <a href="FluidSurfaces.html#Creation"> Creation</a> <ul>
+<li> <a href="FluidSurfaces.html#Properties: _FluidSurfaceComponent"> Properties: FluidSurfaceComponent</a>
+</li> <li> <a href="FluidSurfaces.html#Properties: Fluid"> Properties: Fluid</a>
+</li> <li> <a href="FluidSurfaces.html#Properties: _FluidDetail"> Properties: FluidDetail</a>
+</li> <li> <a href="FluidSurfaces.html#Properties: _FluidDebug"> Properties: FluidDebug</a>
+</li></ul>
+</li> <li> <a href="FluidSurfaces.html#Tips and best practices"> Tips and best practices</a>
+</li> <li> <a href="FluidSurfaces.html#Console commands"> Console commands</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Fluid Surfaces are flat objects that visualize waves by moving the vertices up and down and/or by animating a normalmap texture that can be used in the material. Each of these features only affect a smaller rectangular part of the whole fluid. Normally, these rectangles will be centered around the main player and the rest of the fluid will remain flat and unaffected by any forces. As a designer, you'll want to keep these rectangles as large and finely tessellated as you can, while still maintaining good memory and performance.
+<p />
+Fluid Surfaces are commonly used to simulate water.
+<p />
+There are two types of Fluid Surfaces: FluidSurfaceActor and FluidSurfaceActorMovable. The only difference is that the latter can be moved around by Matinee.
+<p />
+<img alt="FluidTest.jpg" src="rsrc/Three/FluidSurfaces/FluidTest.jpg" />
+<p />
+<h2><a name="Simulation and Detail sub-grids"></a> Simulation and Detail sub-grids </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+As mentioned, only a part of a FluidSurfaceActor has some detail. The rest is just a flat quad. The Simulation and Detail sub-grids move around within the FluidSurfaceActor, trying to center themselves around their respective "targets". When the <em>TargetSimulation</em> and <em>TargetDetail</em> properties are empty, they will center around the player.
+<p />
+You can see where the Simulation or Detail sub-grids are located within the FluidSurfaceActor by turning on <em>bShowSimulationPosition</em> or <em>bShowDetailPosition</em>. They will show up as rectangles. Since they move around and follows a target, you will probably want to test this in-game or in PIE. You can turn these on in-game with the "set" exec command. E.g: <pre> set fluidsurfacecomponent bShowSimulationPosition 1 </pre>
+<p />
+Since Simulation grid uses vertex animation to visualize waves and ripples, that sub-grid will be highly tessellated and contain a lot of vertices. The Detail grid only moves around a normalmap texture and don't need any extra vertices.
+<p />
+The Simulation grid is simulated on the CPU in a separate thread. The Detail grid is simulated purely on the GPU, animating a normalmap texture.
+<p />
+<h2><a name="Activation and deactivation"></a> Activation and deactivation </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Fluids can be activated and deactivated. In the activate state, waves and ripples are simulated and the fluid are using up the required memory and performance. In the deactivated state, fluids use only a minimal amount of memory and they cost no extra performance other than rendering a static flat quad with the specified material.
+<p />
+Fluids start up as deactivated, but will be activated automatically if the player is within DeactivationDistance (as measured from the closest FluidSurfaceActor edge - not the Simulation or Detail edges) and a force is applied to a point within the Simulation or Detail grid. Any force that are applied outside these sub-grids will simply be ignored and the fluid stays in the deactivated state.
+<p />
+Once a fluid is activated, it will be deactivated automatically 10 seconds after the player moves outside the DeactivationDistance, no more forces are applied to the Simulation or Detail grids, and the fluid has settled down.
+<p />
+<h2><a name="Generating waves"></a> Generating waves </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+There are two ways of generating waves in a fluid: manual FluidSurfaceInfluenceActors or automatic physical interaction. Automatic interaction are handled by normal Touch events (this can also be hooked up in Kismet). Whenever an actor touches the fluid plane, an impact force is applied. The strength will be derived from the ForceImpact property, as well as the size and velocity of the touching actor. While the touching actor moves around on the fluid plane, a different (continuous) force is applied. This type of interaction uses the FluidContinuous property to determine the strength of the continuous force.
+<p />
+Note that the TestRipple uses the FluidImpact property for its impulses (when TestRippleFrequency is greater than 0). When TestRippleFrequency is 0, it will apply a continuous force using the ForceContinuous property.
+<p />
+Any force that is applied to a location outside the Simulation or Detail rectangles is ignored.
+<p />
+As a general tip for visual quality, a larger impact radius will normally generate nicer, smoother wave. A larger radius have a stabilizing effect on the simulation since more cells are affected by the force.
+<p />
+<p />
+<h2><a name="Creation"></a> Creation </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Select FluidSurfaceActor under the "Actor Classes" tab in the Generic Browser. Right-click somewhere in the world in a viewport and select "Add FluidSurfaceActor Here". Position and resize it as desired using the widgets and hit F4 (or double-click the actor, or right-click and select "FluidSurfaceActor Properties").
+<p />
+FluidSurfaceActors have 4 categories of properties: Fluid, FluidDebug, FluidDetail and FluidSurfaceComponent. While reviewing the property settings, keep that in mind that fluids have two ways of animating - moving vertices up/down and/or animating a normalmap texture. The former is usually referred to as "simulation" and the latter as "detail". Note that the simulation is processed on the CPU (in a separate thread) and the detail is processed on the GPU.
+<p />
+<h3><a name="Properties: _FluidSurfaceComponent"></a> Properties: FluidSurfaceComponent </h3>
+<p />
+This category only contains the fluid material property, which is the only property you have to set to have a fully functional fluid.
+<p />
+<table border = "0" width=70%><tr valign=top>
+<td><dl>
+<dt><b>FluidMaterial</b></dt> <dd>Material used for rendering the fluid.
+This can contain scrolling distortion maps for ambient turbulance as well as the special FluidNormal node for accessing the Detail texture.
+Note that the material must have the <em>bUsedWithFluidSurfaces</em> checkbox enabled!</dd>
+</dl><td>
+<td><img src="rsrc/Three/FluidSurfaces/FluidSurfaceComponent.jpg"></td>
+</tr></table>
+<p />
+<h3><a name="Properties: Fluid"></a> Properties: Fluid </h3>
+<p />
+These properties control the simulation (vertex animation) and the fluid as a whole.
+<p />
+<table border = "0" width=70%><tr valign=top>
+<td><dl>
+<dt><b>DeactivationDistance</b></dt> <dd>Distance between the player and the closest fluid edge where the fluid will deactivate and start rendering as a simple flat quad.</dd>
+<dt><b>EnableDetail</b></dt> <dd>Enables/disables the animation of the normalmap detail texture</dd>
+<dt><b>EnableSimulation</b></dt> <dd>Enables/disables the Simulation (vertex-animation)</dd>
+<dt><b>FluidDamping</b></dt> <dd>How much to dampen the amplitude of waves in the fluid Simulation (0.0-30.0)</dd>
+<dt><b>FluidHeightScale</b></dt> <dd>Wave height scale - higher value produces higher vertex waves in the Simulation</dd>
+<dt><b>FluidTravelSpeed</b></dt> <dd>Wave travel speed factor for the Simulation (0.0-1.0). This can be used to slow down the waves.</dd>
+<dt><b>FluidUpdateRate</b></dt> <dd>Simulation update rate in number of updates per second. Increasing this will make waves propagate faster but reduces performance.</dd>
+<dt><b>ForceContinuous</b></dt> <dd>Force factor for continuous interaction (in contrast to sudden impacts)</dd>
+<dt><b>ForceImpact</b></dt> <dd>Force factor for instantaneous interaction</dd>
+<dt><b>GPUTessellationFactor</b></dt> <dd>How much the GPU should tessellate the fluid grid. (Only used on platforms that completely supports GPU tessellation)</dd>
+<dt><b>GridSpacing</b></dt> <dd>The size of a Simulation grid cell (in world space units)</dd>
+<dt><b>GridSpacingLowRes</b></dt> <dd>Fluids automatically draw a low-resolution grid when they are deactivated. A reasonable value is needed for vertex fogging to work when the fluid is translucent. GridSpacingLowRes gets clamped if it's too low (resulting in more than 65000 vertices).</dd>
+<dt><b>LightingContrast</b></dt> <dd>Increasing this value adds more contrast to the lighting by exaggerating the curvature for the fluid vertex normals.</dd>
+<dt><b>SimulationQuadsX</b></dt> <dd>Number of vertex quads in the Simulation grid (along the X-axis)</dd>
+<dt><b>SimulationQuadsY</b></dt> <dd>Number of vertex quads in the Simulation grid (along the X-axis)</dd>
+<dt><b>TargetDetail</b></dt> <dd>Target actor which the detail texture will center around.  If none is provided, the detail texture will center around the player.</dd>
+<dt><b>TargetSimulation</b></dt> <dd>Target actor which the simulation grid will center around.  If none is provided, the simulation grid will center around the player.</dd>
+</dl><td>
+<td><img src="rsrc/Three/FluidSurfaces/FluidProperties3.jpg"></td>
+</tr></table>
+<p />
+<h3><a name="Properties: _FluidDetail"></a> Properties: FluidDetail </h3>
+<p />
+These properties affect the Detail normalmap texture only.
+<p />
+<table border = "0" width=70%><tr valign=top>
+<td><dl>
+<dt><b>DetailDamping</b></dt> <dd>Same as FluidDamping, but for the Detail texture.</dd>
+<dt><b>DetailHeightScale</b></dt> <dd>Same as FluidHeightScale, but for the Detail texture. Increasing this will make the FluidNormal show more "contrast".</dd>
+<dt><b>DetailResolution</b></dt> <dd>Resolution of the Detail texture. The texture is square. </dd>
+<dt><b>DetailSize</b></dt> <dd>Size of the Detail grid within the fluid, in world-space units. The Detail grid is square.</dd>
+<dt><b>DetailTransfer</b></dt> <dd>This is a factor that modulates any forces applied (transferred) to the Detail texture. It's only useful if you use both the Simulation and Detail features on a FluidSurfaceActor.</dd>
+<dt><b>DetailTravelSpeed</b></dt> <dd>Same as FluidTravelSpeed, but for the Detail texture.</dd>
+<dt><b>DetailUpdateRate</b></dt> <dd>Same as FluidUpdateRate, but for the Detail texture.</dd>
+</dl><td>
+<td><img src="rsrc/Three/FluidSurfaces/FluidDetail2.jpg"></td>
+</tr></table>
+<p />
+<h3><a name="Properties: _FluidDebug"></a> Properties: FluidDebug </h3>
+<p />
+These properties can be used while setting up and tweaking a FluidSurfaceActor. They have no affect in a FINAL_RELEASE build.
+<p />
+<table border = "0" width=70%><tr valign=top>
+<td><dl>
+<dt><b>bPause</b></dt> <dd>Turning this on will freeze the simulation in place.</dd>
+<dt><b>bShowDetailNormals</b></dt> <dd>Renders an overlay showing the Detail texture on screen.</dd>
+<dt><b>bShowDetailPosition</b></dt> <dd>Show the position of the Detail grid as a rectangle within the fluid.</dd>
+<dt><b>bShowFluidDetail</b></dt> <dd>Shows the Detail texture as flat, but keeps animating it in the background.</dd>
+<dt><b>bShowFluidSimulation</b></dt> <dd>Shows the Simulation as flat geometry, but keeps animating it in the background.</dd>
+<dt><b>bShowSimulationNormals</b></dt> <dd>Visualize the Simulation normals with lines.</dd>
+<dt><b>bShowSimulationPosition</b></dt> <dd>Show the position of the Simulation grid as a rectangle within the fluid.</dd>
+<dt><b>bTestRipple</b></dt> <dd>Turns the Test Ripple on/off.</dd>
+<dt><b>bTestRippleCenterOnDetail</b></dt> <dd>Whether to center the Test Ripple on the Detail grid.</dd>
+<dt><b>NormalLength</b></dt> <dd>Length of visulized Simulation normals.</dd>
+<dt><b>TestRippleFrequency</b></dt> <dd>Number of seconds between each pling on the test ripple. 0 makes it continuous.</dd>
+<dt><b>TestRippleRadius</b></dt> <dd>Radius of the test ripple, in world space.</dd>
+<dt><b>TestRippleSpeed</b></dt> <dd>Angular speed of the test ripple.</dd>
+</dl><td>
+<td><img src="rsrc/Three/FluidSurfaces/FluidDebug.jpg"></td>
+</tr></table>
+<p />
+<h2><a name="Tips and best practices"></a> Tips and best practices </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+We recommend using vertex-animation only for larger surfaces and normalmap-animation only for smaller surfaces like puddles. Using features at the same time can become cumbersome to tweak and will only waste memory and performance for little gain.
+<p />
+While the FluidSurfaceActor can be as large as you want, using large simulation or detail sub-grids can use up a lot of memory and hurt performance. The key is to have as large GridSpacing as you can without hurting the smoothness too much. Start with a high value (like 50) and gradually make it smaller until you're satisfied with the quality. Then adjust the size of the simulation grid with SimulationQuadsX and SimulationQuadsY until you have as large active rectangle as you need. Still, using larger grid than 300x300 will use up a lot of memory.
+<p />
+Turn on the "Test Rippple" to tweak the fluid properties in the editor and use Realtime Udate. The test ripple will activate the fluid so you can estimate the quality of your settings. Remember to use the lowest possible settings without hurting the quality too much, to keep memory and performance cost low.
+<p />
+Wave travel speed is affected by the resolution (GridSpacing/SimulationQuadsX/SimulationQuadsX or DetailSize/DetailResolution), FluidUpdateRate/DetailUpdateRate and FluidTravelSpeed/DetailTravelSpeed. Once you have a set the resolution for decent smooth waves, you want to tweak the wave speed with FluidTravelSpeed/DetailTravelSpeed. You should try to keep the update rates around 30 (lower will make the animation jerky, higher will cost performance).
+<p />
+Any force you apply to a fluid shouldn't have too small radius. Larger radius will make the waves look smoother.
+<p />
+<h2><a name="Console commands"></a> Console commands </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> <strong>togglefluids</strong> will turn all fluid simulation on/off and free up almost all memory it uses. This can be used to compare memory usage and performance hit.
+</li> <li> <strong>stat fluids</strong> will display memory and performance statistics. Remember that the statistics can vary greatly per platform!
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/FluidSurfaces.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:21:40 GMT -->
+</html></body>

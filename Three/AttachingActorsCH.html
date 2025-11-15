@@ -1,0 +1,330 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/AttachingActorsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:15:46 GMT -->
+<head>
+<title> UDK | AttachingActorsCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">AttachingActorsCH  </b></div>
+<div id="tooltext">
+<a href="AttachingActors.html" class="twikiLink">English Translation</a><br><a href="AttachingActorsJP.html" class="twikiLink">日本語訳</a><br><a href="AttachingActorsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/AttachingActorsCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="LevelEditingHome.html" class="twikiLink">关卡编辑</a></b> &gt; 附加 Actor <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="LevelDesignerHome.html" class="twikiLink">关卡设计师</a></b> &gt; 附加 Actor
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="附加 Actor"></a> 附加 Actor </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="AttachingActorsCH.html#附加 Actor"> 附加 Actor</a> <ul>
+<li> <a href="AttachingActorsCH.html#概述"> 概述</a>
+</li> <li> <a href="AttachingActorsCH.html#动态 Actors"> 动态 Actors</a>
+</li> <li> <a href="AttachingActorsCH.html#Base 指针"> Base 指针</a>
+</li> <li> <a href="AttachingActorsCH.html#刚体"> 刚体</a>
+</li> <li> <a href="AttachingActorsCH.html#将 Actors 附加给骨骼"> 将 Actors 附加给骨骼</a>
+</li> <li> <a href="AttachingActorsCH.html#b_ShadowParented"> bShadowParented</a>
+</li> <li> <a href="AttachingActorsCH.html#附加物机制"> 附加物机制</a> <ul>
+<li> <a href="AttachingActorsCH.html#SoftAttach"> SoftAttach</a>
+</li> <li> <a href="AttachingActorsCH.html#HardAttach"> HardAttach</a>
+</li></ul>
+</li> <li> <a href="AttachingActorsCH.html#Matinee"> Matinee</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+在 UE3 中，通常最好将您的关卡中的对象附加在一起。示例可以是将一个光源附加给一个移动的电梯，或者将一个粒子发射器附加给一个升降机，或者是将一个网格物体附加给一些动画人物的骨骼。该文档会告诉您如何在虚幻编辑器中对它进行设置。
+<p />
+<p />
+<h2><a name="动态 Actors"></a> 动态 Actors </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+首先要记住任何‘静态’的 actor 在游戏中都不可以移动，而且您不应该尝试将它们附加给其他对象，因为这样它将无法运行。例如，您不应该尝试并将一个 StaticMeshActor 附加给某些对象，而应该使用一个 Mover (aka InterpActor) 。光源也是一样的 - 使用 PointLightMovable 而不是 PointLight。
+<p />
+<p />
+<h2><a name="Base 指针"></a> Base 指针 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Actors 有一个被称为 Base 的属性，它在 Attachment（附加物）部分中。这个 Actor 是它们的“基础” - 或者“附加目标”。如果您想要将 Actor A 附加到 Actor B 上，下面是最简单的方法：
+<p /> <ol>
+<li> 选择 A。
+</li> <li> 在属性窗口上按下‘锁定’按钮，这样就可以在您选择其他 Actors 时使该窗口可以一直显示 A 的属性。
+</li> <li> 选择 B。
+</li> <li> 打开 Attachment 部分并选择 A 的 Base 属性。
+</li> <li> 点击绿色箭头将当前选择的 Actor (B) 赋予该属性。
+</li></ol>
+<p />
+每当您选择一个基于其他 Actor 的 Actor 时，您应该都会看到一条从 Actor 指向它的 Base 的绿色的线。这使得检查所有对象设置是否正确变得容易。
+<p />
+<p />
+<h2><a name="刚体"></a> 刚体 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+注意在使用 PHYS_RigidBody 的 Actors 上使用 Base 指针不起任何作用。要连接到使用物理仿真的 Actor，您将需要使用一个关节（也称为‘约束’）。在 <a href="VtmConstraints.html" class="twikiLink">VtmConstraints（视频教学模块约束）</a> 页面上会提供更多相关信息。
+<p />
+<p />
+<h2><a name="将 Actors 附加给骨骼"></a> 将 Actors 附加给骨骼 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+也可以将一个 Actor 附加给另一个 Actor 的 Skeletal Mesh（骨架网格物体）的特定骨骼。它特别适用于过场动画 - 例如，将一个武器附加给一个动画人物手。要进行该操作，您首先要如上所述设置 Base 指针。然后您输入您想要附加到 BaseBoneName 属性的骨骼的名称，也在 Attachment（附加物）部分中。在您选择附加的 Actor 时，您应该会像以前一样看到绿色的线盒框，但是这次它应该是绕在特定骨骼周围的。它可以使您轻松地检查您是否具有正确的骨骼名称。您可以使用 AnimSet Viewer（动画集查看器）在特定的 Skeletal Mesh（骨架网格物体）中查找骨骼的名称 - 只需在浏览器中双击它即可。
+<p />
+<p />
+<h2><a name="b_ShadowParented"></a> bShadowParented </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+在 QA_APPROVED_BUILD_JULY_2008 版本之前，bShadowParented 只会将父项的阴影投射到 BaseSkelComponent 上。<br><br>
+<p />
+从 QA_APPROVED_BUILD_JULY_2008 开始，如果 BaseSkelComponent 有效，bShadowParented 标志会将父项的阴影投射到它上面，否则它会使所有投射当前 actor 的分量的阴影将父项的阴影投射到第一个附加到 Base actor 上的阴影投射分量上。 这会使之前提到的所有分量可以投射同一个阴影，这样渲染会更有效率，而且会避免对象投下阴影重叠的地方出现双阴影。
+<p />
+<h2><a name="附加物机制"></a> 附加物机制 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+UE3 中有两个附加物机制。
+<p />
+<h3><a name="SoftAttach"></a> SoftAttach </h3>
+<p />
+其中一个附加物机制是供玩家在他们站立在一个对象上时使用的。它是默认的‘软’附加物。随着基础不断移动，它会计算每帧附加的 Actor 的线性运动，然后通过使用该运动尝试移动它使它一直处于同一个相对位置。将它添加到任何玩家运动中，这样玩家就可以仍然在移动对象的顶部跑动。此外，如果移动器在一个低的边缘下运行，那么会正确地推动玩家向后直到他最后掉下去。虽然它可以随着时间的推移缓慢地累积错误（特别是使用旋转的 Actors），但是附加的对象可能还是会逐渐从它的基础中‘漂移’。
+<p />
+<h3><a name="HardAttach"></a> HardAttach </h3>
+<p />
+另一种附加物机制被称为 HardAttach，而且可以保证附加物通常有一个相对于它的基础的特定位置/旋转。因为它没有正确处理附加物与环境之间的碰撞，所以只能将它用于非碰撞附加物（bBlockActors 是 FALSE）。
+<p />
+要牢记于心的重要的事情是，如果您看到的是附加物慢慢从它们的基础中分离出来，那么请确保将 bHardAttach 标志设置为 TRUE。对于大多数常见的附加 Actors（Emitter（发射器）、PointLightMovable（可移动点光源）等等），它默认为 TRUE。
+<p />
+<h2><a name="Matinee"></a> Matinee </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Matinee 应该正确处理基于其他对象的对象。当您关键帧某个基于其他对象的 Actor 时，会相对于基础考虑运动信息。使用这种方法，设置相对于其他 Actors 移动的 Actors（例如，火车上的门），就会变得很容易。此外，当您在 Matinee 中取消运动和动画时，附加的 Actors 应该进行实时更新。最重要的事情是，在您开始使用 Matinee 关键帧它们 <em>之前</em> ，设置您的附加物。在您已经设置了运动轨道之后进行这项操作可能会产生逻辑混乱的结果。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/AttachingActorsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:15:46 GMT -->
+</html></body>

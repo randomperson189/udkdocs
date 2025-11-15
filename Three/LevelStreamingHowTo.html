@@ -1,0 +1,413 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LevelStreamingHowTo.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:19:24 GMT -->
+<head>
+<title> UDK | LevelStreamingHowTo    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">LevelStreamingHowTo  </b></div>
+<div id="tooltext">
+<a href="LevelStreamingHowToJP.html" class="twikiLink">日本語訳</a><br><a href="LevelStreamingHowToCH.html" class="twikiLink">中国翻译</a><br><a href="LevelStreamingHowToKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/LevelStreamingHowTo -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="LevelStreamingHome.html" class="twikiLink">Level Streaming</a></b> &gt; Using Level Streaming
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Using Level Streaming"></a> Using Level Streaming </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="LevelStreamingHowTo.html#Using Level Streaming"> Using Level Streaming</a> <ul>
+<li> <a href="LevelStreamingHowTo.html#Overview"> Overview</a>
+</li> <li> <a href="LevelStreamingHowTo.html#The Persistent Level"> The Persistent Level</a> <ul>
+<li> <a href="LevelStreamingHowTo.html#Persistent Level Quick How-To"> Persistent Level Quick How-To</a>
+</li></ul>
+</li> <li> <a href="LevelStreamingHowTo.html#Scripted Streaming via Kismet"> Scripted Streaming via Kismet </a> <ul>
+<li> <a href="LevelStreamingHowTo.html#Scripted Streaming Quick How-To"> Scripted Streaming Quick How-To</a>
+</li></ul>
+</li> <li> <a href="LevelStreamingHowTo.html#Distance-based Streaming"> Distance-based Streaming</a> <ul>
+<li> <a href="LevelStreamingHowTo.html#Distance Streaming Quick How-To"> Distance Streaming Quick How-To</a>
+</li></ul>
+</li> <li> <a href="LevelStreamingHowTo.html#Working with the Streamed Levels"> Working with the Streamed Levels</a> <ul>
+<li> <a href="LevelStreamingHowTo.html#Loading and Events"> Loading and Events</a>
+</li> <li> <a href="LevelStreamingHowTo.html#Moving Actors Between Levels"> Moving Actors Between Levels</a>
+</li> <li> <a href="LevelStreamingHowTo.html#Optimization"> Optimization</a>
+</li></ul>
+</li> <li> <a href="LevelStreamingHowTo.html#Streaming Volumes"> Streaming Volumes</a>
+</li> <li> <a href="LevelStreamingHowTo.html#Conclusion"> Conclusion</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+By following the directions in this document, Unreal Engine 3 users should be able to successfully set up the realtime streaming of multiple levels together to create the illusion of one large, seamless world.
+<p />
+For information about volume-based level streaming, see the doc on <a href="LevelStreamingVolumes.html" class="twikiLink">Level Streaming Volumes</a>.
+<p />
+<p />
+<h2><a name="The Persistent Level"></a> The Persistent Level </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The first step towards getting your levels to blend together seamlessly is creating the persistent level. This can be thought of as a master level that is primarily used to govern which levels will be streamed in and out.
+<p />
+Creating a persistent level and adding streaming levels to it can be done in just a few simple steps:
+<p /> <ol>
+<li> Create a new map, add a small cube of geometry out of sight somewhere (this simply validates it as a level as far as the engine is concerned, and will likely be a step that is done away with eventually)
+</li> <li> Place a playerstart wherever you would like the player to begin. Note that in the persistent level this playerstart will likely be floating in space, but once you have streamed a level in, it should be moved to wherever you want the player to begin in the first streamed level. We will be launching the persistent level when it's time to play the game, but the player will actually be moving through the geometry of one of your streamed levels, not the persistent level.
+</li> <li> Save your map, giving it a name denoting it as the persistent level for your own organizational purposes. Headquarters_P, for example.
+</li> <li> Open the generic browser, and click on the "Level" tab. This is where you must list every level that you wish to stream in. If Headquarters consists of three maps, all three should be added here. Do so by selecting Level-&gt;New From File from the Level pull-down menu. The order in which you add the streaming levels is not important, but future versions of UnrealEd<sup>?</sup> will allow you to re-order the levels to keep things organized. You should end up with something like what is in the picture below.
+</li> <li> <em>Note that you will be given the option to stream your levels in by distance or by kismet</em>: <ul>
+<li> Distance streaming loads and unloads a level based on the player's distance from the level's origin.
+</li> <li> Kismet streaming allows the designer to load and unload the level at will via kismet scripting, and thus is the most common choice here.
+</li></ul>
+</li></ol>
+<p />
+<img alt="streamingImagenew1.jpg" src="rsrc/Three/LevelStreamingHowTo/streamingImagenew1.jpg" />
+<p />
+<strong>Example 1: The level browser after three streamed levels have been added</strong>
+<p />
+The level denoted as "CURRENT" is the level that will be modified if changes are made in the editor windows or kismet. This allows you to easily work on multiple maps, as long as they are all writeable. If you press the save button, it will save the CURRENT level (or you can save all maps listed here including the persistent by clicking the Save All Levels button).
+<p />
+The visible checkbox allows you to hide and unhide the levels in the editor, although this is for visualization purposes only and has no bearing on whether or not a level will stream into the game when it is run. However, a level that is not visible here will not be affected if you rebuild the level, which can be a great timesaver if you have complicated levels.
+<p />
+In order to permanently remove a streamed level from your persistent level, select Remove level from world from the Level pulldown in the browser. If you need to change a level's streaming method, remove the level and then re-add it, selecting the method you would prefer it to stream in by. Currently "Load" and "Unload" are not functional, nor is the Lock/Unlock icon or the Draw Bounding Box flag.
+<p />
+<img alt="streamingImagenew2.jpg" src="rsrc/Three/LevelStreamingHowTo/streamingImagenew2.jpg" />
+<p />
+<strong>Example 2: Right-click and choose "Make Current" to change which level you are working on</strong>
+<p />
+<h3><a name="Persistent Level Quick How-To"></a> Persistent Level Quick How-To </h3>
+<p /> <ul>
+<li> Create a new map in UnrealEd<sup>?</sup>
+</li> <li> Add a piece of simple BSP geometry, such as a cube
+</li> <li> Add a playerstart
+</li> <li> Add the levels you would like to stream in the Level Browser.
+</li> <li> Save and name the map
+</li></ul>
+<p />
+<p />
+<h2><a name="Scripted Streaming via Kismet"></a> Scripted Streaming via Kismet </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Once you have created your persistent level as detailed above, you are ready to start choosing which streaming levels to load into your game. There are two parts to this; streaming (loading) the level and making the level visible. To stream your levels via Kismet, simply follow these steps:
+<p /> <ul>
+<li> Open Kismet
+</li> <li> Place a level startup (New Event -&gt; Level Loaded)
+</li> <li> Place as many Stream Level actions as you have levels (New Action -&gt; Level -&gt; Stream Level)
+</li> <li> Add the name of each of your levels to the Stream Level actions by clicking on them and entering the level name where it says LevelName.
+</li> <li> Connect the level loaded to each of the Load inputs on the Stream Level actions.
+</li></ul>
+<p />
+This process will immediately load each of your connected levels when the persistent map is run. Note that you have the option to make your level visible immediately (bMakeVisibleAFterLoad), if the map is one that the player will see as soon as he enters the world. It is also recommended that you check bShouldBlockOnLoad for any streamed sections that will be visible immediately upon load.
+<p />
+<img alt="streamingImagenew3.jpg" src="rsrc/Three/LevelStreamingHowTo/streamingImagenew3.jpg" />
+<p />
+<strong>Example 3: Loading three levels via Kismet</strong>
+<p />
+At this point, you should be able to launch the persistent level and explore your streaming levels, as long as they were set to be visible upon load. If you had any levels that were not marked as such for performance reasons, you will now want to set up triggers or other means of making them visible. For example, Headquarters_3 may be too far away for the player to see it initally, so it should be made visible later in order to conserve resources. There is a kismet action called Change Level Visibility which is also located in New Action -&gt; Level. This action will allow you to hide and unhide streamed levels at your discretion. If you use the Unload event in the Stream Level action, the level will be unloaded from memory which is great for freeing up memory though you will need to use the Load event before you are able to make it visible.
+<p />
+<h3><a name="Scripted Streaming Quick How-To"></a> Scripted Streaming Quick How-To </h3>
+<p /> <ul>
+<li> Open Kismet
+</li> <li> Add a Level Loaded action and a StreamLevel action, connect the Level Loaded to the Load input
+</li> <li> Left-click on Stream Level and add the name of the level you would like to stream to the "LevelName" field and check the bMakeVisibleAfterLoad flag.
+</li> <li> Save your map and launch the game.
+</li></ul>
+<p />
+<p />
+<h2><a name="Distance-based Streaming"></a> Distance-based Streaming </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+If you have chosen to stream your level in based on its distance from the player, there are some extra steps to take. First, make sure your persistent level is selected in the generic browser, and then expand the WorldInfo category on the far right-hand side. Right-click on the WorldInfo_# that you should now see and select "Edit Properties". Open the WorldInfo property in the property window and then open the StreamingLevels property. You should see each of the streaming levels listed here. You will now be able to set at what distance from the player the level will stream in at in the MaxDistance field. Think of this as a sphere that is centered at 0,0,0 in that level's world space by default. When the player enters this sphere, the level will stream in and when he leaves the sphere, the level will be unloaded. The location of this sphere can be changed, and most likely will have to be, since you'll in most cases want this sphere to completely surround the level you are streaming in, so that it is loaded when you are near the level, and unloaded when you leave the levels immediate area. We are planning on adding ways of visualizing where this sphere exists, but this has not yet been implemented.
+<p />
+This method of streaming can be useful for situations where you want to load and unload a level numerous times, based on player distance from the level. Note that there may be a noticeable hitch as the level loads, if it is a large map, as the level is actually being streamed in and out, not being hidden and unhidden.
+<p />
+<img alt="streamingImagenew4.jpg" src="rsrc/Three/LevelStreamingHowTo/streamingImagenew4.jpg" />
+<p />
+<strong>Example 4: Setting up distance-based streaming</strong>
+<p />
+<h3><a name="Distance Streaming Quick How-To"></a> Distance Streaming Quick How-To </h3>
+<p /> <ul>
+<li> Open the Generic Browser
+</li> <li> Click the Level tab
+</li> <li> Select Level-&gt;New From File from the Generic Browser file menu and select the level you would like to stream in
+</li> <li> Choose "Distance" streaming
+</li> <li> Making sure "Persistent Level" is selected, expand the WorldInfo property on the right-hand side. Right-click on the WorldInfo_# and select "Edit Properties"
+</li> <li> In the property menu that should now be open, expand WorldInfo and then StreamingLevels.
+</li> <li> Enter the distance from the player in game units at which you would like the level to be streamed into the world, and change the origin to the location in world space you would like that distance to be measured from.
+</li></ul>
+<p />
+<p />
+<h2><a name="Working with the Streamed Levels"></a> Working with the Streamed Levels </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="Loading and Events"></a> Loading and Events </h3>
+<p />
+A new Kismet action was added to replace the Level Startup action that typically gets many events rolling when a level is loaded. This action is called Level Loaded And Visible. It basically functions in the same way as a Level Startup, but is designed to work in conjunction with the Change Level Visibility action. Whenever a level is made visible to the player, either by the CLV action or by streaming it in if the bMakeVisibleAfterLoad flag has been checked, this Loaded And Visible action will fire. This combined with Remote Events allows each streamed level to be its own self-contained entity that can be loaded and unloaded as necessary as well as receive and give events to other streamed levels. The example picture below has the player teleporting as soon as the subject level has been made visible, and also spawns a creature when a remote event from another level has been fired.
+<p />
+<img alt="streamingImagenew5.jpg" src="rsrc/Three/LevelStreamingHowTo/streamingImagenew5.jpg" />
+<p />
+<strong>Example 5: Example script of a streamed level</strong>
+<p />
+<h3><a name="Moving Actors Between Levels"></a> Moving Actors Between Levels </h3>
+<p />
+As of the DEC 2007 QA-Approved build, you can move Actors between levels by simply copying them from one level (Ctrl + C), changing the current level and then pasting them (Ctrl + V). However, this uses a similar pathway to that of the <em>MoveSelectedActorsToCurrentLevel</em> in that it has to serialize them out to a <em>scratch</em> world in order to resolve potential references between the Actors. This functionality was introduced in changelist #203995 and #206418.
+<p />
+In builds prior to the JAN 2007 QA-Approved build, you may have experiencd <em>out of memory</em> problems when moving a large number of Actors at once; but this was fixed when we improved performance (and memory usage) of editor transaction buffers (changelist #206829).
+<p />
+Also in the JAN 2007 QA-Approved build, you can move Actors into a new level using the <em>New Level from Selected Actors</em> button in the <a href="LevelBrowserReference.html" class="twikiLink">Level Browser</a> (changelist #206324).
+<p />
+<h3><a name="Optimization"></a> Optimization </h3>
+<p />
+Most developers will find that the more streaming levels they have the better, both for performance and workflow reasons. However, this should be tempered by a limiting factor currently in the system, namely that actors that have been placed in one level cannot be directly referenced in kismet by another level. Remote events can be fired and received to trigger events across streaming levels, but it is not possible to directly reference actors across levels at this point. In the picture above, Pathnode_0 and Pathnode_1 must be located in the same level as this script, in this case Headquarters_2. If either of those nodes were in HQ_1 or 3, these actions would not function.
+<p />
+As of the December 2007 QA-Approved build, there is a feature that makes it easier to chop existing levels into streaming chunks.
+<p /> <ul>
+<li> Select a bunch of actors in the world.
+</li> <li> Select <em>New Level from Selected Actors</em> from the Level Browser’s <em>Level</em>.
+</li> <li> A new streaming level will be created on disk and added to the world, and the selected actors will then be moved to that new level.
+</li></ul>
+<p />
+This should make it easier to create smaller streaming level sections!
+<p />
+<p />
+<h2><a name="Streaming Volumes"></a> Streaming Volumes </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+For information about volume-based level streaming, see the <a href="LevelStreamingVolumes.html" class="twikiLink">Level Streaming Volumes</a> page.
+<p />
+<p />
+<h2><a name="Conclusion"></a> Conclusion </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+That concludes our overview of how to dynamically stream levels in and out of your game world. Since many aspects of this feature are new and constantly being updated, expect this document to be updated regularly as new features and simplifications come online.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LevelStreamingHowTo.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:19:26 GMT -->
+</html></body>

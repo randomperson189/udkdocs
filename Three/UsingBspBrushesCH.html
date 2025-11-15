@@ -1,0 +1,524 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingBspBrushesCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:20:28 GMT -->
+<head>
+<title> UDK | UsingBspBrushesCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">UsingBspBrushesCH  </b></div>
+<div id="tooltext">
+<a href="UsingBspBrushes.html" class="twikiLink">English Translation</a><br><a href="UsingBspBrushesJP.html" class="twikiLink">日本語訳</a><br><a href="UsingBspBrushesKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/UsingBspBrushesCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="LevelDesignerHome.html" class="twikiLink">关卡设计师</a></b> &gt; 使用 BSP 画刷
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="使用 BSP 画刷"></a> 使用 BSP 画刷 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="UsingBspBrushesCH.html#使用 BSP 画刷"> 使用 BSP 画刷</a> <ul>
+<li> <a href="UsingBspBrushesCH.html#概述"> 概述</a>
+</li> <li> <a href="UsingBspBrushesCH.html#BSP 画刷的用途"> BSP 画刷的用途</a> <ul>
+<li> <a href="UsingBspBrushesCH.html#阻挡关卡"> 阻挡关卡</a>
+</li> <li> <a href="UsingBspBrushesCH.html#体积"> 体积</a>
+</li> <li> <a href="UsingBspBrushesCH.html#简单的过滤几何体"> 简单的过滤几何体</a>
+</li></ul>
+</li> <li> <a href="UsingBspBrushesCH.html#画刷类型"> 画刷类型</a> <ul>
+<li> <a href="UsingBspBrushesCH.html#构建画刷"> 构建画刷</a>
+</li> <li> <a href="UsingBspBrushesCH.html#叠加型动画"> 叠加型动画</a>
+</li> <li> <a href="UsingBspBrushesCH.html#添加型"> 添加型</a>
+</li></ul>
+</li> <li> <a href="UsingBspBrushesCH.html#使用 BSP"> 使用 BSP</a> <ul>
+<li> <a href="UsingBspBrushesCH.html#添加型 vs 挖空型"> 添加型 vs 挖空型</a>
+</li> <li> <a href="UsingBspBrushesCH.html#拖拽网格"> 拖拽网格</a>
+</li> <li> <a href="UsingBspBrushesCH.html#Brush Order（画刷顺序）"> Brush Order（画刷顺序）</a>
+</li></ul>
+</li> <li> <a href="UsingBspBrushesCH.html#画刷固体性"> 画刷固体性</a> <ul>
+<li> <a href="UsingBspBrushesCH.html#固体"> 固体</a>
+</li> <li> <a href="UsingBspBrushesCH.html#半固体"> 半固体</a>
+</li> <li> <a href="UsingBspBrushesCH.html#非固体"> 非固体</a>
+</li></ul>
+</li> <li> <a href="UsingBspBrushesCH.html#画刷操作"> 画刷操作</a> <ul>
+<li> <a href="UsingBspBrushesCH.html#反交集"> 反交集</a>
+</li> <li> <a href="UsingBspBrushesCH.html#交集"> 交集</a>
+</li></ul>
+</li> <li> <a href="UsingBspBrushesCH.html#创建 BSP 画刷"> 创建 BSP 画刷</a>
+</li> <li> <a href="UsingBspBrushesCH.html#修改 BSP 画刷"> 修改 BSP 画刷</a> <ul>
+<li> <a href="UsingBspBrushesCH.html#几何体模式"> 几何体模式</a>
+</li> <li> <a href="UsingBspBrushesCH.html#变换窗体控件"> 变换窗体控件</a>
+</li> <li> <a href="UsingBspBrushesCH.html#图元"> 图元</a>
+</li> <li> <a href="UsingBspBrushesCH.html#画刷属性"> 画刷属性</a> <ul>
+<li> <a href="UsingBspBrushesCH.html#Select（选择）"> Select（选择）</a>
+</li> <li> <a href="UsingBspBrushesCH.html#Transform（变换）"> Transform（变换）</a>
+</li> <li> <a href="UsingBspBrushesCH.html#Pivot（支点）"> Pivot（支点）</a>
+</li> <li> <a href="UsingBspBrushesCH.html#Order（顺序）"> Order（顺序）</a>
+</li> <li> <a href="UsingBspBrushesCH.html#Polygons（多边形）"> Polygons（多边形）</a>
+</li> <li> <a href="UsingBspBrushesCH.html#CSG"> CSG</a>
+</li> <li> <a href="UsingBspBrushesCH.html#Solidity（固体性）"> Solidity（固体性）</a>
+</li> <li> <a href="UsingBspBrushesCH.html#添加体积"> 添加体积</a>
+</li> <li> <a href="UsingBspBrushesCH.html#转换"> 转换</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+本文档细分了在关卡创建中 BSP 的用途。关于创建关卡方面的总结，请参照<a href="CreatingLevels.html" class="twikiLink">创建关卡</a>页面。
+<p />
+BSP 画刷时虚幻关卡中最基本的构建块。从理论上说，最好将 BSP 想象为可以在关卡中进行雕塑并填充空间体积的东西。BSP 曾经备用作为关卡设计中最主要的构建块，但是现在我么已经引入了更加高效的并且具有不同专门用途的几何体类型。然而，BSP 在产品的初期阶段用于构建关卡和物体原型时仍然是非常有用的。本文档概述了 BSP 的用途以及如何使用它。
+<p />
+从技术上讲，BSP（二进制空间划分）是指一个数据结构，它用于组织空间中的物体，因此从语义上将它的描述是不正确的。这种类型的几何体的以更加精确的术语描述是 CSG（构造实体几何体）。然而，BSP 和 CSG 可以交换使用，所以当在文章或谈话中碰到这些术语时，理解它们的意思是一样的便可以了。
+<p />
+同时请注意，现在的虚幻引擎中 BSP 的使用方式和之前的版本稍微有些不同。先前的版本中，一个空的关卡是一个实体空间，采用一个添加型空间。现在，关卡作为一个挖空型空间启动。这意味着当您创建关卡时不再不要以初始的挖空型方式启动。
+<p />
+<h2><a name="BSP 画刷的用途"></a> BSP 画刷的用途 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+尽管现在主要使用 StaticMeshes（静态网格物体）来组成关卡，但是 BSP 画刷仍然有它们的用途。下面是其中一些使用 BSP 画刷的示例，通常用于：
+<p />
+<h3><a name="阻挡关卡"></a> 阻挡关卡 </h3>
+<p />
+开发关卡的标准的工作流程是这样的：
+<p /> <ul>
+<li> 设计出关卡草图及关卡路径。
+</li> <li> 运行关卡测试流程和游戏性。
+</li> <li> 修改布局并重新测试
+</li> <li> 第一遍布局网格物体
+</li> <li> 第一遍布局光照
+</li> <li> 运行关卡测试碰撞及性能问题。
+</li> <li> 润色。
+</li></ul>
+<p />
+第一步首先要阻挡关卡，在准备花时间使用静态网格物体以及其他完成的美术资源填充关卡之前决定布局和流程。通常会使用 BSP 为这个关卡创建一个框架完成这个过程，通过测试和迭代，就最终布局达成一致。BSP 对于关卡设计流程这方面几近完美，因为它不需要任何时间或牵扯到美术组。关卡设计师可以简单使用内置在虚幻编辑器中的工具创建并修改 BSP，直到他们对布局以及关卡播放方式满意为止。
+<p />
+<h3><a name="体积"></a> 体积 </h3>
+<p />
+体积是可以定义特定空间的不可视几何体，通常在玩家位于体积指定的区域内部时启用一些特殊功能。体积区域由 BSP 画刷进行定义。它会使设计师轻松地制作出局限于给定地图部分的效果，例如，适合游泳的区域、碰撞、触发器甚至是修改后期特效。
+<p />
+要了解有关体积的更多信息，请参阅<a href="UsingVolumes.html" class="twikiLink">使用体积</a>页面。
+<p />
+<h3><a name="简单的过滤几何体"></a> 简单的过滤几何体 </h3>
+<p />
+通常，在关卡设计师制作他们的关卡过程中，他们会突然想出一个情形，其中他们需要一个非常简单的一块几何体来填充空隙或空间。如果没有静态网格物体填充空间，不需要麻烦美术组负责创建一个自定义网格物体，设计师只需使用 BSP 就可以填充这个空间。尽管静态网格物体在性能方面更好，但是只要几何体简单在不会造成任何严重影响的情况下可以偶尔使用 BSP。
+<p />
+<h2><a name="画刷类型"></a> 画刷类型 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+这里有各种各样不同的 BSP Brush 类型，您可以在整个关卡创建过程中使用。每种类型专门适用于特定情况。
+<p />
+以下是在编辑器中的线框视图模式下显示的样子（在每对盒子中，左侧的那个显示了选中它后的样子）。
+<p />
+<img alt="brush_types.jpg" src="rsrc/Three/UsingBspBrushesCH/brush_types.jpg" />
+<p />
+<h3><a name="构建画刷"></a> 构建画刷 </h3>
+<p />
+构建画刷实际上是一个模板，可以对其进行修改，然后用于创建任何其他画刷类型。可以在<a href="MainEditorToolbox.html" class="twikiLink">主要编辑器工具框</a>中使用变换工具修改这个画刷、使用 Geometry Mode（几何体模式）或使用 Primitive（图元）对这个画刷进行修改。构建画刷还可以通过使用关联菜单中的 <em>Polygons（多边形） &gt; To Brush（到画刷）</em> 选项采用任何其他现有画刷格式。
+<p />
+<h3><a name="叠加型动画"></a> 叠加型动画 </h3>
+<p />
+添加型画刷就像实体填充的空间。它是您将会作为您想要添加到关卡中的 BSP 几何体的类型。可视化添加型画刷的好方法是想象房间的四面墙壁、地面和屋顶。其中每部分在您的地图中都会是一个单独的类似于盒子形状的添加型画刷，将它们的角互相匹配构成一个封闭的空间。
+<p />
+<h3><a name="添加型"></a> 添加型 </h3>
+<p />
+挖空型画刷是空心挤出来的空间。它是您可以用于删除实心空间的画刷类型，例如通过之前创建的添加型画刷制作门窗等等。挖空型空间是玩家唯一可以在其内部自由到处移动的区域。
+<p />
+<h2><a name="使用 BSP"></a> 使用 BSP </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="添加型 vs 挖空型"></a> 添加型 vs 挖空型 </h3>
+<p />
+添加型和挖空型画刷的概念已经在上面进行解释。这些概念还可以沿用到整个关卡。您在一个空白关卡中开始的默认世界空间就像是一个巨大挖空的空间，或者是一个空白的空间，您可以在其中添加几何体构建您的世界。只是为了便于理解，将它称之为添加型关卡。注意，在之前的虚幻引擎版本中，默认的世界一般都是您可以从中挖出空间的实体空间。现在已经不再是那样了。
+<p />
+可以从添加型或实体空间这样的世界开始，它们被称为添加型关卡，然后将其从您的关卡挖出，但是使用这种方法需要注意一些事项，而且它实质上只是使用大型添加型画刷填充了空白世界。通常情况下，最好以 Additive（添加型）关卡形式开始。
+<p />
+<h3><a name="拖拽网格"></a> 拖拽网格 </h3>
+<p />
+在使用 BSP 时，可以用于对齐世界中的对象的拖拽网格非常重要。如果画刷的边或角没有固定在网格上，那么可能会出现错误，引发渲染失真或其他问题。在使用画刷的时候，您应该始终确保启用了拖拽网格，并且确保您可以使画刷的顶点总是在这个网格上。
+<p />
+<h3><a name="Brush Order（画刷顺序）"></a> Brush Order（画刷顺序） </h3>
+<p />
+画刷放置的顺序非常重要，因为要根据这个顺序执行添加型或挖空型操作。放置一个挖空型画刷然后再放置一个添加型画刷的效果与放置一个添加型画刷然后再放置挖空型画刷的效果会有所不同，即使他们的位置完全相同。如果您从空白空间挖空然后添加到这个空白空间的顶部，那么实际上会忽略这个挖空型画刷，因为您无法进行挖空操作。但是，如果您以相反的顺序放置相同的画刷，那么您会添加到空白空间，然后从添加回转式空间中将其挖出。
+<p />
+有时您可能会不按照顺序放置画刷或想要在现有画刷前面添加一个需要进行计算的新画刷。幸运的是，画刷的顺序可以按照您稍后将会在<a href="UsingBspBrushesCH.html#BpAnchor" class="twikiAnchorLink">画刷属性</a>部分中看到的顺序进行修改。
+<p />
+<h2><a name="画刷固体性"></a> 画刷固体性 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+画刷可以是固体、半固体或非固体。画刷硬度指的是它是否可以与世界中的物体发生碰撞以及在构建几何体的时候是否要在周围的画刷中创建 BSP 分割。
+<p />
+画刷可以使用由<a href="MainEditorToolbox.html" class="twikiLink">工具箱</a>中的 <img alt="AddSpecialButton.gif" src="rsrc/Three/UsingBspBrushesCH/AddSpecialButton.gif" /> 按钮指定的硬度进行创建。点击这个按钮可以打开以下对话框：
+<p />
+<img alt="addspecialbrush.jpg" src="rsrc/Three/UsingBspBrushesCH/addspecialbrush.jpg" />
+<p />
+下面介绍了三种类型硬度。
+<p />
+<h3><a name="固体"></a> 固体 </h3>
+<p />
+固体画刷是画刷的默认类型。这些是您在创建一个新的添加型或挖空型画刷时得到的画刷。它们具有以下属性：
+<p /> <ul>
+<li> 阻挡游戏中的玩家和射弹。
+</li> <li> 可以是添加型或挖空型。
+</li> <li> 在周围画刷中创建 BSP 分割。
+</li></ul>
+<p />
+<h3><a name="半固体"></a> 半固体 </h3>
+<p />
+半固体画刷是可以防止在关卡中的碰撞画刷，不需要对周围的世界几何体创建 BSP 分割。可以使用它们创建诸如柱子和支撑柱这样的东西，虽然此类对象通常应该通过使用静态网格物体进行创建。它们具有以下属性：
+<p /> <ul>
+<li> 阻挡玩家和设当，就像 Solid（固体）画刷一样。
+</li> <li> 只可以是添加型，绝对不可以是挖空型。
+</li> <li> 不要在周围画刷中创建 BSP 分割。
+</li></ul>
+<p />
+<h3><a name="非固体"></a> 非固体 </h3>
+<p />
+非固体画刷是也可以在周围世界几何体中创建 BSP 分割的非碰撞画刷。它们具有可视化的效果，但是使用任何方式都无法相互作用。它们具有以下属性：
+<p /> <ul>
+<li> 不会阻挡玩家或射弹。
+</li> <li> 只可以是添加型，绝对不可以是挖空型。
+</li> <li> 不要在周围画刷中创建 BSP 分割。
+</li></ul>
+<p />
+<h2><a name="画刷操作"></a> 画刷操作 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="反交集"></a> 反交集 </h3>
+<p />
+反交集工具可以删除当前位于实体几何体的构建画刷的所有部分，例如，一个添加型画刷，只留下在实体空间外的画刷部分。现有几何体不会受到任何影响。这只是一个在构建画刷上执行的操作，为创建一个添加型画刷做准备。
+<p />
+<h3><a name="交集"></a> 交集 </h3>
+<p />
+交集工具可以删除当前不在实体几何体内的构建画刷的所有部分，例如，一个添加型画刷，只留下在实体空间内的画刷部分。现有几何体不会受到任何影响。这只是一个在构建画刷上执行的操作，为创建一个挖空型画刷做准备。
+<p />
+<h2><a name="创建 BSP 画刷"></a> 创建 BSP 画刷 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<img alt="Primitives.jpg" src="rsrc/Three/UsingBspBrushesCH/Primitives.jpg" />
+<p />
+您可以通过选中您的图元创建 BSP 画刷，右击那个按钮并在弹出的窗口中输入值来设置其大小。
+<p />
+然后使用 CSG 按钮来添加 <img alt="AddButton.gif" src="rsrc/Three/UsingBspBrushesCH/AddButton.gif" /> 或挖空 <img alt="SubtractButton.gif" src="rsrc/Three/UsingBspBrushesCH/SubtractButton.gif" /> 那个画刷几何体。当在一个已经存在的几何体上进行挖空或添加操作时一定要小心。为了确保安全，您通常应该在进行挖空操作前进行 <em>取交集</em> 操作，在进行添加操作前进行 <em>反交集</em> 操作。这将可以确保您不拥有重叠的 BSP 几何体来使得引擎混乱。
+<p />
+<img alt="operations.jpg" src="rsrc/Three/UsingBspBrushesCH/operations.jpg" />
+<p />
+<img alt="CSGspecial.jpg" src="rsrc/Three/UsingBspBrushesCH/CSGspecial.jpg" />
+<p />
+同时请注意您可以从画刷文件菜单中获得关于这些画刷的大多数工能。
+<p />
+<img alt="BrushMenu.jpg" src="rsrc/Three/UsingBspBrushesCH/BrushMenu.jpg" />
+<p />
+<h2><a name="修改 BSP 画刷"></a> 修改 BSP 画刷 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+您可以使用几种方法修改 BSP 画刷，其中每个对应特定情况以及您希望编辑画刷的方式。
+<p />
+<h3><a name="几何体模式"></a> 几何体模式 </h3>
+<p />
+最好的方式是使用几何体模式来改变画刷的实际形状。编辑器模式可以直接控制画刷的顶点、边和面。它与非常简单的 3D 建模应用程序中的工作方式极为相似。
+<p />
+要了解有关 Geometry Mode（几何体模式）以及如何使用它修改画刷的信息，请参阅<a href="GettingStartedWithGeometryMode.html" class="twikiLink">几何体模式入门指南</a>页面。
+<p />
+<h3><a name="变换窗体控件"></a> 变换窗体控件 </h3>
+<p />
+还可以使用各种不同的编辑器变换窗体控件修改您的画刷。这些允许交互进行平移、旋转和缩放，可以通过主工具栏中的窗体控件按钮访问：
+<p />
+<img alt="widgets.jpg" src="rsrc/Three/UsingBspBrushesCH/widgets.jpg" />
+<p />
+要了解有关 Transform（变换）窗体控件以及使用它们的方式的信息，请参阅<a href="UnrealEdUserGuide-2.html#Transforming Actors">变换 Actor</a>。
+<p />
+<h3><a name="图元"></a> 图元 </h3>
+<p />
+图元可以用于改变构建画刷的形状，其中这个画刷使用的是预定义还可以配置的图元形状，例如，立方体、圆柱体和圆锥体等等。有关可用图元以及如何使用它们的信息，请参阅<a href="MainEditorToolbox-2.html#Brush Primitives">主要编辑器工具箱</a>页面。
+<p />
+<a name="BpAnchor"></a>
+<h3><a name="画刷属性"></a> 画刷属性 </h3>
+<p />
+可以通过选择画刷然后在视窗中右击访问关联菜单对现有画刷进行编辑。注意，右击菜单总是可以访问的，并且是情境相关的，它根据您当前在编辑器选择的东西显示不同的选项。
+<p />
+<img alt="rclick.jpg" src="rsrc/Three/UsingBspBrushesCH/rclick.jpg" />
+<p />
+<h4><a name="Select（选择）"></a> Select（选择） </h4>
+<p />
+根据从以下菜单中选择的选项进行选择：
+<p />
+<img alt="menu_select.jpg" src="rsrc/Three/UsingBspBrushesCH/menu_select.jpg" />
+<p />
+<h4><a name="Transform（变换）"></a> Transform（变换） </h4>
+<p />
+将当前选中的画刷与网格或表面对齐，同时提供镜像选项。
+<p />
+<strong>注意：</strong> 如果画刷在尽可能大的网格上，那么有许多 BSP 画刷组成的地图将可以更高效地运行。
+<p />
+<h4><a name="Pivot（支点）"></a> Pivot（支点） </h4>
+<p />
+允许临时设置与所进行的变换相关的支点。
+<p />
+<h4><a name="Order（顺序）"></a> Order（顺序） </h4>
+<p />
+改变画刷的描画顺序。如果由于某些原因导致您的画刷按照错误的顺序进行了挖空和添加操作时，这个功能是有用的。比如，在您把一个挖空型画刷移动到一个比它后添加的一个添加型画刷的内部的情况中。结果将是您不能看到挖空出的东西。所以在这种情况下，您应该点击 order（顺序）-&gt;last on the subtract（最后描画挖空画刷），将会使得挖空型画刷最后描画，从而使得挖空操作在您的关卡中可见。
+<p />
+<h4><a name="Polygons（多边形）"></a> Polygons（多边形） </h4>
+<p /> <ul>
+<li> <strong>To Brush</strong> - 使构建画刷和您已经选中的画刷形状相同。
+</li> <li> <strong>From Brush</strong> - 使您选中的画刷和构建画刷形状相同。
+</li> <li> <strong>Merge</strong> - 将画刷面的多个多边形融合得尽可能少。这些面必须是共面的，并且这些面必须具有同样的贴图和排列方式。
+</li> <li> <strong>Separate</strong> - 与融合行为相反的操作。
+</li></ul>
+<p />
+<h4><a name="CSG"></a> CSG </h4>
+<p /> <ul>
+<li> <strong>Additive（添加型）</strong> - 将画刷转换为添加型画刷。
+</li> <li> <strong>Subtractive（挖空型）</strong> - 将画刷转换为挖空型画刷。
+</li></ul>
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>注意：</strong> 这仅对添加型或挖空型画刷有效
+<p />
+<h4><a name="Solidity（固体性）"></a> Solidity（固体性） </h4>
+<p />
+您可以把一个画刷从固体转换为半固体或非固体状态。既然虚幻技术游戏中到处都是静态网格物体，所以半固体基本上是被废弃的。然而，它们在项目初期用于避免由BSP画刷几何体组成的原型地图中的BSP洞仍然很有用。
+<p />
+<h4><a name="添加体积"></a> 添加体积 </h4>
+<p />
+在选中构建画刷后可用，这个菜单会提供 Add Volume（添加体积）按钮的备选，使用当前构建画刷创建一个新体积。
+<p />
+<h4><a name="转换"></a> 转换 </h4>
+<p /> <ul>
+<li> <strong>Convert To Static Mesh</strong> - 该选项允许用户把当前选中的画刷转换为静态网格物体。简单地选择您想转换的所有画刷，右击它们（如果您右击一个顶点，那么那个顶点将是产生的网格物体的原点！！），选择这个选项，然后为这个新网格物体分配一个包、组（可选项）并赋予为它命名。然后您便可以在通用浏览器中打开那个包，选择新的网格物体然后通过使用右击菜单把它放置在关卡中。
+</li> <li> <strong>Convert To Blocking Volume</strong> - 该选项会将选中的画刷转换为新的 BlockingVolume，替换现有画刷。
+</li> <li> <strong>Convert To ProcBuilding</strong> - 该选项会将选中的画刷转换为新 ProcBuilding 体积，通过使用删除或保留现有 BSP 画刷选项。
+</li> <li> <strong>Convert To Volume</strong> - 该选项会将选中的画刷转换为选中类型的体积，替换现有画刷。
+</li></ul>
+<p />
+<strong>注意：</strong> 新创建的静态网格物体将不会有碰撞，除非您为它们分配碰撞。如果网格物体是简单的，那么您可以把它放置在由于创建它的画刷的正上方。选择那个网格物体&amp;所有画刷，右击并选择 Save as Collision（保存为碰撞）。这将会把这些画刷的碰撞分配给网格物体（在通用浏览器中双击网格物体，并点击粉色的盒子来查看碰撞）。如果您有一个复杂的网格物体，您或许应该构建一个简单的碰撞，从而来帮助改善帧频率。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UsingBspBrushesCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:20:31 GMT -->
+</html></body>

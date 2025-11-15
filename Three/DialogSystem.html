@@ -1,0 +1,290 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DialogSystem.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:17:39 GMT -->
+<head>
+<title> UDK | DialogSystem    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">DialogSystem  </b></div>
+<div id="tooltext">
+<a href="DialogSystemJP.html" class="twikiLink">日本語訳</a><br><a href="DialogSystemCH.html" class="twikiLink">中国翻译</a><br><a href="DialogSystemKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/DialogSystem -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="AudioHome.html" class="twikiLink">Audio Home</a></b> &gt; Dialog System
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Dialog System"></a> Dialog System </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="DialogSystem.html#Dialog System">  Dialog System</a> <ul>
+<li> <a href="DialogSystem.html#Streaming Audio"> Streaming Audio</a>
+</li> <li> <a href="DialogSystem.html#Unscripted Dialog"> Unscripted Dialog</a>
+</li> <li> <a href="DialogSystem.html#Scripted Dialog"> Scripted Dialog</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Streaming Audio"></a> Streaming Audio </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The Unreal Engine <a href="AudioSystem.html" class="twikiLink">Audio System</a> does not support simultanous streaming of arbitrary audio content; however you can stream packages that have audio in them. This approach was favored because we wanted to devote as much bandwidth to texture streaming as possible; and having a delay for such fast action games as Unreal Tournament and <a href="https://udn.epicgames.com/Three/GearsOfWar2" class="restricted" class="restricted" class="twikiLink">Gears of War</a> would also be unacceptable, and syncing up the FaceFX anims becomes an additional chore at this point. As an alternative, a special dialog system was created for Gears.
+<p />
+Gears also has a lot of unscripted dialog, so this approach gives us the greatest bang for the buck.
+<p />
+<h2><a name="Unscripted Dialog"></a> Unscripted Dialog </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The Gears 2 dialog system is an <em>unscripted dialog system</em>, or <strong>GUDS</strong>, which was also used in Gears 1.
+<p />
+The system is event-based and has the Pawns making comments on occurrences in the game, such as when an enemy is spotted, or a man on your team goes down. For each action that can occur, the Pawn has a selection of lines that can be played - it could be any number of lines, even none, for each action. Currently, all the lines a Pawn can speak are held in a GUDBank, which the game will load completely for each pawn in a map. This leads to a large amount of sounds present at any given time.
+<p />
+In order to reduce the memory overhead of the system, the GUDBank for each player is being broken up into several smaller banks. At any given time, a pawn will be guaranteed to have at least one bank loaded, thereby allowing them to respond to any situation they have a setup for.
+<p />
+This process is done during <a href="ContentCooking.html" class="twikiLink">content cooking</a> so that there is no management overhead on the content side. The system introduces a game-specific <em>cooker helper</em> that allows for a game to take control of the cooking process where necessary. Each stage of the cooking pipeline calls into the game cooker helper and allows it to perform any actions it requires. This includes generating the list of packages which should be cooked, the cooking of each individual object, a function that lets the helper load a package (or create one on the fly, as is the case for the GUDS cooking), and a function that is called after a package is loaded for cooking, but before any processing has occurred.
+<p />
+Here is how the GUDS cooking utilizes the system: <ul>
+<li> The cooker will generate a list of packages it has determined as needing to be cooked. When it is done, it will make the call into the cooker helper where it will add the GUD banks that need to be generated to the lists. These are 'fake' packages, as they do not actually exist. The helper just inserts the names of packages it knows it will need to create. During this time, it will break down the source GUDBanks into several smaller banks as described above. It also generates lists of the sound cues and FaceFX animations that are used by the dialog for use later in the system. (This information will be stored in the persistent cooker data to avoid having to regenerate it each time the cooker is run.) A table of contents package is also put on the list which maps the 'parent' GUDBank class to the collection of GUDBank packages it will be broken into.
+</li> <li> The cooker will iterate over the packages in the list, loading each one and cooking the objects in them. When loading a package, it will first make a call into the helper to allow it to load the package. In the case of the GUDS, this is where the helper will create the package on the fly and return it. This involves creating a new GUDBank and filling it in with the appropriate lines. Any FaceFX animations are also inserted into a new AnimGroup that will be applied to the pawn when a bank is set for them. It will also set an internal flag indicating that a GUD package is being cooked or not for use later in the process. The helper will return NULL if it does not need to do any special processing of the given package file, and the cooker will load the package the standard way. This is done for all non-GUDS packages.
+</li> <li> After the package is loaded, the helper has a post load function called. In the case of the GUDS system, the helper will find the original GUD banks if the package is GearGame or GearGameContent and clear out their contents. This is to avoid the lines being pulled into their cooked packages. (Note that this operation could have been done during the cooking of the actual GUDBank objects as well, but it demonstrates a usage case for the PostLoad function of the cooker helper.)
+</li> <li> The cooker then iterates over each object in the package cooking it. It will first make a call into the helper CookObject function, which returns a boolean indicating whether or not the standard cooker should process the object further. In the GUDS helper case, if the object is a sound cue in the referenced list and the package is not a GUDS package, the sound cue will be set to <code>MarkedByCooker</code> to avoid having it cooked into the current package. If it is a GUDS package, it is set to force export and also has its FaceFX animation group name fixed up if required. If the object is a FaceFX asset or animset, and it is not a GUDS package, any referenced animations used by the GUDS are removed from the set.
+</li></ul>
+<p />
+At run-time, the GUDS manager handles the loading/unloading of banks. When a pawn is spawned, it gets registered with the GUD manager. If the pawn uses GUDS assets, the manager will see if the collection has already been loaded. If it hasn't, it will kick off an asynchronous load of one of the GUDBank packages that go with the pawn. The loaded package gets put into the proper collection, which is ref counted to avoid hanging onto banks when all of the pawns that use it are gone. At various times, requests can be placed to stream in a new set of banks to reduce repetition of the responses. When a new bank is loaded, old ones can be unloaded.
+<p />
+While this specific system will likely not be usable by your game, it will provide a model for breaking up content based on game-specific needs.
+<p />
+Note that this system is designed for dynamic (unscripted) dialog...
+<p />
+<h2><a name="Scripted Dialog"></a> Scripted Dialog </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Hard-referenced (situation-specific) dialog would not benefit from this exact approach. A modified GUDS approach could possibly be taken, however, simply breaking the dialog up into much smaller batches. While one batch is being used a manager could be asynchronously loading the next required batch. Once a batch is known to be completed, it could be unloaded, reducing the amount of lines in memory at any given time. Balancing the batch size to ensure minimal memory overhead but no hitches in playback would be the trick in that case.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DialogSystem.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:17:39 GMT -->
+</html></body>

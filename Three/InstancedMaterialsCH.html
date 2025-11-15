@@ -1,0 +1,385 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/InstancedMaterialsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:19:19 GMT -->
+<head>
+<title> UDK | InstancedMaterialsCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">InstancedMaterialsCH  </b></div>
+<div id="tooltext">
+<a href="InstancedMaterials.html" class="twikiLink">English Translation</a><br><a href="InstancedMaterialsJP.html" class="twikiLink">日本語訳</a><br><a href="InstancedMaterialsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/InstancedMaterialsCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="MaterialsAndTexturesHome.html" class="twikiLink">材质 &amp; 贴图</a></b> &gt; 实例化材质
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="实例化材质"></a> 实例化材质 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="InstancedMaterialsCH.html#实例化材质"> 实例化材质</a> <ul>
+<li> <a href="InstancedMaterialsCH.html#概述"> 概述</a>
+</li> <li> <a href="InstancedMaterialsCH.html#在编辑器中实例化材质"> 在编辑器中实例化材质</a>
+</li> <li> <a href="InstancedMaterialsCH.html#参数组"> 参数组</a>
+</li> <li> <a href="InstancedMaterialsCH.html#创建参数化的材质"> 创建参数化的材质</a>
+</li> <li> <a href="InstancedMaterialsCH.html#标量参数"> 标量参数</a>
+</li> <li> <a href="InstancedMaterialsCH.html#向量参数"> 向量参数</a>
+</li> <li> <a href="InstancedMaterialsCH.html#贴图参数"> 贴图参数</a>
+</li> <li> <a href="InstancedMaterialsCH.html#静态参数"> 静态参数</a>
+</li> <li> <a href="InstancedMaterialsCH.html#在脚本中实例化一个材质"> 在脚本中实例化一个材质</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+在虚幻引擎3中，材质实例化可以用于不会导致重新编译材质的材质外观改变。在不进行材质重新编译的情况下，不支持材质的一般修改，所以实例仅限于修改预定义的材质 <strong>参数</strong> 的值。参数在编译后的材质中通过唯一的名称、类型和默认值进行静态地定义。 材质实例可以动态地为这些参数提供一个新值，仅需要非常少的性能消耗。
+<p />
+为了允许应用未实例化的材质到图元上，使用了抽象基类 MaterialInterface(材质接口)。 这个类是已应用的材质的表达式和参数值的接口。 Material(材质)类是定义了表达式和默认参数值的 MaterialInterface(材质接口)的子类。 <a href="MaterialInstanceConstant.html" class="twikiLink">材质实例常量</a>和<a href="InstancedMaterials_TimeVarying.html" class="twikiLink">随时间变化的材质实例</a>类是有一个 MaterialInstance 父类的 MaterialInterface 的子类。 这些类型都会从它们的父类中继承它们的表达式和参数值，可以选择重新载入某些参数值或对其进行动画处理。
+<p />
+<a href="MaterialInstanceConstant.html" class="twikiLink">材质示例常量</a>是一个明确定义了参数值的材质实例，而<a href="InstancedMaterials_TimeVarying.html" class="twikiLink">随时间变化的材质实例</a>是一个可以通过使用<a href="Distributions.html" class="twikiLink">分布</a>曲线随时间对它的参数值进行动画处理的材质实例。
+<p />
+然后可以使用材质实例编辑器来编辑材质实例。 请参阅<a href="MaterialInstanceEditorUserGuide.html" class="twikiLink">材质实例编辑器用户指南</a>了解更多信息。
+<p />
+<h2><a name="在编辑器中实例化材质"></a> 在编辑器中实例化材质 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+可以使用两种主要方法在编辑器中创建材质实例。
+<p />
+在<a href="ContentBrowserReference.html" class="twikiLink">内容浏览器</a>中点击 <strong>新建</strong> 按钮，然后在 <strong>新建</strong> 对话框中将 <strong>工厂</strong> 选项设置为 MaterialInstanceConstant（或者根据您需要的实例类型，设置为 MaterialInstanceTimeVarying）。
+<p />
+<img src="rsrc/Three/InstancedMaterialsCH/create_newdialog.jpg" alt="create_newdialog.jpg" width="510" height="510" />
+<p />
+然后为该材质赋值，将其实例化为这个新材质实例的 <strong>父类</strong> 属性。
+<p />
+<img src="rsrc/Three/InstancedMaterialsCH/create_parentprop.jpg" alt="create_parentprop.jpg" width="786" height="414" />
+<p />
+在您希望实例的材质上右击，然后选择 <strong>创建新的材质实例（常量）</strong> （或者 <strong>创建新的材质实例（随时间变化）</strong> 根据您需要的实例类型进行选择）。
+<p />
+<img src="rsrc/Three/InstancedMaterialsCH/create_contextmenu.jpg" alt="create_contextmenu.jpg" width="282" height="483" />
+<p />
+<a name="ParameterGroups"></a>
+<h2><a name="参数组"></a> 参数组 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+参数表达式有一个 <strong>组</strong> 属性，可以在材质实例编辑器中组织安排它们。可以将相关的参数添加到同一个组，这样可以更加便于快速查找并修改所有控制特定效果或父类材质部分的参数。不属于某个组的参数将会默认为是 <em>None（无）</em> 组，并显示在这个组中。
+<p />
+<img src="rsrc/Three/InstancedMaterialsCH/groups.jpg" alt="groups.jpg" width="745" height="450" />
+<p />
+<h2><a name="创建参数化的材质"></a> 创建参数化的材质 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+为了给材质添加一个参数，可以在材质编辑器中使用其中一个参数表达式类型。这里有几种参数类型可以使用，包括 ScalarParameter、VectorParameter、各种贴图参数以及静态参数。
+<p />
+赋予这个参数一个唯一的名称，将其分配给一个<a href="InstancedMaterialsCH.html#ParameterGroups" class="twikiAnchorLink">组</a>，然后赋给它一个默认值。
+<p />
+<img src="rsrc/Three/InstancedMaterialsCH/param_edit.jpg" alt="param_edit.jpg" width="878" height="614" />
+<p />
+<h2><a name="标量参数"></a> 标量参数 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+ScalarParameter是一个可以包含一个单独的浮点值的参数。可以使用这些参数根据单独的值驱动效果，例如，高光强度，线性插值的alpha、不透明度等等。
+<p />
+请参阅<a href="MaterialsCompendium.html" class="twikiLink">材质概要</a>了解所有表达式的完整列表和描述。
+<p />
+<h2><a name="向量参数"></a> 向量参数 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+VectorParameter是一个包含一个 4 通道向量值或 4 浮点值的参数。这些通常用于提供可配置颜色，但是同时也可以使用它们表示位置数据或驱动任何需要多个值的效果。
+<p />
+请参阅<a href="MaterialsCompendium.html" class="twikiLink">材质概要</a>了解所有表达式的完整列表和描述。
+<p />
+<h2><a name="贴图参数"></a> 贴图参数 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+这里提供了一些贴图参数。每个参数针对可以接受的贴图类型或者使用它的方式。因为根据不同的贴图类型会生成不同的着色器代码，所以每个特定的贴图类型需要一个单独的表达式。
+<p /> <ul>
+<li> TextureSampleParameter2D 可以接受基本的 Texture2D
+</li> <li> TextureSampleParameterCube 可以接受 TextureCube 或立方体贴图。
+</li> <li> TextureSampleParameterFlipbook 可以接受 FlipbookTexture。
+</li> <li> TextureSampleParameterMeshSubUV 可以接受通过使用网格物体发射器制作 uv 细分效果的 Texture2D。
+</li> <li> TextureSampleParameterMeshSubUV 可以接受通过使用网格物体发射器制作 uv 细分混合效果的 Texture2D。
+</li> <li> TextureSampleParameterMovie 可以接受 MovieTexture（bink 视频格式）。
+</li> <li> TextureSampleParameterNormal 可以接受作为法线贴图使用的 Texture2D。
+</li> <li> TextureSampleParameterSubUV 可以接受通过使用平面实例发射器制作 uv 细分效果的 Texture2D。
+</li></ul>
+<p />
+请参阅<a href="MaterialsCompendium.html" class="twikiLink">材质概要</a>了解所有表达式的完整列表和描述。
+<p />
+<h2><a name="静态参数"></a> 静态参数 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+静态参数在编译时应用，所以它们能产生更加优化的代码，因为被静态参数隐藏的材质的全部分支都将被编译完成，并且在运行时不会执行。 因为它们是在编译时应用的，所以它们仅能从<a href="MaterialInstanceEditorUserGuide.html" class="twikiLink">材质实例编辑器</a>中改变，而不能从脚本中改变。
+<p />
+<strong>警告： 对于实例所应用的基础材质中的每次静态参数的结合都将编译出一个新的材质！</strong>
+<p />
+这将会导致大量的昂贵的着色器被编译。 请尝试最小化材质中静态参数及真正使用的这些静态参数排列的数量。 请参阅<a href="MaterialsCompendium.html#Static Switch Parameter" target="_top">静态切换参数</a> and <a href="MaterialsCompendium.html#Static Component Mask Parameter" target="_top">静态组件蒙板参数</a>了解更多有关特定静态参数类型的信息。
+<p />
+请参阅<a href="MaterialsCompendium.html" class="twikiLink">材质概要</a>了解所有表达式的完整列表和描述。
+<p />
+<h2><a name="在脚本中实例化一个材质"></a> 在脚本中实例化一个材质 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+为了创建一个脚本控制的材质实例，请在 UnrealScript 中使用新关键字来创建一个新的 MaterialInstanceConstant(材质实例常量)对象。 使用 SetParent 函数来设置定义了实例的表达式和默认参数值的材质，并使用 SetScalarParameterValue 或 SetVectorParameterValue 函数来改变那个实例的参数值。
+<p />
+这里的代码示范了如何使用 UnrealScript 控制参数来创建并应用一个材质实例。
+<p />
+<div class="codesnippet">
+<pre>
+var MeshComponent Mesh;
+var MaterialInstanceConstant MatInst;
+
+var float TanPercent;
+
+function InitMaterialInstance()
+{
+   MatInst &#61; new(None) Class&#39;MaterialInstanceConstant&#39;;
+   MatInst.SetParent(Mesh.GetMaterial(0));
+   Mesh.SetMaterial(0, MatInst);
+   UpdateMaterialInstance();
+}
+
+function UpdateMaterialInstance()
+{
+   MatInst.SetScalarParameterValue(&#39;TanPercent&#39;,TanPercent);
+}
+
+function Timer()
+{
+   if(/&#42;character is outside&#42;/)
+      TanPercent &#61; Lerp(/&#42;tanning rate&#42;/,TanPercent,1.0);
+   UpdateMaterialInstance();
+}
+</pre>
+</div>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/InstancedMaterialsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:19:20 GMT -->
+</html></body>

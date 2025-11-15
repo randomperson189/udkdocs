@@ -1,0 +1,742 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/WebServerKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:11:30 GMT -->
+<head>
+<title> UDK | WebServerKR    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">WebServerKR  </b></div>
+<div id="tooltext">
+<a href="WebServer.html" class="twikiLink">English Translation</a><br><a href="WebServerJP.html" class="twikiLink">日本語訳</a><br><a href="WebServerCH.html" class="twikiLink">中国翻译</a><br>
+
+<!-- Three/WebServerKR -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHomeKR.html" class="twikiLink">UE3 홈</a></b> &gt; <b><a href="InputOutputHomeKR.html" class="twikiLink">인풋 / 아웃풋</a></b> &gt; 웹 서버
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="웹 서버"></a> 웹 서버 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<em>문서 요약: UT3의 HTTP 웹서버 구현 사항의 API와 사용법 입니다.</em>
+<p />
+<em>문서 변경사항: <a href="https://udn.epicgames.com/Main/MichielHendricks" class="restricted" class="restricted" class="twikiLink">Michiel Hendricks</a> 작성. <a href="https://udn.epicgames.com/Main/SungjinHong" class="restricted" class="restricted" class="twikiLink">홍성진</a> 번역.</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="WebServerKR.html#웹 서버"> 웹 서버</a> <ul>
+<li> <a href="WebServerKR.html#개요"> 개요</a>
+</li> <li> <a href="WebServerKR.html#구조"> 구조</a>
+</li> <li> <a href="WebServerKR.html#HTTP 요청 프로세스"> HTTP 요청 프로세스</a>
+</li> <li> <a href="WebServerKR.html#WebApplication 만들기"> WebApplication 만들기</a> <ul>
+<li> <a href="WebServerKR.html#요청 처리하기"> 요청 처리하기</a>
+</li> <li> <a href="WebServerKR.html#응답 생성하기"> 응답 생성하기</a>
+</li></ul>
+</li> <li> <a href="WebServerKR.html#API"> API</a> <ul>
+<li> <a href="WebServerKR.html#WebApplication"> WebApplication</a>
+</li> <li> <a href="WebServerKR.html#WebRequest"> WebRequest</a>
+</li> <li> <a href="WebServerKR.html#WebResponse"> WebResponse</a>
+</li> <li> <a href="WebServerKR.html#WebServer"> WebServer</a>
+</li> <li> <a href="WebServerKR.html#WebConnection"> WebConnection</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="개요"></a> 개요 </h2>
+<hr size="1" noshade="noshade">
+웹서버 사용법 및 웹어플(리케이션)을 새로 만드는 방법에 대한 문서입니다. 웹서버에 사용되는 네트웍 연결의 로우 레벨 정보는, <a href="TcpLinkKR.html" class="twikiLink">TcpLink</a> 문서를 참고하시기 바랍니다.
+<p />
+HTTP 프로토콜에 대한 기본 지식이 있다는 가정하에 진행합니다. 사실 HTTP에 대해 자세히 아실 필요는 없지만, 알아두시면 도움이 많이 됩니다.
+<p />
+웹서버는 HTTP 프로토콜의 일부만 지원합니만, 웹어플에는 기능이 추가될 수도 있습니다. 현재 GET 과 POST 요청만 지원됩니다.
+<p />
+<h2><a name="구조"></a> 구조 </h2>
+<hr size="1" noshade="noshade">
+웹서버 기능을 구성하는 클래스는 다음과 같습니다:
+<p /> <dl>
+<dt> <code>WebServer</code>  </dt><dd> 웹서버의 시작점이며, 연결과 어플리케이션을 관리합니다.
+</dd> <dt> <code>WebConnection</code>  </dt><dd> 웹서버의 <em>Acceptor</em> 클래스입니다. 웹서버에 연결되는 각 클라이언트에 대해 이 클래스의 인스턴스가 생성됩니다. 연결을 관리하고, 웹어플에 전달되기 전의 전처리 과정을 담당합니다.
+</dd> <dt> <code>WebRequest</code>  </dt><dd> 이 클래스는 웹서버가 수신한 HTTP 요청을 구체화합니다.
+</dd> <dt> <code>WebResponse</code>  </dt><dd> 이 클래스는 요청에 대한 응답을 제공해 주는 기능을 구현합니다.
+</dd> <dt> <code>WebApplication</code>  </dt><dd> 이 클래스의 구현 사항은 요청 처리 및 응답 생성을 담당합니다. 웹서버를 사용할 때, 이 클래스를 확장하게 됩니다.
+</dd></dl>
+<p />
+<h2><a name="HTTP 요청 프로세스"></a> HTTP 요청 프로세스 </h2>
+<hr size="1" noshade="noshade"> <ol>
+<li> 클라이언트가 웹서버에 연결합니다.
+</li> <li> <code>WebConnection</code> 가 새로 생성되어, <code>WebServer</code> 의 연결 카운터가 증가됩니다.
+</li> <li> <em>WebConnection.Accepted</em> 가 호출됩니다. <ol>
+<li> 셧다운 타이머가 가동됩니다. 연결은 30초동안만 유지됩니다.
+</li></ol>
+</li> <li> <em>WebConnection.ReceivedText</em>. 연결이 요청을 받습니다. <ol>
+<li> 계속 요청 헤더를 처리중일 때, 데이터를 줄 단위로 분리합니다.
+</li> <li> 요청 헤더를 처리합니다. <ol>
+<li> 요청 URL에 있는 요청 변수를 처리합니다.
+</li> <li> GET 요청의 경우: <ol>
+<li> <code>WebRequest</code> 및 <code>WebResponse</code> 인스턴스를 생성합니다.
+</li> <li> 연결된 웹어플을 찾습니다.
+</li> <li> 웹어플이 없으면, HTTP를 기본 어플리케이션(이 설정된 경우)에 돌리도록 응답합니다.
+</li></ol>
+</li> <li> POST 요청의 경우: <ol>
+<li> <code>WebRequest</code> 및 <code>WebResponse</code> 인스턴스를 생성합니다.
+</li> <li> 연결된 웹어플을 찾습니다.
+</li></ol>
+</li> <li> 헤더를 <em>WebRequest.ProcessHeaderString</em> 에 의해 처리합니다. <ol>
+<li> <code>Authorization: Basic</code> 이면, 인증 사용자명과 암호를 디코드합니다.
+</li> <li> <code>Content-Length</code> 이면, <code>ContentType</code> 변수를 설정합니다.
+</li> <li> <code>Content-Length</code> 이면, <code>ContentLength</code> 변수를 설정합니다.
+</li></ol>
+</li></ol>
+</li> <li> 요청을 검사합니다: <ol>
+<li> <code>WebResponse</code> 가 생성되지 않았으면, HTTP 400 에러로 응답합니다.
+</li> <li> 웹 어플리케이션이 없으면, HTTP 404 에러로 응답합니다.
+</li></ol>
+</li> <li> <code>WebRequest.ContentLength</code> 가 0보다 크고 POST 요청인 경우, 추가 데이터를 읽습니다.
+</li> <li> &dagger; <em>WebApplication.PreQuery</em> 호출. 결과가 참이면: <ol>
+<li> &dagger; <em>WebApplication.Query</em> 호출.
+</li> <li> &dagger; <em>WebApplication.PostQuery</em> 호출.
+</li></ol>
+</li> <li> 클린업 초기화: <ol>
+<li> 모든 변수를 언셋합니다.
+</li> <li> 연결을 닫습니다.
+</li></ol>
+</li></ol>
+</li></ol>
+<p />
+&dagger; : 빌드하게 될 부분입니다.
+<p />
+<h2><a name="WebApplication 만들기"></a> WebApplication 만들기 </h2>
+<hr size="1" noshade="noshade">
+웹서버의 기능을 확장하려면, 일반적으로 웹어플을 만들어야 합니다. 이는 <code>WebApplication</code> 클래스의 상속 및 최소한 <em>WebApplication.Query</em> 메서드의 구현을 통해 이루어 집니다.
+<p />
+<code>IpDrv</code> 에서 <code>HelloWeb</code> 호출 구현 예제를 찾을 수 있습니다.
+<p />
+웹어플이 등록되면 웹서버에서만 사용되게 됩니다. 웹어플을 등록하려면, 웹서버 환경설정을 갱신해야 합니다. <code>??Web.ini</code> 파일을 수정하여 <code>[IpDrv.WebServer]</code> 부분을 다음과 같이 갱신하십시오.
+<pre>
+Applications[x]=MyPackage.MyWebApplication
+ApplicationPaths[x]=/myweb
+</pre>
+<code>x</code> 는 빈 슬롯 번호입니다. 웹어플은 최대 10개까지 가능하며, <code>http://ip:port/myweb</code> 을 통해 접근할 수 있습니다.
+<p />
+웹서버가 시작되면 모든 웹어플을 생성하고 초기화합니다. 해당 웹어플에 대한 <code>path</code> 변수는 <code>ApplicationPaths</code> 값으로 설정됩니다. <em>init()</em> 함수를 구현하여 웹어플 초기화를 수행할 수 있습니다. 웹서버가 셧다운되면, <em>CleanupApp()</em> 함수를 호출합니다. 그 함수를 통해 생성한 모든 액터 참조가 (변수가 <code>none</code> 으로 설정되는 등) 무효화됩니다.
+<p />
+<a href="#HTTP 요청 프로세스">HTTP 요청 프로세스</a> 부분에서 보듯이, 웹어플에서 처음 호출되는 함수는 <em>PreQuery(..)</em> 입니다. 이 함수가 (기본 작동값인) 참을 반환하면 이어서 <em>Query(..)</em> 와 <em>PostQuery(..)</em> 함수를 호출하게 됩니다. 세 함수 모두 다 다음과 같은 2개의 인수를 받습니다: <code>WebRequest</code> 및 <code>WebResponse</code> 인스턴스. 클래스명이 암시하듯, <code>WebRequest</code> 인스턴스는 사용자의 HTTP 요청에 관한 정보를 담고 있습니다. 그리고 <code>WebResponse</code> 인스턴스는 해당 요청에 대한 응답을 생성하는데 사용됩니다. <code>WebRequest</code> 인스턴스의 <code>URI</code> 변수는 생성된 상대적 URL 정보를 포함합니다. 웹어플 경로는 원래 URI에서 떼어버리게 됩니다.
+<p />
+<h3><a name="요청 처리하기"></a> 요청 처리하기 </h3>
+클라이언트의 요청은 웹어플의 <em>Query</em> 함수에 전달된 <code>WebRequest</code> 인스턴스에 저장됩니다.
+<p />
+아마도 <code>WebRequest</code> 에서 둘째 가라면 서러울 만큼 중요한 변수는 <code>URI</code> 일 것이며, 웹어플 영역 안에 요청 페이지를 포함하게 됩니다. 예로, 클라이언트가 <code>http://ip:port/myweb/some/page?foo=bar</code> 요청을 하고 나면, <code>URI</code> 변수는 <code>/some/page</code> 값을 갖게 됩니다. 웹어플의 전치사 <code>/myweb</code> 는 삭제되었으며, 요청 변수는 다른 곳에 저장됩니다.
+<p />
+GET 이나 POST 요청에 대해 요청 변수를 구하려면, <em>GetVariable</em>, <em>GetVariableCount</em>, <em>GetVariableNumber</em>, 및 <em>GetVariables</em> 함수를 사용해야 합니다. <em>GetVariable</em> 함수는 해당 요청에 대해 가능한 첫 값을 구합니다. 예전에 게시한 예에서 <em>GetVariable("foo")</em> 는 <code>bar</code> 를 반환할 것입니다. 몇몇 경우에 같은 이름의 요청 변수가 여럿일 수 있습니다. 예를 들어 <code>http://ip:port/myweb/some/page?foo=bar&amp;quux</code> 의 경우 <em>GetVariableCount("foo")</em> 함수를 사용하여 해당 변수에 대한 숫자 값을 구할 수 있고, <em>GetVariableNumber("foo", X)</em> 함수를 사용하여 각각의 값을 구할 수 있습니다.
+<p />
+또한 <em>GetHeader</em> 및 <em>GetHeaders</em> 함수를 통해 요청 헤더를 읽을 수도 있습니다. HTTP 헤더 <code>Content-Type</code>, <code>Content-Length</code>, <code>Authentication</code> 는 특정 변수에 저장되어 처리됩니다. <code>Content-Type</code> 및 <code>Content-Length</code> 는 POST 요청에서만 사용됩니다. <code>Authentication</code> 요청 헤더는 기본 인증 요청에 대해서만 처리됩니다. 이 경우 <code>WebRequest</code> 오브젝트의 <code>username</code> 과 <code>password</code> 변수가 디코드된 값을 포함할 것입니다.
+<p />
+요청 처리의 전형적인 메서드는 다음 예제와 같습니다:
+<p />
+<pre>
+function Query(WebRequest Request, WebResponse Response)
+{
+    // Each "page" is handled by a separate function
+    switch (request.URI)
+    {
+        case "/page1"
+            doPage1(request, response);
+            break;
+        case "/page2"
+            doPage2(request, response);
+            break;
+        // etc.
+    }
+}
+
+function doPage1(WebRequest Request, WebResponse Response)
+{
+    if (request.getVariable("action") ~= "save")
+    {
+        // save incomming settings
+    }
+    // produce a response
+}
+</pre>
+<p />
+<h3><a name="응답 생성하기"></a> 응답 생성하기 </h3>
+<p />
+웹어플이 응답하지 않으면, 웹서버도 아무런 응답을 하지 않습니다. 몇 가지 희귀한 경우에나 클라이언트에 쓸만한 응답을 생성하게 됩니다. 고로 내용을 채우는 일은 웹어플에 달려 있습니다.
+<p />
+<code>WebResponse</code> 오브젝트가 클라이언트로의 응답을 생성하는데 사용됩니다. 응답 생성의 가장 기본적인 메서드는 <em>SendText</em> 메서드를 사용하여 콘텐츠를 반환하는 것입니다. 하지만 일반적으로 내용을 조금 추가하거나, 더도 말고 덜도 말고 언리얼스크립트를 통해 생성되는 항상 동일한 응답 보다는 나은 수준의 콘텐츠를 사용하고 싶게 마련입니다.
+<p />
+<code>WebRespons</code> 오브젝트를 통해 응답을 생성하는 기본 절차는 다음과 같습니다:
+<p /> <ol>
+<li> 콘텐츠 정의: <em>AddHeader</em>, <em>Subst</em>, <em>ClearSubst</em>, <em>LoadParsedUHTM</em>, <code>headers</code>, <code>CharSet</code>
+</li> <li> <em>HTTPResponse</em>
+</li> <li> <em>SendStandardHeaders</em>
+</li> <li> 콘텐츠 전송: <em>IncludeUHTM</em>, <em>SendText</em>, <em>IncludeBinaryFile</em>
+</li></ol>
+<p />
+처음 세 단계는 완전히 옵션입니다.
+<p />
+<code>WebResponse</code> 는 다음과 같은 몇 가지 표준 HTTP 헤더를 생성하여, 커스텀 헤더 이전에 전송합니다:
+<p /> <dl>
+<dt> 서버 </dt><dd> "UnrealEngine IpDrv Web Server Build ..."
+</dd> <dt> 콘텐츠-유형 </dt><dd> <code>ContentType</code> 인자값은 <em>SendStandardHeaders</em> 호출에 포함되어 있습니다.
+</dd> <dt> 캐쉬-콘트롤 </dt><dd> "max-age=...", 웹브라우저의 <code>ExpirationSeconds</code> 값
+</dd> <dt> 만료 </dt><dd> "...", 웹 브라우저의 <code>ExpirationSeconds</code> 값
+</dd> <dt> 연결 </dt><dd> "Close". 웹브라우저는 한 번에 하나의 요청만 처리합니다.
+</dd></dl>
+<p />
+요청 데이터를 생성하는 세 가지 흔한 방법이 있습니다.
+<p /> <ol>
+<li> 수동 텍스트 보내기
+</li> <li> 파일을 있는 그대로 보내기
+</li> <li> 처리된 UHTM 파일
+</li></ol>
+<p />
+<h4><a name="수동 텍스트 보내기"></a> 수동 텍스트 보내기 </h4>
+<em>SendText</em> 함수를 사용하여 웹브라우저에 응답할 문서를 수동으로 설정할 수 있습니다. 이 메서드를 사용한 웹어플 예제는 <code>HelloWeb</code> 클래스를 참조하십시오.
+<p />
+<h4><a name="파일을 있는 그대로 보내기"></a> 파일을 있는 그대로 보내기 </h4>
+WebResponse 오브젝트는 디스크에 저장된 파일을 클라이언트에 있는 그대로 보낼 수 있게 해 주는 <em>IncludeBinaryFile</em> 함수를 제공합니다. 이 함수는 이미지 등의 고정 파일을 보내는데 흔히 사용되니, <code>ImageServer</code> 클래스를 참조하십시오.
+<p />
+첨부할 수 있는 파일은 <code>UDK/WEB</code> 디렉토리에 포함되어 있어야 합니다.
+<p />
+<em>주의</em>: <em>IncludeBinaryFile</em> 함수는 응답 헤더가 전송되었는가를 확인하지 않습니다. 고로 <em>IncludeBinaryFile</em> 함수를 호출하기 전에 <em>SendStandardHeaders</em> 함수를 호출해야 합니다.
+<p />
+<h4><a name="처리된 UHTM 파일"></a> 처리된 UHTM 파일 </h4>
+UHTM 은 텍스트 파일을 처리하여 특정 변수 및 지시어를 대체하는 템플릿 시스템입니다. 이 파일은 HTML 파일일 필요가 없으며, 아무 텍스트 파일이나 사용해도 됩니다.
+<p />
+두 가지 특수 구조가 있습니다. 첫째, 치환될 변수가 있습니다. 다음 구조를 사용하여 치환 변수를 생성합니다: <code>&lt;%var_name%&gt;</code>, <code>var_name</code> 은 변수의 이름입니다. <em>Subst</em> 함수를 사용하여 이 변수 값을 설정할 수 있습니다. 단, SGML 코멘트 안에서는 변수가 치환되지 않음을 명심하십시오. 고로 <code>&lt;!-- &lt;%var_name%&gt; --&gt;</code> 등은 그대로일 것입니다.
+<p />
+둘째 구조는 <code>&lt;!-- #include file="file.inc" --&gt;</code> 입니다. 이는 <code>file.inc</code> 파일을 현재 파일의 해당 위치에 포함시킵니다. 포함된 파일은 추가 변수 및 포함 지시어에 대해서도 처리될 것입니다.
+<p />
+<em>LoadParsedUHTM</em> 및 <em>IncludeUHTM</em> 함수가 해당 파일을 처리하게 됩니다. <em>LoadParsedUHTM</em> 함수는 처리된 파일을 스트링으로 반환하며, <em>IncludeUHTM</em> 함수는 처리된 UHTM 파일을 웹브라우저에 보냅니다. 보통 치환 변수를 새로 만드는 데는 <em>LoadParsedUHTM</em> 함수를 사용하게 됩니다.
+<p />
+<h2><a name="API"></a> API </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="WebApplication"></a> WebApplication </h3>
+<p />
+<h4><a name="필드"></a> 필드 </h4>
+<p />
+<h5><a name="Path"></a> Path </h5>
+<p />
+이 필드는 웹어플에 설정된 기본 경로로 설정됩니다. 적정 링크를 생성하려면 이 필드를 사용하십시오.
+<p />
+<h4><a name="함수"></a> 함수 </h4>
+<p />
+<h5><a name="Init"></a> Init </h5>
+<code>function Init()</code>
+<p />
+WebApplication 인스턴스가 생성된 직후 호출됩니다. 몇 가지 중요 초기화는 이 함수를 통해 이루어 집니다. 이 메서드 사용 중에는 너무 많은 일을 병행하지 마시기 바랍니다. 이 웹어플에 대한 첫 요청이 있을 때까지는 전체 초기화를 지연하는 것이 좋습니다.
+<p />
+<h5><a name="CleanupApp"></a> CleanupApp </h5>
+<code>function CleanupApp()</code>
+<p />
+웹서버가 소멸되기 전 호출됩니다. 이 메서드를 통해 모든 웹어플 액터 참조를 <code>none</code> 으로 설정해야 메모리 누수를 막을 수 있습니다.
+<p />
+<h5><a name="PreQuery"></a> PreQuery </h5>
+<code>function bool PreQuery(WebRequest Request, WebResponse Response)</code>
+<p />
+이 웹어플이 해당 쿼리를 처리하려는지 검사하기 위해 호출됩니다. 거짓이 반환되면, <em>Query</em> 와 <em>PostQuery</em> 메서드는 호출되지 않습니다.
+<p />
+<h5><a name="Query"></a> Query </h5>
+<code>function Query(WebRequest Request, WebResponse Response)</code>
+<p />
+<em>PreQuery</em> 함수 호출 반환값이 true인 경우 호출됩니다.
+<p />
+<h5><a name="PostQuery"></a> PostQuery </h5>
+<code>function PostQuery(WebRequest Request, WebResponse Response)</code>
+<p />
+<em>Query</em> 함수 호출 반환 후 호출됩니다.
+<p />
+<h3><a name="WebRequest"></a> WebRequest </h3>
+<p />
+<h4><a name="Fields"></a> Fields </h4>
+<p />
+<h5><a name="RemoteAddr"></a> RemoteAddr </h5>
+<p />
+이 요청을 생성한 클라이언트의 주소입니다.
+<p />
+<h5><a name="URI"></a> URI </h5>
+<p />
+요청 URL입니다. 이 필드는 웹어플에 의해 처리될 때 웹어플 전치사에서 제거된 부분입니다.
+<p />
+<h5><a name="Username"></a> Username </h5>
+<p />
+요청에 기본 HTTP 인증 헤더가 포함한 경우 디코드된 사용자명입니다. 자세한 정보는 RFC 2617 을 참조하십시오.
+<p />
+<h5><a name="Password"></a> Password </h5>
+<p />
+요청에 기본 HTTP 인증 헤더가 포함한 경우 디코드된 암호입니다. 자세한 정보는 RFC 2617 을 참조하십시오.
+<p />
+<h5><a name="ContentLength"></a> ContentLength </h5>
+<p />
+POST 요청의 바이트 수입니다.
+<p />
+<h5><a name="ContentType"></a> ContentType </h5>
+<p />
+POST 데이터용 콘텐츠 MIME 유형입니다.
+<p />
+<h5><a name="RequestType"></a> RequestType </h5>
+<p />
+요청의 종류에 따라 <code>Request_GET</code> 나 <code>Request_POST</code> 중 하나로 설정됩니다.
+<p />
+<h4><a name="함수"></a> 함수 </h4>
+<p />
+<h5><a name="DecodeBase64"></a> DecodeBase64 </h5>
+<code>native final function string DecodeBase64(string Encoded)</code>
+<p />
+base64 인코딩된 스트링을 디코딩합니다.
+<p />
+<h5><a name="EncodeBase64"></a> EncodeBase64 </h5>
+<code>native final function string EncodeBase64(string Decoded)</code>
+<p />
+스트링을 base64로 인코딩합니다.
+<p />
+<h5><a name="AddHeader"></a> AddHeader </h5>
+<code>native final function AddHeader(string HeaderName, coerce string Value)</code>
+<p />
+데이터 구조에 요청 헤더를 추가합니다. 이 함수는 요청 처리 도중에 사용되며, 웹어플 호출용은 아닙니다.
+<p />
+<h5><a name="GetHeader"></a> GetHeader </h5>
+<code>native final function string GetHeader(string HeaderName, optional string DefaultValue)</code>
+<p />
+해당 요청 헤더 값을 구합니다. 요청에 헤더가 없을 경우, 기본값이 반환됩니다. 이름이 같은 요청 헤더가 여럿 있을 경우, 마지막에 수신된 헤더만 반환됩니다. 헤더 이름은 대소문자를 구분하지 않습니다.
+<p />
+<h5><a name="GetHeaders"></a> GetHeaders </h5>
+<code>native final function GetHeaders(out array<string> headers)</code>
+<p />
+모든 수신 헤더 이름을 구합니다.
+<p />
+<h5><a name="AddVariable"></a> AddVariable </h5>
+<code>native final function AddVariable(string VariableName, coerce string Value)</code>
+<p />
+수신된 요청 변수를 등록합니다. 이 함수는 요청 처리 도중 내부적으로 사용되며, 웹어플 호출용은 아닙니다.
+<p />
+<h5><a name="GetVariable"></a> GetVariable </h5>
+<code>native final function string GetVariable(string VariableName, optional string DefaultValue)</code>
+<p />
+요청 변수 값을 구합니다. 요청 변수가 없으면 기본값이 반환됩니다. 변수명은 대소문자를 구분하지 않습니다. 동일 이름 변수가 여럿 수신된 경우, 값 하나만 반환됩니다. 개별 값을 구하려면 <em>GetVariableNumber</em> 및 <em>GetVariableCount</em> 함수를 사용하십시오.
+<p />
+<h5><a name="GetVariableCount"></a> GetVariableCount </h5>
+<code>native final function int GetVariableCount(string VariableName)</code>
+<p />
+해당 요청 변수의 변수 갯수를 반환합니다. 값이 1 초과일 경우, 각 값을 구하려면 <em>GetVariableNumber</em> 함수를 사용해야 합니다.
+<p />
+<h5><a name="GetVariableNumber"></a> GetVariableNumber </h5>
+<code>native final function string GetVariableNumber(string VariableName, int Number, optional string DefaultValue)</code>
+<p />
+해당 요청 변수값을 구합니다. 변수가 없거나 해당 번호 값이 없는 경우 기본값이 반환됩니다.
+<p />
+<h5><a name="GetVariables"></a> GetVariables </h5>
+<code>native final function GetVariables(out array<string> varNames)</code>
+<p />
+수신된 요청 변수 이름을 구합니다.
+<p />
+<h3><a name="WebResponse"></a> WebResponse </h3>
+<p />
+<h4><a name="필드"></a> 필드 </h4>
+<p />
+<h5><a name="헤더"></a> 헤더 </h5>
+<p />
+이 배열에는 원격 호스트로 보낼 모든 헤더가 포함됩니다. 송신 당시의 헤더를 포함하며, 이 배열 디렉토리는 <em>AddHeader</em> 함수 등을 사용하여 수정할 수 있습니다. 콘텐츠가 송신될 때, 이 필드의 변경은 적용되지 않습니다.
+<p />
+<h5><a name="IncludePath"></a> IncludePath </h5>
+<p />
+웹서버가 보낼 수 있거나 처리할 수 있는 파일이 위치한 기본 디렉토리의 상대 경로입니다.
+<p />
+<h5><a name="Connection"></a> Connection </h5>
+<p />
+이 응답을 통한 <code>WebConnection</code> 인스턴스가 전송될 것입니다. 이 변수는 데이터 저장용이 아닙니다.
+<p />
+<h4><a name="Functions"></a> Functions </h4>
+<p />
+<h5><a name="FileExists"></a> FileExists </h5>
+<code>native final function bool FileExists(string Filename)</code>
+<p />
+해당 파일명이 디렉토리를 포함하여 웹에 존재하면 참을 반환합니다. <code>ImageServer</code> 클래스같은 고정 파일 서버의 경우, 해당 파일이 존재하는지 판단하여 <code>WebApplication</code> 이 HTTP 404 Not Found 에러를 낼 수 있게 하는데 사용할 수 있습니다.
+<p />
+<h5><a name="Subst"></a> Subst </h5>
+<code>native final function Subst(string Variable, coerce string Value, optional bool bClear)</code>
+<p />
+<em>IncludeUHTM</em> 및 <em>LoadParsedUHTM</em> 함수 도중 사용되는 치환 변수를 수정합니다. 셋째 옵션 인자를 통해 기존 선언된 변수를 지울 수 있습니다.
+<p />
+<h5><a name="ClearSubst"></a> ClearSubst </h5>
+<code>native final function ClearSubst()</code>
+<p />
+치환 변수로 등록된 모든 변수를 지웁니다.
+<p />
+<h5><a name="IncludeUHTM"></a> IncludeUHTM </h5>
+<code>native final function bool &nbsp; IncludeUHTM(string Filename)</code>
+<p />
+UHTM 파일을 로드하여 저리합니다. 처리 결과가 바로 원격 호스트에 전송됩니다. 이 함수는 파일이 제대로 포함 및 처리되면 참 값을 반환합니다. 제공된 파일명은 <code>IncludePath</code> 필드에 선언된 대로 하위트리 안에서 유효해야 합니다.
+<p />
+<h5><a name="IncludeBinaryFile"></a> IncludeBinaryFile </h5>
+<code>native final function bool &nbsp; IncludeBinaryFile(string Filename)</code>
+<p />
+파일을 그대로 원격 호스트에 보냅니다. <em>IncludeUHTM</em> 와는 달리 이 함수는 응답 해더가 전송되었는지를 확인하지 않습니다. 고로 이 메서드 호출 전, 헤더가 전송되었는지 확인하십시오.
+<p />
+<h5><a name="LoadParsedUHTM"></a> LoadParsedUHTM </h5>
+<code>native final function string LoadParsedUHTM(string Filename)</code>
+<p />
+<em>IncludeUHTM</em> 함수와 비슷하나, 주요 차이점은 처리 결과 파일을 반환하며, 원격 호스트로 보내지는 않습니다. 이를 통해 좀 더 복잡한 UHTM 템플릿을 만들 수 있습니다.
+<p />
+<h5><a name="GetHTTPExpiration"></a> GetHTTPExpiration </h5>
+<code>native final function string GetHTTPExpiration(optional int OffsetSeconds)</code>
+<p />
+현재 + OffsetSeconds 의 RFC 1123 날짜를 생성합니다. 이는 <code>Expires</code> 응답 헤더를 구성하는데 사용됩니다.
+<p />
+<h5><a name="SendText"></a> SendText </h5>
+<code>event SendText(string Text, optional bool bNoCRLF)</code>
+<p />
+텍스트 데이터 스트링을 원격지에 보냅니다. <code>bNoCRLF</code> 가 참이면, DOS 줄 변환(0x13 0x10)이 추가되지 않습니다. 이 함수는 텍스트 데이터 전송 전에 응답 헤더를 보낼지 확인합니다.
+<p />
+<h5><a name="SendBinary"></a> SendBinary </h5>
+<code>event SendBinary(int Count, byte B[255])</code>
+<p />
+바이너리 데이터를 원격지에 보냅니다. 이 함수는 헤더가 전송되는지 확인하지 않습니다.
+<p />
+<h5><a name="HTTPResponse"></a> HTTPResponse </h5>
+<code>function HTTPResponse(string Header)</code>
+<p />
+HTTP 응답 코드를 보냅니다. 기본으로 200 OK 응답이 전송되지만, 이 함수를 사용하여 다른 응답을 보낼 수 있습니다. HTTP 응답 코드에 관한 상세 내용은 HTTP RFC 를 참조하십시오. HTTP 응답은 헤더 인자에 포함되어야 합니다. 예로:
+<p />
+<code>HTTPResponse("HTTP/1.0 404 Not Found");</code>
+<p />
+<h5><a name="HTTPHeader"></a> HTTPHeader </h5>
+<code>function HTTPHeader(string Header)</code>
+<p />
+응답 헤더를 보냅니다. 헤더를 보내기 전 HTTP 응답 코드가 전송되었는지 확인합니다. 이 메서드는 헤더 전송용이 아닙니다. <code>Headers</code> 필드를 직접 수정하거나 <em>AddHeader</em> 함수를 통해 헤더를 큐에 넣는 것이 낫습니다.
+<p />
+<h5><a name="AddHeader"></a> AddHeader </h5>
+<code>function AddHeader(string header, optional bool bReplace=true)</code>
+<p />
+헤더 목록에 헤더를 추가/갱신하며, 가능해지면 바로 전송됩니다. 해당 헤더를 완전히 삭제하려면, "X-Header:"와 같이 그냥 공백값을 주면 됩니다.
+<p />
+(Set-Cookie 헤더에 필요한) 이름이 같은 헤더를 여럿 추가하려면, 헤더 배열을 직접 수정해야 합니다.
+<p />
+<h5><a name="SendHeaders"></a> SendHeaders </h5>
+<code>function SendHeaders()</code>
+<p />
+큐의 헤더를 보냅니다. 이 함수는 내부적으로 <em>SendStandardHeaders</em> 에 의해 호출되므로, 직접 호출하지 마십시오.
+<p />
+<h5><a name="HTTPError"></a> HTTPError </h5>
+<code>function HTTPError(int ErrorNum, optional string Data)</code>
+<p />
+400 Bad Request, 401 Unauthorized, 404 Not Found 와 같은 일반 HTTP 응답 코드를 보내는 간단 메서드입니다.
+<p />
+에러 메시지가 내장된 HTML 응답을 포함합니다. 응답 처리 메시지를 좀 더 친숙하게 바꾸고 싶을 경우, 이 메서드로 편리하게 구현할 수 있습니다.
+<p />
+<h5><a name="SendStandardHeaders"></a> SendStandardHeaders </h5>
+<code>function SendStandardHeaders( optional string ContentType, optional bool bCache )</code>
+<p />
+표준 및 모든 커스텀 헤더를 보냅니다. 이 함수를 호출한 후에는 안전하게 응답 데이터를 포함할 수 있습니다.
+<p />
+<code>ContentType</code> 인자는 "Content-Type" 응답 헤더를 설정하는데 사용되며, 기본값은 "text/html" 입니다.
+<p />
+<code>bCache</code> 가 참인 경우, 캐쉬 명령을 포함한 헤더도 몇 포함되며, <code>WebServer.ExpirationSeconds</code> 값을 사용합니다.
+<p />
+"Connection: Close" 헤더만 강제할 수 있습니다. 기타 기본 헤더는 전부, 해당 헤더가 이미 설정되지 않았을 경우에만 사용됩니다.
+<p />
+<h5><a name="Redirect"></a> Redirect </h5>
+<code>function Redirect(string URL)</code>
+<p />
+302 Document Moved HTTP 응답을 전송하고, 클라이언트를 다른 URL로 돌려 주는 간편한 메서드입니다.
+<p />
+<h5><a name="SentText"></a> SentText </h5>
+<code>function bool SentText()</code>
+<p />
+응답 데이터가 전송된 경우 참이 됩니다. 이후로는 더이상 헤더를 보낼 수 없습니다.
+<p />
+<h5><a name="SentResponse"></a> SentResponse </h5>
+<code>function bool SentResponse()</code>
+<p />
+HTTP 응답 코드가 전송된 경우 참이 됩니다. 이후로는 응답 코드를 변경할 수 없습니다만, 헤더를 보낼 수는 있습니다.
+<p />
+<h3><a name="WebServer"></a> WebServer </h3>
+<p />
+이 클래스는 상속용이 아니며, 중요 엘리먼트만 기술됩니다.
+<p />
+<h4><a name="Fields"></a> Fields </h4>
+<p />
+<h5><a name="ServerName"></a> ServerName </h5>
+<p />
+이 옵션 환경설정 필드는 웹서버에 호스트명을 할당할 때 사용됩니다. 서버의 기능과는 전혀 상관 없습니다. <code>ServerURL</code> 필드만 로컬 IP 대신 이 이름으로 갱신하게 됩니다.
+<p />
+<h5><a name="Applications"></a> Applications </h5>
+<p />
+웹어플을 로드하는 정식 클래스 이름입니다. 이 변수는 ApplicationPaths 필드와 밀접하게 관련이 있습니다. 최대 10개의 웹어플을 정의할 수 있습니다.
+<p />
+<h5><a name="ApplicationPaths"></a> ApplicationPaths </h5>
+<p />
+웹어플에 관련된 경로입니다. 처음 일치하는 경로명에 우선순위가 주어지므로 순서가 중요합니다.
+<p />
+<h5><a name="bEnabled"></a> bEnabled </h5>
+<p />
+이 환경설정 필드로 웹서버를 쉽게 켜고 끌 수 있습니다.
+<p />
+<h5><a name="ListenPort"></a> ListenPort </h5>
+<p />
+웹서버가 동작하는 포트를 정의합니다. 웹서버는 여기 정해진 포트를 통해서만 작동하게 됩니다.
+<p />
+<h5><a name="MaxConnections"></a> MaxConnections </h5>
+<p />
+웹서버에서 지원하는 최대 동시 연결 수입니다. 이 수치를 너무 높게 잡으면 게임의 성능에 영향을 줄 수 있습니다.
+<p />
+<h5><a name="DefaultApplication"></a> DefaultApplication </h5>
+<p />
+사용할 기본 웹어플입니다. 이는 Applications 필드의 인덱스 입니다. 요청된 URL에 해당하는 웹어플이 없을 경우, 사용자를 이 웹어플로 돌립니다. 이 필드는 <code>WebConnection</code> 클래스에 의해 사용됩니다.
+<p />
+<h5><a name="ExpirationSeconds"></a> ExpirationSeconds </h5>
+<p />
+종료 시간을 정의용 일반 위치를 제공해 주는 환경설정 필드입니다. 요청에 대한 캐쉬 종료 시간을 설정하는 WebReponse 클래스에 의해 사용됩니다.
+<p />
+<h5><a name="ServerURL"></a> ServerURL </h5>
+<p />
+이 필드는 웹서버의 시작 도중 생성되며, 웹서버의 기본 url을 포함합니다.
+<p />
+<h4><a name="함수"></a> 함수 </h4>
+<p />
+<h5><a name="GetApplication"></a> GetApplication </h5>
+<code>function WebApplication GetApplication(string URI, out string SubURI)</code>
+<p />
+이 메서드는 해당 URI에 대한 웹어플을 반환합니다. 이 메서드의 둘째 인자는 웹어플 경로 전치사를 제외한 URI를 포함합니다.
+<p />
+<h3><a name="WebConnection"></a> WebConnection </h3>
+<p />
+이 클래스는 상속용이 아니며, 중요 엘리먼트만 기술됩니다.
+<p />
+<h4><a name="필드"></a> 필드 </h4>
+<p />
+<h5><a name="MaxValueLength"></a> MaxValueLength </h5>
+<p />
+이 환경설정 가능 항목은 요청 값이 가질 수 있는 최대 길이를 정의하며, 이 수치를 초과한 값은 버려집니다. 이 값이 요청을 처리하기에 충분할 만큼 크게 잡혀야 함은 두말할 필요 없습니다. 이 값은 <code>WebRequest</code> 클래스에 의해 사용됩니다.
+<p />
+<h5><a name="MaxLineLength"></a> MaxLineLength </h5>
+<p />
+요청된 한 줄의 최대 길이입니다. GET 요청의 ('?' 이후의 전부) 변수 최대 길이 뿐 아니라, POST 데이터의 한 줄 길이도 제한합니다.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/WebServerKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:11:30 GMT -->
+</html></body>

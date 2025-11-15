@@ -1,0 +1,479 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/SkeletalMeshSocketsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:28:16 GMT -->
+<head>
+<title> UDK | SkeletalMeshSocketsCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">SkeletalMeshSocketsCH  </b></div>
+<div id="tooltext">
+<a href="SkeletalMeshSockets.html" class="twikiLink">English Translation</a><br><a href="SkeletalMeshSocketsJP.html" class="twikiLink">日本語訳</a><br><a href="SkeletalMeshSocketsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/SkeletalMeshSocketsCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/Three/SkeletalMeshSocketsCH/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="SkeletalMeshHome.html" class="twikiLink">骨架网格物体</a></b> &gt; 骨架网格物体插槽
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="骨架网格物体插槽"></a> 骨架网格物体插槽 </h1>
+<hr size="1" noshade="noshade">
+<p />
+_文档概述：关于向骨架网格物体添加命名插槽的指南，这个方法也可以用于在游戏中附加其它物体。
+<p />
+_文档变更记录：由 <a href="https://udn.epicgames.com/Main/JamesGolding" class="restricted" class="restricted" class="twikiLink">James Golding</a> 创建。
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="SkeletalMeshSocketsCH.html#骨架网格物体插槽"> 骨架网格物体插槽</a> <ul>
+<li> <a href="SkeletalMeshSocketsCH.html#概述"> 概述</a>
+</li> <li> <a href="SkeletalMeshSocketsCH.html#插槽管理器"> 插槽管理器</a>
+</li> <li> <a href="SkeletalMeshSocketsCH.html#创建插槽"> 创建插槽</a>
+</li> <li> <a href="SkeletalMeshSocketsCH.html#修改插槽"> 修改插槽</a> <ul>
+<li> <a href="SkeletalMeshSocketsCH.html#相对位置"> 相对位置</a>
+</li> <li> <a href="SkeletalMeshSocketsCH.html#相对旋转量"> 相对旋转量</a>
+</li> <li> <a href="SkeletalMeshSocketsCH.html#相对缩放量"> 相对缩放量</a>
+</li> <li> <a href="SkeletalMeshSocketsCH.html#在 Skeletal Meshes（骨架网格物体）之间复制和粘贴插槽设置"> 在 Skeletal Meshes（骨架网格物体）之间复制和粘贴插槽设置</a>
+</li> <li> <a href="SkeletalMeshSocketsCH.html#预览骨架网格物体和/或静态网格物体"> 预览骨架网格物体和/或静态网格物体</a>
+</li></ul>
+</li> <li> <a href="SkeletalMeshSocketsCH.html#视图插槽"> 视图插槽</a>
+</li> <li> <a href="SkeletalMeshSocketsCH.html#使用插槽"> 使用插槽</a> <ul>
+<li> <a href="SkeletalMeshSocketsCH.html#Unrealscript"> Unrealscript</a> <ul>
+<li> <a href="SkeletalMeshSocketsCH.html#检查骨架网格物体是否有插槽"> 检查骨架网格物体是否有插槽</a>
+</li> <li> <a href="SkeletalMeshSocketsCH.html#获取插槽的世界位置和旋转量"> 获取插槽的世界位置和旋转量</a>
+</li> <li> <a href="SkeletalMeshSocketsCH.html#获取插槽的骨骼"> 获取插槽的骨骼</a>
+</li> <li> <a href="SkeletalMeshSocketsCH.html#向插槽附加组件"> 向插槽附加组件</a>
+</li> <li> <a href="SkeletalMeshSocketsCH.html#向插槽附加 actor"> 向插槽附加 actor</a>
+</li></ul>
+</li> <li> <a href="SkeletalMeshSocketsCH.html#虚幻编辑器"> 虚幻编辑器</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<hr size="1" noshade="noshade">
+通常在游戏中，您将会想要将一个物体附加到人物的骨骼上。这或许是把一个武器附加到手上，或者是把一个帽子附加到头上。虚幻引擎 3 允许您在 AnimSet Editor（动画集编辑器）中创建插槽，将它们并列放置在骨架网格物体内的一个骨骼中。然后可以相对于这个骨骼平移、旋转和缩放插槽。同时还可以预览附加到插槽上的静态网格物体和/或骨架网格物体。它允许内容创建者轻松地为骨架网格物体创建插槽，然后告诉程序员要附加对象的插槽的名称。
+<p />
+<h2><a name="插槽管理器"></a> 插槽管理器 </h2>
+<hr size="1" noshade="noshade">
+要为骨架网格物体打开 Socket Manager（插槽管理器），那么请在内容浏览器中找到这个骨架网格物体，然后双击它在动画集编辑器中打开。在工具栏上按下 Socket Manager（插槽管理器）按钮 <img src="rsrc/Three/SkeletalMeshSocketsCH/SocketManagerButton.png" alt="SocketManagerButton.png" width='27' height='26' />。目前，两个按钮的图标相同。Socket Manager（插槽管理器）按钮在 AnimSet Editor（动画集编辑器）内的位置：
+<p />
+<img src="rsrc/Three/SkeletalMeshSocketsCH/SocketMgrButton.jpg" alt="SocketMgrButton.jpg" width='600' height='53' />
+<p />
+点击这个按钮将会弹出浮动的 Socket Manager（插槽管理器）窗口。
+<p />
+<img src="rsrc/Three/SkeletalMeshSocketsCH/SocketMgr.jpg" alt="SocketMgr.jpg" width='536' height='485' />
+<p /> <ol>
+<li> <strong>Translate Socket</strong> - 可以修改所选插槽的相对平移。
+</li> <li> <strong>Rotate Socket</strong> - 可以修改所选插槽的相对旋转。
+</li> <li> <strong>Clear Previews</strong> - 可以清除所有附加插槽的网格物体。
+</li> <li> <strong>New Socket</strong> - 可以打开 Create Socket（创建插槽）对话框。
+</li> <li> <strong>Delete Socket</strong> - 可以删除所选的插槽。
+</li> <li> <strong>Socket Properties</strong> - 所选插槽的属性面板。
+</li> <li> <strong>Socket List</strong> - 该骨架网格物体的所有插槽的列表。
+</li> <li> <strong>Copy Sockets</strong> - 可以将所有插槽复制到剪切板中。
+</li> <li> <strong>Paste Sockets</strong> - 可以从剪切板中粘贴所有插槽。
+</li> <li> <strong>World Space Rotation</strong> - 允许您在时间空间旋转的同时对所选插槽相对旋转进行调整。
+</li></ol>
+<p />
+<h2><a name="创建插槽"></a> 创建插槽 </h2>
+<hr size="1" noshade="noshade">
+要创建一个新的插槽，请在 Socket Manager（插槽管理器）中按下 New Socket（新建插槽）按钮。然后您将会看到一个组合框，它允许您选择您要附加到插槽上的骨骼。注意，您可以只选择 SkeletalMesh（骨架网格物体）的所有 LOD 中的骨骼。
+<p />
+<img src="rsrc/Three/SkeletalMeshSocketsCH/AddingANewSocket.jpg" alt="AddingANewSocket.jpg" width='514' height='460' />
+<p />
+只要您已经选中了这个骨骼，那么将会提示您为这个新的插槽输入一个唯一的（在这个骨架网格物体中是唯一的，不是在所有骨架网格物体中）名称。完成这项操作之后，就创建了一个新的插槽，并且可以在视口中看到它。
+<p />
+<img src="rsrc/Three/SkeletalMeshSocketsCH/NewGunSocket.jpg" alt="NewGunSocket.jpg" width='800' height='640' />
+<p />
+<h2><a name="修改插槽"></a> 修改插槽 </h2>
+<hr size="1" noshade="noshade">
+Socket Manager（插槽管理器）也可以用于修改插槽属性。在 Socket List（插槽列表）中选择您想要修改的插槽，然后会在 Socket Properties（插槽属性）项中显示它的属性。
+<p />
+<h3><a name="相对位置"></a> 相对位置 </h3>
+您可以使用两种方法调整插槽的相对位置。 <ol>
+<li> 一种方法是直接在 Socket Properties（插槽属性）中通过扩展结构体设置相对位置 X、Y 和 Z 值。调整这些值将会更新视窗内插槽的相对位置。
+</li> <li> 另一种方法是将 Socket Manager（插槽管理器）设置为 Translate Socket（平移插槽）模式。要进行这项操作，请点击 Translate Socket（平移插槽）按钮。然后在视窗中，您可以使用平移窗体部件移动插槽。
+</li></ol>
+<p />
+<img src="rsrc/Three/SkeletalMeshSocketsCH/SocketTranslationTool.jpg" alt="SocketTranslationTool.jpg" width='800' height='640' />
+<p />
+<h3><a name="相对旋转量"></a> 相对旋转量 </h3>
+您可以使用三种方法调整插槽的相对旋转量。 <ol>
+<li> 一种方法是直接在 Socket Properties（插槽属性）中通过扩展结构体设置相对旋转量的 Pitch、Yaw 和 Roll 值。调整这些值将会更新视窗内插槽的相对旋转量。
+</li> <li> 另一种方法是将 Socket Manager（插槽管理器）设置为 Rotate Socket（旋转插槽）模式。要进行这项操作，请点击 Rotate Socket（旋转插槽）按钮。然后在视窗中，您可以使用旋转窗体部件旋转插槽。
+</li> <li> 还有一种方法是使用 World Space Rotation（世界空间旋转）工具。这种方法适用于您需要插槽与世界空间中的对象对齐的情况。该工具将会进行必要的运算，并且相应地设置相对旋转量。关闭并打开 Socket Manager（插槽管理器）查看变更情况。
+</li></ol>
+<p />
+<img src="rsrc/Three/SkeletalMeshSocketsCH/SocketRotateTool.jpg" alt="SocketRotateTool.jpg" width='800' height='640' />
+<p />
+<h3><a name="相对缩放量"></a> 相对缩放量 </h3>
+您可以在 Socket Properties（插槽属性）内调整插槽的相对所放量，通过扩展结构体同时直接设置 X、Y 和 Z 值。调整这些值将会更新视窗内附加插槽的网格物体（如果存在）。
+<p />
+<img src="rsrc/Three/SkeletalMeshSocketsCH/SocketScaleTool.jpg" alt="SocketScaleTool.jpg" width='486' height='466' />
+<p />
+<h3><a name="在 Skeletal Meshes（骨架网格物体）之间复制和粘贴插槽设置"></a> 在 Skeletal Meshes（骨架网格物体）之间复制和粘贴插槽设置 </h3>
+如果您有多个骨架网格物体，它们可以共享常用的骨架或共享同一个骨骼名称，那么您可以在它们之间复制并粘贴插槽设置。它会帮助您提高开发进度，尤其是在那些您可以具有多个运行方式相同的游戏人的游戏中。注意，它将会复制所有地方的插槽。将不会覆盖现有插槽。如果您希望覆盖现有插槽，那么首先要删除它们。
+<p />
+在动画集编辑器中打开源骨架网格物体，然后打开 Socket Manager（插槽管理器）。点击 Copy Socket（复制插槽）。
+<img src="rsrc/Three/SkeletalMeshSocketsCH/SocketCopySockets.jpg" alt="SocketCopySockets.jpg" width='800' height='621' />
+<p />
+在动画集编辑器中打开目标骨架网格物体，然后打开 Socket Manager（插槽管理器）。点击 Paste Socket（粘贴插槽）。
+<img src="rsrc/Three/SkeletalMeshSocketsCH/SocketPasteSockets.jpg" alt="SocketPasteSockets.jpg" width='800' height='621' />
+<p />
+正如您所见，已经将所有插槽添加到了我的目标骨架网格物体中，没费什么力气。您不再需要亲手重新创建所有插槽！
+<img src="rsrc/Three/SkeletalMeshSocketsCH/SocketSocketsPasted.jpg" alt="SocketSocketsPasted.jpg" width='800' height='621' />
+<p />
+<h3><a name="预览骨架网格物体和/或静态网格物体"></a> 预览骨架网格物体和/或静态网格物体 </h3>
+通常需要在您调整插槽属性的时候查看附加给插槽的实际网格物体。它适用于您尝试将一些内容与诸如角色的手对齐的情况。在 Socket Properties（插槽属性）中，有两个名为 Preview Skel Mesh（预览骨架网格物体）和 Preview Static Mesh（预览静态网格物体）。通过在内容浏览器中选择一个静态网格物体或骨架网格物体，您可以按下绿色的使用箭头按钮设置这个字段。接下来它会显示在视窗中。您可以通过使用 Clear Previews（清除预览）按钮清除所有插槽预览网格物体。
+<p />
+带有 Gun（枪）插槽以及一个骨架网格附件的骨架网格物体。
+<p />
+<img src="rsrc/Three/SkeletalMeshSocketsCH/SocketPreviewSkeletalMesh.jpg" alt="SocketPreviewSkeletalMesh.jpg" width='800' height='640' />
+<p />
+带有 Gun（枪）插槽以及一个静态网格附件的骨架网格物体。
+<p />
+<img src="rsrc/Three/SkeletalMeshSocketsCH/SocketPreviewStaticMesh.jpg" alt="SocketPreviewStaticMesh.jpg" width='800' height='640' />
+<p />
+<h2><a name="视图插槽"></a> 视图插槽 </h2>
+<hr size="1" noshade="noshade">
+显示在视窗中的插槽是粉红色的菱形，它的旁边是字体颜色为粉红色的名称。
+<p />
+<img src="rsrc/Three/SkeletalMeshSocketsCH/SocketWidget.jpg" alt="SocketWidget.jpg" width='370' height='360'/>
+<p />
+您可以通过打开 Socket Manager（插槽管理器）或者从“View（视图）”菜单中勾选“Show Sockets（显示插槽）”选项启动插槽渲染。
+<p />
+<img src="rsrc/Three/SkeletalMeshSocketsCH/AnimSetEditorViewShowSockets.jpg" alt="AnimSetEditorViewShowSockets.jpg" width='256' height='422' />
+<p />
+<h2><a name="使用插槽"></a> 使用插槽 </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="Unrealscript"></a> Unrealscript </h3>
+您可以引用并使用骨架网格物体组件内的虚幻脚本中的插槽。
+<p />
+<h4><a name="检查骨架网格物体是否有插槽"></a> 检查骨架网格物体是否有插槽 </h4>
+您可以通过使用下面的代码段测试一个骨架网格物体在虚幻脚本中是否有插槽。您还可以通过查看返回的插槽引用获取插槽的属性。
+<p />
+<div class="codesnippet">
+<pre>
+if (SkeletalMeshComponent.GetSocketByName(SocketName) !&#61; None)
+{
+  // 插槽存在
+}
+else
+{
+  // 插槽不存在
+}
+</pre>
+</div>
+<p />
+<h4><a name="获取插槽的世界位置和旋转量"></a> 获取插槽的世界位置和旋转量 </h4>
+您可以随时获取插槽在虚幻脚本中的位置和旋转量。它在您希望投射跟踪进行示例的时候很适用。
+<p />
+<div class="codesnippet">
+<pre>
+local Vector SocketLocation; // 您还可以使用变量在类实例内部全局存储它
+local Rotator SocketRotation; // 您还可以使用变量在类实例内部全局存储它
+
+if (SkeletalMeshComponent.GetSocketWorldLocationAndRotation(InSocketName, SocketLocation, SocketRotation, 0 /&#42; Use 1 if you wish to return this in component space&#42;/ )
+{
+  // 对返回的插槽位置和旋转进行一些操作
+}
+else
+{
+  // 插槽不存在
+}
+</pre>
+</div>
+<p />
+<h4><a name="获取插槽的骨骼"></a> 获取插槽的骨骼 </h4>
+您可以通过使用下面的代码段获取插槽的骨骼。
+<p />
+<div class="codesnippet">
+<pre>
+local Name SocketBoneName;
+
+SocketBoneName &#61; SkeletalMeshComponent.GetSocketBoneName(InSocketName);
+
+if (SocketBoneName !&#61; &#39;&#39; &#38;&#38; SocketBoneName !&#61; &#39;None&#39;)
+{
+  // 对返回的骨骼执行一些操作
+}
+</pre>
+</div>
+<p />
+<h4><a name="向插槽附加组件"></a> 向插槽附加组件 </h4>
+您可以大量地将诸如粒子特效、骨架网格物体、平面实例或静态网格物体这样的组件附加给插槽。
+<p />
+<div class="codesnippet">
+<pre>
+SkeletalMeshComponent.AttachComponentToSocket(Component, SocketName);
+</pre>
+</div>
+<p />
+<h4><a name="向插槽附加 actor"></a> 向插槽附加 actor </h4>
+可以向插槽附加 actor，虽然从技术上看只是设置 actor 的位置和旋转量，使其与插槽匹配，然后使用 actor 附加方法附加它。附加的 actor 不应该阻塞，而且应该将 bHardAttach 设置为 true。 注意，为了将 Pawn 作为基类使用，必须将 bCanBeBaseForPawns 设置为 true。
+<p />
+<div class="codesnippet">
+<pre>
+local Vector SocketLocation;
+local Rotator SocketRotation;
+local Actor Actor;
+
+if (SkeletalMeshComponent !&#61; None)
+{
+  if (Archetype !&#61; None &#38;&#38; SkeletalMeshComponent.GetSocketByName(SocketName) !&#61; None)
+  {
+    SkeletalMeshComponent.GetSocketWorldLocationAndRotation(SocketName, SocketLocation, SocketRotation);
+
+    Actor &#61; Spawn(Archetype.Class,,, SocketLocation, SocketRotation, Archetype);
+
+    if (Actor !&#61; None)
+    {
+      Actor.SetBase(Self,, SkeletalMeshComponent, SocketName);
+    }
+  }
+}
+</pre>
+</div>
+<p />
+<h3><a name="虚幻编辑器"></a> 虚幻编辑器 </h3>
+您还可以在编辑器内将 actor 附加给骨架网格物体。
+<p />
+首先启用插槽对齐。
+<p />
+<img src="rsrc/Three/SkeletalMeshSocketsCH/SocketSnappingA.jpg" alt="SocketSnappingA.jpg" width='800' height='621' />
+<p />
+这样视窗将会渲染所有可见插槽。选择您想要附加的 actor。点击您希望附加给哪个插槽。
+<p />
+<img src="rsrc/Three/SkeletalMeshSocketsCH/SocketSnappingB.jpg" alt="SocketSnappingB.jpg" width='800' height='621' />
+<p />
+该 actor 目前处于这个插槽的位置和旋转量，并将其附加给拥有目标插槽的骨架网格物体组件的 actor。
+<p />
+<img src="rsrc/Three/SkeletalMeshSocketsCH/SocketSnappingC.jpg" alt="SocketSnappingC.jpg" width='800' height='621' />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/SkeletalMeshSocketsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:28:21 GMT -->
+</html></body>

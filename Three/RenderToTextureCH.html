@@ -1,0 +1,473 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/RenderToTextureCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:20:22 GMT -->
+<head>
+<title> UDK | RenderToTextureCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">RenderToTextureCH  </b></div>
+<div id="tooltext">
+<a href="RenderToTexture.html" class="twikiLink">English Translation</a><br><a href="RenderToTextureJP.html" class="twikiLink">日本語訳</a><br><a href="RenderToTextureKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/RenderToTextureCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="MaterialsAndTexturesHome.html" class="twikiLink">材质 &amp; 贴图</a></b> &gt; 渲染到贴图
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="渲染到贴图"></a> 渲染到贴图 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="RenderToTextureCH.html#渲染到贴图"> 渲染到贴图</a> <ul>
+<li> <a href="RenderToTextureCH.html#概述"> 概述</a>
+</li> <li> <a href="RenderToTextureCH.html#创建渲染目标贴图"> 创建渲染目标贴图</a> <ul>
+<li> <a href="RenderToTextureCH.html#HDR 支持"> HDR 支持</a>
+</li></ul>
+</li> <li> <a href="RenderToTextureCH.html#渲染场景到贴图"> 渲染场景到贴图</a> <ul>
+<li> <a href="RenderToTextureCH.html#SceneCapture2DActor"> SceneCapture2DActor</a>
+</li> <li> <a href="RenderToTextureCH.html#SceneCaptureCubeMapActor"> SceneCaptureCubeMapActor</a>
+</li> <li> <a href="RenderToTextureCH.html#SceneCaptureReflectActor (动态反射)"> SceneCaptureReflectActor (动态反射)</a>
+</li> <li> <a href="RenderToTextureCH.html#SceneCapturePortalActor"> SceneCapturePortalActor</a>
+</li> <li> <a href="RenderToTextureCH.html#SceneCaptureComponents"> SceneCaptureComponents</a> <ul>
+<li> <a href="RenderToTextureCH.html#SceneCapture2DComponent"> SceneCapture2DComponent</a>
+</li> <li> <a href="RenderToTextureCH.html#SceneCaptureCubeMapComponent"> SceneCaptureCubeMapComponent</a>
+</li> <li> <a href="RenderToTextureCH.html#SceneCaptureReflectComponent (动态反射)"> SceneCaptureReflectComponent (动态反射)</a>
+</li> <li> <a href="RenderToTextureCH.html#SceneCaptureParaboloidComponent"> SceneCaptureParaboloidComponent</a>
+</li> <li> <a href="RenderToTextureCH.html#SceneCapturePortalComponent"> SceneCapturePortalComponent</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="RenderToTextureCH.html#保存静态截图"> 保存静态截图 </a> <ul>
+<li> <a href="RenderToTextureCH.html#静态立方体贴图的截图"> 静态立方体贴图的截图</a>
+</li></ul>
+</li> <li> <a href="RenderToTextureCH.html#技术主义事项 (写给程序员)"> 技术主义事项 (写给程序员)</a>
+</li> <li> <a href="RenderToTextureCH.html#示例">示例</a>
+</li> <li> <a href="RenderToTextureCH.html#已知限制"> 已知限制</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+引擎的渲染到贴图功能允许您动态地从不同的角度捕获场景到贴图资源上。这允许一些特效，比如远程相机、以及呈现出动态地反应场景的表面。
+<p />
+本文档的目的是概述在虚幻编辑器中创建一个渲染到贴图资源并使用该贴图作为捕获场景的目标的步骤。
+<p />
+<p />
+<h2><a name="创建渲染目标贴图"></a> 创建渲染目标贴图 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+渲染场景到贴图所需要的第一项元素是一个新的渲染-到-场景资源。您可以通过在<a href="https://udn.epicgames.com/Three/GenericBrowserReference" class="restricted" class="restricted" class="twikiLink">通用浏览器</a>中右击并从关联菜单中选择 <em>RenderToTexture(渲染到贴图)</em> 选项来实现；或者仅通过从  <em>File(文件)</em> 中选择  <em>New(新建)</em> 来实现。
+<p />
+<img alt="gen_browser_1.jpg" src="rsrc/Three/RenderToTextureCH/gen_browser_1.jpg" />
+<p />
+注意有两种类型的 渲染-到-贴图 资源，每种资源由不同的场景捕获类型使用。
+<p /> <ul>
+<li> <strong>RenderToTexture(渲染到贴图)</strong> - 用于2d、反射、及入口的场景捕获物。
+</li> <li> <strong>RenderToTextureCube（渲染到贴图立方体）</strong> - 用于立方体贴图的场景捕获物。
+</li></ul>
+<p />
+这些渲染-到-贴图资源创建一个有效的贴图表面，当渲染场景时它们可以用作为渲染目标。注意，渲染-到-贴图资源仅向文件中保存几个属性，但它并不是真正地保存贴图表面，因为它仅是用于渲染的用途而存在的。
+<p />
+当最初创建渲染-到-贴图资源后，您将会注意到它仅声明为了默认颜色。但是，一旦将它用于场景截图，您应该可以看到具有那个贴图的截图的结果。任何时候，您都可以改变现有的渲染-到-贴图资源的宽度、高度或格式，并且它将会更新它的内部渲染目标来匹配新的设置。
+<p />
+<img alt="gen_browser_2.jpg" src="rsrc/Three/RenderToTextureCH/gen_browser_2.jpg" />
+<p />
+当您准备把渲染-到-贴图资源应用到表面时，就像正常的静态贴图资源一样，您可以通过使用TextureSampler材质表达式把它放到材质中。
+<p />
+本文档的接下来的部分向您展示了如何真正地把一些东西渲染到 渲染-到-贴图 资源上。
+<p />
+<h3><a name="HDR 支持"></a> HDR 支持 </h3>
+<p />
+这次仅可以创建RGBA的渲染-到-贴图资源。以后，我们将添加对浮点型HDR目标的支持。
+<p />
+<p />
+<h2><a name="渲染场景到贴图"></a> 渲染场景到贴图 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+可以使用不同的方法来捕获场景。最常见的情况是使用一个单独的视图来捕获场景到2D平面上，但是您也可以从一个立方体贴图的两个不同的方向来捕获场景，甚至可以根据当前视口的相机朝向来反映场景。
+<p />
+基本的过程涉及在关卡中放置一个SceneCapture actor，把它和创建的渲染-到-贴图资源相关联。您可以在Actor浏览器中看到一系列的可用的SceneCapture actors。
+<p />
+以下是可用的捕获actor类型的列表以及它们的工作方式。
+<p />
+<h3><a name="SceneCapture2DActor"></a> SceneCapture2DActor </h3>
+<p />
+通过使用SceneCapture2DActor，您可以像把这个Actor投射到视锥的近平面的表面上那样捕获场景。
+<p />
+当在关卡中放置这些actors中的其中一个时，您将会注意到显示的视锥展示了捕获的场景的视图。Actor的位置及方位用于设置捕获的场景视图的位置及朝向。SceneCapture actor也可以附加到其它actors上，以便您可以使用脚本序列来驱动它或者使用物理来操作它。
+<p />
+<img alt="render-to-texture_actor.jpg" src="rsrc/Three/RenderToTextureCH/render-to-texture_actor.jpg" />
+<p />
+注意，这个actor仅是一个SceneCapture2DComponent的容器。关于每种SceneCapture组件类型的详细信息，我们将在本文档的后面进行详细解释。
+<p />
+在任何渲染发生之前，SceneCapture actor必须有一个要渲染到其上面的贴图目标。您可以通过设置它的SceneCapture组件的TextureTarget属性来分配您的 渲染-到-贴图 资源给SceneCapture actor。
+<p />
+<h3><a name="SceneCaptureCubeMapActor"></a> SceneCaptureCubeMapActor </h3>
+<p />
+SceneCaptureCubeMapActor和SceneCapture2DActor类似，除了它必须以单独的六遍来渲染场景除外 - 每个立方体贴图面渲染一遍。这显然是一个性能消耗昂贵的选择，所以我们推荐使用较低的细节层次设置。
+<p />
+同样，捕获物期望使用一个“RenderToTextureCube”资源作为它的目标贴图。通过使用默认的“RenderToTexture(渲染到贴图)”资源仅能创建一个单独的2D表面，而不能用于立方体贴图的场景截图。创建“RenderToTextureCube(渲染到立方体贴图)”的步骤和创建"RenderToTexture(渲染到贴图)"资源类似。
+<p />
+注意，这个actor仅是一SceneCaptureCubeComponent的容器。关于每种SceneCapture组件类型的详细信息，我们将在本文档的后面进行详细解释。
+<p />
+<h3><a name="SceneCaptureReflectActor (动态反射)"></a> SceneCaptureReflectActor (动态反射) </h3>
+<p />
+SceneCaptureReflectActor可以使场景进行动态反射。在关卡中放置一个这种类型的actor来创建一个可以正确地根据镜像表面进行反射及剪辑的场景的视图截图。这个镜像表面是有朝向的，以便它面向的方向和actor的方向一样。actor的放置位置也是很重要的，因为这将改变镜像平面的位置，从而改变场景的剪辑区域。
+<p />
+关于最终获得的反射的一个重要的注意事项是：应该使用设置ScreenAlign为真的ScreenPosition材质表达式和仅使用了红、绿通道的ComponentMask材质表达式来访问那个渲染-到-贴图资源。这样做是必要的，因为反射计算假设贴图像覆盖整个屏幕一样进行映射。以下图片更好地解释了所需的材质节点：
+<p />
+<img alt="mat_ed_1.jpg" src="rsrc/Three/RenderToTextureCH/mat_ed_1.jpg" />
+<p />
+注意，这个actor仅是SceneCaptureCubeComponent的容器。关于每种SceneCapture组件类型的详细信息，我们将在本文档的后面进行详细解释。
+<p />
+<h3><a name="SceneCapturePortalActor"></a> SceneCapturePortalActor </h3>
+<p />
+SceneCapturePortalActor允许从另一个位置的视角处渲染场景，就像它映射到了入口的表面一样。
+<p />
+注意，这个actor仅是SceneCapturePortalComponent容器。关于每种SceneCapture组件类型的详细信息，我们将在本文档的后面进行详细解释。
+<p />
+<h3><a name="SceneCaptureComponents"></a> SceneCaptureComponents </h3>
+<p />
+这些组件可以捕获场景到贴图目标中。每个组件真正地做了在关卡中放置场景截图探测器的工作，以便可以在渲染整个关卡的主要视图到后置缓冲中之前单独地渲染一遍场景。您也可以把这些组件附加到任何其它类型的actor上。
+<p />
+所有的SceneCaptureComponent类型都有一组可以修改的通用属性。
+<p />
+每个组件都有一个要渲染场景到其上面的目标贴图：
+<p /> <ul>
+<li> <strong>TextureTarget(贴图目标)</strong> - 最终的场景截图的渲染-到-贴图资源。注意，场景截图将不会渲染任何东西，除非已经为它分配了目标贴图。
+</li></ul>
+<p />
+组件也具有一些控制如何渲染场景的设置：
+<p /> <ul>
+<li> <strong>bEnablePostProcess</strong> - 切换应用到场景的后期处理步骤。
+</li> <li> <strong>bEnableFog</strong> - 切换任何高度雾渲染。
+</li> <li> <strong>ClearColor</strong> - 贴图目标的背景的清除颜色。
+</li> <li> <strong>ViewMode</strong> - 枚举了不同的视图和光照配置。可用的模式有：
+</li></ul>
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 模式 </td><td bgcolor="#eaeaea"> 描述 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> SceneCapView_Lit </td><td bgcolor="#ffffff"> UE3场景的默认渲染模式，具有动态阴影和光照。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> SceneCapView_Unlit </td><td bgcolor="#eaeaea"> 当渲染场景时没有阴影或光照的渲染。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> SceneCapView_LitNoShadows </td><td bgcolor="#ffffff"> 和默认的带光照渲染模式一样，但是没有动态阴影。 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> SceneCapView_Wire </td><td bgcolor="#eaeaea"> 使用线框模式渲染场景中的所有几何体。 </td></tr>
+</table>
+<p /> <ul>
+<li> <strong>SceneLOD</strong> - 设置场景中的几何体的最大细节模式（LOD）。0代表着最高的LOD设置。(目前还没有实现)。
+</li> <li> <strong>FrameRate</strong> - 设置捕获场景的FPS(每秒的帧数)频率。比如，设置它的值为30将会以30FPS来捕获场景。同时，请注意如果FrameRate的值是0，那么将仅捕获一次场景。当您知道您不需要持续地更新特定的屏幕截图时这是有用的。
+</li> <li> <strong>PostProcess</strong> - 场景截图使用的后期处理链。您可以指定每个场景截图使用自定义的后期处理过程 (请参照本页面尾部的已知限制)。
+</li></ul>
+<p />
+<h4><a name="SceneCapture2DComponent"></a> SceneCapture2DComponent </h4>
+<p />
+这个组件处理渲染场景的2D截图，正如在SceneCapture2DActor部分所描述的。它管理渲染这种类型所必须的状态，并且为了以单独的遍数渲染截图，则需要添加一个FSceneCaptureProbe2D到当前的场景中。
+<p />
+以下是针对这种类型的截图组件的属性：
+<p /> <ul>
+<li> <strong>FieldOfView</strong> - 用于计算视图投射的所使用的水平视角。
+</li> <li> <strong>NearPlane</strong> - 代表近裁平面的和屏幕对齐的视图距离。
+</li> <li> <strong>FarPlane</strong> - 代表远裁平面的和屏幕对齐的视图距离。将完全地剔除(不渲染)在远裁平面后面的任何几何体。降低FarPlane的值将会导致更好的性能。
+</li> <li> <strong>bUpdateMatrices</strong> - 如果这个标志设置为假，那么则不能自动地更新视图和投射矩阵，但可以手动地设置它们。这对于比渲染场景需要更多控制的游戏性代码是有用的。
+</li></ul>
+<p />
+<h4><a name="SceneCaptureCubeMapComponent"></a> SceneCaptureCubeMapComponent </h4>
+<p />
+本组件处理SceneCaptureCubeActor中描述的立方体贴图渲染目标贴图的六遍截图渲染。它管理这种类型渲染所必须的状态，并且为了以单独的遍数渲染截图，需要添加一个FSceneCaptureProbeCube 到当前的场景中。
+<p /> <ul>
+<li> <strong>NearPlane</strong> - 代表近裁平面的和屏幕对齐的视图距离。
+</li> <li> <strong>FarPlane</strong> - 代表远裁平面的和屏幕对齐的视图距离。将完全地剔除(不渲染)在远裁平面后面的任何几何体。降低FarPlane的值将会导致更好的性能。
+</li></ul>
+<p />
+当渲染六个面的任何一个面时，视角的固定值是90度。
+<p />
+注意，因为这个截图单独地渲染了场景六遍，所以在复杂的场景中它的性能是比较慢的。请尝试调整FrameRate和FarPlane 的值来提高性能。请记住您也可以设置FrameRate=0，从而在关卡最初渲染时限制对于单独的截图的渲染。
+<p />
+<h4><a name="SceneCaptureReflectComponent (动态反射)"></a> SceneCaptureReflectComponent (动态反射) </h4>
+<p />
+这个组件处理使用镜像平面渲染场景来反转当前视图并剪辑掉该平面后面的所有几何体。它管理这种类型渲染所必须的状态，并添加一个FSceneCaptureProbeReflect 到当前的场景中，以便单独地渲染截图。
+<p /> <ul>
+<li> <strong>ScaleFOV</strong> - 不使用。
+</li></ul>
+<p />
+<h4><a name="SceneCaptureParaboloidComponent"></a> SceneCaptureParaboloidComponent </h4>
+<p />
+目前还不支持。
+<p />
+<h4><a name="SceneCapturePortalComponent"></a> SceneCapturePortalComponent </h4>
+<p />
+这个组件就像从在另一个位置的入口处查看场景那样渲染场景。它同时使用了当前入口和目的地入口的朝向来设置截图的朝向。注意，当前的入口和目的地入口应该使用它们自己的唯一的2D的渲染-到-贴图资源。
+<p /> <ul>
+<li> <strong>ViewDestination</strong> - 这个入口的在视图位置处的actor。这是捕获场景的位置。
+</li> <li> <strong>ScaleFOV</strong> - 不使用。
+</li></ul>
+<p />
+<p />
+<h2><a name="保存静态截图"></a> 保存静态截图 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+有时候，需要把现有的屏幕截图的结果保存为一个静态贴图。这对于从您的地图的各个位置来生成立方体贴图是非常有用的(请参照以下的立方体贴图生成的注意事项)。如果您知道您不需要场景的动态截图并且一个单独的静态截图便可以满足要求，那么最好创建静态贴图，因为动态的 渲染-到-贴图资源不能像静态贴图那样压缩。
+<p />
+通过右击渲染-到-贴图资源(2D或立方体贴图），您将会在关联菜单上看到一个 <em>Create Static Texture(创建静态贴图)...</em> 选项。当您选择这个选项后，您可以指定要创建的静态资源的名称以及该资源所在的包的名称。
+<p />
+<h3><a name="静态立方体贴图的截图"></a> 静态立方体贴图的截图 </h3>
+<p />
+从动态的渲染-到-贴图资源创建静态贴图的一个非常通用的应用是从您的场景中生成立方体贴图。这里是从您的场景生成立方体贴图的步骤： <ol>
+<li> 在地图中您想捕获立方体贴图的位置处放置一个SceneCaptureCubeMapActor。
+</li> <li> 在包中创建一个新的RenderToTextureCube(渲染到贴图立方体)资源。这将是场景将要渲染到的动态的 渲染-到-贴图 目标。
+</li> <li> 把第二部中的RenderToTextureCube资源分配给SceneCaptureCubeMapActor的TextureTarget 属性。
+</li> <li> 现在，您的场景被捕获到了动态的 渲染-到-贴图 目标上了。您可以通过右击它并从关联菜单中选择 <em>Create Static Texture(创建静态贴图)...</em> 来保存这个动态贴图的屏幕截图。每次您这样做时，将会创建和动态立方体贴图的6个面相对应的新的静态的立方体贴图。
+</li> <li> 您也可以把您的SceneCaptureCubeMapActor移动到关卡中的另一个位置，并重复步骤4来获得更多的静态截图。
+</li> <li> 一旦您完成了生成静态立方体截图，您便可以删除这些您添加到关卡中的这些临时的SceneCaptureCubeMapActor及随同产生的RenderToTextureCube资源。
+</li></ol>
+<p />
+
+<p />
+<p />
+<h2><a name="示例"></a> 示例 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+
+<p />
+以下屏幕截图是正在工作中的渲染到贴图功能的示例。
+<p />
+<img alt="render-to-texture.jpg" src="rsrc/Three/RenderToTextureCH/render-to-texture.jpg" />
+<p />
+<img alt="Reflections.jpg" src="rsrc/Three/RenderToTextureCH/Reflections.jpg" />
+<p />
+<h2><a name="已知限制"></a> 已知限制 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+SceneCaptureActor所支持的节点有一些限制。可以使用Blur和DOFAndBloom节点。DOFAndBlom节点中光溢出是禁用的。
+其他大部分节点都用于正常的全景后期处理，对SceneCaptureActor来说是无效(比如节点UberPostProcessingNode)。
+<p />
+要想执行更新渲染，您可以选中或取消选中"Enable postprocess(启用后期处理过程)"来更新后期处理链中的设置。
+<p />
+当从贴图读取数据时必须完成颜色操作。这将会更加高效，因为它不需要中间贴图，仅针对所需的
+像素进行处理。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/RenderToTextureCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:20:24 GMT -->
+</html></body>

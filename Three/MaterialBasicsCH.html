@@ -1,0 +1,448 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MaterialBasicsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:20:07 GMT -->
+<head>
+<title> UDK | MaterialBasicsCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">MaterialBasicsCH  </b></div>
+<div id="tooltext">
+<a href="MaterialBasics.html" class="twikiLink">English Translation</a><br><a href="MaterialBasicsJP.html" class="twikiLink">日本語訳</a><br><a href="MaterialBasicsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/MaterialBasicsCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="MaterialsAndTexturesHome.html" class="twikiLink">材质 &amp; 贴图</a></b> &gt; 材质基础
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="材质基础"></a> 材质基础 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="MaterialBasicsCH.html#材质基础"> 材质基础</a> <ul>
+<li> <a href="MaterialBasicsCH.html#概述"> 概述</a>
+</li> <li> <a href="MaterialBasicsCH.html#细节贴图"> 细节贴图</a>
+</li> <li> <a href="MaterialBasicsCH.html#即时高光 (Instant Specular)"> 即时高光 (Instant Specular)</a>
+</li> <li> <a href="MaterialBasicsCH.html#改进的高光"> 改进的高光</a>
+</li> <li> <a href="MaterialBasicsCH.html#法线贴图"> 法线贴图</a>
+</li> <li> <a href="MaterialBasicsCH.html#改进的法线贴图"> 改进的法线贴图</a>
+</li> <li> <a href="MaterialBasicsCH.html#细节法线贴图"> 细节法线贴图</a>
+</li> <li> <a href="MaterialBasicsCH.html#自发光/发射/光溢出"> 自发光/发射/光溢出</a>
+</li> <li> <a href="MaterialBasicsCH.html#贴图平移器"> 贴图平移器</a>
+</li> <li> <a href="MaterialBasicsCH.html#贴图旋转器"> 贴图旋转器</a>
+</li> <li> <a href="MaterialBasicsCH.html#贴图缩放/贴图平铺"> 贴图缩放/贴图平铺</a>
+</li> <li> <a href="MaterialBasicsCH.html#遮罩的材质"> 遮罩的材质</a>
+</li> <li> <a href="MaterialBasicsCH.html#半透明材质"> 半透明材质</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+这是一个创建普通的基本材质类型的简略指南。前提是您至少熟悉在<a href="https://udn.epicgames.com/Three/GenericBrowserReference" class="restricted" class="restricted" class="twikiLink">通用浏览器</a>中<a href="ImportingTextureTutorial.html" class="twikiLink">导入贴图</a>以及使用<a href="MaterialEditorUserGuide.html" class="twikiLink">材质编辑器</a>的基本知识。
+<p />
+对于这些熟悉 <a href="https://udn.epicgames.com/Two/UnrealEngine25" class="restricted" class="restricted" class="twikiLink">Unreal Engine 2.5</a> 和 Unreal Tournament 2004 的关卡设计的人，在这个文档中说明的大多数基本材质的名称对您来说都是熟悉的，因为在 UE2.5 中的材质部分也提供了类似的功能。
+<p />
+基本材质一般用于通过彼此间进行结合来产生更加复杂的材质着色器。
+<p />
+<p />
+<h2><a name="细节贴图"></a> 细节贴图 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+UE3 材质系统不像 UE2.5 那样具有细节贴图 (Detail Texture) 属性，但是在 UE3 中创建类似的功能是很容易。
+<p />
+细节贴图可以像 UT2004 中使用的细节贴图那样可以工作得很好。这些贴图是一个可以无缝平铺的灰度贴图，它们主要是在中间灰度值 127 左右进行偏移。
+<p />
+当导入细节贴图后，设置它的 UnpackMax 属性值在 2.0 和 3.0 之间。这可以增加贴图的解压亮度，否则通常会在乘法 (Multiply) 操作过程中使最终的材质变得更黑。UnpackMax 的默认值为 1.0。
+<p />
+设置 TexCoord 装置的 UTiling 和 VTiling 的值和细节贴图平铺块的数量相适应，通常根据它的应用设置为 8 和 64。
+<p />
+这些细节贴图对于静态网格物体和地形都是有用的。
+<p />
+<img alt="UE3DetailMaterial.gif" src="rsrc/Three/MaterialBasicsCH/UE3DetailMaterial.gif" />
+<p />
+<img alt="UE3DetailMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsCH/UE3DetailMaterialPreview.jpg" />
+<p />
+<p />
+<h2><a name="即时高光 (Instant Specular)"></a> 即时高光 (Instant Specular) </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+对于您的材质收藏夹中的发光金属，对其增加直接来自基础漫反射贴图本身的高光 (Specular) 是非常容易的。
+<p />
+把漫反射贴图和一个大于 1 的常量 (Constant) 值相乘可以创建一个闪耀的高光 (Specular) 区域。一般常量值在 4 到 8 之间时效果最好。值大于 8 时则开始使高光 (Specular) 进入“光溢出”状态。
+<p />
+注意： 如果漫反射贴图的 Alpha 通道中包含提供高光信息的功能，则该贴图也可以提供高光，或者可替换地由另一个贴图提供。这允许和漫反射贴图本身不同的自定义高光。
+<p />
+注意： 为材质添加高光也可以提高任何已分配的法线贴图的“深度 (depth)”质量。
+<p />
+<img alt="UE3SpecularMaterial.gif" src="rsrc/Three/MaterialBasicsCH/UE3SpecularMaterial.gif" />
+<p />
+<img alt="UE3SpecularMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsCH/UE3SpecularMaterialPreview.jpg" />
+<p />
+<p />
+<h2><a name="改进的高光"></a> 改进的高光 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+如上图所示的来自基础漫反射贴图的材质高光通常看上去有点单调和不自然，因为它将高光效果均匀地应用到具有相似亮度的所有贴图像素上。<br>
+为了使高光更加的突出，并且提高法线贴图 (NormalMap) 深度，可以使用一个 Power 表达式来增加所得到的高光差异度。<br>
+Power 表达式像一个对比度控制器一样进行工作，当Exp(指数)为0时没有变化，当 Exp(指数)值为 1.0 到 2.0 之间时则会增加对比度。
+<p />
+然后乘以 Power 函数的较大的对比度输出来增加总的贴图亮度等级返回为正常状态。把 Multiply 的 Constant 值设置得非常高，比如大于 16 或 32 将会迫使高光效果的较亮的边缘变为高光溢出状态。
+<p />
+<img alt="UE3SpecularEnhMaterial.gif" src="rsrc/Three/MaterialBasicsCH/UE3SpecularEnhMaterial.gif" />
+<p />
+<img alt="UE3SpecularEnhMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsCH/UE3SpecularEnhMaterialPreview.jpg" />
+<p />
+<p />
+<h2><a name="法线贴图"></a> 法线贴图 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+法线贴图，是最新虚幻引擎的一个功能，可以为材质提供 3D 细节。
+<p />
+导入漫反射贴图和法线贴图。对于法线贴图请确保设置 CompressionSettings 为 Normalmap，并设置 LODGroup 为 TEXTUREGROUP_WorldNormalMap。
+<p />
+注意： 为材质添加高光也可以提高任何已分配的法线贴图的“深度 (depth)”质量。
+<p />
+<img alt="UE3NormalMaterial.gif" src="rsrc/Three/MaterialBasicsCH/UE3NormalMaterial.gif" />
+<p />
+<img alt="UE3NormalMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsCH/UE3NormalMaterialPreview.jpg" />
+<p />
+<p />
+<h2><a name="改进的法线贴图"></a> 改进的法线贴图 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+有时候法线贴图提供的凸凹效果可能是不足的。<br>
+<br>为了提高法线贴图的效果或它的视觉深度，可以使法线贴图的 TextureSample(贴图样本)和一个 Constant3Vector(3 维向量)相乘，并把 B(Blue或Z)向量的值改变为一个低于 1.0，比如 0.5 或 0.75。<br>
+将 R 和 G 的值增加到高于 1.0 时也可以增加法线贴图的深度，但在材质的高光上的视觉效果可能稍微有些不同。<br>
+请随意地尝试设置 R 和 G 为 1.0 到 2.0 之间的任何值，以及设置 B 为 0.25 到 1.0 间的任何值。
+<p />
+注意通过简单地设置 B 为 1.0 并将 R 和 G 的值降低于 1.0 也可以降低法线贴图深度的大小。比如 R 和 G 的值为 0.5 将会把法线贴图深度降低很多。
+<p />
+<img alt="UE3NormalEnhMaterial.gif" src="rsrc/Three/MaterialBasicsCH/UE3NormalEnhMaterial.gif" />
+<p />
+<img alt="UE3NormalEnhMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsCH/UE3NormalEnhMaterialPreview.jpg" />
+<p />
+<p />
+<h2><a name="细节法线贴图"></a> 细节法线贴图 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+和细节贴图为漫反射贴图添加额外的精致细节的方式类似，一个细节法线贴图也可以为法线贴图添加精致的细节。当法线贴图的分辨率较低比如 512x512 时这是有用的，因为它为最终的材质增加了一个精细的高分辨率的凸凹细节。
+<p />
+Noise Normal map（噪音法线贴图）是在绘画软件中简单地创建的 1024x1024 灰度化贴图、灰度值为 127、然后为它增加一个随机的像素噪声。这个灰度化贴图然后经过 ATI Compressonator（ATI 压缩器）或 NVidia nvDXT 工具进行处理，来把它转换为标准的法线贴图文件。
+<p />
+设置材质中的 Constant3Vector（3 维常数向量）为 R=1, G=1, B=0，并使用 Multiply（乘法）表达式来删除细节法线贴图的所有 Blue（蓝色）通道。否则这将需要两个法线贴图的混合来真正地移除最终的凸凹细节。然后细节法线贴图和漫反射贴图的主要法线贴图相加来产生两个法线贴图的总和。
+<p />
+<img alt="UE3DetailNormalMaterial.gif" src="rsrc/Three/MaterialBasicsCH/UE3DetailNormalMaterial.gif" />
+<p />
+<img alt="UE3DetailNormalMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsCH/UE3DetailNormalMaterialPreview.jpg" />
+<p />
+<p />
+<h2><a name="自发光/发射/光溢出"></a> 自发光/发射/光溢出 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+虚幻引擎 3 支持自发光材质，从而可以使材质产生辐射的闪光。在 UE3 中颜色值的范围是 0.0 到 1.0。当颜色值超过 1.0 时，它将会渲染为“光溢出”。
+<p />
+在这个例子中，导入了漫反射贴图，随同一起导入了一个自发光贴图，它决定了在漫反射贴图的哪个区域出现自发光。通过把自发光贴图的颜色级别增加到大于 1.0，我们可以强制它发光。
+<p />
+自发光贴图样本和 VectorParameter 相乘可以使我们指定 RGBA 所要增加的量，从而把贴图的自发光颜色推至为光溢出。在这个例子中 RGBA 的值为 8,0,0,0，导致发出了红色的光。
+<p />
+我们也可以使用灰度自发光贴图，它将允许 VectorParameter 属性通过简单地输入合适的 RGBA 值来指定我们所希望得到的任何自定义的自发颜色。
+<p />
+<img alt="UE3EmissiveMaterial.gif" src="rsrc/Three/MaterialBasicsCH/UE3EmissiveMaterial.gif" />
+<p />
+<img alt="UE3EmissiveMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsCH/UE3EmissiveMaterialPreview.jpg" />
+<p />
+<p />
+<h2><a name="贴图平移器"></a> 贴图平移器 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Panner（贴图平移器）以指定的速度在 X 和/或 Y 方向上平移贴图。
+<p />
+Panner（平移器）有允许您指定平移的速度和方向的两个属性： SpeedX 和 SpeedY。正值在一个方向上平移贴图，而负值在相反的方向上平移贴图。值越小平移得越慢，值越大平移得越快。
+<p />
+<img alt="UE3TexPannerMaterial.gif" src="rsrc/Three/MaterialBasicsCH/UE3TexPannerMaterial.gif" />
+<p />
+<img alt="UE3TexPannerMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsCH/UE3TexPannerMaterialPreview.jpg" />
+<p />
+<p />
+<h2><a name="贴图旋转器"></a> 贴图旋转器 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Texture Rotator（贴图旋转器）以指定的坐标偏移和速度来旋转贴图。Rotator（旋转器）设备有三个属性，允许您指定贴图的旋转中心坐标和旋转速度。CenterX 和 CenterY 指定了在贴图上的旋转位置，当它们的值为 0.0,0.0 时位置是贴图的左上角，当值为 0.5,0.5 时旋转位置是贴图的中心，当值为 1.0,1.0 时旋转位置是贴图的右下角。正的速度值将按照逆时针方向旋转，而负值将按照顺指针方向旋转。速度值越小旋转得越慢，速度值越大旋转地越快。
+<p />
+<img alt="UE3TexRotatorMaterial.gif" src="rsrc/Three/MaterialBasicsCH/UE3TexRotatorMaterial.gif" />
+<p />
+<img alt="UE3TexRotatorMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsCH/UE3TexRotatorMaterialPreview.jpg" />
+<p />
+<p />
+<h2><a name="贴图缩放/贴图平铺"></a> 贴图缩放/贴图平铺 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+在材质中平铺或缩放贴图是要执行的最简单的功能之一。
+<p />
+连接 TexCoord 和 Texture Sample（贴图样本）的 UV 节点，并指定 UTiling 和 VTiling 的属性值。默认的贴图尺寸值为 1.0，值越小贴图尺寸缩放得越大； 比如值为 0.5 贴图尺寸变为 2 倍或者平铺块变为原来的 1/2 倍；值越大贴图尺寸缩放得越小； 比如值为 2.0，则贴图尺寸变为原来的 1/2 或平铺块变为原来的 2 倍。
+<p />
+<img alt="UE3TileMaterial.gif" src="rsrc/Three/MaterialBasicsCH/UE3TileMaterial.gif" />
+<p />
+<img alt="UE3TileMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsCH/UE3TileMaterialPreview.jpg" />
+<p />
+<p />
+<h2><a name="遮罩的材质"></a> 遮罩的材质 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+遮罩用于那些具有半透明区域的材质，比如壁炉、篱笆、草和树叶。仅需要设置几个必须的属性便可以获得遮罩。
+<p />
+材质的半透明区域可以源于主要的漫反射贴图本身或者源于另一个像单色蒙板或灰度化的 alpha 通道的贴图，它们指定了哪个像素是不透明的（白或更亮）和哪个像素是半透明的（黑或更暗）。
+<p />
+不透明蒙板节点连接到遮挡的源。设置材质的 BlendMode 属性为 BLEND_Masked，通常勾选 TwoSided（双面）单选框（设置它为 True），也可以可选地调整 OpacityMaskClipValue（不透明蒙板剪切值）属性来在半透明区域获得适当的边缘。OpacityMaskClipValue（不透明蒙板剪切值）决定了像素被描画或丢弃的范围。类似于 0.1 的较低的值倾向于黑色(不描画较暗的颜色，也就是 0.0 到 0.1 的颜色)，而类似于 0.6 较高的值倾向于白色(不描画从较暗到较亮之间的颜色，也就是 0.0 到 0.6 的颜色)。
+<p />
+<img alt="UE3MaskMaterial.gif" src="rsrc/Three/MaterialBasicsCH/UE3MaskMaterial.gif" />
+<p />
+<img alt="UE3MaskMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsCH/UE3MaskMaterialPreview.jpg" />
+<p />
+<p />
+<h2><a name="半透明材质"></a> 半透明材质 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+半透明材质用于创建玻璃和其它部分地半透明的材质。有非常广泛的各种各样的类型和材质表达式设置来用于创建各种半透明效果。半透明材质的基础是一个漫反射贴图样本和一个不透明贴图样本。通过把不透明贴图结合到漫反射贴图的 alpha 通道中，一个 32 位的贴图便可以包含全部的贴图需要。
+<p />
+材质的 BlendModes 属性必须设置为 BLEND_Translucent。材质的 LightingModel 通常设置为 MLM_Unlit。材质的 TwoSided（双面）属性通常设置为 True，因为玻璃通常是有两个面的。
+<p />
+其它的半透明材质种类包括：
+<p /> <ul>
+<li> 连接 Texture Sample（贴图样本）的 RGB 输出到材质的 Emissive（自发光）节点而不是 Diffuse（漫反射）节点。这将创建一种可以发光的材质。
+</li> <li> 将 Texture Sample（贴图样本）添加到材质的 Distortion（变形）节点上，从而导致玻璃可以使它后面的物体发生变形。漫反射或不透明贴图或者它们的衍生版本经常用于这个目的。这要求设置 LightingModel（光照模式）为 MLM_Unlit。
+</li> <li> 添加一个 NormalMap TextureSample（法线贴图贴图样本）并把它连接到材质的 Normal（法线）节点上来产生一些凸凹细节。
+</li></ul>
+<p />
+<img alt="UE3TranslucentMaterial.gif" src="rsrc/Three/MaterialBasicsCH/UE3TranslucentMaterial.gif" />
+<p />
+<img alt="UE3TranslucentMaterialPreview.jpg" src="rsrc/Three/MaterialBasicsCH/UE3TranslucentMaterialPreview.jpg" />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MaterialBasicsCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:20:13 GMT -->
+</html></body>

@@ -1,0 +1,379 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UT3MultiplayerMapTheoryCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:41:01 GMT -->
+<head>
+<title> UDK | UT3MultiplayerMapTheoryCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">UT3MultiplayerMapTheoryCH  </b></div>
+<div id="tooltext">
+<a href="UT3MultiplayerMapTheory.html" class="twikiLink">English Translation</a><br><a href="UT3MultiplayerMapTheoryJP.html" class="twikiLink">日本語訳</a><br><a href="UT3MultiplayerMapTheoryKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/UT3MultiplayerMapTheoryCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="多玩家地图理论 (UT3)"></a> 多玩家地图理论 (UT3) </h1>
+<p />
+<em>文档概述： 既然虚幻编辑器是公开的了，那么我们UT3的一些关卡设计人员也想分享一些如何创建非常棒的UT3 ＭＰ地图的基本原理及技巧，希望您可以充分地利用它们。</em>
+<p />
+<em>文档变更记录: 由<a href="https://udn.epicgames.com/Main/DaveEwing" class="restricted" class="restricted" class="twikiLink">Dave Ewing</a>和Richard Nalezynski<sup>?</sup>创建。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="UT3MultiplayerMapTheoryCH.html#多玩家地图理论 (UT3)"> 多玩家地图理论 (UT3)</a> <ul>
+<li> <a href="UT3MultiplayerMapTheoryCH.html#简介"> 简介</a>
+</li> <li> <a href="UT3MultiplayerMapTheoryCH.html#游戏性">游戏性</a>
+</li> <li> <a href="UT3MultiplayerMapTheoryCH.html#视觉效果">视觉效果</a>
+</li> <li> <a href="UT3MultiplayerMapTheoryCH.html#AI(人工智能)"> AI(人工智能)</a>
+</li> <li> <a href="UT3MultiplayerMapTheoryCH.html#优化"> 优化</a>
+</li> <li> <a href="UT3MultiplayerMapTheoryCH.html#结论"> 结论</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<p />
+<h2><a name="简介"></a> 简介 </h2>
+<p />
+本文档包含了制作您的大部分地图的技巧和窍门。
+<p />
+希望大家知道的是这些仅是如何使得用户制作的地图更加接近专业水平的建议，而不是权威性的“必须按照这些步骤来制作地图”的指南。
+<p />
+<p />
+<h2><a name="游戏性"></a> 游戏性 </h2>
+<p />
+<strong>框架</strong>
+<p />
+当开始设计关卡时，无论它是哪种游戏类型，最好都要在您开始进行任何设计关卡可视化细节之前设计出游戏性的总体框架。 使用BSP和非常少的几个静态网格物体，快速地勾勒出整个关卡，播放那个关卡，看一下它的有趣程度。 在开始进行关卡的可视化设计之前，您会觉着那并不是非常有趣，但是之后可能也不会像您想象的那么有趣，因为UE3中进行关卡的视觉效果设计会占用大量的时间，在您开始视觉效果设计之前，您要确保您的关卡可以尽可能地有趣，以便之后不会浪费太多的时间来重新设计网格物体和光照来适应游戏性的改变。
+<p />
+<p />
+<strong>规模</strong>
+<p />
+当您开始设计关卡框架时首先要考虑的便是关卡的规模。 关卡具有多样性是很好的，但是一般您不会想使得您的关卡如此大，以至于当您打开它在其中运行时感觉您就像以蜗牛的爬行速度那样在运动。 但是出于同样的原因，您想使走廊及房间足够的开阔，以便您可以进行躲闪并且可以自由地运行而不至于被卡住。 另一个好的建议是避免使用看上去您可以通过二级跳到的但是实际上 仅需要使它比二级跳的范围稍稍高一些壁架。  一旦您粗略地制作出一个区域后，请一定要确保在使用PIE(在编辑器中播放)时跳入到那个区域，并花一些时间在那里到处移动，来感觉一下您的规模是否合适。
+<p />
+<p />
+<strong>流程</strong>
+<p />
+有时候流程是很难处理好的，但是您希望您的关卡可以使得玩家可以舒服的并且可以凭直觉进行穿行的。 您想牵引着玩家在地图中到处移动，而不是偶然的使它们往回跑。 拾取物的放置对于流程有很大影响，但是您的关卡本身的几何体也可以影响流程。 检查您的流程的最好的方法是找一个从来没有看过您的关卡的人来试玩该关卡。 让他们在关卡中到处地跑几次来熟悉它，并看他们是否更加喜欢并容易到达某些地方或者看他们是否完全地忽略了其它任何地方。 并且需要确保它们在地图中到处跑几次后不会任然迷路，并确保他们不会无意地自己往回跑反复的路线。
+<p />
+<p />
+<strong>拾取物放置</strong>
+<p />
+散步您的宝物！ 如果关键的强大的宝物放置的太近，那么您的关卡的其它部分将会很少有人去通行。 请尝试着确保玩家可以轻易并快速的找到武器。 风险和奖励的权衡永远是放置拾取物的最佳法则，因为您通常会想在更加难于夺取的地方应该可以获得更加强大的拾取物。 在可防守的区域放置大的拾取物也可以工作的很好，那样一旦玩家获得它后，它们便尝试守住它。
+<p />
+<p />
+<strong>创新</strong>
+<p />
+如果您想使您的地图脱颖而出，那么这些便是关键！ 事实上UT地图只是一个游戏性的场所，而是各种视觉可能性使得它如此特别。 请不要害怕违背原则去尝试一些全新的东西。 有时候，您可能会惨遭失败(就像我已经失败很多次一样！)，但是当您成功时，您将会获得一些非常难忘的东西。
+<p />
+<p />
+<strong>阻挡体积</strong>
+<p />
+润泽您的关卡并使得您的关卡达到准备发行的程度的最基本的步骤是进行阻挡体积渲染。 如果您在编辑器中打开任何UT3发行的地图，您将会看到它们被覆盖在阻挡体积中。 它可能是一个很麻烦的工作，但是相对于获得平滑的墙壁和地面来说这是值得的。 如果您仅依赖自定义的静态网格物体，那么玩家通常会被‘挂在’两个网格物体交接的地方，即使网格物体之间看上去是平滑的。 请确保关闭阻挡体积中包围的或者在游戏场地区域之外的任何网格物体的碰撞(设置这些网格物体为‘Block_Weapons’，意味武器开火将会穿过阻挡体积)。
+<p />
+<p />
+<strong>强制方向体积</strong>
+<p />
+这些对于在游戏场地空间中包含车辆是非常有用的。 它们从本质上像'软'阻挡体积，它们会阻挡车辆但是它们会有一些反弹的作用力，所以它的感觉并是不像您碰到一个没有看到的墙壁那样。 打开‘ForceDirVolume\Arrow’ 标签，它的方向是指体积推向的方向。 您可以可以设置体积阻止徒步的玩家，并且不允许它们从已经把它们被推入的车辆中出来。
+<p />
+<p />
+<strong>碰撞视图模式</strong>
+<p />
+在每个视图的下拉列表中，您将会找到碰撞视图模式。 非零粗细碰撞是玩家碰撞，零粗细碰撞是武器碰撞，刚体碰撞是布娃娃及车辆的碰撞。 非零粗细视图模式对于查看玩家正在和哪个东西进行碰撞是非常有用的，并且可以帮助您排除那些能够把玩家挂住的粘着点。 最好在完全地构建光照后并且用带光照的情况下来查看这个模式。
+<p />
+<p />
+<h2><a name="视觉效果"></a> 视觉效果 </h2>
+<p />
+<strong>规模</strong>
+<p />
+我们尝试保持我们的资源的大小和玩家的尺寸成比例关系。 资源过大将会导致使用较少的资源来覆盖BSP，但是最后它会降低整个关卡的视觉效果。 请关注三种不同类型的视觉效果细节： 大、中和小。 大的对象一般是墙壁和建筑物；中等尺寸的标示物一般是门和窗；小的对象是类似于垃圾、控制面板、铁丝或拾取物的东西。 通过密切关注这三组物体，那么无论关卡是科幻的、半真实的还是卡通的，您都将会获得更加令玩家满意的真实的关卡。
+<p />
+<p />
+<strong>后期处理体积</strong>
+<p />
+后期处理体积(PPV)是统一关卡的整体效果的一个相对快捷的方式，它使得 美术人员/关卡设计人员 可以控制对比度、亮度、颜色色调及饱和度。 您的关卡应该具有了接近于您想获得的光照效果，然后使用后期处理来执行正如它的名字所预示的一些操作 - 在一个事件之后应用一个矫正工具。 如果您使用这个工具来修正较弱的光照，那么它可能导致 玩家/角色/车辆的可见性都变得较弱并且会影响光溢出。
+<p />
+在后期处理体积中，您可以通过一些设置来定义一个像素的光溢出、景深(我们添加它来帮助我们定义关卡的深度感)、全屏运动模糊及物体运动模糊。
+<p />
+<p />
+<strong>光照</strong>
+<p />
+在您开始制作关卡之前，您最好想想好设计好光照的配置情况。 这听起来是显而易见的，但是如果您不按照这个方法开始，您会发现您会浪费很多时间来重新设计很多次您的光照。 在任何可能的时候，我们使用概念美术或图片参考来为美术人员提供更好的起始点。 记住-糟糕的光照可能会使得最好的网格物体组成的关卡看上去很糟糕，但是好的光照可能会使得糟糕的关卡变得不错。
+<p />
+通常，室外的白天的关卡时候容易进行光照的，因为您有一个关键光源(太阳)，并且通过使用skylight (天空光源)actor 将会为您提供来自天空和地面的所有的反射光(分别设置)。 在具有强光，并产生反射光和发光感觉的地方，请使用点光源。
+<p />
+对于室内关卡，从明显的光源开始然后再向外展开是有意义的。 当您在建造关卡时考虑光照机制及光源类型可以使得您的关卡看上去更加专业。  你是否正在使用从窗户中淡入的光照作为您的装光源哪？ 您是否在走廊上使用向上的光照哪？ 你是否在使用粘土的闪光池作为您的主光源哪？ 我们通常使用不同颜色的光源来帮助我们区分地图中的地面，因为它为玩家提供了辨别它们在那个关卡中的快捷方式。
+<p />
+<p />
+<strong>雾薄片</strong>
+<p />
+雾薄片给关卡添加气氛的最好方法 - 它们会给出 薄雾、烟雾、厚的大气层的假象，甚至可以帮助分割关卡的不同部分。 雾网格物体通常会用在连入到另一个房间的门口，因为它们突出了这个变换并且它们比类似于霓虹灯的东西更加微妙。 当您着手处理时，可以把雾网格物体上的材质的颜色设置为任何颜色，您甚至可以使用材质来降低不透明度。
+<p />
+<p />
+<strong>高空雾</strong>
+<p />
+任何关卡都应该具有高空雾！ 高空雾并不需要总是很厚，但是雾是帮助增加深度感及提高距离假象的最好方法。 您可以在您的关卡中放置多个高空雾来创建一些类似于地上的薄雾、厚雾或者甚至更一般的大气雾霾。
+<p />
+<p />
+<strong>导入自定义的网格物体</strong>
+<p />
+在导入时，您需要检查您是否已经设置了基本碰撞、第二个UV集(在编辑器中自动完成或者在3D包中手动完成)、校正最佳放置位置的支点位置、以及检查物体是否具有的材质数量是否正确。 选择您是否需要在网格物体上的放置光照贴图或定点光照并分配一个材质。 把网格物体放到关卡中，测试它的大小和碰撞 -- 对于关卡设计人员来说没有比碰撞障碍更令人烦恼的事了。
+<p />
+<p />
+<h2><a name="AI(人工智能)"></a> AI(人工智能) </h2>
+<p />
+<strong>路径颜色及车辆</strong>
+<p />
+一旦您为您的关卡设计了路径，在正交视口中按下‘P’键便可以看到它们的连接状况。 对于步行的机器人来说： 白色的路径意味这最佳连接，机器人将会在有这条白线连接的路径之间寻找捷径。 绿线是中等宽度的连接，蓝色路径是窄的连接。 对于蓝线，机器人将直接地在它的上面跑动，并且如果可能将不会背离那条路径。 对于车辆中的机器人，这些线便有了更多的意义： 类似于 Goliaths 和Paladins的大的车辆将仅在有白色连接的路径间行走。 类似于Hellbenders 的中等车辆将可以在白色和绿色路径上进行形式，仅类似于Mantas 和Scavengers 的小车辆会在蓝色路径上行驶。  如果您正遇到了关于在车辆中的机器人不能在您的关卡中进行导航的问题，那么很可能是由于没有足够的白色和绿色路径导致的。
+<p />
+<p />
+<strong>车辆的bBlocked标志</strong>
+<p />
+如果您注意到机器人正在尝试向它们不应该去的地方开动车辆时(比如在建筑物内部或者在窄的人行道)，您可以通过选中那些令人讨厌的路径、打开属性中的‘VehicleUsage’ 标签然后选中bBlockedForVehicles来简单地解决这个问题。 相反，如果您想使一些路径满足并有利于车辆运行，那么您可以设置它们为bPreferredVehiclePath。
+<p />
+<p />
+<strong>地图错误列表</strong>
+<p />
+当您对地图完成了完全的重新编译时便会出现这个列表。 如果可能这个列表应该是空的！ 那里所列出的错误都是有原因的，排除这些错误将会使得您的关卡运行更快，同时会使得机器人导航及关卡的可玩性更好。 请不要忽略它！
+<p />
+<p />
+<h2><a name="优化"></a> 优化 </h2>
+<p />
+<strong>详细设置</strong>
+<p />
+从关卡设计的角度来说，这是使得UT3具有如此大的可升级性的重要部分之一。 网格物体和粒子发射器可以进行Low(低)、Medium(中)或High(高)的细节设置(您可以在属性或右击菜单中找到这些设置)。 所有的Actors默认都为"Low(低)"细节模式，这意味这个它们可以显示所有的细节层次级别。 通过使用中等级别和高等级别的设置，可以使得网格物体呈现出中等细节层次和高等细节层次的效果。 需要知道的是设置为High(高等细节层次)的网格物体仍然具有低等级别的细节层次，只是不渲染它们而已。 因此，如果它们启动了任何碰撞，即使你不能看到它们，它们也仍然会进行碰撞。 在编辑器的View\Detail Mode(视图\细节模式)中，您可以设置视图选显示在每个细节层次下游戏的样子。
+<p />
+<p />
+<strong>Stat LD</strong>
+<p />
+当游戏正在运行时，在控制台输入‘Stat LD’ 将会为您提供很多有用的统计数据来帮助您优化您的关卡。 这显示了和此时渲染到屏幕上的东西相关的所有主要元素。 有如此多的变量来解释帧频率，但是以下是两个很好的指导，您可以从它们开始分析： 一旦您的静态网格所具有的多边形达到800,000个，那么‘Static Mesh Tris’便开始是个瓶颈；当可见的静态网格物体元素数量(可见静态网格物体的实际数量)达到900个，那么‘Visible Static Mesh Elements’ 便开始是个瓶颈。如果您的关卡运行缓慢并且您不知道为什么会这样，那么在发行级别的版本上尝试使用Stat LD命令，检查它数量，看您的数量是否超出了这些参数的最大限制。
+<p />
+<p />
+<strong>剔除距离体积</strong>
+<p />
+在UE3中，无论何时当网格物体的边界盒被地形、BSP、网格物体及任何这三种物体的组合物遮挡时便会发生遮挡。 由于这个原因，那么在眼睛到可见物体的视线处进行剪辑便是一个很好的优化方法，因为这将不会渲染任何被遮挡的东西。 但是决定遮挡哪个多边形本身便是一个非常消耗性能的过程，更不用说允许玩家在Raptors中进行到处飞行的事实了，这使得在眼睛到可见物的视线处进行剪辑变得更加困难。 在这些情况下，Cull Distance(剔除距离)是非常便利的。 在发行级别中搜索CullDistance体积，这和您想搜索查看那些值可以正常的方法一样。 如果剔除距离体积重叠，那么更加精确地设置这两个体积便可以解决问题，所以如果您的整个关卡被一个不是非常精确的剔除距离体积包围着，那么在一个完全地封闭的房间内您可以放置一个较小的更加具有侵略性精确的体积。 请记住，如果您在StaticMeshActor\StaticMeshComponent标签中没有选中bAllowCullDistanceVol ，那么您仍然可以基于每个网格物体设置剔除距离体积。 如果您看到在剔除几个网格物体时出现了明显的‘突然’弹出的现象，那么这是有用的，这样您就不必改变这个剔除距离体积的设置了。
+<p />
+<p />
+<strong>动态/可切换的光源</strong>
+<p />
+<p />
+<h2><a name="结论"></a> 结论 </h2>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/UT3MultiplayerMapTheoryCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:41:01 GMT -->
+</html></body>

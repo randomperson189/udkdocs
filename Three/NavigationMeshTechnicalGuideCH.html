@@ -1,0 +1,339 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavigationMeshTechnicalGuideCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:35 GMT -->
+<head>
+<title> UDK | NavigationMeshTechnicalGuideCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">NavigationMeshTechnicalGuideCH  </b></div>
+<div id="tooltext">
+<a href="NavigationMeshTechnicalGuide.html" class="twikiLink">English Translation</a><br><a href="NavigationMeshTechnicalGuideJP.html" class="twikiLink">日本語訳</a><br><a href="NavigationMeshTechnicalGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/NavigationMeshTechnicalGuideCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="AIAndNavigationHome.html" class="twikiLink">AI &amp; 导航</a></b> &gt; 导航网格物体技术指南
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="导航网格物体技术指南"></a> 导航网格物体技术指南 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="NavigationMeshTechnicalGuideCH.html#导航网格物体技术指南"> 导航网格物体技术指南</a> <ul>
+<li> <a href="NavigationMeshTechnicalGuideCH.html#概述"> 概述</a>
+</li> <li> <a href="NavigationMeshTechnicalGuideCH.html#导航句柄"> 导航句柄</a> <ul>
+<li> <a href="NavigationMeshTechnicalGuideCH.html#导航句柄功能"> 导航句柄功能</a> <ul>
+<li> <a href="NavigationMeshTechnicalGuideCH.html#实际寻路功能"> 实际寻路功能</a>
+</li> <li> <a href="NavigationMeshTechnicalGuideCH.html#路径所遵循的函数"> 路径所遵循的函数</a>
+</li> <li> <a href="NavigationMeshTechnicalGuideCH.html#导航网格物体查询函数"> 导航网格物体查询函数</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="NavigationMeshTechnicalGuideCH.html#导航接口"> 导航接口</a>
+</li> <li> <a href="NavigationMeshTechnicalGuideCH.html#导航网格物体调试"> 导航网格物体调试</a>
+</li> <li> <a href="NavigationMeshTechnicalGuideCH.html#Pawn 寻路参数"> Pawn 寻路参数 </a>
+</li> <li> <a href="NavigationMeshTechnicalGuideCH.html#下载"> 下载</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<hr size="1" noshade="noshade">
+这是一个使您的 AI 使用导航网格物体（也称为 <em>nav mesh</em> ）的快速指南。要想获得关于虚幻引擎中的导航网格物体系统的介绍，请参照<a href="NavigationMeshReference.html" class="twikiLink">导航网格物体参考指南</a>页面。
+<p />
+<p />
+<h2><a name="导航句柄"></a> 导航句柄 </h2>
+<hr size="1" noshade="noshade">
+所有 PathNode 寻路功能都内置在 Controller 中。基于寻路的导航网格物体的所有新功能都是封装在一个称为导航句柄的自包含对象中。导航句柄本身是一个组件，可以附加到您要寻路到的任何 actor 上。另外，句柄存储了路径搜索的输出结果。那就是它存储了生成的路径，并且可以扩展它来存储任何和您正在进行的路径移动的类型相关的任何东西。
+<p />
+要想使用导航网格物体生成您的 AI 寻路，需要进行如下操作： <ul>
+<li> 实现 Interface_NavigationHandle。
+</li> <li> 使得 Navigationhandle（导航处理）组件在某处可以访问。
+</li></ul>
+<p />
+<p />
+<h3><a name="导航句柄功能"></a> 导航句柄功能 </h3>
+导航处理的功能可以粗略地分为三种：
+<p />
+<h4><a name="实际寻路功能"></a> 实际寻路功能 </h4>
+寻路是在路径约束和目标点求值器的帮助下执行的。请参照<a href="NavMeshConstraintsAndGoalEvaluators.html" class="twikiLink">约束及目标点求值器</a>页面了解更多信息。要想进行寻路，您至少需要建立一个约束和目标点求值器。要想完成这个功能，添加一些类似于这样的函数：
+<p />
+<div class="codesnippet">
+<pre>
+function bool GeneratePathTo(Actor Goal, optional float WithinDistance, optional bool bAllowPartialPath)
+{
+  if (NavigationHandle &#61;&#61; None)
+  {
+    return false;
+  }
+
+  AddBasePathConstraints(false);
+
+  class&#39;NavMeshPath&#95;Toward&#39;.static.TowardGoal(NavigationHandle, Goal);
+  class&#39;NavMeshGoal&#95;At&#39;.static.AtActor(NavigationHandle, Goal, WithinDistance, bAllowPartialPath);
+
+  return NavigationHandle.FindPath();
+}
+</pre>
+</div>
+<p /> <ul>
+<li> <strong>FindPath()</strong> - 这个函数将会执行一个循环，并不断运行直到目标点求值器的栈确定了适当的目标或者要处理的节点集合为空（查找了所有的节点）为止。如果搜索成功则返回 true，并且将会把得到的路径存储在您调用 <strong>FindPath()</strong> 的 NavigationHandle（导航处理）上的 PathCache（路径缓存）中。在自定义的路径搜索的情况下（比如，掩体搜索），目标求值器将根据额外的数据的自身的内部情况来存储这些数据。
+</li></ul>
+<p />
+<h4><a name="路径所遵循的函数"></a> 路径所遵循的函数 </h4> <ul>
+<li> <strong>SetFinalDestination()</strong> - 这个函数设置 NavigationHandle（导航处理）上的 <strong>FinalDestination（最终目的地）</strong> 参数的值。由于以下两个原因，导致这个函数是必要的： 第一，PathCache（路径缓存）是一系列的边，所以一旦 Actor 到达了最后一个边，我们需要更多的信息来使得 Actor 到达路径的最后一个多边形中的路径的目标点。第二，没有自动为每次路径搜索设置这个参数的原因是当前正在朝向一个目标点的路径上运动的 Actor 可能会进行和到那里的寻路没有关系的路径搜索（比如，在跑动的过程中寻找掩体），所以在这种情况下我们不想清除当前存储在 <strong>FinalDestination</strong> 中的数据。<br/><img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>注意：</strong> 如果没有设置这个参数，某些目标点求值程序（也就是 NavMeshGoal_At）将会自动地设置它，这仅在传统的寻路情况下使用。
+</li> <li> <strong>GetNextMoveLocation()</strong> - 这是路径跟随的最重要的函数。 它决定了您当前沿着路径所在的位置，并计算了实体将要移动到的空间点（也就是计算了传入到 <strong>MoveTo()</strong> 函数中的值）。
+</li></ul>
+<p />
+<h4><a name="导航网格物体查询函数"></a> 导航网格物体查询函数 </h4>
+有太多的相关函数，以至于不能在这里一一列出。请参照<a href="NavigationMeshReference.html" class="twikiLink">导航网格物体参数</a>来获得关于导航句柄函数的全部列表。 其中几个需要注意函数的是：  <ul>
+<li> <strong>PointReachable()</strong> -  这将会对 NavMesh 生成过程重生成的障碍物网格物体进行线性检测。这个检测过程要比对碰撞几何体的线性检测快很多，同时也比进行正常的可到达性的检测快很多（这涉及到很多线性检测）。
+</li> <li> <strong>GetValidPositionsForBox()</strong> - 返回给定范围中的传入框中的全部有效（非重叠的）位置。对于类似于查找 spawn 位置这样的事情是非常有用的。
+</li></ul>
+<p />
+<!--  -->
+<p />
+<h2><a name="导航网格物体调试"></a> 导航网格物体调试 </h2>
+<hr size="1" noshade="noshade">
+关于在运行时对导航网格物体寻路进行调试的信息，请参照<a href="NavigationMeshPathDebugging.html" class="twikiLink">导航网格物体寻路调试</a>页面。
+<p />
+<h2><a name="Pawn 寻路参数"></a> Pawn 寻路参数 </h2>
+<hr size="1" noshade="noshade">
+Pawn 本身有一些将会影响那些没有直接与导航网格物体相关的寻路的参数。
+<p />
+下面是一个快速概述： <ul>
+<li> <strong>MaxStepHeight</strong> - AI 可以‘登上去’的最大垂直高度。（非跳步）
+</li> <li> <strong>MaxJumpHeight</strong> - AI 可以跳的最大垂直高度 （它将会确定 AI 尝试跳过障碍物 vs 在它们周围走动的时间）
+</li> <li> <strong>WalkableFloorZ</strong> - 认为可以走动的斜坡的法线最大 Z 值。（Pawn 将会在 Z &gt; 这个值的情况下从斜坡上滑下来）
+</li></ul>
+<p />
+<h2><a name="下载"></a> 下载 </h2>
+<hr size="1" noshade="noshade"> <ul>
+<li> <a href="#" target="_top">下载</a>一个可以演示说明如何使用 NavigationHandle 路径函数的示例。
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavigationMeshTechnicalGuideCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:35 GMT -->
+</html></body>

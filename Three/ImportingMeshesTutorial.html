@@ -1,0 +1,314 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ImportingMeshesTutorial.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:17:38 GMT -->
+<head>
+<title> UDK | ImportingMeshesTutorial    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ImportingMeshesTutorial  </b></div>
+<div id="tooltext">
+<a href="ImportingMeshesTutorialJP.html" class="twikiLink">日本語訳</a><br><a href="ImportingMeshesTutorialCH.html" class="twikiLink">中国翻译</a><br><a href="ImportingMeshesTutorialKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ImportingMeshesTutorial -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="Importing Meshes Tutorial"></a> Importing Meshes Tutorial </h1>
+<p />
+<em>Document Summary: A primer on how to take mesh geometry that was exported from a 3D modeling program using the <a href="ActorX.html" class="twikiLink">ActorX</a> export plugin tools, and import it into the Unreal Engine and apply multiple materials.</em>
+<p />
+<em>Document Changelog: Created by Erik de Neve<sup>?</sup>.</em>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<p />
+This is a step-by-step primer on how to import a static mesh with multiple material assignments that was exported from 3D Modeling programs using the <a href="ActorX.html" class="twikiLink">ActorX</a> plugin.
+<p />
+<p />
+<p />
+<h2><a name="Getting Content Into the Engine"></a> Getting Content Into the Engine </h2>
+<p />
+<h3><a name="Importing Mesh Geometry"></a> Importing Mesh Geometry </h3>
+<p />
+To import a Render mesh, use the <a href="https://udn.epicgames.com/Three/GenericBrowserReference" class="restricted" class="restricted" class="twikiLink">Generic Browser</a>, which can be opened
+using its button on the main menu bar. From there, select Import from the File Menu; and select the raw textures that were used on the mesh &ndash; find the .ASE files &ndash; and click Open. A Generic Import window will open with several fields to be filled in.
+<p />
+<img alt="Image_1.png" src="rsrc/Three/ImportingMeshesTutorial/Image_1.png" />
+<p />
+Name the new package (by default named "MyPackage").  Fill in a Group and change the Name, if desired.
+<p />
+Groups are a convenient way to organize content within a package.  A group can be created for each type of content, such as "Meshes" and "Textures"; or by theme, such as "Soldier1" and "Soldier2."  The Group field can also be left blank, resulting in all content being kept together in one package.
+<p />
+One thing to consider is the polycount of the objects intended for import. There is a 32,000 vert limit on importing meshes right now; although technically that could be increased easily. Ideally, it is best to bring a in a lower-res model with a normal map.
+<p />
+When prompted for the package, group, and name, for each texture, type in the appropriate package and texture name.  To have the assignments to work automatically when importing the mesh, be sure to use texture names that are NOT identical to the file names, since these are not the final materials yet. For example, here the extension _raw was used.
+<p />
+Important update: UE3 codebases since November 29, 2004 have an import art path which uses the material names, not the raw bitmap names, from the ASE file for use with the automatic material matching in the Unreal Editor. If, for a material slot, there are no matching material name fields in the ASE, the importer falls back to using the bitmap filename field. A warning: early versions of this new code (December 2004) would collapse a material slot if no matching material is found in the editor for that slot.
+<p />
+<strong>IMPORTANT</strong>: It is the name of the <strong>Shading Groups</strong> (NOT the names of the Materials) in Maya which must match the names of the Materials in the Unreal Editor in order for automatic matching to occur.
+<p />
+<img alt="Image_2.png" src="rsrc/Three/ImportingMeshesTutorial/Image_2.png" />
+<p />
+<h3><a name="Importing Materials"></a> Importing Materials </h3>
+<p />
+Now it is time to create the actual materials. Right-click on an empty part of the Generic Browser and choose "New Material". This is done twice, and this time the original, short texture names should be used (without file extensions.)
+<p />
+<img alt="Image_3.png" src="rsrc/Three/ImportingMeshesTutorial/Image_3.png" />
+<p />
+There should now be two 'empty' materials.
+<p />
+<img alt="Image_4.png" src="rsrc/Three/ImportingMeshesTutorial/Image_4.png" />
+<p />
+The two materials can be linked by right-clicking on the material, which should open the <a href="MaterialEditorUserGuide.html" class="twikiLink">Material Editor</a>. From there, right-click on empty space and select "New TextureSample".
+<p />
+<img alt="Image_5.png" src="rsrc/Three/ImportingMeshesTutorial/Image_5.png" />
+<p />
+This box we link up as illustrated. More complex linkups with multiple textures are possible, of course - see also the <a href="MaterialsTutorial.html" class="twikiLink">MaterialsTutorial</a>
+<p />
+Right clicking on the TextureSample box opens the properties. We assign the raw texture to it ( which we selected outside the material editor, in the generic browser, and then clicked on the 'use' (arrow) button.)
+<p />
+<img alt="Image_6.png" src="rsrc/Three/ImportingMeshesTutorial/Image_6.png" />
+<p />
+The same steps are used for the other material. Once they both have the correct names and texture linkups, it's time to import the actual cube.
+<p />
+<h3><a name="Creating and assigning materials"></a> Creating and assigning materials </h3>
+<p />
+Select Import from the File Menu, and import the .ASE cube into the same package.
+<p />
+<img alt="Image_9.png" src="rsrc/Three/ImportingMeshesTutorial/Image_9.png" />
+<p />
+Immediately, the textures are assigned like they were in Maya, because the two materials were prepared with the proper names in this package.
+<p />
+<img alt="Image_10.png" src="rsrc/Three/ImportingMeshesTutorial/Image_10.png" />
+<p />
+Note that everything does not necessarily have to be done in this order all the time. You can always import a static mesh first, and assign, or re-assign whichever material you want to whichever material slot. The slots are accessed by right-clicking on the cube, which opens the static mesh editor. Expanding the materials properties shows us the slots. These can be reassigned - the 'Use' button will put any existing material into the slot. You can even select other materials in other packages in the Generic Browser, and then press 'Use'.
+<p />
+<img alt="Image_11.png" src="rsrc/Three/ImportingMeshesTutorial/Image_11.png" />
+<p />
+<p />
+<p />
+
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ImportingMeshesTutorial.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:17:40 GMT -->
+</html></body>

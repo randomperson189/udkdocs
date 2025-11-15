@@ -1,0 +1,581 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GameplayDebugging.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:08:15 GMT -->
+<head>
+<title> UDK | GameplayDebugging    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">GameplayDebugging  </b></div>
+<div id="tooltext">
+<a href="GameplayDebuggingJP.html" class="twikiLink">日本語訳</a><br><a href="GameplayDebuggingCH.html" class="twikiLink">中国翻译</a><br><a href="GameplayDebuggingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/GameplayDebugging -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="GameplayProgrammingHome.html" class="twikiLink">Gameplay Programming</a></b> &gt; Gameplay Debugging
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Gameplay Debugging"></a> Gameplay Debugging </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="GameplayDebugging.html#Gameplay Debugging"> Gameplay Debugging</a> <ul>
+<li> <a href="GameplayDebugging.html#Overview"> Overview</a>
+</li> <li> <a href="GameplayDebugging.html#Remote Control"> Remote Control</a>
+</li> <li> <a href="GameplayDebugging.html#Property Inspection and Manipulation"> Property Inspection and Manipulation</a> <ul>
+<li> <a href="GameplayDebugging.html#Object Data Manipulation"> Object Data Manipulation</a> <ul>
+<li> <a href="GameplayDebugging.html#EditActor"> EditActor</a>
+</li> <li> <a href="GameplayDebugging.html#EditObject"> EditObject</a>
+</li> <li> <a href="GameplayDebugging.html#EditDefault"> EditDefault</a>
+</li> <li> <a href="GameplayDebugging.html#EditArchetype"> EditArchetype</a>
+</li></ul>
+</li> <li> <a href="GameplayDebugging.html#Static Object Data Inspection"> Static Object Data Inspection</a> <ul>
+<li> <a href="GameplayDebugging.html#GetAll"> GetAll</a>
+</li> <li> <a href="GameplayDebugging.html#GetAllState"> GetAllState</a>
+</li></ul>
+</li> <li> <a href="GameplayDebugging.html#Dynamic Object Data Inspection"> Dynamic Object Data Inspection</a> <ul>
+<li> <a href="GameplayDebugging.html#DisplayAll"> DisplayAll</a>
+</li> <li> <a href="GameplayDebugging.html#DisplayAllState"> DisplayAllState</a>
+</li> <li> <a href="GameplayDebugging.html#DisplayClear"> DisplayClear</a>
+</li></ul>
+</li> <li> <a href="GameplayDebugging.html#Object Data Modification"> Object Data Modification</a> <ul>
+<li> <a href="GameplayDebugging.html#Set"> Set</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="GameplayDebugging.html#Gameplay Code Profiling"> Gameplay Code Profiling</a>
+</li> <li> <a href="GameplayDebugging.html#STAT Commands"> STAT Commands</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+This is a quick guide to using some of UE3's runtime gameplay debugging features. When implementing new features, actors, or gameplay elements, things seldom work exactly as intended the first time through. Being able to quickly adjust property values on the fly or easily view property values, Actor states, or other information while the game is running is imperative to an efficient process. Unreal Engine 3 contains several features, in the form of console commands and applications, which make this debugging process as painless and as efficient as possible. These features can be quite useful for making tweaks, inspecting variables, and tracking down issues without needing to rebuild the engine, rebuild scripts, or restart the game; each of which is a time-consuming process.
+<p />
+<a name="RemoteControl"></a>
+<h2><a name="Remote Control"></a> Remote Control </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<img src="rsrc/Three/GameplayDebugging/remotecontrol.jpg" alt="remotecontrol.jpg" width="346" height="599" style="float:left;margin-right:20px;" />
+<p />
+The RemoteControl is a special window that can be opened while the game is running to provide information and control over certain aspects of the game.
+<p />
+As this window is external to the game window and is created using wxWindows, it is unavailable if wxWindows is disabled, which it is by default except when running a <a href="PlayInEditor.html" class="twikiLink">Play In Editor</a> game session from within UnrealEd. To enable wxWindows and the RemoteControl, the game must be run with the <code>-wxwindows</code> <a href="CommandLineArguments.html" class="twikiLink">command line argument</a>.
+<p />
+For more information and a complete guide to using this feature, see the <a href="RemoteControl.html" class="twikiLink">Remote Control</a> page.
+<div style="clear:both;"></div>
+<p />
+<h2><a name="Property Inspection and Manipulation"></a> Property Inspection and Manipulation </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Inspecting properties of Actors in the game and being able to modify them on the fly is a huge benefit not only when debugging, but also for tweaking and tuning the behavior of gameplay elements. The ability to view and adjust Actor properties is provided through the use of a special set of console commands.
+<p />
+<h3><a name="Object Data Manipulation"></a> Object Data Manipulation </h3>
+<p />
+These <a href="ConsoleCommands.html" class="twikiLink">console commands</a> allow you to open a property window for an in-game object or even for the class default object, which can then be viewed or modified at runtime. Note that there is a <code>None</code> category that contains all the variables that have not been declared with <code>var()</code>, giving you complete access to all of the object's data.
+<p />
+As these commands rely on property windows external to the game window which are created using wxWindows, these commands are unavailable if wxWindows is disabled, which it is by default. To enable wxWindows and thus these console commands, the game must be run with the <code>-wxwindows</code> <a href="CommandLineArguments.html" class="twikiLink">command line argument</a>.
+<p />
+<strong>Note:</strong> This will also enable the <a href="GameplayDebugging.html#RemoteControl" class="twikiAnchorLink">Remote Control</a>. You can also add the <code>-norc</code> <a href="CommandLineArguments.html" class="twikiLink">command line argument</a> to disable the <a href="GameplayDebugging.html#RemoteControl" class="twikiAnchorLink">Remote Control</a> window if you like.
+<p />
+<h4><a name="EditActor"></a> EditActor </h4>
+<p />
+The <code>editactor</code> console command makes the properties of an actor in the game available in the property window. This command only works for classes extending from <code>Actor</code>.This command can take a name or a class as an argument. Optionally, the <code>trace</code> argument can be passed in place of the name or class causing the <code>Actor</code> the player's camera is currently aiming at to be used.
+<p />
+If a name of an <code>Actor</code> is specified, either with the <code>name=</code> prefix or not, the properties of that Object will be displayed.
+<p />
+<pre>
+editactor name&#61;UTPawn&#95;0
+</pre>
+<p />
+This will open a property window for the object <code>UTPawn_0</code>.
+<p />
+If a class is specified, the properties of the first <code>Actor</code> of that class, or a subclass thereof, are displayed.
+<p />
+<pre>
+editactor class&#61;UTPawn
+</pre>
+<p />
+This will choose the first <code>UTPawn</code>. In this case, it would most likely open the properties for the current player's <code>UTPawn</code>.
+<p />
+If the <code>trace</code> argument is specified, the properties of the <code>Actor</code> being aimed at are displayed.
+<p />
+<pre>
+editactor trace
+</pre>
+<p />
+This will open a property window for the object at which the camera is aiming.
+<p />
+<strong>Example Usage:</strong>
+<p />
+In the case of creating a new vehicle, the need to fine-tune the properties of the vehicle to make driving feel right will no doubt arise. Setting the property values in the defaultproperties or even in an .ini file would require starting the game up, testing out the current values, shutting the game down, tweaking the values, starting the game up again, testing the values, etc. This is obviously less than ideal and not very efficient by any means. Using the <code>editactor</code> command allows any and all of the properties of the vehicle to be tweaked while the game is running, even while the player is sitting in the vehicle ready to test it out. This is a much more efficient and intuitive method of tuning gameplay.
+<p />
+The simplest method here is probably to use the <code>trace</code> argument and just aim at the vehicle in question, but specifying the class is easy enough as well.
+<p />
+For vehicles, it may be unlikely you will know the exact name of the vehicle as they are usually spawned dynamically from factories and not placed directly in a map.
+<p />
+<img src="rsrc/Three/GameplayDebugging/editactor_trace.jpg" alt="editactor_trace.jpg" width="640" height="480" /><img src="rsrc/Three/GameplayDebugging/editactor.jpg" alt="editactor.jpg" width="640" height="480" />
+<p />
+<h4><a name="EditObject"></a> EditObject </h4>
+<p />
+The <code>editobject</code> console command makes the properties of a specific object in the game available in the property window. This command is functionally identical to the <code>editactor</code> command without the limitation that the class must extend from <code>Actor</code> and it has no optional <code>trace</code> argument.
+<p />
+<strong>Note:</strong> This command may not work for certain classes or objects when running a map from within UnrealEd through a Play In Editor session.
+<p />
+If a name of an <code>Object</code> is specified, either with the <code>name=</code> prefix or not, the properties of that Object will be displayed.
+<p />
+<pre>
+editobject GameThirdPersonCamera&#95;0
+editobject name&#61;GameThirdPersonCamera&#95;0
+</pre>
+<p />
+Both of these are functionally identical, and will display the properties for the <code>GameThirdPersonCamera_0</code> object.
+<p />
+If a class is specified, the properties of the first <code>Object</code> of that class, or a subclass thereof, are displayed.
+<p />
+<pre>
+editobject class&#61;GameThirdPersonCamera
+</pre>
+<p />
+This will choose the first <code>GameThirdPersonCamera</code>. In this case, it would most likely open the properties for the current player's <code>GameThirdPersonCamera</code>.
+<p />
+<strong>Example Usage:</strong>
+<p />
+Implementing a camera other than first person usually requires having the camera offset from the player mesh, among other aspects that may need tuning. Of course, getting the camera offset the proper distance to get the desired look and feel can be tricky. You certainly do not want to be constantly going back and forth between code and testing needing to compile with each tweak. If you are also working with a system similar to the modular system that is part of the <code>GameFramework</code> examples that means you are dealing with objects and not actors. The <code>editobject</code> command enables you to easily view and modify the properties of those modules with the game running to make the process of tweaking your camera extremely simple and incredibly intuitive.
+<p />
+By using the <code>editobject</code> command and passing it the class of the camera module, the properties for the module will be displayed and tuned to get the offset just right.
+<p />
+<pre>
+editobject class&#61;UDNCameraModule
+</pre>
+<p />
+This will open the property window for the camera module currently in use.
+<p />
+<img src="rsrc/Three/GameplayDebugging/editobject_0.jpg" alt="editobject.jpg" width="712" height="502" /><img src="rsrc/Three/GameplayDebugging/editobject_1.jpg" alt="editobject.jpg" width="712" height="502" />
+<p />
+<h4><a name="EditDefault"></a> EditDefault </h4>
+<p />
+The <code>editdefault</code> console command makes the properties of a class default object available, similar to specifying a class with the <code>editobject</code> console command. The class can be specified using the <code>class=</code> prefix, but it is not necessary.  This command is extremely useful for classes that are frequently spawned, such as projectiles or units in a real-time strategy game.
+<p />
+<strong>Note:</strong> This command is not allowed when running a map from within UnrealEd through a Play In Editor session.
+<p />
+<strong>Example Usage:</strong>
+<p />
+Tweaking the behavior of projectiles can be tedious if you are constantly going between code and testing. By editing the default values directly inside the game while you are testing, the process becomes extremely streamlined.
+<p />
+Simply use the <code>editdefault</code> command and pass it the name of a projectile class:
+<p />
+<pre>
+editdefault UTProj&#95;LinkPlasma
+editdefault class&#61;UTProj&#95;LinkPlasma
+</pre>
+<p />
+Both of these are functionally identical and will display the default properties of the <code>UTProj_LinkPlasma</code> class which can then be modified allowing you to adjust the behavior of all future instances of that class.
+<p />
+<img src="rsrc/Three/GameplayDebugging/editdefault.jpg" alt="editdefault.jpg" width="350" height="500" />
+<p />
+<h4><a name="EditArchetype"></a> EditArchetype </h4>
+<p />
+The <code>editarchetype</code> console command makes the properties of an archetype available. The archetype to edit is specified by passing the path (Package.Group.Name) to the archetype following the command.  Like the <code>editdefault</code> command, this command is also extremely useful for archetypes that are used as templates for objects that are frequently spawned, such as projectiles or units in a real-time strategy game, or for archetypes used as data definitions or content holders.
+<p />
+In addition to being able to edit the properties of the archetype, the settings can be saved to the archetype in the package using the <img alt="arch_save_button.jpg" src="rsrc/Three/GameplayDebugging/arch_save_button.jpg" /> button in the properties window so they are not lost.
+<p />
+<strong>Note:</strong> This command is not allowed when running a map from within UnrealEd through a Play In Editor session.
+<p />
+<strong>Example Usage:</strong>
+<p />
+Say you have a weapon class set up to use archetypes as templates for its projectiles. This allows the look and behavior of the projectiles to easily be tweaked without having to modify and recompile the scripts. However, it would also usually require running the game and testing, closing the game and making changes, running the game and testing, etc. By using the <code>editarchetype</code> command, the modifications can be made while the game is running for an easy and efficient workflow.
+<p />
+The projectile using the current settings of the archetype:
+<p />
+<img src="rsrc/Three/GameplayDebugging/arch_before.jpg" alt="arch_before.jpg" width="640" height="360" />
+<p />
+Simply use the <code>editarchetype</code> command and pass it the path of the archetype:
+<p />
+<pre>
+editarchetype UDNProjectiles.RedPlasma
+</pre>
+<p />
+<img src="rsrc/Three/GameplayDebugging/arch_editwindow.jpg" alt="arch_editwindow.jpg" width="338" height="470" />
+<p />
+By modifying the proeprties, the look and behavior of the projectiles is changed in realtime:
+<p />
+<img src="rsrc/Three/GameplayDebugging/arch_after.jpg" alt="arch_after.jpg" width="640" height="360" />
+<p />
+Once you are satisfied with the settings, press the <img alt="arch_save_button.jpg" src="rsrc/Three/GameplayDebugging/arch_save_button.jpg" /> button in the proeperties window to save the current settings to the archetype.
+<p />
+<h3><a name="Static Object Data Inspection"></a> Static Object Data Inspection </h3>
+<p />
+These <a href="ConsoleCommands.html" class="twikiLink">console commands</a> are useful for inspecting a static snapshot of object data while the game is running. They will capture the values of the specified data at the time the command is executed and display that data in the console and output it to the log as well.
+<p />
+<h4><a name="GetAll"></a> GetAll </h4>
+<p />
+The <code>getall</code> console command returns the value of a particular variable for all objects of a particular class and displays them in the console in-game, visible by pressing the '~' key, and outputs them to the log. The command is followed by the name of the class and variable within that class to access.
+<p />
+<strong>Example usage:</strong>
+<p />
+When implementing a new custom camera system, it can be frustrating to run the game to test out the new camera only to find it not working as expected. It is possible the camera is not functioning correctly, but it could be something more simple such as the camera is not getting created and assigned correctly in the first place. Adding log statements to the code and then running the game and then closing the game to check the logs to see the results is one method to see if the camera is getting assigned. However, it would be so much easier and efficient if you could check right there in the game while it is running. The <code>getall</code> command makes this possible.
+<p />
+By using this command and passing it your custom <code>PlayerController</code> class and the name of the camera variable contained within it, the current value of that variable will be displayed right there in the console, immediately letting you know if the camera is not being assigned properly or if the problem lies elsewhere.
+<p />
+<pre>
+getall UDNPlayerController PlayerCamera
+</pre>
+<p />
+This will list out the <code>Name</code> and <code>PlayerCamera</code> of every <code>UDNPlayerController</code> actor in memory in the console in-game.
+<p />
+<img src="rsrc/Three/GameplayDebugging/getall.jpg" alt="getall.jpg" width="640" height="480" />
+<p />
+Since the <code>PlayerCamera</code> has a value and not <code>None</code>, you know the camera is being assigned properly.
+<p />
+<strong>Additional Parameters:</strong>
+<p />
+This command can also be used to obtain the value of a particular variable for a single instance of a particular class by specifying some optional parameters.
+<p /> <ul>
+<li> <strong>Name=</strong> - Displays the particular variable's value for the <code>Object</code> having this <code>Name</code>.
+</li> <li> <strong>Outer=</strong> - Displays the particular variable's value for all instances of the specified class having this <code>Object</code> as its <code>Outer</code>.
+</li></ul>
+<p />
+In addition, other special information can be displayed along with the particular variable value.
+<p /> <ul>
+<li> <strong>SHOWDEFAULTS</strong> - Displays the default value for the particular variable in addition to the current value.
+</li> <li> <strong>SHOWPENDINGKILLS</strong> - Displays instances even if they are orphaned and pending deletion.
+</li> <li> <strong>DETAILED</strong> - Displays detailed information about the instance(s) via the <code>GetDetailedInfoInternal()</code> function.
+</li></ul>
+<p />
+<h4><a name="GetAllState"></a> GetAllState </h4>
+<p />
+The <code>getallstate</code> console command returns the current state of all objects of a particular class and displays them in the console in-game, visible by pressing the '~' key, and outputs them to the log. The command is followed by the name of the class to access.
+<p />
+<strong>Example usage:</strong>
+<p />
+<pre>
+getallstate UTPawn
+</pre>
+<p />
+This will list the current state of every <code>UTPawn</code> in memory in the console in-game.
+<p />
+<img src="rsrc/Three/GameplayDebugging/getallstate.jpg" alt="getallstate.jpg" width="640" height="480" />
+<p />
+This gives you a quick overview of what the <code>UTPawns</code> in the game are doing. It can quickly point out an anomaly, such as you see in the screenshot as this snapshot was taken at the time the bots were spawning and yet one <code>UTPawn</code> is in the <code>Dying</code> state.
+<p />
+<h3><a name="Dynamic Object Data Inspection"></a> Dynamic Object Data Inspection </h3>
+<p />
+These <a href="ConsoleCommands.html" class="twikiLink">console commands</a> are useful for inspecting object data as it changes over time. They will display a set of data which dynamically updates each frame directly on the screen overlaying the game as part of the HUD.
+<p />
+<h4><a name="DisplayAll"></a> DisplayAll </h4>
+<p />
+The <code>displayall</code> console command returns the value of a particular variable for all objects of a particular class and displays them on the screen. The command is followed by the name of the class and the variable within that class to access.
+<p />
+<strong>Example usage:</strong>
+<p />
+<pre>
+displayall UTPawn Location
+</pre>
+<p />
+This will list the <code>Name</code> and <code>Location</code> of every <code>UTPawn</code> on the screen, updated every frame.
+<p />
+<img src="rsrc/Three/GameplayDebugging/displayall.jpg" alt="displayall.jpg" width="640" height="480" />
+<p />
+<h4><a name="DisplayAllState"></a> DisplayAllState </h4>
+<p />
+The <code>displayallstate</code> console command returns the current state of all objects of a particular class and displays them on the screen. The command is followed by the name of the class to access.
+<p />
+<strong>Example usage:</strong>
+<p />
+Creating believable AI in a game is a difficult task to begin with, but without a way to keep an eye on all the AI as they interact it would become even more so. The <code>displayallstate</code> command makes one aspect of this quick and easy. You can have the current state of every AI entity displayed right on the screen, updating every frame as they make new decisions.
+<p />
+By using this command and passing it the class of the AI entities, you can have an overview of your AI at the ready.
+<p />
+<pre>
+displayallstate UTBot
+</pre>
+<p />
+This will list the current state of every <code>UTBot</code> in memory on the screen, updated every frame, making it extremely easy to see exactly what each bot is doing.
+<p />
+<img src="rsrc/Three/GameplayDebugging/displayallstate.jpg" alt="displayallstate.jpg" width="640" height="480" />
+<p />
+<h4><a name="DisplayClear"></a> DisplayClear </h4>
+<p />
+The <code>displayclear</code> console command clears all object data currently being displayed on the screen. This command takes no arguments.
+<p />
+<strong>Example usage:</strong>
+<p />
+<pre>
+displayclear
+</pre>
+<p />
+This will clear the object data being displayed on the screen from a previous <a href="GameplayDebugging.html#DisplayAll" class="twikiAnchorLink">DisplayAll</a> or <a href="GameplayDebugging.html#DisplayAllState" class="twikiAnchorLink">DisplayAllState</a> command.
+<p />
+<img src="rsrc/Three/GameplayDebugging/displayclear_before.jpg" alt="displayclear.jpg" width="640" height="480" /><img src="rsrc/Three/GameplayDebugging/displayclear_after.jpg" alt="displayclear.jpg" width="640" height="480" />
+<p />
+<h3><a name="Object Data Modification"></a> Object Data Modification </h3>
+<p />
+<h4><a name="Set"></a> Set </h4>
+<p />
+The <code>set</code> console command will set the value of a variable for all instances of a particular class, as well as the class default object. The command is followed by the name of the class, the variable within the class to modify, and the value to set the variable to. This can be very useful for tweaking weapons, projectiles, bots, units in an RTS, etc.
+<p />
+<strong>Note:</strong> This command is not allowed when running a map from within UnrealEd through a Play In Editor session.
+<p />
+<strong>Example usage:</strong>
+<p />
+Balancing weapons can be a tricky feat, constantly tweaking properties to get just the right combination so that no one weapon is overpowering the others. No one in their right mind would want to try to do this by resorting to changing properties in code and compiling and testing. And since you really want to affect all instances of the weapons at once, the <code>editactor</code> command just will not cut it. The <code>set</code> command, however, is perfectly suited for such a task.
+<p />
+By this command and passing it a class name, a variable name, and a value for that variable, it is easy to modify the value of that variable for all instances of that class that currently exist and any instances that may be spawned subsequently.
+<p />
+<pre>
+set utweap&#95;linkgun maxammocount 150
+</pre>
+<p />
+This will increase the maximum ammo count that all link guns can hold.
+<p />
+<img src="rsrc/Three/GameplayDebugging/set.jpg" alt="set.jpg" width="640" height="480" />
+<p />
+<h2><a name="Gameplay Code Profiling"></a> Gameplay Code Profiling </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The Gameplay Profiler is a tool that provides a detailed breakdown of where time is being spent when executing UnrealScript gameplay code.
+<p />
+<img src="rsrc/Three/GameplayDebugging/gameplayprofiler.jpg" alt="gameplayprofiler.jpg" width="800" height="812" />
+<p />
+For a detailed overview, see the <a href="GameplayProfiler.html" class="twikiLink">Gameplay Profiler</a> page.
+<p />
+
+<p />
+For more information on the command line arguments useful for profiling gameplay, see the <a href="https://udn.epicgames.com/Three/GameplayProfiling" class="restricted" class="restricted" class="twikiLink">Gameplay Profiling</a> page.
+<p />
+<h2><a name="STAT Commands"></a> STAT Commands </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The STAT commands can be useful in getting a quick look at how much time certain aspects of your code are taking to execute. The <code>STAT GAME</code> command is especially useful as it shows the cumulative time your scripts are taking to update each tick.
+<p />
+<img src="rsrc/Three/GameplayDebugging/statgame.jpg" alt="statgame.jpg" width="640" height="480" />
+<p />
+For more information on this and other STAT commands, see the <a href="StatsDescriptions.html" class="twikiLink">Stats Description</a> page.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GameplayDebugging.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:08:21 GMT -->
+</html></body>

@@ -1,0 +1,512 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DevelopmentKitGemsCreatingADynamicNavMeshObstacleCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:39 GMT -->
+<head>
+<title> UDK | DevelopmentKitGemsCreatingADynamicNavMeshObstacleCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">DevelopmentKitGemsCreatingADynamicNavMeshObstacleCH  </b></div>
+<div id="tooltext">
+<a href="DevelopmentKitGemsCreatingADynamicNavMeshObstacle.html" class="twikiLink">English Translation</a><br><a href="DevelopmentKitGemsCreatingADynamicNavMeshObstacleJP.html" class="twikiLink">日本語訳</a><br><a href="DevelopmentKitGemsCreatingADynamicNavMeshObstacleKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/DevelopmentKitGemsCreatingADynamicNavMeshObstacleCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<p />
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="DevelopmentKitGems.html" class="twikiLink">虚幻开发工具包精华文章</a></b> &gt; 创建动态导航网格物体障碍物 <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt; <b><a href="AIAndNavigationHome.html" class="twikiLink">AI &amp; 导航</a></b> &gt; 创建动态导航网格物体障碍物
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="创建动态导航网格物体障碍物"></a> 创建动态导航网格物体障碍物 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<strong><em>使用2011 年 6 月的UDK版本进行了最后测试</em></strong>
+<br>
+<strong><em>可以与 PC 和 iOS 兼容</em></strong>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="DevelopmentKitGemsCreatingADynamicNavMeshObstacleCH.html#创建动态导航网格物体障碍物"> 创建动态导航网格物体障碍物</a> <ul>
+<li> <a href="DevelopmentKitGemsCreatingADynamicNavMeshObstacleCH.html#概述"> 概述</a> <ul>
+<li> <a href="DevelopmentKitGemsCreatingADynamicNavMeshObstacleCH.html#相关主题"> 相关主题</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsCreatingADynamicNavMeshObstacleCH.html#动态导航网格物体障碍物"> 动态导航网格物体障碍物</a>
+</li> <li> <a href="DevelopmentKitGemsCreatingADynamicNavMeshObstacleCH.html#使用 _DynamicNavMeshObstacle"> 使用 DynamicNavMeshObstacle </a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+导航网格物体有很多有益的功能，这些功能使它远远优于以前的路径节点系统。其中一个最好的功能是它可以真正轻而易举地实时定义障碍物。
+<p />
+以前的路径节点系统通过关闭路径节点实现了这个功能，这样路径就不会使用它，因为这样做通常会产生更大的路径节点数，而关卡设计师需要牢记这个数字。而且它使用起来非常麻烦容易出错。
+<p />
+对于导航网格物体，它与将一个 2D 形状定义为障碍物并寄存它一样简单。
+<p />
+<h3><a name="相关主题"></a> 相关主题 </h3> <ul>
+<li> <a href="UsingNavigationMeshes.html" class="twikiLink">使用导航网格物体</a>
+</li> <li> <a href="NavigationMeshReference.html" class="twikiLink">导航网格物体引用</a>
+</li> <li> <a href="NavMeshDynamicObstacleSplitting.html" class="twikiLink">导航网格物体动态障碍物分割</a>
+</li> <li> <a href="NavigationMeshTechnicalGuide.html" class="twikiLink">导航网格物体技术指南</a>
+</li></ul>
+<p />
+<h2><a name="动态导航网格物体障碍物"></a> 动态导航网格物体障碍物 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+下面的脚本是一个可以扩展现有 NavMeshObstacle 类的辅助类。它可以帮助我们轻松创建我们想要的形状，通过为程序员提供一个使用界面 [SetAsSquare, SetAsRectangle, SetAsCircle] 的样本。
+<p />
+<div class="codetitlebar">
+DynamicNavMeshObstacle.uc
+</div>
+<div class="codesnippet">
+<pre>
+class DynamicNavMeshObstacle extends NavMeshObstacle;
+
+// 可以创建的形状列表
+enum EShape
+{
+  EShape&#95;None,
+  EShape&#95;Square,
+  EShape&#95;Rectangle,
+  EShape&#95;Circle
+};
+
+// 导航网格物体障碍物的形状
+var PrivateWrite EShape ShapeType;
+// 在 EShape&#95;Square 中使用
+var PrivateWrite float Width;
+// 在 EShape&#95;Square 和 EShape&#95;Rectangle 中使用
+var PrivateWrite float Height;
+// 在 EShape&#95;Circle 中使用
+var PrivateWrite float Radius;
+// 在 EShape&#95;Circle 中使用
+var PrivateWrite int Sides;
+// 是否将障碍物与 actor 的旋转量对齐？
+var bool AlignToRotation;
+
+simulated function PostBeginPlay()
+{
+  // 忽略默认的 post begin play 函数
+  Super(Actor).PostBeginPlay();
+}
+
+function SetAsSquare(float NewWidth)
+{
+  if (NewWidth &#62; 0.f)
+  {
+    ShapeType &#61; EShape&#95;Square;
+    Width &#61; NewWidth;
+  }
+}
+
+function SetAsRectangle(float NewWidth, float NewHeight)
+{
+  if (NewWidth &#62; 0.f &#38;&#38; NewHeight &#62; 0.f)
+  {
+    ShapeType &#61; EShape&#95;Rectangle;
+    Width &#61; NewWidth;
+    Height &#61; NewHeight;
+  }
+}
+
+function SetAsCircle(float NewRadius, float NewSides)
+{
+  if (NewRadius &#62; 0.f &#38;&#38; NewSides &#62; 0)
+  {
+    ShapeType &#61; EShape&#95;Circle;
+    Radius &#61; NewRadius;
+    Sides &#61; NewSides;
+  }
+}
+
+event bool GetObstacleBoudingShape(out array&#60;vector&#62; Shape)
+{
+  local Vector Offset;
+  local int i, Angle;
+  local Rotator R;
+
+  if (ShapeType &#61;&#61; EShape&#95;Square)
+  {
+    if (AlignToRotation)
+    {
+      // 右上角
+      Offset.X &#61; Width;
+      Offset.Y &#61; Width;
+      Shape.AddItem(Location + (Offset &#62;&#62; Rotation));
+      // 右下角
+      Offset.X &#61; -Width;
+      Offset.Y &#61; Width;
+      Shape.AddItem(Location + (Offset &#62;&#62; Rotation));
+      // 左下角
+      Offset.X &#61; -Width;
+      Offset.Y &#61; -Width;
+      Shape.AddItem(Location + (Offset &#62;&#62; Rotation));
+      // 左上角
+      Offset.X &#61; Width;
+      Offset.Y &#61; -Width;
+      Shape.AddItem(Location + (Offset &#62;&#62; Rotation));
+    }
+    else
+    {
+      // 右上角
+      Offset.X &#61; Width;
+      Offset.Y &#61; Width;
+      Shape.AddItem(Location + Offset);
+      // 右下角
+      Offset.X &#61; -Width;
+      Offset.Y &#61; Width;
+      Shape.AddItem(Location + Offset);
+      // 左下角
+      Offset.X &#61; -Width;
+      Offset.Y &#61; -Width;
+      Shape.AddItem(Location + Offset);
+      // 左上角
+      Offset.X &#61; Width;
+      Offset.Y &#61; -Width;
+      Shape.AddItem(Location + Offset);
+    }
+
+    return true;
+  }
+  else if (ShapeType &#61;&#61; EShape&#95;Rectangle)
+  {
+    if (AlignToRotation)
+    {
+      // 右上角
+      Offset.X &#61; Width;
+      Offset.Y &#61; Height;
+      Shape.AddItem(Location + (Offset &#62;&#62; Rotation));
+      // 右下角
+      Offset.X &#61; -Width;
+      Offset.Y &#61; Height;
+      Shape.AddItem(Location + (Offset &#62;&#62; Rotation));
+      // 左下角
+      Offset.X &#61; -Width;
+      Offset.Y &#61; -Height;
+      Shape.AddItem(Location + (Offset &#62;&#62; Rotation));
+      // 左上角
+      Offset.X &#61; Width;
+      Offset.Y &#61; -Height;
+      Shape.AddItem(Location + (Offset &#62;&#62; Rotation));
+    }
+    else
+    {
+      // 右上角
+      Offset.X &#61; Width;
+      Offset.Y &#61; Height;
+      Shape.AddItem(Location + Offset);
+      // 右下角
+      Offset.X &#61; -Width;
+      Offset.Y &#61; Height;
+      Shape.AddItem(Location + Offset);
+      // 左下角
+      Offset.X &#61; -Width;
+      Offset.Y &#61; -Height;
+      Shape.AddItem(Location + Offset);
+      // 左上角
+      Offset.X &#61; Width;
+      Offset.Y &#61; -Height;
+      Shape.AddItem(Location + Offset);
+    }
+
+    return true;
+  }
+  else if (ShapeType &#61;&#61; EShape&#95;Circle &#38;&#38; Sides &#62; 0)
+  {
+    // 获取每个由面数定义的‘切片’的角度。
+    Angle &#61; 65536 / Sides;
+    // 如果我们与旋转对齐，那么将旋转作为起点
+    R &#61; (AlignToRotation) ? Rotation : Rot(0, 0, 0);
+    // 设置半径
+    Offset.X &#61; Radius;
+    Offset.Y &#61; 0.f;
+    // 对于每个面...
+    for (i &#61; 0; i &#60; Sides; ++i)
+    {
+      // 向左边的面添加点
+      Shape.AddItem(Location + (Offset &#62;&#62; R));
+      // 增加到相邻的面
+      R.Yaw +&#61; Angle;
+    }
+
+    return true;
+  }
+
+  return false;
+}
+
+defaultproperties
+{
+}
+</pre>
+</div>
+<p />
+<h2><a name="使用 _DynamicNavMeshObstacle"></a> 使用 DynamicNavMeshObstacle </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+使用动态导航网格物体障碍物与在其中生成它一样简单，构建您需要的障碍物形状类型，然后寄存它。
+<p />
+<div class="codetitlebar">
+<em>YourClass.uc</em>
+</div>
+<div class="codesnippet">
+<pre>
+var DynamicNavMeshObstacle PlacementObstacle;
+
+function PostBeginPlay()
+{
+  Super.PostBeginPlay();
+  PlacementObstacle &#61; Spawn(class&#39;DynamicNavMeshObstacle&#39;);
+  PlacementObstacle.SetAsCircle(96, 8);
+}
+</pre>
+</div>
+<p />
+您还可以四处移动这个 DynamicNavMeshObstacle 创建一个可移动的导航网格物体障碍物。
+<p />
+<div class="codesnippet">
+<pre>
+function Tick(float DeltaTime)
+{
+  Super.Tick(DeltaTime);
+
+  ForEach TraceActors(class&#39;Actor&#39;, HitActor, HitLocation, HitNormal, CachedMouseWorldOrigin + CachedMouseWorldDirection &#42; 65536.f, CachedMouseWorldOrigin,,, class&#39;Actor&#39;.const.TRACEFLAG&#95;Bullet)
+  {
+    if (HitActor.bWorldGeometry)
+    {
+      PlacementObstacle.UnRegisterObstacle();
+      PlacementObstacle.SetLocation(HitLocation);
+      PlacementObstacle.RegisterObstacle();
+      break;
+    }
+  }
+}
+</pre>
+</div>
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsCreatingADynamicNavMeshObstacleCH/DynamicNavMeshObstacleScreenShot.jpg" alt="DynamicNavMeshObstacleScreenShot.jpg" width='900' height='672' />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DevelopmentKitGemsCreatingADynamicNavMeshObstacleCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:23:40 GMT -->
+</html></body>

@@ -1,0 +1,439 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/VolumetricLightbeamTutorialJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:26:00 GMT -->
+<head>
+<title> UDK | VolumetricLightbeamTutorialJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">VolumetricLightbeamTutorialJP  </b></div>
+<div id="tooltext">
+<a href="VolumetricLightbeamTutorial.html" class="twikiLink">English Translation</a><br><a href="VolumetricLightbeamTutorialCH.html" class="twikiLink">中国翻译</a><br><a href="VolumetricLightbeamTutorialKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/VolumetricLightbeamTutorialJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="ボリュメトリック ライト ビーム チュートリアル"></a> ボリュメトリック ライト ビーム チュートリアル </h1>
+<p />
+<em>ドキュメント概要: ボリュメトリック ライト ビームを作成するためのガイド。</em>
+<p />
+<em>ドキュメントの変更ログ: <a href="https://udn.epicgames.com/Main/RyanBrucks" class="restricted" class="restricted" class="twikiLink">Ryan Brucks</a> により作成。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="VolumetricLightbeamTutorialJP.html#ボリュメトリック ライト ビーム チュートリアル"> ボリュメトリック ライト ビーム チュートリアル</a> <ul>
+<li> <a href="VolumetricLightbeamTutorialJP.html#はじめに"> はじめに</a> <ul>
+<li> <a href="VolumetricLightbeamTutorialJP.html#何を期待するべきか"> 何を期待するべきか</a>
+</li></ul>
+</li> <li> <a href="VolumetricLightbeamTutorialJP.html#LightBeams"> LightBeams</a> <ul>
+<li> <a href="VolumetricLightbeamTutorialJP.html#静的メッシュの作成"> 静的メッシュの作成</a>
+</li> <li> <a href="VolumetricLightbeamTutorialJP.html#マテリアルの作成"> マテリアルの作成</a> <ul>
+<li> <a href="VolumetricLightbeamTutorialJP.html#FalloffTexture"> FalloffTexture</a>
+</li> <li> <a href="VolumetricLightbeamTutorialJP.html#マテリアルのセットアップ"> マテリアルのセットアップ</a> <ul>
+<li> <a href="VolumetricLightbeamTutorialJP.html#アーチファクトの修正"> アーチファクトの修正</a> <ul>
+<li> <a href="VolumetricLightbeamTutorialJP.html#下から見ると見栄えが悪い"> 下から見ると見栄えが悪い</a>
+</li> <li> <a href="VolumetricLightbeamTutorialJP.html#カメラの交差"> カメラの交差</a>
+</li> <li> <a href="VolumetricLightbeamTutorialJP.html#ワールド オブジェクトとライトビームの交差"> ワールド オブジェクトとライトビームの交差</a>
+</li></ul>
+</li> <li> <a href="VolumetricLightbeamTutorialJP.html#仕上げのタッチの追加"> 仕上げのタッチの追加</a> <ul>
+<li> <a href="VolumetricLightbeamTutorialJP.html#パニング スモーク"> パニング スモーク</a>
+</li> <li> <a href="VolumetricLightbeamTutorialJP.html#追加のパラメータ"> 追加のパラメータ</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li> <li> <a href="VolumetricLightbeamTutorialJP.html#最終的な考え"> 最終的な考え</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="はじめに"></a> はじめに </h2>
+<p />
+これは、説得力のあるボリュメトリック ライト ビームを作成するマテリアル技術を紹介するガイドです。円錐の静的メッシュに適用されたアンリット トランスルーセント マテリアルを使用し、フォールオフを用いてエッジを隠します。
+<p />
+何年もの間、ゲーム エンジンはボリュメトリック ライト ビームの様子に見せかけるのに似たような技術を使用してきましたが、もっともよく使用される技術は、遺憾な点が多いです。どうすれば偽物のライト ビームを、どの角度から見ても正常に見せることができるでしょうか？ プレイヤーがライト ビームの中を歩いたらどうなるでしょう？ ビームがワールド ジオメトリと交差するとどうなるでしょう？ いくつかの強力なマテリアル表現式のおかげで、Unreal Engine 3 は、少しの微調整で簡単にこれらの問題をすべて解決することができます。
+<p />
+<h3><a name="何を期待するべきか"></a> 何を期待するべきか </h3>
+<p />
+このチュートリアルでは EngineVolumetrics パッケージの Master Lightbeam マテリアルを再現します。
+<p />
+完成したマテリアルの完全な名前は以下の通りです: \\Build\UnrealEngine3-Build\Engine\Content\EngineVolumetrics.LightBeam.Materials.M_EV_Lightbeam_Master_01
+<p />
+注記：\\Build\UnrealEngine3-Build\Engine\Content\EngineVolumetrics.LightBeam.Materials.M_EV_Lightbeam_Master_01_1sided_01 はlightbeamの内部を見る必要がない時に使用されます。この1sided バージョンはパフォーマンス面で使う羽目になることが多いです。
+<p />
+<p />
+EngineVolumetrics は、4 つのタイプのボリュメトリック FalloffSpheres、FogEnvironments、Fogsheets、Lightbeams を含むための 4 つのグループを含むパッケージです。すべてのボリュメトリック プリミティブ タイプの中で、すべてのタイプからのほとんどの技術を 1 つのマテリアルに組み合わせられているので、Lightbeam をチュートリアルのマテリアルとして使用します。さまざまなタイプのボリュメトリック プリミティブとその使用法を説明したページは、 <a href="VolumetricLightingGuideJP.html" class="twikiLink">ボリュメトリック ライティング ガイド</a> になります。
+<p />
+このマテリアルは、多くのインスタンスのペアレント マテリアルとして使用されるので、このチュートリアルは、インスタンス化のためにマテリアルのパラメータをどのように設定するかも説明します。マテリアルのインスタンス化の完全な説明は、 <a href="InstancedMaterialsJP.html" class="twikiLink">インスタンス化したマテリアル</a> ページを参照してください。
+<p />
+<p />
+<h2><a name="LightBeams"></a> LightBeams </h2>
+<p />
+何を作成できるかには無限の可能性がありますが、簡単な円錐のフォールオフ タイプのビームを作成していきます。これらは多くの異なった方法に使用できます。ライト ソースからの輝きを投影するために小さくかすかにすることもできますし、雲の隙間から発するビームのような一筋の光にスケールアップすることもできます。これはレベルの既存の雰囲気にマッチするべきで、密度の高い距離フォグは、明るい雰囲気のレベルよりも密度の高いライトビームを使用するべきです。もちろん、これはアーティストの気まぐれや思いつきになります。
+<p />
+これらのライトビームの作成には 3 ステップあります。
+1) ビームの形を定義する静的メッシュを作成します。
+2) フォールオフ テクスチャを作成します。
+3) マテリアルを作成し、すべてのアーチファクトがなくなるまで値を微調整します。
+<p />
+<img alt="lightbeams.jpg" src="rsrc/Three/VolumetricLightbeamTutorialJP/lightbeams.jpg" />
+<p />
+<h3><a name="静的メッシュの作成"></a> 静的メッシュの作成 </h3>
+<p />
+EngineVolumetrics パッケージは既に異なる角度で 3 つの円錐の変化形を持っていますが、これらはすべて同じ UV を持っています。このセクションでは、このマテリアルでよりたくさんのカスタム円錐メッシュを正常に機能させるには、何が必要かを解説していきます。
+<p />
+テーパ エッジを持った円柱を作成し、UV にシームが 1 つしかできないようにこれをアンラップします。マテリアル計算はタンジェント空間で行われ、粗雑な UV は後ほどビジュアル ディストーションの原因となるので、UV はクリーンであることが重要です。メッシュがテッセレートされていればいるほど、最終的な結果としてフォールオフはよりスムーズになります (4 つの垂直なスライスを持った 16 面体の円柱で大丈夫でしょう)。
+<p />
+EngineVolumetrics にある 3 つの円錐の変化形で、たいていの場合は用が足りるでしょう。
+<p />
+<img alt="UDNLightmaps_Mesh01.jpg" src="rsrc/Three/VolumetricLightbeamTutorialJP/UDNLightmaps_Mesh01.jpg" />
+<p />
+<h3><a name="マテリアルの作成"></a> マテリアルの作成 </h3>
+<p />
+マテリアルの作成は、プロセスの中でももっとも複雑な部分です。まず、ライトビームをもっとも基本的なレベルで機能させます。その後、それぞれのアーチファクトを 1 つずつ解決していきます。
+<p />
+<h4><a name="FalloffTexture"></a> FalloffTexture </h4>
+<p />
+最初にフォールオフ テクスチャを作成します。フォールオフ テクスチャの外見は、最終的な結果の外見に大きく影響を与えます。このフォールオフ テクスチャは、完全に Photoshop の Render (レンダリング) -&gt; Light Effects (ライト エフェクト) フィルタで作成されました。上部にぼやけた黒い線が 1 つ描かれています。
+<p />
+\\Build\UnrealEngine3-Build\Engine\Content\EngineVolumetrics.LightBeam.Materials. T_EV_LightBeam_Falloff_01
+<p />
+<p />
+<img alt="T_LT_Light_UDNLightbeams_Materials_Falloff01.jpg" src="rsrc/Three/VolumetricLightbeamTutorialJP/T_LT_Light_UDNLightbeams_Materials_Falloff01.jpg" />
+<p />
+ここで注意する重要な性質は、テクスチャのすべてのエッジの周りは完全に黒くあり、テクスチャの上部は黒色に消えていくということです。これは、静的メッシュの上部のエッジの位置を隠すのに役立ちます。テクスチャ プロパティが Clamp (クランプ) に設定されていることを確認してください。マテリアル内のこのテクスチャ サンプルは TextureSample2DParameter なので、さまざまな異なったフォールオフ テクスチャをライトビームに使用することができます。
+<p />
+<h4><a name="マテリアルのセットアップ"></a> マテリアルのセットアップ </h4>
+<p />
+これで、マテリアルの作成を始める準備ができました。新しいマテリアルを作成し、マテリアル設定で以下のオプションを設定します。
+<p />
+BlendMode: BLEND_Translucent
+LightModel: MLM_Unlit
+TwoSided: True
+<p />
+<img alt="UDNLightmaps_Material_start.jpg" src="rsrc/Three/VolumetricLightbeamTutorialJP/UDNLightmaps_Material_start.jpg" />
+<p />
+マテリアル入力フィールドは Emissive と Opacity の 2 つのみを使用します。Emissive フィールドは、ビームの色情報のみを含んでいるはずです。今のところは、シンプルな VectorParameter (1, 1, 1, 1) を Emissive に使用します。VectorParameter の Alpha チャンネルは、RGB によって掛けられます。これは、カラー ピッカーを使用して RGB 値 (&lt;1 の値のみをサポート) を選びつつ、ライトビームを非常にエミッシブにすることができるように、Brightness (明るさ) の変更に関しては Alpha チャンネルを使用することができます。色から独立した光度を変更することができるのは、たいていの場合非常に便利です。
+<p />
+Opacity フィールドが、ほとんどの魔法が起きる場所になります。これは、ビームのフォールオフを処理し、ダストやスクロールするスモークを追加するために、テクスチャ情報を含みます。
+<p />
+上記のフォールオフ テクスチャを Opacity として使用します。フォールオフ テクスチャのテクスチャ座標には、Reflection Vector を使用して X コンポーネントを生成し、Y コンポーネントは静的メッシュの UV により提供されます。これは、テクスチャが静的メッシュの回転に対して X 軸に沿ってカメラに向かうようにします。X コンポーネントの作成には少し手間がかかります。
+<p />
+Reflection Vector は -1 から 1 の範囲の数を出力します。結果をテクスチャ座標として使用するので、数は 0 から 1 の範囲でなければいけません。0.5 で掛けて 0.5 を足すことで、簡単に Reflection Vector の範囲を 0-1 に変更することができます。
+<p />
+範囲が正常になると、AppendVector 表現式が、生成された X 座標を、静的メッシュの UV からの Y 座標と組み合わせます。この AppendVector の出力が、UV を FalloffTexture に提供する準備ができました。
+<p />
+<img alt="UDNLightmaps_material01.jpg" src="rsrc/Three/VolumetricLightbeamTutorialJP/UDNLightmaps_material01.jpg" />
+<p />
+現在のライトビームは以下のように見えます。
+<p />
+<img alt="UDNLightmaps_Lightbeam01.jpg" src="rsrc/Three/VolumetricLightbeamTutorialJP/UDNLightmaps_Lightbeam01.jpg" />
+<p />
+これは、よい出発点ではありますが、ライトビーム マテリアルは完全とは言えません。シーンに導入することのできるアーチファクトを見てみましょう。
+<p />
+<img alt="UDNLightmaps_artifacting01JP.JPG" src="rsrc/Three/VolumetricLightbeamTutorialJP/UDNLightmaps_artifacting01JP.jpg" />
+<p />
+このガイドの始めの部分で解説しましたように、これらの問題のそれぞれは、適切なマテリアル表現式を使用することで解決できます。
+<p />
+<h5><a name="アーチファクトの修正"></a> アーチファクトの修正 </h5>
+<p />
+<h6><a name="下から見ると見栄えが悪い"></a> 下から見ると見栄えが悪い </h6>
+<p />
+現在使用している方法 (厳密には X チャンネル フォールオフ) では、横から見た場合、ビームの見栄えを非常に良くしますが、下の角度から見た場合にほとんど役に立ちません。下から見た際のビームの見栄えを修正するには、2 つ目のフォールオフ テクスチャを使用して、既存のフォールオフ テクスチャで掛けます。2 つ目のフォールオフ テクスチャにはぼやけたドットを使用しました。
+<p />
+<img alt="T_LT_Light_UDNLightbeams_Materials_Falloff02.jpg" src="rsrc/Three/VolumetricLightbeamTutorialJP/T_LT_Light_UDNLightbeams_Materials_Falloff02.jpg" />
+<p />
+テクスチャ プロパティが Clamp (クランプ) に設定されていることを確認してください。
+<p />
+以前と同様に、Reflection Vector を使用して、2 つ目のフォールオフ テクスチャのテクスチャ座標を生成します。このテクスチャのテクスチャ座標には、Reflection Vector からの X と Y コンポーネントを使用します。よりうまくエッジを隠すのに微妙に調節するために、ReflectionVector(X,Y) は、定数によって掛けられます。ここでは、0.3 を使用しましたが、他の値でも大丈夫です。
+<p />
+<img alt="UDNLightmaps_material02.jpg" src="rsrc/Three/VolumetricLightbeamTutorialJP/UDNLightmaps_material02.jpg" />
+<p />
+今度は下から見ると、ライトビームは以下のように見えるはずです。
+<p />
+<img alt="UDNLightmaps_artifacting_fixed01JP.JPG" src="rsrc/Three/VolumetricLightbeamTutorialJP/UDNLightmaps_artifacting_fixed01JP.jpg" />
+<p />
+もうハードなエッジが見えることはありません。まだハードなエッジが見える場合は、単にフォールオフ テクスチャか ReflectionVector(X,Y) の掛け算を微調整します。
+<p />
+<h6><a name="カメラの交差"></a> カメラの交差 </h6>
+<p />
+PixelDepth ノードを使用して、トランスルーセント マテリアル内のどのようなピクセルの深度もサンプルすることができます。これを使用して、カメラの直前にあるピクセルをフェードアウトさせます。深度を定数で掛けることにより、フェードアウトが起きる距離をコントロールすることができます。定数には、インスタンスごとに変更することができるように、'Distance' と名前の付いたスカラー パラメータを使用します。通常は、設置するライトビームのサイズに基づいて、この値を変更します。大きなビームはずっと後ろの方からフェードアウトするべきですし、小さいビームはフェードし始める前にかなりカメラに近づくはずです。デフォルトに最適なのは 0.005 です。
+<p />
+この結果を 1 の最大にクランプすることが重要です。以前のフォールオフ テクスチャの結果で単純に掛けてください。
+<p />
+ <img alt="UDNLightmaps_material03.jpg" src="rsrc/Three/VolumetricLightbeamTutorialJP/UDNLightmaps_material03.jpg" />
+<p />
+距離フェードが適用される前と後の画像です。
+<p />
+ <img alt="UDNLightmaps_artifacting_fixed02JP.JPG" src="rsrc/Three/VolumetricLightbeamTutorialJP/UDNLightmaps_artifacting_fixed02JP.jpg" />
+<p />
+<h6><a name="ワールド オブジェクトとライトビームの交差"></a> ワールド オブジェクトとライトビームの交差 </h6>
+<p />
+ライトビームをワールド ジオメトリとの交差でフェードさせるには、DepthBiasedAlpha を使用します。
+<p />
+DepthBiasedBlendAlpha ノードを追加し、BiasScale を約 500 に設定します。'Density' という名前のスカラー パラメータが、ノードの Bias 入力で使用され、マテリアル インスタンスを介した深度バイアスのさらなる微調整を可能にします。
+<p />
+このマテリアルはインスタンスのペアレント マテリアルになり、depthbiasedalpha はどちらかというとコストの高い表現式なので、オン/オフがトグルできるように StaticSwitchParameter に接続します。そのデフォルトがオフであるようにセットアップされています。
+<p />
+<img alt="UDNLightmaps_material04.jpg" src="rsrc/Three/VolumetricLightbeamTutorialJP/UDNLightmaps_material04.jpg" />
+<p />
+DepthBiasedAlpha の技術は完全ではありませんが (ライトビームがボリュメトリックにシャドウされる原因となりません)、シーンから明瞭なアーチファクトを削除するのに立派な役目を果たします。
+<p />
+<img alt="UDNLightmaps_artifacting_fixed03JP.JPG" src="rsrc/Three/VolumetricLightbeamTutorialJP/UDNLightmaps_artifacting_fixed03JP.jpg" />
+<p />
+<h5><a name="仕上げのタッチの追加"></a> 仕上げのタッチの追加 </h5>
+<p />
+<h6><a name="パニング スモーク"></a> パニング スモーク </h6>
+<p />
+StaticSwitchParameter を使用して、ビーム内でパニング スモーク テクスチャを有効化するオプションを与えます。追加のビーム メッシュを作成すると、スモーク テクスチャがタイルする場所でシームなしにパンできるように UV がきれいに円柱に 0 から 1 にアンラップされているべきである理由です。
+<p />
+テクスチャ パラメータが追加されました。これには、その挙動をコントロールするいくつかの他のパラメータがあります。ライトビームは通常、長さに沿ってスケールされるので、テクスチャは X と Y スケールで別々のパラメータを持ちます。また、パニング速度とコントラストのパラメータもあります。
+<p />
+以下がそのパラメータです。
+TextureContrast: 線形はテクスチャを 1 の定数で補間します。
+TextureScaleX: X に沿ってスケールします。
+TextureScaleY: Y に沿ってスケールします。
+PanningSpeed: パニング速度をコントロールする時間を掛けます。
+<p />
+以下がスクリーンショットです。
+<p />
+<img alt="UDNLightmaps_material05.jpg" src="rsrc/Three/VolumetricLightbeamTutorialJP/UDNLightmaps_material05.jpg" />
+<p />
+<h6><a name="追加のパラメータ"></a> 追加のパラメータ </h6>
+<p />
+最後に、付加的な Multiply と "Opacity" という名前のスカラー パラメータを追加し、ビームのオパシティのコントロールをマテリアル インスタンスに与えます。
+<p />
+<img alt="UDNLightmaps_material05.jpg" src="rsrc/Three/VolumetricLightbeamTutorialJP/UDNLightmaps_material05.jpg" />
+<p />
+<p />
+<h2><a name="最終的な考え"></a> 最終的な考え </h2>
+<p />
+マテリアルは最終的にこのように見えます。21 の指示で、このライトビームは、まだほとんどのリット マテリアルよりもコストがかかりません。UseDepthBiasedAlpha と UseTextureOverlay をオンにすると、指示カウントが 39 個に増えるので、StaticSwitchParameters は賢く使うようにしましょう。
+<p />
+次世代エンジンのライティング機能は注目されていますが、アンリット マテリアルの力量を見くびらないことも重要です。
+<p />
+<img alt="UDNLightmaps_mat_complete.jpg" src="rsrc/Three/VolumetricLightbeamTutorialJP/UDNLightmaps_mat_complete.jpg" />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/VolumetricLightbeamTutorialJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:26:03 GMT -->
+</html></body>

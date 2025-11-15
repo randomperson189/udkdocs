@@ -1,0 +1,462 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/FogVolumesJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:32:19 GMT -->
+<head>
+<title> UDK | FogVolumesJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">FogVolumesJP  </b></div>
+<div id="tooltext">
+<a href="FogVolumes.html" class="twikiLink">English Translation</a><br><a href="FogVolumesCH.html" class="twikiLink">中国翻译</a><br><a href="FogVolumesKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/FogVolumesJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="Fog Volumes"></a> Fog Volumes </h1>
+<p />
+<em>ドキュメントの概要: Fog Volumes の使用法、ベストプラクティスや制限についての説明。</em>
+<p />
+<em>ドキュメントの変更ログ: <a href="https://udn.epicgames.com/Main/DanielWright" class="restricted" class="restricted" class="twikiLink">Daniel Wright</a> により作成</em>
+<p />
+<em>最新のアップデート：- <a href="https://udn.epicgames.com/Main/DanielWright" class="restricted" class="restricted" class="twikiLink">DanielWright</a> – 2008 年 9 月 8 日</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="FogVolumesJP.html#Fog Volumes"> Fog Volumes</a> <ul>
+<li> <a href="FogVolumesJP.html#Versions"> Versions</a>
+</li> <li> <a href="FogVolumesJP.html#Fog Volumes とは?"> Fog Volumes とは?</a>
+</li> <li> <a href="FogVolumesJP.html#セットアップ方法"> セットアップ方法</a>
+</li> <li> <a href="FogVolumesJP.html#簡単な自動セットアップ"> 簡単な自動セットアップ</a>
+</li> <li> <a href="FogVolumesJP.html#自動セットアップの詳細"> 自動セットアップの詳細</a>
+</li> <li> <a href="FogVolumesJP.html#簡単な手動セットアップ"> 簡単な手動セットアップ</a>
+</li> <li> <a href="FogVolumesJP.html#手動セットアップの詳細"> 手動セットアップの詳細</a>
+</li> <li> <a href="FogVolumesJP.html#密度関数"> 密度関数</a> <ul>
+<li> <a href="FogVolumesJP.html#FogVolumeConstantDensityInfo"> FogVolumeConstantDensityInfo</a>
+</li> <li> <a href="FogVolumesJP.html#FogVolumeConstantHeightDensityInfo"> FogVolumeConstantHeightDensityInfo</a>
+</li> <li> <a href="FogVolumesJP.html#FogVolumeLinearHalfspaceDensityInfo"> FogVolumeLinearHalfspaceDensityInfo</a>
+</li> <li> <a href="FogVolumesJP.html#FogVolumeSphericalDensityInfo"> FogVolumeSphericalDensityInfo</a>
+</li> <li> <a href="FogVolumesJP.html#付加的密度関数"> 付加的密度関数</a>
+</li></ul>
+</li> <li> <a href="FogVolumesJP.html#付属的な設定"> 付属的な設定</a> <ul>
+<li> <a href="FogVolumesJP.html#bEnabled"> bEnabled</a>
+</li> <li> <a href="FogVolumesJP.html#StartDistance"> StartDistance</a>
+</li> <li> <a href="FogVolumesJP.html#Density, _PlaneDistanceFactor, _MaxDensity"> Density, PlaneDistanceFactor, MaxDensity</a>
+</li></ul>
+</li> <li> <a href="FogVolumesJP.html#Fog Volumes  アクタ"> Fog Volumes  アクタ</a>
+</li> <li> <a href="FogVolumesJP.html#Fog Volumes  マテリアル"> Fog Volumes  マテリアル</a> <ul>
+<li> <a href="FogVolumesJP.html#マテリアルの制限"> マテリアルの制限</a>
+</li></ul>
+</li> <li> <a href="FogVolumesJP.html#Height Fog との相互作用"> Height Fog との相互作用</a>
+</li> <li> <a href="FogVolumesJP.html#Fog Volumes での透明度"> Fog Volumes での透明度</a>
+</li> <li> <a href="FogVolumesJP.html#パフォーマンス関連"> パフォーマンス関連</a>
+</li> <li> <a href="FogVolumesJP.html#ベストプラクティス"> ベストプラクティス</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<h2><a name="Versions"></a> Versions </h2>
+<p />
+Fog Volumes were introduced in QA_APPROVED_BUILD_MAR_2007. その後すぐに、Fog Volume による透明性フォグ サポートは追加され、QA_APPROVED_BUILD_APRIL_2007 に入っています。パーティクル フォギングは QA_APPROVED_BUILD_MAY_2007 で有効化されました。また、クリッピング メッシュを伴う定数密度関数で同じような機能が利用可能なので、定数高度密度関数はこのビルドから削除されました。これは、コンパイルされたシェーダの数を減少させ、より効率的になります。自動セットアップ方法は QA_APPROVED_BUILD_FEB_2008 に追加され、それ以前は手動でのセットアップ方法のみサポートされていました。QA_APPROVED_BUILD_APR_2008 では、Fog Volume コストを含めるため、シェーダの複雑さが拡張されました。QA_APPROVED_BUILD_JUL_2008 では、密度の設定を 0 にすることは、bEnabled=False と同じ扱いを受けます。
+<p />
+<h2><a name="Fog Volumes とは?"></a> Fog Volumes とは? </h2>
+<p />
+A Fog Volumes は、 基本的に 3 つのものから成り立ちっています。: 密度関数、密度関数をクリップするメッシュ、フォグの色を定義するマテリアル。Fog Volumes は、メッシュにより結合されたり、複数の密度関数を操作するため、 <a href="HeightFogJP.html" class="twikiLink">HeightFogJP</a> にて入手できる関数のスーパーセットです。Fog Volumes は、シームレスにボリューム内やボリュームに交差している不透明なオブジェクトに入っていくカメラを操作します。
+<p />
+<h2><a name="セットアップ方法"></a> セットアップ方法 </h2>
+<p />
+密度関数をそれをクリップするメッシュに関連付けるには 2 つの方法があります。これらは自動と手動方法と呼ばれています。
+<p />
+<h2><a name="簡単な自動セットアップ"></a> 簡単な自動セットアップ </h2>
+<p />
+<p /> <ul>
+<li> FogVolumeConstantDensityInfo を設定します。 (Generic Browser-&gt;Actor Classes-&gt;Info-&gt;FogVolumeDensityInfo にあります)
+</li></ul>
+<p />
+<img alt="AutomaticConstDensityFogVolume.jpg" src="rsrc/Three/FogVolumesJP/AutomaticConstDensityFogVolume.jpg" /><br />
+<em>設置された後の定数密度 Fog Volume</em>
+<p />
+<h2><a name="自動セットアップの詳細"></a> 自動セットアップの詳細 </h2>
+<p />
+自動セットアップは、もっとも一般的な結果を得るために、なるべく少ないクリックでセットアップを終了できるようにデザインされています。新しい Fog Volume 情報アクタ を設置すると、静的メッシュ コンポーネントが自動的に追加され、Fog Volume をレンダリングするのに使用されます。このコンポーネントには、”FogVolumeConstantDensityInfo” -&gt; “FogVolumeDensityInfo” -&gt; “AutomaticMeshComponent” でアクセスすることができます。Fog Volume 情報をスケール、または回転すると、自動メッシュ コンポーネントもその Fog Volume に合うようにスケール、または回転します。これは、シェードされるのはメッシュなので、良いパフォーマンスをキープするために重要となってきます。可視性フォグ エリアをきちんとバインドする必要があり、そうでないと特に球体密度タイプで、無駄になるシェーディング演算があります。以下が付加的な自動セットアップの詳細です。
+<p /> <ul>
+<li> Fog Volume Info で DrawScale3d を 1.0 から変更すると、AutomaticMeshComponent が Fog Volume 情報のサイズとマッチしなくなる原因となります。
+</li> <li> 新しい球体の Fog Volume 情報を設置すると、DrawScale X、Y、Z は、AutomaticMeshComponent が Fog Volume 情報をしっかりバインドするようにセットアップされます。
+</li> <li> ”AutomaticMeshComponent” -&gt; “PrimitiveComponent” -&gt; “Scale” や “Translation” などから、Fog Volume 情報に対して、AutomaticMeshComponent の位置やスケーリングを変更することができます。
+</li> <li> 新しい Fog Volume 情報を作成すると、新しいマテリアル インスタンスがレベルに作成され、AutomaticMeshComponent に自動的に適用されます。これは、FogMaterial として設定されます。Generic ブラウザでマテリアルが選択されている場合は、そのマテリアルがペアレントとして使用されます。そうでない場合は、EngineMaterials.FogVolumeMaterial がペアレントになります。この新しいマテリアル インスタンスを、選んだマテリアルと互換性のある Fog Volume なら何にでも置換することができます。しかし、実際の Materials 配列を AutomaticMeshComponent で変更するのでなく、情報アクタで FogMaterial を変更するのを忘れないでください。
+</li> <li> Fog Volume Info の SimpleLightColor プロパティは、簡便性特性で AutomaticMeshComponent のマテリアル インスタンスの 'EmissiveColor' ベクトル パラメータとして設定されます。マテリアル インスタンスをオーバーライドして 'EmissiveColor' ベクトル パラメータを使用しない場合は、SimpleLightColor が機能しなくなります。
+</li> <li> AutomaticMeshComponent は、手動方法で使用されるメッシュと違い、エディタで選択可能ではないので、代わりに Fog Volume 情報アクタ自身を選択しなければいけません。
+</li> <li> AutomaticMeshComponent には、衝突、ライティング、シャドウイング フラグがすべて適切に設定されます。
+</li></ul>
+<p />
+<h2><a name="簡単な手動セットアップ"></a> 簡単な手動セットアップ </h2>
+<p />
+<p /> <ul>
+<li> クローズした静的メッシュを配置します。
+</li> <li> FogVolumeConstantDensityInfo を設定します。 (Generic Browser-&gt;Actor Classes-&gt;Info-&gt;FogVolumeDensityInfo にあります)
+</li> <li> 静的メッシュを情報アクタの FogVolumeActors 配列 に追加します。 <ul>
+<li> これをするには、最初に設定した FogVolumeConstantDensityInfo のプロパティを開き、DensityComponent(密度コンポーネント)を展開します。
+</li> <li> 左上に見えるプロパティウィンドウをクリックします。
+</li> <li> ビューポートで静的メッシュを選択します。
+</li> <li> ロックしたため、プロパティウィンドウでは、情報アクタが表示されています。
+</li> <li> 「+」 をクリックし、FogVolumeActors 配列にエントリを追加します。
+</li> <li> 新しいエントリで、 [use selected actor] (選択したアクタを使う)ボタンをクリックします。
+</li></ul>
+</li></ul>
+<p />
+<img alt="SetFogVolumeActors.jpg" src="rsrc/Three/FogVolumesJP/SetFogVolumeActors.jpg" /><br />
+<em>Set the static mesh in the FogVolumeActors array.</em>
+<p />
+この時点で、静的メッシュは Fog Volume としてレンダリングされるはずです。
+<p />
+<h2><a name="手動セットアップの詳細"></a> 手動セットアップの詳細 </h2>
+<p /> <ul>
+<li> 新しい FogVolumeActors エントリを追加すると、デフォルトの Fog Volume 設定でセットアップされます。これは、衝突、ライティング、シャドウイングを無効化します。新しい FogVolumeActor のメッシュ コンポーネント マテリアルも、EngineMaterials.FogVolumeMaterial を使用するように変更されます。これをオーバーライドするには、ターゲットの FogVolumeActor エントリにマテリアルを設定します。FogMaterial は手動セットアップで使用されません。*注意：プロパティ システムの制限のため、現段階では新しいエントリを追加すると FogVolumeActors 配列のすべてのエントリはデフォルトで設定されています。*最初に FogVolumeActors 配列内のすべてのエントリを設定し、その後にマテリアルを設定するのが良いでしょう。
+</li> <li> 手動セットアップは、複数のメッシュを 1 つの Fog Volume 情報に関連付けることができます。また、情報やメッシュを別々にアニメーション化することもできます。しかしながら、複数のパーツをセットアップしアニメーション化するのは単調なので、その場合は自動セットアップの方が簡単です。
+</li></ul>
+<p />
+<h2><a name="密度関数"></a> 密度関数 </h2>
+<p />
+Fog Density 関数は、ワールドの様々な部分でのフォグの濃さを定義します。 UE3 では、それらの密度関数は、 FogVolumeDensityInfo アクタにより表現されます。関数のうちの １ つは配置され、割り当てられたFog Volumes  アクタを持たなければいけません。下記に簡単なものから複雑なものの順で、様々な密度関数を紹介して行きます。
+<p />
+<h3><a name="FogVolumeConstantDensityInfo"></a> FogVolumeConstantDensityInfo </h3>
+これは、密度変数により設定される、あらゆる場所に同じ密度を持つ密度関数です。<br><br>
+<img alt="ConstantDensityCube.jpg" src="rsrc/Three/FogVolumesJP/ConstantDensityCube.jpg" /><br>
+<i>図 2: 定数密度関数でレンダリングされた立方体。密度の定数があらゆる場所にあるため、フォグ情報アクタの場所は重要ではありません。</i>
+<p />
+<h3><a name="FogVolumeConstantHeightDensityInfo"></a> FogVolumeConstantHeightDensityInfo </h3>
+FogVolumeConstantDensityInfo と同じですが、情報アクタの高さが制限されています。  <br><br>
+<img alt="ConstantHeightTorus.jpg" src="rsrc/Three/FogVolumesJP/ConstantHeightTorus.jpg" /><br>
+<i>図 3: 定数高さ密度を使用したメッシュ。メッシュは、 上方に続いていますが、Fog Volumes  がFogVolumeConstantHeightDensityInfo の高さでクリップされています。</i>
+<p />
+<h3><a name="FogVolumeLinearHalfspaceDensityInfo"></a> FogVolumeLinearHalfspaceDensityInfo </h3>
+この密度関数は、プレーンと線形密度係数により定義されます。プレーンの一面の半空間は、フォグがかかります。このプレーンは、回転したり、情報アクタを回転したり移動したりすることで配置することもできます。この関数の密度は、プレーンからの距離で線形に増加するため、プレーン上で密度は 0 になり、距離の値が 1 は、PlaneDistanceFactor(プレーン距離因数)になります。線形密度は、カメラがプレーンにある時、半空間が決して固いエッジを形成しないよう確実にします。 <br><br>
+<p />
+<img alt="LinearHalfspaceHeightfield.jpg" src="rsrc/Three/FogVolumesJP/LinearHalfspaceHeightfield.jpg" /><br>
+<p />
+<i>図 4: 立方体メッシュにより結合された線形半空間密度関数。 密度はプレーンで 0 ではじまり、この例では、 XY プレーン座標のプレーンから遠ざかりながら増加します。ただし、これは、どの座標でも使用できます。</i>
+<p />
+<h3><a name="FogVolumeSphericalDensityInfo"></a> FogVolumeSphericalDensityInfo </h3>
+<p />
+球体密度関数は、MaxDensity(最大密度)の最大密度が中心にあり、 その密度は半球で 0 の値に向って４方向に落ち、スムーズでやわらかいエッジを形成します。球体の中心は、情報アクタの位置により定義され、情報アクタのスケーリングは、半球をスケールします。<br><br>
+<img alt="SphericalDensitySphere.jpg" src="rsrc/Three/FogVolumesJP/SphericalDensitySphere.jpg" />
+<img alt="SphericalDensitySphereClipped.jpg" src="rsrc/Three/FogVolumesJP/SphericalDensitySphereClipped.jpg" /><br>
+<i>図 5 &amp; 6: スムーズエッジのある、球体密度関数。球体をクリップしないため、 図 5 で非可視になっているメッシュにより結合される。図 6 では、メッシュが球体をクリップしている。プレビューコンポーネントでは、ワイヤーフレームで球体の範囲を表示。</i>
+<p />
+<p />
+<h3><a name="付加的密度関数"></a> 付加的密度関数 </h3>
+<p />
+これらの密度関数が、希望するフォールオフ エフェクトを作成するのに十分でない場合、まずはマテリアルを操作してみてください。例えば、よりソフトなエッジを希望する場合は、Fog Volume マテリアルのフレネルを球体に使用してみてください。ポイントは、Fog Volume の背面のみがレンダリングされるので、ビューアーに向かわせるためには、従来のフレネル ノードの代わりに、ノーマルをミラーリングしなければいけないところにあります。付加的な密度関数はコード内に追加することもできます。
+<p />
+<h2><a name="付属的な設定"></a> 付属的な設定 </h2>
+<p />
+<img alt="FogVolumeInfoProperties.jpg" src="#" /><br />
+<em>FogVolumeSphericalDensityInfo のプロパティ</em>
+<p />
+<h3><a name="bEnabled"></a> bEnabled </h3>
+<p />
+Fog Volume を有効化/無効化するにはこのプロパティを使用します。
+<p />
+<h3><a name="StartDistance"></a> StartDistance </h3>
+<p />
+フォグが始まるビューアーからの距離で、ワールド ユニットで表されます。これは現在、線形半空間密度関数ではサポートされていません。
+<p />
+<h3><a name="Density, _PlaneDistanceFactor, _MaxDensity"></a> Density, PlaneDistanceFactor, MaxDensity </h3>
+<p />
+これらは、各密度タイプの Fog Volume 密度をコントロールします。これらが 0 の値であるとき、bEnabled=False と同様の働きをします。
+<p />
+<h2><a name="Fog Volumes  アクタ"></a> Fog Volumes  アクタ </h2>
+<p />
+Fog Volumes  アクタは、レンダリングされ、密度関数をメッシュの内部にクリップします。 <strong>クローズした静的または骨格メッシュで機能します</strong>  つまりこれは、メッシュを通して放たれる光線は、正面の数が背面の数と同様に交差しなければなりません。 Xenon および shader model 2 PC 実装では、アーチファクトが出現する前、オーバーラップができる正面または背面の数が制限されています。現時点では、制限数は、背面、正面それぞれ、4 つとなっています。
+<p />
+<h2><a name="Fog Volumes  マテリアル"></a> Fog Volumes  マテリアル </h2>
+<p />
+Fog Volumes  アクタに割り当てたマテリアルは、次の設定になっていなければいけません。: <ul>
+<li> Lighting model(ライティングモデル) が 「Unlit」
+</li> <li> Blend モードがtranslucent モードの内の一つに設定してある。 (Translucent、Additive または Modulative)
+</li> <li> それらは、Emissive(エミッシブ) 入力である。
+</li> <li> bUsedWithFogVolumes がチェックされている。
+</li></ul>
+<p />
+<img alt="MinimalMaterialSetup.jpg" src="rsrc/Three/FogVolumesJP/MinimalMaterialSetup.jpg" /><br>
+<i>図 7: 最小Fog Volumes  マテリアルセットアップ。「Opacity」(不透明度) のデフォルトが 1 になっているため、指定する必要はありません。</i><br><br>
+マテリアルのエミッシブ入力はFog Volumes  カラーで、opacity 入力は、Fog Volumes を介した距離から演算されるフォグコントリビューションをスケールします。
+<p />
+<h3><a name="マテリアルの制限"></a> マテリアルの制限 </h3>
+<p />
+マテリアルを適用する際、Fog Volume アクタの背面のみが描かれます。これは、カメラが中にある状態でも Fog Volume が描かれるために必要となります。これは、テクスチャリングに密接に関係してきます。 テクスチャは Fog Volume メッシュの背面のみに適用されます。テクスチャを使用するボリュメトリック ライティングのコツに関しては、 <a href="VolumetricLightingGuideJP.html" class="twikiLink">ボリュメトリック ライティング ガイド</a> を参照してください。これは、normal、reflection、vectorと言った他のメッシュの属性にも影響を与えます。
+<p />
+<p />
+<h2><a name="Height Fog との相互作用"></a> Height Fog との相互作用 </h2>
+<p />
+Fog Volumes は、 最高 4 レイヤの高さのフォグにより作用されます。  ただし、高さのフォグ は背面の頂点でのみ演算されるため、高さフォグの作用が、Fog Volumes の背面と正面の間で大きく違う場合は、 視覚的な不一致が生じます。Fog Volumes の tessellation(テッセレーションを) 増加することにより、これを現象することができます。 交差しているFog Volumes は、サポートされておらず、完全に、互いの前または後ろにあるものとして描画されます。
+<p />
+<h2><a name="Fog Volumes での透明度"></a> Fog Volumes での透明度 </h2>
+<p />
+Fog Volumes は、透明なオブジェクトでソートされるため、透明なオブジェクトの前、または後ろにある場合は正確に描画します。  しかし、Fog Volumes と交差する透明なオブジェクトは、フォグが正確にかけられず、最新のハードウェアで効率的な理由から、近似値化されます。 <br>
+<p />
+<strong>FogVolumeDensityInfo の ApproxFogLightColor を近似のマテリアル色に設定することは、重要なことです!</strong> この色は、Fog Volumes が 半透明のオブジェクトを交差するために適用する色です。<br><br>
+<img alt="ApproxFogColor.jpg" src="rsrc/Three/FogVolumesJP/ApproxFogColor.jpg" /><br>
+<i>図 8: ApproxFogLightColor メンバを設定。これにより、 Fog Volumes に交差している透明なオブジェクトにフォグが正確にかけられる。</i>
+<br><br>
+<p />
+Fog Volumes に交差している透明なオブジェクトには、次の制限があります。: <ul>
+<li> フォグは、各頂点ごとに演算される。アーチファクトを最小限にするには、 半透明のメッシュの テッセレーションを増加する。
+</li> <li> Fog Volumes メッシュからのクリッピングによるフォグ遷移は、表現されません。フォグのクリップには、Fog Volumes  メッシュの境界ボックスにそろえられた軸が代わりに使用されます。フォグ関数でのフォグ遷移  (例えば、Spherical Density (球体密度)関数にある急のエッジなど) は、正しく演算されます。
+</li> <li> 単一の透明なオブジェクトで近似値化されるほとんどのフォグ交差は、4 つの height fog レイヤと 1 つのFog Volumes で成り立っています。
+</li> <li> Modulative blend mode(変調ブレンドモード) を使用した透明なマテリアルは、Height Fog、またはFog Volumes のいずれも、まったくフォグされません。
+</li> <li> スキン済みメッシュに適用された透明なマテリアル(骨格メッシュ、または骨格メッシュ Decals) は、Fog Volumes でフォグされません。
+</li> <li> パーティクルと使用されるようマークされた透明なマテリアルは、Fog Volumes では影響されません。 これは単にマテリアルのコンパイル時間を減少し、今後のビルドで修正されます。
+</li></ul>
+<p />
+<h2><a name="パフォーマンス関連"></a> パフォーマンス関連 </h2>
+<p />
+一般的に Fog Volume は 1 層の Translucency よりもコストがかかりますが、同じマテリアルとスクリーン エリアの何十層もの Translucency よりはかかりません。パーティクル エフェクトを Fog Volume と置換する際、シェーダ複雑性ビューモードを使用して、相対的なコストがどれぐらいになるか見てみましょう。
+<p />
+画面の 1 ピクセルのみをカバーしてる、または完全に不透明なオブジェクトの後ろにあっても、レンダリングされる各 Fog Volume には、いくらかのオーバーヘッドが関わってきます。この理由のため、同じボリュームを占めるのならば、小さな Fog Volume をたくさんにするよりも、1 つの大きな Fog Volume の方が良いことになります。Fog Volume メッシュは、いかなる閉じたメッシュにもなり得るので、フォグの始まる場所と終わる場所を完全にコントロールしつつ、1 つの Fog Volume をねじれたトンネルに使用することが可能です。
+<p />
+Fog Volumes は、全体の透光性よりはるかにコストがかかります。 スクリーンの単一のピクセルのみの範囲、または完全に不透明なオブジェクトの背部であったとしても、レンダリングされた各Fog Volumes に関連したオーバーヘッドはかなりあります。 こういう理由から、多数の小さいFog Volumes よりも、1 つの大きなFog Volumes を持つほうが良いのです。
+<br><br>
+Fog Volumes は、 複雑なピクセルシェーダで、最終結果を得るために複数のパスがあります。そのため、これはピクセルシェーダ境界です。 つまり、ハイポリ Fog Volumes を持つ、ほとんどのプラットフォームでは、パフォーマンスにまったく影響しません。 またこれは、たくさんのオーバードローのFog Volumes  (正面や背面のオーバーラッピング) は、パフォーマンスが最悪ということです。
+<br><br>
+簡単なフォグ関数は、複雑なものより敏速に実行します。例えば、定数密度関数は、球体密度関数より 2 倍早いです。できるだけ、 一番簡単なフォグ関数を使用してみてください。
+<br><br>
+Fog Volumes  アクタにあるすべてのピクセルは、同じコストで、どうフォグされるかということに関係ないため、できるだけ一番小さいメッシュを使用するよう心がけてください。例えば、 球体密度関数の例で言うと、球体の外側にフォグなしが適用されますが、メッシュがそれらのフォグされていないピクセルより大きい場合は、フォグされたものと同じコストがかかります。球体関数をできるだけ近くに結合するため、メッシュのサイズを変えてください。
+<p />
+<p />
+以下の基準を満たしているようでしたら、Fog Volume でなく Fog Sheet ( <a href="VolumetricLightingGuideJP.html" class="twikiLink">ボリュメトリック ライティング ガイド</a> を参照) を使用してください。 <ul>
+<li> オーバーラップしている Fog Sheet の数が少ない。
+</li> <li> カメラがフォグの中に入ることは決してない、またはフォグの中にいるのにフォグが消えても構わない。
+</li> <li> Translucency がフォグと交差しない、またはアーチファクトが顕著でない。
+</li></ul>
+<p />
+この場合、いかなる ノイズ テクスチャも Fog Sheet にマップすることができるので、Fog Sheet はコストが低くなり、Fog Volume よりも柔軟性があります。
+<p />
+<p />
+<h2><a name="ベストプラクティス"></a> ベストプラクティス </h2>
+<p />
+透光性の交差の近似値化のみをし、入れ子をサポートしないため、Fog Volumes は、小さい効果から、中間の効果で使用されるのが最適です。 <a href="HeightFogJP.html" class="twikiLink">HeightFogJP</a> レイヤを使用するか、その他のレベル-ワイドなフォグのメソッド、ライト周りまたはレベルの部分に含まれたボリュメトリック効果のFog Volumes を使用してください。
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/FogVolumesJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:32:21 GMT -->
+</html></body>

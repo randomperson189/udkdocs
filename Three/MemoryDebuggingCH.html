@@ -1,0 +1,548 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MemoryDebuggingCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:41:02 GMT -->
+<head>
+<title> UDK | MemoryDebuggingCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">MemoryDebuggingCH  </b></div>
+<div id="tooltext">
+<a href="MemoryDebugging.html" class="twikiLink">English Translation</a><br><a href="MemoryDebuggingJP.html" class="twikiLink">日本語訳</a><br><a href="MemoryDebuggingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/MemoryDebuggingCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="https://udn.epicgames.com/Three/MemoryHome" class="restricted" class="restricted" class="twikiLink">内存系统</a></b> &gt; 内存调试
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="内存调试"></a> 内存调试 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="MemoryDebuggingCH.html#内存调试">内存调试</a> <ul>
+<li> <a href="MemoryDebuggingCH.html#内存调试概述">内存调试概述</a>
+</li> <li> <a href="MemoryDebuggingCH.html#调试内存： 步骤">调试内存： 步骤</a>
+</li> <li> <a href="MemoryDebuggingCH.html#案例参考">案例参考</a> <ul>
+<li> <a href="MemoryDebuggingCH.html#关卡优化">关卡优化</a>
+</li> <li> <a href="MemoryDebuggingCH.html#引擎配置">引擎配置</a>
+</li> <li> <a href="MemoryDebuggingCH.html#动画优化">动画优化</a>
+</li> <li> <a href="MemoryDebuggingCH.html#参考系统">参考系统</a>
+</li> <li> <a href="MemoryDebuggingCH.html#内存碎片">内存碎片</a>
+</li> <li> <a href="MemoryDebuggingCH.html#栈内存">栈内存</a>
+</li></ul>
+</li> <li> <a href="MemoryDebuggingCH.html#参考指南"> 参考指南</a>
+</li> <li> <a href="MemoryDebuggingCH.html#游戏控制台平台的内存">游戏控制台平台的内存</a>
+</li> <li> <a href="MemoryDebuggingCH.html#有用的命令行命令">有用的命令行命令</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="内存调试概述"></a> 内存调试概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+本部分帮助您理解如何调查和处理内存问题&ndash;尤其是对于控制台游戏平台来说，意味内存的应用受到内存的物理大小的限制。
+<p />
+由于不进行内存预算、使用巨大的资源、代码bug等情况，导致这些内存问题在游戏开发过程中是经常发生的。
+<p />
+这里将会提供一些处理这些情况中大多数问题的基本思想，但是请参照针对特定平台的问题获得更多的信息。
+<p />
+<p />
+<h2><a name="调试内存： 步骤"></a> 调试内存： 步骤 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<strong>1. 加载入戏</strong>
+<p />
+如果您由于内存不足而不能加载游戏，请参照<a href="LevelOptimization.html" class="twikiLink">关卡优化</a>页面来学习如何优化关卡。
+<p />
+通常有一个已定的内存预算指导方针是个好主意&ndash;比如，在关卡中可以使用多少静态网格物体；或者使用多少其它的资源比如骨架网格物体、动画、声效。这些都可以根据您做的是什么游戏以及它们是关于什么内容的而动态地变化。
+<p />
+<p />
+<strong>2. 运行游戏并观察</strong>
+<p />
+即使游戏运行了，也不意味着您没有用光内存的危险。您需要知道您的游戏正在使用多少内存以及剩余有多少可用内存最好，这样来避免过量地使用它。
+<p />
+平台提供者有一些工具来完成这个功能。请参照<a href="MemoryDebuggingCH.html#MemoryOnConsoles" class="twikiAnchorLink">下面</a>的平台部分。
+<p />
+<p />
+<strong>3. 降低内存使用量(没有OOM)</strong>
+<p />
+当您将要用光内存时，您需要尽量地把它们要用的内存量降低。
+<p />
+一些可能性的包括：  <ul>
+<li> 具有太多静态网格物体的关卡。
+</li> <li> 使用了太多射弹和粒子的关卡。
+</li> <li> 具有占用了太多内存的代码。
+</li></ul>
+<p />
+<p />
+<strong>基本理解</strong>
+<p />
+<em>关于在各个方面应该使用多少内存没有通用答案。</em>
+<p />
+<em>这需要根据您的游戏及您游戏要注重花费内存的地方进行决定。</em>
+<p />
+<em>所以您需要理解您当前的应用是什么地方以并且您需要找到正确的内存预算。</em>
+<p /> <ul>
+<li> Budget(预算):决定把内存应用在哪里
+</li> <li> 确保所有的资源都是最佳的，并且没有任何不必要的引用。
+</li> <li> 确保您有足够的缓冲(用于碎片)来保持您游戏的运行状态。
+</li></ul>
+<p />
+<strong>案例参考</strong>
+<p /> <ul>
+<li> <strong><a href="MemoryDebuggingCH.html#LevelOptimization" class="twikiAnchorLink">关卡优化</a></strong>
+</li> <li> <strong><a href="MemoryDebuggingCH.html#EngineConfiguration" class="twikiAnchorLink">引擎配置</a></strong>
+</li> <li> <strong><a href="MemoryDebuggingCH.html#AnimationOptimization" class="twikiAnchorLink">动画优化</a></strong>
+</li> <li> <strong>Novodex</strong>
+</li></ul>
+<pre>
+           #define KEEP&#95;TRACK&#95;OF&#95;NOVODEX&#95;ALLOCATIONS 1
+</pre> <ul>
+<li> <strong><a href="MemoryDebuggingCH.html#ReferenceSystem" class="twikiAnchorLink">参考系统</a></strong>
+</li> <li> <strong>内存泄露检查</strong>
+</li> <li> <strong><a href="MemoryDebuggingCH.html#MemoryFragmentation" class="twikiAnchorLink">内存碎片</a></strong>
+</li> <li> <strong><a href="MemoryDebuggingCH.html#StackMemory" class="twikiAnchorLink">栈内存</a></strong>
+</li> <li> <strong><a href="AudioSystem.html" class="twikiLink">音频系统</a></strong>
+</li></ul>
+<p />
+<h2><a name="案例参考"></a> 案例参考 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<a name="LevelOptimization"></a>
+<h3><a name="关卡优化"></a> 关卡优化 </h3>
+<p />
+<strong>Stats(统计数据)</strong>
+<p />
+<code><b>STAT LEVELS</b></code>
+<p />
+运行 <code>Stat levels</code> 命令来查看内存中加载了多少关卡。
+<p /> <ul>
+<li> Green(绿色):未加载。
+</li> <li> Red(红色):已加载(以及加载所花费的时间)。
+</li> <li> Blue(蓝色):未加载并进行了垃圾回收。
+</li> <li> Yellow(黄色):已加载但不可见。
+</li> <li> Pink(粉红色):准备加载。
+</li></ul>
+<p />
+如果你有一些不必加载的关卡，那么请一定不要加载它。如果可能，黄色的关卡是不需要进行加载及推迟加载的最好备选项。如果您有一个大的动态载入的关卡，请尝试把它进行分隔或者进行优化。
+<p />
+<code><b>STAT MEMORY:</b></code>
+<p />
+<code>Stat Memory</code> 提供了关卡中资源的内存应用的基本概况。
+<p /> <ul>
+<li> Audio Memory(音频内存)
+</li> <li> Novodex Allocation(Novodex内存分配)
+</li> <li> 动画
+</li> <li> Vertex Lighting(顶点光照)
+</li> <li> StaticMesh Vertex/Index(静态网格物体 顶点/索引)
+</li> <li> SkeletalMesh Vertex/Index(骨架网格物体 顶点/索引)
+</li> <li> Decal Vertex/Index(Decal 顶点/索引)
+</li> <li> VertexShader(顶点着色器)
+</li> <li> PixelShader(像素着色器)
+</li> <li> Texture Pool Size(贴图池大小)
+</li> <li> FaceFX
+</li></ul>
+<p />
+在很多情况下，由于虚幻参考系统的存在，这些中的很多项比如Animation(动画)、SkeletalMesh(骨架网格物体)、Audio(音频)以及FaceFX都是和游戏数据相互关联的。本文上好会对这方面的内容进行详细解释。
+<p />
+<strong>其它有用的<a href="ConsoleCommands.html" class="twikiLink">控制台命令</a>：</strong>
+<p /> <ul>
+<li> ListSpawnedActors
+</li> <li> ListLoadedPackages
+</li> <li> ListPrecacheMapPackages
+</li> <li> OBJ BULK
+</li></ul>
+<p />
+请参照<a href="LevelOptimization.html" class="twikiLink">关卡优化</a>页面获得关于优化的更多信息；参照<a href="StatsDescriptions.html" class="twikiLink">统计数据描述</a>页面获得关于统计数据描述的更多信息。
+<p />
+<p />
+<a name="EngineConfiguration"></a>
+<h3><a name="引擎配置"></a> 引擎配置 </h3>
+<p />
+<strong>Texture Pool Size(贴图池大小):</strong>
+<p />
+除了着色器目标之外的所有贴图都使用贴图池。这包括光照贴图。(使用光照贴图而不是顶点光照在内存节约上肯定是个胜利，因为它们将不会使系统内存发生变动。
+<p />
+同时，请确保您的游戏具有理想的贴图池大小。 <code>Stat Memory</code> 将会显示正在使用多少贴图池。基于那些数据，您将可以决定您游戏所要使用的贴图池的最佳大小。
+<p />
+<pre>
+在文件 &#42;Engine.ini 中,
+      &#91;TextureStreaming]
+         PoolSize&#61;120
+
+</pre>
+<p />
+<strong>频繁的垃圾回收:</strong>
+<p />
+如果您的游戏需要比较频繁的<a href="https://udn.epicgames.com/Three/GarbageCollection" class="restricted" class="restricted" class="twikiLink">垃圾回收</a>，请使用这个配置。
+<p />
+<pre>
+在文件 &#42;Engine.ini 中,
+      &#91;Engine.SeekFree]
+         TimeBetweenPurgingPendingKillObjects&#61;10 (every 10 seconds)
+
+</pre>
+<p />
+<a name="AnimationOptimization"></a>
+<h3><a name="动画优化"></a> 动画优化 </h3>
+<p />
+当一个动画集被游戏引用时，那个动画集中的所有动画都将被加载。如果您仅使用这些动画中的一部分，那么这个过程是浪费的。如果动画集中的所有动画不是全部需要的，那么一般推荐您把它们分隔为子动画集，然后仅当需要时加载它们。
+<p />
+比如，除非您在任何时候都需要所有的武器，否则不同的武器可以有它们自己的动画集。
+<p />
+<strong>Matinee:</strong>
+<p />
+当<a href="MatineeUserGuide.html" class="twikiLink">Matinee</a>出现问题时，问题可能是严重的。
+<p />
+根据您的工作流程(也就是不同的人操作不同的Matinee序列)不同，基于每个Matinee序列或者每个关卡来维护不同的AnimSets(动画集)可能是非常复杂的。理想情况下，您会想在每个关卡中有一个AnimSet(动画集)，但是在不同的开发组(关卡设计人员/动画制作人员/脚本人员)之间维护这些是非常耗费时间的。
+<p />
+在这种情况下，InterpData中的标志 <code>bShouldBakeAndPrune</code> (CL 259515) 可以帮助解决这个问题。它将为关卡创建一个新的动画集，并且仅复制那个关卡所使用的动画并重新链接引用。如果要 烘焙/加载 动画集，那么这个标志都应该设为off，因为它将会复制同样的动画。如果您正在烘焙及剪辑的动画集不是必须被关卡加载时则需要使用这个标志。这个标志可以通过设置 *Editor.ini 文件的Cooker.MatineeOptions部分的bBakeAndPruneDuringCook值为FALSE来全局地进行禁用。
+<p />
+<pre>
+In &#42;Editor.ini,
+      &#91;Cooker.MatineeOptions]
+         bBakeAndPruneDuringCook&#61;false
+
+</pre>
+<p />
+<strong>动画压缩:</strong>
+<p />
+动画压缩是节约动画内存的很重要的一部分。请参照<a href="AnimationCompression.html" class="twikiLink">动画压缩</a>页面获得更多信息。
+<p />
+<p />
+<a name="ReferenceSystem"></a>
+<h3><a name="参考系统"></a> 参考系统 </h3>
+<p />
+当游戏关卡已经接近完成时，对所有关卡进行一遍加载来确保它们仅加载了需要的资源是值得的。在虚幻引擎3中，任何被引用的内容都会被加载到游戏中，而且引用内容的方法&ndash;包括直接地和间接地引用等&ndash;这样您最终便会不知不觉地加载了很多的资源。比如，一个Pawn引用一个骨架网格物体，它将会自动地加载那个骨架网格物体所引用的动画集，从而那个动画集的所有动画(Pawn-&gt;Skeletalmesh-&gt;Animsets-&gt;Animations)将会被加载。从内存方面来说，这个链接关系是很危险的，因为游戏有很多Actors之间彼此进行着引用。
+<p />
+一般，您都必须要和关卡设计人员协同工作来决定是否有一些东西不必进行加载或者是否要对动态载入关卡进行分割以及是否不需要同时加载所有关卡。其中的一个实例许是在这个关卡中不需要出现的敌人网格物体。
+<p />
+<strong>MEMLEAKCHECK:</strong>
+<p />
+<code>Memleakcheck</code> 打印出许多基本游戏数据到一个文本格式的输出文件 <code>[ProfileDirectory:Platform-specific]/MemLeak</code> 中。
+<p />
+这将会至少为您显示骨架网格物体、动画集、声效等物体列表的简单概括信息。一旦您有了基本的信息，您便可以仔细地检查它们来查看是否有不需要加载的资源。如果是这样的，那么可以跟踪查出是谁引用了它，然后删除那个引用是主要的解决方式。
+<p />
+以下是案例学习...
+<p />
+<strong>OBJ LIST CLASS=SKELETALMESH:</strong>
+<p />
+列出了所有加载的SkeletalMeshes(骨架网格物体)，按照占用内存的大小进行排序。 <code>MEMLEAKCHECK</code> 包含这个信息，但是它是按照字母顺序排序的，这使得您很难找到要进行优化的内容。
+<p />
+<strong>LISTSOUNDS:</strong>
+<p />
+列出了所有加载的SoundCues，按照占用内存的大小进行排序。 <code>MEMLEAKCHECK</code> 包含这个信息，但是它是按照字母顺序排序的，这使得您很难找到要进行优化的内容。
+<p />
+<strong>OBJ LIST CLASS=STATICMESH:</strong>
+列出了所有加载的静态网格物体，按照占用内存的大小进行排序。
+<p />
+<strong>LISTANIMSETS:</strong>
+<p />
+列出了所有加载的SoundCues，按照占用内存的大小进行排序。 <strong>MEMLEAKCHECK</strong> 包含这个信息。
+<p />
+<strong>OBJ REFS:</strong>
+<p />
+用来查找为什么加载某个资源的最好用的方法是使用 <code>OBJ REFS</code> 命令。要想使用这个命令，您需要在PC上运行游戏，因为由于递归函数的存在它需要一个较深的栈，而在UE3的游戏控制台平台版本上通常会崩溃的。
+<p />
+播放到加载有问题的资源的地方，然后输入： <code>OBJ REFS CLASS=<classname> NAME=<name></code> 。
+<p />
+比如：
+<p />
+<pre>
+OBJ REFS CLASS&#61;SKELETALMESH NAME&#61;BIG&#95;OGRE&#95;2
+</pre>
+<p />
+然后它将会显示引入这个资源的引用物体链，比如：
+<p />
+<pre>
+Log： Shortest reachability from root to SkeletalMesh COG&#95;Bolo&#95;Grenade.Frag&#95;Grenade:
+Log：    SkeletalMesh COG&#95;Bolo&#95;Grenade.Frag&#95;Grenade &#91;target] (root) (standalone)
+Log：    SkeletalMeshComponent GearGame.Default&#95;&#95;GearProj&#95;FragGrenade:COGGrenadeMesh0 (root) (ObjectProperty Engine.SkeletalMeshComponent:SkeletalMesh)
+Log：    Class GearGame.GearProj&#95;FragGrenade (root) (standalone)
+</pre>
+<p />
+在上面的实例中，Frag_Grenade网格物体由native 类GearProj_FragGrenade的默认属性所引用。
+<p />
+注意可能会有不止一个引用，在这种情况下您必须一个一个地处理它们。
+<p />
+这里是一些我们找到的没有正确地加载资源的原因： <ul>
+<li> 资源被native类引用。
+</li> <li> UnrealScript代码引用这些需要从中获得默认属性的类(该类引用了资源)。
+</li></ul>
+<pre>
+                      Asset &#61; class&#39;MyGameContent.Pawn&#95;BigOgre&#39;.default.Mesh.PhysicsAsset;
+</pre> <ul>
+<li> A Touch Kismet event (SeqEvt_Touch) references the class in its ClassProximityTypes or IgnoredClassProximityTypes arrays.   Kismet的Touch事件(SeqEvt_Touch)引用它的ClassProximityTypes或IgnoredClassProximityTypes数组中的类。
+</li></ul>
+<p />
+<a name="MemoryFragmentation"></a>
+<h3><a name="内存碎片"></a> 内存碎片 </h3>
+<p />
+<strong>MEM STAT:</strong> 仅是概要总结。
+<p />
+<strong>MEM DETAILED:</strong>
+<p />
+这将会输出关于分配器的有用信息。请参照<a href="MemoryDebuggingCH.html#MemoryOnConsoles" class="twikiAnchorLink">下面</a>的平台部分。
+<p />
+为内存碎片保存一些缓冲是个好主意。
+<p />
+<a name="StackMemory"></a>
+<h3><a name="栈内存"></a> 栈内存 </h3>
+<p />
+主线程继承于栈内存。尽管您可以指定您创建的线程的栈大小，
+但如果您在内部正在使用一个创建线程的库，那么它可能不会考虑那个内存。
+<p />
+<h2><a name="参考指南"></a> 参考指南 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+以下页面提供了关于内存信息的详细信息。
+<p /> <ul>
+<li> <strong>内存概述</strong>:<a href="https://udn.epicgames.com/Three/MemoryOverview" class="restricted" class="restricted" class="twikiLink">内存概述</a>
+</li> <li> <strong>内存分配</strong>:<a href="https://udn.epicgames.com/Three/MemoryAllocation" class="restricted" class="restricted" class="twikiLink">内存分配</a>
+</li> <li> <strong>内存使用量</strong>:<a href="https://udn.epicgames.com/Three/MemoryUsage" class="restricted" class="restricted" class="twikiLink">内存使用量</a>
+</li> <li> <strong>内存分析器</strong>:<a href="https://udn.epicgames.com/Three/MemoryProfiler" class="restricted" class="restricted" class="twikiLink">内存分析器</a>
+</li> <li> <strong>内存跟踪</strong>:<a href="https://udn.epicgames.com/Three/MemoryTracking" class="restricted" class="restricted" class="twikiLink">内存跟踪</a>
+</li></ul>
+<p />
+<p />
+<a name="MemoryOnConsoles"></a>
+<h2><a name="游戏控制台平台的内存"></a> 游戏控制台平台的内存 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> <strong>Xbox360</strong>:<a href="https://udn.epicgames.com/Three/XenonMemoryDebugging" class="restricted" class="restricted" class="twikiLink">内存调试</a> (Xbox360)
+</li> <li> <strong>PS3</strong>:<a href="https://udn.epicgames.com/Three/PS3MemoryDebugging" class="restricted" class="restricted" class="twikiLink">内存调试</a> (PS3)
+</li></ul>
+<p />
+<p />
+<h2><a name="有用的命令行命令"></a> 有用的命令行命令 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> <strong>所有统计数据命令介绍</strong>:<a href="StatsDescriptions.html" class="twikiLink">统计数据描述</a>
+</li> <li> <strong>所有的控制台命令</strong>:<a href="ConsoleCommands.html" class="twikiLink">控制台命令</a>
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MemoryDebuggingCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:41:02 GMT -->
+</html></body>

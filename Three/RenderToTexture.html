@@ -1,0 +1,473 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/RenderToTexture.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:12:42 GMT -->
+<head>
+<title> UDK | RenderToTexture    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">RenderToTexture  </b></div>
+<div id="tooltext">
+<a href="RenderToTextureJP.html" class="twikiLink">日本語訳</a><br><a href="RenderToTextureCH.html" class="twikiLink">中国翻译</a><br><a href="RenderToTextureKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/RenderToTexture -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="MaterialsAndTexturesHome.html" class="twikiLink">Materials &amp; Textures</a></b> &gt; Render to Texture
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Render to Texture"></a> Render to Texture </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="RenderToTexture.html#Render to Texture"> Render to Texture</a> <ul>
+<li> <a href="RenderToTexture.html#Overview"> Overview</a>
+</li> <li> <a href="RenderToTexture.html#Creating a render target texture"> Creating a render target texture</a> <ul>
+<li> <a href="RenderToTexture.html#HDR Support"> HDR Support</a>
+</li></ul>
+</li> <li> <a href="RenderToTexture.html#Rendering the scene to the texture"> Rendering the scene to the texture</a> <ul>
+<li> <a href="RenderToTexture.html#SceneCapture2DActor"> SceneCapture2DActor</a>
+</li> <li> <a href="RenderToTexture.html#SceneCaptureCubeMapActor"> SceneCaptureCubeMapActor</a>
+</li> <li> <a href="RenderToTexture.html#SceneCaptureReflectActor (Dynamic Reflections)"> SceneCaptureReflectActor (Dynamic Reflections)</a>
+</li> <li> <a href="RenderToTexture.html#SceneCapturePortalActor"> SceneCapturePortalActor</a>
+</li> <li> <a href="RenderToTexture.html#SceneCaptureComponents"> SceneCaptureComponents</a> <ul>
+<li> <a href="RenderToTexture.html#SceneCapture2DComponent"> SceneCapture2DComponent</a>
+</li> <li> <a href="RenderToTexture.html#SceneCaptureCubeMapComponent"> SceneCaptureCubeMapComponent</a>
+</li> <li> <a href="RenderToTexture.html#SceneCaptureReflectComponent (Dynamic Reflections)"> SceneCaptureReflectComponent (Dynamic Reflections)</a>
+</li> <li> <a href="RenderToTexture.html#SceneCaptureParaboloidComponent"> SceneCaptureParaboloidComponent</a>
+</li> <li> <a href="RenderToTexture.html#SceneCapturePortalComponent"> SceneCapturePortalComponent</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="RenderToTexture.html#Saving static captures"> Saving static captures </a> <ul>
+<li> <a href="RenderToTexture.html#Static cube map captures"> Static cube map captures</a>
+</li></ul>
+</li> <li> <a href="RenderToTexture.html#Technical Notes (for Programmers)"> Technical Notes (for Programmers)</a>
+</li> <li> <a href="RenderToTexture.html#Examples"> Examples</a>
+</li> <li> <a href="RenderToTexture.html#Known Limitations"> Known Limitations</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The render-to-texture features of the engine allow you to dynamically capture the scene from different viewpoints to a texture resource.  This allows for certain special effects such as remote cameras and surfaces that appear to be dynamically reflecting the scene.
+<p />
+The purpose of this document is to outline the steps needed to create a render-to-texture resource in UnrealEd and to use that texture as a target for capturing the scene.
+<p />
+<p />
+<h2><a name="Creating a render target texture"></a> Creating a render target texture </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The first item that is needed for rendering the scene to a texture is a new render-to-texture resource.  You can create one by right-clicking and selecting the <em>RenderToTexture</em> option from the context menu in the <a href="https://udn.epicgames.com/Three/GenericBrowserReference" class="restricted" class="restricted" class="twikiLink">Generic Browser</a>; or by just selecting <em>New</em> from the <em>File</em> menu.
+<p />
+<img alt="gen_browser_1.jpg" src="rsrc/Three/RenderToTexture/gen_browser_1.jpg" />
+<p />
+Note that there are two types of render-to-texture resources and each one is used by different scene capture types:
+<p /> <ul>
+<li> <strong>RenderToTexture</strong> - used for 2d, reflection, and portal scene captures
+</li> <li> <strong>RenderToTextureCube</strong> - used for cube map scene captures
+</li></ul>
+<p />
+These render-to-texture resources create a valid texture surface that can be used as the render target when rendering the scene.  Note that the render-to-texture resource only saves a few properties to file, but does not actually save the texture surface since it only exists for rendering purposes.
+<p />
+After first creating the render-to-texture resource, you will notice that it will just be cleared to a default color.  Once it is used for a scene capture, however, you should be able to see the results of the capture in the texture.  At any time you can change the width, height, or format of an existing render-to-texture resource and it will update its internal render target surface to match the new settings.
+<p />
+<img alt="gen_browser_2.jpg" src="rsrc/Three/RenderToTexture/gen_browser_2.jpg" />
+<p />
+When you are ready to apply the render-to-texture to a surface, you can place it within an material by using a TextureSampler material expression just as you would a regular static texture resource.
+<p />
+The next part of this doc shows you how to actually render something to a render-to-texture resource.
+<p />
+<h3><a name="HDR Support"></a> HDR Support </h3>
+<p />
+Only RGBA render-to-texture resources can be created at this time.  Support for floating point HDR targets may be added in the future.
+<p />
+<p />
+<h2><a name="Rendering the scene to the texture"></a> Rendering the scene to the texture </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The scene can be captured using several different methods. The most common case is to just use a single viewpoint to capture the scene to a 2D plane, but you can also capture the scene from the six different orientations of a cube map or even have the scene reflected with respect to the current viewport's camera orientation.
+<p />
+The basic process involves placing a SceneCapture actor in the level and associating it with the render-to-texture resource that was created.  You can see a list of the available SceneCapture actors in the Actor browser.
+<p />
+The following is an outline of the available capture actor types that can be used and how they work.
+<p />
+<h3><a name="SceneCapture2DActor"></a> SceneCapture2DActor </h3>
+<p />
+With a SceneCapture2DActor you can have the scene captured as if it was projected onto the surface of the near plane of a view frustum.
+<p />
+When placing one of these actors in the level you will notice that a view frustum is displayed that shows the captured view of the scene.  The actor's position and orientation are used for placing and orienting the view of the captured scene.  The SceneCapture actor can also be attached to other actors in case you want it to be driven by a scripted sequence or manipulated by physics.
+<p />
+<img alt="render-to-texture_actor.jpg" src="rsrc/Three/RenderToTexture/render-to-texture_actor.jpg" />
+<p />
+Note that this actor is just a container for a SceneCapture2DComponent.  Details about each of the SceneCapture component types are explained later in this document.
+<p />
+Before any rendering occurs, the SceneCapture actor has to have a texture target to render to.  You can assign your render-to-texture resource to the SceneCapture actor by setting the TextureTarget property of its SceneCapture compoenent.
+<p />
+<h3><a name="SceneCaptureCubeMapActor"></a> SceneCaptureCubeMapActor </h3>
+<p />
+The SceneCaptureCubeMapActor is similar to the SceneCapture2DActor except that it has to render the scene in six separate passes - one pass for each cube map face.  This can obviously be an expensive operation so it is recommended that a lower level of detail setting is used.
+<p />
+Also, the capture expects a "RenderToTextureCube" resource to use as its target texture.  Using the default "RenderToTexture" resource creates only a single 2D surface and can not be used for the cube map scene captures.  The steps for creating a "RenderToTextureCube" are similar to creating a "RenderToTexture" resource.
+<p />
+Note that this actor is just a container for a SceneCaptureCubeComponent.  Details about each of the SceneCapture component types are explained later in this document.
+<p />
+<h3><a name="SceneCaptureReflectActor (Dynamic Reflections)"></a> SceneCaptureReflectActor (Dynamic Reflections) </h3>
+<p />
+The SceneCaptureReflectActor allows for dynamic reflections of the scene.  Placing an actor of this type in the level creates a view capture of the scene that is reflected and clipped properly about a mirroring surface.  The mirror surface is oriented so that it faces in the same direction as the actor's direction.  The positioning of the actor is also important since that will change the mirror plane's position and therefore the clipped region of the scene.
+<p />
+One important note about the resulting reflection is that the render-to-texture resource should be accessed using a ScreenPosition material expression with the ScreenAlign option set to true and with a ComponentMask material expression that only uses Red,Green channels.  This is needed because the reflection calculations assume that the texture will be mapped as if it covers the entire screen.  The following image better illustrates the required material nodes:
+<p />
+<img alt="mat_ed_1.jpg" src="rsrc/Three/RenderToTexture/mat_ed_1.jpg" />
+<p />
+Note that this actor is just a container for a SceneCaptureReflectComponent.  Details about each of the SceneCapture component types are explained later in this document.
+<p />
+<h3><a name="SceneCapturePortalActor"></a> SceneCapturePortalActor </h3>
+<p />
+The SceneCapturePortalActor allows the scene to be rendered from the viewpoint of another location as if it was mapped to the surface of a portal.
+<p />
+Note that this actor is just a container for a SceneCapturePortalComponent.  Details about each of the SceneCapture component types are explained later in this document.
+<p />
+<h3><a name="SceneCaptureComponents"></a> SceneCaptureComponents </h3>
+<p />
+These components can capture the scene to a texture target.  Each component does the actual work of placing a scene capture probe in the level so that the scene gets rendered in a separate pass before rendering the main view of the level to the back buffer.  You can attach these components to any other type of actor as well.
+<p />
+All SceneCaptureComponent types have a set of common properties that can be modified.
+<p />
+Each component has a target texture to render the scene to:
+<p /> <ul>
+<li> <strong>TextureTarget</strong> - A render-to-texture resource for the resulting scene capture.  Note that the scene capture won't render anything unless it has an assigned target texture.
+</li></ul>
+<p />
+The components also have settings that control how the scene is rendered:
+<p /> <ul>
+<li> <strong>bEnablePostProcess</strong> - Toggles the post processing step that is applied to the scene.
+</li> <li> <strong>bEnableFog</strong> - Toggles any height fog rendering.
+</li> <li> <strong>ClearColor</strong> - The background clear color for the texture target.
+</li> <li> <strong>ViewMode</strong> - Enumerates the differnet view and lighting configurations. The available modes are:
+</li></ul>
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Mode </td><td bgcolor="#eaeaea"> Description </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> SceneCapView_Lit </td><td bgcolor="#ffffff"> Default rendering mode for UE3 scenes with dynamic shadows and lighting </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> SceneCapView_Unlit </td><td bgcolor="#eaeaea"> No shadows or lighting passes are used when rendering the scene </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> SceneCapView_LitNoShadows </td><td bgcolor="#ffffff"> Same as the default lit rendering mode but without dynamic shadows </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> SceneCapView_Wire </td><td bgcolor="#eaeaea"> All geometry in the scene is rendered using wireframe mode </td></tr>
+</table>
+<p /> <ul>
+<li> <strong>SceneLOD</strong> - Sets the maximum Level of Detail (LOD) setting for all geometry in the scene. A value of 0 represents the highest LOD setting.  (Currently not implemented)
+</li> <li> <strong>FrameRate</strong> - Sets the FPS (Frames per Second) rate to capture the scene. For example, a value of 30 would capture the scene at 30 FPS.  Also note that if the FrameRate value is 0 then the scene will only be captured once.  This can be useful when you know you don't need to constantly update a particular scene capture.
+</li> <li> <strong>PostProcess</strong> - Post process chain to be used by the capture. You can specify a custom post process chain for use by each scene capture (See known limitations at the end of this page).
+</li></ul>
+<p />
+<h4><a name="SceneCapture2DComponent"></a> SceneCapture2DComponent </h4>
+<p />
+This component handles rendering 2D captures of the scene as described in the SceneCapture2DActor.  It manages the state necessary for this type of rendering, and adds a FSceneCaptureProbe2D to the current scene in order to render the capture in a separate pass.
+<p />
+The following properties are specific to this type of capture component:
+<p /> <ul>
+<li> <strong>FieldOfView</strong> - The horizontal field of view used to calculate the view projection.
+</li> <li> <strong>NearPlane</strong> - The screen aligned view distance that represents the near clip plane.
+</li> <li> <strong>FarPlane</strong> - The screen aligned view distance that represents the far clip plane.  Any geometry that is completely behind the far clip plane is culled (not rendered).  Decreasing the FarPlane value will result in better performance.
+</li> <li> <strong>bUpdateMatrices</strong> - If this flag is set to false then the view and projection matrices are not automatically updated, and they can be set manually.  This can be useful for gameplay code that needs more control over how a scene is being rendered.
+</li></ul>
+<p />
+<h4><a name="SceneCaptureCubeMapComponent"></a> SceneCaptureCubeMapComponent </h4>
+<p />
+This component handles rendering the six capture passes for each face of a cube map render target texture as described in the SceneCaptureCubeActor.  It manages the state necessary for this type of rendering, and adds a FSceneCaptureProbeCube to the current scene in order to render the captures in a separate pass.
+<p /> <ul>
+<li> <strong>NearPlane</strong> - The screen aligned view distance that represents the near clip plane.
+</li> <li> <strong>FarPlane</strong> - The screen aligned view distance that represents the far clip plane.  Any geometry that is completely behind the far clip plane is culled (not rendered).  Decreasing the FarPlane value will result in better performance.
+</li></ul>
+<p />
+The field of view is fixed at 90 degrees when rendering each of the six faces.
+<p />
+Note that, since this capture renders the scene six separate times, it will have slow performance in complex scenes.  Try adjusting the FrameRate and FarPlane values to help performance.  Remember that you can also set the FrameRate=0 in order to limit the rendering to just a single capture when the level initially renders.
+<p />
+<h4><a name="SceneCaptureReflectComponent (Dynamic Reflections)"></a> SceneCaptureReflectComponent (Dynamic Reflections) </h4>
+<p />
+This component handles rendering the scene using a mirror plane to flip the current view and to clip all the geometry that is behind the plane.  It manages the state necessary for this type of rendering, and adds a FSceneCaptureProbeReflect to the current scene in order to render the captures in a separate pass.
+<p /> <ul>
+<li> <strong>ScaleFOV</strong> - not used
+</li></ul>
+<p />
+<h4><a name="SceneCaptureParaboloidComponent"></a> SceneCaptureParaboloidComponent </h4>
+<p />
+Currently not supported.
+<p />
+<h4><a name="SceneCapturePortalComponent"></a> SceneCapturePortalComponent </h4>
+<p />
+This component renders the scene as if it was viewed through a portal at another location.  It uses both the orientation of the current portal and the destination portal to orient the capture.  Note that the current portal and destination portal should use their own unique 2D render-to-texture resources.
+<p /> <ul>
+<li> <strong>ViewDestination</strong> - The actor at the view location for this portal.  This is the point where the scene is captured from.
+</li> <li> <strong>ScaleFOV</strong> - not used
+</li></ul>
+<p />
+<p />
+<h2><a name="Saving static captures"></a> Saving static captures </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+At times it may be necessary to save the results from an existing scene capture to a static texture.  This is especially useful for generating cubemaps from various locations of your map (see note Cubemap generation note below).  If you know that you don't need a dynamic capture of a scene and that a single static capture is sufficient, then it is better to create a static texture because the dynamic render-to-texture resources are not compressed like static textures are.
+<p />
+By right-clicking on a render-to-texture resource (2D or cubemap) you will see an option called <em>Create Static Texture...</em> on the context menu.  After selecting this option, you can specify the name of the static resource to be created and the name of the package that it should reside in.
+<p />
+<h3><a name="Static cube map captures"></a> Static cube map captures </h3>
+<p />
+One very common usage for creating static textures from dynamic render-to-texture resources is for generating cubemaps from your scene.  Here are the steps for generating cubemaps from your scene: <ol>
+<li> Place a SceneCaptureCubeMapActor in the map at the location where you want the cubemap to be captured
+</li> <li> Create a new RenderToTextureCube resource in a package. This will be the dynamic render-to-texture target that the scene will be rendered to.
+</li> <li> Assign the RenderToTextureCube from step 2 to the TextureTarget property of the SceneCaptureCubeMapActor.
+</li> <li> Your scene is now being captured to the dynamic render-to-texture target.  You can now save snapshots from this dynamic texture by right-clicking on it and selecting <em>Create Static Texture...</em> from the context menu.  Each time you do this, a new static cubemap texture will be created along with the textures for its 6 corresponding faces.
+</li> <li> You can also move your SceneCaptureCubeMapActor to another location in the level and repeat step 4 for more static captures.
+</li> <li> Once you're done generating the static cube textures you can get rid of the temporary SceneCaptureCubeMapActor that you added to your level as well as the scratch RenderToTextureCube resource that goes with it.
+</li></ol>
+<p />
+
+<p />
+<p />
+<h2><a name="Examples"></a> Examples </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+
+<p />
+The screenshots below are example of the Render to Texture feature in action.
+<p />
+<img alt="render-to-texture.jpg" src="rsrc/Three/RenderToTexture/render-to-texture.jpg" />
+<p />
+<img alt="Reflections.jpg" src="rsrc/Three/RenderToTexture/Reflections.jpg" />
+<p />
+<h2><a name="Known Limitations"></a> Known Limitations </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+There are limits what nodes are supports for the SceneCaptureActor. The Blur and DOFAndBloom nodes can be used. The bloom in the DOFAndBlom node is not enabled.
+Most other nodes are made for normal full scene postprocessing and will not work for the SceneCaptureActor (e.g. UberPostProcessingNode).
+<p />
+To enforce update the rendering you can check and unckeck the "Enable postprocess" to update the setting from the chain.
+<p />
+Color manipulations should be done when reading from the texture. This will be more efficient as it doesn't require an intermediate texture and it will only
+be done for required pixels.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/RenderToTexture.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:12:44 GMT -->
+</html></body>

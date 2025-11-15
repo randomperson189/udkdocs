@@ -1,0 +1,413 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LightMapUnwrappingCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:17:41 GMT -->
+<head>
+<title> UDK | LightMapUnwrappingCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">LightMapUnwrappingCH  </b></div>
+<div id="tooltext">
+<a href="LightMapUnwrapping.html" class="twikiLink">English Translation</a><br><a href="LightMapUnwrappingJP.html" class="twikiLink">日本語訳</a><br><a href="LightMapUnwrappingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/LightMapUnwrappingCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="StaticMeshHome.html" class="twikiLink">静态网格物体</a></b> &gt; 展开光照贴图的 UV <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="EnvironmentArtistHome.html" class="twikiLink">场景美工人员</a></b> &gt; 展开光照贴图的 UV
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="展开光照贴图的 UV"></a> 展开光照贴图的 UV </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="LightMapUnwrappingCH.html#展开光照贴图的 UV"> 展开光照贴图的 UV</a> <ul>
+<li> <a href="LightMapUnwrappingCH.html#有关创建光照贴图"> 有关创建光照贴图</a>
+</li> <li> <a href="LightMapUnwrappingCH.html#示例"> 示例</a>
+</li> <li> <a href="LightMapUnwrappingCH.html#光照贴图坐标索引"> 光照贴图坐标索引</a>
+</li> <li> <a href="LightMapUnwrappingCH.html#相邻 UV 以及间隔"> 相邻 UV 以及间隔</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="有关创建光照贴图"></a> 有关创建光照贴图 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+光照贴图可能是场景美术制作中最难的环节。我们依靠它们可以得到光照和阴影清晰可见的细节。它们必须是唯一地展开，这样模型中每个部分才会有属于它们自己的空间来接收亮和暗信息。
+<p />
+重点是记住光照贴图分辨率与贴图 UV 的分辨率相比是微不足道的。还有一点也很重要，那就是要了解关卡需要进行优化的地方越多，关卡设计师会将光照贴图的分辨率向下调整得更低，对那种较小的对象甚至使用的是 8x8 或 16x16 分辨率。这个趋势需要我们在每部分光照贴图 UV 周围留出大量‘padding（间隔）’，这样暗的区域不会渗开进入到亮区域中， 会破坏游戏中正确的阴影幻觉效果。
+<p />
+有 3 种创建光照贴图的方法
+<p /> <ul>
+<li> <strong>BOX UNWRAP（长方形展开）</strong>
+</li></ul>
+<p />
+通常这是最可靠的光照贴图展开方法，因为大多数环境模型都是互相结合或重复的方块形来创建一个结构。一个紧凑的网格物体（全部连结在一起，没有分离的元素）通常是构建结构非常有效的方法，它可以使光照贴图展开的效率更高，因为您只可以展开连接在一起的大部分设计。
+<p />
+这种方法非常实用，因为光照贴图的分辨率是这样低，如果它是作用在一大块上，那么从亮到暗的渐变处理会更加容易，当它在一些零散的部分上展开时，需要在这些块之间留出更多的间隔，这样光照才会正确。
+<p />
+这样通常会促使需要更高的光照贴图分辨率，而我们必须尽我们所能努力避免这种情况发生。有时没有办法避免分辨率更低的需求，我们必须添加比我们想要补偿的间隔还要更加多的间隔。
+<p />
+<p /> <ul>
+<li> <strong>PLANAR UNWRAP（平面展开）</strong>
+</li></ul>
+<p />
+这种方法最适用于像 BSP 类型墙壁这样带有一些倒角或挤压的简单平面设计。它还适用于大型建筑物表面部分，例如，公寓大楼。使用连续网格物体对平面展开的帮助很大，因为它更多涉及的是展开网格物体 UV 并将覆盖范围手动添加给游戏中光照不正确的倒角。
+<p />
+有时候它需要反反复复来回进行操作，但是经验告诉我们，要确保展开的水平方向空间比垂直方向更大，因为阴影通常是从侧面略高一点的角度投射过来的，而不是从正上方直接投射下来的。
+<p />
+所以水平方向要为较尖锐的阴影信息提供更多的空间，因为关卡设计师光照选择的发展趋势是创建比他们使用自上而下光照的情况下可能生成的阴影更有生动的阴影。
+<p />
+<p />
+<p /> <ul>
+<li> <strong>CYLINDRICAL UNWRAP（圆柱形展开）</strong>
+</li></ul>
+<p />
+		环境中除长方形和平面形状外，大多数其他形状都分解为圆柱形。圆柱形可以很好地弥补那些既有侧面同时又有正面但是现在是背面部分的设计，如若不然我们会使用 Box Unwrap（长方形展开）方法。
+<p />
+<p />
+<p />
+<h2><a name="示例"></a> 示例 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<img src="rsrc/Three/LightMapUnwrappingCH/BoxUnwrap1.jpg" alt="BoxUnwrap1.jpg" width="720" height="964" />
+<p />
+这是一个紧凑的网格物体，所以它比较适于长方形展开，只要从水平方向展开，尽可能多地使用光照贴图分辨率。将中间那张图片中突出显示的底面从整个模型中分离出来，因为它们几乎始终会渲染为黑色，如果将它们与这个 UV 的其他部分连接在一起，那么模型中原本不应该暗的地方都会因为它们的渗开而变暗。
+<p />
+这对于在最下面图片中显示的分离出来的顶面也同样适用，它们一直都是亮的。最上面的图片显示的是这个贴图 UV。
+<p />
+<p />
+<img src="rsrc/Three/LightMapUnwrappingCH/BoxUnwrap2.jpg" alt="BoxUnwrap2.jpg" width="720" height="594" />
+<p />
+这种尽量在安全情况多连接的方法使我们得到了近乎完美的游戏中光照贴图，分辨率为 32x32。这里根本没有缝隙，所以在本不该暗的地方没有难于察觉的暗线。
+<p />
+<p />
+<p />
+<img src="rsrc/Three/LightMapUnwrappingCH/BruteForce.jpg" alt="BruteForce.jpg" width="720" height="323" />
+<p />
+有时候您需要用力将这些部分强制弄在一起。使表面看上去整洁同时不会对光照贴图产生影响是值得的。按照 1 比 1 比率拉伸对于光照贴图所产生影响实际上并没有覆盖率所产生的影响大，所以除 1 比 1 等级外太小的区域由于渗透问题都不能进行正确的光照，但是 1 比 1 等级是覆盖率的两倍看起来效果不错。在这里您还会看到我分离了非建设性破口的内部，因为它们通常都是暗的，而我们需要避免从这些破口中渗开到外部去。
+<p />
+<p />
+<img src="rsrc/Three/LightMapUnwrappingCH/Facade1.jpg" alt="Facade1.jpg" width="720" height="358" />
+<p />
+像这样的大型建筑物正面部分，使用 Planar（平面）展开效果很好。这个网格物体是紧密接邻的，这对我们要在这里进行的工作有所帮助，但是同样的屋架可以与其中包含一些垂直或水平元素的网格物体结合在一起使用。只要您放置在光照贴图 UV 上的最具代表性的内容与这个低多边形匹配，即使是需要一些间隔以防有些侧面部分在与其他部分堆放在一起时渲染为黑色也一样可以正常工作。
+<p />
+<p />
+<img src="rsrc/Three/LightMapUnwrappingCH/Facade2.jpg" alt="Facade2.jpg" width="720" height="729" />
+<p />
+您可以在这里看到这个相接的网格物体布局允许我更加轻松地使用镜像低多边形网格物体的方法展开 UV。我还会将这些侧面，顶部 &amp; 底部盖子从主要部分中移出来，允许出现渗透问题，我保证在它们周围留有间隔，主要部分和顶部的窗户都具有相同的间隔量。
+<p />
+<p />
+有时候您的设计会违反这些简单的设计规则，如果设计中包含大量的带有一些单个元素的非建设性空间，那么我们需要拆分光照贴图并添加更多的间隔。
+<p />
+<p />
+<img src="rsrc/Three/LightMapUnwrappingCH/NegativeSpaces.jpg" alt="NegativeSpaces.jpg" width="720" height="353" />
+<p />
+您可以看到在将栏杆固定在一起的相交垂直部分上有一些非常明显的弯曲，我们只是在这 3 块中强制地将这 2 个侧面与中间 &amp; 中央部分弄在一起。
+<p />
+对于圆柱形栏杆内部，我们将其中一个面单独分离出来，同时将另一个面赋给内表面和外表面。完成上述操作后，在 3/4 这些区域中遮蔽着光滑的光照贴图，而且另一个面上光照贴图中只有一个裂缝，由于它顶上有金属光束直射，所以看不到这个裂缝。
+<p />
+<img src="rsrc/Three/LightMapUnwrappingCH/railingame.jpg" alt="railingame.jpg" width="720" height="546" />
+<p />
+<p />
+<p />
+有些设计可能与我们通常所进行的常规操作不同，例如下面这个设计。
+<p />
+<p />
+<img src="rsrc/Three/LightMapUnwrappingCH/Fragmented.jpg" alt="Fragmented.jpg" width="720" height="484" />
+<p />
+当单个元素较多的时候，我们没有其他选择，只好提高贴图分辨率，否则我们将会浪费很多光照贴图空间，因为每个部分之间都有足够的间隔，这样做在游戏中看起来效果会很差。所以我计划将光照贴图分辨率提高到 128x128，不过我知道效果仍然不会完美，会有一些渗透现象，幸运的是这种现象并不严重不会破坏这个对象。
+<p />
+<p />
+<img src="rsrc/Three/LightMapUnwrappingCH/GirderINGAME.jpg" alt="GirderINGAME.jpg" width="720" height="344" />
+<p />
+有时将模型投射为一个近似平面然后展开 UV 会很容易，因为各个部分很整洁清晰相连，这样可以轻松地将它们连接在一起，以下面这个模型为例。
+<p />
+<img src="rsrc/Three/LightMapUnwrappingCH/easy.jpg" alt="easy.jpg" width="720" height="323" />
+<p />
+这个设计肯定就是一个圆柱形的盖子加上一个平面的底座，所以我使用这 2 种基础的方法展开这个 UV。地面的那部分中心很容易就可以在 Z 轴上进行平面展开，然后应用放松修改器，微量调整选项使所有内容都不会因为倒角上的 1：1 比率问题所获得的覆盖太小。
+<p />
+中间部分与底座部分一样结构清晰明了，我直接强制手动使用圆柱形展开，获得了最大的覆盖率以及使用空间。通常，与低多边形网格物体的每个小平面的 1 比 1 表现形式相比，我们更加关注的是覆盖率。我在向上的 Z 轴上对顶部狮头运动部分的下部表面进行了平面展开，然后使用松弛值进行确认。
+<p />
+这样分离模型有一个好处就是可以将缝隙放在低多边形设计中真实的缝隙部分，所以这里的光照中有一点裂缝，感觉很自然。在有明显深度凹陷或裂缝的地方分割您的光照贴图 uv 是选择在哪里分割部分的理想经验法则，这种方法有助于表现游戏中模型并降低它的等级。
+<p />
+<img src="rsrc/Three/LightMapUnwrappingCH/FountainINGAME.jpg" alt="FountainINGAME.jpg" width="720" height="604" />
+<p />
+<p />
+<p />
+<p />
+<h2><a name="光照贴图坐标索引"></a> 光照贴图坐标索引 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<p />
+默认情况下，在为静态光照生成光照贴图的时候将会使用静态网格物体的第一组 UV（索引 0）。这意味着用于将材质应用于这个网格物体的同一组坐标也可以用于光照贴图。这通常不是很理想。其中一个原因是用于生成光照贴图的 UV 需要是唯一的，也就是说网格物体的每一个面必须不能与 UV 空间中的其他任何面重叠。
+<p />
+<p />
+<p />
+针对这个问题，这个原因应该十分明显。如果这些面共享同一个 UV 空间，与这个空间对应的光照贴图部分将会被应用到这两个面上。它对于漫反射和其他贴图而言可能非常重要，因为它会使每个面的贴图分辨率更高。但是，它将会使光照不正确。静态网格物体有一个名为 <code>LightmapCoordinateIndex</code> 的属性，它可以使用指定的一组 UV 生成光照贴图。通过将这个属性设置为指向一组唯一的 UV，然后为光照贴图进行正确设置，静态网格物体可以享用最好的两个世界： 漫反射贴图具有较好的贴图分辨率，光照贴图产生精确的光照。
+<p />
+<h2><a name="相邻 UV 以及间隔"></a> 相邻 UV 以及间隔 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+其中具有相邻 UV 的三角形组被称为 UV 图表。
+<p />
+<img src="#" alt="uvs_charts.jpg" width="" height="" />
+<p />
+UV 图标之间必需有间隔以防渗透失真。但是，光照贴图 UV 布局的边周围不需要有间隔，因为<a href="Lightmass.html" class="twikiLink">Lightmass</a>自动在边周围进行间隔就可以防止渗透失真。 注意，当您设置 UV 图表间的间距时通常需要 4 个贴图像素避免所有的渗透失真，因为 DXT 压缩会对 4x4 贴图块产生作用。
+<p />
+<img src="#" alt="uvs_padding.jpg" width="" height="" />
+<p />
+这意味着对于分辨率为 32 的光照贴图来说，UV 图表之间的间隔应该是整个 UV 空间的 12.5%。但是，记住在 UV 图表之间放置的间隔越多，在分辨率较高的光照贴图上浪费的光照贴图内存越多。如果您可以使静态光照 UV 尽量紧凑，那么您所得到的结果会更好。这将会减少需要的间隔量，同时会使分辨率增加。在执行 Lightmass 之前或在大部分依赖顶点光照的时候，静态网格物体可能已经通过单独对元素进行建模并将它们组合到一起创建完成。
+<p />
+<img src="rsrc/Three/LightMapUnwrappingCH/old_mesh_seperate.jpg" alt="old_mesh_seperate.jpg" width="821" height="364" />
+<p />
+不过这没有依赖于光照贴图并使用 Lightmass 时理想。它无法得到好的紧凑的光照贴图 UV。
+<p />
+<img src="rsrc/Three/LightMapUnwrappingCH/old_mesh_uvs.jpg" alt="old_mesh_uvs.jpg" width="396" height="397" />
+<p />
+而您最终将会得到一个破裂的光照贴图，其中的多边形在模型内部被渲染为黑色，渗开到网格物体的另一部分。另一个潜在缺点是像它这样也依赖于自动展开可能会引发相同的问题。
+<p />
+<img src="rsrc/Three/LightMapUnwrappingCH/old_mesh_ingame.jpg" alt="old_mesh_ingame.jpg" width="692" height="424" />
+<p />
+为光照贴图创建网格物体并展开它们的 UV 的最好方法是将整个网格物体建模为一个相邻的元素并手动展开这个 UV。
+<p />
+<img src="rsrc/Three/LightMapUnwrappingCH/new_mesh_contiguous.jpg" alt="new_mesh_contiguous.jpg" width="821" height="383" />
+<p />
+这样会得到紧凑的光照贴图 UV，没有缝隙，同时提高光照贴图的利用率。
+<p />
+<img src="rsrc/Three/LightMapUnwrappingCH/new_mesh_uvs.jpg" alt="new_mesh_uvs.jpg" width="396" height="397" />
+<p />
+最终结果是一个被正确照射的网格物体，没有任何渗透失真现象。
+<p />
+<img src="rsrc/Three/LightMapUnwrappingCH/new_mesh_ingame.jpg" alt="new_mesh_ingame.jpg" width="692" height="424" />
+<p />
+这个方法还有一个优点是它同时可以逐渐减少模型所需的三角形数量。
+<p />
+<img src="rsrc/Three/LightMapUnwrappingCH/old_mesh.jpg" alt="old_mesh.jpg" width="417" height="413" /> <img src="rsrc/Three/LightMapUnwrappingCH/new_mesh.jpg" alt="new_mesh.jpg" width="416" height="428" />
+<p />
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/LightMapUnwrappingCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:17:46 GMT -->
+</html></body>

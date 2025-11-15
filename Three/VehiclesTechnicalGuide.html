@@ -1,0 +1,1910 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/VehiclesTechnicalGuide.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:08:08 GMT -->
+<head>
+<title> UDK | VehiclesTechnicalGuide    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">VehiclesTechnicalGuide  </b></div>
+<div id="tooltext">
+<a href="VehiclesTechnicalGuideJP.html" class="twikiLink">日本語訳</a><br><a href="VehiclesTechnicalGuideCH.html" class="twikiLink">中国翻译</a><br><a href="VehiclesTechnicalGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/VehiclesTechnicalGuide -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="GameplayProgrammingHome.html" class="twikiLink">Gameplay Programming</a></b> &gt; Vehicle System Technical Guide
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Vehicle System Technical Guide"></a> Vehicle System Technical Guide </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="VehiclesTechnicalGuide.html#Vehicle System Technical Guide"> Vehicle System Technical Guide</a> <ul>
+<li> <a href="VehiclesTechnicalGuide.html#Overview"> Overview</a>
+</li> <li> <a href="VehiclesTechnicalGuide.html#Vehicle Classes"> Vehicle Classes</a> <ul>
+<li> <a href="VehiclesTechnicalGuide.html#Vehicle"> Vehicle</a>
+</li> <li> <a href="VehiclesTechnicalGuide.html#SVehicle"> SVehicle</a>
+</li> <li> <a href="VehiclesTechnicalGuide.html#UDKVehicleBase"> UDKVehicleBase</a>
+</li> <li> <a href="VehiclesTechnicalGuide.html#UDKVehicle"> UDKVehicle</a>
+</li> <li> <a href="VehiclesTechnicalGuide.html#UTVehicle"> UTVehicle</a>
+</li> <li> <a href="VehiclesTechnicalGuide.html#SVehicleSimBase"> SVehicleSimBase</a> <ul>
+<li> <a href="VehiclesTechnicalGuide.html#The Wheel Model"> The Wheel Model</a>
+</li> <li> <a href="VehiclesTechnicalGuide.html#SVehicleWheel Properties"> SVehicleWheel Properties</a>
+</li></ul>
+</li> <li> <a href="VehiclesTechnicalGuide.html#Vehicle Seats and Weapons"> Vehicle Seats and Weapons</a> <ul>
+<li> <a href="VehiclesTechnicalGuide.html#VehicleSeat Properties"> VehicleSeat Properties</a>
+</li> <li> <a href="VehiclesTechnicalGuide.html#Vehicle Weapon Replication"> Vehicle Weapon Replication</a>
+</li></ul>
+</li> <li> <a href="VehiclesTechnicalGuide.html#Vehicle Events"> Vehicle Events</a> <ul>
+<li> <a href="VehiclesTechnicalGuide.html#VehicleAnim Properties"> VehicleAnim Properties</a>
+</li> <li> <a href="VehiclesTechnicalGuide.html#VehicleEffect Properties"> VehicleEffect Properties</a>
+</li> <li> <a href="VehiclesTechnicalGuide.html#VehicleSound Properties"> VehicleSound Properties</a>
+</li></ul>
+</li> <li> <a href="VehiclesTechnicalGuide.html#Vehicle Damage System"> Vehicle Damage System</a> <ul>
+<li> <a href="VehiclesTechnicalGuide.html#FDamageMorphTargets Properties"> FDamageMorphTargets Properties</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="VehiclesTechnicalGuide.html#Different Types Of Vehicle"> Different Types Of Vehicle</a> <ul>
+<li> <a href="VehiclesTechnicalGuide.html#Wheeled Vehicles"> Wheeled Vehicles</a>
+</li> <li> <a href="VehiclesTechnicalGuide.html#Hover Vehicles"> Hover Vehicles</a>
+</li> <li> <a href="VehiclesTechnicalGuide.html#Flying Vehicles"> Flying Vehicles</a>
+</li> <li> <a href="VehiclesTechnicalGuide.html#Tanks"> Tanks</a>
+</li></ul>
+</li> <li> <a href="VehiclesTechnicalGuide.html#Content: The Physics Asset"> Content: The Physics Asset</a>
+</li> <li> <a href="VehiclesTechnicalGuide.html#Performance: Tuning Vehicles"> Performance: Tuning Vehicles</a> <ul>
+<li> <a href="VehiclesTechnicalGuide.html#Useful Console Commands"> Useful Console Commands</a>
+</li></ul>
+</li> <li> <a href="VehiclesTechnicalGuide.html#Vehicle Replication"> Vehicle Replication</a> <ul>
+<li> <a href="VehiclesTechnicalGuide.html#Strategies for Other Games"> Strategies for Other Games</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+A vehicle in Unreal is any physical object used by the player to get around the world. The first things that may come to mind are wheeled vehicles like cars and trucks or flying vehicles like planes and helicopters. However, the vehicle system and rigid body physics engine in Unreal allow for great flexibility in the types of vehicles that can be created. Anything from those cars, trucks, planes, and helicopters to tanks or other vehicles which use treads to hovering vehicles like a hovercraft or hoverboard to biological vehicles such as horses to mechanized walking vehicles is possible using this system. This means that not only is it possible to create games which use vehicle combat, but the system could also be used to create horses that can be ridden for a horse racing game or a western. The vehicle system could even be used to create surfboards or snowboards for simulations. Of course, with more specialized types of vehicles it may become necessary to implement custom functionality, but the framework and overall system is in place to allow you to simply add what is needed for a specific type, and not have to build the entire system from the ground up.
+<p />
+<h2><a name="Vehicle Classes"></a> Vehicle Classes </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+All vehicles in Unreal extend from the Pawn class from which they inherit a great deal of properties and functionality. The visual component of vehicles in Unreal uses a skeletal mesh and have the ability to play animations and sounds as well as spawn various effects at the locations of sockets or bones on the skeleton of the mesh.
+<p />
+<h3><a name="Vehicle"></a> Vehicle </h3>
+<p />
+This is the base class for all vehicles. It contains the basic control inputs Steering, Throttle and Rise, as well as the stubs for much of the AI code that is used to allow computer players to drive vehicles. It also includes the code used for getting in and out of vehicles. You would probably want to subclass this to create something like a fixed turret.
+<p />
+<div class="regionhead" onclick="toggleRegion('VP');">
+	<div class="regionimage" id="region_VP_image">+</div>Vehicle Properties<span style="font-weight:normal;font-style:italic;font-size:10px;"> (click to view)</span>
+</div>
+<div class="regioncontent" id="region_VP_content">
+<p />
+<strong>AI</strong>
+<p /> <ul>
+<li> <strong>bTurnInPlace</strong> - If true, tells the AI that this vehicle can turn in place.
+</li> <li> <strong>bSeparateTurretFocus</strong> - If true, tells the AI the vehicle has a turret-type weapon which aims separately from the direction the vehicle faces.
+</li> <li> <strong>bFollowLookDir</strong> - If true, tells the AI that the vehicle's rotation follows the camera's rotation.
+</li> <li> <strong>bHasHandbrake</strong> - If true, tells the AI that the vehicle can hand brake. Used for steering the vehicle.
+</li> <li> <strong>bScriptedRise</strong> - If true, tells the AI that the vehicle hovers. Used when stuck or when a destination is reached.
+</li> <li> <strong>bDuckObstacles</strong> - If true, tells the AI to check for and duck under obstacles.
+</li> <li> <strong>bAvoidReversing</strong> - If true, tells the AI to avoid using reverse unless it absolutely has to.
+</li> <li> <strong>bRetryPathfindingWithDriver</strong> - if true, tells the AI to continue on foot if pathfinding in the vehicle fails.
+</li></ul>
+<p />
+<strong>Damage</strong>
+<p /> <ul>
+<li> <strong>DriverDamageMult</strong> - Multiplier for damage incurred by the driver while in the vehicle.
+</li> <li> <strong>MomentumMult</strong> - Multiplier for momentum applied by damage to the vehicle.
+</li> <li> <strong>CrushedDamageType</strong> - DamageType to use when the vehicle crushes something.
+</li> <li> <strong>MinCrushSpeed</strong> - Minimum speed the vehicle must be moving to crush something.
+</li> <li> <strong>ForceCrushPenetration</strong> - Maximum penetration allowed before crushing something regardless of speed.
+</li></ul>
+<p />
+<strong>Display</strong>
+<p /> <ul>
+<li> <strong>ViewPitchMin</strong> - Inherited from Pawn. The minimum pitch rotation the vehicle's camera is allowed to have.
+</li> <li> <strong>ViewPitchMax</strong> - Inherited from Pawn. The maximum pitch rotation the vehicle's camera is allowed to have.
+</li></ul>
+<p />
+<strong>Entry/Exit</strong>
+<p /> <ul>
+<li> <strong>Driver</strong> - References the Pawn driving this vehicle.
+</li> <li> <strong>bDriving</strong> - If true, the vehicle has a driver
+</li> <li> <strong>ExitPositions</strong> - Array of locations relative to the vehicle to attempt to place players when they exit the vehicle. If none are specified, an optional automatic placement system is used.
+</li> <li> <strong>ExitRadius</strong> - Distance from the vehicle's location the player should be placed on exit when using the automatic placement system; attempts to place the player this distance forward, backward, to the left, and to the right of the vehicle.
+</li> <li> <strong>ExitOffset</strong> - Additional offset to use when placing players on exit.
+</li> <li> <strong>bDriverIsVisible</strong> - If true, the driver of the vehicle is rendered.
+</li> <li> <strong>bAttachDriver</strong> - If true, the driver is attach to the vehicle when entering.
+</li></ul>
+<p />
+<strong>Mesh and Animation</strong>
+<p /> <ul>
+<li> <strong>Mesh</strong> - Inherited from Pawn. The SkeletalMeshComponent representing the visual component of the vehicle.
+</li></ul>
+<p />
+<strong>Movement</strong>
+<p /> <ul>
+<li> <strong>Steering</strong> - A value between -1 and 1 representing the direction the player is steering the vehicle left or right. By default, this is the result of pressing the A and D keys.
+</li> <li> <strong>Throttle</strong> - A value between -1 and 1 representing the forward and backward input from the player. By default, this is the result of the W and S keys.
+</li> <li> <strong>Rise</strong> - A value between -1 and 1 representing the up and down input from the player. By default, this is the result of the Spacebar and C keys.
+</li> <li> <strong>bIgnoreStallZ</strong> - If true, the vehicle can continue to rise to altitudes above the specified StallZ value in the World Properties for the level.
+</li></ul>
+</div>
+<p />
+<div class="regionhead" onclick="toggleRegion('VF');">
+	<div class="regionimage" id="region_VF_image">+</div>Vehicle Functions<span style="font-weight:normal;font-style:italic;font-size:10px;"> (click to view)</span>
+</div>
+<div class="regioncontent" id="region_VF_content">
+<p />
+<strong>AI</strong>
+<p /> <ul>
+<li> <strong>GetMaxRiseForce</strong> - Returns the maximum rise force of the vehicle.
+</li> <li> <strong>GetTargetLocation [RequestedBy] [bRequestAlternateLoc]</strong> - Returns the best location to target when aiming at the vehicle. <ul>
+<li> <strong>RequestedBy</strong> - Optional. References the Actor targeting the vehicle.
+</li> <li> <strong>bRequestAlternateLoc</strong> - Optional. If true, returns a secondary location if there are multiple. Not used in this implementation.
+</li></ul>
+</li> <li> <strong>ContinueOnFoot</strong> - Forces the driver out of the vehicle, if the driver is AI, and returns whether the driver left the vehicle. Called from the pathfinding code when the path can only be continued on foot.
+</li></ul>
+<p />
+<strong>Collision</strong>
+<p /> <ul>
+<li> <strong>EncroachingOn [Other]</strong> - Called by the engine when the vehicle encroaches on, or overlaps, the spcified Actor and the Actor could not be pushed out of the way. <ul>
+<li> <strong>Other</strong> - References the Actor the vehicle is encroaching upon.
+</li></ul>
+</li> <li> <strong>PancakeOther [Other]</strong> - Called by EncroachingOn() to deal large amounts of damage in order to crush  the specified Pawn. <ul>
+<li> <strong>Other</strong> - References the Pawn to crush.
+</li></ul>
+</li></ul>
+<p />
+<strong>Damage</strong>
+<p /> <ul>
+<li> <strong>TakeRadiusDamage [InstigatedBy] [BaseDamage] [DamageRadius] [DamageType] [Momentum] [HurtOrigin] [bFullDamage] [DamageCauser] [DamageFallowExponent]</strong> - Applies damage to the vehicle and driver scaled based on the distance of the vehicle from the specified origin for the damage. <ul>
+<li> <strong>InstigatedBy</strong> - References the controller responsible for doing the damage.
+</li> <li> <strong>BaseDamage</strong> - Holds the maximum amount of damage to be applied at the origin.
+</li> <li> <strong>DamageRadius</strong> - Holds the maximum distance from the origin to do damage; scaled between the origin and this distance.
+</li> <li> <strong>DamageType</strong> - Holds the type of damage to do.
+</li> <li> <strong>Momentum</strong> - Holds the amount of momentum to impart on the vehicle.
+</li> <li> <strong>HurtOrigin</strong> - Holds the origin of the damage to apply. Full damage is done at this location.
+</li> <li> <strong>bFullDamage</strong> - If true, damage is not scaled based on distance from the origin. Full damage is done throughout the radius.
+</li> <li> <strong>DamageCauser</strong> - References the Actor responsible for doing the damage.
+</li> <li> <strong>DamageFalloffExponent</strong> - Holds the exponent of the falloff for the damage over the radius. Defaults to 1.0 for linear falloff.
+</li></ul>
+</li> <li> <strong>DamageRadiusDamage [DamageAmount] [DamageRadius] [EventInstigator] [DamageType] [Momentum] [HitLocation] [DamageCauser] [DamageFalloffExponent]</strong> - Determines if damage done to the vehicle should damage the driver as well and calls TakeRadiusDamage() on the Driver if so. <ul>
+<li> <strong>DamageAmount</strong> - Holds the maximum amount of damage to be applied at the origin.
+</li> <li> <strong>DamageRadius</strong> - Hold the maximum distance from the origin to do damage; scaled between the origin and this distance.
+</li> <li> <strong>EventInstigator</strong> - References the controller responsible for doing the damage.
+</li> <li> <strong>DamageType</strong> - Holds the type of damage to be done.
+</li> <li> <strong>Momentum</strong> - Holds the momentum to impart on the driver.
+</li> <li> <strong>HitLocation</strong> - Holds the origin of the damage to apply. Full damage is done throughout the radius.
+</li> <li> <strong>DamageCauser</strong> - References the Actor responsible for doing the damage.
+</li> <li> <strong>DamageFalloffExponent</strong> - Holds the exponent of the falloff for the damage over the radius. Defaults to 1.0 for linear falloff.
+</li></ul>
+</li> <li> <strong>Destroy</strong> - Called by engine when the vehicle is destroyed.
+</li> <li> <strong>Destroyed_HandleDriver</strong> - Called when the vehicle is destroyed to handle cleanup of the driver.
+</li> <li> <strong>TakeDamage [Damage] [EventInstigator] [HitLocation] [Momentum] [DamageType] [HitInfo] [DamageCauser]</strong> - Inherited from parent. Applies damage to the vehicle. Uses DamageType vehicle scaling values to adjust the incoming damage amount. <ul>
+<li> <strong>Damage</strong> - Holds the amount of damage to be done.
+</li> <li> <strong>EventInstigator</strong> - References the controller responsible for doing the damage.
+</li> <li> <strong>HitLocation</strong> - Holds the location where the damage was done.	  * <strong>Momentum</strong> - Holds the momentum to impart on the vehicle.
+</li> <li> <strong>DamageType</strong> - Holds the type of damage to be done.
+</li> <li> <strong>HitInfo</strong> - Holds information about the hit that caused the damage.
+</li> <li> <strong>DamageCauser</strong> - References the Actor that caused the damage.
+</li></ul>
+</li> <li> <strong>AdjustDriverDamage [Damage] [InstigatedBy] [HitLocation] [Momentum] [DamageType]</strong> - Adjusts an incoming damage amount for being applied to a driver. Called from the driver's Pawn class when taking damage. <ul>
+<li> <strong>Damage</strong> - Holds the original amount of damage to be done.
+</li> <li> <strong>InstigatedBy</strong> - References the controller responsible for the damage.
+</li> <li> <strong>HitLocation</strong> - Holds the location of the hit that caused the damage.
+</li> <li> <strong>Momentum</strong> - Holds the momentum to impart on the driver.
+</li> <li> <strong>DamageType</strong> - Holds the type of damage to be done.
+</li></ul>
+</li> <li> <strong>DriverDied [DamageType]</strong> - Handles cleanup of the Driver and Controller when the driver of the vehicle dies while inside of the vehicle. <ul>
+<li> <strong>DamageType</strong> - Holds the type of damage that caused the driver's death.
+</li></ul>
+</li> <li> <strong>NotifyDriverTakeHit [InstigatedBy] [HitLocation] [Damage] [DamageType] [Momentum]</strong> -
+</li></ul>
+<p />
+<strong>Display</strong>
+<p /> <ul>
+<li> <strong>GetDefaultCameraMode [RequestedBy]</strong> - Returns the default camera mode to use when the player is in the vehicle. <ul>
+<li> <strong>RequestedBy</strong> - References the controller requesting the camera mode, most likely the vehicle's controller.
+</li></ul>
+</li></ul>
+<p />
+<strong>Entry/Exit</strong>
+<p /> <ul>
+<li> <strong>CanEnterVehicle [P]</strong> - Returns whether the given Pawn can enter this vehicle, e.g. if there are any available seats, the Pawn has a controller, the Pawn isn't already driving another vehicle, etc. <ul>
+<li> <strong>P</strong> - References the Pawn to try to place in the vehicle.
+</li></ul>
+</li> <li> <strong>AnyAvailableSeat</strong> - Returns whether there are any available seats in the vehicle.
+</li> <li> <strong>TryToDrive [P]</strong> - Returns whether the given Pawn successfully becomes the driver of the vehicle. <ul>
+<li> <strong>P</strong> - References the Pawn to become the driver.
+</li></ul>
+</li> <li> <strong>DriverEnter [P]</strong> - Places the given Pawn as the driver of the vehicle unless the Pawn is dead and returns whether it was successful. The driver's controller becomes the vehicle's controller here. <ul>
+<li> <strong>P</strong> - References the Pawn to enter the vehicle.
+</li></ul>
+</li> <li> <strong>AttachDriver [P]</strong> - Hard attaches the driver to the vehicle and hides the driver if bDriverIsVisible is false. Called from the Pawn class by the driver in StartDriving(). Only executes if bAttachDriver is true. Called on all clients. <ul>
+<li> <strong>P</strong> - References the driver to attach.
+</li></ul>
+</li> <li> <strong>DetachDriver [P]</strong> - Function stub for detaching the current driver from the vehicle. Called from the Pawn class by the driver in StopDriving(). Called on all clients.
+</li> <li> <strong>GetExitRotation [C]</strong> - Returns the rotation to use when placing the driver on exit. <ul>
+<li> <strong>C</strong> - References the controller of the driver.
+</li></ul>
+</li> <li> <strong>DriverLeave [bForceLeave]</strong> - Called from the PlayerController when the player wishes to exit the vehicle. Detaches the driver from the vehicle, places the driver in the world, and returns the driver to being possessed by the controller. <ul>
+<li> <strong>bForceLeave</strong> - If true, the driver will be forced out of the vehicle even if no suitable location to place the driver can be found. Places the driver at the GetTargetLocation() of the vehicle.
+</li></ul>
+</li> <li> <strong>DriverLeft</strong> - Clears the Driver and sets bDriving to false.
+</li> <li> <strong>PlaceExitingDriver [ExitingDriver]</strong> - Attempts to find a suitable location to place the driver when exiting the vehicle and returns whether it was successful or not. <ul>
+<li> <strong>ExitingDriver</strong> - Optional. References the driver exiting the vehicle. Current Driver is used if not specified.
+</li></ul>
+</li> <li> <strong>FindAutoExit [ExitingDriver]</strong> - Attempts to find an exit location in front, behind, to the right, or to the left of the vehicle and returns whether it was successful. <ul>
+<li> <strong>ExitingDriver</strong> - References the driver exiting the vehicle.
+</li></ul>
+</li> <li> <strong>TryExitPos [ExitingDriver] [ExitPos] [bMustFindGround]</strong> - Tests each individual exit location generated by FindAutoExit() and returns whether the driver can be placed in that location. <ul>
+<li> <strong>ExitingDriver</strong> - References the driver exiting the vehicle.
+</li> <li> <strong>ExitPos</strong> - Holds the exit position to be tested.
+</li> <li> <strong>bMustFindGround</strong> - If true, the trace to find the floor must hit something for the test to succeed.
+</li></ul>
+</li> <li> <strong>GetEntryLocation</strong> - Returns the entry location for the vehicle. Defaults to the vehicle's location.
+</li></ul>
+<p />
+<strong>Movement</strong>
+<p /> <ul>
+<li> <strong>SetInputs [InForward] [InSrafe] [InUp]</strong> - Provides an interface for manually setting the Rise, Steering, and Throttle values of the vehicle. <ul>
+<li> <strong>InForward</strong> - Holds the new Throttle value for the vehicle.
+</li> <li> <strong>InStrafe</strong> - Holds the new Steering value for the vehicle.
+</li> <li> <strong>InUp</strong> - Holds the new Rise value for the vehicle.
+</li></ul>
+</li> <li> <strong>SetDriving [b]</strong> - Sets the driving status, bDriving, of the vehicle. <ul>
+<li> <strong>b</strong> - Holds the new driving status of the vehicle.
+</li></ul>
+</li> <li> <strong>DrivingStatusChanged</strong> - Called when the driving status is changed allowing you to perform any necessary actions. Defaults to zeroing out Rise, Steering, and Throttle.
+</li> <li> <strong>ZeroMovementVariables</strong> - Zeroes out the values of Rise, Steering, and Throttle.
+</li></ul>
+</div>
+<p />
+<h3><a name="SVehicle"></a> SVehicle </h3>
+<p />
+The SVehicle class introduces rigid-body physics-based movement into the vehicle system. It contains all the parameters for supporting wheeled vehicles and makes use of a generic simulation object for creating different types of vehicles: wheeled, flying, hovering, treaded, etc.
+<p />
+<div class="regionhead" onclick="toggleRegion('SVP');">
+	<div class="regionimage" id="region_SVP_image">+</div>SVehicle Properties<span style="font-weight:normal;font-style:italic;font-size:10px;"> (click to view)</span>
+</div>
+<div class="regioncontent" id="region_SVP_content">
+<p />
+<strong>Damage</strong>
+<p /> <ul>
+<li> <strong>RadialImpulseScaling</strong> - Holds the amount to scale impulses imparted on the vehicle by damage done through the HurtRadius() function.
+</li></ul>
+<p />
+<strong>Display</strong>
+<p /> <ul>
+<li> <strong>BaseOffset</strong> - The base Vector offset for the camera's location.
+</li> <li> <strong>CamDist</strong> - Distance to offset the camera from the base location along the camera's local X-axis.
+</li> <li> <strong>DriverViewPitch</strong> - Holds the driver's pitch used for LookToSteer.
+</li> <li> <strong>DriverViewYaw</strong> - Holds the driver's yaw used for LookToSteer.
+</li></ul>
+<p />
+<strong>Movement</strong>
+<p /> <ul>
+<li> <strong>SimObj</strong> - The SVehicleSimBase object that handles much of the vehicle simulation. For more information, see the <a href="#SVehicleSimBase">SVehicleSimBase</a> section.
+</li> <li> <strong>Wheels</strong> - The array of SVehicleWheel objects, holding parameters for each wheel (in the case of a wheeled vehicle).
+</li> <li> <strong>COMOffset</strong> - Center Of Mass location of the vehicle, in local space.
+</li> <li> <strong>InertiaTensorMultiplier</strong> - This scales the inertia tensor for the vehicle. This affects how easy the vehicle is to spin around each axis, it's the angular equivalent of mass.
+</li> <li> <strong>MaxSpeed</strong> - Maximum speed the vehicle at which will be allowed to travel.
+</li> <li> <strong>MaxAngularVelocity</strong> - Maximum angular velocity the vehicle is allowed to achieve.
+</li> <li> <strong>bUseSuspensionAxis</strong> - If TRUE, then the wheel contact with the ground will always have its normal point back along the suspension axis. If FALSE, the wheel contact will use the surface normal of the ground it hits.
+</li> <li> <strong>HeavySuspensionShiftPercentage</strong> - Percent of the maximum allowed distance the Suspension must want to move in one go for the <em>SuspensionHeavyShift()</em> function to be called
+</li></ul>
+<p />
+SVehicle also contains support for an `upright constraint'. This is a springy constraint that is used to keep the vehicle upright as it moves around, and can be useful for certain sorts of hover vehicles.
+<p /> <ul>
+<li> <strong>bStayUpright</strong> - Use the stay-upright world constraint.
+</li> <li> <strong>StayUprightRollResistAngle</strong> - Angle at which the vehicle will resist rolling.
+</li> <li> <strong>StayUprightPitchResistAngle</strong> - Angle at which the vehicle will resist pitching.
+</li> <li> <strong>StayUprightStiffness</strong> - Stiffness of upright spring past the limit angles.
+</li> <li> <strong>StayUprightDamping</strong> - Damping of upright spring past the limit angles.
+</li></ul>
+<p />
+If a vehicle does get flipped, SVehicle has support for being flipped back over again using the following settings
+<p /> <ul>
+<li> <strong>bCanFlip</strong> - True if vehicle can be uprighted by player.
+</li> <li> <strong>UprightLiftStrength</strong> - Scales the lifting force applied to the vehicle during uprighting.
+</li> <li> <strong>UprightTorqueStrength</strong> - Scales the torque applied to the vehicle during uprighting.
+</li> <li> <strong>UprightTime</strong> - Time in seconds to apply uprighting force/torque.
+</li></ul>
+<p />
+<strong>Output</strong>
+<p />
+There are a number of `output' parameters in the SVehicle class that you can use elsewhere in your code.
+<p /> <ul>
+<li> <strong>bVehicleOnGround</strong> - True if <em>any</em> SVehicleWheel is currently touching the ground (ignores contacts with chassis etc).
+</li> <li> <strong>TimeOffGround</strong> - Time that bVehicleOnGround has been false for.
+</li> <li> <strong>bVehicleOnWater</strong> - True if <em>any</em> SVehicleWheel is currently touching water
+</li> <li> <strong>bIsInverted</strong> - True if vehicle is mostly upside down.
+</li> <li> <strong>bChassisTouchingGround</strong> - True if there are any contacts between the chassis of the vehicle and the ground.
+</li> <li> <strong>bWasChassisTouchingGroundLastTick</strong> - True if there were any contacts between the chassis of the vehicle and the ground last tick.
+</li></ul>
+<p />
+<strong>Sounds</strong>
+<p /> <ul>
+<li> <strong>EngineSound</strong> - AudioCompnent for the ambient engine-running sound. Pitch is modulated based on the RPMs.
+</li> <li> <strong>SquealSound</strong> - AudioComponent for the wheel squealing sound. Volume is modulated based on amount of squealing.
+</li> <li> <strong>CollisionSound</strong> - SoundCue to play when the vehicle collides with other objects.
+</li> <li> <strong>EnterVehicleSound</strong> - SoundCue to play when the driver enters the vehicle.
+</li> <li> <strong>ExitVehicleSound</strong> - SoundCue to play when the driver exits the vehicle.
+</li> <li> <strong>CollisionIntervalSeconds</strong> - Minimum number of seconds that must pass between collisions before the CollisionSound can be played again.
+</li> <li> <strong>SquealThreshold</strong> - Slip velocity cuttoff below which no wheel squealing is heard.
+</li> <li> <strong>SquealLatThreshold</strong> - Lateral Slip velocity cut off below which no wheel squealing is heard.
+</li> <li> <strong>LatAngleVolumeMult</strong> - Multiplier for volume level of Lateral squeals relative to straight slip squeals.
+</li> <li> <strong>EngineStartOffsetSecs</strong> - Number of seconds delay between the engine startup sound and beginning the engine idling sound.
+</li> <li> <strong>EngineStopOffsetSecs</strong> - Number of seconds delay between the playing of the engine shutdown sound and the deactivation of the engine idling sound.
+</li></ul>
+</div>
+<p />
+<div class="regionhead" onclick="toggleRegion('SVF');">
+	<div class="regionimage" id="region_SVF_image">+</div>SVehicle Functions<span style="font-weight:normal;font-style:italic;font-size:10px;"> (click to view)</span>
+</div>
+<div class="regioncontent" id="region_SVF_content">
+<p />
+<strong>Display</strong>
+<p /> <ul>
+<li> <strong>CalcCamera [fDeltaTime] [out_CamLoc] [out_CamRot] [out_FOV]</strong> - Inherited from Pawn. Calculates the viewpoint for the camera for players in this vehicle. <ul>
+<li> <strong>fDeltaTime</strong> - Amount of time since the last update.
+</li> <li> <strong>out_CamLoc</strong> - Holds current camera position and outputs new camera position.
+</li> <li> <strong>out_CamRot</strong> - Holds current camera rotation and outputs new camera rotation.
+</li> <li> <strong>out_FOV</strong> - Holds current field of view and outputs new field of view.
+</li></ul>
+</li></ul>
+<p />
+<strong>Entry/Exit</strong>
+<p /> <ul>
+<li> <strong>TurnOff</strong> - Inherited from Pawn. Shuts down sounds, animations, physics, etc.
+</li></ul>
+<p />
+<strong>Movement</strong>
+<p /> <ul>
+<li> <strong>AddForce [Force]</strong> - Applies a constant force using the specified vector. <ul>
+<li> <strong>Force</strong> - Vector representing both the direction and strength of the force to apply..
+</li></ul>
+</li> <li> <strong>AddImpulse [Impulse]</strong> - Applies a single impulse force using the specified vector. <ul>
+<li> <strong>Impulse</strong> - Vector representing both the direction and strength of the impulse to apply.
+</li></ul>
+</li> <li> <strong>AddTorque [Torque]</strong> - Applies torque (turning force) using the specified vector. <ul>
+<li> <strong>Torque</strong> - Vector representing both the direction and strength of the torque to apply.
+</li></ul>
+</li> <li> <strong>AddVelocity [NewVelocity] [DamageType] [HitInfo]</strong> - Inherited from Pawn. Adds the specified velocity to the vehicle. Overriding the Pawn version is necessary here since rigid-body physics is in use.
+</li> <li> <strong>IsSleeping</strong> - Returns whether the physics simulation controlling the vehicle's physics is asleep.
+</li> <li> <strong>HasWheelsOnGround</strong> - Returns whether the vehicle has any wheels currently in contact with the ground.
+</li> <li> <strong>SuspensionHeavyShift [Delta]</strong> - Called by the engine when the suspension of the vehicle moves a large amount. <ul>
+<li> <strong>Delta</strong> - Holds the amount of the shift.
+</li></ul>
+</li> <li> <strong>PostTeleport [OutTeleporter]</strong> - Called after the vehicle has been teleported to update position, etc. <ul>
+<li> <strong>OutTeleporter</strong> - References the teleporter at the destination.
+</li></ul>
+</li></ul>
+<p />
+<strong>Collision</strong>
+<p /> <ul>
+<li> <strong>SetWheelCollision [WheelNum] [bCollision]</strong> - Turns the collision of a particular wheel of the vehicle on or off. <ul>
+<li> <strong>WheelNum</strong> - Index of the wheel in the Wheels array to modify collision for.
+</li> <li> <strong>bCollision</strong> - If true, enable collision on the wheel. Otherwise, disable collision.
+</li></ul>
+</li> <li> <strong>RigidBodyCollision [HitComponent] [OtherComponent] [RigidCollisionData] [ContactIndex]</strong> - Called by the engine when the rigid body of the vehicle collides with another object. Plays the CollisionSound SoundCue. <ul>
+<li> <strong>HitComponent</strong> - References the component of the vehicle that was collided with.
+</li> <li> <strong>OtherComponent</strong> - References the component of the other object that was collided with.
+</li> <li> <strong>RigidCollisionData</strong> - Holds data about the collision.
+</li> <li> <strong>ContactIndex</strong> - Holds the index of the collision contact point.
+</li></ul>
+</li></ul>
+<p />
+<strong>Mesh and Animation</strong>
+<p /> <ul>
+<li> <strong>PostInitAnimtree [SkelComp]</strong> - Called by the engine after the AnimTree has been initialized. Obtains and sets the references to the SkelControlWheel controllers in the vehicle's AnimTree, if the vehicle has wheels. <ul>
+<li> <strong>SkelComp</strong> - References the SkeletalMeshComponent whose AnimTree was initialized.
+</li></ul>
+</li></ul>
+<p />
+<strong>Physics</strong>
+<p /> <ul>
+<li> <strong>InitVehicleRagdoll [RagdollMesh] [RagdollPhysAsset] [ActorMove] [bClearAnimtree]</strong> - Transitions the vehicle from using a single-body for physics to using a full, articulated, ragdoll-like skeleton. <ul>
+<li> <strong>RagdollMesh</strong> - The new skeletal mesh containing the full skeleton to use.
+</li> <li> <strong>RagdollPhysAsset</strong> - The physics asset for the new skeletal mesh.
+</li> <li> <strong>ActorMove</strong> - A vector used to translate the vehicle during the transition. Can be used to avoid the ragdoll mesh penetrating into the ground.
+</li> <li> <strong>bClearAnimtree</strong> - If true, clear the reference to the current AnimTree for the vehicle.
+</li></ul>
+</li></ul>
+<p />
+<strong>Sounds</strong>
+<p /> <ul>
+<li> <strong>StopVehicleSounds</strong> - Called from TurnOff(). Stops playing engine and squeal audio components.
+</li> <li> <strong>StartEngineSound</strong> - Begins playing the engine sound audio component.
+</li> <li> <strong>StartEngineSoundTimed</strong> - Starts a timer to begin playing the engine sound audio component after EngineStartOffsetSecs seconds.
+</li> <li> <strong>StopEngineSound</strong> - Stops playing the engine sound audio component.
+</li> <li> <strong>StopEngineSoundTimed</strong> - Starts a timer to stop playing the engine sound audio component after EngineStartOffsetSecs seconds.
+</li> <li> <strong>VehiclePlayEnterSound</strong> - Plays the EnterVehicleSound SoundCue and calls StartEngineSoundTimed().
+</li> <li> <strong>VehiclePlayExitSound</strong> - Plays the ExitVehicleSound and calls StopEngineSoundTimed().
+</li></ul>
+</div>
+<p />
+<h3><a name="UDKVehicleBase"></a> UDKVehicleBase </h3>
+<p />
+The UDKVehicleBase class extends from SVehicle and adds basic support for multiple-seat vehicles and carrying game objects, such as flags in vCTF games.
+<p />
+<div class="regionhead" onclick="toggleRegion('UDKVBP');">
+	<div class="regionimage" id="region_UDKVBP_image">+</div>UDKVehicleBase Properties<span style="font-weight:normal;font-style:italic;font-size:10px;"> (click to view)</span>
+</div>
+<div class="regioncontent" id="region_UDKVBP_content">
+<p />
+<strong>Entry/Exit</strong>
+<p /> <ul>
+<li> <strong>bShouldEject</strong> - If true, the driver will be ejected when exiting the vehicle. Should be set when the current driver should be ejected.
+</li></ul>
+</div>
+<p />
+<div class="regionhead" onclick="toggleRegion('UDKVBF');">
+	<div class="regionimage" id="region_UDKVBF_image">+</div>UDKVehicleBase Functions<span style="font-weight:normal;font-style:italic;font-size:10px;"> (click to view)</span>
+</div>
+<div class="regioncontent" id="region_UDKVBF_content">
+<p />
+<strong>AI</strong>
+<p /> <ul>
+<li> <strong>NeedToTurn [Targ]</strong> - Inherited from Pawn. Returns whether the AI needs to turn in order to face/fire at the specified location. <ul>
+<li> <strong>Targ</strong> - Holds the location to look/fire at.
+</li></ul>
+</li></ul>
+<p />
+<strong>Entry/Exit</strong>
+<p /> <ul>
+<li> <strong>SwitchWeapons [NewGroup]</strong> - Called by UTPlayerController from SwitchWeapon() exec function to switch the player's current seat location (using the number keys on the keyboard by default). <ul>
+<li> <strong>NewGroup</strong> - Holds the group/seat to switch to. Seat index is NewGroup - 1.
+</li></ul>
+</li> <li> <strong>ServerChangeSeat [RequestedSeat]</strong> - Called on server. Function stub for synchronizing seat changes on all clients. Subclasses should override this function. <ul>
+<li> <strong>RequestedSeat</strong> - Holds seat index to switch to.
+</li></ul>
+</li> <li> <strong>AdjacentSeat [Direction] [C]</strong> - Called on client. Requests a change to an adjacent seat in the vehicle. <ul>
+<li> <strong>Direction</strong> - Holds the direction to move. -1 means previous seat. 1 means next seat.
+</li> <li> <strong>C</strong> - References the controller of the player changing seats.
+</li></ul>
+</li> <li> <strong>ServerAdjacentSeat [Direction] [C]</strong> - Classed on server. Function stub for moving the player to an adjacent seat. Subclasses should override this function. <ul>
+<li> <strong>Direction</strong> - Holds the direction to move. -1 means previous seat. 1 means next seat.
+</li> <li> <strong>C</strong> - References the controller of the player changing seats.
+</li></ul>
+</li> <li> <strong>EjectDriver</strong> - Ejects the driver from the vehicle at a high velocity. Called by DriverLeft().
+</li></ul>
+<p />
+<strong>GamePlay</strong>
+<p /> <ul>
+<li> <strong>HoldGameObject [GameObj]</strong> - Function stub called by engine to attach a GameObject to the vehicle. Subclasses should override this function. <ul>
+<li> <strong>GameObj</strong> - References the GameObject to attach to the vehicle.
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h3><a name="UDKVehicle"></a> UDKVehicle </h3>
+<p />
+The UDKVehicle class adds basic support for vehicle weapons as well as introducing the beginnings of a flexible system for playing different animations, particle effects, and sounds. It also has the ability to use morph targets to display location-specific damage.
+<p />
+For more information on some of the sub-systems added, see the following sections:
+<p /> <ul>
+<li> <a href="#Vehicle Seats and Weapons">Vehicle Seats and Weapons</a> - Information over adding seats and weapons to vehicles.
+</li> <li> <a href="#Vehicle Events">Vehicle Events</a> - Information regarding the vehicle event system.
+</li> <li> <a href="#Vehicle Damage System">Vehicle Damage System</a> - Information over the location-specific damage system.
+</li></ul>
+<p />
+<div class="regionhead" onclick="toggleRegion('UDKVP');">
+	<div class="regionimage" id="region_UDKVP_image">+</div>UDKVehicle Properties<span style="font-weight:normal;font-style:italic;font-size:10px;"> (click to view)</span>
+</div>
+<div class="regioncontent" id="region_UDKVP_content">
+<p />
+<strong>AI</strong>
+<p /> <ul>
+<li> <strong>ObjectiveGetOutDist</strong> - When controlled by AI and an objective needs to be triggered that cannot be triggered by the vehicle itself, the AI will try to get out of the vehicle this distance away.
+</li> <li> <strong>bUseAlternatePaths</strong> - If true, the AI will consider using its squad's alternate paths to an objective. Vehicle where detours would be painful (slow or other) or vehicles that are strong enough that detouring would be pointless should set this to false.
+</li></ul>
+<p />
+<strong>Damage</strong>
+<p /> <ul>
+<li> <strong>BurnOutMaterialInstances</strong> - Array of material instances and associated data used to replace the regular materials of the mesh when the vehicle dies and becomes a burning hulk of metal.
+</li> <li> <strong>FireDamageThreshold</strong> - The ratio of Health / MaxHealth which when reached will cause the vehicle to catch on fire and begin to take continuous damage from the fire.
+</li> <li> <strong>FireDamagePerSec</strong> - Amount of damage to be done each second when on fire.
+</li> <li> <strong>AccruedFireDamage</strong> - The amount of fire damage done so far.
+</li> <li> <strong>UpsideDownDamagePerSec</strong> - The amount of damage to be done each second when the vehicle is upside down and unoccupied.
+</li> <li> <strong>OccupiedUpsideDownDamagePerSec</strong> - The amount of damage to be done each second when the vehicle is upside down and occupied.
+</li> <li> <strong>WaterDamage</strong> - The amount of damage to be done each second when the vehicle is submerged.
+</li> <li> <strong>bTakeWaterDamageWhileDriving</strong> - If true, the vehicle will take water damage when being driven.
+</li> <li> <strong>AccumulatedWaterDamage</strong> - The amount of water damage done since TakeWaterDamage() was last called to apply the damage.
+</li> <li> <strong>DestroyOnPenetrationThreshold</strong> - Maximum amount of penetration allowed before destroying the vehicle.
+</li> <li> <strong>DestroyOnPenetrationDuration</strong> - Maximum amount of time penetration can be over DestroyOnPenetrationThreshold before destroying vehicle.
+</li> <li> <strong>KillerController</strong> - References the controller responsible for killing the vehicle.
+</li> <li> <strong>MinRunOverSpeed</strong> - The minimum speed the vehicle must be moving in order to cause damage by running into another player.
+</li></ul>
+<p />
+<strong>Display</strong>
+<p /> <ul>
+<li> <strong>TeamBeaconMaxDist</strong> - The maximum distance out that the Team Beacon will be displayed.
+</li> <li> <strong>bShowLocked</strong> - If true, draw the "No Entry" indicator on the HUD for this vehicle.
+</li> <li> <strong>bTeamLocked</strong> - If true, only players on the same team as the vehicle may enter.
+</li> <li> <strong>ShowLockedMaxDist</strong> - The maximum distance from the vehicle to the camera where the locked indicator will be displayed.
+</li></ul>
+<p />
+<strong>Effects</strong>
+<p /> <ul>
+<li> <strong>VehicleEffects</strong> - Array of VehicleEffect data structs containing information for the various particle effects to use for the vehicle.
+</li> <li> <strong>WheelParticleEffects</strong> - Array of material specific particle effects applied to all attached UDKVehicleWheels with bUseMaterialSpecificEffects set to true.
+</li> <li> <strong>MaxWheelEffectDistSq</strong> - Maximum distance off the ground a wheel can be to still play sounds and particle effects.
+</li> <li> <strong>GroundEffectIndices</strong> - Array of indices into the VehicleEffects array specifying effects to be used as grounnd effects, or effects that are displayed when the vehicle is within a certain distance of the ground.
+</li> <li> <strong>MaxGroundEffectDist</strong> - The maximum distance the vehicle can be from the ground to display ground effects.
+</li> <li> <strong>GroundEffectDistParamName</strong> - The name of the parameter in the ground effects' particle systems controlling the intensity of the effect. Will be set with a value between 0.0 and 1.0 which is the result of CurrentGroundDist / MaxGroundEffectDist.
+</li> <li> <strong>WaterGroundEffect</strong> - ParticleSystem to use for ground effects when the vehicle is over water.
+</li> <li> <strong>WaterEffectType</strong> - The name of the material type representing water. Used to switch to water ground effects when the current ground material type matches this name.
+</li> <li> <strong>ContrailEffectIndices</strong> - Array of indices into the VehicleEffects array specifying effects to be used as contrails.
+</li> <li> <strong>ContrailColorParamName</strong> - The name of the parameter used for setting the color in the contrail particle systems. The value passed to the parameter is based on the speed of the vehicle.
+</li> <li> <strong>HoverboardDust</strong> - ParticleSystemComponent for playing effects under the hoverboard
+</li></ul>
+<p />
+<strong>Entry/Exit</strong>
+<p /> <ul>
+<li> <strong>bEjectKilledBodies</strong> - If true, when the driver of the vehicle dies it will be ejected and ragdolled. Otherwise, it is destroyed immediately.
+</li> <li> <strong>bEjectPassengersWhenFlipped</strong> - If true, all passengers including the driver will be ejected if the vehicle flips over.
+</li> <li> <strong>Seats</strong> - Array of VehicleSeats containing information used to build the various seats and/or weapons available to players in the vehicle. See the <a href="#Vehicle Seats and Weapons">Vehicle Seats and Weapons</a> section for more information.
+</li> <li> <strong>bAllowedExit</strong> - If true, the driver is allowed to leave the vehicle.
+</li></ul>
+<p />
+<strong>Gameplay</strong>
+<p /> <ul>
+<li> <strong>Team</strong> - The team this vehicle is currently on.
+</li></ul>
+<p />
+<strong>Mesh and Animation</strong>
+<p /> <ul>
+<li> <strong>VehicleAnims</strong> - Array of VehicleAnims containing information about various animations to be played on the vehicle when certain events occur. See the <a href="#Vehicle Animations">Vehicle Animations</a> section for more information.
+</li> <li> <strong>DrivingAnim</strong> - The name of the animation to play on the Driver when visible and driving.
+</li> <li> <strong>DamageParamScaleLevels</strong> - Array mapping damage material parameter names to scaling factors. The parameter value is set by getting the health ratio (CurrentHealth / DefaultHealth) of the current damage morph target. This allows that 0.0 to 1.0 value to be scaled to fit the usage of the parameter in the material.
+</li> <li> <strong>DamageSkelControls</strong> - Array of damage skeletal controllers in the vehicle's AnimTree.
+</li> <li> <strong>DamageMorphTargets</strong> - Array of damage morph target data structs used to control the damage system.
+</li> <li> <strong>DamageMaterialInstance</strong> - References to dynamically created material instances created from the vehicle's materials and applied to the vehicle allowing access to damage parameters
+</li></ul>
+<p />
+<strong>Movement</strong>
+<p /> <ul>
+<li> <strong>bNoZDampingInAir</strong> - If true, the Z-component of the vehicle's velocity will not have damping applied while the vehicle is in the air.
+</li> <li> <strong>bNoZDamping</strong> - If true, the Z-component of the vehicle's velocity will not have damping applied even when the vehicle is on the ground.
+</li> <li> <strong>bIsDisabled</strong> - If true, the vehicle is disabled.
+</li> <li> <strong>bJostleWhileDriving</strong> - If true, the vehicle will have a random impulse applied to it to simulate realistic hovering. Useful for air vehicles.
+</li> <li> <strong>bFloatWhenDriven</strong> - If true, the vehicle will use a gravity Z-value of -0.1 to simulate floating. Useful for flying vehicles.
+</li> <li> <strong>CustomGravityScaling</strong> - Vehicle-specific multiplier for the gravity Z-value allowing for custom gravity on individual vehicles.
+</li> <li> <strong>bDisableRepulsorsAtMaxFallSpeed</strong> - If true, the vehicle's repulsors will be disabled if the vehicle's negative Z velocity is greater than the Driver's MaxFallSpeed value.
+</li></ul>
+<p />
+<strong>Sounds</strong>
+<p /> <ul>
+<li> <strong>TireAudioComp</strong> - AudioComponent used to play tire sounds.
+</li> <li> <strong>TireSoundList</strong> - Array of MaterialSoundEffects played from the tires when on different types of materials.
+</li> <li> <strong>CurrentTireMaterial</strong> - Holds the type of material the tires are currently on.
+</li> <li> <strong>ScrapeSound</strong> - AudioComponent used to play scraping sounds when the vehicle's body is scraping against another object.
+</li> <li> <strong>VehicleSounds</strong> - Array of VehicleSound data structs containing SoundCues to play for various events.
+</li> <li> <strong>LargeChunkImpactSound</strong> - SoundCue to play when the vehicle is impacted with a force of magnitude greater than 20000.
+</li> <li> <strong>MediumChunkImpactSound</strong> - SoundCue to play when the vehicle is impacted with a force of magnitude greater than 4000.
+</li> <li> <strong>SmallChunkImpactSound</strong> - SoundCue to play when the vehicle is impacted with a force of magnitude greater than 1000.
+</li></ul>
+<p />
+<strong>Weapons</strong>
+<p /> <ul>
+<li> <strong>bHomingTarget</strong> - If true, this vehicle can be locked onto by homing weapons.
+</li> <li> <strong>WeaponRotation</strong> - Current rotation of the vehicle's main weapon.
+</li></ul>
+</div>
+<p />
+<div class="regionhead" onclick="toggleRegion('UDKVF');">
+	<div class="regionimage" id="region_UDKVF_image">+</div>UDKVehicle Functions<span style="font-weight:normal;font-style:italic;font-size:10px;"> (click to view)</span>
+</div>
+<div class="regioncontent" id="region_UDKVF_content">
+<p />
+<strong>AI</strong>
+<p /> <ul>
+<li> <strong>JumpOutCheck</strong> - Function stub called by the engine when the vehicle is descending toward its destination allowing the bot a chance to jump out. Subclasses should override this function.
+</li></ul>
+<p />
+<strong>Collision</strong>
+<p /> <ul>
+<li> <strong>OnTouchForcedDirVolume [Vol]</strong> - Notifies the vehicle that it has hit a ForcedDirVolume. Returning false in this function will cause the vehicle to ignore the volume. <ul>
+<li> <strong>Vol</strong> - References the ForcedDirvolume that was touched.
+</li></ul>
+</li></ul>
+<p />
+<strong>Damage</strong>
+<p /> <ul>
+<li> <strong>GetRanOverDamageType</strong> - Returns the damage type used when running someone over with this vehicle.
+</li> <li> <strong>LockOnWarning [IncomingMissile]</strong> - Warns the driver of the vehicle a homing projectile is incoming. <ul>
+<li> <strong>IncomingMissile</strong> - References the projectile that is locked on to the vehicle.
+</li></ul>
+</li> <li> <strong>ReceivedHealthChange</strong> - Function stub called by the engine when the client receives a change to its health. Subclasses should override this function.
+</li> <li> <strong>CheckAutoDestruct [InstigatorTeam] [CheckRadius]</strong> - Returns whether the vehicle should auto destruct, i.e. if it is close enough to an enemy or objective. <ul>
+<li> <strong>InstigatorTeam</strong> - TeamInfo of the player who instigated the auto destruct.
+</li> <li> <strong>CheckRadius</strong> - How close the vehicle must be to something to auto destruct.
+</li></ul>
+</li> <li> <strong>SelfDestruct [ImpactedActor]</strong> - Function stub called by the engine when the vehicle should self-destruct. Subclasses should override this function. <ul>
+<li> <strong>ImpactedActor</strong> - References the Actor to take full damage from the self-destruct.
+</li></ul>
+</li> <li> <strong>RBPenetrationDestroy</strong> - Destroys the vehicle when a large penetration occurs.
+</li> <li> <strong>TakeWaterDamage</strong> - Function stub called by the engine every tick when water damage is being taken. Subclasses should override this function.
+</li> <li> <strong>TakeFireDamage</strong> - Function stub called by the engine when fire damage is being taken. Subclasses should override this function.
+</li></ul>
+<p />
+<strong>Display</strong>
+<p /> <ul>
+<li> <strong>NativePostRenderFor [PC] [Canvas] [CameraPosition] [CameraDir]</strong> - Allows the vehicle to draw HUD overlays. Natively draws locked icons. <ul>
+<li> <strong>PC</strong> - References the local player controller.
+</li> <li> <strong>Canvas</strong> - References the current canvas for drawing.
+</li> <li> <strong>CameraPosition</strong> - Holds the current location of the player's camera.
+</li> <li> <strong>CameraDir</strong> - Holds the current direction the player's camera is facing.
+</li></ul>
+</li> <li> <strong>SetHUDLocation [NewHUDLocation]</strong> - Sets the location where the icon for the vehicle will be drawn on the HUD. <ul>
+<li> <strong>NewHUDLocation</strong> - Holds the location (X and Y components of the vector) to draw the icon at.
+</li></ul>
+</li></ul>
+<p />
+<strong>Effects</strong>
+<p /> <ul>
+<li> <strong>PlayTakeHitEffects</strong> - Function stub called by engine to play hit effects when the vehicle is impacted. Subclasses should override this function.
+</li> <li> <strong>UpdateHoverboardDustEffect [DustHeight]</strong> - Function stub called by the engine to update the hoverboard dust effects. Subclasses should override this function. <ul>
+<li> <strong>DustHeight</strong> - Holds the height of the hoverboard above the ground.
+</li></ul>
+</li></ul>
+<p />
+<strong>Gameplay</strong>
+<p /> <ul>
+<li> <strong>GetTeamNum</strong> - Returns the team number of this vehicle.
+</li> <li> <strong>InUseableRange [PC] [Dist]</strong> - Returns whether the vehicle is within range to be used. <ul>
+<li> <strong>PC</strong> - References the player controller trying to use the vehicle.
+</li> <li> <strong>Dist</strong> - Holds the distance the player is from the vehicle.
+</li></ul>
+</li></ul>
+<p />
+<strong>Mesh and Animation</strong>
+<p /> <ul>
+<li> <strong>InitDamageSkel</strong> - Populates the DamageSkelControls array with the damage skeletal controllers in the vehicle's Animtree.
+</li> <li> <strong>UpdateDamageMaterial</strong> - Updates any materials applied to the vehicle when the damage system updates a health value.
+</li> <li> <strong>ApplyMorphDamage [HitLocation] [Damage] [Momentum]</strong> - Applies hit damage to the damage system to modify the morph targets. <ul>
+<li> <strong>HitLocation</strong> - Holds the location where the hit occurred.
+</li> <li> <strong>Damage</strong> - Holds the amount of damage that was done.
+</li> <li> <strong>Momentum</strong> - Holds the momentum imparted by the damage.
+</li></ul>
+</li> <li> <strong>MorphTargetDestroyed [MorphNodeIndex]</strong> - Function stub called by the engine (as a result of ApplyMorphDamage) when a damage node is destroyed. <ul>
+<li> <strong>MorphNodeIndex</strong> - Holds the index in the DamageMorphTargets array of the node that was destroyed.
+</li></ul>
+</li></ul>
+<p />
+<strong>Physics</strong>
+<p /> <ul>
+<li> <strong>PostInitRigidBody [PrimComp]</strong> - Function stub called by the engine after the rigid body simulation is initialized allowing the vehicle to do any custom physics initialization necessary. Subclasses should override this function. <ul>
+<li> <strong>PrimComp</strong> - References the primitive component the RB physics was initialized for.
+</li></ul>
+</li></ul>
+<p />
+<strong>Weapons</strong>
+<p /> <ul>
+<li> <strong>SeatWeaponRotation [SeatIndex] [NewRot] [bReadValue]</strong> - Gets or sets the weapon rotation for the specified seat. <ul>
+<li> <strong>SeatIndex</strong> - Holds the index of the seat.
+</li> <li> <strong>NewRot</strong> - Optional. New rotation value to set the seat's weapon rotation to.
+</li> <li> <strong>bReadValue</strong> - If true, returns the seat's weapon rotation. Otherwise, sets the seat's weapon rotation to NewRot.
+</li></ul>
+</li> <li> <strong>SeatFlashLocation [SeatIndex] [NewLoc] [bReadValue]</strong> - Gets or sets the flash location for the specified seat. <ul>
+<li> <strong>SeatIndex</strong> - Holds the index of the seat.
+</li> <li> <strong>NewLoc</strong> - Optional. New location value to set the seat's flash location to.
+</li> <li> <strong>bReadValue</strong> - If true, returns the seat's flash location. Otherwise, sets the seat's flash location to NewLoc.
+</li></ul>
+</li> <li> <strong>SeatFlashCount [SeatIndex] [NewCount] [bReadValue]</strong> - Gets or sets the flash count for the specified seat. <ul>
+<li> <strong>SeatIndex</strong> - Holds the index of the seat.
+</li> <li> <strong>NewCount</strong> - Optional. New flash count value to set the seat's flash count to.
+</li> <li> <strong>bReadValue</strong> - If true, returns the seat's flash count. Otherwise, sets the seat's flash count to NewCount.
+</li></ul>
+</li> <li> <strong>SeatFiringMode [SeatIndex] [NewFireMode] [bReadValue]</strong> - Gets or sets the firing mode for the specified seat. <ul>
+<li> <strong>SeatIndex</strong> - Holds the index of the seat.
+</li> <li> <strong>NewFireMode</strong> - Optional. New firing mode to set the seat's firing mode to.
+</li> <li> <strong>bReadValue</strong> - If true, returns the seat's firing mode. Otherwise, sets the seat's firing mode to NewFireMode.
+</li></ul>
+</li> <li> <strong>ForceWeaponRotation [SeatIndex] [NewRotation]</strong> - Forces the weapon rotation of the specified seat to the new rotation. Used by vehicle factories when spawning the vehicle. <ul>
+<li> <strong>SeatIndex</strong> - Holds the index of the seat.
+</li> <li> <strong>NewRotation</strong> - New rotation value to set the seat's weapon rotation to.
+</li></ul>
+</li> <li> <strong>GetSeatPivotPoint [SeatIndex]</strong> - Returns the pivot point for the specified seat. <ul>
+<li> <strong>SeatIndex</strong> - Holds the index of the seat.
+</li></ul>
+</li> <li> <strong>GetBarrelIndex [SeatIndex]</strong> - Returns the index of the barrel currently in use, or being fired out of, for the specified seat. <ul>
+<li> <strong>SeatIndex</strong> - Holds the index of the seat.
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h3><a name="UTVehicle"></a> UTVehicle </h3>
+<p />
+The UTVehicle class implements most of the gameplay-specific functionality for vehicles as well as the majority of the actual implementation of the vehicle event system for playing animations, effects, and sounds. This class also contains a good deal of console-specific functionality for controlling vehicles.
+<p />
+<div class="regionhead" onclick="toggleRegion('UTVP');">
+	<div class="regionimage" id="region_UTVP_image">+</div>UTVehicle Properties<span style="font-weight:normal;font-style:italic;font-size:10px;"> (click to view)</span>
+</div>
+<div class="regioncontent" id="region_UTVP_content">
+<p />
+<strong>AI</strong>
+<p /> <ul>
+<li> <strong>bKeyVehicle</strong> - If true, this vehicle is considered to be more important by the AI. Also, displays the vehicle on the minimap.
+</li> <li> <strong>AIPurpose</strong> - Specifies which kind of tasks the AI should use this vehicle for. <ul>
+<li> <em>AIP_Offense</em> - The vehicle should only be used for offensive or attacking tasks.
+</li> <li> <em>AIP_Defense</em> - The vehicle should only be used for defensive tasks.
+</li> <li> <em>AIP_Any</em> - The vehicle can be used for any purpose.
+</li></ul>
+</li> <li> <strong>bShouldLeaveForCombat</strong> - If true, the Ai will leave this vehicle when they encounter enemies.
+</li> <li> <strong>MaxDesireability</strong> - Determines how desirable this vehicle is to the AI.
+</li> <li> <strong>HornAIRadius</strong> - Distance from the vehicle within which the Ai will respond to the horn by trying to enter any available seats in the vehicle.
+</li> <li> <strong>Reservation</strong> - References the AI that is about to enter the vehicle; keeps multiple AI entities from all trying to enter the same vehicle.
+</li></ul>
+<p />
+<strong>Camera</strong>
+<p /> <ul>
+<li> <strong>bShouldAutoCenterViewPitch</strong> - If true, the vehicle will be automatically centered in the player's view when in this vehicle.
+</li> <li> <strong>SeatCameraScale</strong> - A multiplier for the seat-specific camera offsets.
+</li> <li> <strong>bRotateCameraUnderVehicle</strong> - If true, the camera will be allowed to rotate under the vehicle, potentially obscuring the player's view.
+</li> <li> <strong>bNoZSmoothing</strong> - If true, the lagged camera will not have its Z-position smoothed resulting in a bumpier-looking ride.
+</li> <li> <strong>bLimitCameraZLookingUp</strong> - If true, the camera will always stay above the vehicle when looking up to avoid clipping in flying vehicles when going up.
+</li> <li> <strong>bNoFollowJumpZ</strong> - If true, the Z-position of the camera will not change when the vehicle "jumps" resulting in more dramatic-looking jumps.
+</li> <li> <strong>CameraSmoothingFactor</strong> - The smoothing scale used to smooth lagged cameras. Higher values result in shorter smoothing times.
+</li> <li> <strong>DefaultFOV</strong> - The default field of view to use for passengers in this vehicle.
+</li> <li> <strong>CameraLag</strong> - The amount time to lag the camera.
+</li> <li> <strong>LookForwardDist</strong> - The distance to bring the camera forward when looking down over the front of the vehicle.
+</li> <li> <strong>MinCameraDistSq</strong> - The distance (squared) from the camera to the vehicle to begin hiding the vehicle, unless bCameraNeverHidesVehicle is true.
+</li> <li> <strong>bCameraNeverHidesVehicle</strong> - If true, the vehicle is never hidden regardless of how close the camera gets to the vehicle.
+</li> <li> <strong>bStopDeathCamera</strong> - If true, stop death camera using old camera position saved upon death.
+</li></ul>
+<p />
+<strong>Damage</strong>
+<p /> <ul>
+<li> <strong>bValidLinkTarget</strong> - If true, this vehicle can be healed by the Link Gun.
+</li> <li> <strong>LinkHealthMult</strong> - The amount of healing done by the Link Gun on this vehicle is the Link Gun damage amount multiplied by this value, if greater than 0.
+</li> <li> <strong>LinkedToCount</strong> - The number of Link Gun currently linked to this vehicle.
+</li> <li> <strong>RanOverDamageType</strong> - The DamageType used for damage incurred by players that get run over by this vehicle.
+</li> <li> <strong>VehicleDrowningDamageType</strong> - The DamageType used for damage taken when submerged in water.
+</li> <li> <strong>ClientHealth</strong> - Client-side health for morph targets in the damage system. Used to adjust everything to the replicated Health whenever it is received.
+</li> <li> <strong>ExplosionDamageType</strong> - The DamageType to use when doing damage caused by the vehicle exploding.
+</li> <li> <strong>ExplosionDamage</strong> - The amount of damage done by the vehicle's explosion.
+</li> <li> <strong>ExplosionRadius</strong> - The radius within which the vehicle's explosion should cause damage.
+</li> <li> <strong>ExplosionMomentum</strong> - The amount of momentum imparted by the vehicle's explosion.
+</li> <li> <strong>ExplosionInAirAngVel</strong> - The amount of spin the vehicle is given if it explodes while in the air.
+</li> <li> <strong>CollisionDamageMult</strong> - A multiplier for damage incurred from collisions with other rigid bodies.
+</li> <li> <strong>bReduceFallingCollisionDamage</strong> - If true, collision damage is reduced when the vehicle collided with an object below it.
+</li></ul>
+<p />
+<strong>Display</strong>
+<p /> <ul>
+<li> <strong>bHasWeaponBar</strong> - If true, the weapon bar for this vehicle will be drawn on the HUD.
+</li> <li> <strong>bDrawHealthOnHUD</strong> - If true, the vehicle's health will be displayed on the HUD in addition to the driver's health.
+</li> <li> <strong>bDriverCastsShadow</strong> - If true, the driver's mesh should always cast shadows.
+</li> <li> <strong>bDropDetailWhenDriving</strong> - If true, the detail of the vehicle will be dropped when the local player is driving this vehicle unless the game is currently in super high detail mode.
+</li> <li> <strong>LightEnvironment</strong> - The DynamicLightEnvironment used by this vehicle for dynamic shadows.
+</li> <li> <strong>TeamBeaconPlayerInfoMaxDist</strong> - The maximum distance from the camera the player info will be displayed.
+</li> <li> <strong>HUDExtent</strong> - A scaling factor used to determine if the crosshair is over the vehicle.
+</li> <li> <strong>MapSize</strong> - The scale to draw this vehicle's icon on the minimap.
+</li> <li> <strong>IconCoords</strong> - The coordinates in the icon texture for this vehicle's icon.
+</li> <li> <strong>FlipToolTipIconCoords</strong> - The coordinates in the icon texture for this vehicle's flip tooltip icon.
+</li> <li> <strong>EnterToolTipIconCoords</strong> - The coordinates in the icon texture for this vehicle's enter tooltip icon.
+</li> <li> <strong>DropFlagIconCoords</strong> - The coordinates in the icon texture for this vehicle's drop flag icon.
+</li> <li> <strong>DropOrbIconCoords</strong> - The coordinates in the icon texture for this vehicle's drop orb icon.
+</li> <li> <strong>bPostRenderTraceSucceeded</strong> - If true, the last trace check for drawing postrender HUD icons succeeded.
+</li> <li> <strong>TeamBeaconOffset</strong> - An offset from the vehicle's location used to display info, such as the locked icon.
+</li> <li> <strong>PassengerTeamBeaconOffset</strong> - An offset from the vehicle's location used to display the passenger's icons.
+</li> <li> <strong>HUDIcons</strong> - The texture containing the icons to draw on the HUD for this vehicle.
+</li></ul>
+<p />
+<strong>Effects</strong>
+<p /> <ul>
+<li> <strong>ExplosionLightClass</strong> - The class of light to use for explosion effects.
+</li> <li> <strong>MaxExplosionLightDistance</strong> - The maximum distance the explosion can be from the camera to create the explosion light.
+</li> <li> <strong>bInitializedVehicleEffects</strong> - If true, the vehicle effects have been attached.
+</li> <li> <strong>DeathExplosion</strong> - References the Emitter spawned on death so it can be deactivated when the burnout occurs.
+</li> <li> <strong>TimeTilSecondaryVehicleExplosion</strong> - The amount of time to wait after the initial vehicle explosion before playing the secondary explosion (assuming it has not already been played because of some other circumstance).
+</li> <li> <strong>DamageSmokeThreshold</strong> - The health ratio (Health / HealthMax) at which the vehicle will begin playing smoke effects.
+</li> <li> <strong>MaxImpactEffectDistance</strong> - The maximum distance from the camera where a hit impact will spawn effects.
+</li> <li> <strong>MaxFireEffectDistance</strong> - The maximum distance from the camera where the vehicle's fire effects will be displayed.
+</li> <li> <strong>ExplosionTemplate</strong> - The ParticleSystem to play when the vehicle explodes.
+</li> <li> <strong>BigExplosionTemplate</strong> - An array of ParticleSystems and minimum distances used to play different explosion effects based on the distance the local player is from this vehicle's explosion.
+</li> <li> <strong>SecondaryExplosion</strong> - The ParticleSystem to play for the vehicle's secondary explosion. Played on a delay after the initial explosion or when a vehicle falls and impacts the ground after its initial explosion.
+</li> <li> <strong>BigExplosionSocket</strong> - The name of the socket to attach the big explosion to. If 'None', the big explosion will not be attached at all.
+</li> <li> <strong>BurnOutTime</strong> - The amount of time it takes for the vehicle to burn out.
+</li> <li> <strong>BurnTimeParameterName</strong> - The name of the material parameter used to control the burn out effects.
+</li> <li> <strong>BurnOutMaterial</strong> - An array of team-specific materials to use for the burnout mesh.
+</li> <li> <strong>DeadVehicleLifeSpan</strong> - The amount of time that should pass before the vehicle burns out.
+</li> <li> <strong>DelayedBurnoutCount</strong> - The number of times the burn out has been delayed.
+</li> <li> <strong>bHasTurretExplosion</strong> - If true, this vehicle plays a turret explosion sequence upon death.
+</li> <li> <strong>TurretScaleControlname</strong> - The name of the turret skeletal controller used to scale the turret to 0.
+</li> <li> <strong>TurretSocketname</strong> - The name of the socket to spawn the explosion effect for the turret blowing up.
+</li> <li> <strong>DistanceTurretExplosionTemplate</strong> - An array of ParticleSystems and minimum distances used to play different turret explosions based on the local player's distance from the explosion.
+</li> <li> <strong>SpawnInTemplate</strong> - An array of team-specific ParticleSystems to be played when the vehicle spawns into the world.
+</li> <li> <strong>SpawnMaterialLists</strong> - An array of team-specific materials to use for the vehicle when it spawns into the world..
+</li> <li> <strong>SpawnMaterialParameterName</strong> - The name of the material parameter used in the spawn materials.
+</li> <li> <strong>SpawnMaterialParameterCurve</strong> - Curve information used to control the value of the spawn material parameters.
+</li> <li> <strong>SpawnInTime</strong> - The amount of time it takes to finish the spawn effect.
+</li> <li> <strong>bPlayingSpawnEffect</strong> - If true, the spawning effect is currently in progress.
+</li> <li> <strong>DisabledTemplate</strong> - The ParticleSystem to be played when the vehicle becomes disabled.
+</li> <li> <strong>DisabledEffectComponent</strong> - The ParticleSystemComponent used to play the disabled effect.
+</li></ul>
+<p />
+<strong>Entry/Exit</strong>
+<p /> <ul>
+<li> <strong>bEnteringUnlocks</strong> - If true, the vehicle will become unlocked when a player enters it.
+</li> <li> <strong>bHasCustomEntryRadius</strong> - If true, the vehicle should use special entry radius rules (defined in the InCustomEntryRadius() function) to determine if the player can enter.
+</li> <li> <strong>bMustBeUpright</strong> - If true, the vehicle must be upright in order to be entered.
+</li> <li> <strong>bHasBeenDriven</strong> - if true, this vehicle has been driven at some time since it was spawned.
+</li> <li> <strong>bFindGroundExit</strong> - If true, the exit position for passengers leaving the vehicle must be near solid ground.
+</li> <li> <strong>bRequestedEntryWithFlag</strong> - If true, the player tried to enter the vehicle which doesn't allow flags while holding the flag.
+</li> <li> <strong>PassengerPRI</strong> - References the PlayerReplicationInfo of the player in the passenger turret (e.g. seat 1).
+</li></ul>
+<p />
+<strong>Gameplay</strong>
+<p /> <ul>
+<li> <strong>bDriverHoldsFlag</strong> - If true, the driver of the vehicle will have the flag, if being carried, attached to it.
+</li> <li> <strong>bCanCarryFlag</strong> - If true, the player is allowed to enter this vehicle while carrying the flag.
+</li> <li> <strong>NoPassengerObjective</strong> - References an objective that when this objective is the AI's current objective, they will not attempt to enter this vehicle.
+</li> <li> <strong>bOverrideAVRiLLocks</strong> - If true, this vehicle can override targeting locks from AVRiL rockets.
+</li> <li> <strong>RespawnTime</strong> - The amount of time it takes for this vehicle to respawn after being destroyed.
+</li> <li> <strong>InitialSpawnDelay</strong> - The amount of time that must pass from the start of the game before this vehicle will spawn for the first time.
+</li> <li> <strong>NextVehicle</strong> - References the next vehicle in the linked list of vehicles. The first vehicle in the list is referenced by the UTgame class's VehicleList property.
+</li> <li> <strong>ParentFactory</strong> - References the UTVehicleFactory that spawned this vehicle.
+</li> <li> <strong>VehiclePositionString</strong> - Localized. The string holding the text used to display the "in a [VehicleName]" message. Set in the Localization files.
+</li> <li> <strong>VehicleNameString</strong> - Localized. The string holding the human-readable name of the vehicle. Set in the Localization files.
+</li> <li> <strong>TeamMaterials</strong> - An array of team-specific materials to use for the vehicle.
+</li> <li> <strong>SpawnRadius</strong> - The radius determining the safe zone around the spawn point for the vehicle. This area must be out of Pawns in order for the vehicle to spawn.
+</li> <li> <strong>FlagOffset</strong> - An offset from the flag bone used to place the flag when attaching it to the vehicle.
+</li> <li> <strong>FlagRotation</strong> - A rotation offset from the flag bone used to orient the flag when attaching it to the vehicle.
+</li> <li> <strong>FlagBone</strong> - The name of the bone on the vehicle's skeleton to attach the flag to.
+</li></ul>
+<p />
+<strong>Mesh and Animation</strong>
+<p /> <ul>
+<li> <strong>VehiclePieceClass</strong> - The class to use for spawning blown off vehicle pieces.
+</li> <li> <strong>DeathExplosionShake</strong> - The CameraAnim to play on player cameras near this vehicle's explosion.
+</li> <li> <strong>InnerExplosionShakeRadius</strong> - The maximum distance from the explosion where the camera shake has full intensity. Intensity falls off from this distance to OuterExplosionShakeRadius.
+</li> <li> <strong>OuterExplosionShakeRadius</strong> - The distance where the explosion camera shake reaches zero intensity.
+</li> <li> <strong>TurretOffset</strong> - The offset from the turret socket to spawn the destroyed turret.
+</li> <li> <strong>DestroyedTurret</strong> - References the destroyed turret for playing death effects.
+</li> <li> <strong>DestroyedTurretTemplate</strong> - The StaticMesh to spawn when the turret is destroyed.
+</li> <li> <strong>TurretExplosiveForce</strong> - The magnitude of the force applied to the turret explosion.
+</li> <li> <strong>ReferenceMovementMesh</strong> - The StaticMesh used for the movement effect (e.g. the passing clouds in the Cicada) for the seats of the vehicle.
+</li></ul>
+<p />
+<strong>Movement</strong>
+<p /> <ul>
+<li> <strong>bStickDeflectionThrottle</strong> - If true, use stick deflection (the amount the analog stick is moved) to determine the amountof throttle when using console controllers.
+</li> <li> <strong>DeflectionThrottleReverseThresh</strong> - When using stick deflection for throttle, this is the amount the analog stick must be pulled back in the Y-axis before the vehicle enters reverse.
+</li> <li> <strong>bLookSteerOnNormalControls</strong> - If true, 'look to steer' controls will be used when 'Normal' vehicle control settings are in use.
+</li> <li> <strong>bLookSteerOnSimpleControls</strong> - If true, 'look to steer' controls will be used when 'Simple' vehicle control settings are in use.
+</li> <li> <strong>bUsingLookSteer</strong> - If true, the vehicle is currently using 'look to steer' controls.
+</li> <li> <strong>LeftStickDeadZone</strong> - The amount the left analog stick must be moved in order to cause the vehicle to turn; makes driving straight ahead much easier.
+</li> <li> <strong>LookSteerSensitivity</strong> - Determines the relation between 'looking' and 'facing' and steering angle when using 'look to steer'.
+</li> <li> <strong>LookSteerDamping</strong> - Damping to apply to the angular velocity of the vehicle to lessen its effect on steering when using 'look to steer'.
+</li> <li> <strong>LookSteerDeadZone</strong> - The amount the analog stick must be moved in order to cause the vehicle to turn when using 'look to steer'.
+</li> <li> <strong>ConsoleSteerScale</strong> - Multiplier that increases steering sensitivity in the middle region of the controller.
+</li></ul>
+<p />
+<strong>Physics</strong>
+<p /> <ul>
+<li> <strong>DrivingPhysicalMaterial</strong> - The PhysicalMaterial to use for the vehicle when being driven.
+</li> <li> <strong>DefaultPhysicalMaterial</strong> - The PhysicalMaterial to use for the vehicle when not being driven.
+</li></ul>
+<p />
+<strong>Sounds</strong>
+<p /> <ul>
+<li> <strong>VehicleLockedSound</strong> - SoundCue to play when a player attempts to enter this vehicle while it is locked.
+</li> <li> <strong>LinkedToAudio</strong> - The AudioComponent used to play the sound when players link to this vehicle with the Link Gun.
+</li> <li> <strong>LinkedToCue</strong> - The SoundCue to play when players link to this vehicle with the Link Gun.
+</li> <li> <strong>LinkedToEndSound</strong> - The SoundCue to play when a link to this vehicle is broken.
+</li> <li> <strong>HornSounds</strong> - An array of SoundCues to use as the horn for this vehicle.
+</li> <li> <strong>LockedOnSound</strong> - The SoundCue to be played when something, such as a homing projectile, locks onto this vehicle.
+</li> <li> <strong>RanOverSound</strong> - The SoundCue to be played when the vehicle runs over someone.
+</li> <li> <strong>StolenAnnouncementIndex</strong> - The index in the MessageAnnouncements array of the UTVehicle class for the "Hijack" announcement to play for this vehicle.
+</li> <li> <strong>StolenSound</strong> - The SoundCue to be played when someone steals the vehicle.
+</li> <li> <strong>ExplosionSound</strong> - The SoundCue to be played when the vehicle explodes.
+</li> <li> <strong>SpawnInSound</strong> - The SoundCue to be played when the vehicle spawns into the world.
+</li> <li> <strong>SpawnOutSound</strong> - The SoundCue to be played when the vehicle burns out.
+</li> <li> <strong>BoostPadSound</strong> - The SoundCue to be played when the vehicle passes over a boost pad.
+</li></ul>
+</div>
+<p />
+<div class="regionhead" onclick="toggleRegion('UTVF');">
+	<div class="regionimage" id="region_UTVF_image">+</div>UTVehicle Functions<span style="font-weight:normal;font-style:italic;font-size:10px;"> (click to view)</span>
+</div>
+<div class="regioncontent" id="region_UTVF_content">
+<p />
+<strong>AI</strong>
+<p /> <ul>
+<li> <strong>SetKeyVehicle</strong> - Sets this vehicle as an important vehicle.
+</li> <li> <strong>HasOccupiedTurret</strong> - Returns whether any passenger seats are occupied.
+</li> <li> <strong>TooCloseToAttack [Other]</strong> - Returns whether the given Actor is too close for the AI to attack. <ul>
+<li> <strong>Other</strong> - References the Actor to check.
+</li></ul>
+</li> <li> <strong>BotDesireability [S] [TeamIndex] [Objective]</strong> - Returns the desirability, or usefulness, of the vehicle to AI. <ul>
+<li> <strong>S</strong> - References the AI desiring the vehicle.
+</li> <li> <strong>TeamIndex</strong> - The team the AI is on.
+</li> <li> <strong>Objective</strong> - References the objective of the AI.
+</li></ul>
+</li> <li> <strong>SetReservation [C]</strong> - Sets the given AI as having the vehicle reserved. <ul>
+<li> <strong>C</strong> - References the AI that is reserving the vehicle.
+</li></ul>
+</li> <li> <strong>ShouldLeaveForCombat [B]</strong> - Returns whether the AI should leave this vehicle when it encounters an enemy. <ul>
+<li> <strong>[B]</strong> - References the AI controller.
+</li></ul>
+</li></ul>
+<p />
+<strong>Camera</strong>
+<p /> <ul>
+<li> <strong>ProcessViewRotation [DeltaTime] [out_ViewRotation] [out_DeltaRot]</strong> - Gives the vehicle an opportunity to alter this frame's view rotation changes for the camera. <ul>
+<li> <strong>DeltaTime</strong> - The amount of time that has passed since the last update.
+</li> <li> <strong>out_ViewRotation</strong> - Holds the current view rotation and outputs the updated view rotation.
+</li> <li> <strong>out_DeltaRot</strong> - Holds the current change in rotation and outputs the updated change in rotation.
+</li></ul>
+</li> <li> <strong>GetCameraFocus [SeatIndex]</strong> - Returns the camera focus position for the given seat without any camera lag factored in. <ul>
+<li> <strong>SeatIndex</strong> - The index of the seat to get the camera focus for.
+</li></ul>
+</li> <li> <strong>GetCameraStart [SeatIndex]</strong> - Returns the camera focus position for the given seat with camera lag added. <ul>
+<li> <strong>SeatIndex</strong> - The index of the seat to get the lagged camera focus for.
+</li></ul>
+</li> <li> <strong>VehicleCalcCamera [DeltaTime] [SeatIndex] [out_CamLoc] [out_CamRot] [CamStart] [bPivotOnly]</strong> - Calculates the camera location and rotation for the given seat. Called from CalcCamera(). <ul>
+<li> <strong>DeltaTime</strong> - The amount of time since the last update.
+</li> <li> <strong>SeatIndex</strong> - The index of the seat to calculate the camera for.
+</li> <li> <strong>out_CamLoc</strong> - Out. Outputs the camera location.
+</li> <li> <strong>out_CamRot</strong> - Out. Outputs the camera rotation.
+</li> <li> <strong>CamStart</strong> - Out. Outputs the camera focus position with lag added.
+</li> <li> <strong>bPivotOnly</strong> - Optional.
+</li></ul>
+</li></ul>
+<p />
+<strong>Collision</strong>
+<p /> <ul>
+<li> <strong>StopsProjectile [P]</strong> - Returns whether this vehicle should be able to "touch" the given projectile. <ul>
+<li> <strong>P</strong> - References the projectile to check.
+</li></ul>
+</li> <li> <strong>DisableCollision</strong> -
+</li></ul>
+<p />
+<strong>Damage</strong>
+<p /> <ul>
+<li> <strong>GetRanOverDamage</strong> - Returns the DamageType to be used for damage given to players the vehicle runs over.
+</li> <li> <strong>RanInto [Other]</strong> - Applies damage to encroaching Actors which were able to be moved out of the way. <ul>
+<li> <strong>Other</strong> - References the encroaching Actor.
+</li></ul>
+</li> <li> <strong>BlowupVehicle</strong> - Called when the vehicle dies to cause the vehicle to explode.
+</li> <li> <strong>GetDisplayedHealth</strong> - Returns the vehicle's health to use for drawing on the HUD.
+</li> <li> <strong>HealDamage [Amount] [Healer] [DamageType]</strong> - Inherited from Pawn. Heals the vehicle, updating the damage system in the process. <ul>
+<li> <strong>Amount</strong> - The amount of health to replenish.
+</li> <li> <strong>Healer</strong> - References the controller responsible for healing the vehicle.
+</li> <li> <strong>DamageType</strong> - The DamageType to use for the healing being done.
+</li></ul>
+</li> <li> <strong>GetHealth [SeatIndex]</strong> - Returns the vehicle's current Health.
+</li> <li> <strong>GetCollisionDamageModifier [ContactInfos]</strong> - Returns the damage multiplier to be used for the given collision. Takes into account whether falling damage should be reduced or not. <ul>
+<li> <strong>ContactInfos</strong> - Information about the collisions. Only the first item in the array is used.
+</li></ul>
+</li> <li> <strong>InitializeMorphs</strong> - Sets up the references to the MorphNodes and linked indices for the DamageMorphTargets in the damage system.
+</li> <li> <strong>ReceivedHealthChange</strong> - Called on clients when a change in the vehicle's health occurs. Updates the damage system, applying damage or healing to the morph targets.
+</li> <li> <strong>ApplyMorphHeal [Amount]</strong> - Applies healing to the damage systems morph targets. Because damage modeling is done client-side and healing is done server-side we cannot know which specific node to heal, so the healing is evenly applied to all morph targets. <ul>
+<li> <strong>Amount</strong> - The amount of healing that the vehicle received.
+</li></ul>
+</li> <li> <strong>ApplyRandomMorphDamage [Amount]</strong> - Applies damage to morph targets randomly when a specific location for the damage cannot be determined because the vehicle's health changed on a remote client. <ul>
+<li> <strong>Amount</strong> - The amount of damage done to the vehicle.
+</li></ul>
+</li></ul>
+<p />
+<strong>Display</strong>
+<p /> <ul>
+<li> <strong>UpdateShadowSettings [bWantShadow]</strong> - Enables or disables shadow casting for the vehicle. <ul>
+<li> <strong>bWantShadow</strong> - If true, enables shadows. Otherwise, disables them.
+</li></ul>
+</li> <li> <strong>DisplayWeaponBar [canvas] [HUD]</strong> - Function stub called by the HUD to allow the vehicle a chance to draw its own weapon bar. Subclasses should override this if they wish to display a weapon bar on screen, e.g. if their weapons require charging. <ul>
+<li> <strong>Canvas</strong> - References the current canvas for drawing.
+</li> <li> <strong>HUD</strong> - References the HUD.
+</li></ul>
+</li> <li> <strong>DrawKillIcon [Canvas] [ScreenX] [ScreenY] [HUDScaleX] [HUDScaleY]</strong> - Draws the vehicle's icon on the HUD when a kill is made. <ul>
+<li> <strong>Canvas</strong> - References the current canvas for drawing.
+</li> <li> <strong>ScreenX</strong> - Holds the horizontal location to draw the icon.
+</li> <li> <strong>ScreenY</strong> - Holds the vertical location to draw the icon.
+</li> <li> <strong>HUDScaleX</strong> - Holds the horizontal scale of the HUD (relative to 1024).
+</li> <li> <strong>HUDScaleY</strong> - Holds the vertical scael of the HUD (relative to 768).
+</li></ul>
+</li> <li> <strong>RenderMapIcon [MP] [Canvas] [PlayerOwner] [FinalColor]</strong> - Draws the vehicle on the minimap. Called from the UTMapInfo. <ul>
+<li> <strong>MP</strong> - References the map info drawing the map.
+</li> <li> <strong>Canvas</strong> - References the current canvas for drawing.
+</li> <li> <strong>PlayerOwner</strong> - References the local player controller.
+</li> <li> <strong>FinalColor</strong> - Holds the color to draw the vehicle's map icon.
+</li></ul>
+</li> <li> <strong>PostRenderFor [PC] [Canvas] [CameraPosition] [CameraDir]</strong> - Inherited from Actor. Script version of NativePostRenderFor that allows pawns to render HUD overlays for themselves. <ul>
+<li> <strong>PC</strong> - References the player's controller.
+</li> <li> <strong>Canvas</strong> - References the current canvas for drawing.
+</li> <li> <strong>CameraPosition</strong> - The current camera position.
+</li> <li> <strong>CameraDir</strong> - The current direction the camera is facing.
+</li></ul>
+</li> <li> <strong>PostRenderPassengerBeacons [PC] [Canvas] [TeamColor] [TextColor] [Weap] [InPassengerPRI] [InPassengerTeamBeaconOffset]</strong> - Draws the vehicle's passenger info on the HUD. <ul>
+<li> <strong>PC</strong> - References the player's controller.
+</li> <li> <strong>Canvas</strong> - References the current canvas for drawing.
+</li> <li> <strong>TeamColor</strong> - The color to use when drawing the passenger info icon.
+</li> <li> <strong>TextColor</strong> - The color to use when drawing the passenger info text.
+</li> <li> <strong>Weap</strong> - References the weapon the passenger is using.
+</li> <li> <strong>InPassengerPRI</strong> - References the passenger's PlayerReplicationInfo.
+</li> <li> <strong>InPassengerTeamBeaconOffset</strong> - The offset to use from the vehicle's location when drawing the passenger info.
+</li></ul>
+</li> <li> <strong>TurnOffShadows</strong> - Calls UpdateShadowSettings(False) to disable all shadows for the vehicle.
+</li> <li> <strong>DisplayHUD [HUD] [Canvas] [HudPOS] [SeatIndex]</strong> - Draws all vehicle-related HUD details. Called from the HUD. <ul>
+<li> <strong>HUD</strong> - References the HUD.
+</li> <li> <strong>Canvas</strong> - References the canvas for drawing.
+</li> <li> <strong>HudPOS</strong> - Not used.
+</li> <li> <strong>SeatIndex</strong> - Optional. The index of the seat.
+</li></ul>
+</li></ul>
+<p />
+<strong>Effects</strong>
+<p /> <ul>
+<li> <strong>PlaySpawnEffect</strong> - Plays all effects associated with the spawning of the vehicle. Called by the vehicle factory when it spawns the vehicle.
+</li> <li> <strong>StopSpawnEffect</strong> - Stops all effects associated with the spawning of the vehicle.
+</li> <li> <strong>CreateVehicleEffect [EffectIndex]</strong> - Creates the ParticleSystemComponent for the given effect and assigns the associated ParticleSystem to it. <ul>
+<li> <strong>EffectIndex</strong> - The index into the VehicleEffects array to create.
+</li></ul>
+</li> <li> <strong>InitializeEffects</strong> - Triggers the 'BeginPlay' vehicle effect and sets bInitializedVehicleEffects to true.
+</li> <li> <strong>SetVehicleEffectParams [TriggerName] [PSC]</strong> - Sets any particle parameters associated with the given event name. <ul>
+<li> <strong>TriggerName</strong> - The name of the event the effect is associated with.
+</li> <li> <strong>PSC</strong> - References the ParticleSystemComponent of the effect.
+</li></ul>
+</li> <li> <strong>TriggerVehicleEffect [EventTag]</strong> - Plays all vehicle effects associated with the given event. <ul>
+<li> <strong>EventTag</strong> - The name of the event being triggered.
+</li></ul>
+</li> <li> <strong>TeamChanged_VehicleEffects</strong> - Updates the vehicle's effects to match the team the vehicle is on.
+</li> <li> <strong>StartLinkedEffect</strong> - Sets up all the effects to play when a Link Gun links to the vehicle.
+</li> <li> <strong>StopLinkedEffect</strong> - Shuts down all the effects associated with a Link Gun linking to the vehicle.
+</li> <li> <strong>PlayTakeHitEffects</strong> - Plays hit effects when the vehicle is impacted and updates the damage system.
+</li> <li> <strong>CauseMuzzleFlashLight [SeatIndex]</strong> - Turns on the muzzle flash light for the weapon of the given seat. <ul>
+<li> <strong>SeatIndex</strong> - The index of the seat to turn the muzzle flash light in for.
+</li></ul>
+</li> <li> <strong>VehicleWeaponFireEffects [HitLocation] [SeatIndex]</strong> - Plays weapon firing effects for the given seat by triggering the vehicle event matching the weapon's FireTriggerTags. <ul>
+<li> <strong>HitLocation</strong> - The location of the fire effects.
+</li> <li> <strong>SeatIndex</strong> - The index of the seat to play the effects for.
+</li></ul>
+</li> <li> <strong>VehicleWeaponImpactEffects [HitLocation] [SeatIndex]</strong> - Plays any effects that occur at the impact point from the weapon of the given seat firing. <ul>
+<li> <strong>HitLocation</strong> - The location of the impact.
+</li> <li> <strong>SeatIndex</strong> - The index of the seat whose weapon fired the shot that caused the impact.
+</li></ul>
+</li> <li> <strong>SpawnImpactEmitter [HitLocation] [HitNormal] [ImpactEffect] [SeatIndex]</strong> - Spawns the appropriate effect depending on the type of surface that was impacted. <ul>
+<li> <strong>HitLocation</strong> - The location of the impact.
+</li> <li> <strong>HitNormal</strong> - The surface normal at the impact.
+</li> <li> <strong>ImpactEffect</strong> - The material type-specific effect to spawn.
+</li> <li> <strong>SeatIndex</strong> - The index of the seat that fired the shot responsible for the impact.
+</li></ul>
+</li> <li> <strong>DisableDamageSmoke</strong> - Deactivates smoke and/or fire effects when the vehicle is mostly burned out by triggering the 'NoDamageSmoke' event.
+</li> <li> <strong>StartBurnOut</strong> - Begins the burn out effect on the dead vehicle.
+</li> <li> <strong>SetBurnOut</strong> - Sets up the burn out effect and starts a timer to begin the effect.
+</li> <li> <strong>ShouldSpawnExplosionLight [HitLocation] [HitNormal]</strong> - Returns whether an explosion light should be spawned based on the distance from local players. <ul>
+<li> <strong>HitLocation</strong> - Not used.
+</li> <li> <strong>HitNormal</strong> - Not used.
+</li></ul>
+</li> <li> <strong>TurretExplosion</strong> - Sets up and performs the turret explosion, hiding the existing turret and spawning the detroyed turret.
+</li> <li> <strong>CheckDamageSmoke</strong> - Causes either the 'DamageSmoke' or 'NoDamageSmoke' event to be triggered based on the health of the vehicle.
+</li> <li> <strong>SpawnGibVehicle [SpawnLocation] [SpawnRotation] [TheMesh] [HitLocation] [bSpinGib] [ImpulseDirection] [PS_OnBreak] [PS_Trail]</strong> - Called by any damage skeletal controllers in the vehicle's AnimTree to spawn a specific vehicle piece when the spring breaks or the vehicle breaks apart on death. <ul>
+<li> <strong>SpawnLocation</strong> - The location of the part to spawn.
+</li> <li> <strong>SpawnRotation</strong> - The rotation of the part to spawn.
+</li> <li> <strong>TheMesh</strong> - The static mesh of the part to be spawned.
+</li> <li> <strong>HitLocation</strong> - The location of the impact.
+</li> <li> <strong>bSpinGib</strong> - If true, a random angular velocity is given to the spawned part.
+</li> <li> <strong>ImpulseDirection</strong> - An impulse to apply to the spawned part.
+</li> <li> <strong>PS_OnBreak</strong> - The ParticleSystem to play when the part breaks off.
+</li> <li> <strong>PS_Trail</strong> - The ParticleSystem to use as a trail for the broken off part.
+</li></ul>
+</li> <li> <strong>SetMovementEffect [SeatIndex] [bSetActive] [UTP]</strong> - Creates or destroys the movement effect for the given seat. Movement effects allow a static mesh to be used to create certain movement effects such as the passing clouds effect of the Cicada. <ul>
+<li> <strong>SeatIndex</strong> - The index of the seat to create the movement effect for.
+</li> <li> <strong>bSetActive</strong> - If true, the effect is created. Otherwise, the effect is destroyed.
+</li> <li> <strong>UTP</strong> - References the Pawn in the seat. Used to determine if the effect is for a local player. If not, no effect is created.
+</li></ul>
+</li> <li> <strong>ApplyWeaponEffects [OverlayFlags] [SeatIndex]</strong> - Sets up and attaches the weapon effects for the given seat. <ul>
+<li> <strong>OverlayFlags</strong> - Flags used to find the effects for the seat.
+</li> <li> <strong>SeatIndex</strong> - The index of the seat.
+</li></ul>
+</li></ul>
+<p />
+<strong>Entry/Exit</strong>
+<p /> <ul>
+<li> <strong>EjectSeat [SeatIdx]</strong> - Ejects the player/AI in the specified seat from the vehicle. <ul>
+<li> <strong>SeatIndex</strong> - The index of the seat to eject the passenger from.
+</li></ul>
+</li> <li> <strong>ExitRotation</strong> - Returns the rotation used for determining valid exit positions. Defaults to the rotation of the vehicle.
+</li> <li> <strong>DisableVehicle</strong> - Disables the vehicle, expels all passengers, and plays any effects associated with disabling the vehicle. Returns true if there was anyone in the vehicle.
+</li> <li> <strong>EnableVehicle</strong> - Enables the vehicle and disables any effects associated with disabling the vehicle.
+</li> <li> <strong>GetSeatIndexFromPrefix [Prefix]</strong> - Returns the seat index associated with the given variable prefix. <ul>
+<li> <strong>Prefix</strong> - The prefix to find the seat index for.
+</li></ul>
+</li> <li> <strong>SeatAvailable [SeatIndex]</strong> - Returns whether the specified seat is available or occupied. <ul>
+<li> <strong>SeatIndex</strong> - The index of the seat to check.
+</li></ul>
+</li> <li> <strong>AnySeatAvailable</strong> - Returns whether any seat in the vehicle is available.
+</li> <li> <strong>GetSeatIndexForController [ControllerToMove]</strong> - Returns the index of the seat the given controller is occupying or -1 if the controller is not occupying any seat in the vehicle. <ul>
+<li> <strong>ControllerToMove</strong> - References the controller to check for.
+</li></ul>
+</li> <li> <strong>GetControllerForSeatIndex [SeatIndex]</strong> - Returns the controller  occupying the given seat or None if the seat is not occupied. <ul>
+<li> <strong>SeatIndex</strong> - The index of the seat to get the controller for.
+</li></ul>
+</li> <li> <strong>HasPriority [First] [Second]</strong> - Returns whether the first controller has priority over the second controller. Used for changing seats and determining if one player can bump another if the destination seat is occupied. By default, priority is given to human-controlled players. <ul>
+<li> <strong>First</strong> - References the controller to check for priority.
+</li> <li> <strong>Second</strong> - References the controller to check against.
+</li></ul>
+</li> <li> <strong>ChangeSeat [ControllerToMove] [RequestedSeat]</strong> - Attempts to move the given player to the new seat. The move will be successful if the new seat is empty or if the player to move has priority over the player occupying the seat. <ul>
+<li> <strong>ControllerToMove</strong> - References the controller of the player to move.
+</li> <li> <strong>RequestedSeat</strong> - The index of the seat to move the player to.
+</li></ul>
+</li> <li> <strong>InCustomEntryRadius [P]</strong> - Called when bHasCustomEntryRadius is true and returns whether the given Pawn is within the custom radius. Defaults to always returning false. Vehicles which use a custom radius should override this function. <ul>
+<li> <strong>P</strong> - References the Pawn to check.
+</li></ul>
+</li> <li> <strong>KickOutBot</strong> - Iterates through the seats in the vehicle and forces the first AI passenger found out of the vehicle to make room for a human player.
+</li> <li> <strong>VehicleLocked [P]</strong> - Called when a Pawn tried to enter the vehicle while it is locked. Plays the locked vehicle sound and displays a message to the player. <ul>
+<li> <strong>P</strong> - References the Pawn that tried to enter the vehicle.
+</li></ul>
+</li> <li> <strong>ShouldShowUseable [PC] [Dist]</strong> - Returns whether the vehicle can be entered by the given player.     * <strong>PC</strong> - References the player controller of the player to check.     * <strong>Dist</strong> - The distance of the player to check from the vehicle.
+</li> <li> <strong>NumPassengers</strong> - Returns the number of passengers, including the driver, that are currently occupying the vehicle.
+</li> <li> <strong>GetFirstAvailableSeat</strong> - Returns the first available passenger seat, e.g. not seat 0, or -1 if no seats are available.
+</li> <li> <strong>PassengerEnter [P] [SeatIndex]</strong> - Called when a new passenger, i.e. not the driver, enters the vehicle in order to handle any flags the passenger is carrying and place the passenger in the given seat. <ul>
+<li> <strong>P</strong> - References the Pawn entering the vehicle.
+</li> <li> <strong>SeatIndex</strong> - The index of the seat to place the passenger in.
+</li></ul>
+</li> <li> <strong>PassengerLeave [SeatIndex]</strong> - Called when a passenger leaves the vehicle. <ul>
+<li> <strong>SeatIndex</strong> - The index of the seat to remove the passenger from.
+</li></ul>
+</li> <li> <strong>Occupied</strong> - Returns whether any seats in the vehicle are currently occupied.
+</li> <li> <strong>OpenPositionFor [P]</strong> - Returns whether this is an available seat for the given Pawn. <ul>
+<li> <strong>P</strong> - References the Pawn to check.
+</li></ul>
+</li> <li> <strong>InitializeSeats</strong> - Sets up the weapons for each of the seats in the vehicle.
+</li> <li> <strong>SitDriver [UTP] [SeatIndex]</strong> - Places the given Pawn in the specified seat, attaching it to the associated bone. <ul>
+<li> <strong>UTP</strong> - References the Pawn to place in the seat.
+</li> <li> <strong>SeatIndex</strong> - The index of the seat to place the Pawn in.
+</li></ul>
+</li> <li> <strong>OnExitVehicle [Action]</strong> - Receives an Exit Vehicle Kismet action and forces all passengers out of the vehicle. <ul>
+<li> <strong>Action</strong> - References the UTSeqAct_ExitVehicle action that was activated.
+</li></ul>
+</li> <li> <strong>SetSeatStoragePawn [SeatIndex] [PawnToSit]</strong> - Updates the SeatMask when placing or removing the given Pawn in/from the given seat. <ul>
+<li> <strong>SeatIndex</strong> - The index of the seat to place or remove the Pawn from.
+</li> <li> <strong>PawnToSit</strong> - References the Pawn to place in the seat or None to remove the passenger in the given seat.
+</li></ul>
+</li></ul>
+<p />
+<strong>Events</strong>
+<p /> <ul>
+<li> <strong>VehicleEvent [EventTag]</strong> - Provides the interface for triggering events on the vehicle in response to any situation.. See the <a href="#Vehicle Events">Vehicle Events</a> section for more information. <ul>
+<li> <strong>EventTag</strong> - The name of the event to be triggered.
+</li></ul>
+</li></ul>
+<p />
+<strong>Gameplay</strong>
+<p /> <ul>
+<li> <strong>SetTeamNum [T]</strong> - Sets the team the vehicle belongs to. <ul>
+<li> <strong>T</strong> - The number of the team to change the vehicle to.
+</li></ul>
+</li> <li> <strong>TeamChanged</strong> - Called when the vehicle changes teams to update materials and effects to match the new team.
+</li> <li> <strong>IncomingMissle [P]</strong> - Notifies the AI of an incoming projectile that is targeting the vehicle. <ul>
+<li> <strong>P</strong> - References the projectile targeting the vehicle.
+</li></ul>
+</li> <li> <strong>ShootMissile [P]</strong> - Causes the vehicle to fire at the given projectile. <ul>
+<li> <strong>P</strong> - References the projectile to fire at.
+</li></ul>
+</li> <li> <strong>SendLockOnMessage [Switch]</strong> - Called by the LockOnWarning() function to pass the warning on to all the seats in the vehicle. <ul>
+<li> <strong>Switch</strong> - The index of the message to display.
+</li></ul>
+</li> <li> <strong>HandleEnteringFlag [EnteringPRI]</strong> - Attaches the flag carried by the player entering the vehicle or forces the player to drop the flag depending on whether the vehicle allows flags to be carried. <ul>
+<li> <strong>EnteringPRI</strong> - References the PRI of the player entering the vehicle.
+</li></ul>
+</li> <li> <strong>AttachFlag [FlagActor] [NewDriver]</strong> - Attaches the given the flag to the vehicle, or FlagBone if one is specified. <ul>
+<li> <strong>FlagActor</strong> - References the flag to attach.
+</li> <li> <strong>NewDriver</strong> - References the Pawn that was carrying the flag.
+</li></ul>
+</li> <li> <strong>GetHumanReadableName</strong> - Returns the human-readable name of the vehicle; either the VehicleNameString or the class name.
+</li></ul>
+<p />
+<strong>Mesh and Animation</strong>
+<p /> <ul>
+<li> <strong>ReattachMesh</strong> - Detaches and Attaches the mesh component. Used when settings have been updated.
+</li> <li> <strong>PlayVehicleAnimation [EventTag]</strong> - Plays any animations associated with the given event. <ul>
+<li> <strong>EventTag</strong> - The name of the event being triggered.
+</li></ul>
+</li> <li> <strong>OnAnimEnd [SeqNode] [PlayedTime] [ExcessTime]</strong> - Inherited from Actor. Called by the engine when an animation ends. Calls the 'Idle' event on the vehicle to place the vehicle back into its idle state. <ul>
+<li> <strong>SeqNode</strong> - The AnimNodeSequence player that was playing the animation.
+</li> <li> <strong>PlayedTime</strong> - The amount of time the animation played for.
+</li> <li> <strong>ExcessTime</strong> - The amount of time overlapped beyond the end of the animation.
+</li></ul>
+</li></ul>
+<p />
+<strong>Movement</strong>
+<p /> <ul>
+<li> <strong>UpdateLookSteerStatus</strong> - Updates the value of bUsingLookSteer based on the current control scheme.
+</li></ul>
+<p />
+<strong>Physics</strong>
+<p /> <ul>
+<li> <strong>OnDriverPhysicsAssetChanged [UTP]</strong> - Function stub allowing the vehicle to do custom physics setup on the driver when its physics asset changes. <ul>
+<li> <strong>UTP</strong> - References the Pawn of the driver.
+</li></ul>
+</li></ul>
+<p />
+<strong>Sounds</strong>
+<p /> <ul>
+<li> <strong>PlayVehicleSound [SoundTag]</strong> - Plays and/or stops any sounds associated with the given event. <ul>
+<li> <strong>SoundTag</strong> - The name of the event being triggered.
+</li></ul>
+</li> <li> <strong>EntryAnnouncement [C]</strong> - Plays any sounds or announcements necessary when someone enters the vehicle. <ul>
+<li> <strong>C</strong> - References the controller of the player/AI entering the vehicle.
+</li></ul>
+</li> <li> <strong>PlayHorn</strong> - Plays the horn sound telling any nearby AI to try to get in the vehicle.
+</li> <li> <strong>StopVehicleSounds</strong> - Stops all vehicle sounds from playing.
+</li></ul>
+<p />
+<strong>Weapons</strong>
+<p /> <ul>
+<li> <strong>WeaponRotationChanged [SeatIndex]</strong> - Called on remote clients when a weapon rotation value has changed for a particular seat to update the rotation of the turret on the client. <ul>
+<li> <strong>SeatIndex</strong> - The index of the seat whose rotation changed.
+</li></ul>
+</li> <li> <strong>CheckTurretPitchLimit [NeededPitch] [SeatIndex]</strong> - Checks if the given pitch would be limited by the turret controllers, i.e. the turret cannot possibly fire in that direction, and returns whether the rotation would be constrained or not. <ul>
+<li> <strong>NeededPitch</strong> - The pitch needed to fire in the desired direction.
+</li> <li> <strong>SeatIndex</strong> - The index of the seat to do the firing.
+</li></ul>
+</li> <li> <strong>GetHomingTarget [Seeker] [InstigatedBy]</strong> - Returns the Actor projectiles trying to lock on to this vehicle should target. <ul>
+<li> <strong>Seeker</strong> - References the projectile targeting the vehicle.
+</li> <li> <strong>InstigatedBy</strong> - References the controller responsible for firing the projectile.
+</li></ul>
+</li> <li> <strong>IntializeTurrets</strong> - Initializes the turret skeletal controllers for all of the seats in the vehicle.
+</li> <li> <strong>SetFiringMode [Weap] [FiringModeNum]</strong> - Inherited from Pawn. Sets the firing mode for the driver's weapon to the given fire mode. <ul>
+<li> <strong>Weap</strong> - References the driver's weapon.
+</li> <li> <strong>FiringModeNum</strong> - The new fire mode for the weapon.
+</li></ul>
+</li> <li> <strong>ClearFlashCount [Who]</strong> - Inherited from Pawn. Clears the flash count of all fire modes of the driver's weapon via VehicleAdjustFlashCount(). <ul>
+<li> <strong>Who</strong> - References the driver's weapon.
+</li></ul>
+</li> <li> <strong>IncrementFlashCount [Who] [FireModeNum]</strong> - Inherited from Pawn. Increases the flash count of given fire mode of the driver's weapon via VehicleAdjustFlashCount(). <ul>
+<li> <strong>Who</strong> - References the driver's weapon.
+</li> <li> <strong>FireModeNum</strong> - The fire mode to increment the flash count for.
+</li></ul>
+</li> <li> <strong>SetFlashLocation [Who] [FireModeNum] [NewLoc]</strong> - Inherited from Pawn. Sets the location via VehicleAdjustFlashLocation() of a hit from the driver's weapon to be replicated to all clients for playing fire effects. <ul>
+<li> <strong>Who</strong> - References the driver's weapon.
+</li> <li> <strong>FireModeNum</strong> - The fire mode responsible for the hit.
+</li> <li> <strong>NewLoc</strong> - The location of the impact.
+</li></ul>
+</li> <li> <strong>ClearFlashLocation [Who]</strong> - Clears the flash location for the driver's weapon via VehicleAdjustFlashLocation() and stops weapon fire effects. <ul>
+<li> <strong>Who</strong> - References the driver's weapon.
+</li></ul>
+</li> <li> <strong>GetBarrelLocationAndRotation [Seatindex] [SocketLocation] [SocketRotation]</strong> - Outputs the location and/or rotation of the socket for the current barrel being fired of the given seat's weapon. <ul>
+<li> <strong>SeatIndex</strong> - The index of the seat to get the location and rotation for.
+</li> <li> <strong>SocketLocation</strong> - Outputs the location of the barrel.
+</li> <li> <strong>SocketRotation</strong> - Optional. Outputs the rotation of the barrel.
+</li></ul>
+</li> <li> <strong>GetEffectLocation [SeatIndex]</strong> - Gets the barrel location for the weapon of the given seat. <ul>
+<li> <strong>SeatIndex</strong> - The index of the seat to get the barrel location for.
+</li></ul>
+</li> <li> <strong>GetPhysicalFireStartLoc [ForWeapon]</strong> - Gets the location of the barrel for the driver's weapon via GetEffectLocation(). <ul>
+<li> <strong>ForWeapon</strong> - References the driver's weapon.
+</li></ul>
+</li> <li> <strong>GetWeaponAim [VWeapon]</strong> - Returns the rotation representing the direction the given weapon is aiming. <ul>
+<li> <strong>VWeapon</strong> - References the weapon to get the aim for.
+</li></ul>
+</li> <li> <strong>WeaponFired [InWeapon] [bViaReplcation] [HitLocation]</strong> - Passes weapon fired call for the vehicle's driver to VehicleWeaponFired(). <ul>
+<li> <strong>InWeapon</strong> - References the driver's weapon.
+</li> <li> <strong>bViaReplication</strong> - If true, this is being replicated from a remote client.
+</li> <li> <strong>HitLocation</strong> - The location to play fire effects at.
+</li></ul>
+</li> <li> <strong>VehicleWeaponFired [bViaReplication] [HitLocation] [SeatIndex]</strong> - Triggers any weapon firing effects for the weapon of the given seat. <ul>
+<li> <strong>bViaReplication</strong> - If true, this is being replicated from a remote client.
+</li> <li> <strong>HitLocation</strong> - The location for fire effects.
+</li> <li> <strong>SeatIndex</strong> - The index of the seat whose weapon fired.
+</li></ul>
+</li> <li> <strong>WeaponStoppedFiring [InWeapon] [bViaReplication]</strong> - Pass weapon stopped firing call for the vehicle's driver to the VehicleWeaponStoppedFiring() function. <ul>
+<li> <strong>InWeapon</strong> - References the driver's weapon.
+</li> <li> <strong>bViaReplication</strong> - If true, this is being replicated from a remote client.
+</li></ul>
+</li> <li> <strong>VehicleWeaponStoppedFiring [bViaReplication] [SeatIndex]</strong> - Stops any weapon firing effects for the weapon of the given seat. <ul>
+<li> <strong>bViaReplication</strong> - If true, this is being replicated from a remote client.
+</li> <li> <strong>SeatIndex</strong> - The index of the seat whose weapon stopped firing.
+</li></ul>
+</li> <li> <strong>FindWeaponHitNormal [HitLocation] [HitNormal] [End] [Start] [HitInfo]</strong> - Outputs the location, normal, and info for the hit from a trace using the given start and end points. <ul>
+<li> <strong>HitLocation</strong> - Outputs the location of the hit from the trace.
+</li> <li> <strong>HitNormal</strong> - Outputs the surface normal at the location of the hit from the trace.
+</li> <li> <strong>End</strong> - The end point for the trace.
+</li> <li> <strong>Start</strong> - The starting point for the trace.
+</li> <li> <strong>HitInfo</strong> - Outputs the hit information for the trace.
+</li></ul>
+</li> <li> <strong>VehicleAdjustFlashCount [SeatIndex] [FireModeNum] [bClear]</strong> - Modifies or clears the flash count for the weapon of the given seat. <ul>
+<li> <strong>SeatIndex</strong> - The index of the seat to adjust the flash count for.
+</li> <li> <strong>FireModeNum</strong> - The fire mode to adjust the flash count for.
+</li> <li> <strong>bClear</strong> - Optional, If true, clear the flash count. Otherwise, increment the flash count.
+</li></ul>
+</li> <li> <strong>VehicleAdjustFlashLocation [SeatIndex] [FireModeNum] [NewLocation] [bClear]</strong> - Sets or clears the flash location for the weapon of the given seat. <ul>
+<li> <strong>SeatIndex</strong> - The index of the seat to set the flash location for.
+</li> <li> <strong>FireModeNum</strong> - The fire mode to set the flash location for.
+</li> <li> <strong>NewLocation</strong> - The new location for the flash location.
+</li> <li> <strong>bClear</strong> - Optional. If true, the flash location is cleared. Otherwise, the flash location is set to the new location.
+</li></ul>
+</li> <li> <strong>SetShieldActive [SeatIndex] [bActive]</strong> - Function stub for activating/deactivating shields for vehicles with shield fire modes. Subclasses with shields should override this function. <ul>
+<li> <strong>SeatIndex</strong> - The index of the seat activating the shield.
+</li> <li> <strong>bActive</strong> - If true, activate the shield. Otherwise, deactivate the shield.
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h3><a name="SVehicleSimBase"></a> SVehicleSimBase </h3>
+<p />
+Much of the simulation work for a vehicle is handled inside a SVehicleSimBase object. This is broken out as a separate object so that you can create a game-specific SVehicle-derived base class for all your vehicles, but still re-use code for different vehicle types.
+<p /> <ul>
+<li> <strong>WheelSuspensionStiffness</strong> - Controls the stiffness of the suspension spring for the wheels. There is no particular range on this value, but we have used values between 20.0 and 500.0.
+</li> <li> <strong>WheelSuspensionDamping</strong> - Controls the damping of the suspension spring for the wheels.  The larger this number, the less oscillation you will get on the suspension. Again, there is no particular range for this number, but we have used values between 1.0 and 75.0.
+</li> <li> <strong>WheelSuspensionBias</strong> - Offset applied to the equilibrium position for the wheel suspension.
+</li> <li> <strong>WheelInertia</strong> - The mass of the wheels. Used by PhysX to determine the wheel velocity that wheel torques can achieve. How 'heavy' and hard to turn the wheels are.
+</li> <li> <strong>bWheelSpeedOverride</strong> - If true, you can specify the speed of this wheel directly, rather than applying a torque and have the physics update the wheel speed accordingly. This is used by the SVehicleSimTank object, which calls SetAxleSpeed on the wheel.
+</li> <li> <strong>bClampedFrictionModel</strong> - If true, use a friction model that clamps the frictional force applied by the wheels. Should be more realistic.
+</li></ul>
+<p />
+<h4><a name="The Wheel Model"></a> The Wheel Model </h4>
+<p />
+The Unreal Engine 3 vehicle system makes use of a Pacejka-like wheel model (you can find more on this type of model using <a href="http://www.google.com/search?q=Pacejka" target="_top">Google</a>). The wheel model is broken down into a lateral (sideways) direction and a longitudinal direction (in the direction of roll). For each direction there is a curve which relates the amount of slip between the wheel and the ground and the amount of force generated. The curve looks like this:
+<p />
+<img alt="pacejka_curve.jpg" src="rsrc/Three/VehiclesTechnicalGuide/pacejka_curve.jpg" />
+<p />
+For the lateral direction Slip Angle is used as input and for the longitudinal direction Slip Ratio is used. The way you specify these curves is by giving the co-ordinates of the two points shown in the diagram, referred to as `Extremum' and `Asymptote'. The Extremum is the point of maximum force, where as Asymptote point gives the output value at infinite slip. The tangent at each point is taken as flat, and a cubic spline is fitted between them to give the final shape of the curve. The properties you use for each curve are defined as:
+<p /> <ul>
+<li> <strong>Wheel..ExtremumSlip</strong> - The input Slip value of the Extremum point.
+</li> <li> <strong>Wheel..ExtremumValue</strong> - The output value of the Extremum point.
+</li> <li> <strong>Wheel..AsymptoteSlip</strong> - The input Slip value of the Asymptote point.
+</li> <li> <strong>Wheel..AsymptoteValue</strong> - The output value of the Asymptote point.
+</li></ul>
+<p />
+Early versions of the wheel simulation would increase the wheel force greatly when there was a large relative velocity between wheel and ground. This meant that landing jumps and sliding stably was quite hard. Later the 'clamped friction mode' was introduced which helped fix this. To use this model, set the 'bClampedFrictionModel' option in SVehicleSimBase to TRUE. Note that doing this on an existing vehicle will require re-tuning of the wheel parameters described above.
+The SVehicleSimBase class uses default wheel function values that should be a good starting point for an average wheeled vehicle.
+<p />
+<h4><a name="SVehicleWheel Properties"></a> SVehicleWheel Properties </h4>
+<p />
+There are several values that are set on the SVehicleWheel by the simulation code each tick, and are then passed down into the physics.
+<p /> <ul>
+<li> <strong>Steer</strong> - The steering angle of the wheel. 0 is straight ahead, positive angles steer to the right. In degrees.
+</li> <li> <strong>MotorTorque</strong> - The motor torque that should be applied to this wheel. Can be negative to motorise the wheel to spin backwards.
+</li> <li> <strong>BrakeTorque</strong> - Amount of brake torque to apply to wheel to prevent rotation. Should always be positive.
+</li> <li> <strong>ChassisTorque</strong> - Amount of torque to apply back to the chassis from this wheel, so that it pitches up when accelerating etc.
+</li></ul>
+<p />
+Many other parameters of the wheel are used by the simulation code to determine what the values above should be. These usually do not change over time.
+<p /> <ul>
+<li> <strong>bPoweredWheel</strong> - If power should be applied to this wheel.
+</li> <li> <strong>bHandbrakeWheel</strong> - Whether the `handbrake' reduces grip on this wheel when applied.
+</li> <li> <strong>SteerFactor</strong> - How much this wheel should respond to steering. If 0, the wheel will not turn when steering. If 1.0, it will steer to the right when the steering does. Setting this to -1.0 will cause the wheel to steer in the opposite direction, which can be useful in 4-wheel steering configurations for example.
+</li> <li> <strong>LongSlipFactor</strong> - Per-wheel scaling of wheel force function defined in SVehicleSimBase in Longitudinal direction.
+</li> <li> <strong>LatSlipFactor</strong> - Per-wheel scaling of wheel force function defined in SVehicleSimBase in Latitudinal direction.
+</li> <li> <strong>SkelControlName</strong> - The name of the SkelControlWheel that should be updated based on this wheel. For more information, see the <a href="SettingUpVehicles.html" class="twikiLink">SettingUpVehicles</a> document
+</li> <li> <strong>BoneName</strong> - The name of the bone in the skeletal mesh that is used to position the wheel.
+</li> <li> <strong>BoneOffset</strong> - Offset from the bone specified using BoneName to place the wheel at.
+</li> <li> <strong>WheelRadius</strong> - The radius of the wheel.
+</li> <li> <strong>SuspensionTravel</strong> - How much vertical travel the wheel is allowed before it hits the `hard' stop.
+</li> <li> <strong>SuspensionSpeed</strong> - To avoid the graphics wheel moving too quickly (e.g. when going up steps), you can specify the maximum number of Unreal Units per second the wheel can move.
+</li> <li> <strong>WheelParticleSystem</strong> - An optional particle system that is used to generate smoke effects for this wheel. A float parameter called `WheelSlip' is set on this particle system each tick which can be used to modify spawn rate etc.
+</li> <li> <strong>Side</strong> - Used for tank vehicles, to indicate if this wheel forms part of the left or right 'tread' of the vehicle.
+</li></ul>
+<p />
+The SVehicleWheel also provides a number of `output' parameters, which are updated each frame.
+<p /> <ul>
+<li> <strong>bWheelOnGround</strong> - If this particular wheel is currently on the ground.
+</li> <li> <strong>SpinVel</strong> - The current angular velocity of this wheel, in radians per second.
+</li> <li> <strong>LongSlipRatio</strong> - Current longitudinal slip ratio for this wheel.
+</li> <li> <strong>LatSlipAngle</strong> - Current lateral slip angle for this wheel.
+</li> <li> <strong>ContactNormal</strong> - Direction of the contact normal between the wheel and the ground.
+</li> <li> <strong>LongDirection</strong> - Longitudinal wheel direction vector, in world space.
+</li> <li> <strong>LatDirection</strong> - Lateral wheel direction vector, in world space.
+</li> <li> <strong>ContactForce</strong> - Magnitude of force applied by this wheel last frame.
+</li> <li> <strong>LongImpulse</strong> - Size of impulse applied in the longitudinal direction last frame.
+</li> <li> <strong>LatImpulse</strong> - Size of impulse applied in the lateral direction last frame.
+</li> <li> <strong>SuspensionPosition</strong> - Current vertical displacement of the wheel on its suspension.
+</li> <li> <strong>CurrentRotation</strong> - Current rotation of the wheel, in degrees.
+</li></ul>
+<p />
+The line check done by the physics is then the suspension travel plus the wheel radius.
+<p />
+<h3><a name="Vehicle Seats and Weapons"></a> Vehicle Seats and Weapons </h3>
+<p />
+The vehicle system (beginning with the UDKVehicle class) allows for vehicles with multiple seats and weapons. This means a vehicle can have a driver who controls the movement of the vehicle as well as any primary weapons and any number of passengers who each control their own set of weapons. This not only allows for vehicle combat, but also makes the creation of transports, such as dropships or armored personnel carriers, possible.
+<p />
+Each vehicle must have at least one seat defined, which is used for the driver. Each vehicle seat is defined by adding a VehicleSeat to the Seats array in the defaultproperties for the vehicle. The VehicleSeat struct contains all the properties needed to define a seat, including how to position the camera for players in the seat, what weapon class to use as the weapon for players in the seat, etc.
+<p />
+By default when a player enters the vehicle, they will be placed in the first available seat. If the vehicle is empty, this would obviously place the player as the driver. Passengers in the vehicle, including the driver, can switch to any other available seat in the vehicle at any time using the number keys normally used to switch weapons.
+<p />
+<h4><a name="VehicleSeat Properties"></a> VehicleSeat Properties </h4>
+<p />
+<strong>Damage</strong>
+<p /> <ul>
+<li> <strong>DriverDamageMult</strong> - A multiplier for damage being applied to the passenger in this seat.
+</li></ul>
+<p />
+<strong>Display</strong>
+<p /> <ul>
+<li> <strong>CameraTag</strong> - The name of the bone or socket to use as the base for the camera.
+</li> <li> <strong>CameraBaseOffset</strong> - An offset from the base location (bone/socket in CameraTag) used to determine the base camera location.
+</li> <li> <strong>CameraSafeOffset</strong> - An offset from the vehicle's location used to determine a safe trace start point.
+</li> <li> <strong>CameraOffset</strong> - Distance the camera is pulled back from the seat.
+</li> <li> <strong>CameraEyeHeight</strong> - The eye height for the WeaponPawn.
+</li> <li> <strong>ViewPitchMin</strong> - The minimum pitch rotation the seat's camera/weapon is allowed to have. If set to 0.0f, the vehicle's ViewPitchMin is used instead.
+</li> <li> <strong>ViewPitchMax</strong> - The maximum pitch rotation the seat's camera/weapon is allowed to have. If set to 0.0f, the vehicles ViewPitchMax is used instead.
+</li> <li> <strong>SeatIconPos</strong> - The location used to draw the seat's icon on the HUD.
+</li></ul>
+<p />
+<strong>Effects</strong>
+<p /> <ul>
+<li> <strong>WeaponEffects</strong> - An array of locations for weapon bonus effects (UDamage, etc) and the component references if those effects are active.
+</li> <li> <strong>MuzzleFlashLightClass</strong> - The class of the light to use for muzzle flashes.
+</li> <li> <strong>MuzzleFlashLight</strong> - References the light to use for muzzle flashes.
+</li> <li> <strong>ImpactFlashLightClass</strong> - The class of the light to use for hit impacts from the weapon for this seat.
+</li> <li> <strong>SeatMovementEffect</strong> - The effect (VehicleMovementEffect) played when the vehicle is in motion.
+</li></ul>
+<p />
+<strong>General</strong>
+<p /> <ul>
+<li> <strong>StoragePawn</strong> - References the Pawn sitting in the seat.
+</li> <li> <strong>SeatPawn</strong> - References the WeaponPawn for this seat, if the seat has a weapon assigned.
+</li> <li> <strong>bSeatVisible</strong> - If true, the Pawn occupying this seat will be rendered.
+</li> <li> <strong>SeatBone</strong> - The name of the bone used as the anchor point for the Pawn occupying this seat.
+</li> <li> <strong>SeatOffset</strong> - An offset from the SeatBone to place the Pawn occupying this seat.
+</li> <li> <strong>SeatRotation</strong> - A rotation offset from the SeatBone's rotation to orient the Pawn occupying this seat.
+</li> <li> <strong>SeatSocket</strong> - Does not appear to be used.
+</li></ul>
+<p />
+<strong>Sounds</strong>
+<p /> <ul>
+<li> <strong>SeatMotionAudio</strong> - The AudioComponent used to play sounds when the seat is in motion, e.g. when the seat/weapon is turning.
+</li></ul>
+<p />
+<strong>Weapon</strong>
+<p /> <ul>
+<li> <strong>GunClass</strong> - The class of the weapon to use for this seat. Can be none if the seat should not have a weapon.
+</li> <li> <strong>Gun</strong> - References the weapon for this seat.
+</li> <li> <strong>GunSocket</strong> - An array of the names of the sockets used as the locator for effects and spawning projectiles.
+</li> <li> <strong>GunPivotPoints</strong> - An array of the names of the bones used as pivot points for rotating/aiming the weapon.
+</li> <li> <strong>BarrelIndex</strong> - Holds the current active barrel for the weapon.
+</li> <li> <strong>TurretVariablePrefix</strong> - The name to use as a prefix for the WeaponRotation, FlashLocation, FlashCount, and FiringMode properties of this seat. Should be set for all seats other than Seat[0]. See the <a href="#Vehicle Weapon Replication">Vehicle Weapon Replication</a> section for more information.
+</li> <li> <strong>TurretControls</strong> - An array of the names of the UTSkelControl_TurretConstrined skeletal controllers in the Animtree of the vehicle associated with the weapon for this seat. Used to get references to those skeletal controllers.
+</li> <li> <strong>TurretControllers</strong> - An array of the UTSkelControl_TurretConstrined skeletal controllers in the Animtree of the vehicle associated with the weapon for this seat.
+</li> <li> <strong>AimPoint</strong> - Cached in ApplyWeaponRotation, this is the vector in the world where the player is currently aiming.
+</li> <li> <strong>AimTarget</strong> - Cached in ApplyWeaponRotation, this is the actor the seat is currently aiming at. Can be none if not aiming at anything.
+</li> <li> <strong>PivotFireOffsetZ</strong> - Z distance between the weapon pivot and actual firing location. Used to correct aiming rotation.
+</li> <li> <strong>bDisableOffsetZAdjust</strong> - If true, disable adjustment to turret pitch based on PivotFireOffsetZ.
+</li></ul>
+<p />
+<h4><a name="Vehicle Weapon Replication"></a> Vehicle Weapon Replication </h4>
+<p />
+Vehicles need to handle the replication of all variables required for the firing of a weapon. Each vehicle needs to have a set of variables that begin with a common prefix and will be used to line up the needed replicated data with that weapon.  The first weapon of the vehicle (i.e.: that which is associated with the driver/seat 0) has no prefix.
+<p />
+[prefix]WeaponRotation 	- This defines the physical desired rotation of the weapon in the world.
+[prefix]FlashLocation	- This defines the hit location when an instant-hit weapon is fired
+[prefix]FlashCount		- This value is incremented after each shot
+[prefix]FiringMode		- This is assigned the fire mode the weapon is currently functioning in
+<p />
+Additionally, each seat can have any number of SkelControl_TurretConstrained controls associated with it.  When a [prefix]WeaponRotation value is set or replicated, those controls will automatically be updated.
+<p />
+FlashLocation, FlashCount and FiringMode (associated with seat 0) are inherited from the Pawn class.  WeaponRotation is defined in UDKVehicle.  All "turret" variables must be defined "repnotify".  FlashLocation, FlashCount and FiringMode variables should only be replicated to non-owning clients.
+<p />
+<h3><a name="Vehicle Events"></a> Vehicle Events </h3>
+<p />
+The vehicle event system (in vehicles extending from UDKVehicle) provides a method of playing any number of animations, effects, and/or sounds on the vehicle in any situation required by the vehicle. This system is extremely flexible and can be used in many ways.
+<p />
+Each vehicle will have its own set of events and animations, effects, and/or sounds for each of those events will be created and placed into the corresponding array, VehicleAnims, VehicleEffects, or VehicleSounds, in the default properties for the vehicle. Then, in the code for the vehicle, the VehicleEvent() function will be called passing it the name of the event to trigger for that specific situation.
+<p />
+The VehicleEvent() function in turn calls the following functions passing them the name of the event that was triggered:
+<p /> <ul>
+<li> PlayVehicleAnimation()
+</li> <li> TriggerVehicleEffect()
+</li> <li> PlayVehicleSound()
+</li></ul>
+<p />
+Each of these functions iterates through the corresponding array and plays (or stops as the case may be) any and all animations, effects, and/or sounds that match the triggered event. It is a relatively simple system that is extremely easy to use and it provides the ability to quickly add custom visual and aural details to any vehicle.
+<p />
+<h4><a name="VehicleAnim Properties"></a> VehicleAnim Properties </h4>
+<p /> <ul>
+<li> <strong>AnimTag</strong> - The name of the vehicle event responsible for playing this animation.
+</li> <li> <strong>AnimSeqs</strong> - An array of animation sequence names to play for this animation.
+</li> <li> <strong>AnimRate</strong> - The speed to play back the animations at.
+</li> <li> <strong>bAnimLoopLastSeq</strong> - If true, the last animation sequence played for this animation will loop.
+</li> <li> <strong>AnimPlayerName</strong> - The name of the UTAnimNodeSequence player in the AnimTree to use to play the animation.
+</li></ul>
+<p />
+<h4><a name="VehicleEffect Properties"></a> VehicleEffect Properties </h4>
+<p /> <ul>
+<li> <strong>EffectStartTag</strong> - The name of the vehicle event responsible for playing this effect.
+</li> <li> <strong>EffectEndTag</strong> - The name of the vehicle event responsible for stopping this effect.
+</li> <li> <strong>bRestartRunning</strong> - If true, the effect will restart if the event is triggered while this effect is already running.
+</li> <li> <strong>bHighDetailOnly</strong> - If true, this effect will only be played when the game is run in high detail mode.
+</li> <li> <strong>EffectTemplate</strong> - The ParticleSystem to play for this effect.
+</li> <li> <strong>EffectTemplate_Blue</strong> - The ParticleSystem to play for this event if the vehicle belongs to the blue team.
+</li> <li> <strong>EffectSocket</strong> - The name of the socket on the vehicle to attach the effect to.
+</li> <li> <strong>EffectRef</strong> - The ParticleSystemComponent used to play this effect.
+</li></ul>
+<p />
+<h4><a name="VehicleSound Properties"></a> VehicleSound Properties </h4>
+<p /> <ul>
+<li> <strong>SoundStartTag</strong> - The name of the vehicle event responsible for playing this sound.
+</li> <li> <strong>SoundEndTag</strong> - The name of the vehicle event responsible for stopping this sound.
+</li> <li> <strong>SoundTemplate</strong> - The SoundCue to play for this sound.
+</li> <li> <strong>SoundRef</strong> - The AudioComponent used to play this sound.
+</li></ul>
+<p />
+<h3><a name="Vehicle Damage System"></a> Vehicle Damage System </h3>
+<p />
+The vehicle damage system (in vehicles extending from UDKVehicle) provides the ability for the vehicle to take location specific damage showing the effects of that damage through the use of morph targets. Any time the vehicle takes damage, the damage system finds the bone closest to the hit location. That bone is then used to find the corresponding entry in the DamageMorphTargets array. The damage done to the vehicle is applied to that damage morph target's health and any subsequent linked damage morph targets until the damage is dissipated. When a particular damage morph target's health is depleted, it is considered dead and is skipped in the process and only linked damage morph targets are damaged.
+<p />
+The system takes care of all the hard work. All you have to do is set up the morph targets and materials on the content side and add the entries to the DamageMorphTargets array in the vehicle's defaultproperties.
+<p />
+<h4><a name="FDamageMorphTargets Properties"></a> FDamageMorphTargets Properties </h4>
+<p /> <ul>
+<li> <strong>MorphNodeName</strong> - The name of the MorphNode in the vehicle's AnimTree that corresponds to this damage morph target.
+</li> <li> <strong>MorphNode</strong> - References the actual MorphNode that corresponds to this damage morph target. Set when the vehicle is initialized.
+</li> <li> <strong>LinkedMorphNodeName</strong> - The name of next MorphNode in the chain. Can be 'None' if this is the last damage morph target in the chain.
+</li> <li> <strong>LinkedMorphNodeIndex</strong> - The index in the DamageMorphTargets array of the next damage morph target in the chain. Set when the vehicle is initialized.
+</li> <li> <strong>InfluenceBone</strong> - The name of the bone this damage morph target is associated with.
+</li> <li> <strong>Health</strong> - The current health of this damage morph target.
+</li> <li> <strong>DamagePropsName</strong> - The names of the scalar properties in the vehicle's materials to adjust when the damage morph target takes damage. As the damage morph target's health goes from its initial value to 0, the parameter values go from 0 to 1.
+</li></ul>
+<p />
+<h2><a name="Different Types Of Vehicle"></a> Different Types Of Vehicle </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The various wheeled vehicle tools provided by the SVehicle class can create a large number of different vehicle types. It is well worth looking at Unreal Tournament 3 to see how some of them operate. Here are some non-traditional vehicle types:
+<p />
+<h3><a name="Wheeled Vehicles"></a> Wheeled Vehicles </h3>
+<p />
+Wheeled vehicles in Unreal Engine 3 are simulated as a single rigid body. Ray-casts are made from points on the car chassis downwards to see where they hit the ground, and forces are computed at the contact point based on a number of parameters. There are no physical `wheel' objects - the engine just stores how fast each wheel is moving, and uses that in the calculations for forces generated.
+<p />
+<h3><a name="Hover Vehicles"></a> Hover Vehicles </h3>
+<p />
+These are done by creating wheels with a long, soft suspension travel, and no wheel friction at all, allowing them to move in all direction. Then we just use forces, torques and damping to control the movement of the vehicle.
+<p />
+<h3><a name="Flying Vehicles"></a> Flying Vehicles </h3>
+<p />
+For vehicles like helicopters, where the vehicle stays upright, we use the StayUprightConstraint to gently keep the vehicle upright. Then by overriding the GetGravityZ() function, you can make the vehicle 'hover' and be easily driven with forces.
+<p />
+<h3><a name="Tanks"></a> Tanks </h3>
+<p />
+UE3 contains an SVehicleSimTank object for this purpose.
+<p />
+With full throttle applied, the tank engine will split up the MaxEngineToque across both tracks. This will be an even split unless the tank is being steered. When steered, the torque will be split based on the InsideTrackTorqueCurve according to its current speed.
+<p />
+For example... When driving forward each track gets 50% of the total torque. However, if the tank is steering fully left and the InsideTrackTorqueCurve is 0.2, this will apply 20% of the engine torque to the left track and the remaining 80% will be applied to the right track. If the InsideTrackTorqueCurve is -0.2 it will still split the torque 20/80 however the inside torque will be applied in the reverse direction. EngineDamping is a damping force inversely proportional to the speed of each track.
+<p />
+Keep in mind that total torque is conserved across both tracks so if you were to direct 100% to the inside track there wouldn't be any torque left to send to the outside track. In addition, any track wheels with a positive SteerFactor will have their lateral stiffness adjusted using TurnMaxGripReduction/TurnGripScaleRate when tracks are at different speeds.
+<p />
+If bTurnInPlaceOnSteer is TRUE, TurnInPlaceThrottle allows you to set a reduced amount of throttle for turning in place.
+<p />
+<h2><a name="Content: The Physics Asset"></a> Content: The Physics Asset </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+You set up the collision for a vehicle using PhAT, in the same way as a ragdoll. However, vehicles use the bUseSingleBodyPhysics flag in their SkeletalMeshComponent, which only creates a single physics body (from the root body) for the component, instead of one body for each part of the PhysicsAsset. The other bodies you set up in PhAT for the vehicle play no part in the physics simulation of the vehicle. There is no need to create joints for wheels etc. The other bodies in the PhysicsAsset are used for Unreal collision line checks though, so it can be useful to add extra bodies to stop player movement more accurately, especially on animating parts.
+<p />
+See the <a href="SettingUpVehicles.html" class="twikiLink">Setting up Vehicles</a> page for information about creating vehicles in a 3D package and importing them into the engine.
+<p />
+<h2><a name="Performance: Tuning Vehicles"></a> Performance: Tuning Vehicles </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Tuning a vehicle is more of an art than a science.
+<p />
+<h3><a name="Useful Console Commands"></a> Useful Console Commands </h3>
+<p />
+A very useful tool however is the 'editactor' console command. To use this, run the game with the -wxwindows switch (or use PIE). Then get into the vehicle you want to tune and type 'editactor class=[vehicle class name]', and you should see a property window appear allowing you to edit all the vehicle properties whilst driving your vehicle. Note that properties that are only used at construction time (e.g. BoneOffset) cannot be changed on the fly.
+<p />
+<h2><a name="Vehicle Replication"></a> Vehicle Replication </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Here are some strategies for vehicle replication, as done in <em>Unreal Tournament</em>:
+<p />
+Physics is fully simulated on both the client and server. When a client presses forwards, that goes to the server as a 'raw' input. Then it gets turned into vehicle-specific <code>Throttle</code>, <code>Steering</code> etc. settings on the server, and replicated to all clients - along with the current state of the vehicle (linear and angular, position and velocity). That way inputs and vehicle state are kept in sync. The physics state of the vehicle on the client is corrected in 3 ways:
+<p /> <ol>
+<li> If it is very small, it is ignored.
+</li> <li> If it is fairly small and vehicle is moving, some percentage of the error is corrected directly, and the velocity is modified to move the client version towards the server version.
+</li> <li> If it is large, it just teleports to the new location.
+</li></ol>
+<p />
+This code is in <code>AActor::ApplyNewRBState</code>. This data is replicated using a struct, to keep all the fields in sync. This is the <code>VehicleState</code> struct in SVehicle.uc.
+<p />
+A good way to debug and visualize this is to ignore physics corrections from the server, and draw them instead. This code is actually in the <code>ApplyNewRBState</code> function - look for the <em>Handy debugging mode</em> comment near the top. This way you can drive around and see how quickly the client and server version of the vehicle diverge.
+<p />
+Most effects are handled entirely on the client, by interrogating the client's physics state (velocity, contacts etc).
+<p />
+<h3><a name="Strategies for Other Games"></a> Strategies for Other Games </h3>
+<p />
+For games with very high-speed vehicles handle this situation, such as racing games, there are other strategies to consider. The larger the velocities, the more aggressive you may need to be with 'teleport' corrections. If you have a reasonable number of vehicles, you may always want the server authoritative with physics simulation. If you are making an MMO with hundreds of vehicles, you may need to distribute the simulation.
+<p />
+</noautolink>
+<p />
+<style type="text/css">
+<!--
+	.code_heading
+	{
+		padding-left:16px;
+		font:bold 12px arial;
+	}
+	.code_heading_toggle
+	{
+		background:url("../../../www.sectionj.net/expand_plus.png") no-repeat scroll 3px 3px transparent;
+		padding-left:16px;
+		cursor:pointer;
+		font:bold 12px arial;
+	}
+	.code_block
+	{
+		margin-left:16px;
+		margin-right:16px;
+		background:#d8d8d8;
+		padding:1px 10px;
+		font:12px courier; <dl>
+ <dd>
+ <dl>
+<dt> -moz-box-shadow</dt><dd> 2px 2px 5px #606060;
+</dd> <dt> -webkit-box-shadow</dt><dd> 2px 2px 5px #606060;
+</dd> <dt> box-shadow</dt><dd> 2px 2px 5px #606060;	}	.code_block_toggle	{		margin-left:16px;		margin-right:16px;		display:none;		background:#d8d8d8;		padding:1px 10px;		font:12px courier;
+</dd> <dt> -moz-box-shadow</dt><dd> 2px 2px 5px #606060;
+</dd> <dt> -webkit-box-shadow</dt><dd> 2px 2px 5px #606060;
+</dd> <dt> box-shadow</dt><dd> 2px 2px 5px #606060;	}	.code_block_more	{		margin-left:16px;		margin-right:16px;		cursor:pointer;		display:block;		background:#d8d8d8;		padding:10px;		font:12px arial;
+</dd> <dt> -moz-box-shadow</dt><dd> 2px 2px 5px #606060;
+</dd> <dt> -webkit-box-shadow</dt><dd> 2px 2px 5px #606060;
+</dd> <dt> box-shadow</dt><dd> 2px 2px 5px #606060;	}	.clicktext	{
+</dd> <dt> font-weight</dt><dd> normal;
+</dd> <dt> font-style</dt><dd> italic;
+</dd> <dt> font-size</dt><dd> 10px;	}	.thumbnail	{		width:240px;		border:2px solid #202020;
+</dd> <dt> -moz-box-shadow</dt><dd> 3px 3px 5px #606060;
+</dd> <dt> -webkit-box-shadow</dt><dd> 3px 3px 5px #606060;
+</dd> <dt> box-shadow</dt><dd> 3px 3px 5px #606060;	}	.regionhead	{		background:#b0b0b0;		cursor:pointer;		padding:5px;		font:bold 12px arial;		border:1px solid #a0a0a0;
+</dd> <dt> minimum-width</dt><dd> 700px;	}	.regionimage	{		margin-right:5px;		display:inline-block;	    width:10px;		height:10px;	}	.regioncontent	{		border:1px solid #a0a0a0;		padding:10px;		display:none;	}	.tabs	{		width:100%;		height:27px;		border-bottom:1px solid #606060;		list-style:none;		padding:0px;		margin:0px;	}	.tabs li	{		padding:3px 12px;		float:left;		margin:0px;		border:1px solid #606060;
+</dd> <dt> -moz-border-radius</dt><dd> 5px 5px 0px 0px;
+</dd> <dt> -webkit-border-radius</dt><dd> 5px 5px 0px 0px;		cursor:pointer;		background:#d0d0d0;	}	.tabcontent	{		border:1px solid #606060;		display:none;		padding:10px;		min-height:250px;
+</dd> <dt> -moz-box-shadow</dt><dd> 2px 2px 5px #606060;
+</dd> <dt> -webkit-box-shadow</dt><dd> 2px 2px 5px #606060;
+</dd> <dt> box-shadow</dt><dd> 2px 2px 5px #606060;	}
+</dd></dl>
+</dd></dl>
+-->
+</style>
+<p />
+<script type="text/javascript">
+	function toggleRegion(id)
+	{
+		var content = document.getElementById("region_" + id + "_content");
+		var head= document.getElementById("region_" + id + "_image");
+
+		//var plusImage = "url(/udk/pub/images/expand_plus.png)";
+		//var minusImage = "url(/udk/pub/images/expand_minus.png)";
+
+		if(content.style.display == "block")
+		{
+		     //head.style.backgroundImage = plusImage;
+		     head.innerHTML = "+";
+		     content.style.display = "none";
+		}
+		else
+		{
+		     //head.style.backgroundImage = minusImage;
+		     head.innerHTML = "-";
+		     content.style.display = "block";
+		}
+	}
+</script>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/VehiclesTechnicalGuide.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:08:10 GMT -->
+</html></body>

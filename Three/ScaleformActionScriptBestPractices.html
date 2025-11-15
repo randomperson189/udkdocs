@@ -1,0 +1,605 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ScaleformActionScriptBestPractices.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:22:58 GMT -->
+<head>
+<title> UDK | ScaleformActionScriptBestPractices    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ScaleformActionScriptBestPractices  </b></div>
+<div id="tooltext">
+<a href="ScaleformActionScriptBestPracticesJP.html" class="twikiLink">日本語訳</a><br><a href="ScaleformActionScriptBestPracticesCH.html" class="twikiLink">中国翻译</a><br><a href="ScaleformActionScriptBestPracticesKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ScaleformActionScriptBestPractices -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="UIAndHUDHome.html" class="twikiLink">User Interfaces &amp; HUDs</a></b> &gt; <b><a href="Scaleform.html" class="twikiLink">Scaleform GFx</a></b> &gt; Scaleform GFx ActionScript Best Practices
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Scaleform GFx _ActionScript Best Practices"></a> Scaleform GFx ActionScript Best Practices </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="ScaleformActionScriptBestPractices.html#Scaleform GFx _ActionScript Best Practices"> Scaleform GFx ActionScript Best Practices</a> <ul>
+<li> <a href="ScaleformActionScriptBestPractices.html#Overview"> Overview</a>
+</li> <li> <a href="ScaleformActionScriptBestPractices.html#General _ActionScript Guidelines"> General ActionScript Guidelines</a> <ul>
+<li> <a href="ScaleformActionScriptBestPractices.html#Loops"> Loops</a>
+</li> <li> <a href="ScaleformActionScriptBestPractices.html#Functions"> Functions</a>
+</li> <li> <a href="ScaleformActionScriptBestPractices.html#Variables / Properties"> Variables / Properties</a>
+</li></ul>
+</li> <li> <a href="ScaleformActionScriptBestPractices.html#General Optimization Tips"> General Optimization Tips</a> <ul>
+<li> <a href="ScaleformActionScriptBestPractices.html#The Flash Timeline"> The Flash Timeline</a>
+</li> <li> <a href="ScaleformActionScriptBestPractices.html#General Performance Optimization"> General Performance Optimization</a>
+</li> <li> <a href="ScaleformActionScriptBestPractices.html#Advance"> Advance</a>
+</li> <li> <a href="ScaleformActionScriptBestPractices.html#on_ClipEvent and on Events"> onClipEvent and on Events</a>
+</li> <li> <a href="ScaleformActionScriptBestPractices.html#on_EnterFrame"> onEnterFrame</a>
+</li> <li> <a href="ScaleformActionScriptBestPractices.html#Var Keyword"> Var Keyword</a>
+</li> <li> <a href="ScaleformActionScriptBestPractices.html#Precaching"> Precaching</a>
+</li> <li> <a href="ScaleformActionScriptBestPractices.html#Complex Expressions"> Complex Expressions</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<hr size="1" noshade="noshade">
+ActionScript is not compiled to native machine code; instead it is converted to byte code, which is faster than an interpreted language but not as fast as compiled native code. Although ActionScript can be slow, in most multimedia presentations, the assets such as graphics, audio, and video - and not the code - are often the limiting performance factor.
+<p />
+Many optimization techniques are not specific to ActionScript but simply well-known techniques for writing code in any language without an optimizing compiler. For example, loops are faster if items that don't change with every loop iteration are removed from within the loop and placed outside the loop instead.
+<p />
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>Note</strong>: ActionScript is abbreviated as AS for the rest of this document. <br/>
+<img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>Note</strong>: Virtual Machine is abbreviated as VM for the rest of this document.
+<p />
+<h2><a name="General _ActionScript Guidelines"></a> General ActionScript Guidelines </h2>
+<hr size="1" noshade="noshade">
+<p />
+The following optimizations will increase AS execution speed.
+<p /> <ul>
+<li> Publish SWFs to Flash version 8 or better.
+</li> <li> The less AS used, the better the file performance. Always minimize the amount of code written to perform a given task. AS should be used primarily for interactivity, not for creating graphical elements. If your code consists of heavy use of attachMovie calls, reconsider how the FLA file is constructed.
+</li> <li> Use scripted animation sparingly; timeline animation will typically perform better.
+</li> <li> Avoid heavy string manipulation.
+</li> <li> Avoid too many looping movie clips that use an “if” statement to avoid termination.
+</li> <li> Avoid using on() or onClipEvent() event handlers. Use onEnterFrame, onPress, etc instead.
+</li> <li> Minimize placing primary AS logic on a frame. Instead, place large chunks of important code inside functions. The Flash AS compiler can generate significantly faster code for source located within the function body as compared to that located directly inside of frames or old-style event handlers (onClipEvent, on). It is however acceptable to keep simple logic in the frame, such as timeline control (gotoAndPlay, play, stop, etc.) and other non-critical logic.
+</li> <li> Avoid using "long-distance" gotoAndPlay/gotoAndStop in movie clips with long timelines having several animations. <ol>
+<li> In case of forward gotoAndPlay/gotoAndStop , the farther the target frame from the current one, the more expensive is the gotoAndPlay/gotoAndStop timeline control. Thus, the most expensive forward gotoAndPlay/gotoAndStop is from the first frame to the last one.
+</li> <li> In case of backward gotoAndPlay/gotoAndStop , farther the target frame from the beginning of the timeline, the more expensive is the timeline control. Thus the most expensive backward gotoAndPlay/gotoAndStop is from the last frame to the frame before the last.
+</li></ol>
+</li> <li> Use movieclips with short timelines. The cost of the gotoAndPlay/gotoAndStop highly depends on the number of keyframes and the complexity of timeline animation. Thus, do not create long and complex timelines if you are planning to navigate by calling gotoAndPlay/gotoAndStop. Instead, split the movieclip's timeline into several independent movieclips with shorter timelines and less gotoAndPlay/gotoAndStop calls.
+</li> <li> If updating many objects simultaneously, it is essential to develop a system in which these objects can be updated as a group. On the C++ side use a GFxMovie::SetVariableArray call to pass large amount of data from C++ to AS. This call can then be followed by a single invoke that updates multiple objects at once based on the uploaded array. Grouping multiple invokes into one call is usually several times faster than calling them for each individual object.
+</li> <li> Don’t attempt to perform too much work in a single frame, or GFx may not have time to render the Stage, and the user may perceive a slowdown. Instead, break up the amount of work being performed into smaller chunks, allowing GFx to refresh the Stage at the prescribed frame rate with no perceived slowdown.
+</li> <li> Don't overuse the Object type. <ol>
+<li> Data-type annotations should be precise, because it allows compiler type checking to identify bugs. Use the Object type only when there is no reasonable alternative.
+</li></ol>
+</li> <li> Avoid using the eval() function or array access operator. Often, setting the local reference once is preferable and more efficient.
+</li> <li> Assign Array.length to a variable before a loop to use as its condition, rather than using myArr.length itself. For example:
+</li></ul>
+<p />
+    Use the following code:
+<p />
+<div class="codesnippet">
+<pre>
+var fontArr:Array &#61; TextField.getFontList();
+var arrayLen:Number &#61; fontArr.length;
+for (var i:Number &#61; 0; i &#60; arrayLen; i++) {
+  trace(fontArr&#91;i]);
+}
+</pre>
+</div>
+<p />
+    Instead of:
+<p />
+<div class="codesnippet">
+<pre>
+var fontArr:Array &#61; TextField.getFontList();
+for (var i:Number &#61; 0; i &#60; fontArr.length; i++) {
+  trace(fontArr&#91;i]);
+}
+</pre>
+</div>
+<p /> <ul>
+<li> Manage events wisely and specifically. Keep event listener arrays compacted by using conditions to check whether a listener exists (is not null) before calling it.
+</li> <li> Explicitly remove listeners from objects by calling removeListener() before releasing the reference to the object.
+</li> <li> Minimize the number of levels in package names to reduce startup time. At startup, the AS VM has to create the chain of objects, one object per level. Moreover, before the creation of each level object, the AS compiler adds an "if" conditional to check whether the level is already created or not. Thus, for the package "com.xxx.yyy.aaa.bbb" the VM will create objects "com", "xxx", "yyy", "aaa", "bbb" and before each creation there will be an "if" opcode that checks the object's existence. Accessing of such deeply nested objects/classes/functions is also slow, since resolving names requires parsing each level (resolve "com", then "xxx", then "yyy" inside the "xxx", etc). To avoid this additional overhead, some Flash developers use preprocessor software to reduce the path to a single-level unique identifier, such as c58923409876.functionName(), before compiling the SWF.
+</li> <li> If an application consists of multiple SWF files that use the same AS classes, exclude those classes from select SWF files during compilation. This can help reduce runtime memory requirements.
+</li> <li> If AS on a keyframe in the timeline requires a lot of time to complete, consider splitting that code up to execute over multiple keyframes.
+</li> <li> Remove trace() statements from the code when publishing the final SWF file. To do this, select the Omit Trace Actions check box on the Flash tab in the Publish Settings dialog box, then comment them out or delete them. This is an efficient way to disable any trace statements used for debugging at runtime.
+</li> <li> Inheritance increases the number of method calls and uses more memory: a class that includes all the functionality it needs is more efficient at runtime than a class that inherits some of its functionality from a superclass. Therefore, it may be necessary to make a design trade-off between extensibility of classes and efficiency of code.
+</li> <li> When one SWF file loads another SWF file that contains a custom AS class (for example: foo.bar.CustomClass) and then unloads the SWF file, the class definition remains in memory. To save memory, explicitly delete any custom classes in unloaded SWF files. Use the delete statement and specify the fully qualified class name, as the following example shows: delete foo.bar.CustomCLass
+</li> <li> Not all code has to run every frame, use flip flops (where portions of code are alternated each frame) for non-100% time critical items.
+</li> <li> Try to use as few onEnterFrames as possible.
+</li> <li> Precalculate data tables instead of using math functions. <ol>
+<li> If doing a lot of math, then consider precalculating the values and storing them in a (pseudo) array of variables. Pulling those values from a data table can be much faster than having GFx to do it on the fly.
+</li></ol>
+</li></ul>
+<p />
+<p />
+<h3><a name="Loops"></a> Loops </h3> <ul>
+<li> Focus on optimizing loops, and any repeating actions.
+</li> <li> Limit the number of loops used and the amount of code that each loop contains.
+</li> <li> Stop frame-based looping as soon as it is no longer needed.
+</li> <li> Avoid calling a function multiple times from within a loop.
+</li> <li> It is better to include the contents of a small function inside the loop.
+</li></ul>
+<p />
+<p />
+<h3><a name="Functions"></a> Functions </h3> <ul>
+<li> Whenever possible, avoid deeply nested functions.
+</li> <li> Do not use 'with' statements inside functions. This operator turns off optimizations.
+</li></ul>
+<p />
+<p />
+<h3><a name="Variables / Properties"></a> Variables / Properties </h3> <ul>
+<li> Avoid referencing nonexistent variables, objects, or functions.
+</li> <li> Use the “var” keyword whenever possible. The use of the “var” keyword inside functions is especially important since the ActionScript compiler optimizes access to local variables using internal registers with direct access by index rather than putting them into a hash-table and accessing by names.
+</li> <li> Don't use class variables or global variables when local variables will suffice.
+</li> <li> Limit the use of global variables, because they are not garbage collected if the movie clip that defined them was removed.
+</li> <li> Delete variables or set them to null when no longer needed. Doing this marks the data for garbage collection. Deleting variables helps optimize memory use during runtime, because unneeded assets are removed from the SWF file. It is better to delete variables than to set them to null.
+</li> <li> Always try to access properties directly rather than using AS getter and setter methods, which have more overhead than other method calls.
+</li></ul>
+<p />
+<p />
+<h2><a name="General Optimization Tips"></a> General Optimization Tips </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="The Flash Timeline"></a> The Flash Timeline </h3>
+Timeline frames and layers are two important parts of the Flash authoring environment. These areas show where assets are placed and determine how your document works. How a timeline and the library are set up and used affect the entire FLA file and its overall usability and performance.
+<p /> <ul>
+<li> Use frame-based loops sparingly. A frame-based animation is dependent on the application’s framerate, as opposed to a time-based model which is not tied to FPS.
+</li> <li> Stop frame-based loops as soon as they are not needed.
+</li> <li> Distribute complex blocks of code across more than one frame if possible.
+</li> <li> Scripts with hundreds of lines of code will be just as processor intensive as timelines with hundred of frames based tweens.
+</li> <li> Evaluate content to determine whether animation/interaction can be easily achieved with the timeline or simplified and made modular using AS.
+</li> <li> Avoid using the default layer names (such as Layer 1, Layer 2), because it can be confusing to remember or locate assets when working on complex files.
+</li></ul>
+<p />
+<h3><a name="General Performance Optimization"></a> General Performance Optimization </h3> <ul>
+<li> There are ways to combine transforms for better performance. For example, instead of nesting three transforms, calculate one matrix manually.
+</li> <li> If things slow down over time, check for memory leaks. Be sure to dispose of things which are no longer needed.
+</li> <li> At authoring time, avoid a lot of trace() statements or updating text fields dynamically as these consume performance. Update them as infrequently as possible (i.e. only when something changes rather than constantly).
+</li> <li> If applicable, place layers that include AS and a layer for frame labels at the top of the layer stack in the timeline. For example, it is a good and common practice to name the layer that contains AS actions.
+</li> <li> Do not put frame actions in different layers; instead, concentrate all actions in one layer. This will simplify management of AS code and improve performance by eliminating the overhead incurred by multiple AS execution passes.
+</li></ul>
+<p />
+<h3><a name="Advance"></a> Advance </h3>
+If advance is taking too long to execute, there are seven possible optimizations:
+<p /> <ul>
+<li> Do not execute AS code on every frame. Avoid onEnterFrame handlers as well, which invoke code on each frame.
+</li> <li> Use event-driven programming practices, changing text field and UI state values through an explicit Invoke notification only when a change takes place.
+</li> <li> Stop animation in invisible movie clips (_visible property should be set to true; use the stop() function to stop animation). This will exclude such movie clips from the Advance list. Note that it is necessary to stop every single movie clip in the hierarchy, including children, even if the parent movie clip has stopped.
+</li> <li> There is an alternative technique that involves usage of _global.noInvisibleAdvance extension. This extension might be useful to exclude groups of invisible movie clips from the Advance list without stopping each of them. If this extension property is set to "true" then invisible movie clips are not added into the Advance list (including their children) and therefore performance is improved. Keep in mind that this technique is not fully Flash compatible. Ensure that the Flash file does not rely on any type of per frame processing within hidden movies. Don’t forget to turn on GFx extensions on by setting _global.gfxExtensions to true to use this (and any other) extension.
+</li> <li> Reduce the number of movie clips on stage. Limit unnecessary nesting of movie clips, as each nested clip incurs a small amount of overhead during advance.
+</li> <li> Reduce timeline animation, number of keyframes, and shape tweens.
+</li> <li> In GFx 2.2 and earlier versions, it is possible to prevent advancing of static movie clips that are visible and on screen but don't require an advance or an onEnterFrame by setting MovieClip.noAdvance property to true. The GFx extensions should be enabled by setting _global.gfxExtensions to true to use this extension. Note that in most cases, this is not necessary in GFx 3.0 and later. GFx 3.0 doesn't advance or process stopped movie clips at all, as it no longer processes the entire rendering graph in Advance and instead maintains an active list. With this improvement, noAdvance/noInvisibleAdvance is rarely necessary as their main purpose is to skip processing parts of the graph. They can still perhaps be used to disable onEnterFrame or some animated objects, but this is rarely necessary and can be achieved in other ways such as by removing onEnterFrame handler itself.
+</li></ul>
+<p />
+<h3><a name="on_ClipEvent and on Events"></a> onClipEvent and on Events </h3>
+Avoid using onClipEvent() and on() events. Instead, use onEnterFrame, onPress, etc. There are several reasons for doing this:
+<p /> <ul>
+<li> Function-style event handlers are run-time installable and removable.
+</li> <li> The byte-code inside functions is better optimized than inside old-style onClipEvent and on handlers. The main optimization is in precaching this, _global, arguments, super, etc., and using the 256 internal registers for local variables. This optimization works only for functions.
+</li></ul>
+<p />
+The only problem exists when you need an onLoad function-style handler to be installed before the first frame is executed. In this case, you may use the undocumented event handler onClipEvent(construct) to install the onEnterFrame:
+<p />
+<div class="codesnippet">
+<pre>
+onClipEvent(construct) {
+  this.onLoad &#61; function() {
+    //function body
+  }
+}
+</pre>
+</div>
+<p />
+Or, use onClipEvent(load) and call a regular function from it. This approach is less effective however, as there will be additional overhead for the extra function call.
+<p />
+<h3><a name="on_EnterFrame"></a> onEnterFrame </h3>
+Minimize the use of onEnterFrame event handlers, or at the very least install and remove them when necessary, rather than having them executed all the time. Having too many onEnterFrame handlers may drop performance significantly. As an alternative, consider using setInterval and setTimeout functions. When using setInterval:
+<p /> <ul>
+<li> Do not forget to call clearInterval when the handler is no longer needed.
+</li> <li> setInterval and setTimeout handlers may be slower than onEnterFrame if they are executed more frequently than onEnterFrame. Use conservative values for the time intervals to avoid this.
+</li></ul>
+<p />
+To remove onEnterFrame handlers use the delete operator:
+<p />
+<div class="codesnippet">
+<pre>
+delete this.onEnterFrame;
+delete mc.onEnterFrame;
+</pre>
+</div>
+<p />
+Do not assign null or undefined to onEnterFrame (e.g., this.onEnterFrame = null), as this operation does not remove the onEnterFrame handler completely. GFx will still attempt to resolve this handler, as the member with the name onEnterFrame will still exist.
+<p />
+<h3><a name="Var Keyword"></a> Var Keyword </h3>
+Use the var keyword whenever possible. It is especially important to do so inside functions, as the AS compiler optimizes access to local variables by using internal registers with direct access by index rather than putting them into hash tables and accessing by names. Using the var keyword can double the AS function’s execution speed.
+<p />
+Un-optimized Code:
+<div class="codesnippet">
+<pre>
+var i &#61; 1000;
+countIt &#61; function() {
+  num &#61; 0;
+  for(j&#61;0; j&#60;i; j++) {
+    j++;
+    num +&#61; Math.random();
+  }
+  displayNumber.text &#61; num;
+}
+</pre>
+</div>
+<p />
+Optimized Code:
+<p />
+<div class="codesnippet">
+<pre>
+var i &#61; 1000;
+countIt &#61; function() {
+  var num &#61; 0;
+  var ii &#61; i;
+  for(var j&#61;0; j&#60;ii; j++) {
+    j++;
+    num +&#61; Math.random();
+  }
+  displayNumber.text &#61; num;
+}
+</pre>
+</div>
+<p />
+<h3><a name="Precaching"></a> Precaching </h3>
+Precache frequently accessed read-only object members in local variables (with var keyword).
+<p />
+Un-optimized Code:
+<p />
+<div class="codesnippet">
+<pre>
+function foo(var obj:Object) {
+  for (var i &#61; 0; i &#60; obj.size; i++) {
+    obj.value&#91;i] &#61; obj.num1 &#42; obj.num2;
+  }
+}
+</pre>
+</div>
+<p />
+Optimized Code:
+<p />
+<div class="codesnippet">
+<pre>
+function foo(var obj:Object) {
+  var sz &#61; obj.size;
+  var n1 &#61; obj.num1;
+  var n2 &#61; obj.num1;
+  for (var i &#61; 0; i &#60; sz; i++) {
+    obj.value&#91;i] &#61; n1&#42;n2;
+  }
+}
+</pre>
+</div>
+<p />
+Precaching can be used effectively for other scenarios as well. Some further examples include:
+<p />
+<div class="codesnippet">
+<pre>
+var floor &#61; Math.floor
+var ceil &#61; Math.ceil
+num &#61; floor(x) ? ceil(y);
+var keyDown &#61; Key.isDown;
+var keyLeft &#61; Key.LEFT;
+if (keyDown(keyLeft)) {
+  // do something;
+}
+</pre>
+</div>
+<p />
+Precache Long Paths
+<p />
+Avoid repeating usage of long paths, such as:
+<p />
+<div class="codesnippet">
+<pre>
+mc.ch1.hc3.djf3.jd9.&#95;x &#61; 233;
+mc.ch1.hc3.djf3.&#95;x &#61; 455;
+</pre>
+</div>
+<p />
+Precache parts of the file path in local variables:
+<p />
+<div class="codesnippet">
+<pre>
+var djf3 &#61; mc.ch1.hc3.djf3;
+djf3.&#95;x &#61; 455;
+var jd9 &#61; djf3.jd9;
+jd9.&#95;x &#61; 223;
+</pre>
+</div>
+<p />
+<h3><a name="Complex Expressions"></a> Complex Expressions </h3>
+Avoid complex, C-style expressions, such as:
+<p />
+<div class="codesnippet">
+<pre>
+this&#91;&#95;global.mynames&#91;queue]]&#91;&#95;global.slots&#91;i]].gosplash.text &#61; &#95;global.MyStrings&#91;queue];
+</pre>
+</div>
+<p />
+Split this expression into smaller parts, storing intermediate data in local variables:
+<p />
+<div class="codesnippet">
+<pre>
+var &#95;splqueue &#61; this&#91;&#95;global.mynames&#91;queue]];
+var &#95;splstring &#61; &#95;global.MyStrings&#91;queue];
+var slot&#95;i &#61; &#95;global.slots&#91;i];
+&#95;splqueue&#91;slot&#95;i].gosplash.text &#61; &#95;splstring;
+</pre>
+</div>
+<p />
+This is especially important if there are multiple references on those split parts, for example in the following loop:
+<p />
+<div class="codesnippet">
+<pre>
+for(i&#61;0; i&#60;3; i++) {
+  this&#91;&#95;global.mynames&#91;queue]]&#91;&#95;global.slots&#91;i]].gosplash.text &#61; &#95;global.MyStrings&#91;queue];
+  this&#91;&#95;global.mynames&#91;queue]]&#91;&#95;global.slots&#91;i]].gosplash2.text &#61; &#95;global.MyStrings&#91;queue];
+   this&#91;&#95;global.mynames&#91;queue]]&#91;&#95;global.slots&#91;i]].gosplash2.textColor &#61; 0x000000;
+}
+</pre>
+</div>
+<p />
+An improved version of the previous loop would be as follows:
+<p />
+<div class="codesnippet">
+<pre>
+var &#95;splqueue &#61; this&#91;&#95;global.mynames&#91;queue]];
+var &#95;splstring &#61; &#95;global.MyStrings&#91;queue];
+for (var i&#61;0; i&#60;3; i++) {
+  var slot&#95;i &#61; &#95;global.slots&#91;i];
+  &#95;splqueue&#91;slot&#95;i].gosplash.text &#61; &#95;splstring;
+  &#95;splqueue&#91;slot&#95;i].gosplash2.text &#61; splstring;
+  &#95;splqueue&#91;slot&#95;i].gosplash2.textColor &#61; 0x000000;
+}
+</pre>
+</div>
+<p />
+The above code can be further optimized. Eliminate multiple references to the same element of array, if possible. Precache the resolved object in a local variable:
+<p />
+<div class="codesnippet">
+<pre>
+var &#95;splqueue &#61; this&#91;&#95;global.mynames&#91;queue]];
+var &#95;splstring &#61; &#95;global.MyStrings&#91;queue];
+for (var i&#61;0; i&#60;3; i++) {
+  var slot&#95;i &#61; &#95;global.slots&#91;i];
+  var elem &#61; &#95;splqueue&#91;slot&#95;i];
+  elem.gosplash.text &#61; &#95;splstring;
+  var gspl2 &#61; elem.gosplash2;
+  gspl2.text &#61; splstring;
+  gspl2.textColor &#61; 0x000000;
+}
+</pre>
+</div>
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ScaleformActionScriptBestPractices.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:22:58 GMT -->
+</html></body>

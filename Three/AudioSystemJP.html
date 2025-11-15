@@ -1,0 +1,523 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/AudioSystemJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:38 GMT -->
+<head>
+<title> UDK | AudioSystemJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">AudioSystemJP  </b></div>
+<div id="tooltext">
+<a href="AudioSystem.html" class="twikiLink">English Translation</a><br><a href="AudioSystemCH.html" class="twikiLink">中国翻译</a><br><a href="AudioSystemKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/AudioSystemJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="オーディオシステム"></a> オーディオシステム </h1>
+<p />
+<em>ドキュメントの概要: オーディオシステムのプラットフォーム非依存レイヤーに関する詳細な説明。</em>
+<p />
+<em>ドキュメントの変更ログ: <a href="https://udn.epicgames.com/Main/JohnScott" class="restricted" class="restricted" class="twikiLink">John Scott</a> により作成。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="AudioSystemJP.html#オーディオシステム"> オーディオシステム</a> <ul>
+<li> <a href="AudioSystemJP.html#概要"> 概要</a>
+</li> <li> <a href="AudioSystemJP.html#共通コンセプト"> 共通コンセプト</a> <ul>
+<li> <a href="AudioSystemJP.html#オーディオデバイス"> オーディオデバイス</a>
+</li> <li> <a href="AudioSystemJP.html#サウンドソース"> サウンドソース</a>
+</li> <li> <a href="AudioSystemJP.html#サウンド バッファ"> サウンド バッファ</a>
+</li> <li> <a href="AudioSystemJP.html#UAudioComponent"> UAudioComponent</a>
+</li> <li> <a href="AudioSystemJP.html#サウンドクラス"> サウンドクラス</a>
+</li> <li> <a href="AudioSystemJP.html#リバーブ効果"> リバーブ効果</a>
+</li> <li> <a href="AudioSystemJP.html#AmbientZone(アンビエントゾーン)エフェクト"> AmbientZone(アンビエントゾーン)エフェクト</a>
+</li> <li> <a href="AudioSystemJP.html#DistanceModel 減衰"> DistanceModel 減衰</a>
+</li> <li> <a href="AudioSystemJP.html#Low Pass Filter(ローパスフィルタ)"> Low Pass Filter(ローパスフィルタ)</a>
+</li> <li> <a href="AudioSystemJP.html#サウンドモード"> サウンドモード</a>
+</li> <li> <a href="AudioSystemJP.html#ボリュームダッキング"> ボリュームダッキング</a>
+</li></ul>
+</li> <li> <a href="AudioSystemJP.html#サウンドのインポート"> サウンドのインポート</a>
+</li> <li> <a href="AudioSystemJP.html#ビジュアル編集ツール"> ビジュアル編集ツール</a> <ul>
+<li> <a href="AudioSystemJP.html#サウンドキューエディタ"> サウンドキューエディタ</a>
+</li> <li> <a href="AudioSystemJP.html#サウンド品質プレビューア"> サウンド品質プレビューア</a>
+</li> <li> <a href="AudioSystemJP.html#マルチチャンネルのインポート/エクスポート"> マルチチャンネルのインポート/エクスポート</a>
+</li></ul>
+</li> <li> <a href="AudioSystemJP.html#方法"> 方法</a>
+</li> <li> <a href="AudioSystemJP.html#サウンドメモリ使用の最適化"> サウンドメモリ使用の最適化</a>
+</li> <li> <a href="AudioSystemJP.html#テストマップ"> テストマップ</a>
+</li> <li> <a href="AudioSystemJP.html#ストリーミング"> ストリーミング</a>
+</li> <li> <a href="AudioSystemJP.html#デバッグコマンド"> デバッグコマンド</a>
+</li> <li> <a href="AudioSystemJP.html#既知の問題点"> 既知の問題点</a>
+</li> <li> <a href="AudioSystemJP.html#プラットフォーム仕様"> プラットフォーム仕様</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<p />
+UnrealEngine3 のオーディオシステムは、ベース　オーディオクラスである UAudioDevice システムにより構成されています。ベース実装は、UAudioComponent オブジェクトの追加と削除のような基礎ロジックを処理します。UAudioComponent オブジェクトは、UAudioDevice で再生できるコンテンツです。UAudioComponent オブジェクトは USoundCue オブジェクトを含んでおり、この USoundCue オブジェクトは、実際のオーディオデータを含んだ USoundNode オブジェクトを参照します（例えば、USoundNodeWave は、wave オーディオデータを含むなど）。
+<p />
+UnrealEngine3 のオーディオコードで、プラットフォーム指定のものは、UAudioDevice オーディオベースクラスから派生したオーディオデバイスクラスに存在します。現在 3 つのプラットフォーム指定のオーディオデバイスがあります：UALAudioDevice (OpenAL PC)、 UXeAudioDevice (XBox360)、 そして UPS3AudioDevice (PlayStation3) です。
+<p />
+すべてのデバイスは、任意のソースローパスフィルター、bus reverbエフェクト、bus EQ フィルターおよびマルとチャンネル (4.0, 5.1, 6.1 および7.1) サウンド (ハードウェアが許可時)ごとにサポートします。すべてのプラットフォームができるだけ互いに近く音がでることを意図としています。
+<p />
+ベースオーディオクラスの実装については、Engine\Src\UnAudio.cpp と Engine\Inc\UnAudio.h の宣言文をご覧ください。
+ベースオーディオコンポーネントの実装については、Engine\Src\UnAudio.cpp と Engine\Inc\UnActorComponent.h の宣言文をご覧ください。
+<p />
+<p />
+<h2><a name="共通コンセプト"></a> 共通コンセプト </h2>
+<p />
+<h3><a name="オーディオデバイス"></a> オーディオデバイス </h3>
+<p />
+上に説明されているとおり、これはオーディオシステムのメインのインターフェースです。ロードされている資産のリストを維持し、リスナーに対応し、サウンドのソースを管理します。
+<p /> <ul>
+<li> Init  - ハードウェアを初期化し、チャンネルを割り当て、オーディオを聴くためのその他すべての動作を行います。
+</li> <li> TearDown  - ハードウェアをシャットダウンし、すべてのリソースをフリーにしてシステムへ返します。
+</li> <li> Update  - リスナーの位置、方向、および速度を更新します。
+</li> <li> Exec  - コンソールにタイプされたデバッグのコマンドを処理します。
+</li></ul>
+<p />
+UAudioDevice::Update サウンド システムのための主な "Tick" 関数です。すべてのアクティブな AudioComponents （エンジンが望むサウンドを再生） を反復し、優先順位に応じてソートして、サウンド ソースを更新または新しいサウンドをスタートさせます。また、すべてのハウスキーピングおよびポージングを処理します。
+<p />
+<h3><a name="サウンドソース"></a> サウンドソース </h3>
+<p />
+サウンドソース（または Voices）とは、最終的な出力にミックスされるサウンドのシングルソースを意味します。これらの数には限りがあり、ハードウェアまたは設定ファイルによって決定します。各ソースには位置、ボリューム、ピッチ、および速度があります。MaxChannels のデフォルトの数値はすべてのプラットフォームにおいて 32 で、内部的には 16 から 64 の間でクランプされています。MaxChannels を 0 に設定しておくと、すべてのオーディオシステムのコードを回避することができます。
+<p /> <ul>
+<li> Init （初期化） - 再生するサウンドアセットを検出し、ハードウェアへパスします。
+</li> <li> Update （更新） - ボリューム、ピッチ、位置、および速度を、エンジンからハードウェアへ更新します。
+</li> <li> Play （再生）- サウンドソースの再生を開始します。
+</li> <li> Stop （停止） - サウンドソースの再生を停止します。
+</li> <li> Pause （一時停止） - ソースのサウンド プレイバックを一時停止します。
+</li> <li> IsFinished （終了） - サウンドの終了の処理、必要に応じた通知、キューしているバッファのダブル バッファを行います。
+</li></ul>
+<p />
+<p />
+<h3><a name="サウンド バッファ"></a> サウンド バッファ </h3>
+<p />
+サウンド バッファとは、wave データのコンテナを意味します。コンソール コマンドの「ListSounds」 （サウンドのリスト） により、現在ロードされているすべてのウェーブとそのフォーマットが表示されます。これらの数には、メモリが許す限り上限はありません。これらには通常 2 つの基本的なタイプがあります：サウンドシステムが完全にすべてのデータを含み、エンジンには最低限のコントロールしかない場合のレジデント タイプ、そして、サウンドがループした場合またはリアルタイムで解凍された（例えば、PC での ogg vorbis 解凍）場合にエンジンに知らせることができるようキューしているタイプです。
+<p /> <ul>
+<li> Init - サウンドリソースをロケートし、必要に応じてロードします。
+</li></ul>
+<p />
+<h3><a name="UAudioComponent"></a> UAudioComponent </h3>
+<p />
+エンジンは、AudioComponent によりオーディオデバイスと通信します。エンジンがサウンドを再生する場合、 <em>UAudioDevice::CreateComponent</em> を呼び出し、返し構造のプロパティを設定します。するとこの構造は、後に管理に利用されるようアクタのコンポーネントのリストに付記されます。ロケーションが <em>UAudioDevice::CreateComponent</em>  関数にパスされると、サウンドが短い場合は単純な距離のカル チェックが行われ、コンポーネントが作成されない場合があります。常に <em>UAudioDevice::CreateComponent</em>  からの NULL リターンをチェックすることが重要です。
+<p />
+UActorComponent で一番重要なフィールドは<br>
+<br>
+class USoundCue*   SoundCue;      // コントロールと共に再生されるサウンド   <br>
+BITFIELD      bUseOwnerLocation:1;   // これが関連付けられているアクタのロケーションで空間化<br>
+BITFIELD      bAllowSpatialization:1;   // ３D の空間においてこのサウンドを空間化<br>
+FVector         Location;      // 関連付けられて<b>いない</b>場合に、空間化のために使用する位置<br>
+FVector         ComponentLocation;   //関連付けられている場合に、空間化のために使用する位置<br>
+<p />
+<h3><a name="サウンドクラス"></a> サウンドクラス </h3>
+<p />
+サウンドキューはそれぞれサウンドクラスに割り当てられています。サウンドクラスは、[Engine.AudioDevice] の下の Config\DefaultEngine.ini ファイルで定義されています。
+これらのサウンドクラスは、 <em>FSoundGroupProperties</em> クラスを投入するサウンドキューの、クラスのプロパティを指定します。これらは構造として階層的で、ペアレント プロパティの一部はすべての子ノードに伝達されます。ルートのサウンドクラスは「Master」と呼ばれ、必要です。SoundModeVoice は、ゼロ（EQ 効果なし）または１（EQ 効果あり）です。
+<p />
+<p />
+これらのヒエラルキーはセットアップされ、プロパティはサウンドクラスエディタで変更されます。これはサウンドキューエディタと非常に良く似た方法で動作します。
+<p />
+このグループはボリュームおよび/またはピッチのダッキングを適用するのに使われます。どのグループがどの効果を適用するかを定義するために、DefaultEngine.ini ファイルのサウンドクラス プロパティセクションを使います。UTGame はこれをイラスト化するためのテストマップ"DM-SoundMode"をもっています。これがどのように作動するかを見るため、コマンドライン上にSetSoundMode 'bandpass' および 'highpass'を呼び出します。１つ注意しておきたいことは、サウンドグループプロパティは階層的には動作しません。
+<p />
+<h3><a name="リバーブ効果"></a> リバーブ効果 </h3>
+<p />
+必要に応じて使われるターゲットプラットフォームのパラメータを使用して、プラットフォーム非依存法に実装されます。パラメータは  <em>FAudioEffectsManager::ReverbPresets</em> テーブル内でコードによって定義されますが、将来的にはエディタにも公開されます。UnPlayer.cpp では、コードはプレーヤがいる反響ボリュームのための反響設定を取得し、これらを補間のために <em>FAudioEffectsManager::SetReverbSettings</em> へパス、さらにプラットフォーム固有のレイヤーへパスします。パラメータは補間されるため、リバーブが断続することはありません。リバーブボリュームを作成するには、ビルダブラシを右クリックし、[Add Volume] （ボリュームの追加） --> [Reverb Volume] （リバーブボリューム） の順にクリックします。 <em>FAudioEffectsManager</em> は基本クラスで、プラットフォーム固有のインターフェースはここから派生します。
+<p />
+<h3><a name="AmbientZone(アンビエントゾーン)エフェクト"></a> AmbientZone(アンビエントゾーン)エフェクト </h3>
+<p />
+Reverb ボリュームには'AmbientZone' 設定が導入されています。これは以前アンビエントサウンドのオクルージョンをエミュレートしていました。ボリュームおよび/またはローパスフィルターエフェクトは内部の時に外部のサウンドが、外部の時に内部のサウンドが適用されます。例えば、レベル全体を覆う非常に大きなアウトドア アンビエント サウンドウィンドエフェクトを配置することができますが、プレイヤーが中に移動するとサウンドはフェードダウンし、プレイヤーがフェードアップすると同じ音量のサウンドが再生されます。
+<p />
+付加ドキュメンテーションをご覧になりたい場合は、 AmbientZones Overview<sup>?</sup> ページをご覧ください。
+<p />
+<h3><a name="DistanceModel 減衰"></a> DistanceModel 減衰 </h3>
+<p />
+減衰とはプレイヤーが遠ざかるとサウンドもフェードアウトするように聞こえる機能です。フェーディング率はDistanceModel プロパティにより定義されます。
+<p />
+更なる情報については  <a href="DistanceModelAttenutionJP.html" class="twikiLink">DistanceModel Attenution</a>  ページをご覧ください。
+<p />
+<p />
+<h3><a name="Low Pass Filter(ローパスフィルタ)"></a> Low Pass Filter(ローパスフィルタ) </h3>
+<p />
+これは現在ノードに減衰サウンドノードより実装されています。有効にするフラグとminおよびmax distanceがあります。これは実際にハイシェルフ・フィルターとして実装され、最短距離で何もないものから、最長距離での高周波でないコンポーネントまでを実装します。
+<p />
+<h3><a name="サウンドモード"></a> サウンドモード </h3>
+<p />
+サウンドモードは、サウンドクラスのセットに変更を適用します。サウンドグループは、AmbientやWeaponsなどのサウンドクラスの廃止されている名前です(パッケージグループでの衝突のため)。
+<p />
+希望のサウンド変更でのサウンドクラスエフェクトの配列をセットアップします。例えば、シネマティックダイアログの場合、ダイアログのボリュームを上げ、エフェクトのボリュームを下げます(これらは階層的に適用されません)。最初の遅延後に、モードのフェードインが(フェードインタイム上にて)開始するようにサウンドモードを設定することは、持続期間を継続させ、デフォルトにフェードバック(フェードアウトタイム上にて)します。持続期間が&lt; 0 とは、他のモードが設定されるまで、そのモードが継続されるということです。デフォルトsoundmode エントリを持つ、soundmode と呼ばれるパッケージがあります。これは、パッケージに新しいサウンドモードを追加します。新しいサウンドモードがgameplay スクリプトによりトリガされます。
+<p />
+UTGameにあるDM-SoundMode マップがすべてを説明しています。 Run it and type 'setsoundmode quick', 'setsoundmode slow' or 'setsoundmode loud' at the command line.PIEにて実行、独自のオンザフライを編集または作成することができます。
+<p />
+下記のボリュームダッキング例は、使用例です。
+<p />
+<h3><a name="ボリュームダッキング"></a> ボリュームダッキング </h3>
+<p />
+ボリュームダッキングは通常、ダイアログなど(ムービーに限定されず)試聴が必要なものを除き他のサウンドグループすべてのボリュームを減少するために使われます。その制御は次の通りです: <ul>
+<li> ダッキングの原因となっている サウンドグループの特定 (ダイアログ)。
+</li> <li> グループからサウンドがトリガされると、他のグループのボリュームがある時間 X の希望した量(フェード)だけ減少 (<code>FadeStartTime</code> = 0.3 秒)。
+</li> <li> 他のグループのボリューム減少分の合計 (<code>FadeAmount</code> = -0.4).
+</li> <li> ダッキンググループからのサウンドが中止時に、他のグループのボリュームがある時間 X の通常の量(フェード)に戻る (<code>FadeStopTime</code> = 0.2 秒).
+</li> <li> ダッキングプロセス（例：音楽）へのサウンドグループ、または影響がない <em>Exceptions</em>  と呼ばれるサウンドグループの例外。
+</li></ul>
+<p />
+ボリュームに上記のシステムを制限する代わりに、ピッチ、EQおよび他のフィルタを追加することでさらにコントロールが可能です(Ｍｏｄｅシステム)。
+<p />
+例えば、ムービーのラウドセクション（例：戦闘中など）で、通常のボリュームで一人の人がもう一人の人に話しかけているシーンがある場合は、他のサウンドすべてを <em>ダックした</em> ためその人達の会話を聞くことができます。すべての戦闘/アンビエント/エフェクトサウンドは、そのダイアログが再生時により静かに再生されます。
+<p />
+ゲームの場合は、アンビエントサウンドグループ（およびその他の）でボリュームを <em>ダック</em> します。
+<p />
+<p />
+<h2><a name="サウンドのインポート"></a> サウンドのインポート </h2>
+<p />
+現在エンジンでは、非圧縮のリトルエンディアン 16 ビット wave のファイルの、すべてのサンプルレート（サンプルレート 44100 Hz または 22050 Hz を推奨）でのインポートをサポートしています。
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> 仕様 </td><td bgcolor="#eaeaea"> &nbsp; </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> フォーマット </td><td bgcolor="#ffffff"> .Wav </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> ビットレート </td><td bgcolor="#eaeaea"> 16 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> スピーカーチャンネル </td><td bgcolor="#ffffff"> モノ、ステレオ 2.1, 4.1, 5.1 6.1, 7.1 </td></tr>
+</table>
+<p />
+標準のサウンドファクトリでインポートを行うと、シンプルなサウンドノード ウェーブを生み出し、これはプレイバックの際にサウンドキューにより参照されます。これらのサウンドは、モノラルあるいはステレオのいずれかです。サウンド サラウンド ファクトリ（および特別な命名法）と共にインポートすると、マルチチャンネル（5.1 など）サウンドが潜在的に可能となります。すべてのプラットフォームにおいて ８ チャンネルまでのサウンドが圧縮可能ですが、これらを効率的にプレイバックできるプラットフォームは限られます。パッケージの保存プロセスにおいて、プラットフォームのネイティブのフォーマットに変換するすべての作業がなされます。スピーカーの厳密なマッピングはないため、チャンネルの数により、どのチャンネルがどのスピーカーで再生されるかが決まります（下の表を参照）。
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> &nbsp; </td><td bgcolor="#eaeaea"> 拡張子 </td><td bgcolor="#eaeaea"> 4.0 </td><td bgcolor="#eaeaea"> 5.1 </td><td bgcolor="#eaeaea"> 6.1 </td><td bgcolor="#eaeaea"> 7.1 </td><td bgcolor="#eaeaea"> &nbsp; </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> FrontLeft （前方左） </td><td bgcolor="#ffffff"> _fl </td><td bgcolor="#ffffff"> * </td><td bgcolor="#ffffff"> * </td><td bgcolor="#ffffff"> * </td><td bgcolor="#ffffff"> * </td><td bgcolor="#ffffff"> &nbsp; </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> FrontRight （前方右） </td><td bgcolor="#eaeaea"> _fr </td><td bgcolor="#eaeaea"> * </td><td bgcolor="#eaeaea"> * </td><td bgcolor="#eaeaea"> * </td><td bgcolor="#eaeaea"> * </td><td bgcolor="#eaeaea"> &nbsp; </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> FrontCenter （前方中央） </td><td bgcolor="#ffffff"> _fc </td><td bgcolor="#ffffff"> &nbsp; </td><td bgcolor="#ffffff"> * </td><td bgcolor="#ffffff"> * </td><td bgcolor="#ffffff"> * </td><td bgcolor="#ffffff"> &nbsp; </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> LowFrequency （低周波） </td><td bgcolor="#eaeaea"> _lf </td><td bgcolor="#eaeaea"> &nbsp; </td><td bgcolor="#eaeaea"> * </td><td bgcolor="#eaeaea"> * </td><td bgcolor="#eaeaea"> * </td><td bgcolor="#eaeaea"> &nbsp; </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> SideLeft （サイド左） </td><td bgcolor="#ffffff"> _sl </td><td bgcolor="#ffffff"> * </td><td bgcolor="#ffffff"> * </td><td bgcolor="#ffffff"> * </td><td bgcolor="#ffffff"> * </td><td bgcolor="#ffffff"> &nbsp; </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> SideRight （サイド右） </td><td bgcolor="#eaeaea"> _sr </td><td bgcolor="#eaeaea"> * </td><td bgcolor="#eaeaea"> * </td><td bgcolor="#eaeaea"> * </td><td bgcolor="#eaeaea"> * </td><td bgcolor="#eaeaea"> &nbsp; </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> BackLeft （後方左） </td><td bgcolor="#ffffff"> _bl </td><td bgcolor="#ffffff"> &nbsp; </td><td bgcolor="#ffffff"> &nbsp; </td><td bgcolor="#ffffff"> * </td><td bgcolor="#ffffff"> * </td><td bgcolor="#ffffff"> BackRight （後方右） チャンネルがない場合は、これが BackCenter （後方中央） チャンネルに該当 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> BackRight （後方右） </td><td bgcolor="#eaeaea"> _br </td><td bgcolor="#eaeaea"> &nbsp; </td><td bgcolor="#eaeaea"> &nbsp; </td><td bgcolor="#eaeaea"> &nbsp; </td><td bgcolor="#eaeaea"> * </td><td bgcolor="#eaeaea"> &nbsp; </td></tr>
+</table>
+<p />
+圧縮の設定を微調整することにより、すべてのプラットフォームにおいて類似した品質を維持することができます。数多くのサウンドをテストした結果、弊社のミュージシャンは XMA 品質における 40 が、ogg vorbis 品質における 0.15 と同等であると判断しました。
+<p />
+<p />
+<p />
+<h2><a name="ビジュアル編集ツール"></a> ビジュアル編集ツール </h2>
+<p />
+<h3><a name="サウンドキューエディタ"></a> サウンドキューエディタ </h3>
+<p />
+<em>sound waves</em> 形式としてオーディオファイルをインポートすることができ、可視の  <a href="SoundCueEditorUserGuideJP.html" class="twikiLink">サウンドキューエディタ</a>に <em>オーディオノード</em> 　を呼び出したモディファイヤを適用します。
+<p />
+<h3><a name="サウンド品質プレビューア"></a> サウンド品質プレビューア </h3>
+<p />
+<a href="https://udn.epicgames.com/Three/GenericBrowserReferenceJP" class="restricted" class="restricted" class="twikiLink">汎用ブラウザ</a> にあるSoundNodeWave資産を右クリックし <em>Sound Quality Previewer</em> を選択すると、エンジンは圧縮設定 5, 10, 15, 20, 15, 30, 35, 40, 50, 60 でサウンドを圧縮します。任意の品質設定をクリックすることができ、１６ビットＰＣＭに拡張しなおされた後にサウンドが聞こえます。これはメモリ設定に対するベストなfidelity (忠実度）を選択するのに使われます。 <em>OK</em> をクリックすると、現在選択されている設定がwave に表示されます。
+<p />
+<h3><a name="マルチチャンネルのインポート/エクスポート"></a> マルチチャンネルのインポート/エクスポート </h3>
+<p />
+<a href="https://udn.epicgames.com/Three/GenericBrowserReferenceJP" class="restricted" class="restricted" class="twikiLink">汎用ブラウザ</a> 内で
+<p />
+インポートするには:
+<p /> <ul>
+<li> メニューから <em>Import</em> (インポート)を選択します。
+</li> <li> "Surround_fl.wav"、 "Surround_fr.wav"、 "Surround_sl.wav"、 "Surround_sr.wav"ファイルを選択します。
+</li> <li> 保存したいパッケージを選択し <em>OK to all</em> をクリックします。
+</li></ul>
+<p />
+これにより"Surround"と呼ばれる４つのチャンネル資産が作成されます
+<p />
+エクスポートするには： <ul>
+<li> メニューから <em>Export</em> (エクスポート)を選択します。
+</li> <li> ファイルを保存したい場所を選びます。
+</li></ul>
+<p />
+これによりスピーカー拡張子付きのオリジナルモノファイルが保存されます。
+<p />
+<p />
+<h2><a name="方法"></a> 方法 </h2>
+<p />
+最もラウドな潜在ボリュームにつきましては、バンド幅全体に作業が必要です。例えば、ボリューム 1.0 でのステレオファイルは、モノファイルの２倍の音量になります。例としては、４つモノファイルがあったとすると音量は４倍になります。しかし、全体の閾値に達してしまいクリップやゆがみのアウトプットが開始します。
+<p />
+既存のサウンドキューで、2.0までのボリューム設定は、オーディオファイルの認知音量を増加しますが、2.0以上のものは増加しません。単独キューは決してゆがみませんが、複数のキューがゲーム内で再生時にオーバーロードの原因となるため最大音量にしないようにしてください。
+<p />
+一貫したボリューム案を練るか、その他の一般的なガイドラインを考案してください。:
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Dialog </td><td bgcolor="#eaeaea"> ~1.4 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> Music </td><td bgcolor="#ffffff"> ~0.75 </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Weapons </td><td bgcolor="#eaeaea"> ~1.1 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> Ambience </td><td bgcolor="#ffffff"> ~0.5 </td></tr>
+</table>
+<p />
+音楽の例外を伴ったすべてのオーディオのプラットフォームにわたり一貫性を管理するため、全域にわたってモノラルアセットを使うよう考慮してください。
+<p />
+<p />
+<h2><a name="サウンドメモリ使用の最適化"></a> サウンドメモリ使用の最適化 </h2>
+<p />
+コンテンツをオーサリング時、audio fidelityを管理する一番低いサンプルレートを使うことが最適です。すべてのサンプルレートはすべてのプラットフォーム用にサポートされています。例えば、さらに高い必要がある(例：40.0キロヘルツ)高域周波数（ガンショットなど）で再生されたエフェクトに対して、通常22.1キロヘルツでもまだ聞こえがよいダイアログなどです。同様のヒューリスティックは品質設定に適応されます。
+<p />
+以前、distance crossfade ノードはdistance でのサウンド用のローパスフィルタを適用するために使われていました(ドライサウンドは同じサウンドのローパスフィルタされたバージョンでミックスされました)。しかし、すべてのプラットフォームはローパスフィルタでの減衰をサポートしており、サウンドのフィルタされたバージョンが必要ないということです。
+<p />
+<p />
+<h2><a name="テストマップ"></a> テストマップ </h2>
+<p />
+UTGame にはオーディオシステム機能性を確認するための複数のテストマップがあります。-
+<p /> <ul>
+<li> DM-SoundLoop - 無限ループや通知サウンド付きのループをテストする。
+</li> <li> DM-SoundReverb - ローパスフィルタでのreverb および 減衰をテストする。
+</li> <li> DM-SoundMultichannel - 5.1 プレイバックをテストする。
+</li> <li> DM-SoundMode - サウンドモードをテストする。利用可能なテストモードはloud, quiet, quick, slow, lowpass, bandpass, highpassです。
+</li> <li> DM-SoundInterior - アンビエントゾーンの機能性をテストする。
+</li></ul>
+<p />
+<p />
+<h2><a name="ストリーミング"></a> ストリーミング </h2>
+<p />
+Unreal Engine オーディオシステムは、任意のオーディオコンテンツの同時ストリーミングをサポートしておらず、オーディオを含むパッケージのストリーミングのみをサポートしています。可能な限り多くのバンド幅をテクスチャストリーミングに投入したかったのと、Unreal Tournament や <a href="https://udn.epicgames.com/Three/GearsOfWar2JP" class="restricted" class="restricted" class="twikiLink">Gears of War</a> などのような敏速なアクションゲームの遅れは受け入れ難く、この時点ではFaceFX アニメーションの同期は追加の日課となるものだったため、この方法は優遇されていました。代替策として Gears of war 用に特別な <a href="DialogSystemJP.html" class="twikiLink">ダイアログシステム</a> が作成されました。
+<p />
+<h2><a name="デバッグコマンド"></a> デバッグコマンド </h2>
+<p /> <ul>
+<li> <em>ResetSoundState</em>:任意の、およびすべてのでバックコマンドをオフにする。
+</li> <li> <em>TestLowPassFilter</em>:すべてのソースにローパスフィルタを適用する。
+</li> <li> <em>IsolateDryAudio</em>:リバーブされていないサウンドのみを残すreverb サウンドをフィルタアウトする。
+</li> <li> <em>IsolateReverb</em>:reverb サウンドのみを残すドライソースをフィルタアウトする。
+</li> <li> <em>SetSoundMode x</em>:Sound group プロパティからボリュームおよびピッチ変更を適用し、UnAudioEffects.cppにて定義された表からEQ フィルタを適用する。
+</li> <li> <em>ListSounds</em>, <em>ListSoundDurations</em>, <em>ListAudioComponents</em>:現在ロードされたサウンドの詳細のリストをする。
+</li> <li> <em>ListWaves</em>:現在ロードされたサウンドの詳細のリストする。
+</li></ul>
+<p />
+<h2><a name="既知の問題点"></a> 既知の問題点 </h2>
+<p /> <ul>
+<li> TTP 60174:gameplay ウィンドウが移動されるとオーディオーが再び再生する。
+</li> <li> TTP 64605:-nosound はPIEにプロパゲートしない。
+</li> <li> TTP 80463:AmbientSoundSimple アクタは常にエディタにてリアルタイムプレビューでリスタートしない。
+</li> <li> TTP 92710:Delay ノードを使っているサウンドキューは、Generic ブラウザまたはサウンドキューエディタにて正しくプレビューしない。
+</li> <li> TTP 120345:AmbientSoundSimpleToggleable ボリュームフェードが破損している。
+</li> <li> TTP 122495:非Looping Node が接続時にミキサーの後に置換するとLooping Node が作動しない。
+</li> <li> TTP 122683:Distance Crossfade ノードが不正にSoundNodeWave プレイバックを再トリガする。
+</li></ul>
+<p />
+<p />
+<p />
+<h2><a name="プラットフォーム仕様"></a> プラットフォーム仕様 </h2>
+<p /> <ul>
+<li> <a href="https://udn.epicgames.com/Three/AudioSystemXenonSpecificsJP" class="restricted" class="restricted" class="twikiLink">オーディオシステム Xenon 仕様</a>
+</li></ul>
+<p /> <ul>
+<li> <a href="https://udn.epicgames.com/Three/AudioSystemPS3SpecificsJP" class="restricted" class="restricted" class="twikiLink">オーディオシステム PS3 仕様</a>
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/AudioSystemJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:29:38 GMT -->
+</html></body>

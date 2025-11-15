@@ -1,0 +1,384 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DLLBindJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:31:17 GMT -->
+<head>
+<title> UDK | DLLBindJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">DLLBindJP  </b></div>
+<div id="tooltext">
+<a href="DLLBind.html" class="twikiLink">English Translation</a><br><a href="DLLBindCH.html" class="twikiLink">中国翻译</a><br><a href="DLLBindKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/DLLBindJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="UnrealScript からの DLLs 呼び出し (DLLBind)"></a><a name="_UnrealScript からの DLLs 呼び出し (DLLBind)"></a> UnrealScript からの DLLs 呼び出し (DLLBind) </h1>
+<p />
+<em>ドキュメントの概要: UnrealScript から DLLs を呼び出す方法の説明。</em>
+<p />
+<em>ドキュメントの変更ログ: <a href="https://udn.epicgames.com/Main/JackPorter" class="restricted" class="restricted" class="twikiLink">Jack Porter</a> により作成。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="DLLBindJP.html#UnrealScript からの DLLs 呼び出し (DLLBind)"> UnrealScript からの DLLs 呼び出し (DLLBind)</a> <ul>
+<li> <a href="DLLBindJP.html#概要"> 概要</a> <ul>
+<li> <a href="DLLBindJP.html#UnrealScript 側"> UnrealScript 側</a>
+</li> <li> <a href="DLLBindJP.html#DLL 側"> DLL 側</a>
+</li> <li> <a href="DLLBindJP.html#アンロード"> アンロード</a>
+</li> <li> <a href="DLLBindJP.html#サポートされているパラメータ タイプ"> サポートされているパラメータ タイプ</a>
+</li> <li> <a href="DLLBindJP.html#制限事項"> 制限事項</a>
+</li> <li> <a href="DLLBindJP.html#警告"> 警告</a>
+</li></ul>
+</li> <li> <a href="DLLBindJP.html#サンプル"> サンプル</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<p />
+2009 年 12 月バージョンから、UnrealScript には Windows DLL に実装された関数を呼び出す機能が追加されています。この機能は、<a href="DevelopmentKitHomeJP.html" class="twikiLink">UDK</a> 開発者や、サードパーティ Unreal Engine 3 製品の拡張開発に取り組む MOD 制作者用に追加されたものです。完全ライセンスを持つ Unreal Engine 3 開発者は、<a href="https://udn.epicgames.com/Three/CreatingNativeClassesJP" class="restricted" class="restricted" class="twikiLink">Native クラスを作成</a> して native コードを 直接呼び出せるので、この機能を使用する必要はありません。ライセンシーのソースコードではデフォルトで無効にされています。有効にするには、UE3BuildWin32.cs の libffi セクションを有効にします。
+<p />
+<h3><a name="UnrealScript 側"></a><a name="_UnrealScript 側"></a> UnrealScript 側 </h3>
+<p />
+1 つの UnrealScript クラスは、1 つの dll だけにバインドできます。 <code><b>DLLBind</b></code> ディレクティブを使って DLL のバインドを指示し、バインドする DLL の名前をカッコ内に指定します。パスまたは .Dll 拡張子を含めないでください。DLL はBinaries\Win32\UserCode フォルダからのみロードできます。
+<p />
+インポートした関数は、UnrealScript 関数のように <code><b>dllimport</b></code> 関数ディレクティブを使って宣言します。
+<p />
+DLL インポート関数は final 宣言にする必要があります。DLLBind クラスのサブクラスは作成できません。
+<p />
+以下に例を示します。
+<pre>
+class TestDLLPlayerController extends PlayerController
+   DLLBind(TestDLL);
+
+dllimport final function CallDLL1(out string s);
+dllimport final function vector CallDLL2(float x, float y, float z);
+dllimport final function bool CallDLL3(string s, int i&#91;2], out float f, out vector v);
+</pre>
+<p />
+TestDLLPlayerController クラスがロードされると、Binaries\Win32\UserCode\TestDLL.dll にバインドされます。DLL が見つからない場合はログに警告が残ります。DLL で 3 つのエクスポート (CallDLL1、CallDLL2 および CallDLL3) のエントリポイントを探します。バウンドされたこれらの関数は、他の UnrealScript (Unreal スクリプト) 関数と同様に呼び出されます。バインドに失敗すると、これらの関数のいずれかを呼び出しても何も起こりません。
+<p />
+<h3><a name="DLL 側"></a> DLL 側 </h3>
+<p />
+これらの関数は、C++ DLL で次のように実装できます。
+<p />
+<pre>
+extern &#34;C&#34;
+{
+   struct FVector
+   {
+      float x,y,z;
+   };
+
+   &#95;&#95;declspec(dllexport) void CallDLL1(wchar&#95;t&#42; s)
+   {
+      MessageBox(0, s, L&#34;Inside the DLL: CallDLL1&#34;, MB&#95;OK);
+      // reverse the out parameter string (out パラメータ文字列を逆順にする)
+      int len &#61; wcslen(s);
+      for(int i&#61;0; i&#60;len&#62;&#62;1;i++)
+      {
+         wchar&#95;t temp &#61; s&#91;i];
+         s&#91;i] &#61; s&#91;len-i-1];
+         s&#91;len-i-1] &#61; temp;
+      }
+   }
+
+   &#95;&#95;declspec(dllexport) FVector&#42; CallDLL2(float x, float y, float z)
+   {
+      static FVector result;   // declared static so that the struct&#39;s memory is still valid after the function returns. (static 宣言し、関数が戻った後も struct のメモリが有効であるようにする)
+      result.x &#61; x;
+      result.y &#61; y;
+      result.z &#61; z;
+      return &#38;result;
+   }
+
+   &#95;&#95;declspec(dllexport) bool CallDLL3(wchar&#95;t&#42; s, int i&#91;2], float&#42; f, FVector&#42; V)
+   {
+      wchar&#95;t temp&#91;1024];
+      swprintf&#95;s(temp, 1024, L&#34;string: &#37;s, i: {&#37;d,&#37;d}, float: &#37;f, V was (&#37;f,&#37;f,&#37;f)&#34;, s, i&#91;0], i&#91;1], &#42;f, V-&#62;x, V-&#62;y, V-&#62;z);
+      V-&#62;x &#61; (float)i&#91;0];
+      V-&#62;y &#61; (float)i&#91;1];
+      V-&#62;z &#61; (&#42;f);
+      return (MessageBox(0, temp, L&#34;Inside the DLL: CallDLL3&#34;, MB&#95;OKCANCEL) &#61;&#61; IDOK);
+   }
+}
+</pre>
+<p />
+<h3><a name="アンロード"></a> アンロード </h3>
+<p />
+DLLBind クラスのクラスオブジェクトが破壊されると、DLL は FreeLibrary API を使ってアンロードされます。これは、最後のクラスオブジェクト参照が削除され、ガーベジコレクションが発生すると発生します。クリーンアップは、DLL の <a href="http://msdn.microsoft.com/en-us/library/ms682583(VS.85).aspx" target="_top">DllMain()</a> 関数で、引数fdwReason がDLL_PROCESS_DETACH のときに応答することで実行できます。
+<p />
+<h3><a name="サポートされているパラメータ タイプ"></a> サポートされているパラメータ タイプ </h3>
+<p />
+以下のパラメータタイプがサポートされています。
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> UnrealScript タイプ </td><td bgcolor="#eaeaea"> C タイプ </td><td bgcolor="#eaeaea"> &nbsp; </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> int 値 </td><td bgcolor="#ffffff"> int 値 (32 ビット) </td><td bgcolor="#ffffff"> 値渡し </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> int 値[..] </td><td bgcolor="#eaeaea"> int 値 (32 ビット) </td><td bgcolor="#eaeaea"> 参照渡し </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> out int 値 </td><td bgcolor="#ffffff"> int* 値 (32 ビット) </td><td bgcolor="#ffffff"> 参照渡し </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> float 値 </td><td bgcolor="#eaeaea"> float 値 </td><td bgcolor="#eaeaea"> 値渡し </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> float 値[..] </td><td bgcolor="#ffffff"> float* 値 </td><td bgcolor="#ffffff"> 参照渡し </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> out float 値 </td><td bgcolor="#eaeaea"> float* 値 </td><td bgcolor="#eaeaea"> 参照渡し </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> byte 値 </td><td bgcolor="#ffffff"> unsigned char 値 </td><td bgcolor="#ffffff"> 値渡し </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> byte 値[..] </td><td bgcolor="#eaeaea"> unsigned char* 値 </td><td bgcolor="#eaeaea"> 参照渡し </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> out byte 値 </td><td bgcolor="#ffffff"> unsigned char* 値 </td><td bgcolor="#ffffff"> 参照渡し </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> string 値 </td><td bgcolor="#eaeaea"> wchar_t* 値 </td><td bgcolor="#eaeaea"> 参照渡し </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> out string 値 </td><td bgcolor="#ffffff"> wchar_t* 値 </td><td bgcolor="#ffffff"> 参照渡し。 <strong>下記警告を参照のこと</strong> </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> struct foo </td><td bgcolor="#eaeaea"> struct foo* 値 </td><td bgcolor="#eaeaea"> 参照渡し。DLL は UnrealScript の struct に一致する struct を宣言する必要がある。 </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> out struct foo </td><td bgcolor="#ffffff"> struct foo* 値 </td><td bgcolor="#ffffff"> 参照渡し </td></tr>
+</table>
+<p />
+以下の戻り値タイプがサポートされています。
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> UnrealScript タイプ </td><td bgcolor="#eaeaea"> C タイプ </td><td bgcolor="#eaeaea"> &nbsp; </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> int </td><td bgcolor="#ffffff"> int (32 ビット) </td><td bgcolor="#ffffff"> 値を直接返す </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> float </td><td bgcolor="#eaeaea"> float 値 </td><td bgcolor="#eaeaea"> 値を直接返す </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> byte </td><td bgcolor="#ffffff"> unsigned char </td><td bgcolor="#ffffff"> 値を直接返す </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> bool </td><td bgcolor="#eaeaea"> unsigned int (32 ビット) </td><td bgcolor="#eaeaea"> 値を直接返す。ゼロ以外の場合 true </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> string </td><td bgcolor="#ffffff"> wchar_t* </td><td bgcolor="#ffffff"> ポインタ値は UnrealScript string に strcpy される。 <strong>下記の警告を参照のこと</strong> </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> struct foo </td><td bgcolor="#eaeaea"> struct foo* </td><td bgcolor="#eaeaea"> struct データは UnrealScript struct に memcpy される。 <strong>下記の警告を参照のこと</strong> </td></tr>
+</table>
+<p />
+<h3><a name="制限事項"></a> 制限事項 </h3>
+<p /> <ul>
+<li> ユニコード (UTF-16) 文字列のみサポートされています。ユニコード指定の DLL コンパイルは有効です。
+</li> <li> 利用可能なのは 32 ビットバージョンの UDK だけなので、32 ビットの DLLs だけサポートされています。64 ビットバージョンの UDK が利用可能になる際には、64 ビット DLLs もサポートされます。
+</li> <li> DLLs は Binaries\Win32\UserCode だけからロードできます。
+</li> <li> Win32 環境では、stdcall のみサポートされています (呼び出し規則については、<a href="http://en.wikipedia.org/wiki/X86_calling_conventions" target="_top">こちらのリンク</a> を参照してください)。
+</li></ul>
+<p />
+<h3><a name="警告"></a> 警告 </h3>
+<p /> <ul>
+<li> string out パラメータを変更する場合、新しい文字列は渡される文字列の前の値と同じ長さかそれより短くなければなりません。これには、UnrealScript の string を DLL が格納できる最大値より長い値に初期化します。このようにしなければ、メモリが上書きされ、クラッシュの原因となる可能性があります。
+</li> <li> 構造体または文字列を返すときに DLL はポインタを返し、Unreal は値を UnrealScript にコピーします。ただし、参照データを格納するためのメモリを確保するのは DLL の役目です。例えば、CallDLL2 のように静的変数へのポインタを返すことができます。スタック上で宣言された変数へのポインタを返すと、DLL 関数が戻ったときにスタックが破壊されるため、データ破損またはクラッシュを引き起こします。
+</li> <li> UnrealScript struct メンバは 4 バイト境界にアラインされているので、DLL のビルド時に <a href="http://msdn.microsoft.com/en-us/library/xh3e3fd0(VS.71).aspx" target="_top">/Zp4</a> コンパイラオプションを使用できます。
+</li> <li> DLL が理解できない Unreal データタイプを含む struct を宣言できますが、これは推奨されていません。
+</li> <li> 現在の作業ディレクトリは UserCode ではなく Binaries\Win32 フォルダに設定されています。したがって、作成した DLL から LoadLibrary を使って別の DLL をロードする場合、または相対パスを使用する他のファイルタイプにアクセスする場合は、作業フォルダの場所に注意する必要があります。2010 年 2 月バージョンでは、任意の DLLBind 関数を呼び出す前に、作業フォルダが UserCode フォルダに変更されるようにする予定です。
+</li></ul>
+<p />
+<h2><a name="サンプル"></a> サンプル </h2>
+<p /> <ul>
+<li> <a href="rsrc/Three/DLLBind/DLLBind_Example.zip" target="_top">DLLBind_Example.zip</a>
+</li></ul>
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DLLBindJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:31:17 GMT -->
+</html></body>

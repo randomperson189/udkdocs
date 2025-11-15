@@ -1,0 +1,364 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/RenderThreadProfilingHome.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:21:46 GMT -->
+<head>
+<title> UDK | RenderThreadProfilingHome    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">RenderThreadProfilingHome  </b></div>
+<div id="tooltext">
+<a href="RenderThreadProfilingHomeJP.html" class="twikiLink">日本語訳</a><br><a href="https://udn.epicgames.com/Three/RenderThreadProfilingHomeCH" class="restricted" class="restricted" class="twikiLink">中国翻译</a><br><a href="RenderThreadProfilingHomeKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/RenderThreadProfilingHome -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="PerformanceHome.html" class="twikiLink">Performance, Profiling, and Optimization</a></b> &gt; Render Thread Profiling and Optimization
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Render Thread Profiling and Optimization"></a> Render Thread Profiling and Optimization </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="RenderThreadProfilingHome.html#Render Thread Profiling and Optimization"> Render Thread Profiling and Optimization</a> <ul>
+<li> <a href="RenderThreadProfilingHome.html#Overview"> Overview</a>
+</li> <li> <a href="RenderThreadProfilingHome.html#Render Thread Profiling"> Render Thread Profiling</a> <ul>
+<li> <a href="RenderThreadProfilingHome.html#STAT SCENERENDERING"> STAT SCENERENDERING</a>
+</li> <li> <a href="RenderThreadProfilingHome.html#STAT INITVIEWS"> STAT INITVIEWS</a>
+</li> <li> <a href="RenderThreadProfilingHome.html#STAT SCENEUPDATE"> STAT SCENEUPDATE</a>
+</li> <li> <a href="RenderThreadProfilingHome.html#Sample Workflow"> Sample Workflow</a>
+</li></ul>
+</li> <li> <a href="RenderThreadProfilingHome.html#Render Thread Optimization"> Render Thread Optimization</a> <ul>
+<li> <a href="RenderThreadProfilingHome.html#Level Layout"> Level Layout</a>
+</li> <li> <a href="RenderThreadProfilingHome.html#Content Makeup"> Content Makeup</a>
+</li> <li> <a href="RenderThreadProfilingHome.html#Reduce Fidelity"> Reduce Fidelity</a>
+</li> <li> <a href="RenderThreadProfilingHome.html#Splitscreen Detail Mode"> Splitscreen Detail Mode</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The two big rendering thread costs are determining visibility and then submitting draw calls to the GPU. These are both mostly dependent on the number of visible sections/elements, which is determined by the number of meshes visible and how many sections each of those meshes has.
+<p />
+The important thing to remember for rendering thread cost is that the cost is doubled in split screen! Always look at the split screen performance when profiling the rendering thread.
+<p />
+<h2><a name="Render Thread Profiling"></a> Render Thread Profiling </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+When the RenderThread time is high and you want to figure out what is causing it to be slow. Sometimes it could be a single object that has the incorrect flags set on it (e.g. it is casting a HUGE dynamic shadow over the entire level).
+<p />
+When doing an actual profiling run, the following can be helpful:
+<p /> <ul>
+<li> Trace Render will do a single frame trace (this is good if you can get to an area that is especially poor performance)
+</li> <li> Sample Profiling: Is great when you have sort of run of the mill performance and not real spikes.
+</li></ul>
+<p />
+<h3><a name="STAT SCENERENDERING"></a> STAT SCENERENDERING </h3>
+<p />
+The STAT SCENERENDERING command shows general rendering statistics. This is a good starting point to find general areas of slow performance in the rendering process.
+<p />
+<img src="rsrc/Three/RenderThreadProfilingHome/stat_initviews.jpg" alt="stat_initviews.jpg" width="640" height="360" />
+<p />
+<h3><a name="STAT INITVIEWS"></a> STAT INITVIEWS </h3>
+<p />
+The STAT INITVIEWS command displays information on how long visibility culling took and how effective it was. Visible section count is the single most important stat with respect to rendering thread performance, and that is dominanted by <em>Visible Static Mesh Elements</em> under <code>STAT INITVIEWS</code>, but <em>Visible Dynamic Primitives</em> also factors in.
+<p />
+<img src="rsrc/Three/RenderThreadProfilingHome/stat_scenerendering.jpg" alt="stat_scenerendering.jpg" width="640" height="360" />
+<p />
+<h3><a name="STAT SCENEUPDATE"></a> STAT SCENEUPDATE </h3>
+<p />
+The STAT SCENEUPDATE command displays information about updating the world, including the time taken to add, update, and remove lights as well as add and remove primitives in the scene.
+<p />
+<img src="rsrc/Three/RenderThreadProfilingHome/stat_sceneupdate.jpg" alt="stat_sceneupdate.jpg" width="640" height="360" />
+<p />
+<h3><a name="Sample Workflow"></a> Sample Workflow </h3>
+<p /> <ol>
+<li> Run <code>Stat unit</code> <ul>
+<li> shows the render thread is taking 50 ms.
+</li></ul>
+</li> <li> Then run <code>stat scenerendering</code> <ul>
+<li> shows that 25 ms is in the RenderViewFamily
+</li> <li> leaving us with 25 ms that the render commands are taking up
+</li></ul>
+</li> <li> Finally, run <code>stat sceneupdate</code> <ul>
+<li> we see that there is 25 ms in AddLight RT
+</li> <li> we see that it is being called 10 times a frame
+</li></ul>
+</li> <li> We then need to go look at who is calling AddLight via a break point. And see why adding a specific light or lights is so slow. Usually it is the case that a specific light being added in a way that is doing more work than actually needs to be done. (e.g. attaching / reattaching it)
+</li></ol>
+<p />
+<h2><a name="Render Thread Optimization"></a> Render Thread Optimization </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+There are several related optimization techniques that can be done by the designers and artists to help improve the RenderThread performance. In optimizing RenderThread performance, it is important to minimize the component count of static meshes, skeletal meshes, SpeedTrees, terrain, etc. Minimizing the number of elements per mesh is also extremely important. This usually means limiting the number of unique materials used on the mesh.
+<p />
+<h3><a name="Level Layout"></a> Level Layout </h3>
+<p />
+The biggest factor in level design as far as the RenderThread is concerned is visibility and how it affects the number of visible elements. Levels designed to make use of occlusion efficiently will have a better chance of limiting the numbe rof elements visible at any one time. For single player gameplay, implementing a zigzag flow through the map will allow the occlusion features in Unreal Engine 3 to work to their fullest ability.
+<p />
+See the <a href="VisibilityCulling.html" class="twikiLink">VisibilityCulling</a> for information on the available culling methods in Unreal Engine 3.
+<p />
+<h3><a name="Content Makeup"></a> Content Makeup </h3>
+<p />
+In addition to level layout, how the meshes used are made up is also important. There’s a trade-off that has to be made in this area, on one extreme you can use lots of tiny reusable meshes that kill the rendering thread, and on the other extreme you can use fewer large meshes that aren’t reusable.  To get an idea of where to strike the balance, you can look at shipped GOW/UT3/GOW2 levels to see what has worked.  The best POC though is to actually setup test levels that are representative of what you are trying to make and profile on your target platform(s).
+<p />
+Vistas where you see a large area can be a big problem if section count is not carefully controlled.  SP_Assault in Gears2 is a great example of an efficient vista, many trees are merged into single meshes (as you can see in the selection) which keeps the section count low.  This technique only works if the player can never get over to the distant part of the Vista though.  If the player can get over there, a more aggressive LOD system needs to be used.
+<p />
+<img src="rsrc/Three/RenderThreadProfilingHome/gow2_vista.jpg" alt="gow2_vista.jpg" width="900" height="504" />
+<p />
+<h3><a name="Reduce Fidelity"></a> Reduce Fidelity </h3>
+<p />
+For splitscreeen, the renderthread does many things twice as you have two different views into the world. Usually the game is running at max possible speed in SinglePlayer so when you double the workload something has to give. Finding areas to reduce fidelity which do adversely affect the game is key.
+<p />
+You will probably be required to write special code in a number of cases as usually GamePlay code is in charge of spawning objects / creating effects. For some systems in the engine there are settings which can be set, but for the most part it is all about identifying areas and turning them off / reducing the amount.
+<p />
+Key areas where fidelity can be reduced are:
+<p /> <ul>
+<li> Decals: Reduce the max number that are alive at once
+</li> <li> Duration Objects Live: Reduce the lifetime of effects type objects (e.g. Gibs)
+</li> <li> Reduce the number of Decals that can be attached to SkeletalMehes
+</li> <li> For AI characters, don't do many visual things (e.g. you are playing Horde. No need for each bullet impact to have a blowout decal spray or effect)
+</li></ul>
+<p />
+<h3><a name="Splitscreen Detail Mode"></a> Splitscreen Detail Mode </h3>
+<p />
+As a last ditch effort it is useful to use the detail mode feature to select meshes which will not be drawn in split screen.  For Gears 2 a pass was done over all multiplayer maps and marked visual-only detail meshes as High detail.
+<p />
+<img src="rsrc/Three/RenderThreadProfilingHome/detailmode_high.png" alt="detailmode_high.png" width="745" height="364" />
+<p />
+Once the high detail pass was complete, the detail mode setting for splitscreen is set:
+<p />
+<pre>
+&#91;SystemSettingsSplitScreen2]
+DetailMode&#61;1
+</pre>
+<p />
+This setting means those meshes set to high detail mode will not be drawn or have any rendering overhead in split screen.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/RenderThreadProfilingHome.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:21:47 GMT -->
+</html></body>

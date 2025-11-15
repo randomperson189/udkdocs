@@ -1,0 +1,338 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ExportingMeshesTutorialCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:37:55 GMT -->
+<head>
+<title> UDK | ExportingMeshesTutorialCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ExportingMeshesTutorialCH  </b></div>
+<div id="tooltext">
+<a href="ExportingMeshesTutorial.html" class="twikiLink">English Translation</a><br><a href="ExportingMeshesTutorialJP.html" class="twikiLink">日本語訳</a><br><a href="ExportingMeshesTutorialKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ExportingMeshesTutorialCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="导出网格物体指南"></a> 导出网格物体指南 </h1>
+<p />
+ <em>文档概要：关于使用ActorX导出插件工具从3D建模程序中导出网格物体几何体的初级指南。</em>
+<p />
+<em>文档变更记录: 由Erik de Neve<sup>?</sup> 创建。</em>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<p />
+本文档逐步向您介绍了您如何使用<a href="ActorX.html" class="twikiLink">ActorX</a>插件把分配了多种材质的静态网格物体从3D建模包导出的过程。
+<p />
+ <strong>注意</strong> ： <em>在Epic，我们倾向于在3D Studio Max和Maya间进行切换，所以我们使用Maya的Z轴的正半轴选项，以便和Max相匹配；且当把它们导入到编辑器时，我们不使用"assume Maya coordinates(假设为Maya坐标系)"选项。无论使用Max还是Maya，我们仍然必须把网格物体在X轴上旋转90度来使角色朝向正X轴。</em>
+<p />
+一般情况下，要想导出您的渲染网格物体，仅需简单地把它导出为ASCII Export (.ASE)格式即可。请确保正确设置了以下选项：
+<p />
+<strong>Output Options(输出选项)</strong> <ul>
+<li> Mesh Definition(网格物体定义)
+</li> <li> Materials(材质)
+</li></ul>
+<p />
+<strong>Mesh Options (网格物体选项)</strong> <ul>
+<li> Mesh Normals (网格物体法线)
+</li> <li> Mapping Coordinates(映射坐标)
+</li></ul>
+<p />
+<p />
+<h2><a name="导出内容： Maya"></a> 导出内容： Maya </h2>
+<p />
+关于从Maya中导出网格物体的更多技术信息可以在<a href="https://docs.unrealengine.com/udk/Two/StaticMeshesFromMaya.html" class="twikiLink">来自Maya的网格物体</a>页面获得。
+<p />
+<h3><a name="安装Maya _ActorX插件"></a> 安装Maya ActorX插件 </h3>
+<p />
+从<a href="ActorX.html" class="twikiLink">ActorX</a>页面选择针对您的特定Maya版本的适当插件。
+<p />
+解压文件，并安装ActorXTool.MLL文件到您的插件文件夹中，比如...\Maya6.0\bin\plug-ins。
+<p />
+<h3><a name="在Maya中设置场景"></a> 在Maya中设置场景 </h3>
+<p />
+创建网格物体，在这个例子中只是一个简单的立方体。请确保所有的多边形已经进行了三角化处理。
+<p />
+<img alt="Image1.png" src="rsrc/Three/ExportingMeshesTutorialCH/Image1.png" />
+<p />
+使用已有的两个原始格式(Targa 24位)贴图，在multilister中创建两个材质。
+<p />
+<img alt="Image7.png" src="rsrc/Three/ExportingMeshesTutorialCH/Image7.png" />
+<p />
+适当地重命名材质。
+<p />
+通过选择您需要的面，把材质分配给网格物体的各个部分。(按下并按住空格-&gt;”face(面)”，选择面，然后在multilister中，右击，“assign to selection(分配给选中的面)”)。
+<p />
+<img alt="Image3.png" src="rsrc/Three/ExportingMeshesTutorialCH/Image3.png" />
+<p />
+返回“item（项目）”选择模式，并选择网格物体。
+<p />
+<h3><a name="导出场景"></a> 导出场景 </h3>
+<p />
+通过在命令行中输入 <code><b>axmesh</b></code> 命令，将会启动网格物体导出对话框。对话框如下所示：
+<p />
+<img alt="Image5.png" src="rsrc/Three/ExportingMeshesTutorialCH/Image5.png" />
+<p />
+因为网格物体是场景中唯一选中的物体，并且我们勾选了"selected items only(仅选中项)"选项，所以网格物体将会被导出，并且将会弹出一个确认对话框，它说明了导出了多少个网格物体、多边形及材质。
+<p />
+<img alt="Image6.png" src="rsrc/Three/ExportingMeshesTutorialCH/Image6.png" />
+<p />
+<p />
+<h2><a name="导出内容： Max"></a> 导出内容： Max </h2>
+<p />
+关于从Max中导出网格物体的更多技术信息可以在来自Max的网格物体<sup>?</sup>页面获得。
+<p />
+<h3><a name="安装Max _ActorX插件"></a> 安装Max ActorX插件 </h3>
+<p />
+从<a href="ActorX.html" class="twikiLink">ActorX</a>页面针对您特定版本的Max的适当插件。
+<p />
+解压文件并把它们安装到您的插件文件夹。
+<p />
+<h3><a name="在Max中设置场景"></a> 在Max中设置场景 </h3>
+<p />
+<h3><a name="导出场景"></a> 导出场景 </h3>
+<p />
+<p />
+<h2><a name="材质"></a> 材质 </h2>
+<p />
+导出顺序是由材质本身决定的。请参照<a href="ActorX.html" class="twikiLink">ActorX</a>页面获得更多信息，包括关于Max和Maya的指南。
+<p />
+在Max中，使您的材质成为一个多重子对象材质，并命名子材质为skin00, skin01, skin02等来定义顺序。
+<p />
+在Maya中执行以下步骤： <ol>
+<li> 展开Hypershade。
+</li> <li> 双击您的着色器节点，来打开那个着色器的属性编辑器。
+</li> <li> 在顶部，着色器名称所在处有两个箭头，点击底下的一个。
+</li> <li> 这将会把您带到shadingEngine(着色引擎)属性，改变名称为skin00, skin01, skin02等来定义顺序。
+</li></ol>
+<p />
+<p />
+<h2><a name="将内容导入到引擎"></a> 将内容导入到引擎 </h2>
+<p />
+现在我们想把网格物体和材质资源通过虚幻编辑器导入到引擎中。<a href="ImportingMeshesTutorial.html" class="twikiLink">导入网格物体指南</a>页面覆盖了创建包及导出几何体的过程。
+<p />
+<p />
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ExportingMeshesTutorialCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:37:56 GMT -->
+</html></body>

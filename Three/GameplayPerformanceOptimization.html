@@ -1,0 +1,318 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GameplayPerformanceOptimization.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:08:23 GMT -->
+<head>
+<title> UDK | GameplayPerformanceOptimization    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">GameplayPerformanceOptimization  </b></div>
+<div id="tooltext">
+<a href="GameplayPerformanceOptimizationJP.html" class="twikiLink">日本語訳</a><br><a href="GameplayPerformanceOptimizationCH.html" class="twikiLink">中国翻译</a><br><a href="GameplayPerformanceOptimizationKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/GameplayPerformanceOptimization -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="PerformanceHome.html" class="twikiLink">Performance, Profiling, &amp; Optimization</a></b> &gt; Performance Optimization For Gameplay Programmers  <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="GameplayProgrammingHome.html" class="twikiLink">Gameplay Programming</a></b> &gt; Performance Optimization For Gameplay Programmers
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Performance Optimization For Gameplay Programmers"></a> Performance Optimization For Gameplay Programmers </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="GameplayPerformanceOptimization.html#Performance Optimization For Gameplay Programmers"> Performance Optimization For Gameplay Programmers </a> <ul>
+<li> <a href="GameplayPerformanceOptimization.html#Overview"> Overview</a>
+</li> <li> <a href="GameplayPerformanceOptimization.html#Broad Performance Investigation"> Broad Performance Investigation </a>
+</li> <li> <a href="GameplayPerformanceOptimization.html#Game and Render Performance"> Game and Render Performance </a> <ul>
+<li> <a href="GameplayPerformanceOptimization.html#Game Thread Profiling"> Game Thread Profiling</a>
+</li> <li> <a href="GameplayPerformanceOptimization.html#Render Thread Profiling"> Render Thread Profiling</a>
+</li></ul>
+</li> <li> <a href="GameplayPerformanceOptimization.html#Common Performance Issues"> Common Performance Issues </a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+To track down content or game-specific performance issues with UE3 games, there are a variety of tools that can be helpful. One method being used in the development of <strong>Infinity Blade Dungeons</strong> is described here.
+<p />
+<h2><a name="Broad Performance Investigation"></a> Broad Performance Investigation </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The first step is to run through the game and determine what is slow. The quickest way is to run through with <code><b>STAT UNIT</b></code> on to see if game, render, or GPU are slow. This should be run on a <em>Test</em> build if possible. GPU time may not be available, but can be assumed to be equal to total frame time time if it is greater than the other 2. It can be very helpful to have a QA team create a report and distribute it to relevant parties. Some useful information that should be included in the report would be:
+<p /> <ul>
+<li> <strong>Average FPS</strong> - The raw average fps, sometimes excluding cinematics and noninteractive sections. The raw number here is less important as long as you are above vsync (30 usually), but is useful for tracking trending.
+</li> <li> <strong>% over 30</strong> - How much of the time it is over 30fps. This should be as high as possible, with a goal of 95% or greater generally
+</li> <li> <strong>Total Hitches</strong> - Number of frames that take longer than 100 ms. These should be as low as possible.
+</li> <li> <strong>% Bound by Game and Render</strong> - How many of the slow frames are caused by the Game or Render thread. If these numbers are non-0 you should investigate what is causing it. % bound by GPU is not normally available, but if the other 2 bound by % numbers are low but % over 30 is also low, high GPU times are a likely cause.
+</li></ul>
+<p />
+<h2><a name="Game and Render Performance"></a> Game and Render Performance </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+There are two tools that are useful for tracking down gameplay and rendering slowness: the <a href="GameplayProfiler.html" class="twikiLink">Gameplay Profiler</a> and the <a href="PerfStats.html" class="twikiLink">Stats Viewer</a>. The Gameplay Profiler is best at profiling the game thread, while the Stats Viewer is better suited to profiling the render thread. Both should be run on a <em>Release</em> version of the game to get the most accurate resutls. To gather the profiles needed for analysis, you can either follow the steps on the udn pages for each tool, or have a QA team run a profiling pass, as mentioned previously, on the configurations needed. They usually note the most expensive frame in ms. Note that frame times are exaggerated by about 25% with these tools, so do not worry about 35ms frames, they would be 30fps in Test/Shipping. They will generally create a directory of <code><b>.gprof</b></code> files for the Gameplay Profiler and <code><b>.ustats</b></code> files for the Stat Viewer. You can then open them up in the appropriate tool (double click usually works, may need to associate it).
+<p />
+<h3><a name="Game Thread Profiling"></a> Game Thread Profiling </h3>
+<p />
+Once you have a <code><b>.gprof</b></code> file open you can start looking for issues using the <strong>Gameplay Profiler</strong>. One approach is to drill down into individually slow frames on the graph above. Click on a slow frame, and check out the <strong>Frame Actor / Class Call Graph</strong> tab and <strong>Frame Function *</strong> tabs. Red text is STAT information, and green text is script calls and tick time.
+<p />
+<img src="rsrc/Three/GameplayPerformanceOptimization/frame_actor.jpg" alt="frame_actor.jpg" width="900" height="632" />
+<p />
+Using those tabs you should be able to identify if a specific function call is slow, or an actor or class of actors are slow to tick. If it doesn’t look like an actor tick or script function are slow, use the <strong>Frame Function Summary</strong> tab to see what Stat call is taking all of the time, and the frame function call graph to see where that stat lives in the hierarchy. Once you identify the stat that is slow, you can search the source for the string mentioned, then find the stat and code using that stat. That may give you a hint, or you may need to ask for help from the engine team.
+<p />
+The other method of optimization is to try and holistically optimize functions that are slow throughout. To do that, the <strong>Aggr function summary</strong> and <strong>Aggr function call graph</strong> views are great.
+<p />
+<img src="rsrc/Three/GameplayPerformanceOptimization/aggr_func_summary.jpg" alt="aggr_func_summary.jpg" width="900" height="196" />
+<p />
+<img src="rsrc/Three/GameplayPerformanceOptimization/aggr_func_call_graph.jpg" alt="aggr_func_call_graph.jpg" width="900" height="224" />
+<p />
+You can select an individual stat or function and it will illustrate what frames that area is slow on in the graph above in red. It’s often useful to sort by <strong>Exclusive time</strong> here, as otherwise <strong>World Tick Time</strong> is generally the highest because it includes all other ticks. Once you see an area of interest you can click on one of the frames with a spike in that area and try to drill down to see what’s making that stat or function be slow that particular frame.
+<p />
+<h3><a name="Render Thread Profiling"></a> Render Thread Profiling </h3>
+<p />
+The <strong>Stats Viewer</strong> gives you similar information for the render thread, minus tick and script times. Once you open a <code><b>.ustat</b></code> you’ll be provided with a graph on the right and set of filters on the left. If you happen to suspect an individual stat you can select it to have it graph that stat, but it’s easier to start by drilling down into an individual frame. Right-click on a frame on the right, and select <strong>Open call graph</strong>. This drills down the specific frame and lets you look for slow elements, displayed in red. Once you see one you can add that to the general graph to see how frequent that stat is causing the game to be slow.
+<p />
+<h2><a name="Common Performance Issues"></a> Common Performance Issues </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Those are the general tools that are used to track down issues, but it helps to know what kind of things have been slow in the past. Here’s a list of types of issues encountered over the last year, your mileage may vary:
+<p /> <ul>
+<li> <strong>Platform specific issues</strong> - These usually manifest as large STAT times in game or render that do not have any more details available. This includes issues such as shader compiling, audio issues, memory stalls, etc. Once you identify which stat shows the slow time you’ll either need to use a platform-specific native profiler or discuss it with the engine team for additional help.
+</li> <li> <strong>Script call overhead</strong> - This shows up quickly in the gameplay profiler, and is generally easy to fix by adjusting gameplay logic or moving particularly slow functions to native.
+</li> <li> <strong>GC Time</strong> - <strong>GC Mark</strong> and <strong>GC Sweep</strong> often show up as large periodic stalls in the gameplay profiler/stat viewer. These are much, much larger if running in release mode without <code><b>-NoVerifyGC</b></code>, so check that first. These are impossible to completely eliminate, but optimizing the number of GCable objects is the main goal. Moving more things to be in the startup package and decreasing object count are good goals.
+</li> <li> <strong>Pathfinding and line checks</strong> - Pathfind calls and line checks are often slow on the game thread. The easiest way to optimize this is to do less work. Be on the look out for redundant path finds or line checks in gameplay code.
+</li> <li> <strong>DLE Tick time</strong> - Dynamic Light environment tick time is often very high in certain scenes. Make sure that only the objects that actually need them have DLEs, and to unset <code><b>bDynamic</b></code> for any actor-placed DLEs that do not need dynamic lighting. On mobile you may need more aggressive optimization, such as disabling the Dynamic Composite flag on lights you want for lightmass but do not want for dynamic objects.
+</li> <li> <strong>Particle Time</strong> - Individual particle systems are often expensive to tick. You can find out the particle system from the Gameplay Profiler and ask the artist to optimize it. Or, you may need to change gameplay logic to spawn fewer of them, for instance if an attack kills 10 enemies you may want to only spawn the death particle on the first 2 enemies that die in a frame. <strong>Update Bounds time</strong> indicates a particle system needs a fixed bound, and DLE update time indicates it’s doing light updates that may not be necessary. This is very content and game specific. Take a look at the <strong>ParticleTickStats</strong> for more details. Also, too many particles may show up as <strong>Particle update time</strong> on the render thread, fixed by cutting the number of visible particles via LOD or culling.
+</li> <li> <strong>Death and explosions</strong> - Death and explosions are slow for a variety of reasons, usually doing component updates, particle spawning, and some logic or AI updates. You may be able to defer some of the elements to the next frame, or remove them altogether if lots of thing are dying at once.
+</li> <li> <strong>Component Update time</strong> - Specific components may take a long time to update, such as skeletal meshes. You’ll have to look at the type of component, and may be able to move them to a simpler component type (for instance, 100 static meshes with vertex animation are much cheaper than 100 skeletal meshes)
+</li> <li> <strong>Interp actor update time</strong> - Interp actors can be very expensive to update, both in DLE time and in movement time. One common fix is to have the level designer mark "don’t encroach" on non-gameplay objects, as that will stop slow collision checks.
+</li> <li> <strong>Transparency Drawing</strong> - Transparent objects can often be very slow on the render thread, especially particles. Have the artists make sure there are not many transparent objects drawing on top of each other, and to LOD out transparent objects aggressively.
+</li> <li> <strong>Too Much Stuff</strong> - Most generally, artists and lds like to put lots of stuff in the game. Generally having lots (&gt;10) of enemies or huge numbers of meshes visible are going to be slow, and will require optimization on the content side.
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GameplayPerformanceOptimization.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:08:24 GMT -->
+</html></body>

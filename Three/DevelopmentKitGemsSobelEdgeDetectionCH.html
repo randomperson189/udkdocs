@@ -1,0 +1,457 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DevelopmentKitGemsSobelEdgeDetectionCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:45 GMT -->
+<head>
+<title> UDK | DevelopmentKitGemsSobelEdgeDetectionCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">DevelopmentKitGemsSobelEdgeDetectionCH  </b></div>
+<div id="tooltext">
+<a href="DevelopmentKitGemsSobelEdgeDetection.html" class="twikiLink">English Translation</a><br><a href="DevelopmentKitGemsSobelEdgeDetectionJP.html" class="twikiLink">日本語訳</a><br><a href="DevelopmentKitGemsSobelEdgeDetectionKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/DevelopmentKitGemsSobelEdgeDetectionCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="DevelopmentKitHome.html" class="twikiLink">虚幻开发工具包</a></b> &gt; <b><a href="DevelopmentKitGems.html" class="twikiLink">虚幻开发工具包精华文章</a></b> &gt; Sobel 边缘检测后期特效 <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3主页</a></b> &gt; <b><a href="ParticlesAndEffectsHome.html" class="twikiLink">后期处理特效</a></b> &gt; Sobel 边缘检测后期特效
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Sobel 边缘检测后期特效"></a> Sobel 边缘检测后期特效 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<strong><em>最后一次测试是在2011年3月份的UDK版本上进行的。</em></strong>
+<br>
+<strong><em>可以与 PC 兼容</em></strong>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#Sobel 边缘检测后期特效"> Sobel 边缘检测后期特效</a> <ul>
+<li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#概述"> 概述</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#材质着色器"> 材质着色器</a> <ul>
+<li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#计算偏移"> 计算偏移</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#使用偏移"> 使用偏移</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#计算 X 值"> 计算 X 值</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#计算 Y 值"> 计算 Y 值</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#计算距离平方值"> 计算距离平方值</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#比较距离平方值"> 比较距离平方值</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#对比度渲染"> 对比度渲染</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#最小强度渲染"> 最小强度渲染</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#深度排除渲染"> 深度排除渲染</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#合成渲染"> 合成渲染</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#大功告成！"> 大功告成！</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#调整后期特效"> 调整后期特效</a> <ul>
+<li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#禁用合成渲染"> 禁用合成渲染</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#禁用最小强度渲染"> 禁用最小强度渲染</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#禁用对比度渲染"> 禁用对比度渲染</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#禁用深度排除渲染"> 禁用深度排除渲染</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#调整深度排除距离"> 调整深度排除距离</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#调整对比度强度"> 调整对比度强度</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#调整最小强度"> 调整最小强度</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#调整环境明暗度"> 调整环境明暗度</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#调整 sobel 像素偏移"> 调整 sobel 像素偏移</a>
+</li></ul>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#如何使用"> 如何使用</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#相关主题"> 相关主题</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#结论"> 结论</a>
+</li> <li> <a href="DevelopmentKitGemsSobelEdgeDetectionCH.html#下载"> 下载</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+通过在每个像素上计算图像强度的渐变梯度可以进行 Sobel 边缘检测。最终结果是它会产生一个与每个像素上图像更改的突然程度相关联。对场景深度进行这项操作，将会允许我们轻松地检测边缘。该文档将不会详细说明 sobel 算子。在<a href="http://en.wikipedia.org/wiki/Sobel_operator">这里</a>可以找到更多信息。您会使用这个后期特效最简单的原因是要绘制边缘线，因为它是卡通渲染的一部分。另一个原因是在边缘上进行模糊过滤以删除由多边形产生的一些锯齿现象。
+<p />
+<h2><a name="材质着色器"></a> 材质着色器 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+该材质着色器有一些离散步组成。
+<p />
+<h3><a name="计算偏移"></a> 计算偏移 </h3>
+<p />
+因为每个像素需要采样八个周围的像素，所以它需要在对场景深度进行采样的时候偏移 UV 查看角度。因为屏幕坐标依次为从 0 到 1，而不是从 0 到分辨率宽度/高度，所以着色器需要计算相对像素坐标。通过调整偏移位置坐标，可以控制最终边缘大小。要获得最好的效果，应该将 ResolutionX 和 ResolutionY 设置为当前分辨率。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeUVLookupOffset.jpg" alt="SobelEdgeUVLookupOffset.jpg" width='642' height='815' />
+<p />
+<h3><a name="使用偏移"></a> 使用偏移 </h3>
+<p />
+在计算样本偏移坐标后，需要使用这个偏移坐标。要进行这项操作，通过使用 Append 材质节点创建一个 Vector2。然后将最后的 Vector2 添加到相对屏幕位置。这个相对屏幕位置范围在 0.f 和 1.f 之间。这是为了阻止深度查看由于封装而泄露。不需要使屏幕深度标准化，因为具有全部范围的值是很有用的。它适用于所有可行的组合，如下： <ul>
+<li> UV02 (X = +offset, Y = -offset)
+</li> <li> UV12 (X = +offset, Y = 0)
+</li> <li> UV22 (X = +offset, Y = +offset)
+</li> <li> UV01 (X = 0, Y = -offset)
+</li> <li> UV21 (X = 0, Y = +offset)
+</li> <li> UV00 (X = -offset, Y = -offset)
+</li> <li> UV10 (X = -offset, Y = 0)
+</li> <li> UV20 (X = -offset, Y = +offset)
+</li></ul>
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeUVOffset.jpg" alt="SobelEdgeUVOffset.jpg" width='882' height='370' />
+<p />
+<h3><a name="计算 X 值"></a> 计算 X 值 </h3>
+<p />
+计算 x 值的公式为 *0 - UV00 - (UV01 * 2) - UV02 + UV20 + (UV21 * 2) + UV22*。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeCalculatingX.jpg" alt="SobelEdgeCalculatingX.jpg" width='385' height='956' />
+<p />
+<h3><a name="计算 Y 值"></a> 计算 Y 值 </h3>
+<p />
+计算 y 值的公式为 *0 - UV00 + UV02 - (UV10 * 2) + (UV12 * 2) - UV20 + UV22*。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeCalculatingY.jpg" alt="SobelEdgeCalculatingY.jpg" width='437' height='972' />
+<p />
+<h3><a name="计算距离平方值"></a> 计算距离平方值 </h3>
+<p />
+计算距离平方值的公式是 *(X * X) + (Y * Y)*。然后可以使用这个距离平方值检测边缘。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeDistance.jpg" alt="SobelEdgeDistance.jpg" width='408' height='380' />
+<p />
+<h3><a name="比较距离平方值"></a> 比较距离平方值 </h3>
+<p />
+在这里进行距离和标量参数之间的比较。在屏幕深度突然发生变化的的时候，距离平方值将会变大。因此，使用一个简单的比较检测哪里是边缘以及哪里不是。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeEdgeDetection.jpg" alt="SobelEdgeEdgeDetection.jpg" width='800' height='556' />
+<p />
+<h3><a name="对比度渲染"></a> 对比度渲染 </h3>
+<p />
+使用对比度可以增加最大值同时减小最小值。在您需要改善边缘检查的‘鲜明程度’时可以使用它。它对于深度值慢慢分化的斜坡十分有效。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeContrast.jpg" alt="SobelEdgeContrast.jpg" width='362' height='250' />
+<p />
+<h3><a name="最小强度渲染"></a> 最小强度渲染 </h3>
+<p />
+即使是在进行对比渲染之后，还是会出现渐变梯度。为了删除渐变梯度，可以将高于某个特定值的像素值设置为 1，其余的值都设置为 0。它会删除所有渐变梯度，但是可能会产生其他失真现象，例如，锯齿现象或大面积的黑色区域。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeMinimumIntensityPass.jpg" alt="SobelEdgeMinimumIntensityPass.jpg" width='473' height='454' />
+<p />
+<h3><a name="深度排除渲染"></a> 深度排除渲染 </h3>
+<p />
+到目前为止，这个着色器可以在穹顶或距离很远的物体上产生失真现象。此外，假设您知道在穹顶内将永远不会出现边缘，那么可以更快地跳过这些像素。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeDepthExclusion.jpg" alt="SobelEdgeDepthExclusion.jpg" width='597' height='451' />
+<p />
+<h3><a name="合成渲染"></a> 合成渲染 </h3>
+<p />
+所有渲染完成之后，会产生一个灰度贴��像素。只需将它与将会添加边缘的场景贴图相乘。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeCompositePass.jpg" alt="SobelEdgeCompositePass.jpg" width='405' height='238' />
+<p />
+<h3><a name="大功告成！"></a> 大功告成！ </h3>
+<p />
+点击全屏模式查看着色器。
+<p />
+<a href="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeShader.jpg" target="_top"><img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeShaderThumbnail.jpg" alt="SobelEdgeShaderThumbnail.jpg" width='800' height='349' /></a>
+<p />
+下面是使用 sobel 边缘后期特效进行渲染的关卡截图。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeFinalRender.jpg" alt="SobelEdgeFinalRender.jpg" width='800' height='583' />
+<p />
+<h2><a name="调整后期特效"></a> 调整后期特效 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+<h3><a name="禁用合成渲染"></a> 禁用合成渲染 </h3>
+<p />
+禁用合成渲染可以跳过着色器将 sobel 边缘检测的结果与场景样本纹理节点合成这一步骤。可能在非真实渲染中才需要使用它。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeNoCompositePass.jpg" alt="SobelEdgeNoCompositePass.jpg" width='800' height='583' />
+<p />
+<h3><a name="禁用最小强度渲染"></a> 禁用最小强度渲染 </h3>
+<p />
+禁用最小强度渲染可以跳过着色器删除小于输入值的像素值这一步骤。可能在非真实渲染需要向场景中添加更多深度时才需要使用它。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeNoMinimumIntensityPass.jpg" alt="SobelEdgeNoMinimumIntensityPass.jpg" width='800' height='583' />
+<p />
+<h3><a name="禁用对比度渲染"></a> 禁用对比度渲染 </h3>
+<p />
+禁用对比度渲染可以跳过着色器按照指数调整像素值这一步骤。可能在您想要使用未使用的值时需要它，而不是从中点中选取的值。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeNoContrastPass.jpg" alt="SobelEdgeNoContrastPass.jpg" width='800' height='583' />
+<p />
+<h3><a name="禁用深度排除渲染"></a> 禁用深度排除渲染 </h3>
+<p />
+禁用深度排除渲染可以跳过着色器可以跳过那些深度值比输入值大的像素这一步骤。通常情况下，您将需要进行这个渲染，这样穹顶才不会产生失真现象。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeNoDepthExclusionPass.jpg" alt="SobelEdgeNoDepthExclusionPass.jpg" width='800' height='583' />
+<p />
+<h3><a name="调整深度排除距离"></a> 调整深度排除距离 </h3>
+<p />
+调整这个值使您可以跳过那些深度值大于输入值的像素。将这个值设置得过低将会使着色器跳过太多像素，但是设置得太高可能会在其他地方产生失真现象。您需要找到最适合您的场景或游戏美术风格的正确值。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeAdjustingTheDepthExclusionDistance.jpg" alt="SobelEdgeAdjustingTheDepthExclusionDistance.jpg" width='800' height='583' />
+<p />
+<h3><a name="调整对比度强度"></a> 调整对比度强度 </h3>
+<p />
+调整这个值允许您将像素值从中间点（通常是 0.5f）向外侧进行调整。这样，在值逐渐靠近 0.f 的情况下，这个值将会向这个方向靠拢，同时如果一个值逐渐靠近 1.f，那么这个值将会向这个方向靠拢。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeAdjustingTheContrastFactor.jpg" alt="SobelEdgeAdjustingTheContrastFactor.jpg" width='800' height='583' />
+<p />
+<h3><a name="调整最小强度"></a> 调整最小强度 </h3>
+<p />
+调整这个值可以使您包括或排除低于这个输入值的像素值。这样，如果您希望得到更加清晰分明的线，那么将最小强度设置为一个较小的值，而在您希望得到较暗的块时增大这个值。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeAdjustingTheMinimumIntensity.jpg" alt="SobelEdgeAdjustingTheMinimumIntensity.jpg" width='800' height='583' />
+<p />
+<h3><a name="调整环境明暗度"></a> 调整环境明暗度 </h3>
+<p />
+调整这些值使您可以加强或减弱场景的整体亮度/暗度。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeAdjustingAmbientBrightness.jpg" alt="SobelEdgeAdjustingAmbientBrightness.jpg" width='800' height='583' />
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeAdjustingAmbientDarkness.jpg" alt="SobelEdgeAdjustingAmbientDarkness.jpg" width='800' height='583' />
+<p />
+<h3><a name="调整 sobel 像素偏移"></a> 调整 sobel 像素偏移 </h3>
+<p />
+调整这个值使您可以在距离当前像素坐标更远的地方采样像素。这样可以有效地使边缘更加厚重或者轻薄。
+<p />
+<img src="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeAdjustingSobelPixel.jpg" alt="SobelEdgeAdjustingSobelPixel.jpg" width='800' height='583' />
+<p />
+<h2><a name="如何使用"></a> 如何使用 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+这是要在后期处理链中的 MaterialEffect 节点上使用的材质。有关如何将材质作为一种后期特效使用的更多信息，请参阅<a href="PostProcessMaterials.html" class="twikiLink">后期处理材质</a>。
+<p />
+<h2><a name="相关主题"></a> 相关主题 </h2>
+<hr size="1" noshade="noshade">
+<p /> <ul>
+<li> <a href="PostProcessEditorUserGuide.html" class="twikiLink">后期处理编辑器指南</a>
+</li> <li> <a href="PostProcessMaterials.html" class="twikiLink">后期材质</a>
+</li> <li> <a href="PostProcessTechnicalGuide.html" class="twikiLink">后期处理技术指南</a>
+</li> <li> <a href="PostProcessEffectReference.html" class="twikiLink">后期特效参考信息</a>
+</li></ul>
+<p />
+<h2><a name="结论"></a> 结论 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+通过使用材质编辑器，您可以为您的游戏创建一些与众不同的渲染方式。
+<p />
+<h2><a name="下载"></a> 下载 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> <a href="rsrc/Three/DevelopmentKitGemsSobelEdgeDetectionCH/SobelEdgeContent.zip" target="_top">下载</a>这篇精华文章中使用的内容。(SobelEdgeContent.zip)
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/DevelopmentKitGemsSobelEdgeDetectionCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:51 GMT -->
+</html></body>

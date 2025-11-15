@@ -1,0 +1,314 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ImportingMeshesTutorialCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:37:56 GMT -->
+<head>
+<title> UDK | ImportingMeshesTutorialCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ImportingMeshesTutorialCH  </b></div>
+<div id="tooltext">
+<a href="ImportingMeshesTutorial.html" class="twikiLink">English Translation</a><br><a href="ImportingMeshesTutorialJP.html" class="twikiLink">日本語訳</a><br><a href="ImportingMeshesTutorialKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ImportingMeshesTutorialCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="导入网格物体教程"></a> 导入网格物体教程 </h1>
+<p />
+<em>文档概要：这是一个入门读本，只要关于如何使用 <a href="ActorX.html" class="twikiLink">ActorX</a> 导出插件工具从 3D 建模程序中获得网格物体几何体，然后将其导入虚幻引擎并应用多材质。</em>
+<p />
+<em>文档变更记录：由 Erik de Neve<sup>?</sup> 创建。</em>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<p />
+这是一个逐步入门的读本，主要有关如何导入具有使用 <a href="ActorX.html" class="twikiLink">ActorX</a> 插件从 3D 建模程序中导出的多个材质赋值的静态网格物体。
+<p />
+<p />
+<p />
+<h2><a name="将内容导入到引擎"></a> 将内容导入到引擎 </h2>
+<p />
+<h3><a name="导入网格物体几何体"></a> 导入网格物体几何体 </h3>
+<p />
+要导入一个 Render（渲染器）网格物体，请使用可以打开的<a href="https://udn.epicgames.com/Three/GenericBrowserReference" class="restricted" class="restricted" class="twikiLink">通用浏览器</a>
+使用它在主菜单上的按钮。在这里，从 File Menu（文件菜单）中选择 Import（导入），然后选择用于网格物体上的未加工纹理 &ndash; 查找 .ASE 文件 &ndash; 并单击 Open（打开）。填写几个字段后，会打开一个 Generic Import（通用导入）窗口。
+<p />
+<img alt="Image_1.png" src="rsrc/Three/ImportingMeshesTutorialCH/Image_1.png" />
+<p />
+命名新的包（默认情况下，命名为 "MyPackage"）。 填写 Group（组），如果需要更改 Name（名称）。
+<p />
+组是组织包中内容的简便方法。 可以为每个内容类型创建一个组，例如，“Meshes（网格物体）”和“Textures（纹理）”，或者通过主题创建，例如，“Soldier1（士兵 1）”和“Soldier2（士兵 2）”。 也可以将 Group（组）字段保留空白，使所有内容全部保持在一个包中。
+<p />
+需要考虑的一件事情是计划导入的物体的多边形数。现在对导入网格物体限制只能导入 32,000 个顶点，尽管从技术上看很轻松就可以增加导入的顶点数。理想情况，最好是使用法线贴图在分辨率较低的模型中引入一个。
+<p />
+如果提示为每个纹理输入包、组和名称，那么键入合适的包和纹理名称。 要在导入网格物体时可以自动运行赋值，请务必使用与文件名称“不同”的纹理名称，因为这些还不是最终材质。例如，在这里使用的是扩展名 _raw。
+<p />
+重要更新： 自从 2004 年 11 月 29 日，UE3 代码基础有了一个会使用材质名称而不是未加工的位图名称的导入美术作品路径，它在 ASE 文件中可与虚幻编辑器中的自动材质匹配联合使用。对于材质插槽，如果在 ASE 中没有匹配的材质名称字段，那么导入器会转而依靠于使用位图文件名称字段。警告： 如果在插槽的编辑器中没有发现匹配的材质，那么该新代码的早期版本（2004 年 12 月）会销毁该材质。
+<p />
+<strong>要点</strong> ： 在 Maya 中，它是“着色组”的名称（“不是”Materials（材质）的名称），为了可以进行自动匹配，必须匹配虚幻编辑器中 Materials（材质）的名称。
+<p />
+<img alt="Image_2.png" src="rsrc/Three/ImportingMeshesTutorialCH/Image_2.png" />
+<p />
+<h3><a name="导入材质"></a> 导入材质 </h3>
+<p />
+现在是创建实际材质的时候了。在 Generic Browser（通用浏览器）的空白部分右击，然后选择“New Material（新建材质）”。该操作进行了两次，而这一次最初的一次，应该使用短的纹理名称（不包含文件扩展名）。
+<p />
+<img alt="Image_3.png" src="rsrc/Three/ImportingMeshesTutorialCH/Image_3.png" />
+<p />
+现在应该会有两个‘空’材质。
+<p />
+<img alt="Image_4.png" src="rsrc/Three/ImportingMeshesTutorialCH/Image_4.png" />
+<p />
+可以通过右击材质链接这两个材质，这样应该会打开<a href="MaterialEditorUserGuide.html" class="twikiLink">材质编辑器</a>。在这里，右击空白区域，然后选择“新建 TextureSample（纹理样本）”。
+<p />
+<img alt="Image_5.png" src="rsrc/Three/ImportingMeshesTutorialCH/Image_5.png" />
+<p />
+如图所示，这就是我们链接到的框。当然，使用多纹理链接可能更复杂，还请参阅<a href="MaterialsTutorial.html" class="twikiLink">材质教程</a>
+<p />
+右击 TextureSample（纹理样本）框会打开属性。我们会为它赋原始纹理（我们在材质编辑器外部以及通用浏览器内部都已经进行选择，然后单击‘使用’（箭头）按钮）。
+<p />
+<img alt="Image_6.png" src="rsrc/Three/ImportingMeshesTutorialCH/Image_6.png" />
+<p />
+同样的步骤适用于其他材质。只要它们都有正确的名称和纹理连接，那么就可以导入实际的立方体了。
+<p />
+<h3><a name="创建和赋予材质"></a> 创建和赋予材质 </h3>
+<p />
+从 File Menu（文件菜单）中选择 Import（导入），然后将 .ASE 立方体导入同一个包中。
+<p />
+<img alt="Image_9.png" src="rsrc/Three/ImportingMeshesTutorialCH/Image_9.png" />
+<p />
+与 Maya 中一样会立即对纹理进行赋值，因为这两个材质在这个包中都有合适的名称。
+<p />
+<img alt="Image_10.png" src="rsrc/Three/ImportingMeshesTutorialCH/Image_10.png" />
+<p />
+注意，并不是一定要始终按照这个顺序进行所有的操作。通常您可以先导入一个静态网格物体，然后赋值，或重新将任何材质赋值给您所希望的任何材质插槽。可以通过右击这个立方体访问这些插槽，这样会打开静态网格物体编辑器。展开材质属性可以向我们显示插槽。可以对它们进行重新赋值 - ‘Use（使用）’按钮会将任何现有的材质放入插槽中。您甚至可以在 Generic Browser（通用浏览器）的其他包中选择其他材质，然后按下‘Use（使用）’。
+<p />
+<img alt="Image_11.png" src="rsrc/Three/ImportingMeshesTutorialCH/Image_11.png" />
+<p />
+<p />
+<p />
+
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ImportingMeshesTutorialCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:37:58 GMT -->
+</html></body>

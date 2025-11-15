@@ -1,0 +1,425 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TextureOptimizationTechniquesJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:30:15 GMT -->
+<head>
+<title> UDK | TextureOptimizationTechniquesJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">TextureOptimizationTechniquesJP  </b></div>
+<div id="tooltext">
+<a href="TextureOptimizationTechniques.html" class="twikiLink">English Translation</a><br><a href="TextureOptimizationTechniquesCH.html" class="twikiLink">中国翻译</a><br><a href="TextureOptimizationTechniquesKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/TextureOptimizationTechniquesJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px; font:10px Verdana;" >
+<b><a href="WebHomeJP.html" class="twikiLink">UE3 ホーム</a></b> &gt; <b><a href="MaterialsAndTexturesHomeJP.html" class="twikiLink">マテリアルとテクスチャ</a></b> &gt; テクスチャ最適化のテクニック <br/>
+<b><a href="WebHomeJP.html" class="twikiLink">UE3 ホーム</a></b> &gt; <b><a href="PerformanceHomeJP.html" class="twikiLink">パフォーマンス、プロファイリング、最適化</a></b> &gt; <b><a href="ContentProfilingHomeJP.html" class="twikiLink">コンテンツのプロファイリングと最適化</a></b> &gt; テクスチャ最適化のテクニック
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="テクスチャ最適化のテクニック"></a> テクスチャ最適化のテクニック </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="TextureOptimizationTechniquesJP.html#テクスチャ最適化のテクニック"> テクスチャ最適化のテクニック </a> <ul>
+<li> <a href="TextureOptimizationTechniquesJP.html#概要"> 概要 </a>
+</li> <li> <a href="TextureOptimizationTechniquesJP.html#コンテンツの評価"> コンテンツの評価 </a>
+</li> <li> <a href="TextureOptimizationTechniquesJP.html#マスターマテリアルのデフォルト"> マスターマテリアルのデフォルト </a>
+</li> <li> <a href="TextureOptimizationTechniquesJP.html#マテリアルの参照をチェックする"> マテリアルの参照をチェックする </a>
+</li> <li> <a href="TextureOptimizationTechniquesJP.html#チャンネル パック化と統合"> チャンネル パック化と統合 </a>
+</li> <li> <a href="TextureOptimizationTechniquesJP.html#最後に"> 最後に </a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概要"></a> 概要 </h2>
+<div style="margin-top:-10px;" ><hr size="1" noshade="noshade"></div>
+<p />
+メモリとディスクスペースをどのように使用するかという問題は、あらゆるゲームを開発する場合に避けて通ることができない問題です。 コンテンツがメモリとディスクスペースを大量に占有する場合は、使用されているテクスチャがその最大の原因となりやすいです。これは、多くの場合、周到な計画を立てることなく、チャンネルパック化を効率的に使用せずにテクスチャをプールに追加したことに起因しています。
+<p />
+本ドキュメントでは、予め (プロジェクトの最後にではなく)、非効率的なテクスチャを排除し、よりスマートで効率的なコンテンツを作成するための秘訣について説明します。
+<p />
+<h2><a name="コンテンツの評価"></a> コンテンツの評価 </h2>
+<div style="margin-top:-10px;" ><hr size="1" noshade="noshade"></div>
+<p />
+開発中にディスクスペースの問題が起きた場合は、ディスクに乗せてコンテンツの評価を実行することによって、節約が可能となる部分を発見することができる場合があります。通常、大部分が目視による確認に基づくため、すばやく実行することができます。汎用ブラウザでパッケージ内のテクスチャを調べることによって、ただちに、どこでスペースが無駄に使用されているのかわかります。
+<p />
+例
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/assessment.jpg" alt="assessment.jpg" width="644" height="580" />
+<p />
+<h2><a name="マスターマテリアルのデフォルト"></a> マスターマテリアルのデフォルト </h2>
+<div style="margin-top:-10px;" ><hr size="1" noshade="noshade"></div>
+<p />
+時として不必要に大きいテクスチャがゲームのコンテンツに入るようなエリアがある場合は、マスターマテリアルの使用によります。マスターマテリアル内のテクスチャ サンプル パラメータを使用すると、テクスチャはそのパラメータが適用されなければなりません。しかし、これは多くの場合に見られません。子マテリアルがパラメータをオーバーライドしてそれ固有のニーズに合わせるためです。
+<p />
+表示されている、パッケージ内の <em>T_Test_Mask</em> テクスチャが良い例です。マスターマテリアルを調べることによって、テクスチャ サンプル パラメータに適用されていることが分かります。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/master_default.jpg" alt="master_default.jpg" width="481" height="319" />
+<p />
+このテクスチャは、512x512 のテクスチャであり、マスターマテリアルの中でデフォルトとして適用されること以外に、けっして現実のゲーム内で使用されたり見かけたりすることはありません。問題は、子マテリアルがオーバーライドするか否かにかかわらず、マスターマテリアル内のどんなテクスチャでも子マテリアルに入ってしまうということにあります。この問題は簡単に解決することができます。そのためには、このテクスチャを、シンプルな 8x8 ピクセルの黒いテクスチャに置き換えます。これは、一般のパッケージに保存され、同様な設定をもつあらゆるマスターマテリアルによって再利用されます。さらに次のことにも注意してください。マスターマテリアルが、法線マップのために使用されるテクスチャ サンプル パラメータをもつ場合、別個のプレースホルダーテクスチャを使用する必要があります。これは、法線マップのためのプレースホルダーとして法線マップがつねに必要となるためです。
+<p />
+<h2><a name="マテリアルの参照をチェックする"></a> マテリアルの参照をチェックする </h2>
+<div style="margin-top:-10px;" ><hr size="1" noshade="noshade"></div>
+<p />
+マテリアルをプロファイルする場合は、チャンネルパックの一部ではない (すなわち、RGB イメージにおいて単一のチャンネルではない) エディタのためのテクスチャに注意する必要があります。これらは、浪費の主要な候補であり、簡単に改善することができます。以下にその例を示します。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/effect_no_pack.jpg" alt="effect_no_pack.jpg" width="599" height="316" />
+<p />
+このエフェクトは、グレイスケール テクスチャのようなものの RGB output を使用しており、テクスチャは明らかにチャンネルパックされたテクスチャの一部にはなっていません。さらに詳しく調べるには、これをブラウザに同期させます。そのためには、テクスチャサンプルの <code>Texture</code> (テクスチャ) プロパティのための <img alt="find_in_browser.jpg" src="#" /> ボタンをクリックします。このケースではテクスチャが 512x512 のノイズタイルであることが分かります。
+<p />
+つぎの段階として、このテクスチャを使用しているマテリアルが他にないかどうかを調べます。テクスチャを右クリックして、コンテクストメニューから <em>Find All Materials Using This Texture</em> (このテクスチャを使用しているすべてのマテリアルを見つける) を選択します。問題となっているテクスチャを使用するマテリアルからなる集合が作成されるため、このコマンドは非常に役立ちます。初回起動時には時間がかかります。(ゲームのコンテンツのサイズに応じて、インスタンスによっては 5 分ほどもかかることがあります)。ただし、初回以降の起動については、たいてい高速です。
+<p />
+マテリアルの集合が生成されたら、それを選択して、当該のテクスチャを参照しているマテリアルには他に何があるかを調べます。
+<p />
+この例では、多数のマテリアルがあるため、ゲームの多くの部分で使用されている可能性が高い。これを削除することが有益であるということは示されていませんが、今後最適化がさらに必要となる場合に備えておぼえておかなければなりません。
+<p />
+<h2><a name="チャンネル パック化と統合"></a> チャンネル パック化と統合 </h2>
+<div style="margin-top:-10px;" ><hr size="1" noshade="noshade"></div>
+<p />
+先のパッケージをよく調べてみると、このうち 3 つのテクスチャでスペースを浪費している可能性が目につきます。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/assessment_waste.jpg" alt="assessment_waste.jpg" width="644" height="580" />
+<p />
+これらはどれも 1024x1024 のエミッシブ テクスチャであり、3 つのカラーチャンネルが使用されています。また、各テクスチャのうちほんの少しの部分しか実際には使用されていないことに注目してください。これらの黒いピクセルのすべてがメモリを不必要に占有しているのです。これは二重の問題ですが、解決するのは容易です。すなわち、各テクスチャを単一のチャンネルに置くことによって、これらテクスチャを単一のテクスチャにパックするとともに、トリミングすることによってピクセルの数をできるだけ少なくします。
+<p />
+エミッシブ テクスチャはこの最適化のケースにうってつけです。ソフトであり、簡単にトリミングでき、詳細な部分がそれほど多くありません。マテリアル全体の外見にあまり大きな影響を与えないのが普通です。もちろん、そうでない場合は、そのテクスチャと状況にとって理想的な最適化とは言えなくなるでしょう。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/emissive_mesh.jpg" alt="emissive_mesh.jpg" width="900" height="453" />
+<p />
+これらのエミッシブ テクスチャをトリミングしてから「チャンネルパック」(channel pack) を実行することによって、スペースとメモリを大幅に節約することができます。まず、すべてのエミッシブをトリミングして 256x256 の領域に合うようにします。特定の状況においては、単純なトリミングでは済まない場合があります。たとえば、水平軸および垂直軸に沿ってトリミングし、さらに残りの軸に沿ってスケーリングしてテクスチャを押しつぶすことが必要となる場合があります。さらに、マテリアルの中で押しつぶしを元に戻して正しく見えるかチェックします。ソフトなエミッシブ テクスチャであれば正常に見えるはずです。ただし、ハードエッジのエミッシブではそれほどうまく機能しません。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/emissive_crop.jpg" alt="emissive_crop.jpg" width="768" height="256" />
+<p />
+ここで、これら 3 個のエミッシブを Photoshop でチャンネルパックします。つまり、まとめられた 3 チャンネル テクスチャのカラーチャンネル内にそれぞれを保存することになります。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/emissive_pack.jpg" alt="emissive_pack.jpg" width="557" height="258" />
+<p />
+<font color="#ff0000"><b>テクスチャをチャンネルパックする場合に役立つことがあります。わたしたちが使用している圧縮形式は DXT1 であるため、その圧縮スキームの働きによって、テクスチャの緑のチャンネルに余分なデータが保存されます。したがって、高周波細部に値するエミッシブや精妙なエミッシブの場合は、最高のクオリティのために緑のチャンネルに置きます。 </b></font>
+<p />
+256 にトリミングしても、まだかなり無駄なスペースが含まれている可能性があります。スペースがあり、テクスチャがトリミングされてマテリアルの中でオフセットされている場合は、クオリティを高めてみてはどうでしょうか。テクスチャの高解像度ソースアートをとることによって、エミッシブの高解像度バージョンを下げ、同じ量のスペースを使用しながらそのチャンネルのクオリティを上げることができます。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/emissive_highres.jpg" alt="emissive_highres.jpg" width="512" height="256" />
+<p />
+また、「たとえば 第 4 のエミッシブを含める場合、別のチャンネルをテクスチャに追加してみてはどうだろうか」と、考えている場合も注意すべきです。 <font color="#ff0000"><b> その場合問題となるのは、第 4 のチャンネルのテクスチャが DXT1 ではなく DXT5 として圧縮するということです。DXT5 の問題は、圧縮的な観点から見るとアルファチャンネルがフル解像度であるということです。つまり、3 つのカラーチャンネルを合わせたのと同じだけのメモリを使用するということになります! </b></font> だから DXT5 のコストが高いのです。
+<p />
+この時点で、チャンネルパックされたテクスチャを保存しインポートすることができます。
+<p />
+ここで、マスターマテリアルをセットアップして、エミッシブテクスチャをトリミングおよびオフセットできるようにします。これによってシェーダーの複雑度がやや上がりますが (6 命令)、おそらく、テクスチャプールがすでに嵩んでいるため、この命令分に値するはずです。
+<p />
+マスターシェーダーがテクスチャ遅延されている (つまりピクセセルシェーダーの命令を実行するよりもテクスチャサンプルを処理するのに時間を要する) ことが分かっている場合、命令を数個加えてもパフォーマンスにはまったく影響がありません。このことは、マテリアルの PIX キャプチャをとって、Microsoft のパフォーマンス分析ツールを使用すれば分かります。
+<p />
+最初、シェーダーはこのエミッシブテクスチャをそのままの状態でとります。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/emissive_no_offset.jpg" alt="emissive_no_offset.jpg" width="236" height="178" />
+<p />
+このテクスチャをマテリアル上でオフセットし動かすことができるようにする必要があります。そこで、シンプルなシェーダー演算を加えることによって、これらのケースを処理します。その場合、マテリアル インスタンス毎にパラメータを使います。
+<p />
+<span style="font:italic 10px arial;" >（フルサイズの表示には画像をクリック）</span>
+<p />
+<a href="rsrc/Three/TextureOptimizationTechniques/emissive_offset.jpg" Target="NEW"><img src="rsrc/Three/TextureOptimizationTechniques/emissive_offset_small.jpg" alt="emissive_offset_small.jpg" width="900" height="382" /></a>
+<p />
+静的スイッチのパラメータ (Static Switch Parameter) によって、インスタンス単位でトリミングされたエミッシブを使用すべきかどうか決めることができるようになります。  <font color="#ff0000"><b>静的スイッチは、バイナリスイッチとして機能します。つまり、チェックを入れると A の input に入るシェーダー文のみ利用します。チェックを外すと、B の中にあるものを使用します。すなわちオプトインするまで、パフォーマンスの負荷が追加されないことになります。 </b></font>
+<p />
+_スイッチについて役に立つことがあります。 <font color="#ff0000"><b>スイッチに名前を付ける場合はつねに動詞を使ってください。</b></font> つまり、スイッチを切り替えることからアクションを作るのです。これによって、初めてこのマテリアルを見た人でも両方のオプションの意味が分かります。たとえば、CroppedEmissive (トリミングされたエミッシブ) という名前をスイッチにつけていたならば、シェーダーを見ても、どちらのオプションがどちらの状態を意味するか分からなかったでしょう。  UseCroppedEmissive (トリミングされたエミッシブを使用する) という名前が付いているからこそ、だれもが一目で、スイッチにアクションがともない、名前だけでどの状態にあるかが分かり、値がチェックされているか否かも分かるのです。スイッチに名前を付けるときは必ず動詞を使うようにしましょう。
+<p />
+ここにあるパラメータは分かりやすいものです。 <em>Char_Emissive_CropOffset</em> という名前のパラメータは、エミッシブの発光の X 座標と Y 座標を操作するためのものです。また、X および Y のスケールパラメータによって、一方の軸上で個別にテクスチャをスケーリングすることが可能になります。これによって、どのようなエミッシブテクスチャでも押しつぶしを解除することができます。
+<p />
+この演算を改善して、命令を 1 つや 2 つ節約する方法はいくつかあります。ただし、この方法が優れているのは、さまざまなオプションがあることをだれもが分かるからです。
+<p />
+つぎに、パックされたテクスチャの RGB チャンネルのうちどのチャンネルを使用するか選択できるようにしなければなりません。  StaticComponentMaskParameter (静的コンポーネント マスク パラメータ) 式をマテリアルに追加することによって、新たなパックされたテクスチャ内にあるカラーチャンネルのどれであっても選んで使用することができるようになります。そのためには、シェーダーチェーンにおいて 3 つのチャンネルのうち 1 つだけを渡すようにします。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/emissive_channel_mask.jpg" alt="emissive_channel_mask.jpg" width="841" height="187" />
+<p />
+さてこれで、マスターシェーダー上で apply (適用する) をクリックして、親としてマスターを使用するインスタンスの 1 つを開きます。これによって、変更が適切に働いているかテストしてみることができます。
+<p />
+まず、トリミングされたエミッシブを使用するための静的スイッチを有効にします。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/emissive_usecropped.jpg" alt="emissive_usecropped.jpg" width="399" height="19" />
+<p />
+つぎに、新たなパックされたテクスチャをエミッシブのスロットに適用します。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/emissive_texture.jpg" alt="emissive_texture.jpg" width="399" height="19" />
+<p />
+使用するカラーチャンネルを選択します。(この場合は赤です)。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/emissive_componentmask.jpg" alt="emissive_componentmask.jpg" width="399" height="95" />
+<p />
+スケールパラメータを 2 にセットして、エミッシブがマテリアル上で正しいサイズになるようにします。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/emissive_scale.jpg" alt="emissive_scale.jpg" width="399" height="38" />
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/emissive_wrap.jpg" alt="emissive_wrap.jpg" width="490" height="489" />
+<p />
+<font color="#ff0000"><b>あまりよくは見えませんね。なぜでしょうか?  テクスチャがクランプ (固定) されていないためです!  デフォルトでは、「Unreal Engine 3」にインポートされる新しいテクスチャは、そのテクスチャのプロパティの中で、WRAP (ラップ) にセットされています。すなわち、テクスチャがタイリングする場合、繰り返されることになります。ブラウザの中でテクスチャをダブルクリックして、CLAMP (クランプ) にセットします。 </b></font>
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/emissive_texclamp.jpg" alt="emissive_texclamp.jpg" width="340" height="38" />
+<p />
+そのまま、次のフラグもセットします。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/emissive_preserveborder.jpg" alt="emissive_preserveborder.jpg" width="340" height="57" />
+<p />
+テクスチャのエッジピクセルがすべて黒であるため、どのミップレベルが表示されているかにかかわらず、つねに黒のままであることになります。これによって、非常に遠く離れた場合にテクスチャが汚れることがなくなります。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/emissive_clamp.jpg" alt="emissive_clamp.jpg" width="490" height="489" />
+<p />
+良くなりました!  つぎに、パラメータを使ってテクスチャをオフセットします。しっかりと見れば通常は充分なのですが、必要であれば、Photoshop において計算をして、ボックスに入れる正確なトリミングの値を出すことができます。この例では、まったくの偶然ですが、オフセットなしで正しく配置できています。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/emissive_cropoffset.jpg" alt="emissive_cropoffset.jpg" width="399" height="95" />
+<p />
+マテリアルインスタンス内でエミッシブカラーを変更して、チェックを入れます。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/emissive_color.jpg" alt="emissive_color.jpg" width="399" height="95" />
+<p />
+新たなパックされたテクスチャを使用する他のマテリアルインスタンス上でも同じプロセスを実行します。最終的な結果はつぎのようになりました。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/emissive_mesh_final.jpg" alt="emissive_mesh_final.jpg" width="900" height="453" />
+<p />
+つぎに、使用しないテクスチャを取り除きます。そのためには、Consolidate (統合) コマンドを使用します。
+<p />
+3 つの古いテクスチャと作成した新たなテクスチャを選択します。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/emissive_select.jpg" alt="emissive_select.jpg" width="644" height="573" />
+<p />
+右クリックして Consolidate を選択します。  <font color="#ff0000"><b>これによってこれら 3 つが削除され、永久に第 4 のテクスチャにリダイレクトされます。これはパッケージをまたいで実行することができますが、安全のために、前もってあらゆるものをチェックしてください。  この操作はやり直すことができませんので、充分気をつけてください! </b></font>
+<p />
+つぎのダイアログボックスが現れます。
+<p />
+<img src="rsrc/Three/TextureOptimizationTechniques/emissive_consolodate.jpg" alt="emissive_consolodate.jpg" width="502" height="224" />
+<p />
+新たなパックされたエミッシブを選択して、 <img alt="consolidate_button.jpg" src="rsrc/Three/TextureOptimizationTechniques/consolidate_button.jpg" /> ボタンをクリックします。新たなテクスチャだけが残り、他の 3 つのテクスチャは永久に削除されます。繰り返しますが、 <strong>注意してください!</strong> 深刻な問題を引き起こす可能性があります!  必ずパッケージを保存するようにしてください。
+<p />
+<h2><a name="最後に"></a> 最後に </h2>
+<div style="margin-top:-10px;" ><hr size="1" noshade="noshade"></div>
+<p /> <ul>
+<li> UV をパックする場合は、互いにエミッシブを近づけてパックするようにしてください!  それによってトリミングとメモリの節約が容易になります。
+</li> <li> このようなことを最初に準備することによって、最終的には苦労せずに済みます。
+</li> <li> シェーダー複雑度のトレードオフがメモリの節約に見合わない場合があります。かなりまれなことであり、個別的な事象です。  ほとんどの場合、いくらかの節約と釣り合いが取れます。
+</li> <li> エミッシブをトリミングしない場合であっても、チャンネルパック化は有効な考え方であり、クオリティがそのままならば余分なシェーダー計算はまったく行われません。
+</li> <li> <em>Consolidate...</em> および <em>Find All Materials Using This Texture</em> (このテクスチャを使用しているマテリアルをすべて探す) は強力なツールです。
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TextureOptimizationTechniquesJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:30:15 GMT -->
+</html></body>

@@ -1,0 +1,376 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ProfilingBasics.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:21:45 GMT -->
+<head>
+<title> UDK | ProfilingBasics    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">ProfilingBasics  </b></div>
+<div id="tooltext">
+<a href="ProfilingBasicsJP.html" class="twikiLink">日本語訳</a><br><a href="ProfilingBasicsCH.html" class="twikiLink">中国翻译</a><br><a href="ProfilingBasicsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/ProfilingBasics -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="PerformanceHome.html" class="twikiLink">Performance, Profiling, and Optimization</a></b> &gt; Basic Profiling and Optimization Techniques
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Basic Profiling and Optimization Techniques"></a> Basic Profiling and Optimization Techniques </h1>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="ProfilingBasics.html#Basic Profiling and Optimization Techniques"> Basic Profiling and Optimization Techniques</a> <ul>
+<li> <a href="ProfilingBasics.html#Overview"> Overview</a>
+</li> <li> <a href="ProfilingBasics.html#STAT Commands"> STAT Commands</a>
+</li> <li> <a href="ProfilingBasics.html#Preparing the Profiling Environment"> Preparing the Profiling Environment</a> <ul>
+<li> <a href="ProfilingBasics.html#STAT UNIT"> STAT UNIT</a>
+</li> <li> <a href="ProfilingBasics.html#Build configuration"> Build configuration</a>
+</li> <li> <a href="ProfilingBasics.html#Turn off garbage collection verification"> Turn off garbage collection verification</a>
+</li> <li> <a href="ProfilingBasics.html#Compile scripts in Final Release mode"> Compile scripts in Final Release mode</a>
+</li> <li> <a href="ProfilingBasics.html#Disabling VSync"> Disabling VSync</a>
+</li> <li> <a href="ProfilingBasics.html#Using STAT SLOW"> Using STAT SLOW</a>
+</li></ul>
+</li> <li> <a href="ProfilingBasics.html#Tips and Tricks"> Tips and Tricks</a> <ul>
+<li> <a href="ProfilingBasics.html#Just Turn It Off"> Just Turn It Off</a>
+</li> <li> <a href="ProfilingBasics.html#Look at a Wall"> Look at a Wall</a>
+</li> <li> <a href="ProfilingBasics.html#Spawn N of a Type"> Spawn N of a Type</a>
+</li></ul>
+</li> <li> <a href="ProfilingBasics.html#Boot Time Profiling"> Boot Time Profiling</a> <ul>
+<li> <a href="ProfilingBasics.html#Profile Nodes"> Profile Nodes</a>
+</li> <li> <a href="ProfilingBasics.html#Profile Node Visualizer"> Profile Node Visualizer</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The following sections will help you understand the most useful tools for tracking down performance problems, bottlenecks, and hitches.
+<p />
+Usually the first order of business is determining whether your frame is limited by CPU or GPU performance, and then using the appropriate tools to narrow down the problem.
+<p />
+If the CPU is running slowly there are many commands and debugging tools available to help with this.  Sometimes there are simply too many actors and other "moving parts" causing a frame to be slow, or maybe a renegade AI class is firing thousands of ray casts per frame.  With some patience you can track these perf issues right down to the individual level actor!
+<p />
+For GPU performance you may need to use PIX to analyze draw events or shader performance, as well as in-game visualization modes and HUD stats.  Sometimes these problems can be traced to content layout or lighting properties.
+<p />
+In either case you may be dealing with sustained frame rate problem or a hitch (large frame time spike.)  For sustained poor frame rate, single-frame capture tools (such as the TRACE command) and sampling profilers (VTune, etc) may be very useful.  For hitches, you'll want to make use of the StatsViewer tool to analyze historical frames using a call graph.
+<p />
+Note that consoles will generally have different performance debugging tools than PC, although many of the Unreal tools will work on multiple platforms.
+<p />
+<h2><a name="STAT Commands"></a> STAT Commands </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+When debugging, testing, or profiling games, the ability to quickly and easily see and evaluate meaningful data directly in the game is imperative. Through the use of the STAT console command, Unreal Engine 3 provides the ability to view any number of statsistics about various aspects of the game and engine as data rendered to the screen as a heads-up display.
+<p />
+The <a href="StatsDescriptions.html" class="twikiLink">Stat Command Descriptions</a> page contains a complete listing of all the stat commands available as well as descriptions of the various metrics shown by each command.
+<p />
+<h2><a name="Preparing the Profiling Environment"></a> Preparing the Profiling Environment </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p /> <ol>
+<li> First, make sure to always have <a href="ProfilingBasics.html#StatUnit" class="twikiAnchorLink">STAT UNIT</a> up while you're running the game<!--  -->
+</li> <li> Make sure to <a href="ProfilingBasics.html#TurnOffLogSpam" class="twikiAnchorLink">turn off any log spam</a> or debug code that will taint performance results
+</li> <li> Turn off <a href="ProfilingBasics.html#TurnOffGCVerify" class="twikiAnchorLink">garbage collection verification</a> because it will contribute to hitching<!--  -->
+</li> <li> <a href="ProfilingBasics.html#TurnOffVSync" class="twikiAnchorLink">Disable VSync</a> so you can identify bottlenecks, even on fast frames
+</li></ol>
+<p />
+<a name="StatUnit"></a>
+<h3><a name="STAT UNIT"></a> STAT UNIT </h3>
+<p />
+Use the <strong>STAT UNIT</strong> command to determine where your frame time bottleneck is.  <strong>STAT UNIT</strong> will toggle an on-screen HUD that displays Frame time, Game thread time, Render thread (Draw) time and GPU time (if possible.)  This is an invaluable first step for tracking down performance problems -- you should pretty much always have this turned on.
+<p />
+Also, you an use the <strong>STAT FPS</strong> command to display frame rate and frame time on the screen.
+<p />
+<!--  -->
+<p />
+<a name="TurnOffGCVerify"></a>
+<h3><a name="Turn off garbage collection verification"></a> Turn off garbage collection verification </h3>
+<p />
+While working on performance you should always have <em>GC Verification</em> turned off, otherwise you can expect massive hitching in <strong>Release</strong> builds at least every 30 seconds or so.  You can do this using one of the following methods:
+<p />
+<!--  --> <ul>
+<li> Pass the <strong>-NoVerifyGC</strong> command-line argument.
+</li></ul>
+<p />
+<!--  -->
+<p />
+<a name="TurnOffVSync"></a>
+<h3><a name="Disabling VSync"></a> Disabling VSync </h3>
+<p />
+For best results you may want to turn off <strong>VSync</strong> (waits for vertical retrace before presenting frames.)  Otherwise the frame time will be padded to the game's refresh rate, which can make it more difficult to get an accurate picture.  To turn off <strong>VSync</strong>: <ul>
+<li> Pass the <strong>-NoVSync</strong> command-line option to the game.
+</li> <li> Or, enable the <strong>"No VSync"</strong> checkbox in the <strong>Game</strong> tab of <a href="UnrealFrontend.html" class="twikiLink">Unreal Frontend</a>.
+</li></ul>
+<p />
+<a name="StatSlow"></a>
+<h3><a name="Using STAT SLOW"></a> Using STAT SLOW </h3>
+<p />
+You can use the <strong>STAT SLOW</strong> command to help find performance spikes.  It can help you narrow down hitches by reporting any cycle stats that run longer than a specific duration in a frame (10 ms by default.)  Stats that run slowly will be displayed on the HUD for a little while, making it easier to correlate the spike with game behavior on screen.
+<p />
+To use, enter <strong>STAT SLOW</strong> in the console with the optional arguments what the threshold is in seconds (so 0.01 for 10 ms) and how long to render the stat once it has spiked once. The default is 10 seconds.
+<p />
+<strong>Example:</strong>   <code>STAT SLOW 0.01 10</code>
+<p />
+This will render all cycle stats that have been &gt; 10 ms in the last 10 seconds.
+<p />
+<h2><a name="Tips and Tricks"></a> Tips and Tricks </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The following sections contain tips and tricks to keep in mind when profiling for performance issues.
+<p />
+<h3><a name="Just Turn It Off"></a> Just Turn It Off </h3>
+<p />
+Games normally have a number of features that are exciting to see but are a bit expensive. That is normally fine except when you start doing those expensive things a lot OR when you have a complex scene where those expensive things are causing the scene to be slow. You can spend hours optimizing and getting 20-40% improvements which may not even make the scene fast enough. The other way is to just turn that functionality off!! This is a great strategy for things that may not be noticed when there is lots of carnage occurring or for things that are far in the distance.
+<p />
+Additionally, "just turn it off" is a great technique for doing profiling. Sometimes you need to know if something is going to be worth spending time on optimizing. Just completely turning it off is a great way to say: "If we made this basically free how where are we in terms of our frametime budget".
+<p />
+<strong>Example Use Cases:</strong>
+<p /> <ul>
+<li> Enemies that are far away from the player don't often need to spawn small blood decals on the ground (e.g. being shot blood effects)
+</li> <li> Enemies that the LD knows the player will never be able to get reach (e.g. enemies on a cliff that is unreachable) don't need to spawn blood pools or drop weapons
+</li> <li> Instead of optimizing a complex SkeletalControl, just don't update it when the owner is not visible
+</li> <li> Instead of simulating cloth when the cloth is not scene, just don't! :-)
+</li></ul>
+<p />
+<h3><a name="Look at a Wall"></a> Look at a Wall </h3>
+<p />
+Quite often code is updating things it really doesn't need to be when they are not visible. Going into a level, turning to face the wall and doing all of the normal profiling that you do is a great way to see if objects are spuriously updating themselves when there is no need.
+<p />
+Of course some things need to update themselves when they are not visible, but a lot of objects can get by without constantly updating.
+<p />
+<h3><a name="Spawn N of a Type"></a> Spawn N of a Type </h3>
+<p />
+Often in the game you will have a number of enemies of the same type attacking you and the game will be slow. Something is slow with that enemy type! The problem is that the rest of the engine is getting in your way for easily being able to see what is slow. A nice way around that is to get a test level and just spawn N of those enemies in that test level and profile that. It will make it really easy to see where the hot spots are!
+<p />
+This is an easy technique to use. Simply do the following:
+<p /> <ul>
+<li> Place N of the problematic object in a test level
+</li> <li> Profile!
+</li></ul>
+<p />
+<!--  -->
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/ProfilingBasics.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:21:45 GMT -->
+</html></body>

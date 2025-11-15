@@ -1,0 +1,455 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TerrainsFromDEMsJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:39:41 GMT -->
+<head>
+<title> UDK | TerrainsFromDEMsJP    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">TerrainsFromDEMsJP  </b></div>
+<div id="tooltext">
+<a href="TerrainsFromDEMs.html" class="twikiLink">English Translation</a><br><a href="TerrainsFromDEMsCH.html" class="twikiLink">中国翻译</a><br><a href="TerrainsFromDEMsKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/TerrainsFromDEMsJP -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<h1><a name="DEM からのテレイン: Digital Elevation Models (数値標高モデル) の使用"></a> DEM からのテレイン: Digital Elevation Models (数値標高モデル) の使用 </h1>
+<p />
+<em>ドキュメントの概要: テレイン作成における DEM ファイルの使用に関する情報。</em>
+<p />
+<em>初稿は David Green<sup>?</sup> 。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="TerrainsFromDEMsJP.html#DEM からのテレイン: Digital Elevation Models (数値標高モデル) の使用"> DEM からのテレイン: Digital Elevation Models (数値標高モデル) の使用</a> <ul>
+<li> <a href="TerrainsFromDEMsJP.html#Digital Elevation Model の概要"> Digital Elevation Model の概要</a>
+</li> <li> <a href="TerrainsFromDEMsJP.html#DEM データの解像度"> DEM データの解像度</a>
+</li> <li> <a href="TerrainsFromDEMsJP.html#等高線図と起伏図の解像度"> 等高線図と起伏図の解像度</a>
+</li> <li> <a href="TerrainsFromDEMsJP.html#DEM 解像度の拡大"> DEM 解像度の拡大</a>
+</li> <li> <a href="TerrainsFromDEMsJP.html#Unreal Units による DEM データ"> Unreal Units による DEM データ</a>
+</li> <li> <a href="TerrainsFromDEMsJP.html#DEM ファイルの形式"> DEM ファイルの形式</a>
+</li> <li> <a href="TerrainsFromDEMsJP.html#DEM 変換ソフトウェア"> DEM 変換ソフトウェア</a>
+</li> <li> <a href="TerrainsFromDEMsJP.html#DEM データソース"> DEM データソース</a>
+</li> <li> <a href="TerrainsFromDEMsJP.html#DEM データを Unreal Engine で使用するための準備"> DEM データを Unreal Engine で使用するための準備</a>
+</li> <li> <a href="TerrainsFromDEMsJP.html#Unreal Engine へのハイトマップのインポート"> Unreal Engine へのハイトマップのインポート</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<p />
+<h2><a name="Digital Elevation Model の概要"></a> Digital Elevation Model の概要 </h2>
+<p />
+Digital Elevation Model ("DEM"、数値標高モデル) は、標高を示す標本点のラスタライズ グリッドを含むデータ ファイルのことで、これらのデータは通常、周円軌道レーダー衛星などのリモートセンシング システムから得られます。このデータは、調査地点のグレースケールのハイトマップ (高さマップ) か、3D メッシュ表現に変換されます。DEM データが現在提供する解像度や品質にはかなりの幅がありますが、過半数のデータは解像度が非常に低く、そのため GIS または高高度の画像や陰影起伏図のレンダリングにしか利用できません。
+<p />
+GoogleEarth (<a href="http://earth.google.com/" target="_top">http://earth.google.com/</a>) や Mars HiRISE プロジェクト (<a href="http://hirise.lpl.arizona.edu/" target="_top">http://hirise.lpl.arizona.edu/</a>) で観測できるような実際のラスター写真画像と、DEM データを混同しないでください。ラスター写真には写真用カメラで撮影された標準視像が含まれるのに対し、DEM データはレーダー、レーザーまたは同様の高度計測システムを使用して累算されるのが通常です。
+<p />
+写真データでは、画像のピクセルデータが各位置の高度を直接表現していないため、これをハイトマップの高度データに変換するのは容易ではありません。主光源の光線の入射角や、それにより生じる光と影の影響など、多数の要因を考慮しなければならないため、写真から派生高度データを抽出することは難しいのです。
+<p />
+等高線図 (Contour Line Map) 形式の地形データを利用することもできます。これには、単色スタイルと標高カラーのグラデーションスタイルがあります。カラー起伏図 (Color Relief) 形式は等高線図に似ていますが、高度をカラーグラデーションのみで表現します。等高線図、カラー起伏図の多くは土地測量データに基づいて作成されるため、リモートセンシング データファイルが持つ解像度や精度を伴いません。
+<p />
+<p />
+<strong>空中写真画像:</strong>
+<p />
+<img alt="USGS-VolgaRiverDelta.gif" src="rsrc/Three/TerrainsFromDEMsJP/USGS-VolgaRiverDelta.gif" />
+<p />
+<small>
+Volga River Delta (ボルガ川の三角洲) - <a href="http://eros.usgs.gov/imagegallery/imageDetail.php?page=38&amp;img=Volga+River+Delta&amp;id=2055&amp;col=Earth+As+Art" target="_top">アメリカ地質調査所 (USGS)</a>
+</small>
+<p />
+<strong>等高線図:</strong>
+<p />
+<img alt="USGS-Contour.gif" src="rsrc/Three/TerrainsFromDEMsJP/USGS-Contour.gif" />
+<p />
+<small>
+アメリカ、ニューハンプシャー州-  <a href="http://www.usgs.gov/" target="_top">アメリカ地質調査所</a>
+</small>
+<p />
+<strong>陰影起伏画像:</strong>
+<p />
+<img alt="NAG-ShadedRelief.gif" src="rsrc/Three/TerrainsFromDEMsJP/NAG-ShadedRelief.gif" />
+<p />
+<small>
+アメリカ、ニューメキシコ州- <a href="http://nationalatlas.gov/" target="_top">National Atlas Map Maker</a>
+</small>
+<p />
+<strong>DEM データから作成された Unreal テレイン</strong>
+<p />
+<img alt="DGAscraeus.jpg" src="rsrc/Three/TerrainsFromDEMsJP/DGAscraeus.jpg" />
+<p />
+<small>
+<a href="http://www.lilchips.com/dgunreal" target="_top">David Green</a>
+</small>
+<p />
+<p />
+<h2><a name="DEM データの解像度"></a> DEM データの解像度 </h2>
+<p />
+ほとんどの DEM データファイルは、x*y 個の標本点 (16 ビット バイナリまたは ASCII の高度値) を含む四角形のラスター画像として保存されます。多様な DEM 形式を UnrealEd G16 のハイトマップ形式に直接変換することができるソフトウェア ユーティリティが多数あります (G16Ed、HMCS および HMES ソフトウェア アプリケーションなど)。他の GIS および政府/大学提供の変換ユーティリティは RAW16 または TIF-16 などの中間変換ファイル形式を提供しています。これらの形式から UnrealEd の G16 形式により簡単に変換することができます。
+<p />
+現在最もよく使用されている DEM ファイルは地球と火星に関するもので、各惑星のさまざまな位置の多彩な解像度データを取得できます。
+<p />
+DEM ファイルの解像度は <em>arcminutes</em> (分角度) と <em>arcseconds</em> (秒角度) 単位で計測されたものか、またはそれぞれの空間距離をメートル単位で計測されたものです。最も一般的な解像度は 10、30 および 90 メートルです。現在利用できる最高の解像度データは1 ～ 5 メートルですが、このような高解像度データは稀で、通常は公開されていません。arcsecond またはメートル単位の解像度は、データファイル内の各標本点の間の空間を指します。
+<p />
+地球の海抜では、1 arcminute (_1 分 (角度) _) は約 1.151 マイル (6076.115 フィート) または 1.852 キロメートル (1852 メートル) で、1 海里 (nautical mile) に当たります。
+<p />
+1 arcsecond の 3 分の 1 (1/3") は通称 10 meter (10.3 メートルまたは 33.79 フィート) と呼ばれています。
+<p />
+1 arcsecond (1" または 1/60 arcminute) は通称 30 meter (30.86 メートルまたは 101.2 フィート) と呼ばれます。
+<p />
+3 arcseconds (3") は通称 90 meter (92.6 メートルまたは 303.6 フィート) と呼ばれます。
+<p />
+30 arcseconds (30") は約 1km (926 メートルまたは 3038.06 フィート) です。
+<p />
+<p />
+<h2><a name="等高線図と起伏図の解像度"></a> 等高線図と起伏図の解像度 </h2>
+<p />
+等高線図を使用してハイトマップ情報を取得する場合の問題点は、基本的にそれらの画像が、特定地域の妥当な高度変化を線群として全般的に定義されたものであるという点です。このデータをスキャンし、地図の特定グリッド領域の実際の x*y の高度点に変換するのは困難です。個々の等高線のエッジ検出およびトレースを実行し、次にそこから高度基準およびカーブを補外するための専用ソフトウェアが必要です。等高線図のテレイン ディテールの実際の解像度は非常に低いものです。
+<p />
+起伏図および陰影起伏図を使用してハイトマップ情報を取得する場合の問題点は、起伏図は通常は等高線 (地形) 図を基にして、地質学的特徴をより分かりやすく示すために高度寸法を 10 倍に拡大して作成されているという点です。陰影起伏図には光と影のレンダリングデータも含まれ、よりすぐれた 3D 図を提供してくれますが、これは元の高度データから簡単に切り離すことができません。
+<p />
+等高線図および起伏図はいずれも 1:x の縮尺で計測されています。一般的なスケールの値とそれらの等価サイズを次に示します。
+<p />
+1:24,000 (2万4千分の1) の縮尺地図は 7.5-minute (7分30秒地図)。7.5-minute (7分30秒) の四辺形は約 64 平方マイルの面積を内包する。
+<p />
+1:62,500 (6万2500の1) の縮尺地図は 15-minute (15分地図)。1:63,360 は 1 マイルを 1 インチで表わす。
+<p />
+1:100,000 の縮尺地図は、30 分間隔の緯度線、60 分間隔の経度線で区切られている。30 x 60-minute の四辺形では、地図の 1 センチメートルは地上距離の 1 キロメートルを表す。
+<p />
+<p />
+<h2><a name="DEM 解像度の拡大"></a> DEM 解像度の拡大 </h2>
+<p />
+例えば、30 メートルまたは 10 メートルのデータファイルにノイズを追加するなど、低解像度の DEM ファイルにディテールを加えることは可能ですが、データファイルの存在しない元の高度データ自体を再現することは不可能です。DEM データファイルをハイトマップのソースとして使用し、その高度データ上に他のノイズや地形学要因 (浸食など) を通過させて変更した場合、その DEM では元の高度点が変更されることから、ソースが表現されていないことになります。
+<p />
+<p />
+<h2><a name="Unreal Units による DEM データ"></a> Unreal Units による DEM データ </h2>
+<p />
+<em>「ビデオゲームのテレインとして使用するのに適した DEM データの解像度は?」という質問には、5 メートル以下であると簡単に答えることができます。10 メートル以上の DEM データは、テレインのデザインに使用するには解像度が低すぎます。</em>
+<p />
+Unreal Engines 2、2.5 および 3 では、デフォルトの縮尺として 1 Unreal Unit = 2 cm を使用しています。
+つまり、1 メートル = 50 Unreal Units です。
+<p />
+このデフォルトのスケールを使用した場合、一般的な DEM 解像度データは以下の Unreal Unit 間隔に相当します。
+<p /> <ul>
+<li> 1 メートル DEM データ = 1x50 = 標本点の間隔が 50 UUs
+</li> <li> 5 メートル DEM データ = 5x50 = 標本点の間隔が 250 UUs
+</li> <li> 10 メートル DEM データ = 10x50 = 標本点の間隔が 500 UUs
+</li> <li> 30 メートル DEM データ = 30x50 = 標本点の間隔が 1500 UUs
+</li> <li> 90 メートル DEM データ = 90x50 = 標本点の間隔が 4500 UUs
+</li></ul>
+<p />
+Unreal Engine 2 および 2.5 対応の UnrealEd では、TerrainInfo.TerrainScale.X/.Y が 512 の場合、各テレインクワッドのサイズは 512 UU です。10 メートルの DEM では TerrainScale.X/.Y のサイズが 500、つまりテレインクワッドは標準の 2 のべき乗値で約 512 になります。TerrainScale の最も一般的なサイズは 128 と 256 なので、512 は少なくとも最適なハイトマップの解像度の 1/4 になります。
+<p />
+Unreal Engine 3 用 UnrealEd では、Terrain.Display.DrawScale3D.X/.Y が 512 の場合、各テレインクワッドのサイズは 512 UU になります (通常のテッセレーション、すなわち MaxTesselationLevel = 1、MinTesselationLevel = 1 の場合)。10 メートルの DEM では DrawScale3D.X/.Y のサイズが 500、つまりテレイン クワッドは標準の 2 のべき乗値で約 512 になります。DrawScale の最も一般的なサイズは 128 と 256 なので、512 は少なくとも最適なハイトマップの解像度の 1/4 になります。
+<p />
+10 メートルの DEM データの解像度を、大半のビデオゲームのマップ (手作業で作成されたもの、アルゴリズム採用のハイトマップ生成ソフトウェアを使って生成されたものを含む) で通常使用されている値とを比較してみると、視覚的に精確なテレインを取得するのに通常使用されているものは、2.5 から 5 メートル データに相当することがわかります。2.5 および 5 メートルとは、クワッド間がそれぞれ約 128 および 256 UUs にあたります。
+<p />
+ほとんどの DEM データはこの標本点の間隔の少なくとも 2 倍あります。つまり、ほとんどの場合 10 メートルのデータとは最適なビデオゲームの解像度の 1/4 ～ 1/16 にしか相当しないわけで、これではビデオゲームのマップテレインのソースとして使用するには解像度、品質とも十分といえません。
+最もよく見られる一般公開の DEM データは 30 メートルと 90 メートルで、これらは、ビデオゲームのマップデザイン要件をまったく満たしていません。
+<p />
+10 メートルのデータは、スケールが 500 ではなく 256 ならば使用できますが、この場合テレイン ディテールや特徴は実物サイズのほぼ 1/4 になることを意味します。
+<p />
+<p />
+<h2><a name="DEM ファイルの形式"></a> DEM ファイルの形式 </h2>
+<p />
+最も一般的な DEM (デジタル標高モデル) ファイル形式の拡張子を以下に示します。
+<p />
+<table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">拡張子</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">ファイル形式</font></a> </th></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> .ddf </td><td bgcolor="#ffffff"> USGS DEM </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> .dem </td><td bgcolor="#eaeaea"> Vista Pro Binary DEM </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> .dem </td><td bgcolor="#ffffff"> USGS DEM </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> .hgt </td><td bgcolor="#eaeaea"> SRTM (Shuttle Radar Topography Mission) </td></tr>
+<tr><td bgcolor="#ffffff" class="twikiFirstCol"> .tif </td><td bgcolor="#ffffff"> GeoTIFF </td></tr>
+<tr><td bgcolor="#eaeaea" class="twikiFirstCol"> .txt </td><td bgcolor="#eaeaea"> Vista Pro ASCII DEM </td></tr>
+</table>
+<p />
+<p />
+<h2><a name="DEM 変換ソフトウェア"></a> DEM 変換ソフトウェア </h2>
+<p />
+DEM ファイルを他のファイル形式に変換するソフトウェア アプリケーションやユーティリティが多数存在します。これらの中間形式から、最終的にハイトマップ ソフトウェアや UnrealEd で使用可能な形式に変換することができます。広範にわたる DEM データタイプと、多彩な特徴や機能を備えたツールが存在するため、ここでは特定のアプリケーションを推奨していません。ソフトウェアの選択は、スタジオの要件により異なります。1 つ以上の DEM 形式の変換をサポートする一般的なアプリケーションには、HMCS、HMES および Leveller などが含まれます。さらに、多彩な DEM 形式の読み取りおよび変換用に、非営利団体、政府機関、教育機関向けのツールが多数存在します。これには、3DEM、Kashmir3D、LandSerf、MicroDEM、Wilbur および EarthSlot、LandView、World Wind、などが含まれます。
+<p />
+<p />
+<h2><a name="DEM データソース"></a> DEM データソース </h2>
+<p />
+[[http://www.usgs.gov][アメリカ地質調査所] の Web サイトには、航空写真、衛星画像、リモートセンシングデータを現在提供している団体のほとんどのリンクが掲載されています。このデータの大半は、有料でコピーを入手できます。以下は、利用可能な DEM データソースのごく一部のリストです。
+<p />
+<strong>5 メートル</strong>
+<p />
+UTAH AGRC <br>
+アメリカのデータ領域のみ。<br>
+<a href="http://agrc.utah.gov/agrc_sgid/dem_5m.html" target="_top">http://agrc.utah.gov/agrc_sgid/dem_5m.html</a>
+<p />
+<strong>10 メートル</strong>
+<p />
+NED <br>
+10 メートル、30 メートルのデータセット。10 メートルはアメリカ領域のみ。<br>
+<a href="http://ned.usgs.gov/" target="_top">http://ned.usgs.gov/</a>
+<p />
+<strong>30 メートル</strong>
+<p />
+USGS <br>
+<a href="http://www.usgs.gov/pubprod/" target="_top">http://www.usgs.gov/pubprod/</a>
+<p />
+<strong>90 メートル</strong>
+<p />
+SRTM: Shuttle Radar Topography Mission (スペースシャトル立体地形データ) <br>
+<a href="http://srtm.usgs.gov/" target="_top">http://srtm.usgs.gov/</a> <br>
+90 メートル データは元の 30 メートル データから平均化。<br>
+元の 30 メートル データセットは干渉を使用して取得。<br>
+30m x 30m 空間を、垂直高さの絶対精度 &lt;= 16m、相対精度 &lt;= 10m、水平円の絶対精度&lt;= 20m でサンプリング。
+<p />
+Canada Topographical Data (カナダ地形データ) <br>
+<a href="http://maps.nrcan.gc.ca/index_e.php" target="_top">http://maps.nrcan.gc.ca/index_e.php</a>
+<p />
+<strong>1 キロメートル</strong>
+<p />
+SRTM30: Shuttle Radar Topography Mission、30 arcsecond (1km) セット<br>
+<a href="http://topex.ucsd.edu/WWW_html/srtm30_plus.html" target="_top">http://topex.ucsd.edu/WWW_html/srtm30_plus.html</a> <br>
+926 メートルのデータ。
+<p />
+GTOPO30: 30 arcsecond の地形データセット。<br>
+<a href="http://edc.usgs.gov/products/elevation/gtopo30/gtopo30.html" target="_top">http://edc.usgs.gov/products/elevation/gtopo30/gtopo30.html</a> <br>
+926 メートルのデータ。
+<p />
+<p />
+<h2><a name="DEM データを Unreal Engine で使用するための準備"></a> DEM データを Unreal Engine で使用するための準備 </h2>
+<p />
+<strong>Voids</strong> (空隙)
+<p />
+DEM データセットには、"voids" と呼ばれる無効なデータ値領域が含まれていることがよくあります。これらの無効領域は、通常最小および最大データ値がそれぞれ 0 および 65535 で、結果的に生成されるデータの可視化バージョンでは穴またはスパイク (山形) として表示されます。
+<p />
+DEM の提供元によっては、DEM データセットをきれいにして「仕上げ」を施したバージョンを提供することがあり、無効領域の不明データに、他の DEM セットからのデータか、または周囲データに基づく平均値が挿入されています。
+<p />
+無効領域を含む未仕上げの DEM データを使用するときは、UnrealEd にインポートした後でデータを手動で修理するか、テレインの頂点を修正する必要があります。これには、ソースファイルのデータセットを手動で編集するか、UnrealEd 内で無効領域に手動で描き込むか、または、DEM の自動修正機能 (周辺データに基づいて補間充填値を適用することで、ユーザー指定範囲外のデータを訂正する機能) をサポートするサードパーティのソフトウェアを使用します。
+<p />
+<strong>位置基準と高度範囲のスケーリング</strong>
+<p />
+DEM データセットが 16 ビット値の場合、ゲームマップに使用するのに適した位置基準 (0 = 海抜位置) または標高の縮尺範囲に位置していないことが良くあります。ほとんどの場合、レベルデザイナーはデータの標高範囲が 16 ビット範囲の 1/3 ないし 1/2 以上に広がるように調整する必要があります。これにより、メッシュ頂点 Z のグラニュラリティが向上します。さらに、テレインの中間点が UnrealEd の原点に揃うようにデータを中央に合わせ、KillZ と StallZ 位置の間にテレインが適度に収まるようにします。
+<p />
+<p />
+<h2><a name="Unreal Engine へのハイトマップのインポート"></a> Unreal Engine へのハイトマップのインポート </h2>
+<p />
+DEM データ を G16 に変換可能な形式 (RAW-16 または TIF-16) に変換すると、UnrealEd で使用できるようになります。
+<p />
+G16 のハイトマップのインポートに関する詳細は、 <a href="TerrainHeightmapsJP.html" class="twikiLink">テレイン ハイトマップ</a> ページを参照してください。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/TerrainsFromDEMsJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:39:41 GMT -->
+</html></body>

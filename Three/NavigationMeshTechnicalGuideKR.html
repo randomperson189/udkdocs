@@ -1,0 +1,339 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavigationMeshTechnicalGuideKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:11:28 GMT -->
+<head>
+<title> UDK | NavigationMeshTechnicalGuideKR    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">NavigationMeshTechnicalGuideKR  </b></div>
+<div id="tooltext">
+<a href="NavigationMeshTechnicalGuide.html" class="twikiLink">English Translation</a><br><a href="NavigationMeshTechnicalGuideJP.html" class="twikiLink">日本語訳</a><br><a href="NavigationMeshTechnicalGuideCH.html" class="twikiLink">中国翻译</a><br>
+
+<!-- Three/NavigationMeshTechnicalGuideKR -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHomeKR.html" class="twikiLink">UE3 홈</a></b> &gt; <b><a href="AIAndNavigationHomeKR.html" class="twikiLink">AI와 내비게이션</a></b> &gt; 내비게이션 메시 테크니컬 가이드
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="내비게이션 메시 테크니컬 가이드"></a> 내비게이션 메시 테크니컬 가이드 </h1>
+<hr size="1" noshade="noshade">
+<em>문서 변경내역: <a href="https://udn.epicgames.com/Main/MattTonks" class="restricted" class="restricted" class="twikiLink">Matt Tonks</a> 작성. <a href="https://udn.epicgames.com/Main/JamesTan" class="restricted" class="restricted" class="twikiLink">James Tan</a> 수정. <a href="https://udn.epicgames.com/Main/SungjinHong" class="restricted" class="restricted" class="twikiLink">홍성진</a> 번역.</em>
+<div class="twikiToc"> <ul>
+<li> <a href="NavigationMeshTechnicalGuideKR.html#내비게이션 메시 테크니컬 가이드"> 내비게이션 메시 테크니컬 가이드</a> <ul>
+<li> <a href="NavigationMeshTechnicalGuideKR.html#개요"> 개요</a>
+</li> <li> <a href="NavigationMeshTechnicalGuideKR.html#내비게이션 핸들"> 내비게이션 핸들</a> <ul>
+<li> <a href="NavigationMeshTechnicalGuideKR.html#내비게이션 핸들 함수성"> 내비게이션 핸들 함수성</a> <ul>
+<li> <a href="NavigationMeshTechnicalGuideKR.html#실제 길찾기 함수성"> 실제 길찾기 함수성</a>
+</li> <li> <a href="NavigationMeshTechnicalGuideKR.html#길 따라가기 함수"> 길 따라가기 함수</a>
+</li> <li> <a href="NavigationMeshTechnicalGuideKR.html#내비메시 질의 함수"> 내비메시 질의 함수</a>
+</li></ul>
+</li></ul>
+</li> <li> <a href="NavigationMeshTechnicalGuideKR.html#내비게이션 인터페이스"> 내비게이션 인터페이스</a>
+</li> <li> <a href="NavigationMeshTechnicalGuideKR.html#내비 메시 디버깅"> 내비 메시 디버깅</a>
+</li> <li> <a href="NavigationMeshTechnicalGuideKR.html#폰 길찾기 파라미터"> 폰 길찾기 파라미터</a>
+</li> <li> <a href="NavigationMeshTechnicalGuideKR.html#내려받기"> 내려받기</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="개요"></a> 개요 </h2>
+<hr size="1" noshade="noshade">
+AI가 내비게이션 메시( 또는 <em>내비메시</em>) 를 사용할 수 있게끔 후킹하는 법에 대한 간략 안내서입니다. 언리얼 엔진의 내비게이션 메시 시스템에 대해서는 <a href="NavigationMeshReferenceKR.html" class="twikiLink">내비게이션 메시 참고서</a> 를 참고하십시오.
+<p />
+<p />
+<h2><a name="내비게이션 핸들"></a> 내비게이션 핸들 </h2>
+<hr size="1" noshade="noshade">
+모든 PathNode 길찾기 함수성은 Controller 에 들어있었습니다. 길찾기에 기반한 내비게이션 메시용 새 함수성은 모두 내비게이션 핸들이라는 자체-포함 오브젝트에 캡슐화되었습니다. 내비게이션 핸들 자체는 컴포넌트라서 패쓰를 연결하려는 액터 어디에든 부착시킬 수 있습니다. 게다가 핸들은 패쓰 검색 결과를 저장합니다. 즉 생성된 패쓰를 저장하므로, 그것을 확장시키면 수행중인 패쓰 탐색(traversal) 유형에 관련된 것이면 무엇이든 저장할 수 있습니다.
+<p />
+AI가 내비게이션 메시를 사용해서 길찾기를 하도록 하려면: <ul>
+<li> Interface_NavigationHandle 구현
+</li> <li> 어딘가에 접근가능한 NavigationHandle 컴포넌트 두기
+</li></ul>
+<p />
+<p />
+<h3><a name="내비게이션 핸들 함수성"></a> 내비게이션 핸들 함수성 </h3>
+내비게이션 핸들 함수성은 크게 세 범주로 나뉩니다.
+<p />
+<h4><a name="실제 길찾기 함수성"></a> 실제 길찾기 함수성 </h4>
+   길찾기는 패쓰 컨스트레인트와 골 이밸류에이터의 도움을 받아 수행됩니다. 상세 정보는 <a href="NavMeshConstraintsAndGoalEvaluatorsKR.html" class="twikiLink">NavMesh Constraints And Goal Evaluators KR</a> 페이지를 참고하십시오. 길찾기를 하려면 컨스트레인트와 이밸류에이터를 최소 하나씩 설정해 둬야 합니다. 그 작업은 보통 다음과 같은 종류의 상용구(boilerplate) 함수를 추가하는 것이 좋습니다:
+<p />
+<div class="codesnippet">
+   <pre>
+function bool GeneratePathTo(Actor Goal, optional float WithinDistance, optional bool bAllowPartialPath)
+   {
+  if (NavigationHandle &#61;&#61; None)
+  {
+    return false;
+  }
+
+      AddBasePathConstraints(false);
+
+      class&#39;NavMeshPath&#95;Toward&#39;.static.TowardGoal( NavigationHandle, Goal );
+      class&#39;NavMeshGoal&#95;At&#39;.static.AtActor( NavigationHandle, Goal, WithinDistance, bAllowPartialPath );
+
+      return NavigationHandle.FindPath();
+   }
+   </pre>
+</div>
+<p /> <ul>
+<li> <strong>FindPath()</strong> - (길찾기) A* 루프를 실행하고 골 이밸류에이터 스택이 적절한 골을 찾거나 워킹 세트가 공백으로 설정될(더이상 시도할 노드가 없을) 때까지 돌립니다. 그리고서 검색이 성공했으면 참을 반환하고, 결과 패쓰는 <strong>FindPath()</strong> 를 호출한 NavigationHandle 의 PathCache 에 저장되게 됩니다. 더욱 커스터마이징된 (커버 검색같은) 검색 상황에서는 골 이밸류에이터가 자체적인 내부 고려사항에 따라 부가 데이터를 저장할 수도 있습니다.
+</li></ul>
+<p />
+<h4><a name="길 따라가기 함수"></a> 길 따라가기 함수 </h4> <ul>
+<li> <strong>SetFinalDestination()</strong> - (최종 목적지 설정) 이 함수는 NavigationHandle 의 <strong>FinalDestination</strong> 파라미터를 설정합니다. 그 이유는 두 가지 입니다. 첫째, PathCache 는 에지 목록이기에 액터가 마지막 에지에 도달하고나면 패쓰의 지난 폴리에 있는 패쓰의 실제 골지점으로 액터를 보내기 위해 정보가 더 필요하게 됩니다. 둘째, 모든 패쓰 검색에 대해 이것을 자동 설정하지 않는 이유는, 현재 패쓰상에 골을 향해 이동하는 액터가 (어딘가로 달려가는 도중 커버를 찾는다든 지) 실제로 거길 경유하는 데 관계되지 않은 패쓰 검색을 할 수도 있기에, 그런 경우에는 현재 저장된 <strong>FinalDestination</strong> 을 내치지 않는 것이 좋습니다. <br/><img src="rsrc/TWiki/TWikiDocGraphics/warning.gif" alt="ALERT!" title="ALERT!" width="16" height="16" border="0" /> <strong>주</strong>: (NavMeshGoal_At 같은) 특정 골 이밸류에이터는 전형적인 길찾기 상황에서만 사용되는 것이기에 이미 설정되어 있지 않으면 자동으로 설정해 버립니다.
+</li> <li> <strong>GetNextMoveLocation()</strong> - (다음 이동 위치 구하기) 패쓰 따라가기의 주요 선수입니다. 현재 패쓰상의 어디를 따라갈지 정하고, 개체가 향할 공간상의 점을 계산합니다. (<strong>MoveTo()</strong> 에 물려줄(feed) 지점을 알아냅니다.)
+</li></ul>
+<p />
+<h4><a name="내비메시 질의 함수"></a> 내비메시 질의 함수 </h4>
+여기엔 나열할 게 너무 많습니다. 내비게이션 핸들 함수 전체 목록은 <a href="NavigationMeshReferenceKR.html" class="twikiLink">Navigation Mesh Reference KR</a> 페이지를 참고하십시오. 둘 정도 짚어 보자면: <ul>
+<li> <strong>PointReachable()</strong> - (도달가능 지점) 내비메시 생성 과정에서 생성된 장애물 메시에 대해 라인체크를 수행합니다. 콜리전 지오메트리에 대한 일반 라인체크보다 훨씬 빠르며, (라인체크 여럿으로 구성되는) 일반 도달성 검사보다도 빠릅니다.
+</li> <li> <strong>GetValidPositionsForBox()</strong> - (박스에 가능한 위치 구하기) 는 지정된 경계 내로 전달된 박스에 맞(으면서 겹치지 않)는 위치를 모두 반환합니다. 스폰 지점같은 걸 찾을 때 매우 쓸만합니다.
+</li></ul>
+<p />
+<!--  -->
+<p />
+<h2><a name="내비 메시 디버깅"></a> 내비 메시 디버깅 </h2>
+<hr size="1" noshade="noshade">
+실행시간에 내비게이션 메시 길찾기 관련 디버깅 문제에 대한 상세 정보는, <a href="NavigationMeshPathDebuggingKR.html" class="twikiLink">Navigation Mesh Path Debugging KR</a> 페이지를 참고하십시오.
+<p />
+<h2><a name="폰 길찾기 파라미터"></a> 폰 길찾기 파라미터 </h2>
+<hr size="1" noshade="noshade">
+내비메시에 직접 관련되지 않으면서 길찾기에 영향을 끼치는 폰 자체 파라미터가 여럿 있습니다.
+<p />
+간단히 살펴보면: <ul>
+<li> <strong>MaxStepHeight</strong> - 이 폰이 (점프 없이) 'step up'(올라서기) 가능한 최대 세로 높이
+</li> <li> <strong>MaxJumpHeight</strong> - 이 폰이 점프할 수 있는 최대 세로 높이(를 통해 폰이 장애물을 점프할지 우회할지 여부를 결정합니다.)
+</li> <li> <strong>WalkableFloorZ</strong> - 걸어갈 수 있는 경사면의 노멀 Z 최대값 (이 값보다 큰 Z값의 경사면에서는 폰이 미끄러지게 됩니다.)
+</li></ul>
+<p />
+<h2><a name="내려받기"></a> 내려받기 </h2>
+<hr size="1" noshade="noshade"> <ul>
+<li> <a href="rsrc/Three/NavigationMeshTechnicalGuide/TestAI_ExampleCode_v3.zip" target="_top">NavigationHandle 패쓰 함수 사용법 데모 예제</a>.
+</li></ul>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/NavigationMeshTechnicalGuideKR.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:11:28 GMT -->
+</html></body>

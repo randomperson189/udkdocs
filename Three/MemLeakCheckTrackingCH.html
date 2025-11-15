@@ -1,0 +1,349 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MemLeakCheckTrackingCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:38:38 GMT -->
+<head>
+<title> UDK | MemLeakCheckTrackingCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">MemLeakCheckTrackingCH  </b></div>
+<div id="tooltext">
+<a href="MemLeakCheckTracking.html" class="twikiLink">English Translation</a><br><a href="MemLeakCheckTrackingJP.html" class="twikiLink">日本語訳</a><br><a href="MemLeakCheckTrackingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/MemLeakCheckTrackingCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="https://udn.epicgames.com/Three/MemoryHome" class="restricted" class="restricted" class="twikiLink">内存系统</a></b> &gt; 内存泄露检查追踪 <br/>
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="PerformanceHome.html" class="twikiLink">性能、分析及优化</a></b> &gt; <b><a href="MemoryProfilingHome.html" class="twikiLink">内存使用和分析</a></b> &gt; 内存泄露检查追踪
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="MemLeakCheck Tracking（内存泄露检测追踪）"></a> MemLeakCheck Tracking（内存泄露检测追踪） </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="MemLeakCheckTrackingCH.html#MemLeakCheck Tracking（内存泄露检测追踪）"> MemLeakCheck Tracking（内存泄露检测追踪）</a> <ul>
+<li> <a href="MemLeakCheckTrackingCH.html#概述"> 概述</a>
+</li> <li> <a href="MemLeakCheckTrackingCH.html#运行 _MemLeakCheck"> 运行 MemLeakCheck</a> <ul>
+<li> <a href="MemLeakCheckTrackingCH.html#MemLeakCheck"> MemLeakCheck</a>
+</li> <li> <a href="MemLeakCheckTrackingCH.html#MemLeakCheck -fast"> MemLeakCheck -fast</a>
+</li> <li> <a href="MemLeakCheckTrackingCH.html#Release vs. Test"> Release vs. Test</a>
+</li></ul>
+</li> <li> <a href="MemLeakCheckTrackingCH.html#示例使用情况"> 示例使用情况</a>
+</li> <li> <a href="MemLeakCheckTrackingCH.html#输出部分"> 输出部分</a> <ul>
+<li> <a href="MemLeakCheckTrackingCH.html#报头"> 报头</a>
+</li> <li> <a href="MemLeakCheckTrackingCH.html#类列表"> 类列表</a>
+</li> <li> <a href="MemLeakCheckTrackingCH.html#特定对象列表"> 特定对象列表</a>
+</li> <li> <a href="MemLeakCheckTrackingCH.html#平台内存"> 平台内存</a>
+</li> <li> <a href="MemLeakCheckTrackingCH.html#针对游戏的内存"> 针对游戏的内存</a>
+</li> <li> <a href="MemLeakCheckTrackingCH.html#渲染内存"> 渲染内存</a>
+</li> <li> <a href="MemLeakCheckTrackingCH.html#配置/软件包内存"> 配置/软件包内存</a>
+</li> <li> <a href="MemLeakCheckTrackingCH.html#资源列表"> 资源列表</a>
+</li> <li> <a href="MemLeakCheckTrackingCH.html#Actor 列表"> Actor 列表</a>
+</li> <li> <a href="MemLeakCheckTrackingCH.html#关卡列表"> 关卡列表</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+MemLeakCheck提供了一个关于您的游戏所使用的内存状况的非常简单并容易理解的视图。它就是一个文本文件，所以您可以通过比较它们的不同来轻松地查看它们的变化。只是，MemLeakCheck 是一个可以调用所有其他重要内存命令的元命令。您可以在此对内存信息进行一站式管理。
+<p />
+<h2><a name="运行 _MemLeakCheck"></a> 运行 MemLeakCheck </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+主要使用两种方法完整且快速地运行 memleakcheck：
+<p />
+<h3><a name="MemLeakCheck"></a> MemLeakCheck </h3>
+<p />
+为了生成一个完整的 memleakcheck，您只需在控制台中运行 <code>MemLeakCheck</code> 。这样将会由于大量时间消耗（长达一分钟）而使游戏停止运行，但是之后会将大型文件输出到 Profiling\MemLeaks 目录中，其中根据地图名称和时间戳记进行索引。您还可以在记事本文件中打开它。完整的 MemLeakCheck 包含一个其中几乎全部都是重要资源的列表，按照字母顺序进行排序。将它分为不同的部分。完整的 MemLeakCheck 非常适用于追踪<a href="https://udn.epicgames.com/Three/PerfDebug_AlwaysLoadedContent" class="restricted" class="restricted" class="twikiLink">始终加载的内容</a>，以便不断进行内存使用情况比较。按照字母排列应该允许任何工具中的简单文本差异。
+<p />
+<h3><a name="MemLeakCheck -fast"></a> MemLeakCheck -fast </h3>
+<p />
+如果您在控制器中运行 <code>MemLeakCheck -fast</code> ，那么它需要的时间会更加短（通常是 5 秒），然后打印输出一份不够详细的报告。该报告包括所有必需的追踪数据，但是不包括大型资源列表以及任何慢的操作。它主要用于 <code>DoMemLeakChecking</code> 命令，作为<a href="HotSpotReportGeneration.html" class="twikiLink">热点报告生成</a>的一部分，但是在完整 MemLeakCheck 的大停顿将会中断功能（例如网络超时）的情况下有用。
+<p />
+<h3><a name="Release vs. Test"></a> Release vs. Test </h3>
+<p />
+要记住的一件事情是根据使用何种可执行配置运行它 MemLeakCheck 命令的输出会有所不同。Release 运行具有更加准确的信息，但是 Release 可执行函数需要的内存明显比 Test 可执行函数多，所以您需要对此进行调整。通常情况下，使用具有 <code>DoMemLeakChecking</code> 的 Test 是个不错的主意，同时要在您需要采取全部 MemLeakCheck 转存的情况下使用 Release。
+<p />
+<h2><a name="示例使用情况"></a> 示例使用情况 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+这里有一些不同的方法，您可以在其中使用 MemLeakCheck 命令追踪内存问题：
+<p /> <ul>
+<li> 如果您的游戏正在发生内存泄漏，那么查看它是否是 UObject 内存泄露的最快的方法是在启动地图时进行 MemLeakCheck（内存泄露检查）。运行一段时间， 然后再次运行 MemLeakCheck（内存泄露检查）。比较两个文件的不同并找出在数量上具有巨大增长的对象或相关的池。
+</li> <li> 在自动化测试期间，您可以设置每5分钟执行一个MemLeakCheck (内存泄露检测)。这会为您提供一个关于内存和对象在整个自动化测试期间的变化的一个很好的视图。按照<a href="HotSpotReportGeneration.html" class="twikiLink">热点报告生成</a>的描述使用 MemLeakCheckDiffer 工具是进行这项操作的简单快捷的方法。
+</li> <li> 进行一次 MemLeakCheck（内存泄露检测）来查看您的关卡所使用的内存情况。您能够看到所有动态创建的对象，以及加载了多少动画集等，这是非常好的。在这两个多人游戏地图上比较相似的情况是查找为什么某个地图所使用的内存比预期多的好方法。
+</li> <li> 通过记录以前的 MemLeakCheck 数据的源码并定期将它与新的 MemLeakCheck 数据进行比较，您可以在项目周期过程中追踪到内存分配中的更改。它在追踪“为什么突然我的内存比上周少了 5MB？”这样的问题时非常有用。
+</li></ul>
+<p />
+<h2><a name="输出部分"></a> 输出部分 </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Memleakcheck 文件的输出可以大致被分为几个部分。注意，根据平台以及各个游戏划分的 MemLeakCheck 文件的各个部分：
+<p />
+<h3><a name="报头"></a> 报头 </h3>
+<p />
+文件的顶部有时间戳记、命令行开关（对于检查用于特定运行的 -reducepoolsize= 非常有用）、BugItGo 位置和一些内存概述信息。当文件中的数据不合理时，通常要确保检查头文件，查看是否传入了一些奇怪的内容或者您所查看的是不是以前的文件。此外，注意对于大多数部分而言列出了用于生成这个部分的特定命令。
+<p />
+<h3><a name="类列表"></a> 类列表 </h3>
+<p />
+Class List（类列表）是文件的第一个主要块，而且这个列表将游戏中的每个类按照字母顺序进行排列。数量是显而易见的。NumByte 是当前供该类的所有对象使用的内存具体数量。MaxByte 是与类相关联的已分配内存的数量，所以其中包括诸如 TArray 闲置空间这样的内存。ResByte 是与该类的对象相关联的“资源”内存总数，而且根据特定的类它的意义有所不同。TrueResByte 是需要添加到任何供对象本身使用的内存的“资源”内存数量。例如，ParticleSytemComponent 的 TrueResByte 是当前激活 PSC 需要的渲染线程内存的数量。通常，要弄清楚一个类真正使用的内存数量，您需要同时添加 MaxByte 和 TrueResByte。
+<p />
+<h3><a name="特定对象列表"></a> 特定对象列表 </h3>
+<p />
+在一个完整的内存泄露检查中，这个时候会显示对象的一些详细列表。下面还有更多其他信息。它们与 Class List（类列表）相似，但是会列出单个资源。
+<p />
+<h3><a name="平台内存"></a> 平台内存 </h3>
+<p />
+下一个部分是针对平台的内存，各个平台之间有很大不同。在大多数情况下，Release 模式会提供更多的有效平台内存，而且还会输出所有 <code>STAT MEMORY</code> 变量的值。
+<p />
+<h3><a name="针对游戏的内存"></a> 针对游戏的内存 </h3>
+<p />
+这部分主要讲的是针对游戏的内存分配
+<p />
+<h3><a name="渲染内存"></a> 渲染内存 </h3>
+<p />
+这个时候会输出 Render Target（渲染目标）、GPU Resource（GPU 资源）、Shader Cache（着色器缓存）、Texture Streaming（贴图动态加载）和 Octree 大小。它们在 Test 中丢失或不正确，因为这个数据不可用。
+<p />
+<h3><a name="配置/软件包内存"></a> 配置/软件包内存 </h3>
+<p />
+在这里会输出所有加载的配置/位置文件的大小以及完整的软件包列表。这个软件包列表可以用于确定在给定点加载的数据类型，并且显示在完整且快捷的输出中。
+<p />
+<h3><a name="资源列表"></a> 资源列表 </h3>
+<p />
+在整个转存中，它现在会输出贴图、声音和粒子的完整列表。下面还有其他更多内容，其中大部分在快捷模式中都被跳过了。
+<p />
+<h3><a name="Actor 列表"></a> Actor 列表 </h3>
+<p />
+会输出完整的 actor 列表接下来还有创建时间和所有者。它对于在时间长的游戏会话中查找 actor 泄露是非常有效的。
+<p />
+<h3><a name="关卡列表"></a> 关卡列表 </h3>
+<p />
+在这里会输出 <code>STAT LEVELS</code> 命令的输出结果。这对于将内存使用与当前加载的关卡关联起来是非常有用的，在追查顿卡时这样做会有所帮助。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/MemLeakCheckTrackingCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:38:38 GMT -->
+</html></body>

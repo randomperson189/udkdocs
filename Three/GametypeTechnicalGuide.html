@@ -1,0 +1,1001 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GametypeTechnicalGuide.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:08:04 GMT -->
+<head>
+<title> UDK | GametypeTechnicalGuide    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">GametypeTechnicalGuide  </b></div>
+<div id="tooltext">
+<a href="GametypeTechnicalGuideJP.html" class="twikiLink">日本語訳</a><br><a href="GametypeTechnicalGuideCH.html" class="twikiLink">中国翻译</a><br><a href="GametypeTechnicalGuideKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/GametypeTechnicalGuide -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<p />
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="GameplayProgrammingHome.html" class="twikiLink">Gameplay Programming</a></b> &gt; Gametype Technical Guide
+</div>
+<hr size="1" noshade="noshade">
+<h1><a name="Gametype Technical Guide"></a> Gametype Technical Guide </h1>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="GametypeTechnicalGuide.html#Gametype Technical Guide"> Gametype Technical Guide</a> <ul>
+<li> <a href="GametypeTechnicalGuide.html#Overview"> Overview</a>
+</li> <li> <a href="GametypeTechnicalGuide.html#GameInfo Class"> GameInfo Class</a> <ul>
+<li> <a href="GametypeTechnicalGuide.html#GameInfo Properties"> GameInfo Properties</a>
+</li> <li> <a href="GametypeTechnicalGuide.html#GameInfo Functions"> GameInfo Functions</a>
+</li></ul>
+</li> <li> <a href="GametypeTechnicalGuide.html#Game Lifecycle"> Game Lifecycle </a>
+</li> <li> <a href="GametypeTechnicalGuide.html#Gametype Prefixes"> Gametype Prefixes</a> <ul>
+<li> <a href="GametypeTechnicalGuide.html#GameTypePrefix Struct"> GameTypePrefix Struct</a>
+</li> <li> <a href="GametypeTechnicalGuide.html#Adding Gametype Prefixes"> Adding Gametype Prefixes</a>
+</li> <li> <a href="GametypeTechnicalGuide.html#Common Packages"> Common Packages</a>
+</li></ul>
+</li> <li> <a href="GametypeTechnicalGuide.html#Pausing"> Pausing</a>
+</li> <li> <a href="GametypeTechnicalGuide.html#Mutators"> Mutators</a> <ul>
+<li> <a href="GametypeTechnicalGuide.html#Adding Mutators"> Adding Mutators</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Every game made with Unreal Engine revolves around the use of one or more gametypes. This concept is obvious in games such as Unreal Tournament where the user actually chooses the type of game to play, whether it is Deathmatch, Capture the Flag, Last Man Standing, or some other gametype. However, even games such as platformers, sports and racing games, RTS games, RPGs, etc all rely on a gametype, though it is transparent to the user.
+<p />
+A gametype is what determines the rules of the game: how the game starts, how scoring or other events are handled, what conditions must be met for the game to end, and any other elements of the game. The game and thus the gametype is also level-specific; when a new level is loaded (At least in the traditional sense. Level streaming loads levels into the current level leaving the current gametype.), a new gametype is loaded. In a Deathmatch game, the gametype handles spawning the players and bots into the game at various locations, handling kills by each player and keeping score, and ends the game when either the time runs out or one player has made the required number of kills. This is all very straightforward and the same concepts apply to any other game, although they may be slightly more complex.
+<p />
+For instance, imagine an adventure role-playing game. When the player starts the game, the gametype spawns the player into the world, either at a designated location, such as the opening of a dungeon or where the player was when the game was last saved. The player explores the world and then comes to a dungeon. When the player enters the dungeon, a new level and gametype are loaded. This gametype spawns the player at the beginning of the dungeon and then waits for the player to complete the objective of the dungeon, which may be killing a boss or collecting a specific item or what have you. When the gametypes detects the dungeon has been completed, it sends the player back to the main world, loading the main world level. In the main world, the gametype spawns the player at the opening of the dungeon and waits for the player to finish all the objectives of the game as they continue to explore.
+<p />
+Clearly this is a much more complex case as the game has multiple gametypes which all work together, but the concept of each gametype is the same as that for the simple case of a Deathmatch game.
+<p />
+<h2><a name="GameInfo Class"></a> GameInfo Class </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The <code>GameInfo</code> class is the base class for all gametypes in Unreal. Each time a map is loaded, a new instance of the appropriate <code>GameInfo</code> class is created and assigned to be gametype. For more information on how the gametype is set for a specific level, see the <a href="GametypeTechnicalGuide.html#GameCycle" class="twikiAnchorLink">Game Lifecycle</a> section.
+<p />
+<h3><a name="GameInfo Properties"></a> GameInfo Properties </h3>
+<p />
+<strong>Arbitration</strong>
+<p /> <ul>
+<li> <strong>bUsingArbitration</strong> - If TRUE, the game will use arbitration.
+</li> <li> <strong>bHasArbitratedHandshakeBegun</strong> - TRUE if the arbitrated handshake has occurred. New connections will be rejected once the handshaking begins.
+</li> <li> <strong>bNeedsEndGameHandshake</strong> - If TRUE, the game should perform a handshake at the end of the game.
+</li> <li> <strong>bHasEndGameHandshakeBegun</strong> - TRUE if the end game handshake has started.
+</li> <li> <strong>bIsEndGameHandshakeComplete</strong> - TRUE if the end game handshake has finished.
+</li> <li> <strong>ArbitrationHandshakeTimeout</strong> - GLOBALCONFIG. The amount of time a client has to perform the arbitration handshake before being kicked.
+</li> <li> <strong>PendingArbitrationPCs</strong> - An array of <code>PlayerControllers</code> the game is waiting to perform handshakes with.
+</li> <li> <strong>ArbitrationPCs</strong> - An array of <code>PlayerControllers</code> the game has performed handshaking with and require finalization of arbitration data written to the online subsystem.
+</li></ul>
+<p />
+<strong>Cheat Detection</strong>
+<p /> <ul>
+<li> <strong>[Min/Max]TimeMargin</strong> - The maximum amount of time the client clock is allowed to get behind/ahead of the server clock before triggering the speed hack detection.
+</li> <li> <strong>TimeMarginSlack</strong> - How quickly the client clock is allowed to drift from the server clock without triggering the speed hack detection.
+</li> <li> <strong>bIsStandbyCheckingEnabled</strong> - If TRUE, the game should perform checking for standby cheats.
+</li> <li> <strong>bIsStandbyCheckingOn</strong> - TRUE when standby cheats are being checked.
+</li> <li> <strong>bHasStandbyCheatTriggered</strong> - TRUE when a standby cheat has been detected.
+</li> <li> <strong>Standby[Rx/Tx]CheatTime</strong> - The amount of time without receiving a packet/acknowledgement that can occur before triggering the cheat code.
+</li> <li> <strong>BadPingThreshold</strong> - The highest ping allowed before the server is assumed to be delaying packets or has a bad upstream connection.
+</li> <li> <strong>PercentMissingFor[Rx/Tx]Standby</strong> - The percentage of clients allowed to be missing packet/acknowledgement data before triggering the standby code.
+</li> <li> <strong>PercentForBadPing</strong> - The percentage of clients allowed with bad ping values before triggering the standby code.
+</li> <li> <strong>JoinInProgressStandbyWaitTime</strong> - The amount of time to wait before checking a connection for standby issues.
+</li></ul>
+<p />
+<strong>Game Components</strong>
+<p /> <ul>
+<li> <strong>PlayerControllerClass</strong> - The <code>PlayerController</code> class to use when new players login for the gametype.
+</li> <li> <strong>DefaultPawnClass</strong> - The <code>Pawn</code> class to use when new players login for the gametype.
+</li> <li> <strong>HUDType</strong> - The <code>HUD</code> class to use for the heads up display for the gametype.
+</li> <li> <strong>PlayerReplicationInfoClass</strong> - The <code>PlayerReplicationInfo</code> class to use when new players login for the gametype.
+</li> <li> <strong>GameReplicationInfoClass</strong> - The <code>GameReplicationInfo</code> class to use for the gametype.
+</li> <li> <strong>OnlineSub</strong> - The <code>OnlinSubsystem</code> instance used by the gametype for communicating with the platform layer's services.
+</li> <li> <strong>GameInterface</strong> - The <code>OnlineGameInterface</code> instance used by the gametype for creating, searching for, or destroying online games.
+</li> <li> <strong>OnlineStatsWriteClass</strong> - The <code>OnlineStatsWrite</code> class to send to clients to use to create and hold their stats.
+</li> <li> <strong>OnlineGameSettingsClass</strong> - The=OnlineGameSettings= class to use when registering dedicated servers with the online service.
+</li> <li> <strong>DeathMessageClass</strong> - The <code>LocalMessage</code> class to use for displaying messages when players die.
+</li> <li> <strong>GameMessageClass</strong> - The <code>GameMessage</code> class to use for displaying messages about gameplay events.
+</li> <li> <strong>AccessControlClass</strong> - The <code>AccessControl</code> class to use for the gametype.
+</li> <li> <strong>AccessControl</strong> - The <code>AccessControl</code> instance that controls whether players can enter the game and/or become admins.
+</li> <li> <strong>BroadcastHandlerClass</strong> - The <code>BroadcastHandler</code> class to use for the gametype.
+</li> <li> <strong>BroadcastHandler</strong> - The <code>BroadcastHandler</code> instance to use for displaying messages for the gametype.
+</li> <li> <strong>AutoTestManagerClass</strong> - The <code>AutoTestManager</code> class to use for the gametype.
+</li> <li> <strong>MyAutoTestManager</strong> - The <code>AutoTestManager</code> instance to use for managing automated testing. Only exists if requested by through the command line.
+</li></ul>
+<p />
+<strong>Game Settings</strong>
+<p /> <ul>
+<li> <strong>bRestartLevel</strong> - If TRUE, the level should be restarted when the player dies.
+</li> <li> <strong>bTeamGame</strong> - If TRUE, the game is designated as a team game, meaning that the players are divided up into more than one team. There is no built-in logic for creating the teams in the base <code>GameInfo</code>. This simply specifies that the game has teams.
+</li> <li> <strong>bGameEnded</strong> - TRUE when end game conditions have been met. Set by <code>EndGame()</code>.
+</li> <li> <strong>bOverTime</strong> - If TRUE, the game is in overtime. This occurs when <code>EndGame()</code> is called, but <code>CheckEndGame()</code> returns false because some condition has not been met.
+</li> <li> <strong>bDelayedStart</strong> - If TRUE, the game will not immediately begin when the player joins.
+</li> <li> <strong>bWaitingToStartMatch</strong> - TRUE when the game is in the <code>PendingMatch</code> state, waiting for the game to begin.
+</li> <li> <strong>bChangeLevels</strong> - GLOBALCONFIG. If TRUE, a new map should be loaded when the game is restarted.
+</li> <li> <strong>bAlreadyChanged</strong> - TRUE once the loading process has begun on the new map when the game is restarted and <code>bChangeLevels=TRUE</code>.
+</li> <li> <strong>bGameRestarted</strong> - TRUE when the game has been restarted.
+</li> <li> <strong>bLevelChange</strong> - TRUE when a level transition (via <code>ProcessServerTravel()</code>) is in progress.
+</li> <li> <strong>GameDifficulty</strong> - GLOBALCONFIG. The difficulty modifier for the game. The application of this must be done in a subclass as it is extremely game-specific.
+</li> <li> <strong>GoreLevel</strong> - GLOBALCONFIG. The amount of gore to show. A value of <code>0</code> means show normal amount of gore with increasing values showing less gore.
+</li> <li> <strong>GameSpeed</strong> - Scaling factor for the game time. Used to set <code>WorldInfo.TimeDilation</code>.
+</li> <li> <strong>MaxSpectators</strong> - GLOBALCONFIG. The maximum number of players allowed by the gametype on the server.
+</li> <li> <strong>MaxSpectatorsAllowed</strong> - The maximum number of spectators ever allowed by the gametype. Used to clamp the <code>MaxSpectators</code> to a sensible value as it is set in a config and could be modified.
+</li> <li> <strong>NumSpectators</strong> - The current number of spectators in the game.
+</li> <li> <strong>MaxPlayers</strong> - GLOBALCONFIG. The maximum number of players allowed by the gametype on the server.
+</li> <li> <strong>MaxPlayersAllowed</strong> - The maximum number of players ever allowed by the gametype. Used to clamp the <code>MaxPlayers</code> to a sensible value as it is set in a config and could be modified.
+</li> <li> <strong>NumPlayers</strong> - The current number of human-controlled players in the game.
+</li> <li> <strong>NumBots</strong> - The current number of AI-controlled players in the game.
+</li> <li> <strong>NumTravellingPlayers</strong> - The number of players that are currently still traveling from the previous map.
+</li> <li> <strong>CurrentID</strong> - The current ID used to assign unique <code>PlayerIDs</code> to each <code>PlayerReplicationInfo</code> as they are created.
+</li> <li> <strong>DefaultPlayerName</strong> - LOCALIZED. The default name prefix to use when assigning names to players for the gametype.
+</li> <li> <strong>GameName</strong> - LOCALIZED. The display name for the gametype.
+</li> <li> <strong>FearCostFalloff</strong> - The factor that determines how quickly the <code>FearCost</code> for <code>NavigationPoints</code> falls off over time when <code>bDoFearCostFalloff=true</code>.
+</li> <li> <strong>bDoFearCostFalloff</strong> - If TRUE, <code>FearCost</code> for <code>NavigationPoints</code> will fall off over time.
+</li> <li> <strong>GoalScore</strong> - The "score" needed by a player to end the match. Score is an arbitrary concept, though many games keep track of some sort of score and end the game when a particular score is attained.
+</li> <li> <strong>MaxLives</strong> - The maximum number of lives a player is allowed per match.
+</li> <li> <strong>TimeLimit</strong> - The amount of time allowed for a single match.
+</li> <li> <strong>GameInfoClassAliases</strong> - An array of <code>GameClassShortName</code> structures that map short names for the gametype to full class names.
+</li> <li> <strong>DefaultGameType</strong> - CONFIG. The default gametype to use when no gametype is specified otherwise (in the form of a string specifying the full path to the gametype class).
+</li> <li> <strong>DefaultMapPrefixes</strong> - CONFIG. An array of <code>GameTypePrefix</code> structures that map the prefix in a level's name to a specific gametype. Used to determine the gametype to use when no gametype is specified. Overrides the <code>DefaultGameType</code>. See the <a href="GametypeTechnicalGuide.html#GamePrefixes" class="twikiAnchorLink">Gametype Prefixes</a> section for more details.
+</li> <li> <strong>CustomMapPrefixes</strong> - CONFIG. An array of <code>GameTypePrefix</code> structures that map the prefix in a level's name to a specific gametype. Used to determine the gametype to use when no gametype is specified. Overrides the <code>DefaultGameType</code>. See the <a href="GametypeTechnicalGuide.html#GamePrefixes" class="twikiAnchorLink">Gametype Prefixes</a> section for more details.
+</li> <li> <strong>bRequiresPushToTalk</strong> - If TRUE, voice communications are required to be push-to-talk for this gametype. Otherwise, voice comms could be left open at all time.
+</li></ul>
+<p />
+<strong>Mutator</strong>
+<p /> <ul>
+<li> <strong>BaseMutator</strong> - A reference to the first <code>Mutator</code> applied to the gametype.
+</li></ul>
+<p />
+<strong>Network/Replication</strong>
+<p /> <ul>
+<li> <strong>InactivePRIArray</strong> - An array of the <code>PlayerReplicationInfos</code> of players who have left the game. These are saved in case those players reconnect.
+</li> <li> <strong>bKickLiveIdlers</strong> - GLOBALCONFIG. If TRUE, <code>PlayerControllers</code> with <code>Pawns</code> can be kicked from the game for idling.
+</li> <li> <strong>MaxIdleTime</strong> - The maximum amount of time a player is allowed to idle before being kicked.
+</li> <li> <strong>LeaderboarId</strong> - The id of the leaderboard to write stats to for skill/scoring.
+</li> <li> <strong>ArbitratedLeaderBoardId</strong> - The id of the arbitrated leaderboard to write stats to for skill/scoring.
+</li> <li> <strong>bUseSeamlessTravel</strong> - If TRUE, map travels will be performed using <code>SeamlessTravel()</code> which loads in the background and doesn't disconnect the clients.
+</li> <li> <strong>CoverReplicatorBase</strong> - The URL options string to apply when a dedicated server starts to register.
+</li> <li> <strong>bHasNetworkError</strong> - TRUE when a critical network error has occurred which prevents the server from performing a map travel.
+</li> <li> <strong>ServerOptions</strong> - The URL options string to apply when a dedicated server starts to register.
+</li> <li> <strong>AdjustNetSpeed</strong> - The current adjusted net speed which is used for dynamically managing the net speed for listen servers.
+</li> <li> <strong>LastNetSpeedUpdateTime</strong> - The last time the net speed was updated for the server by a client entering or leaving.
+</li> <li> <strong>TotalNetBandwidth</strong> - GLOBALCONFIG. The total amount of bandwidth available for a listen server, which is split dynamically across net connections.
+</li> <li> <strong>[Min/Max]DynamicBandwidth</strong> - The minimum and maximum amount of bandwidth dynamically set per connection.
+</li></ul>
+<p />
+<strong>Pausing</strong>
+<p /> <ul>
+<li> <strong>bPauseable</strong> - If TRUE, the game can be paused by a player when playing online. The game can always be paused by the player when playing in a standalone game.
+</li> <li> <strong>bAdminCanPause</strong> - If TRUE, the game can be paused by admins when playing online.
+</li> <li> <strong>Pausers</strong> - An array of delegates that are checked in <code>ClearPause()</code> to determine if the game can be unpaused.
+</li></ul>
+<p />
+<strong>Profiling/Testing</strong>
+<p /> <ul>
+<li> <strong>bFixedPlayerStart</strong> - If TRUE, the game should use the same spawn point(s) to make profiling consistent. There is no functionality for this in <code>GameInfo</code>. It must be added to the logic for choosing spawn points in a subclass.
+</li> <li> <strong>CauseEventCommand</strong> - Holds the console event passed to the game in the map URL. Usually used for testing, i.e. triggering an automated flythrough. There is no functionality for executing this command in <code>GameInfo</code>. It must be added in a subclass.
+</li> <li> <strong>BugLocString</strong> - Holds the BugIt location string passed to the game in the map URL.
+</li> <li> <strong>BugRotString</strong> - Holds the BugIt rotation string passed to the game in the map URL.
+</li></ul>
+<p />
+<h3><a name="GameInfo Functions"></a> GameInfo Functions </h3>
+<p />
+<strong>Game</strong>
+<p /> <ul>
+<li> <strong>OnEngineHasLoaded</strong> - Event called from native code when the engine has been loaded on startup. This is only called once when the game is first started and not each time a new map (and thus gametype) is loaded.
+</li> <li> <strong>GetSupportedGameTypes [InFilename] [OutGameType] [bCheckExt]</strong> - Retrieves the <code>GameTypePrefix</code> struct for the given map name. See the <a href="GametypeTechnicalGuide.html#GamePrefixes" class="twikiAnchorLink">Gametype Prefixes</a> section for more details. <ul>
+<li> <strong>InFilename</strong> - The name of the map to retrieve the gametype for.
+</li> <li> <strong>OutGameType</strong> - Out. Outputs the <code>GameTypePrefix</code> struct associated with the given map.
+</li> <li> <strong>bCheckExt</strong> - Optional. If TRUE, the file extension of the map name will be checked to ensure it is a valid map file.
+</li></ul>
+</li> <li> <strong>GetMapCommonPackageName [InFilename] [OutCommonPackageName]</strong> - Retrieves the name of the common package (if any) for the given map filename. Returns TRUE if successful. Returns FALSE if the <code>GameTypePrefix</code> for the map is not found or if the <code>GameTypePrefix</code> does not use a common package. See the <a href="GametypeTechnicalGuide.html#GamePackages" class="twikiAnchorLink">Common Packages</a> section for more details. <ul>
+<li> <strong>InFilename</strong> - The name of the map to retrieve the common package name for.
+</li> <li> <strong>OutCommonPackageName</strong> - Out. Outputs the name of the common package.
+</li></ul>
+</li> <li> <strong>GetDefaultGameClassPath [MapName] [Options] [Portal]</strong> - Returns the full path to the optimal <code>GameInfo</code> class to use for the specified map and options. This is used for preloading cooked packages, etc. and therefore doesn't need to include any fallbacks as <code>SetGameType()</code> will be called later to actually find/load the desired class. <ul>
+<li> <strong>MapName</strong> - The name of the map to get the default gametype for.
+</li> <li> <strong>Options</strong> - The options string from the URL for the map, if any.
+</li> <li> <strong>Portal</strong> - The name of the destination portal to send the player to, if any.
+</li></ul>
+</li> <li> <strong>SetGameType [MapName] [Options] [Portal]</strong> - Returns the class of GameInfo to spawn for the game on the specified map and the specified options. This function should include any fallbacks in case the desired class can't be found. <ul>
+<li> <strong>MapName</strong> - The name of the map to get the gametype for.
+</li> <li> <strong>Options</strong> - The options string from the URL for the map, if any.
+</li> <li> <strong>Portal</strong> - The name of the destination portal to send the player to, if any.
+</li></ul>
+</li> <li> <strong>InitGame [Options] [ErrorMessage]</strong> - Called by the engine before any other script executes to initialize parameters and spawn helper classes for the gametype. <ul>
+<li> <strong>Options</strong> - The options string from the URL for the map, if any.
+</li> <li> <strong>ErrorMessage</strong> - Out. Outputs any error messages encountered while initializing the gametype.
+</li></ul>
+</li> <li> <strong>StartMatch</strong> - Informs all actors that the match is starting and spawns <code>Pawns</code> for the players.
+</li> <li> <strong>Reset</strong> - Resets the gametype to its initial state. Called after all other <code>Actors</code> have been reset.
+</li> <li> <strong>ShouldReset [ActorToReset]</strong> - Determines whether the given <code>Actor</code> is allowed to be reset. Returns TRUE if the given <code>Actor</code> should have <code>Reset()</code> called on it while restarting the game or FALSE if the <code>GameInfo</code> will manually reset it or if the actor does not need to be reset. <ul>
+<li> <strong>ActorToReset</strong> - The <code>Actor</code> to reset.
+</li></ul>
+</li> <li> <strong>ResetLevel</strong> - Resets the level by calling <code>Reset()</code> on all <code>Controllers</code>, then all <code>Actors</code>, and then the <code>GameInfo</code>.
+</li> <li> <strong>RestartGame</strong> - Restarts the game by either changing maps if <code>bChangeLevels=TRUE</code> or by reloading the current map.
+</li> <li> <strong>EndGame [Winner] [Reason]</strong> - Performs end of game handling. Should be called when end game condition(s) have been met. <ul>
+<li> <strong>Winner</strong> - The <code>PlayerReplicationInfo</code> of the player that won the game.
+</li> <li> <strong>Reason</strong> - A <code>String</code> specifying the reason the game is ending. For instance, "TimeLimit", "LastMan", "DungeonComplete", etc.
+</li></ul>
+</li> <li> <strong>CheckEndGame [Winner] [Reason]</strong> - Called from <code>EndGame()</code> to check if the game should indeed end based on the reason given.  Subclasses can override this to place additional game-specific modifications. <ul>
+<li> <strong>Winner</strong> - The <code>PlayerReplicationInfo</code> of the player that won the game.
+</li> <li> <strong>Reason</strong> - A <code>String</code> specifying the reason the game is ending. For instance, "TimeLimit", "LastMan", "DungeonComplete", etc.
+</li></ul>
+</li> <li> <strong>CheckModifiedEndGame [Winner] [Reason]</strong> - Called from <code>CheckEndGame()</code> to allow modification of the end game conditions. By default, this calls <code>CheckEndGame()</code> on all <code>Mutators</code>. <ul>
+<li> <strong>Winner</strong> - The <code>PlayerReplicationInfo</code> of the player that won the game.
+</li> <li> <strong>Reason</strong> - A <code>String</code> specifying the reason the game is ending. For instance, "TimeLimit", "LastMan", "DungeonComplete", etc.
+</li></ul>
+</li> <li> <strong>PerformEndGameHandling</strong> - Performs end of game handling for the online layer.
+</li> <li> <strong>GameEnding</strong> - Called by the engine to notify the gametype that the game is shutting down, meaning the application is exiting or a new map is being loaded.
+</li> <li> <strong>PreExit</strong> - Called by the engine to notify the game that the engine is shutting down.
+</li> <li> <strong>MatchIsInProgress</strong> - Returns whether the match is currently in progress.
+</li> <li> <strong>GameEventsPoll</strong> - Function stub that serves as an entry point of the stats code for custom game logging at a regular interval. It is called by <code>Poll()</code> timer of the <code>GameplayeStatsWriter</code> at regular intervals when stat logging is started. Subclasses should override this to add custom stats logging.
+</li> <li> <strong>EndLogging [Reason]</strong> - Function stub for stopping the logging of stats. Subclasses should override this to add logic to stop stats logging. <ul>
+<li> <strong>Reason</strong> - A <code>String</code> specifying the reason to quit logging.
+</li></ul>
+</li></ul>
+<p />
+<strong>Travel</strong>
+<p /> <ul>
+<li> <strong>ProcessServerTravel [URL] [bAbsolute]</strong> - Handles jumping the server to a new level. <ul>
+<li> <strong>URL</strong> - The <code>URL</code> of the map to travel to.
+</li> <li> <strong>bAbsolute</strong> - If TRUE, absolute travel should be used. Otherwise, relative travel is used.
+</li></ul>
+</li> <li> <strong>ProcessClientTravel [URL] [NextMapGuid] [bSeamless] [bAbsolute]</strong> - Notifies all clients to travel to the specified URL. <ul>
+<li> <strong>URL</strong> - The <code>URL</code> of the map to travel to.
+</li> <li> <strong>NextMapGuid</strong> - The GUID of the server's version of the next map.
+</li> <li> <strong>bSeamless</strong> - If TRUE, seamless travel should be used.
+</li> <li> <strong>bAbsolute</strong> - If TRUE, absolute travel should be used. Otherwise, relative travel is used.
+</li></ul>
+</li> <li> <strong>SendPlayer [aPlayer] [URL]</strong> - Sends a player to the given URL. <ul>
+<li> <strong>aPlayer</strong> - The <code>PlayerController</code> of the player to send to the new <code>URL</code>.
+</li> <li> <strong>URL</strong> - The <code>URL</code> of the map to travel to.
+</li></ul>
+</li> <li> <strong>GetNextMap</strong> - Function stub that returns the map players should travel to for the next game. Subclasses should override this if the game should have a map cycle.
+</li> <li> <strong>GetTravelType</strong> - Determines which type of travel should be used. Return TRUE for absolute travel and false for relative.
+</li> <li> <strong>PreCommitMapChange [PreviousMapName] [NextMapName]</strong> - Event stub called by the engine by <code>CommitMapChange()</code> before unloading the previous level. <ul>
+<li> <strong>PreviousMapName</strong> - The name of the map being unloaded.
+</li> <li> <strong>NextMapName</strong> - The name of the map being loaded.
+</li></ul>
+</li> <li> <strong>PostCommitMapChange</strong> - Event stub called by the engine by <code>CommitMapChange()</code> after unlaoding the previous level and loading the new level.
+</li> <li> <strong>GetSeamlessTravelActorList [bToEntry] [ActorList]</strong> - Called by the engine on the server during seamless level transitions to get the list of Actors that should be moved into the new level. <code>PlayerControllers</code>, <code>Role &lt; ROLE_Authority</code> <code>Actors</code>, and any non-Actors that are inside an <code>Actor</code> that is in the list i.e. <code>Object.Outer =</code> Actor= in the list are all automatically moved regardless of whether they're included here. Only dynamic (bStatic and bNoDelete) actors in the PersistentLevel may be moved (this includes all actors spawned during gameplay). This is called for both parts of the transition because actors might change while in the middle (e.g. players might join or leave the game) <ul>
+<li> <strong>bToEntry</strong> - If TRUE the server is traveling from old level -&gt; entry. Otherwise, the server is traveling from entry -&gt; new level.
+</li> <li> <strong>ActorList</strong> - Out. Outputs the array of <code>Actors</code> to be moved.
+</li></ul>
+</li> <li> <strong>PostSeamlessTravel</strong> - Called by the engine on the <strong>new</strong> <code>GameInfo</code> after a seamless level transition has been completed. This is generally used to reinitialize players already in the game as they will not have <code>Login()</code> called.
+</li> <li> <strong>HandleSeamlessTravelPlayer [C]</strong> - Handles reinitializing players that remained through a seamless level transition. Called from <code>PostSeamlessTravel()</code> and from the engine for players that finished loading after the server. <ul>
+<li> <strong>C</strong> - The <code>Controller</code> of the player to handle.
+</li></ul>
+</li> <li> <strong>SetSeamlessTravelViewTarget [PC]</strong> - Sets the <code>ViewTarget</code> for a player that remained through a seamless level transition. <ul>
+<li> <strong>PC</strong> - The <code>PlayerController</code> to set the <code>ViewTarget</code> for.
+</li></ul>
+</li></ul>
+<p />
+<strong>Player</strong>
+<p /> <ul>
+<li> <strong>PreLogin [Options] [Address] [ErrorMessage]</strong> - Accepts or rejects a player joining the server. <ul>
+<li> <strong>Options</strong> - The options string from the URL for the map, if any.
+</li> <li> <strong>Address</strong> - IP address of the connecting player.
+</li> <li> <strong>ErrorMessage</strong> - Out. Outputs the error message for a failed login. A non-empty <code>String</code> here means the login failed.
+</li></ul>
+</li> <li> <strong>Login [Portal] [Options] [UniqueID] [ErrorMessage]</strong> - Logs a player in and spawns the <code>PlayerController</code> for the player. Returns the spawned <code>PlayerController</code>. <ul>
+<li> <strong>Portal</strong> - The name of the destination portal to send the player to, if any.
+</li> <li> <strong>Options</strong> - The options string from the URL for the map, if any.
+</li> <li> <strong>UniqueID</strong> - The <code>UniqueNetID</code> for the player logging in.
+</li> <li> <strong>ErrorMessage</strong> - Out. Outputs the error message for a failed login. A non-empty <code>String</code> here means the login failed.
+</li></ul>
+</li> <li> <strong>PostLogin [NewPlayer]</strong> - Called by the engine after a successful player login to handle player setup. <ul>
+<li> <strong>NewPlayer</strong> - The <code>PlayerController</code> of the player that logged in.
+</li></ul>
+</li> <li> <strong>Logout [Exiting]</strong> - Called from the <code>Controller</code> to remove the player from the game when it is being destroyed. <ul>
+<li> <strong>Exiting</strong> - The <code>Controller</code> of the player leaving the game.
+</li></ul>
+</li> <li> <strong>SpawnDefaultPawnFor [NewPlayer] [StartSpot]</strong> - Spawns and returns a <code>Pawn</code> for the given <code>Controller</code> using the <code>DefaultPawnClass</code>. <ul>
+<li> <strong>NewPlayer</strong> - The <code>Controller</code> of the player to spawn the <code>Pawn</code> for.
+</li> <li> <strong>StartSpot</strong> - The <code>NavigationPoint</code> to spawn the <code>pawn</code> at.
+</li></ul>
+</li> <li> <strong>GetDefaultPlayerClass [C]</strong> - Returns the default <code>Pawn</code> class to use for the given <code>Controller</code>. <ul>
+<li> <strong>C</strong> - The <code>Controller</code> to get the <code>Pawn</code> class for.
+</li></ul>
+</li> <li> <strong>StartHumans</strong> - Starts human-controlled players by calling <code>RestartPlayer()</code>.
+</li> <li> <strong>StartBots</strong> -  Starts AI-controlled players by calling <code>RestartPlayer()</code>.
+</li> <li> <strong>RestartPlayer [NewPlayer]</strong> - Restarts a player (human or AI) by finding a starting spot, spawning a <code>Pawn</code>, adding default inventory, etc. for the player. <ul>
+<li> <strong>NewPlayer</strong> - The <code>Controller</code> of the player to restart.
+</li></ul>
+</li> <li> <strong>GenericPlayerInitialization [C]</strong> - Handles all player initialization that is shared between the travel methods, <code>PostLogin()</code> and <code>HandleSeamlessTravelPlayer()</code>. <ul>
+<li> <strong>C</strong> - The <code>Controller</code> of the player to initialize.
+</li></ul>
+</li> <li> <strong>UnregisterPlayer [PC]</strong> - Removes the player from the named session when they leave the game. <ul>
+<li> <strong>PC</strong> - The <code>PlayerController</code> of the player leaving the game.
+</li></ul>
+</li> <li> <strong>AtCapacity [bSpectator]</strong> - Returns whether the game is already full or not. <ul>
+<li> <strong>bSpectator</strong> - If TRUE, returns whether the game is at max capacity for spectators. Otherwise, return whether the game is at max capacity for players.
+</li></ul>
+</li> <li> <strong>GetNumPlayers</strong> - Returns the number of players in the game.
+</li> <li> <strong>GetNextplayerID</strong> - Returns the next ID to use for joining players.
+</li> <li> <strong>SetPlayerDefaults [PlayerPawn]</strong> - Resets certain player <code>Pawn</code> properties back to their default values. Called from <code>RestartPlayer()</code>. <ul>
+<li> <strong>PlayerPawn</strong> - The <code>Pawn</code> to reset properties for.
+</li></ul>
+</li> <li> <strong>CanSpectate [Viewer] [ViewTarget]</strong> - Return whether the given <code>PlayerController</code> is allowed to spectate from the point of view of the given <code>PlayerReplicationinfo</code>. <ul>
+<li> <strong>Viewer</strong> - The <code>PlayerController</code> of the spectator.
+</li> <li> <strong>ViewTarget</strong> - The <code>PlayerReplicationInfo</code> to spectate.
+</li></ul>
+</li> <li> <strong>ChangeName [Other] [S] [bNameChange]</strong> - Changes the given player's name to the specified name. <ul>
+<li> <strong>Other</strong> - The <code>Controller</code> of the player.
+</li> <li> <strong>S</strong> - The name to give the player.
+</li> <li> <strong>bNameChange</strong> - Unused.
+</li></ul>
+</li> <li> <strong>ChangeTeam [Other] [N] [bNewTeam]</strong> - Changes the given player's team to the specified team. <ul>
+<li> <strong>Other</strong> - The <code>Controller</code> of the player.
+</li> <li> <strong>N</strong> - The number of the team to place the player on.
+</li> <li> <strong>bNewteam</strong> - Unused.
+</li></ul>
+</li> <li> <strong>PickTeam [Current] [C]</strong> - Returns the actual number of the team to place the given player on. <ul>
+<li> <strong>Current</strong> - The temporary number of the team to place the player on.
+</li> <li> <strong>C</strong> - The <code>Controller</code> of the player.
+</li></ul>
+</li> <li> <strong>PlayerCanRestartGame [aPlayer]</strong> - Returns whether the given player is allowed to restart the game. <ul>
+<li> <strong>aPlayer</strong> - The <code>PlayerController</code> of the player requesting the restart.
+</li></ul>
+</li> <li> <strong>PlayerCanRestart [aPlayer]</strong> - Returns whether the given player is allowed to be restarted. <ul>
+<li> <strong>aPlayer</strong> - The <code>PlayerController</code> of the player requesting to be restarted.
+</li></ul>
+</li> <li> <strong>SwapPlayerControllers [OldPC] [NewPC]</strong> - Swaps a viewport/connection's <code>PlayerControllers</code> when seamless travelling and the new gametype's <code>Controller</code> class is different than the previous. <ul>
+<li> <strong>OldPC</strong> - The <code>PlayerController</code> of the player from the previous gametype.
+</li> <li> <strong>NewPC</strong> - The <code>PlayerController</code> for the player in the new gametype.
+</li></ul>
+</li></ul>
+<p />
+<strong>Navigation</strong>
+<p /> <ul>
+<li> <strong>DoNavFearCostFalloff</strong> - Updates navigation point fear cost fall off when <code>bDoFearCostFalloff=true</code>. Called from the <code>Timer()</code> of the <code>GameInfo</code>.
+</li> <li> <strong>NotifyNavigationChanged [N]</strong> - Function stub notifying the gametype when a NavigationPoint becomes blocked or unblocked allowing it to notify AIs in the world so they can update their routes. <ul>
+<li> <strong>N</strong> - The <code>NavigationPoint</code> that was changed.
+</li></ul>
+</li> <li> <strong>ShouldSpawnAtStartSpot [Player]</strong> - Returns whether the <code>StartSpot</code> property of the given player should be used as the spawn location for its <code>Pawn</code>. <ul>
+<li> <strong>Player</strong> - The <code>Controller</code> of the player.
+</li></ul>
+</li> <li> <strong>FindPlayerStart [Player] [InTeam] [IncomingName]</strong> - Returns the <code>NavigationPoint</code> that is the best location for this player to start from. <code>PlayerStarts</code> are rated by <code>RatePlayerStart()</code>. <ul>
+<li> <strong>Player</strong> - The <code>Controller</code> of the player.
+</li> <li> <strong>InTeam</strong> - Optional. The number of the team the player is on.
+</li> <li> <strong>IncomingName</strong> - Optional. Specifies the tag of a teleporter to use as the starting location.
+</li></ul>
+</li> <li> <strong>ChoosePlayerStart [Player] [InTeam]</strong> - Returns the best <code>PlayerStart</code> for the given player to start from. <code>PlayerStarts</code> are rated by <code>RatePlayerStart()</code>. <ul>
+<li> <strong>Player</strong> - The <code>Controller</code> of the player.
+</li> <li> <strong>InTeam</strong> - Optional. The number of the team the player is on.
+</li></ul>
+</li> <li> <strong>RatePlayerStart [P] [Team] [Player]</strong> - Returns the rating of how desirable the given <code>PlayerStart</code> is for the given player and team. <ul>
+<li> <strong>P</strong> - The <code>PlayerStart</code> to get the rating for.
+</li> <li> <strong>Team</strong> - The number of the team the player is on.
+</li> <li> <strong>Player</strong> - The <code>Controller</code> of the player.
+</li></ul>
+</li></ul>
+<p />
+<strong>Inventory</strong>
+<p /> <ul>
+<li> <strong>ShouldRespawn [Other]</strong> - Returns whether the given <code>PickupFactory</code> should respawn. By default, items are only allowed to respawn in multiplayer games. <ul>
+<li> <strong>Other</strong> - The <code>PickupFactory</code> of the item to respawn.
+</li></ul>
+</li> <li> <strong>AddDefaultInventory [P]</strong> - Spawns any default inventory for the given <code>Pawn</code> (via <code>Pawn::AddDefaultInventory()</code>). Called from <code>RestartPlayer()</code> and also from any <code>ActorFactory</code> spawning a <code>Pawn</code>. <ul>
+<li> <strong>P</strong> - The <code>Pawn</code> to give the default inventory to.
+</li></ul>
+</li> <li> <strong>PickupQuery [Other] [ItemClass] [Pickup]</strong> - Returns whether the given item is allowed to be picked up by the given player. Called by a <code>PickupFactory</code> or <code>DroppedPickup</code> when a <code>Pawn</code> tries to pick the item up. <ul>
+<li> <strong>Other</strong> - The <code>Pawn</code> attempting to pick up the item.
+</li> <li> <strong>ItemClass</strong> - The <code>Inventory</code> class of the item.
+</li> <li> <strong>Pickup</strong> - The <code>Actor</code> containing the item, i.e. the <code>PickupFactory</code>.
+</li></ul>
+</li> <li> <strong>DiscardInventory [Other] [Killer]</strong> - Discards or drops a player's inventory after it dies. <ul>
+<li> <strong>Other</strong> - The <code>Controller</code> of the player that died.
+</li> <li> <strong>Killer</strong> - Optional. The <code>Controller</code> of the player that killed the player that died, if any.
+</li></ul>
+</li></ul>
+<p />
+<strong>Messages</strong>
+<p /> <ul>
+<li> <strong>BroadcastDeathMessage [Killer] [Other] [damageType]</strong> - Displays a message from the <code>DeathMessageClass</code> when one player (<code>Killer</code>) kills another (<code>Other</code>). Calls <code>BroadcastLocalized()</code>. <ul>
+<li> <strong>Killer</strong> - The <code>Controller</code> of the player who killed the other player. Can be <code>None</code> (not killed by a player) or the same as <code>Other</code> (Suicide).
+</li> <li> <strong>Other</strong> - The <code>Controller</code> of the player who was killed.
+</li> <li> <strong>damageType</strong> - The <code>DamageType</code> of the damage that caused the player's death.
+</li></ul>
+</li> <li> <strong>Broadcast [Sender] [Msg] [Type]</strong> - Displays the given message to all players in the game. <ul>
+<li> <strong>Sender</strong> - The <code>Actor</code> responsible for initiating the message.
+</li> <li> <strong>Msg</strong> - A <code>String</code> representing the message to display.
+</li> <li> <strong>Type</strong> - Optional. A <code>Name</code> that can be used to provide an additional "type" of message being sent.
+</li></ul>
+</li> <li> <strong>BroadcastTeam [Sender] [Msg] [Type]</strong> - Displays the given message to all players on the same team as the sender. <ul>
+<li> <strong>Sender</strong> - The <code>Actor</code> responsible for initiating the message.
+</li> <li> <strong>Msg</strong> - A <code>String</code> representing the message to display.
+</li> <li> <strong>Type</strong> - Optional. A <code>Name</code> that can be used to provide an additional "type" of message being sent.
+</li></ul>
+</li> <li> <strong>BroadcastLocalized [Sender] [Message] [Switch] [RelatedPRI_1] [RelatedPRI_2] [OptionalObject]</strong> - Displays a localized message to all players in the game. <ul>
+<li> <strong>Sender</strong> - The <code>Actor</code> responsible for initiating the message.
+</li> <li> <strong>Message</strong> - The <code>LocalMessage</code> class to obtain the message from.
+</li> <li> <strong>Switch</strong> - Optional. The index of the message to display.
+</li> <li> <strong>RelatedPRI_1</strong> - Optional. A <code>PlayerReplicationInfo</code> that can be used to obtain information to be displayed in the message.
+</li> <li> <strong>RelatedPRI_2</strong> - Optional.  A <code>PlayerReplicationInfo</code> that can be used to obtain information to be displayed in the message.
+</li> <li> <strong>OptionalObject</strong> - Optional. An <code>Object</code> that can be used in displaying the message. For instance, the default behavior of the <code>LocalMessage</code> class is to treat this as a <code>Class</code> object and call <code>GetLocalString()</code> on it to obtain the message to display (used for <code>BroadcastDeathMessage</code>).
+</li></ul>
+</li> <li> <strong>BroadcastLocalizedTeam [TeamIndex] [Sender] [Message] [Switch] [RelatedPRI_1] [RelatedPRI_2] [OptionalObject]</strong> - Displays a localized message to all players on the given team. <ul>
+<li> <strong>TeamIndex</strong> - The number of the team to display the message to.
+</li> <li> <strong>Sender</strong> - The <code>Actor</code> responsible for initiating the message.
+</li> <li> <strong>Message</strong> - The <code>LocalMessage</code> class to obtain the message from.
+</li> <li> <strong>Switch</strong> - Optional. The index of the message to display.
+</li> <li> <strong>RelatedPRI_1</strong> - Optional. A <code>PlayerReplicationInfo</code> that can be used to obtain information to be displayed in the message.
+</li> <li> <strong>RelatedPRI_2</strong> - Optional.  A <code>PlayerReplicationInfo</code> that can be used to obtain information to be displayed in the message.
+</li> <li> <strong>OptionalObject</strong> - Optional. An <code>Object</code> that can be used in displaying the message. For instance, the default behavior of the <code>LocalMessage</code> class is to treat this as a <code>Class</code> object and call <code>GetLocalString()</code> on it to obtain the message to display (used for <code>BroadcastDeathMessage</code>).
+</li></ul>
+</li></ul>
+<p />
+<strong>Kick</strong>
+<p /> <ul>
+<li> <strong>KickIdler [PC]</strong> - Removes the given player from the game via <code>AccessControl::KickPlayer()</code>. <ul>
+<li> <strong>PC</strong> - The <code>PlayerController</code> of the player to kick.
+</li></ul>
+</li> <li> <strong>Kick [S]</strong> - Removes the given player from the game. <ul>
+<li> <strong>S</strong> - A <code>String</code> specifying the player to be removed. This should be the player's <code>PlayerName</code> or <code>PlayerID</code>.
+</li></ul>
+</li> <li> <strong>ForceKickPlayer [PC] [KickReason]</strong> - Removes the given player from the game regardless of admin status. <ul>
+<li> <strong>PC</strong> - The <code>PlayerController</code> of the player to kick.
+</li> <li> <strong>KickReason</strong> - A <code>String</code> specifying the reason the player is being removed.
+</li></ul>
+</li> <li> <strong>KickBan [S]</strong> - Removes the given player from the game and bans them, denying re-entry. <ul>
+<li> <strong>S</strong> - A <code>String</code> specifying the player to be removed. This should be the player's <code>PlayerName</code> or <code>PlayerID</code>.
+</li></ul>
+</li></ul>
+<p />
+<strong>Network/Replication</strong>
+<p /> <ul>
+<li> <strong>InitGameReplicationInfo</strong> - Initializes the <code>GameReplicationInfo</code> for the game.
+</li> <li> <strong>StartOnlineGame</strong> - Called from <code>StartMatch()</code> to tell the online system to start the game and waits for the callback. Tells each connected client to mark their session as in progress.
+</li> <li> <strong>OnStartOnlineGameComplete [SessionName] [bWasSuccessful]</strong> - Called when the online system completes the starting of the game. <ul>
+<li> <strong>SessionName</strong> - The <code>Name</code> of the session.
+</li> <li> <strong>bWasSuccessful</strong> - If TRUE, the online system successfully completed starting the game and all clients should be registered.
+</li></ul>
+</li> <li> <strong>EndOnlineGame</strong> - Called from <code>PerformEndGameHandling()</code> to tell the online system to end the game and tells all clients to do the same.
+</li> <li> <strong>GetNetworkNumber</strong> - Returns the IP address of the host machine.
+</li> <li> <strong>RequiresPassword</strong> - Returns whether the game requires a password to join.
+</li> <li> <strong>ReplicateStreamingStatus [PC]</strong> - Replicates the current level streaming status to the given <code>PlayerController</code>. <ul>
+<li> <strong>PC</strong> - The <code>PlayerController</code> of the player to replicate the streaming status to.
+</li></ul>
+</li> <li> <strong>BestNextHostSort [A] [B]</strong> - Returns which of the given hosts is preferable. Used to sort the list of best hosts. Clients with the most peer connections come first. Then sort based on time of join so that newest players are preferred. <ul>
+<li> <strong>[A/B]</strong> - The <code>PlayerControllers</code> of the hosts to sort.
+</li></ul>
+</li> <li> <strong>UpdateBestNextHosts</strong> - Updates the list of best next hosts on the current server and also replicates this list to all clients.
+</li> <li> <strong>UpdateNetSpeeds</strong> - Updates all <code>PlayerControllers</code> in the game with the new speed.
+</li> <li> <strong>CalculatedNetSpeed</strong> - Calculates current net speed clamped between <code>MinDynamicBandwidth</code> and <code>MaxDynamicBandwidth</code>.
+</li> <li> <strong>WriteOnlineStats</strong> - Tells all clients to write stats and then handles writing local stats.
+</li> <li> <strong>WriteOnlinePlayerScores</strong> - If the match is arbitrated, tells all clients to write out their copies of the player scores. If not arbitrated, it only has the first local player write the scores.
+</li> <li> <strong>UpdateGameSettings</strong> - Function stub used to update any changes in game settings that need to be published to players that are searching for games. Subclasses should override this.
+</li> <li> <strong>UpdateGameSettingsCounts</strong> - Updates the online subsystem's information for player counts so that LAN matches can show the correct player counts.
+</li> <li> <strong>ProcessClientRegistrationCompletion [PC] [bWasSuccessful]</strong> - Function stub to notify the game that the given player has completed arbitration registration. Subclasses should override this to handle registration completeion. <ul>
+<li> <strong>PC</strong> - The <code>PlayerController</code> of the player that complete registration.
+</li> <li> <strong>bWasSuccessful</strong> - If TRUE, the registration was successful.
+</li></ul>
+</li> <li> <strong>StartArbitrationRegistration</strong> - Function stub that starts off async registration. Subclasses should override this.
+</li> <li> <strong>StartArbitratedMatch</strong> - Function stub that starts an arbitrated match. Subclasses should override this.
+</li> <li> <strong>RegisterServerForArbitration</strong> - Function stub that registers the server for arbitration. Subclasses should override this.
+</li> <li> <strong>ArbitrationRegistrationComplete [SessionName] [bWasSuccessful]</strong> - Function stub called when the registration of the server for arbitration has completed. <ul>
+<li> <strong>SessionName</strong> - The <code>Name</code> of the session.
+</li> <li> <strong>bWasSuccessful</strong> - If TRUE, the registration was successful.
+</li></ul>
+</li> <li> <strong>NotifyArbitratedMatchEnd</strong> - Called when an arbitrated match has ended and tells all clients to disconnect and then goes to the menu.
+</li> <li> <strong>ProcessServerLogin</strong> - Checks for the login parameters being passed on the command line. If present, it does an async login before starting the dedicated server registration process. Returns TRUE if the login is in progress.
+</li> <li> <strong>ClearAutoLoginDelegates</strong> - Clears the login delegates once the login process has passed or failed.
+</li> <li> <strong>OnLoginFailed [LocalUserNum] [ErrorCode]</strong> - Called if the server login fails and calls <code>ClearAutoLoginDelegates()</code>. <ul>
+<li> <strong>LocalUserNumber</strong> - The controller number of the associated user.
+</li> <li> <strong>ErrorCode</strong> - The <code>EOnlineServerConnectionStatus</code> async error code that occurred.
+</li></ul>
+</li> <li> <strong>OnLoginChanged [LocalUserNum]</strong> - Called when the server login has completed and registers the server. <ul>
+<li> <strong>LocalUserNumber</strong> - Unused.
+</li></ul>
+</li> <li> <strong>RegisterServer</strong> - Registers the dedicated server with the online service.
+</li> <li> <strong>OnServerCreateComplete [SessionName] [bWasSuccessful]</strong> - Called when the dedicated server registration has completed. <ul>
+<li> <strong>SessionName</strong> - The <code>Name</code> of the session.
+</li> <li> <strong>bWasSuccessful</strong> - If TRUE, the registration was successful.
+</li></ul>
+</li> <li> <strong>TellClientsToReturnToPartyhost</strong> - Iterates the player controllers and tells them to return to their party.
+</li> <li> <strong>TellClientsToTravelToSession [SessionName] [SearchClass] [PlatformSpecificInfo]</strong> - Iterates the player controllers and tells remote players to travel to the specified session. <ul>
+<li> <strong>SessionName</strong> - The <code>Name</code> of the session to register.
+</li> <li> <strong>SearchClass</strong> - The <code>OnlineGameSearch</code> class that should be populated with the session.
+</li> <li> <strong>PlatformSpecificInfo</strong> - The binary data to place in the platform-specific areas.
+</li></ul>
+</li> <li> <strong>AddInactivePRI [PRI] [PC]</strong> - Adds the given <code>PlayerReplicationInfo</code> to the inactive list and removes it from the active list. <ul>
+<li> <strong>PRI</strong> - The <code>PlayerReplicationInfo</code> of the player to add to the inactive list.
+</li> <li> <strong>PC</strong> - The <code>PlayerController</code> of the player associated with the <code>PRI</code>.
+</li></ul>
+</li> <li> <strong>FindInactivePRI [PC]</strong> - Finds and returns the PRI associated with the given re-entering player. <ul>
+<li> <strong>PC</strong> - The <code>PlayerController</code> of the player.
+</li></ul>
+</li> <li> <strong>OverridePRI [PC] [OldPRI]</strong> - Overrides, as needed, the properties of the <code>PlayerReplicationInfo</code> of the given player with properties from the old <code>PlayerReplicationInfo</code> which were assigned during the login process. <ul>
+<li> <strong>PC</strong> - The <code>PlayerController</code> of the player.
+</li> <li> <strong>OldPRI</strong> - The <code>PlayerReplicationInfo</code> holding the properties assigned at login.
+</li></ul>
+</li></ul>
+<p />
+<strong>Pausing</strong>
+<p /> <ul>
+<li> <strong>CanUnpause</strong> - Delegate. Called when the game is requested to be unpaused to determine if that action is allowed. Returns TRUE if the game can be unpaused. The default implementation allows all requests to succeed.
+</li> <li> <strong>SetPause [PC] [CanUnpauseDelegate]</strong> - Pauses the game and adds the delegate to the list if the given player has the right to pause the game. The delegate is called to see if it is ok to unpause the game, e.g. the reason the game was paused has been cleared. <ul>
+<li> <strong>PC</strong> - The <code>PlayerController</code> of the player trying to pause the game.
+</li> <li> <strong>CanUnpauseDelegate</strong> - The delagate (matching the <code>CanUnpause</code> delegate's signature) that will be used to determine if this pause is allowed to be cleared.
+</li></ul>
+</li> <li> <strong>ClearPause</strong> - Checks the list of delegates to determine if the pausing can be cleared. If the delegate says it's ok to unpause, that delegate is removed from the list and the rest are checked. The game is considered unpaused when the list is empty.
+</li> <li> <strong>ForceClearUnpauseDelegates [PauseActor]</strong> - Forcibly removes an object's <code>CanUnpause</code> delegates from the list of pausers.  If any of the object's <code>CanUnpause</code> delegate handlers were in the list, triggers a call to <code>ClearPause()</code>. Called when the player controller is being destroyed to prevent the game from being stuck in a paused state when a PC that paused the game is destroyed before the game is unpaused. <ul>
+<li> <strong>PauseActor</strong> - The <code>Actor</code> to clear all <code>CanUnpause</code> delegates for.
+</li></ul>
+</li> <li> <strong>AllowPausing [PC]</strong> - Returns whether the given player is allowed to pause the game. <ul>
+<li> <strong>PC</strong> - The <code>PlayerController</code> of the player requesting to pause the game.
+</li></ul>
+</li></ul>
+<p />
+<strong>Gameplay</strong>
+<p /> <ul>
+<li> <strong>SetGameSpeed [T]</strong> - Sets the game speed and world <code>TimeDilation</code> to the given value. This controls how often the game's <code>Timer()</code> is executed.
+</li> <li> <strong>AllowCheats [P]</strong> - Returns whether cheats are allowed in the game. The default is to allow cheats in offline games only.
+</li> <li> <strong>UpdateGameplayMuteList [PC]</strong> - Used to notify the game type that it is ok to update a player's gameplay specific muting information now. The <code>player</code> needs to notify the server when it is possible to do so or the unique net id will be incorrect and the muting not work. <ul>
+<li> <strong>PC</strong> - The <code>PlayerController</code> of the player to update muting info for.
+</li></ul>
+</li> <li> <strong>RecalculateSkillRating</strong> - Used by the game type to update the advertised skill for this game.
+</li> <li> <strong>MatineeCancelled</strong> - Called when this PC is in cinematic mode, and its matinee is cancelled by the user.
+</li> <li> <strong>GetCoverReplicator</strong> - Returns the <code>CoverReplicatorBase</code> for the game. If none exists, a new one is spawned and that is returned.
+</li> <li> <strong>NotifyKilled [Killer] [Killed] [KilledPawn] [damageType]</strong> - Notifies a given player it has been killed. Called from <code>Killed()</code>. <ul>
+<li> <strong>Killer</strong> - The <code>Controller</code> of the player that did the killing.
+</li> <li> <strong>Killed</strong> - The <code>Controller</code> of the player that was killed.
+</li> <li> <strong>KilledPawn</strong> - The <code>Pawn</code> of the player that was killed.
+</li> <li> <strong>damageType</strong> - The <code>DamageType</code> of the damage responsible for the player's death.
+</li></ul>
+</li> <li> <strong>Killed [Killer] [KilledPlayer] [KilledPawn] [damageType]</strong> - Called by the <code>Pawn</code> to notify the game it has been killed. <ul>
+<li> <strong>Killer</strong> - The <code>Controller</code> of the player that did the killing.
+</li> <li> <strong>Killed</strong> - The <code>Controller</code> of the player that was killed.
+</li> <li> <strong>KilledPawn</strong> - The <code>Pawn</code> of the player that was killed.
+</li> <li> <strong>damageType</strong> - The <code>DamageType</code> of the damage responsible for the player's death.
+</li></ul>
+</li> <li> <strong>PreventDeath [KilledPawn] [Killer] [DamageType] [HitLocation]</strong> - Called by the <code>Pawn</code> to allow the game to override the <code>Pawn</code> being killed. <ul>
+<li> <strong>KilledPawn</strong> - The <code>Pawn</code> of the player that was killed.
+</li> <li> <strong>Killer</strong> - The <code>Controller</code> of the player that did the killing.
+</li> <li> <strong>DamageType</strong> - The <code>DamageType</code> of the damage responsible for the player's death.
+</li> <li> <strong>HitLocation</strong> - A <code>Vector</code> specifying the location of the hit that caused the player's death.
+</li></ul>
+</li> <li> <strong>ReduceDamage [Damage] [injured] [instigatedBy] [HitLocation] [Momentum] [DamageType] [DamageCauser]</strong> - Called From <code>TakeDamage()</code> when damage is done to a player to allow the amount of the damage to be modified. <ul>
+<li> <strong>Damage</strong> - Out. Takes in and outputs the amount of damage to be done.
+</li> <li> <strong>injured</strong> - The <code>Pawn</code> of the player being damaged.
+</li> <li> <strong>instigatedBy</strong> - The <code>Controller</code> of the player responsible for the damage.
+</li> <li> <strong>HitLocation</strong> - A <code>Vector</code> specifying the location of the hit that caused the damage.
+</li> <li> <strong>Momentum</strong> - A <code>Vector</code> specifying the direction and magnitude of the momentum applied by the damage.
+</li> <li> <strong>DamageType</strong> - The <code>DamageType</code> of the damage being done.
+</li> <li> <strong>DamageCauser</strong> - The <code>Actor</code> that actually caused the damage.
+</li></ul>
+</li> <li> <strong>AddObjectiveScore [Scorer] [Score]</strong> - Increments the given player's score after completing an objective. <ul>
+<li> <strong>Scorer</strong> - The <code>PlayerReplicationInfo</code> of the player.
+</li> <li> <strong>Score</strong> - The amount to add to the player's score.
+</li></ul>
+</li> <li> <strong>ScoreObjective [Scorer] [Score]</strong> - Adds to the player's score and checks if the game should end after completing an objective. <ul>
+<li> <strong>Scorer</strong> - The <code>PlayerReplicationInfo</code> of the player.
+</li> <li> <strong>Score</strong> - The amount to add to the player's score.
+</li></ul>
+</li> <li> <strong>CheckScore [Scorer]</strong> - Called by <code>ScoreObjective()</code> to determine if the game should end based on the gievn player's score. <ul>
+<li> <strong>Scorer</strong> - The <code>PlayerReplicationInfo</code> of the player.
+</li></ul>
+</li> <li> <strong>ScoreKill [Killer] [Other]</strong> - Adds to the players score and checks if the game should end after a kill. <ul>
+<li> <strong>Killer</strong> - The <code>Controller</code> of the player that caused the player death.
+</li> <li> <strong>Other</strong> - The <code>Controller</code> of the player that died.
+</li></ul>
+</li></ul>
+<p />
+<strong>Options</strong>
+<p /> <ul>
+<li> <strong>GrabOption [Options] [Result]</strong> - Parses out the next key-value pair from the options string. Returns TRUE if a pair was found. <ul>
+<li> <strong>Options</strong> - Out. Takes in the current options string and outputs the options string minus the parsed pair.
+</li> <li> <strong>Result</strong> - Out. Outputs the parsed pair.
+</li></ul>
+</li> <li> <strong>GetKeyValue [Pair] [Key] [Value]</strong> - Breaks up a key-value pair into a key and a value. <ul>
+<li> <strong>Pair</strong> - Takes in the key-value pair.
+</li> <li> <strong>Key</strong> - Out. Outputs the key.
+</li> <li> <strong>Value</strong> - Out. Outputs the value.
+</li></ul>
+</li> <li> <strong>ParseOption [Options] [InKey]</strong> - Parses out the key-value pair from the options string for the given key. returns the key-value pair in <code>String</code> form. <ul>
+<li> <strong>Options</strong> - Takes in the current options string.
+</li> <li> <strong>InKey</strong> - The key to find.
+</li></ul>
+</li> <li> <strong>HasOption [Options] [InKey]</strong> - Returns whether the key-value pair for the given key exists in the options string. <ul>
+<li> <strong>Options</strong> - Takes in the current options string.
+</li> <li> <strong>InKey</strong> - The key to find.
+</li></ul>
+</li> <li> <strong>GetIntOption [Options] [ParseString] [CurrentValue]</strong> - Returns an <code>Int</code> value for the given key from the options string. <ul>
+<li> <strong>Options</strong> - Takes in the current options string.
+</li> <li> <strong>ParseString</strong> - The key to find.
+</li> <li> <strong>CurrentValue</strong> - The current, or default, value to use if the key is not found.
+</li></ul>
+</li></ul>
+<p />
+<strong>Mutator</strong>
+<p /> <ul>
+<li> <strong>AddMutator [mutname] [bUserAdded]</strong> - Adds the specified mutator to the game. <ul>
+<li> <strong>mutname</strong> - A <code>string</code> specifying the mutator class to add.
+</li> <li> <strong>bUserAdded</strong> - If TRUE, the mutator was added by the player through the game's interface.
+</li></ul>
+</li> <li> <strong>RemoveMutator [MutatorToRemove]</strong> - Removes the given mutator from the game. <ul>
+<li> <strong>MutatorToRemove</strong> - The <code>Mutator</code> to remove.
+</li></ul>
+</li> <li> <strong>AllowMutator [MutatorClassName]</strong> - Returns whether the given <code>Mutator</code> class can be added to the game. <ul>
+<li> <strong>MutatorClassName</strong> - A <code>string</code> specifying the mutator class to check.
+</li></ul>
+</li> <li> <strong>Mutate [MutateString] [Sender]</strong> - Passes an input string to the mutator list.  Used by PlayerController.Mutate(), intended to allow mutators to have input exec functions (by binding mutate xxx to keys). <ul>
+<li> <strong>MutateString</strong> - The <code>String</code> to pass to the mutator list.
+</li> <li> <strong>Sender</strong> - The <code>PlayerController</code> of the player sending the mutate string.
+</li></ul>
+</li> <li> <strong>CheckRelevance [Other]</strong> - Returns TRUE if actor is relevant to this game and should not be destroyed.  Called in <code>Actor::PreBeginPlay()</code>, intended to allow mutators to remove or replace actors being spawned. <ul>
+<li> <strong>Other</strong> - The <code>Actor</code> to check for relevance.
+</li></ul>
+</li> <li> <strong>ModifyScoreKill [Killer] [Other]</strong> - Passes a player kill to the mutator list to process for scoring. <ul>
+<li> <strong>Killer</strong> - The <code>Controller</code> of the player that caused the player death.
+</li> <li> <strong>Other</strong> - The <code>Controller</code> of the player that died.
+</li></ul>
+</li> <li> <strong>DriverEnteredVehicle [V] [P]</strong> - Passes a vehicle entered event to the mutator list. <ul>
+<li> <strong>V</strong> - The <code>Vehicle</code> that was entered.
+</li> <li> <strong>P</strong> - The <code>Pawn</code> of the player entering the vehicle.
+</li></ul>
+</li> <li> <strong>CanLeaveVehicle [V] [P]</strong> - Checks whether the given <code>Pawn</code> can leave the specified <code>Vehicle</code>. Allows the mutator list to make the decision if any mutators exist. <ul>
+<li> <strong>V</strong> - The <code>Vehicle</code> that is being exited.
+</li> <li> <strong>P</strong> - The <code>Pawn</code> of the player exiting the vehicle.
+</li></ul>
+</li> <li> <strong>DriverLeftVehicle [V] [P]</strong> - Passes a vehicle exited event to the mutator list. <ul>
+<li> <strong>V</strong> - The <code>Vehicle</code> that is being exited.
+</li> <li> <strong>P</strong> - The <code>Pawn</code> of the player exiting the vehicle.
+</li></ul>
+</li></ul>
+<p />
+<strong>Cheat Detection</strong>
+<p /> <ul>
+<li> <strong>EnableStandbyCheatDetection [bIsEnabled]</strong> - Turns standby detection on or off. <ul>
+<li> <strong>bIsEnabled</strong> - If TRUE, cheat detection is turned on. Otherwise, it is turned off.
+</li></ul>
+</li> <li> <strong>StandbyCheatDetected [StandbyType]</strong> - Notifies the game code that a standby cheat was detected. <ul>
+<li> <strong>StandbyType</strong> - The <code>EStandbyType</code> of the cheat detected.
+</li></ul>
+</li></ul>
+<p />
+<strong>Automated Testing</strong>
+<p /> <ul>
+<li> <strong>DoTravelTheWorld</strong> - Starts world traveling for automated testing.
+</li> <li> <strong>IsAutomatedPerfTesting</strong> - Returns true if Automated Performance testing is enabled.
+</li> <li> <strong>IsCheckingForFragmentation</strong> - Returns true if checking for fragmentation is enabled.
+</li> <li> <strong>IsCheckingForMemLeaks</strong> - Returns true if checking for memory leaks is enabled.
+</li> <li> <strong>IsDoingASentinelRun</strong> - Returns true if doing a sentinel run.
+</li> <li> <strong>ShouldAutoContinueToNextRound</strong> - Returns true if should auto-continue to next round.
+</li> <li> <strong>CheckForSentinelRun</strong> - Asks <code>AutoTestManager</code> to start a sentinel run if needed.  Must be called by gameinfo subclass - not called in base implementation of <code>GameInfo::StartMatch()</code>.
+</li></ul>
+<p />
+<a name="GameCycle"></a>
+<h2><a name="Game Lifecycle"></a> Game Lifecycle </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The lifecycle of a game - when the gametype is created, how players are created, how the game checks for ending conditions, etc. - is an important aspect to understand. It will help you to adapt the engine to fit your specific gametype. A complete rundown of the game flow from engine startup to the gametype's own lifecycle is provided on the <a href="UnrealScriptGameFlow.html" class="twikiLink">UnrealScript Game Flow</a> document.
+<p />
+<a name="GamePrefixes"></a>
+<h2><a name="Gametype Prefixes"></a> Gametype Prefixes </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The gametype system in Unreal Engine 3 provides a mechanism for automatically selecting the appropriate <code>GameInfo</code> class to use for maps based on the prefix given to the map filename. The <code>DefaultMapPrefixes</code> and <code>CustomMapPrefixes</code> arrays hold a list of <code>GameTypePrefix</code> structs each of which maps a specific prefix string to a gametype class (among other things).
+<p />
+<h3><a name="GameTypePrefix Struct"></a> GameTypePrefix Struct </h3>
+<p /> <ul>
+<li> <strong>Prefix</strong> - A <code>String</code> specifying the map prefix. The map prefix is a sequence of characters that begins the map name and is followed by a hyphen (-). The hyphen is not included in the prefix. It simply spearates the prefix from the rest of the map name.
+</li> <li> <strong>bUseCommonPackage</strong> - If TRUE, a common package should be generated for this gametype. See <a href="GametypeTechnicalGuide.html#GamePackages" class="twikiAnchorLink">Common Packages</a> for more details.
+</li> <li> <strong>GameType</strong> - A <code>String</code> specifying the class of the gametype to map to the prefix. This is the gametype that will be used for maps with this prefix if no gametype is specified in the <code>URL</code>.
+</li> <li> <strong>AdditionalGameTypes</strong> - An array of <code>Strings</code> specifying additional gametype classes supported by this map prefix via the URL.
+</li> <li> <strong>ForcedObjects</strong> - Forced objects (and classes) that should go into the common package to avoid cooking into every map.
+</li></ul>
+<p />
+<h3><a name="Adding Gametype Prefixes"></a> Adding Gametype Prefixes </h3>
+<p />
+Gametype prefix mappings are added by creating new entries in the <code>[Engine.GameInfo]</code> section of the <code>DefaultGame.ini</code> config file. An example is show below:
+<p />
+<div class="codesnippet">
+<pre>
+&#91;Engine.GameInfo]
++DefaultMapPrefixes&#61;(Prefix&#61;&#34;DM&#34;,bUsesCommonPackage&#61;FALSE,GameType&#61;&#34;UTGame.UTDeathmatch&#34;)
+</pre>
+</div>
+<p />
+<a name="GamePackages"></a>
+<h3><a name="Common Packages"></a> Common Packages </h3>
+<p />
+<strong>TODO</strong>
+<p />
+<h2><a name="Pausing"></a> Pausing </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+The game is paused by calling <code>SetPause()</code> on the <code>GameInfo</code>. <code>SetPause()</code> accepts a delegate as a parameter which is added to this array. When the game is paused for a specific reason, a particular delegate that checks to make sure that condition is no longer an issue is passed to <code>SetPause()</code>.
+<p />
+For example, in <code>PlayerController.uc</code> when a controller is plugged in or unplugged, it calls <code>SetPause()</code> on the <code>PlayerController</code> passing it the <code>CanUnpauseControllerConnected</code> function, which is then passed on to <code>SetPause()</code> of the <code>GameInfo</code>:
+<p />
+<div class="codesnippet">
+<pre>
+// Pause if the controller was removed, otherwise unpause
+SetPause(!bIsConnected,CanUnpauseControllerConnected);
+</pre>
+</div>
+<p />
+The <code>CanUnpauseControllerConnected</code> function simply returns whether the controller is plugged in or not:
+<p />
+<div class="codesnippet">
+<verbtaim>
+/** Callback that checks to see if the controller is connected before unpausing */
+function bool CanUnpauseControllerConnected()
+{
+	return bIsControllerConnected;
+}
+</verbatim>
+</div>
+<p />
+If no delegate is passed to the <code>SetPause</code> function in the <code>GameInfo</code>, then the default <code>CanUnpause</code> function is used which always returns true. This would be the case if a player simply wants to pause the game since there are no particular conditions to be checked when they unpause the game.
+<p />
+When <code>ClearPause()</code> is then called to unpause the game, each delegate in the <code>Pausers</code> array is executed. If the delegate returns TRUE, it is removed from the array. Only when the array is empty will the game be unpaused.
+<p />
+<h2><a name="Mutators"></a> Mutators </h2>
+<div style="margin-top:-10px;"><hr size="1" noshade="noshade"></div>
+<p />
+Mutators are special Actors that can be applied to a game to modify certain aspects of the gameplay. For instance, Mutators can do the following:
+<p /> <ul>
+<li> Modify the player login parameters
+</li> <li> Modify the properties of the player's Pawn
+</li> <li> Modify, remove, or replace any or all Actors (which are not bGameRelevant=TRUE)
+</li> <li> Override the player start location
+</li> <li> Modify the game ending conditions
+</li></ul>
+<p />
+The above items are just some of the aspects of the game that Mutators can modify.
+<p />
+<h3><a name="Adding Mutators"></a> Adding Mutators </h3>
+<p />
+Mutators are added to a game through the <code>AddMutator()</code> function in <code>GameInfo</code>. This can potentially be called from any other Actor to allow mutators to be added dynamically during play to modify certain aspects in response to gameplay events. By default, this is called from <code>InitGame()</code> to add any Mutators specified in the map URL.
+<p />
+Mutators can be specified in the map URL by adding <code>Mutator=</code> followed by the list of Mutators to add, with each separated by a comma. For example:
+<p />
+<pre>
+MapName?Game&#61;GameName?Mutator&#61;BigHeads,Instagib
+</pre>
+<p />
+This map URL would load the <code>MapName</code> map using the <code>GameName</code> gametype which would then add the <code>BigHeads</code> and <code>Instagib</code> mutators. The map URL for adding Mutators in this manner would usually be dynamically created by a menu allowing the player to choose the Mutators to use. It would also be possible to hardcode one or more "default" mutators to be added for a particular gametype by adding exlpicit <code>AddMutator()</code> calls for those Mutators in the <code>InitGame()</code> event for the gametype.
+<p />
+</noautolink>
+<p />
+<style type="text/css">
+<!--
+div.codesnippet
+{
+	margin:0px 10px;
+	padding:0px 10px;
+	background:#f0f0f0;
+	font:12px Courier;
+	max-height:500px;
+	overflow:auto;
+	border:1px inset #989898;
+}
+-->
+</style>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GametypeTechnicalGuide.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:08:05 GMT -->
+</html></body>

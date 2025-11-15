@@ -1,0 +1,741 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/WebServer.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:18:23 GMT -->
+<head>
+<title> UDK | WebServer    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">WebServer  </b></div>
+<div id="tooltext">
+<a href="WebServerJP.html" class="twikiLink">日本語訳</a><br><a href="WebServerCH.html" class="twikiLink">中国翻译</a><br><a href="WebServerKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/WebServer -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 Home</a></b> &gt; <b><a href="InputOutputHome.html" class="twikiLink">Input / Output</a></b> &gt; Web Server
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="Web Server"></a> Web Server </h1>
+<hr size="1" noshade="noshade">
+<p />
+<em>Document Summary: Describes the usage and API of the HTTP WebServer implementation in UT3.</em>
+<p />
+<em>Document Changelog: Posted by <a href="https://udn.epicgames.com/Main/MichielHendricks" class="restricted" class="restricted" class="twikiLink">Michiel Hendricks</a>.</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="WebServer.html#Web Server"> Web Server</a> <ul>
+<li> <a href="WebServer.html#Overview"> Overview</a>
+</li> <li> <a href="WebServer.html#Structure"> Structure</a>
+</li> <li> <a href="WebServer.html#HTTP Request process"> HTTP Request process</a>
+</li> <li> <a href="WebServer.html#Creating a Web Application"> Creating a Web Application</a> <ul>
+<li> <a href="WebServer.html#Processing the request"> Processing the request</a>
+</li> <li> <a href="WebServer.html#Producing a response"> Producing a response</a>
+</li></ul>
+</li> <li> <a href="WebServer.html#API"> API</a> <ul>
+<li> <a href="WebServer.html#WebApplication"> WebApplication</a>
+</li> <li> <a href="WebServer.html#WebRequest"> WebRequest</a>
+</li> <li> <a href="WebServer.html#WebResponse"> WebResponse</a>
+</li> <li> <a href="WebServer.html#WebServer"> WebServer</a>
+</li> <li> <a href="WebServer.html#WebConnection"> WebConnection</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="Overview"></a> Overview </h2>
+<hr size="1" noshade="noshade">
+This document will explain how to use the Web Server and how to create new Web Applications. For low level information on the network connection used by the web server see <a href="TcpLink.html" class="twikiLink">TcpLink</a>.
+<p />
+This document will assume you have basic knowledge of the HTTP protocol. It is not really required to know the details of the HTTP, but it will help.
+<p />
+The web server only supports a subset of the HTTP protocol. But web applications can extend the functionality. Only GET and POST requests are supported.
+<p />
+<h2><a name="Structure"></a> Structure </h2>
+<hr size="1" noshade="noshade">
+The following classes make up the web server functionality:
+<p /> <dl>
+<dt> <code>WebServer</code>  </dt><dd> This is the entry point for the web server, it manages connectivity and the applications.
+</dd> <dt> <code>WebConnection</code>  </dt><dd> This class is the <em>acceptor</em> class for the web server. For each client connecting to the web server an instance of this class is created. It manages the connection and preprocesses the request before handing it over to a web application.
+</dd> <dt> <code>WebRequest</code>  </dt><dd> This class embodies the HTTP request the web server received.
+</dd> <dt> <code>WebResponse</code>  </dt><dd> This class implements functionality to provide a response to the request.
+</dd> <dt> <code>WebApplication</code>  </dt><dd> An implementation of this class is responsible for handling the request and to produce a response. When using the web server, this is the class you will be going to extend.
+</dd></dl>
+<p />
+<h2><a name="HTTP Request process"></a> HTTP Request process </h2>
+<hr size="1" noshade="noshade"> <ol>
+<li> Client connects to the web server.
+</li> <li> A new <code>WebConnection</code> is created, connection counter in <code>WebServer</code> is increased.
+</li> <li> <em>WebConnection.Accepted</em> is called. <ol>
+<li> Start shutdown timer. A connection will only remain open for 30 seconds.
+</li></ol>
+</li> <li> <em>WebConnection.ReceivedText</em>. The connection is receiving the request <ol>
+<li> When still processing the request headers, split up the data into lines.
+</li> <li> Process the request headers <ol>
+<li> Process request variables provided in the request URL
+</li> <li> If a GET request: <ol>
+<li> Create <code>WebRequest</code> and <code>WebResponse</code> instances.
+</li> <li> Find the associated web application.
+</li> <li> If no web application was found, respond with a HTTP redirect to the default application (if set).
+</li></ol>
+</li> <li> If a POST request: <ol>
+<li> Create <code>WebRequest</code> and <code>WebResponse</code> instances.
+</li> <li> Find the associated webapplication.
+</li></ol>
+</li> <li> Process the headers, done by <em>WebRequest.ProcessHeaderString</em>. <ol>
+<li> If <code>Authorization: Basic</code>, decode the authentication username and password.
+</li> <li> If <code>Content-Length</code>, set the <code>ContentType</code> variable.
+</li> <li> If <code>Content-Length</code>, set the <code>ContentLength</code> variable.
+</li></ol>
+</li></ol>
+</li> <li> Check the request: <ol>
+<li> If no <code>WebResponse</code> was created, respond with an HTTP 400 error.
+</li> <li> If no webapplication was found, response with an HTTP 404 error.
+</li></ol>
+</li> <li> If <code>WebRequest.ContentLength</code> is larger than 0 and it is a POST request, read the additional data.
+</li> <li> &dagger;Call <em>WebApplication.PreQuery</em>. If the result was true: <ol>
+<li> &dagger;Call <em>WebApplication.Query</em>.
+</li> <li> &dagger;Call <em>WebApplication.PostQuery</em>.
+</li></ol>
+</li> <li> Initiate cleanup: <ol>
+<li> Unset all variables.
+</li> <li> Close the connection.
+</li></ol>
+</li></ol>
+</li></ol>
+<p />
+&dagger; This is the part you are going to build
+<p />
+<h2><a name="Creating a Web Application"></a> Creating a Web Application </h2>
+<hr size="1" noshade="noshade">
+To extend the functionality of the web server you generally create a web application. You do this by subclassing the <code>WebApplication</code> class and implement at least the <em>WebApplication.Query</em> method.
+<p />
+In the <code>IpDrv</code> you will find an example implementation called <code>HelloWeb</code>.
+<p />
+Your web application will only be used by the web server when it is registered. To register a web application you need to update the web server configuration. Edit the <code>??Web.ini</code> file and update the <code>[IpDrv.WebServer]</code> section:
+<pre>
+Applications[x]=MyPackage.MyWebApplication
+ApplicationPaths[x]=/myweb
+</pre>
+Where <code>x</code> is a free slot. You can have up to 10 web applications. Your web application will be reachable through <code>http://ip:port/myweb</code>.
+<p />
+When the web server starts it will create and initialize all web applications. The <code>path</code> variable will be set to the <code>ApplicationPaths</code> value for this web application. Implement the <em>init()</em> function to perform some initialization of your web application. When the web server is shut down it will call the <em>CleanupApp()</em> function. In that function you should nullify all actor references you created (i.e. set the variables to <code>none</code>. ).
+<p />
+As shown in the <a href="#HTTP Request process">request process</a>, the first function of the web application which is called is <em>PreQuery(..)</em>. If this function returns true (the default behavior) it will subsequently call the <em>Query(..)</em> and <em>PostQuery(..)</em> functions. All three functions receive the same 2 arguments: a <code>WebRequest</code> and <code>WebResponse</code> instance. As the class names hint, the <code>WebRequest</code> instance contains information about the HTTP request which the user made. And the <code>WebResponse</code> instance can be used to produce a response to the request. The <code>URI</code> variable of the <code>WebRequest</code> instance will contain the relative URL which was made. The web application path has been stripped from the original URI.
+<p />
+<h3><a name="Processing the request"></a> Processing the request </h3>
+The client's request is stored in the <code>WebRequest</code> instance passed to the <em>Query</em> functions of your WebApplication.
+<p />
+Probably the post important variable in <code>WebRequest</code> is the <code>URI</code> variable. It will contain the request page within the web application domain. For example, if the client made the request <code>http://ip:port/myweb/some/page?foo=bar</code> then the <code>URI</code> variable will have the value <code>/some/page</code>. The <code>/myweb</code> prefix of the web application has been removed. And request variables are stored elsewhere.
+<p />
+In order to retrieve request variables, for either GET or POST request, you need to use the <em>GetVariable</em>, <em>GetVariableCount</em>, <em>GetVariableNumber</em>, and <em>GetVariables</em> functions. The <em>GetVariable</em> function allow you to retrieve the first value for a given request available. In the previously posted example <em>GetVariable("foo")</em> would return <code>bar</code>. In some cases you have multiple request variables of the same name, for example: <code>http://ip:port/myweb/some/page?foo=bar&amp;quux</code>. In this case you can use <em>GetVariableCount("foo")</em> to get the number values for that variable, and use <em>GetVariableNumber("foo", X)</em> to get each value.
+<p />
+You can also read the request headers through the <em>GetHeader</em> and <em>GetHeaders</em> functions. The HTTP headers <code>Content-Type</code>, <code>Content-Length</code>, <code>Authentication</code> are processed and stored in special variables. <code>Content-Type</code> and <code>Content-Length</code> are only used in POST request. The <code>Authentication</code> request header is only processed for basic authentication requests. In that case the <code>username</code> and <code>password</code> variables in the <code>WebRequest</code> object will contain the decoded values.
+<p />
+A typical method of processing the request is shown in the following example:
+<p />
+<pre>
+function Query(WebRequest Request, WebResponse Response)
+{
+    // Each "page" is handled by a separate function
+    switch (request.URI)
+    {
+        case "/page1"
+            doPage1(request, response);
+            break;
+        case "/page2"
+            doPage2(request, response);
+            break;
+        // etc.
+    }
+}
+
+function doPage1(WebRequest Request, WebResponse Response)
+{
+    if (request.getVariable("action") ~= "save")
+    {
+        // save incomming settings
+    }
+    // produce a response
+}
+</pre>
+<p />
+<h3><a name="Producing a response"></a> Producing a response </h3>
+The web server doesn't provide any default response when your web application doesn't. Only in some rare cases it will produce something useful for a client. So it is up to your web application to produce the content.
+<p />
+The <code>WebResponse</code> object is used to generate a response to the client. The most basic method of generating a response is by using the <em>SendText</em> method to return content. But generally you want to do a bit more or use more or less static content instead of constantly generating the response through Unrealscript.
+<p />
+The basic flow of generating a response through the <code>WebResponse</code> object is the following:
+<p /> <ol>
+<li> Define content: <em>AddHeader</em>, <em>Subst</em>, <em>ClearSubst</em>, <em>LoadParsedUHTM</em>, <code>headers</code>, <code>CharSet</code>
+</li> <li> <em>HTTPResponse</em>
+</li> <li> <em>SendStandardHeaders</em>
+</li> <li> Send content:	<em>IncludeUHTM</em>, <em>SendText</em>, <em>IncludeBinaryFile</em>
+</li></ol>
+<p />
+The first three steps are completely optional.
+<p />
+The <code>WebResponse</code> generates a few standard HTTP headers, which are send before custom headers. These are:
+<p /> <dl>
+<dt> Server </dt><dd> "UnrealEngine IpDrv Web Server Build ..."
+</dd> <dt> Content-Type </dt><dd> the value of <code>ContentType</code> argument provided in the <em>SendStandardHeaders</em> call
+</dd> <dt> Cache-Control </dt><dd> "max-age=...", the value of <code>ExpirationSeconds</code> in the web server
+</dd> <dt> Expires </dt><dd> "...", the value of <code>ExpirationSeconds</code> in the web server
+</dd> <dt> Connection </dt><dd> "Close". The web server only processes one request at the time.
+</dd></dl>
+<p />
+There are three common methods to create the response data:
+<p /> <ol>
+<li> Manual text sending
+</li> <li> Sending files AS-IS
+</li> <li> Processed UHTM files
+</li></ol>
+<p />
+<h4><a name="Manual text sending"></a> Manual text sending </h4>
+Using the <em>SendText</em> function you can set manually construct a document to response to the web browser. See the <code>HelloWeb</code> class for an example web application using this method.
+<p />
+<h4><a name="Sending files AS-IS"></a> Sending files AS-IS </h4>
+The WebResponse object provides the <em>IncludeBinaryFile</em> function which will allow you to send a file as it is stored on disk to the client. This function is commonly used to send static files like images, see the <code>ImageServer</code> class.
+<p />
+The files you can include have to be contained within the <code>UDK/Web</code> directory.
+<p />
+<em>Note:</em> The <em>IncludeBinaryFile</em> does not make sure that the response headers are send. So you need to call <em>SendStandardHeaders</em> before calling <em>IncludeBinaryFile</em>.
+<p />
+<h4><a name="Processed UHTM files"></a> Processed UHTM files </h4>
+UHTM is a templating system which processing text files and replaces certain variables and directives. These files do not have to be HTML files, any text file can be used.
+<p />
+There are two special constructions. First there are the variables which will be substituted. You create a substituted variable by using the following construction: <code>&lt;%var_name%&gt;</code>, where <code>var_name</code> is the name of the variable. You can set the value for this variable by using the <em>Subst</em> function. It is important to note that within SGML comments no variables are substituted. So <code>&lt;!-- &lt;%var_name%&gt; --&gt;</code> will stay like that.
+<p />
+The second construction is <code>&lt;!-- #include file="file.inc" --&gt;</code>. This will include the file <code>file.inc</code> at that place in the current file. The included file will also be processed for additional variables and include directives.
+<p />
+The <em>LoadParsedUHTM</em> and <em>IncludeUHTM</em> functions will process the file. The <em>LoadParsedUHTM</em> function will return the processed file as a string, where as the <em>IncludeUHTM</em> will send the processed UHTM file to the web browser. Generally you use <em>LoadParsedUHTM</em> to create the value for a new substitution variable.
+<p />
+<h2><a name="API"></a> API </h2>
+<hr size="1" noshade="noshade">
+<p />
+<h3><a name="WebApplication"></a> WebApplication </h3>
+<p />
+<h4><a name="Fields"></a> Fields </h4>
+<p />
+<h5><a name="Path"></a> Path </h5>
+<p />
+This field will be set to the configured base path of the web application. Use this field to create proper links.
+<p />
+<h4><a name="Functions"></a> Functions </h4>
+<p />
+<h5><a name="Init"></a> Init </h5>
+<code>function Init()</code>
+<p />
+Called right after the WebApplication instance is created. Use this to perform some important initialization. It is advised not to perform too much stuff during this method. It might be better to delay full initialization until the first request for this web application.
+<p />
+<h5><a name="CleanupApp"></a> CleanupApp </h5>
+<code>function CleanupApp()</code>
+<p />
+Called before the web server is destroyed. In this method you should set all references to actors in your web application to <code>none</code> in order to prevent memory from leaking.
+<p />
+<h5><a name="PreQuery"></a> PreQuery </h5>
+<code>function bool PreQuery(WebRequest Request, WebResponse Response)</code>
+<p />
+Called to check if this web application wants to handle the given query. If false is returned the <em>Query</em> and <em>PostQuery</em> methods will not be called.
+<p />
+<h5><a name="Query"></a> Query </h5>
+<code>function Query(WebRequest Request, WebResponse Response)</code>
+<p />
+Called after a call to <em>PreQuery</em> returned true.
+<p />
+<h5><a name="PostQuery"></a> PostQuery </h5>
+<code>function PostQuery(WebRequest Request, WebResponse Response)</code>
+<p />
+Called after the call to <em>Query</em> returned.
+<p />
+<h3><a name="WebRequest"></a> WebRequest </h3>
+<p />
+<h4><a name="Fields"></a> Fields </h4>
+<p />
+<h5><a name="RemoteAddr"></a> RemoteAddr </h5>
+<p />
+The address of the client which produced this request,
+<p />
+<h5><a name="URI"></a> URI </h5>
+<p />
+The request URL. This field has been stripped from the web application prefix when it is handled by a web application.
+<p />
+<h5><a name="Username"></a> Username </h5>
+<p />
+The decoded username when the request contained a basic HTTP Authentication header. See RFC 2617 for more information about this.
+<p />
+<h5><a name="Password"></a> Password </h5>
+<p />
+The decoded password when the request contained a basic HTTP Authentication header.
+<p />
+<h5><a name="ContentLength"></a> ContentLength </h5>
+<p />
+The number of bytes in the POST request.
+<p />
+<h5><a name="ContentType"></a> ContentType </h5>
+<p />
+The content mime type for the POST data.
+<p />
+<h5><a name="RequestType"></a> RequestType </h5>
+<p />
+Will be set to either <code>Request_GET</code> or <code>Request_POST</code> depending on the kind of request.
+<p />
+<h4><a name="Functions"></a> Functions </h4>
+<p />
+<h5><a name="DecodeBase64"></a> DecodeBase64 </h5>
+<code>native final function string DecodeBase64(string Encoded)</code>
+<p />
+Decode a base64 encoded string.
+<p />
+<h5><a name="EncodeBase64"></a> EncodeBase64 </h5>
+<code>native final function string EncodeBase64(string Decoded)</code>
+<p />
+Encode a string to base64.
+<p />
+<h5><a name="AddHeader"></a> AddHeader </h5>
+<code>native final function AddHeader(string HeaderName, coerce string Value)</code>
+<p />
+Add a request header to the data structure. This function is used during the request processing. It is not meant to call this function from your web application.
+<p />
+<h5><a name="GetHeader"></a> GetHeader </h5>
+<code>native final function string GetHeader(string HeaderName, optional string DefaultValue)</code>
+<p />
+Get the value of a given request header. If the header was not present in the request the default value is returned. Note that if there are multiple request headers with the same name, only the last received header is returned. The header name is case insensitive.
+<p />
+<h5><a name="GetHeaders"></a> GetHeaders </h5>
+<code>native final function GetHeaders(out array<string> headers)</code>
+<p />
+Retrieve the names all received header.
+<p />
+<h5><a name="AddVariable"></a> AddVariable </h5>
+<code>native final function AddVariable(string VariableName, coerce string Value)</code>
+<p />
+Register a received request variable. This function is used internally during the request processing. It is not intended to be used from a web application.
+<p />
+<h5><a name="GetVariable"></a> GetVariable </h5>
+<code>native final function string GetVariable(string VariableName, optional string DefaultValue)</code>
+<p />
+Get the value of a request variable. If the request variable does not exist the default value is returned. The variable name is case insensitive. If multiple variables with the same name are received only one value is returned. Use <em>GetVariableNumber</em> and <em>GetVariableCount</em> to retrieve individual values.
+<p />
+<h5><a name="GetVariableCount"></a> GetVariableCount </h5>
+<code>native final function int GetVariableCount(string VariableName)</code>
+<p />
+Return the number of variables for a given request variable. If the value is more than 1 you should use <em>GetVariableNumber</em> to retrieve each value.
+<p />
+<h5><a name="GetVariableNumber"></a> GetVariableNumber </h5>
+<code>native final function string GetVariableNumber(string VariableName, int Number, optional string DefaultValue)</code>
+<p />
+Retrieve a given request variable value. If the variable does not exist, or does not have that number of values the default value is returned.
+<p />
+<h5><a name="GetVariables"></a> GetVariables </h5>
+<code>native final function GetVariables(out array<string> varNames)</code>
+<p />
+Get the names of received request variables.
+<p />
+<h3><a name="WebResponse"></a> WebResponse </h3>
+<p />
+<h4><a name="Fields"></a> Fields </h4>
+<p />
+<h5><a name="headers"></a> headers </h5>
+<p />
+This array contains all headers which will be send to the remote host. It contains the headers as they are send. It is allowed to modify this array directory, or by using the <em>AddHeader</em> function. When content is send changes to this field has not effect.
+<p />
+<h5><a name="IncludePath"></a> IncludePath </h5>
+<p />
+The relative path from the base directory where the files that the web server can send or process are located.
+<p />
+<h5><a name="Connection"></a> Connection </h5>
+<p />
+The <code>WebConnection</code> instance through which this response will be send. You should not use this variable to write data.
+<p />
+<h4><a name="Functions"></a> Functions </h4>
+<p />
+<h5><a name="FileExists"></a> FileExists </h5>
+<code>native final function bool FileExists(string Filename)</code>
+<p />
+Returns true when the given filename exists in the web include directory. This can be used in case of a static file server like the <code>ImageServer</code> class to determine if a given file exists so that the <code>WebApplication</code> can return a HTTP 404 Not Found error.
+<p />
+<h5><a name="Subst"></a> Subst </h5>
+<code>native final function Subst(string Variable, coerce string Value, optional bool bClear)</code>
+<p />
+Modify a substitution variable which will be used during the <em>IncludeUHTM</em> and <em>LoadParsedUHTM</em> functions. The third optional argument allows you to remove a previously declared variable.
+<p />
+<h5><a name="ClearSubst"></a> ClearSubst </h5>
+<code>native final function ClearSubst()</code>
+<p />
+Remove all registered substitution variables.
+<p />
+<h5><a name="IncludeUHTM"></a> IncludeUHTM </h5>
+<code>native final function bool &nbsp; IncludeUHTM(string Filename)</code>
+<p />
+Load a UHTM file and process it. The processed result will directly be send to the remote host. This function returns true when the file was properly included and processed. The filename provided has to live within the subtree as declared by the <code>IncludePath</code> field.
+<p />
+<h5><a name="IncludeBinaryFile"></a> IncludeBinaryFile </h5>
+<code>native final function bool &nbsp; IncludeBinaryFile(string Filename)</code>
+<p />
+Send a file as is to the remote host. Note that unlike <em>IncludeUHTM</em> this function will not make sure the response headers have been send. Thus before calling this method make sure the headers are send.
+<p />
+<h5><a name="LoadParsedUHTM"></a> LoadParsedUHTM </h5>
+<code>native final function string LoadParsedUHTM(string Filename)</code>
+<p />
+Similar to the <em>IncludeUHTM</em> function, with the major exception that it returns the precessed file as a result, and does not send it to the remote host. You can use this to create more complex UHTM templates.
+<p />
+<h5><a name="GetHTTPExpiration"></a> GetHTTPExpiration </h5>
+<code>native final function string GetHTTPExpiration(optional int OffsetSeconds)</code>
+<p />
+Create a RFC 1123 date of now + OffsetSeconds. This is used to construct the <code>Expires</code> response header.
+<p />
+<h5><a name="SendText"></a> SendText </h5>
+<code>event SendText(string Text, optional bool bNoCRLF)</code>
+<p />
+Send a string of text data to the remote host. If <code>bNoCRLF</code> is true no DOS line terminator will be added (0x13 0x10). This function ensures the response headers will be send before the text data is send.
+<p />
+<h5><a name="SendBinary"></a> SendBinary </h5>
+<code>event SendBinary(int Count, byte B[255])</code>
+<p />
+Send binary data to the remote host. This function does not ensure that the headers are send.
+<p />
+<h5><a name="HTTPResponse"></a> HTTPResponse </h5>
+<code>function HTTPResponse(string Header)</code>
+<p />
+Send a HTTP response code. By default a 200 OK response will be send, using this function you can send an alternative response. See the HTTP RFC for more details on the HTTP response codes. The HTTP response should be given in the header argument. For example:
+<p />
+<code>HTTPResponse("HTTP/1.0 404 Not Found");</code>
+<p />
+<h5><a name="HTTPHeader"></a> HTTPHeader </h5>
+<code>function HTTPHeader(string Header)</code>
+<p />
+Send a response header. This will make sure a HTTP response code has been send before sending the header. You should not call this method to send headers. It is better to enqueue headers through the <em>AddHeader</em> function, or by directly editing the <code>Headers</code> field.
+<p />
+<h5><a name="AddHeader"></a> AddHeader </h5>
+<code>function AddHeader(string header, optional bool bReplace=true)</code>
+<p />
+Add/update a header to the headers list. It will be send at the first possible occasion. To completely remove a given header simply give it an empty value, e.g. "X-Header:".
+<p />
+To add multiple headers with the same name (needed for the Set-Cookie header) you'll need to edit the headers array directly.
+<p />
+<h5><a name="SendHeaders"></a> SendHeaders </h5>
+<code>function SendHeaders()</code>
+<p />
+Send the enqueued headers. This function is called internally by <em>SendStandardHeaders</em>. You should not use this function.
+<p />
+<h5><a name="HTTPError"></a> HTTPError </h5>
+<code>function HTTPError(int ErrorNum, optional string Data)</code>
+<p />
+A short hand method to send some common HTTP response codes like 400 Bad Request, 401 Unauthorized, 404 Not Found.
+<p />
+It will include an inline HTML response with a error message. You probably want to handle these kinds of responses yourself with a more user friendly response. This is just a convenience method.
+<p />
+<h5><a name="SendStandardHeaders"></a> SendStandardHeaders </h5>
+<code>function SendStandardHeaders( optional string ContentType, optional bool bCache )</code>
+<p />
+Send the standard and all custom headers. After calling this function you can safely include the response data.
+<p />
+The <code>ContentType</code> argument is used to set the "Content-Type" response header. It defaults to "text/html".
+<p />
+If <code>bCache</code> is true it will also include some headers with caching instructions. For this it uses the value of <code>WebServer.ExpirationSeconds</code>.
+<p />
+Only the "Connection: Close" header is enforced. All other default headers will only be used if that header was not already set.
+<p />
+<h5><a name="Redirect"></a> Redirect </h5>
+<code>function Redirect(string URL)</code>
+<p />
+A convenience method to send a 302 Document Moved HTTP response to redirect the client to a different URL.
+<p />
+<h5><a name="SentText"></a> SentText </h5>
+<code>function bool SentText()</code>
+<p />
+True if response data has been send. At this point you can no longer send headers.
+<p />
+<h5><a name="SentResponse"></a> SentResponse </h5>
+<code>function bool SentResponse()</code>
+<p />
+True when the HTTP response code has been send. After this you can not change the response code. You can still send headers.
+<p />
+<h3><a name="WebServer"></a> WebServer </h3>
+<p />
+This class is not meant to be subclassed, only notable elements will be described.
+<p />
+<h4><a name="Fields"></a> Fields </h4>
+<p />
+<h5><a name="ServerName"></a> ServerName </h5>
+<p />
+This optional configuration field can be used to assign a host name to the web server. This does not influence the behavior of the server at all. It will just updated the <code>ServerURL</code> field with this name rather than the local IP.
+<p />
+<h5><a name="Applications"></a> Applications </h5>
+<p />
+The fully qualified class name of an web application to load. This variable is closely related to the ApplicationPaths field. You can define up to ten web applications.
+<p />
+<h5><a name="ApplicationPaths"></a> ApplicationPaths </h5>
+<p />
+The path to associate with the web application. The order is significant, the first matching path will take priority.
+<p />
+<h5><a name="bEnabled"></a> bEnabled </h5>
+<p />
+This configurable field allows you to easily enable or disable the web server.
+<p />
+<h5><a name="ListenPort"></a> ListenPort </h5>
+<p />
+Defines the port for the web server to listen on. The web server will only accept this port to bind to.
+<p />
+<h5><a name="MaxConnections"></a> MaxConnections </h5>
+<p />
+The maximum number of concurrent connection the web server will support. This number should not be too high because it can impact the performance of the game.
+<p />
+<h5><a name="DefaultApplication"></a> DefaultApplication </h5>
+<p />
+The default web application to use. This is an index in the Applications field. When no web application could be found for the requested URL the user is redirected to this web application. This field is used by the <code>WebConnection</code> class.
+<p />
+<h5><a name="ExpirationSeconds"></a> ExpirationSeconds </h5>
+<p />
+A configurable field to provide a generic location to define a expiration time. It is used by the WebResponse class to set the expiration time for responses than may be cached.
+<p />
+<h5><a name="ServerURL"></a> ServerURL </h5>
+<p />
+This field is populated during the startup of the webserver. It will contain the base url of the webserver.
+<p />
+<h4><a name="Functions"></a> Functions </h4>
+<p />
+<h5><a name="GetApplication"></a> GetApplication </h5>
+<code>function WebApplication GetApplication(string URI, out string SubURI)</code>
+<p />
+This method returns a web application for the given URI. The second argument of this method will contain the URI without the prefix of the web application path.
+<p />
+<h3><a name="WebConnection"></a> WebConnection </h3>
+<p />
+This class is not meant to be subclassed, only notable elements will be described.
+<p />
+<h4><a name="Fields"></a> Fields </h4>
+<p />
+<h5><a name="MaxValueLength"></a> MaxValueLength </h5>
+<p />
+This configurable item defines the maximum length a request value is allowed to have. Values will be truncated to this length. It is important that this value is large enough to process the request. This value is used by the <code>WebRequest</code> class.
+<p />
+<h5><a name="MaxLineLength"></a> MaxLineLength </h5>
+<p />
+The maximum length of a single line is the request. This limits the length of the variables in the GET request (everything after the '?'). But it also limits the length of a single line within the POST data.
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/WebServer.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 09:18:23 GMT -->
+</html></body>

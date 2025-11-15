@@ -1,0 +1,496 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PerformanceDebuggingCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:41:02 GMT -->
+<head>
+<title> UDK | PerformanceDebuggingCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">PerformanceDebuggingCH  </b></div>
+<div id="tooltext">
+<a href="PerformanceDebugging.html" class="twikiLink">English Translation</a><br><a href="PerformanceDebuggingJP.html" class="twikiLink">日本語訳</a><br><a href="PerformanceDebuggingKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/PerformanceDebuggingCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<h1><a name="性能调试"></a> 性能调试 </h1>
+<p />
+<em>概述: 如何调试虚幻引擎中的帧频率问题和其它停顿问题。</em>
+<p />
+<em>文档变更记录: 由<a href="https://udn.epicgames.com/Main/MikeFricker" class="restricted" class="restricted" class="twikiLink">Mike Fricker</a>创建并维护。</em>
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="PerformanceDebuggingCH.html#性能调试">性能调试</a> <ul>
+<li> <a href="PerformanceDebuggingCH.html#游戏性能概述">游戏性能概述</a>
+</li> <li> <a href="PerformanceDebuggingCH.html#调试性能：步骤">调试性能：步骤</a>
+</li> <li> <a href="PerformanceDebuggingCH.html#性能参考指南">性能参考指南</a> <ul>
+<li> <a href="PerformanceDebuggingCH.html#显示 帧/线程/GPU事件(STAT UNIT)">显示 帧/线程/GPU事件(STAT UNIT)</a>
+</li> <li> <a href="PerformanceDebuggingCH.html#编译配置"> 编译配置</a>
+</li> <li> <a href="PerformanceDebuggingCH.html#关闭垃圾回收确认功能"> 关闭垃圾回收确认功能</a>
+</li> <li> <a href="PerformanceDebuggingCH.html#以 Final Release(最终发布版本)模式编译脚本"> 以 Final Release(最终发布版本)模式编译脚本</a>
+</li></ul>
+</li> <li> <a href="PerformanceDebuggingCH.html#禁用VSync"> 禁用VSync</a> <ul>
+<li> <a href="PerformanceDebuggingCH.html#使用STAT SLOW"> 使用STAT SLOW</a>
+</li> <li> <a href="PerformanceDebuggingCH.html#分析CPU">分析CPU</a>
+</li> <li> <a href="PerformanceDebuggingCH.html#使用_StatsViewer(统计数据查看器)分析代码">使用StatsViewer(统计数据查看器)分析代码</a>
+</li> <li> <a href="PerformanceDebuggingCH.html#请使用Script Profiling(脚本分析)来调整_UnrealScript的性能">请使用Script Profiling(脚本分析)来调整UnrealScript的性能</a>
+</li> <li> <a href="PerformanceDebuggingCH.html#游戏机平台的性能">游戏机平台的性能</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<noautolink>
+<p />
+<p />
+<h2><a name="游戏性能概述"></a> 游戏性能概述 </h2>
+<p />
+以下部分将帮助您学习很多用于查找性能问题、瓶颈及停顿障碍的有用工具。
+<p />
+通常，首先需要确定帧是否受到CPU或GPU性能的限制，然后使用适当的工具跟踪限定问题的范围。
+<p />
+如果CPU运行速度很慢，那么有很多命令和调试工具可以帮助您处理这个问题。有时候，可能只是由于actors的数量太多的或者“移动的部分”数量太多而导致帧频率较慢，或者可能是因为一个脱离的AI类每帧正在激活成千次的光线投射。只要耐心一点，您就可以跟踪发现这些性能问题并准确地定位到单独的关卡actor上！
+<p />
+对于GPU性能，您或许需要使用PIX来分析描画事件或着色器性能、以及游戏中的可视化模式和HUD统计数据。有时候，这些问题可能会最终跟踪到内容布局或光照属性上。
+<p />
+无论哪种情况，您都可能遇到持续的较慢帧频率问题或停顿问题(较大的帧时间顿卡)。对于持续的较慢的帧频率来说，单独帧的捕获工具(比如TRACE 命令)和采样优化器(VTune等)可能是非常有用的。对于停顿来说，您将需要使用StatsViewer工具通过函数调用图来分析以前的帧。
+<p />
+注意，尽管大部分Unreal工具可以在多个平台上工作，但是一般游戏机平台的调试工具和PC平台是不同的。
+<p />
+<p />
+<h2><a name="调试性能：步骤"></a> 调试性能：步骤 </h2>
+<p />
+<strong>准备调试:</strong>
+<p /> <ol>
+<li> 首先，确保当您正在运行游戏时，打开<a href="PerformanceDebuggingCH.html#StatUnit" class="twikiAnchorLink">STAT UNIT</a>命令。
+</li> <li> 配置您的<a href="PerformanceDebuggingCH.html#BuildConfiguration" class="twikiAnchorLink">构建环境</a>。当测量性能时请使用ShippingDebugConsole (LTCG)版本；当调试性能时请使用Release（发布）版本。
+</li> <li> 确保 <a href="PerformanceDebuggingCH.html#TurnOffLogSpam" class="twikiAnchorLink">关闭任何日志垃圾</a>或者干扰性能结果的调试代码。
+</li> <li> 关闭<a href="PerformanceDebuggingCH.html#TurnOffGCVerify" class="twikiAnchorLink">垃圾回收验证</a>，因为它将会导致帧停顿。
+</li> <li> 在<a href="PerformanceDebuggingCH.html#UseFinalReleaseScripts" class="twikiAnchorLink"> Final Release(最终发行版本)</a>模式下编译脚本。
+</li> <li> <a href="PerformanceDebuggingCH.html#TurnOffVSync" class="twikiAnchorLink">禁用VSync</a>，以便您可以识别瓶颈，即使在较快的帧频率上。
+</li></ol>
+<p />
+<strong>分离瓶颈类型:</strong>
+<p /> <ul>
+<li> 使用<a href="PerformanceDebuggingCH.html#StatUnit" class="twikiAnchorLink">STAT UNIT</a>来决定为什么帧频率较慢。 <ul>
+<li> 您应该可以分辨出是CPU问题还是GPU问题。
+</li></ul>
+</li></ul>
+<p />
+<strong>CPU - 找到运行较慢的C++或UnrealScript代码:</strong>
+<p /> <ul>
+<li> 打开 <a href="PerformanceDebuggingCH.html#StatSlow" class="twikiAnchorLink">STAT SLOW</a>，来帮助辨别CPU上的帧停顿。 <ul>
+<li> 当使用STAT SLOW时，如果您在 <em>ScriptTime(脚本时间)</em> 中看到停顿，那么请考虑使用<a href="PerformanceDebuggingCH.html#StatsViewer" class="twikiAnchorLink">StatsViewer(统计数据查看器)</a>或<a href="PerformanceDebuggingCH.html#ScriptProfiling" class="twikiAnchorLink">脚本分析</a>来跟踪查看脚本时间数据。
+</li></ul>
+</li> <li> 使用平台<a href="PerformanceDebuggingCH.html#ProfilingCPU" class="twikiAnchorLink">CPU取样工具</a>来捕获C++代码的分析数据。
+</li> <li> 使用<a href="PerformanceDebuggingCH.html#StatsViewer" class="twikiAnchorLink">统计数据查看器</a>来获得UnrealScript调用函数和基于状态的时间数据以便使用。 <ul>
+<li> 这对于追踪基本性能的bug是非常有用的。
+</li></ul>
+</li> <li> 使用<a href="PerformanceDebuggingCH.html#ScriptProfiling" class="twikiAnchorLink">脚本分析</a> 来查找UnrealScript的热点区。
+</li></ul>
+<p />
+<strong>GPU -决定了导致较低渲染性能的原因:</strong> <ul>
+<li> 使用<a href="PerformanceDebuggingCH.html#ProfilingGPU" class="twikiAnchorLink">GPU 性能分析工具</a>来定位调用函数、昂贵的着色器以及处理乱用的资源。
+</li></ul>
+<p />
+<strong>关于解决一般的虚幻引擎性能问题的指南:</strong>
+<p /> <ul>
+<li> <a href="https://udn.epicgames.com/Three/PerfDebug_MoveActor" class="restricted" class="restricted" class="twikiLink">MoveActor 调用函数</a>:调用MoveActor()函数所消耗的包含时间较高。
+</li> <li> <a href="PerfDebug_DynamicLightEnvironments.html" class="twikiLink">动态光照环境</a>:动态光照函数更新显示为性能消耗昂贵。
+</li> <li> <a href="https://udn.epicgames.com/Three/PerfDebug_SkeletalMeshCompUpdates" class="restricted" class="restricted" class="twikiLink">SkeletalMeshComponent(骨架网格物体组件) 更新</a>:调用SkeletalMeshComponent::Tick函数期间的包含时间较高。
+</li> <li> <a href="https://udn.epicgames.com/Three/PerfDebug_LineChecks" class="restricted" class="restricted" class="twikiLink">线性检测</a>: :在 SingleLineCheck/MultiLineCheck(单线检测/多线检测)上花费了很多时间。
+</li></ul>
+<p />
+<strong>请确保优化了关卡内容和资源:</strong> <ul>
+<li> 通常，性能问题需要通过改变或优化关卡及资源来解决。
+</li> <li> 请参照<a href="PerformanceDebuggingCH.html#OptimizingContent" class="twikiAnchorLink">内容优化</a>部分来学习所提供的有用工具。
+</li></ul>
+<p />
+<p />
+<h2><a name="性能参考指南"></a> 性能参考指南 </h2>
+<p />
+<a name="StatUnit"></a>
+<h3><a name="显示 帧/线程/GPU事件(STAT UNIT)"></a> 显示 帧/线程/GPU事件(STAT UNIT) </h3>
+<p />
+使用 <strong>STAT UNIT</strong> 命令判断帧时间瓶颈出现的地方。 <strong>STAT UNIT</strong> 将启动一个屏幕上的HUD来显示帧时间、游戏线程事件、渲染线程(描画)时间和GPU时间(如果可能)。这是跟踪性能问题的第一步也是非常重要的一步 -- 您应该总是打开这个命令。
+<p />
+同时，您可以使用 <strong>STAT FPS</strong> 命令来在屏幕上显示帧频率和帧时间。
+<p />
+<a name="BuildConfiguration"></a>
+<h3><a name="编译配置"></a> 编译配置 </h3>
+<p />
+当测试性能时，您应该使用 <strong>Release(发布)</strong> 或 <strong>ShippingDebugConsole</strong> (LTCG) 编译配置。*ShippingDebugConsole* 提供的性能数值接近于发行的游戏所提供的数值，但是某些性能测量及调试功能(比如统计数据捕获)可能是不可用的。通过进行一些小的调整， <strong>Release</strong> 版本可以满足性能和内存测试需求，只要您 <em>分别地</em> 查看数值结果即可。
+<p />
+<a name="TurnOffLogSpam"></a>
+注意，如果您正在使用 <strong>Release</strong> 版本进行测试，那么您应该关闭大量的日志记录,可以使用命令禁用日志记录或者使用 #ifdef在编译时把日志记录功能注释掉。比如， <strong>"suppress AILog"</strong> 命令可以关闭针对游戏的所有AI日志记录，这些日志将会减慢C++和脚本程序的运行速度。
+<p />
+<a name="TurnOffGCVerify"></a>
+<h3><a name="关闭垃圾回收确认功能"></a> 关闭垃圾回收确认功能 </h3>
+<p />
+当处理性能问题时，您应该总是关闭 <em>GC Verification</em> ，否则在 <strong>Release（发布）</strong> 版本中将会看到大量的停顿现象，每次大约停顿30秒左右。您可以使用以下方法之一来关闭垃圾回收确认功能：
+<p /> <ul>
+<li> 在 <em>UnObjGC.cpp</em> 文件中， 确保 <strong>VERIFY_DISREGARD_GC_ASSUMPTIONS</strong> 为 <strong>0</strong> 。   <strong>传入 *-NoVerifyGC</strong> 命令行参数。
+</li></ul>
+<p />
+<a name="UseFinalReleaseScripts"></a>
+<h3><a name="以 Final Release(最终发布版本)模式编译脚本"></a> 以 Final Release(最终发布版本)模式编译脚本 </h3>
+<p />
+当启用日志功能和断言功能时，UnrealScript的性能会有很大的差别。获得接近于发行版本的游戏性能的最简单方法是以 <strong>Final Release(最终发布)</strong> 模式编译脚本，该模式可以自动地从编译后的字节码中剥离性能消耗较高的函数调用。您可以通过以下几种方法之一来编译 <strong>Final Release(最终发布)</strong> 版本的脚本：
+<p /> <ul>
+<li> 在<a href="UnrealFrontend.html" class="twikiLink">虚幻前端</a>, 选择 <strong>Cooking(烘焙)</strong> 标签并启用 <strong>"Cook Final Release Scripts(烘焙最终发布版本的脚本)"</strong> 复选框。现在，当您运行烘焙器或通过UFE启动游戏时，将会编译并使用 <strong>Final Release(最终发布)</strong> 版本的脚本。
+</li> <li> 向 <strong>make</strong> 命令行开关中传入  <strong>-Final_Release</strong> 命令行参数。
+</li></ul>
+<p />
+<a name="TurnOffVSync"></a>
+<h2><a name="禁用VSync"></a> 禁用VSync </h2>
+<p />
+要想获得最好的效果，您需要关闭 <strong>VSync</strong> (在呈现帧之前等待垂直的折回)。否则，帧时间将会被填充到游戏的刷新频率上，这会导致更难获得精确的图像。要想关闭 <strong>VSync</strong> : <ul>
+<li> 传入 <strong>-NoVSync</strong> 命令行选项到游戏中。
+</li> <li> 或者，在<a href="UnrealFrontend.html" class="twikiLink">Unreal Frontend(虚幻前端)</a>的 <strong>Game</strong> 变迁中启用 <strong>"No VSync"</strong> 复选框。
+</li></ul>
+<p />
+<a name="StatSlow"></a>
+<h3><a name="使用STAT SLOW"></a> 使用STAT SLOW </h3>
+<p />
+您可以使用  <strong>STAT SLOW</strong> 命令帮助您找到性能波动问题。它可以通过报告运行时间长于一帧中特定时间段(默认10毫秒)的任何循环统计数据来帮助您逐步定位帧停顿发生的位置。运行速度较慢的统计数据将会在HUD上显示一段时间，从而可以更加容易地把性能波动和屏幕上的游戏行为联系到一起。
+<p />
+要想使用该命令，可以在控制台中输入 <strong>STAT SLOW</strong> 和用于说明阈值的可选参数，该参数以秒为单位(所以10ms也就是0.01秒)，也可以输入代表一旦波动停顿发生渲染统计数据所持续的时间的参数。默认值是 10秒。
+<p />
+<em>实例:</em>   <strong>STAT SLOW 0.01 10</strong>
+<p />
+这将会渲染在过去的10秒内所有运行时间超过10毫秒的循环统计数据。
+<p />
+<a name="ProfilingCPU"></a>
+<h3><a name="分析CPU"></a> 分析CPU </h3>
+<p />
+当您分析出您的帧瓶颈是CPU性能问题时，下一步应该是决定那些时间是C++代码中的哪部分消耗的。另外，您或许想查找类似于Load-Hit-Stores或缓存丢失的隐藏的性能消耗。
+<p />
+大多数平台都有功能强大的CPU采样工具，它们提供了详细的代码标准，甚至提供了使用从活动会话捕获的数据组成的C++代码调用图表。比如，在Windows平台上，您或许使用 <em>Intel VTune</em> 来捕获一个较短时间段内的数据从而分析出热点区。游戏控制台平台也提供了类似的工具，通常包含在开发工具链中。
+<p />
+如果您想熟悉这些应用程序，那么就在开发过程中大量的使用它们把！
+<p />
+注意，在某些游戏控制台上，Unreal有一些工具用于帮助执行单独一帧的CPU/GPU采样获取。您可以输入 <strong>TRACE GAME</strong> 来启动一个CPU踪迹，或者 输入 <strong>TRACE RENDER</strong> 来捕获GPU数据。
+<p />
+大多数CPU分析器支持捕获较短时间间隔内的采样数据 和/或 调用图表数据 的功能。这对于调试关于具有持续的低帧频率的性能问题是非常有用的。_Sampling captures(采样捕获)_ 通常会为您提供C++代码中的函数调用热点区。这有时候是有用的，但大多数时候您会发现 <em>Call Graph capture(调用函数图表捕获)</em> 是更加有用的！
+<p />
+<em>Call Graph capture(调用函数图标捕获)</em> 通常会有更多的捕获时间消耗，但是它提供了关于热点区的函数的 <strong>调用者</strong> 的详细信息。这通常可视直接引导你查出问题的根源！即使在许多 物体/actors正在调用显示为运行速度较慢一个单独函数的情况，如果您很幸运，那么调用函数图表将会引导您到特定的actor类别名称或导致这个原因的其它形式的暗示。
+<p />
+有时候调用函数图表将简单地显示 <em>UnrealScript</em> 所占用的时间(调用 <em>ProcessEvent</em>  、 <em>CallFunction</em> 等)，在这种情况下您需要运行一个<a href="PerformanceDebuggingCH.html#StatsViewer" class="twikiAnchorLink">StatsViewer(统计数据查看器)</a> 或<a href="PerformanceDebuggingCH.html#ScriptProfiling" class="twikiAnchorLink">Script Profiling(脚本分析)</a> 来捕获这些调用函数的消耗。
+<p />
+当处理帧 <em>停顿</em> 时，由于相对较低的采样频率，CPU分析器可能有时候是不适用的。如果停顿在游戏中很容易再现，一个很好的策略是当捕获一个较短的CPU采样会话时，尽量经常地启动那个停顿(理想地每帧很多次)。如果那个停顿是很难捕捉的，你将需要使用<a href="PerformanceDebuggingCH.html#StatsViewer" class="twikiAnchorLink">StatsViewer(统计数据查看器)</a> 中捕获的数据，它提供了在很多帧上的历史调用函数图表。
+<p />
+<a name="StatsViewer"></a>
+<h3><a name="使用_StatsViewer(统计数据查看器)分析代码"></a> 使用StatsViewer(统计数据查看器)分析代码 </h3>
+<p />
+您可以使用 <strong>StatsViewer(统计数据查看器)</strong> 来帮助您跟踪CPU性能问题。它也可以用作为UnrealScript代码的详细分析工具。
+<p />
+StatsViewer(统计数据查看器) 将沿着图形化的时间轴显示所有的 <strong>UnrealScript函数调用</strong> 和 <strong>游戏统计数据</strong> (数值计数器、循环计时器等)，您可以在时间轴排序和查看数据，和您在PIX中的操作类似。更加重要的是，它可以为您显示一个范围内的循环统计数据和脚本函数组成的漂亮的 *层次化的函数调用图*。这个图表可以使您迅速查找到任何指定帧中“那些函数较慢”。(只要在图表窗口中双击该帧即可)
+<p />
+准备:
+<p /> <ul>
+<li> 请确保您正在使用的版本中的 <strong>STATS</strong> 定义为  <strong>1</strong> (UnBuild.h)。 <ul>
+<li> 在Debug(调试) 和 Release(发布)版本中这项是默认启用的。
+</li></ul>
+</li> <li> 要想分析脚本代码，也要确保 <strong>STATS_SLOW</strong> 定义为 <strong>1</strong> (UnStats.h)。 <ul>
+<li> 这将会减慢分析的速度，但是提供了所有UnrealScript调用函数的详细调用图。
+</li></ul>
+</li></ul>
+<p />
+要想把统计数据捕获到磁盘上(推荐)：
+<p /> <ul>
+<li> 在控制台中输入 <strong>"STAT StartFile"</strong> 来开始捕获数据到磁盘中。
+</li> <li> 当完成时，输入 <strong>"STAT StopFile"</strong> 来停止记录和完成统计数据文件。
+</li> <li> 要想在应用程序启动时立即捕获统计数据，需要传入 <strong>"-StartStatsFile"</strong> 参数。
+</li> <li> 在游戏机平台上，请确保传入 <strong>-DisableHDDCache</strong> 命令行选项！ <ul>
+<li> 这将会关闭贴图mips到HDD的缓存(它与统计数据文件写操作争夺缓存)。
+</li></ul>
+</li> <li> 统计数据文件将会输出到 \UnrealEngine3\<GameName>\Profiling\文件夹中。 <ul>
+<li> 在控制台游戏平台上，将会通过UnrealConsole把统计数据自动地转换到PC上。
+</li></ul>
+</li> <li> 运行StatsViewer并加载文件(比如 <GameName>-07.15-18.58.ustats)。
+</li></ul>
+<p />
+要想从运行的游戏中捕获活动的统计数据：
+<p /> <ul>
+<li> 加载游戏
+</li> <li> 使用 <strong>连接到IP</strong> 把StatsViewer(统计数据查看器)和Xenon会话连接到一起。 <ul>
+<li> 在Xenon上，使用Xenon的"Title IP Address"，而不是"Debug Channel IP Address(调试通道IP地址)" <ul>
+<li> 您可以通过在UFE中点击 "Show All Target Information(显示所有目标信息)"来找到这个地址。
+</li></ul>
+</li> <li> 确保端口号设置为 <strong>13002</strong> 。
+</li></ul>
+</li> <li> 活动的统计数据将会通过UDP连接开始动态载入。
+</li> <li> 您可以使用 File(文件) -&gt; Save(保存)命令来把不活的数据保存到磁盘上。
+</li></ul>
+<p />
+查看统计数据:
+<p /> <ul>
+<li> 在StatsViewer(统计数据查看器)工具中找到一个 <strong>.ustats</strong> 文件，或者 <strong>Connect(连接到)</strong> 活动的游戏会话。
+</li> <li> 交互式的图表将在开头为您显示帧频率，以便您可以看到停顿及趋势。
+</li> <li> 从左侧的栏中 <strong>拖拽并放下</strong> 统计数据到图表上，以便显示统计数据。
+</li> <li> <strong>点击</strong> 图表来选择一个帧，并查看那个帧的统计数据。
+</li> <li> <strong>双击</strong> 图表来为那帧 <strong>open the Call Graph(打开调用图表)</strong> 。
+</li> <li> 右击左侧栏中的统计数据来"View Frames by Criteria(根据条件查看帧)" (比如仅查看FPS&lt;20的帧，等。
+</li> <li> 使用菜单项来切换视图模式(相对于事件的帧编号，范围内的/全部 数据)。
+</li></ul>
+<p />
+其它注意：
+<p /> <ul>
+<li> 不要在LTCG模式下进行工作(除非您在本地定义了 #define STATS )，  请使用发布版本。
+</li> <li> 活动的统计数据捕获仍然是有些问题的(丢失帧、滚动也有点奇怪等)。
+</li></ul>
+<p />
+关于进行实时统计数据捕获的更多信息，请参照<a href="PerfStats.html" class="twikiLink">这个页面</a>。
+<p />
+&nbsp;&nbsp;&nbsp;• <a href="GameplayProfiler.html" class="twikiLink">游戏性分析器</a>:这里概述了如何读取和分析游戏性代码中所花费的时间数据。<br>
+<p />
+<p />
+<a name="ScriptProfiling"></a>
+<h3><a name="请使用Script Profiling(脚本分析)来调整_UnrealScript的性能"></a> 请使用Script Profiling(脚本分析)来调整UnrealScript的性能 </h3>
+<p />
+<strong>Gameplay Profiler(游戏性分析器)</strong> 提供了关于您的脚本代码中的一些昂贵函数的很多重要信息。捕获一个较短采样时间间隔内的分析数据并给于您到热点区的及时访问是十分地快的。
+<p />
+要想捕获脚本分析器数据：
+<p /> <ul>
+<li> 在控制台中输入  <code><b>PROFILEGAME START</b></code> 来开始捕获数据。
+</li> <li> 当您完成后，输入 <code><b>PROFILEGAME STOP</b></code> 来停止捕获数据并把数据保存到磁盘中。
+</li> <li> 分析数据将会被保存到 \UnrealEngine3\<GameName>\Profiling\文件夹中。 <ul>
+<li> 在控制台游戏平台上，将会通过UnrealConsole把统计数据自动地转换到PC上。
+</li></ul>
+</li> <li> 运行GameplayProfiler (游戏性分析器)并加载文件(比如 <GameName>-07.15-18.58.uprof)。
+</li></ul>
+<p />
+请参照 <a href="GameplayProfiler.html" class="twikiLink">游戏性分析器</a>文档获得更多的信息。
+<p />
+<em>注意:</em> 在很多情况下，<a href="PerformanceDebuggingCH.html#StatsViewer" class="twikiAnchorLink">状态查看器</a>提供的脚本分析数据要比GameplayProfiler(游戏性分析器)提供的数据更加详细，这要以更多的运行时间消耗为代价。当捕获统计数据时，仅要确保 #define <strong>STAT SLOW</strong> 为 <strong>1</strong> ，那么StatsViewer(统计数据查看器)便可以显示每一帧的所有UnrealScript调用图。
+<p />
+<h3><a name="游戏机平台的性能"></a> 游戏机平台的性能 </h3>
+<p />
+<em>针对游戏机平台的性能信息在子页面上进行了介绍。</em>
+<p />
+<p />
+要想获得所有的Stat Commands(统计命令)列表，请参照<a href="StatsDescriptions.html" class="twikiLink">统计数据命令描述</a>页面。
+<p />
+要想获得所有的Console Commands (控制台命令)列表，请参照<a href="ConsoleCommands.html" class="twikiLink">控制台命令</a>页面。
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/PerformanceDebuggingCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:41:02 GMT -->
+</html></body>

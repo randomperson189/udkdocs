@@ -1,0 +1,373 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GameStateReplicationCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:15 GMT -->
+<head>
+<title> UDK | GameStateReplicationCH    </title>
+
+<style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+<style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+<link rel="icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="rsrc/Three/WebPreferences/favicon.ico" type="image/x-icon" />
+
+
+<!-- view.static_udn3.tmpl  -->
+<script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<p />
+<body id="webbgThree">
+<p />
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11251639-6']);
+  _gaq.push(['_setCustomVar', 1, 'Member Type', 'Free', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<p />
+<div id="webThree"><div id="head">
+<!--
+<div class="header">
+ -->
+<div style="background: url(../pub/webbg_udn.jpg); background-repeat: no-repeat; height:140px; width: 100%;" >
+<!--
+<div style="background: transparent url(/udk/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+ -->
+<p />
+<div id="nav">
+<ul class="nav">
+<font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Two/WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/udk/Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+</ul><br><br><br>
+</div>
+</div>
+</div> <!-- end head -->
+<div id="pagedefault">
+<div id="maincol">
+<div id="tool">
+<div id="tooltop">UDN</div>
+<div id="tooltext" style="padding: 10px 10px 10px 10px;">
+Search public documentation: <br>
+<form ACTION="https://www.unrealengine.com/bing-search" METHOD="GET" NAME="main" ID="main">
+<input type="hidden" name="filter" value="UDK" /><input type="text" name="keyword" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+<input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+</form>
+</div>
+<div id="toolband">GameStateReplicationCH  </b></div>
+<div id="tooltext">
+<a href="GameStateReplication.html" class="twikiLink">English Translation</a><br><a href="GameStateReplicationJP.html" class="twikiLink">日本語訳</a><br><a href="GameStateReplicationKR.html" class="twikiLink">한국어</a><br>
+
+<!-- Three/GameStateReplicationCH -->
+<hr size="1" noshade="noshade" />
+Interested in the Unreal Engine? <br>
+Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+<br>
+Looking for jobs and company info? <br>
+Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+<br>
+Questions about support via UDN? <br>
+Contact the <a href="https://docs.unrealengine.com/udk/Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+<br>
+</div> <!-- end toolbox content -->
+<div id="toolbottom"></div>
+</div> <!-- end tool -->
+<p />
+<noautolink>
+<style type="text/css" media="all">@import "rsrc/UDNCSS_test.css";</style>
+<div style="padding:0px 0px 0px 4px;font:10px Verdana;">
+<b><a href="WebHome.html" class="twikiLink">UE3 主页</a></b> &gt; <b><a href="ReplicationHome.html" class="twikiLink">复制</a></b> &gt; 游戏状态复制
+</div>
+<hr size="1" noshade="noshade">
+<p />
+<h1><a name="游戏状态函数复制"></a> 游戏状态函数复制 </h1>
+<hr size="1" noshade="noshade">
+<p />
+<div class="twikiToc"> <ul>
+<li> <a href="GameStateReplicationCH.html#游戏状态函数复制"> 游戏状态函数复制</a> <ul>
+<li> <a href="GameStateReplicationCH.html#概述"> 概述</a>
+</li> <li> <a href="GameStateReplicationCH.html#函数复制检查"> 函数复制检查</a>
+</li> <li> <a href="GameStateReplicationCH.html#可靠与不可靠之间对比"> 可靠与不可靠之间对比</a>
+</li> <li> <a href="GameStateReplicationCH.html#函数复制数据近似"> 函数复制数据近似</a>
+</li> <li> <a href="GameStateReplicationCH.html#函数复制声明规则"> 函数复制声明规则</a>
+</li> <li> <a href="GameStateReplicationCH.html#函数复制声明准则"> 函数复制声明准则</a>
+</li> <li> <a href="GameStateReplicationCH.html#编写函数复制声明"> 编写函数复制声明</a>
+</li></ul>
+</li></ul>
+</div>
+<p />
+<h2><a name="概述"></a> 概述 </h2>
+<hr size="1" noshade="noshade">
+对于每一个与特定客户端相关的 actor，服务器都会为该客户端在该 actor 上执行一系列函数复制检查。这些检查会确定哪些变量应该被复制到客户端，并确定是否应该将一个给定的函数发送给该客户端执行，而不是在本地机器上执行。同样，客户端可以将函数（而不是变量）复制返回到服务器。关于 actor 的数据传送过程被称为复制。传送某个 actor 的所有数据过程会溢出连接，就好像传送过程会改变数据一样。相反，Unreal 采用的方法是只复制在某个特定客户端上需要的数据。
+<p />
+<p />
+<h2><a name="函数复制检查"></a> 函数复制检查 </h2>
+<hr size="1" noshade="noshade">
+当您想到服务器中的客户端数量、每个客户端的相关 actor 的数量，以及每个 actor 的变量上的函数复制检查数量时，需要执行大部分这些检查来确定哪些数据要通过网络发送。在执行函数复制声明时应该特别注意，以便不会浪费太多 CPU 计算要发送什么数据。不要从函数复制声明内部调用函数，因为对于函数复制声明来说函数调用太慢。如果必要，在 tick（更新）中计算函数的结果，并使用您的函数复制声明中的变量值。按照老规矩，您应该尝试使您的检查尽量简单，如果可以只评估一个条件。由于为虚幻脚本内 Actor、Inventory 以及其他常见的类的变量计算函数复制条件需要时间；所以将这些检查移至 native 代码。这是您为什么在一些 Egine 类上看到 <strong>nativereplication</strong> 的原因。为函数复制而评估的任何变量将会被 native 函数复制代码覆盖<!--  -->。但是 UnrealScript 函数复制声明仍然很重要，而且可以用于诸如秘技保护和供没有源代码的改编作者使用的文档中。任何没有在 nativereplication 类中定义的变量（在一个非 nativereplication 子类或超类中）都将会通过 unrealscript 定义进行复制。
+<p />
+<p />
+<h2><a name="可靠与不可靠之间对比"></a> 可靠与不可靠之间对比 </h2>
+<hr size="1" noshade="noshade">
+在网络中使用的另一种优化是 reliable（可靠）与 unreliable（不可靠）数据之间的差。对于变量，所有数据都是可靠的。如果一个变量没有将其通过传送到客户端，那么会保证将其重新发送到客户端，最后I使其通过。为了允许有出现故障的包，使用编号最大的包中的变量数据，并确保新颖。但是函数同时存在于可靠和不可靠形式中。可靠函数，可以保证以发送时的顺序到达客户端，相对于其他可靠函数。但是发送到客户端的不可靠函数，不能保证是否可以被接收到（如果没有将它成功发动给客户端，那么服务器不会尝试再次发送这个函数）。通常情况下，在将函数导入到游戏中时应该使用可靠函数，这样客户端才会与服务器保持相对更高的仿真。使用不可靠函数也是可以的，但是不是必需的；例如特效。
+<p />
+<p />
+<h2><a name="函数复制数据近似"></a> 函数复制数据近似 </h2>
+<hr size="1" noshade="noshade">
+另一个优化是 Unreal 如何通过互联网发送向量、旋转量和数组。这些规则可以同时应用于函数参数和变量中。<!--  -->
+<p /> <ul>
+<li> <strong>Vectors</strong> - 四舍五入的每个分量。
+</li> <li> <strong>Planes</strong> - 四舍五入的每个分量。
+</li> <li> <strong>Rotators</strong> - 每个分量可以有 255 个不同的值。然后在连接的另一端将这些值按比例从 0-255 增加到 0-65536。
+</li> <li> <strong>Structs</strong> - 所有或没有。如果一个元素改变，那么整个结构体会被复制。
+</li> <li> <strong>Static Arrays</strong> - 只会发送数组中已经改变的元素。动态数组不可以进行复制。
+</li> <li> <strong>Strings, Structs</strong> - 必须小于 448 字节，否则该变量会缺少该特定 actor 的其他变量
+</li> <li> <strong>CompressedPosition</strong> - 使用向量和旋转器的以上变换控件（Rotator.Roll 除外，它通常是 0）。而速度分量会获得与向量相同的变换控件。
+</li></ul>
+<p />
+请参阅<a href="ReplicationVariableReplicationNotes.html" class="twikiLink">变量复制注意事项</a>了解更多信息。如果您需要精确的向量、平面和旋转量，那么最好新建一个结构体进行结构体指定优化。通常最好按照要求尽量少发送数据，强烈推荐尽可能在客户端上多进行仿真。
+<p />
+<p />
+<h2><a name="函数复制声明规则"></a> 函数复制声明规则 </h2>
+<hr size="1" noshade="noshade">
+在编写您自己的函数复制声明时，需要了解一些有用的事情。首先，您只可以在其中已经定义变量的类中定义函数复制声明。这意味着您可以始终不覆盖函数复制声明，而您必须在可以定义数据的正确类中定义函数复制声明。如果您发现您自己需要覆盖变量的函数复制条件，很可能是您为您的 actor 使用的是错误角色，您需要重新考虑它应该使用什么类型的角色，它会允许您复制该数据。这样，如果 Actor 类包含一个变量 DrawType，那么您知道在以下地方可以寻找它的函数复制条件： 它可能存在于 Actor 类中。如果您仍然需要复制数据，您通常最好定义一个新的可以作为信息载体的变量，然后将其复制到另一端上的真正变量上。
+<p />
+现在只能使用函数修饰符 <strong>server</strong> 、 <strong>client</strong> 、 <strong>reliable</strong> 和 <strong>unrealiable</strong> 进行复制的函数定义。这些修改量的意思都很直接。一个声明了 <strong>server</strong> 的函数将会在服务器上执行，而且通常被客户端调用。一个声明了 <strong>client</strong> 的函数将会在 actor 拥有的客户端。*Client* 和 <strong>server</strong> 互相对立，就像 <strong>reliable</strong> 和 <strong>unreliable</strong> 一样；也就是说一个函数不可能同时是 <strong>server</strong> 和 <strong>client</strong> 。一个声明了 <strong>reliable</strong> 的函数通常会按顺序执行，而且可以保证到达。一个声明了 <strong>unreliable</strong> 的函数可能不会将其发送到到另一端；也就是说，如果网络饱和，那么将会声明这个函数调用。
+<p />
+<p />
+<h2><a name="函数复制声明准则"></a> 函数复制声明准则 </h2>
+<hr size="1" noshade="noshade">
+使您的函数复制声明简单。如果您有很多有关这个数据的实例，那么很可能常常运行这些函数复制条件，任何可以执行的优化对您都会大有帮助。我们已经讨论了不做任何过度复杂的操作的重要性以及应该要遵守的规则。其次，如果可以，使用 <strong>bNet...</strong> 变量。这些变量，例如， <strong>bNetInitial</strong> 、 <strong>bNetOwner</strong> 、 <strong>bNetDirty</strong> 都非常有用，而且使用这些变量不需要其他 CPU 需求，因为系统会自动为您设置它们。还可以执行检查进行各种操作，这取决于 角色/远程角色 是否是一个 <strong>Role_SimulatedProxy</strong> 或者是一个 <strong>Role_AutonomousProxy</strong> 。找到这些更错综复杂的检查实例最好的地方是在 Engine 类中，特别是 <strong>Actor</strong> 、 <strong>Pawn</strong> 和 <strong>PlayerController</strong> 。毫无疑问，您不得改变函数复制声明中的任何内容。在函数复制声明中进行 <strong>i++</strong> 会使 <strong>i</strong> 在被复制的过程中发生不可预知的改变，这些不是您真正想要进行的操作。而且最后，作为最后一个建议，服务器会检查所有输入的数据以确定它是否合情合理。如果客户端将某些内容复制到服务器，该服务器会临时交换 <strong>Role</strong> 和 <strong>RemoteRole</strong> 变量，然后判断这个函数复制条件以查看另一端是否具备发送该数据的合理理由。如果检查失败，那么会删除这个数据。这意味着当您编写函数复制声明的时候，要确保服务器也有执行函数复制检查需要的所有数据。否则，它将始终不会被服务器处理或接受。
+<p />
+<h2><a name="编写函数复制声明"></a> 编写函数复制声明 </h2>
+<hr size="1" noshade="noshade">
+在 UnrealScript 中，每个类都可以有一个函数复制块，其中包含很多函数复制声明。每个函数复制说明由一个函数复制条件（判断 true 或 false 的声明）和一个或多个使用这个条件的变量组成。
+<p />
+一个类最好不包含函数复制声明，也就意味着这个类将不会将任何它定义的变量复制到另一端。事实上，大多数类不需要函数复制声明，因为大多数“有趣”的变量都会影响在 Actor 类中定义的展示，而且只可以由子类中的代码进行修改。
+<p />
+如果您在一个类中定义一个新变量，但是您没有将它列在函数复制定义中，这意味着您的变量绝对从来没有被复制过。这是正常现象；大多数变量不需要被复制。
+<p />
+以下是函数复制声明的 UnrealScript 语法的一个示例。它以 Pawn 类为例：
+<p />
+<div class="codetitlebar">
+Pawn.uc
+</div>
+<div class="codesnippet">
+<pre>
+replication
+{
+  // 服务器应该发送给所有客户端的变量。
+  if (bNetDirty &#38;&#38; Role &#61;&#61; ROLE&#95;Authority)
+  FlashLocation, bSimulateGravity, bIsWalking, PlayerReplicationInfo, HitDamageType, TakeHitLocation, DrivenVehicle, Health;
+
+  // 发送给拥有的客户端的变量
+  if (bNetDirty &#38;&#38; bNetOwner &#38;&#38; Role &#61;&#61; ROLE&#95;Authority)
+    InvManager, Controller, GroundSpeed, WaterSpeed, AirSpeed, AccelRate, JumpZ, AirControl;
+
+  // 发送给非拥有的客户端的变量
+  if (bNetDirty &#38;&#38; !bNetOwner &#38;&#38; Role&#61;&#61;Role&#95;Authority)
+    bIsCrouched, FlashCount, FiringMode;
+
+  // 当 Pawn 被关闭时发送给所有客户端的变量。(bTearOff)
+  if (bTearOff &#38;&#38; bNetDirty &#38;&#38; Role &#61;&#61; ROLE&#95;Authority)
+    TearOffMomentum;
+
+  // 发送给除拥有的客户端之外的所有客户端的变量
+  if (!bNetOwner &#38;&#38; Role&#61;&#61;ROLE&#95;Authority)
+    RemoteViewPitch;
+}
+</pre>
+</div>
+<p />
+以下是一些复制的函数的示例，以 Controller 类为例：
+<div class="codetitlebar">
+Controller.uc
+</div>
+<div class="codesnippet">
+<pre>
+reliable server function ServerRestartPlayer()
+{
+  if (WorldInfo.NetMode !&#61; NM&#95;Client &#38;&#38; Pawn !&#61; None)
+  {
+    ServerGivePawn();
+  }
+}
+
+reliable client function ClientSetWeapon( class&#60;Weapon&#62; WeaponClass )
+{
+  local Inventory Inv;
+
+  if (Pawn &#61;&#61; None)
+  {
+    return;
+  }
+
+  Inv &#61; Pawn.FindInventoryType( WeaponClass );
+  if (Weapon(Inv) !&#61; None)
+  {
+    Pawn.SetActiveWeapon(Weapon(Inv));
+  }
+}
+</pre>
+</div>
+<p />
+</noautolink>
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+
+
+<!-- BEGIN UE4 NOTICE -->
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+        LoadVersionMessage();
+
+    }
+
+
+
+    function LoadVersionMessage()
+
+    {
+
+        var showMessage = readCookie("doc_version_message");
+
+        if(showMessage != "false")
+
+        {
+
+            showVersionMessage();
+
+        }
+
+    }
+
+
+
+    function showVersionMessage()
+
+    {
+
+        var message = document.getElementById("version_message");
+
+        if(message)
+
+        {
+
+            message.style.display = "block";
+
+        }
+
+    }
+
+
+
+    function closeVersionMessage() {
+
+        var dismiss = document.getElementById("dismiss");
+
+        var message = document.getElementById("version_message");
+
+        if (message) {
+
+            message.style.display = "none";
+
+        }
+
+        if (dismiss.checked) {
+
+            eraseCookie("doc_version_message");
+
+            createCookie("doc_version_message", "false", 365);
+
+            dismiss.checked = false;
+
+        }
+
+        return false;
+
+    }
+
+
+
+    function createCookie(name, value, days) {
+
+        if (days) {
+
+            var date = new Date();
+
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+
+            var expires = "; expires=" + date.toGMTString();
+
+        }
+
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+
+    }
+
+
+
+    function readCookie(name) {
+
+        var nameEQ = name + "=";
+
+        var ca = document.cookie.split(';');
+
+        for (var i = 0; i < ca.length; i++) {
+
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+
+        }
+
+        return null;
+
+    }
+
+
+
+    function eraseCookie(name) {
+
+        createCookie(name, "", -1);
+
+    }
+
+</script>
+
+
+
+<!-- END UE4 NOTICE -->
+
+
+
+</div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="https://docs.unrealengine.com/udk/Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+<p />
+
+<!-- Mirrored from docs.unrealengine.com/udk/Three/GameStateReplicationCH.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Apr 2022 10:27:15 GMT -->
+</html></body>

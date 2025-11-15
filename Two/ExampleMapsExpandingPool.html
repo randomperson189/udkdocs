@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/ExampleMapsExpandingPool.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 13:17:55 GMT -->
+<head>
+  <title> UDN - Two - ExampleMapsExpandingPool    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">ExampleMapsExpandingPool  </b></div>
+  <div id="tooltext">
+  <p />
+  
+  <!-- Two/ExampleMapsExpandingPool -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="Expanding Pool Example Map"></a> Expanding Pool Example Map </h1>
+  <p />
+  <em>Document Summary: A simple demonstration of how to make a projector expand, to simulate pooling water. Requires some knowledge of emitters and projectors. Most of this document is at an intermediate skill level. However, code exists to modify the projector, so to follow this document, programmer aid is required to create a subclass.</em>
+  <p />
+  <em>Document Changelog: Last updated by Tom Lin (DemiurgeStudios<sup>?</sup>), for document summary. Original author was Lode Vandevenne (<a href="https://udn.epicgames.com/Main/UdnStaff" class="restricted" class="restricted" class="twikiLink">UdnStaff</a>).</em>
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="ExampleMapsExpandingPool.html#Expanding Pool Example Map"> Expanding Pool Example Map</a> <ul>
+  <li> <a href="ExampleMapsExpandingPool.html#Introduction"> Introduction</a>
+  </li> <li> <a href="ExampleMapsExpandingPool.html#The emitter"> The emitter</a>
+  </li> <li> <a href="ExampleMapsExpandingPool.html#The Projector"> The Projector</a>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <h2><a name="Introduction"></a> Introduction </h2>
+  <p />
+  This map for shows an expanding pool: when you walk on a trigger, wine starts flowing out of a barrel, and creates the pool on the ground.  The pool is done with a Projector with an expanding DrawScale.  There's also an emitter for the wine spouting out of the barrel.
+  <p />
+  To download this map, scroll to the bottom of this document and download the file wine.zip .  The map should work under engine build 829 without any external files.
+  <p />
+  Here are step by step instructions on how it's done (I assume you know a little bit about Emitters, Movers and Projectors already):
+  <p />
+  <h2><a name="The emitter"></a> The emitter </h2>
+  <p />
+  The emitter is attached to a mover.  First the Emitter is hidden away, and when you walk on the trigger, the wine starts flowing out of the barrel and the mover with the attached emitter moves to the barrel.  Then, after a while when the barrel is empty, wine stops flowing out of it and the emitter moves away again.
+  <p />
+  The emitter is a SpriteEmitter, with a red texture.  The texture is scaled properly (with the StartSizeRange setting) and MaxParticles is set to about 20. Acceleration.Z is set to -950 to make the particles fall down, and StartVelocityRange.Y is set to something between -100 and -120 to make the particles being spouted forwards a little bit.
+  <p />
+  This is how the emitter will look when placed in position:
+  <p />
+  <img width="179" alt="emitter.jpg" src="rsrc/Two/ExampleMapsExpandingPool/emitter.jpg" height="197" border="0"  />
+  <p />
+  Add a small mover, and place it somewhere where you can't see it, for example in the center of the barrel.  Place the Emitter on the mover, also in the center of the barrel, and make sure you can't see the particles (the emitter has to be invisible until it's triggered to move).  In the settings of the mover, set Advanced --> bHidden to True so the mover will be hidden in the game.  Then set Key1 of the mover to the location where the emitter will be when the wine starts flowing out of the barrel, and set the mover back to Key0 after that.
+  <p />
+  So here is Key0 of the mover: both mover and emitter are hidden inside the barrel:
+  <p />
+  <img width="106" alt="key0.jpg" src="rsrc/Two/ExampleMapsExpandingPool/key0.jpg" height="133" border="0"  />
+  <p />
+  And here is Key1 of the mover, outside the barrel (in the game, the emitter is supposed to follow the mover):
+  <p />
+  <img width="106" alt="key1.jpg" src="rsrc/Two/ExampleMapsExpandingPool/key1.jpg" height="133" border="0"  />
+  <p />
+  To make the Emitter to follow the mover, set in the properties of the Emitter the setting Movement --> AttachTag to the tag of the mover, in this case Mover.
+  <p />
+  Set the InitialState of the mover to TriggerOpenTimed, set MoveTime to 0 and StayOpenTime to the time the wine will keep flowing, in this case 20.
+  <p />
+  Add a trigger somewhere in the map and set its Event to the tag of the mover: Mover.  Also set btriggerOnlyOnce to True so you can't make it move a second time again.
+  <p />
+  Now you already have a map where you can walk on a trigger, then a squirt of wine comes out of the barrel for 20 seconds, and then stops again. There's no expanding pool yet.
+  <p />
+  <h2><a name="The Projector"></a> The Projector </h2>
+  <p />
+  The Projector has to be one that appears when it's triggered and starts expanding.  The default projector can't do this, so it has to be a subclass with its own script, for example a script like this:
+  <p />
+  <pre>
+  //&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;
+  // PoolProjector.
+  //&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;
+  class PoolProjector extends Projector;
+  
+  var() int StartScale;
+  var() int EndScale;
+  var() int PoolingTime;
+  var float time;
+  var float scale;
+  
+  
+  function PostBeginPlay()
+  {
+     DetachProjector(True);
+     SetDrawScale(StartScale);
+  }
+  
+  
+  
+  function Timer()
+  {
+     if (time&#60;PoolingTime)
+     {
+        DetachProjector(True);
+        time&#61;time+0.1;
+        scale&#61;(StartScale&#42;(PoolingTime-time)+EndScale&#42;time)/PoolingTime;
+        SetDrawScale(scale);
+  
+        AttachProjector();
+     }
+  }
+  
+  function Trigger( actor Other, pawn EventInstigator )
+  {
+     SetTimer(0.1, True);
+  }
+  </pre>
+  <p />
+  Select the Projector in the Actor Class Browser, open Class --> New..., enter Package: MyLevel (if you need this projector only for this map) and Name: PoolProjector, and enter the script.  If you can improve this script, please do so.
+  <p />
+  Place the projector above the barrel, so it's center is where the wine will hit the ground, and add a wine pool texture (Make sure UClampMode and VClampMode in the properties of the texture are both set to TC_Clamp).  With DrawScale 1 and FOV 0 the projection should look like a very small pool of wine:
+  <p />
+  <img width="300" alt="projection.jpg" src="rsrc/Two/ExampleMapsExpandingPool/projection.jpg" height="200" border="0"  />
+  <p />
+  Then look in the settings of the PoolProjector --> PoolProjector: there are StartScale, EndScale and PoolingTime.  Set StartScale to the same value as the DrawScale setting in Display.  Set EndScale to the size the pool should have at the end, for example 20 means it'll become 20 times as big, and set PoolingTime to the time the pool will keep expanding.
+  <p />
+  Add a second trigger, and set its Event to the Tag of the PoolProjector.  Don't use the same Tag as the mover, because the Emitter with his AttachTag will get confused if there's another actor with the same tag as the mover.
+  <p />
+  This should be about it.  If you want to improve this example map in any way, feel free to do so.
+  <p />
+  Note: in Build 829, the Projector has bStatic=False in its Default Projector, and automatically also it's subclass PoolProjector.  However, in some later builds the Projector may have bStatic=True, so you have to make sure the PoolProjector has bStatic=False in its Default Properties, otherwise Dynamic Projector the effect won't work.
+  <p />
+  Note: possibly, a very realistic fluid physics system may be added to the engine to create much more realistic pools.
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/ExampleMapsExpandingPool.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 13:17:55 GMT -->
+</html>

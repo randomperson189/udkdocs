@@ -1,0 +1,270 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/CollisionTutorial.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:45:14 GMT -->
+<head>
+  <title> UDN - Two - CollisionTutorial    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">CollisionTutorial  </b></div>
+  <div id="tooltext">
+  <a href="CollisionTutorialJP.html" class="twikiLink">日本語訳</a><br>
+  
+  <!-- Two/CollisionTutorial -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="Collision Tutorial"></a> Collision Tutorial </h1>
+  <p />
+  <em>Document Summary: A quick introductory guide to Collision in Unreal Ed.</em>
+  <p />
+  <em>Document Changelog: Last updated by Michiel Hendriks, updated for v3323. Previously updated by Chris Linder(DemiurgeStudios<sup>?</sup>) 11-3-2003 to link to more collision docs. Original Author was James Golding (<a href="mailto&#58;jamesg&#64;epicgames&#46;com">jamesg&#64;epicgames&#46;com</a>) October 22nd 2002.</em>
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="CollisionTutorial.html#Collision Tutorial"> Collision Tutorial</a> <ul>
+  <li> <a href="CollisionTutorial.html#Related Documents"> Related Documents</a>
+  </li> <li> <a href="CollisionTutorial.html#Collision Overview"> Collision Overview</a>
+  </li> <li> <a href="CollisionTutorial.html#Collision Types"> Collision Types</a> <ul>
+  <li> <a href="CollisionTutorial.html#Blocking Volume"> Blocking Volume</a>
+  </li> <li> <a href="CollisionTutorial.html#Collision Models"> Collision Models</a>
+  </li></ul>
+  </li> <li> <a href="CollisionTutorial.html#Creating Collision Models"> Creating Collision Models</a> <ul>
+  <li> <a href="CollisionTutorial.html#Save Brush As Collision"> Save Brush As Collision</a>
+  </li> <li> <a href="CollisionTutorial.html#K-DOP"> K-DOP</a>
+  </li> <li> <a href="CollisionTutorial.html#Fit Karma Primitive"> Fit Karma Primitive</a>
+  </li> <li> <a href="CollisionTutorial.html#Create in a Modeling Program (3D Studio Max or Maya)"> Create in a Modeling Program (3D Studio Max or Maya)</a>
+  </li></ul>
+  </li> <li> <a href="CollisionTutorial.html#Collision For Karma"> Collision For Karma</a>
+  </li> <li> <a href="CollisionTutorial.html#Reviewing Collision In-Game"> Reviewing Collision In-Game</a>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <h2><a name="Related Documents"></a> Related Documents </h2>
+  <p />
+  <a href="StaticMeshCollisionReference.html" class="twikiLink">StaticMeshCollisionReference</a>, <a href="KarmaReference.html" class="twikiLink">KarmaReference</a>, <a href="StaticMeshesTutorial.html" class="twikiLink">StaticMeshesTutorial</a>,
+  <p />
+  <p />
+  <h2><a name="Collision Overview"></a> Collision Overview </h2>
+  <p />
+  This tutorial is intended for 3323 builds of the engine.  Most of the information in this document is relevant and useful for most <a href="https://udn.epicgames.com/Two/UnrealEngine2" class="restricted" class="restricted" class="twikiLink">UnrealEngine2</a> games but there might be some differences that are not addressed in this document.
+  <p />
+  As well as making your Unreal level look amazing, it is worth spending some time on the collision in your level. After this tutorial, take a look at some of the UT2004 maps and see how the methods described here have been used.
+  <p />
+  Collision with the level BSP and terrain should work fine without much tweaking. Collision with static meshes, however, can require some optimization, simply because of the large number of triangles involved. The main job here is using simpler shapes for collision than for graphics. There are 2 reasons for doing this:
+  <p /> <ul>
+  <li> <em>Faster</em>. With the number of triangles now in a level, using just the graphics triangles for collision can get really slow.
+  </li></ul>
+  <p /> <ul>
+  <li> <em>Smoother</em>. It can be really annoying to get 'snagged' on some small graphical detail in the middle of a firefight!
+  </li></ul>
+  <p />
+  <p />
+  <h2><a name="Collision Types"></a> Collision Types </h2>
+  <p />
+  There are two main tools for tweaking collision in your level, <a href="CollisionTutorial.html#Blocking_Volume" class="twikiAnchorLink">Blocking Volumes</a> and <a href="CollisionTutorial.html#Collision_Models" class="twikiAnchorLink">Collision Models</a>. Both must be 'closed' meshes.
+  <p />
+  <p />
+  <h3><a name="Blocking Volume"></a> Blocking Volume </h3>
+  <p />
+  These are invisible actors which the player will collide against in game. First make the builder brush the correct shape, then press the 'Volume' button in the editor and select 'BlockingVolume' from the list. These can also be useful for preventing players getting to certain areas of the level eg. over walls.
+  <p />
+  <img width="237" alt="volume_tool.jpg" src="rsrc/Two/CollisionTutorial/volume_tool.jpg" height="325" border="0"  />
+  <p />
+  <p />
+  <h3><a name="Collision Models"></a> Collision Models </h3>
+  <p />
+  <em>Collision Models</em> are stored as part of a static mesh, in the .usx package. Every time you place a static mesh, it will collide in the same manner.  Each static mesh can have several collision models to make up the collision for the entire mesh.  Because collision models are part of the static mesh, they are 'instanced' in the same way as static mesh graphics, so are more efficient memory-wise than blocking volumes.
+  <p />
+  There are two basic types of collision models: <ul>
+  <li> <strong>Type 1</strong> - These are collision models created using <a href="CollisionTutorial.html#Save_Brush_As_Collision" class="twikiAnchorLink">Save Brush As Collision</a>, or <a href="CollisionTutorial.html#K_DOP" class="twikiAnchorLink">K-DOP</a>.  This type of collision also includes collision shapes <a href="CollisionTutorial.html#Create_in_a_Modeling_Program" class="twikiAnchorLink">created in a modeling program</a> with the <em>MCDCX</em> tag.
+  </li> <li> <strong>Type 2</strong> - These are collision models created with <a href="CollisionTutorial.html#Fit_Karma_Primitive" class="twikiAnchorLink">Fit Karma Primitive</a> or collision shapes <a href="CollisionTutorial.html#Create_in_a_Modeling_Program" class="twikiAnchorLink">created in a modeling program</a> with the <em>MCDBX</em>, <em>MCDSP</em>, or <em>MCDCY</em> tags.
+  </li></ul>
+  <p />
+  You can easily tell the difference between these types of collision models by turning on <em>View-&gt;Collision</em> in the static mesh browser; only the <em>Type 1</em> collision objects will be displayed.  You can see the <em>Type 2</em> collision models by turning on <em>View-&gt;Show Karma Primitives</em>.  The <em>Show Karma Primitives</em> option will sometimes display <em>Type 1</em> objects and sometimes not.
+  <p />
+  In the static mesh browser you can change a few properties of how the collision model is used:
+  <p />
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Collision Type</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Default</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=2;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Relevant For</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=3;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Description</font></a> </th></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> <em>UseSimpleKarmaCollision</em> </td><td bgcolor="#ffffff"> <em>TRUE</em> </td><td bgcolor="#ffffff"> <em>Type 1</em> and <em>Type 2</em>. </td><td bgcolor="#ffffff"> If this is <em>TRUE</em> and a collision model is present, the collision model will be turned into a set of convex hulls and used for calculate the collision of karma objects against this object.  If <em>UseSimpleKarmaCollision</em> is <em>TRUE</em>, and there is no collision model, karma will not collide with this object.   If you set <em>UseSimpleKarmaCollision</em> to <em>FALSE</em>, karma will collide with the graphics triangles; only use this option if the graphics triangles are fairly large. See the <a href="CollisionTutorial.html#Collision_For_Karma" class="twikiAnchorLink">Collision For Karma</a> section below for more details. </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <em>UseSimpleBoxCollision</em> </td><td bgcolor="#eaeaea"> <em>TRUE</em> </td><td bgcolor="#eaeaea"> <em>Type 1</em> </td><td bgcolor="#eaeaea"> If this is <em>TRUE</em>, the collision model (if present) will be used for 'non-zero extent' line checks. This includes things like player movement, but not weapon fire.  No per triangle collision will be used if this is <em>TRUE</em> and there is a collision model.  If you set <em>UseSimpleBoxCollision</em> to <em>TRUE</em> when you do not have a collision model or if you set <em>UseSimpleBoxCollision</em> to <em>FALSE</em>, per triangle collision will be used based on the material.  You can turn off collision for a material by pulling down the <em>Materials</em> array and setting <em>EnableCollision</em> to <em>FALSE</em>. </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> <em>UseSimpleLineCollision</em> </td><td bgcolor="#ffffff" align="right"> <em>FALSE</em> </td><td bgcolor="#ffffff"> <em>Type 1</em> </td><td bgcolor="#ffffff"> If this is <em>TRUE</em>, collision model (if present) will be used for 'zero extent' line checks. This includes most weapon fire, corona traces etc. If you set <em>UseSimpleLineCollision</em> to <em>TRUE</em> when you do not have a collision model or if you set <em>UseSimpleLineCollision</em> to <em>FALSE</em>, per triangle collision will be used based on the material.  You can turn off collision for a material by pulling down the <em>Materials</em> array and setting <em>EnableCollision</em> to <em>FALSE</em>. </td></tr>
+  </table>
+  <p />
+  For more details on static mesh collision see the <a href="StaticMeshCollisionReference.html" class="twikiLink">Static Mesh Collision Reference</a>
+  <p />
+  An additional bonus of using collision models is that if you set all of the settings to true and you turn off the collision of every material, the static mesh will use much less memory.
+  <p />
+  <p />
+  <h2><a name="Creating Collision Models"></a> Creating Collision Models </h2>
+  <p />
+  There are several ways to create a collision model for a static mesh. After adding a collision model to a static mesh you will need to save the .usx.
+  <p />
+  <p />
+  <h3><a name="Save Brush As Collision"></a> Save Brush As Collision </h3>
+  <p />
+  Place the static mesh that you want to add a collision model to into a level. Then place the builder brush around it in the shape you want the collision model to be. Keep it as simple as possible! Then select the static mesh, right click and choose 'Save Brush As Collision'. This will take into account any scaling you may have applied to the static mesh.
+  <p />
+  <img width="460" alt="save_brush_as_collision.jpg" src="rsrc/Two/CollisionTutorial/save_brush_as_collision.jpg" height="595" border="0"  />
+  <p />
+  It is very important to note that this collision will be added to ALL instances of the static mesh you have selected.  To see the effect of saving the brush as collision you will have to save the package that contains the static mesh.
+  <p />
+  <p />
+  <h3><a name="K-DOP"></a> K-DOP </h3>
+  <p />
+  <img width="346" alt="K-DOP.gif" src="rsrc/Two/CollisionTutorial/K-DOP.gif" height="240" border="0"  />
+  <p />
+  K-DOP is a tool in the static mesh browser for generating simple <em>Type 1</em> <a href="CollisionTutorial.html#Collision_Models" class="twikiAnchorLink">collision models</a>.  K-DOP stands for 'K discrete oriented polytope' but that doesn't really matter :).  Basically it takes 'k' axis-aligned planes and pushes them as close to the mesh as it can. The resulting shape is used as a collision model. In the editor k can be:
+  <p />
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <em>6</em> </td><td bgcolor="#eaeaea"> Axis-aligned box. </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> <em>10</em> </td><td bgcolor="#ffffff"> Box with 4 edges bevelled - you can choose X, Y or Z aligned edges. </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> <em>18</em> </td><td bgcolor="#eaeaea"> Box with all edges bevelled. </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> <em>26</em> </td><td bgcolor="#ffffff"> Box with all edges and corners bevelled. </td></tr>
+  </table>
+  <p />
+  See below for an example. This util is quite handy for .usx's full of pipes, pillars and railings.
+  <p />
+  <img width="800" alt="kdop_sizes.jpg" src="rsrc/Two/CollisionTutorial/kdop_sizes.jpg" height="473" border="0"  />
+  <p />
+  <p />
+  <h3><a name="Fit Karma Primitive"></a> Fit Karma Primitive </h3>
+  <p />
+  <img width="387" alt="FitKarma.gif" src="rsrc/Two/CollisionTutorial/FitKarma.gif" height="238" border="0"  />
+  <p />
+  <em>Fit Karma Primitive</em> is a tool in the static mesh browser for generating simple <em>Type 2</em> <a href="CollisionTutorial.html#Collision_Models" class="twikiAnchorLink">collision models</a>.  You can fit Spheres or Cylinders.
+  <p />
+  <p />
+  <h3><a name="Create in a Modeling Program (3D Studio Max or Maya)"></a> Create in a Modeling Program (3D Studio Max or Maya) </h3>
+  <p />
+  You can create <a href="CollisionTutorial.html#Collision_Models" class="twikiAnchorLink">collision models</a> of <em>Type 1</em> and <em>Type 2</em> in MAX or Maya.  Simply create boxes, spheres, cylinders, or convex objects and place them around your mesh appropriately.  These shapes will be converted to collision models in Unreal if they are named properly.  The naming convention (which is case sensitive) is as follows:
+  <p />
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> MCDBX </td><td bgcolor="#eaeaea"> Box Primitive </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> MCDSP </td><td bgcolor="#ffffff"> Sphere Primitive </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> MCDCY </td><td bgcolor="#eaeaea"> Cylinder Primitive </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> MCDCX </td><td bgcolor="#ffffff"> Convex Mesh Primitive </td></tr>
+  </table>
+  <p /> <ul>
+  <li> Boxes are created with the "Box" objects type in MAX or with the "Cube" polygonal primitive in Maya.  You can't move the vertices around or deform it in any way to make it something other than a rectangular prism, or else it won't work.
+  </li></ul>
+  <p /> <ul>
+  <li> Spheres are created with the "Sphere" object type.  The sphere does not need to have many segments (8 is a good number) at all because it is converted into a true sphere for collision.  Like boxes, you shouldn't move the individual vertices around.
+  </li></ul>
+  <p /> <ul>
+  <li> Cylinders are a little tricky.  There does not seem to be a set number of <em>Height Segments</em> and <em>Sides</em> that work.  In general if the cylinder does not import, increase the number of <em>Height Segments</em> till it does.  8 <em>Sides</em> seems to be a good number.  Like spheres, cylinders are converted to true cylinders with fully smooth sides and so the polygonal sides don't matter.
+  </li></ul>
+  <p /> <ul>
+  <li> Convex objects can be any completely closed convex 3D shape.  A box for example can also be a convex object.  The diagram below illustrates what is convex and what is not:
+  </li></ul>
+  <p />
+  <img width="500" alt="Convex.gif" src="rsrc/Two/CollisionTutorial/Convex.gif" height="400" border="0"  />
+  <p />
+  Objects created with the <em>MCDCX</em> tag behave differently than the others; please see the <a href="CollisionTutorial.html#Collision_Models" class="twikiAnchorLink">collision models</a> parts of this document for more details.  In general you probably want to create <em>MCDCX</em> primitives.  Once your collision objects are set up you can export both the graphics and collision mesh in the same .ASE. When you import the .ASE into UnrealEd it should find the collision mesh, remove it from the graphic, and turn it into the collision model.
+  <p />
+  Note: In the case of an object whose collision is defined by multiple convex hulls, results are best when the hulls do not intersect with one another.  For example, if the collision for a lollipop were defined by two convex hulls, one for the candy and one for the stick, a gap should be left between the two as in the following illustration:
+  <p />
+  <img width="300" alt="lollipop.jpg" src="rsrc/Two/CollisionTutorial/lollipop.jpg" height="400" border="0"  />
+  <p />
+  <p />
+  <h2><a name="Collision For Karma"></a> Collision For Karma </h2>
+  <p />
+  The way that Karma works is to generate 'contact points' each frame for where things are touching. This is a more complicated process than performing a line check, so it is important to keep the geometry that karma objects (such as a ragdoll) collide with as simple as possible, both for speed and behavior. For example, a lot of small triangles can lead to Karma objects getting 'snagged', and will take a long time to process.
+  <p />
+  First, for an actor to block karma actors, it must have the 'bBlockKarma' flag set to true. This is the default for static meshes and blocking volumes.
+  <p />
+  If 'UseSimpleKarmaCollision' is true (see <a href="CollisionTutorial.html#Collision_Models" class="twikiAnchorLink">Collision Models</a> above for more details), Karma will take the collision model and turn it into a set of convex hull primitives for contact generation. If you choose 'Show Karma Primitives' from the 'View' menu, it will show you each hull that was generated in a different colour, as well as giving you an overall count (indicated in the shot below). You ideally want to keep that count below 10, certainly under 100.
+  <p />
+  <img width="566" alt="show_karma_prims.jpg" src="rsrc/Two/CollisionTutorial/show_karma_prims.jpg" height="690" border="0"  />
+  <p />
+  Karma actors collide against BSP and terrain per-triangle. For this reason, you should make sure your BSP and terrain do not have very small triangles in them. For small details, use a blocking volume/collision model.
+  <p />
+  <h2><a name="Reviewing Collision In-Game"></a> Reviewing Collision In-Game </h2>
+  <p />
+  There are several console commands you can use in-game for reviewing how collision is set up - here are a few. Typing them toggles them on and off.
+  <p /> <ul>
+  <li> <em>'show collision'</em> This will draw all collision models and blocking volumes in use in the level.
+  </li></ul>
+  <p />
+  <img width="640" alt="show_collision.jpg" src="rsrc/Two/CollisionTutorial/show_collision.jpg" height="480" border="0"  />
+  <p /> <ul>
+  <li> <em>'kdraw triangles'</em> This is only for Karma collision, but shows the raw triangles being fed to Karma for contact generation. It allows you to check the size and quantity of triangles you are getting.
+  </li></ul>
+  <p />
+  <img width="640" alt="kdraw_triangles.jpg" src="rsrc/Two/CollisionTutorial/kdraw_triangles.jpg" height="480" border="0"  />
+  <p /> <ul>
+  <li> <em>'stat game'</em> This shows you various useful stats on how long different types of collision are taking.
+  </li></ul>
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/CollisionTutorial.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:45:19 GMT -->
+</html>

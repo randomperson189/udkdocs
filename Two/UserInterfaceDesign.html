@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/UserInterfaceDesign.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 13:06:59 GMT -->
+<head>
+  <title> UDN - Two - UserInterfaceDesign    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">UserInterfaceDesign  </b></div>
+  <div id="tooltext">
+  <p />
+  
+  <!-- Two/UserInterfaceDesign -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="User Interface Design"></a> User Interface Design </h1>
+  <p />
+  <em>Last updated by Michiel Hendriks, pretty much rewrote it. Previously Updated by Richard 'vajuras' Osborne (SecretLevel<sup>?</sup>) for document creation.  Originally written by Joe Wilcox (<a href="https://udn.epicgames.com/Main/EpicGames" class="restricted" class="restricted" class="twikiLink">EpicGames</a>).</em>
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="UserInterfaceDesign.html#User Interface Design"> User Interface Design</a> <ul>
+  <li> <a href="UserInterfaceDesign.html#Ingame Layout"> Ingame Layout</a> <ul>
+  <li> <a href="UserInterfaceDesign.html#Simple editor"> Simple editor</a>
+  </li> <li> <a href="UserInterfaceDesign.html#All editor hotkeys"> All editor hotkeys</a>
+  </li> <li> <a href="UserInterfaceDesign.html#Property Editor"> Property Editor</a>
+  </li></ul>
+  </li> <li> <a href="UserInterfaceDesign.html#BatchExport Issues"> BatchExport Issues</a>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <h2><a name="Ingame Layout"></a> Ingame Layout </h2>
+  <p />
+  This document describes the engine's ingame feature to allow programmers to dynamically adjust GUI components. The ingame design tool allows GUI designers/programmers to adjust settings and post the changes into their scripts.
+  <p />
+  In order to be able to use any of the in-game UI editing feature you will have to set the following in the <code>User.ini</code> file
+  <pre>
+  &#91;XInterface.GUIController]
+  bModAuthor&#61;true
+  </pre>
+  <p />
+  <h3><a name="Simple editor"></a> Simple editor </h3>
+  <p />
+  To activate the simple editor press <code>Ctrl+Alt+D</code>. In this mode you'll be able to move and resize the selected component. To select a component hold <code>Ctrl</code> and select the control with the left mouse button, or use <code>Ctrl+Tab</code> to cycle through the component list. Subsequent clicks on the smae spot will cycle through the z-order of the components. A red border will be shown around the selected components, you can temporarily hide this frame by holding the <code>Shift</code> key.
+  <p />
+  Once a component is selected you can move it around with the cursors keys while holding the <code>Ctrl</code> key. You can also move components with the mouse when holding <code>Ctrl+Alt+Left Mouse Button</code>, however this only works well in windowed mode or with mouse acceleration set to 1.
+  <p />
+  To resize a component hold the <code>Ctrl</code> and press one of the following keys:
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> = </td><td bgcolor="#eaeaea"> increase the height </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> - </td><td bgcolor="#ffffff"> decrease the height </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> numpad + </td><td bgcolor="#eaeaea"> increase the width </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> numpad - </td><td bgcolor="#ffffff"> decrease the width </td></tr>
+  </table>
+  When holding <code>Ctrl+Alt</code> the component will be resized with larger steps.
+  <p />
+  After you made the changes you can copy the current position and dimesion to the clipboard for easy pasting in the code by pressing <code>Ctrl+c</code>.
+  <p />
+  <h3><a name="All editor hotkeys"></a> All editor hotkeys </h3>
+  <p />
+  Here's a list of all editor hotkeys. Can also see this list by holding <code>F1</code> while in design mode.
+  Legenda: (Key) only when holding this key; [Key] only required when not in <em>interactive</em> mode.
+  <p />
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=2;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Key</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=2;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Meaning</font></a> </th></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> (F1) </td><td bgcolor="#ffffff"> View this help screen. </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Ctrl + Alt + D </td><td bgcolor="#eaeaea"> Toggles design mode. </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> Ctrl + Alt + E </td><td bgcolor="#ffffff"> Toggles <a href="UserInterfaceDesign.html#PropertyEditor" class="twikiAnchorLink">property editor</a> mode. </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> [Ctrl +] H </td><td bgcolor="#eaeaea"> Toggles active/focused info; This will show some component details at the bottom of the screen. </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> [Ctrl +] I </td><td bgcolor="#ffffff"> Toggle interactive mode; when enabled some functions are more easy accessable. </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> [Ctrl +] P </td><td bgcolor="#eaeaea"> Toggles full MenuOwner<sup>?</sup> chains for active/focused </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> [Ctrl +] C </td><td bgcolor="#ffffff"> Copy position and dimension to the clipboard </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> [Ctrl +] X </td><td bgcolor="#eaeaea"> Export the selected component to the clipboard; This is usefull in combination with the <a href="UserInterfaceDesign.html#PropertyEditor" class="twikiAnchorLink">property editor</a> </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> [Ctrl +] U </td><td bgcolor="#ffffff"> Refresh the property editor window in the designer. </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> [Ctrl +] Up/Down/Left/Right </td><td bgcolor="#eaeaea"> Reposition the selected component using arrow keys. </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> [Ctrl +] =/- </td><td bgcolor="#ffffff"> Resize the selected component vertically. </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> [Ctrl +] Num+/Num- </td><td bgcolor="#eaeaea"> Resize the selected component horizontally. </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> [Ctrl +] WheelUp<sup>?</sup> </td><td bgcolor="#ffffff"> Set the current component to the component's menuowner. </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> [Ctrl +] WheenDown<sup>?</sup> </td><td bgcolor="#eaeaea"> Set the current component to components's focused control. </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> [(Ctrl + Alt) +] MouseX<sup>?</sup>/Y+LMouse </td><td bgcolor="#ffffff"> Reposition the selected component using mouse. </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> (Shift) </td><td bgcolor="#eaeaea"> Hides all design mode indicators. </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> (Ctrl + Alt) </td><td bgcolor="#ffffff"> View focus chain in top of the screen, only visible when the detail info is visible (<code>Ctrl+H</code>). </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> [Ctrl +] Tab </td><td bgcolor="#eaeaea"> Select new component. </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> [Ctrl +] LMouse </td><td bgcolor="#ffffff"> Select new component. </td></tr>
+  </table>
+  <p />
+  <a name="PropertyEditor"></a>
+  <h3><a name="Property Editor"></a> Property Editor </h3>
+  <p />
+  In order to use this you first have to set the following in the <code>User.ini</code>:
+  <pre>
+  &#91;XInterface.GUIController]
+  DesignerMenu&#61;GUIDesigner.PropertyManager
+  </pre>
+  <p />
+  Now when you press <code>Ctrl+Alt+E</code> or every time you select a new component the property editor window will show up. You will have to switch to windowed mode for this to be usefull. The property editor is in fact normal more that the normal property editor that you'll also find in UnrealEd. With this you will be able to change pretty much every variable of the GUI components.
+  <p />
+  The changes you make will be directly visible in the game, after you've made the changes you can export the whole GUI object by pressing <code>Ctrl+X</code>, you can simply paste this in the <em>defaultproperties</em> section.
+  <p />
+  <img alt="guiedit01.png" src="rsrc/Two/UserInterfaceDesign/guiedit01.png" />
+  <p />
+  It's also possible to add new components on the fly. To do this select a GUIMultiComponent (this is usually a GUIPage) and open the Menu section in the property editor. There you will find an entry <strong>Controls</strong>, when you select it you can press the <strong>Add</strong> button to add a new control.
+  <p />
+  <img alt="guiedit02.png" src="rsrc/Two/UserInterfaceDesign/guiedit02.png" />
+  <p />
+  It is possible to reuse an existing component, however this doesn't always work well. It's best you select a new component class and press the <strong>New</strong> button.
+  <p />
+  <img alt="guiedit03.png" src="rsrc/Two/UserInterfaceDesign/guiedit03.png" />
+  <p />
+  After you created the button, you will have to initialize it before it will show up on screen, you can do this by selecting the new entry in the controls list and press the <strong>Init</strong> button. After you made the changes you can press <code>Ctrl+X</code> or press the <strong>Export</strong> button to export the component to the clipboard. Note: you will still have to hook up the class variable for the new component.
+  <p />
+  There are a few things you can not edit, one of them being the context popup windows.
+  <p />
+  <p />
+  <h2><a name="BatchExport Issues"></a><a name="_BatchExport Issues"></a> BatchExport Issues </h2>
+  <p />
+  In v3323 exporting of subobjects has been fixes for the better of it. However in some cases not everything is exported. So it's best to use the released source code as reference and guidance instead of the exported code. You can get the source code releases <a href="USCRIPTDownload.html" class="twikiLink">here</a>.
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/UserInterfaceDesign.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 13:07:01 GMT -->
+</html>

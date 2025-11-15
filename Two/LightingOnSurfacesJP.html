@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/LightingOnSurfacesJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 13:27:01 GMT -->
+<head>
+  <title> UDN - Two - LightingOnSurfacesJP    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">LightingOnSurfacesJP  </b></div>
+  <div id="tooltext">
+  <a href="LightingOnSurfaces.html" class="twikiLink">English Translation</a><br><a href="LightingOnSurfacesKR.html" class="twikiLink">한국어</a><br>
+  
+  <!-- Two/LightingOnSurfacesJP -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <noautolink>
+  <p />
+  <h1><a name="サーフェスの照明"></a> サーフェスの照明 </h1>
+  <p />
+  <em>概要：多種多様なジオメトリに対してLightActors（ライトアクタ）が及ぼす効果についてご説明します。</em>
+  <p />
+  <em>修正ログ：最終更新者Jason Lents（DemiurgeStudios）により管理しやすいよう文書を分割。原著者Lode Vandevenne（Udnスタッフ）</em>
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="LightingOnSurfacesJP.html#サーフェスの照明"> サーフェスの照明</a> <ul>
+  <li> <a href="LightingOnSurfacesJP.html#はじめに"> はじめに</a>
+  </li> <li> <a href="LightingOnSurfacesJP.html#BSPの照明"> BSPの照明</a>
+  </li> <li> <a href="LightingOnSurfacesJP.html#StaticMesh（静的メッシュ）の照明"> StaticMesh（静的メッシュ）の照明</a>
+  </li> <li> <a href="LightingOnSurfacesJP.html#メッシュの照明"> メッシュの照明</a>
+  </li> <li> <a href="LightingOnSurfacesJP.html#テレインの照明"> テレインの照明</a>
+  </li> <li> <a href="LightingOnSurfacesJP.html#スプライトの照明"> スプライトの照明</a>
+  </li> <li> <a href="LightingOnSurfacesJP.html#パーティクルの照明"> パーティクルの照明</a>
+  </li> <li> <a href="LightingOnSurfacesJP.html#ムーバーの照明"> ムーバーの照明</a>
+  </li> <li> <a href="LightingOnSurfacesJP.html#関連文書"> 関連文書</a>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <h2><a name="はじめに"></a> はじめに </h2>
+  <p />
+  ライトがジオメトリに与える効果は、ジオメトリの種類により異なります。このページでは、他の機能を最大限に生かしつつ、アーチファクトに不満が残ることのないように、ライトの多様性を生かす方法を概説します。
+  <p />
+  <h2><a name="BSPの照明"></a> BSPの照明 </h2>
+  <p />
+  Rebuild Lighting（ライティングのリビルド）の処理中に、エディタによりBSPサーフェス上にライトマップが作成されます。これによってサーフェス上には非常に現実的なシャドウが生成されますが、細密なシャドウディテールがあれば更にリアルなシャドウになります。このライトマップの利点は見栄えが良いことです。一方欠点は、リアルタイムに演算処理できないところです。StaticMesh（静的メッシュ）のDisplay Properties（表示プロパティ）で、bShadowCast = True（有効）と設定されている場合、BSPサーフェスは他のBSPサーフェスやStaticMesh（静的メッシュ）からシャドウを受け取ります。
+  <p />
+  <img width="332" alt="lightingbsp.jpg" src="rsrc/Two/LightingOnSurfacesJP/lightingbsp.jpg" height="188" border="0"  />
+  <p />
+  ライトはソリッド、セミソリッドおよび非ソリッドのブラシによりさえぎられます。片面シートブラシの非表示側は光を通しますが、反対側は通しません。また、シートでない非ソリッドの内側に配置されたライトは透過します。
+  <p />
+  ライトは透光性サーフェスを透過しますが、モジュール化されたサーフェスを透過しません。ライトが透光性サーフェスを透過する際、全くサーフェスが無いかのように抜けていきます。透光性サーフェスは着色されません。ライトの光線がマスクされたテクスチャの非表示部を透過するため、シャドウはマスクされたテクスチャの形状を形取ります。
+  <p />
+  <img width="332" alt="maskedfence.jpg" src="rsrc/Two/LightingOnSurfacesJP/maskedfence.jpg" height="188" border="0"  />
+  <p />
+  ライトのリビルドにより、マスクしたテクスチャが黒くなってしまうことがあります。その場合は、[Unlit]（アンリット）と設定すれば元に戻ります。
+  <p />
+  照明によって透光性サーフェスの光の透過度も決まります。つまり、ライトが強くなるほど透明感が薄れてはっきり見える一方、ライトが弱くなるほど見えにくくなります。マップに透光性サーフェスがあり、透過度の強弱を調整したい場合は、周囲の照明に照らされないよう独立させて[Special Lit]（特殊リット）に設定し、[bSpecialLit]（b特殊リット）のライトを隣に追加して、このライトを用いて透過度を調整します。例えば下のイメージをご覧下さい。この部屋の中心には実は透過性サーフェスがあるのですが、全く照らされていません。非透光性サーフェスが黒くなってしまう状況なら、非表示となります。
+  <p />
+  <img width="182" alt="trans1.jpg" src="rsrc/Two/LightingOnSurfacesJP/trans1.jpg" height="142" border="0"  />
+  <p />
+  このライトのLightBrightness（ライトの明度）を高くするほど、サーフェスがはっきりと見えてきます。
+  <p />
+  <img width="182" alt="trans2.jpg" src="rsrc/Two/LightingOnSurfacesJP/trans2.jpg" height="142" border="0"  /> <img width="182" alt="trans3.jpg" src="rsrc/Two/LightingOnSurfacesJP/trans3.jpg" height="142" border="0"  /> <img width="182" alt="trans4.jpg" src="rsrc/Two/LightingOnSurfacesJP/trans4.jpg" height="142" border="0"  />
+  <p />
+  着色光なら、より一層の効果が狙えます。
+  <p />
+  <img width="182" alt="transred.jpg" src="rsrc/Two/LightingOnSurfacesJP/transred.jpg" height="142" border="0"  />
+  <p />
+  <h2><a name="StaticMesh（静的メッシュ）の照明"></a> StaticMesh（静的メッシュ）の照明 </h2>
+  <p />
+  StaticMesh（静的メッシュ）で最善の結果を得るには、Rebuild Lighting（ライティングのリビルド）が必要です。ライティングはStaticMesh（静的メッシュ）の各サーフェスごとに演算されるため、ライトに面しているサーフェスのみ照明されます。例えば、イメージにある小さなStaticMesh（静的メッシュ）のキューブを見てみましょう。
+  <p />
+  <img width="302" alt="redlighthw.jpg" src="rsrc/Two/LightingOnSurfacesJP/redlighthw.jpg" height="153" border="0"  />
+  <p />
+  これは、StaticMesh（静的メッシュ）上にライトマップがないので、BSPサーフェスのような上質のシャドウが得られていない例です。例えばこの画面では、左下にあるブラシはStaticMesh（静的メッシュ）で、上側のブラシはBSPです（つまり、いずれもデフォルトのエンジンテクスチャが貼られています）。シャドウを作成するために、ライトの正面にバーが設置されていますが、StaticMesh（静的メッシュ）上にはこのバーのシャドウが見えません。
+  <p />
+  <img width="302" alt="hwvsbsp.jpg" src="rsrc/Two/LightingOnSurfacesJP/hwvsbsp.jpg" height="153" border="0"  />
+  <p />
+  StaticMesh（静的メッシュ）を移動できる（つまり、アクタがDefault Properties（デフォルトのプロパティ）でbStatic = False（無効）と設定されている）場合、照明はStaticMesh（静的メッシュ）上でリアルタイムに演算されます。ですから、このメッシュがライトに向かって移動すれば、メッシュはより明るくなります。
+  <p />
+  StaticMesh（静的メッシュ）自身もBSP上にシャドウを生成しますが、他のStaticMesh（静的メッシュ）やそれ自体には生成しません。
+  <p />
+  StaticMeshの照明は、ピボットポイントにではなく境界ボックスに依存するため、ピボットボックスを自由に操作できます。
+  <p />
+  ブラシをStaticMesh（静的メッシュ）に変換すると、[Special Lit]（特殊リット）の設定が失われるため、StaticMesh（静的メッシュ）での[Special Lit]（特殊リット）使用は不可能です。一方、[Unlit]（アンリット）は作動しますが、BSPブラシ上でアンリットになっていたサーフェスはすべてStaticMesh（静的メッシュ）でもUnlit（アンリット）になります。
+  <p />
+  ライトのコロナにStaticMesh（静的メッシュ）を透過させたい（例えば、ランプの中にコロナを配置する）場合は、StaticMesh（静的メッシュ）のbBlockZeroExtentTraces（ゼロエクステントトレースをブロックする）をFalse（無効）に設定します。こうして初めてコロナが現れます。もちろん、[Display]（表示）の[bShadowCast]（bシャドウをかける）もFalse（無効）に設定しますので、ライトはStaticMesh（静的メッシュ）を透過することができます。
+  <p />
+  <img width="49" alt="blockzero.jpg" src="rsrc/Two/LightingOnSurfacesJP/blockzero.jpg" height="228" border="0"  /> <img width="75" alt="dontblockzero.jpg" src="rsrc/Two/LightingOnSurfacesJP/dontblockzero.jpg" height="228" border="0"  />
+  <p />
+  <h2><a name="メッシュの照明"></a> メッシュの照明 </h2>
+  <p />
+  メッシュ上での照明は、StaticMesh（静的メッシュ）の照明と非常に似ています。メッシュの照明はリアルタイムで行います。
+  <p />
+  <img width="315" alt="meshlighting.jpg" src="rsrc/Two/LightingOnSurfacesJP/meshlighting.jpg" height="177" border="0"  />
+  <p />
+  メッシュのプロパティで[Display]（表示）を展開します。そこで、AmbientGlow（環境輝度）を使ってメッシュを明るくできます。例えば、メッシュのAmbientGlow（環境輝度）を「128」に設定すると、「0」の時より遥かに明るくなります。AmbientGlow（環境輝度）を255となると、メッシュは最高明度に達します。イメージには、AmbientGlow（環境輝度）が「0」、「128」、そして「255」の例が表示されています。
+  <p />
+  <img width="290" alt="ambientglow.jpg" src="rsrc/Two/LightingOnSurfacesJP/ambientglow.jpg" height="161" border="0"  />
+  <p />
+  また、[Display]（表示）にはbUnlit（bアンリット）プロパティもあります。これをTrue（有効）に設定すると、メッシュはすべての照明を無視し、その明るさはAmbientGlow（環境輝度）のみにより決まります。
+  <p />
+  <img width="290" alt="ambientglowunlit.jpg" src="rsrc/Two/LightingOnSurfacesJP/ambientglowunlit.jpg" height="161" border="0"  />
+  <p />
+  <h2><a name="テレインの照明"></a> テレインの照明 </h2>
+  <p />
+  テレインの照明で最も重要な方法はSunLight（太陽光）です。実際、SunLight（太陽光）はテレインに不可欠です。使わなければ、テレインは変化に乏しいつまらないものになってしまいます。例えば一番目のイメージでは、SunLight（太陽光）が無くAmbient Lighting（環境照明）だけです。二番目のイメージでは、SunLight（太陽光）とAmbient Lighting（環境照明）の両方が使われています。
+  <p />
+  <img width="252" alt="terrainlight1.jpg" src="rsrc/Two/LightingOnSurfacesJP/terrainlight1.jpg" height="177" border="0"  /> <img width="252" alt="terrainlight2.jpg" src="rsrc/Two/LightingOnSurfacesJP/terrainlight2.jpg" height="177" border="0"  />
+  <p />
+  Ambient Lighting（環境照明）（ZoneLight）は、テレインのシャドウ部分を明るくするのに使用します。通常の照明でもテレインは明るくなるのですが、それによりテレインを十分に照らすには無数のライトアクタが必要となります。
+  <p />
+  <h2><a name="スプライトの照明"></a> スプライトの照明 </h2>
+  <p />
+  スプライトは完全に照明を無視した、常に最高輝度のものです。エディタでは、LightType（ライトの種類）の設定をLT_Noneとさえしなければ、スプライトはLightColor（ライトの色）で設定されているのと同色になります。これはエディタ内のみで有効で、ゲームでは利用できません。
+  <p />
+  以前は[Display]（表示）の[ScaleGlow]（スケール輝度）の設定でスプライトの明るさを調整できましたが、777では故障しています。
+  <p />
+  スプライトの照明は、例えばライトアクタのシンボルである電球などのように、ゲームではなく主にエディタのみに使用されるため、さほど重要ではありません。。
+  <p />
+  <h2><a name="パーティクルの照明"></a> パーティクルの照明 </h2>
+  <p />
+  パーティクルはすべての照明を無視しますが、特定の部屋の照明にあうように、明るさや色を設定できます。本件については、UDNの<a href="EmittersReference.html" class="twikiLink">EmittersReference</a>（エミッタのリファレンス）でご説明します。
+  <p />
+  <h2><a name="ムーバーの照明"></a> ムーバーの照明 </h2>
+  <p />
+  ムーバーはもともとbStatic = False（無効）と設定されたStaticMesh（静的メッシュ）なので、ムーバーの照明はStaticMesh（静的メッシュ）と同様です。
+  <p />
+  ムーバーは自動的に[DynamicLightMover]（ダイナミック ライトムーバー）になるため、[bDynamicLightMover]（bダイナミック ライトムーバー）のプロパティを設定する必要はありません。また、[BrushRayTraceKey]（ブラシのレイトレース キー）や[WorldRayTraceKey]（ワールド レイトレース キー）のプロパティでは何もする必要はなく、これらの設定は無視して結構です。
+  <p />
+  BSP上のムーバーのシャドウは移動しないため、シャドウを完全に消したい場合は、 ムーバーの[Display]（表示）プロパティにあるbShadowCast（bシャドウをかける）の設定を[False]（無効）にして下さい。
+  <p />
+  <h2><a name="関連文書"></a> 関連文書 </h2>
+  <p />
+  Unreal Edのライトアクタや標準ライトの詳細については、次の文書もご参照下さい。
+  <p />
+  <a href="LightingBasicsJP.html" class="twikiLink">「ライティングの基本」</a> - 全ライティング関連文書の項目リスト
+  <p />
+  <a href="UsingLightsJP.html" class="twikiLink">「ライトの使用方法」</a> - ライトの設定方法、およびその関連機能についての総合ガイド
+  <p />
+  <a href="TypesOfLightsJP.html" class="twikiLink">「ライトの種類」</a> - さまざまな種類のライトアクタとライトソースのガイド
+  <p />
+  <a href="LightingReference.html" class="twikiLink">LightingReference</a> （ライティングの参照） - LightColor（ライトの色）とライティング プロパティの総合リファレンス
+  <p />
+  <a href="SpecialLightingFeatures.html" class="twikiLink">SpecialLightingFeatures</a>（特殊ライティング機能） - 特殊ライティング機能の設定方法を示したチュートリアル
+  <p />
+  <p />
+  </noautolink>
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/LightingOnSurfacesJP.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 13:27:01 GMT -->
+</html>

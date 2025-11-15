@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/LevelOptimizationTerrain.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:53:51 GMT -->
+<head>
+  <title> UDN - Two - LevelOptimizationTerrain    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">LevelOptimizationTerrain  </b></div>
+  <div id="tooltext">
+  <p />
+  
+  <!-- Two/LevelOptimizationTerrain -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="Level Optimization - Terrain"></a> Level Optimization - Terrain </h1>
+  <p />
+  <em>Document Summary: A detailed description on how to optimize Terrain in your level.</em>
+  <p />
+  <em>Document Changelog: Last updated by Michiel Hendriks, minor text changes. Previous update by Jason Lentz (DemiurgeStudios<sup>?</sup>), to break up in to smaller docs. Original authors were Tomasz Jachimczak (<a href="https://udn.epicgames.com/Main/UdnStaff" class="restricted" class="restricted" class="twikiLink">UdnStaff</a>) and Jason Lentz (DemiurgeStudios<sup>?</sup>).</em>
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="LevelOptimizationTerrain.html#Level Optimization - Terrain"> Level Optimization - Terrain</a> <ul>
+  <li> <a href="LevelOptimizationTerrain.html#Introduction"> Introduction</a>
+  </li> <li> <a href="LevelOptimizationTerrain.html#Setting an Initial Size"> Setting an Initial Size</a>
+  </li> <li> <a href="LevelOptimizationTerrain.html#Invisibility Tool"> Invisibility Tool </a>
+  </li> <li> <a href="LevelOptimizationTerrain.html#Optimizing Layers"> Optimizing Layers</a>
+  </li> <li> <a href="LevelOptimizationTerrain.html#Terrain _SectorSize"> Terrain SectorSize</a>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <h2><a name="Introduction"></a> Introduction </h2>
+  <p />
+  Terrain geometry falls between Static Meshes and BSP as far as rendering and collision efficiency. There isn't a whole lot that can be done to optimize Terrain with respect to collision, but there are a few things to be aware of to optimize for rendering. This document shows what aspects of Terrain can be optimized and how best to optimize them.
+  <p />
+  This document is part of a collection of documents on <a href="LevelOptimization.html" class="twikiLink">LevelOptimization</a>, but sure to read the others.
+  <p />
+  <h2><a name="Setting an Initial Size"></a> Setting an Initial Size </h2>
+  <p />
+  The first step in optimizing your terrain is selecting the right resolution for it. By default, terrain is 256x256, but sometimes a lower resolution will suffice.
+  <p />
+  <img width="459" alt="cut_window_new_terrain.jpg" src="rsrc/Two/LevelOptimizationTerrain/cut_window_new_terrain.jpg" height="308" border="0"  />
+  <p />
+  You may want to use terrain only in a small section of the world. For instance, if you are planning to use terrain to cover a smaller area, such as a small oblong cavern, a 128x64 sized terrain may be all you need. Unfortunately, since terrain sizes should be kept at powers of 2, you can't get too specific about the size of terrain you wish to use when creating it.
+  <p />
+  If you do need to change the resolution of your Terrain either because of performance issues or because of file size issues you will need a G16 file editor. Fortunately Martin Bell has been kind enough to put together such a tool and has posted if on his website.
+  <p />
+  You can download this tool from Martin Bell's site: <a href="http://homepage.ntlworld.com/martingbell/ut2003/" target="_top">http://homepage.ntlworld.com/martingbell/ut2003/</a>
+  <p />
+  <h2><a name="Invisibility Tool"></a> Invisibility Tool </h2>
+  <p />
+  Another `fine tuning' tool for optimizing the terrain is the Visibility tool in the Terrain Editor.
+  <p />
+  <img width="500" alt="cut_window_terrain_visibility.jpg" src="rsrc/Two/LevelOptimizationTerrain/cut_window_terrain_visibility.jpg" height="369" border="0"  />
+  <p />
+  By selecting this tool and highlighting the terrain map you want to hide sections of, you can turn patches of terrain triangles invisible by right clicking with the mouse. If you turn too much invisible, you can simply left click to turn those triangles back to visible.  Note that the maximum radius can be altered to change the affected area so it is possible to hide large patches with a single click, or by setting the maximum radius to one, you can hide the triangles on a per triangle basis. Triangles that are turned invisible will never be considered for rendering.
+  <p />
+  <h2><a name="Optimizing Layers"></a> Optimizing Layers </h2>
+  <p />
+  Another way that Terrain can slow down the rendering of a scene is in the complexity of the texture layers for the Terrain. Having multiple layers of texture painted across an area of Terrain will cause that area to be rendered in multiple passes -how many passes depends on the graphics card you are dealing with on the end users machine. For example, if you've blended together 3 different Terrain Layer Textures on one Sector, that Sector could be rendered in as many as 3 passes.
+  <p />
+  The Terrain Editor is somewhat smart in that it will not render other textures that are totally obscured by a Layer that is completely opaque, but it is better to just have Terrain Layers painted only where you really want them. One of the tools in the Terrain Editor that helps you see where you have and have not painted a Terrain Layer is the Show Grid button.
+  <p />
+  <img width="500" alt="terrain_grid_toggle.jpg" src="rsrc/Two/LevelOptimizationTerrain/terrain_grid_toggle.jpg" height="528" border="0"  />
+  <p />
+  With this pull down menu, you can select individual layers and see where these layers are being used on your Terrain. By reducing the number of layers on a particular patch of Terrain will decrease the Depth Complexity of your scene and thus allow your scene to render faster and more efficiently.
+  <p />
+  <h2><a name="Terrain _SectorSize"></a> Terrain SectorSize </h2>
+  <p />
+   Terrain is almost as fast as BSP for collision and when being occluded from the renderer, it disappears in blocks (16x16 quad blocks by default), much like BSP disappearing by nodes. With Terrain though, you get to specify how large (or small) these nodes are by setting the <strong>Terrain SectorSize.</strong>
+  <p />
+  By default, the Terrain SectorSize (located at the bottom of the Terrain Properties) is set to be at 16. This means that when Terrain is being culled it will be culled by 16x16 quad blocks or sectors. Below you can see where three 16x16 sectors are being occluded. By an Antiportal (shaded in green) that totally obscures those three sectors
+  <p />
+  <img width="400" alt="terrain_occluded.jpg" src="rsrc/Two/LevelOptimizationTerrain/terrain_occluded.jpg" height="324" border="0"  />
+  <p />
+  To determine the best Terrain SectorSize for your level involves a little bit of trial and error. I recommend tinkering with the SectorSize settings as a final step and you have everything in your environment laid out. This won't change any of the functionality or appearance of your Terrain but you may find that increasing or decreasing the SectorSize will result in over all faster fps.
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/LevelOptimizationTerrain.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:53:53 GMT -->
+</html>

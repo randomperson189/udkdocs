@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/MaterialsEnvironmentMaps.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 13:13:41 GMT -->
+<head>
+  <title> UDN - Two - MaterialsEnvironmentMaps    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">MaterialsEnvironmentMaps  </b></div>
+  <div id="tooltext">
+  <p />
+  
+  <!-- Two/MaterialsEnvironmentMaps -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="Environment Maps"></a> Environment Maps </h1>
+  <p />
+  <em>Document Summary: A guide and reference to setting up Environment Map and Cube Map Materials.</em>
+  <p />
+  <em>Document Changelog: Last updated by Richard Nalezynski (VirtualHeroes<sup>?</sup>).  Original author was Jason Lentz (DemiurgeStudios<sup>?</sup>).</em>
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="MaterialsEnvironmentMaps.html#Environment Maps"> Environment Maps</a> <ul>
+  <li> <a href="MaterialsEnvironmentMaps.html#Introduction"> Introduction</a>
+  </li> <li> <a href="MaterialsEnvironmentMaps.html#Cubemap"> Cubemap</a>
+  </li> <li> <a href="MaterialsEnvironmentMaps.html#TexEnvMap"> TexEnvMap</a>
+  </li> <li> <a href="MaterialsEnvironmentMaps.html#Example Map and Other Material Classes"> Example Map and Other Material Classes</a>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <h2><a name="Introduction"></a> Introduction </h2>
+  <p />
+  To create an Environment Map you will need two different types of Materials: a Cubemap and a TexEnvMap. An Environment Map is a texture that will appear to reflect an environment based on the orientation and position of the Mesh that it is applied to. This document will walk you through the steps for creating an Environment Map.
+  <p />
+  <h2><a name="Cubemap"></a> Cubemap </h2>
+  <p />
+  A Cubemap is needed for the TexEnvMap.  Create the new Cubemap, then in Cubemap --> Faces you have to set the 6 textures used for the &lt;nopEnvironmentMap.  These textures are 6 directions in which you can look: north, east, south, west, up and down, or the 6 faces of a cube.  To create them you can just create black textures with a large blurry white dot for a shiny effect, or you can take 6 screenshots in the 6 directions in your map.  The easiest way to do this is to press Alt-Enter to go to windowed mode, enter "SETRES 256x256" in the console (or 512x512 if you want huge textures).  In UnrealEd<sup>?</sup>, use the NumPad<sup>?</sup> keys 0 through 5 to change the camera rotation to match the 6 views needed for the cube map. So just go where you want the shots from, press 0, F9, 1, F9 etc. until you have all 6 shots. NumPad<sup>?</sup> 6 returns the view to normal.
+  <p />
+  <font color="#ff0000">NOTE!</font>
+  If you are using the <a href="UnrealEngine2Runtime.html" class="twikiLink">UnrealEngine2Runtime</a>, the Numpad keys 0 through 6 are set by default in User.ini. Otherwise, the keys will have to be manually entered into User.ini (search for NumPad0<sup>?</sup>, NumPad1<sup>?</sup>, NumPad2<sup>?</sup>, NumPad3<sup>?</sup>, NumPad5<sup>?</sup>, NumPad5<sup>?</sup>, NumPad6<sup>?</sup>).  Replace each line with the following:
+  <p />
+  <pre>
+  NumPad0&#61;set playercontroller bZeroRoll False &#124; set playercontroller rotation (pitch&#61;0,yaw&#61;0,roll&#61;16384)
+  NumPad1&#61;set playercontroller bZeroRoll False &#124; set playercontroller rotation (pitch&#61;0,yaw&#61;32768,roll&#61;-16384)
+  NumPad2&#61;set playercontroller bZeroRoll False &#124; set playercontroller rotation (pitch&#61;0,yaw&#61;16384,roll&#61;32768)
+  NumPad3&#61;set playercontroller bZeroRoll False &#124; set playercontroller rotation (pitch&#61;0,yaw&#61;-16384,roll&#61;0)
+  NumPad4&#61;set playercontroller bZeroRoll False &#124; set playercontroller rotation (pitch&#61;16384,yaw&#61;0,roll&#61;16384)
+  NumPad5&#61;set playercontroller bZeroRoll False &#124; set playercontroller rotation (pitch&#61;-16384,yaw&#61;32768,roll&#61;16384)
+  NumPad6&#61;set playercontroller bZeroRoll False &#124; set playercontroller rotation (pitch&#61;0,yaw&#61;0,roll&#61;0)
+  </pre>
+  <p />
+  <p />
+  <img width="341" alt="texenvmap.jpg" src="rsrc/Two/MaterialsEnvironmentMaps/texenvmap.jpg" height="686" border="0"  />
+  <p />
+  If you took screenshots, make sure the textures are rotated correctly, and for a better overview give their names the same number as the numbers used in the Cubemap Properties.  [0] to [3] are the 4 sides, [4] is the sky or ceiling and [5] is the ground or floor.  This screenshot shows how to rotate and number the textures:
+  <p />
+  <img width="397" alt="environment.jpg" src="rsrc/Two/MaterialsEnvironmentMaps/environment.jpg" height="646" border="0"  />
+  <p />
+  <img width="300" alt="faces.jpg" src="rsrc/Two/MaterialsEnvironmentMaps/faces.jpg" height="211" border="0"  />
+  <p />
+  <h2><a name="TexEnvMap"></a><a name="_TexEnvMap"></a> TexEnvMap </h2>
+  <p />
+  A Cubemap isn't an EnvironmentMap yet, it's just a placeholder for 6 textures.  The TexEnvMap uses the Cubemap for an EnvironmentMap.  When you create a new TexEnvMap, select a Cubemap in the Texture Browser, and then click on Material and press the Use button.  To preview the EnvironmentMap click the cube or sphere button of the preview window.
+  <p />
+  <img width="446" alt="texenvmap2.jpg" src="rsrc/Two/MaterialsEnvironmentMaps/texenvmap2.jpg" height="49" border="0"  />
+  <p />
+  If the EnvMapType is EM_CameraSpace, the ground will be in front of you, but if you set it to EM_WorldSpace it'll be at the bottom:
+  <p />
+  <img width="256" alt="worldspace.jpg" src="rsrc/Two/MaterialsEnvironmentMaps/worldspace.jpg" height="256" border="0"  />
+  <p />
+  You can use TexEnvMap materials on Static Meshes as well as on BSP Surfaces.  A TexEnvMap looks very shiny because it only has the EnvironmentMap, with other materials, for example Shaders, you can blend the EnvironmentMap on a flat texture.
+  <p />
+  <hr />
+  <p />
+  <h2><a name="Example Map and Other Material Classes"></a> Example Map and Other Material Classes </h2>
+  <p />
+  <img width="400" alt="EPICmaterials1.jpg" src="rsrc/Two/MaterialsEnvironmentMaps/EPICmaterials1.jpg" height="292" border="0"  />
+  <p />
+  For an example map that shows many different complex Materials in action, take a look at this document:
+  <p />
+  <a href="ExampleMapsEPIC.html#Materials_Example_Map" class="twikiAnchorLink">ExampleMapsEPIC</a> <em>(The example map is at the bottom of the page)</em>
+  <p />
+  To return back the main Materials page, click <a href="MaterialTutorial.html" class="twikiLink">here</a> &lt;--
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/MaterialsEnvironmentMaps.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 13:13:41 GMT -->
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/RuntimeMapProcess.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:47:23 GMT -->
+<head>
+  <title> UDN - Two - RuntimeMapProcess    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">RuntimeMapProcess  </b></div>
+  <div id="tooltext">
+  <a href="RuntimeMapProcessJP.html" class="twikiLink">日本語訳</a><br>
+  
+  <!-- Two/RuntimeMapProcess -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="Runtime Map Process"></a> Runtime Map Process </h1>
+  <p />
+  <em>Document Summary: Here you will see a detailed look at the process for creating some of the features of the EM_RunTime map.</em>
+  <p />
+  <em>Document Changelog: Last updated by Jason Lentz (DemiurgeStudios<sup>?</sup>), for creation purposes. Original author was Jason Lentz (DemiurgeStudios<sup>?</sup>).</em>
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="RuntimeMapProcess.html#Runtime Map Process"> Runtime Map Process</a> <ul>
+  <li> <a href="RuntimeMapProcess.html#Introduction"> Introduction</a>
+  </li> <li> <a href="RuntimeMapProcess.html#Purpose of the EM_RunTime Map"> Purpose of the EM_RunTime Map</a>
+  </li> <li> <a href="RuntimeMapProcess.html#The Terrain"> The Terrain</a> <ul>
+  <li> <a href="RuntimeMapProcess.html#Changing Resolution"> Changing Resolution</a>
+  </li> <li> <a href="RuntimeMapProcess.html#Restricting Vistas with Terrain"> Restricting Vistas with Terrain</a>
+  </li> <li> <a href="RuntimeMapProcess.html#Hiding Texture Tiling"> Hiding Texture Tiling</a>
+  </li></ul>
+  </li> <li> <a href="RuntimeMapProcess.html#StaticMesh Guidelines"> StaticMesh Guidelines</a> <ul>
+  <li> <a href="RuntimeMapProcess.html#Size Matters"> Size Matters</a>
+  </li> <li> <a href="RuntimeMapProcess.html#Modular Design"> Modular Design</a>
+  </li> <li> <a href="RuntimeMapProcess.html#Collision"> Collision</a>
+  </li></ul>
+  </li> <li> <a href="RuntimeMapProcess.html#Setting up the Water"> Setting up the Water</a> <ul>
+  <li> <a href="RuntimeMapProcess.html#Advantages of the _StaticMesh water surface"> Advantages of the StaticMesh water surface</a>
+  </li> <li> <a href="RuntimeMapProcess.html#Advantages of the _FluidSurface water surface"> Advantages of the FluidSurface water surface</a>
+  </li> <li> <a href="RuntimeMapProcess.html#Final Decision"> Final Decision</a>
+  </li></ul>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <img width="500" alt="runtime_map.jpg" src="rsrc/Two/RuntimeMapProcess/runtime_map.jpg" height="297" border="0"  />
+  <p />
+  <h2><a name="Introduction"></a> Introduction </h2>
+  <p />
+  The purpose of this doc is to explain the process of how the EM_RunTime map was created and reasoning behind the choices that were made in the map. Specifically, this doc takes a close look at the StaticMeshes, creation of various bodies of water, and setting up the Terrain. If you are new to the Unreal Engine or you are just curious to see someone else's thought process, then this doc should prove to be very enlightening.
+  <p />
+  To download the Runtime build and map click on the following link:
+  <p />
+  <a href="rsrc/Powered/UnrealEngine2Runtime/index.html" target="_top">http://udn.epicgames.com/pub/Powered/UnrealEngine2Runtime/</a>
+  <p />
+  <p />
+  <h2><a name="Purpose of the EM_RunTime Map"></a> Purpose of the EM_RunTime Map </h2>
+  <p />
+  First of all, you should know the purpose of the EM_RunTime map is to demonstrate what can be done with the Unreal Engine (specifically using the Runtime build) to people who may not be familiar with games and/or are curious to see what kind of magic can be done with the engine.
+  <p />
+  In the EM_RunTime map are a variety of effects and elements that can be used in different ways. To see more about how the different elements can be used together, take a look at the <a href="BreakAwayExample.html" class="twikiLink">BreakAwayExample</a> doc.
+  <p />
+  <h2><a name="The Terrain"></a> The Terrain </h2>
+  <p />
+  <h3><a name="Changing Resolution"></a> Changing Resolution </h3>
+  Setting up the Terrain was one of the first things done for the EM_RunTime map. At first a lower resolution terrain was used (64x64) since it was expected that the majority of the Terrain would be able to be seen from most view points. Later it was decided that a 64x64 Terrain was too polygonal, and a new higher resolution terrain was necessary. Below you can see the difference between the old terrain and the new.
+  <p />
+  <img width="500" alt="lo_vs_high.gif" src="rsrc/Two/RuntimeMapProcess/lo_vs_high.gif" height="170" border="0"  />
+  <p />
+  Since much of the Terrain was already roughly laid out, it was not worth it to start over. Instead, the "UnrealEd3 G16 file editor" (created by <a href="http://homepage.ntlworld.com/martingbell/" target="_top">Martin Bell</a> was used to double the resolution of the Terrain Height Map and then it was re-imported, scaled in the TerrainInfo, and then smoothed over using the Terrain editor in Unreal Ed.
+  <p />
+  <img width="341" alt="G16tool.jpg" src="rsrc/Two/RuntimeMapProcess/G16tool.jpg" height="351" border="0"  />
+  <p />
+  You can download this tool from Martin Bell's site: <a href="http://homepage.ntlworld.com/martingbell/ut2003/" target="_top">http://homepage.ntlworld.com/martingbell/ut2003/</a>
+  <p />
+  <h3><a name="Restricting Vistas with Terrain"></a> Restricting Vistas with Terrain </h3>
+  <p />
+  As mentioned above, the Terrain resolution was increased which means that more triangles were used per section of the Terrain. This change meant that it was not longer acceptable to be able to see as much of the Terrain as we could before since the triangle count had essentially quadrupled. So to reduce the amount of visible Terrain, a berm was raised in the Terrain to separate the farm portion of the Terrain from the wide open landscape. Then beneath the berm, an Antiportal was added to make sure that all the Terrain Sectors that were behind the berm would be properly occluded and not drawn by the renderer.
+  <p />
+  <img width="500" alt="anitportal_berm.jpg" src="rsrc/Two/RuntimeMapProcess/anitportal_berm.jpg" height="319" border="0"  />
+  <p />
+  Above you can seen the Antiportal as the orange wirefame box beneath the Terrain that will hide anything that is entirely occluded by that box.
+  <p />
+  <h3><a name="Hiding Texture Tiling"></a> Hiding Texture Tiling </h3>
+  <p />
+  To minimize download size, the textures for the terrain were also kept to a smaller size than is usually used in a typical game. No matter what resolution image you choose though, there will always be some balance between scaling the image across the terrain and noticeable tiling across the terrain. This balance was achieved in the EM_RunTime map by first setting the terrain textures to an appropriate scale so they looked good at the viewer's feet, and then additional Terrain layers were added to blend away the tiling.
+  <p />
+  <img width="500" alt="tiling_comparison.jpg" src="rsrc/Two/RuntimeMapProcess/tiling_comparison.jpg" height="215" border="0"  />
+  <p />
+  Two techniques were used to reduce the noticeable tiling. <ul>
+  <li> layering entirely different textures at different opacities
+  </li> <li> layering the same texture, but rotated and scaled at different opacities
+  </li></ul>
+  <p />
+  In total there were 5 Layers used in the Terrain, 2 using the grass texture, 2 using the dirt texture, and one texture for the River bed.
+  <p />
+  Note that because you have great control of what textures are applied where on the Terrain, you can use the Painting Tool in the Terrain editor to create paths where there otherwise isn't one to help guide the viewers where you would like them to go.
+  <p />
+  <h2><a name="StaticMesh Guidelines"></a><a name="_StaticMesh Guidelines"></a> StaticMesh Guidelines </h2>
+  <p />
+  There are several things to consider when creating a mesh such as how many materials will be used, how much texture memory can be devoted to the mesh, how many triangles it will be, what sort of collision it has, as well as how it will work with the rest of the level. Here you will find a couple of guidelines for creating StaticMeshes for your own levels.
+  <p />
+  For more information on StaticMeshes, see the <a href="StaticMeshesTutorial.html" class="twikiLink">StaticMeshesTutorial</a>
+  <p />
+  <h3><a name="Size Matters"></a> Size Matters </h3>
+  <p />
+  When creating StaticMeshes, there are many things to consider for performance reasons, and often these considerations are influence by the end platform you intend on running on (X Box, Playstation, PC). The EM_RunTime map is intended to run on a PC platform. Most of the considerations taken into account on the EM_RunTime map can be applied to most any platform though.
+  <p />
+  First of all, the size of the meshes was a consideration, not in dimensions, but rather in number of triangles. Smaller is almost always better since the fewer triangles per mesh, the faster it will be to render, but sometimes it is better to have one larger mesh rather than several small ones. The wheat field is a good example of this.
+  <p />
+  <img width="500" alt="wheat_field.jpg" src="rsrc/Two/RuntimeMapProcess/wheat_field.jpg" height="181" border="0"  />
+  <p />
+  The wheat field could have been made up of several smaller copied StaticMeshes placed next to each other, but it would actually have rendered more slowly than if it was one entire mesh. This is because that there is some overhead for rending an individual mesh. So even though the scenes may have looked identical, the wheat field composed of one large mesh will render much faster than a wheat field composed of dozens and dozens of smaller meshes.
+  <p />
+  In general, StaticMeshes that are around 1,000 - 2,000 triangles are the ideal size, but this is merely a rule of thumb and to really find the optimal size for your meshes, you will want to work with your programmers in profiling the scene to find out what is best for your situation.
+  <p />
+  <h3><a name="Modular Design"></a> Modular Design </h3>
+  <p />
+  In the EM_RunTime map there wasn't a wide variety of StaticMeshes used and most of the meshes were custom meshes for only one use, so there wasn't a strong need for modular design. An example of it can be seen in the stonewall mesh.
+  <p />
+  <img width="500" alt="stone_wall.jpg" src="rsrc/Two/RuntimeMapProcess/stone_wall.jpg" height="193" border="0"  />
+  <p />
+  Each section of the wall is only 512 units long and is designed to laid down in seamless rows. Working in large powers of 2 (such as 128, 256, and 512) can greatly simplify a level designers task of laying down world geometry as it allows for StaticMeshes to snap perfectly to the grid allowing them to line up with other meshes built with modular design in mind.
+  <p />
+  This type of modular design was also used in the <a href="BreakAwayExample.html#BSP_Editing_Tools_and_Techniques" class="twikiAnchorLink">BSP section</a> of the EM_RunTime map. To read more about the principles of modular level design, take a look at the <a href="WorkflowAndModularity.html" class="twikiLink">WorkflowAndModularity</a> doc.
+  <p />
+  <h3><a name="Collision"></a> Collision </h3>
+  <p />
+  While StaticMeshes render quicker than any other geometry type, the do have their disadvantages -namely, they can be somewhat processor intensive when calculating for collisions. There are of course ways simplify StaticMesh collision. In the EM_RunTime map, all of the StaticMeshes were given simplified collision hulls (described in further detail in the <a href="ImportingKarmaActors.html" class="twikiLink">ImportingKarmaActors</a> doc). Then upon importing the ASEs make sure all of the collision properties are set as follows:
+  <p />
+  <img width="408" alt="collision_prop1.gif" src="rsrc/Two/RuntimeMapProcess/collision_prop1.gif" height="141" border="0"  />
+  <p />
+  This will cause actors to collide not with the geometry of the StaticMesh which is often quite complicated, but instead with the much simpler collision hull that you've created in the third party modeling program. Another advantage of this is that not only will the collision calculations be simplified, it will also make the file size of the StaticMesh package smaller since some data about collision is stored within the meshes.
+  <p />
+  Another way to simplify collision is just to turn off all collision in the actor if you never want to collide with it. The mesh used for the surface of the lake for instance, is set up to have all of its collision turned off in this manner.
+  <p />
+  <img width="408" alt="collision_prop2.gif" src="rsrc/Two/RuntimeMapProcess/collision_prop2.gif" height="141" border="0"  />
+  <p />
+  Also StaticMeshes used in DecoLayers, such as the bushes in the EM_RunTime map, will have no collision.
+  <p />
+  <h2><a name="Setting up the Water"></a> Setting up the Water </h2>
+  <p />
+  There was a fair bit of experimentation and back and forth with creating a good effect for the water surface. There were two main methods that were explored: <ul>
+  <li> A StaticMesh with tweaked texture coordinates
+  </li> <li> A FluidSurface
+  </li></ul>
+  <p />
+  <h3><a name="Advantages of the _StaticMesh water surface"></a> Advantages of the StaticMesh water surface </h3>
+  <p />
+  With the StaticMesh water surface, the UV coordinates for the mesh can be tweaked so that when a texture is applied to it (specifically a TexPanner Material), it appears as if the water is flowing along the shape of the body of water instead of just statically flowing in one straight direction. Also by using a specially designed StaticMesh, it will render more quickly as it will most likely have less triangles than a FluidSurface as well as having those triangles just naturally rendering faster as it is a StaticMesh
+  <p />
+  <h3><a name="Advantages of the _FluidSurface water surface"></a> Advantages of the FluidSurface water surface </h3>
+  <p />
+  A FluidSurface has the advantage of being interactive with the player creating for a more dynamic environment. This method of water surface also allows for adding ambient ripples coming from the source of the waterfall. For more examples of FluidSurfaces in actions take a look at some of the Unreal Tournament 2003 maps listed below: <ul>
+  <li> DM_Antalus.ut2 (out to the left exit from the central underground portion)
+  </li> <li> CTF_December.ut2 (beneath the boat)
+  </li></ul>
+  <p />
+  Or these maps that will run on the UDN Off Build 2226 <ul>
+  <li> Rising Water maps (<a href="ExampleMapsRisingWater.html" class="twikiLink">ExampleMapsRisingWater</a>)
+  </li></ul>
+  <p />
+  Also you can learn more about FluidSurfaces from the <a href="FluidSurfaceTutorial.html" class="twikiLink">FluidSurfaceTutorial</a> doc.
+  <p />
+  <h3><a name="Final Decision"></a> Final Decision </h3>
+  <p />
+  Ultimately it was decided that both types of water surfaces should be included so the advantages and disadvantages of both could seen for yourself. The lake uses a StaticMesh for the surface of the lake, and behind the wheat field a small FluidSurface pond is placed so that players can run through it and watch the waves.
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/RuntimeMapProcess.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:47:27 GMT -->
+</html>

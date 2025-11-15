@@ -1,0 +1,307 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/MakingACommandlet.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 13:06:58 GMT -->
+<head>
+  <title> UDN - Two - MakingACommandlet    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">MakingACommandlet  </b></div>
+  <div id="tooltext">
+  <p />
+  
+  <!-- Two/MakingACommandlet -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="Making a Commandlet"></a> Making a Commandlet </h1>
+  <p />
+  <em>Last updated by Michiel Hendriks, made a real document out of it. Created by somebody at DemiurgeStudios<sup>?</sup> .</em>
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="MakingACommandlet.html#Making a Commandlet"> Making a Commandlet</a> <ul>
+  <li> <a href="MakingACommandlet.html#Overview"> Overview</a>
+  </li> <li> <a href="MakingACommandlet.html#How To Make a Commandlet in Script"> How To Make a Commandlet in Script</a>
+  </li> <li> <a href="MakingACommandlet.html#Giving Users Some Help"> Giving Users Some Help</a>
+  </li> <li> <a href="MakingACommandlet.html#How To Use a Commandlet"> How To Use a Commandlet</a>
+  </li> <li> <a href="MakingACommandlet.html#Commandlet Listing"> Commandlet Listing</a> <ul>
+  <li> <a href="MakingACommandlet.html#HelpCmd"> HelpCmd</a>
+  </li> <li> <a href="MakingACommandlet.html#HelpOneLiner"> HelpOneLiner</a>
+  </li> <li> <a href="MakingACommandlet.html#HelpUsage"> HelpUsage</a>
+  </li> <li> <a href="MakingACommandlet.html#HelpWebLink"> HelpWebLink</a>
+  </li> <li> <a href="MakingACommandlet.html#Help Parmameters and Help Description"> Help Parmameters and Help Description</a>
+  </li> <li> <a href="MakingACommandlet.html#Log to Standard Out"> Log to Standard Out</a>
+  </li> <li> <a href="MakingACommandlet.html#IsServer, _IsClient, _IsEditor"> IsServer, IsClient, IsEditor</a>
+  </li> <li> <a href="MakingACommandlet.html#LazyLoad"> LazyLoad</a>
+  </li> <li> <a href="MakingACommandlet.html#Show Error Count"> Show Error Count</a>
+  </li> <li> <a href="MakingACommandlet.html#Show Banner"> Show Banner</a>
+  </li> <li> <a href="MakingACommandlet.html#Entry Point"> Entry Point</a>
+  </li> <li> <a href="MakingACommandlet.html#Native Commandlets"> Native Commandlets</a>
+  </li></ul>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <noautolink>
+  <p />
+  <p />
+  <h2><a name="Overview"></a> Overview </h2>
+  <p />
+  Commandlets are (often small) programs that make use of the UnrealEngine to perform certain functions. For example the UnrealScript compiler and the dedicated server are executed via a commandlet. Commandlets can be both native and script based.
+  <p />
+  <h2><a name="How To Make a Commandlet in Script"></a> How To Make a Commandlet in Script </h2>
+  <p />
+  Create a script class for your commandlet as seen below:
+  <p />
+  <pre>
+  class HelloWorldCommandlet extends Commandlet;
+  
+  event int Main( string Params )
+  {
+     log( &#34; hello world &#34; );
+  
+     return 0;
+  }
+  </pre>
+  <p />
+  <h2><a name="Giving Users Some Help"></a> Giving Users Some Help </h2>
+  <p />
+  Built into a commandlet is the ability to show help information about it, so that users can discover what it is and what options it supports. To make help information available for your commandlet, you need to add entries into the INT file that your commandlet resides in. If you package is in Core, then you need to modify Core.int for your help information to show up. Below is a sample setting for the "hello world" commandlet residing in Core.
+  <p />
+  <pre>
+  &#91;HelloWorldCommandlet]
+  HelpDescription&#61;&#34;This commandlet displays hello world&#34; HelpUsage&#61;&#34;gamename.exe helloworld&#34;
+  HelpWebLink&#61;&#34;https://udn.epicgames.com/bin/view/Three/MakingACommandlet&#34;
+  HelpParamNames&#91;0]&#61;&#34;param1&#34;
+  HelpParamDescriptions&#91;0]&#61;&#34;Ignored since helloworld doesn&#39;t need params&#34;
+  </pre>
+  <p />
+  Notice that the section name must include the <em>commandlet</em> as part of the class name. Without this, the commandlet wouldn't be found. To see how this information is used, run the following commands:
+  <p />
+  <pre>
+  game.exe help help
+  game.exe help list
+  game.exe help webhelp help
+  </pre>
+  <p />
+  <p />
+  <h2><a name="How To Use a Commandlet"></a> How To Use a Commandlet </h2>
+  <p />
+  Commandlets are executed from the <code>ucc.exe</code> command line utility, using the following syntax:
+  <pre>
+  UCC.exe package&#95;name.commandlet&#95;class&#95;name &#91;parm&#61;value]...
+  </pre>
+  <p />
+  For example:
+  <pre>
+  UCC.exe Core.HelloWorldCommandlet
+  UCC.exe Editor.MakeCommandlet
+  </pre>
+  <p />
+  In addition, if you list your commandlet in the public section of your package's localized text file (see <code>Engine.int</code> for example), then your commandlet can be executed without requiring a fully qualified name, for example:
+  <pre>
+  UCC.exe MakeCommandlet
+  </pre>
+  <p />
+  Example of a commandlet declaration (from <code>Engine.int</code>):
+  <pre>
+  &#91;Public]
+  Object&#61;(Name&#61;Engine.ServerCommandlet,Class&#61;Class,MetaClass&#61;Core.Commandlet)
+  </pre>
+  <p />
+  As a convenience, if a user tries to run a commandlet and the exact name he types isn't found, then <code>ucc.exe</code> appends the text "commandlet" onto the name and tries again.  Therefore, the following shortcuts perform identically to the above:
+  <pre>
+  UCC.exe Core.HelloWorld
+  UCC.exe Editor.Make
+  UCC.exe Make
+  </pre>
+  <p />
+  It is also perfectly valid to call the Main method of a commandlet class directly, for example from within the body of another commandlet. Commandlets are executed in a "raw" UnrealScript environment, in which the game isn't loaded, the client code isn't loaded, no levels are loaded, and no actors exist.
+  <p />
+  All commandlets are descendents of the Commandlet class that is defines as:
+  <pre>
+  class Commandlet
+     extends Object
+     abstract
+     transient
+     noexport
+     native;
+  </pre>
+  <p />
+  <p />
+  <h2><a name="Commandlet Listing"></a> Commandlet Listing </h2>
+  <p />
+  Here are the general UnrealScript commandlets that are available...
+  <p />
+  <h3><a name="HelpCmd"></a> HelpCmd </h3>
+  <code>var localized string HelpCmd;</code>
+  <p />
+  Command name to show for <code>ucc help</code>. This name can then be used to get additional information via <code>ucc help _name_</code>.
+  <p />
+  <h3><a name="HelpOneLiner"></a> HelpOneLiner </h3>
+  <code>var localized string HelpOneLiner;</code>
+  <p />
+  Command description to show for <code>ucc help</code>. This will be shown in the overview of all commandlets.
+  <p />
+  <h3><a name="HelpUsage"></a> HelpUsage </h3>
+  <code>var localized string HelpUsage;</code>
+  <p />
+  Usage template to show for <code>ucc help _name_</code>. The line will be shown after the "Usage:" in the help overview.
+  <pre>
+  Usage:
+     ucc server map.unr&#91;?game&#61;gametype] &#91;-option...] &#91;parm&#61;value]...
+  </pre>
+  <p />
+  <h3><a name="HelpWebLink"></a> HelpWebLink </h3>
+  <code>var localized string HelpWebLink;</code>
+  <p />
+  Hyperlink for more info. This will be added to the detailed commandlet help info like this:
+  <pre>
+  For more info, see
+     http://unreal.epicgames.com/servertips.htm
+  </pre>
+  <p />
+  <h3><a name="Help Parmameters and Help Description"></a> Help Parmameters and Help Description </h3>
+  <pre>
+  var localized string HelpParm&#91;16];
+  var localized string HelpDesc&#91;16];
+  </pre>
+  <p />
+  Parameters and descriptions for <code>ucc help _name_</code>.
+  <pre>
+  Parameters:
+     Log              Specify the log file to generate
+     AllAdmin         Give all players admin priveleges
+  </pre>
+  <p />
+  <h3><a name="Log to Standard Out"></a> Log to Standard Out </h3>
+  <code>var bool LogToStdout;</code>
+  <p />
+  Whether to redirect log output to console stdout. (Default: <code>true</code>)
+  <p />
+  <h3><a name="IsServer, _IsClient, _IsEditor"></a> IsServer, IsClient, IsEditor </h3>
+  <code>var bool IsServer, IsClient, IsEditor;</code>
+  <p />
+  Whether to load objects required in server, client, and editor context. (Default: <code>true</code> for all)
+  <p />
+  <h3><a name="LazyLoad"></a> LazyLoad </h3>
+  <code>var bool LazyLoad;</code>
+  <p />
+  Whether to load objects immediately, or only on demand. (Default: <code>true</code>)
+  <p />
+  <h3><a name="Show Error Count"></a> Show Error Count </h3>
+  <code>var bool ShowErrorCount;</code>
+  <p />
+  Whether to show standard error and warning count on exit. When this is set to <code>true</code> the following line is printed at the end of execution (in case of no errors):
+  <pre>
+  Success - 0 error(s), 0 warning(s)
+  </pre>
+  (Default: <code>false</code>)
+  <p />
+  <h3><a name="Show Banner"></a> Show Banner </h3>
+  <code>var bool ShowBanner;</code>
+  <p />
+  Whether to show Unreal banner on startup. When set to <code>true</code> the following message will be printed in the beginning:
+  <pre>
+  &#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;
+  ucc.exe: UnrealOS execution environment
+  Copyright 2001 Epic Games Inc
+  &#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;&#61;
+  </pre>
+  (Default: <code>true</code>)
+  <p />
+  <h3><a name="Entry Point"></a> Entry Point </h3>
+  <code>native event int Main( string Parms );</code>
+  <p />
+  Entry point. This is the commandlets' entry point. <code>Parms</code> will contain the arguments passed to the commandlet on the command-line. For example:
+  <pre>
+  ucc server MyMap?game&#61;mygame.gametype -alladmin
+  </pre>
+  <code>Param</code> will have the content:
+  <pre>
+  MyMap?game&#61;mygame.gametype -alladmin
+  </pre>
+  <p />
+  The return value of this function is the error\exit code passed back to the shell.
+  <p />
+  <h3><a name="Native Commandlets"></a> Native Commandlets </h3>
+  <p />
+  Most of the native commandlets are found in the <a href="https://udn.epicgames.com/Two/CommandletList" class="restricted" class="restricted" class="twikiLink">Commandlet List</a>.
+  <p />
+  </noautolink>
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/MakingACommandlet.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 13:06:58 GMT -->
+</html>

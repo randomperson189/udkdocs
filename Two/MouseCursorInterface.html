@@ -1,0 +1,301 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/MouseCursorInterface.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:47:35 GMT -->
+<head>
+  <title> UDN - Two - MouseCursorInterface    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">MouseCursorInterface  </b></div>
+  <div id="tooltext">
+  <p />
+  
+  <!-- Two/MouseCursorInterface -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="Mouse Cursor Interface Example"></a> Mouse Cursor Interface Example </h1>
+  <p />
+  <em>Last updated by Martin Actor (<a href="https://udn.epicgames.com/Main/UdnStaff" class="restricted" class="restricted" class="twikiLink">UdnStaff</a>), because to not to would be a crime against coolness. Original author was Martin Actor (<a href="https://udn.epicgames.com/Main/UdnStaff" class="restricted" class="restricted" class="twikiLink">UdnStaff</a>).</em>
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="MouseCursorInterface.html#Mouse Cursor Interface Example"> Mouse Cursor Interface Example</a> <ul>
+  <li> <a href="MouseCursorInterface.html#Introduction"> Introduction</a>
+  </li> <li> <a href="MouseCursorInterface.html#Preparation"> Preparation</a>
+  </li> <li> <a href="MouseCursorInterface.html#Execution"> Execution</a> <ul>
+  <li> <a href="MouseCursorInterface.html#PlayerController"> PlayerController</a>
+  </li> <li> <a href="MouseCursorInterface.html#HUD"> HUD</a>
+  </li></ul>
+  </li> <li> <a href="MouseCursorInterface.html#Genesis"> Genesis</a>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <h2><a name="Introduction"></a> Introduction </h2>
+  <p />
+  This document is to demonstrate how to add a mouse cursor interface to your project, wholly in UnrealScript. While there may be room for optimization (moving some UnrealScript to native, for example), the purpose of this document is to show just how simple the task can be made to be.
+  <p />
+  So, if you're looking for a way to have a player interface using the mouse as a mouse (yet still within the normal 3d world), this document will surely interest you.
+  <p />
+  It is worthy to note that the code presented in this document was written with the runtime build (2226).
+  <p />
+  Also, if you aren't starting a new project from scratch and are just interested in the implemention, feel free to skip to the next section.
+  <p />
+  <h2><a name="Preparation"></a> Preparation </h2>
+  <p />
+  The following are classes that we will be subclassing (extending). Provided with each class listed is a short explanation of what the class does and why we'll be subclassing it.
+  <p />
+  <code><b>PlayerController</b></code> - this class is where the logic for player control resides. Equally as important, because it's good to know how our code will work over a network, it houses the network handling for player movement commands. What makes this important is that our code will be entirely client side, meaning that in a network game, the server knows nothing about what the local player is doing in regards to the mouse cursor interface. The player movement control code is segregated into a number of different states, depending on the physics mode the player's Pawn is in. Our subclass will have a new state to encompass the new interface method.
+  <p />
+  <code><b>HUD</b></code> - this class is where all manual screen rendering is done in-game (for things like health displays, ammo, objectives, inventory, etc.). We'll be subclassing this class in order to handle rendering of a mouse cursor as well as telling our custom PlayerController class the size of the screen.
+  <p />
+  <h2><a name="Execution"></a> Execution </h2>
+  <p />
+  Though it may seem like the following would work by itself, the code below is intended to be either added to (to fill out other project implementation requirements) or to be added to your current (and relevant) custom classes.
+  <p />
+  <h3><a name="PlayerController"></a><a name="_PlayerController"></a> PlayerController </h3>
+  <p />
+  This is the more heavy duty class (as opposed to the HUD class), code-wise. If you're starting from scratch, in your custom package directory, under the Classes directory, create an UnrealScript file (call it CustomPlayer.uc if you want an example). It should look something like this :
+  <p />
+  <pre>
+  class CustomPlayer extends PlayerController;
+  
+  defaultproperties
+  {
+  }
+  </pre>
+  <p />
+  This is as basic as a class gets. At this stage, you could rebuild your custom package and have no warnings nor errors, but also no additional functionality. So, we need to get this showboat going.
+  <p />
+  We need to know where our mouse cursor currently is on the screen, so we add the follow below the class declaration :
+  <p />
+  <pre>
+  var vector PlayerMouse;
+  </pre>
+  <p />
+  This vector represents the 2d (we will be ignoring the Z component of the vector with this implementation, but if you want to z-order the mouse cursor, or even scale the cursor or whatever, the Z component is available to you) position of the mouse cursor on the screen, with the origin at the center of the screen.
+  <p />
+  We also need to know the size of the screen currently (this will become more apparent later on). To that end, we add the following after the previous variable declaration :
+  <p />
+  <pre>
+  var float LastHUDSizeX;
+  var float LastHUDSizeY;
+  </pre>
+  <p />
+  We don't want the player to be doing anything else, control-wise, while they're in mouse control mode, so we need a custom state (added before the defaultproperties line) :
+  <p />
+  <pre>
+  state PlayerMousing
+  {
+  }
+  </pre>
+  <p />
+  Our custom state doesn't do anything for us yet, so let's fix that. The following block of code is our entire PlayerMousing state :
+  <p />
+  <pre>
+  state PlayerMousing
+  {
+     exec function Fire(float f)
+     {
+        // do stuff here for when players click their fire/select button
+  
+        return;
+     }
+  
+     simulated function PlayerMove(float DeltaTime)
+     {
+        local vector MouseV, ScreenV;
+  
+        // get the new mouse position offset
+        MouseV.X &#61; DeltaTime &#42; aMouseX / (InputClass.default.MouseSensitivity &#42; DesiredFOV &#42; 0.01111);
+        MouseV.Y &#61; DeltaTime &#42; aMouseY / (InputClass.default.MouseSensitivity &#42; DesiredFOV &#42; -0.01111);
+  
+        // update mouse position
+        PlayerMouse +&#61; MouseV;
+  
+        // convert mouse position to screen coords, but only if we have good screen sizes
+        if ((LastHUDSizeX &#62; 0) &#38;&#38; (LastHUDSizeY &#62; 0))
+        {
+           ScreenV.X &#61; PlayerMouse.X + LastHUDSizeX &#42; 0.5;
+           ScreenV.Y &#61; PlayerMouse.Y + LastHUDSizeY &#42; 0.5;
+           // here is where you would use the screen coords to do a trace or check HUD elements
+        }
+  
+        return;
+     }
+  }
+  </pre>
+  <p />
+  There are, immediately, two things worthy of note - the Fire exec function does nothing for you, nor has any supporting code, and that the PlayerMove looks woefully sparse, in comparison to other versions found in the other states in PlayerController. The Fire function is there as a placeholder and helper to show where code for "the user has clicked the mouse" needs to go. The PlayerMove function, however, completely removes all player movement control while the player is in the PlayerMousing state. The reason for this is, if you do not clear everything out, the player will be able to either move or rotate the camera while in the mousing mode. If this is desirable, you will have to also take a look at the PlayerInput class, as it uses the mouse variables aMouseX and aMouseY to modify player rotation and/or movement (which you will want to disallow while in the PlayerMousing state).
+  <p />
+  The key work is done with the MouseV assignment lines. We take the mouse input vars (which are offset values, i.e. how far the mouse has moved in arbitrary mouse coord units since the last Tick or input poll), scale them by the time taken for the last engine loop (to produce consistant mouse moving feel regardless of framerate), and further scale them by the mouse sensitivity, player Field Of View, and the magic values pulled from PlayerInput, which all results in the mouse moving consistantly across the player's screen, regardless of screen size and player FOV.
+  <p />
+  After the mouse position updating is done, the last block of code converts the mouse position to screen coordinates, for use with a ScreenToWorld call or whatever you might need.
+  <p />
+  With the PlayerMousing state done, our custom PlayerController class has the necessary code for allowing the player to control a mouse cursor. However, we can't see anything! It's time to work on the HUD.
+  <p />
+  <h3><a name="HUD"></a> HUD </h3>
+  <p />
+  The HUD class we'll be working on will be very basic. If you're starting from scratch, create a new UnrealScript file in your package's classes directory (CustomHUD, for example). It should look something like this :
+  <p />
+  <pre>
+  class CustomHUD extends HUD;
+  
+  var Texture MouseCursorTexture;
+  
+  defaultproperties
+  {
+     //MouseCursorTexture&#61;Texture&#39;CustomTexturePackage.MouseCursorTexture&#39;
+  }
+  </pre>
+  <p />
+  We've added more than the base requirements this time. In the defaultproperties, the commented out line (when uncommented) sets the texture reference you would use for the mouse cursor texture. Now, we need to override the most important event function in the class :
+  <p />
+  <pre>
+  simulated event PostRender(Canvas C)
+  {
+     Super.PostRender(Canvas C);
+  
+     return;
+  }
+  </pre>
+  <p />
+  PostRender is the event function that the engine calls to tell the HUD class to render to screen what it wants to render. What we've done is override PostRender and told it to do whatever the parent class does (via the Super.PostRender call). We need to add a bit more in order to see where our mouse cursor lays :
+  <p />
+  <pre>
+  simulated event PostRender(Canvas C)
+  {
+     Super.PostRender(Canvas C);
+  
+     CustomPlayer(PlayerOwner).LastHUDSizeX &#61; C.SizeX;
+     CustomPlayer(PlayerOwner).LastHUDSizeY &#61; C.SizeY;
+  
+     if (PlayerOwner.IsInState(&#39;PlayerMousing&#39;)) DrawMouseCursor(C);
+  
+     return;
+  }
+  </pre>
+  <p />
+  We've added calls to set the screen size variables in CustomPlayer, and we make a call to a new function, DrawMouseCursor :
+  <p />
+  <pre>
+  
+  simulated function DrawMouseCursor(Canvas C)
+  {
+     local float XPos, YPos;
+  
+     C.SetDrawColor(255, 255, 255);
+     C.Style &#61; ERenderStyle.STY&#95;Alpha;
+  
+     // find position of cursor, and clamp it to screen
+     XPos &#61; CustomPlayer(PlayerOwner).PlayerMouse.X + C.SizeX / 2.0;
+     if (XPos &#60; 0)
+     {
+        CustomPlayer(PlayerOwner).PlayerMouse.X -&#61; XPos;
+        XPos &#61; 0;
+     }
+     else if (XPos &#62;&#61; C.SizeX)
+     {
+        CustomPlayer(PlayerOwner).PlayerMouse.X -&#61; (XPos - C.SizeX);
+        XPos &#61; C.SizeX - 1;
+     }
+     YPos &#61; CustomPlayer(PlayerOwner).PlayerMouse.Y + C.SizeY / 2.0;
+     if (YPos &#60; 0)
+     {
+        CustomPlayer(PlayerOwner).PlayerMouse.Y -&#61; YPos;
+        YPos &#61; 0;
+     }
+     else if (YPos &#62;&#61; C.SizeY)
+     {
+        CustomPlayer(PlayerOwner).PlayerMouse.Y -&#61; (YPos - C.SizeY);
+        YPos &#61; C.SizeY - 1;
+     }
+  
+     // render mouse cursor
+     C.SetPos(XPos, YPos);
+     C.DrawIcon(MouseCursorTexture);
+  
+     return;
+  }
+  </pre>
+  <p />
+  The DrawMouseCursor function is pretty simple. We make sure our rendering settings are how we want, and then we clamp the mouse cursor position to the screen area limits. After that, it's a simple matter of setting the drawing location for the canvas, and then rendering our mouse cursor texture (which is undefined in this example).
+  <p />
+  <h2><a name="Genesis"></a> Genesis </h2>
+  <p />
+  The above is all that's needed to get a mouse cursor interface started for your project. However, only a basis for expansion is provided here; your project's needs will determine just how you modify and add functionality (multiple cursors? selecting objects in 3d space? managing 2d windows?). Another consideration might be switching between mouse cursor control and normal player control. There aren't many games (nor mods for games) using the Unreal engine that present an interface dominated by mouse cursor control, and it always adds to the interest in the project when it does.
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/MouseCursorInterface.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:47:35 GMT -->
+</html>

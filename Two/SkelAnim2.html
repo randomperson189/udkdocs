@@ -1,0 +1,345 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/SkelAnim2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 13:24:33 GMT -->
+<head>
+  <title> UDN - Two - SkelAnim2    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">SkelAnim2  </b></div>
+  <div id="tooltext">
+  <p />
+  
+  <!-- Two/SkelAnim2 -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="Unreal Skeletal Animation 102"></a> Unreal Skeletal Animation 102 </h1>
+  <p />
+  Note that this document refers to UE2, and has not been updated for UE2.5.
+  <p />
+  Revision history:
+  <p />
+  <em>Last updated by Chris Sturgill (Demiurge Studios<sup>?</sup>) 23 March 2004 for nomenclature.</em>
+  <p />
+  <em>Updated by Joe Graf to fix some grammar, Twiki-ness, and add a caveat.</em>
+  <p />
+  <em>Updated by Carlos Cuello to fix setbonedirection. (Thx Carlos for fixing my burg--I mean bug)</em>
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="SkelAnim2.html#Unreal Skeletal Animation 102"> Unreal Skeletal Animation 102</a> <ul>
+  <li> <a href="SkelAnim2.html#Introduction"> Introduction</a>
+  </li> <li> <a href="SkelAnim2.html#Scaling Bones"> Scaling Bones</a>
+  </li> <li> <a href="SkelAnim2.html#Bone Rotation"> Bone Rotation</a>
+  </li> <li> <a href="SkelAnim2.html#Summary"> Summary</a>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <h2><a name="Introduction"></a> Introduction </h2>
+  <p />
+  In the previous article, <a href="https://udn.epicgames.com/Two/SkelAnim" class="restricted" class="restricted" class="twikiLink">SkelAnim</a>, we looked at the skeletal animation
+  classes and some of their important members and methods (<a href="CodeDrop.html" class="twikiLink">CodeDrop</a> 2226). This article explores two
+  functional areas of those classes: scaling and rotating the skeletal bones. These
+  features are explored via sample classes all of which derive off of WarCOGGrunt.
+  <p />
+  <h2><a name="Scaling Bones"></a> Scaling Bones </h2>
+  <p />
+  Imagine a game-play modifier that used only a sniper rifle. Imagine that it was a variation
+  on the FatBoy mutator (modifys the game play rules) from Unreal Tournament, except that rather than making the
+  whole character appear to be a different size only the player's head changed size. This
+  way lesser players would run around with shrunken heads and elite players would have
+  giant sized heads. Players with the tiny heads would be hard to "head shot", but players
+  with lots of frags would be relatively easy to hit.
+  <p />
+  In the old vertex based animation code such a concept was not possible. However, with
+  the skeletal animation system this is relatively easy (see caveat below). If you refer back to <a href="https://udn.epicgames.com/Two/SkelAnim#SkelMeshVars" class="restricted" class="restricted" class="twikiAnchorLink">Table 5</a> of
+  the previous article, <a href="https://udn.epicgames.com/Two/SkelAnim" class="restricted" class="restricted" class="twikiLink">SkelAnim</a>, you will see the Scalers array. This array
+  is used to scale skeletal bones during rendering. Setting the scale of a bone is done
+  by calling SetBoneScale(), taking three parameters. The first parameter specifies
+  the slot in the Scalers array that is being set. The second parameter specifies the scaling
+  factor that is to be applied to the bone. The final parameter identifies which bone is
+  to be scaled. For instance:
+  <p />
+  <code>SetBoneScale(0,1.25,'head');</code>
+  <p />
+  <em>Caveat: Vito explained to me that this is not "easy", since there are not multiple hit detection cylinders. To make</em>
+  <em>this "easy" game play modification the hit detection code must take into account the bones with their</em>
+  <em>appropriate scalers, translations, and rotations applied. Then the code would have to determine whether the hit</em>
+  <em>occured on the "head" paying attention to the bone scale, rotation, and translation. So what I thought was "easy"</em>
+  <em>is actually quite involved.</em> :(
+  <p />
+  In the case above, we are scaling the bone named "head" by a factor of 1.25 and are placing
+  that scaler in slot 0. The result is a head that is 25% larger than it was before the
+  call. To remove the scaling effect you call the SetBoneScale() method only supplying
+  the slot number. This tells the method to zero out the scaling factor and the bone involved.
+  <p />
+  To illustrate this effect, I created a simple derivative of the WarCOGGrunt, called
+  HeadScaler. Figure 1 shows the player's head as if they were suffering from gigantism.
+  Figure 2 yeilds an effect similar to the shrunken heads seen in the movie Beetlejuice.
+  <p />
+  <img width="132" alt="JumboHead_small.jpg" src="rsrc/Two/SkelAnim2/JumboHead_small.jpg" height="246" border="0"  />
+  Figure 1 - A large headed player
+  <p />
+  <img width="119" alt="ShrunkenHead_small.jpg" src="rsrc/Two/SkelAnim2/ShrunkenHead_small.jpg" height="201" border="0"  />
+  Figure 2 - Tiny, tiny head
+  <p />
+  The code to produce this effect is very simple. I overloaded the PlayFiring() method
+  so that when the primary fire is used the head is increased in size by 10%, while the
+  alternate fire shrinks the head by 10%. The PlayFiring() method is seen below:
+  <p />
+  <pre>
+  function PlayFiring()
+  {
+     // Primary fire makes the head grow by 10&#37;
+     // Alternate fire makes the head shrink by 10&#37;
+     if( Controller.bFire !&#61; 0 )
+     {
+        flHeadScale +&#61; 0.1;
+     }
+     else
+     {
+        flHeadScale -&#61; 0.1;
+     }
+     // Set the new scale
+     SetBoneScale(0,flHeadScale,&#39;head&#39;);
+  }
+  </pre>
+  <p />
+  What happens if the player's mesh does not have a bone named "head"? In that case, the
+  bone won't be found in the reference skeleton and the scaling request is ignored. This
+  is not the same as triggering an Accessed None error. There are no bad side effects other than the CPU
+  cycles wasted executing a function that, in the end, does nothing.
+  <p />
+  The HeadScaler class only scales one bone, the head. Consider the case of scaling an
+  arm or a leg. Would you have to to know each of the bones in the arm and apply scalers
+  to each of those bones? The answer to this question is "No." The skeletal system uses a
+  hierarchy of bones, so that scaling a parent also affects all of its children. So if I
+  wanted to scale the right arm by 50% percent I would use the following code:
+  <p />
+  SetBoneScale(0,1.5,'r_shoulder');
+  <p />
+  which would increase the size of the shoulder and the 16 bones that are attached to it.
+  <p />
+  As an example of the hierarchical scaling in action, I created two more grunt derived
+  classes, HierarchicalScaling1 and HierarchicalScaling2. The first class scales
+  the upper body inversely proportional to the lower body. The upper body is specified by
+  the mid_back and all higher bones connected to it. The lower body is comprised of the
+  pelvis and all bones beneath it. The effect is extremely weird as seen in Figure 3.
+  <p />
+  <p />
+  <img width="203" alt="LargeLowerSmallUpper_small.jpg" src="rsrc/Two/SkelAnim2/LargeLowerSmallUpper_small.jpg" height="221" border="0"  />
+  Figure 3 - Morphology run amok
+  <p />
+  As with the HeadScaler sample, the HierarchicalScaling1 performs scaling operations
+  in the PlayFiring() method. For primary fire the lower body increases. The alternate
+  fire increases the lower body. The code for this is:
+  <p />
+  <pre>
+  function PlayFiring()
+  {
+     // Primary fire makes the upper body shrink and lower body grow by 10&#37;
+     // Alternate fire makes the body grow and lower body shrink by 10&#37;
+     if( Controller.bFire !&#61; 0 )
+     {
+        flLowerBodyScale +&#61; 0.1;
+        flUpperBodyScale -&#61; 0.1;
+     }
+     else
+     {
+        flLowerBodyScale -&#61; 0.1;
+        flUpperBodyScale +&#61; 0.1;
+     }
+     // Scale the lower body
+     SetBoneScale(0,flLowerBodyScale,&#39;pelvis&#39;);
+     // Scale the upper body
+     SetBoneScale(1,flUpperBodyScale,&#39;mid&#95;back&#39;);
+  }
+  </pre>
+  <p />
+  Note that there are two slots used in this method. If you specify the same slot twice,
+  the second scaling operation replaces the first. Also, notice in Figure 3 that the legs
+  of the player extend into the floor. This occurs because the scale of the bones is
+  changed while the player's position in 3D space did not change. A better system would
+  take into account the player's new height and adjust their location.
+  <p />
+  A second sample, illustrating the hierarchical nature of the skeletal system, is the
+  HierarchicalScaling2 class. This class scales two portions of the body just like
+  the first sample. However, it leaves the majority of the body in its reference scale.
+  Only the legs are manipulated with one leg growing and the other shrinking proportionally.
+  Figures 4 and 5 show this in action.
+  <p />
+  <img width="203" alt="LargeRightSmallLeft_small.jpg" src="rsrc/Two/SkelAnim2/LargeRightSmallLeft_small.jpg" height="227" border="0"  />
+  Figure 4 - Leg torture
+  <p />
+  <img width="161" alt="LargeLeftSmallRight_small.jpg" src="rsrc/Two/SkelAnim2/LargeLeftSmallRight_small.jpg" height="215" border="0"  />
+  Figure 5 - More leg torture
+  <p />
+  The code to achieve the results seen in Figures 4 and 5 is the same as
+  HierarchicalScaling1's PlayFiring() method with two small changes,
+  change the 'pelvis' to 'r_hip' and 'mid_back' to 'l_hip'.
+  <p />
+  There is one final thing to note about scaling operations with respect to the skeletal
+  system: they are uniform. Since the scaling operation is determined by a single floating
+  point value, all axes are scaled the same amount. The next article in the series of
+  skeletal animation articles covers how to modify the USkeletalMeshInstance class
+  to expose a non-uniform scaling feature and use from with Unreal Script.
+  <p />
+  <h2><a name="Bone Rotation"></a> Bone Rotation </h2>
+  <p />
+  Just as you can scale bones and their children in a single operation, you can apply a
+  rotator. Though an animation is better to manipulate the skeleton, there might be some
+  reasons why you would want to perform some simple animations using rotators without
+  creating a new animation. For instance, let's say you want to create an effect that
+  twists the torso of a player when a bullet hits a shoulder. You could create a separate
+  animation for each type of movement and each type of body twist. Depending on the number
+  of movement animations and effects that could be a huge undertaking. A simpler solution
+  is to apply the effect to the skeleton so that any animation will automatically gain
+  that feature. As an example of this, I created a class, ShoulderHitSimulator, that
+  twists the torso as if a bullet hit the left or right shoulder. It forces the back to
+  bend back slightly and turn to the side the bullet hit (see Figures 6-8).
+  <p />
+  <p />
+  <img width="146" alt="LeftShoulderHit_small.jpg" src="rsrc/Two/SkelAnim2/LeftShoulderHit_small.jpg" height="219" border="0"  />
+  <img width="141" alt="NormalPose_small.jpg" src="rsrc/Two/SkelAnim2/NormalPose_small.jpg" height="215" border="0"  />
+  <img width="186" alt="RightShoulderHit_small.jpg" src="rsrc/Two/SkelAnim2/RightShoulderHit_small.jpg" height="221" border="0"  />
+  <p />
+  Figures 6 through 8 - Left shoulder hit, normal pose, right shoulder hit
+  <p />
+  Because this effect is done using bone rotation, it works with all animations. The code to
+  do this is very similar to the scaling code, as seen below:
+  <p />
+  <pre>
+  function PlayFiring()
+  {
+      local rotator rotTorso;
+      if( Controller.bFire !&#61; 0 )
+      {
+          rotTorso.Pitch &#61; -6553;
+      }
+      else
+      {
+          rotTorso.Pitch &#61; 6553;
+      }
+      rotTorso.Roll &#61; 500;
+      rotTorso.Yaw &#61; 0;
+      // This torques the body as if a bullet impact occured on one of the
+      // actor&#39;s shoulders
+      SetBoneRotation(&#39;lower&#95;back&#39;,rotTorso,1.0);
+  }
+  </pre>
+  <p />
+  The call that does the magic is SetBoneRotation(). It applies a delta rotation to
+  the specified bone. This means that the rotator does not specify the absolute rotation
+  coordinates, but instead indicates the amount to change the rotation on top of the
+  bone's current position. This rotational information is stored in the USkeletalMeshInstance::Directors array.
+  If you use the method SetBoneDirection(), the
+  coordinates in the rotator are absolute and replace any of the animation's rotation for
+  the specified bone (see Figures 9 and 10). These absolute rotators are stored in the USkeletalMeshInstance::WorldSpacers array.
+  You can clear the effects of a SetBoneDirection() call by passing in 0.0 as the Alpha parameter to SetBoneDirection(BoneTag,BoneTurn,BoneTrans,Alpha).
+  <p />
+  From the code snippet above, you'll notice that there are three parameters. The first one
+  obviously specifies the bone to affect. The second one is the rotator as stated in the
+  previous paragraph. The third one is an alpha value. This value tells the rendering
+  code how much of the rotator to apply. For instance, if the above code was called with
+  an alpha of 0.1 instead of 1.0, the real pitch change would be either -655 or 655. By
+  incrementing/decrementing the alpha value over time, you get a simple tweening
+  mechanism, though probably not your best choice due to performance issues. Setting the
+  alpha value to 0.0 disables the rotator, though doesn't delete it.
+  <p />
+  <img width="145" alt="BoneRotation_small.jpg" src="rsrc/Two/SkelAnim2/BoneRotation_small.jpg" height="211" border="0"  />
+  Figure 9 - SetBoneRotation() with Rotator(0.0, 0.0, 0.0)
+  <p />
+  <img width="139" alt="BoneDirection_small.jpg" src="rsrc/Two/SkelAnim2/BoneDirection_small.jpg" height="219" border="0"  />
+  Figure 10 - SetBoneDirection() with Rotator(0.0, 0.0, 0.0)
+  <p />
+  <h2><a name="Summary"></a> Summary </h2>
+  <p />
+  We've examined manipulating the WarCOGGrunt's skeleton using the
+  scriptable USkeletalMeshInstance methods. In subsequent skeletal animation articles, we will customize the
+  USkeletalMeshInstance class to allow non-uniform scaling and add features for
+  removal of both local and world rotators. Attached to
+  this document are the UC samples. Try them out and play with the rotation and scaling
+  features.
+  <p />
+  -- <a href="https://udn.epicgames.com/Main/UdnStaff" class="restricted" class="restricted" class="twikiLink">UdnStaff</a> - 21 Nov 2001 <br />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/SkelAnim2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 13:24:33 GMT -->
+</html>

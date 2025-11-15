@@ -1,0 +1,425 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/UnrealSockets.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 13:06:59 GMT -->
+<head>
+  <title> UDN - Two - UnrealSockets    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">UnrealSockets  </b></div>
+  <div id="tooltext">
+  <p />
+  
+  <!-- Two/UnrealSockets -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="Unreal Sockets"></a> Unreal Sockets </h1>
+  <p />
+  <em>Document Summary: Explains the unrealscript networking classes TCPLink and UDPLink.</em>
+  <p />
+  <em>Document Changelog: Created by Michiel Hendriks, to complete the <a href="https://udn.epicgames.com/Two/NetworkingTome" class="restricted" class="restricted" class="twikiLink">NetworkingTome</a>.</em>
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="UnrealSockets.html#Unreal Sockets"> Unreal Sockets</a> <ul>
+  <li> <a href="UnrealSockets.html#Overview"> Overview</a>
+  </li> <li> <a href="UnrealSockets.html#InternetLink"> InternetLink</a> <ul>
+  <li> <a href="UnrealSockets.html#LinkMode"> LinkMode</a>
+  </li> <li> <a href="UnrealSockets.html#Line mode"> Line mode</a>
+  </li> <li> <a href="UnrealSockets.html#ReceiveMode"> ReceiveMode</a>
+  </li> <li> <a href="UnrealSockets.html#Resolving hostnames"> Resolving hostnames</a>
+  </li> <li> <a href="UnrealSockets.html#IsDataPending"> IsDataPending</a>
+  </li> <li> <a href="UnrealSockets.html#GetLastError"> GetLastError</a>
+  </li> <li> <a href="UnrealSockets.html#IpAddrToString and _StringToIpAddr"> IpAddrToString and StringToIpAddr</a>
+  </li> <li> <a href="UnrealSockets.html#ParseURL"> ParseURL</a>
+  </li> <li> <a href="UnrealSockets.html#GetLocalIP"> GetLocalIP</a>
+  </li></ul>
+  </li> <li> <a href="UnrealSockets.html#Common elements"> Common elements</a> <ul>
+  <li> <a href="UnrealSockets.html#BindPort"> BindPort</a>
+  </li></ul>
+  </li> <li> <a href="UnrealSockets.html#TcpLink"> TcpLink</a> <ul>
+  <li> <a href="UnrealSockets.html#AcceptClass"> AcceptClass</a>
+  </li> <li> <a href="UnrealSockets.html#LinkState"> LinkState</a>
+  </li> <li> <a href="UnrealSockets.html#Listen"> Listen</a>
+  </li> <li> <a href="UnrealSockets.html#Open"> Open</a>
+  </li> <li> <a href="UnrealSockets.html#Close"> Close</a>
+  </li> <li> <a href="UnrealSockets.html#IsConnected"> IsConnected</a>
+  </li> <li> <a href="UnrealSockets.html#SendText"> SendText</a>
+  </li> <li> <a href="UnrealSockets.html#SendBinary"> SendBinary</a>
+  </li> <li> <a href="UnrealSockets.html#ReadText"> ReadText</a>
+  </li> <li> <a href="UnrealSockets.html#ReadBinary"> ReadBinary</a>
+  </li> <li> <a href="UnrealSockets.html#Accepted"> Accepted</a>
+  </li> <li> <a href="UnrealSockets.html#Opened"> Opened</a>
+  </li> <li> <a href="UnrealSockets.html#Closed"> Closed</a>
+  </li> <li> <a href="UnrealSockets.html#ReceivedText"> ReceivedText</a>
+  </li> <li> <a href="UnrealSockets.html#ReceivedLine"> ReceivedLine</a>
+  </li> <li> <a href="UnrealSockets.html#ReceivedBinary"> ReceivedBinary</a>
+  </li></ul>
+  </li> <li> <a href="UnrealSockets.html#UdpLink"> UdpLink</a>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <h2><a name="Overview"></a> Overview </h2>
+  <p />
+  If you don't want to delve into the TCP/UDP fundamentals to create a C++ implementation, it will be easiest to write your code using the UnrealScript<sup>?</sup> interface. Since most network transmissions are not CPU-bound, this shouldn't be a problem.
+  <p />
+  The engine provides unrealscript interfaces to work with both UDP (<a href="UnrealSockets.html#UdpLink" class="twikiAnchorLink">UDPLink</a>) and TCP (<a href="UnrealSockets.html#TcpLink" class="twikiAnchorLink">TCPLink</a>) sockets. They can be used as clients and as servers.
+  <p />
+  As with everything you might want to take a look at some of the existing implementations for more information.
+  <p />
+  <h2><a name="InternetLink"></a><a name="_InternetLink"></a> InternetLink </h2>
+  <p />
+  Both the (<a href="UnrealSockets.html#TcpLink" class="twikiAnchorLink">TCPLink</a>) and (<a href="UnrealSockets.html#UdpLink" class="twikiAnchorLink">UDPLink</a>) subclass from this class. This class declares a few important functions (like hostname resolving) and types. Most of the variables declared here, except for the few described below, are only to be used from the native implementation of the classes.
+  <p />
+  <h3><a name="LinkMode"></a><a name="_LinkMode"></a> LinkMode </h3>
+  <p />
+  <pre>
+  var enum ELinkMode
+  {
+     MODE&#95;Text,
+     MODE&#95;Line,
+     MODE&#95;Binary
+  } LinkMode;
+  </pre>
+  <p />
+  This variable defines what events will be triggered when data is received.
+  <p /> <dl>
+  <dt> MODE_Text</dt><dd> data send via <em>SendText</em> is send AS IS, the event <em>ReceivedText</em> is called when text is received
+  </dd> <dt> MODE_Line</dt><dd> data send via <em>SendText</em> will get newline tokens appended, the event <em>ReceivedLine</em> is called when a line is received (excluding the newline tokens)
+  </dd> <dt> MODE_Binary</dt><dd> when data is received the <em>ReceivedBinary</em> event will be called. UnrealScript<sup>?</sup> hasn't been designed to properly handle binary data. Because of this the functionality to use binary data in sockets is rather limited.
+  </dd></dl>
+  <p />
+  This variable has to be set after the class has been spawned. It can be changed at any time.
+  <p />
+  <h3><a name="Line mode"></a> Line mode </h3>
+  <p />
+  <pre>
+  var enum ELineMode
+  {
+     LMODE&#95;auto,
+     LMODE&#95;DOS,   // CRLF
+     LMODE&#95;UNIX, // LF
+     LMODE&#95;MAC,   // LFCR
+  } InLineMode, OutLineMode;
+  </pre>
+  <p />
+  Only used in case of <code>LinkMode = MODE_Line</code>. It defines when a line is detected and what tokens are appended in case of a <em>SendText</em>. In line endings are not important you should use <code>LMODE_auto</code> for <code>InLineMode</code>, in this case only a line feed is significant for a newline, a leading or trailing carriage return is removed. <code>LMODE_auto</code> for <code>OutLineMode</code> equals to <code>LMODE_DOS</code>.
+  <p />
+  <h3><a name="ReceiveMode"></a><a name="_ReceiveMode"></a> ReceiveMode </h3>
+  <p />
+  <pre>
+  var enum EReceiveMode
+  {
+     RMODE&#95;Manual,
+     RMODE&#95;Event
+  } ReceiveMode;
+  </pre>
+  <p />
+  This defines how data is read. With <code>RMODE_Event</code> events are triggered when data is received, with <code>RMODE_Manual</code> you should check for data yourself and read it manually.
+  <p />
+  <h3><a name="Resolving hostnames"></a> Resolving hostnames </h3>
+  <p />
+  In order to connect to a remote host unreal requires an &lt;nopIpAddr struct. However, usually the only thing you've got is the port number and a hostname. This hostname first has to be resolved. For this the function <em>resolve()</em> has been declared:
+  <p />
+  <pre>
+  native function Resolve( coerce string Domain );
+  </pre>
+  <p />
+  You can pass both a hostname or a IP address (as a string) and it will resolve it to an IpAddr struct. When the resolve was succesful the <em>Resolved</em> event will be triggered, otherwise the <em>ResolveFailed</em> event will be triggered.
+  <p />
+  Usually resolving a hostname will block the rest of the process until the resolve has been finished. This is not desireable in this case. Therefore hostname resolving has been made unblocking (this is done by starting a new thread for the resolve). Because the <em>resolve</em> function returns before the resolve is actually done you shouldn't do anything until you either receive a <em>resolved</em> or <em>resolvefailed</em> event.
+  <p />
+  <h3><a name="IsDataPending"></a><a name="_IsDataPending"></a> IsDataPending </h3>
+  <p />
+  <pre>
+  native function bool IsDataPending();
+  </pre>
+  <p />
+  Returns true when there is data to be read. This is only useful when manually reading data instead of using the event based reading.
+  <p />
+  <h3><a name="GetLastError"></a><a name="_GetLastError"></a> GetLastError </h3>
+  <p />
+  <pre>
+  native function int GetLastError();
+  </pre>
+  <p />
+  This will return the last socket error. The value is the value as returned by the operating system, so you might want to look up the error code in the OS's documentation. (Or use a web searchengine)
+  <p />
+  <h3><a name="IpAddrToString and _StringToIpAddr"></a><a name="_IpAddrToString and _StringToIpAddr"></a> IpAddrToString and StringToIpAddr </h3>
+  <p />
+  <pre>
+  native function string IpAddrToString( IpAddr Arg );
+  native function bool StringToIpAddr( string Str, out IpAddr Addr );
+  </pre>
+  <p />
+  This will convert an IpAddr to a string and vice versa. <em>StringToIpAddr</em> only works for strings like <code>12.123.45.78:7777</code>. For hostnames you should use the <em>Resolve</em> function.
+  <p />
+  <h3><a name="ParseURL"></a><a name="_ParseURL"></a> ParseURL </h3>
+  <p />
+  <pre>
+  native function bool ParseURL
+  (
+     coerce string URL,
+     out string Addr,
+     out int Port,
+     out string LevelName,
+     out string EntryName
+  );
+  </pre>
+  <p />
+  This will parse an string as an URL (returning true when valid). This function is only useful for unreal style URLs, it is not very useful for the common URIs.
+  <p />
+  <h3><a name="GetLocalIP"></a><a name="_GetLocalIP"></a> GetLocalIP </h3>
+  <p />
+  <pre>
+  native function GetLocalIP(out IpAddr Arg );
+  </pre>
+  <p />
+  Returns the IP of the local machine (the one it's bound to).
+  <p />
+  <p />
+  <h2><a name="Common elements"></a> Common elements </h2>
+  <p />
+  Both TCPLink and UDPLink share a few identical functions and events that are not defined in their parent classes.
+  <p />
+  <h3><a name="BindPort"></a><a name="_BindPort"></a> BindPort </h3>
+  <p />
+  <pre>
+  native function int BindPort( optional int Port, optional bool bUseNextAvailable );
+  </pre>
+  <p />
+  One of the most important functions. This function will bind a port to be used for communication. Only in case of a server socket you should provide a port number to bind to. In case the provided port can not be bound (because it's already bound by an other process) it will issue an error, unless <code>bUseNextAvailable</code> is true, then it will bind the next available port. The function will return the port number is has bound to.
+  <p />
+  <a name="TcpLink"></a>
+  <h2><a name="TcpLink"></a><a name="_TcpLink"></a> TcpLink </h2>
+  <p />
+  A TCPLink can be used in two ways, as a client or as a server. To use it as a client you should call <em>BindPort</em> and then <em>Open</em>, to use it as a server you should call <em>BindPort</em> and then <em>Listen</em>. For a server you might also want to consider to use an <code>AcceptClass</code> to handle the actual communication when a client connected to the server because a single class hasn't been designed to handle multiple clients.
+  <p />
+  <h3><a name="AcceptClass"></a><a name="_AcceptClass"></a> AcceptClass </h3>
+  <p />
+  <pre>
+  var class&#60;TcpLink&#62; AcceptClass;
+  </pre>
+  <p />
+  If <code>AcceptClass</code> is not <code>None</code>, an actor of class <code>AcceptClass</code> will be spawned when an incoming connecting is accepted, leaving the listener open to accept more connections. <em>Accepted()</em> is called only in the child class.  You can use the <em>LostChild()</em> and <em>GainedChild()</em> events to track your children.
+  <p />
+  <h3><a name="LinkState"></a><a name="_LinkState"></a> LinkState </h3>
+  <p />
+  <pre>
+  var enum ELinkState
+  {
+     STATE&#95;Initialized,      // Sockets is initialized
+     STATE&#95;Ready,         // Port bound, ready for activity
+     STATE&#95;Listening,      // Listening for connections
+     STATE&#95;Connecting,      // Attempting to connect
+     STATE&#95;Connected,      // Open and connected
+     STATE&#95;ListenClosePending,       // Socket in process of closing
+     STATE&#95;ConnectClosePending,      // Socket in process of closing
+     STATE&#95;ListenClosing,           // Socket in process of closing
+     STATE&#95;ConnectClosing           // Socket in process of closing
+  } LinkState;
+  </pre>
+  <p />
+  The current state of the socket. Set by native code and should only be read.
+  <p />
+  <h3><a name="Listen"></a> Listen </h3>
+  <p />
+  <pre>
+  native function bool Listen();
+  </pre>
+  <p />
+  Start listening for incomming connections. For a server link you should call this function after <em>BindPort</em>. A single class can only handle a few connectings at the same time. It's best to create an <code>AcceptClass</code> that does the actual processing.
+  <p />
+  <h3><a name="Open"></a> Open </h3>
+  <p />
+  <pre>
+  native function bool Open( IpAddr Addr );
+  </pre>
+  <p />
+  Open a connection to a remote host. This is meant to be used for TCP client after <em>BindPort</em> has been called. Returns true when successful.
+  <p />
+  <h3><a name="Close"></a> Close </h3>
+  <p />
+  <pre>
+  native function bool Close();
+  </pre>
+  <p />
+  Close the current connection. Returns true when successful.
+  <p />
+  <h3><a name="IsConnected"></a><a name="_IsConnected"></a> IsConnected </h3>
+  <p />
+  <pre>
+  native function bool IsConnected();
+  </pre>
+  <p />
+  Returns true if connected.
+  <p />
+  <h3><a name="SendText"></a><a name="_SendText"></a> SendText </h3>
+  <p />
+  <pre>
+  native function int SendText( coerce string Str );
+  </pre>
+  <p />
+  Send <code>str</code> to the connected peer. If <code>LinkMode</code> is <code>MODE_Line</code> a newline token is appended. Returns the number of bytes actually send.
+  <p />
+  <h3><a name="SendBinary"></a><a name="_SendBinary"></a> SendBinary </h3>
+  <p />
+  <pre>
+  native function int SendBinary( int Count, byte B&#91;255] );
+  </pre>
+  <p />
+  Send a piece of binary data to the remote peer. <code>Count</code> specifies the number of bytes in <code>B</code> to send. Returns the number of bytes send.
+  <p />
+  <h3><a name="ReadText"></a><a name="_ReadText"></a> ReadText </h3>
+  <p />
+  <pre>
+  native function int ReadText( out string Str );
+  </pre>
+  <p />
+  Read a string from the buffer. This function is to be used with <code>RecieveMode</code> set to <code>RMODE_Manual</code>. Returns the number of bytes read.
+  <p />
+  <p />
+  <h3><a name="ReadBinary"></a><a name="_ReadBinary"></a> ReadBinary </h3>
+  <p />
+  <pre>
+  native function int ReadBinary( int Count, out byte B&#91;255] );
+  </pre>
+  <p />
+  Read <code>Count</code> (with a max of <code>255</code>) bytes from the buffer. This function is to be used with <code>RecieveMode</code> set to <code>RMODE_Manual</code>. Returns the number of bytes read.
+  <p />
+  <p />
+  <h3><a name="Accepted"></a> Accepted </h3>
+  <p />
+  <pre>
+  event Accepted();
+  </pre>
+  <p />
+  Called during <code>STATE_Listening</code> when a new connection is accepted.
+  <p />
+  <h3><a name="Opened"></a> Opened </h3>
+  <p />
+  <pre>
+  event Opened();
+  </pre>
+  <p />
+  Called when socket successfully connects.
+  <p />
+  <h3><a name="Closed"></a> Closed </h3>
+  <p />
+  <pre>
+  event Closed();
+  </pre>
+  <p />
+  Called when <em>Close()</em> completes or the connection is dropped.
+  <p />
+  <h3><a name="ReceivedText"></a><a name="_ReceivedText"></a> ReceivedText </h3>
+  <p />
+  <pre>
+  event ReceivedText( string Text );
+  </pre>
+  <p />
+  Called when data is received and connection mode is <code>MODE_Text</code>.
+  <p />
+  <h3><a name="ReceivedLine"></a><a name="_ReceivedLine"></a> ReceivedLine </h3>
+  <p />
+  <pre>
+  event ReceivedLine( string Line );
+  </pre>
+  <p />
+  Called when data is received and connection mode is <code>MODE_Line</code>.
+  <p />
+  <h3><a name="ReceivedBinary"></a><a name="_ReceivedBinary"></a> ReceivedBinary </h3>
+  <p />
+  <pre>
+  event ReceivedBinary( int Count, byte B&#91;255] );
+  </pre>
+  <p />
+  Called when data is received and connection mode is <code>MODE_Binary</code>.
+  <p />
+  <p />
+  <a name="UdpLink"></a>
+  <h2><a name="UdpLink"></a><a name="_UdpLink"></a> UdpLink </h2>
+  <p />
+  UDPLink's functions are almost identical to those of TCPLink with a major exception: they all take an extra argument of type <code>IpAddr</code>. This is the destination or source to use. Since UDP is a connectionless protocol a single class can be connected to more than one remote peer at the same time without any issues. So there's no need for an accept class or similar things.
+  <p />
+  Implemented functions are: SendText, SendBinary, ReadText, ReadBinary.
+  <p />
+  Implemented events are: ReceivedText, ReceivedLine, ReceivedBinary.
+  <p />
+  The only thing you need to do to use an UDPLink is call <em>BindPort</em> and start sending\recieving data. There's no direct difference between an UDP client and UDP server (except that for a server you should specify a port number to bind to).
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/UnrealSockets.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 13:06:59 GMT -->
+</html>

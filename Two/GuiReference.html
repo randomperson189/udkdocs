@@ -1,0 +1,732 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/GuiReference.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 13:22:03 GMT -->
+<head>
+  <title> UDN - Two - GuiReference    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">GuiReference  </b></div>
+  <div id="tooltext">
+  <p />
+  
+  <!-- Two/GuiReference -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="GUI Reference"></a> GUI Reference </h1>
+  <p />
+  <em>Last updated by Michiel Hendriks, some v3323 updates. Previous update by Chris Linder (DemiurgeStudios<sup>?</sup>), for first draft.  Original author was Chris Linder (DemiurgeStudios<sup>?</sup>).</em>
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="GuiReference.html#GUI Reference"> GUI Reference</a> <ul>
+  <li> <a href="GuiReference.html#Introduction"> Introduction</a>
+  </li> <li> <a href="GuiReference.html#GUIController"> GUIController</a> <ul>
+  <li> <a href="GuiReference.html#OpenMenu"> OpenMenu</a>
+  </li> <li> <a href="GuiReference.html#ReplaceMenu"> ReplaceMenu</a>
+  </li> <li> <a href="GuiReference.html#CloseMenu"> CloseMenu</a>
+  </li> <li> <a href="GuiReference.html#CloseAll"> CloseAll</a>
+  </li> <li> <a href="GuiReference.html#GetMenuFont"> GetMenuFont</a>
+  </li> <li> <a href="GuiReference.html#GetStyle"> GetStyle</a>
+  </li> <li> <a href="GuiReference.html#RegisterStyle"> RegisterStyle</a>
+  </li> <li> <a href="GuiReference.html#GetCurrentRes"> GetCurrentRes</a>
+  </li> <li> <a href="GuiReference.html#GetMapList"> GetMapList</a>
+  </li> <li> <a href="GuiReference.html#ResetKeyboard"> ResetKeyboard</a>
+  </li> <li> <a href="GuiReference.html#MouseEmulation"> MouseEmulation</a>
+  </li> <li> <a href="GuiReference.html#ViewportOwner"> ViewportOwner</a>
+  </li></ul>
+  </li> <li> <a href="GuiReference.html#GUIComponent"> GUIComponent</a>
+  </li> <li> <a href="GuiReference.html#GUIPage"> GUIPage</a> <ul>
+  <li> <a href="GuiReference.html#OnOpen"> OnOpen</a>
+  </li> <li> <a href="GuiReference.html#OnClose"> OnClose</a>
+  </li> <li> <a href="GuiReference.html#OnCanClose"> OnCanClose</a>
+  </li> <li> <a href="GuiReference.html#Opened"> Opened</a>
+  </li> <li> <a href="GuiReference.html#Closed"> Closed</a>
+  </li> <li> <a href="GuiReference.html#PageLoadINI"> PageLoadINI</a>
+  </li> <li> <a href="GuiReference.html#PageSaveINI"> PageSaveINI</a>
+  </li> <li> <a href="GuiReference.html#PlayOpenSound"> PlayOpenSound</a>
+  </li> <li> <a href="GuiReference.html#PlayCloseSound"> PlayCloseSound</a>
+  </li> <li> <a href="GuiReference.html#InitComponent"> InitComponent</a>
+  </li> <li> <a href="GuiReference.html#HandleParameters"> HandleParameters</a>
+  </li></ul>
+  </li> <li> <a href="GuiReference.html#GUIStyles"> GUIStyles</a> <ul>
+  <li> <a href="GuiReference.html#States"> States</a>
+  </li> <li> <a href="GuiReference.html#RStyles"> RStyles</a>
+  </li> <li> <a href="GuiReference.html#Images"> Images</a>
+  </li> <li> <a href="GuiReference.html#ImgStyle"> ImgStyle</a>
+  </li> <li> <a href="GuiReference.html#ImgColors"> ImgColors</a>
+  </li> <li> <a href="GuiReference.html#FontNames"> FontNames</a>
+  </li> <li> <a href="GuiReference.html#FontColors"> FontColors</a>
+  </li> <li> <a href="GuiReference.html#FontBKColors"> FontBKColors</a>
+  </li> <li> <a href="GuiReference.html#BorderOffsets"> BorderOffsets</a>
+  </li></ul>
+  </li> <li> <a href="GuiReference.html#Controls"> Controls</a> <ul>
+  <li> <a href="GuiReference.html#Standard Controls"> Standard Controls</a> <ul>
+  <li> <a href="GuiReference.html#GUIButton"> GUIButton</a>
+  </li> <li> <a href="GuiReference.html#GUIListBox"> GUIListBox</a>
+  </li> <li> <a href="GuiReference.html#GUISlider"> GUISlider</a>
+  </li></ul>
+  </li> <li> <a href="GuiReference.html#GUIMenuOption Controls"> GUIMenuOption Controls</a> <ul>
+  <li> <a href="GuiReference.html#GUICheckBoxButton / mo_CheckBox"> GUICheckBoxButton / moCheckBox</a>
+  </li> <li> <a href="GuiReference.html#GUIComboBox / mo_ComboBox"> GUIComboBox / moComboBox</a>
+  </li> <li> <a href="GuiReference.html#GUIEditBox / mo_EditBox"> GUIEditBox / moEditBox</a>
+  </li> <li> <a href="GuiReference.html#GUIFloatEdit / mo_FloatEdit"> GUIFloatEdit / moFloatEdit</a>
+  </li> <li> <a href="GuiReference.html#GUINumericEdit / mo_NumericEdit"> GUINumericEdit / moNumericEdit</a>
+  </li></ul>
+  </li></ul>
+  </li> <li> <a href="GuiReference.html#Laying out Components"> Laying out Components</a>
+  </li> <li> <a href="GuiReference.html#Tabs"> Tabs</a>
+  </li> <li> <a href="GuiReference.html#Saving"> Saving</a>
+  </li> <li> <a href="GuiReference.html#Hints"> Hints</a>
+  </li> <li> <a href="GuiReference.html#Context Menus"> Context Menus</a>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <noautolink>
+  <p />
+  <h2><a name="Introduction"></a> Introduction </h2>
+  <p />
+  The GUI system is flexible toolkit for making menus.  It provides tools for laying out buttons, labels, combo boxes, tabs, images, lists, and other basic UI elements in a resolution independent manner.  All of the text is independent of the images so menus made with the GUI system can be easily localized.  The GUI system also has the advantage of being laid out entirely in default properties so it is fairly easy to change and reorganize.  Using GUI does not require the game to be paused so it can also be used for in-game menu overlays though it is not best suited for this.  For the most part GUI is well documented so if you have questions about a particular variable or function, checking the source is a good thing to do.  This document is designed to give a general overview of how to use GUI, not to go over the details of all variables and functions.
+  <p />
+  The GUI system works by having a <em>GUIController</em> which distributes messages to <em>GUIComponents</em>.  <em>GUIController</em> extends <em>BaseGUIController</em> which is an <a href="InteractionReference.html" class="twikiLink">Interaction</a> which is how the controller gets all its input events and also how it can draw to the screen.  At the same time, because the controller is based on an interaction, other interactions can disrupt the GUI system by stealing events.  Beware particularly of the <em>DefaultPlayerMenu</em> interaction which is defined in &lt;YourGame &gt;.ini under the [Engine.Engine] heading.
+  <p />
+  The type of <em>GUIController</em> you have is also defined in &lt;YourGame&gt;.ini.  For the GUI system to work GUIController=GUI.GUIController must be set.  If you want an initial menu to appear when you launch the game you can set the <em>InitialMenuClass</em> under the [Engine.GameEngine] heading in &lt;YourGame&gt;.ini.  For example:
+  <p />
+  <pre>
+  &#91;Engine.GameEngine]
+  InitialMenuClass&#61;GUI.MyMainMenu
+  </pre>
+  <p />
+  <p />
+  <h2><a name="GUIController"></a> GUIController </h2>
+  <p />
+  As mentioned above, <em>GUIController</em> is an <a href="InteractionReference.html" class="twikiLink">Interaction</a>.  It implements all the <em>Interaction</em> functions  natively and uses these functions to send its own set of events to the current menu.  The <em>GUIController</em> is a simple FILO menu stack.  You have 3 things you can do.  You can open a menu which adds the menu to the top of the stack.  You can replace a menu which replaces the current menu with the new menu.  And you can close a menu, which returns you to the last menu on the stack. <em>GUIController</em> also provides some useful functions and variables for menu layout and design.
+  <p />
+  <p />
+  <h3><a name="OpenMenu"></a> OpenMenu </h3>
+  <code>event bool OpenMenu(string NewMenuName, optional string Param1, optional string Param2)</code>
+  <p />
+  OpenMenu opens the <a href="GuiReference.html#GUIPage" class="twikiAnchorLink">GUIPage</a> with the given class name <em>NewMenuName</em> and puts it on top of the stack as the active menu.  If the menu could not be opened, this function returns false.  <em>Param1</em> and <em>Param2</em> are passed to the new <em>GUIPage</em> in the the <a href="GuiReference.html#HandleParameters" class="twikiAnchorLink">HandleParameters</a> function if the menu is created successfully.  The <a href="GuiReference.html#PlayOpenSound" class="twikiAnchorLink">PlayOpenSound</a> function in <em>GUIPage</em> is also called.  If this <em>GUIPage</em> has <em>bDisconnectOnOpen</em> set to true, any net game will be disconnected.
+  Note: disconnecting games causes an <em>NotifyLevelChange</em> event to be called. In this case all GUIPages will receive <em>NotifyLevelChange</em> call and will be closed.
+  <p />
+  <p />
+  <h3><a name="ReplaceMenu"></a> ReplaceMenu </h3>
+  <code>event bool ReplaceMenu(string NewMenuName, optional string Param1, optional string Param2)</code>
+  <p />
+  This functions works much like <a href="GuiReference.html#OpenMenu" class="twikiAnchorLink">OpenMenu</a> but unlike <em>OpenMenu</em> this function does not put the new window on top of the stack, instead it replaces the current menu.  The other major difference is that even if <em>bDisconnectOnOpen</em> is set to true, any net game will NOT be disconnected.  This function will return false, if it does not succeed.
+  <p />
+  <p />
+  <h3><a name="CloseMenu"></a> CloseMenu </h3>
+  <code>event bool CloseMenu(optional bool bCanceled)</code>
+  <p />
+  This function tries to close the top menu. The delegate <em>OnCanClose</em> will be called, if this delegate returns false the menu will not be closed.
+  When the menu can be closed the close sound for that menu is played, and it is removed from the stack. Control will be given to the menu next on the stack if there is one.  If there is not a menu on the stack and the menu just closed does not have <em>bAllowedAsLast</em>, this function will attempt to open <em>GameEngine.MainMenuClass</em> and given control to it.  If the there is not a menu on the stack and <em>bAllowedAsLast</em> = true, the <em>GUIController</em> will try to give up control and return focus to the game. If you want to close the menus and return to the game, call <a href="GuiReference.html#CloseAll" class="twikiAnchorLink">CloseAll</a> even there is only one menu open. If bCanceled is false, the current menu will save its setting by calling <a href="GuiReference.html#SaveINI" class="twikiAnchorLink">SaveINI</a>, this is called for all components on the page.  <em>CloseMenu</em> only returns false and is considered to have failed if there are no menus on the stack when it is called.
+  <p />
+  <p />
+  <h3><a name="CloseAll"></a> CloseAll </h3>
+  <code>event CloseAll(bool bCancel, optional bool bForced)</code>
+  <p />
+  <em>CloseAll</em> will close all menus and the <em>GUIController</em> will give up control and the focus will return to the game.  If bCanceled is false, the top menu will save its setting by calling <a href="GuiReference.html#SaveINI" class="twikiAnchorLink">SaveINI</a>.
+  Setting bForced to true will prevent the main menu from being opened.
+  <p />
+  <p />
+  <h3><a name="GetMenuFont"></a> GetMenuFont </h3>
+  <code>native event GUIFont GetMenuFont(string FontName)</code>
+  <p />
+  <em>GetMenuFont</em> finds and returns a given <em>GUIFont</em> in the <em>FontStack</em> based on the font's <em>Name</em>.  The <em>FontStack</em> is defined in defaultproperties of <em>GUIController</em>.  If the font can't be found, NONE is returned.
+  <p />
+  <p />
+  <h3><a name="GetStyle"></a> GetStyle </h3>
+  <code>native event GUIStyles GetStyle(string StyleName)</code>
+  <p />
+  <em>GetStyle</em> find and returns a style on the <em>StyleStack</em> based on the <em>KeyName</em> of the <em>GUIStyles</em>.  If the style can't be found, NONE is returned.
+  <p />
+  <p />
+  <h3><a name="RegisterStyle"></a> RegisterStyle </h3>
+  <code>function bool RegisterStyle(class<GUIStyles> StyleClass, optional bool bTemporary)</code>
+  <p />
+  This allows you to register a new style during runtime. Returns true when the style is registered. If <code>bTemporary</code> is set the style will only exist for the duration of this level, so when a level is changed the style will be purged (see the <em>PurgeObjectReferences</em> function).
+  <p />
+  <h3><a name="GetCurrentRes"></a> GetCurrentRes </h3>
+  <code>native function string GetCurrentRes()</code>
+  <p />
+  This function returns the current resolution as a string in the format <em>WIDTHxHEIGHT</em> (for example "1024x768").
+  <p />
+  <p />
+  <h3><a name="GetMapList"></a> GetMapList </h3>
+  <code>native function GetMapList(string Prefix, GUIList list)</code>
+  <p />
+  This function takes a <em>GUIList</em> and fills it with all the maps with the given <em>Prefix</em>.  If you want all the maps, simply pass "" as <em>Prefix</em>.
+  <strong>Deprecated since v3323</strong> Use the CacheManager instead.
+  <p />
+  <h3><a name="ResetKeyboard"></a> ResetKeyboard </h3>
+  <code>native function ResetKeyboard()</code>
+  <p />
+  This function resets all the key bindings to those in the default ini files like <em>Default.ini</em> and <em>DefUser.ini</em>.
+  <p />
+  <p />
+  <h3><a name="MouseEmulation"></a> MouseEmulation </h3>
+  <code>native function MouseEmulation(bool On)</code>
+  <p />
+  This seems to turn on joystick emulation for the mouse.  Note: I have not tested this.  If anyone has used it, drop me a line.
+  Removed from v3323.
+  <p />
+  <p />
+  <h3><a name="ViewportOwner"></a> ViewportOwner </h3>
+  <code>var Player ViewportOwner</code>
+  <p />
+  This is a variable in <em>Interaction</em> but it is worth mentioning here because it allows the <em>GUIController</em> or a <em>GUIPage</em> to have access to the <em>PlayerController</em>, the <em>Level</em>, and <em>Game</em>; for example "ViewportOwner.Actor.Level.Game".
+  In v3323 use <em>PlayerOwenr()</em> defined in <em>GUIComponent</em> instead to get the <em>PlayerController</em>.
+  <p />
+  <p />
+  <h2><a name="GUIComponent"></a> GUIComponent </h2>
+  <p />
+  Almost everything in GUI, from <a href="GuiReference.html#GUIPage" class="twikiAnchorLink">GUIPages</a> to <a href="GuiReference.html#GUIButton" class="twikiAnchorLink">GUIButtons</a>, is built on <em>GUIComponent</em>.  This class is well documented and I suggest just looking though it.
+  <p />
+  <p />
+  <h2><a name="GUIPage"></a> GUIPage </h2>
+  <p />
+  <em>GUIPage</em> is the basic page out of which menus are built.  <em>GUIPage</em> extends <em>GUIMultiComponent</em> which allows it to contain many <em>GUIComponents</em> which are menu tools such as labels, buttons and lists.  Besides containing <em>GUIComponents</em>, <em>GUIPages</em> have a <em>Background</em> image, a <em>BackgroundColor</em> and sounds that play when the menu opens and closes.  <em>GUIPages</em> can demand to be rendered at 640x480 or greater by setting <em>bRequire640x480</em> to true which will switch the resolution if it is not already at 640x480 or greater.  These are some other variables in <em>GUIPage</em>:
+  <p />
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Background </td><td bgcolor="#eaeaea"> The background image for the menu </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> BackgroundColor </td><td bgcolor="#ffffff"> The color of the background </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> BackgroundRStyle </td><td bgcolor="#eaeaea"> The render style of background </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> bAllowedAsLast </td><td bgcolor="#ffffff"> If this is true, closing this page will not bring up the main menu if last on the stack. </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> bCaptureInput </td><td bgcolor="#eaeaea"> Whether to allow input to be passed to pages lower on the menu stack. </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> bCheckResolution </td><td bgcolor="#ffffff"> obsolete </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> bDisconnectOnOpen </td><td bgcolor="#eaeaea"> Should this menu cause for a disconnect when opened. </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> bPauseIfPossible </td><td bgcolor="#ffffff"> This does not do anything. But: should this menu pause the game if possible. </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> bPersistent </td><td bgcolor="#eaeaea"> If set in defprops, page is kept in memory across open/close/reopen </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> bRenderWorld </td><td bgcolor="#ffffff"> this does not do anything </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> bRequire640x480 </td><td bgcolor="#eaeaea"> Does this menu require at least 640x480 </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> bRestorable </td><td bgcolor="#ffffff"> When the GUIController receives a call to CloseAll(), should it reopen this page the next time main is opened? </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> CloseSound </td><td bgcolor="#eaeaea"> Sound to play when closed </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> InactiveFadeColor </td><td bgcolor="#ffffff"> Color Modulation for Inactive Page </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> OpenSound </td><td bgcolor="#eaeaea"> Sound to play when opened </td></tr>
+  </table>
+  <p />
+  <p />
+  <h3><a name="OnOpen"></a> OnOpen </h3>
+  <code>delegate OnOpen()</code>
+  <p />
+  This <a href="UnrealScriptDelegates.html" class="twikiLink">delegate</a> is called from <a href="GuiReference.html#Opened" class="twikiAnchorLink">Opened</a>. This delegate is called by the <a href="GuiReference.html#GUIController" class="twikiAnchorLink">GUIController</a>.
+  Pre-v3223 tis delegated is called by the <em>Opened</em> event and the default delegate calls <a href="GuiReference.html#PageLoadINI" class="twikiAnchorLink">PageLoadINI</a>.
+  <p />
+  <h3><a name="OnClose"></a> OnClose </h3>
+  <code>delegate OnClose(optional Bool bCancelled)</code>
+  <p />
+  This <a href="UnrealScriptDelegates.html" class="twikiLink">delegate</a> is called from <a href="GuiReference.html#Closed" class="twikiAnchorLink">Closed</a>.  Pre-v3323 the default calls <a href="GuiReference.html#PageSaveINI" class="twikiAnchorLink">PageSaveINI</a> if bCancelled is false.
+  <p />
+  <p />
+  <h3><a name="OnCanClose"></a> OnCanClose </h3>
+  <code>delegate bool OnCanClose(optional Bool bCancelled)</code>
+  <p />
+  This delegate will be called by the <a href="GuiReference.html#GUIController" class="twikiAnchorLink">GUIController</a> from <em>CloseMenu</em>. Return false to prevent this menu from closing.
+  <p />
+  <h3><a name="Opened"></a> Opened </h3>
+  <code>event Opened(GUIComponent Sender)</code>
+  <p />
+  This function is called from the <a href="GuiReference.html#GUIController" class="twikiAnchorLink">GUIController</a> when this <em>GUIPage</em> is opened.
+  Pre-v3323 <em>Opened</em> calls <a href="GuiReference.html#OnOpen" class="twikiAnchorLink">OnOpen</a>.
+  <p />
+  <h3><a name="Closed"></a> Closed </h3>
+  <code>event Closed(GUIComponent Sender, bool bCancelled)</code>
+  <p />
+  <em>Closed</em> is called from the <a href="GuiReference.html#GUIController" class="twikiAnchorLink">GUIController</a> when this <em>GUIPage</em> is closed.  This function calls <a href="GuiReference.html#OnClose" class="twikiAnchorLink">OnClose</a>.
+  <p />
+  <p />
+  <h3><a name="PageLoadINI"></a> PageLoadINI </h3>
+  <code>function PageLoadINI()</code>
+  <p />
+  <strong>Removed from v3323</strong> This function calls <em>LoadINI</em> on all the controls in this page.
+  <p />
+  <p />
+  <h3><a name="PageSaveINI"></a> PageSaveINI </h3>
+  <code>function PageSaveINI()</code>
+  <p />
+  <strong>Removed from v3323</strong> This function calls <em>SaveINI</em> on all the controls in this page.
+  <p />
+  <p />
+  <h3><a name="PlayOpenSound"></a> PlayOpenSound </h3>
+  <code>function PlayOpenSound()</code>
+  <p />
+  This function plays <em>OpenSound</em>.  It is called from the <a href="GuiReference.html#GUIController" class="twikiAnchorLink">GUIController</a> when this <em>GUIPage</em> is opened.
+  <p />
+  <p />
+  <h3><a name="PlayCloseSound"></a> PlayCloseSound </h3>
+  <code>function PlayCloseSound()</code>
+  <p />
+  This function plays <em>CloseSound</em>.  It is called from the <a href="GuiReference.html#GUIController" class="twikiAnchorLink">GUIController</a> when this <em>GUIPage</em> is closed.
+  <p />
+  <p />
+  <h3><a name="InitComponent"></a> InitComponent </h3>
+  <code>function InitComponent(GUIController MyController, GUIComponent MyOwner)</code>
+  <p />
+  <em>InitComponent</em> is responsible for initializing all components on the page.  Pages that subclass <em>GUIPage</em> should override this function to initialize all the components.  Make sure to call the super though.
+  <p />
+  <h3><a name="HandleParameters"></a> HandleParameters </h3>
+  <code>event HandleParameters(string Param1, string Param2)</code>
+  <p />
+  This is called from <a href="GuiReference.html#OpenMenu" class="twikiAnchorLink">OpenMenu</a> and <a href="GuiReference.html#ReplaceMenu" class="twikiAnchorLink">ReplaceMenu</a> where <em>Param1</em> and <em>Param2</em> are optional parameters to both those functions.  This gives the ability to pass arguments to your menus when you create them without changing the API.  You should subclass this function to take advantage of this functionality.
+  <p />
+  <p />
+  <p />
+  <h2><a name="GUIStyles"></a> GUIStyles </h2>
+  <p />
+  <em>GUIStyles</em> is a class that provides support for making different drawing styles for <em>GUIComponents</em>.  When the <em>GUIComponent</em> is drawn, the <em>Style</em> variable which is a <em>GUIStyles</em>, is used to draw the component.  The style determines the image to draw, the color of the image, how to draw that image, the text to draw, the color of the text, and the font of the test.  The style determines each of these things for all five states of the component (Blurry, Watched, Focused, Pressed, and Disabled).  This gives a great deal of flexibility for creating whatever sort of look and feel you might want.
+  <p />
+  Below is an example of the same button drawn with two different styles:
+  <p />
+  <img width="137" alt="GUIButton.jpg" src="rsrc/Two/GuiReference/GUIButton.jpg" height="33" border="0"  />
+  <img width="137" alt="GUIButtonStyle2.jpg" src="rsrc/Two/GuiReference/GUIButtonStyle2.jpg" height="33" border="0"  />
+  <p />
+  <p />
+  <p />
+  <h3><a name="States"></a> States </h3>
+  <p />
+  As mentioned before there are five states: Blurry, Watched, Focused, Pressed, and Disabled.  These are defined in the <em>eMenuState</em> enum in <em>GUI.uc</em>.
+  <p />
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> MSAT_Blurry </td><td bgcolor="#eaeaea"> Component has no focus at all.  This is the state if the mouse is not over this component nor is it selected. </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> MSAT_Watched </td><td bgcolor="#ffffff"> Component is being watched (ie: Mouse is hovering over, etc) </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> MSAT_Focused </td><td bgcolor="#eaeaea"> Component is Focused (ie: selected).  This happens either though using Tab or by the component receiving a mouse down event but the mouse button is no longer being pressed.  The mouse being over the component does not affect this state. </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> MSAT_Pressed </td><td bgcolor="#ffffff"> Component is being pressed.  This is when the component received a mouse down event and the mouse button is still being pressed, even if the mouse is not over this component any more. </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> MSAT_Disabled </td><td bgcolor="#eaeaea"> Component is disabled </td></tr>
+  </table>
+  <p />
+  <p />
+  <h3><a name="RStyles"></a> RStyles </h3>
+  <code>var EMenuRenderStyle RStyles[5]</code>
+  <p />
+  <em>RStyles</em> determines how the text and image of this component will be rendered.  <em>EMenuRenderStyle</em> is and enum defined in <em>GUI.uc</em>.  This defaults to <em>MSTY_Normal</em>.
+  <p />
+  <p />
+  <h3><a name="Images"></a> Images </h3>
+  <code>var Material Images[5]</code>
+  <p />
+  This array holds 1 material for each state (Blurry, Watched, Focused, Pressed, and Disabled).  Because these are materials you can have them blink and fade and do very neat things.
+  <p />
+  <p />
+  <h3><a name="ImgStyle"></a> ImgStyle </h3>
+  <code>var eImgStyle ImgStyle[5]</code>
+  <p />
+  <em>ImgStyle</em> determines how each image should be drawn.
+  <p />
+      ISTY_Normal,
+      ISTY_Stretched,
+      ISTY_Scaled,
+      ISTY_Bound,
+      ISTY_Justified,
+      ISTY_PartialScaled,
+      ISTY_Tiled,
+  <p />
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> ISTY_Stretched </td><td bgcolor="#eaeaea"> This is the default.  It corresponds to the <a href="CanvasReference.html#DrawTileStretched" class="twikiAnchorLink">DrawTileStretched</a> function in <a href="CanvasReference.html" class="twikiLink">Canvas</a> and will stretch the image to fit the dimensions of the <em>GUIComponent</em>. </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> ISTY_Normal </td><td bgcolor="#ffffff"> This draws the image without any scaling or stretching. </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> ISTY_Scaled </td><td bgcolor="#eaeaea"> This will draw the image scaled to fit the dimensions of the <em>GUIComponent</em>. </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> ISTY_Bound </td><td bgcolor="#ffffff"> image doesn't seem to draw </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> ISTY_Justified </td><td bgcolor="#eaeaea"> Image is drawn within the bounds of the component according to the ImageAlign setting </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> ISTY_PartialScaled </td><td bgcolor="#ffffff"> Combination between scaling and stretching. </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> ISTY_Tiled </td><td bgcolor="#eaeaea"> The image is repeated. </td></tr>
+  </table>
+  <p />
+  <img width="600" alt="ISTY chart" src="rsrc/Two/GuiReference/ISTY_chart.png" height="338" border="0"  />
+  <p />
+  <h3><a name="ImgColors"></a> ImgColors </h3>
+  <code>var Color ImgColors[5]</code>
+  <p />
+  This array holds 1 image color for each state.  The image will be modulated <em>(multiplied with the color range (0-255) considered to be from 0.0-1.0)</em> with this color.
+  <p />
+  <p />
+  <h3><a name="FontNames"></a> FontNames </h3>
+  <code>var string FontNames[5]</code>
+  <p />
+  Holds the names of the fonts to use for each state.
+  <p />
+  <p />
+  <h3><a name="FontColors"></a> FontColors </h3>
+  <code>var Color FontColors[5]</code>
+  <p />
+  This array holds 1 font color for each state.
+  <p />
+  <h3><a name="FontBKColors"></a> FontBKColors </h3>
+  <code>var Color FontBKColors[5]</code>
+  <p />
+  Background colors for the fonts. Used to color the background for selections in lists and popup menus.
+  <p />
+  <p />
+  <h3><a name="BorderOffsets"></a> BorderOffsets </h3>
+  <code>var int BorderOffsets[4]</code>
+  <p />
+  <em>BorderOffsets</em> is the border for the text.  0=Left, 1=Top, 2=Right, 3=Bottom.
+  <p />
+  <p />
+  <h2><a name="Controls"></a> Controls </h2>
+  <p />
+  Below are some examplea of controls that can be used to design pages and panels with GUI. There are a lot more components available. Check the code of the classes in the XInterface and GUI2K4 package for good examples on how various components can be used.
+  <p />
+  <h3><a name="Standard Controls"></a> Standard Controls </h3>
+  <p />
+  These are basic controls built on <a href="GuiReference.html#GUIComponent" class="twikiAnchorLink">GUIComponent</a>.
+  <p />
+  <h4><a name="GUIButton"></a> GUIButton </h4>
+  <p />
+  <img width="271" alt="GUIButton" src="rsrc/Two/GuiReference/GUIButton.png" height="60" border="0"  />
+  <p />
+  To use buttons you must use the <em>OnClick</em> <a href="UnrealScriptDelegates.html" class="twikiLink">delegate</a> of <em>GUIComponent</em>.  This Delegate is defined as follows:
+  <p />
+  <pre>
+  // The mouse was clicked on this control
+  Delegate bool OnClick(GUIComponent Sender);
+  </pre>
+  <p />
+  To use this delegate, create a function in your <a href="GuiReference.html#GUIPage" class="twikiAnchorLink">GUIPage</a> that has the same format as the delegate.  Below is an example:
+  <p />
+  <pre>
+  function bool ButtonClick(GUIComponent Sender)
+  {
+     local GUIButton Selected;
+  
+     if (GUIButton(Sender) !&#61; None)
+        Selected &#61; GUIButton(Sender);
+  
+     if (Selected &#61;&#61; None) return false;
+  
+     switch (Selected)
+     {
+        case TestButton1:
+           return Controller.OpenMenu(&#34;GUI.MyTest2Page&#34;); break;
+        case TestButton2:
+           return Controller.OpenMenu(&#34;GUI.MyTestPage&#34;); break;
+        case QuitButton:
+           return Controller.OpenMenu(&#34;GUI.MyQuitPage&#34;); break;
+     }
+     return false;
+  }
+  </pre>
+  <p />
+  Now in defaultproperties set the OnClick of the button to be the name of the function you created like so:
+  <p />
+  <pre>
+  defaultproperties
+  {
+     Begin Object Class&#61;GUIButton Name&#61;cTestButton1
+        ...
+        OnClick&#61;ButtonClick
+        ...
+     End Object
+  
+     TestButton1&#61;cTestButton1
+  }
+  </pre>
+  <p />
+  <p />
+  <h4><a name="GUIListBox"></a> GUIListBox </h4>
+  <p />
+  <img width="289" alt="GUIListBox.jpg" src="rsrc/Two/GuiReference/GUIListBox.jpg" height="198" border="0"  />
+  <p />
+  This box will simply display a <em>GUIList</em>.  The delegates of <em>GUIListBox</em> pass on the <em>OnClick</em> and <em>OnChange</em> events to the <em>GUIList</em> itself.
+  <p />
+  <p />
+  <h4><a name="GUISlider"></a> GUISlider </h4>
+  <p />
+  <img width="165" alt="GUISlider.jpg" src="rsrc/Two/GuiReference/GUISlider.jpg" height="41" border="0"  />
+  <p />
+  A <em>GUISlider</em> is a slider between <em>float MinValue</em> and <em>float MaxValue</em> which are specified in defaultproperties.  If <em>bIntSlider</em> is true, the slider will have only Int values.  You can get the value of the slider by querying <em>float Value</em>; there is not getter function.  Two useful functions are:
+  <pre>
+  function SetValue(float NewValue)
+  function Adjust(float amount)
+  </pre>
+  <p />
+  <em>SetValues</em> sets the current value after doing a range check and a cast to an Int if <em>bIntSlider</em> is true.  <em>Adjust</em> moves the slider up or down by the given <em>amount</em> which is treated as a percentage.  If <em>amount</em> causes the slider to exceed its min or max, that value will just be clamped.
+  <p />
+  <p />
+  <h3><a name="GUIMenuOption Controls"></a> GUIMenuOption Controls </h3>
+  <p />
+  <em>GUIMenuOption</em> is a wrapper class for <em>GUIComponent</em>.  <em>GUIMenuOption</em> contains a <em>GUIComponent</em> ( <em>MyComponent</em> ) and a <em>GUILabel</em> ( <em>MyLabel</em> ) and it takes care of all positioning and scaling between the component and the label.  By default the label is left justified in the space available for this component and the control is right justified but this can be changed by altering the defaultproperties of the <em>GUIMenuOption</em>.  The text of the label is specified in <em>Caption</em>.
+  <p />
+  The <em>GUIComponent</em> of the <em>GUIMenuOption</em> can be accessed directly through <em>MyComponent</em> but most <em>GUIMenuOptions</em> provide a more direct representation such as <em>MyCheckBox</em> in <em>moCheckBox</em>.  <em>GUIMenuOptions</em> often also provide similar accessor functions to the <em>GUIComponent</em> they wrap so it is easy to swap one for the other without changing much code.  For example <em>moFloatEdit</em>, the <em>GUIMenuOption</em> wrapper of <em>GUIFloatEdit</em>, both have the <em>SetValue(float V)</em> function.
+  <p />
+  Below I will discuss both the <em>GUIComponent</em> and the <em>GUIMenuOption</em> wrapper for that component together.  This is because the two classes serve nearly the same purpose and are used in nearly the same way except for the fact that one has a label.
+  <p />
+  <p />
+  <h4><a name="GUICheckBoxButton / mo_CheckBox"></a> GUICheckBoxButton / moCheckBox </h4>
+  <p />
+  <img width="328" alt="moCheckBox.jpg" src="rsrc/Two/GuiReference/moCheckBox.jpg" height="32" border="0"  />
+  <p />
+  These classes are very simple.  Unfortunately, they don't have the same API.  <em>GUICheckBoxButton</em> has the function <em>SetChecked(bool bNewChecked)</em> to set the checkedness of the box and to examine the checkedness you just look at <em>bCheckBox</em>.  <em>moCheckBox</em> has the function <em>Checked(bool C)</em> to set the checkedness and the function <em>bool IsChecked()</em> to examine the checkedness.
+  <p />
+  <p />
+  <h4><a name="GUIComboBox / mo_ComboBox"></a> GUIComboBox / moComboBox </h4>
+  <p />
+  <img width="273" alt="GUIComboBox.jpg" src="rsrc/Two/GuiReference/GUIComboBox.jpg" height="34" border="0"  />
+  <p />
+  There are two types of combo boxes, <em>GUIComboBox</em> and <em>moComboBox</em>.  Both behave in very similar ways.  The main function of interest in both of these classes are <em>SetText</em> , <em>GetText</em>, and <em>Find</em>.
+  <pre>
+  function SetText(string NewText)
+  function string GetText()
+  function string Find(string Test, bool bExact)
+  </pre>
+  <p />
+  <em>SetText</em> will set the current text in the text field of the box to <em>NewText</em> and try to set the item in the pull down list be <em>NewText</em>.  If <em>NewText</em> does not exist in the pull down list, the list index will remain unchanged.
+  <p />
+  <em>GetText</em> returns the current text of the combo box.
+  <p />
+  <em>Find</em> returns contents of the combo box that match <em>Test</em>.  If <em>bExact</em> is true, the finding will be case sensitive and the return value of <em>Find</em> will equal <em>Test</em> exactly or be an empty string.  If <em>bExact</em> is false, <em>Find</em> will return the version in the combo box or an empty string if <em>Test</em> is not found.
+  <p />
+  <p />
+  <h4><a name="GUIEditBox / mo_EditBox"></a> GUIEditBox / moEditBox </h4>
+  <p />
+  <img width="328" alt="moEditBox.jpg" src="rsrc/Two/GuiReference/moEditBox.jpg" height="32" border="0"  />
+  <p />
+  These are boxes that display text and that you can type in if <em>bReadOnly</em> is false.  They can be configured to only display numbers but maybe you would want to use a <a href="GuiReference.html#GUIFloatEdit_moFloatEdit" class="twikiAnchorLink">GUIFloatEdit</a> or a <a href="GuiReference.html#GUINumericEdit_moNumericEdit" class="twikiAnchorLink">GUINumericEdit</a> instead for that.  <em>GUIEditBox</em> and <em>moEditBox</em> both have the <em>SetText(string NewText)</em> function.  <em>GUIEditBox</em> can inspect the value of <em>TextStr</em> to get the current value of the edit while <em>moEditBox</em> has the <em>string GetText()</em> function.
+  <p />
+  <p />
+  <h4><a name="GUIFloatEdit / mo_FloatEdit"></a> GUIFloatEdit / moFloatEdit </h4>
+  <p />
+  <img width="328" alt="moFloatEdit.jpg" src="rsrc/Two/GuiReference/moFloatEdit.jpg" height="32" border="0"  />
+  <p />
+  This is an edit for entering floats.  The floats can be either left or right justified based on <em>bLeftJustified</em> in <em>GUIFloatEdit</em>.  Based on the general pattern we are seeing here both of these classes have setter functions, <em>SetValue(float V)</em>, but only <em>moFloatEdit</em> has a getter, <em>float GetValue()</em>.  <em>GUIFloatEdit _ must inspect _string Value</em> and cast it to a float.
+  <p />
+  <p />
+  <h4><a name="GUINumericEdit / mo_NumericEdit"></a> GUINumericEdit / moNumericEdit </h4>
+  <p />
+  <img width="328" alt="moNumericEdit.jpg" src="rsrc/Two/GuiReference/moNumericEdit.jpg" height="32" border="0"  />
+  <p />
+  These classes are almost exactly like <a href="GuiReference.html#GUIFloatEdit_moFloatEdit" class="twikiAnchorLink">FloatEdits</a> but with Ints.
+  <p />
+  <p />
+  <p />
+  <h2><a name="Laying out Components"></a> Laying out Components </h2>
+  <p />
+  The layout of components is done predominantly in defaultproperties.  Below is an example:
+  <p />
+  <pre>
+  defaultproperties
+  {
+     Begin Object Class&#61;GUIButton Name&#61;cLoadMapButton
+        Caption&#61;&#34;Load Map&#34;
+        Hint&#61;&#34;Loads a map&#34;
+        OnClick&#61;InternalOnClick
+        TabOrder&#61;0
+        bBoundToParent&#61;true
+        bScaleToParent&#61;true
+        WinWidth&#61;0.2
+        WinHeight&#61;0.05
+        WinLeft&#61;0.031250
+        WinTop&#61;0.8
+     End Object
+  
+     Begin Object Class&#61;GUIButton Name&#61;cCancelMapButton
+        Caption&#61;&#34;Cancel&#34;
+        Hint&#61;&#34;Cancels and closes this window&#34;
+        OnClick&#61;InternalOnClick
+        TabOrder&#61;1
+        bBoundToParent&#61;true
+        bScaleToParent&#61;true
+        WinWidth&#61;0.2
+        WinHeight&#61;0.05
+        WinLeft&#61;0.26
+        WinTop&#61;0.8
+     End Object
+  
+     LoadMapButton&#61;cLoadMapButton;
+     CancelMapButton&#61;cCancelMapButton;
+  
+     Background&#61;Material&#39;GUIMenu.SquareBoxA&#39;
+  
+     WinWidth&#61;1.000000
+     WinHeight&#61;0.807813
+     WinLeft&#61;0.000000
+     WinTop&#61;55.980499
+  }
+  </pre>
+  <p />
+  Clearly this is not a complete <em>GUIPage</em> but it illustrates common layout techniques.  First we will inspect the creation of the two buttons.  <em>Caption</em> is used to set the text of the button.  This string can be <a href="LocalizationReference.html" class="twikiLink">localized</a> in the following manner (German in this example):
+  <p />
+  <pre>
+  &#91;MyClass]
+  LoadMapButton.Caption&#61;&#34;Last Diagramm&#34;
+  CancelMapButton.Caption&#61;&#34;L�schen&#34;
+  </pre>
+  <p />
+  <em>OnClick</em> is the click delegate which is set to <em>InternalOnClick</em> for both these buttons.  For more information on click delegates see <a href="GuiReference.html#GUIButton" class="twikiAnchorLink">GUIButton</a>.
+  <p />
+  Now for the layout information.  Layout positions can be given in ratios with 0.0 being the extreme top or left and 1.0 being the extreme bottom or right.  These ratios can be given in either screen ratios or parent ratios as the parent does not necessarily take up the whole screen.  The parent size is defined by the <em>WinWidth</em> and <em>WinHeight</em> of the GUIPage which are 1.000000 and  0.807813 respectively in the example above.  <em>bBoundToParent</em> set to true means that this component uses the parent's bounds for all positioning instead of the window size.  This affects <em>WinLeft</em> and <em>WinTop</em>.  <em>bScaleToParent</em> set to true means that this component uses the Parent for scaling.  The affects <em>WinWidth</em> and <em>WinHeight</em> of the component.
+  <p />
+  Layout positions can also be given in pixels by entering any value &gt; 1.0 even floats such as 1.1.  Pixel values are also affected by <em>bBoundToParent</em> and <em>bScaleToParent</em>.
+  <p />
+  As you might have guessed by now <em>WinLeft</em> and <em>WinTop</em> are used to position components.  They are the left side and top of the component respectively.  <em>WinWidth</em> and <em>WinHeight</em> are the width and height of the component respectively.
+  <p />
+  <p />
+  <p />
+  <h2><a name="Tabs"></a> Tabs </h2>
+  <p />
+  <img width="404" alt="GUITabs.jpg" src="rsrc/Two/GuiReference/GUITabs.jpg" height="91" border="0"  />
+  <p />
+  The <em>GUITabControl</em> and <em>GUITitleBar</em> classes can be used to make tabs in the UI.  Strictly speaking <em>GUITitleBar</em> does not need to be used to make the tabs but it has support for linking the title bar to the tabs so the tabs are not just floating in space.
+  <p />
+  <em>GUITabControl</em> has a function:
+  <pre>
+  GUITabPanel AddTab(string Caption, string PanelClass,
+            optional GUITabPanel ExistingPanel,
+            optional string Hint,
+            optional bool bForceActive)
+  </pre>
+   which is used to add tabs to the tab control.  <em>Caption</em> is the name what will be written on the tab itself.  <em>PanelClass</em> is the name of the <em>GUITabPanel</em> class to be spawned.  <em>PanelClass</em> will not used if a valid <em>ExistingPanel</em> is passed.  <em>Hint</em> is the hint that will be associated with the tab.  If <em>bForceActive</em> is true, this new tab will be set to the active tab.
+  <p />
+  Another important aspect of <em>GUITabControls</em> is the <em>OnChange(GUIComponent Sender)</em> delegate.  This delegate is called when tabs change and can, for example, be used to change the caption of the <em>GUITitleBar</em>.
+  <p />
+  <p />
+  <h2><a name="Saving"></a> Saving </h2>
+  <p />
+  Saving and the subsequent loading of <em>GUIComponents</em> can take place in two delegate functions of <em>GUIComponent</em>.
+  <p />
+  <pre>
+  Delegate OnLoadINI(GUIComponent Sender, string s);
+  Delegate string OnSaveINI(GUIComponent Sender);
+  </pre>
+  <p />
+  These delegates are called for all of the controls in a <em>GUIPage</em> but not the page itself.
+  <p />
+  Another way to do saving it to use the <em>SaveConfig</em> function.  <em>SaveConfig</em> works by writing to the game ini file the config vars in a config(user) defined class.  When this class in next spawned, it will start with these defaults.
+  <p />
+  <p />
+  <p />
+  <h2><a name="Hints"></a> Hints </h2>
+  <p />
+  There is a built in mouse over hint system in GUI.  All <em>GUIComponents</em> have a <em>localized string Hint</em> which is the hint about how to use that component.
+  <p />
+  In v3323 the hint is shown in a GUIToolTip component. This GUIToolTip will show when the mouse is overing above a component with a hint set. The delegates <em>OnBeginTooltip</em> and <em>OnEndTooltip</em> are called when a tool tip should be opened/closed. Not all components have the ToolTip variable set by default, only the input components (buttons, menuoptions, etc.). Tooltips can be disabled globally by setting the <code>bNoToolTips</code> variable in <em>GUIController</em> .
+  <p />
+  Pre-v3323 the <em>event ChangeHint(string NewHint)</em> defined in <em>GUIPage</em> is called when there is a new hint.  In many cases this will be used to set the text of a text box or a <em>GUITitleBar</em>.  Below is an example taken from <em>MyTestPage.uc</em>.
+  <p />
+  <pre>
+  var Automated GUITitleBar TabFooter;
+  
+  ...
+  
+  event ChangeHint(string NewHint)
+  {
+     TabFooter.Caption &#61; NewHint;
+  }
+  
+  ...
+  
+  defaultproperties
+  {
+     Begin Object class&#61;GUITitleBar name&#61;MyFooter
+        WinWidth&#61;0.880000
+        WinHeight&#61;0.055000
+        WinLeft&#61;0.120000
+        WinTop&#61;0.942397
+        bUseTextHeight&#61;false
+        StyleName&#61;&#34;Footer&#34;
+        Justification&#61;TXTA&#95;Center
+     End Object
+  
+     TabHeader&#61;MyHeader
+  
+     ...
+  }
+  </pre>
+  <p />
+  <h2><a name="Context Menus"></a> Context Menus </h2>
+  <p />
+  Another new thing in v3323 are context menus. Every component can have it's own context menu. Context menus are creaed just like any GUIComponent in the defaultproperties.
+  <pre>
+     Begin Object class&#61;GUIContextMenu Name&#61;myContextMenu
+        ContextItems(0)&#61;&#34;Option 1&#34;
+        ContextItems(1)&#61;&#34;Second Option&#34;
+        ContextItems(2)&#61;&#34;Last Option&#34;
+        OnSelect&#61;ContextMenuOnClick
+     End Object
+     ContextMenu&#61;myContextMenu
+  </pre>
+  There's one important thing to think about, the context menu has to be defined in the defaultproperties section of the component that it is going to assigned to.
+  When a user right-clicks a component with a ContextMenu assigned it will open the ContextMenu. When a ContextMenu item is selected the <em>OnSelect</em> delegate is called:
+  <p />
+  <code>function cmMatchesOnClick(GUIContextMenu Sender, int ClickIndex)</code>
+  The ClickIndex is the item that was selected from the context menu.
+  The context menu can be modified on runtime using the following functions: <ul>
+  <li> AddItem
+  </li> <li> InsertItem
+  </li> <li> RemoveItemByName
+  </li> <li> RemoveItemByIndex
+  </li> <li> ReplaceItem
+  </li></ul>
+  </noautolink>
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/GuiReference.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 13:22:03 GMT -->
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/NavigationAIUT2003.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:38:53 GMT -->
+<head>
+  <title> UDN - Two - NavigationAIUT2003    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">NavigationAIUT2003  </b></div>
+  <div id="tooltext">
+  <p />
+  
+  <!-- Two/NavigationAIUT2003 -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="Unreal Tournament 2003 AI for Level Designers"></a> Unreal Tournament 2003 AI for Level Designers </h1>
+  <p />
+  <em>Version 2.0</em> <br />
+  <em>Steven Polge</em> <br />
+  <em>2/15/03</em> <br />
+  <p />
+  <h2><a name="Overview"></a> Overview </h2>
+  <p />
+  This document describes how to set up navigation networks in a level so that NPCs can efficiently navigate to any point in the level. It also describes AI actors and level issues specific to UT 2003.  The intended audience is level designers.
+  <p />
+  <p />
+  <h2><a name="Basic Pathing"></a> Basic Pathing </h2>
+  <p />
+  Level designers place PathNodes<sup>?</sup> (a subclass of NavigationPoint<sup>?</sup>) in their levels on surfaces which NPCs can walk on, or in volumes which NPCs can swim in. For PathNodes<sup>?</sup> to connect, they should be less than 1000 Unreal units apart. PlayerStarts<sup>?</sup> are also NavigationPoints<sup>?</sup>, and they perform the same navigation function. In addition, InventorySpots<sup>?</sup> are automatically placed at the location of every pickup in the level when building paths (they are invisible, but you will be able to see path connections to them). Having two NavigationPoints<sup>?</sup> too close together (overlapping) can cause AI problems and should be avoided. When placing PathNodes<sup>?</sup>, the goal is to make sure that every area of the level is covered by a PathNode<sup>?</sup> or some other NavigationPoint<sup>?</sup>. An area is covered if an NPC could walk to some pathnode less than 1000 units away completely unobstructed (i.e. without having to step around anything).
+  <p />
+  <img alt="NavigationAIUT2003\naviga1.gif" src="#" />
+  <p />
+  After placing PathNodes<sup>?</sup>, the level designer can build the connections between NavigationPoints<sup>?</sup> by using the "Build AI Paths" option in the Build menu (or by doing a full rebuild). Once paths have been built, they can be seen in the various level view windows by using the "Show Paths" option under the View menu. Paths will be displayed as lines from one NavigationPoint<sup>?</sup> to another. If NPCs can traverse the path in either direction, there will be two lines, with an arrowhead pointing in each direction. Otherwise, the line will show with an arrowhead in which direction the path can be traversed. Paths will be displayed in various colors, indicating important information about the path:
+  <p /> <ul>
+  <li> <strong>White</strong> - very wide path, which large NPCs can use (maximum collision radius of  120 units).
+  </li> <li> <strong>Green</strong> - wide path, which moderately large NPCs can use (maximum collision radius of  72 units).
+  </li> <li> <strong>Blue</strong> - narrow path, useable by smaller NPCs.
+  </li> <li> <strong>Purple</strong> - path using a lift or teleporter.
+  </li> <li> <strong>Light Purple</strong> - path using a ladder.
+  </li> <li> <strong>Yellow</strong> - forced path. A path between two NavigationPoints<sup>?</sup> can be forced, if no connection is automatically made, by putting the name of the destination NavigationPoint<sup>?</sup> in the ForcedPaths<sup>?</sup>[] array of the source NavigationPoint<sup>?</sup> (in the NavigationPoint<sup>?</sup> properties sheet).
+  </li> <li> <strong>Red</strong> - proscribed path. A path between two NavigationPoints<sup>?</sup> can be proscribed by putting the name of the destination NavigationPoint<sup>?</sup> in the ProscribedPaths<sup>?</sup>[] array of the source NavigationPoint<sup>?</sup> (in the NavigationPoint<sup>?</sup> properties sheet).
+  </li></ul>
+  Even if the NPCs using the paths are small, it is always better to tweak the pathnode positions to make the connecting paths as wide as possible. NPCs will smoothly round corners, or strafe back and forth within a path, so larger paths will result in more natural looking movement.
+  <p />
+  Once a level has a large number of paths, it can take a while to rebuild all the paths. To tweak path placement, use the "Build changed paths" button in the build options menu. This will only rebuild paths between NavigationPoints<sup>?</sup> which have been added, removed, or moved. <strong>Before saving and playing the level, however, a full path rebuild is required</strong>.
+  <p />
+  <p />
+  <h2><a name="Debugging Paths"></a> Debugging Paths </h2>
+  <p />
+  After building paths, a window may pop up in the editor with a list of pathing errors. Click on an error to take you to the offending NavigationPoint<sup>?</sup>.
+  <p />
+  After the level is completely pathed and paths have been defined, use the 'Review Paths' option in the Tools menu. The following items are checked:
+  <p /> <ul>
+  <li> All NavigationPoints<sup>?</sup> with bMustBeReachable true (such as flagbases) can be reached from any path in the level.
+  </li> <li> All movers have an appropriate NavigationPoint<sup>?</sup> associated with them (unless the mover's editable bNoAIRelevance property is true).
+  </li> <li> Checks if PathNodes<sup>?</sup> should be converted to JumpDests<sup>?</sup>.
+  </li> <li> No NavigationPoint<sup>?</sup> ExtraCost<sup>?</sup> can be less than zero.
+  </li></ul>
+  <p />
+  If a bot seems confused or is doing something funky, view it by using the <code>ViewBot</code> console command, and use the <code>ShowAI</code> console command to see what it's thinking and the path it is following. Each time you enter <code>ViewBot</code>, your view will switch to another bot in the level.  You can also use <code>ViewFlag</code> to directly view flag carriers. To check navigation paths while in the level, use <code>RememberSpot</code> to mark a location. Then, using <code>ShowDebug</code> while viewing your own player will show you a continually updated path to the marked location.
+  <p />
+  An additional valuable tool for debugging/testing AI in your level is the console command SoakBots<sup>?</sup>.  After entering <code>SoakBots</code> in the UT console, any time a bot encounters a significant problem, the game is paused with the view shifted to looking at the bot, with debugging information about the bot's state displayed (including the error at the top).  While this will catch many bot problems, it won't catch everything, so watching bots play is still vital.
+  <p />
+  <p />
+  <h2><a name="PlayerStart (subclass of _NavigationPoint)"></a> PlayerStart<sup>?</sup> (subclass of NavigationPoint<sup>?</sup>) </h2>
+  <p />
+  Each PlayerStart<sup>?</sup> has a <strong><em>TeamNumber</em></strong> option, which specifies what team can spawn at that start.  <strong>TriggeredPlayerStarts</strong> toggle the PlayerStart<sup>?</sup> <strong><em>bEnabled</em></strong> attribute whenever they are triggered.  Also, whenever a player spawns at a playerstart, its event (if any) is triggered.
+  <p />
+  <p />
+  <h2><a name="UnrealScriptedSequence (subclass of Keypoint-AIScript-_ScriptedSequence)"></a> UnrealScriptedSequence<sup>?</sup> (subclass of Keypoint-&gt;AIScript-&gt;ScriptedSequence) </h2>
+  <p />
+  UnrealScriptedSequence<sup>?</sup> is the subclass of ScriptedSequence<sup>?</sup> that should be used for all UT2003 scripted sequences (typically used as defense points around bases).  It contains several defense script related attributes:
+  <p /> <ul>
+  <li> <strong><em>bDontChangeScripts</em></strong>:  Bot should return to this defense script after being interrupted, rather than possibly changing to another compatible script.
+  </li> <li> <strong><em>Priority</em></strong>:  Used to prioritize selection of script when several compatible scripts are available.
+  </li> <li> <strong><em>EnemyAcquisitionScriptTag</em></strong>:  Tag of script that bot will use after leaving this script and acquiring an enemy.
+  </li> <li> <strong><em>EnemyAcquisitionScriptProbability</em></strong>: Likelihood that bot will use the acquisition script.
+  </li> <li> <strong><em>bSniping</em></strong>:  Bot should snipe when using this scripted sequence as a defense point.
+  </li> <li> <strong><em>SnipingVolumeTag</em></strong>: area defined by volume in which to look for (distant) sniping targets (use only if needed).
+  </li> <li> <strong><em>WeaponPreference</em></strong>:    bots using this defense point will preferentially use this weapon.
+  </li> <li> <strong><em>bRoamingScript</em></strong>:  bots won’t re-use the same script, but will keep moving.
+  </li></ul>
+  <p />
+  By default, an UnrealScriptedSequence<sup>?</sup> makes a bot go to its location, and look in the direction specified by its rotation.  In most cases, this is all you need, and no changes to the default properties are needed (except for tagging the script properly to associate it with a GameObjective<sup>?</sup>, such as a FlagBase<sup>?</sup>).
+  <p />
+  However, defense scripts can assign a variety of actions to bots, and be linked together like any scripted sequence.  Note that the amount of time bots pause at a script can be modified by changing the PauseTime<sup>?</sup> in the second action (if using the default actions).
+  <p />
+  UnrealScriptedSequences<sup>?</sup> that are not associated with any GameObjective<sup>?</sup> are Freelance scripts.  Bots with orders to freelance, or playing deathmatch, will wander between these scripts when they have nothing else to do.  This works best if there are several in the map – it's better to have none than to have less than 5 freelance scripts.
+  <p />
+  <p />
+  <h2><a name="Doors"></a> Doors </h2>
+  <p />
+  Door NavigationPoints<sup>?</sup> should be placed in conjunction with any mover that acts as a door (based on its position, it allows or blocks movement between two areas). The Door should be placed in the center of the affected area (typically, in the middle of the actual static mesh used for the door - but low enough to touch the ground). There are also several important properties of a Door NavigationPoint<sup>?</sup> that should be updated as needed:
+  <p /> <ul>
+  <li> <strong><em>DoorTag</em></strong> - the tag of the mover with which this Door is associated.
+  </li> <li> <strong><em>DoorTrigger</em></strong> - if the door is triggered, this is the tag of the trigger actor which will open the door.
+  </li> <li> <strong><em>bInitiallyClosed</em></strong> - whether the default state of the mover allows movement (if false), or prevents it (if true, the default value).
+  </li> <li> <strong><em>bBlockedWhenClosed</em></strong> - if the mover is closed, there is no way for the NPC to open it. (false by default)
+  </li></ul>
+  Movers have a bAutoDoor property. If set to true, a Door pathnode is automatically generated for that mover. This should work for most doors.
+  <p />
+  <p />
+  <h2><a name="CTF"></a> CTF </h2>
+  <p />
+  Level designers will place one xRedFlagBase actor, and one xBlueFlagBase actor in their level for CTF games.  CTF bases have the following important AI attribute, that should be set:
+  <p /> <ul>
+  <li> <strong><em>DefenseScriptTags</em></strong>:  All UnrealScriptedSequences<sup>?</sup> with this tag will be used as defense scripts for this objective.  Bots will choose between these defense scripts when defending this objective.
+  </li></ul>
+  <p />
+  <p />
+  <h2><a name="Double Domination"></a> Double Domination </h2>
+  <p />
+  Level designers will place one xDomPointA actor and one xDomPointB actor in their level for Double Domination games.  Just like with CTF Bases, each domination point should have its DefenseScriptTags<sup>?</sup> property set to match the UnrealScriptedSequences<sup>?</sup> used as defense scripts for this point.
+  <p />
+  <p />
+  <h2><a name="Bombing Run"></a> Bombing Run </h2>
+  <p />
+  Level designers will place on xBombSpawn actor in the center of their level, and two xBombDelivery actors for Bombing Run games.  Just like with CTF Bases, each bomb delivery point, or goal, should have its DefenseScriptTags<sup>?</sup> property set to match the UnrealScriptedSequences<sup>?</sup> used as defense scripts for this point.  xBombDelivery actors also have a couple of other important attributes.  The <strong><em>Team</em></strong> property needs to be set for each goal.  The TouchDownDifficulty<sup>?</sup> property is used to modify whether bots are more likely to shoot goals or try to jump through (higher values make bots more likely to shoot).
+  <p />
+  For bots to shoot goals from a distance, the level designer will need to set up ShootSpots<sup>?</sup> to identify locations bots should shoot from.  Use a BlueShootSpot<sup>?</sup> to mark where red team bots should shoot at the blue goal, and RedShootSpots<sup>?</sup> to mark where blue team bots should shoot at the red goal. You can have several shootspots for each goal.
+  <p />
+  <p />
+  <h2><a name="AssaultPath (subclass of _NavigationPoint)"></a> AssaultPath<sup>?</sup> (subclass of NavigationPoint<sup>?</sup>) </h2>
+  <p />
+  AssaultPaths<sup>?</sup> are used to specify alternate routes for squads of bots attacking an objective (for example a CTF Base).  The following attributes are important for setting up basic assault paths:
+  <p /> <ul>
+  <li> <strong><em>ObjectiveTag</em></strong> - set the ObjectiveTag<sup>?</sup> to the tag of the destination objective for this AssaultPath<sup>?</sup>.
+  </li> <li> <strong><em>Priority</em></strong> - 0 to 1, higher means heavier weighting when determining whether to use this path from among all potential candidates.
+  </li> <li> <strong><em>bNoReturn</em></strong> - Set this to true if this AssaultPath<sup>?</sup> shouldn't be used when returning from the enemy base.
+  </li> <li> <strong><em>bReturnOnly</em></strong> - Set this to true if this AssaultPath<sup>?</sup> should <strong>only</strong> be used for returning from the enemy base.
+  </li> <li> <strong><em>bNoGrouping</em></strong> - Normally, squads of two or three bots will try to attack flag bases together.  A lone bot will wait for a team mate near the assault path, unless this flag is set to true.  It should be set to true if the assault path is in an open area, where it would be foolish to hang out for a few seconds.
+  </li></ul>
+  <p />
+  When a squad of bots attack a base that has associated Assaultpaths, they will pick an assault path at random (weighted by their priorities), and run to that point before proceeding to the base.  AssaultPaths<sup>?</sup> should therefore be positioned so as to make bots use all the alternative ways into the base.  For example, the red flag base might have three ways in, and an assaultpath  in each of these paths.  The attacking squad of blue bots will pick one of the three assault paths (weighted by their priorities, and ignoring any with bReturnOnly=true), and invade the base by running to that AssaultPath<sup>?</sup>, and then proceeding to the red flag base.  Once a blue bot grabs the red flag, he will exit the blue flag base by randomly picking one of the red flag base assault paths (weighted by their priorities, and ignoring any with bNoReturn=true),  and running to it, and from there back to the blue flag base.
+  <p />
+  It is important to use bNoReturn to prevent bots from using unsuitable AssaultPaths<sup>?</sup> for leaving the base (for example a path which you had to jump down into the base from, or one that requires the use of translocators).
+  <p />
+  <p />
+  <h2><a name="Advanced Assault Pathing"></a> Advanced Assault Pathing </h2>
+  <p />
+  Most level designers will not need to put together more complex configurations of assault paths, so this section is intended for advanced users only.  These properties were almost never used in the levels shipped with UT, and may cause problems if not used correctly.
+  <p /> <ul>
+  <li> <strong><em>Position</em></strong> - specifies relative position in a chain of AssaultPaths<sup>?</sup> with the same PathTag<sup>?</sup> and the same ObjectiveTag<sup>?</sup>
+  </li> <li> <strong><em>PathTag[4]</em></strong> -  Each AssaultPath<sup>?</sup> belongs to one to four ordered groups of AssaultPaths<sup>?</sup>.
+  </li> <li> <strong><em>bEnabled</em></strong> - toggled by triggering the AssaultPath<sup>?</sup>.  If bEnabled is false, the path won't be used.
+  </li></ul>
+  <p />
+  When an attacking squad of bots starts off toward the enemy base, it will choose an AssaultPath<sup>?</sup> to use from among those which are first in all their paths, using the AssaultPath<sup>?</sup> priorities to weight them.  Only paths with a lower position than any other path which shares any of their PathTags<sup>?</sup> will be considered as initial paths.  AssaultPaths<sup>?</sup> are also used as gather points for the squads, so they shouldn't be too out in the open.  Once the squad has reached an AssaultPath<sup>?</sup>, it will pick from among the paths specified in the PathTag<sup>?</sup>[] array, and proceed to the next path (next higher position) which has that PathTag<sup>?</sup>.  If several share the same PathTag<sup>?</sup> and same Position, one will be randomly chosen using their Priority as weights.
+  <p />
+  <p />
+  <h2><a name="UTJumpPad"></a> UTJumpPad<sup>?</sup> </h2>
+  <p />
+  UTJumpPad<sup>?</sup> is the UT2003 version of JumpPads<sup>?</sup>.  JumpPads<sup>?</sup> will throw any pawn touching them in a specified direction. JumpPads<sup>?</sup> are set up by specifying a destination pathnode in the first entry of the ForcedPaths<sup>?</sup>[] array of the JumpPad<sup>?</sup>. The appropriate jump velocity is automatically calculated when paths are rebuilt. The JumpZModifier<sup>?</sup> property of the JumpPad<sup>?</sup> can be set if for any reason the automatically generated velocity is problematic.
+  <p />
+  <p />
+  <h2><a name="JumpSpot"></a> JumpSpot<sup>?</sup> </h2>
+  <p />
+  JumpSpot<sup>?</sup> is the UT2003 version of JumpDest<sup>?</sup>.  JumpDests<sup>?</sup> should be used instead of PathNodes<sup>?</sup> at any spot that is too high to jump up to, but is linked to paths below it. JumpSpots<sup>?</sup> will be used by NPCs in low gravity, or if they have some kind of jump boost. The path from which the bot should jump to the JumpSpot<sup>?</sup> should have the JumpSpot<sup>?</sup> in one of its ForcedPath<sup>?</sup>[] array entries.   Jumpspots should be used as the destination at the top of jumps.  They should never be used on the "bottom" side of a jump, unless the fall is so great that the bot should translocate down rather than taking damage.  Unnecessary jumpspots should be avoided, since they cost slightly more to evaluate for the navigation AI.
+  <p />
+  JumpSpots<sup>?</sup> have the following important properties:
+  <p /> <ul>
+  <li> <strong><em>bOnlyTranslocator</em></strong> - This JumpDest<sup>?</sup> can only be reached on the forced path by translocating (because a full sized pawn wouldn't fit - through bars for example).
+  </li> <li> <strong><em>bNeverImpactJump</em></strong> - This JumpDest<sup>?</sup> should never be reached by impact jumping (shield belt regular fire used to push off).
+  </li> <li> <strong><em>bNoLowGrav</em></strong> - This JumpDest<sup>?</sup> should never be reached by low gravity jumping.
+  </li> <li> <strong><em>TranslocZOffset</em></strong> - Used to adjust the point bots aim at to translocate, to fix any translocation problems you might find.
+  </li></ul>
+  <p />
+  To review and debug the jumpspots in your level, use the <code>ReviewJumpSpots</code> console command.  To use it, start the level, and type ReviewJumpSpots<sup>?</sup> at the console before hitting fire to start the game (and don't hit fire).  It will spawn a bot who tries to reach every jumpspot using the following modes:
+  <p /> <ul>
+  <li> translocator
+  </li> <li> double jump
+  </li> <li> jumping with Speed combo enabled and impact jump
+  </li> <li> low gravity jump
+  </li></ul>
+  <p />
+  You can watch the bot attempt the jumps, plus it will write to the log the details of any jump that failed.
+  <p />
+  <p />
+  <h2><a name="Lifts"></a> Lifts </h2>
+  <p />
+  A <em>Mover</em> used as a lift should never use the <code>BumpOpenTimed</code> state (use <code>StandOpenTimed</code> instead). Movers used as lifts have two types of NavigationPoints<sup>?</sup> associated with them. A <em>LiftCenter</em> should be placed on the lift at its center. A <em>LiftExit</em> should be placed at each exit from the lift (but far enough away so that an NPC standing there will not interfere with the lift). Both the LiftCenter<sup>?</sup> and LiftExits<sup>?</sup> have a <code>LiftTag</code> property which must be set to the tag of the Mover. In addition, if the lift is triggered, put the tag of the triggering actor in the <code>LiftTrigger</code> property of the LiftCenter<sup>?</sup>. LiftExits<sup>?</sup> also have an optional property, <code>SuggestedKeyFrame</code>, which can be set to the keyframe number of the mover when the liftexit can be used. This may improve navigation by NPCs in some situations.
+  <p />
+  <p />
+  <h2><a name="Ladders"></a> Ladders </h2>
+  <p />
+  <em>LadderVolumes</em> must be oriented to face the wall being climbed (by adjusting their <code>WallDir</code> property, which is displayed as a directional arrow when the LadderVolume<sup>?</sup> is selected). In most cases, level designers can allow Ladder NavigationPoints<sup>?</sup> to be automatically added when paths are built, at the top and bottom of the LadderVolume<sup>?</sup>. However, if there are any problems with the automatically placed ladders, level designers can manually place the ladders after setting the LadderVolume<sup>?</sup> <code>bAutoPath</code> to <strong>false</strong>. The Ladder centers must be within the LadderVolume<sup>?</sup>. The LadderVolume<sup>?</sup> should touch the floor at its bottom, and poke over the edge at the top by at least the height of the largest NPC using the ladder.
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/NavigationAIUT2003.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:38:53 GMT -->
+</html>

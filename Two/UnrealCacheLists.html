@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/UnrealCacheLists.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:38:52 GMT -->
+<head>
+  <title> UDN - Two - UnrealCacheLists    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">UnrealCacheLists  </b></div>
+  <div id="tooltext">
+  <p />
+  
+  <!-- Two/UnrealCacheLists -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="Unreal Cache Lists Tutorial"></a> Unreal Cache Lists Tutorial </h1>
+  <p />
+  <em>Document Summary: Tutorial which briefly describes how to use the UT2004 caching system.</em>
+  <p />
+  <em>Document Changelog: Original revision.</em>
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="UnrealCacheLists.html#Unreal Cache Lists Tutorial"> Unreal Cache Lists Tutorial</a> <ul>
+  <li> <a href="UnrealCacheLists.html#Overview"> Overview</a>
+  </li> <li> <a href="UnrealCacheLists.html#Preparation"> Preparation</a>
+  </li> <li> <a href="UnrealCacheLists.html#Exporting"> Exporting</a>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <h2><a name="Overview"></a> Overview </h2>
+  Loading an unreal package, like anything else, takes time. The caching system for UT2004 was introduced for 2 reasons: <ul>
+  <li> Speed - accessing values for properties in a class requires that the class first be loaded into memory (for obvious reasons).If this is the first time (during the current gaming session) that the class is being referenced, the engine must first loadthe package containing the class into memory. When this happens, you might experience a slight pause in gameplay, or hitch, whilethe package is loaded from disk. Many times, the class is no longer needed once the value of the property is read.<br><br>The caching system helps reduce the number of hitches during the game by eliminating unnecessary loading of packages for caseswhere the properties being referenced are static - that is, their values do not change at runtime. Gametype acronyms, map names, andmutator descriptions are perfect examples of these types of properties.
+  </li></ul>
+  <p /> <ul>
+  <li> Simplification - provides a centralized location for storing and retrieving static property values for supported classes. Theformat of the caching system allows for additional properties to be made cacheable without changing any existing code.
+  </li></ul>
+  <p />
+  <h2><a name="Preparation"></a> Preparation </h2>
+  <p />
+  In addition to maps, the following class types are supported by the caching system:
+  <p /> <ul>
+  <li> Gametypes (subclasses of GameInfo<sup>?</sup>)
+  </li> <li> Mutators (subclasses of Engine.Mutator)
+  </li> <li> Weapons (subclasses of Engine.Weapon)
+  </li> <li> Custom crosshairs (subclasses of CrosshairPack<sup>?</sup>)
+  </li> <li> Vehicles (subclasses of Engine.Vehicle)
+  </li> <li> Custom announcers (subclasses of AnnouncerVoice<sup>?</sup>)
+  </li></ul>
+  <p />
+  Only classes of the above types will be exported by the caching system. Some types have certain requirements in order to be imported from the caching file into the game correctly. They are as follows:
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Maps </td><td bgcolor="#eaeaea"> Must have Acronym set in LevelInfo </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> Game Types </td><td bgcolor="#ffffff"> Must have Acronym and MaplistClassname set in defaultproperties </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Crosshairs </td><td bgcolor="#eaeaea"> Must be able to load the crosshair texture </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> Announcers </td><td bgcolor="#ffffff"> If bEnglishOnly is true, will not be available when game is running in other languages </td></tr>
+  </table>
+  <p />
+  If a class fails to meet one of the above criteria, you have the option of seeing a warning written to the game's log file (UT2004.log). By default, this option is disabled. In order to see these messages, remove (or disable using a semi-colon) the line in the UT2004.ini file that reads <code>Suppress=RecordCache</code>.
+  <p />
+  <h2><a name="Exporting"></a> Exporting </h2>
+  To have your custom content appear in the game, it must have an associated cache entry. Cache entries are stored in unreal cache list files. These files have a .ucl extension, and can be generated automatically using the 'exportcache' commandlet. The syntax for the exportcache commandlet is as follows:
+  <p />
+  <code>ucc exportcache [-a][ -y][ -v][ -nocreate][ -mod=&lt;foldername&gt;] &lt;file.ext&gt; [file.ext file.ext] [DestFile.ucl]</code>
+  <p />
+  Options:
+  <p />
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> -a (or -append) </td><td bgcolor="#eaeaea"> Cache entries should be appended to the end of the cache list file, replacing any existing matching entries. </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> -y (or -yes) </td><td bgcolor="#ffffff"> Automatically overwrite read-only files. </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> -v (or -verbose) </td><td bgcolor="#eaeaea"> Enables detailed logging of cache activities (for debugging). </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> -nocreate </td><td bgcolor="#ffffff"> Indicates that no new cache list files should be created; existing cache list files may be updated. </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> -mod=&lt;modname&gt; </td><td bgcolor="#eaeaea"> Mod directory support. </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> file.ext </td><td bgcolor="#ffffff"> File that should be exported. Only .u and .ut2 files may be exported. You may specify files individually, seperating filenames with spaces. The * wildcard is supported. </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> DestFile.ucl </td><td bgcolor="#eaeaea"> By default, each package receives its own .ucl file. You may group multiple package's cache entries into a single file, however, by specifying a destination filename on the command-line. You must include the .ucl part in order for this parameter to be recognized. Keep in mind that even if you change the extension for cache list files by altering the CacheRecordPath, this parameter must still contain .ucl (the file would be written using the correct extension, however). </td></tr>
+  </table>
+  <p />
+  Cache files should never be modified manually. If changes need to be made to a .ucl file, the corresponding property should be first be changed in the class or map file, and the .ucl file should be regenerated using the exportcache commandlet.
+  <p />
+  In order to make the transition from the old .int based system to the new cache entry based system, the game will automatically create ucl entries for any gameinfo, mutator, or weapon entries that are found in the [Public] section of .int files. Cache entries will also be created automatically for any new maps which are found. Folders are scanned at each mapchange for new packages and cache list files. When packages are deleted or otherwise removed from their respective directories, any existing cache entries for content from those packages will be removed from the cache list file. When the last cache entry is removed from a cache list file, the cache list file will be deleted.
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/UnrealCacheLists.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:38:52 GMT -->
+</html>

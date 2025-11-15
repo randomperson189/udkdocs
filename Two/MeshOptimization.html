@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/MeshOptimization.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 13:24:14 GMT -->
+<head>
+  <title> UDN - Two - MeshOptimization    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">MeshOptimization  </b></div>
+  <div id="tooltext">
+  <p />
+  
+  <!-- Two/MeshOptimization -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="Mesh Optimization"></a> Mesh Optimization </h1>
+  <p />
+  <em>Document Summary: This document covers the optimization of static meshes to gain performance. This is fairly involved and somewhat technical. For advanced users.</em>
+  <p />
+  <em>Document Changelog: Last updated by Tom Lin (DemiurgeStudios<sup>?</sup>), for document summary.  Original author was Albert Reed (DemiurgeStudios<sup>?</sup>).</em>
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="MeshOptimization.html#Mesh Optimization"> Mesh Optimization</a> <ul>
+  <li> <a href="MeshOptimization.html#Basics"> Basics </a>
+  </li> <li> <a href="MeshOptimization.html#Comparing Batched to Un-Batched"> Comparing Batched to Un-Batched</a>
+  </li> <li> <a href="MeshOptimization.html#Optimizing for Batched Rendering"> Optimizing for Batched Rendering</a> <ul>
+  <li> <a href="MeshOptimization.html#Optimizing Batch Setup Time"> Optimizing Batch Setup Time</a>
+  </li> <li> <a href="MeshOptimization.html#Optimizing Section Setup Time"> Optimizing Section Setup Time</a>
+  </li> <li> <a href="MeshOptimization.html#Optimizing Section Drawing Time"> Optimizing Section Drawing Time</a>
+  </li></ul>
+  </li> <li> <a href="MeshOptimization.html#Optimizing for Un-Batched Rendering"> Optimizing for Un-Batched Rendering</a> <ul>
+  <li> <a href="MeshOptimization.html#Optimizing Mesh Setup Time"> Optimizing Mesh Setup Time</a>
+  </li> <li> <a href="MeshOptimization.html#Section Setup Time"> Section Setup Time</a>
+  </li> <li> <a href="MeshOptimization.html#Section Drawing Time"> Section Drawing Time</a>
+  </li> <li> <a href="MeshOptimization.html#Mesh Memory Footprint Optimization"> Mesh Memory Footprint Optimization</a>
+  </li></ul>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <h2><a name="Basics"></a> Basics </h2>
+  Before breaking into this section on detailed mesh optimization, be sure you've read through <a href="LevelOptimization.html" class="twikiLink">LevelOptimization</a>. Optimizing a level will yield much more significant results. Build meshes with the ideas contained herein but make sure to perform level-wide optimizations first. Before beginning any significant optimization, always attempt to identify the performance problem before trying to speed things up. If you optimize the wrong thing, you might not get any improvement at all.
+  <p />
+  The performance implications of modular level-design are a bit tricky as they vary from platform to platform. In general, there are two types of rendering that take place, <strong>Batched</strong> and <strong>Un-Batched</strong>. There are tradeoffs for each. Ask a programmer which you are using since it drastically affects what you should worry about for optimization. In general, folks developing for consoles are using un-batched rendering and batched rendering on the PC. There are two considerations when doing optimizations, performance and memory, we'll cover both where applicable.
+  <p />
+  For the purposes of this discussion, we'll be referring to the following scenes:
+  <p />
+  <img width="500" alt="Scene1.jpg" src="rsrc/Two/MeshOptimization/Scene1.jpg" height="400" border="0"  />
+  <p />
+  <img width="500" alt="Scene2.jpg" src="rsrc/Two/MeshOptimization/Scene2.jpg" height="400" border="0"  />
+  <p />
+  <noautolink>
+  <strong>Scene 1</strong>
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Stat </td><td bgcolor="#eaeaea"> Batched </td><td bgcolor="#eaeaea"> Un-Batched </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> Triangles </td><td bgcolor="#ffffff"> 384 </td><td bgcolor="#ffffff"> 384 </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Batches </td><td bgcolor="#eaeaea"> 1 </td><td bgcolor="#eaeaea"> 0 </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> UnsortedSections </td><td bgcolor="#ffffff"> 8 </td><td bgcolor="#ffffff"> 8 </td></tr>
+  </table>
+  <p />
+  <strong>Scene 2</strong>
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Stat </td><td bgcolor="#eaeaea"> Batched </td><td bgcolor="#eaeaea"> Un-Batched </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> Triangles </td><td bgcolor="#ffffff"> 3936 </td><td bgcolor="#ffffff"> 3936 </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Batches </td><td bgcolor="#eaeaea"> 5 </td><td bgcolor="#eaeaea"> 0 </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> UnsortedSections </td><td bgcolor="#ffffff"> 40 </td><td bgcolor="#ffffff"> 104 </td></tr>
+  </table>
+  <p />
+  </noautolink>
+  <p />
+  We've left out the sorted triangle numbers, because they were always zero. Triangles only need to be sorted if they are alpha'd.
+  <p />
+  The following sections will outline various times, and memory amounts and describe how to plan your mesh construction to run as fast as possible. The best way to determine which of these factors you will need to optimize is to run tests. Take a scene you'd like to optimize and perform the recommended optimizations for each value, not worrying about appearance or final art. When you perform an optimization that provides the desired framerate boost, go ahead and finalize the work.
+  <p />
+  <h2><a name="Comparing Batched to Un-Batched"></a> Comparing Batched to Un-Batched </h2>
+  In un-batched rendering, each material in each mesh is rendered separately. We'll call the set of triangles on a mesh that share a material a "Section". The tables above give the number of sections being rendered for each scene. Batched rendering basically means that the meshes in the level are combined in memory and rendered as larger blocks. In general, this method of rendering is faster because it produces less CPU overhead. Each "Batch" is a collection of "Sections".
+  <p />
+  As a general rule, sections for batched-render will render faster than sections for un-batched rendering because all of the sections that use the same material are rendered together.
+  <p />
+  <h2><a name="Optimizing for Batched Rendering"></a> Optimizing for Batched Rendering </h2>
+  If you're using batched rendering which uses considerably more memory, chances are you're not too concerned about how big your memory footprint is.
+  We'll focus this discussion around raw performance.
+  <p />
+  A "Batch" is a collection of triangles stored in system memory and then passed off the video card at runtime. Batches are broken into sections which are rendered one at a time. More-or-less every triangle that uses the same material will be placed in a batch. Obviously adding more triangles will still impact performance, but tracking the number of batches will also become very important. We'll discuss the optimization of the following times
+  <p />
+  <strong>Batch Setup Time</strong> - The amount of time spent by the CPU preparing batches to be rendered.
+  <p />
+  <strong>Section Setup Time</strong> - The amount of time spent by the CPU preparing sections for the GPU.
+  <p />
+  <strong>Section Drawing Time</strong> - The amount of time spent by the GPU rendering the sections
+  <p />
+  For batched rendering, you will likely find that your slowdowns are caused by batch setup time or Section Drawing Time. Generally speaking, Section Setup Time doesn't consume tons of milliseconds.
+  <p />
+  <h3><a name="Optimizing Batch Setup Time"></a> Optimizing Batch Setup Time </h3>
+  Batch setup time can be reduced by cutting down on the total number of batches currently being rendered. Because each material on the screen is separated into a different batch, optimizing this time basically amounts to cutting down on the total number of materials in a scene.
+  <p />
+  <h3><a name="Optimizing Section Setup Time"></a> Optimizing Section Setup Time </h3>
+  Section setup time can be optimized by reducing the overall number of sections, and by making them easier to process.
+  <p />
+  To review - a section in batched rendering is composed of those triangles that use a single material in a static mesh. For batched rendering, if the same material is used multiple times in the Materials list of the static mesh, all those uses are packed into a single section. For example, in Scene 2, the boxes have 13 materials in the material list, but many of them use the same texture. There are only 5 unique textures used, and 8 meshes, for a total of 40 sections. It is worth noting that there is still some overhead for having duplicate materials in the materials list, so the practice should be avoided.
+  <p />
+  The number of sections can be reduced by using fewer materials on a per-mesh basis. If the crates in Scene 2 used just one texture then they would only have 1 section each which would speed things up.
+  <p />
+  Because the end goal is to squeeze as many triangles on to the screen at a time and still have a good framerate, it is worth considering how efficient your meshes are able to render. To get the most efficient rendering time per triangle, you would want each section to have around 2000 triangles given your average T&amp;L accelerated video card. Obviously, having these larger meshes is frequently impractical, and not worth the added effort given the smallish performance win. Section setup time is much more significant in Un-Batched Rendering
+  <p />
+  <h3><a name="Optimizing Section Drawing Time"></a> Optimizing Section Drawing Time </h3>
+  The time it takes to draw a section is governed by the video card you're running on. Different video cards are good at rendering different kinds of materials under different circumstances. As a general rule on PCs, this value is probably governed by fillrate. You can see visually using the fillrate render mode in UnrealEd<sup>?</sup> and in-game.
+  <p />
+  <h2><a name="Optimizing for Un-Batched Rendering"></a> Optimizing for Un-Batched Rendering </h2>
+  We'll explain how to optimize each of the following:
+  <p />
+  <strong>Mesh Setup Time</strong> - The amount of time it takes the CPU to prepare a mesh for rendering.
+  <p />
+  <strong>Section Setup Time</strong> - The amount of time it takes the CPU to prepare a section for rendering.
+  <p />
+  <strong>Section Drawing Time</strong> - The amount of time it takes the GPU to actually draw the section.
+  <p />
+  <strong>Mesh Memory Footprint</strong> - The amount of memory taken up by a given StaticMesh. with un-batched rendering, repeated meshes only exist in memory once.
+  <p />
+  <h3><a name="Optimizing Mesh Setup Time"></a> Optimizing Mesh Setup Time </h3>
+  Mesh setup time is not mostly constant for every mesh. For un-batched rendering keeping the number of meshes in view to a minimum is the the best way to keep cut down this time. Combining small meshes into larger meshes is one good way to go about this. Great examples of places to speed things up are by combing tiles described in <a href="WorkflowAndModularity.html" class="twikiLink">WorkflowAndModularity</a> document. Additionally, in outdoor scenes using <a href="CreatingDecoLayers.html" class="twikiLink">Decolayers</a> with tiny meshes will be subject to problems, use them sparingly.
+  <p />
+  <h3><a name="Section Setup Time"></a> Section Setup Time </h3>
+  The same rules for optimizing mesh setup time apply to section setup time for meshes. Like mesh setup time, the best way to reduce the this cost is to cut down the number of sections. Unlike batched-rendering sections that use the same material on a given mesh are not combined into single sections, making redundant materials in a mesh especially bad in the un-batched rendering method.
+  <p />
+  <h3><a name="Section Drawing Time"></a> Section Drawing Time </h3>
+  This is the same for batched and unbatched rendering. Take a look at the <a href="MeshOptimization.html#Optimizing_Section_Drawing_Time" class="twikiAnchorLink">batched rendering description</a> of this time.
+  <p />
+  <h3><a name="Mesh Memory Footprint Optimization"></a> Mesh Memory Footprint Optimization </h3>
+  The amount of memory used by a given mesh is determined by a number of factors. First, collision information in static meshes consumes lots of memory. If you can turn off collision for a given material, and use "Simple" collision, do that. Check out the <a href="CollisionTutorial.html" class="twikiLink">CollisionTutorial</a> for more details on cutting down the memory used by collision
+  <p />
+  Un-batched rendering is great for cutting down memory, because the static mesh vertex data only need to exist once for each static mesh. That means, if you duplicate a mesh in a level, the information about its vertices only needs to remain once. Take ample advantage of the techniques discussed in <a href="WorkflowAndModularity.html" class="twikiLink">WorkflowAndModularity</a> and you'll save tons of memory in the process.
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/MeshOptimization.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 13:24:14 GMT -->
+</html>

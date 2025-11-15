@@ -1,0 +1,1281 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/ParticleSystems.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:42:18 GMT -->
+<head>
+  <title> UDN - Two - ParticleSystems    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">ParticleSystems  </b></div>
+  <div id="tooltext">
+  <a href="ParticleSystemsJP.html" class="twikiLink">日本語訳</a><br><a href="ParticleSystemsKR.html" class="twikiLink">한국어</a><br>
+  
+  <!-- Two/ParticleSystems -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="Particle Systems"></a> Particle Systems </h1>
+  <p />
+  <em>Document Summary: A comprehensive guide to Emitters using the new Particle System Editor (available in the UDN build).</em>
+  <p />
+  <em>Document Changelog: Last updated by Chris Linder (DemiurgeStudios<sup>?</sup>), to update for UDNBuild 2226.  Original authors were Albert Reed, Chris Linder, and Tom Lin (DemiurgeStudios<sup>?</sup>).</em>
+  <p />
+  <h2><a name="Unsupported Disclaimer"></a> Unsupported Disclaimer </h2>
+  The code described in this document is provided to you as a service of UDN or other licensees. It is not supported by Epic.
+  <p />
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="ParticleSystems.html#Particle Systems"> Particle Systems</a> <ul>
+  <li> <a href="ParticleSystems.html#Unsupported Disclaimer"> Unsupported Disclaimer  </a>
+  </li> <li> <a href="ParticleSystems.html#Introduction"> Introduction</a>
+  </li> <li> <a href="ParticleSystems.html#Quick-Start"> Quick-Start</a> <ul>
+  <li> <a href="ParticleSystems.html#Creating the Particle System"> Creating the Particle System</a>
+  </li> <li> <a href="ParticleSystems.html#Editing the Particle System"> Editing the Particle System</a>
+  </li> <li> <a href="ParticleSystems.html#Adding a Sprite Emitter"> Adding a Sprite Emitter</a>
+  </li> <li> <a href="ParticleSystems.html#Making Them Move"> Making Them Move</a>
+  </li> <li> <a href="ParticleSystems.html#Picking a Texture"> Picking a Texture</a>
+  </li> <li> <a href="ParticleSystems.html#Play around"> Play around</a>
+  </li></ul>
+  </li> <li> <a href="ParticleSystems.html#Particle Editor Interface"> Particle Editor Interface</a> <ul>
+  <li> <a href="ParticleSystems.html#Adding an Emitter"> Adding an Emitter</a>
+  </li> <li> <a href="ParticleSystems.html#Editing Emitters"> Editing Emitters</a>
+  </li> <li> <a href="ParticleSystems.html#Deleting an Emitter"> Deleting an Emitter</a>
+  </li> <li> <a href="ParticleSystems.html#Refreshing"> Refreshing</a>
+  </li> <li> <a href="ParticleSystems.html#Exporting"> Exporting</a>
+  </li> <li> <a href="ParticleSystems.html#Duplicate Emitter"> Duplicate Emitter</a>
+  </li> <li> <a href="ParticleSystems.html#Save/Load Emitter"> Save/Load Emitter</a>
+  </li> <li> <a href="ParticleSystems.html#Getting Help"> Getting Help</a>
+  </li></ul>
+  </li> <li> <a href="ParticleSystems.html#Parameter Reference"> Parameter Reference</a> <ul>
+  <li> <a href="ParticleSystems.html#General"> General</a>
+  </li> <li> <a href="ParticleSystems.html#Texture"> Texture</a>
+  </li> <li> <a href="ParticleSystems.html#Rendering"> Rendering</a>
+  </li> <li> <a href="ParticleSystems.html#Color/Fading"> Color/Fading</a>
+  </li> <li> <a href="ParticleSystems.html#Time"> Time</a>
+  </li> <li> <a href="ParticleSystems.html#Movement"> Movement</a>
+  </li> <li> <a href="ParticleSystems.html#Location"> Location</a>
+  </li> <li> <a href="ParticleSystems.html#Mesh Spawning"> Mesh Spawning</a>
+  </li> <li> <a href="ParticleSystems.html#Skeletal Mesh"> Skeletal Mesh</a>
+  </li> <li> <a href="ParticleSystems.html#Rotation"> Rotation</a>
+  </li> <li> <a href="ParticleSystems.html#Revolution"> Revolution</a>
+  </li> <li> <a href="ParticleSystems.html#Size"> Size</a>
+  </li> <li> <a href="ParticleSystems.html#Collision"> Collision</a>
+  </li> <li> <a href="ParticleSystems.html#Sounds"> Sounds</a>
+  </li> <li> <a href="ParticleSystems.html#Mesh"> Mesh</a>
+  </li> <li> <a href="ParticleSystems.html#Spark"> Spark</a>
+  </li> <li> <a href="ParticleSystems.html#Beam"> Beam</a>
+  </li> <li> <a href="ParticleSystems.html#Beam Noise"> Beam Noise</a>
+  </li> <li> <a href="ParticleSystems.html#Beam Branching"> Beam Branching</a>
+  </li> <li> <a href="ParticleSystems.html#Trigger"> Trigger</a>
+  </li></ul>
+  </li> <li> <a href="ParticleSystems.html#Editing the &quot;Old Way&quot;"> Editing the "Old Way"</a>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <h2><a name="Introduction"></a> Introduction </h2>
+  <p />
+  Particle systems are tools for creating various effects which cannot be creating using static geometry or animations. These effects are achieved by having several instances of the same thing, usually sprites, move and change in a pattern. Using this simple concept artists can create effects as diverse as waterfalls, flames and lightening.
+  <p />
+  <Sample pictures here>
+  <p />
+  Note for old-school engine users: In the Unreal Engine, particle systems are called <em>Emitters</em>.  In this document when we refer to particle systems we are talking about the <em>Emitter</em> actor. A particle system does nothing by itself but rather is composed of one or more of <em>Sprite Emitters</em>, <em>Mesh Emitters</em>, <em>Beam Emitters</em> or <em>Spark Emitters</em>.  (Note that these _ "emitters"_ are not the actor <em>Emitter</em> nor are they derived from the actor <em>Emitter</em>)  A single particle system can contain as many or few of these as you wish.
+  <p />
+  To get you started the following section of the manual will walk you through creating your first emitter. After that we'll cover the interface to the editor, give you some more examples and finally there is a reference which explains every parameter in the Particle system editor.
+  <p />
+  <h2><a name="Quick-Start"></a> Quick-Start </h2>
+  <p />
+  <h3><a name="Creating the Particle System"></a> Creating the Particle System </h3>
+  Begin with a new map and subtract out a 1024x1024x1024 cube from the world (If you need more help with this check out the <a href="UnrealEdInterface.html" class="twikiLink">UnrealEdInterface</a> document) If you prefer, you may edit an existing level. Add a few lights to the empty cube and do a <strong>Build-&gt;Build All</strong>.  Your level should look something like this:
+  <BR> <img width="360" alt="emptyroom.jpg" src="rsrc/Two/ParticleSystems/emptyroom.jpg" height="358" border="0"  />
+  <p />
+  With the room setup, open up the actor browser and select <strong>Emitter</strong>.
+  <BR> <img width="370" alt="ActorBrowser.jpg" src="rsrc/Two/ParticleSystems/ActorBrowser.jpg" height="455" border="0"  />
+  <p />
+  Right-click on the far wall and select <strong>Add Emitter Here</strong>.
+  <p />
+  With your emitter created we are now ready to start editing it. Before we do however, make sure you have <em>Realtime Preview</em> turned on by clicking the joystick at the top of the viewport like this:
+  <BR> <img width="512" alt="RealtimePreview.jpg" src="rsrc/Two/ParticleSystems/RealtimePreview.jpg" height="194" border="0"  />
+  <p />
+  With that selection you'll be able to see the changes you make to your emitters update in realtime. Before moving on, drag the emitter to the middle of the room so there will be plenty of space when it begins emitting particles.
+  <p />
+  <h3><a name="Editing the Particle System"></a> Editing the Particle System </h3>
+  <p />
+  With the emitter selected pull down <strong>Particle Editor</strong> from the <strong>Tools</strong> menu in UnrealEd. A window like this will appear:
+  <BR> <img alt="BlankEmitter.jpg" src="rsrc/Two/ParticleSystems/BlankEmitter.jpg" />.
+  <p />
+  From this tool you will be doing all of your particle editing.
+  <p />
+  <h3><a name="Adding a Sprite Emitter"></a> Adding a Sprite Emitter </h3>
+  <p />
+  The <a href="ParticleSystems.html#Introduction" class="twikiAnchorLink">introduction</a> of this manual explains that particle systems can be made up of <em>Sprite Emitters</em>. The first thing to do is to add a sprite emitter to your particle system. To do this click the <img width="24" alt="NewEmitterButton.jpg" src="rsrc/Two/ParticleSystems/NewEmitterButton.jpg" height="22" border="0"  /> <em>New Particle Emitter</em> button in the top toolbar of the particle editor.
+  Fill the the dialoge that appears like this and click Ok.
+  <BR> <img alt="NewDlg.jpg" src="rsrc/Two/ParticleSystems/NewDlg.jpg" />.
+  <p />
+  This will create a new Sprite Emitter called "MyFirstEmitter".  After you click okay. The Particle System Editor will now look like this:
+  <BR> <img width="605" alt="MyFirstEmitter.jpg" src="rsrc/Two/ParticleSystems/MyFirstEmitter.jpg" height="668" border="0"  />
+  <p />
+  If everything worked correctly, you'll notice your particle system has begun spitting out some ugly particles and will look like this:
+  <BR> <img alt="FirstParticles.jpg" src="rsrc/Two/ParticleSystems/FirstParticles.jpg" />.
+  <p />
+  <h3><a name="Making Them Move"></a> Making Them Move </h3>
+  <p />
+  Right now the particle system doesn't do much at all. The first step in making it a bit more interesting is to get the particle to move rather than piling up in one place. To do this select the <a href="ParticleSystems.html#Movement" class="twikiAnchorLink">Movement</a> category from the left-hand column. The large scrolling area on the right will zip down to the Movement heading.  Fill in the values under <a href="ParticleSystems.html#StartVelocity" class="twikiAnchorLink">Start Velocity</a> to look like this and things will start to happen.
+  <BR> <img width="423" alt="StartVelocity.jpg" src="rsrc/Two/ParticleSystems/StartVelocity.jpg" height="125" border="0"  /> <BR>
+  The <a href="ParticleSystems.html#StartVelocity" class="twikiAnchorLink">Start Velocity</a> settings, like most of the settings in the particle system editor change things in real time.  You can type numbers in or you can click and <strong>drag</strong> the buttons next to the fields to change values and watch the system change as you drag.  You can also "link" values together so you don't have to change each one individually.
+  <BR> <img width="408" alt="StartVelocity2.jpg" src="rsrc/Two/ParticleSystems/StartVelocity2.jpg" height="111" border="0"  />
+  <p />
+  <h3><a name="Picking a Texture"></a> Picking a Texture </h3>
+  <p />
+  Another major change you can make to a particle system is to change the texture it is using for the sprites. From the texture browser, select a texture and then under the <a href="ParticleSystems.html#Texture" class="twikiAnchorLink">Texture</a> category click the <strong>Use</strong> button in the <a href="ParticleSystems.html#TextureUse" class="twikiAnchorLink">Texture</a> field.
+  <p />
+  <h3><a name="Play around"></a> Play around </h3>
+  <p />
+  Take some time to play around with all the properties available to you. They may not all make sense the first time around but most do what they say. If at anytime you want further explanation visit the <a href="ParticleSystems.html#Parameter_Reference" class="twikiAnchorLink">reference</a> section of this document.  <a href="ParticleSystems.html#Acceleration" class="twikiAnchorLink">Acceleration</a>, <a href="ParticleSystems.html#MaxNumberOfParticles" class="twikiAnchorLink">Max Number Of Particles</a>, <a href="ParticleSystems.html#Lifetime" class="twikiAnchorLink">Lifetime</a>, <a href="ParticleSystems.html#Fading" class="twikiAnchorLink">Fading</a>, and <a href="ParticleSystems.html#StartLocation" class="twikiAnchorLink">Start Location</a> are all good places to start.
+  <p />
+  <h2><a name="Particle Editor Interface"></a> Particle Editor Interface </h2>
+  <p />
+  <h3><a name="Adding an Emitter"></a> Adding an Emitter </h3>
+  <p />
+  To add an emitter to a particle system click the  <img width="24" alt="NewEmitterButton.jpg" src="rsrc/Two/ParticleSystems/NewEmitterButton.jpg" height="22" border="0"  /> <em>New Particle Emitter</em> button in the top toolbar of the particle editor. This dialogue will appear:
+  <BR> <img width="312" alt="NewDlg.jpg" src="rsrc/Two/ParticleSystems/NewDlg.jpg" height="93" border="0"  />
+  <BR> Give your particle system a name and select the type you would like and click <em>Ok</em>.
+  <p />
+  <h3><a name="Editing Emitters"></a> Editing Emitters </h3>
+  <p />
+  <h4><a name="Categories"></a> Categories </h4>
+  <p />
+  The left column contains a list of categories which organize the various properties of a given emitter. Clicking on the categories will scroll to that set of variables. Checking and unchecking the boxes will show and hide those categories.
+  <BR> <img width="120" alt="Categories.jpg" src="rsrc/Two/ParticleSystems/Categories.jpg" height="321" border="0"  />
+  <p />
+  <h4><a name="Controls"></a> Controls </h4>
+  <p />
+  There are several types of controls that are used in the particle system editor.  Almost all of the controls have fields where you can values and watch the particle system change. Some properties will force the system to re-start others will update smoothly in realtime.
+  <p />
+  All of the numeric fields have "Scroll Buttons"
+  <img width="174" alt="ScrollButton.jpg" src="rsrc/Two/ParticleSystems/ScrollButton.jpg" height="23" border="0"  />
+  next to them. These buttons make it simple to edit the values in the corresponding text boxes. Clicking, holding and dragging a scroll button will cycle the value inside of the text box up or down. You can also just click up and down to increment the value.
+  <p />
+  Many of the controls also have a Hide/Expand button <img width="17" alt="HideExpand.jpg" src="rsrc/Two/ParticleSystems/HideExpand.jpg" height="17" border="0"  /> which can be used to hide or show a tool.
+  <p />
+  <BR> <img width="563" alt="RangeVectEdit.jpg" src="rsrc/Two/ParticleSystems/RangeVectEdit.jpg" height="124" border="0"  />
+  Some controls have mins and maxes.  In addition to being able to set the individual components of the vector with the scroll buttons, you can click the Different/Same/Mirror button to alter the min and max of a variable in sync. <ul>
+  <li> The blue and red Lego signify that you can edit min and max independent of each other.
+  </li> <li> The two blue Legos signify that the values in min and max will be kept the same.
+  </li> <li> The two red Legos signify that the min and max values will be mirrored. For example, setting the max to 40.0 will automatically set the Min to -40.0.
+  </li></ul>
+  <p />
+  Some controls like <a href="ParticleSystems.html#StartVelocity" class="twikiAnchorLink">Start Velocity</a> have a min and max for several fields, in this case X, Y and Z.  Checking the check boxes on the right of the tool will keep the checked X, Y or Z values the same.
+  <p />
+  <h3><a name="Deleting an Emitter"></a> Deleting an Emitter </h3>
+  <p />
+  Clicking the Delete Emitter button <img width="23" alt="DeleteEmitter.jpg" src="rsrc/Two/ParticleSystems/DeleteEmitter.jpg" height="22" border="0"  /> will remove the emitter tab currently selected from the particle system.
+  <p />
+  <h3><a name="Refreshing"></a> Refreshing </h3>
+  <p />
+  Many particle systems aren't designed to be going constantly. For example, a muzzle flash or breaking glass need to be restarted in order to preview them properly. Clicking the <em>Refresh Button</em> <img width="23" alt="Refresh.jpg" src="rsrc/Two/ParticleSystems/Refresh.jpg" height="22" border="0"  /> causes a system to start over.
+  <p />
+  <h3><a name="Exporting"></a> Exporting </h3>
+  <p />
+  If you need to spawn a particle system dynamically in-game you'll need to make a script out of it. You might also want to make a script so that your particle system is availible in the actor browser. To create a script click the <img width="22" alt="ExportButton.jpg" src="rsrc/Two/ParticleSystems/ExportButton.jpg" height="21" border="0"  /> <em>Export to Script</em> button.
+  <img width="339" alt="ExportToScript.jpg" src="rsrc/Two/ParticleSystems/ExportToScript.jpg" height="107" border="0"  />
+  Fill in the package and name of the actor you want to create and click <em>Ok</em> to export the script. Checking <em>Auto Destroy</em> creates an actor that will delete itself when it no longer has particles. You will need to recompile the package the script was exported to in order for it to work or show up in the editor.
+  <p />
+  <h3><a name="Duplicate Emitter"></a> Duplicate Emitter </h3>
+  <p />
+  Clicking the <img width="22" alt="DuplicateButton.jpg" src="rsrc/Two/ParticleSystems/DuplicateButton.jpg" height="21" border="0"  /> <em>Duplicate Emitter</em> button will cause the emitter currently being edited to be duplicated and added as the last tab.
+  <p />
+  <h3><a name="Save/Load Emitter"></a> Save/Load Emitter </h3>
+  <p />
+  Individual emitters can be saved to ".emt" files for later use by clicking the <img width="22" alt="SaveButton.jpg" src="rsrc/Two/ParticleSystems/SaveButton.jpg" height="21" border="0"  /> <em>Save Emitter</em> button. These files may later be loaded into a particle system by clicking on the <img width="22" alt="OpenButton.jpg" src="rsrc/Two/ParticleSystems/OpenButton.jpg" height="21" border="0"  /> <em>Open Emitter</em> button.
+  <p />
+  <h3><a name="Getting Help"></a> Getting Help </h3>
+  <p />
+  You can also use the context-help tool <img width="22" alt="HelpButton.jpg" src="rsrc/Two/ParticleSystems/HelpButton.jpg" height="24" border="0"  />  at the top of the UnrealEd toolbar. Click that button once and then click on any of the tool headings to open up this page's help section on that tool.
+  <p />
+  <p />
+  <h2><a name="Parameter Reference"></a> Parameter Reference </h2>
+  <p />
+  The referance section of this document borrows heavily from Lode Vandevenne's original emitter tutorial which is masterful piece of work from dark and troubled times.
+  <p />
+  <h3><a name="General"></a> General </h3>
+  <p />
+  <img width="450" alt="GeneralCat.jpg" src="rsrc/Two/ParticleSystems/GeneralCat.jpg" height="263" border="0"  />
+  <p />
+  <h4><a name="Disable"></a> Disable </h4>
+  If Disable is checked, the particle emitter will not work. You can for example use it if you want to remember the settings of a p particle emitter, but you currently don't want it to work in the map.
+  <p />
+  <a name="MaxNumberOfParticles"></a>
+  <h4><a name="Max Number of Particles"></a> Max Number of Particles </h4>
+  <p />
+  The Max Number of Particles setting sets the maximum number of particles that may be on screen for this Particle Emitter.  If the maximum number is reached, the oldest particle gets killed, so a new one can get spawned.  If you set it to 0, the editor crashes.  For example, if you set this number to 4, there will be 4 particles on screen once the warmuptime is over.  On the screenshot, the particles are moving to the left, and the most left one gets destroyed while a new one appears on the right:
+  <BR> <img width="279" alt="maxparticles.jpg" src="rsrc/Two/ParticleSystems/maxparticles.jpg" height="170" border="0"  /> <BR>
+  This setting is quite important, especially if you want to reduce the amount of particles on screen to get more performance.
+  <p />
+  <h4><a name="Name"></a> Name </h4>
+  <p />
+  This parameter simply gives the particle system a name. Next time you load the editor, the new <em>Name</em> will appear on the tab.
+  <p />
+  <a name="RespawnDeadParticles"></a>
+  <h4><a name="Respawn Dead Particles"></a> Respawn Dead Particles </h4>
+  <p />
+  Unchecking this box will cause dead particles not to respawn. If you are making an explosion or other tempoary effect, uncheck this box.
+  <p />
+  <a name="AutomaticSpawning"></a>
+  <h4><a name="Automatic Spawning"></a> Automatic Spawning </h4>
+  <p />
+  Automatic Spawning causes the number of particles to remain equal to Max Number of Particles regardless of other particle system properties. For example, with this box checked and Max Particles set to 10 once the system warms up there will always be exactly 10 particles regardless of the <a href="ParticleSystems.html#Lifetime" class="twikiAnchorLink">Lifetime</a> of the system. With Automatic Spawning checked you cannot directly control how many <a href="ParticleSystems.html#ParticlesPerSecond" class="twikiAnchorLink">Particles Per Second</a> are spawned.
+  <p />
+  <a name="ParticlesPerSecond"></a>
+  <h4><a name="Particles Per Second"></a> Particles Per Second </h4>
+  <p />
+  With Automatic Spawning unchecked, you can now control the rate at which your particles are released. Keep in mind that no matter what you can not cause there to be more particles than what <a href="ParticleSystems.html#MaxNumberOfParticles" class="twikiAnchorLink">Max Particles</a> is set to.
+  <p />
+  <a name="ScaleEmitter"></a>
+  <h4><a name="Scale Emitter"></a> Scale Emitter </h4>
+  <p />
+  This tool adjusts several properties throughout the editor to make your emitter larger or smaller. Pick a value and click the apply button to scale the emitter.
+  <p />
+  <h3><a name="Texture"></a> Texture </h3>
+  <p />
+  <img width="449" alt="TextureCat.jpg" src="rsrc/Two/ParticleSystems/TextureCat.jpg" height="332" border="0"  />
+  <p />
+  <a name="TextureUse"></a>
+  <h4><a name="Texture Picker"></a> Texture Picker </h4>
+  <p />
+  Select a texture from the texture browser and click the <strong>Use</strong> button to use that texture on your emitter.
+  <p />
+  <a name="DrawStyle"></a>
+  <h4><a name="Draw Style"></a> Draw Style </h4>
+  <p />
+  Using the Draw Style property you can change the way the texture is drawn in the map.  The Draw Style for Particles is somewhat the same as the Draw Style you find under Display of normal actors, but has some added options, and some other removed.
+  <p />
+  For the example screenshots, the blue texture is one without alphachannel, and the second one is a texture with different colors and an alphachannel that has 16 dark dots, like this:
+  <p />
+  <img width="168" alt="alphatexture1.jpg" src="rsrc/Two/ParticleSystems/alphatexture1.jpg" height="184" border="0"  />
+  <p />
+  <em>Regular</em> makes the texture opaque, so it's a non-transparent square.
+  <p />
+  <img width="100" alt="regular2.jpg" src="rsrc/Two/ParticleSystems/regular2.jpg" height="100" border="0"  /> <img width="89" alt="regular.jpg" src="rsrc/Two/ParticleSystems/regular.jpg" height="93" border="0"  /> <img width="257" alt="regular3.jpg" src="rsrc/Two/ParticleSystems/regular3.jpg" height="100" border="0"  />
+  <p />
+  <em>Alpha Blend</em> makes the darker parts of the A-channel of the RGBA texture more transparent than the bright parts.  Black becomes 100% transparent (invisible) and white becomes 100% opaque.  Grey becomes semi-transparent.  This effect is not good visible on very bright textures.
+  <p />
+  <img width="100" alt="alphablend2.jpg" src="rsrc/Two/ParticleSystems/alphablend2.jpg" height="100" border="0"  /> <img width="100" alt="alphablend.jpg" src="rsrc/Two/ParticleSystems/alphablend.jpg" height="100" border="0"  />
+  <p />
+  <em>Modulated</em> makes the texture some sort of inverse translucent: it makes the brightest colors of the texture more transparent than the darkest colors, so black becomes opaque, white becomes 100% transparent (invisible).  Grey, red, blue, etc... become semi-transparent.
+  <p />
+  <img width="100" alt="modulated2.jpg" src="rsrc/Two/ParticleSystems/modulated2.jpg" height="100" border="0"  /> <img width="100" alt="modulated.jpg" src="rsrc/Two/ParticleSystems/modulated.jpg" height="100" border="0"  />
+  <p />
+  <em>Translucent</em> makes the darkest colors of the texture more transparent than the brightest colors, so white become opaque, while black become 100% transparent (invisible).  Grey, red, blue, etc... become semi-transparent.
+  <p />
+  <img width="100" alt="translucent2.jpg" src="rsrc/Two/ParticleSystems/translucent2.jpg" height="100" border="0"  /> <img width="100" alt="translucent.jpg" src="rsrc/Two/ParticleSystems/translucent.jpg" height="100" border="0"  />
+  <p />
+  <em>AlphaModulate</em> makes the actual RGB texture brighter on places where the alphachannel is darker.  It looks somewhat the opposite of <em>Alpha Blend</em>.  This effect isn't good to see on very bright textures.
+  <p />
+  <img width="100" alt="alphamodulate2.jpg" src="rsrc/Two/ParticleSystems/alphamodulate2.jpg" height="100" border="0"  /> <img width="100" alt="alphamodulate.jpg" src="rsrc/Two/ParticleSystems/alphamodulate.jpg" height="100" border="0"  />
+  <p />
+  <em>Darken</em> makes the colors of the texture negative and translucent.
+  <p />
+   <img width="100" alt="darken2.jpg" src="rsrc/Two/ParticleSystems/darken2.jpg" height="100" border="0"  /> <img width="100" alt="darken.jpg" src="rsrc/Two/ParticleSystems/darken.jpg" height="100" border="0"  />
+  <p />
+  <em>Brighten</em> makes the texture to brighten the background, so the texture becomes translucent and brighter than it's original version.
+  <p />
+  <img width="100" alt="brighten2.jpg" src="rsrc/Two/ParticleSystems/brighten2.jpg" height="100" border="0"  /> <img width="100" alt="brighten.jpg" src="rsrc/Two/ParticleSystems/brighten.jpg" height="100" border="0"  />
+  <p />
+  As you can see, the alphachannel of an RGBA8 texture is only used for the Draw Styles <em>Alpha Blend</em> and <em>Alpha Modulate</em>.
+  <p />
+  <a name="NumberOfUSubdivisions"></a>
+  <a name="NumberofVSubdivisions"></a>
+  <a name="BlendBetweenSubdivisions"></a>
+  <a name="UseRandomSubdivision"></a>
+  <a name="UseSubdivisionScale"></a>
+  <a name="SubdivisionScale"></a>
+  <a name="SubdivisionStart"></a>
+  <a name="SubdivisionEnd"></a>
+  <h4><a name="Subdivisions"></a> Subdivisions </h4>
+  <p />
+  You can divide one texture into different subdivisions.  You can make the particles randomly pick one of the textures, or make one particle change from one subdivision to another during it's <a href="ParticleSystems.html#Lifetime" class="twikiAnchorLink">Lifetime</a>.  You have to make a texture that can be used for this yourself: divide into a * b equal rectangles, and give every rectangle it's own picture.  For example, this is a texture that can be divided into 3 * 3 = 9 Subdivisions:
+  <p />
+  <img width="128" alt="shapes.jpg" src="rsrc/Two/ParticleSystems/shapes.jpg" height="128" border="0"  />
+  <p />
+  To set the Subdivisions, use U-Subdivisions and V-Subdivisions for the horizontal and vertical Subdivisions.
+  Setting these settings to 0 or 1 does exactly the same: it divides the texture into 1 Subdivision, meaning there are no Subdivisions at all (the Subdivision is the texture itself), so the particles will look like this:
+  <p />
+  <img width="280" alt="subdiv1.jpg" src="rsrc/Two/ParticleSystems/subdiv1.jpg" height="170" border="0"  />
+  <p />
+  If you set both U-Subdivisions and V-Subdivisions to 3, it looks like this:
+  <p />
+  <img width="280" alt="subdiv2.jpg" src="rsrc/Two/ParticleSystems/subdiv2.jpg" height="170" border="0"  />
+  <p />
+  If you set them to 2 or 4, some pictures of this texture will be cut into half, because it has 3 * 3 Subdivisions and isn't made for other values.
+  <p />
+  <img width="280" alt="subdiv3.jpg" src="rsrc/Two/ParticleSystems/subdiv3.jpg" height="170" border="0"  /> <img width="280" alt="subdiv4.jpg" src="rsrc/Two/ParticleSystems/subdiv4.jpg" height="170" border="0"  />
+  <p />
+  If you set respectively U-Subdivisions=1 and V-Subdivisions=3 or U-Subdivisions=3 and V-Subdivisions=1, it'll look like this:
+  <p />
+  <img width="280" alt="subdiv13.jpg" src="rsrc/Two/ParticleSystems/subdiv13.jpg" height="170" border="0"  /> <img width="280" alt="subdiv31.jpg" src="rsrc/Two/ParticleSystems/subdiv31.jpg" height="170" border="0"  />
+  <p />
+  If you check the Use Random Subdivision box the Emitter will give each particle a random Subdivision at the beginning, and the particle keeps this Subdivision as long as it lives.
+  <p />
+  <img width="279" alt="subdiv5.jpg" src="rsrc/Two/ParticleSystems/subdiv5.jpg" height="174" border="0"  />
+  <p />
+  If leave Use Random Subdivision un-checked, the particles will change during their <a href="ParticleSystems.html#Lifetime" class="twikiAnchorLink">Lifetime</a>.  For example if you'd have 2 * 2 Subdivisions, then first they'll have the upper left Subdivision,  then the bottom left, then the upper right and finally the bottom right.  The time it takes to change from one Subdivision to another, depends on their <a href="ParticleSystems.html#Lifetime" class="twikiAnchorLink">Lifetime</a>, more about this further in the section Time.  On the screenshot, there are 9 Subdivisions.
+  <p />
+  <img width="278" alt="subdiv6.jpg" src="rsrc/Two/ParticleSystems/subdiv6.jpg" height="173" border="0"  />
+  <p />
+  If you check Blend Between Subdivisions (and Use Random Subdivision is not checked), the particles will Fade from one Subdivision to another:
+  <p />
+  <img width="295" alt="subdivblend.jpg" src="rsrc/Two/ParticleSystems/subdivblend.jpg" height="226" border="0"  />
+  <p />
+  Normally, the particles go through the different Subdivisions this way, that they will have all the Subdivision one for the same amount of time.  The time is divided in equal parts for each Subdivision.  If you don't want this, you can use the Subdivision Scale feature. To do this, first check the Use Subdivision Scale box. Next, click the <em>Insert</em> button under Subdivision Scale that  so there are 3 Subdivision Scales (then 4 of the 9 Subdivisions will be used).  If you want the 9 Subdivisions to be used, you have to make 8 Subdivision Scales.  If you make less than 8 Subdivision Scales, the last Subdivisions will never appear.  There's also nothing wrong with making too many Subdivision Scales, then the last ones will just be ignored.
+  <p />
+  The Subdivision Scale is relative to the <a href="ParticleSystems.html#Lifetime" class="twikiAnchorLink">Lifetime</a> of the particles (see the section <a href="ParticleSystems.html#Time" class="twikiAnchorLink">Time</a> for this), so a Subdivision Scale of 1.000000 takes as long as the <a href="ParticleSystems.html#Lifetime" class="twikiAnchorLink">Lifeime</a> of the particles.  Each Subdivision Scale represents a certain point in the Lifetime of the particle.  For example if the <a href="ParticleSystems.html#Lifetime" class="twikiAnchorLink">Lifetime</a> is 4 seconds, a Subdivision Scale of 0.25 is the end of the first second of the Lifetime.  A successive Subdivision Scale should always be larger than the previous one, otherwise you're going back in time and it will be ignored.  For example if you make Subdivision [0] = 0.1, [1] = 0.3 and [2] = 0.6, and LifeTimeRange is 4 seconds, the particle will have Subdivision 1 for 0.4 seconds, then Subdivision 2 for 0.8 seconds, Subdivision 3 for 1.2 seconds and Subdivision 4 for the remaining 1.6 seconds.  On the screenshot, the particles move from left to right.
+  <p />
+  <img width="279" alt="subdivscale1.jpg" src="rsrc/Two/ParticleSystems/subdivscale1.jpg" height="170" border="0"  />
+  <p />
+  If you make Subdivision Scale [0] = 0.4 and [1] = 1, only two of the Subdivisions will be used.  Then it doesn't matter anymore what value you entered in [2].
+  <p />
+  <img width="279" alt="subdivscale2.jpg" src="rsrc/Two/ParticleSystems/subdivscale2.jpg" height="171" border="0"  />
+  <p />
+  To get this effect at it's best, you have to use the correct LifeTimeRange and also make sure the <a href="ParticleSystems.html#MaxNumberOfParticles" class="twikiAnchorLink">Number of Particles</a> value is high enough.  Read sections <a href="ParticleSystems.html#General" class="twikiAnchorLink">General</a> and <a href="ParticleSystems.html#Time" class="twikiAnchorLink">Time</a> for this.
+  <p />
+  Use the Subdivision End and Subdivision Start values if you want only a few Subdivisions of the texture to be used. Subdivision 0 is the Subdivision in the upper left corner of the texture, Subdivision 1 the one below that, and the last one is in the lower right corner of the texture.  This picture shows the numbering:
+  <p />
+  <img width="128" alt="subdiv.jpg" src="rsrc/Two/ParticleSystems/subdiv.jpg" height="128" border="0"  />
+  <p />
+  <a name="CustomTextureSet"></a>
+  <h4><a name="Custom Texture Set"></a> Custom Texture Set </h4>
+  <p />
+  This option is only shown when the emitter is a mesh emitter.  This is different set of textures to use instead of the standard texture for the selected mesh.  See <a href="ParticleSystems.html#Mesh" class="twikiAnchorLink">Mesh</a> for more details on mesh emitters.
+  <p />
+  <h3><a name="Rendering"></a> Rendering </h3>
+  <p />
+  <img width="450" alt="RenderingCat.jpg" src="rsrc/Two/ParticleSystems/RenderingCat.jpg" height="129" border="0"  />
+  <p />
+  <a name="DisableFogging"></a>
+  <h4><a name="Disable Fogging"></a> Disable Fogging </h4>
+  <p />
+  If chcked, the fogging on the particles will be disabled, so you can see them through the distance fog.
+  <p />
+  <a name="AlphaTest"></a>
+  <a name="AlphaRef"></a>
+  <h4><a name="Alpha Test/Alpha Ref"></a> Alpha Test/Alpha Ref </h4>
+  <p />
+  When checked, the video hardware will not write pixels that already has accumlated an alpha value of Alpha Ref.
+  <p />
+  <h4><a name="Z-Test"></a> Z-Test </h4>
+  <p />
+  The the default and normal behavior for emitters is with this box checked.  Unchecking this box makes the emitter draw on top almost everything.  This may not draw on top of other emitters with z-test unchecked or other alpha'ed objects.
+  <p />
+  <h4><a name="Z-Write"></a> Z-Write </h4>
+  <p />
+  This causes the particles to write to the Z-buffer.  ("In a graphics card, this section of video memory keeps track of which onscreen elements can be viewed and which are hidden behind other objects." - CNET Glossary)
+  <p />
+  <h3><a name="Color/Fading"></a> Color/Fading </h3>
+  <p />
+  <img width="450" alt="ColorFadingCat.jpg" src="rsrc/Two/ParticleSystems/ColorFadingCat.jpg" height="576" border="0"  />
+  <p />
+  <h4><a name="Opacity"></a> Opacity </h4>
+  <p />
+  This utility tool will adjust the translucency of the entire emitter. It changes several properties in the Color/Fading category.
+  <p />
+  <a name="FadeInStartTime"></a>
+  <a name="FadeOutStartTime"></a>
+  <h4><a name="Fading"></a> Fading </h4>
+  <p />
+  With this, you can make the particles fade in or fade out, for example when they fade in they are invisible at the beginning and become more and more visible.  You can also make only a few of the colorchannels fade, so for example the red and green parts of the texture will be invisible while the blue parts are always visible.
+  <p />
+  To cause your particle emitter to fade in, drag the <em>Fade-In End Time</em> slider away from the left side.  On the screenshot, the particles have a <a href="ParticleSystems.html#Lifetime" class="twikiAnchorLink">Lifetime</a> of 5.0 and a Fade In End Time of 5.0, so they are 100% visible at the moment they die:
+  <p />
+  <img width="280" alt="fadein.jpg" src="rsrc/Two/ParticleSystems/fadein.jpg" height="170" border="0"  />
+  <p />
+  <em>Fade-Out Start Time</em> works the same as <em>Fade-In End Time</em>.  If this is 0 (Slider all the way to the left) the particles will will already start fading when they're born and be  completely Faded out at the moment they die.  On the screenshot, <em>Fade-Out Start Time</em> is 1.
+  <p />
+  <img width="280" alt="fadeout.jpg" src="rsrc/Two/ParticleSystems/fadeout.jpg" height="170" border="0"  />
+  <p />
+  <a name="FadeOutFactor"></a>
+  <a name="FadeInFactor"></a>
+  <h4><a name="Fade Out/In Factor"></a> Fade Out/In Factor </h4>
+  <p />
+  You can use <em>Fade In Factor</em> and <em>Fade Out Factor</em> to fade individual color channels. If the values are 1, the particles fade normally.  If you make for example R = 0, the red channel will get changed 0%, so while the other colors are invisible (this is at the start of a fade in, or the end of a fade out), the red will still be visible (left part of the first screen).  Or when G = 0, the green will still be visible (right part of the first screen).  If R and G are 0, both will be visible, it looks somewhat yellowish here (left part of the second screen).  If R, G and B are 5, the whole texture will get super-invisible so it fades out much faster (right part of the second screen).  If R, G and B would all be 0, the texture wouldn't get invisible at all.
+  <img width="280" alt="fade3.jpg" src="rsrc/Two/ParticleSystems/fade3.jpg" height="170" border="0"  /> <img width="280" alt="fade4.jpg" src="rsrc/Two/ParticleSystems/fade4.jpg" height="170" border="0"  />
+  <p />
+  <a name="ColorMultiplierRange"></a>
+  <h4><a name="Color Multiplier Range"></a> Color Multiplier Range </h4>
+  <p />
+  The <em>Color Multiplier Range</em> is a multiplier that is applied to each particle individually at the start of its lifetime.  This can be used in two main ways; to give the particles random variation in color, and to adjust the color of the emitter without having to change the texture or the color scale.  To give the particles a slightly random color set the min and max of a field to different values; the wider the range the more the variation in color.  To adjust the color of the emitter just change the value of R, G, or B to make the emitter less Red, Green or Blue.
+  <p />
+  <a name="UseColorScale"></a>
+  <h4><a name="Use Color Scale"></a> Use Color Scale </h4>
+  <p />
+  This turns on the use of color scale and color scale repeats (see below)
+  <p />
+  <a name="ColorScale"></a>
+  <h4><a name="Color Scale"></a> Color Scale </h4>
+  <p />
+  This is another scale that can be applied to the particles. A scale changes something of the particle during its lifetime, in this case the color. To use a Color Scale, first set "Use Color Scale" to True, and then add a new color bar.  To add a new a new color bar double click somewhere in the color scale box. This will bring up a color picker window where you can pick a color and click OK.  This will show the color you choose on a vertical bar where you double clicked.
+  <BR> <img width="409" alt="ColorFade1.jpg" src="rsrc/Two/ParticleSystems/ColorFade1.jpg" height="152" border="0"  />
+  <p />
+  You can change this color at any time by double clicking on the color to bring up the color picker window or by single clicking on the color and manually adjusting the R, G, B, and A values.  The alpha values (which only are only relevant for alpha blend mode) must be changed manually in this way because the color picker does not support alpha.  The color in the color bar is combined with the color of the texture so if your texture is bluish and your color bar is white, the particle will still look bluish.  If the color bar is cyan on the other hand, the particle will look more cyan but not as cyan as the color bar.  White textures generally work best with color scale because they take the color of the color bars best.
+  <p />
+  The position of the color bar represents the relative time of this color.  This is the time in the life of the particle that the particle will be the color you have chosen.  If the color bar is in the middle of the Color Scale the value will be somewhere around 0.5.  If the lifetime of the particles is 4.0 seconds, about 2.0 seconds into the particle's life it will be the color you have chosen.  The relative time can be changed by dragging the color bar or manually adjusting the relative time field below the Color Scale box.
+  <p />
+  Color scale is most useful with two or more color bars.  If you do not have a color bar at the far right of the Color Scale box, the color of the particles will pop back their normal color after the rightmost color bar.  This is generally undesired.  If you do not have a color bar at the far left of the Color Scale box, the system will behave as if there is a white color bar there.  This is an example of 3 color bars used with a white texture.  The middle color bar is selected so the field values correspond to that color bar.
+  <BR> <img width="405" alt="ColorFade2.jpg" src="rsrc/Two/ParticleSystems/ColorFade2.jpg" height="277" border="0"  />
+  <p />
+  <a name="ColorScaleRepeats"></a>
+  <h4><a name="Color Scale Repeats"></a> Color Scale Repeats </h4>
+  <p />
+  With "Color Scale Repeats", the Color Scale process can be repeated an arbitrary number of times.  The default is 0 which means that the color scale with work once, but not repeat any times.  With the value set to 1.0, there will be two scales, once for the normal color scale and one repeat.  This is the same color scale as above but with "Color Scale Repeats" set to 1.0.
+  <BR> <img width="405" alt="ColorFade3.jpg" src="rsrc/Two/ParticleSystems/ColorFade3.jpg" height="124" border="0"  />
+  <p />
+  This is an image with color scale repeats set to 2.5.  Note how the color ends on green, which is in the middle of the color scale.
+  <BR> <img width="405" alt="ColorFade4.jpg" src="rsrc/Two/ParticleSystems/ColorFade4.jpg" height="125" border="0"  />
+  <p />
+  <h3><a name="Time"></a> Time </h3>
+  <p />
+  <img width="452" alt="TimeCat.jpg" src="rsrc/Two/ParticleSystems/TimeCat.jpg" height="284" border="0"  />
+  <p />
+  #Lifetime
+  <h4><a name="Lifetime"></a> Lifetime </h4>
+  <p />
+  The Lifetime is the number of seconds the particle will live.  After this time, it gets destroyed and might respawn.
+  <p />
+  <a name="InitialTime"></a>
+  <h4><a name="Initial Time"></a> Initial Time </h4>
+  <p />
+  The _Initial Time_ lets the particles be several seconds old already when they get spawned.  If <a href="ParticleSystems.html#Lifetime" class="twikiAnchorLink">Lifetime</a> is 4 and _Initial Time_ is 3, the particle will already be 3 seconds old when spawned and live for only one second.  This setting can be interesting when you use scales: the <a href="ParticleSystems.html#UseSubdivisionScale" class="twikiAnchorLink">Subdivision Scale</a>, <a href="ParticleSystems.html#ColorScale" class="twikiAnchorLink">Color Scale</a> and <a href="ParticleSystems.html#SizeScale" class="twikiAnchorLink">SizeScale</a> will also be calculated as if they're 3 seconds old already.
+  <p />
+  <a name="InitialDelay"></a>
+  <h4><a name="Initial Delay"></a> Initial Delay </h4>
+  <p />
+  The <em>Initial Delay</em> is the time it takes before the emitter starts its job.  For example, if you enter an <em>Initial Delay</em> of 5, when you start the map or click [[#Refreshing][refresh], it'll do nothing for 5 seconds before it starts emitting.
+  <p />
+  For all the settings you can use a Min and Max value.  If you make them the same, that exact value will be used.  If you make Min smaller than Max, every particle will get it's own random LifeTimeRange or InitialTimeRange when it gets spawned, and this random value is something between Min and Max.  If you use a random LifeTime, the particles will look like the screenshot at constant speed: there appear holes because some of the particles die already while others are still continuing their way.
+  <p />
+  <img width="280" alt="randomlifetime.jpg" src="rsrc/Two/ParticleSystems/randomlifetime.jpg" height="172" border="0"  />
+  <p />
+  <a name="SecondsBeforeInactive"></a>
+  <h4><a name="Seconds Before Inactive"></a> Seconds Before Inactive </h4>
+  <p />
+  When this value is 0.000000, the movements of the particles are always calculated by the computer, even if they're out of view.  If you enter a value in here, the computer will stop calculating the movements of the particles after the Emitter actor is out of view for this many seconds.  This way you gain performance.  So when you look away from the Emitter, the particles will freeze, and only come back to life when you look at them again.  So when <em>Seconds Before Inactive</em> = 0.010000 and you see this:
+  <p />
+  <img width="279" alt="initial1.jpg" src="rsrc/Two/ParticleSystems/initial1.jpg" height="171" border="0"  />
+  <p />
+  and then rotate the camera 180�, wait an hour and then look again at the Emitter, you'll still see exactly the same image (where the warmup is not finished yet).  When you can't see the Emitter actor, but you should be able to see some particles, you will not see these particles!  Only when you can see the Emitter itself, you'll be able to see it's particles.  If you don't want this, set  _Seconds Before Inactive to 0.000000.
+  <p />
+  <a name="RelativeWarmupTime"></a>
+  <a name="WarmupTicksPerSecond"></a>
+  <h4><a name="Relative Warmup Time/Warmup Ticks Per Second"></a> Relative Warmup Time/Warmup Ticks Per Second </h4>
+  <p />
+  You can make the engine precalculate the Emitter, so when you start the map it's as if the Particle Emitter has been there already for a few seconds and you will not see the warmup effect.  The warmup is the time where not yet all the particles are spawned.  With the setting <em>Relative Warmup Time</em> you can set how many seconds have to be precalculated, relative to the <a href="ParticleSystems.html#Lifetime" class="twikiAnchorLink">Lifetime</a> of the particles.  This means if you set it to 1, there are exactly as much precalculated seconds as the first particles will live.  But before this works you also have to set the WarmupTicksPerSecond: this is how many ticks each second of the RelativeWarmupTime has.  The higher the <em>Warmup Ticks Per Second</em>, the more there will be precalculated.
+  <p />
+  In short, the longer the <em>Relative Warmup Time</em> of a certain Particle Emitter takes, the higher you have to make the <em>Warmup Ticks Per Second</em> setting (and set <em>Relative Warmup Time</em> to 1) if you want there to be no visible warmup.
+  <p />
+  <h3><a name="Movement"></a> Movement </h3>
+  <p />
+  <img width="444" alt="MovementCat.gif" src="rsrc/Two/ParticleSystems/MovementCat.gif" height="648" border="0"  />
+  <p />
+  <a name="StartVelocity"></a>
+  <h4><a name="Start Velocity"></a> Start Velocity </h4>
+  <p />
+  Use <em>Start Velocity</em> to give the particles a constant speed. The X, Y and Z values will adjust how fast the particles travel in that direction. If Min and Max are the same, you get what you would expect: the particle moves with the speed you entered to the direction you used.  If Min &lt; Max, the particle will move with a random, constant speed that is something between the Min and Max value.  For example, if you set X-Min equal to X-Max and Y-Min equal to Y-Max and Z-Min equal to Z-Man (and make sure there is no acceleration), all the particles will move towards the same direction:
+  <p />
+  <img width="281" alt="velocity1.jpg" src="rsrc/Two/ParticleSystems/velocity1.jpg" height="172" border="0"  />
+  <p />
+  But if you set X-Min to -500 and X-Max to +500 (and keep the Y values), the particles will move with a random direction:
+  <p />
+  <img width="280" alt="velocity2.jpg" src="rsrc/Two/ParticleSystems/velocity2.jpg" height="173" border="0"  />
+  <p />
+  If you'd have made X-Min = -150 and X-Max = +150, there'd be less difference in the directions:
+  <p />
+  <img width="281" alt="velocity3.jpg" src="rsrc/Two/ParticleSystems/velocity3.jpg" height="172" border="0"  />
+  <p />
+  <h4><a name="Acceleration"></a> Acceleration </h4>
+  <p />
+  To make the particles moving, you can give them Velocity and/or Acceleration.  The Acceleration makes them move faster and faster, and is very easy to set up: open the properties of the Emitter and in there open the properties of the <em>Sprite Emitter</em>.  In there, expand Acceleration.
+  <p />
+  There you can enter the amount of Acceleration you want along the X, Y and Z axis.  You can enter negative values too.  If you assume that the upper part of the Top View is the North, here's what the settings do:
+  <p />
+  <img width="327" alt="base.jpg" src="rsrc/Two/ParticleSystems/base.jpg" height="257" border="0"  />
+  <p />
+  If X &gt; 0, the particle will go to the East
+  If X &lt; 0, it'll go to the West
+  If Y &gt; 0, it'll go to the South
+  If Y &lt; 0, it'll go to the North
+  If Z &gt; 0, it'll go to the ceiling or sky
+  If Z &lt; 0, it'll go to the ground
+  The total acceleration is the sum of these 3 components, so if X = 425, Y = -950 and Z = -950, the particles will go to the North-East and down,  and will go to the North with more acceleration than to the East.  However, if you rotated the Emitter actor with the Rotation tool, this won't be correct anymore, the CoordinateSystem will be rotated then.  The X-axis will then be the direction of the arrow if you set bDirectional to True in advanced.  Once you gave it some acceleration, you'll see the particles move.
+  <p />
+  While <em>Acceleration</em> makes the particle move faster every second, the <a href="ParticleSystems.html#StartVelocity" class="twikiAnchorLink">Start Velocity</a> is a constant speed.  If no <em>Acceleration</em> is used, but there is a Velocity, the particle will move with the same speed as long as it lives.  If you use Velocity AND <em>Acceleration</em> the total speed of the particle will be the sum of the constant Velocity and the variable speed caused by the Acceleration. If there is a Velocity and a Acceleration along the same axis, but they have opposite signs, the particle will first move in one direction, but at a certain point the absolute value of the speed caused but the Acceleration will be larger than the absolute value of the Velocity, so the particles will move back to the direction they came from.  If you use a Velocity and an Acceleration, both along a different axis, the particles will make a parabola.  A parabola is the realistic trajectory for example a bullet or an object you throw follow.  For example if Acceleration has Z = -950, and <em>Start Velocity</em> has X-Min = 500 X-Max = 500, it'll look like this:
+  <p />
+  <img width="282" alt="parabola1.jpg" src="rsrc/Two/ParticleSystems/parabola1.jpg" height="172" border="0"  />
+  <p />
+  If you now set also the X of Acceleration to -1000, it'll do the following:
+  <p />
+  <img width="281" alt="parabola2.jpg" src="rsrc/Two/ParticleSystems/parabola2.jpg" height="173" border="0"  />
+  <p />
+  <a name="MaxVelocity"></a>
+  <h4><a name="Max Velocity"></a> Max Velocity </h4>
+  The sum of the velocity caused by the <a href="ParticleSystems.html#Acceleration" class="twikiAnchorLink">Acceleration</a> and the Velocity is the Absolute Velocity, and you can set a <em>Max Velocity</em> value for every axis.  If you use this, the Acceleration will keep speeding up the particle until the <em>Max Velocity</em> speed is reached.  The particle will then have a constant speed. If you change the first parabola example to have Z value of <em>Max Velocity</em> to 600, the function will look like a parabola in the beginning, but once the absolute value of the speed along the Z axis is 600, the function will become a constant function (a line).
+  <p />
+  <img width="282" alt="parabola3.jpg" src="rsrc/Two/ParticleSystems/parabola3.jpg" height="172" border="0"  />
+  <p />
+  <p />
+  <a name="VelocityLoss"></a>
+  <h4><a name="Velocity Loss"></a> Velocity Loss </h4>
+  The <em>Velocity Loss</em> setting hinders the particle from moving along any axis you chose (if you set X = Y = Z it will slow down particles the same no matter which way they are moving).  It works sort of like friction or air resistance.  If it's larger than 100, the particles suddenly get shot away at very high speed.  Again, you can use a Min and Max value if you want the <em>Velocity Loss</em> to be something random between the Min and Max value.
+  <p />
+  <a name="AddVelocityFromOtherEmitter"></a>
+  <h4><a name="Add Velocity From Other Emitter"></a> Add Velocity From Other Emitter </h4>
+  <em>Add Velocity From Other Emitter</em> gives the particles the same Velocity as a random particle coming from another Particle Emitter inside the same Emitter actor.  This setting works very similar to [[#AddLocationFromOtherEmitter][Add Location From Other Emitter] in <a href="ParticleSystems.html#Location" class="twikiAnchorLink">Location</a>.
+  <p />
+  <a name="AddVelocityMultiplier"></a>
+  <h4><a name="Add Velocity Multiplier"></a> Add Velocity Multiplier </h4>
+  If <a href="ParticleSystems.html#AddVelocityFromOtherEmitter" class="twikiAnchorLink">Add Velocity From Other Emitter</a> is not set to <em>None</em> then the particle's velocity will be multiplied by this value. For example, if you want the particles from this emitter to have twice the velocity of the particles from other emitter you could set all the values in this tool equal to 2.0.
+  <p />
+  <a name="GetVelocityDirectionFrom"></a>
+  <h4><a name="Get Velocity Direction From"></a> Get Velocity Direction From </h4>
+  With <em>Get Velocity Direction From</em>, you can choose in what direction the Velocity is used.  None is the default and works as explained above.  With <em>Start Position And Owner</em>, the particles will go in the direction determinated by the start position of the particle, and the Emitter Actor, and it moves away from the Emitter.  <em>Owner and Start Position</em> does the same, but now the particle will move from it's startposition towards the Emitter Actor and when it reached that keep going further.  This only works if it's startposition is not the Emitter itself, more about this is in <a href="ParticleSystems.html#Location" class="twikiAnchorLink">Location</a>.
+  <p />
+  <a name="StartVelocityRadial"></a>
+  (coming soon)
+  <p />
+  <a name="CoordinateSystem"></a>
+  <h4><a name="Coordinate System"></a> Coordinate System </h4>
+  The CoordinateSystem determinates what the X, Y and Z values for the <a href="ParticleSystems.html#LocatioN" class="twikiAnchorLink">Location</a> of the particles mean.  If you set the CoordinateSystem to PTCS_Relative, the (X,Y,Z) = (0,0,0) position for the particles is the position of the Emitter actor in the editor, so the particles will get spawned there:
+  <p />
+  <img width="281" alt="coorrelative.jpg" src="rsrc/Two/ParticleSystems/coorrelative.jpg" height="172" border="0"  />
+  <p />
+  But if you set the CoordinateSystem to PTCS_Absolute, the CoordinateSystem of the world in the editor is used, and there the (0,0,0) <a href="ParticleSystems.html#LocatioN" class="twikiAnchorLink">Location</a> is the exact center of the world (there the lines of the grid are painted a little darker than the others in the 2D views).  So the particles will start in the center of the map (where the thicker gridlines in the 2D view cut each other), no matter where the Emitter actor is: note the emitter actor on the right of the screenshot:
+  <p />
+  <img width="281" alt="coorabsolute.jpg" src="rsrc/Two/ParticleSystems/coorabsolute.jpg" height="173" border="0"  />
+  <p />
+  The default CoordinateSystem PTCS_Independent does the same as PTCS_Relative, but after they are spawned the particles become independent and use the absolute coordinatesystem.  The difference between PTCS_Relative and PTCS_Independent becomes important when you use <a href="ParticleSystems.html#MoveEm" class="twikiAnchorLink">Moving Emitters</a>.
+  <p />
+  All the three CoordinateSystems will rotate if you rotate the Emitter actor with the Rotation Tool.  If you set in the properties of the Emitter actor in Advanced bDirectional to True, an arrow will be displayed in the editor to help you to rotate it better.
+  <p />
+  In the section <a href="ParticleSystems.html#LocatioN" class="twikiAnchorLink">Location</a> is explained how you can make the particles spawn at another <a href="ParticleSystems.html#LocatioN" class="twikiAnchorLink">Location</a>, again relative or absolute to the Emitter actor depending on the CoordinateSystem you use.
+  <p />
+  <a name="MinSquaredVelocity"></a>
+  <h4><a name="Min Squared Velocity"></a> Min Squared Velocity </h4>
+  This controls the minimum velocity a particle may have before it becomes inactive.  This is important if you use [[#CollisioN][Collision]: the particles will then get less velocity every time they bounce on the wall.
+  <p />
+  <p />
+  <h4><a name="Use Velocity Scale"></a> Use Velocity Scale </h4>
+  <p />
+  <img width="279" alt="VelocityScale.jpg" src="rsrc/Two/ParticleSystems/VelocityScale.jpg" height="289" border="0"  />
+  <p />
+  <em>UseVelocityScale</em> turns velocity scale on an off.  Velocity scale is used to scale the velocity of the particle over time.  Given that this is a component scale, velocity scale can be used to make the particles change direction over time and even reverse directions.
+  <p />
+  <p />
+  <h4><a name="Velocity Scale"></a> Velocity Scale </h4>
+  <p />
+  <em>Velocity Scale</em> allows you to scale the velocity of particles over the course of their lifetime.  This can allow you to do things such as stop moving particles and then start them again.  It can also allow you change the direction of particles by setting the X scale to 0.0 and the Y scale to 1.0 for one entry and then setting the X scale to 1.0 and the Y scale to 0.0 for another entry.  <em>Relative Velocity</em> is a multiplier for the current velocity of the particle and <em>Relative Time</em> is the time at which that multiplier will be applied.  As with all scales, the entries in <em>Velocity Scale</em> will be interpolated between.
+  <p />
+  <p />
+  <h4><a name="Velocity Scale Repeats"></a> Velocity Scale Repeats </h4>
+  <p />
+  <em>Velocity Scale Repeats</em> is the number of times the <em>Velocity Scale</em> will be additional repeated.  Setting this to 0 will cause the velocity scale to happen just once.  Setting this to 1 will cause the velocity scale to happen twice.
+  <p />
+  <p />
+  <h3><a name="Location"></a> Location </h3>
+  <img width="449" alt="LocationCat.jpg" src="rsrc/Two/ParticleSystems/LocationCat.jpg" height="417" border="0"  />
+  <p />
+  <a name="StartLocationShape"></a>
+  <a name="StartLocation"></a>
+  <a name="SphereRadius"></a>
+  <a name="StartLocationPolarRange"></a>
+  <h4><a name="Start Location Shape"></a> Start Location Shape </h4>
+  This will determine the overall shape that particle spawn in.
+  <p />
+  Selecting <em>Box</em> uses the variables in <strong><em>Start Location</em></strong> to spawn all of the particles in the specified _ Box_. For example if you set X, Y and Z(Min) to -150 and X, Y and Z(Max) to +150, all the particles will start inside a 300*300*300 box.
+  <p />
+  <img width="279" alt="box.jpg" src="rsrc/Two/ParticleSystems/box.jpg" height="171" border="0"  />
+  <p />
+  Selecting <em>Sphere</em> makes it possible spawn the particles inside of a sphere with a radius equal to the values inside of <strong><em>Sphere Radius</em></strong>.
+  <p />
+  <img width="279" alt="sphere.jpg" src="rsrc/Two/ParticleSystems/sphere.jpg" height="171" border="0"  />
+  <p />
+  <em>Polor</em> is rather complicated, but uses the X, Y, and Z varibles in <strong><em>Start Location Polar Range</em></strong> as theta, phi, and <em>r</em> repsectively in the standard polar equation. Basically, this makes a hollowed partial-sphere with radius <em>r</em>. It will sweep longitudally <em>theta</em> degrees and latitdually <em>phi</em> degrees.
+  <p />
+  <h4><a name="Start Location Offset"></a> Start Location Offset </h4>
+  <a name="StartLocationOffset"></a>
+  The settings in <a href="ParticleSystems.html#StartLocationShape" class="twikiAnchorLink">Start Location Shape</a> work in combination with <em>Location Offset</em>, so the final Start Location is the sum of those. This makes is possible for spawning area of particles to not be centered over the emitter.
+  <p />
+  <p />
+  <h4><a name="Add Location From Other Emitter"></a> Add Location From Other Emitter </h4>
+  <a name="AddLocationFromOtherEmitter"></a>
+  In Add Location From Other Emitter you can select another Particle Emitter that is inside the same Emitter actor.  If you set it to something other than <em>None</em>, the particles will not be spawned where they normally should spawn, but at the location of one of the particles of the selected particle emitter.  They will not keep following that particle, they only get spawned there and get independent after that.  You can for example make a trace of particles behind another moving particle.  This is done in the DEMO-Particles example map:
+  <p />
+  <img width="279" alt="locationfromotheremitter.jpg" src="rsrc/Two/ParticleSystems/locationfromotheremitter.jpg" height="171" border="0"  />
+  <p />
+  The blue sprites never move, but when they die they respawn at one of the bouncing balls, so together all the blue sprites form the shape of the traces the balls follow.
+  <p />
+  <p />
+  <p />
+  <h3><a name="Mesh Spawning"></a> Mesh Spawning </h3>
+  <p />
+  <img width="444" alt="MeshSpawning.gif" src="rsrc/Two/ParticleSystems/MeshSpawning.gif" height="570" border="0"  />
+  <p />
+  Mesh Spawning uses the vertices of a static mesh to calculate the spawn location and optionally the velocity and the color of the particles in this emitter.  The static mesh does not have to exist in the world nor do the faces of the static mesh matter.  This means that you can make arbitrary shapes for static meshes in a modeling program.  You can also use existing static meshes in the world and attach effects to them to produce results like a bush on fire.
+  <p />
+  <h4><a name="Mesh Spawning Type"></a> Mesh Spawning Type </h4>
+  <p />
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Mesh Spawning Type</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Description</font></a> </th></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> Do Not Use Mesh Spawning </td><td bgcolor="#ffffff"> Off.  The mesh spawning is not used at all. </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Linear </td><td bgcolor="#eaeaea"> The particles will be spawned on each subsequent vertex based on numbering of the vertices. </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> Random </td><td bgcolor="#ffffff"> The particles will spawned on a random vertex. </td></tr>
+  </table>
+  <p />
+  <p />
+  <h4><a name="Static Mesh"></a> Static Mesh </h4>
+  <p />
+  This is the static to use for the mesh spawning.  Select a mesh in the mesh browser and click "Use".
+  <p />
+  <h4><a name="Mesh Scale"></a> Mesh Scale </h4>
+  <p />
+  <em>Mesh Scale</em> is the scale of the <em>Static Mesh</em>.  Given that this is a range, a random number in the range is chosen for every particles spawned.
+  <p />
+  <h4><a name="Uniform Mesh Scale"></a> Uniform Mesh Scale </h4>
+  <p />
+  This will cause only the X component to be used to uniformly scale the mesh.  With will prevent stretching and squashing and just change the size of the static mesh.
+  <p />
+  <h4><a name="Velocity From Mesh Normal"></a> Velocity From Mesh Normal </h4>
+  <p />
+  This will use the normal of each vertex to determine the initial velocity of each particle.
+  <p />
+  <h4><a name="Velocity Scale"></a> Velocity Scale </h4>
+  <p />
+  This scales the velocity from the mesh normal.  For example if you have a mesh sphere with outward facing normals, you can set the <em>Velocity Scale</em> to negative values and the particles will move inwards towards the center of the sphere.
+  <p />
+  <h4><a name="Uniform Velocity Scale"></a> Uniform Velocity Scale </h4>
+  <p />
+  <em>Uniform Velocity Scale</em> will cause the only the X component of the <em>Velocity Scale</em> to be used to uniformly scale the velocity.
+  <p />
+  <h4><a name="Spawn Only In Normal Direction"></a> Spawn Only In Normal Direction </h4>
+  <p />
+  (Note: Do not use with <em>Respawn Dead Particles</em> = true!)
+  <p />
+  This will only use the normals within <em>Normal Direction Threshold</em> of <em>Normal Direction</em> to spawn particles.
+  <p />
+  <h4><a name="Normal Direction"></a> Normal Direction </h4>
+  <p />
+  This is the direction of the normals to use for spawning particles.  This will only work is <em>Spawn Only In Normal Direction</em> is true.
+  <p />
+  <p />
+  <h4><a name="Normal Direction Threshold"></a> Normal Direction Threshold </h4>
+  <p />
+  This is the threshold for the <em>Normal Direction</em>.  This will only work is <em>Spawn Only In Normal Direction</em> is true.
+  <p />
+  <p />
+  <h4><a name="Use Color From Mesh"></a> Use Color From Mesh </h4>
+  <p />
+  This uses the color of the each vertex to determine the color the particle being spawned.
+  <p />
+  <p />
+  <h3><a name="Skeletal Mesh"></a> Skeletal Mesh </h3>
+  <p />
+  <img width="444" alt="SkelMesh1.gif" src="rsrc/Two/ParticleSystems/SkelMesh1.gif" height="236" border="0"  />
+  <p />
+  Skeletal Mesh animation allows you to attach particles to the bones of a skeletal mesh.  The mesh is used to determine the spawn location of the particles and can also be used to determine the movement the particles.  The main way to use this system is to attach effects to existing character models such as the dead greens DeRes effect in UT2003. <BR>
+  <img width="380" alt="SkelMesh2.jpg" src="rsrc/Two/ParticleSystems/SkelMesh2.jpg" height="275" border="0"  />
+  <p />
+  Another way to use skeletal mesh animation is to create a simple model that moves a bone in a pattern that you want an emitter to move in.  This can be used to move emitters in more complex patterns than is otherwise possible with the PSE.  The example below moves an emitter in a decreasing spiral that travels upwards. <BR>
+  <img width="297" alt="SkelMesh3.jpg" src="rsrc/Two/ParticleSystems/SkelMesh3.jpg" height="182" border="0"  /> <BR>
+  Complex movement patterns can also be achieved by using <a href="AnimNotifies.html" class="twikiLink">Anim Notifies</a> to attach particles systems to bones. (See <em>AnimNotify_Effect</em>).
+  <p />
+  While it is possible to use skeletal mesh animation without any new code (the spiral example did not use any new code for example) the system works best when coupled with game specific code.  This is mainly do to the fact that <a href="ParticleSystems.html#SkeletalMeshActor" class="twikiAnchorLink">SkeletalMeshActor</a> must be an <em>Actor</em> that exists in the level.  This makes it impossible to preview this type of particle system in Unrealed because characters do not move around or animate in the editor.  Below is an example of attaching the dead green DeRes effect in UT2003:
+  <p />
+  <pre>
+  DeResFX &#61; Spawn(class&#39;DeResPart&#39;, self, , Location);
+  if ( DeResFX !&#61; None )
+  {
+     DeResFX.Emitters&#91;0].SkeletalMeshActor &#61; self;
+     DeResFX.SetBase(self);
+  }
+  </pre>
+  <p />
+  If you do not want to use code you can create a <em>Pawn</em> (or a subclass of <em>Pawn</em> if you are not using the UDNBuild) and set it to draw with a particular skeletal mesh and then animate that mesh using a scripted sequence.  You will also have to attach the particle system to the pawn using the <em>AttachTag</em> and <em>bHardAttach</em> = true, if you want the particle system to move with the pawn.  Also, make sure you place the pawn and particle system at the same location in the level.
+  <p />
+  <h4><a name="Use Skeletal Location As"></a> Use Skeletal Location As </h4>
+  <p />
+  <em>UseSkeletalLocationAs</em> is used to tell the particles of the emitter how to spawn and move relative to the bones of the mesh.
+  <p />
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=2;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">UseSkeletalLocationAs</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=2;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Description</font></a> </th></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> Don't Use SkeletalMesh </td><td bgcolor="#ffffff"> Off.  The skeletal mesh animation is not used at all. </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Spawn at Vertex </td><td bgcolor="#eaeaea"> The particles will spawn at bone locations but once the particle is spawned, it will not be effected by the mesh.  The spiral example uses <em>Spawn at Vertex</em> which is why you see the trail in the path of the bone. </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> Move with Vertex </td><td bgcolor="#ffffff"> The particles will spawn at a bone location and will continue to be effected by the location of the bone but not the rotation.  The spiral example from above would just look like a fat vertical white line moving around in a spiral. </td></tr>
+  </table>
+  <p />
+  <p />
+  <h4><a name="SkeletalMesh Actor"></a><a name="_SkeletalMesh Actor"></a> SkeletalMesh Actor </h4>
+  <p />
+  <em>SkeletalMesh Actor</em> is the <em>Actor</em> in the level whole skeletal mesh will be used to determine the spawning and motion of the particles in this emitter.  In most cases this will be set in code.  If you want to set this in the editor you will have type this in directly.  First find the <strong>Name</strong> of the actor in the level by looking at the properties of this actor under <strong>Object</strong> or looking at the top of the properties window.  In the <em>SkeletalMesh Actor</em> text window type the name of the actor.
+  <p />
+  <p />
+  <h4><a name="Skeletal Scale"></a> Skeletal Scale </h4>
+  <p />
+  <em>Skeletal Scale</em> is used to set the scale of the "mesh" used to spawn the particles.  The mesh of the actor that the emitter is attached to is not exactly the mesh used to spawn the particles.  For example if the mesh is scaled in the animation browser, this skeletal mesh animation system will use the size before the scale.  You can use <em>Skeletal Scale</em> to match the size of scaled meshes or you can use it to intentionally make the size larger or smaller.
+  <p />
+  <p />
+  <h4><a name="RelativeBoneIndexRange"></a><a name="_RelativeBoneIndexRange"></a> RelativeBoneIndexRange </h4>
+  <p />
+  <em>RelativeBoneIndexRange</em> is used to determine which bones are used to for spawning particles.  For all bones set this range from 0.0 to 1.0.  If you only want some bones, set it to a sub range between 0 and 1.  Which bones you get is dependent on how the bones are indexed in your model.
+  <p />
+  <p />
+  <p />
+  <h3><a name="Rotation"></a> Rotation </h3>
+  <img width="450" alt="RotationCat.jpg" src="rsrc/Two/ParticleSystems/RotationCat.jpg" height="487" border="0"  />
+  <p />
+  <a name="SpinParticles"></a>
+  <a name="SpinsPerSecond"></a>
+  <a name="SpinCCWorCW"></a>
+  <h4><a name="Spin"></a> Spin </h4>
+  <p />
+  To make the particles Spin while they move, check <em>Sping Particles and enter an X-Min and X-Max value at _Spins Per Second</em>.    The value you enter is the number of times per second the texture of the particle will spin.  If X-Min and X-Max values are different, each particle will get a random value between Min and Max.  You can also set to spin Counter Clock Wise or Clock Wise with the <em>Spin CCW or CW</em> slider. If you set it to something between 0 and 1, for example 0.7, there's 70% chance a particle will rotate Clock-Wise and 30% chance it'll rotate Counter-Clock-Wise.  If SpinsPerSecondRange is 0.5 and SpinCCWorCW is 1, it'll look somewhat like the first animated gif.  If you set <em>Spin CCW or CW</em> to 0.5, it'll do for example like on the second animated gif (on the second screenshot, some particles may suddenly switch from CCW to CW, but that's because otherwise the gif would require TOO many frames.  This never happens in the editor.)
+  <p />
+  <img width="280" alt="spin1.gif" src="rsrc/Two/ParticleSystems/spin1.gif" height="170" border="0"  />
+  <img width="280" alt="spin2.gif" src="rsrc/Two/ParticleSystems/spin2.gif" height="170" border="0"  />
+  <p />
+  <a name="StartSpin"></a>
+  <h4><a name="Start Spin"></a> Start Spin </h4>
+  With <em>Start Spin</em>, you can set the rotation the particle has when it's spawned. You can also make the particle to have a random <em>Start Spin</em>, if you enter a different Min and Max value.
+  <p />
+  <a name="FacingDirection"></a>
+  <h4><a name="Facing Direction"></a> Facing Direction </h4>
+  <img width="190" alt="FacingDir.jpg" src="rsrc/Two/ParticleSystems/FacingDir.jpg" height="115" border="0"  />
+  Facing Direction determines how particles are oriented in the world.  It is important to remember that this orientation is calculated BEFORE the spin of the particles is calculated.  If there is any spin it will be applied after the facing direction making it difficult to see the effects of the facing direction.  To illustrate the effect of this tool, I created a simple particle system effected by gravity.  The texture on the particles is this arrow.<BR>
+  <img width="128" alt="FacingDirTex.jpg" src="rsrc/Two/ParticleSystems/FacingDirTex.jpg" height="128" border="0"  />
+  <p />
+  <strong>Facing Camera</strong> is the default and most common choice for facing direction.  All the particles are billboarded facing the camera no matter where the camera is.  This can be seen in the image below.  The one confusing part about <em>Facing Camera</em> is that it flips the texture vertically.  Another confusing aspect of this settings is that the size of particles has a constant aspect ratio because X size (from <a href="ParticleSystems.html#StartSize" class="twikiAnchorLink">Start Size</a>) is used to scale both X and Y.  Y size is ignored when facing direction is set to <em>Facing Camera</em>.<BR>
+  <img width="250" alt="FacingDir1a.jpg" src="rsrc/Two/ParticleSystems/FacingDir1a.jpg" height="250" border="0"  /> <img width="250" alt="FacingDir1b.jpg" src="rsrc/Two/ParticleSystems/FacingDir1b.jpg" height="250" border="0"  />
+  <p />
+  <strong>Along Movement Facing Camera</strong> is fairly straightforward.  The particles orient themselves so that the "up" of the texture is always facing the direction the particle is moving.  The particle tries its best to also face the camera at the same time but it is hard at certain angles like looking along the direction the particle is moving.  These two images illustrate the effect of this setting.<BR>
+  <img width="250" alt="FacingDir2a.jpg" src="rsrc/Two/ParticleSystems/FacingDir2a.jpg" height="250" border="0"  /> <img width="250" alt="FacingDir2b.jpg" src="rsrc/Two/ParticleSystems/FacingDir2b.jpg" height="250" border="0"  />
+  <p />
+  <strong>Specified Normal</strong> is very simple; the particle normal is specified by <a href="ParticleSystems.html#ProjectionNormal" class="twikiAnchorLink">Projection Normal</a>.  In the case of the first image the normal is straight up (0, 0, 1).  The second image has a normal of (-0.5, 0.3, 1.0).<BR>
+  <img width="250" alt="FacingDir3.jpg" src="rsrc/Two/ParticleSystems/FacingDir3.jpg" height="250" border="0"  /> <img width="250" alt="FacingDir3b.jpg" src="rsrc/Two/ParticleSystems/FacingDir3b.jpg" height="250" border="0"  />
+  <p />
+  <strong>Along Movement Facing Normal</strong> is like <em>Along Movement Facing Camera</em> but instead of facing the camera, the particles faces the specified <a href="ParticleSystems.html#ProjectionNormal" class="twikiAnchorLink">Projection Normal</a>.  This is very useful for things like waterfalls where the particles should orient with its movement but not face the camera.  The effects can be seen below.<BR>
+  <img width="250" alt="FacingDir4a.jpg" src="rsrc/Two/ParticleSystems/FacingDir4a.jpg" height="250" border="0"  /> <img width="250" alt="FacingDir4b.jpg" src="rsrc/Two/ParticleSystems/FacingDir4b.jpg" height="250" border="0"  />
+  <p />
+  <p />
+  <strong>Perpendicular to Movement</strong> orients the particles perpendicular to the movement direction.  This has the unfortunate side effect that in some cases it rotates the particles 90 degrees mid flight.  This can be seen in the image below.<BR>
+  <img width="250" alt="FacingDir5.jpg" src="rsrc/Two/ParticleSystems/FacingDir5.jpg" height="250" border="0"  />
+  <p />
+  <p />
+  <a name="ProjectionNormal"></a>
+  <h4><a name="Projection Normal"></a> Projection Normal </h4>
+  This tool is enabled and used for the <em>Specified Normal</em> and <em>Along Movement Facing Normal</em> settings of <a href="ParticleSystems.html#FacingDirection" class="twikiAnchorLink">Facing Direction</a>.
+  <p />
+  <p />
+  <a name="UseRotationFrom"></a>
+  <a name="RotationOffset"></a>
+  <a name="RotationNormal"></a>
+  <h4><a name="Use Rotation From:"></a> Use Rotation From: </h4>
+  <p />
+  You can also rotate the entire particle system for the particles using <em>Use Rotation From</em> .  This affects the location and velocity, but not the acceleration.  With <em>Use Rotation From, you can set how to rotate it.  If it's _None</em>, the particle system is not rotated, cause the X-Axis, for example, to face the same direction as the main X-Axis in the editor.
+  <p />
+  If <em>Use Rotation From</em> is set to <em>Actor</em>, the rotation of the Emitter Actor is used. If you set in Advanced bDirectional=True, the Emitter gets an arrow.  The direction of that arrow is the X-Axis that now will be used for velocity and location.
+  <p />
+  If <em>Use Rotation From</em> is set to <em>Offset</em>, the settings in <em>Rotation Offset</em> are used.  There you can set how much the particle system has to Pitch, Yaw and Roll.
+  <p />
+  If <em>Use Rotation From</em> is set to <em>Normal</em>, the settings in <em>Rotation Normal</em> are used for the rotation.  Now, you can enter the direction of a plane, and the X-Axis will be perpendicular on that plane.
+  <p />
+  For example on the first screenshot there is no <em>Rotation Offset</em> used, and the particles are moving with a Velocity of X = 500.  On the second screenshot, they still have the same Velocity, but <em>Use Rotation From</em> is set to <em>Offset</em> and the <em>Pitch+ of _Rotation Offset</em> is set to 90.
+  <p />
+  <img width="280" alt="rotation1.jpg" src="rsrc/Two/ParticleSystems/rotation1.jpg" height="170" border="0"  /> <img width="280" alt="rotation2.jpg" src="rsrc/Two/ParticleSystems/rotation2.jpg" height="170" border="0"  />
+  <p />
+  <p />
+  <h3><a name="Revolution"></a> Revolution </h3>
+  <p />
+  <img width="446" alt="Revolution.jpg" src="rsrc/Two/ParticleSystems/Revolution.jpg" height="352" border="0"  />
+  <p />
+  While <a href="ParticleSystems.html#Rotation" class="twikiAnchorLink">Rotation</a> is for rotating individual particles about their center, Revolution is for rotation particles about a fixed point in space.  Using Revolution will cause the particles to change position.
+  <p />
+  <p />
+  <h4><a name="Use Revolution"></a> Use Revolution </h4>
+  <p />
+  Checking <em>Use Revolution</em> will enable the use or revoltion.
+  <p />
+  <p />
+  <h4><a name="Revolution Center Offset"></a> Revolution Center Offset </h4>
+  <p />
+  In general particles will revolve about the center of the particle system.  <em>Revolution Center Offset</em> will allow you to change this so that particles rotate about a point other than the center of the particle system.
+  <p />
+  <p />
+  <h4><a name="Revolutions Per Second"></a> Revolutions Per Second </h4>
+  <p />
+  <em>Revolutions Per Second</em> specifies the number of revolutions per second around the specified axes.
+  <p />
+  <p />
+  <h4><a name="Use Revolution Scale"></a> Use Revolution Scale </h4>
+  <p />
+  If <em>Use Revolution Scale</em> is true, the <em>Revolution Scale</em> will be used.
+  <p />
+  <p />
+  <h4><a name="Revolution Scale"></a> Revolution Scale </h4>
+  <p />
+  This <em>Revolution Scale</em> is used as a multiplier for each of the axes of <em>Revolutions Per Second</em> range.  Using <em>Revolution Scale</em> you increase or decrease the speed of revolution of particular axes over the lifetime of the particle.  You can even reverse the direction of revolution by using negative numbers.
+  <p />
+  <p />
+  <h4><a name="Revolution Scale Repeats"></a> Revolution Scale Repeats </h4>
+  <p />
+  <em>Revolution Scale Repeats</em> is the number of times the <em>Revolution Scale</em> will be additional repeated.  Setting this to 0 will cause the revolution scale to happen just once.  Setting this to 1 will cause the revolution scale to happen twice.
+  <p />
+  <p />
+  <h3><a name="Size"></a> Size </h3>
+  <img width="447" alt="SizeCat.jpg" src="rsrc/Two/ParticleSystems/SizeCat.jpg" height="502" border="0"  />
+  <p />
+  <a name="UniformSize"></a>
+  <h4><a name="Uniform Size"></a> Uniform Size </h4>
+  If Uniform Size is set to True, only the X is used for both U and V (or X, Y and Z for meshes).  You may need this if you use a random Size if you want to preserve the aspect ratio.
+  <p />
+  <p />
+  <a name="StartSize"></a>
+  <h4><a name="Start Size"></a> Start Size </h4>
+  The <em>Start Size Range</em> determinates the Size the particles will get when spawned.  For Sprites, only the X values are useful if <a href="ParticleSystems.html#FacingDirection" class="twikiAnchorLink">Facing Direction</a> is <strong>Facing Camera</strong>.  For all other settings of <strong>Facing Direction</strong> the X and Y can be used to change the width and height of the texture separately (but only if <a href="ParticleSystems.html#UniformSize" class="twikiAnchorLink">UniformSize </a> is false).  For Meshes, X, Y, and Z are used (but only if <a href="ParticleSystems.html#UniformSize" class="twikiAnchorLink">UniformSize </a> is false). The default value is 100, the screenshots show X(Min) = X(Max) = 50, and X(Min) = X(Max) = 150.
+  <BR> <img width="280" alt="size1.jpg" src="rsrc/Two/ParticleSystems/size1.jpg" height="170" border="0"  /> <img width="280" alt="size2.jpg" src="rsrc/Two/ParticleSystems/size2.jpg" height="170" border="0"  />
+  <p />
+  If you enter a different X(Min) and X(Max) value, the particles will get a random Size.
+  <BR> <img width="280" alt="size3.jpg" src="rsrc/Two/ParticleSystems/size3.jpg" height="170" border="0"  />
+  <p />
+  <a name="ShrinkParticlesExponentially"></a>
+  <a name="SizeScaleRepeats"></a>
+  <a name="UseSizeScale"></a>
+  <a name="SizeScale"></a>
+  <h4><a name="Size Scale"></a> Size Scale </h4>
+  The <em>Size Scale</em> works exactly the same as the <a href="ParticleSystems.html#ColorScale" class="twikiAnchorLink">Color Scale</a>, only now you're working with a Size instead of a color.  If you set <em>Use Size Scale</em> to True AND <em>Shrink Particles Exponentially</em> to True, the Particles will always shrink, and you don't have to add any SizeScales.
+  <BR> <img width="282" alt="size4.jpg" src="rsrc/Two/ParticleSystems/size4.jpg" height="173" border="0"  />
+  <p />
+  <p />
+  <h3><a name="Collision"></a> Collision </h3>
+  <img width="445" alt="CollisionCat.gif" src="rsrc/Two/ParticleSystems/CollisionCat.gif" height="718" border="0"  />
+  <p />
+  <a name="UseActorForces"></a>
+  <h4><a name="Use Actor Forces"></a> Use Actor Forces </h4>
+  Enabling <em>Use Actor Forces</em> lets actors with their force parameters set influence particles.  <em>(Any sort of actor works but pawns are the easiest because they already have their collision properties set just right.)</em>  The force parameters can be found by double clicking on the actor and selecting the <strong>Force</strong> category in the <em>Properties</em> window.  <em>ForceType</em> must be set to <strong>FT_DragAlong</strong> and <em>ForceScale</em> must be greater than 0.  To see a large effect set <em>ForceScale</em> &gt; 50.  <em>ForceRadius</em> can be set to anything but it might work well to set it to the <em>CollisionRadius</em> of the actor.  Now with these parameters set, when this actor moves into the particles of this system, the actor will knock them radially away from the itself in the direction of movement.  However, when the actor is stopped near the particles and the particles are moving, the particles will move towards the actor and circle around it.  While this effect looks good, it is can be <strong><em>VERY</em></strong> slow.  Sometimes it will run OK and then if the pawn moves just a little, or the view changes, the game might pause for several seconds while it recalculates the motion of all the particles.
+  <p />
+  <a name="UseCollision"></a>
+  <h4><a name="Use Collision"></a> Use Collision </h4>
+  <BR> NOTE: Collision will not work if your coordinate system is set to "Relative" in the default code base.
+  <p />
+  The Collision can make the particles realistically bounce on walls, floors or ceilings.  It looks for example like the animated gif:
+  <BR> <img width="242" alt="collision.gif" src="rsrc/Two/ParticleSystems/collision.gif" height="145" border="0"  />
+  <p />
+  If you have no Collision, the particles will just disappear in the wall:
+  <BR> <img width="280" alt="collision0.jpg" src="rsrc/Two/ParticleSystems/collision0.jpg" height="170" border="0"  />
+  <p />
+  But if you set UseCollision to True, the particles will bounce on the wall.  If they hit the wall perpendicularly, they will bounce back to from where they came as on the first screenshot, in any other case they'll bounce like on the second screenshot.
+  <BR> <img width="280" alt="collision1.jpg" src="rsrc/Two/ParticleSystems/collision1.jpg" height="170" border="0"  /> <img width="280" alt="collision2.jpg" src="rsrc/Two/ParticleSystems/collision2.jpg" height="170" border="0"  />
+  <p />
+  <p />
+  <a name="DampingFactor"></a>
+  <h4><a name="Damping Factor"></a> Damping Factor </h4>
+  The DampingFactor changes the velocity of the Particle every time it bounces on the wall.  The Velocity gets multiplied by this factor.  For example in the real world if you let a tennis-ball fall on the ground, it bounces less high every time it hits the ground again.   On the following screenshots, there is an acceleration Z = -950, and a velocity of X = 500.  The Particles are falling towards the ground, and then bounce.  On every screenshot, the Z value of the DampingFactor is modified to show the difference.  It's the Z value that's used, because in this case the particles are bouncing on the floor.  If the DampingFactor is 1 they can keep and keep bouncing as long as they live, as shown on the first screenshot.  If you make it lower than 1, for example 0.9, they'll bounce less high every time they hit the ground (this is most realistic).
+  <BR> <img width="280" alt="collision3.jpg" src="rsrc/Two/ParticleSystems/collision3.jpg" height="170" border="0"  /> <img width="280" alt="collision4.jpg" src="rsrc/Two/ParticleSystems/collision4.jpg" height="170" border="0"  />
+  <p />
+  If you make the DampingFactor higher than 1, for example 1.5, the particles will bounce higher and higher (1st screenshot).  If you give a different Min and Max value, every particle will bounce randomly something between the Min and Max value (2nd screenshot).
+  <BR> <img width="280" alt="collision5.jpg" src="rsrc/Two/ParticleSystems/collision5.jpg" height="170" border="0"  /> <img width="280" alt="collision6.jpg" src="rsrc/Two/ParticleSystems/collision6.jpg" height="170" border="0"  />
+  <p />
+  <p />
+  <a name="RotationDampingFactor"></a>
+  <a name="UseRotationDamping"></a>
+  <h4><a name="Rotation Damping Factor"></a> Rotation Damping Factor </h4>
+  To use rotation damping factor you first have to check <em>Use Rotation Damping</em>.  With <em>Rotation Damping Factor</em>, you can set the damping factor for the spinning particles, this works the same way as the <a href="ParticleSystems.html#DampingFactor" class="twikiAnchorLink">Damping Factor</a> of Collision, only it makes the particles spin slower or faster every time they bounce.  For example if you make the Z-Min and Z-Max values of the <em>Rotation Damping Factor</em> 0, the spin will stop after the first bounce on the floor already because the <em>Spins Per Second</em> gets multiplied by 0.  Note on the screenshot all the textures to have the same Rotation after the bounce:
+  <BR> <img width="280" alt="spin3.jpg" src="rsrc/Two/ParticleSystems/spin3.jpg" height="170" border="0"  />
+  <p />
+  <p />
+  <a name="ExtentMultiplier"></a>
+  <h4><a name="Extent Multiplier"></a> Extent Multiplier </h4>
+  The <em>Extent Multiplier</em> is multiplied by the <a href="ParticleSystems.html#Size" class="twikiAnchorLink">Size</a> of the particle, and this is used for the collision detection.  This multiplied <a href="ParticleSystems.html#Size" class="twikiAnchorLink">Size</a> determinates where the colliding sides of the particles are, and as soon as that (invisible) side reached the surface, the particle will bounce.  0 represents the middle of the particle and 1 represents the normal size of the particle.  For numbers larger than 1, the particle will bounce even sooner.  This is useful because when particles are rotated the corners might hit the wall when <em>Extent Multiplier</em> is 1.
+  <p />
+  <p />
+  <p />
+  <a name="UseCollisionPlanes"></a>
+  <a name="CollisionPlanes"></a>
+  <h4><a name="Collision Planes"></a> Collision Planes </h4>
+  If you set <em>Use Collision Planes</em> to True, you can make invisible planes, where the particles will bounce on.  The planed don't collide anything else, only the particles of that particular emitter.  These planes are 1-sided which means the particle can go through it at one side but will bounce against it if it goes the other direction.  You have to make the planes in the <em>Collision Planes</em> setting.  For each plane, you can enter W, X, Y and Z.  W is the distance from the plane to the center of the editor grid, and X, Y and Z determinate the normal of theplane and the that direction W moves the plane.  You can also enter negative values, for example to get on the other side of the grid or to turn around the 1-sided direction. On the screenshots, the red dot represents the center of the editor grid, the grid itself is 256 units, and the red line shows the (invisible) plane.  The small red triangles point into the direction the particles can go through the plane.  On the first screenshot, W=256, X=0, Y=1 and Z=0.  The particles can go to the south until they bounce against the wall, and when going north again, they'll bounce against the plane.  On the second screenshot, W is changed to -256 and Y to -1, so the direction turns around, and the particles will bounce against the other side of the plane instead.
+  <BR> <img width="292" alt="plane256_0_1_0.jpg" src="rsrc/Two/ParticleSystems/plane256_0_1_0.jpg" height="225" border="0"  /> <img width="292" alt="plane256_0_-1_0.jpg" src="rsrc/Two/ParticleSystems/plane256_0_-1_0.jpg" height="225" border="0"  />
+  <p />
+  <p />
+  <a name="UseMaxCollisions"></a>
+  <a name="MaxCollisions"></a>
+  <h4><a name="Max Collisions"></a> Max Collisions </h4>
+  If you set <em>Use Max Collisions</em> to True, the particle will die when it bounced the (random) number of times you enter in <em>MaxCollosions</em>, no matter what the <a href="ParticleSystems.html#Lifetime" class="twikiAnchorLink">lifeTime</a> is.
+  <p />
+  <p />
+  <a name="SpawnFromOtherEmitter"></a>
+  <a name="SpawnAmount"></a>
+  <h4><a name="Spawn From Other Emitter"></a> Spawn From Other Emitter </h4>
+  With SpawnFromOtherEmitter, you can make something to get spawned at the location where the particle bounces, for example sparks leaving a glowing mark where they hit, or rippels in shallow water.  For this to work, you have to make a second emitter inside of the same emitter actor, and select that emitter is <em>Spawn From Other Emitter</em>.  The particles of this new emitter are the ones that will be spawned at the location of bouncing particle when it bounces (this is subtly different from the location of the bounce particularly if you have a large <a href="ParticleSystems.html#ExtentMultiplier" class="twikiAnchorLink">Extent Multiplier</a>). For the new emitter, set <a href="ParticleSystems.html#RespawnDeadParticles" class="twikiAnchorLink">Respawn Dead Particles</a> and <a href="ParticleSystems.html#AutomaticSpawning" class="twikiAnchorLink">Automatic Spawning</a> to False.  The reason for this is, otherwise these particles may also get spawned at the wrong moment at the location of the particle system in the world.
+  <p />
+  Then, in <em>Spawn Amount Range</em>, enter the number of particles you want to get spawned when the bouncing particle hits the surface.  This must be at least 1 for the anything to happen.
+  <p />
+  <p />
+  <a name="UseSpawnedVelocityScale"></a>
+  <a name="SpawnedVelocityScale"></a>
+  <h4><a name="Spawned Velocity Scale"></a> Spawned Velocity Scale </h4>
+  If you check <em>Use Spawned Velocity Scale</em>, you can also give the particles that get spawned when it bounces a velocity.  You can set this Velocity in the <em>Spawned Velocity Scale</em> settings: you can give Minimum and Maximup X, Y and Z settings.  If the particle bounces, the spawned particles only get the velocity in the normal direction on the surface.  The best way to use this to give the mins and maxs of X, Y, and Z all the same positive value so that the they will travel in the direction of the normal (If you give X, Y, and Z negative values the spawned particles will more towards the surface they bounced off).
+  <p />
+  Spawned Velocity Scale can be used very well with <a href="ParticleSystems.html#FacingDirection" class="twikiAnchorLink">Facing Direction</a>.  If you set <em>Facing Direction</em> to 'Perpendicular To Movement' and set the spawned velocity to a very small value (like 1.0) the secondary particles will be aligned with the surface they bounced off.  This works very well for impact marks.
+  <p />
+  <p />
+  <h3><a name="Sounds"></a> Sounds </h3>
+  <p />
+  <img width="444" alt="Sounds.gif" src="rsrc/Two/ParticleSystems/Sounds.gif" height="532" border="0"  />
+  <p />
+  Sounds can be played when particles are spawned and also when they collide with the world.
+  <p />
+  <h4><a name="Spawning Sound"></a> Spawning Sound </h4>
+  Spawning sounds can be enabled by setting the <em>Spawning Sound</em> pull down to anything other than <strong>Don't Use Spawning Sounds</strong>.  The other options for <em>Spawning Sound</em> are as follows: <ul>
+  <li> <strong>Linear Global / Linear Local</strong> - These both play though the sounds in a linear order when particles are spawned.  Every time a particle is spawned, the next sound in the <em>Sound Array</em> in the range specified by <em>Spawning Sound Index</em> is played.
+  </li> <li> <strong>Random</strong> - plays a random sound in the <em>Sound Array</em> in the range specified by <em>Spawning Sound Index</em>.
+  </li></ul>
+  <p />
+  <h4><a name="Spawning Sound Index"></a> Spawning Sound Index </h4>
+  <em>Spawning Sound Index</em> selects the range for which sounds will play.  When you specify a sound range using <em>Spawning Sound Index</em>, the <em>Min</em> and <em>Max</em> must be different numbers.  If they are the same, Min=0 and Max=0 for example, all the sounds in <em>Sound Array</em> will be used.
+  <p />
+  <h4><a name="Spawning Sound Probability"></a> Spawning Sound Probability </h4>
+  <em>Spawning Sound Probability</em> is a range for the probability that a sound will play on spawning.  One might wonder, "Why a range when this is already a probability?"  I wonder the same thing.
+  <p />
+  <a name="CollisionSound"></a>
+  <h4><a name="Collision Sound"></a> Collision Sound </h4>
+  Collision sounds can be enabled by setting the <em>Collision Sound</em> pull down to anything other than <strong>Don't Use Collision Sounds</strong>.  The other options for <em>Collision Sound</em> are as follows: <ul>
+  <li> <strong>Linear Global</strong> - plays the sounds in the <em>Sound Array</em> in order, in a loop without, regard to the particle's lifetime.  This loop is per particle and so if a burst of particles is spawned at the same time, and this burst hits a wall, all the particles will play the same collision sound.
+  </li> <li> <strong>Linear Local</strong> - is like <em>Linear Global</em> except that the loop for each particles is reset at the end of it's lifetime.  This mean that if the <em>Sound Array</em> contains the sounds "Boing!", "Bop!", and "Thud!", in that order, particles will always start with "Boing!".  If a particle only collided with the world twice, the first time it collides in its next life, it will not go "Thud!", as it would in the case of <em>Linear Global</em>.
+  </li> <li> <strong>Random</strong> - plays a random sound in the <em>Sound Array</em>.
+  </li></ul>
+  <p />
+  <a name="CollisionSoundIndex"></a>
+  <h4><a name="Collision Sound Index"></a> Collision Sound Index </h4>
+  <em>Collision Sound Index</em> selects the range for which sounds will play.  When you specify a sound range using <em>Collision Sound Index</em>, the <em>Min</em> and <em>Max</em> must be different numbers.  If they are the same, Min=0 and Max=0 for example, all the sounds in <em>Sound Array</em> will be used.
+  <p />
+  <a name="CollisionSoundProbability"></a>
+  <h4><a name="Collision Sound Probability"></a> Collision Sound Probability </h4>
+  <em>Collision Sound Probability</em> is a range for the probability that a sound will play on collision.  One might wonder, "Why a range when this is already a probability?"  I wonder the same thing.
+  <p />
+  <a name="CollisionSoundArray"></a>
+  <h4><a name="Sound Array"></a> Sound Array </h4>
+  <em>Sound Array</em> is an array of sounds that contain <em>Sound</em>, <em>Radius</em>, <em>Pitch</em>, <em>Volume</em>, and <em>Probability</em>. <ul>
+  <li> To set the <em>Sound</em>, select a sound in the Sounds browser and click <strong>Use</strong>.
+  </li> <li> The <em>Radius</em> is in stand unit for sound radii which is something other than Unreal units.  64 seems to be a good value.
+  </li> <li> For <em>Pitch</em>, 1.0 is the default pitch.
+  </li> <li> The <em>Volume</em> setting only accepts values between 0.0 and 1.0.  1.0 is the standard volume and it can only be made more quiet.
+  </li> <li> <em>Probability</em> is the chance that this sound will play if it is told to play.  The sound will be told to play based on <a href="ParticleSystems.html#SpawningSoundProbability" class="twikiAnchorLink">Spawning Sound Probability</a> or <a href="ParticleSystems.html#CollisionSoundProbability" class="twikiAnchorLink">Collision Sound Probability</a>.
+  </li></ul>
+  <p />
+  <p />
+  <p />
+  <h3><a name="Mesh"></a> Mesh </h3>
+  <img width="452" alt="MeshCat.jpg" src="rsrc/Two/ParticleSystems/MeshCat.jpg" height="164" border="0"  />
+  <p />
+  <a name="MeshUse"></a>
+  <h4><a name="Mesh"></a> Mesh </h4>
+  This is very similar to the <a href="ParticleSystems.html#TextureUse" class="twikiAnchorLink">Texture</a> field.  In the Static Mesh browser select the mesh you want to use for this mesh emitter and click <strong>Use</strong>.
+  <p />
+  <a name="UseMeshBlendMode"></a>
+  <h4><a name="Use Mesh Blend Mode"></a> Use Mesh Blend Mode </h4>
+  If this is true, the blend mode of the mesh is used.  This means that the particles will look just like they do when you drop them in the level.  If this is false, the particles will use the blend mode defined in the <a href="ParticleSystems.html#Texture" class="twikiAnchorLink">Texture</a> category.
+  <p />
+  <a name="RenderTwoSided"></a>
+  <h4><a name="Render Two Sided"></a> Render Two Sided </h4>
+  If this set, the mesh will render all triangles two sided.  This is usefull only if <a href="ParticleSystems.html#UseMeshBlendMode" class="twikiAnchorLink">UseMeshBlendMode</a> is false.
+  <p />
+  <a name="UseParticleColor"></a>
+  <h4><a name="Use Particle Color"></a> Use Particle Color </h4>
+  If this is set, the mesh will use the settings in Color/Fading<sup>?</sup>.  This is only usefull if <a href="ParticleSystems.html#UseMeshBlendMode" class="twikiAnchorLink">UseMeshBlendMode</a> is true.
+  <p />
+  <p />
+  <h3><a name="Spark"></a> Spark </h3>
+  <img width="449" alt="SparkCat.jpg" src="rsrc/Two/ParticleSystems/SparkCat.jpg" height="181" border="0"  />
+  <p />
+  This ParticleEmitter generates sparks, for example the kind of sparks you see when someone's welding.  This emitter turns it's Texture into one thin line with the colors of the texture.  Settings such as <a href="ParticleSystems.html#Acceleration" class="twikiAnchorLink">Acceleration</a>, <a href="ParticleSystems.html#StartVelocity" class="twikiAnchorLink">Start Velocity</a>, and <a href="ParticleSystems.html#StartLocation" class="twikiAnchorLink">Start Location</a> still work on it, but <a href="ParticleSystems.html#Collision" class="twikiAnchorLink">Collision</a>, <a href="ParticleSystems.html#Rotation" class="twikiAnchorLink">Rotation</a>, <a href="ParticleSystems.html#Size" class="twikiAnchorLink">Size</a>, etc... don't work on it because the particles are just lines.  <a href="ParticleSystems.html#Texture" class="twikiAnchorLink">Texture</a> still works to color the particle but because it is just a line the entire texture can not be seen.  Things such as the <a href="ParticleSystems.html#ColorScale" class="twikiAnchorLink">Color Scale</a> and <a href="ParticleSystems.html#Fading" class="twikiAnchorLink">Fading</a> work, but these work per segment so you might not get the look you expected.  On the screenshot: a random <a href="ParticleSystems.html#StartLocation" class="twikiAnchorLink">Start Location</a> and a subtle red <a href="ParticleSystems.html#ColorScale" class="twikiAnchorLink">Color Scale</a> on a white texture.
+  <BR> <img width="280" alt="spark10.jpg" src="rsrc/Two/ParticleSystems/spark10.jpg" height="170" border="0"  />
+  <p />
+  To get a working Spark Emitter, add one the same way you'd add a Sprite or Mesh Emitter, and first give the it Velocity or Acceleration and then go to it's Spark properties.  There set the Min and Max value of <a href="ParticleSystems.html#TimeBetweenSegments" class="twikiAnchorLink">Time Between Segments</a> to 1, you'll see the  emitter working already.
+  <BR> <img width="280" alt="spark1.jpg" src="rsrc/Two/ParticleSystems/spark1.jpg" height="170" border="0"  />
+  <p />
+  <a name="LineSegmentRange"></a>
+  <h4><a name="Line Segment Range"></a> Line Segment Range </h4>
+  <em>Line Segments Range</em> this determinates how long the sections of the lines of the sparks will be, and also how visible they are.  You can also make the length to be random if you enter a different Min and Max value.  If you make this setting too high or too low (depending on other settings), the Spark Emitter will not work.  The first screenshot has Min = Max = 5, the second screen has Min = Max = 3.  A setting of 5 most of the times works the best.
+  <BR> <img width="280" alt="spark1.jpg" src="rsrc/Two/ParticleSystems/spark1.jpg" height="170" border="0"  /> <img width="280" alt="spark2.jpg" src="rsrc/Two/ParticleSystems/spark2.jpg" height="170" border="0"  />
+  <p />
+  <a name="TimeBeforeVisible"></a>
+  <h4><a name="Time Before Visible"></a> Time Before Visible </h4>
+  <em>Time Before Visible Range</em> doesn't seem to do too much.
+  <p />
+  <a name="TimeBetweenSegments"></a>
+  <h4><a name="Time Between Segments"></a> Time Between Segments </h4>
+  The effect of <em>Time Between Segments</em> is best visible if you let the line to be curved, when you use some acceleration.  <em>Time Between Segments Range</em> determinates in how many segments the line should be divided.  If this settings is low, for example 0.1, the line will be divided into a lot of segments so the curve looks smooth (first screenshot).  If it's high (for example 0.5), you'll see the line broken into segments. (second screenshot).  A higher <em>Time Between Segments</em> means less particles and thus better performance, but it doesn't look as good.
+  <BR> <img width="280" alt="spark3.jpg" src="rsrc/Two/ParticleSystems/spark3.jpg" height="170" border="0"  /> <img width="280" alt="spark4.jpg" src="rsrc/Two/ParticleSystems/spark4.jpg" height="170" border="0"  />
+  <p />
+  For low <em>Time Between Segments</em> settings, there will have to be more particles created (every segment of the line is a particle), so you might have to set <a href="ParticleSystems.html#MaxParticles" class="twikiAnchorLink">Max Particles</a> and to something higher before it looks good.  A very high <a href="ParticleSystems.html#MaxParticles" class="twikiAnchorLink">Max Particles</a> might create something like this (again with low and high <em>Time Between Segments</em>)
+  <BR> <img width="280" alt="spark5.jpg" src="rsrc/Two/ParticleSystems/spark5.jpg" height="170" border="0"  /> <img width="280" alt="spark6.jpg" src="rsrc/Two/ParticleSystems/spark6.jpg" height="170" border="0"  />
+  <p />
+  <p />
+  <p />
+  <h3><a name="Beam"></a> Beam </h3>
+  <p />
+  <img width="449" alt="BeamCat.jpg" src="rsrc/Two/ParticleSystems/BeamCat.jpg" height="276" border="0"  />
+  <p />
+  Beam Emitters are very useful to create lightning and other such things.  The emitter stretches the chosen Texture into a beam with <a href="ParticleSystems.html#HighFrequencyPoints" class="twikiAnchorLink">High Frequency Points</a> and <a href="ParticleSystems.html#LowFrequencyPoints" class="twikiAnchorLink">Low Frequency Points</a>.  There must be at least two of each to make the lightning work.  Each particle will be such a beam, and once created a particle never moves.  The way to get the lightning moving is to create a new beam all the time while the old one gets destroyed, or to make the lightning flash with a Color Scale.  Normally, the beam is only one angular line, but you can also give it branches.
+  <p />
+  Getting started: Given a new beam emitter, leave all the settings at default, and add some Velocity and you will start to see something.  The length of the beams depends on the magnitude of the Velocity and the Lifetime.
+  <BR> <img width="280" alt="beam1.jpg" src="rsrc/Two/ParticleSystems/beam1.jpg" height="170" border="0"  /> <BR>
+  You may recognize the 5 colored dot texture on this beam.  If you want, you can change it in something better in <a href="ParticleSystems.html#Texture" class="twikiAnchorLink">Texture</a>.  In the following examples a square, white texture is used.  To make the lightning look much better, use a better texture for it.  The texture for the lightning should be rotated 90�, like this:
+  <BR> <img width="136" alt="lightning8.jpg" src="rsrc/Two/ParticleSystems/lightning8.jpg" height="44" border="0"  />
+  <p />
+  For beams, some basic settings can be used in interesting new ways.  <a href="ParticleSystems.html#Location" class="twikiAnchorLink">Location</a> can to used to make it seem as if lightning is coming from different places.  With <a href="ParticleSystems.html#StartLocationRange" class="twikiAnchorLink">Start Location Range</a>, you can make random start points for the lightning by entering a different value in Min and Max for the X and Y (the Z is not interesting for lightnings, because most of the times lightnings start at the same height).
+  <BR> <img width="285" alt="lightning7.gif" src="rsrc/Two/ParticleSystems/lightning7.gif" height="173" border="0"  />
+  <p />
+  The best way to make the lightning to flash realistically is to use a [[#ColorScale][color scale].  This will make the whole beam change it's color during it's LifeTime.  On the animated screenshot, there are 2 [[#ColorScale][color scales]: orange and yellow and the <a href="ParticleSystems.html#LifeTime" class="twikiAnchorLink">lifetime</a> of the particles is 0.6 seconds.  You can also use <a href="ParticleSystems.html#FadeIn" class="twikiAnchorLink">Fade In</a> and <a href="ParticleSystems.html#FadeOut" class="twikiAnchorLink">Fade Out</a> to make a flashing effect.
+  <BR> <img width="285" alt="lightning14.gif" src="rsrc/Two/ParticleSystems/lightning14.gif" height="173" border="0"  />
+  <p />
+  <p />
+  <h4><a name="Number of Beam Planes"></a> Number of Beam Planes </h4>
+  <a name="NumberOfBeamPlanes"></a>
+  This option determinates how many planes the Beam is made of.  0 and 1 mean the same: only one sheet.  The screenshots show 0, 3 and 10.
+  <BR> <img width="176" alt="sheet0.jpg" src="rsrc/Two/ParticleSystems/sheet0.jpg" height="128" border="0"  /> <img width="176" alt="sheet3.jpg" src="rsrc/Two/ParticleSystems/sheet3.jpg" height="127" border="0"  /> <img width="176" alt="sheet10.jpg" src="rsrc/Two/ParticleSystems/sheet10.jpg" height="128" border="0"  />
+  <p />
+  <a name="BeamTextureUScale"></a>
+  <a name="BeamTextureVScale"></a>
+  <h4><a name="Beam Texture Scale"></a> Beam Texture Scale </h4>
+  By default, the texture is repeated only once for the Beam.  In Beam, with  BeamTextureUScale you can set how many times to repeat the texture in the length of the Beam, and with  BeamTextureVScale how many times to repeat it in the width: it's repeated 4 times on the screenshots.
+  <BR> <img width="280" alt="lightning12.jpg" src="rsrc/Two/ParticleSystems/lightning12.jpg" height="170" border="0"  /> <img width="285" alt="lightning13.jpg" src="rsrc/Two/ParticleSystems/lightning13.jpg" height="173" border="0"  />
+  <p />
+  <p />
+  <a name="DetermineEndPointBy"></a>
+  <h4><a name="Determine End Point By"></a> Determine End Point By </h4>
+  <p />
+  <img width="210" alt="DetermineEndPointBy.jpg" src="rsrc/Two/ParticleSystems/DetermineEndPointBy.jpg" height="121" border="0"  />
+  <p />
+  This property sets what determines the EndPoint of the beam.  The StartPoint is determined by the location of the Emitter actor and the settings in <a href="ParticleSystems.html#Location" class="twikiAnchorLink">Location</a>.  There's more about StartPoints for beams <a href="ParticleSystems.html#huh" class="twikiAnchorLink">later</a>.
+  <p />
+  <em>Velocity</em> is the default setting.  With this selected the end point is determinated by the <a href="ParticleSystems.html#Movement" class="twikiAnchorLink">Velocity</a> of the particle and the <a href="ParticleSystems.html#Time" class="twikiAnchorLink">Lifetime</a>.  The length of the beam is then determinated by the StartVelocityRange values and the <a href="ParticleSystems.html#Time" class="twikiAnchorLink">Lifetime</a> of the particles.  The direction of it is determinated by the X, Y and Z values of the StartVelocityRange.  You can again use random values, so for example if X(Max) = Y(Max) = Z(Max) = +1000 and X(Min) = Y(Min) = Z(Min) = -1000, each Beam will be anything random between this.  It'll do almost exactly the same as on this animated gif below.  You'll be able to see more than one Beam now, because MaxParticles is set to 10 by default.  Also, lightnings normally only goes straight towards the ground, so only using negative Z values for StartVelocityRange is useful.
+  <BR> <img width="280" alt="lightning1.gif" src="rsrc/Two/ParticleSystems/lightning1.gif" height="170" border="0"  /> <BR>
+  <p />
+  <em>Distance</em> does the same as <em>Velocity</em>, but the StartVelocityRange only determines the direction of the beam.  The length is set with <a href="ParticleSystems.html#BeamDistance" class="twikiAnchorLink">Beam Distance</a>, in editor units.
+  <p />
+  <em>Offset</em> allows you to determinate the EndPoint in relative coordinates.  You have to enter these coordinates in Offset, inside BeamEndPoints[0].  To get this, first expand
+  <a href="ParticleSystems.html#BeamEndPoints" class="twikiAnchorLink">Beam End Points</a> and press the Insert button.
+  <BR> <img width="429" alt="BeamEndPoints.jpg" src="rsrc/Two/ParticleSystems/BeamEndPoints.jpg" height="165" border="0"  /> <BR>
+  In Offset, enter the X, Y and Z coordinate range for the EndPoint of the Beam.  The coordinates are relative to the StartPoint (most of the times this is the Emitter actor), so for example X = 0, Y = 0, Z = -1000 means the EndPoint will be 1000 units below the StartPoint.  Before it works, you also have to set Weight to something larger than 0.  You can again use different Min and Max values if you want a random Location for the EndPoint.  You can add more <em>Beam End Points</em>, and then the Beam will use one of these <em>Beam End Points</em> by random.  With Weight, you can set the importance of each <em>Beam End Point</em>, this is the probability that it'll be used.  If you give all the <em>Beam End Points</em> a Weight of 1, the chances will be equally divided.  If for the Offset X = Y = Z = 0, the EndPoint and the StartPoint the same, so there won't be a Beam.  You can use this if you want the lightning to strike only a few times and to be invisible for the rest of the time.  Then you can give the <em>Beam End Point</em> with this 0-Offset a high Weight, so the lightning is most of the times invisible.
+  <p />
+  <em>TraceOffset</em> does the same as <em>Offset</em>, but if there is a solid surface in the way the lightning will hit against it, instead of going to the actual end point.  <em>TraceOffset</em> does not work well in combination with the relative coordinate systems.
+  <p />
+  <em>OffsetAsAbsolute</em> does the same thing as <em>Offset</em> but interprets the offset range as world coordinates instead of relative coordinates.  So if X = Y = Z = 0, the beam end point would be at the origin.
+  <p />
+  <em>Actor</em> lets you make the beam go to a certain actor.  This also uses [[#BeamEndPoints][Beam End Points],  but this time, you have to fill in the Actor Tag property (and not the Offset property). The lightning will go towards the actor you gave that Tag (in the Event properties of that actor).  If you want the lightning to go randomly towards different actors, you have to add more <em>Beam End Points</em>, and in each <em>Beam End Points</em> enter a different Actor Tag.  Of course also give the actors these Tags.  If you'd give three trees the SAME tag and use only the first <em>Beam End Point</em>, it won't work, the lightning will go to only one of the trees then. Again you have to give each of the <em>Beam End Points</em> a Weight higher than 0, that is the chance this <em>Beam End Point</em> will be used.
+  <p />
+  For example if there are three trees, with Tags FullTree, FullTree2 and FullTree3, and you want the lightning to strike each of the trees randomly, but to strike FullTree3 twice as much as the other trees, give the following properties to the emitter:
+  <BR> <img width="145" alt="BeamEndPoints2.jpg" src="rsrc/Two/ParticleSystems/BeamEndPoints2.jpg" height="423" border="0"  /> <img width="285" alt="lightning2.gif" src="rsrc/Two/ParticleSystems/lightning2.gif" height="173" border="0"  />
+  <p />
+  If the actor is moving, the Beam will follow it:
+  <BR> <img width="300" alt="lightning4.jpg" src="rsrc/Two/ParticleSystems/lightning4.jpg" height="200" border="0"  />
+  <p />
+  <p />
+  <a name="BeamDistanceRange"></a>
+  <h4><a name="Beam Distance Range"></a> Beam Distance Range </h4>
+  <p />
+  This determines the length of the beam when <a href="ParticleSystems.html#DetermineEndPointBy" class="twikiAnchorLink">Determine End Point By</a> is set to <em>Velocity</em>.
+  <p />
+  <a name="BeamEndPoints"></a>
+  <h4><a name="Beam End Points"></a> Beam End Points </h4>
+  This determines the various end points of the beam when <a href="ParticleSystems.html#DetermineEndPointBy" class="twikiAnchorLink">Determine End Point By</a> is set to <em>Offset</em>, <em>Actor</em>, and <em>TraceOffset</em>.
+  <p />
+  <p />
+  <h4><a name="Trigger Actor End Point"></a> Trigger Actor End Point </h4>
+  <p />
+  If <em>Trigger Actor End Point</em> is true, the beam will trigger the actor it draws to.  This only works if <a href="ParticleSystems.html#DetermineEndPointBy" class="twikiAnchorLink">Determine End Point By</a> is set to <em>Actor</em> and there are valid actor tags in the the <a href="ParticleSystems.html#BeamEndPoints" class="twikiAnchorLink">Beam End Points</a> array.  For example, this can be used to spawn impact effects for lighting at the strike point.
+  <p />
+  <p />
+  <p />
+  <h3><a name="Beam Noise"></a> Beam Noise </h3>
+  <img width="444" alt="BeamNoiseCat.gif" src="rsrc/Two/ParticleSystems/BeamNoiseCat.gif" height="662" border="0"  />
+  <a name="NoiseDeterminesEndPoints"></a>
+  <p />
+  <a name="LowFrequencyNoiseRange"></a>
+  <a name="LowFrequencyPoints"></a>
+  <a name="HighFrequencyNoiseRange"></a>
+  <a name="HighFrequencyPoints"></a>
+  Here you can give the beam noise.  You can give <em>High Frequency Points</em> and <em>Low Frequency Points</em>.  Both do exactly the same, but you can use them independent for example to give the lightning a lot of small bends inside a few large bends.  There must be at least 2 <em>High Frequency Points</em> (and 2 <em>Low Frequency Points</em>), these represent the start point and end point.  If you set it to 0, the editor crashes.  If you set it to 1, there will be no beam.  If it's 2, the beam will always be straight.  If <em>High Frequency Points</em> is 3 (and <em>Low Frequency Points</em> is 2), there will be 1 bend in the half of the beam.  The higher the value, the more bends.  You can determinate the size of the bend with <em>High or Low Frequency Noise Range</em> by entering Min and Max values for X, Y and Z there.  This way you can set the direction of the bend, the size of it, and you can make it to be random.  Actually, you have to make it random, otherwise it'll not work the way you want.  For example if <em>High Frequency Noise Range</em> has Y(Max) = 1000 and Y(Min) = -1000 and there are 4 <em>High Frequency Points</em>, it'll look like the screenshot.  1 particle will not change during it's lifetime, so to get the lightning moving make sure the <a href="ParticleSystems.html#Time" class="twikiAnchorLink">lifetime</a> is short enough for new particles to get spawned fast enough.
+  <BR> <img width="285" alt="lightning5.gif" src="rsrc/Two/ParticleSystems/lightning5.gif" height="173" border="0"  />
+  <p />
+  <a name="UseHighFrequencyScale"></a>
+  <a name="HighFrequencyScaleFactors"></a>
+  <a name="HighFrequencyScaleRepeats"></a>
+  You can also make a <em>High Frequency Scale</em>.  This is similar to the <a href="ParticleSystems.html#ColorScale" class="twikiAnchorLink">Color Scale</a>, <a href="ParticleSystems.html#SizeScale" class="twikiAnchorLink">Size Scale</a>, etc..., only the <em>High Frequency Scale</em> determinates the <a href="ParticleSystems.html#HighFrequencyNoiseRange" class="twikiAnchorLink">High Frequency Noise Range</a> on the different places of the beam.  You can see the effect of the <em>High Frequency Scale</em> best on beams with a lot of <em>High Frequency Points</em>, so set it to for example 100.  Without the <em>High Frequency Scale</em>, the whole beam has the same <em>Noise Range</em> everywhere:
+  <BR> <img width="280" alt="noise.jpg" src="rsrc/Two/ParticleSystems/noise.jpg" height="170" border="0"  />
+  <p />
+  To enable the <em>High Frequency Scale</em>, first set <em>Use High Frequency Scale</em> to True, and then add a <em>High Frequency Scale</em>, the same way as you added <a href="ParticleSystems.html#ColorScale" class="twikiAnchorLink">Color Scale</a>: expand the <em>High Frequency Scale Factors</em> and press the Insert button until you have enough scale factors.  The frequency scale multiplies the <em>High Frequency Noise Range</em> (X, Y and Z separately), and <em>Relative Length</em> determinates the location on the beam where you want this multiplier to happen.  100% represents the length of the whole beam.  If you set <em>Relative Length</em> of the first <em>High Frequency Scale Factor</em> to 70%, the first 70% of the Beam will have the scale of that <em>High Frequency Scale Factor</em>, and if you then set the <em>Relative Lentgh</em> of next <em>High Frequency Scale Factor</em> to 100%, the remaining 30% will get multiplied by the this <em>Frequency Scale</em>.  On the screenshot the first <em>Frequency Scale</em> is 1 for X, Y and Z, and the second <em>Frequency Scale</em> is 10 for X, Y and Z.
+  <BR> <img width="283" alt="freqscale.jpg" src="rsrc/Two/ParticleSystems/freqscale.jpg" height="173" border="0"  /> <img width="368" alt="freqscale2.jpg" src="rsrc/Two/ParticleSystems/freqscale2.jpg" height="191" border="0"  />
+  <p />
+  <p />
+  You can use <em>High Frequency Scale Repeats</em> to repeat the scale 1 or more times, just the same way as for the <a href="ParticleSystems.html#ColorScale" class="twikiAnchorLink">Color Scale</a> and the other scales.  For example it looks like this if <em>High Frequency Scale Repeats</em> = 2.
+  <BR> <img width="285" alt="freqscale3.jpg" src="rsrc/Two/ParticleSystems/freqscale3.jpg" height="173" border="0"  />
+  <p />
+  <a name="UseLowFrequencyScale"></a>
+  <a name="LowFrequencyScaleFactors"></a>
+  <a name="LowFrequencyScaleRepeats"></a>
+  The <em>Low Frequency</em> settings do exactly the same as the <em>High Frequency</em> settings.  Low frequency and high frequency work independently from each other, and can be used "through" each other.  For example, you can use a lot of small <a href="ParticleSystems.html#HighFrequencyPoints" class="twikiAnchorLink">High Frequency Points</a>, and a few, very large, <a href="ParticleSystems.html#LowFrequencyPoints" class="twikiAnchorLink">Low Frequency Points</a>.  Then the beam will have a few large bends, and a lot of small bends at the same time, as shown on the screenshot:
+  <BR> <img width="280" alt="lightning6.jpg" src="rsrc/Two/ParticleSystems/lightning6.jpg" height="170" border="0"  />
+  <p />
+  <em>NoiseDeterminesEndPoint</em> allows the noise applied to the beam to also affect its endpoint, which in most cases, it already does.  Sometimes, however, the location of the endpoint is locked-- if the DetermineEndPointBy setting is PTEP_Actor, for example.  In this case the endpoint will be set to the center point of the specified actor.  However, this might not be the desired effect.  It might look odd to see lightning strike the exact same place repeatedly.  Checking this box will allow the beam to strike the desired actor but in a more random fashion.  If the beam were striking a triggerable actor, allowing the noise to determine the endpoint will not stop the actor from triggering, even if the beam does not visually strike that actor.  Note that this might result in visual glitches if the amount of noise is great.  For example, let's say your beam is supposed to strike a tree and set off a fire particle system.  However, it will look strange if a lightning bolt strikes the ground and tree 40 feet away from the impact bursts into flame.  Reducing the amount of noise on the beam would fix this problem.
+  <p />
+  <p />
+  Dynamic High Frequency Noise is used to make the beam actually move over the course of its lifetime.   The feature uses the <em>High Frequency Points</em> described above.  The only drawback of dynamic noise is that it only works on the first beam in a beam emitter.  If you have more than one beam, the dynamic noise will not apply to the additional beams.  The movement of the high frequency points is calculated on a time interval determined by <em>Dynamic Noise Points Update Time</em>.  If you want the beam to updates continuously set <em>Dynamic Noise Points Update Time</em> to 0 or some very small number.  Each timestep the high frequency points between the min and max of <em>Dynamic High Frequency Noise Points</em> will be skewed by a random amount based on <em>Dynamic High Frequency Noise</em>.  The high frequency points start at index 0 at the start of the beam and end at 1 less than the total number of points.  If the beam has 20 high frequency points and <em>Dynamic High Frequency Noise Points</em> is set from 0 to 10, only have the beam will move dynamically.
+  <p />
+  <p />
+  <p />
+  <h3><a name="Beam Branching"></a> Beam Branching </h3>
+  <p />
+  <img width="442" alt="BeamBranching.gif" src="rsrc/Two/ParticleSystems/BeamBranching.gif" height="287" border="0"  />
+  <p />
+  To make good looking lightning effects, you can give beams branches.  If this is used correctly, you can get a very cool and realistic lightning.  It works like this: you have to create more than one <a href="ParticleSystems.html#BeamEmitter" class="twikiAnchorLink">BeamEmitter</a> (inside the same Emitter).  Then you can tell the first <a href="ParticleSystems.html#BeamEmitter" class="twikiAnchorLink">BeamEmitter</a> to use the second <a href="ParticleSystems.html#BeamEmitter" class="twikiAnchorLink">BeamEmitter</a> for the branches.  Then again, you can tell the second <a href="ParticleSystems.html#BeamEmitter" class="twikiAnchorLink">BeamEmitter</a> to use a third one for sub-branches, and so on.  The <em>Max Particles</em> setting is also the maximum number of branches.
+  <p />
+  First add multiple beam emitters and give each Emitter the properties you want.  Make the first one big, and set it's <em>Max Particles</em> to 1.  Make the second and third one smaller; they're for the branches.  Give them many more <em>Max Particles</em>, for example 10 or 25.  Also, set<a href="ParticleSystems.html#RespawnDeadParticles" class="twikiAnchorLink">RespawnDeadParticles</a> to False for all branches, and set <a href="ParticleSystems.html#AutomaticInitialSpawning" class="twikiAnchorLink">AutomaticInitialSpawning</a> to False, otherwise the branches might get spawned at the start point of the emitter itself instead of the new start point they get when they become branch.  Also, make sure the beam emitters that will get branches, have a lot of <a href="ParticleSystems.html#BeamNoise" class="twikiAnchorLink">Beam Noise</a>.  The branches will appear in the bends only, so if there aren't enough <a href="ParticleSystems.html#HighFrequencyPoints" class="twikiAnchorLink">High Frequency Points</a>, there will not be a place for all the branches!  You can of course make the noise very subtle, so you won't notice it, only the number of <a href="ParticleSystems.html#HighFrequencyPoints" class="twikiAnchorLink">High Frequency Points</a> is important; the more the better.
+  <p />
+  <a name="UseBranching"></a>
+  <a name="BranchEmitter"></a>
+  <h4><a name="Use Branching, Branch Emitter"></a> Use Branching, Branch Emitter </h4>
+  <p />
+  Then go to the <em>Beam Branching</em> properties of the first beam emitter.  Set <em>Use Branching</em> to True, and set <em>Branch Emitter</em> to one of the first other beam emitter.  Now the beam emitter you selected will be used for the branches.
+  <p />
+  <a name="BranchProbability"></a>
+  <h4><a name="Branch Probabilty"></a> Branch Probabilty </h4>
+  <p />
+  With <em>BranchProbability</em>, you can set the chance of branches to appear.  If you set both Min and Max to 1, all the branches will be there (this is, the number of branches that you set in <em>Max Particles</em>).  If you set Min and Max to 1, the branches may appear only at the top of the main beam depending on the number of beams on the branching emitter.  This is because each chance the beam gets to spawn, it will spawn.  If Min=0 and Max=1, the branches will be divided over the whole beam but may not use all the beams of the branching emitter.  You have to experiment a little with this setting to find the best result.
+  <p />
+  <a name="BranchSpawnAmountRange"></a>
+  <h4><a name="Branch Spawn Amount Range"></a> Branch Spawn Amount Range </h4>
+  <p />
+  In <em>Branch Spawn Amount Range</em>, both Min and Max have to be larger than 1, as soon as you make one of them smaller than 1, there won't appear any branches at all.  The <em>Branch Spawn Amount</em> is the number of beams to spawn at each high frequency point.  When this is 1, there will be at most 1 branch at each point.  If this is 10, there will be up to 10 branches coming off each point.
+  <p />
+  <p />
+  <h4><a name="Branch High Frequency Points"></a> Branch High Frequency Points </h4>
+  <p />
+  This is the range of high frequency points the branches of the beam will be spawned on.  The high frequency points are indexed starting with 0 at the beam's origin and continuing up to the number of high frequency points.  The <em>Max</em> of this can be set well beyond the number of the high frequency points so if you don't want to think about this setting make sure the <em>Min</em> is 0 and the <em>Max</em> is very large, like 1000.
+  <p />
+  <p />
+  <a name="LinkupLifetime"></a>
+  <h4><a name="Linkup Lifetime"></a> Linkup Lifetime </h4>
+  <p />
+  If <em>Linkup Lifetime</em> is False, the branches may stay behind while the large beam is somewhere else already.  This happens when the branch has a bigger <a href="ParticleSystems.html#LifeTime" class="twikiAnchorLink">lifetime</a>.  If you set <em>Linkup Lifetime</em> to True, this problem is gone because the branches will live as long as the main beam, no matter what lifeTime they have.  Only make sure <a href="ParticleSystems.html#RespawnDeadParticles" class="twikiAnchorLink">Respawn Dead Particles</a> is False for the branches then, otherwise they get spawned at the wrong place when <em>Linkup Lifetime</em> is True.
+  <p />
+  For example, here the main beam is red,  it has 12 <a href="ParticleSystems.html#LowFrequencyPoints" class="twikiAnchorLink">Low Frequency Points</a>, and 60 very small <a href="ParticleSystems.html#HighFrequencyPoints" class="twikiAnchorLink">High Frequency Points</a> that can be used as spawnpoints for the 25 green branches.
+  <BR> <img width="124" alt="branchemitter1.jpg" src="rsrc/Two/ParticleSystems/branchemitter1.jpg" height="234" border="0"  />
+  <p />
+  You can now do the same in the <em>Beam Branching</em> properties of the second beam emitter (the one that was used as branch).  In this emitter also set <a href="ParticleSystems.html#UseBranching" class="twikiAnchorLink">Use Branching</a> to True, and set <a href="ParticleSystems.html#BranchEmitter" class="twikiAnchorLink">Branch Emitter</a> to the last emitter.  This way, the branches get sub-branches themself.  Note that not all the branches will get sub-branches, especially the ones closest to the top will get the least.  Also, if <a href="ParticleSystems.html#MaxParticles" class="twikiAnchorLink">Max Particles</a> is 10 for the sub-branches, there will be 10 sub-branches total, and not 10 for every branch.  For example, this emitter has 10 sub-branches (pink).
+  <BR> <img width="116" alt="branchemitter2.jpg" src="rsrc/Two/ParticleSystems/branchemitter2.jpg" height="267" border="0"  />
+  <p />
+  <p />
+  <p />
+  <h3><a name="Trigger"></a> Trigger </h3>
+  <p />
+  <img width="443" alt="Trigger.jpg" src="rsrc/Two/ParticleSystems/Trigger.jpg" height="188" border="0"  />
+  <p />
+  Triggering allows you to change the behavior of an emitter when it is triggered.  You can trigger an emitter just like everything else in Unrealed by setting the <em>Tag</em> of the Particle System to be that of an <em>Event</em> of a trigger.  It is important to note that the <em>Tag</em> is not specified per emitter but for the entire particle system.  Each emitter can configure how it handles the trigger differently but they will all receive the same trigger event at the same time.
+  <p />
+  Triggers are use mainly to turn emitters on and off in different ways.  This trigger system provides good ways to turn emitters on but it unfortunately does not provide a very smooth way to turn emitters off.
+  <p />
+  <p />
+  <h4><a name="Toggle Disable"></a> Toggle Disable </h4>
+  <p />
+  This will toggle the disabledness of the emitter.  If the emitter is currently disabled, triggering it will turn it back on.  If the emitter is not disabled, triggering it will disable it.  When an emitter is toggled, all the particles will either disappear or appear instantly.
+  <p />
+  <p />
+  <h4><a name="Reset"></a> Reset </h4>
+  <p />
+  This will reset the emitter.  This is very much like pressing the <img width="27" alt="Reset.gif" src="rsrc/Two/ParticleSystems/Reset.gif" height="26" border="0"  /> reset button.  The emitter will start over with all its initial values.
+  <p />
+  <p />
+  <h4><a name="Number of Particles to Spawn"></a> Number of Particles to Spawn </h4>
+  <p />
+  <em>Number of Particles to Spawn</em> is the number of particles that will be spawned when the emitter is triggered.  This setting depends on <em>Particles per Second</em> described below and also <a href="ParticleSystems.html#MaxNumberOfParticles" class="twikiAnchorLink">Max Number of Particles</a> in <em>General</em>.  The particles whose number you specify here will spawn at rate described in <em>Particles per Second</em> and will not exceed <em>Max Number of Particles</em>.
+  <p />
+  <h4><a name="Particles per Second"></a> Particles per Second </h4>
+  <p />
+  <em>Particles per Second</em> is the rate at which the particles specified above in <em>Number of Particles to Spawn</em> will spawn when triggered.  If either <em>Particles per Second</em> or <em>Number of Particles to Spawn</em> are 0, no effect will be observed.  If the emitter is currently emitting particles, this setting should be greater than the current rate of particles per second, otherwise no effect will be observed.  In most cases <em>Particles per Second</em> and <em>Number of Particles to Spawn</em> will be used when <a href="ParticleSystems.html#RespawnDeadParticles" class="twikiAnchorLink">Respawn Dead Particles</a> is false but it does not have to be.
+  <p />
+  <p />
+  <a name="OldSkoolEdit"></a>
+  <h2><a name="Editing the &quot;Old Way&quot;"></a> Editing the "Old Way" </h2>
+  <p />
+  To edit the old way, just double click on the emitter in Unrealed.  <a href="EmittersReference.html" class="twikiLink">EmittersReference</a> covers editing in this manner but it does not include the new particle system features.
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/ParticleSystems.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:43:27 GMT -->
+</html>

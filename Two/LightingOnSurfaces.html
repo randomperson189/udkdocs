@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/LightingOnSurfaces.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:59:07 GMT -->
+<head>
+  <title> UDN - Two - LightingOnSurfaces    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">LightingOnSurfaces  </b></div>
+  <div id="tooltext">
+  <a href="LightingOnSurfacesJP.html" class="twikiLink">日本語訳</a><br><a href="LightingOnSurfacesKR.html" class="twikiLink">한국어</a><br>
+  
+  <!-- Two/LightingOnSurfaces -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="Lighting on Surfaces"></a> Lighting on Surfaces </h1>
+  <p />
+  <em>Document Summary: A guide showing how LightActors affect various types of geometry.</em>
+  <p />
+  <em>Document Changelog: Last updated by Jason Lentz (DemiurgeStudios<sup>?</sup>) to separate into more manageable docs. Original author - Lode Vandevenne (<a href="https://udn.epicgames.com/Main/UdnStaff" class="restricted" class="restricted" class="twikiLink">UdnStaff</a>)</em>
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="LightingOnSurfaces.html#Lighting on Surfaces"> Lighting on Surfaces</a> <ul>
+  <li> <a href="LightingOnSurfaces.html#Introduction"> Introduction</a>
+  </li> <li> <a href="LightingOnSurfaces.html#Lighting on BSP"> Lighting on BSP</a>
+  </li> <li> <a href="LightingOnSurfaces.html#Lighting on Static Meshes"> Lighting on Static Meshes</a>
+  </li> <li> <a href="LightingOnSurfaces.html#Lighting on Meshes"> Lighting on Meshes</a>
+  </li> <li> <a href="LightingOnSurfaces.html#Lighting on Terrain"> Lighting on Terrain</a>
+  </li> <li> <a href="LightingOnSurfaces.html#Lighting on Sprites"> Lighting on Sprites</a>
+  </li> <li> <a href="LightingOnSurfaces.html#Lighting on Particles"> Lighting on Particles</a>
+  </li> <li> <a href="LightingOnSurfaces.html#Lighting on Movers"> Lighting on Movers</a>
+  </li> <li> <a href="LightingOnSurfaces.html#Relevant Documents"> Relevant Documents</a>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <h2><a name="Introduction"></a> Introduction </h2>
+  <p />
+  Lights affect different types of geometries in different ways. This document outlines how each of these cases differ to help you avoid unwanted artifacts as well as take full advantage of other features available.
+  <p />
+  <h2><a name="Lighting on BSP"></a> Lighting on BSP </h2>
+  <p />
+  On BSP surfaces, the editor creates lightmaps during the Rebuild Lighting process. This creates very realistic shadows on the surfaces, especially if they have High Shadow Detail. The advantage of these lightmaps is that they look good. The disadvantage is that they can't be calculated in real time. The BSP Surfaces receive shadows from other BSP surfaces, and from Static Meshes, if in the Display Properties of this Static Mesh bShadowCast = True.
+  <p />
+  <img width="332" alt="lightingbsp.jpg" src="rsrc/Two/LightingOnSurfaces/lightingbsp.jpg" height="188" border="0"  />
+  <p />
+  The light gets stopped by solids, semisolids and nonsolids. The light will shine through the invisible side of a one sided sheet brush, but not through the other side. Also, if you place a light inside of a nonsolid brush that is not a sheet, the light will shine through it.
+  <p />
+  The light will shine through translucent surfaces, but not through modulated surfaces. When the light goes through a translucent surface, it just goes through it as if there were no surface at all. It doesn't get the colors of the translucent surface. The rays of the light go through the invisible parts of masked textures, so the shadows will have the shape of your masked texture:
+  <p />
+  <img width="332" alt="maskedfence.jpg" src="rsrc/Two/LightingOnSurfaces/maskedfence.jpg" height="188" border="0"  />
+  <p />
+  Sometimes the masked texture itself becomes black when you rebuild lighting. Set it to Unlit then and it should work again.
+  <p />
+  The lighting also determines the translucency of a translucent surface: the more light it gets, the more opaque it becomes; the less light, the more invisible. If you have a translucent surface in your map and you want to make it more or less translucent, independent from the lighting around it, set it to Special Lit and add a bSpecialLit light next to it, then you can control the translucency of it with that light. For example, in the center of this room is actually a translucent surface, but it doesn't get any light at all. Where a non-translucent surface would become black, this one becomes invisible:
+  <p />
+  <img width="182" alt="trans1.jpg" src="rsrc/Two/LightingOnSurfaces/trans1.jpg" height="142" border="0"  />
+  <p />
+  The higher you now set the LightBrightness of the light, the more visible the surface will become:
+  <p />
+  <img width="182" alt="trans2.jpg" src="rsrc/Two/LightingOnSurfaces/trans2.jpg" height="142" border="0"  /> <img width="182" alt="trans3.jpg" src="rsrc/Two/LightingOnSurfaces/trans3.jpg" height="142" border="0"  /> <img width="182" alt="trans4.jpg" src="rsrc/Two/LightingOnSurfaces/trans4.jpg" height="142" border="0"  />
+  <p />
+  With colored lights you can get even more effects:
+  <p />
+  <img width="182" alt="transred.jpg" src="rsrc/Two/LightingOnSurfaces/transred.jpg" height="142" border="0"  />
+  <p />
+  <h2><a name="Lighting on Static Meshes"></a> Lighting on Static Meshes </h2>
+  <p />
+  Also for Static Meshes you need to Rebuild Lighting to get the best result. The lighting is calculated for every surface of the Static Mesh, so only the surfaces that are facing the light get lit, for example on this small Static Mesh cube:
+  <p />
+  <img width="302" alt="redlighthw.jpg" src="rsrc/Two/LightingOnSurfaces/redlighthw.jpg" height="153" border="0"  />
+  <p />
+  This means there are no lightmaps on the Static Mesh, so it doesn't receive nice shadows like BSP surfaces do. For example, on this screenshot the bottom-left brush is a Static Mesh and the upper brush is BSP (I mean the two brushes with the default engine texture on it). There's a bar placed in front of the light to create a shadow, but on the Static Mesh, this shadow isn't visible:
+  <p />
+  <img width="302" alt="hwvsbsp.jpg" src="rsrc/Two/LightingOnSurfaces/hwvsbsp.jpg" height="153" border="0"  />
+  <p />
+  If the Static Mesh has the ability to move (so it's actor has bStatic = False in the Default Properties), the lighting is calculated in real time on the Static Mesh, so if for example it moves towards a light it'll become brighter.
+  <p />
+  The Static Meshes themselves create shadows on BSP, but not on other Static Meshes or on their own.
+  <p />
+  The lighting on Static Meshes is no longer dependent on the Pivot Point, but instead on a bounding box. So you can do what you want with the Pivot Point.
+  <p />
+  If you convert a brush to a Static Mesh, the "Special Lit" settings will be lost, so you can't use Special Lit with Static Meshes. Unlit will still work, so all surfaces that were Unlit on the BSP brush will also be Unlit for the Static Mesh.
+  <p />
+  If you want to get the corona of a light to shine through a Static Mesh (for example to place a corona inside a lamp) set the setting bBlockZeroExtentTraces of the Static Mesh to False.  Only then you'll be able to see the corona.  Of course, also set bShadowCast in Display to false, so the light can shine through the Static Mesh.
+  <p />
+  <img width="49" alt="blockzero.jpg" src="rsrc/Two/LightingOnSurfaces/blockzero.jpg" height="228" border="0"  /> <img width="75" alt="dontblockzero.jpg" src="rsrc/Two/LightingOnSurfaces/dontblockzero.jpg" height="228" border="0"  />
+  <p />
+  <h2><a name="Lighting on Meshes"></a> Lighting on Meshes </h2>
+  <p />
+  The lighting on meshes is very similar to the lighting on Static Meshes. The lighting on meshes is real time.
+  <p />
+  <img width="315" alt="meshlighting.jpg" src="rsrc/Two/LightingOnSurfaces/meshlighting.jpg" height="177" border="0"  />
+  <p />
+  In the properties of the Mesh, expand Display. In there, you can use AmbientGlow to make the Mesh brighter, for example if you set AmbientGlow to 128, the mesh will be much brighter than when it's 0. When AmbientGlow is 255, the mesh is fullbright. On the screenshots, the AmbientGlow is respectively 0, 128 and 255.
+  <p />
+  <img width="290" alt="ambientglow.jpg" src="rsrc/Two/LightingOnSurfaces/ambientglow.jpg" height="161" border="0"  />
+  <p />
+  There's also a bUnlit property in Display. If you set this to true, the mesh will ignore all lighting, and its brightness is determined by AmbientGlow only. On the screenshot, again the AmbientGlow is respectively 0, 128 and 255:
+  <p />
+  <img width="290" alt="ambientglowunlit.jpg" src="rsrc/Two/LightingOnSurfaces/ambientglowunlit.jpg" height="161" border="0"  />
+  <p />
+  <h2><a name="Lighting on Terrain"></a> Lighting on Terrain </h2>
+  <p />
+  The most important way to get light on a Terrain is Sunlight. Actually you have to use Sunlight on the terrain. Otherwise it'll look flat and boring. For example, the first screenshot has no SunLight but it has Ambient Lighting. The second screenshot has Sunlight and no Ambient Lighting:
+  <p />
+  <img width="252" alt="terrainlight1.jpg" src="rsrc/Two/LightingOnSurfaces/terrainlight1.jpg" height="177" border="0"  /> <img width="252" alt="terrainlight2.jpg" src="rsrc/Two/LightingOnSurfaces/terrainlight2.jpg" height="177" border="0"  />
+  <p />
+  The Ambient Lighting (ZoneLight) can be used to make the shadow parts of the terrain brighter. Normal lights brighten the terrain as well, but you'd need hundreds of light actors to completely light the terrain.
+  <p />
+  <h2><a name="Lighting on Sprites"></a> Lighting on Sprites </h2>
+  <p />
+  Sprites completely ignore lighting, they're always fullbright. In the editor, Sprites get the same color as the LightColor settings, if it's LightType is not LT_None at least. This works only in the editor and not in the game.
+  <p />
+  You used to be able to change the brightness of the Sprites with the ScaleGlow setting in Display, but this is broken in 777.
+  <p />
+  The lighting on Sprites isn't very important, because they're mainly used in the editor only, for example for the lightbulb symbol of light actors, and not in the game.
+  <p />
+  <h2><a name="Lighting on Particles"></a> Lighting on Particles </h2>
+  <p />
+  The particles ignore all lighting, but you can set the brightness and color of them to fit in the lighting of a certain room. I refer to the Emitters tutorial on UDN for this.
+  <p />
+  <h2><a name="Lighting on Movers"></a> Lighting on Movers </h2>
+  <p />
+  Movers are basicly Static Meshes with bStatic = False, so the lighting on a mover is the same as on a Static Mesh.
+  <p />
+  The Movers automaticly become DynamicLightMover already. You don't have to set the bDynamicLightMover property for this. Also, the BrushRayTraceKey and WorldRayTraceKey properties don't do anything anymore, so you can ignore these settings.
+  <p />
+  The shadow on the BSP of the mover will not move, so if you want the shadow to be completely away set bShadowCast to False in the Display properties of the mover.
+  <p />
+  <h2><a name="Relevant Documents"></a> Relevant Documents </h2>
+  <p />
+  For more about LightActors and general lighting in Unreal Ed, also see the following documents:
+  <p />
+  <a href="LightingBasics.html" class="twikiLink">LightingBasics</a> - A detailed table of contents to all of the Lighting documents
+  <p />
+  <a href="UsingLights.html" class="twikiLink">UsingLights</a> - A general guide to not only using lights but also how to use features associated with lights.
+  <p />
+  <a href="TypesOfLights.html" class="twikiLink">TypesOfLights</a> - A guide to the various types of LightActors and light sources.
+  <p />
+  <a href="LightingReference.html" class="twikiLink">LightingReference</a> - A comprehensive reference for the LightColor and Lighting properties.
+  <p />
+  <a href="SpecialLightingFeatures.html" class="twikiLink">SpecialLightingFeatures</a> - A tutorial showing how to set up special lighting features.
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/LightingOnSurfaces.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:59:16 GMT -->
+</html>

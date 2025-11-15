@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/PushingContentUT2003.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:38:53 GMT -->
+<head>
+  <title> UDN - Two - PushingContentUT2003    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">PushingContentUT2003  </b></div>
+  <div id="tooltext">
+  <p />
+  
+  <!-- Two/PushingContentUT2003 -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="Pushing Skin and Model Content"></a> Pushing Skin and Model Content </h1>
+  <p />
+  <em>Unreal Tournament 2003 Tutorial</em> <br />
+  <em>Joseph M. Wilcox</em>
+  <p />
+  <img alt="PushingContentUT2003\smallut2003logo.gif" src="#" />
+  <p />
+  <hr />
+  <p />
+  <h2><a name="Description:"></a> Description: </h2>
+  <p />
+  At the request of several server admins, starting with 2186 we added the ability to push model and skin content from the server to all clients that connect.  This tutorial will explain in a step by step method how to setup a model or skin to be pushed.  For an example, I'm using the <a href="http://skincity.beyondunreal.com/?section=models&amp;action=show_infos&amp;id=203" target="_top">Beatrice model</a>.  This is a good example to start with as it has multiple skins.  Let's begin by looking at an overview of the steps needed to push content.
+  <p />
+  Step 1:  Create a .U package that contains a single PlayerRecordClass<sup>?</sup> for each character defined in the skin or model's .UPL file.
+  <p />
+  Step 2:  Add each .U file to your server packages list.
+  <p />
+  Step 3: Make sure all needed resources (.UTX and .UKX) files are referenced in your server packages list.
+  <p />
+  <p />
+  <h2><a name="Case Study: Beatrice"></a> Case Study: Beatrice </h2>
+  <p />
+  Ok, so now that we have an overview, let's look at converting the Beatrice model to be pushed.  Install the Beatrice model on your server (or work machine).  Open up BeatriceSkins<sup>?</sup>.upl to see the character descriptions for Beatrice.  For our examples, you do not have to be concerned with the duplicate bot descriptions.  Notice that this UPL file defines 3 characters, Beatrice, Flora and Florence.  This means you will have to create a separate "push" .U package for each character you want to make available.. in this case, 3!
+  <p />
+  There are two times in this process where naming is important, first is the name of the "push" .U package and second, is the name of the class defined in it.  To understand why this is important, it helps to understand the process UT2K3 goes through when looking to see if it needs something.
+  <p />
+  When a player connects to a server, that player sends his character information.  This information is then forwarded to each client connected to the server.  Each client then attempts to load skin/model data for the new player.  What it does is first look in it's local player list to see if that character exists.  If it does, it uses that character list to load the data.  If it doesn't exist, it will attempt to load pushed data from the server.  It does this by taking the character's name and trying to load a PlayerRecordClass<sup>?</sup> that matches it.  Due to naming conventions, the package name should be different from the name of the PlayerRecordClass<sup>?</sup> so the suffix "MOD" is appended to the character name.   If this package or class do not exist, the default model is then used.
+  <p />
+  <p />
+  <h2><a name="Settings up the package directories"></a> Settings up the package directories </h2>
+  <p />
+  So, for the Beatrice model, you need to create 3 subdirectories off of the main \UT2003\ directory.  <strong>\BeatriceMod</strong>, <strong>\FloraMod</strong>, and  <strong>\FlorenceMod</strong>.  In each of these directories, you will need to create a subdirectory \Classes that will contain the unrealscript definition of the PlayerRecordClass<sup>?</sup> for each character.
+  <p />
+  Now edit your UT2003.ini file and find the section [Editor.EditorEngine] and add these new packages to your EditPackages<sup>?</sup> list:
+  <p />
+  <pre>
+  EditPackages&#61;BeatriceMod
+  EditPackages&#61;FloraMod
+  EditPackages&#61;FlorenceMod
+  </pre>
+  <p />
+  <p />
+  For those of you not familiar with UnrealScript<sup>?</sup>, you have now created the basic shell of what you need to generate a .U package.  Now it's time to create the class definitions.
+  <p />
+  <p />
+  <h2><a name="So you want to be a scripter"></a> So you want to be a scripter </h2>
+  <p />
+  Inside the \Classes subdirectory of each package, you will need to create a .UC file that contains the script definition of the PlayerRecordClass<sup>?</sup> structure for each character.  Begin by creating the PlayerRecordClass<sup>?</sup> for the Beatrice character.  In <strong>\BeatriceMod\Classes</strong> create the file <strong>Beatrice.uc</strong>. In unrealscript, the name of the .UC source file must match the name of the class it defines, and in the case of pushing content, the name of the class must match the name of the character it represents.
+  <p />
+  The PlayerRecordClass<sup>?</sup> contains variables that represent all of the data you can set via the UPL file.  Let's look at Beatrice's
+  <p />
+  <pre>
+  class Beatrice extends PlayerRecordClass;
+  
+  defaultproperties
+  {
+          Species&#61;class&#39;XGame.SPECIES&#95;Merc&#39;
+          MeshName&#61;&#34;Beatrice.Beatrice&#95;Female&#34;
+          BodySkinName&#61;&#34;BeatriceSkins.Beatrice.BeatriceSkin&#34;
+          FaceSkinName&#61;&#34;BeatriceSkins.Beatrice.Pulseline&#34;
+          Portrait&#61;Material&#39;BeatriceSkins.Beatrice.BeatricePortrait&#39;
+          TextName&#61;&#34;XPlayers.Default&#34;
+          Sex&#61;&#34;Female&#34;
+          Menu&#61;&#34;SP&#34;
+  }
+  </pre>
+  <p />
+  See if you can match up each entry here to it's value in the UPL file.
+  <p />
+  Once you have created the .UC playerRecordClasses for each character, you are set to compile.  In your \System directory execute the command:
+  <p />
+  <pre>
+  ucc make
+  </pre>
+  <p />
+  This will compile your new packages and create <strong>BeatriceMod.u</strong>, <strong>FloraMod.u</strong> and <strong>FlorenceMod.u</strong>.  If for some reason you need to recompile or change settings, make sure to manually delete this files each time before compiling.
+  <p />
+  <p />
+  <h2><a name="Setting up the Server"></a> Setting up the Server </h2>
+  <p />
+  Once you have your packages compile, all that's left is setting up your server to push the content.  Edit your server's .INI file and add all the necessary <code>ServerPackages</code> references to the <code>[Engine.GameEngine]</code>.  For Beatrice, you should be adding the following lines:
+  <p />
+  <pre>
+  ServerPackages&#61;Beatrice
+  ServerPackages&#61;BeatriceSkins
+  ServerPackages&#61;BeatriceMod
+  ServerPackages&#61;FloraMod
+  ServerPackages&#61;FlorenceMod
+  </pre>
+  <p />
+  And that's it.  You are now pushing the Beatrice, Flora and Florence characters to every player who connects.
+  <p />
+  <p />
+  <h2><a name="Final Notes"></a> Final Notes </h2>
+  <p />
+  Keep in mind, that when pushing content to a user, it doesn't INSTALL the content.  That user will not be able to select or use the pushed model or skin.  It's purpose is to allow the user to see other players using it.  As a server admin, you should probably add a reference for downloading the model somewhere in your MOTD.  Also, model content can grow to be fairly large (uncompressed, sending Beatrice and her skins takes close to 12 megs) so by pushing model content, you are probably restricting your server to high bandwidth players only.
+  <p />
+  I've included the full source to all 3 push .U packages in a .ZIP file here<sup>?</sup> for reference.
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/PushingContentUT2003.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:38:53 GMT -->
+</html>

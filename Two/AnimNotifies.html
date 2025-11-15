@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/AnimNotifies.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:44:45 GMT -->
+<head>
+  <title> UDN - Two - AnimNotifies    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">AnimNotifies  </b></div>
+  <div id="tooltext">
+  <p />
+  
+  <!-- Two/AnimNotifies -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="Animation notifies"></a> Animation notifies </h1>
+  <p />
+  Last updated by Chris Linder (DemiurgeStudios<sup>?</sup>) for adding how multiple events are processed in close proximity to one another.  Original author was Nathaniel Brown (KungFuTheatreTeam<sup>?</sup>).
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="AnimNotifies.html#Animation notifies"> Animation notifies </a> <ul>
+  <li> <a href="AnimNotifies.html#Introduction"> Introduction</a>
+  </li> <li> <a href="AnimNotifies.html#Overview"> Overview</a>
+  </li> <li> <a href="AnimNotifies.html#Adding a notify"> Adding a notify</a>
+  </li> <li> <a href="AnimNotifies.html#Notify types"> Notify types</a> <ul>
+  <li> <a href="AnimNotifies.html#AnimNotify_Effect"> AnimNotify_Effect</a>
+  </li> <li> <a href="AnimNotifies.html#AnimNotify_Destroyeffect"> AnimNotify_Destroyeffect</a>
+  </li> <li> <a href="AnimNotifies.html#AnimNotify_Sound"> AnimNotify_Sound</a>
+  </li> <li> <a href="AnimNotifies.html#AnimNotify_Script"> AnimNotify_Script</a>
+  </li> <li> <a href="AnimNotifies.html#AnimNotify_Scripted"> AnimNotify_Scripted</a>
+  </li> <li> <a href="AnimNotifies.html#AnimNotify_MatSubAction"> AnimNotify_MatSubAction</a>
+  </li> <li> <a href="AnimNotifies.html#AnimNotify_Trigger"> AnimNotify_Trigger</a>
+  </li></ul>
+  </li> <li> <a href="AnimNotifies.html#Making new notifies, technical overview"> Making new notifies, technical overview</a>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <h2><a name="Introduction"></a> Introduction </h2>
+  <p />
+  Animation notifies are one of the most useful abilities of the Unreal Engine's animation system. Especially post-829, since their functionality has been expanded a great deal. They allow you to insert callbacks into an animation at a given frame in the sequence, which can perform a variety of tasks. Some examples are, but not limited to the following, AnimNotify_Script (calls a uscript function), AnimNotify_Sound (plays a sound), and AnimNotify_Effect (spawns an effect, with options for attaching it to a bone).
+  <p />
+  In this article I'll try to go over how they work, how to use them, what the different types do, and how to add new ones. Also I'll provide an example class, which should ease you into how to create new types.
+  <p />
+  Note: This article should be useful for both artists, and programmers.
+  <p />
+  <h2><a name="Overview"></a> Overview </h2>
+  <p />
+  The animation code (UnSkeletalMesh.cpp) checks for a notify in each frame for each sequence (in case of skeletal blended animation). If you want to disable a notify, a native function is provided; EnableChannelNotify() (this is pretty useful for instances of blended animation where you may not want the notify to be called). Each AnimNotify_* object has a Notify() function, this is where the magic is done. Each type just overrides this to add its unique functionality.
+  <p />
+  <h2><a name="Adding a notify"></a> Adding a notify </h2>
+  <p />
+  This is a relatively painless process; just go into the AnimationBrowser and select your mesh, and then the sequence you want to add a notify to. You'll see a box appear on the right panel of the browser window. It should say Animation. LOD, Mesh, Redigest, and Skin. Above that is a list of tabs, click on Notify. The item list should now just say Notify. If you click add and then new (not the button, just the text) you should be able to drop down a list of notify types you want to insert. You may have to adjust the box's size to fully see this. Once you have added your new notify type, then you need to type in the frame it should occur one (<strong>Note:</strong>. This is now displayed in frame numbers instead of time).
+  <p />
+  The major limitation with animation notifies is that you can not add two notifies at the same time.  You should also never put a notify on the very last frame because this will interfere with the <em>AnimEnd</em> event.  You can put notifies very very close to each other if you want then to occur at the "same" time.  For example, one notify can be at frame <code>20.0</code> and the next one can be at frame <code>20.001</code>.  These two notifies will almost always be executed in the same tick but you can not guaranty it.  If you <strong>must</strong> have two things happen at the same time, use an <a href="AnimNotifies.html#AnimNotify_Script" class="twikiAnchorLink">AnimNotify_Script</a> and write a function to do what you want.  One more thing to watch out for is that the engine can only execute four animation notifies in a single tick.  If there are still more to process, they will be processed the next tick.  Once again, if you are really packing in many many notifies, you should probably just write a function and use <a href="AnimNotifies.html#AnimNotify_Script" class="twikiAnchorLink">AnimNotify_Script</a> .
+  <p />
+  <h2><a name="Notify types"></a> Notify types </h2>
+  <p />
+  Below is a list of the various default notify types and what they do.
+  <p />
+  <h3><a name="AnimNotify_Effect"></a><a name="_AnimNotify_Effect"></a> AnimNotify_Effect </h3>
+  This notify generates an effect at the specified point in the animation, which can be either attached to a bone, spawned at a bone location, or spawned at the actors location, all of which can be offset by location and rotation.
+  <p />
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Variable</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Description</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=2;table=1;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">DataType</font></a> </th></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> EffectClass </td><td bgcolor="#ffffff"> Effect class type to spawn </td><td bgcolor="#ffffff"> Class (Actor) </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Bone </td><td bgcolor="#eaeaea"> Name of the bone to attach to, or spawn at (if any) </td><td bgcolor="#eaeaea"> Name </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> OffsetLocation </td><td bgcolor="#ffffff"> Offset from the actor's location (or bone) </td><td bgcolor="#ffffff"> Vector </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> OffsetRotation </td><td bgcolor="#eaeaea"> Offset from the actor's rotation (or bone) </td><td bgcolor="#eaeaea"> Rotator </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> Attach </td><td bgcolor="#ffffff"> Whether or not to attach to the bone </td><td bgcolor="#ffffff"> Bool </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Tag </td><td bgcolor="#eaeaea"> Tag to use on the effect (for later destroying) </td><td bgcolor="#eaeaea"> Name </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> DrawScale </td><td bgcolor="#ffffff"> Scale of the effect </td><td bgcolor="#ffffff"> Float </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> DrawScale3D </td><td bgcolor="#eaeaea"> Axis scale of the effect </td><td bgcolor="#eaeaea"> Vector </td></tr>
+  </table>
+  <p />
+  <h3><a name="AnimNotify_Destroyeffect"></a><a name="_AnimNotify_Destroyeffect"></a> AnimNotify_Destroyeffect </h3>
+  DestroyEffect kills an effect created by AnimNotify_Effect.
+  If an emitter is used you can opt to tell it to wait till all of the particles have died before being destroyed via bExpireParticles.
+  <p />
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=2;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Variable</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=2;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Description</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=2;table=2;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">DataType</font></a> </th></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> DestroyTag </td><td bgcolor="#ffffff"> Tag of the effect to destroy (set by AnimNotify_Effect) </td><td bgcolor="#ffffff"> Name </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> bExpireParticles </td><td bgcolor="#eaeaea"> If effect is an emitter let all particle die before destroying </td><td bgcolor="#eaeaea"> Bool </td></tr>
+  </table>
+  <p />
+  <h3><a name="AnimNotify_Sound"></a><a name="_AnimNotify_Sound"></a> AnimNotify_Sound </h3>
+  A simple notify that plays a sound at the specified frame.
+  <p />
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=3;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Variable</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=3;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Description</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=2;table=3;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">DataType</font></a> </th></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> Sound </td><td bgcolor="#ffffff"> Name of the sound to be played </td><td bgcolor="#ffffff"> Sound </td></tr>
+  <tr><td bgcolor="#eaeaea" class="twikiFirstCol"> Volume </td><td bgcolor="#eaeaea"> Volume of the sound </td><td bgcolor="#eaeaea"> Float </td></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> Radius </td><td bgcolor="#ffffff"> Radius of the sound </td><td bgcolor="#ffffff"> Int </td></tr>
+  </table>
+  <p />
+  <h3><a name="AnimNotify_Script"></a><a name="_AnimNotify_Script"></a> AnimNotify_Script </h3>
+  The classic AnimNotify, this calls an UnrealScript function at the specified frame.
+  <p />
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=4;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Variable</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=4;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Description</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=2;table=4;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">DataType</font></a> </th></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> NotifyName </td><td bgcolor="#ffffff"> Name of the script function to call </td><td bgcolor="#ffffff"> Name </td></tr>
+  </table>
+  <p />
+  <h3><a name="AnimNotify_Scripted"></a><a name="_AnimNotify_Scripted"></a> AnimNotify_Scripted </h3>
+  This useful notify is for easy creation of new notifies that don't require c++ code.
+  It has an Unrealscript event that gets fired at the appropriate frame, this allows for easy extensions. AnimNotify_Trigger is a good example of this.
+  <p />
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=5;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Variable</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=5;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Description</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=2;table=5;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">DataType</font></a> </th></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> N/A </td><td bgcolor="#ffffff"> N/A </td><td bgcolor="#ffffff"> N/A </td></tr>
+  </table>
+  <p />
+  <h3><a name="AnimNotify_MatSubAction"></a><a name="_AnimNotify_MatSubAction"></a> AnimNotify_MatSubAction </h3>
+  MatSubAction allows you to add a matinee subaction at a specific point in an animation.
+  This could be extremely useful for triggering camera positions by gestures, or adding specific CameraEffects such as motion blur at a key point.
+  <p />
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=6;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Variable</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=6;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Description</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=2;table=6;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">DataType</font></a> </th></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> SubAction </td><td bgcolor="#ffffff"> Matinee subaction to perform </td><td bgcolor="#ffffff"> MatSubAction (editinline) </td></tr>
+  </table>
+  <p />
+  <h3><a name="AnimNotify_Trigger"></a><a name="_AnimNotify_Trigger"></a> AnimNotify_Trigger </h3>
+  This notify simply calls the Trigger() method of an actor whose Tag matches EventName.
+  <p />
+  <table cellspacing="1" cellpadding="1" class="twikiTable" border="0"><tr><th bgcolor="#dadada" class="twikiFirstCol"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=0;table=7;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Variable</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=1;table=7;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">Description</font></a> </th><th bgcolor="#dadada"> <a rel="nofollow" href="https://udn.epicgames.com/bin/publish/WebHome?webs=Main%2CTwo%2CThree%2CPowered&amp;amp;inclusions=%2A&amp;amp;exclusions=&amp;amp;filter=&amp;amp;inclfilter=%5C%25META%5C%3AFIELD%5C%7Bname%5C%3D%5C%22Documentavailability%5C%22.%2Avalue%5C%3D%5C%22General%20public%5C%22&amp;amp;filterbymeta=yes&amp;amp;skin=static_udn3&amp;amp;restrictedclass=restricted&amp;amp;format=&amp;amp;sortcol=2;table=7;up=0#sorted_table" class="restricted" title="Sort by this column"><font color="#000000">DataType</font></a> </th></tr>
+  <tr><td bgcolor="#ffffff" class="twikiFirstCol"> EventName </td><td bgcolor="#ffffff"> Name of the actor's tag that you wish to trigger </td><td bgcolor="#ffffff"> Name </td></tr>
+  </table>
+  <p />
+  <h2><a name="Making new notifies, technical overview"></a> Making new notifies, technical overview </h2>
+  <p />
+  Found in <a href="https://udn.epicgames.com/Two/MakingNewAnimNotifies" class="restricted" class="restricted" class="twikiLink">MakingNewAnimNotifies</a>, for licensees only!
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/AnimNotifies.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:44:45 GMT -->
+</html>

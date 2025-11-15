@@ -1,0 +1,515 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/ExampleMapsAdvLighting.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:54:22 GMT -->
+<head>
+  <title> UDN - Two - ExampleMapsAdvLighting    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">ExampleMapsAdvLighting  </b></div>
+  <div id="tooltext">
+  <a href="ExampleMapsAdvLightingJP.html" class="twikiLink">日本語訳</a><br>
+  
+  <!-- Two/ExampleMapsAdvLighting -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="Advanced Lighting Tutorial"></a> Advanced Lighting Tutorial </h1>
+  <p />
+  <em>Document Summary: A useful guide to performing some tricks with lighting in Unreal. Best for advanced users, since knowledge of many aspects of the engine is a requirement.</em>
+  <p />
+  <em>Document Changelog: Last updated by Michiel, style changes and what not. Previous update by Tom Lin (DemiurgeStudios<sup>?</sup>), for document summary. Original author was Jason Lentz (DemiurgeStudios<sup>?</sup>).</em>
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="ExampleMapsAdvLighting.html#Advanced Lighting Tutorial"> Advanced Lighting Tutorial</a> <ul>
+  <li> <a href="ExampleMapsAdvLighting.html#Introduction"> Introduction</a>
+  </li> <li> <a href="ExampleMapsAdvLighting.html#Projectors + Shaders"> Projectors + Shaders</a> <ul>
+  <li> <a href="ExampleMapsAdvLighting.html#Tree Canopy Shadows"> Tree Canopy Shadows</a> <ul>
+  <li> <a href="ExampleMapsAdvLighting.html#Single Tree Shadow"> Single Tree Shadow</a>
+  </li> <li> <a href="ExampleMapsAdvLighting.html#Forest Canopy Shadow"> Forest Canopy Shadow</a>
+  </li></ul>
+  </li> <li> <a href="ExampleMapsAdvLighting.html#Ground Fog"> Ground Fog</a>
+  </li> <li> <a href="ExampleMapsAdvLighting.html#Rolling Clouds"> Rolling Clouds</a>
+  </li> <li> <a href="ExampleMapsAdvLighting.html#Wavering Torch Light"> Wavering Torch Light</a>
+  </li> <li> <a href="ExampleMapsAdvLighting.html#Caustics"> Caustics</a> <ul>
+  <li> <a href="ExampleMapsAdvLighting.html#Underwater"> Underwater</a>
+  </li> <li> <a href="ExampleMapsAdvLighting.html#Above Water"> Above Water</a>
+  </li></ul>
+  </li></ul>
+  </li> <li> <a href="ExampleMapsAdvLighting.html#Projectors + Emitters"> Projectors + Emitters</a> <ul>
+  <li> <a href="ExampleMapsAdvLighting.html#Light Beam through Window"> Light Beam through Window</a>
+  </li></ul>
+  </li> <li> <a href="ExampleMapsAdvLighting.html#Mesh Effects"> Mesh Effects</a> <ul>
+  <li> <a href="ExampleMapsAdvLighting.html#Tree Canopy Light Beams"> Tree Canopy Light Beams</a>
+  </li> <li> <a href="ExampleMapsAdvLighting.html#Neon Lights"> Neon Lights</a>
+  </li> <li> <a href="ExampleMapsAdvLighting.html#Rotating Caution Light"> Rotating Caution Light</a>
+  </li> <li> <a href="ExampleMapsAdvLighting.html#Moths Casting Shadows"> Moths Casting Shadows</a>
+  </li></ul>
+  </li> <li> <a href="ExampleMapsAdvLighting.html#Special Projectors"> Special Projectors</a> <ul>
+  <li> <a href="ExampleMapsAdvLighting.html#Triggerable _FluorescentLight Projector"> Triggerable FluorescentLight Projector</a>
+  </li></ul>
+  </li> <li> <a href="ExampleMapsAdvLighting.html#Downloads"> Downloads</a>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <img width="512" alt="advanced_lighting.jpg" src="rsrc/Two/ExampleMapsAdvLighting/advanced_lighting.jpg" height="355" border="0"  />
+  <p />
+  <h2><a name="Introduction"></a> Introduction </h2>
+  <p />
+  This document assumes that you know the fundamentals of using Lights, Projectors, <a href="https://udn.epicgames.com/Two/StaticMeshTopics" class="restricted" class="restricted" class="twikiLink">Static Meshes</a>, <a href="https://udn.epicgames.com/Two/ParticleTopics" class="restricted" class="restricted" class="twikiLink">Particle Systems</a>, and <a href="MaterialTutorial.html" class="twikiLink">Materials</a>. In the example map are demonstrations as well as explanations on how to create various lighting effects mostly using some combination of the actors listed above. In the example map, the effects are divided into indoors and outdoors effects. Inside you will find triggerable fluorescent lights, neon lights, caution lights, light beams through a window, and moving lights through grates. Outside you will find trees with moving canopy shadows and beams of light, wavering torch lights, volumetric ground frog, water caustics, and rolling clouds. Within the document though, these effects are categorized by how they are created.
+  <p />
+  You will need the <a href="https://udn.epicgames.com/Two/UDNBuildContent" class="restricted" class="restricted" class="twikiLink">UDN content</a> for some of the examples.
+  <p />
+  <h2><a name="Projectors + Shaders"></a> Projectors + Shaders </h2>
+  <p />
+  <h3><a name="Tree Canopy Shadows"></a> Tree Canopy Shadows </h3>
+  <p />
+  You can use projectors to create realistic shadows and depending on the type of shadow you are creating will obviously effect the type of projector you will create. In this section you will see how to create a shadow for a single tree as well as for a forest of trees.
+  <p />
+  <a name="SingleTree"></a>
+  <h4><a name="Single Tree Shadow"></a> Single Tree Shadow </h4>
+  <p />
+  <img width="500" alt="single_tree_shadow.jpg" src="rsrc/Two/ExampleMapsAdvLighting/single_tree_shadow.jpg" height="400" border="0"  />
+  <p />
+  Because you will be creating the tree's shadow with a projector, you will want to turn the tree StaticMesh Display property <code>bShadowCast</code> and <code>bAcceptProjectors</code> to <code>False</code> . Then to create the Projector Texture here are a few steps to quickly creating an accurate shadow texture:
+  <p /> <ul>
+  <li> Set up the tree in the level that is relatively free of other near by StaticMeshes (you can use groups to hide them)
+  </li> <li> Set the texture of the tree bark to black (this is only temporary)
+  </li> <li> Turn off the terrain in the perspective viewport
+  </li> <li> Set the viewport mode to BSP Cuts
+  </li> <li> Position camera view at the angle of the sun and take a screen shot into a power of 2 sized image
+  </li></ul>
+  <p />
+  You should end up with an image that looks like this:
+  <p />
+  <img width="256" alt="tree_topdown.jpg" src="rsrc/Two/ExampleMapsAdvLighting/tree_topdown.jpg" height="256" border="0"  />
+  <p />
+  Now in Photoshop you follow these instructions: <ul>
+  <li> Select all of the white (non tree) and delete
+  </li> <li> Desaturate the image
+  </li> <li> Paint over where the leaves cover the bark with solid black <ul>
+  <li> (This will create a solid shadow where the trunk should be casting one)
+  </li></ul>
+  </li> <li> Apply a Gaussian blur to the image
+  </li> <li> Create a layer of grey (RGB values: 127, 127, 127) behind the shadow layer
+  </li> <li> Save and import the texture into Unreal Ed
+  </li></ul>
+  <p />
+  <img width="256" alt="tree_shadow.jpg" src="rsrc/Two/ExampleMapsAdvLighting/tree_shadow.jpg" height="256" border="0"  />
+  <p />
+  Next create a TexOscillator for this new texture that will give it a slight sway. Note that the UOscillationType is set to OT_Stretch so that the trunk shadow stays aligned with the StaticMesh trunk.
+  <p />
+  <img width="477" alt="tree_oscillator.gif" src="rsrc/Two/ExampleMapsAdvLighting/tree_oscillator.gif" height="205" border="0"  />
+  <p />
+  Then assign the TexOscillator to a projector that is casting in the direction of the Sun Light and just set the MaxTraceDistance accordingly and the FOV to 1 to simulate an extremely far off light source.
+  <p />
+  <h4><a name="Forest Canopy Shadow"></a> Forest Canopy Shadow </h4>
+  <p />
+  <img width="500" alt="tree_canopy_shadows.jpg" src="rsrc/Two/ExampleMapsAdvLighting/tree_canopy_shadows.jpg" height="274" border="0"  />
+  <p />
+  The process for a forest shadow is not that much different from a single tree shadow, except with a forest canopy shadow, you will need a tileable shadow texture without abrupt edges. To create such a texture, follow these steps:
+  <p /> <ul>
+  <li> Turn off the terrain in the perspective viewport
+  </li> <li> Set the viewport mode to BSP Cuts
+  </li> <li> Orient the camera over the trees of your forest and grab a screenshot into a power of 2 sized image
+  </li> <li> Select all of the white (non tree) and delete
+  </li> <li> Desaturate the image in Photoshop
+  </li> <li> Apply a Gaussian blur to the image
+  </li> <li> Create two layers of grey (RGB values: 127, 127, 127) <ul>
+  <li> Set one layer above the shadow layer with 50% opacity
+  </li> <li> Leave the other layer at 100% opacity and set it behind the shadow layer
+  </li></ul>
+  </li> <li> Now around the edges create a 127, 127, 127 grey border that blends to the center <ul>
+  <li> This makes the edge seams less noticeable.
+  </li></ul>
+  </li> <li> Save and import the texture into Unreal Ed
+  </li></ul>
+  <p />
+  <img width="256" alt="forest_shadow.jpg" src="rsrc/Two/ExampleMapsAdvLighting/forest_shadow.jpg" height="256" border="0"  />
+  <p />
+  <p />
+  Now you will need to use a TexScaler so that the image will tile when set as the Projector Texture. There will be an obvious tiling pattern duplicating the projector and moving it slightly off from the first one will solve this. You will still have a fairly obvious edge around the perimeter of the two projectors. To mask this just create another projector that casts the shadow of a single tree (as described <a href="ExampleMapsAdvLighting.html#SingleTree" class="twikiAnchorLink">above</a>) and strategically place them along the perimeter of your forest so as to mask the forest canopy shadow seams.
+  <p />
+  <h3><a name="Ground Fog"></a> Ground Fog </h3>
+  <p />
+  Note: the ground fog projectors may flicker in older builds.
+  <p />
+  <img width="500" alt="groundfog.jpg" src="rsrc/Two/ExampleMapsAdvLighting/groundfog.jpg" height="229" border="0"  />
+  <p />
+  Using a single projector and a TexRotator material, you can quickly create a convincing ground fog effect for a large area. For the base texture, create a texture with some variation in the middle but have it fade out towards the edges leaving a large margin of black. This is the texture used in this example:
+  <p />
+  <img width="128" alt="fog_texture.jpg" src="rsrc/Two/ExampleMapsAdvLighting/fog_texture.jpg" height="128" border="0"  />
+  <p />
+  Then create a TexRotator with a TexRotationType of <code>TR_ConstantlyRotating</code> with a Yaw Rotation of 1000 for a subtle rotation. Then use the U and V Offsets to center the rotation about the center of the image (1/2 the dimension of the base texture).
+  <p />
+  For the projector properties, you will want to set them as follows:
+  <p /> <ul>
+  <li> Projector - <ul>
+  <li> <code>bClipStaticMesh</code> : <code>True</code> This will cause the projector to cast only on the bottom portion of meshes that protrude through the ground fog. If you have BSP protruding through the ground fog, you will also want to set <code>bClipBSP</code> to <code>True</code>.
+  </li> <li> <code>bGradient</code> : <code>True</code> this will allow the projection to gracefully fade out at the edges of the ground fog.
+  </li> <li> <code>FOV</code> : <em>will vary</em> You will want to play with this setting some, but essentially, you want a LARGE setting for this value (between 150 and 179). The FOV for the ground fog in this example map is set to 160.
+  </li> <li> <code>FrameBufferBlendingOP</code> and <code>MaterialBelndingOp</code> : <code>PB Add</code> Both Blending Ops should be se to Add because the texture has been made to use black as transparent.
+  </li> <li> <code>MaxTraceDistance</code> : <em>will vary</em> This depends on the depth that you want your ground fog to be. A good measure is to set the Projector at your desired height and then increase the <code>MaxTraceDistance</code> until it passes through your terrain/ground surface. You can also make the ground fog appear darker by further increasing the <code>MaxTraceDistance</code> .
+  </li></ul>
+  </li></ul>
+  <p />
+  <h3><a name="Rolling Clouds"></a> Rolling Clouds </h3>
+  <p />
+  This effect combines Projector with two material modifiers, a TexPanner and a TexScaler. First you will want to set up your base texture though. Take your cloud texture from your SkyZone then desaturate the image so it is just a gray scale image. After importing the desaturated cloud image back into Unreal Ed, create your TexPanner (which you should be identical to the TexPanner you are using for your sky clouds just using the desaturated cloud image).
+  <p />
+  <img width="566" alt="clouds_tex_panner.jpg" src="rsrc/Two/ExampleMapsAdvLighting/clouds_tex_panner.jpg" height="467" border="0"  />
+  <p />
+  Then apply a TexScaler to the TexPanner to create for more believable shadow sizes. Your resulting material should look like this:
+  <p />
+  <img width="549" alt="clouds_tex_scaler.jpg" src="rsrc/Two/ExampleMapsAdvLighting/clouds_tex_scaler.jpg" height="501" border="0"  />
+  <p />
+  Now you are ready to set up the Projector. Set the <code>ProjTexture</code> to the newly created TexScaler and place the Projector above your level with its <code>FOV</code> set to 1. Then increase its <code>DrawScale</code> and <code>MaxTraceDistance</code> until the frustum encompasses the entire level. In the example map, the Projector is set to cast its shadows in the same direction as the sunlight; it's a minor touch, but it prevents shadows from being cast on surfaces that are already receiving a shadow from blocked sunlight. You can copy and paste the Rotation settings from the sunlight Movement Properties for a quick and accurate duplication of its orientation.
+  <p />
+  <h3><a name="Wavering Torch Light"></a> Wavering Torch Light </h3>
+  <p />
+  <img width="500" alt="wavering_torch.jpg" src="rsrc/Two/ExampleMapsAdvLighting/wavering_torch.jpg" height="352" border="0"  />
+  <p />
+  To create a wavering torch effect you will need a light and a single Projector with an TexOscillator material. The light is there just to cast the flame light and flame color. The projector will apply a wavering motion to the light cast on the wall.
+  <p />
+  To set up the light, just add a light to the level, either at the source of the light or a little bit away if it is directly next to a wall. Next using the <code>LightColor</code> properties, assign an appropriate color to the light and then tweak the brightness until it looks right.
+  <p />
+  <img width="493" alt="flamelight_color.jpg" src="rsrc/Two/ExampleMapsAdvLighting/flamelight_color.jpg" height="419" border="0"  />
+  <p />
+  Before you move on to setting up the projector you must first create a texture for the projector that will looks something like this:
+  <p />
+  <img width="256" alt="torchlight_proj.jpg" src="rsrc/Two/ExampleMapsAdvLighting/torchlight_proj.jpg" height="256" border="0"  />
+  <p />
+  It is important that there is subtle variation throughout the texture so that the flicker effect is apparent even in the center of the projection. Also because we will be using a Modulate bleding type, you will want to keep the edges and background of the texture at 127, 127, 127 gray. To create the flicker effect for the texture you will need to create a TexOscillator material.
+  <p />
+  <img width="692" alt="torch_oscillator.gif" src="rsrc/Two/ExampleMapsAdvLighting/torch_oscillator.gif" height="591" border="0"  />
+  <p />
+  For this TexOscillator you will want to set different U and V <code>OscillationRates</code>  as well as different U and V <code>OscillationAmplitudes</code> to create a more random appearance for the flickering. For both <code>OscillationTypes</code> you will want to set it to <code>OT_StretchRepeat</code> . For a final touch, offset the texture halfway in the U direction and a full 256 in the V direction (for a 256x256 texture). This causes the <code>StretchRepeat</code> to be exaggerated at the top of the texture which in this example is used as the far edge of the torch light.
+  <p />
+  Now assign the TexOscillator to the ProjTexture of a new Projector. Set its properties as follows:
+  <p /> <ul>
+  <li> Display - <ul>
+  <li> <code>DrawScale</code> : <em>will vary</em> In this example a DrawScale of 0.25 is used to make the projector more manageable and able to be more directly targeted at one specific area without projecting through the floor.
+  </li></ul>
+  </li> <li> Projector - <ul>
+  <li> <code>bClipBSP</code> and <code>bClipStaticMesh</code> : <code>True</code> This will prevent the projection from tiling across BSP and StaticMesh geometry.
+  </li> <li> <code>bGradient</code> : <code>True</code> Setting this to False will amplify the effect of the flicker and also create sharper edges to your projection, but the flame flicker should be a subtle effect that fades with distance from the light source.
+  </li> <li> <code>FOV</code> : <code>100</code> You may want to play with this setting, but it will help to distort your flame projection as it appears to cast from the flame source.
+  </li> <li> <code>FrameBufferBlendingOP</code> : <code>PB_Modulate</code> This should be left at its default setting as it will be Modulating the <code>ProjTexture</code> against the wall and the light casting on the wall from the colored light you set up earlier.
+  </li> <li> <code>MaxTraceDistance</code> : <em>will vary</em> Since Projectors are not occluded by anything you will want to set the MaxTraceDistance so that it does not project onto anything on the other side of the surface that is being lit by the torch.
+  </li></ul>
+  </li></ul>
+  <p />
+  Now place the Projector near the floor centering the bright portion of the <code>ProjTexture</code> behind the torch flame. This will cause the Projector to cast on the wall behind the torch as well as on the ceiling.
+  <p />
+  To improve this effect another similar projector with an inverted <code>ProjTexture</code> can be created and cast down towards the floor to create the shadow of the torch.
+  <p />
+  <h3><a name="Caustics"></a> Caustics </h3>
+  <p />
+  <h4><a name="Underwater"></a> Underwater </h4>
+  <p />
+  <img width="500" alt="uw_caustics.jpg" src="rsrc/Two/ExampleMapsAdvLighting/uw_caustics.jpg" height="277" border="0"  />
+  <p />
+  The majority of the work is in creating a compelling water caustics Shader, and there are a number of ways to create a caustics texture. Feel free to use your own method, but the method used to create the caustics in this example map are described here.
+  <p />
+  First start with an image of reflected light on water.
+  <p />
+  <img width="256" alt="Caustics1.jpg" src="rsrc/Two/ExampleMapsAdvLighting/Caustics1.jpg" height="256" border="0"  />
+  <p />
+  This texture was quickly created using a few layers of the various stained glass texture filters blended together and then made to be tileable. It is important that you do not have an alpha channel for your texture as it will not properly blend with Combiner Materials that you will later be using.
+  <p />
+  Once imported into Unreal Ed, you will base several different Shaders on this texture. Here you see the texture browser material tree of the final material followed by the settings for each material (in the order that you would create them)
+  <p />
+  <a name="UnderWaterShader"></a>
+  <img width="500" alt="caustics_tree.gif" src="rsrc/Two/ExampleMapsAdvLighting/caustics_tree.gif" height="316" border="0"  />
+  <p />
+  <strong>TexScaler:</strong> Both U and V Scale are set to 0.5 to double the size of the base texture. You may want to increase or descrease these values depending on the size of your underwater area.
+  <p />
+  <strong>TexOscillator:</strong> The U and V <code>OscillationRates</code> are set to 0.2 and 0.3 respecitvely,  and the U and V OscillationApplitudes are set at 0.01 and 0.02 respectively. The <code>OscillationType</code> for both U and V directions is <code>OT_Stretch</code> . This creates a subtle and irregular waving motion applied to the TexScaler .
+  <p />
+  <strong>Combiner:</strong> With a <code>CombineOperation</code> of <code>CO_Multiply</code> with the TexOscillator in Material 1 and the base texture in Material 2, this creates a greater sense of depth.
+  <p />
+  <strong>TexRotator"</strong> The <code>TexRotationType</code> is set to <code>TR_ConstantlyRotating</code> and it is given a rotation of Yaw = 512. This final modifier material creates a sense of movement to the resulting texture making it appear as if the water if constantly flowing by as it reflects and refracts the flowing water.
+  <p />
+  Again this is not the only way to create a convincing caustics effect. Different materials may be used in different ways to create the effect you are looking for. Try experimenting and see what you can come up with on your own.
+  <p />
+  Once you've finished creating your caustics Shader, you can apply it to a projector. You will most likely need several projectors unless your underwater area is easily covered by one large square projection. You will want to place the projector below the entire underwater area and point it upwards. Below is a list of the settings you will want to change with explanations as to why.
+  <p /> <ul>
+  <li> Display - <ul>
+  <li> <code>DrawScale</code> : <em>will vary</em> This will vary on the size of your projection. Set it to that it encompasses the entire underwater area.
+  </li></ul>
+  </li> <li> Projector - <ul>
+  <li> <code>bGradient</code> : <code>True</code> This will cause the caustics effect gradually fade out towards the edge of the water, avoiding sharp seams along terrain triangles.
+  </li> <li> <code>bProjectOnBackfaces</code> : <code>True</code> Because you are placing the projector below the terrain pointing up, you will need to set this to true so that the Projector will show up on the Terrain.
+  </li> <li> <code>FOV</code> : <code>1</code> This projection should not be distorted with a wide <code>FOV</code> , so by setting it to 1 it will project without any noticeable distortion.
+  </li> <li> <code>FrameBufferBlendingOP</code> : <code>PB_Modulate</code> This will multiply the color of the projector on to the surface of the terrain allowing it to brighten any color values of the projector over 127 and darken any color values of the projector under 127.
+  </li> <li> <code>MaxTraceDistance</code> : <em>will vary</em> This value will also depend on the size of your underwater area. After you've placed your projector(s) just below the lowest point of your underwater area, set the <code>MaxTraceDistance</code> so that the projector projects just up to the surface of the WaterVolume.
+  </li></ul>
+  </li></ul>
+  <p />
+  After setting all this up, your projector should be ready to go. If you are using multiple projectors to cover your underwater portion, you can just copy the projector and line them up next to each other watching you that you don't get any overlap. The projectors may not line up perfectly, but it will take a careful and patient eye to notice the seams.
+  <p />
+  <h4><a name="Above Water"></a> Above Water </h4>
+  <p />
+  <img width="500" alt="aw_caustics.jpg" src="rsrc/Two/ExampleMapsAdvLighting/aw_caustics.jpg" height="309" border="0"  />
+  <p />
+  Using an almost identical Shader and very similar Projector settings, a caustics effect can be applied to the underside of geometry that may be over water (such as a bridge).
+  <p />
+  Because a large projector isn't required to cover the space of the underside of the bridge, the TexScaler should be made to reduce the size of the texture even further so that you get more detail out of the projector (U and V Scale are set to .375). All other properties of this Shader are identical to the Shader described <a href="ExampleMapsAdvLighting.html#UnderWaterShader" class="twikiAnchorLink">above</a>.
+  <p />
+  The Projector properties for the above water caustics are also very similar to that of the below water caustics. Because of subtleties with casting on to somewhat complex StaticMeshes, some setting may have to be altered to achieve the proper effect. For instance, <code>bProjectOnBackfaces</code> must remain at False so that the caustics do not cast through the bridge and appear on the top side. Below is a list of the settings you will want to change from the underwater projector with explanations as to why:
+  <p /> <ul>
+  <li> Display - <ul>
+  <li> <code>DrawScale</code> : <code>1</code> This setting should remain at the default setting of 1 and you can use the FOV to make the Project cast an appropriately sized projection.
+  </li></ul>
+  </li> <li> Projector - <ul>
+  <li> <code>bGradient</code> : <code>False</code> Because you want the project to project evenly on the entire underside of the bridge, you can leave this setting at its default value of <code>False</code> . If set to <code>True</code>, the projection may not even show up at all in parts.
+  </li> <li> <code>bProjectOnBackfaces</code> : <code>False</code> As mentioned earlier, this should be left at the default setting so as to avoid projection on to the top side of the mesh.
+  </li> <li> <code>FOV</code> : <em>will vary</em> Play around with this setting so that it displays only on the exposed underside of your mesh. An FOV that is too large may end up causing the projector to cast on triangles of the topside of the bridge that are facing downwards.
+  </li> <li> <code>MaxTraceDistance</code> : <em>will vary</em> This value will also depend on the size of you're the mesh you are casting on. You will want to also play with this value in conjunction with the <code>FOV</code> setting. Be careful not to set it too far so that you don't end up projecting onto the top side of your StaticMesh.
+  </li></ul>
+  </li></ul>
+  <p />
+  Note that how you create your StaticMesh greatly aid in preventing the Projector for casting through. Below two diagrams of possible bridges are shown in cross section. The one on the right will work better with a projector below it casting water caustics:
+  <p />
+  <img width="476" alt="bridge_good_bad.gif" src="rsrc/Two/ExampleMapsAdvLighting/bridge_good_bad.gif" height="140" border="0"  />
+  <p />
+  The bridge on the right will work better because it has a greater depth and the inside walls are slanted so that their inside faces all point upwards towards the bottom of the wall. Also if the bridge is straight and not arched, you can very easily set the MaxTraceDistance accordingly so it does not project beyond the top of the bridge, although some cases do call for an arched bridge.
+  <p />
+  <p />
+  <h2><a name="Projectors + Emitters"></a> Projectors + Emitters </h2>
+  <p />
+  <h3><a name="Light Beam through Window"></a> Light Beam through Window </h3>
+  <p />
+  <img width="500" alt="sunbeam.jpg" src="rsrc/Two/ExampleMapsAdvLighting/sunbeam.jpg" height="296" border="0"  />
+  <p />
+  A sun beam from a window can be created with a Projector combined with a Particle System of fog and dust. For consistency's sake, you should make sure that the angle of your Projector matches the angle of your Sun Light. You can easily accomplish this by copying and pasting the Pitch Roll and Yaw values from the Rotation field under the Movement tab of the Sun Light properties to the Projector properties.
+  <p />
+  Once you've set up your window you can place and set up your Projector. To create the Projector texture just take the texture for your window frame, desaturate the image in Photoshop and import it as a new texture. Also, this Projector Texture will need to have its <code>UClampMode</code> and <code>VClampMode</code> to <code>TC_Clamp</code> .
+  <p />
+  <img width="539" alt="windowbeam_texproperties.gif" src="rsrc/Two/ExampleMapsAdvLighting/windowbeam_texproperties.gif" height="681" border="0"  />
+  <p />
+  Note that if you have a rectangular Projector Texture the texture will display as a square. To correct for this you will need to make a square texture - just add some additional black space around the short edges of your Projector Texture in Photoshop and it will project a rectangular texture.
+  <p />
+  For the other Projector Properties, you will only need to change the following properties:
+  <p /> <ul>
+  <li> Projector - <ul>
+  <li> <code>FOV</code> : <code>1</code>
+  </li> <li> <code>FrameBufferBlendingOp</code> :  _=PB_Add=
+  </li> <li> <code>MaterialBlendingOp</code> : <code>PB_Modulate</code>
+  </li></ul>
+  </li></ul>
+  <p />
+   Now you will be able align the projector with your window and it will cast a bright spot within the room as if the sun is lighting it. The <code>MaxTraceDistance</code> has also been decreased to prevent the Projector from showing through into the next room.
+  <p />
+  To complete the light beam effect you will need a particle system that runs through the Projector. In this example map a Particle System with a fog and a dust emitter is used. Be careful that if you have multiple projectors in your level that you don't have your particle system running through both of them. Currently Particle Systems will disappear if they pass through the frustum of two different Projectors.
+  <p />
+  Note: This effect may disappear if two Projectors project onto the same particle system with out overlap. This is a known bug with Emitters in conjunction with Projectors in the 2110 build.
+  <p />
+  <p />
+  <h2><a name="Mesh Effects"></a> Mesh Effects </h2>
+  <p />
+  <h3><a name="Tree Canopy Light Beams"></a> Tree Canopy Light Beams </h3>
+  <p />
+  <img width="500" alt="lightbeams.jpg" src="rsrc/Two/ExampleMapsAdvLighting/lightbeams.jpg" height="331" border="0"  />
+  <p />
+  This section shows a method for creating light beams that stream down through the canopy of your forest using only static meshes. First you will need your static mesh which will simply be three planes put together as seen below:
+  <p />
+  <img width="416" alt="lightbeammesh.gif" src="rsrc/Two/ExampleMapsAdvLighting/lightbeammesh.gif" height="675" border="0"  />
+  <p />
+  Then create two textures with alpha channels, one for the long beam section, and one for the top piece to appear as a bright spot if you look directly up the beam.
+  <p />
+  <img width="64" alt="beamtexture1.gif" src="rsrc/Two/ExampleMapsAdvLighting/beamtexture1.gif" height="64" border="0"  /> <img width="128" alt="beamtexture2.gif" src="rsrc/Two/ExampleMapsAdvLighting/beamtexture2.gif" height="256" border="0"  />
+  <p />
+  Next you will need to set the properties for the light beam StaticMesh. Make sure all of its collision properties are set to False, <code>bShadowCast</code> is <code>False</code>, and <code>bAcceptsProjectors</code> is <code>False</code> .
+  <p />
+  Lastly, orient the light beam to have the same rotation as the sun light with the square plane at the top of the beam. The rotation property can found under the Movement rollout), and then place in the canopy holes and resize accordingly.
+  <p />
+  <h3><a name="Neon Lights"></a> Neon Lights </h3>
+  <p />
+  <img width="512" alt="advanced_lighting.jpg" src="rsrc/Two/ExampleMapsAdvLighting/advanced_lighting.jpg" height="355" border="0"  />
+  <p />
+  To create a neon light effect is fairly easy. You will need a StaticMesh, a Projector casting a somewhat fuzzy image of the StaticMesh, and a series of lights the color of the neon light with a relatively small light radius.
+  <p />
+  For the StaticMesh, you will need to set the light portion of the mesh to a solid color, and under its display properties, set <code>bUnlit</code> to <em>True.</em>
+  <p />
+  For the Projector, set the properties as follows:
+  <p /> <ul>
+  <li> Projector - <ul>
+  <li> <code>FOV</code> : <code>1</code>
+  </li> <li> <code>MaxTraceDistance</code> : <code>32</code>  Or something just larger than the depth of the neon light StaticMesh.
+  </li> <li> <code>FrameBufferBlendingOP</code> : <code>PB_Add</code> which means that Black will be transparent in the projective texture.
+  </li></ul>
+  </li></ul>
+  <p />
+  The texture itself should just be a blurred image of the neon light on a black background. This will give the glow around whatever surface the neon light is up against, but will not cast any light on any nearby StaticMeshes or Actors.
+  <p />
+  <img width="500" alt="neon_with_lights.jpg" src="rsrc/Two/ExampleMapsAdvLighting/neon_with_lights.jpg" height="349" border="0"  />
+  <p />
+  Lastly add a series of lights with a short <code>LightRadius</code> and small <code>LightBrightness</code> (8 and 16 respectively in this example map). These lights are not so much for lighting up the sign, or the surface behind it, but they are for casting a neon glow to anything that nearby or that passes by.
+  <p />
+  <h3><a name="Rotating Caution Light"></a> Rotating Caution Light </h3>
+  <p />
+  <img width="590" alt="rotating_caution.jpg" src="rsrc/Two/ExampleMapsAdvLighting/rotating_caution.jpg" height="353" border="0"  />
+  <p />
+  To create a moving Projector, you can attach it to a Mover. In this example, you will see how to create a spinning caution light with a Projector and a Mover.
+  <p />
+  For the StaticMesh portion of the caution light, it is broken into three pieces, the rotating reflector, the red shade, and the light and base.
+  <p />
+  <img width="441" alt="caution_pieces.gif" src="rsrc/Two/ExampleMapsAdvLighting/caution_pieces.gif" height="247" border="0"  />
+  <p />
+  It is broken into three parts for two reasons. One, so that the rotating reflector can be placed in separately as a Mover, and two, by placing it as different pieces it allows you to control the drawing order manually in Unreal Ed (since the objects are all so close to each other, the render has difficulty determining what should be drawn first and last).
+  <p />
+  <img width="424" alt="draw_order.gif" src="rsrc/Two/ExampleMapsAdvLighting/draw_order.gif" height="565" border="0"  />
+  <p />
+  Set up the three pieces in your level with the reflector as a Mover and then adjust the draw order by right clicking on the meshes and selecting the appropriate setting from the Order option. For the reflector Mover, you will want to set the following properties: <ul>
+  <li> Display - <ul>
+  <li> <code>bAcceptsProjectors</code> : <code>False</code>
+  </li></ul>
+  </li> <li> Events - <ul>
+  <li> <code>Tag</code> : <em>NameOfYourMover</em>
+  </li></ul>
+  </li> <li> Movement - <ul>
+  <li> <code>bFixedRotation</code> : <code>True</code>
+  </li> <li> <code>RotationRate</code> : <em>YourRotationSpeed (8192 in this example)</em>
+  </li></ul>
+  </li></ul>
+  <p />
+  Then place a <strong>DynamicProjector</strong> at the center of the reflector pointing outward. The Projector must be a <strong>DynamicProjector</strong> otherwise the projection will be baked into the level at the start of the level. The <strong>DynamicProjector</strong> properties should be set up as follows: <ul>
+  <li> Display - <ul>
+  <li> <code>DrawScale</code> : <em>SetAccordinly</em> The projection should fit within the side of the translucent hull.
+  </li></ul>
+  </li> <li> Movement - <ul>
+  <li> <code>AttachTag</code> : <em>NameOfYourMover</em>
+  </li></ul>
+  </li> <li> Projector - <ul>
+  <li> <code>bClipBSP</code> : <code>True</code> This prevents the projector from tiling on BSP
+  </li> <li> <code>bClipStaticMesh</code> : <code>True</code> This prevents the projector from tiling across StaticMeshes.
+  </li> <li> <code>bGradient</code> : <code>True</code> The projection will fade out over distance.
+  </li> <li> <code>bProjectOnAlpha</code> : <code>True</code> If <code>False</code> , the projection will be very harsh on the translucent hull, and it will also show up poorly on any other textures with alpha layers.
+  </li> <li> <code>bProjectOnBackFaces</code> : <code>True</code> This will light up the translucent casing of the caution light.
+  </li> <li> <code>FOV</code> : <code>25</code> This number is up to the level designer, but 25 was chosen so as to limit the Projector for casting through the floor
+  </li> <li> <code>FrameBufferBlendingOP</code> : <code>PB_Add</code> (remember that this means your projection will cast black as transparent)
+  </li> <li> <code>MaxTraceDistance</code> : <em>MayVary</em> Set this accordinly to your level
+  </li></ul>
+  </li></ul>
+  <p />
+  Once you assign a texture to the <strong>ProjTexture,</strong> your caution light is ready to go. Note that a projector set up like this is best used in large indoor spaces so that the projections through walls can be more easily controlled and hidden from the players.
+  <p />
+  <h3><a name="Moths Casting Shadows"></a> Moths Casting Shadows </h3>
+  <p />
+  <img width="317" alt="moth_shadow.jpg" src="rsrc/Two/ExampleMapsAdvLighting/moth_shadow.jpg" height="278" border="0"  />
+  <p />
+  Some of the more dynamic lighting effects will require additional code to be written. This effect will create a dynamic shadow that follows the movement of a moth around a light. Below is a link to a document in the Technical section of UDN that shows how your programmers can set this up.
+  <p />
+  <a href="https://udn.epicgames.com/Two/ExampleMapsAdvLightingCode#Moth" class="restricted" class="restricted" class="twikiAnchorLink">Moth Shadows</a>
+  <p />
+  <p />
+  <h2><a name="Special Projectors"></a> Special Projectors </h2>
+  <p />
+  Special Projectors can also be added by your programmers depending on what you want. This example shows a FluorescentLight Projector that was added to the UDNContent code. To add this TriggerLight into your build, just copy the "UDNContent.dll" and "UDNContent.u" files into your system folder. You can download these files <a href="https://udn.epicgames.com/Two/UDNBuildContent#Running_the_Content_" class="restricted" class="restricted" class="twikiAnchorLink">here</a>. The new classes are explained in <a href="https://udn.epicgames.com/Two/ExampleMapsAdvLightingCode#Fluorescent_Lights" class="restricted" class="restricted" class="twikiAnchorLink">this document</a>.
+  <p />
+  <h3><a name="Triggerable _FluorescentLight Projector"></a> Triggerable FluorescentLight Projector </h3>
+  <p />
+  <img width="500" alt="fluorescent_lights.jpg" src="rsrc/Two/ExampleMapsAdvLighting/fluorescent_lights.jpg" height="364" border="0"  />
+  <p />
+  The FluorescentLight Projector will project a texture and a light that randomly flickers at a set rate and then remains steady after a set time once triggered. To set up this type of projector you will have to set up the Projector properties as you would any other projector, but you now also have a FluorescentLight tab in the properties window as well as the two normal light property tabs (LightColor and Lighting).
+  <p />
+  Note that because the light component of the FluorescentLight Projector is set to <code>bDymanicLight</code> the light will cast through geometry hitting surfaces it shouldn't. Without <code>bDymanicLight</code> though, the light portion of the FluorescentLight Projector will not work.
+  <p />
+  The fluorescent lights in the example map are set up in the following manner. First of all you will want to create a MaterialSwith material and a MaterialSwitchTrigger for the light texture. To do this import two textures, one for the lights on, and one for the lights off.
+  <p />
+  <img width="128" alt="fluorescent_on.jpg" src="rsrc/Two/ExampleMapsAdvLighting/fluorescent_on.jpg" height="256" border="0"  /> <img width="128" alt="fluorescent_off.jpg" src="rsrc/Two/ExampleMapsAdvLighting/fluorescent_off.jpg" height="256" border="0"  />
+  <p />
+  Then create a MaterialSwith material from the New Material MaterialClasses window. Open the properties for the MaterialSwith material and assign the on and off textures to the first two Material slots.
+  <p />
+  <img width="559" alt="fluorescent_matswitch.gif" src="rsrc/Two/ExampleMapsAdvLighting/fluorescent_matswitch.gif" height="485" border="0"  />
+  <p />
+  Next you will need to place two types of triggers, a regular trigger and a MaterialSwitchTrigger. The MaterialSwitchTrigger triggers the MaterialSwitch material but it cannot be triggered by itself. Thus the regular trigger is required to trigger the MaterialSwitchTrigger.
+  <p />
+  <img width="439" alt="materialswitch_triggers.jpg" src="rsrc/Two/ExampleMapsAdvLighting/materialswitch_triggers.jpg" height="507" border="0"  />
+  <p />
+  In the example map two separate regular triggers activate the MaterialSwitchTrigger which switches the MaterialSwitch material on both fluorescent lights. These two regular triggers are also set the bHidden False so that they can be easily found in game.
+  <p />
+  If your programmers want to create your own special Projector lights, they can see how the FluorescentLight Projector was created <a href="https://udn.epicgames.com/Two/ExampleMapsAdvLightingCode#Fluorescent_Lights" class="restricted" class="restricted" class="twikiAnchorLink">here</a> in the Technical version of this document.
+  <p />
+  <h2><a name="Downloads"></a> Downloads </h2>
+  <p />
+  Below are contained in the zip file are folders containing the map, Texture packages, and StaticMesh packages required to run the game. You will also need to down load the <a href="https://udn.epicgames.com/Two/UDNBuildContent" class="restricted" class="restricted" class="twikiLink">UDN content</a> for some of the examples.
+  <p />
+  Note: the examples are for build 2226, they might not work for other versions.
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/ExampleMapsAdvLighting.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:54:38 GMT -->
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/LevelOptimizationBSP.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:53:03 GMT -->
+<head>
+  <title> UDN - Two - LevelOptimizationBSP    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">LevelOptimizationBSP  </b></div>
+  <div id="tooltext">
+  <p />
+  
+  <!-- Two/LevelOptimizationBSP -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="Level Optimization - BSP"></a> Level Optimization - BSP </h1>
+  <p />
+  <em>Document Summary: A detailed description on how to optimize your level through use of BSP.</em>
+  <p />
+  <em>Document Changelog: Last updated by Michiel Hendriks, minor text changes. Previously updated by Jason Lentz (DemiurgeStudios<sup>?</sup>), to break up in to smaller docs. Original authors were Tomasz Jachimczak (<a href="https://udn.epicgames.com/Main/UdnStaff" class="restricted" class="restricted" class="twikiLink">UdnStaff</a>) and Jason Lentz (DemiurgeStudios<sup>?</sup>).</em>
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="LevelOptimizationBSP.html#Level Optimization - BSP"> Level Optimization - BSP</a> <ul>
+  <li> <a href="LevelOptimizationBSP.html#Introduction"> Introduction</a>
+  </li> <li> <a href="LevelOptimizationBSP.html#Creating the World Space"> Creating the World Space</a>
+  </li> <li> <a href="LevelOptimizationBSP.html#BSP Collision"> BSP Collision</a> <ul>
+  <li> <a href="LevelOptimizationBSP.html#Zones and Portals"> Zones and Portals</a>
+  </li></ul>
+  </li> <li> <a href="LevelOptimizationBSP.html#Downloads"> Downloads</a>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <h2><a name="Introduction"></a> Introduction </h2>
+  <p />
+  BSP is the most primitive of the geometry types as well as the most fundamental.  Without it, your level will not exist. While BSP is the slowest geometry type to render, it does have some advantages over the other geometry types. Here you will see what the best uses are for BSP geometry and how you can use it efficiently in your level.
+  <p />
+  This document is part of a collection of documents on <a href="LevelOptimization.html" class="twikiLink">LevelOptimization</a>, but sure to read the others.
+  <p />
+  <h2><a name="Creating the World Space"></a> Creating the World Space </h2>
+  <p />
+  It is necessary in creating the actual space of the world. You must start with BSP by subtracting a BSP brush from the world, so that you are working within subtracted world space. Using BSP brush is also the only way to set up zones (explained in detail in the <a href="LevelOptimizationBSP.html#ZonesAndPortals" class="twikiAnchorLink">Zones and Portals</a> section). Another thing to note with BSP is that it is occluded in nodes, which means that when it is set up to be hidden from the renderer it will be hidden in chunks, not on a triangle by triangle basis.
+  <p />
+  Here are some images of a space that has been created entirely with BSP geometry carved out from the solid world space.
+  <p />
+  <img width="420" alt="bsp_only.jpg" src="rsrc/Two/LevelOptimizationBSP/bsp_only.jpg" height="441" border="0"  />
+  <p />
+  And with textures it can look like this:
+  <p />
+  <img width="420" alt="bsp_textured.jpg" src="rsrc/Two/LevelOptimizationBSP/bsp_textured.jpg" height="441" border="0"  />
+  <p />
+  Another thing to note is the frequency of BSP cuts. It is of course ideal to keep the number of subtractions and additions down to a minimum, but having a few extra additions here and there across your level will not have a dramatic impact on performance. What is more important is to note the complexity of the resulting BSP brush. The more complex it is, the more likely it is to produce BSP holes and thus hinder performance.
+  <p />
+  <h2><a name="BSP Collision"></a> BSP Collision </h2>
+  <p />
+  BSP geometry always handles collision calculations more efficiently but because of its rendering limitations, it is not ideal for everywhere. Typically BSP surfaces are used for ground and floor surfaces, and often invisible blocking volumes are constructed from the BSP brush and used to conceal more complicated StaticMesh geometry that may be making up the walls or sides of the space.
+  <p />
+  For more detail on optimizing for collision, see the <a href="CollisionTutorial.html" class="twikiLink">CollisionTutorial</a>
+  <p />
+  <a name="ZonesAndPortals"></a>
+  <h3><a name="Zones and Portals"></a> Zones and Portals </h3>
+  <p />
+  Zones and Portals are the best tool for visibility culling that the level designer can work with. A Zone is an entire area of the level that can be sectioned off and considered separately for rendering. This allows the renderer to draw triangles or not draw triangles per Zone rather than going through and individually determining what meshes will and won't be drawn. This is a huge advantage since with zones, the render will only be limited to drawing just the geometry in the 2-5 zones that a player can see into.
+  <p />
+  To create a Zone, section off areas of your level by totally enclosing them in BSP volumes. A skybox, which does just that (completely surrounds a world), is in effect a Zone. Everything outside of that Zone will not be rendered as long as there are no lines of sight from one Zone to another. This brings up the problem of having players travel from Zone to Zone.  To allow a player to move from one Zone to another a Portal must be added. Portals are invisible sheets that are used to divide up Zones. If a player can see through a Portal into another zone, then the renderer will render that zone. Given this, it is best to place Portals in the smallest connection two parts of a zone, such as doorways, to ensure you get the maximum efficiency of your Zones and Portals.
+  <p />
+  <img width="420" alt="zone_two_zones.jpg" src="rsrc/Two/LevelOptimizationBSP/zone_two_zones.jpg" height="441" border="0"  />
+  <p />
+  Using the previous example of a BSP room we will split this from one Zone into two through the addition of a Portal.  As shown by separate colors, in this level there are two Zones, the blue two room Zone with the barrel and the light static meshes, and the green zone to the left that is simply an unattached box. As explained before, if you are in one of the green box Zone, nothing in the blue Zone will be rendered at all, but the blue Zone can be broken down further by the addition of a Portal.
+  <p />
+  To create a Zone Portal, create a sheet that takes up the entire space of the hallway between the two blue rooms. Next click on the "Add Special" button on the left toolbar, and then select the "Zone Portal" default from the pull down menu:
+  <p />
+  <img width="406" alt="cut_window_add_portal.jpg" src="rsrc/Two/LevelOptimizationBSP/cut_window_add_portal.jpg" height="184" border="0"  />
+  <p />
+  This will place a portal in the shape and location of the BSP sheet you just set up. The portal created divides the blue zone into two (now shown as red and green below) and still allows players to travel from one room to the other (you will have to rebuild geometry to see this effect take place).
+  <p />
+  <img width="420" alt="zone_three_zones.jpg" src="rsrc/Two/LevelOptimizationBSP/zone_three_zones.jpg" height="441" border="0"  />
+  <p />
+  When the portal is not within the frustum of the player's view, the other room and all of its contents will not be rendered.
+  <p />
+  The more Zones a level is divided into (within reason), the better. A well zoned interior will allow for elaborate and intricate detail to be added within confined spaces. Outside environments can be a bit trickier as they are often large, wide open spaces that are not easily divisible into separate BSP Zones. It is possible to have small buildings that are their own separate zones within a landscape, but the landscape as a whole will be one large zone. Objects within large outdoor spaces can still be occluded, but different tools are required for this. These tools are described in <a href="LevelOptimizationAntiportals.html" class="twikiLink">LevelOptimizationAntiportals</a> .
+  <p />
+  For an additional document that touches on the topic of setting up Zones, see the <a href="BreakAwayExample.html" class="twikiLink">BreakAwayExample</a> .
+  <p />
+  <h2><a name="Downloads"></a> Downloads </h2>
+  <p />
+  To view a downloadable version of the map described above, go to the bottom of <a href="LevelOptimization.html#DownLoads" class="twikiAnchorLink">main Level Optimization</a> and download the appropriate version from there.
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/LevelOptimizationBSP.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:53:06 GMT -->
+</html>

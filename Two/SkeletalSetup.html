@@ -1,0 +1,323 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/SkeletalSetup.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:53:15 GMT -->
+<head>
+  <title> UDN - Two - SkeletalSetup    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">SkeletalSetup  </b></div>
+  <div id="tooltext">
+  <p />
+  
+  <!-- Two/SkeletalSetup -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="Preparing a Character for use with the Unreal Skeletal Animation System"></a> Preparing a Character for use with the Unreal Skeletal Animation System </h1>
+  <p />
+  <em>Document Summary: A broad document that covers general design and implementation principles associated with skeletal animations. Appropriate for novice and intermediate users.</em>
+  <p />
+  <em>Document Changelog: Last updated by Tom Lin (DemiurgeStudios<sup>?</sup>), for document summary. Original authors were Erik de Neve (<a href="https://udn.epicgames.com/Main/EpicGames" class="restricted" class="restricted" class="twikiLink">EpicGames</a>) and James Green.</em>
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="SkeletalSetup.html#Preparing a Character for use with the Unreal Skeletal Animation System"> Preparing a Character for use with the Unreal Skeletal Animation System</a> <ul>
+  <li> <a href="SkeletalSetup.html#Overview"> Overview</a>
+  </li> <li> <a href="SkeletalSetup.html#Designing a Skeleton"> Designing a Skeleton</a> <ul>
+  <li> <a href="SkeletalSetup.html#Unnecessary Bones"> Unnecessary Bones</a>
+  </li> <li> <a href="SkeletalSetup.html#Shoulders and Elbows"> Shoulders and Elbows</a>
+  </li> <li> <a href="SkeletalSetup.html#The Neck"> The Neck</a>
+  </li> <li> <a href="SkeletalSetup.html#Highly Articulated Facial Skeleton"> Highly Articulated Facial Skeleton</a> <ul>
+  <li> <a href="SkeletalSetup.html#Procedural Facial Control"> Procedural Facial Control</a>
+  </li></ul>
+  </li></ul>
+  </li> <li> <a href="SkeletalSetup.html#Optimizing your Mesh"> Optimizing your Mesh</a>
+  </li> <li> <a href="SkeletalSetup.html#Initializing Physique"> Initializing Physique</a>
+  </li> <li> <a href="SkeletalSetup.html#Other Issues"> Other Issues</a> <ul>
+  <li> <a href="SkeletalSetup.html#Creating a Skeleton Without Biped"> Creating a Skeleton Without Biped</a>
+  </li> <li> <a href="SkeletalSetup.html#Adding Bones to Biped"> Adding Bones to Biped</a>
+  </li> <li> <a href="SkeletalSetup.html#Link Rigid Meshes After Physiquing"> Link Rigid Meshes After Physiquing</a>
+  </li> <li> <a href="SkeletalSetup.html#Unlink Meshes after Removing Physique"> Unlink Meshes after Removing Physique</a>
+  </li> <li> <a href="SkeletalSetup.html#Null Vertex Weight"> Null Vertex Weight</a>
+  </li></ul>
+  </li> <li> <a href="SkeletalSetup.html#Karma and Skeletons"> Karma and Skeletons</a>
+  </li> <li> <a href="SkeletalSetup.html#UDN Skeletons vs UT2K3 Skeletons"> UDN Skeletons vs UT2K3 Skeletons</a>
+  </li> <li> <a href="SkeletalSetup.html#Misc Skel Info"> Misc Skel Info</a> <ul>
+  <li> <a href="SkeletalSetup.html#Blending Animations"> Blending Animations</a>
+  </li> <li> <a href="SkeletalSetup.html#Bone Attachments"> Bone Attachments</a>
+  </li> <li> <a href="SkeletalSetup.html#Animation Notifications"> Animation Notifications</a>
+  </li></ul>
+  </li> <li> <a href="SkeletalSetup.html#For Programmers"> For Programmers</a>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <h2><a name="Overview"></a> Overview </h2>
+  <p />
+  Skeletal animation gives your characters smoother movement than was possible with vertex animation, but they must be designed and prepared properly to get the desired results. Generally, polygon counts can increase, because memory usage does not balloon as it does with vertex animations, and rendering power becomes the new bottleneck. The difficult part is that the artists no longer have frame by frame, vertex by vertex control of their animations. Each vertex can only be animated by the bones around it, which means that much more planning must go into each model, lest you find that your model isn't capable of certain motions because of a poorly considered skeleton.
+  <p />
+  <h2><a name="Designing a Skeleton"></a> Designing a Skeleton </h2>
+  <p />
+  <h3><a name="Unnecessary Bones"></a> Unnecessary Bones </h3>
+  <p />
+  Your character's skeleton needs to be designed efficiently to take full advantage of the benefits of skeletal animation. Each bone requires resources to track and animate, so eliminating redundant or clumsy hierarchies is important. For example, if your characters are only going to have 2 digits on their hand (a thumb and four bonded fingers) it is an incredible waste to have a Biped with 5 fingers with 3 joints each. Evaluate the exact function of each bone and make sure you need it before finalizing your skeleton.
+  <p />
+  <h3><a name="Shoulders and Elbows"></a> Shoulders and Elbows </h3>
+  <p />
+  Skeletal animation is not as kind as most would like on areas such as shoulders and elbows. This is because the influences of the bones on the vertices are linear, not spline-based like Physique's Deformable mode. A shoulder lifted straight above the head is prone to pinching, unless designed particularly well. A workaround is to segment the arms from the body if appropriate, as in the case of robots, knights in armor, or even characters in vests or clearly segmented clothing. Another possible solution is to add an extra 'helper' bone to your skeleton that can be animated to make the skin shift more naturally. This could be done with some method of automatic control (including script functions/methods, or 3rd party plugins) if someone is feeling really clever, since animating this by hand would be an arduous task.
+  <p />
+  <h3><a name="The Neck"></a> The Neck </h3>
+  <p />
+  Neck areas are also sometimes tricky. A neck segmented many times looks smooth, lights perfectly, but can deform horribly. Pay special attention to how the neck deforms when the character looks to extreme angles, since this area will probably draw a lot of attention in game.
+  <p />
+  <h3><a name="Highly Articulated Facial Skeleton"></a> Highly Articulated Facial Skeleton </h3>
+  <p />
+  If you're reading this and scoffing at the very <em>idea</em> of saving resources by eliminating useless bones, then this section is for you. As games have become more complex, the expected level of detail in models has skyrocketed. If your game will have any sort of close-up, facial camerawork then some thought must be given to adding additional bones for a facial structure.
+  <p />
+  The following pictures illustrate an inordinately high-count bone structure.
+  <p />
+  <img width="500" alt="facecompare.jpg" src="rsrc/Two/SkeletalSetup/facecompare.jpg" height="322" border="0"  />
+  <p />
+  This skeletal structure is complex enough for simple emotion, blinking, eye tracking, and phonemes/visemes.
+  <p />
+  The skeleton is composed of approximately 50 bones. They break down as follows: <ul>
+  <li> Forehead: 12
+  </li> <li> Eyes: 4 per eye
+  </li> <li> Sides of the nose: 4
+  </li> <li> Cheeks: 4
+  </li> <li> Upper Lip: 8
+  </li> <li> Lower Lip/Chin: 11
+  </li> <li> Tongue: 4
+  </li></ul>
+  <p />
+  These numbers are slightly misleading, as they include the bone substructure that places the surface bones in the correct area. Below is an image with the terminating ends of the bone chains highlighted. Note that it is certainly possible to make facial rigs with a fraction of these numbers, though in that case the bones would likely not deform in an anatomically correct fashion.
+  <p />
+  <img width="500" alt="bonechain.jpg" src="rsrc/Two/SkeletalSetup/bonechain.jpg" height="430" border="0"  />
+  <p />
+  <h4><a name="Procedural Facial Control"></a> Procedural Facial Control </h4>
+  <p />
+  If your model will have a large number of facial animations, you may want to consider setting up your skeletal rig to take advantage of procedural controls over the animations. A programmer can choose to play multiple animations at once, and over selected branches of the facial tree.
+  <p />
+  For this reason, it's a good idea to have one root bone that comes off of the main skeleton, which controls all the other bones lower in the hierarchy. This allows ALL the hair to be blended at once, since you have a single bone parent. This is much cleaner than having each string of bones (strands of hair, fingers) connect to a part of the skeleton that you don't wish to receive blending information (hand, head).
+  <p />
+  <img width="500" alt="bones illustration" src="rsrc/Two/SkeletalSetup/bones.jpg" height="217" border="0"  />
+  <p />
+  For example, imagine an animation exists for 'happy' and 'sad' faces on a correctly set up facial rig. A new animation could be created, 'talking,' which can be selectively played on certain bones during either the 'happy' or 'sad' animations. This saves animators from having to create separate 'talking while happy' and 'talking while sad' animations. For a rough diagram of a facial system that would be suited to procedural animation, see the <a href="https://udn.epicgames.com/Two/PawnAnimation#Setting_Up_the_Face_of_the_Model" class="restricted" class="restricted" class="twikiAnchorLink">PawnAnimation</a>
+  doc.
+  <p />
+  The most important concept to keep in mind is that procedural control works for bones along the tree structure; if you'd like to be able to play an entire facial animation at once <strong>or</strong> be able to break the mouth out into another animation, then have the entire face link off of the root head bone, and then branch off another section for the mouth.
+  <p />
+  You can download this model with the completed facial rig. The source files are attached to this doc page: <a href="UnrealDemoModels.html" class="twikiLink">UnrealDemoModels</a>.
+  <p />
+  Tools exist to help streamline the facial control process. You may want to consider using <em>Impersonator</em> for lip synch on your models. To get started, take a look at these documents.
+  <p />
+  <a href="ImpersonatorHeadRigging.html" class="twikiLink">ImpersonatorHeadRigging</a>
+  <br>
+  <a href="https://udn.epicgames.com/Two/ImpersonatorTutorial" class="restricted" class="restricted" class="twikiLink">ImpersonatorTutorial</a>
+  <br>
+  <a href="ImpersonatorUserGuide.html" class="twikiLink">ImpersonatorUserGuide</a>
+  <br>
+  <p />
+  <h2><a name="Optimizing your Mesh"></a> Optimizing your Mesh </h2>
+  <p />
+  Any mesh can benefit from being tweaked for use in game, no matter how good it looks in Max. The Unreal Engine uses vertex lighting for meshes, which means that light and dark areas are applied at actual vertices, with areas in between calculated as an average. Therefore, the more vertices there are the smoother the lighting will appear. If you have the polygons to spare, make sure you have a minimum number of 'long' edges. Even on a robotic character, a thigh section that stretches from the hip to the knee will look better if there are a few segments in it.
+  <p />
+  It is extremely important that you weld the vertices on your mesh. This is because meshes are drawn smoothly as long as faces share vertices, with abrubt shadows usually showing up along edges where this has not been done. The LOD code will also 'tear' the model apart at these seams. So unless you have a specific reason for doing so, make sure you weld your vertices. I have to stress this because Max has the annoying behavior of unwelding vertices on .3ds files you import.
+  <p />
+  <h2><a name="Initializing Physique"></a> Initializing Physique </h2>
+  <p />
+  <img width="414" alt="PhysiqueInit.jpg" src="rsrc/Two/SkeletalSetup/PhysiqueInit.jpg" height="449" border="0"  />
+  <p />
+  When linking a mesh to a biped (or any hierarchy for that matter) you must initialize with Rigid Vertex Link Assignments. If you do not, what you see in Max will be different from what you see in the engine. This is because Max's Deformable mode computes vertex deformation in a special way which is not duplicated in the engine. The image to the right shows the correct initialization settings, along with the recommended 3 link maximum. Remember, you want to use these options: <ul>
+  <li> Rigid
+  </li> <li> 3 Links
+  </li></ul>
+  <p />
+  All of the other settings can be left as their default, or set to whatever you normally would use. Editing vertex weights may be done by adjusting envelopes or by assigning vertices manually (or even typing in values).
+  <p />
+  When exported, all weights are normalized so they add up to 100% influence automatically.
+  <p />
+   No bulges, tendons, or other special Physique tools may be used. This is necessary so that meshes will deform in Max exactly as they will in the game engine.
+  <p />
+  Often people report differences between what they see in Max and what they see in the engine. Usually this indicates a problem with the initial setup. An easy way to see if a model is set up wrong is to toggle between the Physique Level of Detail settings while the model is in a non-reference pose. If the mesh surface 'shifts' in any way, it has been linked up incorrectly. Below, you can see an image of the radio buttons to toggle between to check a model.
+  <p />
+  <img width="173" alt="PhysiqueLOD.jpg" src="rsrc/Two/SkeletalSetup/PhysiqueLOD.jpg" height="352" border="0"  />
+  <p />
+  <h2><a name="Other Issues"></a> Other Issues </h2>
+  <p />
+  There are some other things to watch for when preparing your models due to quirks in Physique. Some of the things are well known to Max users while others may be new, since a lot of things can be 'wrong' with a Physique setup that will not affect cinematic or vertex animation, but will give skeletal animation some problems.
+  <p />
+  <h3><a name="Creating a Skeleton Without Biped"></a> Creating a Skeleton Without Biped </h3>
+  <p />
+  This is completely possible, as long as you add the appropriate Dummy objects to the ends of your hierarchies. The exporter will work on any valid hierarchy with a single root.
+  <p />
+  <h3><a name="Adding Bones to Biped"></a> Adding Bones to Biped </h3>
+  <p />
+  A lot of artists need to add extra bones for things such as special shoulder pads, wings, or even weapon attach points. This is done in the standard method, making sure a Dummy is linked to the end of any new bone chain, even if there is only a single bone added. This should be done before applying Physique to the mesh. If the Dummy objects are not present, Physique will ignore them as links. Biped bones work because the Dummys are automatically created for you.
+  <p />
+  <h3><a name="Link Rigid Meshes After Physiquing"></a> Link Rigid Meshes After Physiquing </h3>
+  <p />
+  If you have rigid meshes that do not deform at all (helmets, shoulder pads, etc.) you can link them to your skeleton using Max's standard link command. However, this should be done after you have applied (and initialized) all meshes that will be Physiqued, because otherwise Physique will interpret these meshes as links in the hierarchy. They will probably not deform your mesh unexpectedly, but extra links will be established and may be exported as bones into the engine. This can sometimes create problems, and wastes engine resources if nothing else.
+  <p />
+  <h3><a name="Unlink Meshes after Removing Physique"></a> Unlink Meshes after Removing Physique </h3>
+  <p />
+  When I am working, I find myself applying and removing Physique several times when setting up a character. If you let Physique link your mesh to the root (default behavior) deleting the Physique modifier will not unlink your mesh. If you then proceed to apply Physique again, it will treat the mesh you are trying to Physique as a bone and add an extra link to that mesh's origin. This can cause some of the problems listed in the previous section. To avoid this, always 'unlink' meshes after you remove the Physique modifier (or collapse the stack).
+  <p />
+  <h3><a name="Null Vertex Weight"></a> Null Vertex Weight </h3>
+  <p />
+  If a locked vertex is accidentally set to no influence from any bone, then when imported into Unreal vertices will jump about haphazardly, and the model will tear in obvious ways. If you check the logs during the model import process into UnrealEd, it will spit out a null vertex error. Unfortunately, there is no easy way to track down which vert is broken. To guard against this problem, make sure that each vertex has at least some influence when you set type-in weights.
+  <p />
+  <h2><a name="Karma and Skeletons"></a> Karma and Skeletons </h2>
+  <p />
+  A complete analysis of the Karma Physics tools is beyond the scope of this document. See these docs for a more complete description of how to implement Karma.
+  <p />
+  <a href="KarmaReference.html" class="twikiLink">KarmaReference</a>
+  <br>
+  <a href="ImportingKarmaActors.html" class="twikiLink">ImportingKarmaActors</a>
+  <br>
+  <a href="UsingKarmaActors.html" class="twikiLink">UsingKarmaActors</a>
+  <br>
+  <a href="KarmaAuthoringTool.html" class="twikiLink">KarmaAuthoringTool</a>
+  <br>
+  <a href="RagdollsInUT2003.html" class="twikiLink">RagdollsInUT2003</a>
+  <br>
+  <a href="KarmaExampleUT2003.html" class="twikiLink">KarmaExampleUT2003</a>
+  <br>
+  <a href="ExampleMapsKarmaColosseum.html" class="twikiLink">ExampleMapsKarmaColosseum</a>
+  <p />
+  <h2><a name="UDN Skeletons vs UT2K3 Skeletons"></a> UDN Skeletons vs UT2K3 Skeletons </h2>
+  <p />
+  Here is a side by side comparison of the skeletons to be found in the UDN models and a typical skeleton in UT2K3.
+  <p />
+  <img width="357" alt="udnskel.gif" src="rsrc/Two/SkeletalSetup/udnskel.gif" height="470" border="0"  />
+  The UDN Skeleton.
+  <p />
+  <img width="357" alt="juggskel.gif" src="rsrc/Two/SkeletalSetup/juggskel.gif" height="470" border="0"  />
+  The UT2K3 skeleton.
+  <p />
+  As you can see, there is a large discrepancy in the number of total bones between the two skeletons. The UDN model has as many bones in the hands alone as the 2K3 models have in their entire bodies. Let's not even mention the respective heads - as you may have noticed above, the UDN model is stuffed full of bones. Interestingly enough, much of the body looks relatively similar in terms of bone density; the legs, torso, and arms have minor differences in numbers, if at all.
+  <p />
+  The point between the comparison is that your needs for a skeleton may vary wildy between the stripped down framework of the 2K3 rigs and the overweight UDN models. There isn't a perfect number of bones, it all depends on what you want your models to do.
+  <p />
+  If you want: <ul>
+  <li> eye tracking
+  </li> <li> facial emotion
+  </li> <li> lip synching
+  </li> <li> sign language
+  </li></ul>
+  then you need something like the UDN rig.
+  <p />
+  However, if you want: <ul>
+  <li> many characters onscreen at once
+  </li> <li> less memory spent on animation
+  </li> <li> jumping, shooting, running
+  </li></ul>
+  then the 2K3 setup will serve you just fine.
+  <p />
+  <h2><a name="Misc Skel Info"></a> Misc Skel Info </h2>
+  <p />
+  <h3><a name="Blending Animations"></a> Blending Animations </h3>
+  <p />
+  Animations can be blended together in code to make transitions fluid, as well as to create new animations out of existing animations.  For example, in the UDNBuilds and the CodeDrops (not UT2003/UT2004) running forward-left is not a separate animation; it is the run forward animation mixed with the run left animation.  For animations to mix well together they must be the same length and also sync up with each other in a reasonable way.  In the Epic content that comes with the CodeDrops (<a href="https://udn.epicgames.com/Two/CodeDrop2226" class="restricted" class="restricted" class="twikiLink">CodeDrop2226</a> for example), all the run animations (forward, back, left and right) are 33 frames and the left foot always steps down at about frame 10.
+  <p />
+  <p />
+  <h3><a name="Bone Attachments"></a> Bone Attachments </h3>
+  <p />
+  Objects can be attached to bones in the skeleton.  Weapons are attached to models in this manner.  In most cases you will want to make a special attach bone to attach the object in the correct location with the correct orientation.  If you do not make a specific bone, one of your existing bones must be aligned for the attachment, or an offset rotation and location must be set in code.  The following images illustrate how to align objects to bones.
+  <p />
+  If the object is aligned in 3DS MAX like this:
+  <p />
+  <img width="319" alt="WeaponAlign.jpg" src="rsrc/Two/SkeletalSetup/WeaponAlign.jpg" height="180" border="0"  />
+  <p />
+  The attach bone should be aligned like this:
+  <p />
+  <img width="497" alt="ModelBoneAlign.jpg" src="rsrc/Two/SkeletalSetup/ModelBoneAlign.jpg" height="330" border="0"  />
+  <p />
+  The Z axis of the alignment bone orientation corresponds to the Y axis of the object orientation.  The X axis of the alignment bone orientation corresponds to the negative Z axis of the object orientation.
+  <p />
+  Objects are attached to bones by using the bone names.  It is best to use the same bones names for attach bones for all models; for example, all of Epic's models that comes with the CodeDrops (<a href="https://udn.epicgames.com/Two/CodeDrop2226" class="restricted" class="restricted" class="twikiLink">CodeDrop2226</a> for example), have a bone called "weapon_bone" that is used for attaching the weapon.
+  <p />
+  <h3><a name="Animation Notifications"></a> Animation Notifications </h3>
+  <p />
+  For things like footstep sounds and the spawning of effects that should happen at a particular frame you can set up notifies for animations in UnrealEd<sup>?</sup>.  Please see this <a href="AnimNotifies.html" class="twikiLink">Animation Notification</a> document for details.
+  <p />
+  <p />
+  <h2><a name="For Programmers"></a> For Programmers </h2>
+  <p />
+  To get an understanding of how programmers are involved in the animation pipeline, check out the <a href="https://udn.epicgames.com/Two/SkelAnim" class="restricted" class="restricted" class="twikiLink">Skeletal Animation 101</a> and <a href="SkelAnim2.html" class="twikiLink">Skeletal Animation 102</a> pages, as well as the <a href="https://udn.epicgames.com/Two/ExtendingUWSkelAnim" class="restricted" class="restricted" class="twikiLink">Extending Skeletal Animation</a> page.
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/SkeletalSetup.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 12:53:20 GMT -->
+</html>

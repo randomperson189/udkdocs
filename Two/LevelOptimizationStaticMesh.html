@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  	"http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/LevelOptimizationStaticMesh.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 13:16:36 GMT -->
+<head>
+  <title> UDN - Two - LevelOptimizationStaticMesh    </title>
+  
+  <style type="text/css" media="all">@import "rsrc/twiki_webs.css";</style>
+  <style type="text/css" media="all">@import "rsrc/udn_new.css";</style>
+  <link rel="icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="rsrc/Two/WebPreferences/favicon.ico" type="image/x-icon" />
+  
+  
+  <!-- view.static_udn3.tmpl  -->
+  <script language="JavaScript" type="text/javascript" src="rsrc/udn.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  </head>
+  <p />
+  <body id="webbgTwo">
+  <p />
+ <!-- Pixel Analytics -->  <script type="text/javascript">
+  
+  (function(w,d,s,q,c){var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s);j.async=true;j.src=
+     '../../../tracking.epicgames.com/tracking.js';
+     j.addEventListener('load',function(e){w.com.epicgames.web.track.loadPixel(q,c)});
+     f.parentNode.insertBefore(j,f);
+     })(window,document,'script',{/*data layer*/}/*,callback(){}*/); 
+  
+  </script>
+  <p />
+  <div id="webTwo"><div id="head">
+  <!--
+  <div class="header">
+   -->
+  <div style="background: url(../../pub/webbg_udn.html); background-repeat: no-repeat; height:140px; width: 100%;" >
+  <!--
+  <div style="background: transparent url(/pub/udn_header_bg.jpg); background-repeat: repeat-x; height:140px; width: 100%; margin-left: 991px;">
+   -->
+  <p />
+  <div id="nav">
+  <ul class="nav">
+  <font color=black>|</font>&nbsp;&nbsp;<li class=nav_Three><a href="../Main/WebHome.html" class="twikiLink">Main</a></li><font color=black>|</font><li class=nav_Three><a href="WebHome.html" class="twikiLink">UnrealEngine2</a></li><font color=black>|</font><li class=nav_Three><a href="../Three/WebHome.html" class="twikiLink">UnrealEngine3</a></li><font color=black>|</font><li class=nav_Three><a href="https://docs.unrealengine.com/" class="twikiLink">UnrealEngine4</a></li><font color=black>|</font><li class=nav_Three><a href="../Main/BusinessAndLegal.html" class="twikiLink">Business &amp; Legal</a></li><font color=black>|</font>
+  </ul><br><br><br>
+  </div>
+  </div>
+  </div> <!-- end head -->
+  <div id="pagedefault">
+  <div id="maincol">
+  <div id="tool">
+  <div id="tooltop">UDN</div>
+  <div id="tooltext" style="padding: 10px 10px 10px 10px;">
+  Search public documentation: <br>
+  <form ACTION="https://docs.unrealengine.com/search/index.php" METHOD="GET" NAME="main" ID="main">
+  <input TYPE="TEXT" NAME="q" SIZE="15" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;">
+  <input TYPE="SUBMIT" VALUE="Search" STYLE="font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: xx-small;"><br>
+  </form>
+  </div>
+  <div id="toolband">LevelOptimizationStaticMesh  </b></div>
+  <div id="tooltext">
+  <p />
+  
+  <!-- Two/LevelOptimizationStaticMesh -->
+  <hr size="1" noshade="noshade" />
+  Interested in the Unreal Engine? <br>
+  Visit the <a href="http://www.unrealtechnology.com/" target="_top">Unreal Technology</a> site.<br>
+  <br>
+  Looking for jobs and company info? <br>
+  Check out the <a href="http://www.epicgames.com/" target="_top">Epic games</a> site.<br>
+  <br>
+  Questions about support via UDN? <br>
+  Contact the <a href="../Main/ContactUDNStaff.html" class="twikiLink">UDN Staff</a> <br>
+  <br>
+  </div> <!-- end toolbox content -->
+  <div id="toolbottom"></div>
+  </div> <!-- end tool -->
+  <p />
+  <h1><a name="Level Optimization - _StaticMeshes"></a> Level Optimization - StaticMeshes </h1>
+  <p />
+  <em>Document Summary: A detailed description on how to optimize StaticMeshes in your level.</em>
+  <p />
+  <em>Document Changelog: Last updated by Michiel Hendriks, minor text changes. Previous update by Jason Lentz (DemiurgeStudios<sup>?</sup>), to break up in to smaller docs. Original authors was Jason Lentz (DemiurgeStudios<sup>?</sup>).</em>
+  <p />
+  <div class="twikiToc"> <ul>
+  <li> <a href="LevelOptimizationStaticMesh.html#Level Optimization - _StaticMeshes"> Level Optimization - StaticMeshes</a> <ul>
+  <li> <a href="LevelOptimizationStaticMesh.html#Introduction"> Introduction</a>
+  </li> <li> <a href="LevelOptimizationStaticMesh.html#Efficient _StaticMesh Design"> Efficient StaticMesh Design</a>
+  </li> <li> <a href="LevelOptimizationStaticMesh.html#Using _StaticMeshes Efficiently"> Using StaticMeshes Efficiently</a>
+  </li> <li> <a href="LevelOptimizationStaticMesh.html#Collision with _StaticMeshes"> Collision with StaticMeshes</a>
+  </li></ul>
+  </li></ul>
+  </div>
+  <p />
+  <h2><a name="Introduction"></a> Introduction </h2>
+  <p />
+  StaticMeshes are meshes that were created in a 3rd party modeling program and imported into Unreal Ed. Due to being drawn entirely through use of 3D acceleration on the client computer and the fact that they do not move (hence the name <em>Static</em> Meshes), they render faster than any other geometry type. This document goes into detail about how not only using StaticMeshes to optimize your level but also on how to create your StaticMeshes so that they themselves are optimized.
+  <p />
+  This document is part of a collection of documents on <a href="LevelOptimization.html" class="twikiLink">LevelOptimization</a>, but sure to read the others.
+  <p />
+  <h2><a name="Efficient _StaticMesh Design"></a> Efficient StaticMesh Design </h2>
+  <p />
+  Optimizing the StaticMeshes is a more of a way to fine tune your level, rather than making large sweeping optimizations, although it is still a good thing to keep in mind at the outset of creating the StaticMeshes for your level. For a more technical explanation on how your meshes can be built for the fastest rendering time as well as optimal memory size, see the <a href="MeshOptimization.html" class="twikiLink">MeshOptimization</a> document.
+  <p />
+  <h2><a name="Using _StaticMeshes Efficiently"></a> Using StaticMeshes Efficiently </h2>
+  <p />
+  In the downloadable example at the bottorm of the <a href="LevelOptimization.html" class="twikiLink">LevelOptimization</a>, there are a few StaticMeshes used to further demonstrate how they are culled by Antiportals and Zones. Taking a closer look at the barrel StaticMesh a few other advantages of StaticMeshes can be seen.
+  <p />
+  <img width="420" alt="mesh_textured.jpg" src="rsrc/Two/LevelOptimizationStaticMesh/mesh_textured.jpg" height="441" border="0"  />
+  <p />
+  As stated above, StaticMeshes are the fastest type of geometry for rendering and because of this, not only can they be safely given more detail than BSP geometry, but they can also be replicated to flesh out a scene.
+  <p />
+  <img width="420" alt="bsp_full_items.jpg" src="rsrc/Two/LevelOptimizationStaticMesh/bsp_full_items.jpg" height="441" border="0"  />
+  <p />
+  Above you can see the rooms with multiple instances of only a few different StaticMeshes (three to be exact: barrel, wall light, and ceiling light). The advantage of being able to reuse StaticMeshes in a level is that they will not take up as much space in memory allowing for ultimately more variety and/or complexity in the different meshes. Another way to increase the visual variety of your level is to alter the display sizes of StaticMeshes, as demonstrated below.
+  <p />
+  <img width="420" alt="mesh_display_size.jpg" src="rsrc/Two/LevelOptimizationStaticMesh/mesh_display_size.jpg" height="441" border="0"  />
+  <p />
+  Using modular design principles, using the DrawScale values can greatly increase the functionality of your StaticMeshes. To see more about modular level design, see the <a href="WorkflowAndModularity.html" class="twikiLink">WorkflowAndModularity</a> document.
+  <p />
+  <h2><a name="Collision with _StaticMeshes"></a> Collision with StaticMeshes </h2>
+  <p />
+  Collision for StaticMeshes with their default settings is not that efficient, but fortunately this can be optimized. What makes StaticMesh collision calculation so slow is that when UnrealEd is calculating collision for the mesh it calculates it on a per triangle basis for the entire mesh, not just the area that might be affected. So you can imagine that if you have a large mesh (both in size and poly count), for instance a complicated Tree model with lots of modeled foliage, the engine will be making unnecessary calculations for any player that may bump against the trunk of this tree.
+  <p />
+  There are a variety of ways to improve the collision for StaticMeshes. One of these ways includes Blocking Volumes. Again in the downloadable example at the bottorm of the <a href="LevelOptimization.html" class="twikiLink">LevelOptimization</a> you can see an example of a Blocking Volume that has been set up around one of the barrel StaticMeshes.
+  <p />
+  <img width="420" alt="mesh_collision_hull.jpg" src="rsrc/Two/LevelOptimizationStaticMesh/mesh_collision_hull.jpg" height="440" border="0"  />
+  <p />
+  This screenshot shows the mesh from the barrel next to a standard eight-sided cylinder. For a player running through the level, the simpler 8-sided collision surface simulates the spatial volume of the barrel almost identically. The cylinder is exactly the same height, has the same circumference and will block the player from walking through the barrel. However, the eight-sided cylinder greatly simplifies the calculations needed by the engine to work out collisions against players.
+  <p />
+  Another way to improve StaticMesh collision is to create simpler collision hulls around the StaticMeshes in the 3rd party modeling programs and then set up the properties of the StaticMesh to use the collision hull for collision calculations. For more detailed information on StaticMesh collision, see the <a href="CollisionTutorial.html" class="twikiLink">CollisionTutorial</a>.
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  <p />
+  </div></div><div id="footer"><div style="BACKGROUND-COLOR: transparent; margin: 0; padding: 0; width: 100%;"><div>&nbsp;</div><div style="float: left; text-align: left; vertical-align: bottom; width: 50%;"><a href="http://www.videogamevoters.org/"><img src="rsrc/vgvn.jpg" border="0" width="234" height="60" alt="Video Game Voters Network" /></a></div><div style="float: right; text-align: right; vertical-align: bottom; width: 50%;">Copyright &copy; 2001-2012 <a href="http://www.epicgames.com/" target="_top">Epic Games, Inc.</a><br /><a href="../Main/TermsAndConditions.html" class="twikiLink">Terms and Conditions</a><br /><a href="http://epicgames.com/privacynotice" target="_top">Privacy Notice</a></div></div></div></div>
+  <p />
+  </body>
+  
+<!-- Mirrored from docs.unrealengine.com/udk/Two/LevelOptimizationStaticMesh.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 08 Sep 2018 13:16:36 GMT -->
+</html>
